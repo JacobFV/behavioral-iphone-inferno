@@ -1,0 +1,36 @@
+{
+  "original_spindump_sha256": "2b4874df0c2129b3c6f7a69370b019fd10f39947b2b40f59790bf94cf712bfaf",
+  "original_backboardd": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/hid-routing-inspection/Volume1/usr/libexec/backboardd",
+    "sha256": "304d45d72dcba7e16928ec9192897c269280846f6d06dcccfdb4b991cbf040d2"
+  },
+  "available_mapper": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/symbolize-cache",
+    "sha256": "6db73f0ae7a811e125fb61f8322bd8ef2a70934985b4d23c78eb64b790dab0c9",
+    "source": "companion/native-probe/symbolize-cache.cpp",
+    "parser_revision": "3008aaaa0909824a71ee3040c9edc58703c250f5"
+  },
+  "original_cache": {
+    "uuid": "11ad39c9-e3c9-3067-a337-7287744fdcb5",
+    "sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+    "preferred_base": "0x180000000"
+  },
+  "workflow": [
+    "Reconstruct hex chunks by exact request ID and contiguous offset, require byte/count/EOF/final status metadata. Keep partial output explicitly incomplete.",
+    "Read actual image UUID and preferred/runtime base or image-relative offsets. Require original artifact UUID match before attribution; do not borrow another boot slide.",
+    "For cache-relative offsets add preferred cache base; for runtime PCs subtract actual observed slide. Feed normalized addresses as hex lines to the existing symbolize-cache original-cache-path adapter.",
+    "For standalone backboardd normalize with its actual Binary Images runtime base and original LC_UUID/Mach-O preferred base; use original symbols/disassembly already retained outside Git.",
+    "Keep nearest-symbol offset and original frame together; an imprecise local symbol is not an exact source line. Check sparse renderer patch locations before interpreting any overlapping original instruction.",
+    "Compare target thread state and repeated sampled stacks; dispatch/Mach/semaphore waits alone are ordinary and do not establish the missing-submission cause."
+  ],
+  "limitations": [
+    "Original usage promises gathered UUID+offset, not proven emitted text shape for this exact invocation. No sample has executed yet.",
+    "Original spindump explicitly cannot re-symbolicate text itself; our offline image-based mapping is separate.",
+    "The 256KiB cap or original-tool failure may omit an image table, rendering some addresses unresolvable without independently observed same-boot mapping.",
+    "Backboard imports CARenderServerRenderDisplay/CAWindowServer/CAFenceHandle/CATransaction/IOSurface establish relevant linked interfaces only, not a live blocked stack or implementation fix."
+  ],
+  "retained_excerpts": {
+    "backboard-display-imports.txt": "c82ac46d1e7de29aab9c0a00acf2f685607f3d04c4dfa0baeaaec01ffdd042de",
+    "symbolication-usage.txt": "600a3057eb3bf406d54477e58f1976061fb85c6070c1b23c111448d9313eb09c"
+  }
+}
