@@ -73,3 +73,14 @@ USB2 root hub enumeration follow at 07:36:52. No Apple device was attached at
 that checkpoint. Local raw logs are under
 `$HOME/.local/share/inferno/usb/run3/`, including `guest-diagnosis.log`,
 `guest-install.log` and `serial.log`. This proves Linux service readiness only.
+
+The two-vCPU run3 Linux guest later panicked in `ehci_irq` immediately after
+USB attachment. Stderr recorded blocked re-entrant access to EHCI operational
+MMIO. `--cpus 1` enables an unchanged-driver experiment to avoid overlapping
+vCPU accesses while usb-tcp-remote waits for a response with BQL released.
+This is under validation, not a verified fix. The runner now detects a serial
+kernel panic and returns failure even if daemon readiness occurred earlier.
+
+`--accel kvm` selects KVM with `-cpu host` for this Linux companion only,
+requiring a KVM-enabled binary and usable `/dev/kvm`. TCG remains the default;
+this flag does not alter t8030 acceleration.

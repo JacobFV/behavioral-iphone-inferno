@@ -94,7 +94,7 @@ def run(args):
     disk_hash = sha(disk_source)
     subprocess.run(['cp', '--reflink=auto', '--sparse=always',
                     str(disk_source), str(output / 'guest.qcow2')], check=True)
-    command = [str(binary), '-M', 'virt', '-accel', 'tcg', '-cpu', 'max', '-smp', '2', '-m', args.memory,
+    command = [str(binary), '-M', 'virt', '-accel', args.accel, '-cpu', 'host' if args.accel == 'kvm' else 'max', '-smp', str(args.cpus), '-m', args.memory,
                '-kernel', str(args.cache / 'noble-server-cloudimg-arm64-vmlinuz-generic'),
                '-initrd', str(args.cache / 'noble-server-cloudimg-arm64-initrd-generic'),
                '-append', 'root=LABEL=cloudimg-rootfs rw console=ttyAMA0',
@@ -126,7 +126,11 @@ def run(args):
             deadline = time.monotonic() + args.seconds
             while process.poll() is None and time.monotonic() < deadline:
                 serial = output / 'serial.log'
-                if not report['guest_ready'] and serial.exists() and b'INFERNO_USB_COMPANION_READY' in serial.read_bytes():
+                content = serial.read_bytes() if serial.exists() else b''
+                if b'Kernel panic - not syncing:' in content:
+                    report['guest_panic'] = True
+                    break
+                if not report['guest_ready'] and b'INFERNO_USB_COMPANION_READY' in content:
                     report['guest_ready'] = True
                     (output / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
                     print(json.dumps({'guest_ready': True, 'usb_socket': str(endpoint)}), flush=True)
@@ -147,7 +151,7 @@ def run(args):
         report['ended_utc'] = datetime.datetime.now(datetime.timezone.utc).isoformat()
         (output / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps({'report': str(output / 'report.json'), 'guest_ready': report['guest_ready']}))
-    return 0 if report['guest_ready'] else 1
+    return 0 if report['guest_ready'] and not report.get('guest_panic') else 1
 
 
 def main():
@@ -158,6 +162,8 @@ def main():
     parser.add_argument('--output', type=Path)
     parser.add_argument('--resume-from', type=Path, help='copy stopped run disk, seed and private credentials, preserving cloud-init instance')
     parser.add_argument('--disk', type=Path, help='copy an existing stopped companion QCOW2 to retain installed packages')
+    parser.add_argument('--accel', choices=['tcg', 'kvm'], default='tcg')
+    parser.add_argument('--cpus', type=int, choices=[1, 2], default=2)
     parser.add_argument('--memory', choices=['1G', '2G', '4G'], default='2G')
     parser.add_argument('--ssh-port', type=int, help='optional loopback-only host SSH forwarding port')
     parser.add_argument('--seconds', type=int, default=1800)
