@@ -226,3 +226,10 @@ Preparation11 failed before helper execution after the old HFS writer deleted
 the restore plist: the kernel reported an HFS attributes-node error and launchd
 exec errno8, although extracted launchd SHA256 remained unchanged. Preparation
 now moves the job catalog entry without deleting its file/attribute records.
+
+Preparation12 executed the original gigalocker initializer successfully and then
+cleanly unmounted xART. Its raw serial includes the original tool's initialization
+message, status0, APFS unmount completion, and `INFERNO_GIGALOCKER_COMPLETE`.
+The relocated restore plist profile also passed an independent 7-Zip archive test
+of all 775 files. This establishes initialization and normal unmount; it does not
+retroactively establish success for the hanging shutdown calls in attempts9/10.
