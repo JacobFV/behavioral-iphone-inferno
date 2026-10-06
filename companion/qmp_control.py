@@ -99,10 +99,13 @@ def sample_capability(output, args):
     found = []
     banner_count = 0
     offset = 0
-    for raw in data.splitlines(keepends=True):
-        if raw.startswith(b'INFERNO_SAMPLE_READY '):
+    for line in data.split(b'\n'):
+        if offset == len(data):
+            break
+        raw = line + (b'\n' if offset + len(line) < len(data) else b'')
+        if line.startswith(b'INFERNO_SAMPLE_READY '):
             banner_count += 1
-        if raw.rstrip(b'\r\n') == expected:
+        if line.rstrip(b'\r') == expected:
             found.append({'path': str(path), 'byte_start': offset, 'byte_end': offset + len(raw),
                           'sha256': hashlib.sha256(raw).hexdigest(), 'text': expected.decode('ascii')})
         offset += len(raw)

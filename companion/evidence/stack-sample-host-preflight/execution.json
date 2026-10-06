@@ -45,10 +45,27 @@
     {
       "name": "sample-two-attempt-guard-no-socket",
       "rejected": "At most two explicit SAMPLE attempts are allowed per run"
+    },
+    {
+      "name": "explicitly-synthetic-CRCRLF-capability",
+      "prefix_hex": "7072696f72207261770d7365676d656e740d0d0a",
+      "banner_raw_hex": "494e4645524e4f5f53414d504c455f524541445920656e61626c65643d3120626f6f743d30323442443833452d454231302d343636362d394330342d363837453743323145394443206d61785f72657175657374733d3220746172676574733d535052494e47424f4152442c4241434b424f41524444206175746f6d617469635f73616d706c653d300d0d0a",
+      "reference": {
+        "path": "/tmp/tmplhdxrp6a/serial.log",
+        "byte_start": 20,
+        "byte_end": 160,
+        "sha256": "fbbf6c48ddae4473b7f9e3f48ecb563c023bcabc2c3b062fdf341e205e0acbea",
+        "text": "INFERNO_SAMPLE_READY enabled=1 boot=024BD83E-EB10-4666-9C04-687E7C21E9DC max_requests=2 targets=SPRINGBOARD,BACKBOARDD automatic_sample=0"
+      },
+      "exact_physical_line_hash_and_offsets": true
+    },
+    {
+      "name": "bare-CR-does-not-start-banner",
+      "rejected": "Exactly one matching enabled SAMPLE_READY capability is required; legacy guests cannot sample"
     }
   ],
   "sources": {
-    "companion/qmp_control.py": "6f7d89ac74749e98516535fdb25993c8699aea993a591f87c02d884932d02673",
+    "companion/qmp_control.py": "1859298b8b8dc99d0c46786fd09dd81c0ef6f2e7fbf80b1511a7b8a4aefb8c03",
     "companion/owned-control.py": "e129f01c38f6a492834c905dcd57c1092c1cae6cd75be54bf302769113d9d2ae"
   }
 }
