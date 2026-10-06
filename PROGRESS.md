@@ -52,7 +52,11 @@
   completion marker. Logs: `.local-build/reports/disk-preparation-8/`.
   Direct-root-3 mounted xART and Preboot and passed mount-phase-1. It then
   panicked during data-protection (exit2): missing gigalocker storage. The
-  original guest initialization utility is being investigated. Committed raw
+  original guest initialization utility subsequently succeeded in run12: original
+  `seputil --gigalocker-init` returned0 and xART cleanly unmounted. The separate
+  shutdown utility hung in runs9/10; run12 used sync and normal unmount.
+  Raw evidence: `companion/evidence/gigalocker-preparation*`. Data/Update and
+  original var seeding are now executing. Earlier committed raw
   evidence: `companion/evidence/apfs-role-preparation*` and
   `companion/evidence/direct-root-prepared*`.
 - **Reproduced OS conversion:** root ran both committed OS utilities; full raw

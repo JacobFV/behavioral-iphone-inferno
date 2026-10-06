@@ -51,8 +51,9 @@ that directory together: the binary references local libraries/resources.
 Owned native recovery code executes. A direct System boot reaches Darwin
 Bootstrapper but needs auxiliary APFS preparation. The latest owned helper
 created Preboot, xART and Hardware and copied original firmware. Direct-root-3
-passed mount-phase-1, then failed data-protection because gigalocker storage is
-missing. Investigate original guest initialization rather than fabricated blobs. See PROGRESS.md and companion/native-probe/README.md.
+passed mount-phase-1, then failed data-protection because gigalocker storage was
+missing. Run12 invoked the original guest initializer and cleanly unmounted xART;
+Data/Update and original var seeding are now executing in run13. See PROGRESS.md and companion/native-probe/README.md.
 Linux USB companion boots under KVM. EHCI attachment panics due to the blocking
 remote handler; xHCI descriptor enumeration also fails. The asynchronous USB fix
 and EHCI address-order correction at7e70337967 passed actual enumeration,
