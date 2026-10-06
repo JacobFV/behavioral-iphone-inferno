@@ -1,0 +1,112 @@
+{
+  "kind": "actual_firmware_free_keep_running_mailbox_lifecycle",
+  "ios_boot": false,
+  "guest_markers_injected": false,
+  "host_completion_fixture": true,
+  "binary_sha256": "e3da84b179ce328e06a0f917aabb8e4d80c8a4cf64701212464831a270e1741e",
+  "source_sha256": {
+    "boot.py": "3a981c67b18f3fd53a9a5a6450ded716ed38fe857b64adabec3472dc7e911297",
+    "qmp_control.py": "b5d7656d2fb00930b2f5ec6645b8392d43ff3881cc8043aafa79b75293f5f0a5"
+  },
+  "command": [
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "-machine",
+    "none",
+    "-display",
+    "none",
+    "-nodefaults",
+    "-S",
+    "-qmp",
+    "unix:/tmp/inferno-keep-running-clf1jwvl/qmp.sock,server=on,wait=off"
+  ],
+  "checks": [
+    {
+      "command": "finish-run",
+      "arguments": "{}",
+      "exit_code": 1,
+      "stdout": "{\"rejected\": \"finish-run requires --probe-keep-running\"}\n",
+      "stderr": "",
+      "qmp_commands_added": 0,
+      "journey_unchanged": true
+    },
+    {
+      "default_completed_stop": true
+    },
+    {
+      "command": "finish-run",
+      "arguments": "{}",
+      "exit_code": 1,
+      "stdout": "{\"rejected\": \"finish-run requires a completed probe journey\"}\n",
+      "stderr": "",
+      "qmp_commands_added": 0,
+      "journey_unchanged": true
+    },
+    {
+      "command": "probe-status",
+      "arguments": "{}",
+      "exit_code": 0,
+      "stdout": "{\"return\": {\"state\": \"completed\", \"completed\": true, \"input_mode\": \"operator-observation\", \"automatic_input\": false, \"visual_review_required\": true, \"captures\": {}, \"keep_running\": true, \"finish_requested\": false}}\n",
+      "stderr": "",
+      "qmp_commands_added": 0,
+      "journey_unchanged": true
+    },
+    {
+      "command": "finish-run",
+      "arguments": "{\"extra\":true}",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/tmp/inferno-disk-overlay-chain/companion/qmp_control.py\", line 328, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"/tmp/inferno-disk-overlay-chain/companion/qmp_control.py\", line 312, in main\n    validate(request)\n  File \"/tmp/inferno-disk-overlay-chain/companion/qmp_control.py\", line 88, in validate\n    raise ValueError('Command or arguments are outside the input diagnostic allowlist')\nValueError: Command or arguments are outside the input diagnostic allowlist\n",
+      "qmp_commands_added": 0,
+      "journey_unchanged": true
+    },
+    {
+      "completed_opt_in_remained_alive": true,
+      "host_loop_iterations": 8,
+      "duration_deadline_reached_without_finish": true
+    },
+    {
+      "command": "finish-run",
+      "arguments": "{}",
+      "exit_code": 0,
+      "stdout": "{\"return\": {\"keep_running\": true, \"finish_requested\": true}}\n",
+      "stderr": "",
+      "qmp_commands_added": 0,
+      "journey_unchanged": true
+    }
+  ],
+  "normal_qmp_quit": {
+    "return": {},
+    "id": 3
+  },
+  "exit_code": 0,
+  "files": {
+    "stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "control-transcript.jsonl": {
+      "sha256": "f5024048e53408b5045534cf5760ab5aac4b393bc182134f26c7a6eb20702a1c",
+      "bytes": 1512
+    },
+    "qmp-transcript.jsonl": {
+      "sha256": "1f7e47a5b626a49b8cac0c9cc53b48a5415480f00880b04e7d38d6f719ffee13",
+      "bytes": 1057
+    },
+    "control/reply-422df3d48d8d4bfc890fb5e7d1399aa7.json": {
+      "sha256": "cc55d865cf1459e6b6c2454bd9c9a465c6c4dd4f4797d246c2fd30caa11af790",
+      "bytes": 215
+    },
+    "control/reply-07b4ef141276469a844d902af980ade8.json": {
+      "sha256": "68f928ad13cbdd82cdbac05cc6aa799a84052eb39617281993b3b3945089f1fe",
+      "bytes": 61
+    },
+    "control/reply-a1fc5d227ae84351ab2afd023202c685.json": {
+      "sha256": "dec49d2cf1f17da2811ccf7d771988d42227b4a9c4c3d4786bd59f5b5f99e54e",
+      "bytes": 57
+    },
+    "control/reply-f10db86c40804f169ca2f0148ac2ced6.json": {
+      "sha256": "f6234c194ebd75eb810502eb1a39804cf3be2b5dc8301241225464fb3702342d",
+      "bytes": 62
+    }
+  }
+}

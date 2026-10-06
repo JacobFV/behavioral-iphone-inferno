@@ -1,0 +1,41 @@
+[
+  {
+    "command": [
+      "python3",
+      "companion/boot.py",
+      "--profile",
+      "/nonexistent-inferno-profile",
+      "--probe-keep-running"
+    ],
+    "exit_code": 2,
+    "stderr": "usage: boot.py [-h] --profile PROFILE [--touch-trace-startup]\n               [--touch-trace-seconds TOUCH_TRACE_SECONDS] [--control-mailbox]\n               [--guest-hid-serial] [--binary BINARY] [--manifest MANIFEST]\n               [--seconds SECONDS] [--output OUTPUT] [--guest-errors]\n               [--launchd-unsecure-cache] [--probe-journey]\n               [--probe-keep-running] [--probe-hardware-tap]\n               [--capture-interval CAPTURE_INTERVAL] [--usb-socket USB_SOCKET]\n               [--root-image ROOT_IMAGE]\n               [--overlay-base-report OVERLAY_BASE_REPORT] [--root-overlay]\n               [--overlay-tools-root OVERLAY_TOOLS_ROOT]\n               [--root-sha256 ROOT_SHA256] [--auxiliary-state AUXILIARY_STATE]\n               [--disk-boot | --ramdisk-boot | --recovery-preserve-disk]\nboot.py: error: --probe-keep-running requires --probe-journey and --control-mailbox, and excludes --probe-hardware-tap\n"
+  },
+  {
+    "command": [
+      "python3",
+      "companion/boot.py",
+      "--profile",
+      "/nonexistent-inferno-profile",
+      "--probe-keep-running",
+      "--probe-journey",
+      "--disk-boot"
+    ],
+    "exit_code": 2,
+    "stderr": "usage: boot.py [-h] --profile PROFILE [--touch-trace-startup]\n               [--touch-trace-seconds TOUCH_TRACE_SECONDS] [--control-mailbox]\n               [--guest-hid-serial] [--binary BINARY] [--manifest MANIFEST]\n               [--seconds SECONDS] [--output OUTPUT] [--guest-errors]\n               [--launchd-unsecure-cache] [--probe-journey]\n               [--probe-keep-running] [--probe-hardware-tap]\n               [--capture-interval CAPTURE_INTERVAL] [--usb-socket USB_SOCKET]\n               [--root-image ROOT_IMAGE]\n               [--overlay-base-report OVERLAY_BASE_REPORT] [--root-overlay]\n               [--overlay-tools-root OVERLAY_TOOLS_ROOT]\n               [--root-sha256 ROOT_SHA256] [--auxiliary-state AUXILIARY_STATE]\n               [--disk-boot | --ramdisk-boot | --recovery-preserve-disk]\nboot.py: error: --probe-keep-running requires --probe-journey and --control-mailbox, and excludes --probe-hardware-tap\n"
+  },
+  {
+    "command": [
+      "python3",
+      "companion/boot.py",
+      "--profile",
+      "/nonexistent-inferno-profile",
+      "--probe-keep-running",
+      "--probe-journey",
+      "--disk-boot",
+      "--control-mailbox",
+      "--probe-hardware-tap"
+    ],
+    "exit_code": 2,
+    "stderr": "usage: boot.py [-h] --profile PROFILE [--touch-trace-startup]\n               [--touch-trace-seconds TOUCH_TRACE_SECONDS] [--control-mailbox]\n               [--guest-hid-serial] [--binary BINARY] [--manifest MANIFEST]\n               [--seconds SECONDS] [--output OUTPUT] [--guest-errors]\n               [--launchd-unsecure-cache] [--probe-journey]\n               [--probe-keep-running] [--probe-hardware-tap]\n               [--capture-interval CAPTURE_INTERVAL] [--usb-socket USB_SOCKET]\n               [--root-image ROOT_IMAGE]\n               [--overlay-base-report OVERLAY_BASE_REPORT] [--root-overlay]\n               [--overlay-tools-root OVERLAY_TOOLS_ROOT]\n               [--root-sha256 ROOT_SHA256] [--auxiliary-state AUXILIARY_STATE]\n               [--disk-boot | --ramdisk-boot | --recovery-preserve-disk]\nboot.py: error: --probe-keep-running requires --probe-journey and --control-mailbox, and excludes --probe-hardware-tap\n"
+  }
+]

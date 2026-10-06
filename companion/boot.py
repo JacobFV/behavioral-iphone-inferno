@@ -113,6 +113,13 @@ class QMP:
                 return response
 
 
+def probe_should_stop(journey, control):
+    """Completion preserves the default stop unless explicitly held by the operator."""
+    return bool(journey and journey.report['completed'] and
+                (control is None or not control.run_control['keep_running'] or
+                 control.run_control['finish_requested']))
+
+
 def main():
     repo = Path(__file__).resolve().parents[1]
     parser = argparse.ArgumentParser(description=__doc__)
@@ -135,6 +142,8 @@ def main():
                         help='use original loader support for an edited launchd configuration on a disposable disk')
     parser.add_argument('--probe-journey', action='store_true',
                         help='observe owned UIKit appearance/operator tap markers and capture before/after; sends no input')
+    parser.add_argument('--probe-keep-running', action='store_true',
+                        help='keep completed observation alive until duration or finish-run; requires journey and mailbox')
     parser.add_argument('--probe-hardware-tap', action='store_true',
                         help='explicitly allow legacy QMP hardware tap; requires --probe-journey, not guest-HID serial')
     parser.add_argument('--capture-interval', type=float, default=0,
@@ -160,6 +169,8 @@ def main():
     modes.add_argument('--recovery-preserve-disk', action='store_true',
                        help='recovery environment with explicit nand-enable-reformat=0')
     args = parser.parse_args()
+    if args.probe_keep_running and (not args.probe_journey or not args.control_mailbox or args.probe_hardware_tap):
+        parser.error('--probe-keep-running requires --probe-journey and --control-mailbox, and excludes --probe-hardware-tap')
     if args.guest_hid_serial and not args.control_mailbox:
         parser.error('--guest-hid-serial requires --control-mailbox')
     if args.touch_trace_seconds is not None:
@@ -272,9 +283,11 @@ def main():
     if journey:
         report['probe_journey'] = journey.report
         report['probe_journey_source_sha256'] = digest(Path(__file__).with_name('probe_journey.py'))
-    control = ControlMailbox(output, journey=journey) if args.control_mailbox else None
+    control = ControlMailbox(output, journey=journey, keep_running=args.probe_keep_running) if args.control_mailbox else None
     if control:
         report['control_mailbox'] = str(control.path)
+        if journey:
+            report['probe_run_control'] = control.run_control
         report['control_source_sha256'] = digest(Path(__file__).with_name('qmp_control.py'))
     touch_trace = StartupTouchTrace(args.touch_trace_seconds if args.touch_trace_seconds is not None else 180) if args.touch_trace_startup else None
     if touch_trace:
@@ -423,7 +436,7 @@ def main():
                     next_capture = time.monotonic() + args.capture_interval
                 if journey:
                     journey.poll(qmp, time.monotonic())
-                    if journey.report['completed']:
+                    if probe_should_stop(journey, control):
                         break
                 time.sleep(min(.2, max(0, deadline - time.monotonic())))
             if process.poll() is not None:
