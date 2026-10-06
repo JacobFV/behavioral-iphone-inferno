@@ -149,3 +149,13 @@ ended its requested240-second window early. The stopped root SHA256 is
 `b9230ec175e388eb0da068adaa3a9fd2da07d63f1149332017aad73450893dca`;
 all seven namespace hashes are in that report's `stopped-disk-hashes.json`.
 The original prepared21 was unchanged. This proves owned-file staging only.
+
+The first staged full-System boot reached launchd's early-boot completion, but
+emitted no launcher marker and retained the Inferno startup frame through the
+first120 seconds. Inspection then found432 jobs indexed by plist path in the
+original `/System/Library/xpc/launchd.plist`. Adding a loose LaunchDaemons plist
+alone is therefore not an established full-System job-loading route for this
+image. The subsequent preparation must merge only the owned app/diagnostic job
+entries into a cloned consolidated configuration while preserving original jobs;
+that separate integration belongs to the native preparation worker. Do not claim
+registration or app launch from successful file staging.
