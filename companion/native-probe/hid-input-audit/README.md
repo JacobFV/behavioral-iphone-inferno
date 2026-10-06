@@ -138,3 +138,28 @@ Latest audit resolves15 actual bind/lazy imports and18 dynamic symbols through
 original cache export tries/reexports. SDK-free iOS compilation and signed
 entitlement extraction passed. Parser ASan/UBSan checks passed again. Exact audit
 outputs accompany this file; helper/build/artifacts remain external.
+
+### Boot 17 creation diagnostics candidate
+
+Boot 17 reached the owned parser through the serial transport, but both startup
+and the single operator request saw original `IOHIDUserDeviceCreate` return NULL.
+No input reports were emitted. The next candidate keeps that original wrapper
+and the same 77-byte descriptor/properties/entitlement, adding a bounded preflight:
+match `IOHIDResource`, print its actual class/registry ID, open its original type-0
+userclient using the current task, print the actual return, then close and release
+it. It calls no methods on this diagnostic connection.
+
+Original recovery IOKit at 0x47ebc–0x47ef4 performs this same match/open sequence;
+the wrapper's later create/start selector and analytics allocation failures remain
+possible if the diagnostic open succeeds. The candidate deliberately does not
+reimplement the create selector. `HIDOpenReportDescriptor` and its close function
+are absent from original System IOKit's export trie/reexports. The helper logs
+parser export presence and `parser_invoked=0/result=unavailable`; this is not an
+OS descriptor acceptance result.
+
+Build 43 compiled with `-Wall -Wextra -Werror`. Original cache audits resolve all
+16 bind/lazy imports and 22 required dynamic symbols. The extracted ad-hoc
+entitlement remains exactly `com.apple.developer.hid.virtual.device=true`.
+The only proposed installed change is the HID helper (68,976 bytes, SHA256
+`c1e93f41382f13cfbd4348cf0bf4ab6216c4a45c164d2855d616f9fb502c31bf`).
+Existing readiness, app, jobs, and firmware stay byte-identical for this comparison.
