@@ -44,8 +44,10 @@ No SAMPLE/Home/OPEN54. No55launchyet; wait observer implementation/review.
 Opt-in finite≤300s runner-owned no-input observer IMPLEMENTED606d2fbf0b,
 --headless-refresh-seconds300, defaultoff/privateUnix/noautorestart. Nativeworker
 sourcechecks and root actualfakeRFB child checks pass; independentdisk_path final
-review pending. Fixed final-report race and report-I/O-failure cleanup. ActualiOS
-notyettested; next55 samefrozen55/670 plus flag300 afterfinalreview. Root ownsinputs.
+review pending. Fixed final-report race and report-I/O-failure cleanup. ActualiOS55 LIVE runner3007096/QEMU3007540/observer3007558(start_ticks74545267),
+host5eb59960b1, same55/670 plusflag300. VNC/tmp/inferno-boot-jcbk3zky/vnc.sock.
+Serialconnected1791326268.7968633, observerconnected6268.845939/firstframe6268.8713353.
+Root reviewed actual Infernosplash observed0003. No inputs yet; rootownsallinputs.
 Observer paths headless-refresh/lifecycle.json and headless-refresh/observer/*.png.
 Rootshouldreview livechildframes and finishstrictjourney whilechildstillactive,
 thenverify actualcoverage/resources/gracefulstop andnormalall7preservation.
