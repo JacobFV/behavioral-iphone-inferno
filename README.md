@@ -1,3 +1,7 @@
+> **Local companion fork:** start with [NEXT_SESSION.md](NEXT_SESSION.md),
+> [companion commands](companion/README.md), and [execution status](PROGRESS.md).
+> The upstream project description follows unchanged.
+
 # ChefKiss Inferno ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/ChefKissInc/Inferno/build.yaml?style=for-the-badge) ![Written by humans, not AI](https://img.shields.io/badge/written_by_humans-not_ai-blue?style=for-the-badge)
 
 ChefKiss Inferno is derivative of the QEMU project which provides Apple ARM device guest support.

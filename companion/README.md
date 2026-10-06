@@ -11,6 +11,13 @@ The older clean-room effort is preserved in ../behavioral-iphone. Its fixtures,
 strict image comparisons and dashboard may be reused as integration tools; its
 synthetic references are not native iOS acceptance evidence.
 
+## Quick commands
+
+From this repository, run `./companion/run status` to inspect readiness,
+`./companion/run check` for a fresh headless execution check, and
+`./companion/run build` when committed source changes require rebuilding.
+For the next coding session, start with [NEXT_SESSION.md](../NEXT_SESSION.md).
+
 ## Initial milestones
 
 1. Build the actual upstream aarch64 system emulator with Apple-device support.
@@ -32,7 +39,7 @@ PROGRESS.md.
 
 The initial dependency lock targets Ubuntu24.04 ARM64, matching the current host.
 It is not yet a universal distribution/x86 bootstrap. Existing system tools are
-Python3 with venv, GCC/Make, CMake, pkg-config, Git, curl, dpkg-deb and development
+Python3 with venv, GCC/Make, m4, CMake, pkg-config, Git, curl, dpkg-deb and development
 headers for GLib, Pixman, zlib and PNG. Additional locked packages are extracted
 locally; Nettle3.10.2 is compiled locally. No sudo or system-wide installation is
 used. Meson and Ninja wheels and downloaded packages have explicit hash checks.

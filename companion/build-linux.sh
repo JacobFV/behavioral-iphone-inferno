@@ -18,7 +18,7 @@ build_root=$(cd "$build_root" && pwd)
 python3 "$script_dir/bootstrap-linux.py" "$build_root"
 if [[ ! -x "$build_root/venv/bin/python" ]]; then python3 -m venv "$build_root/venv"; fi
 "$build_root/venv/bin/python" -m pip --cache-dir "$build_root/pip-cache" install --disable-pip-version-check --no-deps --only-binary=:all: --require-hashes -r "$script_dir/build-tools-arm64.txt"
-export PATH="$build_root/venv/bin:$PATH"
+export PATH="$build_root/venv/bin:/usr/bin:/bin"
 packages="$build_root/packages/usr"
 deps="$build_root/deps"
 mkdir -p "$deps" "$build_root/downloads" "$build_root/sources"
@@ -69,6 +69,6 @@ mkdir -p "$build_root/build"
    --disable-gtk --disable-sdl --disable-opengl --disable-guest-agent \
    --disable-tools --disable-install-blobs --disable-werror \
    --extra-cflags="$CPPFLAGS" --extra-ldflags="$LDFLAGS"
- ninja -j"$jobs" qemu-system-aarch64)
+ ninja -j"$jobs" qemu-system-aarch64 trace/trace-events-all)
 python3 "$script_dir/build-manifest.py" "$build_root"
 printf 'Binary: %s\n' "$build_root/build/qemu-system-aarch64"

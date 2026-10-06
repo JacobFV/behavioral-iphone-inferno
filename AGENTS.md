@@ -1,11 +1,13 @@
 # Inferno companion work rules
 
 This is the user-requested pivot from ../behavioral-iphone, not a continuation of
-its framework-reimplementation backlog. Read companion/README.md and PROGRESS.md.
+its framework-reimplementation backlog. Read companion/README.md, PROGRESS.md and NEXT_SESSION.md.
 Preserve upstream history, license notices and attribution. Keep our integration
 under companion/ where possible, with small reviewable upstream changes only when
 an actual execution failure requires them.
 
+- Keep working across status questions; answer briefly and resume active work.
+  Only stop for a requested handoff/pause or a genuinely missing required input.
 - Prefer integrated build/boot/app journeys over routine unit-test proliferation.
   This is a permanent user preference. Record source revisions and actual logs;
   do not treat an implementer's JSON assertion as execution evidence.

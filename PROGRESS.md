@@ -14,7 +14,7 @@ unfinished; no phase-completion claim accompanies the pivot.
 
 Current host reports aarch64 Linux. glib2.80 and pixman0.42 are available; several
 build dependencies and Meson/Ninja were absent. Local dependency/bootstrap build
-work is underway. No firmware has been downloaded, no iOS boot performed and no
+work subsequently completed, as recorded below. No firmware has been downloaded, no iOS boot performed and no
 application run on this backend yet.
 
 ## First executable checkpoint

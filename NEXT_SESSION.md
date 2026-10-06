@@ -1,0 +1,81 @@
+# Start the next session here
+
+Working directory: `/home/brandonin/Documents/behavioral-iphone-inferno`
+
+Suggested opening instruction:
+
+> Read AGENTS.md, PROGRESS.md and NEXT_SESSION.md. Continue this Inferno fork
+> toward a real headless iOS boot and one owned app journey. Use parallel workers
+> for independent tasks, commit progress, and keep working across status questions.
+> Prefer integrated execution over adding routine unit tests. Never use my main
+> display. Do not resume the archived framework reimplementation.
+
+## What is ready
+
+- Local fork of ChefKiss Inferno; upstream remote, branch companion/linux-runner.
+  There is no GitHub-hosted fork or origin remote yet.
+- Actual aarch64 emulator built on this Ubuntu24.04 ARM64 host.
+- Local pinned dependencies/toolchain under `.local-build`; no sudo required.
+- One upstream build fix: Apple SoC explicitly links LZFSE. Runtime unchanged.
+- Independent QMP check passed, including real t8030 machine enumeration.
+- Previous project and backup: `../behavioral-iphone` and
+  `../behavioral-iphone-handoff.bundle`. Its workers/services are stopped.
+
+Run from this directory:
+
+```sh
+./companion/run status
+./companion/run check
+```
+
+Rebuild only when source/build inputs change:
+
+```sh
+./companion/run build --jobs 8
+```
+
+The build intentionally uses committed source. Commit source changes before
+rebuilding. It preserves a detached source checkout and all dependencies beneath
+`.local-build`, with no dependency on the previous session's /tmp worktrees. Keep
+that directory together: the binary references local libraries/resources.
+
+## Next concrete work
+
+1. Read the pinned Inferno setup documentation and the actual t8030 initialization
+   in `hw/arm/apple-silicon/t8030.c`. Determine one supported image/OS/device
+   combination and its complete input provenance. Do not equate version branches
+   in source with proven boot/app support.
+2. Prepare user-authorized firmware/disk inputs outside Git and record their hashes
+   and acquisition/preparation procedure. Nothing has been downloaded or prepared
+   yet. The user has a MacBook Air with limited memory available if preparation
+   needs macOS; prefer Linux work where feasible. Ask for only genuinely missing
+   inputs after identifying a concrete path.
+3. Build a headless boot profile with isolated writable disk state, serial logs,
+   QMP and local-only VNC. Prove boot/display/input through actual execution.
+   t8030 defaults to 4GiB guest RAM; CPU/KVM compatibility must be measured.
+4. Run one owned, unencrypted app and capture a real interaction journey before
+   adding fleet orchestration or importing the old dashboard.
+5. Measure real boot/app memory, latency, reliability and parallel density.
+   The image-free QMP check provides no iOS performance or compatibility evidence.
+
+## Important source facts
+
+- `-machine none -accel tcg -S` is our image-free control-plane check. It creates
+  no guest CPU and proves no iOS execution.
+- t8030 initialization requires DTB and kernel; additional trustcache, disk,
+  ramdisk/ticket/SEP inputs depend on the selected upstream boot path.
+- Upstream direct-kernel startup invokes kernel patches. Do not call future
+  runs unmodified iOS or treat them as native-device reference captures.
+- Linux KVM acceleration is not established here. Metal/app compatibility is
+  unmeasured. Firmware preparation is the next engineering boundary, not a
+  blanket permissions block.
+- Current bootstrap is locked for Ubuntu24.04 ARM64. x86/Linux or another OS
+  requires a reviewed host-specific dependency setup.
+
+## User preferences that must persist
+
+Keep implementation moving across status questions. Use subagents when work can
+be divided cleanly. Commit as you go and document actual outcomes. Avoid routine
+unit-test proliferation; prioritize complete build/boot/app journeys. All UI work
+must stay off the user's main display. This session is ending intentionally so
+work can resume with this directory as its workspace.
