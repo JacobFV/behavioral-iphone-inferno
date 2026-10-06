@@ -1,0 +1,33 @@
+{
+  "status": "read-only proposal; no implementation/build/staging/input",
+  "baseline": "actual first-launch app20/readiness53 records succeeded in boot35; leave same-bits repeat36 unchanged",
+  "control_owner": "Retain inferno-hid-input as the sole /dev/console reader. Do not add a launcher or app reader on that device.",
+  "command_proposal": {
+    "format": "Separate versioned fixed-verb ASCII grammar, request32hex, currentbootUUID, OPEN or TERMINATE with bounded positive expectedPID and process-incarnation token where needed. No arbitrary executable, path, bundle identifier, environment or shell.",
+    "bounds": "At most8 launch-control requests per run, reject duplicate IDs, one in-flight child, finite120s child lifetime, no automatic replay; retain existing32 HID gesture cap separately. While control child runs, reject additional control/input requests rather than silently queue ambiguous work.",
+    "execution": "HID parser forks only a fixed trusted owned controller executable. Child execs fresh process before Objective-C work; closes inherited console read FD, never reads console/stdin; inherits output only. Drop groups/gid/uid501 before invoking existing original LS open API as already executed by current wrapper. Parent remains sole reader and reaps with bounded WNOHANG polling.",
+    "open_only": "Add an explicit mode in the existing owned launcher that opens only org.inferno.companion.probe through the same original nil-configuration LS API, one attempt, no registration/metadata update. Stamp request/callback as current timing candidate. ACK is service result, not active/frame success.",
+    "implementation_gate": "Parent review plus exact new process-incarnation query ABI/permission audit before code."
+  },
+  "warm_trial": [
+    "Root uses ordinary Home/background gesture. Require actual app didEnterBackground record; resignation alone can mean an overlay/lock rather than background.",
+    "Verify same exact executable/uid501/PID/incarnation remains alive, then issue explicit OPEN.",
+    "Require same incarnation, next willEnterForeground/active lifecycle records, and no new main. Preserve capture proof separately.",
+    "If exact owned app icon is actually visible and identified, ordinary icon tap is a simpler no-command alternative. Its visibility has not been established, and host tap-to-active is a different metric from LS-request-to-active."
+  ],
+  "process_cold_trial": [
+    "Separate explicit TERMINATE from OPEN. Original positive-PID SIGTERM only after exact owned executable/UID/currentboot/incarnation revalidation; record original syscall return and errno. Original MAC applies before root/same-user rules; permission is not assumed.",
+    "Boundedly verify prior incarnation no longer runs; do not treat kill return0 or a zombie as sufficient. No SIGKILL escalation.",
+    "Only then a separate explicit OPEN. Require new process incarnation/main and full first-launch hooks. Label process-cold/cache-warm, not storage-cache-cold.",
+    "PID check and kill are not atomic; retain this residual race honestly. If stronger atomic identity safety is required, investigate an original supported identity-aware termination API before implementation rather than claiming the check eliminates it."
+  ],
+  "event_changes": "Separate bounded lifecycle-timing protocol for subsequent will-resign-active, did-enter-background, will-enter-foreground and active. Capture raw ticks in fixed ring at callback entry, defer I/O via main queue; preserve boot/PID/timebase and monotonic sequence. Do not reuse the five-hook first-launch completeness rules. Overflow/failure invalidates trial explicitly. No changes to strict existing marker meanings.",
+  "identity": "Current bootUUID plus original proc_pidpath exact app, proc_pidinfo UID501 and process incarnation. Primary XNU7195 proc_info.h offers proc_bsdinfo pbi_start_tvsec/usec (flavor3) or proc_uniqidentifierinfo (flavor17); installed layout/permission must be checked before use. Current executed reader proves exact path+UID but not new flavors.",
+  "evidence": {
+    "sole_reader": "companion/native-probe/hid-input.c main opens /dev/console read-only/nonblocking and consumes bounded newline commands",
+    "credentials_and_fresh_exec": "companion/app-probe/ExecLauncher.c existing executed path uses setgroups(0),setgid501,setuid501 then execve fixed System launcher",
+    "original_open": "Current Launcher.m original openApplicationWithBundleIdentifier:configuration:completionHandler: executed successfully; nil configuration, BOOL/NSError callback",
+    "signal_policy": "owned-launch-timing-design.json documents primary original XNU cansignal MAC-before-ordinary-permission chain; execution permission remains untested",
+    "timing": "Current OwnedClock.h and boot35 show shared guest mach_absolute_time/timebase; host timestamp remains distinct."
+  }
+}
