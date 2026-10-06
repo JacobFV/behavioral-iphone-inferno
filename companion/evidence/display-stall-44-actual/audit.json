@@ -1,0 +1,1651 @@
+{
+  "trace_events": 153,
+  "counts": {
+    "apple_adp_output_ready": 64,
+    "apple_adp_irq_write": 64,
+    "apple_adp_submit": 5,
+    "apple_adp_bh": 10,
+    "apple_adp_pipe": 10
+  },
+  "regions": [
+    {
+      "label": "before_tap_checkpoint",
+      "start": 0,
+      "end": 11096,
+      "sha256": "08d4f2911d0af715c2f2dc25de44e024a4cf01048a253dbb55f10135b252f2e3",
+      "counts": {
+        "apple_adp_output_ready": 18,
+        "apple_adp_irq_write": 21,
+        "apple_adp_submit": 5,
+        "apple_adp_bh": 10,
+        "apple_adp_pipe": 10
+      }
+    },
+    {
+      "label": "CLI_submission",
+      "start": 11096,
+      "end": 11096,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counts": {}
+    },
+    {
+      "label": "after_CLI_through_review",
+      "start": 11096,
+      "end": 13682,
+      "sha256": "15ed1f2543faecb5f33ddcf78f53c8161abfeb2ade132e43de82c3b302fe3101",
+      "counts": {
+        "apple_adp_output_ready": 17,
+        "apple_adp_irq_write": 16
+      }
+    },
+    {
+      "label": "after_review_through_retained_deadline",
+      "start": 13682,
+      "end": 18001,
+      "sha256": "0a32571be00ce9722d472402dc41995b3de263f8b1ed9b534ffc06e3dbe1ceef",
+      "counts": {
+        "apple_adp_output_ready": 29,
+        "apple_adp_irq_write": 27
+      }
+    }
+  ],
+  "complete_preboundary_draw_cycles": 5,
+  "last_submit_offset": 8994,
+  "last_bh_exit_offset": 9365,
+  "window_duration_seconds": 60.157610177993774,
+  "all_disabled": true,
+  "continuous_capture_count": 16,
+  "continuous_hashes": [
+    "24566763bdc8ceb183927ddf29ec3ddb414f710d3d2b8ddf1bbd3ec3bb9d868d"
+  ],
+  "event_offsets": [
+    {
+      "offset": 5722,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 5787,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x400",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 5854,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x400",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 5921,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 6011,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 6076,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 6166,
+      "name": "apple_adp_submit",
+      "fields": {
+        "value": "0x1a00",
+        "schedule": "1",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 6236,
+      "name": "apple_adp_bh",
+      "fields": {
+        "phase": "enter",
+        "gp0": "0x80070001",
+        "gp1": "0x40000",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 6317,
+      "name": "apple_adp_pipe",
+      "fields": {
+        "pipe": "0",
+        "outcome": "drawn",
+        "control": "0x80070001",
+        "source": "0x2230000",
+        "stride": "3328",
+        "width": "828",
+        "height": "1792",
+        "bytes": "5963776"
+      }
+    },
+    {
+      "offset": 6437,
+      "name": "apple_adp_pipe",
+      "fields": {
+        "pipe": "1",
+        "outcome": "disabled",
+        "control": "0x40000",
+        "source": "0x0",
+        "stride": "0",
+        "width": "0",
+        "height": "0",
+        "bytes": "0"
+      }
+    },
+    {
+      "offset": 6537,
+      "name": "apple_adp_bh",
+      "fields": {
+        "phase": "exit",
+        "gp0": "0x80070001",
+        "gp1": "0x40000",
+        "status": "0x100000",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 6622,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x100000",
+        "before": "0x100000",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 6718,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 6783,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 6873,
+      "name": "apple_adp_submit",
+      "fields": {
+        "value": "0x1b00",
+        "schedule": "1",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 6943,
+      "name": "apple_adp_bh",
+      "fields": {
+        "phase": "enter",
+        "gp0": "0x80070001",
+        "gp1": "0x40000",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 7024,
+      "name": "apple_adp_pipe",
+      "fields": {
+        "pipe": "0",
+        "outcome": "drawn",
+        "control": "0x80070001",
+        "source": "0x16c0000",
+        "stride": "3328",
+        "width": "828",
+        "height": "1792",
+        "bytes": "5963776"
+      }
+    },
+    {
+      "offset": 7144,
+      "name": "apple_adp_pipe",
+      "fields": {
+        "pipe": "1",
+        "outcome": "disabled",
+        "control": "0x40000",
+        "source": "0x0",
+        "stride": "0",
+        "width": "0",
+        "height": "0",
+        "bytes": "0"
+      }
+    },
+    {
+      "offset": 7244,
+      "name": "apple_adp_bh",
+      "fields": {
+        "phase": "exit",
+        "gp0": "0x80070001",
+        "gp1": "0x40000",
+        "status": "0x100000",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 7329,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x100000",
+        "before": "0x100000",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 7425,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 7490,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 7580,
+      "name": "apple_adp_submit",
+      "fields": {
+        "value": "0x1c00",
+        "schedule": "1",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 7650,
+      "name": "apple_adp_bh",
+      "fields": {
+        "phase": "enter",
+        "gp0": "0x80070001",
+        "gp1": "0x40000",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 7731,
+      "name": "apple_adp_pipe",
+      "fields": {
+        "pipe": "0",
+        "outcome": "drawn",
+        "control": "0x80070001",
+        "source": "0x2230000",
+        "stride": "3328",
+        "width": "828",
+        "height": "1792",
+        "bytes": "5963776"
+      }
+    },
+    {
+      "offset": 7851,
+      "name": "apple_adp_pipe",
+      "fields": {
+        "pipe": "1",
+        "outcome": "disabled",
+        "control": "0x40000",
+        "source": "0x0",
+        "stride": "0",
+        "width": "0",
+        "height": "0",
+        "bytes": "0"
+      }
+    },
+    {
+      "offset": 7951,
+      "name": "apple_adp_bh",
+      "fields": {
+        "phase": "exit",
+        "gp0": "0x80070001",
+        "gp1": "0x40000",
+        "status": "0x100000",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 8036,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x100000",
+        "before": "0x100000",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 8132,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 8197,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 8287,
+      "name": "apple_adp_submit",
+      "fields": {
+        "value": "0x1d00",
+        "schedule": "1",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 8357,
+      "name": "apple_adp_bh",
+      "fields": {
+        "phase": "enter",
+        "gp0": "0x80070001",
+        "gp1": "0x40000",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 8438,
+      "name": "apple_adp_pipe",
+      "fields": {
+        "pipe": "0",
+        "outcome": "drawn",
+        "control": "0x80070001",
+        "source": "0x1c78000",
+        "stride": "3328",
+        "width": "828",
+        "height": "1792",
+        "bytes": "5963776"
+      }
+    },
+    {
+      "offset": 8558,
+      "name": "apple_adp_pipe",
+      "fields": {
+        "pipe": "1",
+        "outcome": "disabled",
+        "control": "0x40000",
+        "source": "0x0",
+        "stride": "0",
+        "width": "0",
+        "height": "0",
+        "bytes": "0"
+      }
+    },
+    {
+      "offset": 8658,
+      "name": "apple_adp_bh",
+      "fields": {
+        "phase": "exit",
+        "gp0": "0x80070001",
+        "gp1": "0x40000",
+        "status": "0x100000",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 8743,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x100000",
+        "before": "0x100000",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 8839,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 8904,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 8994,
+      "name": "apple_adp_submit",
+      "fields": {
+        "value": "0x1e00",
+        "schedule": "1",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 9064,
+      "name": "apple_adp_bh",
+      "fields": {
+        "phase": "enter",
+        "gp0": "0x80070001",
+        "gp1": "0x40000",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 9145,
+      "name": "apple_adp_pipe",
+      "fields": {
+        "pipe": "0",
+        "outcome": "drawn",
+        "control": "0x80070001",
+        "source": "0x16c0000",
+        "stride": "3328",
+        "width": "828",
+        "height": "1792",
+        "bytes": "5963776"
+      }
+    },
+    {
+      "offset": 9265,
+      "name": "apple_adp_pipe",
+      "fields": {
+        "pipe": "1",
+        "outcome": "disabled",
+        "control": "0x40000",
+        "source": "0x0",
+        "stride": "0",
+        "width": "0",
+        "height": "0",
+        "bytes": "0"
+      }
+    },
+    {
+      "offset": 9365,
+      "name": "apple_adp_bh",
+      "fields": {
+        "phase": "exit",
+        "gp0": "0x80070001",
+        "gp1": "0x40000",
+        "status": "0x100000",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 9450,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x100000",
+        "before": "0x100000",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 9546,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 9611,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 9701,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 9766,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 9856,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 9921,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 10011,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 10076,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 10166,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 10231,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 10321,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 10386,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 10476,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 10541,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 10631,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 10696,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 10786,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 10851,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 10941,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 11006,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 11096,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 11161,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x400",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 11228,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 11318,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 11383,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 11473,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 11538,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 11628,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 11693,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 11783,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 11848,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 11938,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 12003,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 12093,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 12158,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 12248,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 12313,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 12403,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 12468,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 12558,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 12623,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 12713,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 12778,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 12868,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 12933,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 13023,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 13088,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 13178,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 13243,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 13333,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 13398,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 13527,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 13592,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 13682,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 13747,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x400",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 13814,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x400",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 13881,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 13971,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 14036,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 14126,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 14191,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 14281,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 14346,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 14436,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 14501,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 14591,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 14656,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 14746,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 14811,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 14901,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 14966,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 15056,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 15121,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 15211,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 15276,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 15366,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 15431,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 15521,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 15586,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 15676,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 15741,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 15831,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 15896,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 15986,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 16051,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 16141,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 16206,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 16296,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 16361,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 16451,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 16516,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 16606,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 16671,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 16761,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 16826,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 16916,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 16981,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 17071,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 17136,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 17226,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 17291,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 17381,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 17446,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 17536,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 17601,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 17691,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 17756,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 17846,
+      "name": "apple_adp_output_ready",
+      "fields": {
+        "before": "0x0",
+        "status": "0x400",
+        "enable": "0xc0180c08"
+      }
+    },
+    {
+      "offset": 17911,
+      "name": "apple_adp_irq_write",
+      "fields": {
+        "kind": "status-w1c",
+        "value": "0x400",
+        "before": "0x400",
+        "status": "0x0",
+        "enable": "0xc0180c08"
+      }
+    }
+  ],
+  "interpretation": [
+    "Corrected labels show five complete earlier callbacks with GP0 drawn and GP1 disabled.",
+    "No submit/BH/pipe trace after before-tap file-visible checkpoint through disabled-window prefix; output-ready events and guest W1C acknowledgments continue. This narrows the boundary upstream of modeled submit, not a scheduled draw BH failing to run.",
+    "The guest handles ready interrupts; this does not establish compositor health or explain missing submissions. No IRQ behavior patch justified yet.",
+    "Checkpoints bound file visibility, not exact device execution times. Per-event timestamps absent; no exact per-tap presentation latency claim.",
+    "Genuine tap1 exists separately; root reviewed stillcounter0 and withheld strictafter. Capture hashes retained; visual interpretation belongs to reviewed image evidence.",
+    "VM was live at retention; this is not final-run evidence."
+  ]
+}
