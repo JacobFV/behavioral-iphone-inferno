@@ -10,7 +10,28 @@ Suggested opening instruction:
 > Prefer integrated execution over adding routine unit tests. Never use my main
 > display. Do not resume the archived framework reimplementation.
 
-## CURRENT, 2026-10-06 09:34 local: boot28 exposes event-file open failure
+## CURRENT, 2026-10-06 09:40 local: normal container lookup staging45
+
+Boot28 is stopped (details below). Container-aware app17/readiness49 sources are
+reviewed and integrated0179a2a005/7c880b811a; build/import evidence151b470365.
+Root independently matched app17 SHA92dd7f5c8041129ef87571304665cddc4143adc17c49f1ac319cad8953ce87d0
+(73200bytes), readiness49 SHA93681c99a265e251d1bdf9ff83e274e02283d9a2c9376a10fe8a9943d5aca74e
+(70368bytes). The app uses original NSHomeDirectory/NSCachesDirectory and rejects
+the global mobile fallback. Reader uses exact owned bundleURL/dataContainerURL,
+with no unrelated container scanning. Missing data container is explicit result3;
+mobile fallback is4. No provisioning, new grants or policy change in this build.
+Original LS fallback raw instructions and literals are retained with source.
+
+Bootworker is authorized to stage45 from frozen44 as a sibling of28: replace
+app17 and readiness49 plus unchanged535-byte job. Await actual readbacks, clean
+unmount, normal QMP stop, unchanged ancestry and standard seven-disk manifest.
+Then root runs `/tmp/inferno-freeze-stage45.py` and starts29 (layer4) from45.
+Root gesture utility `/tmp/inferno-explicit-gesture-29.py` is ready. Native/disk
+workers trace legitimate original container provisioning in parallel; do not
+infer missing container until actual29 lookup. Continue active work.
+
+## PREVIOUS, 2026-10-06 09:34 local: boot28 exposes event-file open failure
+
 
 Boot28 stopped normally: cleanup capture, QMPquit33/emulator0,456.72059seconds.
 All seven hashes are recorded; root.qcow2 SHA
