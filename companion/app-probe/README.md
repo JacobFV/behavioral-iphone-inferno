@@ -190,3 +190,23 @@ Framebuffers advanced from Apple logo to a moving progress bar around43%; a
 precautionary migration stackshot is not proof of a hard deadlock. Post-boot
 file/access inspection and preserving the paired migration state are the next
 checks. No app execution or touch is established.
+
+
+`launcher-load-1` exercised the exact staged launcher in an independent recovery
+ramdisk with no arguments and no prepared disks attached. It emitted usage through
+stderr and NSLog, then returned exit64 (raw wait status16384), as expected. The
+launcher SHA256 remained `0a95bb65be29149522d321c527de7efb17b4d3a9a8b5e4d68c4081110c479476`.
+This establishes executable/dependency loading in recovery, not registration or
+launch in the full System environment. `prepare-stage.py --launcher-noargs`
+reproduces this bounded read-only invocation.
+
+`inferno-exec-launcher` and `org.inferno.app-probe-exec.plist` are a prepared,
+not-yet-executed diagnostic alternative. Install the owned wrapper on System at
+`/usr/bin/inferno-exec-launcher`; replace only the owned `org.inferno.app-probe`
+consolidated job with this template (same Label), avoiding a duplicate launcher.
+The root wrapper logs its identity, forks, clears supplementary groups, drops to
+mobile gid501/uid501, logs that identity and execs the unchanged Data launcher and
+app paths. It records exec errno or child wait status. The parent polls up to150
+seconds, kills only its own child on timeout and reaps it. No added entitlements,
+Apple job edits or alternate registration identity are involved. Staging requires
+a stopped copied disk set; the active migration run remains untouched.
