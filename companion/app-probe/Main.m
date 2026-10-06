@@ -104,18 +104,19 @@ static void marker(const char *event, NSUInteger count) {
     [_button addTarget:self action:@selector(increment:) forControlEvents:(1UL << 6)];
     [view addSubview:_button]; // UIControlEventTouchUpInside
     _footer = [[UILabel alloc] initWithFrame:Rect(0, 0, 0, 0)];
-    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno]];
-    [_footer setNumberOfLines:2];
-    [_footer setFont:[UIFont systemFontOfSize:16]];
+    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d\n%s",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno,event_path]];
+    [_footer setNumberOfLines:0];
+    [_footer setLineBreakMode:1];
+    [_footer setFont:[UIFont systemFontOfSize:12]];
     [_footer setTextColor:cyan];
     [_footer setTextAlignment:1];
     [view addSubview:_footer];
     marker("view-loaded", _count);
-    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno]];
+    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d\n%s",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno,event_path]];
 }
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno]];
+    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d\n%s",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno,event_path]];
     CGRect bounds = [[self view] bounds];
     CGFloat width = bounds.size.width;
     CGFloat height = bounds.size.height;
@@ -123,7 +124,7 @@ static void marker(const char *event, NSUInteger count) {
     [_subtitle setFrame:Rect(16, height * 0.19 + 50, width - 32, 28)];
     [_counter setFrame:Rect(16, height * 0.40, width - 32, 64)];
     [_button setFrame:Rect(width * 0.10, height * 0.58, width * 0.80, 76)];
-    [_footer setFrame:Rect(16, height * 0.78, width - 32, 56)];
+    [_footer setFrame:Rect(16, height * 0.75, width - 32, height * 0.21)];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

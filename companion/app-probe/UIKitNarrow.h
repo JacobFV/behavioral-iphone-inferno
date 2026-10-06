@@ -51,6 +51,7 @@ __attribute__((objc_root_class))
 - (void)setFont:(UIFont *)font;
 - (void)setTextAlignment:(NSInteger)alignment;
 - (void)setNumberOfLines:(NSInteger)lines;
+- (void)setLineBreakMode:(NSInteger)mode;
 @end
 @interface UIButton : UIView
 + (instancetype)buttonWithType:(NSInteger)type;
