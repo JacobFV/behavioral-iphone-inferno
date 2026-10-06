@@ -168,3 +168,10 @@ Definitions are in the original [libimobiledevice1.3 header](https://raw.githubu
 No syslog stream was obtained. Actual outputs are retained in external
 `usb/run9/full-system-public-info.log`, `system-service-query.log`, and the two
 `full-system-syslog*.log` files. Guest serial/process diagnostics remain available.
+
+After app-boot-3 stopped, run9 shut down through the original Linux guest
+`shutdown -h now`. Serial records normal filesystem unmounts and
+`reboot: Power down`; emulator exit0 is recorded at09:40:13UTC. The stopped
+`usb/run9/guest.qcow2` is available for reuse. The generic runner's
+`guest_ready=false` does not describe the independently observed SSH/service
+queries above; no automatic ready marker was emitted by this resumed guest.
