@@ -150,7 +150,7 @@ def main():
     parser.add_argument('--probe-hardware-tap', action='store_true',
                         help='explicitly allow legacy QMP hardware tap; requires --probe-journey, not guest-HID serial')
     parser.add_argument('--headless-refresh-seconds', type=int, default=0,
-                        help='opt-in runner-owned no-input VNC observer for1..300 seconds after cont;0 disables')
+                        help='opt-in runner-owned no-input VNC observer for 1..300 seconds after cont; 0 disables')
     parser.add_argument('--capture-interval', type=float, default=0,
                         help='save periodic headless framebuffers; zero disables, otherwise at least 5 seconds')
     parser.add_argument('--usb-socket', type=Path,

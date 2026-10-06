@@ -149,26 +149,43 @@ class HeadlessRefresh:
         self.save()
 
     def close(self):
-        """Bounded child-only shutdown. No QMP commands or process-group signals."""
+        """Bounded child-only shutdown, independent of report persistence success."""
+        def retain_error(phase, exc):
+            self.report.setdefault('cleanup_errors', []).append(
+                {'phase': phase, 'error': f'{type(exc).__name__}: {exc}'})
         try:
-            if self.child is not None:
-                self.poll()
+            self.poll()
+        except Exception as exc:
+            retain_error('pre-stop-observation', exc)
+        # Never let observation/report I/O failure skip owned-child cleanup.
+        if self.child is not None:
+            try:
                 if self.child.poll() is None:
                     self.report['stop_requested_time'] = time.time()
-                    self.child.terminate()  # --runner-observer catches SIGTERM.
+                    self.child.terminate()
                     try:
                         self.child.wait(timeout=3)
                     except subprocess.TimeoutExpired:
                         self.report['forced_kill'] = True
                         self.child.kill()
                         self.child.wait(timeout=3)
-                    self.poll()
-                if not self.report.get('connection_closed_time'):
-                    self.report['coverage_end_unconfirmed'] = True
-        except Exception as exc:
-            self.report['cleanup_error'] = f'{type(exc).__name__}: {exc}'
-        finally:
-            for handle in self.handles:
+                self.report['cleanup_child_exit_code'] = self.child.poll()
+            except Exception as exc:
+                retain_error('child-stop-reap', exc)
+            try:
+                self.poll()
+            except Exception as exc:
+                retain_error('post-stop-observation', exc)
+            if not self.report.get('connection_closed_time'):
+                self.report['coverage_end_unconfirmed'] = True
+        for handle in self.handles:
+            try:
                 handle.close()
-            self.handles = []
+            except Exception as exc:
+                retain_error('log-close', exc)
+        self.handles = []
+        try:
             self.save()
+        except Exception as exc:
+            # Retained in the runner's in-memory report if its final write works.
+            retain_error('final-report-save', exc)
