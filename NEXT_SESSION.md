@@ -55,7 +55,7 @@ still unproven. Do not return to firmware acquisition or the archived framework
 implementation: firmware, original System/Data preparation, keybag creation,
 software-renderer cache patching and full-system launchd execution are established.
 
-At03:13 local, `.local-build/reports/app-boot-6` is live. It uses advanced stopped
+At03:17 local, app-boot-6 has been stopped normally with preserved evidence. It uses advanced stopped
 app-boot-3 state, corrected System launcher, a root wrapper dropping to mobile,
 and a single empty-passcode unlock helper for our freshly created null-secret VM
 keybag. All three owned jobs eventually started after roughly ten minutes.
@@ -66,13 +66,16 @@ outcome is unknown, not an observed API failure. Host CPU load reached77 on20cor
 raw read-only pressure/thread observations are in app-boot-6/host-contention.json.
 Do not stop or reprioritize unrelated host processes.
 
-Native is preparing disk-preparation-30 from stopped29, preserving all paired
-auxiliary state. It adds the exact unchanged owned bundle under
+Disk-preparation-30 failed its owned app readback because of a nested bundle
+directory and was rejected before boot. Corrected disk-preparation-31 passed all
+byte/metadata checks and normal unmounts, preserving stopped29 paired lineage. It adds the exact unchanged owned bundle under
 `/Applications/InfernoProbe.app`, wrapper9 `--system-app`, phase-instrumented
 single-call unlock helper35 with600s watchdog, and extended process observer35.
-The original Data bundle remains. Bootworker will run this as app-boot-7 with
-7200s maximum,30s frames, guest-errors and strict probe journey, stopping6 normally
-and preserving its evidence to limit our own CPU competition. Stopped29 is a
+The original Data bundle remains. Bootworker has started this as app-boot-7 with
+7200s maximum,30s frames, guest-errors and strict probe journey; it is now the
+only live iOS VM. Input root SHA256 is
+c7033cac5a06b7ea924535c780d4baa54363dad88b73ab28d733e211eba56418, paired with
+`.local-build/reports/disk-preparation-31`. Stopped29 is a
 prepared comparison, not an independently executed successful boot.
 
 The launcher fix uses the original LSApplicationWorkspace registerApplication:
