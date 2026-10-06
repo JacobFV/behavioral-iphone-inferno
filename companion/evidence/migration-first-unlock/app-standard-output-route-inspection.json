@@ -1,0 +1,31 @@
+{
+  "scope": "Original launch output API discovery only, no launch configuration or entitlement changes.",
+  "source_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+  "export_audit": [
+    "FBSOpenApplicationOptionKeyDebuggingOptions",
+    "FBSDebugOptionKeyStandardOutPath",
+    "FBSDebugOptionKeyStandardErrorPath"
+  ],
+  "export_provider": "/System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices; actual original export-trie resolver passed",
+  "LS_path": {
+    "class": "_LSOpenConfiguration implements frontBoardOptions and setFrontBoardOptions:",
+    "conversion": "LSApplicationWorkspace optionsFromOpenConfiguration: CoreServices standalone0x3e3e0; reads frontBoardOptions0x3e430-3e440 and addEntriesFromDictionary:0x3e470-3e478",
+    "caller": "openApplicationWithBundleIdentifier:configuration:completionHandler:0x3ea30 calls optionsFromOpenConfiguration:0x3ea94"
+  },
+  "SpringBoard_path": {
+    "method": "SBMainWorkspace _handleOpenApplicationRequest:options:activationSettings:origin:withResult:0x1c586311c",
+    "read": "Nested FBSOpenApplicationOptionKeyDebuggingOptions0x1c5863d4c-3d6c; extracts typed string BKSDebugOptionKeyStandardOutPath0x1c5863de4-3e14 and StandardErrorPath0x1c5863e18-3e48"
+  },
+  "FrontBoard_context": {
+    "class": "FBProcessExecutionContext",
+    "standardOutputURL": "0x18de3aeb0",
+    "setStandardOutputURL:": "0x18de3aeb8",
+    "standardErrorURL": "0x18de3aec4",
+    "setStandardErrorURL:": "0x18de3aecc"
+  },
+  "limits": [
+    "This is a normal debugger-options API surface, not proof that current launcher credentials can request it. Exact debug authorization and launch-service path opening permissions remain unverified.",
+    "Do not add broad debug entitlements or assume /dev/console is writable by a mobile app.",
+    "No arbitrary event/log capture is needed: a bounded owned application event file with existing observer relay is an alternative under separate implementation authorization."
+  ]
+}
