@@ -5,11 +5,13 @@ script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 source_repo=$(git -C "$script_dir" rev-parse --show-toplevel)
 build_root=""
 jobs=8
+simulated_sep=false
 while (($#)); do
     case "$1" in
         --build-root) build_root=$2; shift 2 ;;
         --jobs) jobs=$2; shift 2 ;;
-        *) echo "Usage: $0 --build-root ABSOLUTE_PATH [--jobs 1..8]" >&2; exit 2 ;;
+        --simulated-sep) simulated_sep=true; shift ;;
+        *) echo "Usage: $0 --build-root ABSOLUTE_PATH [--jobs 1..8] [--simulated-sep]" >&2; exit 2 ;;
     esac
 done
 [[ "$build_root" = /* && "$jobs" =~ ^[1-8]$ ]] || { echo 'Require absolute build root and 1..8 jobs' >&2; exit 2; }
@@ -25,6 +27,9 @@ mkdir -p "$deps" "$build_root/downloads" "$build_root/sources"
 export PKG_CONFIG_PATH="$deps/lib/pkgconfig:$deps/lib64/pkgconfig:$packages/lib/aarch64-linux-gnu/pkgconfig:$packages/share/pkgconfig"
 export LD_LIBRARY_PATH="$deps/lib:$deps/lib64:$packages/lib/aarch64-linux-gnu${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 export CPPFLAGS="-I$deps/include -I$packages/include -I$packages/include/aarch64-linux-gnu"
+if $simulated_sep; then
+    export CPPFLAGS="$CPPFLAGS -DINFERNO_SIMULATED_SEP"
+fi
 export LDFLAGS="-L$deps/lib -L$deps/lib64 -L$packages/lib/aarch64-linux-gnu -Wl,-rpath,$deps/lib -Wl,-rpath,$deps/lib64 -Wl,-rpath,$packages/lib/aarch64-linux-gnu"
 nettle_archive="$build_root/downloads/nettle-3.10.2.tar.gz"
 if [[ ! -f "$nettle_archive" ]]; then

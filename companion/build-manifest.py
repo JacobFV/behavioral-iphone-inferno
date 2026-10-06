@@ -24,6 +24,8 @@ files += [root / 'downloads/nettle-3.10.2.tar.gz']
 record = {
     'schema': 'inferno.local-linux-build.v1',
     'purpose': 'build provenance only; no guest boot or firmware execution claim',
+    'sep_mode': ('simulated-unencrypted' if '-DINFERNO_SIMULATED_SEP' in
+                 (root / 'build/config.status').read_text() else 'emulated-encrypted'),
     'upstream_base': 'cc4302a99167abec69b714cfd00c38caece7e7de',
     'source_revision': output(['git', '-C', str(source), 'rev-parse', 'HEAD']),
     'source_diff': output(['git', '-C', str(source), 'diff', '--stat']),
