@@ -1,0 +1,50 @@
+{
+  "source_sha256": "2758160c5761da9d6cd7854f005c0015d511475a37c56f53d4f4b3ad3648a7e9",
+  "scope": "Host preflight rejection only. Actual stopped39 and explicitly synthetic report with missing trace log. No subprocess input CLI reached; no VM launched or input submitted. Positive checkpoint behavior awaits authorized live operator use.",
+  "checks": [
+    {
+      "name": "actual-stopped-39",
+      "command": [
+        "python3",
+        "/tmp/inferno-trace-checkpoints/companion/owned-control.py",
+        "--report",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-39",
+        "--output",
+        "/tmp/inferno-trace-preflight-kfcyzfpj/actual-stopped-39",
+        "--trace-checkpoints",
+        "tap",
+        "16384",
+        "20316",
+        "--duration-ms",
+        "150"
+      ],
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "usage: owned-control.py [-h] --report REPORT --output OUTPUT\n                        [--trace-checkpoints]\n                        {tap,swipe,open} ...\nowned-control.py: error: Run has already stopped\n",
+      "control_directory_unchanged": true,
+      "evidence_directory_created": false
+    },
+    {
+      "name": "synthetic-missing-log",
+      "command": [
+        "python3",
+        "/tmp/inferno-trace-checkpoints/companion/owned-control.py",
+        "--report",
+        "/tmp/inferno-trace-preflight-kfcyzfpj/missing-log",
+        "--output",
+        "/tmp/inferno-trace-preflight-kfcyzfpj/synthetic-missing-log",
+        "--trace-checkpoints",
+        "tap",
+        "16384",
+        "20316",
+        "--duration-ms",
+        "150"
+      ],
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "usage: owned-control.py [-h] --report REPORT --output OUTPUT\n                        [--trace-checkpoints]\n                        {tap,swipe,open} ...\nowned-control.py: error: [Errno 2] No such file or directory: '/tmp/inferno-trace-preflight-kfcyzfpj/missing-log/guest-errors.log'\n",
+      "control_directory_unchanged": true,
+      "evidence_directory_created": false
+    }
+  ]
+}
