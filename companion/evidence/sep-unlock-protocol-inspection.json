@@ -57,7 +57,8 @@
     "opcode_19_query": "selector0, owner:uint64, handle:uint32=0, query_options:uint32=0 or1; response selector0,DER_length:uint32,DER bytes",
     "der_subset": "SET { SEQUENCE { UTF8String \"ss\", INTEGER state } }; all unspecified fields absent. In particular no guessed sls enum.",
     "error_transport": "Mailbox byte3 is signed8 status, no DMA response on error. -11 is bad argument; -1 generic unsupported. No secret bytes logged.",
-    "diagnostics": "Bounded metadata includes request size, safely read header size/version/flags and output byte capacity; no secret bytes."
+    "diagnostics": "Bounded metadata includes request size, safely read header size/version/flags and output byte capacity; no secret bytes.",
+    "der_blob_padding": "Declared DER length13; transport payload rounded to16, with3 zero padding bytes. Total reply108 bytes."
   },
   "addresses": {
     "unlock_the_device": "0xfffffff008f644a0",
@@ -98,8 +99,8 @@
   "options_limit": "Owned NULL-options client defaults to type5; unlock computes options0 unless type2. Original device_opts_adjust_for_metal_smasher may additionally setbit3 depending on battery-policy state. Boot8 did not capture raw wire options; implementation accepts only0 and logs/rejects any adjustment.",
   "validation": {
     "host_parser_check": "External isolated extracted-helper harness, cc -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined",
-    "harness_sha256": "1d16b11a4464de3d3a897e0f2193bfdef4cd5f73672669485ce63fa0964d9dd4",
-    "result": "PASS: before/after state, exact reply lengths, DER ss, unsupported options/secret, short buffers and output-capacity rejection",
+    "harness_sha256": "0106947aac92915074ef7ad00bd05d4fed2a24e79d5ce92caed8f12aae90b407",
+    "result": "PASS: before/after state, exact reply lengths, DER ss plus3 zero padding bytes, both read-only query options, unsupported options/secret, short buffers and output-capacity rejection",
     "not_guest_evidence": "Original API result, first-unlock, migration progress, full build and boot remain required follow-up checks."
   },
   "query_options_evidence": {
@@ -121,5 +122,14 @@
       "kernel_internal_same_DER_decoder": "0xfffffff008f6de68"
     },
     "implementation": "Accept either proven read-only selector for system0; return same partial ss dictionary. Queries do not transition state; no sls labels invented."
+  },
+  "blob_padding_evidence": {
+    "runtime_trigger": "Boot10 original selector17 returned e00002bc despite accepted read-only query.",
+    "original_decoder": "__blob at0xfffffff008f87424",
+    "length_load": "0xfffffff008f874cc",
+    "rounding": "0xfffffff008f874d4 adds3;0xfffffff008f874ec masks0xfffffffc",
+    "available_length_check": "0xfffffff008f874f4 compares remaining after length word to rounded payload length; too short branches87594 returning-13",
+    "offset_advance": "0xfffffff008f87554 adds rounded length;87560 adds4 for length word",
+    "fix": "Preserve13-byte DER and declared13; transmit16 payloadbytes including3 zero pads. Response size105->108. No state/DER semantic changes."
   }
 }
