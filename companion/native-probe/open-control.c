@@ -2,6 +2,7 @@
  * Sole-reader command demultiplexer. Fixed owned OPEN only; no app termination.
  */
 #include "open-control.h"
+#include "sample-control.h"
 #include "../app-probe/EventRecord.h"
 #include "../app-probe/OwnedClock.h"
 extern int printf(const char *,...),fflush(void *),fork(void),close(int),waitpid(int,int *,int),kill(int,int),usleep(unsigned);
@@ -9,9 +10,9 @@ extern int setgroups(int,const unsigned *),setgid(unsigned),setuid(unsigned),exe
 extern void _exit(int);
 static char boot[37],requests[8][33];
 static unsigned request_count,all_count;
-static char all_ids[40][33];
+static char all_ids[42][33];
 int inferno_command_id_seen(const char *id) {for(unsigned i=0;i<all_count;i++)if(!strcmp(id,all_ids[i]))return 1;return 0;}
-void inferno_command_id_remember(const char *id) {if(all_count<40) {for(unsigned i=0;i<33;i++)all_ids[all_count][i]=id[i];all_count++;}}
+void inferno_command_id_remember(const char *id) {if(all_count<42) {for(unsigned i=0;i<33;i++)all_ids[all_count][i]=id[i];all_count++;}}
 
 static int enabled,console_fd=-1,child=-1,killed;
 static unsigned long long began,killed_at;
@@ -62,7 +63,7 @@ int inferno_open_handle(const char *line) {
     if(parse_open(line,id,uuid))reason="syntax";
     else if(!enabled)reason="disabled";
     else if(strcmp(uuid,boot))reason="foreign_boot";
-    else if(child>0)reason="busy";
+    else if(child>0 || inferno_sample_busy())reason="busy";
     else if(request_count==8)reason="limit";
     else if(inferno_command_id_seen(id))reason="duplicate";
     if(reason) {printf("INFERNO_OPEN_REJECT reason=%s\n",reason);fflush(0);return -1;}
