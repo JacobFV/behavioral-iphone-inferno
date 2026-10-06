@@ -419,3 +419,22 @@ same configuration includes precisely the five documented service Disabled
 flags. Disk-preparation-26 uses a copy of stopped25 and stages only this cache;
 no app or Data content is recopied. Runtime registration and app opening still
 require independent execution evidence.
+
+`unlock-empty.c` is restricted to the newly created VM keybag whose original
+creation call used a NULL secret. It emits a raw begin marker, arms alarm120,
+waits30 seconds for normal startup, and loads original MobileKeyBag. The original
+framework's MKBGetDeviceLockState(NULL), MKBDeviceUnlockedSinceBoot(), and
+MKBUnlockDevice(NULL,NULL) call shapes were verified in the unchanged recovery
+framework (SHA256 c335b3f43eee16816e4aec47cb99e02d8d7388d6941b23b2a25d5fd4a2dc5871).
+A negative first-unlock query skips the attempt; an already-unlocked result also
+skips it. Otherwise exactly one empty-passcode attempt is followed by both state
+queries. Root Data X_OK and errno are observed before and after, without executing
+the Data file. No key bytes, synthetic unlock notifications, policy edits, or
+repeated password attempts are involved. Its owned job has KeepAlive=false.
+
+Stage28 starts from stopped app-boot-3, preserving that baseline's migrated Data
+and paired auxiliary state. It adds the corrected System launcher (original
+LaunchServices method import), root wrapper, the one-shot unlock diagnostic,
+and readiness snapshots through3600 seconds. The Data app remains unchanged.
+All five documented service settings remain; unlock success and UIKit execution
+must still be established by the subsequent actual boot.
