@@ -59,7 +59,7 @@ def validate(request):
     name, args = request['execute'], request['arguments']
     if not isinstance(args, dict):
         raise ValueError('Arguments must be an object')
-    if name in ('query-mice', 'query-touch-registers', 'probe-capture-before') and args == {}:
+    if name in ('query-mice', 'query-touch-registers', 'probe-capture-before', 'probe-capture-after') and args == {}:
         return name, args
     if name == 'guest-hid-gesture':
         gesture_line(args)
@@ -137,10 +137,12 @@ class ControlMailbox:
                 record.update(raw=raw.decode('utf-8', errors='replace'), sha256=hashlib.sha256(raw).hexdigest())
                 request = json.loads(raw)
                 name, args = validate(request)
-                if name == 'probe-capture-before':
+                if name in ('probe-capture-before', 'probe-capture-after'):
                     if self.journey is None:
                         raise ValueError('This boot did not enable --probe-journey')
-                    response = {'return': self.journey.operator_capture_before(qmp)}
+                    capture = (self.journey.operator_capture_before if name == 'probe-capture-before'
+                               else self.journey.operator_capture_after)
+                    response = {'return': capture(qmp)}
                 elif name == 'guest-hid-gesture':
                     if self.serial_transport is None:
                         raise ValueError('This boot did not enable --guest-hid-serial')
@@ -285,7 +287,7 @@ class StartupTouchTrace:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report', type=Path, required=True, help='Active boot output directory with --control-mailbox')
-    parser.add_argument('command', choices=['probe-capture-before', 'query-mice', 'query-touch-registers', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture'])
+    parser.add_argument('command', choices=['probe-capture-before', 'probe-capture-after', 'query-mice', 'query-touch-registers', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture'])
     parser.add_argument('--arguments', default='{}', help='Allowlisted QMP arguments as JSON')
     args = parser.parse_args()
     directory = args.report.resolve(strict=True) / 'control'

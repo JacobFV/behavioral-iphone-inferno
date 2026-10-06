@@ -150,3 +150,7 @@ QMP quit when the normal completion path did not capture one, including an
 interrupted or incomplete strict journey. Capture failures are recorded separately
 and do not replace the original attempt error or prevent shutdown. A saved frame
 is evidence of its pixels only; it does not establish an app milestone.
+
+In observation mode the operator also reviews visible counter1 and sends
+`probe-capture-after` after the genuine tap1 marker. The runner does not
+automatically capture or quit on a marker that might precede rendering.

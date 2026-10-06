@@ -55,6 +55,22 @@ class ProbeJourney:
         self.report['before_capture_operator_requested'] = True
         return {'state': self.state, 'capture': self.report['captures']['probe-before']}
 
+    def operator_capture_after(self, qmp):
+        """Complete only after the operator has reviewed the visible counter at one."""
+        if self.hardware_tap or self.state != 'waiting-for-operator-after-capture':
+            raise ValueError('Probe is not awaiting an operator after capture')
+        serial = (self.output / 'serial.log').read_bytes()
+        if b'INFERNO_UIKIT_PROBE_V1 event=tap count=1' not in serial:
+            raise ValueError('Owned app tap marker is missing')
+        if 'probe-before' not in self.report['captures']:
+            raise ValueError('Owned app before capture is missing')
+        self.capture(qmp, 'probe-after')
+        self.state = 'completed'
+        self.report['state'] = self.state
+        self.report['completed'] = True
+        self.report['after_capture_operator_requested'] = True
+        return {'state': self.state, 'capture': self.report['captures']['probe-after']}
+
     def poll(self, qmp, now):
         serial_path = self.output / 'serial.log'
         serial = serial_path.read_bytes() if serial_path.exists() else b''
@@ -85,7 +101,8 @@ class ProbeJourney:
             self.state = 'waiting-for-tap-marker'
         elif self.state in ('waiting-for-tap-marker', 'waiting-for-operator-tap-marker') and tapped in serial:
             self.report['tap_marker_observed'] = True
-            self.state = 'waiting-for-updated-frame'
+            self.state = ('waiting-for-updated-frame' if self.hardware_tap
+                          else 'waiting-for-operator-after-capture')
             self.ready_at = now + 1
         elif self.state == 'waiting-for-updated-frame' and now >= self.ready_at:
             self.capture(qmp, 'probe-after')
