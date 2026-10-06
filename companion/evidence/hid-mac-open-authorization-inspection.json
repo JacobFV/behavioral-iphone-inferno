@@ -1,0 +1,73 @@
+{
+  "scope": "Read-only original kernel inspection following actual app-boot-18 IOHIDResource type0 open denial; no kernel policy, descriptor, identity or guest changes.",
+  "original_kernel": {
+    "path_outside_git": "~/.local/share/inferno/native-probe/kernel-original-decoded",
+    "sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+    "size": 54613232,
+    "version": "iOS14.0b5 18A5351d original decoded research kernel"
+  },
+  "actual": {
+    "report": ".local-build/reports/app-boot-18/serial.log",
+    "lines": "768-775",
+    "resource_id": 4294968036,
+    "open_result": "0xe00002e2",
+    "connection": 0,
+    "wrapper": "NULL",
+    "interpretation": "Descriptor create method was not reached. Numeric status alone does not identify a particular MAC policy rule."
+  },
+  "open_chain": {
+    "generic_service": "IOHIDResource personality selects IOHIDResourceDeviceUserClient; wrapper and diagnostic both use type0. See hid-create-failure-inspection.json.",
+    "developer_gate": "IOHIDResourceDeviceUserClient::initWithTask at0xfffffff00834397c accepts developer.hid.virtual.device Boolean at8343a38..8343a80. Generic false init returns e00002c2, distinct from observed code.",
+    "outer_gate": "is_io_service_open_extended calls mac_iokit_check_open at0xfffffff008098f38 after successful newUserClient; nonzero maps e00002e2 at8098f3c..8098f48.",
+    "mac_dispatch": "mac_iokit_check_open0xfffffff0081140e0 uses policy ops+0x9e8. Original AMFI mac_ops0xfffffff0077953f8 has NULL here; Sandbox policy_ops0xfffffff00797de10 points to hook_iokit_check_open0xfffffff0092a0eec.",
+    "sandbox_hook": "Hook sets context type8 and userclient pointer, calls cred_sb_evaluate(cred,0x33,context) at0xfffffff0092a0f50.",
+    "global_policy": "sb_evaluate_internal passes platform_profile0xfffffff00797e978 to evaluator at0xfffffff0092a9f90..92a9f9c before testing for per-credential sandbox at92a9fb4. Global policy is therefore relevant without a named per-process sandbox."
+  },
+  "platform_profile": {
+    "symbol": "_the_real_platform_profile_data0xfffffff0072159d0",
+    "file_offset": "0x2119d0",
+    "decoder_basis": "Original profile_init0xfffffff0092adc38, not a presumed newer profile layout.",
+    "layout": {
+      "operations": 150,
+      "nodes": 3386,
+      "regexes": 4,
+      "variables": 3,
+      "operation_table_offset": 26,
+      "node_table_offset": 328,
+      "node_size": 8,
+      "data_offset": "0x6b18"
+    },
+    "operation51_root": 233,
+    "relevant_rule": {
+      "node": 509,
+      "filter": "iokit-user-client-class (0x11)",
+      "argument": 2184,
+      "match": 3385,
+      "unmatch": 510,
+      "allow_node": 3385,
+      "argument_interpretation": "Alternatives reference global variables1 and2: ENTITLEMENT:com.apple.security.exception.iokit-user-client-class and ENTITLEMENT:com.apple.security.iokit-user-client-class.",
+      "final_denial_node": 511,
+      "denial_message_argument": 2193,
+      "denial_message": "This must be in your com.apple.security.iokit-user-client-class entitlement."
+    }
+  },
+  "entitlement_value_matching": {
+    "function": "__match_entitlement_variable0xfffffff0092acfb4",
+    "credential_lookup": "Derives credential at92ad038; looks up entitlement suffix after colon with get_entitlement_value_by_cred at92ad048.",
+    "exact_class_special_case": "strcmp at92ad074 tests literal com.apple.security.iokit-user-client-class located0xfffffff00755dabd; exact-length match enforced, not arbitrary prefix.",
+    "array_support": "Non-string value invokes io_array_iterate at92ad180. Block at92ad1d4 gets each string, memcmp at92ad244 and exact length at92ad274; sets iteration success at92ad290..92ad294.",
+    "class_source": "match_iokit_connection0xfffffff00929c1d8 calls match_superclasses at0xfffffff00929c284 and walks actual IOKit object class metadata."
+  },
+  "narrow_next_experiment": {
+    "retain_boolean": "com.apple.developer.hid.virtual.device=true",
+    "add_singleton_string_array": {
+      "com.apple.security.iokit-user-client-class": [
+        "IOHIDResourceDeviceUserClient"
+      ]
+    },
+    "purpose": "Allow the exact original userclient class through original platform-profile rule while retaining the original virtual-device capability check.",
+    "unchanged": "Original OS policy, virtual-device marker, descriptor, Built-In metadata, type0 API and helper behavior. No manager capability, broader class, no-container setting, policy patch, Apple signature or injected report.",
+    "verification": "Require actual IOServiceOpen0, nonNULL original Create and actual event-service registration before any separately authorized input."
+  },
+  "limits": "This is a source-supported next authorization, not proof of successful runtime creation. No policy decision trace identifies the individual failing node in boot18; the observed code and original rule independently justify a narrow retry. Subsequent descriptor/start/route failures remain possible."
+}
