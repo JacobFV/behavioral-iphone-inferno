@@ -53,3 +53,17 @@ rechecks process identity and requires the opened file's device+inode to equal
 the original FD metadata before reading. MAC checks remain active; their actual
 return and errno are recorded, not bypassed. It reads no process environment or
 other file contents. The app footer separately displays its actual cache path.
+
+Actual boot31 process metadata located the exact owned file, but the reader's
+normal open returned EPERM. No filesystem or manager grant is added. The next
+transport is TCP bound only to guest127.0.0.1:37373, with no host listener or
+forwarding. App markers generate the same bounded boot/PID/sequence/event/count
+record and send it over one short connection, while retaining the local journal.
+Nonblocking connect/send/receive use at most8 attempts with250ms polls per phase;
+SO_NOSIGPIPE prevents disconnected receivers terminating the app. The receiver
+accepts at most64 connections in7200seconds, one line under192bytes each, and
+validates the same strict grammar/boot/sequence limits. It checks the claimed PID
+against original executable-path/uid APIs; this is explicitly NOT peer-PID
+authentication. It never relays unvalidated payload text or changes UI input.
+Footer NET=0 means bytes sent, not receiver acceptance. Actual serial records and
+reviewed app frames/tap response are still required for journey completion.

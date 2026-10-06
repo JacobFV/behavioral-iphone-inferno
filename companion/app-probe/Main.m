@@ -2,9 +2,11 @@
 // Owned minimal UIKit fixture. All implementation comes from the running guest.
 #import "UIKitNarrow.h"
 #include "EventRecord.h"
+#include "LoopbackEvent.h"
 extern int open(const char *,int,...),close(int),ftruncate(int,long long),fchmod(int,unsigned short),getpid(void),getuid(void),*__error(void);
 static int event_fd=-1;
 static unsigned event_sequence,event_bytes;
+static int event_identity_valid,network_result=-2,network_errno;
 static char event_boot[37],event_path[INFERNO_EVENT_PATH_LIMIT];
 static const char *event_stage="not-started";
 static int event_errno,event_uid,event_failed;
@@ -17,6 +19,7 @@ static void event_start(void) {
     int boot_result=inferno_boot_uuid(event_boot);
     if(event_uid!=501) {event_error("uid",0);return;}
     if(boot_result) {event_error("boot",inferno_boot_query_errno);return;}
+    event_identity_valid=1;
     NSString *home=NSHomeDirectory();
     if(!home || [home isEqualToString:@"/var/mobile"] || [home isEqualToString:@"/var/mobile/"] || [home isEqualToString:@"/private/var/mobile"] || [home isEqualToString:@"/private/var/mobile/"]) {event_error("no-container",0);return;}
     NSError *directory_error=nil;
@@ -38,10 +41,12 @@ static void event_start(void) {
 }
 
 static void event_store(const char *event,NSUInteger count) {
-    if(event_fd<0 || event_sequence>=64 || !inferno_event_name(event) || count>1000000)return;
+    if(!event_identity_valid || event_sequence>=64 || !inferno_event_name(event) || count>1000000)return;
     char line[192];
     int n=snprintf(line,sizeof(line),"INFERNO_EVENT_V1 %s %d %u %s %lu\n",event_boot,getpid(),++event_sequence,event,count);
     if(n<=0 || n>=(int)sizeof(line) || event_bytes+(unsigned)n>INFERNO_EVENT_LIMIT)return;
+    network_result=inferno_send_event(line,(unsigned)n,&network_errno);
+    if(event_fd<0)return;
     unsigned done=0;
     while(done<(unsigned)n) {long k=write(event_fd,line+done,(unsigned)n-done);if(k<0 && *__error()==4)continue;if(k<=0) {event_error("write",k<0?*__error():0);close(event_fd);event_fd=-1;return;}done+=(unsigned)k;}
     event_bytes+=(unsigned)n;
@@ -104,7 +109,7 @@ static void marker(const char *event, NSUInteger count) {
     [_button addTarget:self action:@selector(increment:) forControlEvents:(1UL << 6)];
     [view addSubview:_button]; // UIControlEventTouchUpInside
     _footer = [[UILabel alloc] initWithFrame:Rect(0, 0, 0, 0)];
-    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d\n%s",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno,event_path]];
+    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d NET=%d e=%d\n%s",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno,network_result,network_errno,event_path]];
     [_footer setNumberOfLines:0];
     [_footer setLineBreakMode:1];
     [_footer setFont:[UIFont systemFontOfSize:12]];
@@ -112,11 +117,11 @@ static void marker(const char *event, NSUInteger count) {
     [_footer setTextAlignment:1];
     [view addSubview:_footer];
     marker("view-loaded", _count);
-    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d\n%s",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno,event_path]];
+    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d NET=%d e=%d\n%s",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno,network_result,network_errno,event_path]];
 }
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d\n%s",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno,event_path]];
+    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d NET=%d e=%d\n%s",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno,network_result,network_errno,event_path]];
     CGRect bounds = [[self view] bounds];
     CGFloat width = bounds.size.width;
     CGFloat height = bounds.size.height;
