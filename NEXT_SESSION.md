@@ -60,7 +60,14 @@ and27 fast swipe each ACK0 but Welcome remains. Five helper slots remain; root
 holds further gestures while native_probe traces original finish readiness and
 disk_path traces original systemgesture routing.
 Original kernel received first-unlock, API state3/first0->1. Screen Time completion is proven; Home and owned app execution remain unproven. Exact raw journals in22 report.
-Source-only launcher diagnostic e7eee456ad is committed but NOT built/staged;
+Next diagnostic candidate45 is being built by native_probe: original readytoexit
+Darwin notification observation (register/check/cancel only), matched HID event
+service readonly properties, and bounded launcher NSError detail. Bootworker is
+preparing stage40 but must wait for reviewed source/binary and normal22stop hashes.
+Root freed obsolete generated cache1/appstage1/prep22/prep17, preserving reports,
+original sources, baseline21 and all actual app boots. Actualfree24GiB at07:51.
+No Home/setup-state bypass or fabricated notification. Current22 remains live.
+Source-only launcher diagnostic e7eee456ad is committed but NOT staged;
 original RequestDenied generic1 hides failureReason/underlying error. Consider
 staging only if denial persists after Setup. Old21 is stopped, all7 hashes/raw
 preserved7a6ae49d0b. Obsolete cache-patching-1 generated disks retiredf7810818f9.
