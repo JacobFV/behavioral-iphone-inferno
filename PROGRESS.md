@@ -2,6 +2,18 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 13:00 continuation: diagnostic build and actual trace controls
+
+Source0132ad93ca built successfully; emulatorSHA
+1e369a50d11a417a50d8a05d9bc8dad7ebd443ca4d9b2db0b71271e55139a6b7.
+Actual firmware-free QMP proved all five display events default off, a one-second
+window disabled at approximately1.021seconds, and early cleanup disabled a
+30-second window. Raw QMP, build output and control journals are retained in
+`display-trace-build-control`. This proves control behavior only. The baseline
+e3da emulator remains archived read-only. Run43 is now starting with the same
+frozen50 guest bits and TCG; root owns all reviewed input and diagnostic windows.
+No display behavior fix or performance improvement is claimed.
+
 ### 12:54 continuation: tracked workflow succeeds in comparison42
 
 42 kept the same emulator and guest bits and added only fixed read-only display

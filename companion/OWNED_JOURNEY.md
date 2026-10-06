@@ -101,6 +101,23 @@ not include framebuffer memory. Older running processes do not acquire new
 commands merely because the checkout has changed. A register snapshot alone
 does not establish the cause of a rendering failure.
 
+For runners using the diagnostic emulator built from0132ad93ca, a bounded trace
+can record submission, drawing and interrupt activity around a reviewed action:
+
+```sh
+companion/run control --report "$attempt" trace-display-window \
+  --arguments '{"seconds":60}'
+```
+
+The five fixed events are disabled by default. The window accepts integer1..60
+seconds and rejects overlapping windows. The sole QMP owner disables them when
+its polling loop reaches the deadline and again during cleanup; this is a
+cooperative deadline, not a hard real-time limit. Inspect
+`display-trace-control.jsonl` and the raw emulator trace for actual enable/disable
+and device activity. Tracing can affect timing. Actual firmware-free validation
+in `evidence/display-trace-build-control` proves control behavior only, not iOS
+rendering. A healthy traced journey does not resolve the retained41 failure.
+
 ## Warm resume and timing
 
 Use `observe --home-button` with a new output directory. It sends the emulator's

@@ -73,19 +73,15 @@ Actual42nine snapshots allvalid. Sevenfirstsnapshots126rawQMPpairs+audita0e134f3
 GP0enabled/run throughout/status0 atsamplinginstants; framebufferaddressalternates
 016c0000↔02230000, healthyreference only, nohistoricBH/submitcounts.
 
-ACTIVE NEXT: nativeworker inisolatedworktree ownsdiagnostic-only optintrace changes
-hw/display/apple_displaypipe_v4.c, hw/display/trace-events, companion/qmp_control.py.
-Tracecategories submit/schedule,BHentryexit, pipeoutcomes, outputreadyIRQ, guest
-W1C/enablewrites. Existingvaluesonly/noextraDMA/pixels/noemulationbehaviorchange.
-Bounded1..60s mailboxwindow/automaticpoll disable; nativeaddsControlMailbox.close(qmp).
-ROOTmustadd tinyboot.py finallyhook callingcontrol.close(qmp) beforecapture/quit,
-catchandrecorddisplay_trace_cleanup_error withoutpreventingquit. Nootherthread/QMPowner.
-Rootreviewsourcebeforemerge/build. Bootworkerawaitingno43launchyet. Archivebaseline
-alreadyverified/read-only `.local-build/binaries/simulated-sep-first-unlock-e3da84b179ce/`
-containsbinary/build-manifest/KEEP-BASELINE.json, e3da84... exact.
-Aftermergedinstrumentation, buildactualcandidate + firmwarefreecontroltraceexpiration
-scopecheck thenONE43samefrozen50 toobserve actualdisplaypipeline. No43 authorizedyet;
-rootwillauthorizeafterbuildreview. No guestartifact/stagingchange required.
+ACTIVE: diagnostic trace sourcea5006fba19 and runner cleanup0132ad93ca merged.
+Actual build and firmware-free control evidence2c5f7d3bae passed: all5events
+available/defaultoff, deadline and earlycleanup disable confirmed by rawQMP.
+BinarySHA1e369a50d11a417a50d8a05d9bc8dad7ebd443ca4d9b2db0b71271e55139a6b7.
+ONE43 now authorized/launched samefrozen50, TCG, keepalive; root owns allinput.
+Bootworker owns launch/lifecycle only. Capture actualdisplaytrace around reviewed
+singlecountertap with fixed trace-display-window seconds1..60. No causalfix yet.
+The old e3da baseline remains read-only in
+`.local-build/binaries/simulated-sep-first-unlock-e3da84b179ce/`.
 
 Unchangedfourbits/backings below remain the current execution baseline.
 
