@@ -195,6 +195,6 @@ int main(int argc, char **argv) {
         if (unmount("/mnt7", 0)) return 14;
         printf("INFERNO_GIGALOCKER_COMPLETE: original seputil initialization and clean unmount succeeded\n"); fflush(0);
     }
-    printf("INFERNO_PREP_COMPLETE: Preboot added, original firmware copied\n"); fflush(0);
+    printf("INFERNO_PREP_COMPLETE: requested preparation operations succeeded\n"); fflush(0);
     return 0;
 }
