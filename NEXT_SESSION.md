@@ -135,8 +135,12 @@ Futurectime/content/sourcechange rejects; explicitverificationjournalretainsactu
 metadata. Keep sidecars AND stage55source report forever withaffectedancestors.
 NEVER chmodalreadyreadonlyancestors again; checkmodebeforeanynecessarychmod.
 Root chainrevalidationPASS0ff76853bb; protectedstage55 immutable for48.
-ONE48runner2861940startingwithstage55/currenthost0ff76853bb/emulator670caae5,
-waitingfreshchainvalidation/QEMUsocket. Rootallinput, firstactualSAMPLEonlyafterreviewednormaljourney
+48 failed BEFOREguestexecution:QEMUexit1/noquit/serial0, readonlysourceauxmode
+wasinheritedbynewprivatecopies. Evidenceprivate-aux-mode includesactualstderr.
+Narrowfix97f7230fa8 reservesnewprivateauxdestination, copy/hashchecks, chmod0600
+ONLYnewcopy. Actualfirmware-freeQMPquery-blockro=false/quit0; frozen55source
+bytes/inode/ctime/mtime/modeunchanged, duplicateoutputreject. NotaniOSmilestone.
+ONE49 authorizednextsame55/670; rootallinput, firstactualSAMPLEonlyafterreviewednormaljourney
 outcome toavoidperturbingreproduction. UseBACKBOARDD thenSPRINGBOARD atmostonceeach,
 waitEND/FAILED; errorsareevidence, no grants/retries. No nativeperformanceclaim.
 

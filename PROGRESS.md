@@ -2,6 +2,20 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 14:12 continuation: repair fresh private auxiliary modes after pre-execution48
+
+The exact metadata revalidation and full backing-chain checks passed. Run48 then
+failed before guest execution because copied auxiliary files inherited the frozen
+base's read-only permissions. QEMU exited1, no serial connection/data or quit
+acknowledgment occurred, and no iOS milestone is claimed.
+
+The runner now exclusively reserves each fresh private auxiliary destination,
+verifies its copied hash and sets that destination to0600. Frozen sources remain
+unchanged. An actual firmware-free QEMU opened the copied block writable and
+quit normally; this validates the file-opening fix only. Raw failure and control
+records are retained in `private-aux-mode`. The next real attempt49 uses the same
+frozen55 and unchanged670caae5 emulator.
+
 ### 14:09 continuation: exact metadata incident recorded and narrowly revalidated
 
 During independent stage55 retention, root mistakenly reapplied mode0444 to three
