@@ -10,7 +10,34 @@ Suggested opening instruction:
 > Prefer integrated execution over adding routine unit tests. Never use my main
 > display. Do not resume the archived framework reimplementation.
 
-## CURRENT, 2026-10-06 09:20 local:27 stopped, next diagnostic staging
+## CURRENT, 2026-10-06 09:34 local: boot28 exposes event-file open failure
+
+Boot28 is live, session92046, private VNC `/tmp/inferno-boot-ap8o399_/vnc.sock`.
+Root owns input; `/tmp/inferno-explicit-gesture-28.py` targets this run. Four inputs
+(two reviewed lock-screen swipes, beta Close, one counter tap) produced actual
+counter0 then1. The diagnostic footer is unequivocal: uid501, boot query0/37,
+query errno0, first failure `open errno=1`. Observer confirms Caches directory
+0700 uid/gid501 and the event file absent (ENOENT). Do not infer later fstat or
+write results. Native/disk workers now inspect original container/sandbox paths
+for the minimal normal app-owned event location, without grants or policy changes.
+Actual diagnostic evidence b693e0d4b8 is integrated; strict journey remains pending.
+
+Stage44 actual app72624/readiness+job69559 readbacks matched, clean unmount,
+QMPquit7/emulator0 and ancestor hashes unchanged (5bb47bb3ab). Root independently
+verified all7 hashes, no open FDs and froze root.qcow20444 with KEEP marker
+(69263e5739). Root SHA a26c50b4f51e5bb8a7c67889e2078649324851849f826f0eb754680f91f66f5d.
+Boot28 uses new layer3 over44(layer2),27(layer1),43(raw). Keep all exact paths.
+For the next fix stage a sibling from frozen44, replacing all changed owned
+components, then boot a layer4 child. Do not stage from28 and exceed chain limits.
+
+Root event-arrival observer session75100 is live. Startup resource sample49419
+completed121 samples/120seconds,170.22CPU seconds, peakRSS5593513984bytes; not
+app memory or launch duration. Idle-after-counter sample94003 is running for60s;
+do not stop28 until it completes. Continue with the actual path correction,
+strict event-backed journey and measurements; no handoff or pause requested.
+
+## HISTORICAL, 2026-10-06 09:20 local:27 stopped, next diagnostic staging
+
 
 Boot27 is STOPPED normally: cleanupcapture41, QMPquit42/emulator0,
 all7stoppedhashes atstandard stopped-disk-hashes.json. Original raw43 backing

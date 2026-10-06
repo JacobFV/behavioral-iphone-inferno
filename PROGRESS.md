@@ -2,6 +2,18 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 09:34 continuation: precise app event-file failure
+
+Actual diagnostic boot28 displays uid501 and successful boot UUID query0/37,
+then `open errno=1` for our global event file. The reader independently reports
+the parent directory0700 owned501 and fileENOENT. This isolates the failure
+before any fstat/write operation. Normal app-container/cache resolution is now
+under inspection; no entitlement or policy changes are introduced. The app again
+visibly increments0 to1 after one explicit tap. Strict marker proof is pending.
+Recovery44 used retained immutable overlays with actual matching readbacks,
+normal unmount/QMP exit0 and unchanged ancestors; boot28 runs its child overlay.
+All backing layers remain protected. Evidence b693e0d4b8 / 5bb47bb3ab.
+
 ### 09:20 continuation: overlay visual repeat; event writer diagnosis
 
 Boot27 ran through the verified raw-backed qcow2 path, accepted the owned app,
