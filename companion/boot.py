@@ -461,6 +461,11 @@ def main():
         if process is not None and process.poll() is None:
             try:
                 if qmp:
+                    if control:
+                        try:
+                            control.close(qmp)
+                        except Exception as exc:
+                            report['display_trace_cleanup_error'] = str(exc)
                     if touch_trace:
                         try:
                             touch_trace.stop(qmp, 'runner cleanup')
