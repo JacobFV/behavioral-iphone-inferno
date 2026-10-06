@@ -1,0 +1,86 @@
+Process:             InfernoProbe [249]
+Path:                /Applications/InfernoProbe.app/InfernoProbe
+Identifier:          org.inferno.companion.probe
+Version:             1 (1.0)
+Code Type:           ARM-64 (Native)
+Role:                Foreground
+Parent Process:      launchd [1]
+Coalition:           org.inferno.companion.probe [358]
+
+
+Date/Time:           2026-10-06 08:28:40.5384 -0700
+Launch Time:         2026-10-06 08:28:39.2422 -0700
+OS Version:          iPhone OS 14.0 (18A5351d)
+Release Type:        Beta
+Baseband Version:    n/a
+Report Version:      104
+
+Exception Type:  EXC_BAD_ACCESS (SIGSEGV)
+Exception Subtype: KERN_INVALID_ADDRESS at 0x0000000000000000
+VM Region Info: 0 is not in any region.  Bytes before following region: 4378263552
+      REGION TYPE                      START - END             [ VSIZE] PRT/MAX SHRMOD  REGION DETAIL
+      UNUSED SPACE AT START
+--->  
+      __TEXT                        104f70000-104f78000        [   32K] r-x/r-x SM=COW  .../InfernoProbe
+
+Termination Signal: Segmentation fault: 11
+Termination Reason: Namespace SIGNAL, Code 0xb
+Terminating Process: exc handler [249]
+Triggered by Thread:  0
+
+Thread 0 name:  Dispatch queue: com.apple.main-thread
+Thread 0 Crashed:
+0   libobjc.A.dylib               	0x0000000193b60990 0x193b5b000 + 22928
+1   UIKitCore                     	0x000000019870d0f4 0x197b51000 + 12304628
+2   UIKitCore                     	0x0000000198b93808 0x197b51000 + 17049608
+3   UIKitCore                     	0x00000001986da9d0 0x197b51000 + 12098000
+4   UIKitCore                     	0x00000001986c9988 0x197b51000 + 12028296
+5   UIKitCore                     	0x00000001986e9468 0x197b51000 + 12158056
+6   CoreFoundation                	0x0000000193dcf2d4 0x193d30000 + 651988
+7   CoreFoundation                	0x0000000193dce528 0x193d30000 + 648488
+8   CoreFoundation                	0x0000000193dc8aa4 0x193d30000 + 625316
+9   CoreFoundation                	0x0000000193dc822c 0x193d30000 + 623148
+10  GraphicsServices              	0x000000019ff41820 0x19ff3e000 + 14368
+11  UIKitCore                     	0x00000001986cad00 0x197b51000 + 12033280
+12  UIKitCore                     	0x00000001986d03dc 0x197b51000 + 12055516
+13  InfernoProbe                  	0x0000000104f74a78 0x104f70000 + 19064
+14  libdyld.dylib                 	0x0000000193c4fe60 0x193c4f000 + 3680
+
+Thread 1:
+0   libsystem_pthread.dylib       	0x0000000193b59774 0x193b4f000 + 42868
+
+Thread 2:
+0   libsystem_pthread.dylib       	0x0000000193b59774 0x193b4f000 + 42868
+
+Thread 3:
+0   libsystem_pthread.dylib       	0x0000000193b59774 0x193b4f000 + 42868
+
+Thread 4:
+0   libsystem_pthread.dylib       	0x0000000193b59774 0x193b4f000 + 42868
+
+Thread 5 name:  com.apple.uikit.eventfetch-thread
+Thread 5:
+0   libsystem_kernel.dylib        	0x0000000193c21e70 0x193c1e000 + 15984
+1   libsystem_kernel.dylib        	0x0000000193c21224 0x193c1e000 + 12836
+2   CoreFoundation                	0x0000000193dcea68 0x193d30000 + 649832
+3   CoreFoundation                	0x0000000193dc8c18 0x193d30000 + 625688
+4   CoreFoundation                	0x0000000193dc822c 0x193d30000 + 623148
+5   Foundation                    	0x0000000194166550 0x19415e000 + 34128
+6   Foundation                    	0x0000000194166428 0x19415e000 + 33832
+7   UIKitCore                     	0x000000019877afd8 0x197b51000 + 12754904
+8   Foundation                    	0x00000001942d0270 0x19415e000 + 1516144
+9   libsystem_pthread.dylib       	0x0000000193b50ca8 0x193b4f000 + 7336
+10  libsystem_pthread.dylib       	0x0000000193b59788 0x193b4f000 + 42888
+
+Thread 0 crashed with ARM Thread State (64-bit):
+    x0: 0x0000000280f44440   x1: 0x00000001de8a62e2   x2: 0x0000000000000002   x3: 0x0000000193b320cc
+    x4: 0x00000000000062dc   x5: 0x0000000000000020   x6: 0x0000000000000000   x7: 0x0000000000000002
+    x8: 0x00000001de8a6000   x9: 0x0000000105107690  x10: 0x0000000000000000  x11: 0x0000000000000000
+   x12: 0x0000000000000000  x13: 0x0000000000000000  x14: 0xfffffffffffffff4  x15: 0x0000000105107690
+   x16: 0x0000000105107690  x17: 0x00000001986f4f34  x18: 0x0000000000000000  x19: 0x000000028035f990
+   x20: 0x00000001de074550  x21: 0x00000001dde16862  x22: 0x00000001de4977e2  x23: 0x00000001051058c0
+   x24: 0x00000001de7842e2  x25: 0x00000001de784000  x26: 0x00000001e7f36000  x27: 0x00000001ddbd8000
+   x28: 0x0000000000000001   fp: 0x000000016ae8e8b0   lr: 0x000000019870d0f4
+    sp: 0x000000016ae8e840   pc: 0x0000000193b60990 cpsr: 0x20000000
+   esr: 0x92000006 (Data Abort) byte read Translation fault
+

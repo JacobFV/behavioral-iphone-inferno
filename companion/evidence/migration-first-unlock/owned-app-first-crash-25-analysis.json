@@ -1,0 +1,48 @@
+{
+  "scope": "Actual first owned UIKit process crash, original-framework analysis only; no guard or guest changes.",
+  "source": {
+    "serial": ".local-build/reports/app-boot-25/serial.log",
+    "report": "InfernoProbe-2026-10-06-082842.ips",
+    "pid": 249,
+    "cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+    "libobjc_uuid": "1bcb72b1-ea99-3d7d-872b-3486d9dfd232",
+    "UIKitCore_uuid": "eff94ce9-ee86-34c6-a228-4f9b8de18016",
+    "uuid_check": "Original LC_UUID values match actual crash Binary Images exactly."
+  },
+  "normalization": {
+    "shared_cache_slide": "0x139d0000",
+    "libobjc_original_base": "0x18018b000",
+    "libobjc_runtime_base": "0x193b5b000",
+    "UIKitCore_original_base": "0x184181000",
+    "UIKitCore_runtime_base": "0x197b51000",
+    "crash_pc_original": "0x180190990",
+    "UIKit_caller_original": "0x184d3d0f4",
+    "selector": "Runtime x1 0x1de8a62e2 minus slide => original0x1cabd62e2, string retain"
+  },
+  "fault": {
+    "function": "objc_msgSend cache lookup",
+    "instruction": "0x180190990 ldp x17,x9,[x13],#-0x10",
+    "registers": {
+      "x0_receiver": "0x280f44440",
+      "x16_decoded_isa": "0x105107690",
+      "x11_cache": "0",
+      "x10_buckets": "0",
+      "x13_read_address": "0"
+    },
+    "interpretation": "Nonnull receiver but decoded class method-cache path reaches NULL; invalid object/class metadata, not an unresolvable import."
+  },
+  "caller": {
+    "owner": "UIWindow _noteOverlayInsetsDidChange starts0x184d3cfd4; schedules deferred block0x184d3d094",
+    "sequence": [
+      "0x184d3d0cc [UIApplication sharedApplication]",
+      "0x184d3d0e8 delegate",
+      "0x184d3d0f0 objc_retainAutoreleasedReturnValue triggers retain on returned delegate",
+      "0x184d3d0f4 recorded return address"
+    ],
+    "conclusion": "The crashing retained object is UIApplication.delegate. Inspect owned delegate lifetime and object/ivar ABI; this is not evidence for a UIKit policy/guard patch."
+  },
+  "limits": [
+    "Nearest Objective-C method labeling alone would incorrectly label the block as the method body; exact block pointer and selector data resolve it.",
+    "Source of delegate corruption is not established by this original-framework trace; parent independently audits owned code."
+  ]
+}
