@@ -199,6 +199,8 @@ def load_stopped_overlay(report_path, tool, seen=()):
     manifest = json.loads(manifest_path.read_text())
     if set(manifest) != {'root.qcow2', *AUXILIARY_SIZES}:
         raise ValueError('Stopped manifest must contain exactly root.qcow2 and six raw namespaces')
+    if manifest['root.qcow2'].get('forensic_only'):
+        raise ValueError('Forensic-only retained attempt cannot be used as an overlay base')
     root_path = directory / 'disks/root.qcow2'
     for name, entry in manifest.items():
         path = directory / 'disks' / name

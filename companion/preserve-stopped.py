@@ -62,9 +62,11 @@ def descriptor_check(paths):
             'permission_denied_pids': sorted(denied), 'time': time.time()}
 
 
-def verify_shutdown(directory, report):
-    if report.get('exit_code') != 0 or report.get('error'):
-        raise ValueError('Report must record emulator exit0 without an attempt error')
+def verify_shutdown(directory, report, failed_attempt=False):
+    if report.get('exit_code') != 0:
+        raise ValueError('Report must record emulator exit0')
+    if report.get('error') and not failed_attempt:
+        raise ValueError('Attempt error requires explicit --failed-attempt; default preservation rejects it')
     if report.get('kind') not in ('t8030_direct_root_experiment', 't8030_recovery_ramdisk_experiment'):
         raise ValueError('Expected an owned t8030 boot report')
     pid = report.get('pid')
@@ -99,7 +101,7 @@ def verify_shutdown(directory, report):
             'reported_emulator_pid_absent': pid}
 
 
-def preserve(report_path, output):
+def preserve(report_path, output, failed_attempt=False):
     report_path = report_path.resolve(strict=True)
     if report_path.is_dir():
         report_path /= 'report.json'
@@ -111,7 +113,7 @@ def preserve(report_path, output):
     report_identity = identity(report_path)
     report_hash = digest(report_path)
     report = bounded_json(report_path)
-    shutdown = verify_shutdown(directory, report)
+    shutdown = verify_shutdown(directory, report, failed_attempt)
     entries = report.get('disks')
     if not isinstance(entries, list) or len(entries) != 7:
         raise ValueError('Report must describe exactly seven namespaces')
@@ -159,6 +161,8 @@ def preserve(report_path, output):
                  'format': 'qcow2' if name == 'root.qcow2' else 'raw'}
         if name == 'root.qcow2':
             entry.update(standalone=False, backing_chain=backing.get('layers') or [record['backing']])
+        if name == root_name and failed_attempt:
+            entry['forensic_only'] = True
         manifest[name] = entry
     fds_after = descriptor_check(paths.values())
     if any(identity(path) != before[name] for name, path in paths.items()):
@@ -171,6 +175,12 @@ def preserve(report_path, output):
         raise ValueError('Reported emulator PID exists at verification completion')
     verification = {'schema': 'inferno.stopped-retention-verification.v1',
                     'report': str(report_path), 'report_sha256': report_hash,
+                    'failed_attempt_opt_in': failed_attempt,
+                    'attempt_error': report.get('error'),
+                    'attempt_completed': report.get('attempt_completed'),
+                    'strict_journey': {key: (report.get('probe_journey') or {}).get(key)
+                                       for key in ('state', 'completed')},
+                    'outcome_scope': 'Disk retention only; not an attempt-success claim or overlay-base authorization.',
                     'source_sha256': digest(Path(__file__)),
                     'overlay_module_sha256': digest(Path(__file__).with_name('disk_overlay.py')),
                     'shutdown': shutdown, 'fd_before': fds_before, 'fd_after': fds_after,
@@ -192,9 +202,11 @@ def main():
     parser.add_argument('--report', required=True, type=Path, help='Stopped report.json or its directory')
     parser.add_argument('--output', required=True, type=Path,
                         help='New manifest file; also creates NAME-verification.json beside it, never overwrites')
+    parser.add_argument('--failed-attempt', action='store_true',
+                        help='Retain a recorded failed attempt only if normal QMP shutdown and every disk check still pass')
     args = parser.parse_args()
     try:
-        print(json.dumps(preserve(args.report, args.output), indent=2))
+        print(json.dumps(preserve(args.report, args.output, args.failed_attempt), indent=2))
     except (OSError, ValueError, KeyError, TypeError) as exc:
         print(f'preserve-stopped: {exc}', file=sys.stderr)
         return 1

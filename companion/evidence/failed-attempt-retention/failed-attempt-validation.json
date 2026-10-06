@@ -1,0 +1,32 @@
+{
+  "default_rejection": {
+    "command": [
+      "/usr/bin/python3",
+      "/tmp/inferno-preserve-stopped-work/companion/preserve-stopped.py",
+      "--report",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-32/report.json",
+      "--output",
+      "/home/brandonin/.local/share/inferno/retention-verification/run32-default-reject2.json"
+    ],
+    "exit_code": 1,
+    "stderr": "preserve-stopped: Attempt error requires explicit --failed-attempt; default preservation rejects it\n"
+  },
+  "forensic_loader_rejection": {
+    "report_copy": "/home/brandonin/.local/share/inferno/retention-verification/run32-forensic-loader-copy/report.json",
+    "actual_source": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-32",
+    "manifest": "/home/brandonin/.local/share/inferno/retention-verification/run32-forensic-loader-copy/stopped-disk-hashes.json",
+    "reason": "Forensic-only retained attempt cannot be used as an overlay base",
+    "copied_original_qmp_and_report": true,
+    "no_disk_or_original_report_writes": true
+  },
+  "original_report_sha256": "964fe6a69323cc9fd61fb82285fea05d485906ac3c7edb54a420d2beca77df23",
+  "tool_sha256": "dd0b92a17578186565034f5c4ae609090bec949204cd6e642d451180e846f4fc",
+  "overlay_module_sha256": "283335352e0764008be89edae84875a774c679afeb8fc92c581b660e5c9195d8",
+  "existing_recovery_stage50_loader": {
+    "result": "accepted",
+    "layers": 4,
+    "retained_result": "stage50-loader-accepted.json",
+    "sha256": "db0572a815b85cf120b5d89a03d5e8dbac6e5c1c21b30e80c56b9f31befec1b4",
+    "preserved_recovery_signal15_semantics": true
+  }
+}
