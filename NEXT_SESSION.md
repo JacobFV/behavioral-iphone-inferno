@@ -28,7 +28,12 @@ observerdefaultOFF. Boot2C5B5B48-7021-49E1-A7BB-2B014BEE2774/PID220/main19166542
 Counter546b14a894ac4168ac072d9daf298573 actualtap1+ACK0, reviewedbothQMPimages:
 before3bcbcef160426e1acb6cf8faea3d14432b5009d3ae342b27d06548780002198c,
 afterb122f344d9ab28b73c5138fa91d25b30b319ae2d5a3e36a0b1347f3873fda8a8.
-NoSAMPLE/Home/OPEN. Rootvisual4950e186a7; bootworkerownsfinalpostflight.
+NoSAMPLE/Home/OPEN. Rootvisual4950e186a7; finalpostflight2f29037290 PASS
+strict/defaultall7+ancestor+attestations/initialtiming. Root78315520bytes SHA
+c67731f9d4e222763866fc9904f382f742d8a108ff19241d56a200c700629438.
+Launchrevision e629bf388a, reportrevisionfc9b820996 (docscommitduringinit), exact
+loadedrunner9f8825f7/control1859298b/emulator670unchanged; laterpostflightsource
+bfcc434c20 separate. All original hashes and logs retained.
 Minimal diagnostic mergedbfcc434c20 after58processesabsent; nativeimplementation
 917abb9dc4 independentlyapprovedbydisk_path androot. Bootworker authorized:
 archive670+manifestoutsideGitwithoutoverwriting; buildsimulatedSEP/KVM8jobs;

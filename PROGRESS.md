@@ -8,7 +8,12 @@ Unchanged frozen55/emulator670 completed another reviewed strict0→1 in58;
 boot2C5B5B48-7021-49E1-A7BB-2B014BEE2774/PID220, singlecounter
 546b14a894ac4168ac072d9daf298573. No samples/Home/OPEN. Root reviewed both
 VNC and actual QMP captures before normal finish. Visual evidence4950e186a7;
-final disk postflight is underway. The runner and emulator have exited.
+final strict/default all7/ancestor/attestation preservation passed2f29037290,
+normal0/noerror506.744416s. Rootdisk78315520bytes SHA
+c67731f9d4e222763866fc9904f382f742d8a108ff19241d56a200c700629438.
+The launch-record/report Git revisions straddle a documentation-only commit;
+exact loaded runner/control/binary hashes are retained and unchanged. The runner
+and emulator have exited.
 
 An ordered raw audit of44/47/49/53/57 shows5/5/12/42/14 complete submit→BH→
 FRAME_PROCESSED-clear chains. Both failed attempts acknowledged their final
