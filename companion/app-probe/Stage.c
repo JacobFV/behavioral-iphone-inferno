@@ -50,7 +50,9 @@ static int copy(const char *src,const char *dst,u16 mode) {
  return same(src,dst);
 }
 int main(int argc,char **argv) {
- if(argc!=2)return 64;int readonly=!strcmp(argv[1],"--inspect-only");
+ if(argc!=2)return 64;
+ if(!strcmp(argv[1],"--launcher-noargs")){char *a[]={"/usr/share/inferno-stage-launcher",0};int status=run(a);printf("INFERNO_LAUNCHER_NOARGS raw=%d expected=%d\n",status,64<<8);fflush(0);return status==(64<<8)?0:1;}
+ int readonly=!strcmp(argv[1],"--inspect-only");
  if(!readonly&&strcmp(argv[1],"--disposable-app-stage"))return 64;
  int system=0,data=0,result=1;struct fs fs;
  printf("INFERNO_STAGE_BEGIN\n");fflush(0);
