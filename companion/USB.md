@@ -25,10 +25,12 @@ python3 companion/usb-companion.py \
 
 Use a new, short output path outside Git. It is private (0700) and contains a
 unique disposable SSH key; the guest's password is locked. There is no forwarded
-SSH port. Networking is QEMU user networking for Ubuntu package installation.
+SSH port by default. `--ssh-port PORT` enables loopback-only SSH forwarding
+for diagnosis, using `ssh -i OUTPUT/guest-key -p PORT inferno@127.0.0.1`.
+A private QMP socket at `OUTPUT/qmp.sock` provides runtime inspection. Networking is QEMU user networking for Ubuntu package installation.
 All display output is disabled; serial logs and the report remain in the output.
 The current Inferno build enables TCG only. This VM uses two virtual CPUs and
-1 GiB RAM and boots the official Linux kernel directly without host EFI files.
+2 GiB RAM by default (`--memory 1G|2G|4G`) and boots the official Linux kernel directly without host EFI files.
 
 NoCloud installs distribution usbmuxd, libimobiledevice-utils and usbutils. Its
 script starts usbmuxd, records package versions, and emits
@@ -44,4 +46,6 @@ concurrently. A socket alone does not establish daemon or iOS readiness. Check
 visibility are separate milestones; some recovery states will not appear in
 `idevice_id -l`. Capture actual USB descriptors and daemon logs before judging
 restore-service availability. The bounded process is terminated at the deadline;
-its disk and logs are retained for diagnosis.
+its disk and logs are retained for diagnosis. `--disk OLD_OUTPUT/guest.qcow2`
+copies a stopped guest disk into a new run to retain already installed packages;
+never copy a live writable disk. A new NoCloud instance/key is generated.
