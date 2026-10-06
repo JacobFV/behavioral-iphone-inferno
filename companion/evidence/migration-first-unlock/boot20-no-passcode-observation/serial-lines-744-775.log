@@ -1,0 +1,32 @@
+Port-Inductive::configureAccessoryPowerInternal: !getAccessoryPowerReady(); set PowerModeOff?
+Port-Inductive::configureAccessoryPowerInternal: handleAccessoryPowerWillChange, confirm PowerModeOff
+AppleAuthCPRelay::copyProperty: obj == NULL key = AuthFullPass
+AppleAuthCPRelay::copyProperty: obj == NULL key = Signature
+AppleSEPKeyStore:10649:167: operation failed (sel: 31 ret: e00002bc)
+AppleSEPKeyStore:10649:167: operation failed (sel: 31 ret: e00002bc)
+INFERNO_UNLOCK_BEGIN watchdog=600 maximum_attempts=1
+tx_flush:1075: disk0s1 xid 18931 tx stats: # 20 finish 20 enter 234 wait 0 0us close 3us flush 252246us
+INFERNO_EXEC_WRAPPER_BEGIN case=system-mobile-system-app path=/usr/bin/inferno-launcher watchdog=150 uid=0 gid=0
+INFERNO_EXEC_WRAPPER_CHILD uid=501 gid=501
+INFERNO_EXEC_WRAPPER_CONSOLE_OPEN fd=3 errno=0 uid=501 gid=501
+INFERNO_EXEC_WRAPPER_ACCESS x=0 xerrno=0 r=0 rerrno=0 fd=3 open_errno=0 read_bytes=16384 read_errno=0
+INFERNO_READINESS_HID_CHILD pid=190 automatic_gestures=0
+INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+INFERNO_HID_BEGIN automatic_gestures=0
+INFERNO_HID_DESCRIPTOR_CHECK bytes=77 parser_exported=0 parser_invoked=0 result=unavailable
+INFERNO_HID_RESOURCE_MATCH dictionary=1 service=2567
+INFERNO_HID_DEVICE_NODE relation=resource_before_create registry_id=4294968005 id_status=0x0 class=IOHIDResource class_status=0x0
+2026-10-06 06:32:14.532 inferno-launcher[187:2203] INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+INFERNO_HID_RESOURCE_OPEN type=0 status=0x0 connection=4871
+INFERNO_HID_RESOURCE_CLOSE status=0x0
+INFERNO_HID_DEVICE_CREATE success=1 descriptor_bytes=77 apple_identity=0
+INFERNO_HID_DEVICE_REGISTRY service=4611 registry_id=4294968464 status=0x0
+INFERNO_HID_DEVICE_NODE relation=owned_device registry_id=4294968464 id_status=0x0 class=IOHIDUserDevice class_status=0x0
+INFERNO_HID_DEVICE_CHILDREN status=0x0
+INFERNO_HID_DEVICE_NODE relation=immediate_child registry_id=4294968466 id_status=0x0 class=IOHIDInterface class_status=0x0
+INFERNO_HID_BACKEND_INITIALIZE status=0 delivery=unproven
+INFERNO_HID_READY protocol=1 console=/dev/console max_requests=32 lifetime_seconds=7200 automatic_gestures=0
+AppleSEPKeyStore:10661:0: AppleKeyStoreUserClient: Assertion timer fired
+INFERNO_READINESS_BEGIN seconds=15
+INFERNO_IOREG_BEGIN max_matches=8 max_adjacent=16 max_nodes=128 watchdog=600
+INFERNO_IOREG_MATCH kind=name query=aop-gpio status=0x0

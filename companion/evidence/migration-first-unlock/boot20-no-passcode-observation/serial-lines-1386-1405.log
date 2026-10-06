@@ -1,0 +1,20 @@
+INFERNO_LOG_ENTRY /private/var/log/mDNSResponder type=4
+INFERNO_LOG_ENTRY /private/var/log/asl type=4
+INFERNO_LOG_ENTRY /private/var/log/ppp type=4
+INFERNO_LOG_ENTRY /private/var/log/com.apple.xpc.launchd type=4
+INFERNO_UNLOCK_STAGE dlopen
+INFERNO_UNLOCK_STAGE resolve-symbols
+INFERNO_UNLOCK_STAGE query-state-before
+INFERNO_UNLOCK_STAGE query-first-before
+INFERNO_UNLOCK_BEFORE state=3 unlocked_since_boot=0
+INFERNO_UNLOCK_STAGE single-empty-attempt
+INFERNO_UNLOCK_SINGLE_EMPTY_ATTEMPT result=0
+INFERNO_UNLOCK_STAGE query-state-after
+INFERNO_UNLOCK_STAGE query-first-after
+INFERNO_UNLOCK_AFTER state=3 unlocked_since_boot=1
+INFERNO_UNLOCK_STAGE access-after
+INFERNO_UNLOCK_DATA_ACCESS phase=after result=-1 errno=1
+apfs_is_valid_class:2253: rejecting class open (class 2) because we're not content protected
+INFERNO_READINESS_BEGIN seconds=45
+INFERNO_IOREG_BEGIN max_matches=8 max_adjacent=16 max_nodes=128 watchdog=600
+INFERNO_IOREG_MATCH kind=name query=aop-gpio status=0x0
