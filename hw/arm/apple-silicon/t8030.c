@@ -575,7 +575,10 @@ static void t8030_memory_setup(AppleT8030MachineState *t8030)
     if (auto_boot) {
         cmdline = g_strdup(machine->kernel_cmdline);
     } else {
-        cmdline = g_strconcat("-restore rd=md0 nand-enable-reformat=1 ",
+        const char *reformat = apple_boot_contains_boot_arg(
+            machine->kernel_cmdline, "nand-enable-reformat=", true)
+            ? "" : "nand-enable-reformat=1 ";
+        cmdline = g_strconcat("-restore rd=md0 ", reformat,
                               machine->kernel_cmdline, NULL);
     }
     info_report("Boot Args: [%s]", cmdline);

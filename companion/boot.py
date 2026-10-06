@@ -110,6 +110,8 @@ def main():
                         help='experimental direct root boot instead of recovery ramdisk')
     modes.add_argument('--ramdisk-boot', action='store_true',
                        help='boot rd=md0 without recovery reformat arguments; keeps NVMe visible')
+    modes.add_argument('--recovery-preserve-disk', action='store_true',
+                       help='recovery environment with explicit nand-enable-reformat=0')
     args = parser.parse_args()
     if not 1 <= args.seconds <= 86400:
         parser.error('--seconds must be between 1 and 86400')
@@ -183,6 +185,8 @@ def main():
                 command[2] += ',boot-mode=exit_recovery'
             if args.ramdisk_boot:
                 command[command.index('-append') + 1] = 'rd=md0 ' + BOOT_ARGS
+            if args.recovery_preserve_disk:
+                command[command.index('-append') + 1] = 'nand-enable-reformat=0 ' + BOOT_ARGS
             if args.disk_boot:
                 index = command.index('-initrd')
                 del command[index:index + 2]
