@@ -233,3 +233,4 @@ apple_adp_output_ready(uint32_t before, uint32_t status, uint32_t enable) "befor
 apple_adp_irq_write(const char *kind, uint64_t value, uint32_t before, uint32_t status, uint32_t enable) "kind=%s value=0x%"PRIx64" before=0x%x status=0x%x enable=0x%x"
 apple_adp_unknown_mmio(const char *block, int32_t pipe, bool write, uint64_t offset, uint64_t value) "block=%s pipe=%d write=%d offset=0x%"PRIx64" value=0x%"PRIx64
 apple_adp_gp_config_write(uint32_t pipe, uint64_t offset, uint64_t value) "pipe=%u offset=0x%"PRIx64" value=0x%"PRIx64
+apple_adp_status_read(uint64_t offset, uint32_t value) "offset=0x%"PRIx64" value=0x%x"

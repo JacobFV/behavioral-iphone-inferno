@@ -646,7 +646,10 @@ static uint64_t adp_v4_reg_read(void *const opaque, hwaddr addr, unsigned size)
     }
     case R_CONTROL_INT_STATUS: {
         ADP_INFO("disp: int status -> 0x%X", qatomic_read(&adp->int_status));
-        return qatomic_read(&adp->int_status);
+        uint32_t value = qatomic_read(&adp->int_status);
+        /* Debug/HMP reads share this path; this is not a guest-only event. */
+        trace_apple_adp_status_read(addr, value);
+        return value;
     }
     case R_CONTROL_INT_ENABLE: {
         ADP_INFO("disp: int enable -> 0x%X", qatomic_read(&adp->int_enable));
