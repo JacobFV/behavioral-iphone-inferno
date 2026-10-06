@@ -2,6 +2,27 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 14:24 continuation: actual49 strict journey and original compositor samples
+
+49 completed actual reviewed counter0→1 with both strict QMP captures. Its counter
+trace contains seven complete draw cycles; tracing disabled before sampling.
+The original `/usr/sbin/spindump` then sampled backboardd and SpringBoard through
+two explicit commands: twenty stackshots each, exit0, EOF, complete contiguous
+output and unchanged target incarnations. No new entitlement was added.
+
+The two reports contain13,070/17,190 bytes and53/69 chunks respectively. Actual
+cache UUID and slide permit offline user-stack mapping. Healthy backboard render
+and display threads are in ordinary Mach message loops; kernel/kext symbol-owner
+warnings remain explicit. This is a reference, not a stalled-stack diagnosis.
+Evidence `original-stack-samples-49` preserves raw serial and reviewed reports.
+Home/reopen afterward rendered counter1. Normal finish exited0 without error.
+
+Retention exposed a comparison bug: fresh verification timestamps differ even
+when all backing and attestation identities match. The preservation comparison
+now excludes only those journal timestamps, retaining both complete original and
+fresh journals. Substantive differences still reject; default retention rerun is
+underway before the next identical attempt.
+
 ### 14:12 continuation: repair fresh private auxiliary modes after pre-execution48
 
 The exact metadata revalidation and full backing-chain checks passed. Run48 then

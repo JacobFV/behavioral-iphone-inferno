@@ -1,8 +1,10 @@
 # Read-only sample reconstruction
 
 The original-tool command is available only in a guest that advertises the matching
-`INFERNO_SAMPLE_READY` boot UUID. Helper55 builds successfully but has not yet
-executed a sample in iOS. Earlier frozen50 guests do not support it.
+`INFERNO_SAMPLE_READY` boot UUID. Helper55 executed both targets successfully in run49: twenty stackshots each,
+complete transport and original-tool exit0. These are healthy reference samples;
+they do not identify the intermittent display-stall cause. Earlier frozen50 guests
+do not support the command.
 
 After reviewing the current guest state, submit one explicitly selected target:
 
@@ -27,7 +29,9 @@ companion/run sample-result --serial REPORT/serial.log \
   --request ACTION/request.json --output /outside-git/new-sample-result
 ```
 
-The output directory must be new, its parent must exist, and the CLI requires Git to confirm that the destination is outside a worktree or actually ignored. Keep decoded `output.bin` outside Git (or in an ignored report directory); it contains original tool stdout/stderr. The parser sends no commands. It preserves the serial snapshot hash, exact physical LF record offsets/hashes, request identity and completion flags in `result.json`.
+The output directory must be new, its parent must exist, and the CLI requires Git to confirm that the destination is outside a worktree or actually ignored. Keep decoded `output.bin` outside Git (or in an ignored report directory); it contains original tool stdout/stderr. Reviewed plaintext diagnostic reports may
+be retained as execution evidence; Apple implementation binaries stay outside Git.
+The parser sends no commands. It preserves the serial snapshot hash, exact physical LF record offsets/hashes, request identity and completion flags in `result.json`.
 
 Exit zero establishes complete bounded transport only: matching REQUEST/BEGIN/END identities, contiguous DATA offsets and decoded lengths, matching byte/chunk totals, successful tool exit/reap, EOF, post-target match and no failure/truncation flags. Exit one retains incomplete evidence and the validated contiguous DATA prefix after the unique matching REQUEST/BEGIN. Missing END, CHILD_STOP, malformed or failed records preserve earlier valid bytes; decoding stops at the first bad chunk and never resumes later. Invalid CLI inputs exit two. Rerun against a later serial snapshot using a new output directory if an explicitly requested sample is still running; never resubmit the guest request automatically.
 
