@@ -215,6 +215,54 @@ dismissal, a complete original process-list absence snapshot captured before
 OPEN, and distinct original kernel process identities. It did not clear caches.
 Use `process-launch-timing --help` for its separate capture/derive commands.
 
+For a fresh-process extension of a completed strict journey without per-marker
+arrival records, retain a raw strict prefix **immediately after** the successful
+`probe-capture-after` response and before App Switcher, dismissal or OPEN. Do not
+create a retrospective checkpoint after the new launch. Use new filenames:
+
+```sh
+python3 - "$attempt" <<'PY'
+from pathlib import Path
+import hashlib, json, os, sys, time
+folder = Path(sys.argv[1]).resolve()
+started = time.time()
+raw = (folder / 'serial.log').read_bytes()
+prefix = raw[:raw.rfind(b'\n') + 1]
+assert prefix
+path = folder / 'strict-completed.serial-prefix.log'
+with path.open('xb') as stream:
+    stream.write(prefix)
+    stream.flush()
+    os.fsync(stream.fileno())
+manifest = {
+    'serial_prefix_path': str(path),
+    'serial_prefix_bytes': len(prefix),
+    'serial_prefix_sha256': hashlib.sha256(prefix).hexdigest(),
+    'read_started_host_epoch': started,
+    'captured_host_epoch': time.time(),
+}
+with (folder / 'strict-completed-prefix.json').open('x') as stream:
+    json.dump(manifest, stream, indent=2)
+    stream.write('\n')
+PY
+```
+
+Keep both original files. After reviewing the owned App Switcher card, dismiss it
+with one explicit gesture, then retain a **complete** original process listing
+that follows that gesture and shows both old PID and exact executable absent.
+Run `process-launch-timing capture-absence` before issuing OPEN; select the actual
+completed readiness interval rather than assuming that its nominal time elapsed.
+Only then request OPEN with the current boot UUID. Derive timing with the old
+and new PIDs, that named request and the absence manifest, and review the new
+counter0 separately. This proves an observed new process, not cleared caches.
+
+After normal shutdown, add `--strict-prefix "$attempt/strict-completed-prefix.json"`
+to `verify-journey`. The verifier requires an exact prefix of the final log,
+capture-completion ordering, checkpoint-before-OPEN ordering and paired event
+provenance. A checkpoint does not supply per-marker arrival times or override
+contradictory recorded arrivals. Actual56 validates this workflow; its original
+strictPID261 and laterPID375 remain separately identified.
+
 ## Resources and normal completion
 
 ```sh
