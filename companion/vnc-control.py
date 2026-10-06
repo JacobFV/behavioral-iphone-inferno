@@ -2,8 +2,9 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 """Capture/touch a private QEMU Unix VNC socket without opening a display.
 
-Narrow RFB3.8 client, RFC6143: None security, raw true-color frames, pointer only.
-No TCP listener, clipboard, keyboard, or host display integration.
+Narrow RFB3.8 client, RFC6143: None security, raw true-color frames, pointer input
+and one fixed F6 Home/Menu button. No TCP listener, clipboard, arbitrary keyboard,
+or host display integration.
 """
 import argparse
 import hashlib
@@ -97,6 +98,16 @@ class Client:
         self.report['pointer_events'].append({'x': x, 'y': y, 'down': bool(down),
                                              'wire_hex': packet.hex(), 'time': time.time()})
 
+    def home_button(self, down):
+        # QEMU buttons.c maps F6 to SMC_HID_BUTTON_MENU; this is not an app hook.
+        packet = struct.pack('>BBxxI', 4, int(down), 0xffc3)
+        event = {'key': 'F6', 'keysym': 0xffc3, 'down': bool(down),
+                 'wire_hex': packet.hex(), 'time': time.time(),
+                 'transmission': 'unknown-or-partial', 'ui_acceptance': 'unproven'}
+        self.report['home_button_events'].append(event)
+        self.sock.sendall(packet)
+        event['transmission'] = 'written-to-vnc-socket'
+
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -105,6 +116,8 @@ def main():
     actions=parser.add_mutually_exclusive_group()
     actions.add_argument('--tap', nargs=2, type=int, metavar=('X','Y'))
     actions.add_argument('--swipe', nargs=4, type=int, metavar=('X0','Y0','X1','Y1'))
+    actions.add_argument('--home-button', action='store_true',
+                         help='one fixed 150ms F6 press/release through emulator SMC Menu')
     parser.add_argument('--hold-seconds', type=float, default=None,
                         help='stationary press before release or swipe (0..10 seconds)')
     parser.add_argument('--swipe-seconds', type=float, default=.5,
@@ -112,6 +125,8 @@ def main():
     parser.add_argument('--settle-seconds', type=float, default=1,
                         help='wait after release before capture (0..10 seconds)')
     args=parser.parse_args()
+    if args.home_button and args.hold_seconds is not None:
+        parser.error('--home-button uses a fixed 150ms press')
     hold=args.hold_seconds if args.hold_seconds is not None else (0 if args.swipe else .15)
     if not (0 <= hold <= 10 and .1 <= args.swipe_seconds <= 10 and 0 <= args.settle_seconds <= 10):
         parser.error('timings must be finite and within their documented bounds')
@@ -119,13 +134,19 @@ def main():
         parser.error('expected existing absolute private Unix socket')
     args.output.mkdir(parents=True, exist_ok=False)
     report={'kind':'headless_unix_vnc_observation', 'socket':str(args.socket),
-            'captures':[], 'pointer_events':[], 'completed':False,
+            'captures':[], 'pointer_events':[], 'home_button_events':[], 'completed':False,
             'timing_seconds':{'hold':hold, 'swipe':args.swipe_seconds, 'settle':args.settle_seconds},
             'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
     client=None
     try:
         client=Client(args.socket,report)
         client.capture(args.output/'before.png')
+        if args.home_button:
+            client.home_button(True)
+            time.sleep(.15)
+            client.home_button(False)
+            time.sleep(args.settle_seconds)
+            client.capture(args.output/'after.png')
         if args.tap or args.swipe:
             x,y=(args.tap or args.swipe)[:2]
             points=[(x,y)] + ([tuple(args.swipe[2:])] if args.swipe else [])
@@ -148,6 +169,11 @@ def main():
         report['error']={'type':type(error).__name__,'message':str(error)}
     finally:
         if client:
+            if report['home_button_events'] and report['home_button_events'][-1]['down']:
+                try:
+                    client.home_button(False)
+                except OSError:
+                    pass
             if report['pointer_events'] and report['pointer_events'][-1]['down']:
                 event=report['pointer_events'][-1]
                 try:
