@@ -249,3 +249,21 @@ Only 331,776 bytes were allocated for that 16 MiB synthetic case. This proves bl
 behavior, not an iOS boot or performance improvement. For planned boot27, the
 stopped stage43 raw root must remain protected together with the boot27 overlay;
 that actual iOS run and its measured disk growth are separate evidence.
+
+### Evidence-backed report milestones
+
+New reports keep deprecated `ios_booted` null: recovery userspace and a usable
+installed system are different milestones. `milestones` records kernel/kext
+serial output, launchd userspace, the owned fixture lifecycle, and the strict
+journey as `observed` or `unestablished`. Final observations include raw serial
+SHA-256, byte ranges and marker text. `app_executed` becomes true only for matching
+current-boot owned main/appeared raw loopback records, their validation records
+and emitted UIKit markers; otherwise it is null. This is scoped to the owned
+fixture. The TCP peer PID is not authenticated.
+
+Strict observation additionally requires the completed journey, genuine tap1
+chain, expected capture paths, both actual frame hashes and the operator capture
+gates when applicable. It does not interpret image pixels or claim automated
+visual verification; operator review remains required. QMP operation or a blank
+frame alone establishes none of these guest milestones. Old reports are not
+rewritten. The reporter source hash is recorded alongside the runner hash.
