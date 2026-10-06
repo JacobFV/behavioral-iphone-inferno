@@ -74,5 +74,21 @@
     "Complete EINPROGRESS connect using writable/error poll and getsockopt(SO_ERROR), not writable alone.",
     "Keep monotonic deadlines bounded across EINTR and repeated EAGAIN.",
     "Treat root/local transport as permission-checked; do not claim successful authorization before actual guest results."
-  ]
+  ],
+  "candidate_review": {
+    "source_sha256": {
+      "companion/app-probe/LoopbackEvent.h": "ecca6dd042246d5d6aba6267af72190f376739a938f8ba99bffb24f6e7e77dda",
+      "companion/app-probe/Main.m": "72b4e2d60a80be9af14c2c40f4f899607fb80515843a9a905294dff0ed62882e",
+      "companion/native-probe/app-event-relay.c": "e4d98c952aa5c9723d63c1b47d69004827c4fecb147da7362497d3587c2baa01",
+      "companion/native-probe/app-event-proc.c": "8f3a15f08016849e59103dc8d523b470560f93b1eb9d7e11b29a1c7e42fb131b"
+    },
+    "status": "No source-review staging blocker after removal of undeclared constructor assignment. Original guest permission and successful relay remain unproven until execution.",
+    "compile": "clang --target=arm64-apple-ios14 -ffreestanding -fno-builtin -fsyntax-only companion/native-probe/app-event-relay.c companion/native-probe/app-event-proc.c passed.",
+    "bounded_io": "Connect checks SO_ERROR and POLLOUT. Send retains partial offset; receive retains partial line. Eight iterations with250ms polls bound requested poll waits to2seconds per phase; scheduling adds elapsed time. Accepted sockets explicitly configured nonblocking. Listener alarm7200seconds and64 accepted connections.",
+    "framing": "Requires newline within191 bytes; embedded NUL rejected. Trailing bytes already present in the same receive are rejected. Later segments after first accepted newline are discarded on close, not separately validated. Exactly one owned record is sent per connection.",
+    "validation": "Exact current boot UUID; decimal PID1..INT_MAX, sequence1..64 and strictly increasing per PID; fixed event-name allowlist; count0..1000000; original proc_pidpath exact owned executable and SHORTBSDINFO uid501 checks.",
+    "identity_limit": "Claimed PID is checked but TCP peer PID is not authenticated; diagnostics explicitly state peer_pid_authenticated=0. This is bounded fixture telemetry, not an authentication protocol.",
+    "delivery_limit": "App send success is not receiver acceptance. Only original guest serial validated relay records plus reviewed visual journey establish execution.",
+    "scope": "No host listener/forwarding, filesystem-reader permission, container provisioning, external network endpoint, or policy change."
+  }
 }
