@@ -1,0 +1,44 @@
+{
+  "kind": "original_guest_utility_readonly_inspection",
+  "binary_path": "/home/brandonin/.local/share/inferno/native-probe/spindump-inspection/usr/sbin/spindump",
+  "binary_bytes": 269264,
+  "binary_sha256": "2b4874df0c2129b3c6f7a69370b019fd10f39947b2b40f59790bf94cf712bfaf",
+  "source_image": "/home/brandonin/.local/share/inferno/images/ios14b5/os-inspection/official-os.raw",
+  "original_inventory": "usr/sbin/spindump, regular0755 root:root,size269264",
+  "extraction": "Existing7-Zip23.01 reader extracts just usr/sbin/spindump from originalAPFS image; no imagewrites. Binary remainsoutsideGit.",
+  "primary_facts": [
+    "Embeddedusage spells positionalPID/partialname,durationseconds,intervalmilliseconds. Defaultwithout-onlyTarget samplesallprocesses.",
+    "Embedded-onlyTarget restrictstospecifiedtarget; numericPID preferabletoambiguouspartialname.",
+    "Embedded-noBinary/-noFile/-stdout/-noSymbolicate/-timelimitoptionssupportboundedtext-onlyreportwithUUID+offsetforofflinesymbolication.",
+    "Originalcode10001dc1c callsstackshot_config_set_pid then10001dc24 stackshot_capture_with_config.",
+    "Root-requirementerrorliteral atfileoffset258f7 andoriginalfprintfat10000725c; no actualguestexecutionperformed."
+  ],
+  "original_entitlements_observed": [
+    "task_for_pid-allow=true",
+    "com.apple.system-task-ports=true",
+    "com.apple.private.kernel.get-kext-info=true",
+    "com.apple.tailspin.dump-output=true",
+    "com.apple.security.system-groups includes systemgroup.com.apple.osanalytics"
+  ],
+  "candidate_only": [
+    "/usr/sbin/spindump",
+    "EXACT_REVALIDATED_ORIGINAL_PROCESS_PID",
+    "2",
+    "100",
+    "-onlyTarget",
+    "-noBinary",
+    "-noFile",
+    "-stdout",
+    "-noSymbolicate",
+    "-timelimit",
+    "20"
+  ],
+  "integration_assessment": [
+    "No existingguestcommandroute permits arbitraryspindump invocation. Readinesshasfixedps/ownedobserverexec; HIDoperatorroutepermitsfixedgestures/ownedOPENonly.",
+    "FutureexplicitroutecouldexecunchangedoriginaltoolasrootwithonehardcodedtargetclassandvalidatednumericPID, boundedownchildtimeout andcappedtextcapture. Nevercopyoriginalentitlementsontoownedhelper.",
+    "Actualexec,stackshotMACandguestkernelacceptanceuntested; rootcontextaloneisnotauthorizationproof. Preserveexactreturn/errorifdenied,noautomaticgrant.",
+    "Stacksamplingmaytemporarilyinterrupttargetthreads andperturbobservedstall; treatasdiagnosticinterventionnotlatencymeasurement.",
+    "No guestcalls,staging,newentitlements,codechangesorruntimeinputmade."
+  ],
+  "disassembler_note": "llvm-objdump18 emitted invalidencodingwarnings elsewhereinarm64e code; retainednarrowcalls/literalreferences decodednormally, nowholebinaryexecutionclaim."
+}
