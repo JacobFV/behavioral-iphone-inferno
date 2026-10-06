@@ -1,0 +1,19 @@
+{
+  "status": "Proposal only; no upstream source, guest behavior or trace controls changed",
+  "trigger": "Actual boot41 had identical stale QMP/VNC console pixels despite real tap and later background/foreground; healthy42 snapshots cannot recover41 submission history.",
+  "minimum_events": [
+    {"site": "adp_v4_reg_write submit0x4602c", "fields": "written value, bit12 schedule decision; cached control/status/enable", "question": "Did the guest submit a draw?"},
+    {"site": "adp_v4_update_disp_bh entry and exit", "fields": "phase, both pipe controls, status/enable", "question": "Did queued work actually execute? Submit writes may legitimately coalesce into one pending BH."},
+    {"site": "adp_v4_gp_draw / gp_read", "fields": "pipe index, explicit disabled/compressed/DMA-failure/drawn outcome, source address/geometry/stride and read length; no pixels", "question": "Did the callback draw or silently skip an inactive pipe?"},
+    {"site": "adp_v4_gfx_update", "fields": "status before/after OUTPUT_READY, enable and resulting IRQ level", "question": "Did display refresh supply readiness while output was stuck?"},
+    {"site": "adp_v4_reg_write int_status/int_enable", "fields": "register kind, written value, old/new status or enable, resulting IRQ level", "question": "Did the guest acknowledge pending bits or change the interrupt mask?"}
+  ],
+  "implementation_constraints": [
+    "Normal QEMU trace-events disabled by default, fixed allowlist only, bounded existing sole-runner trace window and automatic disable. No unconditional per-frame logging.",
+    "Use already available register/read result values; no extra guest memory reads, framebuffer hashing, blocking I/O, timer or interrupt changes.",
+    "Trace history counts are observations, not a new hardware counter/register. Record enable/disable completeness; missing disabled intervals cannot prove absent submissions.",
+    "Keep original schedule, DMA, pixman, W1C, IRQ and FRAME_PROCESSED behavior exactly unchanged. No redraw workaround.",
+    "Capture one healthy path with bounded tracing first; recurrence may then distinguish absent submit, absent BH execution, skipped/failed draw or interrupt acknowledgment history. Healthy-only result is not a reproduced failure.",
+    "Existing query-display-registers remains useful at boundaries. Status snapshots alone do not measure frame completion or presentation."
+  ]
+}

@@ -4,6 +4,11 @@ import json,re,hashlib,pathlib
 P=pathlib.Path(__file__).parent
 base=0x230000000
 registers=[('int_status',0x45818),('int_enable',0x4581c),('version',0x46020),('frame_size',0x4603c)]+[(f'gp{p}_{n}',0x50000+p*0x8000+o) for p in range(2) for n,o in [('control',4),('pixel_format',28),('data_start',48),('data_end',64),('stride',96),('src_dimensions',112),('dest_dimensions',128)]]
+qmp={}
+transcript=P/'qmp-transcript.jsonl'
+if transcript.exists():
+ for line in transcript.read_text().splitlines():
+  row=json.loads(line);inner=json.loads(row['raw']);key=(row['direction'],inner['id']);assert key not in qmp;qmp[key]=inner
 results=[]
 for path in sorted(P.glob('display-*.json')):
  r=json.loads(path.read_text());v={}
@@ -11,6 +16,10 @@ for path in sorted(P.glob('display-*.json')):
   m=re.fullmatch(r'([0-9a-f]+): 0x([0-9a-f]{8})\r\n',row['response']['return'])
   assert m and row['name']==name and int(m[1],16)==int(row['address'],16)==base+offset
   v[name]=int(m[2],16)
+  if qmp:
+   ident=row['response']['id'];sent=qmp[('send',ident)];received=qmp[('receive',ident)]
+   assert sent['execute']=='human-monitor-command' and sent['arguments']=={'command-line':f'xp /1wx 0x{base+offset:x}'}
+   assert received==row['response']
  result={'file':path.name,'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'read_span_ms':(r['end_monotonic_ns']-r['start_monotonic_ns'])/1e6,'raw_values':v,'status_and_enable':v['int_status']&v['int_enable'],'pipes':[]}
  for p in range(2):
   k=f'gp{p}_';dim=v[k+'src_dimensions'];width,height=dim>>16,dim&65535
