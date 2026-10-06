@@ -159,3 +159,11 @@ image. The subsequent preparation must merge only the owned app/diagnostic job
 entries into a cloned consolidated configuration while preserving original jobs;
 that separate integration belongs to the native preparation worker. Do not claim
 registration or app launch from successful file staging.
+
+`app-boot-1` completed its240-second observation with seven identical30-second
+captures (SHA256 `fd27fc149822f9f986de68f276a382ea7e2bf9ed4a5ba54f60c757c075ef9d7c`),
+visually reviewed as Inferno branding. No owned launcher or app marker appeared.
+The strict journey failed `waiting-for-app`; QMP quit returned emulator exit0.
+Raw logs, frame captures, binary/source identity and QMP transcript are retained
+under `.local-build/reports/app-boot-1/`. This is a job-loading boundary before
+any observed registration call, not evidence of a failing registration API.
