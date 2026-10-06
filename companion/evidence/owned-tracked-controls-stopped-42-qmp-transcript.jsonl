@@ -1,0 +1,436 @@
+{"direction": "receive", "time": 1791315726.9719021, "raw": "{\"QMP\": {\"version\": {\"qemu\": {\"micro\": 2, \"minor\": 2, \"major\": 10}, \"package\": \"\"}, \"capabilities\": [\"oob\"]}}\r\n"}
+{"direction": "send", "time": 1791315726.9719696, "raw": "{\"execute\": \"qmp_capabilities\", \"id\": 1}\n"}
+{"direction": "receive", "time": 1791315727.4293568, "raw": "{\"return\": {}, \"id\": 1}\r\n"}
+{"direction": "send", "time": 1791315727.4294345, "raw": "{\"execute\": \"query-status\", \"id\": 2}\n"}
+{"direction": "receive", "time": 1791315727.4438777, "raw": "{\"return\": {\"status\": \"prelaunch\", \"running\": false}, \"id\": 2}\r\n"}
+{"direction": "send", "time": 1791315727.4439337, "raw": "{\"execute\": \"query-cpus-fast\", \"id\": 3}\n"}
+{"direction": "receive", "time": 1791315727.444427, "raw": "{\"return\": [{\"thread-id\": 2749184, \"qom-type\": \"apple-a13-cpu\", \"qom-path\": \"/machine/cluster0/cpu0\", \"cpu-index\": 0, \"target\": \"aarch64\"}, {\"thread-id\": 2749185, \"qom-type\": \"apple-a13-cpu\", \"qom-path\": \"/machine/cluster0/cpu1\", \"cpu-index\": 1, \"target\": \"aarch64\"}], \"id\": 3}\r\n"}
+{"direction": "send", "time": 1791315727.4444811, "raw": "{\"execute\": \"query-mice\", \"id\": 4}\n"}
+{"direction": "receive", "time": 1791315727.444796, "raw": "{\"return\": [{\"index\": 1, \"name\": \"Apple Multitouch HID SPI\", \"current\": true, \"absolute\": true}], \"id\": 4}\r\n"}
+{"direction": "send", "time": 1791315727.4451501, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 5, \"arguments\": {\"name\": \"apple_mt_spi_host_event\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791315727.445966, "raw": "{\"return\": {}, \"id\": 5}\r\n"}
+{"direction": "send", "time": 1791315727.4460433, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 6, \"arguments\": {\"name\": \"apple_mt_spi_enqueue\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791315727.4468064, "raw": "{\"return\": {}, \"id\": 6}\r\n"}
+{"direction": "send", "time": 1791315727.446816, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 7, \"arguments\": {\"name\": \"apple_mt_spi_dequeue\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791315727.4474442, "raw": "{\"return\": {}, \"id\": 7}\r\n"}
+{"direction": "send", "time": 1791315727.4474514, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 8, \"arguments\": {\"name\": \"apple_mt_spi_tx_drained\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791315727.4482794, "raw": "{\"return\": {}, \"id\": 8}\r\n"}
+{"direction": "send", "time": 1791315727.4482863, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 9, \"arguments\": {\"name\": \"apple_mt_spi_boot_command\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791315727.4492917, "raw": "{\"return\": {}, \"id\": 9}\r\n"}
+{"direction": "send", "time": 1791315727.4493575, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 10, \"arguments\": {\"name\": \"apple_mt_spi_control\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791315727.4501863, "raw": "{\"return\": {}, \"id\": 10}\r\n"}
+{"direction": "send", "time": 1791315727.4507225, "raw": "{\"execute\": \"cont\", \"id\": 11}\n"}
+{"direction": "receive", "time": 1791315727.4510336, "raw": "{\"timestamp\": {\"seconds\": 1791315727, \"microseconds\": 450925}, \"event\": \"RESUME\"}\r\n"}
+{"direction": "receive", "time": 1791315727.451069, "raw": "{\"return\": {}, \"id\": 11}\r\n"}
+{"direction": "send", "time": 1791315757.4992018, "raw": "{\"execute\": \"screendump\", \"id\": 12, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0000.ppm\"}}\n"}
+{"direction": "receive", "time": 1791315757.506125, "raw": "{\"return\": {}, \"id\": 12}\r\n"}
+{"direction": "send", "time": 1791315769.528356, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 13, \"arguments\": {\"command-line\": \"xp /1wx 0x230045818\"}}\n"}
+{"direction": "receive", "time": 1791315769.5288284, "raw": "{\"return\": \"0000000230045818: 0x00000000\\r\\n\", \"id\": 13}\r\n"}
+{"direction": "send", "time": 1791315769.5288613, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 14, \"arguments\": {\"command-line\": \"xp /1wx 0x23004581c\"}}\n"}
+{"direction": "receive", "time": 1791315769.5291939, "raw": "{\"return\": \"000000023004581c: 0xc0180c08\\r\\n\", \"id\": 14}\r\n"}
+{"direction": "send", "time": 1791315769.5292015, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 15, \"arguments\": {\"command-line\": \"xp /1wx 0x230046020\"}}\n"}
+{"direction": "receive", "time": 1791315769.529536, "raw": "{\"return\": \"0000000230046020: 0x00070045\\r\\n\", \"id\": 15}\r\n"}
+{"direction": "send", "time": 1791315769.5295427, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 16, \"arguments\": {\"command-line\": \"xp /1wx 0x23004603c\"}}\n"}
+{"direction": "receive", "time": 1791315769.5299146, "raw": "{\"return\": \"000000023004603c: 0x033c0700\\r\\n\", \"id\": 16}\r\n"}
+{"direction": "send", "time": 1791315769.5299814, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 17, \"arguments\": {\"command-line\": \"xp /1wx 0x230050004\"}}\n"}
+{"direction": "receive", "time": 1791315769.5302632, "raw": "{\"return\": \"0000000230050004: 0x80070001\\r\\n\", \"id\": 17}\r\n"}
+{"direction": "send", "time": 1791315769.5302744, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 18, \"arguments\": {\"command-line\": \"xp /1wx 0x23005001c\"}}\n"}
+{"direction": "receive", "time": 1791315769.5305305, "raw": "{\"return\": \"000000023005001c: 0x057c8000\\r\\n\", \"id\": 18}\r\n"}
+{"direction": "send", "time": 1791315769.5305483, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 19, \"arguments\": {\"command-line\": \"xp /1wx 0x230050030\"}}\n"}
+{"direction": "receive", "time": 1791315769.5307899, "raw": "{\"return\": \"0000000230050030: 0x016c0000\\r\\n\", \"id\": 19}\r\n"}
+{"direction": "send", "time": 1791315769.5307965, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 20, \"arguments\": {\"command-line\": \"xp /1wx 0x230050040\"}}\n"}
+{"direction": "receive", "time": 1791315769.5311959, "raw": "{\"return\": \"0000000230050040: 0x01c70000\\r\\n\", \"id\": 20}\r\n"}
+{"direction": "send", "time": 1791315769.5312574, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 21, \"arguments\": {\"command-line\": \"xp /1wx 0x230050060\"}}\n"}
+{"direction": "receive", "time": 1791315769.5316434, "raw": "{\"return\": \"0000000230050060: 0x00000d00\\r\\n\", \"id\": 21}\r\n"}
+{"direction": "send", "time": 1791315769.5317113, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 22, \"arguments\": {\"command-line\": \"xp /1wx 0x230050070\"}}\n"}
+{"direction": "receive", "time": 1791315769.5321062, "raw": "{\"return\": \"0000000230050070: 0x033c0700\\r\\n\", \"id\": 22}\r\n"}
+{"direction": "send", "time": 1791315769.5321662, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 23, \"arguments\": {\"command-line\": \"xp /1wx 0x230050080\"}}\n"}
+{"direction": "receive", "time": 1791315769.5325603, "raw": "{\"return\": \"0000000230050080: 0x033c0700\\r\\n\", \"id\": 23}\r\n"}
+{"direction": "send", "time": 1791315769.5326324, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 24, \"arguments\": {\"command-line\": \"xp /1wx 0x230058004\"}}\n"}
+{"direction": "receive", "time": 1791315769.5330088, "raw": "{\"return\": \"0000000230058004: 0x00040000\\r\\n\", \"id\": 24}\r\n"}
+{"direction": "send", "time": 1791315769.533069, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 25, \"arguments\": {\"command-line\": \"xp /1wx 0x23005801c\"}}\n"}
+{"direction": "receive", "time": 1791315769.5334554, "raw": "{\"return\": \"000000023005801c: 0x00000000\\r\\n\", \"id\": 25}\r\n"}
+{"direction": "send", "time": 1791315769.5335166, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 26, \"arguments\": {\"command-line\": \"xp /1wx 0x230058030\"}}\n"}
+{"direction": "receive", "time": 1791315769.533774, "raw": "{\"return\": \"0000000230058030: 0x00000000\\r\\n\", \"id\": 26}\r\n"}
+{"direction": "send", "time": 1791315769.5337915, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 27, \"arguments\": {\"command-line\": \"xp /1wx 0x230058040\"}}\n"}
+{"direction": "receive", "time": 1791315769.5340757, "raw": "{\"return\": \"0000000230058040: 0x00000000\\r\\n\", \"id\": 27}\r\n"}
+{"direction": "send", "time": 1791315769.5340827, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 28, \"arguments\": {\"command-line\": \"xp /1wx 0x230058060\"}}\n"}
+{"direction": "receive", "time": 1791315769.534344, "raw": "{\"return\": \"0000000230058060: 0x00000000\\r\\n\", \"id\": 28}\r\n"}
+{"direction": "send", "time": 1791315769.5343502, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 29, \"arguments\": {\"command-line\": \"xp /1wx 0x230058070\"}}\n"}
+{"direction": "receive", "time": 1791315769.534729, "raw": "{\"return\": \"0000000230058070: 0x00000000\\r\\n\", \"id\": 29}\r\n"}
+{"direction": "send", "time": 1791315769.5347962, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 30, \"arguments\": {\"command-line\": \"xp /1wx 0x230058080\"}}\n"}
+{"direction": "receive", "time": 1791315769.535052, "raw": "{\"return\": \"0000000230058080: 0x00000000\\r\\n\", \"id\": 30}\r\n"}
+{"direction": "send", "time": 1791315787.565707, "raw": "{\"execute\": \"screendump\", \"id\": 31, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0001.ppm\"}}\n"}
+{"direction": "receive", "time": 1791315787.5660737, "raw": "{\"timestamp\": {\"seconds\": 1791315769, \"microseconds\": 693657}, \"event\": \"VNC_CONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791315787.5664022, "raw": "{\"timestamp\": {\"seconds\": 1791315769, \"microseconds\": 695381}, \"event\": \"VNC_INITIALIZED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791315787.5710468, "raw": "{\"return\": {}, \"id\": 31}\r\n"}
+{"direction": "send", "time": 1791315817.6262805, "raw": "{\"execute\": \"screendump\", \"id\": 32, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0002.ppm\"}}\n"}
+{"direction": "receive", "time": 1791315817.6268892, "raw": "{\"timestamp\": {\"seconds\": 1791315800, \"microseconds\": 383131}, \"event\": \"VNC_DISCONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791315817.632894, "raw": "{\"return\": {}, \"id\": 32}\r\n"}
+{"direction": "send", "time": 1791315820.843709, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 33, \"arguments\": {\"command-line\": \"xp /1wx 0x230045818\"}}\n"}
+{"direction": "receive", "time": 1791315820.844404, "raw": "{\"return\": \"0000000230045818: 0x00000000\\r\\n\", \"id\": 33}\r\n"}
+{"direction": "send", "time": 1791315820.8444698, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 34, \"arguments\": {\"command-line\": \"xp /1wx 0x23004581c\"}}\n"}
+{"direction": "receive", "time": 1791315820.844982, "raw": "{\"return\": \"000000023004581c: 0xc0180c08\\r\\n\", \"id\": 34}\r\n"}
+{"direction": "send", "time": 1791315820.8450494, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 35, \"arguments\": {\"command-line\": \"xp /1wx 0x230046020\"}}\n"}
+{"direction": "receive", "time": 1791315820.845537, "raw": "{\"return\": \"0000000230046020: 0x00070045\\r\\n\", \"id\": 35}\r\n"}
+{"direction": "send", "time": 1791315820.845597, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 36, \"arguments\": {\"command-line\": \"xp /1wx 0x23004603c\"}}\n"}
+{"direction": "receive", "time": 1791315820.846092, "raw": "{\"return\": \"000000023004603c: 0x033c0700\\r\\n\", \"id\": 36}\r\n"}
+{"direction": "send", "time": 1791315820.8461409, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 37, \"arguments\": {\"command-line\": \"xp /1wx 0x230050004\"}}\n"}
+{"direction": "receive", "time": 1791315820.8466182, "raw": "{\"return\": \"0000000230050004: 0x80070001\\r\\n\", \"id\": 37}\r\n"}
+{"direction": "send", "time": 1791315820.8466744, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 38, \"arguments\": {\"command-line\": \"xp /1wx 0x23005001c\"}}\n"}
+{"direction": "receive", "time": 1791315820.8471506, "raw": "{\"return\": \"000000023005001c: 0x057c8000\\r\\n\", \"id\": 38}\r\n"}
+{"direction": "send", "time": 1791315820.847202, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 39, \"arguments\": {\"command-line\": \"xp /1wx 0x230050030\"}}\n"}
+{"direction": "receive", "time": 1791315820.8476655, "raw": "{\"return\": \"0000000230050030: 0x016c0000\\r\\n\", \"id\": 39}\r\n"}
+{"direction": "send", "time": 1791315820.8477206, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 40, \"arguments\": {\"command-line\": \"xp /1wx 0x230050040\"}}\n"}
+{"direction": "receive", "time": 1791315820.8480766, "raw": "{\"return\": \"0000000230050040: 0x01c70000\\r\\n\", \"id\": 40}\r\n"}
+{"direction": "send", "time": 1791315820.848098, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 41, \"arguments\": {\"command-line\": \"xp /1wx 0x230050060\"}}\n"}
+{"direction": "receive", "time": 1791315820.8484397, "raw": "{\"return\": \"0000000230050060: 0x00000d00\\r\\n\", \"id\": 41}\r\n"}
+{"direction": "send", "time": 1791315820.8484566, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 42, \"arguments\": {\"command-line\": \"xp /1wx 0x230050070\"}}\n"}
+{"direction": "receive", "time": 1791315820.8488028, "raw": "{\"return\": \"0000000230050070: 0x033c0700\\r\\n\", \"id\": 42}\r\n"}
+{"direction": "send", "time": 1791315820.8488219, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 43, \"arguments\": {\"command-line\": \"xp /1wx 0x230050080\"}}\n"}
+{"direction": "receive", "time": 1791315820.8491647, "raw": "{\"return\": \"0000000230050080: 0x033c0700\\r\\n\", \"id\": 43}\r\n"}
+{"direction": "send", "time": 1791315820.8491807, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 44, \"arguments\": {\"command-line\": \"xp /1wx 0x230058004\"}}\n"}
+{"direction": "receive", "time": 1791315820.8495457, "raw": "{\"return\": \"0000000230058004: 0x00040000\\r\\n\", \"id\": 44}\r\n"}
+{"direction": "send", "time": 1791315820.8495634, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 45, \"arguments\": {\"command-line\": \"xp /1wx 0x23005801c\"}}\n"}
+{"direction": "receive", "time": 1791315820.8499029, "raw": "{\"return\": \"000000023005801c: 0x00000000\\r\\n\", \"id\": 45}\r\n"}
+{"direction": "send", "time": 1791315820.8499177, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 46, \"arguments\": {\"command-line\": \"xp /1wx 0x230058030\"}}\n"}
+{"direction": "receive", "time": 1791315820.8502548, "raw": "{\"return\": \"0000000230058030: 0x00000000\\r\\n\", \"id\": 46}\r\n"}
+{"direction": "send", "time": 1791315820.850269, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 47, \"arguments\": {\"command-line\": \"xp /1wx 0x230058040\"}}\n"}
+{"direction": "receive", "time": 1791315820.8506117, "raw": "{\"return\": \"0000000230058040: 0x00000000\\r\\n\", \"id\": 47}\r\n"}
+{"direction": "send", "time": 1791315820.8506286, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 48, \"arguments\": {\"command-line\": \"xp /1wx 0x230058060\"}}\n"}
+{"direction": "receive", "time": 1791315820.8509686, "raw": "{\"return\": \"0000000230058060: 0x00000000\\r\\n\", \"id\": 48}\r\n"}
+{"direction": "send", "time": 1791315820.850983, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 49, \"arguments\": {\"command-line\": \"xp /1wx 0x230058070\"}}\n"}
+{"direction": "receive", "time": 1791315820.851321, "raw": "{\"return\": \"0000000230058070: 0x00000000\\r\\n\", \"id\": 49}\r\n"}
+{"direction": "send", "time": 1791315820.851348, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 50, \"arguments\": {\"command-line\": \"xp /1wx 0x230058080\"}}\n"}
+{"direction": "receive", "time": 1791315820.8516967, "raw": "{\"return\": \"0000000230058080: 0x00000000\\r\\n\", \"id\": 50}\r\n"}
+{"direction": "send", "time": 1791315847.7060072, "raw": "{\"execute\": \"screendump\", \"id\": 51, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0003.ppm\"}}\n"}
+{"direction": "receive", "time": 1791315847.706372, "raw": "{\"timestamp\": {\"seconds\": 1791315829, \"microseconds\": 929828}, \"event\": \"VNC_CONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791315847.7067094, "raw": "{\"timestamp\": {\"seconds\": 1791315829, \"microseconds\": 931201}, \"event\": \"VNC_INITIALIZED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791315847.707023, "raw": "{\"timestamp\": {\"seconds\": 1791315836, \"microseconds\": 235671}, \"event\": \"VNC_DISCONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791315847.7113366, "raw": "{\"return\": {}, \"id\": 51}\r\n"}
+{"direction": "send", "time": 1791315877.7688932, "raw": "{\"execute\": \"screendump\", \"id\": 52, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0004.ppm\"}}\n"}
+{"direction": "receive", "time": 1791315877.7692626, "raw": "{\"timestamp\": {\"seconds\": 1791315875, \"microseconds\": 923351}, \"event\": \"VNC_CONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791315877.7696166, "raw": "{\"timestamp\": {\"seconds\": 1791315875, \"microseconds\": 924517}, \"event\": \"VNC_INITIALIZED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791315877.7739809, "raw": "{\"return\": {}, \"id\": 52}\r\n"}
+{"direction": "send", "time": 1791315907.8347847, "raw": "{\"execute\": \"screendump\", \"id\": 53, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0005.ppm\"}}\n"}
+{"direction": "receive", "time": 1791315907.8353722, "raw": "{\"timestamp\": {\"seconds\": 1791315880, \"microseconds\": 431750}, \"event\": \"VNC_DISCONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791315907.835949, "raw": "{\"timestamp\": {\"seconds\": 1791315903, \"microseconds\": 765897}, \"event\": \"VNC_CONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791315907.8364985, "raw": "{\"timestamp\": {\"seconds\": 1791315903, \"microseconds\": 766868}, \"event\": \"VNC_INITIALIZED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791315907.841605, "raw": "{\"return\": {}, \"id\": 53}\r\n"}
+{"direction": "send", "time": 1791315937.9050772, "raw": "{\"execute\": \"screendump\", \"id\": 54, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0006.ppm\"}}\n"}
+{"direction": "receive", "time": 1791315937.9056952, "raw": "{\"timestamp\": {\"seconds\": 1791315910, \"microseconds\": 73282}, \"event\": \"VNC_DISCONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791315937.9103618, "raw": "{\"return\": {}, \"id\": 54}\r\n"}
+{"direction": "send", "time": 1791315960.1567273, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 55, \"arguments\": {\"command-line\": \"xp /1wx 0x230045818\"}}\n"}
+{"direction": "receive", "time": 1791315960.157299, "raw": "{\"timestamp\": {\"seconds\": 1791315955, \"microseconds\": 346781}, \"event\": \"VNC_CONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791315960.157841, "raw": "{\"timestamp\": {\"seconds\": 1791315955, \"microseconds\": 348587}, \"event\": \"VNC_INITIALIZED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791315960.1579611, "raw": "{\"return\": \"0000000230045818: 0x00000000\\r\\n\", \"id\": 55}\r\n"}
+{"direction": "send", "time": 1791315960.1579812, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 56, \"arguments\": {\"command-line\": \"xp /1wx 0x23004581c\"}}\n"}
+{"direction": "receive", "time": 1791315960.1585894, "raw": "{\"return\": \"000000023004581c: 0xc0180c08\\r\\n\", \"id\": 56}\r\n"}
+{"direction": "send", "time": 1791315960.158661, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 57, \"arguments\": {\"command-line\": \"xp /1wx 0x230046020\"}}\n"}
+{"direction": "receive", "time": 1791315960.1591382, "raw": "{\"return\": \"0000000230046020: 0x00070045\\r\\n\", \"id\": 57}\r\n"}
+{"direction": "send", "time": 1791315960.159162, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 58, \"arguments\": {\"command-line\": \"xp /1wx 0x23004603c\"}}\n"}
+{"direction": "receive", "time": 1791315960.1596367, "raw": "{\"return\": \"000000023004603c: 0x033c0700\\r\\n\", \"id\": 58}\r\n"}
+{"direction": "send", "time": 1791315960.1596575, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 59, \"arguments\": {\"command-line\": \"xp /1wx 0x230050004\"}}\n"}
+{"direction": "receive", "time": 1791315960.1600034, "raw": "{\"return\": \"0000000230050004: 0x80070001\\r\\n\", \"id\": 59}\r\n"}
+{"direction": "send", "time": 1791315960.16002, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 60, \"arguments\": {\"command-line\": \"xp /1wx 0x23005001c\"}}\n"}
+{"direction": "receive", "time": 1791315960.1603634, "raw": "{\"return\": \"000000023005001c: 0x057c8000\\r\\n\", \"id\": 60}\r\n"}
+{"direction": "send", "time": 1791315960.1603796, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 61, \"arguments\": {\"command-line\": \"xp /1wx 0x230050030\"}}\n"}
+{"direction": "receive", "time": 1791315960.1607387, "raw": "{\"return\": \"0000000230050030: 0x016c0000\\r\\n\", \"id\": 61}\r\n"}
+{"direction": "send", "time": 1791315960.160757, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 62, \"arguments\": {\"command-line\": \"xp /1wx 0x230050040\"}}\n"}
+{"direction": "receive", "time": 1791315960.1610973, "raw": "{\"return\": \"0000000230050040: 0x01c70000\\r\\n\", \"id\": 62}\r\n"}
+{"direction": "send", "time": 1791315960.1611125, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 63, \"arguments\": {\"command-line\": \"xp /1wx 0x230050060\"}}\n"}
+{"direction": "receive", "time": 1791315960.161452, "raw": "{\"return\": \"0000000230050060: 0x00000d00\\r\\n\", \"id\": 63}\r\n"}
+{"direction": "send", "time": 1791315960.1614678, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 64, \"arguments\": {\"command-line\": \"xp /1wx 0x230050070\"}}\n"}
+{"direction": "receive", "time": 1791315960.1618102, "raw": "{\"return\": \"0000000230050070: 0x033c0700\\r\\n\", \"id\": 64}\r\n"}
+{"direction": "send", "time": 1791315960.161827, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 65, \"arguments\": {\"command-line\": \"xp /1wx 0x230050080\"}}\n"}
+{"direction": "receive", "time": 1791315960.1621652, "raw": "{\"return\": \"0000000230050080: 0x033c0700\\r\\n\", \"id\": 65}\r\n"}
+{"direction": "send", "time": 1791315960.1621804, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 66, \"arguments\": {\"command-line\": \"xp /1wx 0x230058004\"}}\n"}
+{"direction": "receive", "time": 1791315960.162519, "raw": "{\"return\": \"0000000230058004: 0x00040000\\r\\n\", \"id\": 66}\r\n"}
+{"direction": "send", "time": 1791315960.1625404, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 67, \"arguments\": {\"command-line\": \"xp /1wx 0x23005801c\"}}\n"}
+{"direction": "receive", "time": 1791315960.162896, "raw": "{\"return\": \"000000023005801c: 0x00000000\\r\\n\", \"id\": 67}\r\n"}
+{"direction": "send", "time": 1791315960.1629114, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 68, \"arguments\": {\"command-line\": \"xp /1wx 0x230058030\"}}\n"}
+{"direction": "receive", "time": 1791315960.163261, "raw": "{\"return\": \"0000000230058030: 0x00000000\\r\\n\", \"id\": 68}\r\n"}
+{"direction": "send", "time": 1791315960.1632755, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 69, \"arguments\": {\"command-line\": \"xp /1wx 0x230058040\"}}\n"}
+{"direction": "receive", "time": 1791315960.1636171, "raw": "{\"return\": \"0000000230058040: 0x00000000\\r\\n\", \"id\": 69}\r\n"}
+{"direction": "send", "time": 1791315960.1636348, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 70, \"arguments\": {\"command-line\": \"xp /1wx 0x230058060\"}}\n"}
+{"direction": "receive", "time": 1791315960.1639755, "raw": "{\"return\": \"0000000230058060: 0x00000000\\r\\n\", \"id\": 70}\r\n"}
+{"direction": "send", "time": 1791315960.1639905, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 71, \"arguments\": {\"command-line\": \"xp /1wx 0x230058070\"}}\n"}
+{"direction": "receive", "time": 1791315960.1643264, "raw": "{\"return\": \"0000000230058070: 0x00000000\\r\\n\", \"id\": 71}\r\n"}
+{"direction": "send", "time": 1791315960.1643407, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 72, \"arguments\": {\"command-line\": \"xp /1wx 0x230058080\"}}\n"}
+{"direction": "receive", "time": 1791315960.1646802, "raw": "{\"return\": \"0000000230058080: 0x00000000\\r\\n\", \"id\": 72}\r\n"}
+{"direction": "send", "time": 1791315967.980864, "raw": "{\"execute\": \"screendump\", \"id\": 73, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0007.ppm\"}}\n"}
+{"direction": "receive", "time": 1791315967.9814618, "raw": "{\"timestamp\": {\"seconds\": 1791315960, \"microseconds\": 538816}, \"event\": \"VNC_DISCONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791315967.986047, "raw": "{\"return\": {}, \"id\": 73}\r\n"}
+{"direction": "send", "time": 1791315998.0472515, "raw": "{\"execute\": \"screendump\", \"id\": 74, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0008.ppm\"}}\n"}
+{"direction": "receive", "time": 1791315998.052678, "raw": "{\"return\": {}, \"id\": 74}\r\n"}
+{"direction": "send", "time": 1791316013.082371, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 75, \"arguments\": {\"command-line\": \"xp /1wx 0x230045818\"}}\n"}
+{"direction": "receive", "time": 1791316013.0827227, "raw": "{\"timestamp\": {\"seconds\": 1791316008, \"microseconds\": 386135}, \"event\": \"VNC_CONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791316013.083041, "raw": "{\"timestamp\": {\"seconds\": 1791316008, \"microseconds\": 387939}, \"event\": \"VNC_INITIALIZED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791316013.0831094, "raw": "{\"return\": \"0000000230045818: 0x00000000\\r\\n\", \"id\": 75}\r\n"}
+{"direction": "send", "time": 1791316013.0831194, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 76, \"arguments\": {\"command-line\": \"xp /1wx 0x23004581c\"}}\n"}
+{"direction": "receive", "time": 1791316013.083752, "raw": "{\"return\": \"000000023004581c: 0xc0180c08\\r\\n\", \"id\": 76}\r\n"}
+{"direction": "send", "time": 1791316013.083835, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 77, \"arguments\": {\"command-line\": \"xp /1wx 0x230046020\"}}\n"}
+{"direction": "receive", "time": 1791316013.0844362, "raw": "{\"return\": \"0000000230046020: 0x00070045\\r\\n\", \"id\": 77}\r\n"}
+{"direction": "send", "time": 1791316013.0845013, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 78, \"arguments\": {\"command-line\": \"xp /1wx 0x23004603c\"}}\n"}
+{"direction": "receive", "time": 1791316013.0849347, "raw": "{\"return\": \"000000023004603c: 0x033c0700\\r\\n\", \"id\": 78}\r\n"}
+{"direction": "send", "time": 1791316013.084995, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 79, \"arguments\": {\"command-line\": \"xp /1wx 0x230050004\"}}\n"}
+{"direction": "receive", "time": 1791316013.0854173, "raw": "{\"return\": \"0000000230050004: 0x80070001\\r\\n\", \"id\": 79}\r\n"}
+{"direction": "send", "time": 1791316013.0854754, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 80, \"arguments\": {\"command-line\": \"xp /1wx 0x23005001c\"}}\n"}
+{"direction": "receive", "time": 1791316013.0858939, "raw": "{\"return\": \"000000023005001c: 0x057c8000\\r\\n\", \"id\": 80}\r\n"}
+{"direction": "send", "time": 1791316013.0859537, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 81, \"arguments\": {\"command-line\": \"xp /1wx 0x230050030\"}}\n"}
+{"direction": "receive", "time": 1791316013.0862525, "raw": "{\"return\": \"0000000230050030: 0x02230000\\r\\n\", \"id\": 81}\r\n"}
+{"direction": "send", "time": 1791316013.0862746, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 82, \"arguments\": {\"command-line\": \"xp /1wx 0x230050040\"}}\n"}
+{"direction": "receive", "time": 1791316013.0865657, "raw": "{\"return\": \"0000000230050040: 0x027e0000\\r\\n\", \"id\": 82}\r\n"}
+{"direction": "send", "time": 1791316013.0865855, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 83, \"arguments\": {\"command-line\": \"xp /1wx 0x230050060\"}}\n"}
+{"direction": "receive", "time": 1791316013.0868864, "raw": "{\"return\": \"0000000230050060: 0x00000d00\\r\\n\", \"id\": 83}\r\n"}
+{"direction": "send", "time": 1791316013.086904, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 84, \"arguments\": {\"command-line\": \"xp /1wx 0x230050070\"}}\n"}
+{"direction": "receive", "time": 1791316013.0871918, "raw": "{\"return\": \"0000000230050070: 0x033c0700\\r\\n\", \"id\": 84}\r\n"}
+{"direction": "send", "time": 1791316013.087206, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 85, \"arguments\": {\"command-line\": \"xp /1wx 0x230050080\"}}\n"}
+{"direction": "receive", "time": 1791316013.0875013, "raw": "{\"return\": \"0000000230050080: 0x033c0700\\r\\n\", \"id\": 85}\r\n"}
+{"direction": "send", "time": 1791316013.087515, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 86, \"arguments\": {\"command-line\": \"xp /1wx 0x230058004\"}}\n"}
+{"direction": "receive", "time": 1791316013.0878043, "raw": "{\"return\": \"0000000230058004: 0x00040000\\r\\n\", \"id\": 86}\r\n"}
+{"direction": "send", "time": 1791316013.0878217, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 87, \"arguments\": {\"command-line\": \"xp /1wx 0x23005801c\"}}\n"}
+{"direction": "receive", "time": 1791316013.0880961, "raw": "{\"return\": \"000000023005801c: 0x00000000\\r\\n\", \"id\": 87}\r\n"}
+{"direction": "send", "time": 1791316013.0881107, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 88, \"arguments\": {\"command-line\": \"xp /1wx 0x230058030\"}}\n"}
+{"direction": "receive", "time": 1791316013.0883873, "raw": "{\"return\": \"0000000230058030: 0x00000000\\r\\n\", \"id\": 88}\r\n"}
+{"direction": "send", "time": 1791316013.0884016, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 89, \"arguments\": {\"command-line\": \"xp /1wx 0x230058040\"}}\n"}
+{"direction": "receive", "time": 1791316013.0886862, "raw": "{\"return\": \"0000000230058040: 0x00000000\\r\\n\", \"id\": 89}\r\n"}
+{"direction": "send", "time": 1791316013.0887032, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 90, \"arguments\": {\"command-line\": \"xp /1wx 0x230058060\"}}\n"}
+{"direction": "receive", "time": 1791316013.088984, "raw": "{\"return\": \"0000000230058060: 0x00000000\\r\\n\", \"id\": 90}\r\n"}
+{"direction": "send", "time": 1791316013.0889983, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 91, \"arguments\": {\"command-line\": \"xp /1wx 0x230058070\"}}\n"}
+{"direction": "receive", "time": 1791316013.0892756, "raw": "{\"return\": \"0000000230058070: 0x00000000\\r\\n\", \"id\": 91}\r\n"}
+{"direction": "send", "time": 1791316013.0892897, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 92, \"arguments\": {\"command-line\": \"xp /1wx 0x230058080\"}}\n"}
+{"direction": "receive", "time": 1791316013.0896182, "raw": "{\"return\": \"0000000230058080: 0x00000000\\r\\n\", \"id\": 92}\r\n"}
+{"direction": "send", "time": 1791316028.1215725, "raw": "{\"execute\": \"screendump\", \"id\": 93, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0009.ppm\"}}\n"}
+{"direction": "receive", "time": 1791316028.1221623, "raw": "{\"timestamp\": {\"seconds\": 1791316013, \"microseconds\": 582055}, \"event\": \"VNC_DISCONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791316028.126665, "raw": "{\"return\": {}, \"id\": 93}\r\n"}
+{"direction": "send", "time": 1791316053.581885, "raw": "{\"execute\": \"query-mice\", \"id\": 94}\n"}
+{"direction": "receive", "time": 1791316053.582261, "raw": "{\"return\": [{\"index\": 1, \"name\": \"Apple Multitouch HID SPI\", \"current\": true, \"absolute\": true}], \"id\": 94}\r\n"}
+{"direction": "send", "time": 1791316053.5823817, "raw": "{\"execute\": \"screendump\", \"id\": 95, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/probe-before.ppm\"}}\n"}
+{"direction": "receive", "time": 1791316053.5873885, "raw": "{\"return\": {}, \"id\": 95}\r\n"}
+{"direction": "send", "time": 1791316053.792517, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 96, \"arguments\": {\"command-line\": \"xp /1wx 0x230045818\"}}\n"}
+{"direction": "receive", "time": 1791316053.7930324, "raw": "{\"return\": \"0000000230045818: 0x00000000\\r\\n\", \"id\": 96}\r\n"}
+{"direction": "send", "time": 1791316053.7931285, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 97, \"arguments\": {\"command-line\": \"xp /1wx 0x23004581c\"}}\n"}
+{"direction": "receive", "time": 1791316053.793625, "raw": "{\"return\": \"000000023004581c: 0xc0180c08\\r\\n\", \"id\": 97}\r\n"}
+{"direction": "send", "time": 1791316053.7936504, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 98, \"arguments\": {\"command-line\": \"xp /1wx 0x230046020\"}}\n"}
+{"direction": "receive", "time": 1791316053.7939737, "raw": "{\"return\": \"0000000230046020: 0x00070045\\r\\n\", \"id\": 98}\r\n"}
+{"direction": "send", "time": 1791316053.7939808, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 99, \"arguments\": {\"command-line\": \"xp /1wx 0x23004603c\"}}\n"}
+{"direction": "receive", "time": 1791316053.7942898, "raw": "{\"return\": \"000000023004603c: 0x033c0700\\r\\n\", \"id\": 99}\r\n"}
+{"direction": "send", "time": 1791316053.7942967, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 100, \"arguments\": {\"command-line\": \"xp /1wx 0x230050004\"}}\n"}
+{"direction": "receive", "time": 1791316053.7946227, "raw": "{\"return\": \"0000000230050004: 0x80070001\\r\\n\", \"id\": 100}\r\n"}
+{"direction": "send", "time": 1791316053.79463, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 101, \"arguments\": {\"command-line\": \"xp /1wx 0x23005001c\"}}\n"}
+{"direction": "receive", "time": 1791316053.7949417, "raw": "{\"return\": \"000000023005001c: 0x057c8000\\r\\n\", \"id\": 101}\r\n"}
+{"direction": "send", "time": 1791316053.7949479, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 102, \"arguments\": {\"command-line\": \"xp /1wx 0x230050030\"}}\n"}
+{"direction": "receive", "time": 1791316053.795262, "raw": "{\"return\": \"0000000230050030: 0x016c0000\\r\\n\", \"id\": 102}\r\n"}
+{"direction": "send", "time": 1791316053.7952685, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 103, \"arguments\": {\"command-line\": \"xp /1wx 0x230050040\"}}\n"}
+{"direction": "receive", "time": 1791316053.7955816, "raw": "{\"return\": \"0000000230050040: 0x01c70000\\r\\n\", \"id\": 103}\r\n"}
+{"direction": "send", "time": 1791316053.7955883, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 104, \"arguments\": {\"command-line\": \"xp /1wx 0x230050060\"}}\n"}
+{"direction": "receive", "time": 1791316053.795894, "raw": "{\"return\": \"0000000230050060: 0x00000d00\\r\\n\", \"id\": 104}\r\n"}
+{"direction": "send", "time": 1791316053.7958999, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 105, \"arguments\": {\"command-line\": \"xp /1wx 0x230050070\"}}\n"}
+{"direction": "receive", "time": 1791316053.7962108, "raw": "{\"return\": \"0000000230050070: 0x033c0700\\r\\n\", \"id\": 105}\r\n"}
+{"direction": "send", "time": 1791316053.7962167, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 106, \"arguments\": {\"command-line\": \"xp /1wx 0x230050080\"}}\n"}
+{"direction": "receive", "time": 1791316053.7964714, "raw": "{\"return\": \"0000000230050080: 0x033c0700\\r\\n\", \"id\": 106}\r\n"}
+{"direction": "send", "time": 1791316053.7964792, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 107, \"arguments\": {\"command-line\": \"xp /1wx 0x230058004\"}}\n"}
+{"direction": "receive", "time": 1791316053.796963, "raw": "{\"return\": \"0000000230058004: 0x00040000\\r\\n\", \"id\": 107}\r\n"}
+{"direction": "send", "time": 1791316053.7969983, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 108, \"arguments\": {\"command-line\": \"xp /1wx 0x23005801c\"}}\n"}
+{"direction": "receive", "time": 1791316053.7973952, "raw": "{\"return\": \"000000023005801c: 0x00000000\\r\\n\", \"id\": 108}\r\n"}
+{"direction": "send", "time": 1791316053.7974832, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 109, \"arguments\": {\"command-line\": \"xp /1wx 0x230058030\"}}\n"}
+{"direction": "receive", "time": 1791316053.7979982, "raw": "{\"return\": \"0000000230058030: 0x00000000\\r\\n\", \"id\": 109}\r\n"}
+{"direction": "send", "time": 1791316053.798053, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 110, \"arguments\": {\"command-line\": \"xp /1wx 0x230058040\"}}\n"}
+{"direction": "receive", "time": 1791316053.7984307, "raw": "{\"return\": \"0000000230058040: 0x00000000\\r\\n\", \"id\": 110}\r\n"}
+{"direction": "send", "time": 1791316053.7984524, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 111, \"arguments\": {\"command-line\": \"xp /1wx 0x230058060\"}}\n"}
+{"direction": "receive", "time": 1791316053.7988296, "raw": "{\"return\": \"0000000230058060: 0x00000000\\r\\n\", \"id\": 111}\r\n"}
+{"direction": "send", "time": 1791316053.7988498, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 112, \"arguments\": {\"command-line\": \"xp /1wx 0x230058070\"}}\n"}
+{"direction": "receive", "time": 1791316053.7994576, "raw": "{\"return\": \"0000000230058070: 0x00000000\\r\\n\", \"id\": 112}\r\n"}
+{"direction": "send", "time": 1791316053.7994962, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 113, \"arguments\": {\"command-line\": \"xp /1wx 0x230058080\"}}\n"}
+{"direction": "receive", "time": 1791316053.7999935, "raw": "{\"return\": \"0000000230058080: 0x00000000\\r\\n\", \"id\": 113}\r\n"}
+{"direction": "send", "time": 1791316058.2125125, "raw": "{\"execute\": \"screendump\", \"id\": 114, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0010.ppm\"}}\n"}
+{"direction": "receive", "time": 1791316058.213124, "raw": "{\"timestamp\": {\"seconds\": 1791316054, \"microseconds\": 71042}, \"event\": \"VNC_CONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791316058.2136774, "raw": "{\"timestamp\": {\"seconds\": 1791316054, \"microseconds\": 71972}, \"event\": \"VNC_INITIALIZED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791316058.2194545, "raw": "{\"return\": {}, \"id\": 114}\r\n"}
+{"direction": "send", "time": 1791316058.8239448, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 115, \"arguments\": {\"command-line\": \"xp /1wx 0x230045818\"}}\n"}
+{"direction": "receive", "time": 1791316058.824712, "raw": "{\"return\": \"0000000230045818: 0x00000000\\r\\n\", \"id\": 115}\r\n"}
+{"direction": "send", "time": 1791316058.8247945, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 116, \"arguments\": {\"command-line\": \"xp /1wx 0x23004581c\"}}\n"}
+{"direction": "receive", "time": 1791316058.8254137, "raw": "{\"return\": \"000000023004581c: 0xc0180c08\\r\\n\", \"id\": 116}\r\n"}
+{"direction": "send", "time": 1791316058.8254714, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 117, \"arguments\": {\"command-line\": \"xp /1wx 0x230046020\"}}\n"}
+{"direction": "receive", "time": 1791316058.825866, "raw": "{\"return\": \"0000000230046020: 0x00070045\\r\\n\", \"id\": 117}\r\n"}
+{"direction": "send", "time": 1791316058.8258936, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 118, \"arguments\": {\"command-line\": \"xp /1wx 0x23004603c\"}}\n"}
+{"direction": "receive", "time": 1791316058.826256, "raw": "{\"return\": \"000000023004603c: 0x033c0700\\r\\n\", \"id\": 118}\r\n"}
+{"direction": "send", "time": 1791316058.8262727, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 119, \"arguments\": {\"command-line\": \"xp /1wx 0x230050004\"}}\n"}
+{"direction": "receive", "time": 1791316058.8266535, "raw": "{\"return\": \"0000000230050004: 0x80070001\\r\\n\", \"id\": 119}\r\n"}
+{"direction": "send", "time": 1791316058.8266726, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 120, \"arguments\": {\"command-line\": \"xp /1wx 0x23005001c\"}}\n"}
+{"direction": "receive", "time": 1791316058.8270323, "raw": "{\"return\": \"000000023005001c: 0x057c8000\\r\\n\", \"id\": 120}\r\n"}
+{"direction": "send", "time": 1791316058.8270473, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 121, \"arguments\": {\"command-line\": \"xp /1wx 0x230050030\"}}\n"}
+{"direction": "receive", "time": 1791316058.8274114, "raw": "{\"return\": \"0000000230050030: 0x02230000\\r\\n\", \"id\": 121}\r\n"}
+{"direction": "send", "time": 1791316058.8274314, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 122, \"arguments\": {\"command-line\": \"xp /1wx 0x230050040\"}}\n"}
+{"direction": "receive", "time": 1791316058.8277974, "raw": "{\"return\": \"0000000230050040: 0x027e0000\\r\\n\", \"id\": 122}\r\n"}
+{"direction": "send", "time": 1791316058.827817, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 123, \"arguments\": {\"command-line\": \"xp /1wx 0x230050060\"}}\n"}
+{"direction": "receive", "time": 1791316058.8281744, "raw": "{\"return\": \"0000000230050060: 0x00000d00\\r\\n\", \"id\": 123}\r\n"}
+{"direction": "send", "time": 1791316058.8281896, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 124, \"arguments\": {\"command-line\": \"xp /1wx 0x230050070\"}}\n"}
+{"direction": "receive", "time": 1791316058.828558, "raw": "{\"return\": \"0000000230050070: 0x033c0700\\r\\n\", \"id\": 124}\r\n"}
+{"direction": "send", "time": 1791316058.8285763, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 125, \"arguments\": {\"command-line\": \"xp /1wx 0x230050080\"}}\n"}
+{"direction": "receive", "time": 1791316058.8289378, "raw": "{\"return\": \"0000000230050080: 0x033c0700\\r\\n\", \"id\": 125}\r\n"}
+{"direction": "send", "time": 1791316058.8289523, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 126, \"arguments\": {\"command-line\": \"xp /1wx 0x230058004\"}}\n"}
+{"direction": "receive", "time": 1791316058.829305, "raw": "{\"return\": \"0000000230058004: 0x00040000\\r\\n\", \"id\": 126}\r\n"}
+{"direction": "send", "time": 1791316058.8293188, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 127, \"arguments\": {\"command-line\": \"xp /1wx 0x23005801c\"}}\n"}
+{"direction": "receive", "time": 1791316058.8297071, "raw": "{\"return\": \"000000023005801c: 0x00000000\\r\\n\", \"id\": 127}\r\n"}
+{"direction": "send", "time": 1791316058.8297415, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 128, \"arguments\": {\"command-line\": \"xp /1wx 0x230058030\"}}\n"}
+{"direction": "receive", "time": 1791316058.8301609, "raw": "{\"return\": \"0000000230058030: 0x00000000\\r\\n\", \"id\": 128}\r\n"}
+{"direction": "send", "time": 1791316058.830192, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 129, \"arguments\": {\"command-line\": \"xp /1wx 0x230058040\"}}\n"}
+{"direction": "receive", "time": 1791316058.8305113, "raw": "{\"return\": \"0000000230058040: 0x00000000\\r\\n\", \"id\": 129}\r\n"}
+{"direction": "send", "time": 1791316058.8305402, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 130, \"arguments\": {\"command-line\": \"xp /1wx 0x230058060\"}}\n"}
+{"direction": "receive", "time": 1791316058.8310528, "raw": "{\"return\": \"0000000230058060: 0x00000000\\r\\n\", \"id\": 130}\r\n"}
+{"direction": "send", "time": 1791316058.8310795, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 131, \"arguments\": {\"command-line\": \"xp /1wx 0x230058070\"}}\n"}
+{"direction": "receive", "time": 1791316058.8316183, "raw": "{\"return\": \"0000000230058070: 0x00000000\\r\\n\", \"id\": 131}\r\n"}
+{"direction": "send", "time": 1791316058.8317232, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 132, \"arguments\": {\"command-line\": \"xp /1wx 0x230058080\"}}\n"}
+{"direction": "receive", "time": 1791316058.8322668, "raw": "{\"return\": \"0000000230058080: 0x00000000\\r\\n\", \"id\": 132}\r\n"}
+{"direction": "send", "time": 1791316088.2923415, "raw": "{\"execute\": \"screendump\", \"id\": 133, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0011.ppm\"}}\n"}
+{"direction": "receive", "time": 1791316088.2929575, "raw": "{\"timestamp\": {\"seconds\": 1791316059, \"microseconds\": 266750}, \"event\": \"VNC_DISCONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791316088.2995472, "raw": "{\"return\": {}, \"id\": 133}\r\n"}
+{"direction": "send", "time": 1791316090.7084963, "raw": "{\"execute\": \"screendump\", \"id\": 134, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/probe-after.ppm\"}}\n"}
+{"direction": "receive", "time": 1791316090.7139874, "raw": "{\"return\": {}, \"id\": 134}\r\n"}
+{"direction": "send", "time": 1791316090.9192388, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 135, \"arguments\": {\"command-line\": \"xp /1wx 0x230045818\"}}\n"}
+{"direction": "receive", "time": 1791316090.9199193, "raw": "{\"return\": \"0000000230045818: 0x00000000\\r\\n\", \"id\": 135}\r\n"}
+{"direction": "send", "time": 1791316090.9199862, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 136, \"arguments\": {\"command-line\": \"xp /1wx 0x23004581c\"}}\n"}
+{"direction": "receive", "time": 1791316090.9204688, "raw": "{\"return\": \"000000023004581c: 0xc0180c08\\r\\n\", \"id\": 136}\r\n"}
+{"direction": "send", "time": 1791316090.920492, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 137, \"arguments\": {\"command-line\": \"xp /1wx 0x230046020\"}}\n"}
+{"direction": "receive", "time": 1791316090.9209661, "raw": "{\"return\": \"0000000230046020: 0x00070045\\r\\n\", \"id\": 137}\r\n"}
+{"direction": "send", "time": 1791316090.9209867, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 138, \"arguments\": {\"command-line\": \"xp /1wx 0x23004603c\"}}\n"}
+{"direction": "receive", "time": 1791316090.9214585, "raw": "{\"return\": \"000000023004603c: 0x033c0700\\r\\n\", \"id\": 138}\r\n"}
+{"direction": "send", "time": 1791316090.9214761, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 139, \"arguments\": {\"command-line\": \"xp /1wx 0x230050004\"}}\n"}
+{"direction": "receive", "time": 1791316090.9219537, "raw": "{\"return\": \"0000000230050004: 0x80070001\\r\\n\", \"id\": 139}\r\n"}
+{"direction": "send", "time": 1791316090.9219718, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 140, \"arguments\": {\"command-line\": \"xp /1wx 0x23005001c\"}}\n"}
+{"direction": "receive", "time": 1791316090.92232, "raw": "{\"return\": \"000000023005001c: 0x057c8000\\r\\n\", \"id\": 140}\r\n"}
+{"direction": "send", "time": 1791316090.9223354, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 141, \"arguments\": {\"command-line\": \"xp /1wx 0x230050030\"}}\n"}
+{"direction": "receive", "time": 1791316090.9226906, "raw": "{\"return\": \"0000000230050030: 0x016c0000\\r\\n\", \"id\": 141}\r\n"}
+{"direction": "send", "time": 1791316090.9227087, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 142, \"arguments\": {\"command-line\": \"xp /1wx 0x230050040\"}}\n"}
+{"direction": "receive", "time": 1791316090.9230537, "raw": "{\"return\": \"0000000230050040: 0x01c70000\\r\\n\", \"id\": 142}\r\n"}
+{"direction": "send", "time": 1791316090.9230702, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 143, \"arguments\": {\"command-line\": \"xp /1wx 0x230050060\"}}\n"}
+{"direction": "receive", "time": 1791316090.9235516, "raw": "{\"return\": \"0000000230050060: 0x00000d00\\r\\n\", \"id\": 143}\r\n"}
+{"direction": "send", "time": 1791316090.9236023, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 144, \"arguments\": {\"command-line\": \"xp /1wx 0x230050070\"}}\n"}
+{"direction": "receive", "time": 1791316090.9240937, "raw": "{\"return\": \"0000000230050070: 0x033c0700\\r\\n\", \"id\": 144}\r\n"}
+{"direction": "send", "time": 1791316090.9241364, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 145, \"arguments\": {\"command-line\": \"xp /1wx 0x230050080\"}}\n"}
+{"direction": "receive", "time": 1791316090.924625, "raw": "{\"return\": \"0000000230050080: 0x033c0700\\r\\n\", \"id\": 145}\r\n"}
+{"direction": "send", "time": 1791316090.924675, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 146, \"arguments\": {\"command-line\": \"xp /1wx 0x230058004\"}}\n"}
+{"direction": "receive", "time": 1791316090.925034, "raw": "{\"return\": \"0000000230058004: 0x00040000\\r\\n\", \"id\": 146}\r\n"}
+{"direction": "send", "time": 1791316090.9250562, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 147, \"arguments\": {\"command-line\": \"xp /1wx 0x23005801c\"}}\n"}
+{"direction": "receive", "time": 1791316090.925404, "raw": "{\"return\": \"000000023005801c: 0x00000000\\r\\n\", \"id\": 147}\r\n"}
+{"direction": "send", "time": 1791316090.9254217, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 148, \"arguments\": {\"command-line\": \"xp /1wx 0x230058030\"}}\n"}
+{"direction": "receive", "time": 1791316090.9257693, "raw": "{\"return\": \"0000000230058030: 0x00000000\\r\\n\", \"id\": 148}\r\n"}
+{"direction": "send", "time": 1791316090.9257894, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 149, \"arguments\": {\"command-line\": \"xp /1wx 0x230058040\"}}\n"}
+{"direction": "receive", "time": 1791316090.9261348, "raw": "{\"return\": \"0000000230058040: 0x00000000\\r\\n\", \"id\": 149}\r\n"}
+{"direction": "send", "time": 1791316090.926152, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 150, \"arguments\": {\"command-line\": \"xp /1wx 0x230058060\"}}\n"}
+{"direction": "receive", "time": 1791316090.926495, "raw": "{\"return\": \"0000000230058060: 0x00000000\\r\\n\", \"id\": 150}\r\n"}
+{"direction": "send", "time": 1791316090.926517, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 151, \"arguments\": {\"command-line\": \"xp /1wx 0x230058070\"}}\n"}
+{"direction": "receive", "time": 1791316090.9268773, "raw": "{\"return\": \"0000000230058070: 0x00000000\\r\\n\", \"id\": 151}\r\n"}
+{"direction": "send", "time": 1791316090.9268982, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 152, \"arguments\": {\"command-line\": \"xp /1wx 0x230058080\"}}\n"}
+{"direction": "receive", "time": 1791316090.9272459, "raw": "{\"return\": \"0000000230058080: 0x00000000\\r\\n\", \"id\": 152}\r\n"}
+{"direction": "send", "time": 1791316118.3800583, "raw": "{\"execute\": \"screendump\", \"id\": 153, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0012.ppm\"}}\n"}
+{"direction": "receive", "time": 1791316118.3804252, "raw": "{\"timestamp\": {\"seconds\": 1791316091, \"microseconds\": 102399}, \"event\": \"VNC_CONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791316118.380761, "raw": "{\"timestamp\": {\"seconds\": 1791316091, \"microseconds\": 103886}, \"event\": \"VNC_INITIALIZED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791316118.3810759, "raw": "{\"timestamp\": {\"seconds\": 1791316095, \"microseconds\": 959243}, \"event\": \"VNC_DISCONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791316118.3871698, "raw": "{\"return\": {}, \"id\": 153}\r\n"}
+{"direction": "send", "time": 1791316148.4427218, "raw": "{\"execute\": \"screendump\", \"id\": 154, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0013.ppm\"}}\n"}
+{"direction": "receive", "time": 1791316148.448169, "raw": "{\"return\": {}, \"id\": 154}\r\n"}
+{"direction": "send", "time": 1791316153.0603056, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 155, \"arguments\": {\"command-line\": \"xp /1wx 0x230045818\"}}\n"}
+{"direction": "receive", "time": 1791316153.0609462, "raw": "{\"return\": \"0000000230045818: 0x00000000\\r\\n\", \"id\": 155}\r\n"}
+{"direction": "send", "time": 1791316153.0610049, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 156, \"arguments\": {\"command-line\": \"xp /1wx 0x23004581c\"}}\n"}
+{"direction": "receive", "time": 1791316153.0613701, "raw": "{\"return\": \"000000023004581c: 0xc0180c08\\r\\n\", \"id\": 156}\r\n"}
+{"direction": "send", "time": 1791316153.0613797, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 157, \"arguments\": {\"command-line\": \"xp /1wx 0x230046020\"}}\n"}
+{"direction": "receive", "time": 1791316153.0617082, "raw": "{\"return\": \"0000000230046020: 0x00070045\\r\\n\", \"id\": 157}\r\n"}
+{"direction": "send", "time": 1791316153.061717, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 158, \"arguments\": {\"command-line\": \"xp /1wx 0x23004603c\"}}\n"}
+{"direction": "receive", "time": 1791316153.0620272, "raw": "{\"return\": \"000000023004603c: 0x033c0700\\r\\n\", \"id\": 158}\r\n"}
+{"direction": "send", "time": 1791316153.0620341, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 159, \"arguments\": {\"command-line\": \"xp /1wx 0x230050004\"}}\n"}
+{"direction": "receive", "time": 1791316153.0623481, "raw": "{\"return\": \"0000000230050004: 0x80070001\\r\\n\", \"id\": 159}\r\n"}
+{"direction": "send", "time": 1791316153.0623543, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 160, \"arguments\": {\"command-line\": \"xp /1wx 0x23005001c\"}}\n"}
+{"direction": "receive", "time": 1791316153.0626707, "raw": "{\"return\": \"000000023005001c: 0x057c8000\\r\\n\", \"id\": 160}\r\n"}
+{"direction": "send", "time": 1791316153.062677, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 161, \"arguments\": {\"command-line\": \"xp /1wx 0x230050030\"}}\n"}
+{"direction": "receive", "time": 1791316153.06301, "raw": "{\"return\": \"0000000230050030: 0x02230000\\r\\n\", \"id\": 161}\r\n"}
+{"direction": "send", "time": 1791316153.0630164, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 162, \"arguments\": {\"command-line\": \"xp /1wx 0x230050040\"}}\n"}
+{"direction": "receive", "time": 1791316153.0633307, "raw": "{\"return\": \"0000000230050040: 0x027e0000\\r\\n\", \"id\": 162}\r\n"}
+{"direction": "send", "time": 1791316153.0633366, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 163, \"arguments\": {\"command-line\": \"xp /1wx 0x230050060\"}}\n"}
+{"direction": "receive", "time": 1791316153.0636525, "raw": "{\"return\": \"0000000230050060: 0x00000d00\\r\\n\", \"id\": 163}\r\n"}
+{"direction": "send", "time": 1791316153.0636592, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 164, \"arguments\": {\"command-line\": \"xp /1wx 0x230050070\"}}\n"}
+{"direction": "receive", "time": 1791316153.063968, "raw": "{\"return\": \"0000000230050070: 0x033c0700\\r\\n\", \"id\": 164}\r\n"}
+{"direction": "send", "time": 1791316153.063974, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 165, \"arguments\": {\"command-line\": \"xp /1wx 0x230050080\"}}\n"}
+{"direction": "receive", "time": 1791316153.0642867, "raw": "{\"return\": \"0000000230050080: 0x033c0700\\r\\n\", \"id\": 165}\r\n"}
+{"direction": "send", "time": 1791316153.0642931, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 166, \"arguments\": {\"command-line\": \"xp /1wx 0x230058004\"}}\n"}
+{"direction": "receive", "time": 1791316153.0646193, "raw": "{\"return\": \"0000000230058004: 0x00040000\\r\\n\", \"id\": 166}\r\n"}
+{"direction": "send", "time": 1791316153.0646255, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 167, \"arguments\": {\"command-line\": \"xp /1wx 0x23005801c\"}}\n"}
+{"direction": "receive", "time": 1791316153.0649338, "raw": "{\"return\": \"000000023005801c: 0x00000000\\r\\n\", \"id\": 167}\r\n"}
+{"direction": "send", "time": 1791316153.0649414, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 168, \"arguments\": {\"command-line\": \"xp /1wx 0x230058030\"}}\n"}
+{"direction": "receive", "time": 1791316153.065255, "raw": "{\"return\": \"0000000230058030: 0x00000000\\r\\n\", \"id\": 168}\r\n"}
+{"direction": "send", "time": 1791316153.0652606, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 169, \"arguments\": {\"command-line\": \"xp /1wx 0x230058040\"}}\n"}
+{"direction": "receive", "time": 1791316153.0655777, "raw": "{\"return\": \"0000000230058040: 0x00000000\\r\\n\", \"id\": 169}\r\n"}
+{"direction": "send", "time": 1791316153.0655842, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 170, \"arguments\": {\"command-line\": \"xp /1wx 0x230058060\"}}\n"}
+{"direction": "receive", "time": 1791316153.065897, "raw": "{\"return\": \"0000000230058060: 0x00000000\\r\\n\", \"id\": 170}\r\n"}
+{"direction": "send", "time": 1791316153.0659032, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 171, \"arguments\": {\"command-line\": \"xp /1wx 0x230058070\"}}\n"}
+{"direction": "receive", "time": 1791316153.066216, "raw": "{\"return\": \"0000000230058070: 0x00000000\\r\\n\", \"id\": 171}\r\n"}
+{"direction": "send", "time": 1791316153.0662217, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 172, \"arguments\": {\"command-line\": \"xp /1wx 0x230058080\"}}\n"}
+{"direction": "receive", "time": 1791316153.066535, "raw": "{\"return\": \"0000000230058080: 0x00000000\\r\\n\", \"id\": 172}\r\n"}
+{"direction": "send", "time": 1791316178.513709, "raw": "{\"execute\": \"screendump\", \"id\": 173, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0014.ppm\"}}\n"}
+{"direction": "receive", "time": 1791316178.5140786, "raw": "{\"timestamp\": {\"seconds\": 1791316153, \"microseconds\": 141986}, \"event\": \"VNC_CONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791316178.514411, "raw": "{\"timestamp\": {\"seconds\": 1791316153, \"microseconds\": 143113}, \"event\": \"VNC_INITIALIZED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791316178.5147274, "raw": "{\"timestamp\": {\"seconds\": 1791316175, \"microseconds\": 534742}, \"event\": \"VNC_DISCONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-5wz_08e3/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791316178.5195348, "raw": "{\"return\": {}, \"id\": 173}\r\n"}
+{"direction": "send", "time": 1791316208.5835888, "raw": "{\"execute\": \"screendump\", \"id\": 174, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0015.ppm\"}}\n"}
+{"direction": "receive", "time": 1791316208.5890691, "raw": "{\"return\": {}, \"id\": 174}\r\n"}
+{"direction": "send", "time": 1791316238.6587386, "raw": "{\"execute\": \"screendump\", \"id\": 175, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0016.ppm\"}}\n"}
+{"direction": "receive", "time": 1791316238.6638675, "raw": "{\"return\": {}, \"id\": 175}\r\n"}
+{"direction": "send", "time": 1791316241.8729599, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 176, \"arguments\": {\"command-line\": \"xp /1wx 0x230045818\"}}\n"}
+{"direction": "receive", "time": 1791316241.8734815, "raw": "{\"return\": \"0000000230045818: 0x00000000\\r\\n\", \"id\": 176}\r\n"}
+{"direction": "send", "time": 1791316241.8735528, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 177, \"arguments\": {\"command-line\": \"xp /1wx 0x23004581c\"}}\n"}
+{"direction": "receive", "time": 1791316241.8739402, "raw": "{\"return\": \"000000023004581c: 0xc0180c08\\r\\n\", \"id\": 177}\r\n"}
+{"direction": "send", "time": 1791316241.8739645, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 178, \"arguments\": {\"command-line\": \"xp /1wx 0x230046020\"}}\n"}
+{"direction": "receive", "time": 1791316241.874329, "raw": "{\"return\": \"0000000230046020: 0x00070045\\r\\n\", \"id\": 178}\r\n"}
+{"direction": "send", "time": 1791316241.8743455, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 179, \"arguments\": {\"command-line\": \"xp /1wx 0x23004603c\"}}\n"}
+{"direction": "receive", "time": 1791316241.874813, "raw": "{\"return\": \"000000023004603c: 0x033c0700\\r\\n\", \"id\": 179}\r\n"}
+{"direction": "send", "time": 1791316241.8748684, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 180, \"arguments\": {\"command-line\": \"xp /1wx 0x230050004\"}}\n"}
+{"direction": "receive", "time": 1791316241.875346, "raw": "{\"return\": \"0000000230050004: 0x80070001\\r\\n\", \"id\": 180}\r\n"}
+{"direction": "send", "time": 1791316241.8753998, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 181, \"arguments\": {\"command-line\": \"xp /1wx 0x23005001c\"}}\n"}
+{"direction": "receive", "time": 1791316241.8759863, "raw": "{\"return\": \"000000023005001c: 0x057c8000\\r\\n\", \"id\": 181}\r\n"}
+{"direction": "send", "time": 1791316241.8760464, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 182, \"arguments\": {\"command-line\": \"xp /1wx 0x230050030\"}}\n"}
+{"direction": "receive", "time": 1791316241.8766565, "raw": "{\"return\": \"0000000230050030: 0x016c0000\\r\\n\", \"id\": 182}\r\n"}
+{"direction": "send", "time": 1791316241.876719, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 183, \"arguments\": {\"command-line\": \"xp /1wx 0x230050040\"}}\n"}
+{"direction": "receive", "time": 1791316241.8772225, "raw": "{\"return\": \"0000000230050040: 0x01c70000\\r\\n\", \"id\": 183}\r\n"}
+{"direction": "send", "time": 1791316241.8772793, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 184, \"arguments\": {\"command-line\": \"xp /1wx 0x230050060\"}}\n"}
+{"direction": "receive", "time": 1791316241.877747, "raw": "{\"return\": \"0000000230050060: 0x00000d00\\r\\n\", \"id\": 184}\r\n"}
+{"direction": "send", "time": 1791316241.8778083, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 185, \"arguments\": {\"command-line\": \"xp /1wx 0x230050070\"}}\n"}
+{"direction": "receive", "time": 1791316241.8782876, "raw": "{\"return\": \"0000000230050070: 0x033c0700\\r\\n\", \"id\": 185}\r\n"}
+{"direction": "send", "time": 1791316241.8783414, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 186, \"arguments\": {\"command-line\": \"xp /1wx 0x230050080\"}}\n"}
+{"direction": "receive", "time": 1791316241.878826, "raw": "{\"return\": \"0000000230050080: 0x033c0700\\r\\n\", \"id\": 186}\r\n"}
+{"direction": "send", "time": 1791316241.8788881, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 187, \"arguments\": {\"command-line\": \"xp /1wx 0x230058004\"}}\n"}
+{"direction": "receive", "time": 1791316241.8793905, "raw": "{\"return\": \"0000000230058004: 0x00040000\\r\\n\", \"id\": 187}\r\n"}
+{"direction": "send", "time": 1791316241.8794484, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 188, \"arguments\": {\"command-line\": \"xp /1wx 0x23005801c\"}}\n"}
+{"direction": "receive", "time": 1791316241.8801782, "raw": "{\"return\": \"000000023005801c: 0x00000000\\r\\n\", \"id\": 188}\r\n"}
+{"direction": "send", "time": 1791316241.8802402, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 189, \"arguments\": {\"command-line\": \"xp /1wx 0x230058030\"}}\n"}
+{"direction": "receive", "time": 1791316241.8807883, "raw": "{\"return\": \"0000000230058030: 0x00000000\\r\\n\", \"id\": 189}\r\n"}
+{"direction": "send", "time": 1791316241.8808491, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 190, \"arguments\": {\"command-line\": \"xp /1wx 0x230058040\"}}\n"}
+{"direction": "receive", "time": 1791316241.8812366, "raw": "{\"return\": \"0000000230058040: 0x00000000\\r\\n\", \"id\": 190}\r\n"}
+{"direction": "send", "time": 1791316241.8812582, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 191, \"arguments\": {\"command-line\": \"xp /1wx 0x230058060\"}}\n"}
+{"direction": "receive", "time": 1791316241.8816273, "raw": "{\"return\": \"0000000230058060: 0x00000000\\r\\n\", \"id\": 191}\r\n"}
+{"direction": "send", "time": 1791316241.8816478, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 192, \"arguments\": {\"command-line\": \"xp /1wx 0x230058070\"}}\n"}
+{"direction": "receive", "time": 1791316241.8820093, "raw": "{\"return\": \"0000000230058070: 0x00000000\\r\\n\", \"id\": 192}\r\n"}
+{"direction": "send", "time": 1791316241.8820248, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 193, \"arguments\": {\"command-line\": \"xp /1wx 0x230058080\"}}\n"}
+{"direction": "receive", "time": 1791316241.8823822, "raw": "{\"return\": \"0000000230058080: 0x00000000\\r\\n\", \"id\": 193}\r\n"}
+{"direction": "send", "time": 1791316266.53384, "raw": "{\"execute\": \"query-status\", \"id\": 194}\n"}
+{"direction": "receive", "time": 1791316266.5342224, "raw": "{\"return\": {\"status\": \"running\", \"running\": true}, \"id\": 194}\r\n"}
+{"direction": "send", "time": 1791316266.5342894, "raw": "{\"execute\": \"query-cpus-fast\", \"id\": 195}\n"}
+{"direction": "receive", "time": 1791316266.5348706, "raw": "{\"return\": [{\"thread-id\": 2749184, \"qom-type\": \"apple-a13-cpu\", \"qom-path\": \"/machine/cluster0/cpu0\", \"cpu-index\": 0, \"target\": \"aarch64\"}, {\"thread-id\": 2749185, \"qom-type\": \"apple-a13-cpu\", \"qom-path\": \"/machine/cluster0/cpu1\", \"cpu-index\": 1, \"target\": \"aarch64\"}], \"id\": 195}\r\n"}
+{"direction": "send", "time": 1791316266.5349388, "raw": "{\"execute\": \"screendump\", \"id\": 196, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/framebuffer.ppm\"}}\n"}
+{"direction": "receive", "time": 1791316266.5401146, "raw": "{\"return\": {}, \"id\": 196}\r\n"}
+{"direction": "send", "time": 1791316266.542729, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 197, \"arguments\": {\"name\": \"apple_mt_spi_host_event\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791316266.5434592, "raw": "{\"return\": {}, \"id\": 197}\r\n"}
+{"direction": "send", "time": 1791316266.543475, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 198, \"arguments\": {\"name\": \"apple_mt_spi_enqueue\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791316266.544194, "raw": "{\"return\": {}, \"id\": 198}\r\n"}
+{"direction": "send", "time": 1791316266.5442016, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 199, \"arguments\": {\"name\": \"apple_mt_spi_dequeue\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791316266.5449288, "raw": "{\"return\": {}, \"id\": 199}\r\n"}
+{"direction": "send", "time": 1791316266.544935, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 200, \"arguments\": {\"name\": \"apple_mt_spi_tx_drained\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791316266.5457551, "raw": "{\"return\": {}, \"id\": 200}\r\n"}
+{"direction": "send", "time": 1791316266.5457613, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 201, \"arguments\": {\"name\": \"apple_mt_spi_boot_command\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791316266.5465398, "raw": "{\"return\": {}, \"id\": 201}\r\n"}
+{"direction": "send", "time": 1791316266.5465465, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 202, \"arguments\": {\"name\": \"apple_mt_spi_control\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791316266.5471683, "raw": "{\"return\": {}, \"id\": 202}\r\n"}
+{"direction": "send", "time": 1791316266.5471766, "raw": "{\"execute\": \"quit\", \"id\": 203}\n"}
+{"direction": "receive", "time": 1791316266.5474162, "raw": "{\"timestamp\": {\"seconds\": 1791316266, \"microseconds\": 547263}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"}
+{"direction": "receive", "time": 1791316266.5480573, "raw": "{\"return\": {}, \"id\": 203}\r\n"}
