@@ -1,0 +1,29 @@
+  258f7 %s must be run as root
+  2e89c usage: spindump [<pid/partial name> [duration [interval]]] <options>
+  2e8e2    Spindump gathers user and kernel stacks for every process.
+  2e921    pid/partial name
+  2e935                 The target process (sorted topmost in the output file).
+  2e97d                 "-notarget" may be specified instead to avoid providing
+  2e9c5                 a target process when duration is provided.
+  2ea01    duration     The duration of the sampling in seconds. Default 10.
+  2ea46    interval     The number of miliseconds between samples. Default 10.
+  2ea8e    Giving spindump no parameters will use no target with the default
+  2ead3    duration and interval.
+  2f2de    -noText      Omit textual format (include binary format only)
+  2f31f    -noBinary    Omit binary format (include text format only)
+  2f35d    -noFile      Do not output to a file (the report, including binary format,
+  2f3ab                 will go to stdout instead)
+  2f3d6    -stdout      Print the report to stdout
+  2f401    -json        Print the report in json format
+  2f432    -siginfo     After sampling, wait for SIGINFO before reporting
+  2f474    -timelimit <t>  Exit after t seconds even if the report hasn't been saved
+  2fa58    -onlyTarget  Only sample the target process (allows faster sampling,
+  2faa0                 use 'u' to specify interval in microseconds: e.g. 500u)
+  2fae8       -proc <pid/partial name>
+  2fb07                 When specifying -onlyTarget, sample the specified process
+  2fb51                 in addition to the target process (may be passed multiple times)
+  2fba2    -symbolicate (default with -i) Symbolicate the report from information on the
+  2fbf3                 current system
+  2fc12    -noSymbolicate (default without -i) Do not symbolicate the report.
+  2fc58                  UUID+offset information will still be gathered for later
+  2fca2                  symbolication

@@ -1,0 +1,21 @@
+100007250:	ldr	x0, [x26]
+100007254:	bl	0x100022168 ; symbol stub for: _basename
+100007258:	str	x0, [sp]
+10000725c:	adr	x1, #124571 ; literal pool for: "%s must be run as root\n"
+100007260:	nop
+100007264:	mov	x0, x19
+100007268:	bl	0x100022428 ; symbol stub for: _fprintf
+10000726c:	b	0x1000089fc
+10001dc00:	ldr	x8, [sp, #0x1c8]
+10001dc04:	ldr	x20, [x8, x27, lsl #3]
+10001dc08:	mov	x0, x20
+10001dc0c:	mov	x1, x19
+10001dc10:	bl	0x1000226b8 ; symbol stub for: _objc_msgSend
+10001dc14:	mov	x1, x0
+10001dc18:	mov	x0, x22
+10001dc1c:	bl	0x100022988 ; symbol stub for: _stackshot_config_set_pid
+10001dc20:	mov	x0, x22
+10001dc24:	bl	0x100022908 ; symbol stub for: _stackshot_capture_with_config
+10001dc28:	cbz	w0, 0x10001dc48
+10001dc2c:	cmp	w0, #0x2
+10001dc30:	b.ne	0x10001dc80
