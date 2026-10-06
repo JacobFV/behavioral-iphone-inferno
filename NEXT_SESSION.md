@@ -18,6 +18,10 @@ Suggested opening instruction:
 - Local pinned dependencies/toolchain under `.local-build`; no sudo required.
 - One upstream build fix: Apple SoC explicitly links LZFSE. Runtime unchanged.
 - Independent QMP check passed, including real t8030 machine enumeration.
+- Real iOS 14.0 beta 5 recovery boot now works with simulated SEP: kernel,
+  `md0`, launchd, restored_external waiting for host, 828x1792 recovery framebuffer.
+  This is not installed iOS/SpringBoard or an app journey. See PROGRESS.md and
+  committed `companion/evidence/recovery-ramdisk*` raw evidence.
 - Previous project and backup: `../behavioral-iphone` and
   `../behavioral-iphone-handoff.bundle`. Its workers/services are stopped.
 
@@ -26,12 +30,13 @@ Run from this directory:
 ```sh
 ./companion/run status
 ./companion/run check
+./companion/run boot --profile /home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/profile.json --seconds 120
 ```
 
 Rebuild only when source/build inputs change:
 
 ```sh
-./companion/run build --jobs 8
+./companion/run build --jobs 8 --simulated-sep
 ```
 
 The build intentionally uses committed source. Commit source changes before
@@ -41,13 +46,22 @@ that directory together: the binary references local libraries/resources.
 
 ## Next concrete work
 
+The initial firmware/profile/recovery milestone below has now executed. Continue
+with the isolated Linux USB companion and a joint USB enumeration run; see
+companion/USB.md and the latest PROGRESS.md entries. `companion/run boot` accepts
+`--usb-socket /absolute/private/usb.sock` for a running companion. Full installed
+disk boot still needs an evidence-backed path that obeys the no-forged-signatures
+rule; do not silently follow upstream's ticket-forging restore instructions.
+No user input is needed for repeating the proven recovery run.
+
 1. Read the pinned Inferno setup documentation and the actual t8030 initialization
    in `hw/arm/apple-silicon/t8030.c`. Determine one supported image/OS/device
    combination and its complete input provenance. Do not equate version branches
    in source with proven boot/app support.
-2. Prepare user-authorized firmware/disk inputs outside Git and record their hashes
-   and acquisition/preparation procedure. Nothing has been downloaded or prepared
-   yet. The user has a MacBook Air with limited memory available if preparation
+2. The official Apple IPSW and verified kernel/DTB/trustcache/ramdisk profile are
+   now outside Git in `/home/brandonin/.local/share/inferno/images/ios14b5/`.
+   `companion/run prepare` reproduces extraction and manifest/hash verification.
+   The user has a MacBook Air with limited memory available if preparation
    needs macOS; prefer Linux work where feasible. Ask for only genuinely missing
    inputs after identifying a concrete path.
 3. Build a headless boot profile with isolated writable disk state, serial logs,
@@ -71,6 +85,10 @@ that directory together: the binary references local libraries/resources.
   blanket permissions block.
 - Current bootstrap is locked for Ubuntu24.04 ARM64. x86/Linux or another OS
   requires a reviewed host-specific dependency setup.
+- Default upstream data encryption rejects simulated SEP. The current working
+  build explicitly uses `--simulated-sep`; an ordinary build without this flag
+  restores upstream's encrypted mode. Original binary/manifest are retained in
+  `.local-build/binaries/emulated-sep/`.
 
 ## User preferences that must persist
 

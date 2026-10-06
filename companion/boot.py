@@ -102,6 +102,11 @@ def main():
     parser.add_argument('--output', type=Path)
     parser.add_argument('--usb-socket', type=Path,
                         help='existing local Unix socket of a running isolated USB companion')
+    parser.add_argument('--root-image', type=Path,
+                        help='raw 4096-sector GPT base; copied before any guest writes')
+    parser.add_argument('--root-sha256', help='required expected SHA256 of --root-image')
+    parser.add_argument('--disk-boot', action='store_true',
+                        help='experimental direct root boot instead of recovery ramdisk')
     args = parser.parse_args()
     if not 1 <= args.seconds <= 86400:
         parser.error('--seconds must be between 1 and 86400')
@@ -120,12 +125,24 @@ def main():
         usb_socket = args.usb_socket.resolve(strict=True) if args.usb_socket else None
         if usb_socket and not stat.S_ISSOCK(usb_socket.stat().st_mode):
             raise ValueError('--usb-socket must name an existing Unix socket')
+        if bool(args.root_image) != bool(args.root_sha256):
+            raise ValueError('--root-image and --root-sha256 must be supplied together')
+        if args.disk_boot and not args.root_image:
+            raise ValueError('--disk-boot requires --root-image')
+        root_image = args.root_image.resolve(strict=True) if args.root_image else None
+        if root_image:
+            if not root_image.is_file() or digest(root_image) != args.root_sha256:
+                raise ValueError('Root image missing or SHA256 mismatch')
+            with root_image.open('rb') as stream:
+                stream.seek(4096)
+                if stream.read(8) != b'EFI PART':
+                    raise ValueError('Root image must have GPT with 4096-byte sectors (NVMe geometry)')
     except (OSError, ValueError, KeyError, TypeError) as exc:
         parser.error(str(exc))
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ')
     output = (args.output or repo / '.local-build/reports' / ('boot-' + stamp)).resolve()
     output.mkdir(parents=True, exist_ok=False, mode=0o700)
-    report = {'kind': 't8030_recovery_ramdisk_experiment', 'attempt_completed': False,
+    report = {'kind': ('t8030_direct_root_experiment' if args.disk_boot else 't8030_recovery_ramdisk_experiment'), 'attempt_completed': False,
               'ios_booted': False, 'app_executed': False,
               'milestone_note': 'QMP running and framebuffer captures alone do not establish iOS boot.',
               'profile_path': str(profile_path), 'profile_sha256': digest(profile_path),
@@ -134,6 +151,9 @@ def main():
               'build_manifest': manifest, 'runner_sha256': digest(Path(__file__)),
               'companion_revision': subprocess.check_output(['git', '-C', str(repo), 'rev-parse', 'HEAD'], text=True).strip(),
               'duration_limit_seconds': args.seconds, 'disks': [], 'observations': []}
+    if root_image:
+        report['root_base'] = {'path': str(root_image), 'sha256': args.root_sha256,
+                               'bytes': root_image.stat().st_size, 'copied_before_use': True}
     (output / 'profile.json').write_text(json.dumps(profile, indent=2) + '\n')
     (output / 'build-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
     process = qmp = connection = None
@@ -156,13 +176,23 @@ def main():
                        '-display', 'none', '-vnc', 'unix:' + str(Path(tmp) / 'vnc.sock'),
                        '-monitor', 'none', '-serial', 'file:' + str(output / 'serial.log'),
                        '-qmp', 'unix:' + endpoint + ',server=on,wait=off', '-no-reboot']
+            if args.disk_boot:
+                command[2] += ',boot-mode=exit_recovery'
+                index = command.index('-initrd')
+                del command[index:index + 2]
             disk_dir = output / 'disks'
             disk_dir.mkdir()
             for nsid, (name, size, nstype) in enumerate(DISKS, 1):
                 disk = disk_dir / (name + '.raw')
-                with disk.open('xb') as handle:
-                    handle.truncate(size)
-                report['disks'].append({'path': str(disk), 'initial_state': 'fresh sparse zero-filled raw',
+                if name == 'root' and root_image:
+                    subprocess.run(['cp', '--reflink=auto', '--sparse=always', '--',
+                                    str(root_image), str(disk)], check=True)
+                    size = disk.stat().st_size
+                else:
+                    with disk.open('xb') as handle:
+                        handle.truncate(size)
+                initial = 'private copy of hash-verified root base' if name == 'root' and root_image else 'fresh sparse zero-filled raw'
+                report['disks'].append({'path': str(disk), 'initial_state': initial,
                                         'bytes': size, 'nsid': nsid, 'nstype': nstype})
                 device = 'apple-nvram' if name == 'nvram' else 'nvme-ns'
                 device_id = ',id=nvram' if name == 'nvram' else ''
