@@ -103,6 +103,8 @@ def main():
     parser.add_argument('--output', type=Path)
     parser.add_argument('--guest-errors', action='store_true',
                         help='record QEMU guest-error diagnostics in guest-errors.log')
+    parser.add_argument('--launchd-unsecure-cache', action='store_true',
+                        help='use original loader support for an edited launchd configuration on a disposable disk')
     parser.add_argument('--probe-journey', action='store_true',
                         help='require owned UIKit probe appearance, one QMP tap and before/after captures')
     parser.add_argument('--capture-interval', type=float, default=0,
@@ -124,6 +126,8 @@ def main():
     args = parser.parse_args()
     if args.probe_journey and not args.disk_boot:
         parser.error('--probe-journey requires --disk-boot')
+    if args.launchd_unsecure_cache and not args.disk_boot:
+        parser.error('--launchd-unsecure-cache requires --disk-boot')
     if args.auxiliary_state and not args.root_image:
         parser.error('--auxiliary-state requires an explicit --root-image and hash')
     if not 1 <= args.seconds <= 86400:
@@ -231,6 +235,9 @@ def main():
             if args.disk_boot:
                 index = command.index('-initrd')
                 del command[index:index + 2]
+            if args.launchd_unsecure_cache:
+                command[command.index('-append') + 1] += ' launchd_unsecure_cache=1'
+                report['launchd_unsecure_cache'] = True
             disk_dir = output / 'disks'
             disk_dir.mkdir()
             for nsid, (name, size, nstype) in enumerate(DISKS, 1):
