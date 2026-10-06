@@ -107,3 +107,34 @@ uses the same open-by-ID method; its [entitlement file](https://github.com/Procu
 provides launch privilege, but whether our guest requires that permission is
 still an execution question. Do not copy its broad utility entitlement sets
 without a demonstrated need.
+
+## Disposable staging experiment
+
+`build.py` also produces independently ad-hoc-signed `inferno-stage-app` from
+`Stage.c`. `prepare-stage.py --help` describes the required verified decoded
+recovery ramdisk, matching profile, built artifacts, HFS writer and fresh external
+output. It clones the ramdisk, moves the original restored job out of LaunchDaemons,
+adds owned assets and the owned stager job, then verifies every asset's readback
+SHA256. It never uses HFS `rm`, which has an observed attribute-tree problem.
+
+Run the resulting profile with the main boot runner's `--ramdisk-boot`, an
+explicit stopped prepared root image and its SHA256, plus `--auxiliary-state`
+pointing to the SAME stopped preparation report. The runner copies both root and
+all six small namespaces; the keybag and its effaceable storage must stay paired.
+Do not omit auxiliary state or reuse a live disk. Keep the original inputs.
+
+The stager is intentionally specific to the verified prepared21 layout:
+System `/dev/disk0s1s1`, Data `/dev/disk0s1s2`. It confirms the mounted System has
+SystemVersion.plist and the Data volume is named Data. It requests original
+`mount_apfs -o rw` and checks neither mount reports MNT_RDONLY before adding files.
+It refuses an existing `/inferno` staging directory or any existing owned target;
+no Apple file is overwritten. Original copyfile performs the four owned-file
+copies, followed by ownership/mode setting and complete guest byte comparisons
+against the ramdisk inputs. It then syncs and normally unmounts both volumes.
+
+Accept staging only when raw serial contains all four matching byte comparisons,
+`INFERNO_STAGE_UNMOUNT data=0`, `system=0`, and `INFERNO_STAGE_DONE result=0`.
+Stop the recovery runner cleanly, hash the ENTIRE stopped disk set, and use that
+report's root plus auxiliary state for the separate direct app-boot experiment.
+Neither successful staging nor a launcher service acknowledgement proves an app
+screen, launch or tap; the framebuffer and interaction evidence remain necessary.
