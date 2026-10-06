@@ -20,6 +20,44 @@ static int (*service_open)(unsigned,unsigned,unsigned,unsigned *),(*service_clos
 static int descriptor_parser_exported;
 static const void *key_callbacks,*value_callbacks;
 static Object true_value;
+static Object (*copy_property)(unsigned,Object,Object,unsigned);
+static unsigned long (*type_id)(Object),(*boolean_type)(void),(*number_type)(void),(*string_type)(void);
+static unsigned char (*boolean_value)(Object),(*number_value)(Object,int,void *),(*string_value)(Object,char *,long,unsigned);
+static void diagnostic_symbols(void *cf,void *io) {
+    *(void **)(&copy_property)=dlsym(io,"IORegistryEntryCreateCFProperty");
+    *(void **)(&type_id)=dlsym(cf,"CFGetTypeID");
+    *(void **)(&boolean_type)=dlsym(cf,"CFBooleanGetTypeID");
+    *(void **)(&number_type)=dlsym(cf,"CFNumberGetTypeID");
+    *(void **)(&string_type)=dlsym(cf,"CFStringGetTypeID");
+    *(void **)(&boolean_value)=dlsym(cf,"CFBooleanGetValue");
+    *(void **)(&number_value)=dlsym(cf,"CFNumberGetValue");
+    *(void **)(&string_value)=dlsym(cf,"CFStringGetCString");
+}
+static void event_properties(unsigned service,unsigned long long id) {
+    const char *keys[]={"Built-In","PrimaryUsagePage","PrimaryUsage","DisplayIntegrated","Transport","Product",0};
+    if(!copy_property || !type_id || !boolean_type || !number_type || !string_type || !boolean_value || !number_value || !string_value) {
+        printf("INFERNO_HID_PROPERTY registry_id=%llu result=diagnostic_symbols_unavailable\n",id);fflush(0);return;
+    }
+    for(unsigned i=0;keys[i];i++) {
+        Object key=string(0,keys[i],0x08000100);
+        Object value=key?copy_property(service,key,0,0):0;
+        if(key)release(key);
+        if(!value){printf("INFERNO_HID_PROPERTY registry_id=%llu key=%s present=0\n",id,keys[i]);continue;}
+        unsigned long type=type_id(value);
+        if(type==boolean_type())
+            printf("INFERNO_HID_PROPERTY registry_id=%llu key=%s present=1 type=boolean value=%u\n",id,keys[i],(unsigned)boolean_value(value));
+        else if(type==number_type()) {
+            long long number=0;int ok=number_value(value,4,&number); /* kCFNumberSInt64Type */
+            printf("INFERNO_HID_PROPERTY registry_id=%llu key=%s present=1 type=number converted=%d value=%lld\n",id,keys[i],ok,number);
+        } else if(type==string_type()) {
+            char text[192]={0};int ok=string_value(value,text,sizeof(text),0x08000100);text[191]=0;
+            for(unsigned j=0;text[j];j++)if((unsigned char)text[j]<32 || (unsigned char)text[j]>126)text[j]='?';
+            printf("INFERNO_HID_PROPERTY registry_id=%llu key=%s present=1 type=string converted=%d value=%.191s\n",id,keys[i],ok,ok?text:"(unavailable)");
+        } else printf("INFERNO_HID_PROPERTY registry_id=%llu key=%s present=1 type=other type_id=%lu\n",id,keys[i],type);
+        release(value);
+    }
+    fflush(0);
+}
 /* HID1.11 short items: Digitizers/TouchScreen Application, one Finger Logical.
  * Report0: tip/in-range/confidence bits,5padding bits,contact ID8,X16,Y16,count8.
  * Coordinates unsigned logical0..32767; no Apple vendor usage or identity. */
@@ -50,7 +88,7 @@ static int initialize(void) {
     key_callbacks=dlsym(cf,"kCFTypeDictionaryKeyCallBacks");value_callbacks=dlsym(cf,"kCFTypeDictionaryValueCallBacks");
     Object *truth=(Object *)dlsym(cf,"kCFBooleanTrue");
     if(!key_callbacks || !value_callbacks || !truth)return -101;
-    true_value=*truth;return 0;
+    true_value=*truth;diagnostic_symbols(cf,io);return 0;
 }
 static int property(Object dict,const char *key,Object value) {
     Object k=string(0,key,0x08000100);
@@ -131,6 +169,7 @@ static int event_service_ready(void) {
             if(conforms(node,"IOHIDEventService")) {
                 unsigned long long child_id=0;registry_id(node,&child_id);
                 node_inventory(node,"matched_event_service");
+                event_properties(node,child_id);
                 printf("INFERNO_HID_MATCH device_id=%llu event_service_id=%llu\n",id,child_id);fflush(0);found=1;
             }
             object_release(node);if(found || ++count>=64)break;

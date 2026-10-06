@@ -8,6 +8,36 @@ extern unsigned long long mach_absolute_time(void);
 struct timebase {unsigned numer,denom;};
 extern int mach_timebase_info(struct timebase *);
 extern void (*signal(int,void (*)(int)))(int);
+extern void *dlopen(const char *,int),*dlsym(void *,const char *);
+static unsigned (*notify_register_read)(const char *,int *),(*notify_check_read)(int,int *),(*notify_cancel_read)(int);
+static int readiness_token=-1,readiness_poll_enabled;
+static unsigned readiness_observations;
+static void readiness_watch_start(void) {
+    void *lib=dlopen("/usr/lib/system/libsystem_notify.dylib",2);
+    if(lib) {
+        *(void **)(&notify_register_read)=dlsym(lib,"notify_register_check");
+        *(void **)(&notify_check_read)=dlsym(lib,"notify_check");
+        *(void **)(&notify_cancel_read)=dlsym(lib,"notify_cancel");
+    }
+    if(!notify_register_read || !notify_check_read || !notify_cancel_read) {
+        printf("INFERNO_HID_SETUP_WATCH result=symbols_unavailable\n");fflush(0);return;
+    }
+    unsigned status=notify_register_read("com.apple.purplebuddy.readytoexit",&readiness_token);
+    int initial=0;unsigned clear_status=status?status:notify_check_read(readiness_token,&initial);
+    readiness_poll_enabled=!status && !clear_status;
+    printf("INFERNO_HID_SETUP_WATCH register_status=%u initial_clear_status=%u initial_check=%d initial_is_not_event=1 timestamp=%llu\n",status,clear_status,initial,mach_absolute_time());fflush(0);
+    if(status)readiness_token=-1;
+}
+static void readiness_watch_poll(const char *phase) {
+    if(!readiness_poll_enabled)return;
+    int changed=0;unsigned status=notify_check_read(readiness_token,&changed);
+    if(status || changed) {
+        if(readiness_observations++<64)
+            printf("INFERNO_HID_SETUP_NOTIFICATION phase=%s check_status=%u changed=%d timestamp=%llu readiness_state=unqueried\n",phase,status,changed,mach_absolute_time());
+        fflush(0);
+    }
+    if(status)readiness_poll_enabled=0;
+}
 static volatile int stopping;
 static void stop(int sig) {(void)sig;stopping=1;}
 int inferno_hid_stopping(void) {return stopping;}
@@ -56,7 +86,9 @@ static int handle(const char *line,char seen[32][33],unsigned *count) {
     for(unsigned i=0;i<33;i++)seen[*count][i]=g.request_id[i];
     ++*count;
     printf("INFERNO_HID_REQUEST request_id=%s kind=%s x0=%u y0=%u x1=%u y1=%u duration_ms=%u timestamp=%llu\n",g.request_id,g.swipe?"SWIPE":"TAP",g.x0,g.y0,g.x1,g.y1,g.duration_ms,mach_absolute_time());fflush(0);
+    readiness_watch_poll("before_gesture");
     int status=inferno_hid_dispatch(&g);
+    readiness_watch_poll("after_gesture");
     printf("INFERNO_HID_ACK request_id=%s attempt_status=%d delivery=unproven timestamp=%llu\n",g.request_id,status,mach_absolute_time());fflush(0);
     return status;
 }
@@ -73,12 +105,14 @@ int main(int argc,char **argv) {
     int fd=open("/dev/console",4); /* Darwin O_RDONLY | O_NONBLOCK; leave termios unchanged. */
     if(fd<0){printf("INFERNO_HID_OPEN_FAILED errno=%d\n",*__error());fflush(0);return 66;}
     printf("INFERNO_HID_BEGIN automatic_gestures=0\n");fflush(0);
+    readiness_watch_start();
     int backend=inferno_hid_prepare();
     printf("INFERNO_HID_BACKEND_INITIALIZE status=%d delivery=unproven\n",backend);fflush(0);
     printf("INFERNO_HID_READY protocol=1 console=/dev/console max_requests=32 lifetime_seconds=7200 automatic_gestures=0\n");fflush(0);
     char line[160],seen[32][33];unsigned used=0,count=0,rejected=0;int discard=0;
     unsigned long long began=mach_absolute_time();
     while(!stopping && count<32 && rejected<32) {
+        readiness_watch_poll("idle");
         unsigned long long ticks=mach_absolute_time()-began;
         if((ticks/(unsigned long long)tb.denom)*tb.numer>=7200000000000ULL)break;
         char buffer[128];long got=read(fd,buffer,sizeof(buffer));
@@ -94,5 +128,6 @@ int main(int argc,char **argv) {
             else if(!discard)line[used++]=(char)c;
         }
     }
+    if(readiness_token>=0 && notify_cancel_read)notify_cancel_read(readiness_token);
     inferno_hid_close();close(fd);printf("INFERNO_HID_EXIT requests=%u rejected=%u stop=%d\n",count,rejected,stopping);fflush(0);return 0;
 }

@@ -1,0 +1,30 @@
+{
+  "scope": "Observation-only candidate for system-home boundary; no descriptor, device properties, report dispatch, gesture limits, entitlement or notification producer change.",
+  "registry_query": {
+    "api": "IORegistryEntryCreateCFProperty on the actual matched IOHIDEventService descendant",
+    "keys": [
+      "Built-In",
+      "PrimaryUsagePage",
+      "PrimaryUsage",
+      "DisplayIntegrated",
+      "Transport",
+      "Product"
+    ],
+    "bounds": "Exactly six keys; CF type checks; strings at most191 printable bytes; numbers converted as signed64; Boolean actualvalue; other types only typeID. No whole dictionary or data value dump.",
+    "permission": "Read-only original IOKit property API; existing two owned virtual-device/userclient permissions unchanged. Diagnostic symbols unavailable are reported without blocking existing backend initialization."
+  },
+  "notification_watch": {
+    "name": "com.apple.purplebuddy.readytoexit",
+    "original_provenance": "SpringBoard original GOT0x1d40d8568\u2192global0x1d0fcb078\u2192CFString0x1dac81708; original Setup posts using CFNotificationCenterGetDarwinNotifyCenter at0x100010d04 and CFNotificationCenterPostNotification0x100010d20.",
+    "api": "notify_register_check, initial notify_check to clear initial registration signal, later notify_check, notify_cancel on exit.",
+    "permission": "Public read-only notification subscription/check APIs; no added entitlement and all actual registration/check errors are logged.",
+    "placement": "Start before virtual HID backend framework initialization; poll idle and before/after each explicit gesture.",
+    "limits": "At most64 observation/error lines; unchanged7200-second helper lifetime. Changed flag means notification observed after registration, not current SpringBoard readiness or delivery proof.",
+    "prohibited_calls_absent": [
+      "notify_post",
+      "notify_set_state",
+      "CFNotificationCenterPostNotification"
+    ]
+  },
+  "validation_before_build": "arm64 iOS syntax-only -Wall -Wextra -Werror passed."
+}
