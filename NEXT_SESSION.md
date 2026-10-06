@@ -7,39 +7,48 @@ continuous work across status questions and intermediate milestones. Parallel
 workers are authorized for independent work; use isolated worktrees and commit.
 No handoff or pause has been requested.
 
-## Current execution, 2026-10-06 10:49 local
+## Current execution, 2026-10-06 11:07 local
 
-**Boot33 AND34 completed the strict real UIKit journey. No VM currently live.**
-Both use frozen48/app19/reader52/launcher13/HID45/e3da emulator. Two consecutive
-passes with genuine lifecycle/tap1, root-reviewed0→1 and both strictQMPcaptures.
-No statisticalreliability claim;32 is interrupted, never countit asstrictcomplete.
+**Boot36 is live, same timing binaries as successful35.** Private VNC
+`/tmp/inferno-boot-jw8en1i_/vnc.sock`, report `.local-build/reports/app-boot-36`,
+runnerPID2594889 dedicated7200 session. Root owns input; utility
+`/tmp/inferno-explicit-gesture-36.py`; observer session99028 from timingobserver35.
+Actual timing parser live complete in launch-timing-live.json, bootAEE5FC26-9B9D-
+4321-B6E8-71A52A6F41E1 appPID260, timebase125/3. Request→main116.572583ms,
+main→appeared697.905708ms/main→active807.78175ms/request→active924.354333ms.
+These are lifecycle intervals, no screen-presentation/native-device/warm claim.
+Root reviewed lock, first swipe f11bde4c2c6548f2a3859d5835c1b1c7; reviewed persistent
+cover at1791310018.7203543, second swipe670ab78497d943169145dc987a694d73 sent.
+NEXT: review settled beta dialog, Close, counter0, strictbefore, onetap, review1,
+strictafter (36 uses default stop, not new keepalive). Then preserve and freeVMslot.
 
-34 report `.local-build/reports/app-boot-34/report.json`, normalQMPquit33/emulator0/
-errornull/306.12654s. All7hashes andall4backingancestorsunchanged. Root141426688bytes
-SHA37888e60f0654a3088d64a1ed35a9ff8eace071645d9c76fba684e5e411a65b4.
-QMPbeforeSHAf54fb9ed7354a8d8b95a90087541a66e91245f7fda5b613088a6c32f288580f7;
-afterSHAcf314295d9a451e0fc2a9c98957b4bc50e5d34397e2ea95082669eea43c91fad.
-Both PNGderivatives reviewed/pixelequal; capture-conversion.json ready. Bootworker
-preservingfull34evidence. Rootobserver87083finished; observations tracked separately.
+35 completed strict0→1 and five actual timestamp hooks; rawjourneyaf110621e2,
+timing/arrival evidence3619d5d00b. NormalQMPquit/emulator0/errornull/373.293673s,
+root107151360bytesSHA9a9c32bccc19e75b6e1931c60e48356fef00a9eae1bf4b54727dcd603afc3e72,
+all7/all4ancestors unchanged. Firstboot35 request→main245.107292ms,
+main→active694.6705ms/request→active939.777792ms. Same frozen49 as36.
+Boots33/34 previously strictpassed app19/reader52; independent raw/hash comparison
+2b53a16d2e.32 remains interrupted before strictafter, never countcomplete.
 
-33 normalemulator0/errornull/285.89601s, root97779712bytesSHA
-118a7ae8db7902db87d3449c212fb2dd59dcaae30ef44bb4528c1e931b60fb87.
-Evidence `companion/evidence/owned-loopback-strict-journey-33*`, cae829e719/462d24353c;
-actualhostarrivals `app-loopback-33-observations`,de305a4732.
+**Next implementation (active, not staged):** nativeworker owns app subsequent
+resign/background/active timing + fixed OPEN through sole existing HIDconsole reader.
+Fresh launcher child with fixedpath/ID, mobileidentity, openonly mode/no registration,
+finite8 requests, onechild, no replay or arbitraryargv. No processkill yet.
+Needs actualHome/background then sameincarnation reopen; icon visibility unknown.
+Design68aae80dd7. Original proc-incarnation ABI must be audited.
+Diskworker owns matching host OPEN mailbox after native agrees exactgrammar;
+shared duplicateID set with HID, bounded/no automaticcommands. Coordinate directly.
+Host keepalive47a2758de9 integrated and firmware-free checked: explicit
+--probe-keep-running requires journey+mailbox, excludesautomaticinput. Afterstrictafter
+holdsVM; finish-run exact{} only aftercomplete triggers normalcleanup. For37, not36.
 
-32 provedtransport+visual0→1 butSignal15 beforestrictafter. Senderunknown; observers
-read-only. 33/34dedicatedsessionsremove toolsessiondependency, notproofthepriorcause.
-32rawevidence6bad3afdb7/resourcesd3a83032aa/hosttimeline2c92865d5a.
-
-**Active next work**: boot35 now authorized/starting from frozen49, branched from
-frozen44 with app20 + launcher20 + readiness53. Recovery helper-attempt50 staging
-readbacks all zero mismatches: app74528, launcher68992, reader+job70327. Normal
-unmount/QMPquit/emulator0/all7/ancestors verified. Root independently hashedall7,
-checked no rootFD and froze0444+KEEP692545d682. Stage49root3407872bytesSHA
+Stage49 immutable: branch44, app20+launcher20+reader53 (below), HID45unchanged;
+actual three readbacks zero mismatches, normal unmount/QMPexit/all7/ancestors.
+Root froze0444+KEEP692545d682; root3407872bytesSHA
 62e4861109fe7e8c840268e49f8f402c898a5e2ca728f7fde408f77f2eeb2057.
-Bootworker starts35 dedicated7200 session, same emulator/HID, currentprobe-status.
-Root input utility `/tmp/inferno-explicit-gesture-35.py` ready. Endpoint forthcoming.
-Observer35 adds actual timing prefixes: `/tmp/inferno-observe-event-arrivals-35.py`.
+Stageevidencedff5d24650, recoveryhelper-attempt50. Newfuturestage50 mustbranch44
+and replace allchangedcomponents, including newHID ifwarmcontrol; no staging until
+newartifacts reviewed. No handoffrequested; keepworking acrossmilestones.
 
 Timing candidate source b5a166398f; actual build/import audit ff443b226e.
 - App20 `~/.local/share/inferno/app-probe/exec-build-20/InfernoProbe.app/InfernoProbe`,
