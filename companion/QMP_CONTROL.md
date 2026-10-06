@@ -34,7 +34,10 @@ that requires the actual guest traces and visible response.
 
 `--touch-trace-startup` enables exactly the six touch-model tracepoints through
 QMP before `cont`. The runner records start/deadline and enable/disable replies,
-and disables them after 180 seconds or earlier cleanup. With `--guest-errors`,
+and disables them after 180 seconds or earlier cleanup.
+`--touch-trace-seconds N` selects an integer limit from 1 to 1800 seconds and
+requires `--touch-trace-startup`. Use a longer bounded window when original
+userspace firmware delivery starts after the default interval. With `--guest-errors`,
 trace output shares `guest-errors.log`; otherwise it uses `touch-trace.log`.
 This observes the existing device behavior without changing it.
 

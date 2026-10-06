@@ -1,0 +1,301 @@
+{
+  "kind": "firmware-free-control-only",
+  "cli_validation": [
+    {
+      "arguments": [
+        "--touch-trace-seconds",
+        "900"
+      ],
+      "returncode": 2,
+      "error": "boot.py: error: --touch-trace-seconds requires --touch-trace-startup"
+    },
+    {
+      "arguments": [
+        "--touch-trace-startup",
+        "--touch-trace-seconds",
+        "0"
+      ],
+      "returncode": 2,
+      "error": "boot.py: error: --touch-trace-seconds must be between 1 and 1800"
+    },
+    {
+      "arguments": [
+        "--touch-trace-startup",
+        "--touch-trace-seconds",
+        "1801"
+      ],
+      "returncode": 2,
+      "error": "boot.py: error: --touch-trace-seconds must be between 1 and 1800"
+    }
+  ],
+  "actual_one_second_deadline": {
+    "limit_seconds": 1,
+    "events": [
+      "apple_mt_spi_host_event",
+      "apple_mt_spi_enqueue",
+      "apple_mt_spi_dequeue",
+      "apple_mt_spi_tx_drained",
+      "apple_mt_spi_boot_command",
+      "apple_mt_spi_control"
+    ],
+    "enable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 2
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 3
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 4
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 5
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 6
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 7
+        }
+      }
+    ],
+    "disable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 8
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 9
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 10
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 11
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 12
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 13
+        }
+      }
+    ],
+    "start_time": 1791289015.7252014,
+    "deadline_time": 1791289016.7252016,
+    "stop_time": 1791289016.7373233,
+    "stop_reason": "1-second deadline",
+    "all_disabled": true
+  },
+  "actual_900_second_limit_early_cleanup": {
+    "limit_seconds": 900,
+    "events": [
+      "apple_mt_spi_host_event",
+      "apple_mt_spi_enqueue",
+      "apple_mt_spi_dequeue",
+      "apple_mt_spi_tx_drained",
+      "apple_mt_spi_boot_command",
+      "apple_mt_spi_control"
+    ],
+    "enable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 14
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 15
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 16
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 17
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 18
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 19
+        }
+      }
+    ],
+    "disable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 20
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 21
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 22
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 23
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 24
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 25
+        }
+      }
+    ],
+    "start_time": 1791289016.7874253,
+    "deadline_time": 1791289916.7874255,
+    "stop_time": 1791289016.7976139,
+    "stop_reason": "control-only cleanup check",
+    "all_disabled": true
+  },
+  "post_cleanup_states": [
+    {
+      "return": [
+        {
+          "name": "apple_mt_spi_host_event",
+          "state": "disabled"
+        }
+      ],
+      "id": 26
+    },
+    {
+      "return": [
+        {
+          "name": "apple_mt_spi_enqueue",
+          "state": "disabled"
+        }
+      ],
+      "id": 27
+    },
+    {
+      "return": [
+        {
+          "name": "apple_mt_spi_dequeue",
+          "state": "disabled"
+        }
+      ],
+      "id": 28
+    },
+    {
+      "return": [
+        {
+          "name": "apple_mt_spi_tx_drained",
+          "state": "disabled"
+        }
+      ],
+      "id": 29
+    },
+    {
+      "return": [
+        {
+          "name": "apple_mt_spi_boot_command",
+          "state": "disabled"
+        }
+      ],
+      "id": 30
+    },
+    {
+      "return": [
+        {
+          "name": "apple_mt_spi_control",
+          "state": "disabled"
+        }
+      ],
+      "id": 31
+    }
+  ],
+  "module_sha256": "7b1fb82b321ad5feb38a227061a23e73bc269574d95cad5475894d60b69a2b2f",
+  "runner_sha256": "3deacfa39ab07eab4dbbeede6a102a5557ee6389ec2811cfbf27f1c1772c1324",
+  "binary_sha256": "fda9447b41d7bd170a0abf6b56f4b0db822ff9ca84add3e648299d2aa7f59505",
+  "binary_source": "9f92661b1b3154fb19de51ef9c9a1a6ed6e97d4f",
+  "ios_or_touch_claim": false,
+  "emulator_exit": 0
+}

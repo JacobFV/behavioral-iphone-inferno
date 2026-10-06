@@ -126,16 +126,19 @@ class ControlMailbox:
 
 
 class StartupTouchTrace:
-    """Six explicit touch tracepoints, automatically disabled after 180 seconds."""
-    def __init__(self):
-        self.report = {'limit_seconds': 180, 'events': list(TOUCH_TRACE_EVENTS),
+    """Six explicit touch tracepoints with a bounded automatic disable deadline."""
+    def __init__(self, seconds=180):
+        if type(seconds) is not int or not 1 <= seconds <= 1800:
+            raise ValueError('Touch trace seconds must be an integer from 1 to 1800')
+        self.seconds = seconds
+        self.report = {'limit_seconds': seconds, 'events': list(TOUCH_TRACE_EVENTS),
                        'enable_results': [], 'disable_results': []}
         self.active = []
         self.deadline = None
 
     def start(self, qmp):
-        self.deadline = time.monotonic() + 180
-        self.report.update(start_time=time.time(), deadline_time=time.time() + 180)
+        self.deadline = time.monotonic() + self.seconds
+        self.report.update(start_time=time.time(), deadline_time=time.time() + self.seconds)
         for name in TOUCH_TRACE_EVENTS:
             result = qmp.execute('trace-event-set-state', {'name': name, 'enable': True})
             self.report['enable_results'].append({'name': name, 'response': result})
@@ -145,7 +148,7 @@ class StartupTouchTrace:
 
     def poll(self, qmp):
         if self.active and time.monotonic() >= self.deadline:
-            self.stop(qmp, '180-second deadline')
+            self.stop(qmp, f'{self.seconds}-second deadline')
 
     def stop(self, qmp, reason):
         if not self.active:
