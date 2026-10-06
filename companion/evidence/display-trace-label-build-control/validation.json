@@ -1,0 +1,53 @@
+{
+  "scope": "Actual rebuild and firmware-free QMP control validation only. Does not execute Apple display-device submissions or verify pipe label emission in a guest. No new iOS/app acceptance claimed.",
+  "build_command": [
+    "bash",
+    "companion/run",
+    "build",
+    "--build-root",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build",
+    "--jobs",
+    "8",
+    "--simulated-sep",
+    "--enable-kvm"
+  ],
+  "build_exit_code": 0,
+  "source_revision": "ab7892d1acec279cb48a7a02553b4655eec87f44",
+  "binary_sha256": "1545a84357982b7f9c19a134ff63c070c538022b10bec5e0cd1d6a78da953884",
+  "actual_smoke_command": [
+    "python3",
+    "companion/evidence/display-trace-control-smoke.py",
+    "--repo",
+    "/home/brandonin/Documents/behavioral-iphone-inferno",
+    "--binary",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "--manifest",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build-manifest.json",
+    "--output",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/display-trace-control-smoke-2"
+  ],
+  "actual_smoke_exit_code": 0,
+  "events": [
+    "apple_adp_submit",
+    "apple_adp_bh",
+    "apple_adp_pipe",
+    "apple_adp_output_ready",
+    "apple_adp_irq_write"
+  ],
+  "checks": [
+    "all5 available/default disabled",
+    "1-second requested window deadline disabled all5",
+    "second30-second requested window early close disabled all5",
+    "normal QMPquit and emulator0"
+  ],
+  "artifacts_sha256": {
+    "report.json": "41fa52f2afc4e72397f0d6651290bb4caeab8391e2b504703dfec5850afaa324",
+    "qmp-transcript.jsonl": "36db81ee1f14aa51a786698a3c7b2b8fddcce3f97a91bd1959b21f16855f36c7",
+    "control-transcript.jsonl": "c76695e670ba4fa7f0c9f116e0475205ad9c71839d3d02268fd953566091c53e",
+    "display-trace-control.jsonl": "7a4e1707eb73c4c039da851cafcd9c5fe90f8826bf4c4def86a0f4d149973d1b",
+    "build-manifest.json": "ef6499c8c702e25b3505e7e09ec89dd20990292a751077ba08ada596fb1f342f",
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build.log": "8f17603bb61b45a319825f98ae925988cd68165fb8c2144787dbf2ff8ddfc2bd"
+  },
+  "label_fix_scope": "Explicit trace_pipe argument only; source reviewed by parent. No migrated device state change."
+}
