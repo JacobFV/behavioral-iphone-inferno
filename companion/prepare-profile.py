@@ -72,6 +72,11 @@ def main():
             path = output / (key + '-' + Path(member).name)
             with archive.open(member) as source, path.open('xb') as target:
                 shutil.copyfileobj(source, target)
+            with path.open('rb') as source:
+                manifest_digest = hashlib.file_digest(source, 'sha384').digest()
+            expected = identity['Manifest'][COMPONENTS[key]]['Digest']
+            if manifest_digest != expected:
+                raise ValueError(f'{key}: SHA384 does not match BuildManifest')
             profile[key] = {'path': str(path), 'sha256': digest(path),
                             'archive_member': member, 'size': path.stat().st_size}
         profile_path = output / 'profile.json'
