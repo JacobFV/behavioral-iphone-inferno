@@ -17,7 +17,7 @@ mkdir -p "$build_root"
 build_root=$(cd "$build_root" && pwd)
 python3 "$script_dir/bootstrap-linux.py" "$build_root"
 if [[ ! -x "$build_root/venv/bin/python" ]]; then python3 -m venv "$build_root/venv"; fi
-"$build_root/venv/bin/python" -m pip install --disable-pip-version-check 'meson==1.7.2' 'ninja==1.11.1.4'
+"$build_root/venv/bin/python" -m pip --cache-dir "$build_root/pip-cache" install --disable-pip-version-check 'meson==1.7.2' 'ninja==1.11.1.4'
 export PATH="$build_root/venv/bin:$PATH"
 packages="$build_root/packages/usr"
 deps="$build_root/deps"
@@ -27,7 +27,15 @@ export LD_LIBRARY_PATH="$deps/lib:$deps/lib64:$packages/lib/aarch64-linux-gnu${L
 export CPPFLAGS="-I$deps/include -I$packages/include -I$packages/include/aarch64-linux-gnu"
 export LDFLAGS="-L$deps/lib -L$deps/lib64 -L$packages/lib/aarch64-linux-gnu -Wl,-rpath,$deps/lib -Wl,-rpath,$deps/lib64 -Wl,-rpath,$packages/lib/aarch64-linux-gnu"
 nettle_archive="$build_root/downloads/nettle-3.10.2.tar.gz"
-if [[ ! -f "$nettle_archive" ]]; then curl --fail --location --retry 3 https://ftpmirror.gnu.org/gnu/nettle/nettle-3.10.2.tar.gz --output "$nettle_archive"; fi
+if [[ ! -f "$nettle_archive" ]]; then
+    for base in https://ftpmirror.gnu.org/gnu https://ftp.gnu.org/gnu https://mirrors.kernel.org/gnu; do
+        if curl --fail --location --retry 1 --connect-timeout 15 --max-time 120 \
+            "$base/nettle/nettle-3.10.2.tar.gz" --output "$nettle_archive.part"; then
+            mv "$nettle_archive.part" "$nettle_archive"
+            break
+        fi
+    done
+fi
 printf '%s  %s\n' fe9ff51cb1f2abb5e65a6b8c10a92da0ab5ab6eaf26e7fc2b675c45f1fb519b5 "$nettle_archive" | sha256sum -c -
 if [[ ! -f "$deps/lib/pkgconfig/nettle.pc" && ! -f "$deps/lib64/pkgconfig/nettle.pc" ]]; then
     tar -xf "$nettle_archive" -C "$build_root/sources"
@@ -39,7 +47,7 @@ fi
 # A durable detached source clone keeps Meson wrap downloads and mlib local.
 source_tree="$build_root/source"
 if [[ ! -d "$source_tree/.git" ]]; then
-    git clone --no-hardlinks --shared "$source_repo" "$source_tree"
+    git clone --no-hardlinks "$source_repo" "$source_tree"
     git -C "$source_tree" checkout --detach cc4302a99167abec69b714cfd00c38caece7e7de
 fi
 [[ $(git -C "$source_tree" rev-parse HEAD) = cc4302a99167abec69b714cfd00c38caece7e7de ]] || { echo 'Unexpected source revision' >&2; exit 1; }
