@@ -85,8 +85,11 @@ Independentfreshprocessaudit72607d37d7 complete: uniqueid/version261/736→375/1
 Preservealloriginalprefixpathsandcontents.
 Nextafterverified56: ONE57 sameguest/emulator with opt-inobserver60s to validate
 actualfiniteexpiry/noautorestart whileVMcontinues tostrictjourney; rootownsallinputs.
-57 startingrunner3026891 source48294c265e; same55/670 withobserver60s.
-RootallinputsAFTERactualobserverexpiry; workerreportsPIDs/socket/expiry.
+57 LIVErunner3026891/QEMU3027417/observer3027433(start74684569),
+source48294c265e; same55/670 withobserver60s.
+VNC/tmp/inferno-boot-c7cg6449/vnc.sock; observerconnected1791327661.8500829,
+firstframe7661.877803. Rootreviewed headless-refresh/observer/observed0019 Applelogo.
+No57inputs yet. RootallinputsAFTERactualobserverexpiry; workerreports expiry.
 No renderingfix; stillsampleactualfreeze beforeHome.
 Nativeobserverimplementationcomplete606d2fbf0b, rootchecks5eb59960b1 passed;
 independentreviewno blockers. No furthercodechangesassigned.

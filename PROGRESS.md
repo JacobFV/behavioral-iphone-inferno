@@ -2,6 +2,25 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 16:02 continuation: actual56 fresh process and strict-prefix verification complete
+
+The complete originalps600 contained174 clean rows and neither oldPID261 nor
+the owned executable. Root captured that raw absence before named OPEN
+7f06261169f8480896cf96522609f600. NewPID375 had distinct original kernel identity
+(uniqueid/version375/1068 versus261/736), fresh main and all five timing hooks.
+Root reviewed the returned counter0. Independently recomputed OPEN→active was
+743.55175ms in the emulated guest. Callback arrived later at1247.30829ms; this
+ordering is preserved rather than treated as presentation or native latency.
+
+Normal shutdown exited0/noerror in827.21003s. The extended strict verifier passed
+with the genuinely retained pre-relaunch prefix and correctly rejected without
+it. Default all7/ancestor/metadata-attestation retention passed. Root diskSHA
+62c826aac72a19bf31008a563b99594a4660ff1c867d08dab71ac0535649c18b.
+Evidence: `process-launch-56-actual`, `owned-process-56-visual`,
+`owned-default-refresh-process-stopped-56` and `strict-prefix-56-live`.
+57 now uses a60s observer window to validate actual finite expiry and continued
+VM operation; root inputs wait until expiry. No rendering fix is claimed.
+
 ### 15:53 continuation: actual56 strict journey and fresh-process verification
 
 56 confirmed the integrated observer default-off path: no report entry,
