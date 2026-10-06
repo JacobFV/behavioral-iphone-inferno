@@ -6,6 +6,6 @@ targets: [ arm64-ios ]
 install-name: '/usr/lib/libobjc.A.dylib'
 exports:
   - targets: [ arm64-ios ]
-    symbols: [ _objc_alloc, _objc_alloc_init, __objc_empty_cache, _objc_msgSend, _objc_msgSendSuper2, _objc_autoreleasePoolPush, _objc_autoreleasePoolPop ]
+    symbols: [ _objc_release, _objc_retainAutoreleasedReturnValue, _objc_alloc, _objc_alloc_init, __objc_empty_cache, _objc_msgSend, _objc_msgSendSuper2, _objc_autoreleasePoolPush, _objc_autoreleasePoolPop ]
     objc-classes: [ NSObject ]
 ...
