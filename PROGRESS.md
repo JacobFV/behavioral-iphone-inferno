@@ -14,6 +14,20 @@
   `companion/evidence/direct-root-early-boot*`. App staging independently verified
   all four owned files and clean unmounts in app-staging-1; app and process-observer
   boots are now running. Continue diagnosing UI readiness, not a checkpoint pause.
+- **Software-rendering compatibility applied:** pinned upstream InfernoFSPatcher
+  produced45 records changing180 cache bytes. Original and patched full2GiB
+  SHA256 values both matched in the guest, with original fsync and normal System
+  unmount. `companion/fs-patches/` reproduces the guarded plan and execution;
+  Apple cache bytes and patch payload remain outside Git. Raw execution evidence:
+  `companion/evidence/software-renderer-preparation*`.
+- **Owned launch jobs integrated:** loose jobs yielded no markers in app-boot-1
+  over240seconds. Original launchd uses a consolidated configuration. Stage23
+  preserved432 existing entries and added only our app and process observer,
+  with596523-byte guest readback and zero mismatches. The original loader's
+  explicit `launchd_unsecure_cache=1` mode accepts this edited configuration;
+  no signature was generated or changed. App-boot-2 has logged “Using unsecure
+  cache” and is running with periodic frames, USB diagnostics and strict journey
+  checks. App/UI success remains pending actual execution evidence.
 - **Data is guest-verified:** full recursive read-only comparison passed all
   13,025 files (269,210,433 bytes), modes/owners and symlink; 16,665 total entries
   including root, zero mismatches. Both volumes unmounted cleanly. The host
