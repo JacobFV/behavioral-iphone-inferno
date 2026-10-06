@@ -2,6 +2,19 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 09:50 continuation: writer recovered through original Foundation paths
+
+Boot29 app17 displays `ready errno=0` with uid501 and successful boot UUID
+query0/37. The normal NSHomeDirectory/NSCachesDirectory path resolved the prior
+global-path openEPERM. Reader lookup still fails because this owned app's original
+LS record has nil dataContainerURL; that does not mean its physical container is
+missing. Root reviewed the unobstructed app counter0 and diagnostic footer.
+Next reader50 calls original MCMAppDataContainer with createIfNecessary=NO for
+only the exact owned bundle, leaving the working app and launcher unchanged.
+Source and actual54-import audit are integrated; original API flags/authorization
+limits preserved476547692b. Recovery46/boot30 will test actual reader access.
+No accepted lifecycle/tap records yet; strict journey still fails clearly.
+
 ### 09:34 continuation: precise app event-file failure
 
 Actual diagnostic boot28 displays uid501 and successful boot UUID query0/37,
