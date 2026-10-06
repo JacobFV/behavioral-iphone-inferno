@@ -101,6 +101,18 @@ def verify_shutdown(directory, report, failed_attempt=False):
             'reported_emulator_pid_absent': pid}
 
 
+def backing_comparison(value):
+    """Compare identities exactly, excluding only fresh journal check times."""
+    value = dict(value)
+    journal = value.get('metadata_revalidation', [])
+    if not isinstance(journal, list) or any(not isinstance(entry, dict) for entry in journal):
+        raise ValueError('Malformed metadata revalidation journal')
+    value['metadata_revalidation'] = [
+        {key: field for key, field in entry.items() if key != 'verified_time'}
+        for entry in journal]
+    return value
+
+
 def preserve(report_path, output, failed_attempt=False):
     report_path = report_path.resolve(strict=True)
     if report_path.is_dir():
@@ -147,7 +159,7 @@ def preserve(report_path, output, failed_attempt=False):
         if tools != record['tool']:
             raise ValueError('Recorded overlay tools differ from freshly validated pinned tools')
         backing = verify_backing(record)
-        if backing != record['backing_after_stop']:
+        if backing_comparison(backing) != backing_comparison(record['backing_after_stop']):
             raise ValueError('Fresh ancestor verification differs from stopped report')
         layers = backing.get('layers') or [record['backing']]
         info = json.loads(tool_run(tools, 'info', '--output=json', '-f', 'qcow2', paths[root_name]))
@@ -184,7 +196,9 @@ def preserve(report_path, output, failed_attempt=False):
                     'source_sha256': digest(Path(__file__)),
                     'overlay_module_sha256': digest(Path(__file__).with_name('disk_overlay.py')),
                     'shutdown': shutdown, 'fd_before': fds_before, 'fd_after': fds_after,
-                    'ancestor_verification': backing, 'namespace_count': len(manifest),
+                    'ancestor_verification': backing,
+                    'ancestor_verification_at_stop': record.get('backing_after_stop') if record else None,
+                    'namespace_count': len(manifest),
                     'retention': 'Keep each disk and every recorded backing layer. No file was frozen or protected by this tool.',
                     'scope': 'Point-in-time verification; permission gaps and subsequent changes remain possible.'}
     output.parent.mkdir(parents=True, exist_ok=True)
