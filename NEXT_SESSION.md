@@ -7,9 +7,9 @@ The user explicitly wants continuous work across status questions and intermedia
 milestones. No pause or handoff requested. Parallel workers are authorized for
 independent work in isolated worktrees; commit progressively.
 
-## Current execution, 2026-10-06 13:24 local
+## Current execution, 2026-10-06 13:28 local
 
-All through44 stopped.44 is another failed visual attempt. Active task: investigate the intermittent
+All through44 stopped.44 failed visual. ONE45 starting now. Active task: investigate the intermittent
 real display freeze in41 while finishing a reproducible installed-iOS runner.
 Do not treat a healthy comparison as a fix.
 
@@ -67,9 +67,10 @@ strictincomplete. Trackedforensicpreservationpassedall7/ancestors,rootSHA
 `.local-build/binaries/display-trace-labels-1545a8435798/` retained. Evidence5f0f05ad1c/c49724d64a display-stall-44-actual
 and a6902fb090 display-stall-44-visual. Keep allfailedmilestonesdistinct.
 Diagnostic-only unknownADPmain/GP/blendread/write and GPconfigurationtrace merged
-09811d4d1d. NoextraDMA/state/semanticsfix; fixed7eventboundedwindow. Bootworkerbuilding
-sameconfig+actual7eventcontrolsmoke3 now. No45authorizedyet; rootreviewbuildthenONE45
-sameguestbits withinitial10secondwindow toassessvolume (timeboundnotbytebound).
+09811d4d1d. NoextraDMA/state/semanticsfix; fixed7eventboundedwindow. Actualbuild/controlsmoke3 ec2ca86044 passedall7defaultoff/deadline/cleanup.
+BinarySHA670caae5e8b86dbd07968b053ce0667328cce648935cefb8649357400f9c8e59,
+source09811d4d1d4dfa3c10ee8f59360f282624fc1df2. ONE45authorized/launched now,
+runner2790834. Rootallinput, initial10strace toassessvolume(timeboundnotbytebound).
 Nativeworkerindependentlyreviewingoriginalspindumplocalusage forpossiblefuturetargeted
 stacks ifneeded; no newguestroute/staging/execution authorizedyet.
 Use owned-control --trace-checkpoints plusread-onlydisplay-trace-checkpoint command.
