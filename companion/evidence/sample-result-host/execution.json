@@ -1,7 +1,7 @@
 {
   "scope": "Host-only synthetic records; no original tool output, guest sample, VM input or launch.",
   "guest_contract_revision": "d2ac5ba0cc",
-  "source_sha256": "a087240ad132a6941372e50e3b1f73a86752d67d18b86f5d4bfe76a7839947b3",
+  "source_sha256": "2e376a7ad5e3336f199feb23f887e10284209fe50caeb69b4fdf1915fbef3663",
   "checks": [
     {
       "name": "complete-synthetic",
@@ -14,8 +14,8 @@
       "name": "missing-end",
       "input_sha256": "f5c3a7e0b24980703a750fd9f046128b69677ae76084ec0bc2fc237dd2178a5c",
       "transport_complete": false,
-      "reason": "duplicate, missing or out-of-order record",
-      "decoded_bytes": 0
+      "reason": "missing END; retaining validated contiguous DATA prefix",
+      "decoded_bytes": 5
     },
     {
       "name": "duplicate-data",
@@ -57,7 +57,7 @@
       "input_sha256": "561d2854ef8b70e0388ce69902cca8efc8598efa59cb8d1958061661469a842f",
       "transport_complete": false,
       "reason": "selected record lacks physical LF terminator",
-      "decoded_bytes": 0
+      "decoded_bytes": 5
     },
     {
       "name": "wrong-total",
@@ -67,9 +67,27 @@
       "decoded_bytes": 5
     },
     {
+      "name": "child-stop-after-data",
+      "input_sha256": "3cc3a9d7af4e5f10258059bca51077636e32cf66e2f4e62ff9483eb34498e80c",
+      "transport_complete": false,
+      "reason": "selected record malformed, prefixed or failure/stop record",
+      "decoded_bytes": 5
+    },
+    {
+      "name": "bad-chunk-no-later-recovery",
+      "input_sha256": "3787a6ef5ea39acafaad8867cabec83737d153eef065d9bfe7369bc02463c2b7",
+      "transport_complete": false,
+      "reason": "DATA offsets are not contiguous",
+      "decoded_bytes": 5
+    },
+    {
+      "name": "nonignored-Git-output-rejected",
+      "reason": "Output destination must be outside Git or actually ignored"
+    },
+    {
       "name": "actual-host-CLI-on-explicitly-synthetic-records",
       "exit_code": 0,
-      "stdout": "{\"output\": \"/tmp/inferno-sample-parser-4gqmi2lt/result\", \"transport_complete\": true, \"output_usefulness\": \"not_assessed\", \"reason\": null}\n",
+      "stdout": "{\"output\": \"/tmp/inferno-sample-parser-gd5ja0e7/result\", \"transport_complete\": true, \"output_usefulness\": \"not_assessed\", \"reason\": null}\n",
       "existing_output_exit": 2
     }
   ]
