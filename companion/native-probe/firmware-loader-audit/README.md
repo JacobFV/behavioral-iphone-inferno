@@ -69,3 +69,37 @@ here. Userland structural acceptance of an absent manifest does not establish
 that original kernel validation accepts it; that boundary must be traced or
 observed before deployment. No `NONE`, skip-validation option, fake IM4M,
 personalization ticket, or altered original driver is proposed.
+
+## Resolved installed-system destination
+
+Original MSUDataAccessor resolves type 0 to a **Preboot** path, not the System
+image directory. Recovery `copyPathForPersonalizedData:error:` at 0x16dc reads
+its table at 0x140e8: type=0, personalized=1, suffix
+`/usr/standalone/firmware`, no symbolic override. `resolveFilePathForEntry:error:`
+at 0x159c therefore calls `personalizedRootWithError:` and appends that suffix.
+The latter calls `copyMountPointForVolumeType:error:` with volume type 0, then
+appends `copyBootManifestHashWithError:` to the returned Preboot mountpoint.
+
+This was independently corroborated in the installed System cache: method
+0x1c3a8c6dc loads table 0x1d3f41cb8 with the same (0,1) fields; its CFString at
+0x1dd894cc0 is `/usr/standalone/firmware`. Selector slots 0x1d7aa08c0 and
+0x1d7aa08c8 distinguish personalizedRootWithError and hardwareRootWithError.
+Accordingly this no-ticket VM's existing Preboot zero-hash firmware directory
+is the target, with `FUD/Multitouch.img4` appended. This reuses the existing
+96-zero directory established by actual original boot mount/loading evidence;
+it does not invent a manifest hash or personalization ticket.
+
+Disk agent's independent original-kernel trace also finds absent manifests
+structurally accepted: Img4DecodeInit calls DERImg4DecodeManifest at
+0xfffffff00838a19c; NULL/zero-length checks 0xfffffff00838903c/9044 lead to return0
+at 0xfffffff008389098. Existing upstream trust behavior is unchanged. Runtime
+normal-loader acceptance remains untested.
+
+`wrap-multitouch.py` creates only an outer SEQUENCE containing IA5String IMG4
+and the complete unchanged original IM4P. It parses the result, recovers the
+inner bytes, and requires exact equality. Its external JSON records hashes and
+explicitly absent manifest/signature/ticket. `prepare.py --multitouch-img4` plus
+required SHA256 and existing-volume mode injects this artifact into a cloned
+preparation ramdisk. Guest helper adds only the targeted Preboot FUD file,
+refuses an existing target, compares bytes/mode/ownership through the existing
+comparison routine, syncs and normally unmounts. No staging run is claimed here.

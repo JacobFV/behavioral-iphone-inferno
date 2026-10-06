@@ -30,8 +30,14 @@ p.add_argument('--system-launcher',type=Path,help='owned launcher copy for Syste
 p.add_argument('--system-app-dir',type=Path,help='owned two-file InfernoProbe.app bundle to stage under Applications')
 p.add_argument('--unlock-helper',type=Path,help='owned single empty-passcode unlock diagnostic for freshly created VM keybag')
 p.add_argument('--exec-wrapper',type=Path,help='owned System wrapper to diagnose mobile exec')
+p.add_argument('--multitouch-img4', type=Path, help='explicit unsigned format-wrapped original Multitouch payload for existing Preboot FUD directory')
+p.add_argument('--multitouch-sha256', help='required SHA256 of supplied IMG4 container')
 p.add_argument('--output', required=True, type=Path)
 a = p.parse_args()
+if bool(a.multitouch_img4) != bool(a.multitouch_sha256):
+    p.error('--multitouch-img4 and --multitouch-sha256 required together')
+if a.multitouch_img4 and (not a.disk_helper or not a.disk_helper_existing or not a.multitouch_img4.is_file() or hashlib.sha256(a.multitouch_img4.read_bytes()).hexdigest() != a.multitouch_sha256):
+    p.error('Multitouch packaging requires existing volumes, helper, and matching SHA256')
 if bool(a.launchd_cache) != bool(a.launchd_cache_sha256):
     p.error('--launchd-cache and --launchd-cache-sha256 required together')
 if a.launchd_cache and (not a.disk_helper or not a.launchd_cache.is_file() or hashlib.sha256(a.launchd_cache.read_bytes()).hexdigest() != a.launchd_cache_sha256):
@@ -66,6 +72,11 @@ if a.disk_helper:
     hfs('mv', '/System/Library/LaunchDaemons/com.apple.restored_external.plist', '/usr/share/com.apple.restored_external.plist.disabled')
     hfs('add', a.disk_helper, '/usr/bin/inferno-prepare-root')
     hfs('chmod', '755', '/usr/bin/inferno-prepare-root')
+    if a.multitouch_img4:
+        hfs('add', a.multitouch_img4, '/usr/share/inferno-multitouch.img4')
+        hfs('chmod', '644', '/usr/share/inferno-multitouch.img4')
+        hfs('extract', '/usr/share/inferno-multitouch.img4', a.output / 'readback-multitouch.img4')
+        assert sha(a.output / 'readback-multitouch.img4') == a.multitouch_sha256
     if a.sep_payload:
         hfs('add', a.sep_payload, '/usr/share/inferno-sep-payload')
         hfs('chmod', '644', '/usr/share/inferno-sep-payload')
@@ -106,7 +117,7 @@ if a.disk_helper:
         readiness_job.write_bytes(plistlib.dumps({'Label': 'org.inferno.readiness', 'ProgramArguments': ['/usr/bin/inferno-readiness'], 'RunAtLoad': True, 'StandardOutPath': '/dev/console', 'StandardErrorPath': '/dev/console', 'UserName': 'root'}))
         hfs('add', readiness_job, '/usr/share/org.inferno.readiness.plist')
         hfs('chmod', '644', '/usr/share/org.inferno.readiness.plist')
-    jobs.append(('prepare-root', ['/usr/bin/inferno-prepare-root', '--disposable-root-copy'] + (['--role-volumes'] if a.disk_helper_roles else []) + (['--existing-volumes'] if a.disk_helper_existing else []) + (['--init-gigalocker'] if a.disk_helper_gigalocker else []) + (['--seed-data'] if a.disk_helper_data else []) + (['--copy-sep'] if a.sep_payload else []) + (['--verify-data'] if a.disk_helper_verify_data else []) + (['--create-keybag'] if a.disk_helper_keybag else []) + (['--install-readiness'] if a.readiness_probe else []) + (['--install-cache'] if a.launchd_cache else []) + (['--export-reports'] if a.export_reports else []) + (['--install-exec-wrapper'] if a.exec_wrapper else []) + (['--install-system-launcher'] if a.system_launcher else []) + (['--install-unlock-helper'] if a.unlock_helper else []) + (['--install-system-app'] if a.system_app_dir else [])))
+    jobs.append(('prepare-root', ['/usr/bin/inferno-prepare-root', '--disposable-root-copy'] + (['--role-volumes'] if a.disk_helper_roles else []) + (['--existing-volumes'] if a.disk_helper_existing else []) + (['--init-gigalocker'] if a.disk_helper_gigalocker else []) + (['--seed-data'] if a.disk_helper_data else []) + (['--copy-sep'] if a.sep_payload else []) + (['--verify-data'] if a.disk_helper_verify_data else []) + (['--create-keybag'] if a.disk_helper_keybag else []) + (['--install-readiness'] if a.readiness_probe else []) + (['--install-cache'] if a.launchd_cache else []) + (['--export-reports'] if a.export_reports else []) + (['--install-exec-wrapper'] if a.exec_wrapper else []) + (['--install-system-launcher'] if a.system_launcher else []) + (['--install-unlock-helper'] if a.unlock_helper else []) + (['--install-system-app'] if a.system_app_dir else []) + (['--install-multitouch'] if a.multitouch_img4 else [])))
 for name, args in jobs:
     label = 'org.inferno.probe.' + name
     local = a.output / (label + '.plist')
@@ -125,6 +136,8 @@ if a.sep_payload:
     steps += ['added supplied SEP payload byte-for-byte after SHA256 and readback verification']
 profile['provenance']['preparation'] = '; '.join(steps) + '. Original source image and Apple executable bytes unchanged; cloned ramdisk configuration changed.'
 profile['provenance']['helper_flags'] = {key: getattr(a, key) for key in ('disk_helper_roles', 'disk_helper_existing', 'disk_helper_gigalocker', 'disk_helper_data', 'disk_helper_verify_data', 'disk_helper_keybag', 'export_reports')}
+profile['provenance']['multitouch_img4_sha256'] = a.multitouch_sha256
+profile['provenance']['multitouch_scope'] = 'Explicit unsigned container to existing Preboot zero-hash firmware/FUD; no manifest or signature added' if a.multitouch_img4 else None
 profile['provenance']['sep_payload_sha256'] = a.sep_sha256
 profile['provenance']['system_app_files'] = {p.name:sha(p) for p in a.system_app_dir.iterdir()} if a.system_app_dir else None
 profile['provenance']['unlock_helper_sha256'] = sha(a.unlock_helper) if a.unlock_helper else None

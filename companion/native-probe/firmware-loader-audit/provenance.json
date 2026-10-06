@@ -25,6 +25,16 @@
       "path": "/tmp/inferno-AppleFirmwareUpdate-system-disasm.txt",
       "bytes": 280860,
       "sha256": "21e4e6f48d27d1aeec5948d8f1577002ad879092f02f9108954c99cccc1d25aa"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/touch-firmware-inspection/MSUDataAccessor-recovery",
+      "bytes": 227696,
+      "sha256": "86364021263cbaa588e15bb621018188042f6002a1db3dfdc53c122d391350ac"
+    },
+    {
+      "path": "/tmp/inferno-MSUDataAccessor-system-disasm.txt",
+      "bytes": 643029,
+      "sha256": "35174cb52c6edbb742c2bf8aad6f2cf508de0d704137ea0b216f357b27fd3c27"
     }
   ],
   "original_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
@@ -472,6 +482,99 @@
       472,
       552,
       632
+    ]
+  },
+  "unsigned_wrapper": {
+    "source_archive": "/home/brandonin/.local/share/inferno/images/ios14b5/iPhone11,8,iPhone12,1_14.0_18A5351d_Restore.ipsw",
+    "source_member": "Firmware/N104_Multitouch.im4p",
+    "source_im4p_bytes": 583079,
+    "source_im4p_sha256": "c0e09a061970a19dc827ad19d769c2847073df81ed293c297bc75e6569fe8e68",
+    "output_bytes": 583090,
+    "output_sha256": "871a03fb79413e696d3bf952991ac46552a4007585c85f18cb6abbcdbf4943a2",
+    "recovered_im4p_sha256": "c0e09a061970a19dc827ad19d769c2847073df81ed293c297bc75e6569fe8e68",
+    "recovered_im4p_exact_equal": true,
+    "outer_children": [
+      "IA5String IMG4",
+      "unchanged original IM4P sequence"
+    ],
+    "manifest_present": false,
+    "signature_created": false,
+    "ticket_created": false,
+    "meaning": "Unsigned format packaging only; no claim of personalization, authentication or successful guest loading.",
+    "tool_sha256": "6ee864b6818a70f67c2d6bcdfcacee1fd438dc2ece1dfedfb0f4cd87654ff276"
+  },
+  "msu_system_analysis": {
+    "source_cache": "/home/brandonin/.local/share/inferno/fs-patcher-input/System/Library/Caches/com.apple.dyld/dyld_shared_cache_arm64e",
+    "image": "/System/Library/PrivateFrameworks/MSUDataAccessor.framework/MSUDataAccessor",
+    "segments": [
+      {
+        "name": "__TEXT",
+        "vm": 7577579520,
+        "cache_offset": 1135128576,
+        "output_offset": 0,
+        "bytes": 81920
+      },
+      {
+        "name": "__DATA_CONST",
+        "vm": 7850957776,
+        "cache_offset": 1374952400,
+        "output_offset": 1374952400,
+        "bytes": 1304
+      },
+      {
+        "name": "__DATA",
+        "vm": 7913211720,
+        "cache_offset": 1437206344,
+        "output_offset": 1437206344,
+        "bytes": 1824
+      },
+      {
+        "name": "__AUTH_CONST",
+        "vm": 8011729760,
+        "cache_offset": 1502169952,
+        "output_offset": 1502169952,
+        "bytes": 6080
+      },
+      {
+        "name": "__DATA_DIRTY",
+        "vm": 8021758224,
+        "cache_offset": 1512198416,
+        "output_offset": 1512198416,
+        "bytes": 496
+      },
+      {
+        "name": "__OBJC_CONST",
+        "vm": 8011735840,
+        "cache_offset": 1502176032,
+        "output_offset": 1502176032,
+        "bytes": 1152
+      },
+      {
+        "name": "__AUTH",
+        "vm": 8031266528,
+        "cache_offset": 1521706720,
+        "output_offset": 1521706720,
+        "bytes": 160
+      },
+      {
+        "name": "__LINKEDIT",
+        "vm": 8071888896,
+        "cache_offset": 1528774656,
+        "output_offset": 1528774656,
+        "bytes": 148214402
+      }
+    ],
+    "transformation": "Sparse analysis-only Mach-O: all original mapped segment bytes; move __TEXT to file offset0 and adjust only its segment/section file offsets. No guest use.",
+    "header_file_offset_fields_adjusted": [
+      72,
+      152,
+      232,
+      312,
+      392,
+      472,
+      552,
+      632,
+      712
     ]
   }
 }
