@@ -56,8 +56,26 @@ controlledstop6540.6307318/closed6540.6308424/observedexit6540.6472638, exit0,
 noerror/forcedkill, processabsent.185frames. Requested300sphase incomplete by
 normalearlyfinish; not claimed wholeboot. CPU25.01s/RSSpeak47116288 preliminary
 rawstats; disk_path independentlyauditing exactchronology/metrics. NoSAMPLE55.
-Boot_runnerstartingONE56 host77af46d0af, samefrozen55/670, defaultobserverOFF
-to continuefreezeinvestigationandcheckdefaultpath. Rootownsallinputs.
+ONE56 LIVE runner3013027/QEMU3013588,host77af46d0af,samefrozen55/670,observerOFF.
+VNC/tmp/inferno-boot-g57q30gx/vnc.sock; serialconnected1791326698.2692623.
+Default noobserverkey/directory/child verifieddefault-observer-check.json.
+Strict0→1 rootreviewedVNCandQMP, boot02034EC7-A855-43F7-927E-070ECEBC70B4,
+PID261/main3609012586; counter880ebe5a024547fc911f4736207a0c01 at7042.92154.
+QMPbefore855fecfda589d77c4e494631e61215927fcbdf83a4acae81d001fa46f8e04d6b,
+afterfe6f34f82690f9bd3cc1a42d399acac65fa8affd8e032dc983abe4cd16f2b4b4.
+Verifierextended18afb4f2a6 to permit provenlaterdifferentPIDrecords; original38/55
+pass, failed41/44/47reject,6corruptionsreject; independentreviewclear.
+56 actualstrictprefix capturedBEFOREanyHome/appswitcher/relaunch:1b708d72cb,
+strict-completed-prefix.json + strict-completed.serial-prefix.log,365187bytes,
+SHAbc22bcc013d20d21ae5d263c8c721bbe21be7139260903a8527db081490f5ca9,
+readstart1791327080.2869885/captured7080.2903452. Keeporiginalignoredpaths.
+AFTERprefixrootnowissued observe--app-switcher atapp-switcher-001 (session93095),
+awaitpixels, thenphysicalownedcarddismissal, nextcompleteps600absenceold261,
+thenexplicitOPENcurrentboot/newPIDhooks/reviewcounter0. NoOPENyet/noSAMPLE56.
+DoNOTfinishuntilnewprocessjourneyresolved. Rootallinputs. Finalverifierneeds
+--strict-prefix .local-build/reports/app-boot-56/strict-completed-prefix.json.
+ProcessabsenceCLI requires--after-request-id DISMISS_ID andvalidcompleteps.
+
 Nativeobserverimplementationcomplete606d2fbf0b, rootchecks5eb59960b1 passed;
 independentreviewno blockers. No furthercodechangesassigned.
 Boot1C81A853-1B79-4FBC-8EBD-E365B46D4827/PID252/main2739827127.
