@@ -168,8 +168,8 @@ class Audit:
         strict_identity = (chains['main']['boot'], chains['main']['pid'])
         later = [c for c in candidates if all(c is not selected for selected in chains.values())]
         for c in later:
-            require((arrivals is not None and c['arrival']['value']['observed_time'] > t1) or
-                    (prefix_boundary is not None and c['raw']['reference']['byte_start'] >= prefix_boundary),
+            require((c['arrival']['value']['observed_time'] > t1 if arrivals is not None else
+                     prefix_boundary is not None and c['raw']['reference']['byte_start'] >= prefix_boundary),
                     'Additional lifecycle record is not proven after strict capture')
             require(c['boot'] == strict_identity[0] and c['pid'] != strict_identity[1],
                     'Additional lifecycle record has wrong boot or duplicate strict PID')
