@@ -25,11 +25,18 @@ pairs clearstatus0, nozero/mixedread. HomefilebracketnotimmediatelypreHome.
 Originaldriverstaticmapping3420842769+93caaf5dc2: filterread/clear before
 separatehandler/gatednotifications; no directpatchrangeoverlap; notruntimeproof.
 
-ONE60 authorized andbootworkerlaunching unchangedfrozen55/newf088/defaultobserverOFF.
+ONE60 LIVE runner3055969/QEMU3056448, host1a44806f71, frozen55/f088/defaultobserverOFF.
+VNC/tmp/inferno-boot-b_a5glkc/vnc.sock. Boot0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F,
+PID241/main2319371986. Rootreviewboot-view0013lock; unlock1
+5e0fbd5e88ed448392171fa2a42a9fb1 ACK0, reviewedafter-unlock001/observed0012stilllock.
+Unlock2 1e315d9692c446a69531e24d3f7c24f4 at1791329744.2094066 sent,20sviewpending.
+No60counter/trace/SAMPLE/Home/OPEN yet; displaytracejournalabsent.
 Root will leave displaytracingOFFforinitialcounter; ifgenuinestall, observe20s,
 enableboundeddiagnostics then SAMPLEBACKBOARDD+SPRINGBOARD beforeHome.
 No guestbehaviorfix. RootownsallUI/control. Bootworkerownsstart/postflight;
-otherworkersidle aftercompletedboundedsource/traceaudits.
+nativeworkeridle. Diskworker read-onlychecking whether originalfrozen50/HID54
+remainseligible undercurrentancestorattestations forpossiblecontrolledcomparison.
+No61/comparisonVM authorized yet; no guestrestaging/attestationchanges allowed.
 
 Currentbinaryf088a8c99437afaa9da220ee2f2e2a09f4dbf5b8638e897ec01c670c5273a7b7,
 buildsource2f29037290a97299957193006ec44b82e1efa291, changebfcc434c20.
