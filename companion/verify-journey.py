@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: AGPL-3.0-or-later
 """Read-only verification of a stopped, operator-observed owned app journey."""
 import argparse
 import hashlib
@@ -96,7 +97,7 @@ class Audit:
         require(set(args) == {'kind','x','y','duration_ms','request_id'} and args['kind'] == 'tap', 'requires exact bounded tap fields')
         rid = args['request_id']
         require(re.fullmatch(r'[0-9a-f]{32}', rid) is not None, 'invalid tap ID')
-        for key, lo, hi in [('x',0,32767),('y',0,32767),('duration_ms',1,10000)]:
+        for key, lo, hi in [('x',0,32767),('y',0,32767),('duration_ms',1,2000)]:
             require(type(args[key]) is int and lo <= args[key] <= hi, f'invalid {key}')
         sent = unique([r for r in inputs if r['value'].get('stage') == 'before-send' and r['value'].get('request_id') == rid], 'tap wire send')
         wire = f"INFERNO_HID_V1 {rid} TAP {args['x']} {args['y']} {args['duration_ms']}\n"
@@ -151,6 +152,10 @@ class Audit:
             captures.append({'role':role,'width':width,'height':height,'sha256':sha(data),'qmp':ex})
         require(captures[0]['qmp']['reply']['value']['time'] < sent['value']['time'], 'before frame completed after input')
         quit_exchange=exchange('quit')
+        require(report.get('quit_response') == self.command(quit_exchange['reply']), 'reported quit response differs from raw QMP reply')
+        shutdown=unique([r for r in qmp if r['value']['direction']=='receive' and self.command(r).get('event')=='SHUTDOWN'], 'QMP shutdown event')
+        require(self.command(shutdown).get('data') == {'guest':False,'reason':'host-qmp-quit'}, 'shutdown is not host-qmp-quit')
+        require(quit_exchange['request']['reference']['byte_start'] < shutdown['reference']['byte_start'], 'shutdown precedes quit request')
         require(captures[1]['qmp']['reply']['value']['time'] < quit_exchange['request']['value']['time'], 'quit precedes after capture')
         finish=[r for r in controls if self.command(r).get('execute')=='finish-run']
         if report.get('probe_run_control',{}).get('keep_running'):
@@ -158,7 +163,7 @@ class Audit:
             require(t1 < f['value']['time'] < quit_exchange['request']['value']['time'], 'finish-run ordering invalid')
         for name, source in self.sources.items():
             require(sha((self.folder/name).read_bytes()) == source['sha256'], f'source changed during verification: {name}')
-        return {'status':'verified','chronology_basis':('raw observer arrival references plus source-gated capture commands' if arrivals is not None else 'source-gated capture commands; independent marker arrival times unavailable'),'reviewed_capture_gate_source_sha256':gate_sha,'boot_uuid':main['boot'],'app_pid':main['pid'],'relay_ready':ready,'events':chains,'before':before,'tap_command':gesture,'tap_wire':sent,'tap_wire_completion':delivered,'tap_attempt_ack':ack,'after':after,'captures':captures,'finish_run':finish,'quit':quit_exchange,'exit_code':0}
+        return {'status':'verified','chronology_basis':('raw observer arrival references plus source-gated capture commands' if arrivals is not None else 'source-gated capture commands; independent marker arrival times unavailable'),'reviewed_capture_gate_source_sha256':gate_sha,'boot_uuid':main['boot'],'app_pid':main['pid'],'relay_ready':ready,'events':chains,'before':before,'tap_command':gesture,'tap_wire':sent,'tap_wire_completion':delivered,'tap_attempt_ack':ack,'after':after,'captures':captures,'finish_run':finish,'quit':quit_exchange,'shutdown':shutdown,'exit_code':0}
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--report',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
