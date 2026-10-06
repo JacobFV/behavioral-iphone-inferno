@@ -1,0 +1,137 @@
+{"direction": "receive", "time": 1791286572.038141, "raw": "{\"QMP\": {\"version\": {\"qemu\": {\"micro\": 2, \"minor\": 2, \"major\": 10}, \"package\": \"\"}, \"capabilities\": [\"oob\"]}}\r\n"}
+{"direction": "send", "time": 1791286572.0382996, "raw": "{\"execute\": \"qmp_capabilities\", \"id\": 1}\n"}
+{"direction": "receive", "time": 1791286572.7735944, "raw": "{\"return\": {}, \"id\": 1}\r\n"}
+{"direction": "send", "time": 1791286572.773704, "raw": "{\"execute\": \"query-status\", \"id\": 2}\n"}
+{"direction": "receive", "time": 1791286572.7964542, "raw": "{\"return\": {\"status\": \"prelaunch\", \"running\": false}, \"id\": 2}\r\n"}
+{"direction": "send", "time": 1791286572.796559, "raw": "{\"execute\": \"query-cpus-fast\", \"id\": 3}\n"}
+{"direction": "receive", "time": 1791286572.7975147, "raw": "{\"return\": [{\"thread-id\": 1673917, \"qom-type\": \"apple-a13-cpu\", \"qom-path\": \"/machine/cluster0/cpu0\", \"cpu-index\": 0, \"target\": \"aarch64\"}, {\"thread-id\": 1673918, \"qom-type\": \"apple-a13-cpu\", \"qom-path\": \"/machine/cluster0/cpu1\", \"cpu-index\": 1, \"target\": \"aarch64\"}], \"id\": 3}\r\n"}
+{"direction": "send", "time": 1791286572.7975972, "raw": "{\"execute\": \"query-mice\", \"id\": 4}\n"}
+{"direction": "receive", "time": 1791286572.7981331, "raw": "{\"return\": [{\"index\": 1, \"name\": \"Apple Multitouch HID SPI\", \"current\": true, \"absolute\": true}], \"id\": 4}\r\n"}
+{"direction": "send", "time": 1791286572.7981956, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 5, \"arguments\": {\"name\": \"apple_mt_spi_host_event\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791286572.799334, "raw": "{\"return\": {}, \"id\": 5}\r\n"}
+{"direction": "send", "time": 1791286572.7993982, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 6, \"arguments\": {\"name\": \"apple_mt_spi_enqueue\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791286572.8003733, "raw": "{\"return\": {}, \"id\": 6}\r\n"}
+{"direction": "send", "time": 1791286572.8004222, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 7, \"arguments\": {\"name\": \"apple_mt_spi_dequeue\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791286572.801243, "raw": "{\"return\": {}, \"id\": 7}\r\n"}
+{"direction": "send", "time": 1791286572.8012583, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 8, \"arguments\": {\"name\": \"apple_mt_spi_tx_drained\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791286572.8021176, "raw": "{\"return\": {}, \"id\": 8}\r\n"}
+{"direction": "send", "time": 1791286572.802125, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 9, \"arguments\": {\"name\": \"apple_mt_spi_boot_command\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791286572.803006, "raw": "{\"return\": {}, \"id\": 9}\r\n"}
+{"direction": "send", "time": 1791286572.8030128, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 10, \"arguments\": {\"name\": \"apple_mt_spi_control\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791286572.8039787, "raw": "{\"return\": {}, \"id\": 10}\r\n"}
+{"direction": "send", "time": 1791286572.8043668, "raw": "{\"execute\": \"cont\", \"id\": 11}\n"}
+{"direction": "receive", "time": 1791286572.8045845, "raw": "{\"timestamp\": {\"seconds\": 1791286572, \"microseconds\": 804477}, \"event\": \"RESUME\"}\r\n"}
+{"direction": "receive", "time": 1791286572.8046222, "raw": "{\"return\": {}, \"id\": 11}\r\n"}
+{"direction": "send", "time": 1791286589.446435, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 12, \"arguments\": {\"command-line\": \"xp /1wx 0x24a820088\"}}\n"}
+{"direction": "receive", "time": 1791286589.4470263, "raw": "{\"return\": \"000000024a820088: 0x0006020e\\r\\n\", \"id\": 12}\r\n"}
+{"direction": "send", "time": 1791286589.447105, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 13, \"arguments\": {\"command-line\": \"xp /1wx 0x235104000\"}}\n"}
+{"direction": "receive", "time": 1791286589.4475658, "raw": "{\"return\": \"0000000235104000: 0x00000000\\r\\n\", \"id\": 13}\r\n"}
+{"direction": "send", "time": 1791286589.4476001, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 14, \"arguments\": {\"command-line\": \"xp /1wx 0x235104004\"}}\n"}
+{"direction": "receive", "time": 1791286589.448064, "raw": "{\"return\": \"0000000235104004: 0x00004018\\r\\n\", \"id\": 14}\r\n"}
+{"direction": "send", "time": 1791286589.4481142, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 15, \"arguments\": {\"command-line\": \"xp /1wx 0x235104008\"}}\n"}
+{"direction": "receive", "time": 1791286589.448493, "raw": "{\"return\": \"0000000235104008: 0x00000000\\r\\n\", \"id\": 15}\r\n"}
+{"direction": "send", "time": 1791286589.448518, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 16, \"arguments\": {\"command-line\": \"xp /1wx 0x23510400c\"}}\n"}
+{"direction": "receive", "time": 1791286589.448966, "raw": "{\"return\": \"000000023510400c: 0x00000002\\r\\n\", \"id\": 16}\r\n"}
+{"direction": "send", "time": 1791286589.4490108, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 17, \"arguments\": {\"command-line\": \"xp /1wx 0x235104034\"}}\n"}
+{"direction": "receive", "time": 1791286589.4494617, "raw": "{\"return\": \"0000000235104034: 0x00000000\\r\\n\", \"id\": 17}\r\n"}
+{"direction": "send", "time": 1791286589.4494977, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 18, \"arguments\": {\"command-line\": \"xp /1wx 0x23510404c\"}}\n"}
+{"direction": "receive", "time": 1791286589.4499292, "raw": "{\"return\": \"000000023510404c: 0x00000000\\r\\n\", \"id\": 18}\r\n"}
+{"direction": "send", "time": 1791286602.908875, "raw": "{\"execute\": \"screendump\", \"id\": 19, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0000.ppm\"}}\n"}
+{"direction": "receive", "time": 1791286602.933415, "raw": "{\"return\": {}, \"id\": 19}\r\n"}
+{"direction": "send", "time": 1791286633.0331855, "raw": "{\"execute\": \"screendump\", \"id\": 20, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0001.ppm\"}}\n"}
+{"direction": "receive", "time": 1791286633.046134, "raw": "{\"return\": {}, \"id\": 20}\r\n"}
+{"direction": "send", "time": 1791286663.1645544, "raw": "{\"execute\": \"screendump\", \"id\": 21, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0002.ppm\"}}\n"}
+{"direction": "receive", "time": 1791286663.1765907, "raw": "{\"return\": {}, \"id\": 21}\r\n"}
+{"direction": "send", "time": 1791286675.4191816, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 22, \"arguments\": {\"command-line\": \"xp /1wx 0x24a820088\"}}\n"}
+{"direction": "receive", "time": 1791286675.419715, "raw": "{\"return\": \"000000024a820088: 0x0006020e\\r\\n\", \"id\": 22}\r\n"}
+{"direction": "send", "time": 1791286675.4197867, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 23, \"arguments\": {\"command-line\": \"xp /1wx 0x235104000\"}}\n"}
+{"direction": "receive", "time": 1791286675.4201725, "raw": "{\"return\": \"0000000235104000: 0x00000000\\r\\n\", \"id\": 23}\r\n"}
+{"direction": "send", "time": 1791286675.4201999, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 24, \"arguments\": {\"command-line\": \"xp /1wx 0x235104004\"}}\n"}
+{"direction": "receive", "time": 1791286675.420611, "raw": "{\"return\": \"0000000235104004: 0x00004018\\r\\n\", \"id\": 24}\r\n"}
+{"direction": "send", "time": 1791286675.4206352, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 25, \"arguments\": {\"command-line\": \"xp /1wx 0x235104008\"}}\n"}
+{"direction": "receive", "time": 1791286675.421006, "raw": "{\"return\": \"0000000235104008: 0x00000000\\r\\n\", \"id\": 25}\r\n"}
+{"direction": "send", "time": 1791286675.421026, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 26, \"arguments\": {\"command-line\": \"xp /1wx 0x23510400c\"}}\n"}
+{"direction": "receive", "time": 1791286675.4213781, "raw": "{\"return\": \"000000023510400c: 0x00000002\\r\\n\", \"id\": 26}\r\n"}
+{"direction": "send", "time": 1791286675.421396, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 27, \"arguments\": {\"command-line\": \"xp /1wx 0x235104034\"}}\n"}
+{"direction": "receive", "time": 1791286675.421892, "raw": "{\"return\": \"0000000235104034: 0x00000000\\r\\n\", \"id\": 27}\r\n"}
+{"direction": "send", "time": 1791286675.421951, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 28, \"arguments\": {\"command-line\": \"xp /1wx 0x23510404c\"}}\n"}
+{"direction": "receive", "time": 1791286675.4223669, "raw": "{\"return\": \"000000023510404c: 0x00000000\\r\\n\", \"id\": 28}\r\n"}
+{"direction": "send", "time": 1791286693.2773633, "raw": "{\"execute\": \"screendump\", \"id\": 29, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0003.ppm\"}}\n"}
+{"direction": "receive", "time": 1791286693.288485, "raw": "{\"return\": {}, \"id\": 29}\r\n"}
+{"direction": "send", "time": 1791286723.4410944, "raw": "{\"execute\": \"screendump\", \"id\": 30, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0004.ppm\"}}\n"}
+{"direction": "receive", "time": 1791286723.447637, "raw": "{\"return\": {}, \"id\": 30}\r\n"}
+{"direction": "send", "time": 1791286752.8509154, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 31, \"arguments\": {\"name\": \"apple_mt_spi_host_event\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791286752.8540356, "raw": "{\"return\": {}, \"id\": 31}\r\n"}
+{"direction": "send", "time": 1791286752.8543043, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 32, \"arguments\": {\"name\": \"apple_mt_spi_enqueue\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791286752.8554435, "raw": "{\"return\": {}, \"id\": 32}\r\n"}
+{"direction": "send", "time": 1791286752.855654, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 33, \"arguments\": {\"name\": \"apple_mt_spi_dequeue\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791286752.8577871, "raw": "{\"return\": {}, \"id\": 33}\r\n"}
+{"direction": "send", "time": 1791286752.8584378, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 34, \"arguments\": {\"name\": \"apple_mt_spi_tx_drained\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791286752.85985, "raw": "{\"return\": {}, \"id\": 34}\r\n"}
+{"direction": "send", "time": 1791286752.859907, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 35, \"arguments\": {\"name\": \"apple_mt_spi_boot_command\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791286752.860957, "raw": "{\"return\": {}, \"id\": 35}\r\n"}
+{"direction": "send", "time": 1791286752.86103, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 36, \"arguments\": {\"name\": \"apple_mt_spi_control\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791286752.8699036, "raw": "{\"return\": {}, \"id\": 36}\r\n"}
+{"direction": "send", "time": 1791286753.4782987, "raw": "{\"execute\": \"screendump\", \"id\": 37, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0005.ppm\"}}\n"}
+{"direction": "receive", "time": 1791286753.488334, "raw": "{\"return\": {}, \"id\": 37}\r\n"}
+{"direction": "send", "time": 1791286783.6068485, "raw": "{\"execute\": \"screendump\", \"id\": 38, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0006.ppm\"}}\n"}
+{"direction": "receive", "time": 1791286783.612451, "raw": "{\"return\": {}, \"id\": 38}\r\n"}
+{"direction": "send", "time": 1791286794.2708142, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 39, \"arguments\": {\"command-line\": \"xp /1wx 0x24a820088\"}}\n"}
+{"direction": "receive", "time": 1791286794.2716112, "raw": "{\"return\": \"000000024a820088: 0x0006020e\\r\\n\", \"id\": 39}\r\n"}
+{"direction": "send", "time": 1791286794.2717397, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 40, \"arguments\": {\"command-line\": \"xp /1wx 0x235104000\"}}\n"}
+{"direction": "receive", "time": 1791286794.2722442, "raw": "{\"return\": \"0000000235104000: 0x00000000\\r\\n\", \"id\": 40}\r\n"}
+{"direction": "send", "time": 1791286794.2722926, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 41, \"arguments\": {\"command-line\": \"xp /1wx 0x235104004\"}}\n"}
+{"direction": "receive", "time": 1791286794.2726586, "raw": "{\"return\": \"0000000235104004: 0x00004018\\r\\n\", \"id\": 41}\r\n"}
+{"direction": "send", "time": 1791286794.2726924, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 42, \"arguments\": {\"command-line\": \"xp /1wx 0x235104008\"}}\n"}
+{"direction": "receive", "time": 1791286794.2730472, "raw": "{\"return\": \"0000000235104008: 0x00000000\\r\\n\", \"id\": 42}\r\n"}
+{"direction": "send", "time": 1791286794.2730646, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 43, \"arguments\": {\"command-line\": \"xp /1wx 0x23510400c\"}}\n"}
+{"direction": "receive", "time": 1791286794.273413, "raw": "{\"return\": \"000000023510400c: 0x00000002\\r\\n\", \"id\": 43}\r\n"}
+{"direction": "send", "time": 1791286794.2734272, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 44, \"arguments\": {\"command-line\": \"xp /1wx 0x235104034\"}}\n"}
+{"direction": "receive", "time": 1791286794.273779, "raw": "{\"return\": \"0000000235104034: 0x00000000\\r\\n\", \"id\": 44}\r\n"}
+{"direction": "send", "time": 1791286794.2737978, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 45, \"arguments\": {\"command-line\": \"xp /1wx 0x23510404c\"}}\n"}
+{"direction": "receive", "time": 1791286794.2741437, "raw": "{\"return\": \"000000023510404c: 0x00000000\\r\\n\", \"id\": 45}\r\n"}
+{"direction": "send", "time": 1791286813.7520945, "raw": "{\"execute\": \"screendump\", \"id\": 46, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0007.ppm\"}}\n"}
+{"direction": "receive", "time": 1791286813.7674873, "raw": "{\"return\": {}, \"id\": 46}\r\n"}
+{"direction": "send", "time": 1791286843.9386077, "raw": "{\"execute\": \"screendump\", \"id\": 47, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0008.ppm\"}}\n"}
+{"direction": "receive", "time": 1791286843.9466732, "raw": "{\"return\": {}, \"id\": 47}\r\n"}
+{"direction": "send", "time": 1791286874.0611289, "raw": "{\"execute\": \"screendump\", \"id\": 48, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0009.ppm\"}}\n"}
+{"direction": "receive", "time": 1791286874.0718193, "raw": "{\"return\": {}, \"id\": 48}\r\n"}
+{"direction": "send", "time": 1791286904.0779097, "raw": "{\"execute\": \"screendump\", \"id\": 49, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0010.ppm\"}}\n"}
+{"direction": "receive", "time": 1791286904.088379, "raw": "{\"return\": {}, \"id\": 49}\r\n"}
+{"direction": "send", "time": 1791286934.2179523, "raw": "{\"execute\": \"screendump\", \"id\": 50, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0011.ppm\"}}\n"}
+{"direction": "receive", "time": 1791286934.2253304, "raw": "{\"return\": {}, \"id\": 50}\r\n"}
+{"direction": "send", "time": 1791286964.3759425, "raw": "{\"execute\": \"screendump\", \"id\": 51, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0012.ppm\"}}\n"}
+{"direction": "receive", "time": 1791286964.4023633, "raw": "{\"return\": {}, \"id\": 51}\r\n"}
+{"direction": "send", "time": 1791286994.4567723, "raw": "{\"execute\": \"screendump\", \"id\": 52, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0013.ppm\"}}\n"}
+{"direction": "receive", "time": 1791286994.4645681, "raw": "{\"return\": {}, \"id\": 52}\r\n"}
+{"direction": "send", "time": 1791287024.6097505, "raw": "{\"execute\": \"screendump\", \"id\": 53, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0014.ppm\"}}\n"}
+{"direction": "receive", "time": 1791287024.61775, "raw": "{\"return\": {}, \"id\": 53}\r\n"}
+{"direction": "send", "time": 1791287054.7360017, "raw": "{\"execute\": \"screendump\", \"id\": 54, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0015.ppm\"}}\n"}
+{"direction": "receive", "time": 1791287054.7438443, "raw": "{\"return\": {}, \"id\": 54}\r\n"}
+{"direction": "send", "time": 1791287084.9147727, "raw": "{\"execute\": \"screendump\", \"id\": 55, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0016.ppm\"}}\n"}
+{"direction": "receive", "time": 1791287084.9346082, "raw": "{\"return\": {}, \"id\": 55}\r\n"}
+{"direction": "send", "time": 1791287115.0755608, "raw": "{\"execute\": \"screendump\", \"id\": 56, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0017.ppm\"}}\n"}
+{"direction": "receive", "time": 1791287115.085911, "raw": "{\"return\": {}, \"id\": 56}\r\n"}
+{"direction": "send", "time": 1791287145.2156196, "raw": "{\"execute\": \"screendump\", \"id\": 57, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0018.ppm\"}}\n"}
+{"direction": "receive", "time": 1791287145.226104, "raw": "{\"return\": {}, \"id\": 57}\r\n"}
+{"direction": "send", "time": 1791287175.323927, "raw": "{\"execute\": \"screendump\", \"id\": 58, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0019.ppm\"}}\n"}
+{"direction": "receive", "time": 1791287175.3320715, "raw": "{\"return\": {}, \"id\": 58}\r\n"}
+{"direction": "send", "time": 1791287205.415849, "raw": "{\"execute\": \"screendump\", \"id\": 59, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0020.ppm\"}}\n"}
+{"direction": "receive", "time": 1791287205.4212327, "raw": "{\"return\": {}, \"id\": 59}\r\n"}
+{"direction": "send", "time": 1791287235.52128, "raw": "{\"execute\": \"screendump\", \"id\": 60, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0021.ppm\"}}\n"}
+{"direction": "receive", "time": 1791287235.5470748, "raw": "{\"return\": {}, \"id\": 60}\r\n"}
+{"direction": "send", "time": 1791287265.5941718, "raw": "{\"execute\": \"screendump\", \"id\": 61, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0022.ppm\"}}\n"}
+{"direction": "receive", "time": 1791287265.6073523, "raw": "{\"return\": {}, \"id\": 61}\r\n"}
+{"direction": "send", "time": 1791287295.7190154, "raw": "{\"execute\": \"screendump\", \"id\": 62, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0023.ppm\"}}\n"}
+{"direction": "receive", "time": 1791287295.7252662, "raw": "{\"return\": {}, \"id\": 62}\r\n"}
+{"direction": "send", "time": 1791287325.8130004, "raw": "{\"execute\": \"screendump\", \"id\": 63, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0024.ppm\"}}\n"}
+{"direction": "receive", "time": 1791287325.818516, "raw": "{\"return\": {}, \"id\": 63}\r\n"}
+{"direction": "send", "time": 1791287355.9058547, "raw": "{\"execute\": \"screendump\", \"id\": 64, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0025.ppm\"}}\n"}
+{"direction": "receive", "time": 1791287355.9131076, "raw": "{\"return\": {}, \"id\": 64}\r\n"}
+{"direction": "send", "time": 1791287386.109674, "raw": "{\"execute\": \"screendump\", \"id\": 65, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0026.ppm\"}}\n"}
+{"direction": "receive", "time": 1791287387.1541545, "raw": "{\"return\": {}, \"id\": 65}\r\n"}
+{"direction": "send", "time": 1791287417.1717842, "raw": "{\"execute\": \"screendump\", \"id\": 66, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0027.ppm\"}}\n"}
+{"direction": "receive", "time": 1791287417.1902702, "raw": "{\"return\": {}, \"id\": 66}\r\n"}
+{"direction": "send", "time": 1791287424.6958592, "raw": "{\"execute\": \"quit\", \"id\": 67}\n"}
+{"direction": "receive", "time": 1791287424.700969, "raw": "{\"timestamp\": {\"seconds\": 1791287424, \"microseconds\": 700609}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"}
+{"direction": "receive", "time": 1791287424.707116, "raw": "{\"return\": {}, \"id\": 67}\r\n"}
