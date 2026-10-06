@@ -1,0 +1,25 @@
+{
+  "scope": "Read-only original installed iOS14b5 classification for owned app physically at /Applications/InfernoProbe.app. No signature/profile assertion, code patch, registration trial or guest mutation.",
+  "sources": {
+    "CoreServices_analysis_image_sha256": "79beb264e9b2a9a6ac4bcd03ddf61e2f27bc91403253f7b11ada2ece7de92938",
+    "original_system_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+    "installd_sha256": "e8ab72855464b99c891af48849ff70fcaf318d0db93eacc83ddaf9b334399e7e",
+    "installd_bytes": 1006624,
+    "installd_origin": "Unchanged usr/libexec/installd extracted read-only from official-os.raw to external app-classification-inspection directory. MobileInstallation addresses are original mapped System cache VAs. CoreServices addresses below are image-relative offsets, not fabricated runtime VAs."
+  },
+  "current_owned_record": "Launcher reads owned Info.plist and adds Path only. No ApplicationType currently supplied. Actual proxyUser is fallback, not explicit metadata.",
+  "missing_type_default": {
+    "parse": "CoreServices LSBundleRecordBuilder::parseInstallationInfo7d874..894 reads ApplicationType into appType, omittedkey remainsnil. buildBundleData7e940..998 writes corresponding DBstring tobundle+0x140.",
+    "record": "LSApplicationRecord typeForInstallMachineryWithContext137edc..7f00 reads stringfield+0x140.",
+    "proxy": "LSApplicationProxy::applicationType64358 delegatesbundleType. bundleType65f5c..fe4 gets record.typeForInstallMachinery; whennil but isInstalled, returns CFStringUser at65fac..bc (staticpointer1c09b0\u21921dcba0\u2192User). No pathclassification occurs in this fallback."
+  },
+  "normal_original_classifier": {
+    "configuration": "Original MIGlobalConfiguration::init0x196fc4204..4220 creates rootPath fileURLWithPath:/ isDirectory:true. systemAppsDirectory0x196fc484c obtainsrootPath then appends literalApplications isDirectory:true at0x196fc4874..4888. Resolved original CFStrings/selector references, not inferred directory convention.",
+    "bundle_type": "Original installd MIBundle::bundleType0x10002727c requires nonnullidentifier and, for uncachedtype, obtains bundleURL.pathExtension; compares to app at0x10002730c..320. It obtains bundleParentDirectoryURL.path and compares equality with MIGlobalConfiguration.systemAppsDirectory.path at0x100027328..3c0. Equalitybranch0x1000273e0 reaches type1 at0x1000273e4 and cachesbyte at0x1000275b0. This branch contains no signer/profile or Apple-vendor test.",
+    "string_mapping": "MIInstalledInfoGatherer::_determineApplicationType0x100019ef8 obtains bundle.bundleType. Switchtable0x100019fd8 maps type1 to0x100019f64 returning literalSystem. Types2/Internal,4/User,5/CoreServices are distinct; no blanket Appleidentity claim follows from type1.",
+    "normal_dictionary": "MIInstalledInfoGatherer::launchServicesDictionaryWithError calls _determineApplicationType at0x10001b028..30, retains resultstack+0x78 at0x10001b03c, and inserts it under literalApplicationType at0x10001b740..764. Thus original install machinery supplies the classification that direct Info.plist-only registration omitted."
+  },
+  "separate_path_trust": "CoreServices _LSPathIsTrustedaf2c0 accepts /Applications/ prefix and callerb0f7c..90 sets a separate root-owned path flag. This is not the ApplicationType classifier and was not used as sole justification.",
+  "minimal_candidate": "For exactly the owned, verified /Applications/InfernoProbe.app whose identifier and app extension are known, adding ApplicationType=System to the owned registration dictionary reproduces original MIBundle location classification. Keep org.inferno identity, actual path, plain owned ad-hoc signature and all other metadata unchanged. Do not set signerIdentity, signatureVersion, profileValidated, UPPValidated, trust, team identifier or Appleidentity fields. Parent must review this evidence before a bounded execution experiment.",
+  "limits": "Classification affects original FrontBoard validation policy (native evidence012c9936ca). This evidence establishes truthful normal path classification, not successful launch or correctness of all direct-registration metadata. No System classification is justified for arbitrary Data paths or bundles outside exact owned System installation."
+}
