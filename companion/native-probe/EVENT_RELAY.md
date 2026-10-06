@@ -33,3 +33,13 @@ original dataContainerURL plus the fixed Library/Caches basename. Missing data
 container reports a failure and retries lookup every30seconds; it does not create
 one or search other apps. Container provisioning is a separate original install
 operation and is not asserted by these path changes. No sandbox grant is added.
+
+Actual boot29 writer displayed READY after original cache resolution while LS
+reported nil dataContainerURL. Thus nil registration metadata did not mean the
+app lacked a writable home. The reader now falls back only to original
+MCMAppDataContainer lookup for the exact owned identifier, with
+createIfNecessary=NO, then reads its returned URL. It never creates a container.
+The installed original framework's inherited method has ABI
+NSString*,BOOL,BOOL*,NSError** and returns an autoreleased object; its url method
+returns the manager-owned location. Authorization success remains an execution
+question and bounded error codes are logged without adding grants.
