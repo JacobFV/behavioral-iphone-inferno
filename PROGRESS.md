@@ -2,6 +2,25 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 13:13 continuation: real traced journey43 and diagnostic correction
+
+The diagnostic build completed an actual reviewed strict counter0→1 journey in43,
+then normal shutdown, tracked verification and all7 disk/ancestor preservation.
+Evidence `display-trace-43-visual`, `owned-display-trace-stopped-43*` and
+`display-trace-43-actual` retain actual frames, inputs and complete raw traces.
+The60-second window contained13 scheduled submissions,13 complete draw callbacks,
+13 drawn/13 disabled pipe outcomes and normal guest interrupt acknowledgments.
+All5 events disabled by the cooperative deadline,60.17seconds from start.
+
+Audit found both raw pipe labels were0 because upstream genpipe.index was never
+initialized. The43 audit explicitly distinguishes raw labels from the fixed
+source call-order inference. Followup9cadee702b passes explicit diagnostic pipe
+labels without changing migrated state, drawing or IRQ behavior. No lost-update
+race or fix for41 has been established. The43 binary is archived read-only before
+rebuild. Host optional action checkpoints and a read-only checkpoint command
+retain file-visible trace byte boundaries; buffering precludes exact draw times.
+The next real run will validate corrected labels and repeat the single tap.
+
 ### 13:00 continuation: diagnostic build and actual trace controls
 
 Source0132ad93ca built successfully; emulatorSHA
