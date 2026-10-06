@@ -76,16 +76,17 @@ and `--root-sha256` matching it: boot.py creates a separate disposable copy befo
 execution. Never use this helper with a non-disposable guest disk.
 
 The helper executes `newfs_apfs -A` to add Preboot (`role=b`) in `/dev/disk0s1`.
-An actual attempt to add xART was rejected by newfs_apfs with exit77, so that
-operation is excluded. The initial fatal disk-boot blocker is missing Preboot
-firmware; xART/Hardware necessity remains unproven.
+The default adds only Preboot. Explicit `--disk-helper-roles` also adds xART and
+Hardware using the entitled owned helper described below. The original attempt
+without the parent entitlement returned exit77; the entitled run succeeded.
 It never uses the destructive container-create `-C` switch. It discovers actual
 volume identities by mounting existing device nodes read-only and querying names;
 the System volume is recognized by its SystemVersion.plist and original firmware
 path. It then mounts System read-only and Preboot writable, and copies the original
 firmware subtree into `Preboot/<96 zero characters>/usr/standalone/firmware`.
 The zero directory matches the existing direct-kernel no-ticket boot-manifest
-hash; it is not a forged ticket. This phase does not create xART, Hardware, Data, or seed user data.
+hash; it is not a forged ticket. The default phase does not create xART or Hardware. Neither mode creates Data
+or seeds user data.
 Every subprocess argv and wait status is printed. Any failure stops the helper.
 Only `INFERNO_PREP_COMPLETE` establishes completion, and raw logs must be reviewed.
 
@@ -164,3 +165,24 @@ Local signer source: https://github.com/ProcursusTeam/ldid revision
 external checkout. Build it locally with libplist and OpenSSL development packages
 extracted with `apt download`/`dpkg-deb -x`; no system installation is necessary.
 The exact local build output is `native-probe/ldid-build.log` outside Git.
+
+
+## Executed entitled role preparation
+
+Source `99bd636c95`, built under `helper-build-6/` with the pinned local ldid,
+produced `helper-attempt-6/profile.json` using `--disk-helper-roles`. Actual run
+`.local-build/reports/disk-preparation-8/serial.log` shows all three newfs commands
+return status0, then independently mounted names System on disk0s1s1, Preboot on
+s3, xART on s4, and Hardware on s5. Firmware copy and clean unmounts completed.
+The original exit77 was the parent entitlement check, not an observed encryption
+restriction. No Apple binary was changed to enable these operations.
+
+After QMP shutdown and emulator exit0, the prepared disk hash was
+`8103442bd0bf6f4e1aca44c203ee4c0793c87b740dd9395a399e08b604679afc` at
+`.local-build/reports/disk-preparation-8/disks/root.raw`. Full signer source,
+compiler, downloaded-package, binary and build-log hashes are outside Git in
+`/home/brandonin/.local/share/inferno/native-probe/signer-build.json`.
+
+The separate `--recovery-preserve-disk` mode test in preparation7 still exposed
+only a dummy NVMe device despite `nand-enable-reformat=0`; it performed no helper
+writes. The successful full-role run used the proven `--ramdisk-boot` mode.
