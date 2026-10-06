@@ -1,0 +1,78 @@
+{
+  "scope": "Original Darwin loopback stream socket ABI for an owned app-to-reader event channel inside the guest. No external or host endpoint; no policy or entitlement changes.",
+  "primary_sources": [
+    {
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-7195.81.3/bsd/sys/socket.h",
+      "sha256": "0a319d2a5363f30e0a9c1f21b583491f80546493e9699f5c39c1391203a502e2"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-7195.81.3/bsd/netinet/in.h",
+      "sha256": "79f56960f6a34dbe0decce12abaa85ebfe445d87b156b72ef6ba1d2c42d67627"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-7195.81.3/bsd/sys/poll.h",
+      "sha256": "0b8cebda20c1bf38e48f5d37d9a64355415f82c8c3660bdf9ceb0c79585b5769"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-7195.81.3/bsd/sys/fcntl.h",
+      "sha256": "02d4a9cedd50f1914d4c661f56c7b718bc92420ca7a78ce5daaf9265d166356c"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/apple-oss-distributions/xnu/xnu-7195.81.3/bsd/sys/errno.h",
+      "sha256": "c8a527ee020cee45bf69cd150b0c5743c148863d54bfa29e1193caa6af274f36"
+    }
+  ],
+  "version_limit": "The public source tag is later than the installed beta. Installed System export availability is separately checked; actual socket authorization still requires execution.",
+  "installed_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+  "installed_export_resolution": [
+    "_socket ['/usr/lib/libSystem.B.dylib', '/usr/lib/system/libsystem_kernel.dylib'] 0x1802783dc",
+    "_bind ['/usr/lib/libSystem.B.dylib', '/usr/lib/system/libsystem_kernel.dylib'] 0x1802743ec",
+    "_listen ['/usr/lib/libSystem.B.dylib', '/usr/lib/system/libsystem_kernel.dylib'] 0x180274d48",
+    "_accept ['/usr/lib/libSystem.B.dylib', '/usr/lib/system/libsystem_kernel.dylib'] 0x18027434c",
+    "_connect ['/usr/lib/libSystem.B.dylib', '/usr/lib/system/libsystem_kernel.dylib'] 0x18027466c",
+    "_poll ['/usr/lib/libSystem.B.dylib', '/usr/lib/system/libsystem_kernel.dylib'] 0x180277c84",
+    "_fcntl ['/usr/lib/libSystem.B.dylib', '/usr/lib/system/libsystem_kernel.dylib'] 0x1802561bc",
+    "_setsockopt ['/usr/lib/libSystem.B.dylib', '/usr/lib/system/libsystem_kernel.dylib'] 0x18027824c",
+    "_getsockopt ['/usr/lib/libSystem.B.dylib', '/usr/lib/system/libsystem_kernel.dylib'] 0x180277324",
+    "_send ['/usr/lib/libSystem.B.dylib', '/usr/lib/system/libsystem_c.dylib'] 0x1801068e0",
+    "_recv ['/usr/lib/libSystem.B.dylib', '/usr/lib/system/libsystem_c.dylib'] 0x1801068d4",
+    "_close ['/usr/lib/libSystem.B.dylib', '/usr/lib/system/libsystem_kernel.dylib'] 0x1802769c4",
+    "_mach_absolute_time ['/usr/lib/libSystem.B.dylib', '/usr/lib/system/libsystem_kernel.dylib'] 0x180251160",
+    "_mach_timebase_info ['/usr/lib/libSystem.B.dylib', '/usr/lib/system/libsystem_kernel.dylib'] 0x180259074"
+  ],
+  "constants": {
+    "AF_INET": 2,
+    "SOCK_STREAM": 1,
+    "SOL_SOCKET": 65535,
+    "SO_REUSEADDR": 4,
+    "SO_NOSIGPIPE": 4130,
+    "SO_ERROR": 4103,
+    "F_GETFL": 3,
+    "F_SETFL": 4,
+    "O_NONBLOCK": 4,
+    "POLLIN": 1,
+    "POLLOUT": 4,
+    "POLLERR": 8,
+    "POLLHUP": 16,
+    "POLLNVAL": 32,
+    "EINTR": 4,
+    "EAGAIN_EWOULDBLOCK": 35,
+    "EINPROGRESS": 36,
+    "ECONNREFUSED": 61
+  },
+  "layout": {
+    "sockaddr_in": "16 bytes: uint8 sin_len at0, uint8 family at1, network-byte-order uint16 port at2, IPv4 bytes at4, zero padding8. Exact loopback address bytes127,0,0,1.",
+    "pollfd": "8 bytes: int32 fd at0, int16 events at4, int16 revents at6.",
+    "poll": "int poll(struct pollfd *, unsigned int nfds, int timeout_milliseconds);",
+    "socket_lengths": "socklen_t uint32; send/recv count size_t64 and return ssize_t64 on arm64."
+  },
+  "review_requirements": [
+    "Bind and connect only explicit127.0.0.1 at fixed unprivileged port, never INADDR_ANY.",
+    "Use bounded buffers/record lengths, partial read/write handling, boot/PID/sequence filtering. TCP is a stream, not a record transport.",
+    "Set SO_NOSIGPIPE for any socket that sends; check failures before sending.",
+    "Set nonblocking status with preserved F_GETFL flags; explicitly configure accepted sockets.",
+    "Complete EINPROGRESS connect using writable/error poll and getsockopt(SO_ERROR), not writable alone.",
+    "Keep monotonic deadlines bounded across EINTR and repeated EAGAIN.",
+    "Treat root/local transport as permission-checked; do not claim successful authorization before actual guest results."
+  ]
+}
