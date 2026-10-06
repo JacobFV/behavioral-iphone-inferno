@@ -186,3 +186,18 @@ compiler, downloaded-package, binary and build-log hashes are outside Git in
 The separate `--recovery-preserve-disk` mode test in preparation7 still exposed
 only a dummy NVMe device despite `nand-enable-reformat=0`; it performed no helper
 writes. The successful full-role run used the proven `--ramdisk-boot` mode.
+
+## Original gigalocker initialization
+
+The next disk boot mounted xART and Preboot but stopped at `data-protection`
+because the host-UUID `.gl` file was absent. Original recovery seputil has an
+explicit `--gigalocker-init` operation: it uses `/mnt7`, creates a missing file
+through its own implementation, and invokes the SEP user client. The boot alias
+`init_data_protection` instead uses `/private/xarts` and requires an existing file.
+No blob is fabricated by the helper.
+
+`prepare.py --disk-helper-existing --disk-helper-gigalocker` uses already prepared
+volumes, mounts discovered xART on `/mnt7`, executes the original seputil init and
+shutdown operations in order, syncs, and unmounts. Use only a disposable copy of
+the prepared root as always. `INFERNO_GIGALOCKER_COMPLETE` requires both original
+tool calls to return success; absence or errors must remain explicit.
