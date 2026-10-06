@@ -447,3 +447,14 @@ core unlock sequence. The next readiness observer bounds only its own ps child
 to600 seconds before killing/reaping that child and continuing other observation;
 the earlier live observer remains unchanged. Slow partial ps output is not
 evidence that an unprinted process is absent.
+
+Stage30's app readback rejected an incorrectly nested bundle before any full-system
+handoff: four mismatches, exit62, normal System unmount. The clean-source retry
+uses the previously exercised copy_contents routine, preserving directory
+metadata while copying the two bundle members directly. Failed raw logs and
+stopped-disk hashes remain in the stage30 report.
+
+Observer `seconds` fields identify cumulative requested sleep intervals, not
+precise wall time since boot. Original ps startup/printing can take minutes under
+load; use the runner's timestamps and serial dates when comparing actual timing.
+A partial ps listing does not establish absence of a process.
