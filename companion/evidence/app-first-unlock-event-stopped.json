@@ -1,0 +1,203 @@
+{
+  "kind": "stopped_first_unlock_event_comparison",
+  "source_report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-21",
+  "binary_sha256": "e3da84b179ce328e06a0f917aabb8e4d80c8a4cf64701212464831a270e1741e",
+  "elapsed_seconds": 638.466375,
+  "emulator_exit": 0,
+  "quit_response": {
+    "return": {},
+    "id": 39
+  },
+  "stop_reason": "Replace loaded automatic legacy journey runner with observation-default source before setup completion; same guest/emulator next run.",
+  "serial_transport": {
+    "endpoint": "/tmp/inferno-boot-gq0mb9io/gesture-serial.sock",
+    "connected": true,
+    "drained_bytes": 568286,
+    "transmissions": [
+      {
+        "request_id": "897c900dea1d45f29d8e8f2939316287",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 82
+      }
+    ],
+    "automatic_replay": false,
+    "connected_time": 1791295899.942814,
+    "peer_closed": true,
+    "drain_thread_stopped": true,
+    "closed_time": 1791296537.9008205
+  },
+  "startup_trace": {
+    "limit_seconds": 900,
+    "events": [
+      "apple_mt_spi_host_event",
+      "apple_mt_spi_enqueue",
+      "apple_mt_spi_dequeue",
+      "apple_mt_spi_tx_drained",
+      "apple_mt_spi_boot_command",
+      "apple_mt_spi_control"
+    ],
+    "enable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 5
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 6
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 7
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 8
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 9
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 10
+        }
+      }
+    ],
+    "disable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 33
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 34
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 35
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 36
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 37
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 38
+        }
+      }
+    ],
+    "start_time": 1791295899.9430635,
+    "deadline_time": 1791296799.9430637,
+    "stop_time": 1791296537.6839213,
+    "stop_reason": "runner cleanup",
+    "all_disabled": true
+  },
+  "observations": [
+    "Original MKB state3/first0->1 with normal unlock0.",
+    "New simulator trace records queued first-unlock event after reply; no consumer-completion inference.",
+    "Original virtual HID creation succeeds; one operator swipe reaches language chooser.",
+    "Screen Time completion not tested on this run before controlled stop.",
+    "Zero UIKit marker and zero automatic input-send-event command.",
+    "Traces disabled during cleanup before900second deadline."
+  ],
+  "unlock_lines": [
+    "INFERNO_UNLOCK_BEGIN watchdog=600 maximum_attempts=1",
+    "INFERNO_UNLOCK_STAGE dlopen",
+    "INFERNO_UNLOCK_STAGE resolve-symbols",
+    "INFERNO_UNLOCK_STAGE query-state-before",
+    "INFERNO_UNLOCK_STAGE query-first-before",
+    "INFERNO_UNLOCK_BEFORE state=3 unlocked_since_boot=0",
+    "INFERNO_UNLOCK_STAGE single-empty-attempt",
+    "INFERNO_UNLOCK_SINGLE_EMPTY_ATTEMPT result=0",
+    "INFERNO_UNLOCK_STAGE query-state-after",
+    "INFERNO_UNLOCK_STAGE query-first-after",
+    "INFERNO_UNLOCK_AFTER state=3 unlocked_since_boot=1",
+    "INFERNO_UNLOCK_STAGE access-after",
+    "INFERNO_UNLOCK_DATA_ACCESS phase=after result=-1 errno=1"
+  ],
+  "event_lines": [
+    "INFERNO SEP first-unlock event queued ep=18 tag=0 op=1 param=0 handle=0 after_reply=1"
+  ],
+  "files": {
+    "app-first-unlock-event-stopped-serial.log": {
+      "bytes": 568286,
+      "sha256": "ac3b33a3fa3fa54ac7a99e38d7226c7a92f7f2bb89ed92f6b9f872331e0c7f79"
+    },
+    "app-first-unlock-event-stopped-report.json": {
+      "bytes": 32459,
+      "sha256": "60aac3b258e1d181771dc4c9094fce0fd35a1f6220117b6dceefcd3cd4dffd55"
+    },
+    "app-first-unlock-event-stopped-qmp-transcript.jsonl": {
+      "bytes": 15172,
+      "sha256": "44c47c2f07a8e8263290bbcb25bc1b8e0b85a6f3c5730e9122c98a31949a2938"
+    },
+    "app-first-unlock-event-stopped-control-transcript.jsonl": {
+      "bytes": 638,
+      "sha256": "1e7209d8d4812c9554cf8eb57fc740b1d623c89925daa30da0608f5911b28253"
+    },
+    "app-first-unlock-event-stopped-serial-input-transcript.jsonl": {
+      "bytes": 537,
+      "sha256": "1a0f0949948b011cd633ddbde725ff200cfd5b9a568c0e8c441f539ea89ca5c5"
+    },
+    "app-first-unlock-event-stopped-guest-errors.log": {
+      "bytes": 5824,
+      "sha256": "129fa934e2a6c3170ecb7a0264761c914f36ff1be2883ad4e79496a2eb63eada"
+    },
+    "app-first-unlock-event-stopped-stderr.log": {
+      "bytes": 2827,
+      "sha256": "90d324fa1e1c26c49589cda1ea8076ea1c3f9073a1f1fccf44bdc91ae15d91eb"
+    },
+    "app-first-unlock-event-stopped-stopped-disk-hashes.json": {
+      "bytes": 1716,
+      "sha256": "e6a933c7278f03bbbd3244218025bdfea7532cb87334b017e7e0f64fd945be96"
+    },
+    "app-first-unlock-event-stopped-language-before.png": {
+      "bytes": 56384,
+      "sha256": "da2ca695bea650af1be4b937cb9a23e726b08944de4fb13610ab134bd4196ad3"
+    },
+    "app-first-unlock-event-stopped-language-report.json": {
+      "bytes": 660,
+      "sha256": "0e18c1a26d619243ea5f21416be05b7ee2ab355ebdeafafa19579d6e3ad73c96"
+    }
+  }
+}
