@@ -70,9 +70,9 @@ PID's exact executable and uid, grammar and sequence before preserving the raw
 line and emitting a marker. This checks the claimed PID; TCP peer PID is not
 authenticated. It is fixture telemetry, not a security authentication protocol.
 Boot32 proved guest bind/connect/relay with actual lifecycle and tapcount1
-records and strict before-capture. Its unexpected Signal15 preceded operator
-after-capture, so strict completion remains pending in repeat33. Missing markers
-must still fail the strict runner.
+records but was interrupted before operator after-capture. Boot33 completed both
+strict captures with root-reviewed visible0→1 and normal emulator exit0. Missing
+markers must still fail the strict runner.
 A requested window is not a captured visible screen. Acceptance needs the actual
 before/after framebuffer and the matching interaction marker from the guest.
 
@@ -109,8 +109,8 @@ with three seconds between attempts; default SIGALRM terminates the process afte
 exhaustion exits1. A watchdog termination will not print an ordinary exit marker.
 `request-accepted-not-visual-proof` explicitly means only service acknowledgement.
 Strict acceptance also requires app markers and reviewed before/after captures.
-The visual journey and event relay are proven; both strict operator captures
-in one uninterrupted run remain the current acceptance target.
+The visual journey, event relay and both strict operator captures are proven
+in one uninterrupted run33. Same-input repeatability is the next active check.
 
 The original same-build recovery CoreServices1114.5 binary was inspected:
 `registerApplication:` at0x41f4c calls LSRegisterURL at0xd1838; `openApplicationWithBundleID:`
