@@ -74,7 +74,7 @@ class QMP:
             raise RuntimeError('Missing or oversized QMP response')
         return json.loads(line)
 
-    def execute(self, name, arguments=None):
+    def execute(self, name, arguments=None, timeout=5):
         self.counter += 1
         request = {'execute': name, 'id': self.counter}
         if arguments is not None:
@@ -83,7 +83,7 @@ class QMP:
         self.raw.write(json.dumps({'direction': 'send', 'time': time.time(), 'raw': line}) + '\n')
         self.raw.flush()
         self.stream.write(line.encode())
-        deadline = time.monotonic() + 5
+        deadline = time.monotonic() + timeout
         while True:
             self.connection.settimeout(max(.001, deadline - time.monotonic()))
             response = self.receive()
@@ -193,7 +193,7 @@ def main():
             if 'QMP' not in report['greeting']:
                 raise RuntimeError('Missing QMP greeting')
             for name in ('qmp_capabilities', 'query-status', 'query-cpus-fast', 'cont'):
-                response = qmp.execute(name)
+                response = qmp.execute(name, timeout=max(.1, min(30, deadline - time.monotonic())))
                 if 'error' in response:
                     raise RuntimeError(f'QMP {name} failed: {response["error"]}')
             while time.monotonic() < deadline and process.poll() is None:
