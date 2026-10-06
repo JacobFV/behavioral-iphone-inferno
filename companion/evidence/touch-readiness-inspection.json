@@ -121,7 +121,14 @@
       "release_reset": "setResetAsserted(false) at 0xfffffff0085600b4; failure checked at 0xfffffff0085600b8",
       "bootloader": "Subsequently marks boot flags and queries original getBootloader before bootloader work."
     },
-    "resolution_method": "llvm-objdump-18 original symbolized code; virtual targets resolved from original vtable chained-pointer low32 offsets relative to 0xfffffff007004000. No instructions modified."
+    "resolution_method": "llvm-objdump-18 original symbolized code; virtual targets resolved from original vtable chained-pointer low32 offsets relative to 0xfffffff007004000. No instructions modified.",
+    "configureSPI_initial_zero_transfer": {
+      "entry": "0xfffffff008560624",
+      "sequence": "After successful AppleARMSPIDevice::setSPIConfig, tests cached configuration flag this+0x250 and selected byte. If unset/changed, stores a zero uint32 at stack+0x4c (0xfffffff008560774), then calls AppleARMSPIDevice::transferData(buffer,4,NULL,0,NULL,0) at 0xfffffff0085607c4.",
+      "provider_vtable": "Original __ZTV17AppleARMSPIDevice at 0xfffffff00778ab78, address point +16, slot0x578 resolves transferData; slots0x548/550 resolve getSPIConfig/setSPIConfig.",
+      "power_off_caller": "powerOff(true) clears this+0x250 at 0xfffffff00855f160 and invokes configureSPI(1) at 0xfffffff00855f210. handleStart invokes powerOff(true).",
+      "inference_limit": "A single emulated HBPP type0 during startup may be this normal four-zero-byte configuration transfer; it does not establish bootChip or firmware loading began. The current observation is not a proven protocol behavior bug."
+    }
   },
   "actual_execution_context": {
     "report": "app-boot-12/vnc-trace-tap-1/guest-errors-window.log",
@@ -134,5 +141,20 @@
       "Next boot startup traces plus individually reviewed register reads should separate never-started initialization from an incomplete boot/firmware handshake."
     ]
   },
-  "mutations": "None to guest, firmware, or emulator behavior; evidence document only."
+  "mutations": "None to guest, firmware, or emulator behavior; evidence document only.",
+  "post_setup_register_observation": {
+    "report": "app-boot-13 parent-controlled fixed-register transcript",
+    "parent_reported_values": {
+      "gpio_pin34": "0x0006020e",
+      "spi_ctrl": "0x0",
+      "spi_cfg": "0x4018",
+      "spi_status": "0x0",
+      "spi_pin": "0x2",
+      "spi_rxcnt": "0x0",
+      "spi_txcnt": "0x0"
+    },
+    "decode": "GPIO group6 selected, INPUT_ENABLE set, GPIO function, CFG_DISABLE, inputlevel0. SPI RUN clear, modeled transfer MODE invalid, counts zero. CFG bits3/4/14 are unmodeled by current source.",
+    "trace": "Six trace events enabled before cont; parent reports exactly one type0 first-byte event through180s and unchanged registers after rendered setup. Extended command-boundary trace is required to establish completion/pending response.",
+    "provenance_limit": "Values and complete-window count reported by parent; consult raw run transcript for execution evidence."
+  }
 }
