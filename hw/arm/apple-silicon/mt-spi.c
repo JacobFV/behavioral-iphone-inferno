@@ -32,6 +32,7 @@
 #include "qemu/timer.h"
 #include "ui/console.h"
 #include "ui/input.h"
+#include "trace.h"
 
 typedef struct AppleMTSPIBuffer {
     uint8_t *data;
@@ -434,6 +435,7 @@ static void apple_mt_spi_handle_hbpp(AppleMTSPIState *s)
     packet_type = apple_mt_spi_buf_read_byte(&s->rx, 0);
 
     if (apple_mt_spi_buf_pos_at_start(&s->rx)) {
+        trace_apple_mt_spi_boot_command(packet_type);
         apple_mt_spi_buf_set_capacity(
             &s->rx, apple_mt_spi_hbpp_packet_hdr_len(packet_type));
     }
@@ -684,6 +686,7 @@ static void apple_mt_spi_handle_control(AppleMTSPIState *s)
 {
     uint8_t type = apple_mt_spi_ll_read_payload_byte(&s->rx, 0);
 
+    trace_apple_mt_spi_control(type, s->rx.len);
     switch (type) {
     case HID_CONTROL_PACKET_GET_FEATURE_REPORT:
         apple_mt_spi_handle_get_feature(s);
@@ -711,6 +714,7 @@ static void apple_mt_spi_handle_fw_packet(AppleMTSPIState *s)
         } else {
             packet = QTAILQ_FIRST(&s->pending_fw);
             assert_nonnull(packet);
+            trace_apple_mt_spi_dequeue(packet->type, packet->buf.len);
             apple_mt_spi_push_ll_hdr(&buf, packet->type, 0, 0, 0,
                                      packet->buf.len);
             apple_mt_spi_buf_append(&buf, &packet->buf);
@@ -776,6 +780,7 @@ static uint32_t apple_mt_spi_transfer(SSIPeripheral *dev, uint32_t val)
 {
     AppleMTSPIState *s;
     uint8_t ret;
+    bool tx_had_data;
 
     s = container_of(dev, AppleMTSPIState, parent_obj);
 
@@ -793,7 +798,13 @@ static uint32_t apple_mt_spi_transfer(SSIPeripheral *dev, uint32_t val)
         apple_mt_spi_buf_free(&s->rx);
     }
 
+    tx_had_data = !apple_mt_spi_buf_is_empty(&s->tx);
     ret = apple_mt_spi_buf_pop(&s->tx);
+
+    if (tx_had_data && apple_mt_spi_buf_is_empty(&s->tx)) {
+        trace_apple_mt_spi_tx_drained(QTAILQ_EMPTY(&s->pending_fw),
+                                    s->pending_hbpp.len);
+    }
 
     if (apple_mt_spi_buf_is_empty(&s->pending_hbpp) &&
         QTAILQ_EMPTY(&s->pending_fw)) {
@@ -882,6 +893,8 @@ static void apple_mt_spi_send_path_update(AppleMTSPIState *s, uint64_t ts,
 
     apple_mt_spi_buf_push_crc16(&packet->buf);
 
+    trace_apple_mt_spi_enqueue(path_stage, s->frame, s->x, s->y,
+                               packet->buf.len, ts);
     if (s->frame < 0xFF) {
         ++s->frame;
     } else {
@@ -983,6 +996,8 @@ static void apple_mt_spi_mouse_event(void *opaque, int dx, int dy, int dz,
     s->prev_btn_state = s->btn_state;
     s->btn_state = buttons_state;
 
+    trace_apple_mt_spi_host_event(dx, dy, s->x, s->y,
+                                  s->prev_btn_state, s->btn_state);
     if ((s->prev_btn_state & MOUSE_EVENT_LBUTTON) == 0 &&
         (s->btn_state & MOUSE_EVENT_LBUTTON) != 0) {
         apple_mt_spi_schedule_touch_update(s, PATH_STAGE_MAKE_TOUCH);
