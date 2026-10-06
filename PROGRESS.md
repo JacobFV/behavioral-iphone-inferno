@@ -2,6 +2,22 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 11:11 continuation: repeated timestamped journey36 completed
+
+36 repeats frozen49/app20/launcher20/reader53/HID45 without binary changes.
+Five validated hook records (bootAEE5FC26-9B9D-4321-B6E8-71A52A6F41E1/PID260,
+timebase125/3) produce request→main116.572583ms, main→appeared697.905708ms,
+main→active807.78175ms, request→callback1305.488875ms and request→active924.354333ms.
+Callbacks can follow active; neither is a visible-frame timestamp. Two samples
+are retained individually, with no statistical performance/reliability claim.
+
+Strict reviewed0→1 and both captures completed. Normalemulator0/errornull,
+385.872285s, root116916224bytesSHA34a377fec3e470965c0046f1a681c27cf317ed26f5406f5baa8f6ea96c71960f,
+all7/all4ancestors unchanged. Timing evidence `owned-launch-timing-36`.
+No VM active while warm candidate finishes. New host opt-in keepalive47a2758de9
+and fixed guest-open-app eeba9e022d were checked using actual firmware-free
+transport only; installed guest OPEN and warm foreground remain unproven.
+
 ### 11:04 continuation: real guest launch clocks and strict journey35
 
 App20/launcher20/readiness53 executed in installed iOS from frozen49. All five
