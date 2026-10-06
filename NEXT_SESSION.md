@@ -28,7 +28,12 @@ original structs/exports/kernel authorization. App18 adds exact own cache path
 in a bounded readable footer for cross-check; behavior otherwise unchanged.
 Source2814e4a202 reviewed, binary73248bytes independently hashed
 13f9088c97afb4f6741b065151173c80a7b97fa261beee1243e8e1f104854ccf.
-Reader source/build still pending review. No staging47 yet.
+Reader51 source5e9ffc83d9/0aab538f52 and build55ab34faea are now reviewed;
+original libproc ABI/permission proofcbfb87d7ac, all41 imports audited. Actual
+readiness51 69808bytes SHA2f7db612c1bc2780a8f37280d12f1badbd0fad8cadfa9ca8d175af3f42fc940b
+independently matched. Stage47 is authorized and running session90790 with
+helper-attempt48, frozen44 parent, app18/readiness51+same535job. Await actual
+readbacks/clean unmount/normalquit/postflight/all7 before rootfreeze47 then31.
 
 After candidate review,47 must be a sibling from protected frozen44, replacing
 app18 and new readiness plus unchanged535job, preserving launcher13/HID45/emulator.
