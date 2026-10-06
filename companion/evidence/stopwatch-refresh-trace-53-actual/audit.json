@@ -1,0 +1,263 @@
+{
+  "regions": [
+    {
+      "name": "no_VNC",
+      "bytes": [
+        91335,
+        103205
+      ],
+      "host_checkpoint_seconds": 53.87440577999223,
+      "counts": {
+        "apple_adp_output_ready": 2,
+        "apple_adp_irq_write": 4,
+        "apple_adp_unknown_mmio": 130,
+        "apple_adp_gp_config_write": 16,
+        "apple_adp_submit": 2,
+        "apple_adp_bh": 4,
+        "apple_adp_pipe": 4
+      },
+      "complete_draw_cycles": 2,
+      "ordered_handshake_events": [
+        [
+          91335,
+          "apple_adp_output_ready",
+          {
+            "before": "0x0",
+            "status": "0x400",
+            "enable": "0xc0180c08"
+          }
+        ],
+        [
+          91400,
+          "apple_adp_irq_write",
+          {
+            "kind": "status-w1c",
+            "value": "0x400",
+            "before": "0x400",
+            "status": "0x0",
+            "enable": "0xc0180c08"
+          }
+        ],
+        [
+          95603,
+          "apple_adp_submit",
+          {
+            "value": "0x1f00",
+            "schedule": "1",
+            "status": "0x0",
+            "enable": "0xc0180c08"
+          }
+        ],
+        [
+          95673,
+          "apple_adp_bh",
+          {
+            "phase": "enter",
+            "gp0": "0x80070001",
+            "gp1": "0x40000",
+            "status": "0x0",
+            "enable": "0xc0180c08"
+          }
+        ],
+        [
+          95754,
+          "apple_adp_pipe",
+          {
+            "pipe": "0",
+            "outcome": "drawn",
+            "control": "0x80070001",
+            "source": "0x1c78000",
+            "stride": "3328",
+            "width": "828",
+            "height": "1792",
+            "bytes": "5963776"
+          }
+        ],
+        [
+          95874,
+          "apple_adp_pipe",
+          {
+            "pipe": "1",
+            "outcome": "disabled",
+            "control": "0x40000",
+            "source": "0x0",
+            "stride": "0",
+            "width": "0",
+            "height": "0",
+            "bytes": "0"
+          }
+        ],
+        [
+          95974,
+          "apple_adp_bh",
+          {
+            "phase": "exit",
+            "gp0": "0x80070001",
+            "gp1": "0x40000",
+            "status": "0x100000",
+            "enable": "0xc0180c08"
+          }
+        ],
+        [
+          96059,
+          "apple_adp_irq_write",
+          {
+            "kind": "status-w1c",
+            "value": "0x100000",
+            "before": "0x100000",
+            "status": "0x0",
+            "enable": "0xc0180c08"
+          }
+        ],
+        [
+          97270,
+          "apple_adp_output_ready",
+          {
+            "before": "0x0",
+            "status": "0x400",
+            "enable": "0xc0180c08"
+          }
+        ],
+        [
+          97335,
+          "apple_adp_irq_write",
+          {
+            "kind": "status-w1c",
+            "value": "0x400",
+            "before": "0x400",
+            "status": "0x0",
+            "enable": "0xc0180c08"
+          }
+        ],
+        [
+          101538,
+          "apple_adp_submit",
+          {
+            "value": "0x1000",
+            "schedule": "1",
+            "status": "0x0",
+            "enable": "0xc0180c08"
+          }
+        ],
+        [
+          101608,
+          "apple_adp_bh",
+          {
+            "phase": "enter",
+            "gp0": "0x80070001",
+            "gp1": "0x40000",
+            "status": "0x0",
+            "enable": "0xc0180c08"
+          }
+        ],
+        [
+          101689,
+          "apple_adp_pipe",
+          {
+            "pipe": "0",
+            "outcome": "drawn",
+            "control": "0x80070001",
+            "source": "0x16c0000",
+            "stride": "3328",
+            "width": "828",
+            "height": "1792",
+            "bytes": "5963776"
+          }
+        ],
+        [
+          101809,
+          "apple_adp_pipe",
+          {
+            "pipe": "1",
+            "outcome": "disabled",
+            "control": "0x40000",
+            "source": "0x0",
+            "stride": "0",
+            "width": "0",
+            "height": "0",
+            "bytes": "0"
+          }
+        ],
+        [
+          101909,
+          "apple_adp_bh",
+          {
+            "phase": "exit",
+            "gp0": "0x80070001",
+            "gp1": "0x40000",
+            "status": "0x100000",
+            "enable": "0xc0180c08"
+          }
+        ],
+        [
+          101994,
+          "apple_adp_irq_write",
+          {
+            "kind": "status-w1c",
+            "value": "0x100000",
+            "before": "0x100000",
+            "status": "0x0",
+            "enable": "0xc0180c08"
+          }
+        ]
+      ]
+    },
+    {
+      "name": "connected_checkpoint_interval",
+      "bytes": [
+        103205,
+        264217
+      ],
+      "host_checkpoint_seconds": 24.42384842201136,
+      "counts": {
+        "apple_adp_output_ready": 29,
+        "apple_adp_irq_write": 54,
+        "apple_adp_unknown_mmio": 1757,
+        "apple_adp_gp_config_write": 224,
+        "apple_adp_submit": 27,
+        "apple_adp_bh": 54,
+        "apple_adp_pipe": 54
+      },
+      "complete_draw_cycles": 27,
+      "ordered_handshake_events": []
+    }
+  ],
+  "no_VNC_QMP_captures": [
+    {
+      "time": 1791324650.5055006,
+      "id": 83,
+      "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-53/frames/0041.ppm"
+    },
+    {
+      "time": 1791324680.5733228,
+      "id": 84,
+      "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-53/frames/0042.ppm"
+    }
+  ],
+  "all_window_QMP_captures": [
+    {
+      "time": 1791324650.5055006,
+      "id": 83,
+      "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-53/frames/0041.ppm"
+    },
+    {
+      "time": 1791324680.5733228,
+      "id": 84,
+      "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-53/frames/0042.ppm"
+    }
+  ],
+  "window_seconds": 60.149596214294434,
+  "connected_first_requested_time": 1791324686.2262092,
+  "connected_first_received_time": 1791324686.3230233,
+  "first_received_through_trace_stop_seconds": 6.088797569274902,
+  "trace_disabled_time": 1791324692.411821,
+  "connected_capture_count": 13,
+  "input_commands_during_checkpoint_intervals": 0,
+  "interpretation": [
+    "No-VNC53.874406s interval has two refresh-ready/ack/submit/draw/frameprocessed-ack sequences and exactly two periodic QMP captures. This agrees with refresh-driven rendering cadence; individual trace events lack timestamps, so correspondence is source-supported inference rather than event-time pairing.",
+    "After connection27complete draws and29ready events are visible. Only about6.09seconds from first received VNC frame to deadline are traced, not the full24.42second checkpoint interval or full15second observation. No cross-condition frame-rate benchmark is computed.",
+    "Trace stops midway through connected observation. Last captured stopwatch digits reflect untraced later updates; screenshots are not presentation-time samples.",
+    "There are no intervening serial input commands or VNC pointer/Home events in these retained intervals. Earlier explicit stopwatch resume establishes workload; connection itself changes refresh stimulation.",
+    "Unlike earlier stuck41/44/47, both no-viewer and connected53 windows have normal submit/draw responses. This supports capture-cadence explanation for stopwatch pictures, not a fix for no-submission failures or proof of guest monotonic-clock rate."
+  ]
+}
