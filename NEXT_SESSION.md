@@ -53,7 +53,8 @@ original Hello setup UI. Owned app registration and the original first-unlock AP
 transition are proven. Owned UIKit execution, touch navigation and a counter
 journey remain unproven. Do not return to the archived framework implementation.
 
-At 05:24 local, **app-boot-16 is live**, bootworker session5753, from firmware-only
+At 05:42 local, **app-boot-16 is being stopped for verified helper staging37**,
+bootworker session5753, from firmware-only
 stage36 root SHA256
 `6a7dba55d2e16890eec2a76d980a10016cdde0ad2265387048cd76ee699db1ac` and all six
 paired namespaces in `.local-build/reports/disk-preparation-36`.
@@ -83,15 +84,36 @@ encoding matches emulator. No GPIO or coordinate fix is justified. Completed
 four-byte RESET queues two-byte reply, no INT_ACK; that transfer is also used by
 original initial poweroff configuration. SPI CTRL0/CFG0x4018/PIN2/counts0 persist.
 
-**Current implementation work:** investigate normal original IOHID event injection
-as a separate owned UI automation route; hardware touch remains unresolved.
-Original installed IOKit default client type3 requires exactly
-`com.apple.private.hid.client.event-dispatch=true`; accepted events enter the
-normal IOHIDSession queue. Denied dispatch also returns0, so only actual UI
-response proves success. Native owns exact digitizer ABI/helper design; disk
-worker owns authorization/display routing evidence; bootworker owns an optional
-private serial command transport design. No injection helper has run. No admin
-entitlement, synthetic unlock notification or security-guard change is proposed.
+**Current implementation work:** reviewed runnable virtual touchscreen candidate
+is integrated as44a179cad2 (native sourcef15ba1987a), with optional private serial
+runner transport44814e939f. Root checked actual helper-build42 bytes and extracted
+singleton entitlement `com.apple.developer.hid.virtual.device=true`.
+HID helper68736bytes SHA256
+`3619b68952b5b6fa324f1055b74dd04250fc6c764e4241b5525cbe7e1ac0df74`;
+readiness68672bytes SHA256
+`3c360cba34c8d7616fc1ac173af4e7ebd21226f69addc9f11a2fcd6c0e8bcba1`.
+Native will stage only these two owned binaries and identical535byte descriptor
+from stopped16 plus all paired disks; no new cachejob or app/firmware change.
+Require real readbacks/unmount/QMP0/stoppedhashes before next17.
+
+The helper uses original IOHIDUserDevice APIs and an owned standard touchscreen
+report descriptor. Product/Manufacturer identify Inferno; Transport Virtual and
+Built-In=true describe this VM's integrated display. Original kernel retains
+HIDVirtualDevice=true. No IOClass/provider override, guessed sender/context,
+admin or manager entitlement. Original driver supplies normalized coordinates,
+display-integrated field and actual service identity. Helper creates device at
+startup but sends no report automatically. Before an operator gesture it waits
+boundedly for its descendant IOHIDEventService, logs actual IDs/classes and sends
+7-byte down/move/up reports with a release attempt on controlled interruption.
+
+Next17 needs `--guest-hid-serial --control-mailbox`. Runner connects to private
+Unix serial socket before cont and drains it continuously; QEMU preserves exact
+serial output in logfile. Mailbox `guest-hid-gesture` accepts only tap/swipe,
+32hex requestID, integer coords0..32767 and duration1..2000ms. Exact protocol in
+QMP_CONTROL.md; no arbitrary commands, automatic gestures or replay. Image-free
+monitor-frontend smoke proved transport plumbing only. Actual UART roundtrip,
+virtual service creation and visible input remain unproven. Root's first planned
+probe is one bounded Hello info-button tap with before/after frames.
 
 **Live control:** root exclusively owns input. Runner owns the sole QMP connection;
 use `companion/qmp_control.py --report .local-build/reports/app-boot-16 ...`.
@@ -105,7 +127,7 @@ windows, network display endpoints, clipboard or arbitrary guest commands.
 feeds36; normal QMP0 after960.150192s. Observer-only35 came from stopped12.
 Boot14 failed before userland at framebuffer panicPC00979a36c; identical15 retry
 succeeded, matching an older prep16/17 transient precedent. All actual boot tuples
-and reports remain. Verified redundant generated prep24/25/26/28/30/31/32/33/34
+and reports remain. Verified redundant generated prep24/25/26/28/30/31/32/33/34/35
 disk copies were retired; their hashes/evidence/sources remain. Do not refer to
 retired preparation disks as available. Check actual free space before new copies.
 
@@ -121,10 +143,10 @@ Evidence and exact original-code inspection are under companion/evidence/.
 
 ## Next concrete work
 
-1. Keep16 intact while the exact original HID API and private command transport
-   are made reviewable. Build the narrowly authorized owned helper only after
-   ABI, event fields and authorization are established. Do not claim API return0
-   as delivery; require visible before/after UI evidence.
+1. Finish staged37 byte/metadata verification and boot17 with the reviewed helper
+   and optional private serial transport. Inspect actual virtual service creation
+   and console readiness; then root sends one bounded ordinary tap after reviewing
+   Hello. Do not claim report/API return0 as delivery; require visible UI change.
 2. Stage from a normally stopped paired tuple only after the next candidate is
    ready. Commit source, actual build manifests, readbacks, raw logs and hashes.
    Never copy or hash a live disk as an immutable source.
