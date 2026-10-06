@@ -1,0 +1,50 @@
+{
+  "kind": "t8030_direct_root_experiment",
+  "binary_sha256": "fed2f7ff2e975ca243942fefa7dbac0b578b12c745b7ea72bb98b9c1ac1b284a",
+  "profile_sha256": "bed70083a844734ecd754631b3af0cab1f714dd9886efc872b9ae2defdcf69a5",
+  "inputs": {
+    "kernel": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/kernel-kernelcache.research.iphone12b",
+      "sha256": "cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3",
+      "bytes": 17429507
+    },
+    "dtb": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+      "sha256": "dbd9be96c4b18f48a1842879237ae8f27043b894a2ed6139e396dbedca232411",
+      "bytes": 42553
+    },
+    "trustcache": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/disk-profile/038-44337-083.dmg.trustcache",
+      "sha256": "ee71c44830e5c957fee2fcf625d7e5849f2e40b77e6aaffa54f24655f725bc89",
+      "bytes": 49789
+    },
+    "ramdisk": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/ramdisk-038-44135-124.dmg",
+      "sha256": "4013d9b3bb6c7fa0ff82397effc032b6afdb6f3c5e1672782698119dd9b3f704",
+      "bytes": 104685595
+    }
+  },
+  "root_base": {
+    "path": "/home/brandonin/.local/share/inferno/images/ios14b5/os-inspection/official-os-4k.raw",
+    "sha256": "93f97dae602a8fc844f0f88819d3fe358b1cf14ee5e193b0beb7009376032594",
+    "bytes": 8589934592,
+    "copied_before_use": true
+  },
+  "elapsed_seconds": 29.490101,
+  "exit_code": 0,
+  "serial_bytes": 35316,
+  "error": {
+    "type": "RuntimeError",
+    "detail": "Emulator exited during boot attempt; see serial.log and stderr.log"
+  },
+  "built_source": "877b07069ac6c8af459979bad391221c4290b548",
+  "runner_revision": "f47a7fbd4c80fdf4db4c86e231e3072edcd2ef42",
+  "runner_sha256": "7949df7b1f9634cc17b9c3437da3535d1143de5608231156f3a4627eb5af7ac7",
+  "review": "Root read APFS System mount and Darwin Bootstrapper, then mount-phase-1 exit66 panic from missing auxiliary volumes/preboot firmware path. Not a completed installed iOS boot.",
+  "full_report": ".local-build/reports/direct-root-1/report.json",
+  "artifact_sha256": {
+    "serial.txt": "9e1ca2c4d760e307b8f99322f5842e40dae61366ec8547417d2655b8138ebad3",
+    "stderr.txt": "4d7f2d6928bacb0cafa5f9cd7752a9f03157a4b763a2d25e250a61db0d4165ec",
+    "qmp.jsonl": "def329fb86cfaa0c45df2e619da60c8a54ff24595ea5e59e85f46ee81e27f7c7"
+  }
+}
