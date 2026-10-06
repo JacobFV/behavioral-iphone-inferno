@@ -1,15 +1,18 @@
 # Repeat the installed iOS owned-app journey
 
-This procedure uses the existing verified iOS14 beta5 profile and frozen stage50
-disk tuple. It requires those external artifacts; the repository does not contain
-Apple binaries or a distributable iOS image. The actual baseline is app22,
-launcher22, readiness54 and HID54 with emulator SHA256
-`e3da84b179ce328e06a0f917aabb8e4d80c8a4cf64701212464831a270e1741e`.
+This procedure uses the existing verified iOS14 beta5 profile and the current
+frozen stage55 disk tuple described below. It requires those external artifacts;
+the repository does not contain Apple binaries or a distributable iOS image.
 This is TCG with simulated SEP and the upstream direct-kernel patches.
+
+The historical baseline used stage50 with app22, launcher22, readiness54 and
+HID54, and emulator SHA256
+`e3da84b179ce328e06a0f917aabb8e4d80c8a4cf64701212464831a270e1741e`.
+Its retained evidence remains separate from current diagnostic runs.
 
 ## Current freeze investigation
 
-The repeatable baseline above records the original journey. Current diagnostic
+The historical baseline above records the original journey. Current diagnostic
 runs49 onward use frozen `disk-preparation-55/report.json`, app22/launcher22/
 readiness54/HID55, and emulator SHA256
 `670caae5e8b86dbd07968b053ce0667328cce648935cefb8649357400f9c8e59`
@@ -44,12 +47,12 @@ identity checks, output bounds and the original tool's limitations.
 Run from the repository root. Choose a **new** output directory for every attempt.
 The base report and all its backing dependencies must remain at their recorded
 paths, read-only, with unchanged hashes. Do not point `--root-image` at a qcow2
-leaf or add another staging layer above stage50.
+leaf or add another staging layer above stage55.
 
 ```sh
 attempt="$PWD/.local-build/reports/app-boot-NEW"
 profile="$HOME/.local/share/inferno/images/ios14b5/verified-profile/profile.json"
-base="$PWD/.local-build/reports/disk-preparation-50/report.json"
+base="$PWD/.local-build/reports/disk-preparation-55/report.json"
 companion/run boot --profile "$profile" --output "$attempt" --seconds 7200 \
   --overlay-base-report "$base" --disk-boot --launchd-unsecure-cache \
   --guest-errors --capture-interval 30 --probe-journey --control-mailbox \
@@ -133,7 +136,7 @@ not include framebuffer memory. Older running processes do not acquire new
 commands merely because the checkout has changed. A register snapshot alone
 does not establish the cause of a rendering failure.
 
-For runners using the diagnostic emulator built from0132ad93ca, a bounded trace
+For the current diagnostic emulator built from09811d4d1d, a bounded trace
 can record submission, drawing and interrupt activity around a reviewed action:
 
 ```sh
