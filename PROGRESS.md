@@ -2,32 +2,32 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
-### Current execution boundary (03:37 local)
+### Current execution boundary (03:50 local)
 
-Full-system SpringBoard and backboardd execute; reviewed frames show Apple
-migration progress. Visible setup/home UI, owned UIKit execution and tap/count
-journey remain unproven. Continue execution without a handoff.
+Full-system SpringBoard/backboardd execute and reviewed frames show Apple migration
+progress. Visible setup/home UI, owned UIKit execution and tap/count are unproven.
+Continue execution without a handoff.
 
-App-boot-7 completed974.001145seconds with normal QMP cleanup/emulator0. The
-System-path app registration returned NO in completed retry batches. Its one
-original empty-secret unlock call returned-2, with raw selector9 e00002e2 and
-first-unlock unchanged0. Exact original kernel inspection identified the missing
-com.apple.keystore.device entitlement gate before secret processing or SEP.
-These are actual negative results, not timeout guesses or app success.
+Boot7's original selector9 permission rejection e00002e2/public-2 was traced to
+one missing entitlement on our helper. Stage32 adds only that proven declaration.
+Boot8 then reached the simulator's unsupported opcode0x18: actual unknown-op log,
+e00002bc/public-1 and first-unlock0. Original kernel decoding proved request echo
+has the wrong response shape. Raw evidence is under migration-first-unlock/.
 
-Disk-preparation-32 adds only that proven entitlement to our ad-hoc-signed helper;
-the compiled object is unchanged. Guest67600-byte readback, unmounts and emulator0
-passed. Root SHA34240b9546eaea73e1ddae0997a194f1ba9c23e5302d3fb76abf69a35675e276
-and all six paired auxiliary namespaces feed active app-boot-8, with7200-second
-maximum and30-second frames. Observe actual before/after first-unlock and natural
-migration progress. Do not equate raw lock-state0 with unlocked: the upstream
-simulator's GetDeviceState response is a malformed placeholder DER.
+The guarded partial simulator fix at source7a32314605 implements only structurally
+valid system0/operation0/options0/emptysecret transitions and consistent normal
+first-unlock queries. Unknown requests return errors; no notification is injected
+and no unproven lock-state enum is guessed. Real build and control-plane smoke
+passed. Binary6375a52ec963ab43b69ade01ea9e2c3b2bd3c5aaff237d8a3d48cd83c5533fde
+is now in app-boot-9 with unchanged stage32 disk/aux/launcher, preserving attribution.
+Observe actual original API/state/migration behavior before claiming success.
 
-Earlier full migration reports show SystemAppMigrator returned NO and later
-assetsd waited in original PLFirstUnlockProtection. Full raw reports and matched
-symbolization are under companion/evidence/migration-first-unlock/. No fake
-notification, signature forging or migration-guard suppression is used.
-Private Unix VNC capture works; actual guest touch response is still unproven.
+Separately, original LaunchServices inspection found URL registration skips the
+new-app registration path without a dictionary. The candidate uses original
+registerApplicationDictionary: with owned Info.plist plus actual Path only.
+Its imports and guest68016-byte readback passed in stopped stage33. It has not yet
+been executed; first simulator comparison retains the existing URL launcher.
+Full source, raw logs, hashes and limits are committed in companion/evidence/.
 Historical checkpoints below retain their original scope and chronology.
 
 ### Further executed checkpoints

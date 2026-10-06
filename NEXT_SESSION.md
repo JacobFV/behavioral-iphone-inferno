@@ -55,30 +55,36 @@ still unproven. Do not return to firmware acquisition or the archived framework
 implementation: firmware, original System/Data preparation, keybag creation,
 software-renderer cache patching and full-system launchd execution are established.
 
-App-boot-7 completed 974.001145 seconds with deliberate normal QMP cleanup,
-emulator exit0 and all seven stopped disk hashes preserved. System-path app
-registration returned NO through completed 30-attempt batches, with invalid proxy.
-The single original MKBUnlockDevice(NULL,NULL) call returned -2; original driver
-selector9 returned e00002e2 and first-unlock remained0. Original kernel inspection
-proved the helper lacked com.apple.keystore.device: that exact gate rejected the
-call before secret processing or SEP unlock. Raw evidence is committed under
-app-system-registration and migration-first-unlock; original authorization
-inspection is in companion/evidence/unlock-authorization-inspection.json.
+App-boot-7 proved one original unlock permission rejection: selector9 e00002e2,
+public-2, first-unlock0. Exact original kernel inspection identified the missing
+com.apple.keystore.device gate before SEP. Stage32 adds only that singleton
+entitlement to our helper. Its compiled object is unchanged and guest readback
+passed. Root SHA34240b9546eaea73e1ddae0997a194f1ba9c23e5302d3fb76abf69a35675e276,
+paired with .local-build/reports/disk-preparation-32.
 
-Disk-preparation-32 changes only our helper's ad-hoc entitlement declaration to
-add that single proven key. Its compiled object is unchanged. Guest readback of
-67600 bytes matched, normal unmounts and emulator exit0 passed. Root SHA256:
-34240b9546eaea73e1ddae0997a194f1ba9c23e5302d3fb76abf69a35675e276, paired with
-.local-build/reports/disk-preparation-32. App-boot-8 is running from that tuple,
-7200-second maximum, 30-second captures, guest-errors and strict app journey.
-This is the only active iOS boot; await actual API/state and migration evidence.
+App-boot-8 with that helper got past the permission gate but returned e00002bc,
+public-1, with first-unlock still0. Actual guest-errors reported Unknown(0x18).
+Original kernel protocol inspection established the simulator echoed a32-byte
+request where a20-byte response was required. This is a concrete unsupported
+protocol failure. Boot8 was stopped normally before the controlled next boot.
 
-Stage31 established the exact unchanged owned bundle at
-/Applications/InfernoProbe.app, wrapper9 --system-app, phase-instrumented
-single-call unlock with600s watchdog and extended process observer. Original Data
-bundle remains. Failed stage30 generated disks were retired only after preserving
-all hashes/logs and source29; successful inputs remain. CPU contention remains a
-measurement limitation; do not alter unrelated host processes.
+Source7a32314605 adds a bounded partial model under INFERNO_SIMULATED_SEP only.
+A valid systemhandle0/operation0/options0/emptysecret transition changes volatile
+first-unlock state; normal scalar and DER ss queries report it consistently.
+Other transitions return errors, no notification is injected, and no sls labels
+are guessed. Build and firmware-free control-plane check passed; these are not
+unlock or iOS success. New binary SHA256:
+6375a52ec963ab43b69ade01ea9e2c3b2bd3c5aaff237d8a3d48cd83c5533fde.
+App-boot-9 is active with unchanged32 disk/aux and launcher, new binary only,
+7200-second maximum,30-second frames,guest-errors and strictjourney.
+
+The independent dictionary launcher is prepared in stopped33, not yet booted.
+Original URL registration skips registration for an unknown bundle without a
+dictionary; the candidate uses the owned Info.plist plus actual Path through
+original registerApplicationDictionary:. Imports and68016-byte guest readback
+passed. Stage33 root SHA31f1f5c21b49f7d5f892a21361e2d646829f3eca9d3949e12fbd18af5c6a0941,
+paired with disk-preparation-33. Keep this launcher change separate from the first
+simulator comparison. Actual app registration/launch remain unproven.
 
 The launcher fix uses the original LSApplicationWorkspace registerApplication:
 method and logs its BOOL result honestly. The earlier LSRegisterURL was a local,
@@ -100,7 +106,7 @@ Apple signature forging or activation impersonation is authorized.
 
 ## Next concrete work
 
-1. Inspect actual app-boot-8 unlock phase/state/return markers and registration
+1. Inspect actual app-boot-9 unlock phase/state/return markers and registration
    BOOL/proxy results. Keep source revisions, hashes, raw logs and stopped root
    plus all six auxiliary namespaces paired. Do not treat helper JSON as proof.
 2. Resolve the concrete next failure using original APIs and narrow owned code.
