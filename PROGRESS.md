@@ -2,15 +2,23 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
-### Current execution boundary (05:20 local)
+### Current execution boundary (05:42 local)
 
-Boot16 is live from verified firmware-only stage36. Actual original FUD discovery
-succeeds, but original IMG4 validation fails when copying the absent manifest
-digest (callback34, status0xe0000001). Staging succeeded; firmware loading did not.
-No manifest/signature is fabricated and no further validation patch is proposed.
-Original IOHID event APIs and exact authorization are being inspected as a separate
-owned automation path toward the app journey, leaving hardware touch unresolved.
-Live16 retains the same emulator/app/helpers and a900second bounded trace window.
+Boot16 is being preserved for preparation37. It reached original Hello, repeated
+successful app registration/first-unlock, and confirmed hardware firmware rejection
+and HBPP-only registry state. Its bounded900second trace disabled normally.
+
+The reviewed next candidate is an owned virtual touchscreen through original
+IOHIDUserDevice APIs, with only the proven developer virtual-device entitlement.
+Original source confirms normal touchscreen report parsing, normalized display
+routing, Built-In metadata propagation and retained virtual identity. No invented
+sender/context, Apple identity, security guard change or firmware validation patch.
+Actual helper bytes/entitlement were independently checked; imports/build passed.
+The optional private serial runner transport passed a real bidirectional plumbing
+smoke, explicitly not guest UART or HID proof. Preparation37 will install the two
+owned binaries via the existing readiness job; no gestures run automatically.
+Next17 must prove actual virtual service creation and a root-triggered bounded tap
+with visible before/after frames. Owned UIKit/tap-counter journey remains unproven.
 
 Earlier investigation in this sequence:
 
