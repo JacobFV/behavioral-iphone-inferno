@@ -7,17 +7,23 @@ The user explicitly wants continuous work across status questions and intermedia
 milestones. No pause or handoff requested. Parallel workers are authorized for
 independent work in isolated worktrees; commit progressively.
 
-## Current execution, 2026-10-06 14:24 local
+## Current execution, 2026-10-06 14:37 local
 
-All guests through49 STOPPED.49 completed strict0→1, actual BACKBOARDD and
-SPRINGBOARD samples, and Home/reopen retaining1; normalfinish/emulator0/noerror.
-TrackedjourneyverifierPASS/defaultpreservationPASS1da67b8b30. Root49SHA
+All guests through50 STOPPED.50 completed strict counter0→1, normal QMP quit,
+emulator0/errornull, tracked journey verified and default all7/ancestor retention.
+Evidence f388fb81e6 (worker), root visuals77ae980672. Root disk116391936 bytes,
+SHA802d473d12897c72248dbb00a1e619791438db4a198e2da4ffd5a96270e2ff1d.
+50bootF8081A21-B796-416F-B4E7-D15E075E9CC1/PID256/main2869435882,
+countereab89cac47a841f3b5807bc1614af5b9. No samples/Home/OPEN50.
+ONE51 authorized using identical frozen55/emulator670, TCG strict keepalive.
+Root owns all input; on stall collect both original samples BEFORE Home.
+Goal: reproduce real display freeze and collect original compositor stacks while
+stalled, comparing49 healthy baseline. No rendering behavior fix yet.
+
+49 completed strict0→1, actual BACKBOARDD and SPRINGBOARD samples, and
+Home/reopen retaining1; normalfinish/emulator0/noerror. TrackedjourneyverifierPASS/
+defaultpreservationPASS1da67b8b30. Root49SHA
 4369bf694076b083091a5902cb3bb3c2091e4a8d325b77e687a39fe8c44ad199.
-ONE50LIVErunner2875906/QEMU2876439,VNC/tmp/inferno-boot-ym5duaox/vnc.sock,
-serialconnected1791321995.9060767, samefrozen55/emulator670/host1da67b8b30.
-Rootallinput; onstalltakebothsamplesBEFOREHome;healthy50needsnosamples.
-Goal: reproduce real displayfreeze and collect original compositor stacks while
-stalled, comparing49healthybaseline. No renderingbehaviorfixyet.
 
 49boot558C3965-E50B-4A05-A02B-9A5AA952F3A9/appPID244/main2485749412.
 Counter878d8f31544848fe80f77d51cf9a996c; QMPbefore

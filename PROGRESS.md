@@ -2,6 +2,17 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 14:37 continuation: healthy50 preserved, continuing stalled-state capture
+
+50 completed the single-tap counter0→1 journey, independently reviewed in VNC
+and both QMP captures. Current-boot sample capability was available but unused;
+49 already supplies the healthy original-tool baseline. All seven trace events
+disabled at their deadline. Normal quit exited0 with no attempt error; tracked
+journey verification and default all-seven-disk/ancestor preservation passed.
+The exact metadata-attestation journals remained valid. Evidence is retained in
+`owned-sample-50-visual` and the stopped50 records. The next identical attempt51
+continues the search for a stalled compositor sample; no rendering fix is claimed.
+
 ### 14:24 continuation: actual49 strict journey and original compositor samples
 
 49 completed actual reviewed counter0→1 with both strict QMP captures. Its counter
@@ -20,8 +31,7 @@ Home/reopen afterward rendered counter1. Normal finish exited0 without error.
 Retention exposed a comparison bug: fresh verification timestamps differ even
 when all backing and attestation identities match. The preservation comparison
 now excludes only those journal timestamps, retaining both complete original and
-fresh journals. Substantive differences still reject; default retention rerun is
-underway before the next identical attempt.
+fresh journals. Substantive differences still reject; default retention rerun passed before50 began.
 
 ### 14:12 continuation: repair fresh private auxiliary modes after pre-execution48
 
