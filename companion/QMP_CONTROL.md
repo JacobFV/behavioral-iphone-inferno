@@ -52,3 +52,48 @@ the combined alias response remains subject to the 4096-byte limit.
 ```
 python3 companion/qmp_control.py --report /absolute/report query-touch-registers
 ```
+
+## Optional owned-harness serial channel
+
+`--guest-hid-serial --control-mailbox` replaces only that boot's `serial=file`
+backend with a private Unix socket chardev. The default remains unchanged. The
+runner connects before `cont` and continuously drains output on a dedicated
+thread, because the UART model's `write_all` can block if a connected reader
+stops draining. QEMU writes unchanged output to `serial.log` with no inserted
+timestamps. The Unix socket is mode 0600 in the runner's private mode 0700 temporary
+directory. There is no network listener or second QMP connection. Cleanup closes
+the socket and bounds the drain-thread join to two seconds.
+
+The `guest-hid-gesture` mailbox command accepts exactly one of these objects:
+
+```
+{"kind":"tap","request_id":"0123456789abcdef0123456789abcdef","x":16384,"y":16384,"duration_ms":100}
+{"kind":"swipe","request_id":"abcdef0123456789abcdef0123456789","x0":16384,"y0":30000,"x1":16384,"y1":12000,"duration_ms":1000}
+```
+
+Use a new 32-character lowercase hexadecimal request ID for every explicit
+request. Coordinates must be integers 0..32767 and duration must be 1..2000 ms.
+Additional keys, arbitrary strings, control bytes and commands are rejected.
+The fixed wire grammar, agreed with the owned guest helper, is:
+
+```
+INFERNO_HID_V1 <id> TAP <x> <y> <duration_ms>\n
+INFERNO_HID_V1 <id> SWIPE <x0> <y0> <x1> <y1> <duration_ms>\n
+```
+
+Each ASCII line is at most 160 bytes including its newline. The guest helper's
+backend is independent of this transport; the host sends no input automatically.
+Duplicate IDs are refused for the entire run, even after an uncertain partial
+send. Before-send and after-send records, exact line bytes and hashes are retained
+in mode 0600 `serial-input-transcript.jsonl`, alongside the mailbox journal.
+A successful host response means only `written-to-serial-socket`. A guest
+`INFERNO_HID_ACK` means an attempted operation; neither proves UI acceptance.
+Inspect the serial acknowledgment and actual framebuffer before assessing the
+result. Never automatically replay a request whose outcome is uncertain.
+
+An actual firmware-free transport check attached the socket chardev to an empty
+QEMU monitor frontend: two fixed gesture lines arrived and were echoed/rejected
+as unknown monitor commands, duplicate/extra-key requests were refused locally,
+raw output was logged and the drain thread stopped cleanly. That is a socket/log
+plumbing check, not a guest UART, console-read or HID test. Those require the
+original guest and the owned helper to execute.

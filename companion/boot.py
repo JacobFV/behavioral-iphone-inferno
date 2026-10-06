@@ -14,7 +14,7 @@ import subprocess
 import tempfile
 import time
 from probe_journey import ProbeJourney
-from qmp_control import ControlMailbox, StartupTouchTrace
+from qmp_control import ControlMailbox, StartupTouchTrace, SerialGestureTransport
 
 
 DISKS = [('root', 32 << 30, 1), ('firmware', 8 << 20, 2),
@@ -104,6 +104,8 @@ def main():
                         help='startup trace limit from 1 to 1800 seconds; default 180; requires --touch-trace-startup')
     parser.add_argument('--control-mailbox', action='store_true',
                         help='enable private allowlisted pointer/input-trace requests via qmp_control.py')
+    parser.add_argument('--guest-hid-serial', action='store_true',
+                        help='optional private serial gesture transport; requires --control-mailbox')
     parser.add_argument('--binary', type=Path, default=repo / '.local-build/build/qemu-system-aarch64')
     parser.add_argument('--manifest', type=Path)
     parser.add_argument('--seconds', type=float, default=120)
@@ -131,6 +133,8 @@ def main():
     modes.add_argument('--recovery-preserve-disk', action='store_true',
                        help='recovery environment with explicit nand-enable-reformat=0')
     args = parser.parse_args()
+    if args.guest_hid_serial and not args.control_mailbox:
+        parser.error('--guest-hid-serial requires --control-mailbox')
     if args.touch_trace_seconds is not None:
         if not args.touch_trace_startup:
             parser.error('--touch-trace-seconds requires --touch-trace-startup')
@@ -225,6 +229,7 @@ def main():
         report['touch_startup_trace'] = touch_trace.report
         report['control_source_sha256'] = digest(Path(__file__).with_name('qmp_control.py'))
     process = qmp = connection = None
+    serial_transport = None
     started = time.monotonic()
     previous_handlers = {}
     def interrupted(signum, frame):
@@ -244,6 +249,16 @@ def main():
                        '-display', 'none', '-vnc', 'unix:' + str(Path(tmp) / 'vnc.sock'),
                        '-monitor', 'none', '-serial', 'file:' + str(output / 'serial.log'),
                        '-qmp', 'unix:' + endpoint + ',server=on,wait=off', '-no-reboot']
+            if args.guest_hid_serial:
+                serial_path = Path(tmp) / 'gesture-serial.sock'
+                serial_transport = SerialGestureTransport(serial_path, output)
+                report['serial_transport'] = serial_transport.report
+                report['control_source_sha256'] = digest(Path(__file__).with_name('qmp_control.py'))
+                serial_index = command.index('-serial')
+                command[serial_index:serial_index + 2] = [
+                    '-chardev', 'socket,id=gesture-serial,path=' + str(serial_path).replace(',', ',,') +
+                    ',server=on,wait=off,logfile=' + str(output / 'serial.log').replace(',', ',,') +
+                    ',logappend=off,logtimestamp=off', '-serial', 'chardev:gesture-serial']
             if args.guest_errors:
                 command += ['-d', 'guest_errors', '-D', str(output / 'guest-errors.log')]
             if args.touch_trace_startup and not args.guest_errors:
@@ -313,6 +328,9 @@ def main():
                 response = qmp.execute(name, timeout=max(.1, min(30, deadline - time.monotonic())))
                 if 'error' in response:
                     raise RuntimeError(f'QMP {name} failed: {response["error"]}')
+            if serial_transport:
+                serial_transport.connect()
+                control.serial_transport = serial_transport
             if touch_trace:
                 touch_trace.start(qmp)
                 (output / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
@@ -377,6 +395,8 @@ def main():
         if qmp:
             report['qmp_commands'] = qmp.responses
             qmp.close()
+        if serial_transport:
+            serial_transport.close()
         if connection:
             connection.close()
         if process:

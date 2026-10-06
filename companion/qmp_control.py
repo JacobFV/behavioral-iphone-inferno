@@ -7,7 +7,9 @@ import json
 import os
 from pathlib import Path
 import re
+import socket
 import stat
+import threading
 import time
 import uuid
 
@@ -26,6 +28,28 @@ TOUCH_REGISTERS = (0x24a820088, 0x235104000, 0x235104004, 0x235104008,
 LIMIT = 4096
 
 
+def gesture_line(args):
+    kind = args.get('kind')
+    coordinates = ('x', 'y') if kind == 'tap' else ('x0', 'y0', 'x1', 'y1')
+    if kind not in ('tap', 'swipe') or set(args) != {'kind', 'request_id', 'duration_ms', *coordinates}:
+        raise ValueError('Gesture requires exact tap or swipe fields')
+    identifier = args['request_id']
+    if not isinstance(identifier, str) or not re.fullmatch('[0-9a-f]{32}', identifier):
+        raise ValueError('Gesture request_id must be 32 lowercase hexadecimal characters')
+    for field in coordinates:
+        if type(args[field]) is not int or not 0 <= args[field] <= 32767:
+            raise ValueError('Gesture coordinates must be integers from 0 to 32767')
+    if type(args['duration_ms']) is not int or not 1 <= args['duration_ms'] <= 2000:
+        raise ValueError('Gesture duration_ms must be an integer from 1 to 2000')
+    fields = ['INFERNO_HID_V1', identifier, kind.upper()]
+    fields += [str(args[field]) for field in coordinates]
+    fields.append(str(args['duration_ms']))
+    line = (' '.join(fields) + '\n').encode('ascii')
+    if len(line) > 160:
+        raise ValueError('Gesture line exceeds 160 bytes')
+    return line
+
+
 def validate(request):
     if not isinstance(request, dict) or set(request) != {'execute', 'arguments', 'created'}:
         raise ValueError('Expected execute, arguments and created only')
@@ -36,6 +60,9 @@ def validate(request):
     if not isinstance(args, dict):
         raise ValueError('Arguments must be an object')
     if name in ('query-mice', 'query-touch-registers') and args == {}:
+        return name, args
+    if name == 'guest-hid-gesture':
+        gesture_line(args)
         return name, args
     if name in ('trace-event-get-state', 'trace-event-set-state'):
         keys = {'name'} if name.endswith('get-state') else {'name', 'enable'}
@@ -96,6 +123,7 @@ class ControlMailbox:
         self.path.mkdir(mode=0o700)
         self.journal = output / 'control-transcript.jsonl'
         self.journal.touch(mode=0o600, exist_ok=False)
+        self.serial_transport = None
 
     def poll(self, qmp):
         private_dir(self.path)
@@ -108,7 +136,11 @@ class ControlMailbox:
                 record.update(raw=raw.decode('utf-8', errors='replace'), sha256=hashlib.sha256(raw).hexdigest())
                 request = json.loads(raw)
                 name, args = validate(request)
-                if name == 'query-touch-registers':
+                if name == 'guest-hid-gesture':
+                    if self.serial_transport is None:
+                        raise ValueError('This boot did not enable --guest-hid-serial')
+                    response = self.serial_transport.transmit(args)
+                elif name == 'query-touch-registers':
                     response = {'registers': [
                         {'address': hex(address), 'response': qmp.execute(
                             'human-monitor-command', {'command-line': f'xp /1wx 0x{address:x}'})}
@@ -123,6 +155,89 @@ class ControlMailbox:
                 journal.write(json.dumps(record) + '\n')
             write_private(self.path / path.name.replace('request-', 'reply-', 1), response)
             path.unlink()
+
+
+class SerialGestureTransport:
+    """Own and continuously drain a private serial socket; never interpret UI success."""
+    def __init__(self, path, output):
+        self.path = path
+        self.connection = None
+        self.thread = None
+        self.stopping = threading.Event()
+        self.seen = set()
+        self.report = {'endpoint': str(path), 'connected': False, 'drained_bytes': 0,
+                       'transmissions': [], 'automatic_replay': False}
+        self.journal = output / 'serial-input-transcript.jsonl'
+        self.journal.touch(mode=0o600, exist_ok=False)
+
+    def connect(self):
+        private_dir(self.path.parent)
+        info = self.path.lstat()
+        if not stat.S_ISSOCK(info.st_mode) or info.st_uid != os.getuid():
+            raise ValueError('Serial endpoint must be an owned Unix socket')
+        self.path.chmod(0o600)
+        self.connection = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+        self.connection.settimeout(1)
+        self.connection.connect(str(self.path))
+        self.report.update(connected=True, connected_time=time.time())
+        self.thread = threading.Thread(target=self._drain, name='inferno-serial-drain', daemon=True)
+        self.thread.start()
+
+    def _drain(self):
+        while not self.stopping.is_set():
+            try:
+                data = self.connection.recv(65536)
+                if not data:
+                    self.report['peer_closed'] = True
+                    return
+                # QEMU's logfile retains the exact output. Draining prevents its
+                # UART write_all path from stalling on a full socket buffer.
+                self.report['drained_bytes'] += len(data)
+            except socket.timeout:
+                continue
+            except OSError as exc:
+                if not self.stopping.is_set():
+                    self.report['drain_error'] = str(exc)
+                return
+
+    def _record(self, record):
+        with self.journal.open('a') as journal:
+            journal.write(json.dumps(record) + '\n')
+
+    def transmit(self, args):
+        line = gesture_line(args)
+        identifier = args['request_id']
+        if identifier in self.seen:
+            raise ValueError('Duplicate gesture ID; never replay a possibly transmitted request')
+        if not self.report['connected'] or self.stopping.is_set() or not self.thread.is_alive():
+            raise ValueError('Serial transport is not connected and draining')
+        self.seen.add(identifier)
+        attempt = {'time': time.time(), 'stage': 'before-send', 'request_id': identifier,
+                   'raw': line.decode('ascii'), 'sha256': hashlib.sha256(line).hexdigest()}
+        self._record(attempt)
+        result = {'request_id': identifier, 'guest_acknowledgment': 'not checked',
+                  'ui_acceptance': 'not observed by transport'}
+        try:
+            self.connection.sendall(line)
+            result.update(transmission='written-to-serial-socket', bytes_sent=len(line))
+        except OSError as exc:
+            result.update(transmission='unknown-or-partial', error=str(exc), replay_allowed=False)
+        self._record({'time': time.time(), 'stage': 'after-send', 'response': result})
+        self.report['transmissions'].append(result)
+        return result
+
+    def close(self):
+        self.stopping.set()
+        if self.connection:
+            try:
+                self.connection.shutdown(socket.SHUT_RDWR)
+            except OSError:
+                pass
+            self.connection.close()
+        if self.thread:
+            self.thread.join(timeout=2)
+            self.report['drain_thread_stopped'] = not self.thread.is_alive()
+        self.report['closed_time'] = time.time()
 
 
 class StartupTouchTrace:
@@ -165,7 +280,7 @@ class StartupTouchTrace:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report', type=Path, required=True, help='Active boot output directory with --control-mailbox')
-    parser.add_argument('command', choices=['query-mice', 'query-touch-registers', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event'])
+    parser.add_argument('command', choices=['query-mice', 'query-touch-registers', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture'])
     parser.add_argument('--arguments', default='{}', help='Allowlisted QMP arguments as JSON')
     args = parser.parse_args()
     directory = args.report.resolve(strict=True) / 'control'
