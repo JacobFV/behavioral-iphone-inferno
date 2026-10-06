@@ -1,0 +1,36 @@
+{
+  "claim": "Owned helper with original selector-required com.apple.keystore.device entitlement reaches the SEP path, but the one empty unlock attempt returns -1 and first-unlock remains0. Original URL registration for the System app still returns NO; no app journey observed.",
+  "elapsed_seconds": 793.804754,
+  "termination": "Deliberately stopped after concrete helper/API and repeated registration failures once the guarded simulator build was ready. Runner SIGTERM invokes QMP cleanup; emulator exit0. Not a 7200-second observation.",
+  "unlock": {
+    "before": {
+      "state": 0,
+      "unlocked_since_boot": 0
+    },
+    "single_attempt_result": -1,
+    "kernel_error": "selector9 e00002bc",
+    "after": {
+      "state": 0,
+      "unlocked_since_boot": 0
+    },
+    "data_access_after": {
+      "result": -1,
+      "errno": 1
+    },
+    "scope": "Exactly one original empty-secret call on the owned null-secret VM keybag. Raw state0 is not labeled unlocked. Guest-error log records actual simulated SEP traffic."
+  },
+  "comparison": "Same source disk state as previous stage31, with only the owned helper entitlement changed in stage32; old simulator binary retained. The later simulator-only run uses unchanged32 again.",
+  "frame": {
+    "source": "0025.ppm",
+    "meaning": "Apple migration progress; no visible home/setup or owned app."
+  },
+  "files": {
+    "app-entitled-unlock-serial.log": "60cf36756bdf39e9c6eeb307d9ff4c67537a2fb04ebdce56b949678eb5c07029",
+    "app-entitled-unlock-qmp-transcript.jsonl": "685b937882d8b4e57e376d0a4b4b8b1e13137a03de6a5e0b9a70b711fd73d725",
+    "app-entitled-unlock-report.json": "e2ff21b1f117937f9ff2d10000f6dc874822e0029fe9f2a3fee56329dac1d1ac",
+    "app-entitled-unlock-stderr.log": "90d324fa1e1c26c49589cda1ea8076ea1c3f9073a1f1fccf44bdc91ae15d91eb",
+    "app-entitled-unlock-guest-errors.log": "9c8f5ba1bdd48b687c9d15d50d00d068a12acf98747f39c4f369d481660c4712",
+    "app-entitled-unlock-final.png": "30e0e20b73567d935050082547d1bc365eaf3a7e747c4d6024a50b9027c7aef0",
+    "app-entitled-unlock-stopped-disk-hashes.json": "1807ede11f02795c1d07b3178212a84602e815720ec3c3652b4243b9e4d4ffdf"
+  }
+}
