@@ -4,6 +4,13 @@
 
 ### Current execution boundary (04:04 local)
 
+**04:26 local:** Boot11 stopped normally with reviewed Hello setup UI and all
+paired hashes preserved. Activeboot12 uses that progressed state and a trace-only
+emulator change. Live QMP confirms current absolute Apple Multitouch HID SPI.
+Root is waiting for Hello, then will trace a bounded gesture through hostinput,
+queuedtouchreport and guestSPIread. Touch andownedUIKitexecutionremainunproven.
+
+
 **04:21 local:** Boot11 now displays reviewed original Hello setup UI. State-query
 padding is verified in guest, unlock0/first0->1 repeated. App remains registered
 but launch callback returns FrontBoard error1. Fast and slow privateVNC gestures

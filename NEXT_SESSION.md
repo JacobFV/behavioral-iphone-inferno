@@ -53,29 +53,36 @@ Original owned app registration, normal first-unlock and visible Hello setup UI
 are now proven. Owned UIKit execution and actual touch response remain unproven. Firmware, System/Data preparation, keybag creation and renderer patches
 are established; do not return to the archived framework implementation.
 
-At04:04 local, **app-boot-11 is active** from verified stopped stage34:
-root SHA663e93ee73882086d2077b8562fe5e82aa5a920bb74d1300e9f3426063805c75,
-paired with .local-build/reports/disk-preparation-34. It uses the diagnostic
-launcher at the existing System path, exact unchanged owned app and unlock helper,
-and emulator SHA3eacda5c06578e64653313b8ed6774729846d57808e4dec88457a0b58e41b9bd
-from source6fce1464b8. 7200-second maximum,30-second frames,strictjourney,guest-errors,
-no USB, private Unix VNC. Bootworker owns session41036 and evidence.
+At04:26 local, **app-boot-12 is active**, bootworker session34774, with control
+mailbox .local-build/reports/app-boot-12/control. It starts from STOPPED11 root
+SHAe586a8b12a489c76b02be4f6b37708fd619cb5995f70199f26a066ca75c4fc64 and paired
+.local-build/reports/app-boot-11, preserving actual setup/migration progress.
+App/helpers unchanged. Emulator58436578ddbe51e7b2cbeb2f474d907e5bf5a34bb6a49abfcf01947f3d60d34e
+sourcea51980a836 adds only disabled-by-default MT-SPI tracing plus companion QMP
+mailbox. Build/control-plane checks passed. Initial and live query-mice both
+report Apple Multitouch HID SPI, current=true,absolute=true. Trace events are
+currently disabled. Waiting for visible Hello before bounded trace/input window.
+Latest reviewed12frame0002 stillApplelogo. 7200secondsmaximum,30secondframes,
+strictjourney,guest-errors,noUSB. Root owns all live input; coordinate withworker.
 
-**04:21 local live update:** Boot11 reached original Hello setup UI (reviewed
-frame0017, committed setup-ui-first-live evidence). Padded state response works:
-original query raw0/noerror, unlock0, first0->1. Rawstate0 remains uninterpreted.
-Launch callback first returned POSIX60 timeout, then FrontBoardServiceErrorDomain1
-while setup is visible. Nilconfiguration originally adds LSBlockUntilComplete=true;
-that semantic correction is recorded in open-path-inspection.json.
+Boot11 reached original Hello setup UI (reviewedframe0017 and finalRussianHello).
+Padded state response works: originalqueryraw0/noerror, unlock0,first0->1. Rawstate0
+remains uninterpreted. Callback initiallyPOSIX60timeout thenFrontBoarderror1 while
+setupvisible. Nilconfiguration originallyadds LSBlockUntilComplete=true, recorded
+in open-path-inspection.json. Boot11stoppednormally1127.465699s/QMPemulator0; full
+rawlogs/finalframe/allsevenhashescommitted app-first-setup-stopped*.
 
-Root owns all live VNC input. Fast and slow swipes/info taps completed RFBdelivery
-but did not show confirmed UI response; language animation is not touchproof.
-Current task: bootworker adds narrow single-owner QMP request mailbox and initial
-query-mice recording; diskworker adds disabled-by-default MT-SPI delivery trace
-points, no behavior change. Root will review/build then boot12 from STOPPED11
-paired state, preserving progressed setup. Do not reset11 until both are ready.
-No second QMP client: runner owns its connection. Live USB cannot reconnect from
-initial ENOENT; no restart/reset or activation/pairing workaround was attempted.
+Fast and slow VNC swipes/info taps completed RFBdelivery without confirmed UI
+navigation. Languageanimation is nottouchproof. Existing source has correctleft
+button/absolute coordinates; nocoordinate ordevicebehaviorfix made. Newtraces
+observe hostevent→reportenqueue→SPIpacketdequeue/transmitdrain; draindoesnotprove
+UIKitacceptance. Enableonlyboundedwindow throughcompanion/qmp_control.py then
+disable. SeeQMP_CONTROL.md, useexistingrunnerowner, neversecondQMPclient.
+Root VNC helper nowacceptsbounded --hold-seconds/--swipe-seconds/--settle-seconds,
+defaultspreserved. Must read12command.json foritsnewprivateVNCsocket;11socketstale.
+
+LiveUSBcannotreconnectafterinitialENOENT; noreset/activation/pairingworkaround.
+Stopped32/33/34comparisonsandallactualbootstatesremain. Around42GiBfree.
 
 Completed causal sequence:
 - Boot7: original unlock selector9 e00002e2/public-2. Original kernel proved
@@ -115,7 +122,7 @@ key extraction or activation impersonation is authorized.
 
 ## Next concrete work
 
-1. Inspect actual app-boot-11 unlock phase/state/return markers and registration
+1. Inspect actual app-boot-12 unlock phase/state/return markers and registration
    BOOL/proxy results. Keep source revisions, hashes, raw logs and stopped root
    plus all six auxiliary namespaces paired. Do not treat helper JSON as proof.
 2. Resolve the concrete next failure using original APIs and narrow owned code.
