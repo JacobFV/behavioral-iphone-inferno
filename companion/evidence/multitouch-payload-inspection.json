@@ -1,0 +1,121 @@
+{
+  "kind": "read_only_original_multitouch_payload_metadata",
+  "source_member": "Firmware/N104_Multitouch.im4p",
+  "source_im4p_sha256": "c0e09a061970a19dc827ad19d769c2847073df81ed293c297bc75e6569fe8e68",
+  "payload_bytes": 583054,
+  "payload_sha256": "6ab8193330c58a2363de4d42122fd5408ebaa6d6a566ddb6f42e4a682398375e",
+  "format": "Unencrypted IM4P OCTET STRING containing IOKit serialized XML dictionary, parsed with ID/IDREF resolution outside Git. No decryption or implementation payload tracked.",
+  "personalities": {
+    "C1FC2,2-AdcDump": {
+      "records": 14,
+      "protocol": "HIDSPI",
+      "continue_on_failure": "true",
+      "embedded_binary_sizes": [
+        39048,
+        2364,
+        2424
+      ],
+      "calibration_metadata": {
+        "Property": "multi-touch-calibration",
+        "SysConfigKey": "MtCl",
+        "FDRClass": "GpCl",
+        "Payload": {
+          "embedded_bytes": 2156
+        },
+        "MaxSize": "0x86c"
+      },
+      "hids_pi_transfer_length": "0x200",
+      "padding_length": "0x4"
+    },
+    "C1FC2,3-Playback": {
+      "records": 14,
+      "protocol": "HIDSPI",
+      "continue_on_failure": "true",
+      "embedded_binary_sizes": [
+        59072,
+        15944,
+        2424
+      ],
+      "calibration_metadata": {
+        "Property": "multi-touch-calibration",
+        "SysConfigKey": "MtCl",
+        "FDRClass": "GpCl",
+        "Payload": {
+          "embedded_bytes": 2188
+        },
+        "MaxSize": "0x88c"
+      },
+      "hids_pi_transfer_length": "0x500",
+      "padding_length": "0x4"
+    },
+    "C1FC2,2": {
+      "records": 14,
+      "protocol": "HIDSPI",
+      "continue_on_failure": "true",
+      "embedded_binary_sizes": [
+        62764,
+        17312,
+        2424
+      ],
+      "calibration_metadata": {
+        "Property": "multi-touch-calibration",
+        "SysConfigKey": "MtCl",
+        "FDRClass": "GpCl",
+        "Payload": {
+          "embedded_bytes": 2156
+        },
+        "MaxSize": "0x86c"
+      },
+      "hids_pi_transfer_length": "0x200",
+      "padding_length": "0x4"
+    },
+    "C1FC2,3-AdcDump": {
+      "records": 14,
+      "protocol": "HIDSPI",
+      "continue_on_failure": "true",
+      "embedded_binary_sizes": [
+        40164,
+        2376,
+        2424
+      ],
+      "calibration_metadata": {
+        "Property": "multi-touch-calibration",
+        "SysConfigKey": "MtCl",
+        "FDRClass": "GpCl",
+        "Payload": {
+          "embedded_bytes": 2188
+        },
+        "MaxSize": "0x88c"
+      },
+      "hids_pi_transfer_length": "0x200",
+      "padding_length": "0x4"
+    },
+    "C1FC2,3": {
+      "records": 14,
+      "protocol": "HIDSPI",
+      "continue_on_failure": "true",
+      "embedded_binary_sizes": [
+        64676,
+        17580,
+        2424
+      ],
+      "calibration_metadata": {
+        "Property": "multi-touch-calibration",
+        "SysConfigKey": "MtCl",
+        "FDRClass": "GpCl",
+        "Payload": {
+          "embedded_bytes": 2188
+        },
+        "MaxSize": "0x88c"
+      },
+      "hids_pi_transfer_length": "0x200",
+      "padding_length": "0x4"
+    }
+  },
+  "limits": [
+    "Embedded calibration payload presence does not establish runtime fallback or accepted calibration; original consumer must decide. No calibration created, modified or imported from any real device.",
+    "Named .bin strings are Description fields beside embedded binary Payloads; no evidence requires separate external files with those names.",
+    "Personality selection and firmware completion are not proven by offline metadata. Correlate original loader results, HBPP transactions and protocol registry child.",
+    "Continue On Failure is original configuration, not an instruction to override a failed security check."
+  ]
+}
