@@ -1,0 +1,26 @@
+{
+  "status": "read-only source investigation; no input, model/helper change or build",
+  "trigger": "boot37 two accepted virtual touchscreen swipes produced no observed subsequent resign/background and unchanged settled app frame; touch ACK is not Home recognition",
+  "existing_emulator_path": {
+    "handler": "Apple Buttons input handler registered/activated with INPUT_EVENT_MASK_KEY atbuttons.c166-176",
+    "key": "Q_KEY_CODE_F6 mapsSMC_HID_BUTTON_MENU atbuttons.c83-85, enumvalue6 in smc.h149",
+    "edges": "buttons.c99-109 sends only changed down/up states; no automatic replay",
+    "delivery": "smc.c203-220 ifSMCbooted emits SMC_NOTIFICATION, response0state/1button6/2HIDbuttonnotification/3HIDeventnotification viaexistingRTKit kSMCKeyEndpoint",
+    "machine": "t8030_create_buttons reads originalbuttonsDTnode, creates/realizes device; called in machine initialization",
+    "operator_candidate": "One bounded ordinary F6 press/release through existing private VNC RFBKeyEvent, root only. Current runnerQMP mailbox does not allow keys; avoid secondQMPclient or modifyinglive guest."
+  },
+  "original_consumer": {
+    "cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+    "method": "SpringBoard __handleHIDEvent:withUIEvent:0x1c5842d0c",
+    "keyboard_fields": "eventtype3; usagepagefield0x30000 at1c5842d9c,usagefield0x30001 at1c5842db4,downfield0x30002 at1c5842dc4",
+    "menu_branch": "combinedpage/usage comparison0x000c0040 at1c5843524-3530; home object ivaroffset0x510 from1d7c43ac4; selectorstring1ca5b3162=emulateHomeButtonEventsIfNeeded: called1c5843594 with actualevent",
+    "limit": "Original SMC enum6 to consumerusage mapping not independently traced here. Source names/normalemulator route make F6 a concrete execution trial, not proof Home willoccur. Existing source diagnostic does not explain failed touchscreenedge recognition."
+  },
+  "sources": {
+    "hw/misc/apple-silicon/buttons.c": "0b4d4bbf422a31aeb16de868b3ed946ef5de5130a5760e34ff10e154b8099add",
+    "hw/misc/apple-silicon/smc.c": "5bfdbdeeca4cb47e420b15c4fae86f0f4b483fa1b0cfd6ab043501fa48c68eab",
+    "include/hw/misc/apple-silicon/smc.h": "07910efa18a9498d95688ca7429c9e918a1381e2e3c5abddb402e09b8929dc53",
+    "hw/arm/apple-silicon/t8030.c": "a99faeb68b5cceba5615a80306db1f9e2fa10a9b56d4051d9cff88be922a64a5"
+  },
+  "success_criteria": "Actual original app resign/background, visible Home, same owned process incarnation retained; then explicit namedOPEN canmeasurewarm. No inference fromVNCsend/QEMUacceptancealone."
+}
