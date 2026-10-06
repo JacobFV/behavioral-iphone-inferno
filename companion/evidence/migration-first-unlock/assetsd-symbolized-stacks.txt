@@ -1,0 +1,59 @@
+PID384 assetsd THREAD4233 ['TH_WAIT'] user_usec=23073 queue=PLLibraryServicesStateNode(unobtainable) (QOS: USER_INITIATED)
+  /usr/lib/system/libsystem_kernel.dylib _semaphore_wait_trap +0x8
+  /usr/lib/system/libdispatch.dylib __dispatch_sema4_wait +0x1c
+  /usr/lib/system/libdispatch.dylib __dispatch_semaphore_wait_slow +0x84
+  /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices +[PLFirstUnlockProtection waitUntilFirstUnlock] +0x1ec
+  /System/Library/PrivateFrameworks/AssetsLibraryServices.framework/AssetsLibraryServices ___66-[PLLibraryServicesOperation setExecutionBlockFromOperationBlock:]_block_invoke +0x1e4
+  /System/Library/Frameworks/Foundation.framework/Foundation ___NSBLOCKOPERATION_IS_CALLING_OUT_TO_A_BLOCK__ +0x18
+  /System/Library/Frameworks/Foundation.framework/Foundation -[NSBlockOperation main] +0x68
+  /System/Library/Frameworks/Foundation.framework/Foundation ___NSOPERATION_IS_INVOKING_MAIN__ +0x18
+  /System/Library/Frameworks/Foundation.framework/Foundation -[NSOperation start] +0x328
+  /System/Library/Frameworks/Foundation.framework/Foundation ___NSOPERATIONQUEUE_IS_STARTING_AN_OPERATION__ +0x18
+  /System/Library/Frameworks/Foundation.framework/Foundation ___NSOQSchedule_f +0xb8
+  /usr/lib/system/libdispatch.dylib __dispatch_call_block_and_release +0x20
+  /usr/lib/system/libdispatch.dylib __dispatch_client_callout +0x14
+  /usr/lib/system/libdispatch.dylib __dispatch_continuation_pop +0x1a0
+  /usr/lib/system/libdispatch.dylib __dispatch_async_redirect_invoke +0x250
+  /usr/lib/system/libdispatch.dylib __dispatch_root_queue_drain +0x164
+  /usr/lib/system/libdispatch.dylib __dispatch_worker_thread2 +0x74
+  /usr/lib/system/libsystem_pthread.dylib __pthread_wqthread +0xd8
+  /usr/lib/system/libsystem_pthread.dylib _start_wqthread +0x8
+PID384 assetsd THREAD4228 ['TH_WAIT'] user_usec=110089 queue=com.apple.main-thread
+  /usr/lib/system/libsystem_kernel.dylib _mach_msg_trap +0x8
+  /usr/lib/system/libsystem_kernel.dylib _mach_msg +0x4c
+  /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation ___CFRunLoopServiceMachPort +0x17c
+  /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation ___CFRunLoopRun +0x4c0
+  /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation _CFRunLoopRunSpecific +0x258
+  /System/Library/Frameworks/Foundation.framework/Foundation -[NSRunLoop(NSRunLoop) runMode:beforeDate:] +0xe8
+  /System/Library/Frameworks/Foundation.framework/Foundation -[NSRunLoop(NSRunLoop) run] +0x5c
+  image128+5ac8
+  /usr/lib/system/libdyld.dylib _start +0x4
+  image1+0
+PID384 assetsd THREAD4236 ['TH_WAIT'] user_usec=2311 queue=None
+  /usr/lib/system/libsystem_kernel.dylib ___workq_kernreturn +0x8
+  /usr/lib/system/libsystem_pthread.dylib __pthread_wqthread +0x160
+  /usr/lib/system/libsystem_pthread.dylib _start_wqthread +0x8
+PID384 assetsd THREAD4234 ['TH_WAIT'] user_usec=16972 queue=com.apple.assetsd.migration-services.data-migrator
+  /usr/lib/system/libsystem_kernel.dylib ___psynch_cvwait +0x8
+  /usr/lib/system/libsystem_pthread.dylib __pthread_cond_wait +0x4a8
+  /System/Library/Frameworks/Foundation.framework/Foundation -[NSOperation waitUntilFinished] +0x248
+  /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices -[PLLibraryServicesManager _waitForAwaitOperation:] +0x108
+  /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices -[PLLibraryServicesManager _awaitLibraryState:sync:completionHandler:] +0x208
+  /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices -[PLLibraryServicesManager awaitLibraryState:error:] +0xc8
+  /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices -[PLPhotoLibrary _loadServerDatabaseContextWithOptions:error:] +0x1d8
+  /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices -[PLPhotoLibrary _loadDatabaseContextWithOptions:error:] +0x58
+  /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices -[PLPhotoLibrary loadDatabaseWithOptions:error:] +0x1b4
+  /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices +[PLPhotoLibrary newPhotoLibraryWithName:loadedFromBundle:options:error:] +0x88
+  /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices +[PLPhotoLibrary newPhotoLibraryWithName:loadedFromURL:options:error:] +0xb8
+  /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices -[PLModelMigrator photoLibrary] +0xe8
+  /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices -[PLModelMigrator cleanupModelForDataMigrationForRestoreType:] +0x1e0
+  /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices ___78-[PLAssetsdMigrationService cleanupModelForDataMigrationForRestoreType:reply:]_block_invoke.56 +0x5c
+  /usr/lib/system/libdispatch.dylib __dispatch_call_block_and_release +0x20
+  /usr/lib/system/libdispatch.dylib __dispatch_client_callout +0x14
+  /usr/lib/system/libdispatch.dylib __dispatch_lane_serial_drain +0x244
+  /usr/lib/system/libdispatch.dylib __dispatch_lane_invoke +0x1cc
+  /usr/lib/system/libdispatch.dylib __dispatch_lane_serial_drain +0x110
+  /usr/lib/system/libdispatch.dylib __dispatch_lane_invoke +0x1cc
+  /usr/lib/system/libdispatch.dylib __dispatch_workloop_worker_thread +0x2c4
+  /usr/lib/system/libsystem_pthread.dylib __pthread_wqthread +0x114
+  /usr/lib/system/libsystem_pthread.dylib _start_wqthread +0x8
