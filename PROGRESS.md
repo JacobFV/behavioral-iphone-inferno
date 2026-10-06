@@ -2,6 +2,17 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 07:10 continuation: original first-unlock completion
+
+Actual20 ordinary input progressed through offline setup to Screen Time. Its
+SetUpLater completion remained pending with spinner for several minutes after
+one acknowledged request; no replay. Original ScreenTimeAgent gates daemon.start
+on first-unlock and existed before the owned transition. Exact original tracing
+found the missing simulated completion: an async SKS mailbox event, not a response
+action flag or direct notifyd post. New guarded first-transition-only implementation
+built as e3da84b1/source1cebf0c00b and passed actual control check (ee01a1ef62).
+Normalstop20/boot21 requested. Actual recovery remains unproven until21 executes.
+
 ### Current execution boundary (06:36 local)
 
 Boot20 is live with emulator2a0e467b/source1d8b129c88, directly from normally

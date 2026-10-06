@@ -48,14 +48,26 @@ that directory together: the binary references local libraries/resources.
 
 ## Current execution boundary
 
-Keep working; no handoff or missing user input. **Boot20 is live**, session28505,
-from normally stopped19 root
-`b94b587763c0b9ec82f1720c0cf52ef7b15db51f158534b333e61183a11c5841` and paired19.
-New emulator SHA256
-`2a0e467ba6261fbb6da4f1fa8f46bec09cc822a43954b1d3a0a2f06c09e32cf9`, source
-`1d8b129c88aae9ed23b4d017f0504bb677c2cc78`; actual build/QMP check0d269b2bea.
-Same serial/mailbox,900second traces,30second frames,noUSB,7200maximum.
-Private VNC `/tmp/inferno-boot-zmk8vt4z/vnc.sock`, root exclusively owns input.
+Keep working; no handoff or missing user input. **Boot20 normal stop requested**
+at07:10, session28505. Next21 must run directly from normally stopped20 and all
+paired namespaces; no guest staging/helper change. New emulator SHA256
+`e3da84b179ce328e06a0f917aabb8e4d80c8a4cf64701212464831a270e1741e`, source
+`1cebf0c00be038e7156d82578214c2cafa109873`; actual build/QMP control check
+passed ee01a1ef62. Same serial/mailbox,900second traces,30second frames,noUSB,
+7200maximum. Root exclusively owns input. Old20 socket will be stale afterstop;
+read21command.json for currentendpoint, do not use earlierones.
+
+**Reviewed event correction:** exact original SKS async wire EP18/tag0/op1/param0/
+data0 goes through original kernel event queue/cacheinvalidate/d00f and installed
+MobileKeyBagLockState notify-once first_unlock producer. Responseactionbit2 instead
+gives onlyd00d, so actionflags remain0. Evidence43122424c0/abe249fe3b/530cfe103d.
+Candidate queues original successfulreply then event only on acceptedfirst0->1
+empty-secret transition, after allrequest/outputcapacity guards. Repeatedsuccess,
+queries,rejections give noevent. No directnotifyd injection, timer, newsecret
+operation or migrationguardchange. Actual helper/API+ScreenTime recovery still
+requires21. Isolated exactfunction harness ASan/UBSanpassed guards/truncation/
+reply-eventorder, distinct fromguest proof. Native sourcea2a51118dd.
+
 Actual MKB state3 before/after, empty unlock0, first0->1. Root's ordinary UI
 journey reached: language English, regionUnitedStates, QuickStart/manual, WiFi/
 ContinueWithoutWiFi, DataPrivacy, CreatePasscode/options/Don'tUse/confirmation,
@@ -235,9 +247,9 @@ Evidence and exact original-code inspection are under companion/evidence/.
 
 ## Next concrete work
 
-1. Resolve actual ScreenTime SetUpLater pending callback in live20. Native and
-   diskworkers have original-code diagnostic ownership; root controls input and
-   retains27/32request budget. No repeated tap, no policy/migration suppression.
+1. Finish normalstop20/all7hashes then run21 with reviewed built e3da emulator.
+   Require actual one event, original MKB results and UI/ScreenTime progress.
+   Preserve setup state; no helper/staging change or directnotification.
 2. Stage from a normally stopped paired tuple only after the next candidate is
    ready. Commit source, actual build manifests, readbacks, raw logs and hashes.
    Never copy or hash a live disk as an immutable source.
