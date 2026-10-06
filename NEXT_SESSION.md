@@ -7,7 +7,32 @@ The user explicitly wants continuous work across status questions and intermedia
 milestones. No pause or handoff requested. Parallel workers are authorized for
 independent work in isolated worktrees; commit progressively.
 
-## Current execution, 2026-10-06 16:33 local
+## Current execution, 2026-10-06 16:40 local
+
+60 STOPPED/verified5a9daf31d5. Normal0/noerror353.847018s, strict/initialtiming/
+defaultall7+ancestors+attestationsPASS. Root76873728bytes SHA
+e9741a262bc1590f98b9c4391cf60847d838ef1cbdf0710871d0aa5a9b42631d.
+No displaytracejournal/0apple_adp lines. NoSAMPLE/Home/OPEN. Rootvisual7a81923d28.
+Boot0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F/PID241/main2319371986;
+counterf741a80b874042d38ca91b95d47ea1fe at1791329882.0656703.
+QMPbefored95aa1a05fc6e7e316e6eb7650c130eb510629c8246e8cbd92866eefc6456620,
+aftere3f5a0a26ba159cbe8d5adc2ca32d9706f186b027d173faf97404344e5092ed3.
+
+ONE61 AUTHORIZED andbootworkerlaunching controlledpredecessorcomparison:
+base disk-preparation-50/report.json (NOT55), samef088/defaultobserverOFF.
+**HID54 does NOT support SAMPLE. NeverissueSAMPLE61.** Rootallinputs/control.
+InitialdisplaytracingOFF as60; ifstaleaftergenuinetap, continuous20sconfirmthen
+bounded10sstatusreadwindow; preservefailure, no falseaftercapture/secondtap.
+This is predecessorstatecomparison, notHID-onlycause: root ANDnvram differ.
+Currentreadonlyloadereligibility+fourcomponentaudit a2e0eb2230:
+actualstage50input helper-attempt51/ramdisk.raw, NOThelper-attempt50 historical
+attachment. Correction f967103b8d crosslinks originalhid55-presample-diff.
+Actual tuple app22/launcher22/readiness54/HID54, firstthreeidenticalstage55,
+otherfiveauxidenticalbutnvramdifferent. Allbackingheaders/fullhashes/readonlyFD/
+threeexactctimeattestationsaccepted, no mutations. Do notrestage/changeattestations.
+Bootworkerownslaunch/postflight61; allotherworkersidle.
+
+## Recently verified59
 
 59 STOPPED/verified1a44806f71 normal0/noerror410.811885s. Strict0→1 and one
 Home/OPENretaining1, warm748.49175msguestOPEN→active. Defaultall7disks/ancestors/
@@ -24,19 +49,6 @@ startup/counter/Home/OPEN reads71/30/28/32; submits32/6/10/7. AllmatchingW1C
 pairs clearstatus0, nozero/mixedread. HomefilebracketnotimmediatelypreHome.
 Originaldriverstaticmapping3420842769+93caaf5dc2: filterread/clear before
 separatehandler/gatednotifications; no directpatchrangeoverlap; notruntimeproof.
-
-ONE60 LIVE runner3055969/QEMU3056448, host1a44806f71, frozen55/f088/defaultobserverOFF.
-VNC/tmp/inferno-boot-b_a5glkc/vnc.sock. Boot0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F,
-PID241/main2319371986. Rootreviewboot-view0013lock; unlock1
-5e0fbd5e88ed448392171fa2a42a9fb1 ACK0, reviewedafter-unlock001/observed0012stilllock.
-Unlock2 1e315d9692c446a69531e24d3f7c24f4 at1791329744.2094066 sent,20sviewpending.
-No60counter/trace/SAMPLE/Home/OPEN yet; displaytracejournalabsent.
-Root will leave displaytracingOFFforinitialcounter; ifgenuinestall, observe20s,
-enableboundeddiagnostics then SAMPLEBACKBOARDD+SPRINGBOARD beforeHome.
-No guestbehaviorfix. RootownsallUI/control. Bootworkerownsstart/postflight;
-nativeworkeridle. Diskworker read-onlychecking whether originalfrozen50/HID54
-remainseligible undercurrentancestorattestations forpossiblecontrolledcomparison.
-No61/comparisonVM authorized yet; no guestrestaging/attestationchanges allowed.
 
 Currentbinaryf088a8c99437afaa9da220ee2f2e2a09f4dbf5b8638e897ec01c670c5273a7b7,
 buildsource2f29037290a97299957193006ec44b82e1efa291, changebfcc434c20.

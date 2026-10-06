@@ -2,6 +2,30 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 16:40 continuation: untraced-display60 passed; predecessor comparison begins
+
+Run60 completed the reviewed single counter0→1 with display tracing disabled
+throughout: no display trace journal and no apple_adp trace records. It used the
+same frozen55/f088 tuple, with manual VNC observation and the usual startup touch
+trace still enabled. Normal0/noerror353.847018s; strict verification, initial
+timing and default disk/ancestor/attestation preservation passed5a9daf31d5.
+Rootdisk76873728bytes SHA
+e9741a262bc1590f98b9c4391cf60847d838ef1cbdf0710871d0aa5a9b42631d.
+Visual evidence7a81923d28. No SAMPLE/Home/OPEN.
+
+A fresh read-only eligibility audit accepted original frozen stage50 and all
+its backing dependencies under the current loader. Actual stage50 command,
+profile and ramdisk identify helper-attempt51, correcting the unrelated
+helper-attempt50 attachment in the earlier HID diff evidence. Old artifacts
+remain unchanged and explicitly cross-linked to the correction. Actual guest
+readback supports app22/launcher22/readiness54/HID54; stage55 changes HID but also
+has different root/NVRAM state. This is not a clean HID-only experiment.
+
+One61 is authorized from that preserved predecessor state with the same f088
+emulator, observer off, and no initial display trace. It tests whether the
+previously failing state remains reproducible. HID54 cannot collect samples;
+no SAMPLE will be sent. No staging or metadata modification is needed.
+
 ### 16:33 continuation: actual status-read diagnostic and strict/warm59 complete
 
 The reviewed binaryf088a8c99437afaa9da220ee2f2e2a09f4dbf5b8638e897ec01c670c5273a7b7
