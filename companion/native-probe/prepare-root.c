@@ -264,7 +264,7 @@ static int ensure(const char *path) {
 }
 int main(int argc, char **argv) {
     if (argc < 2 || strcmp(argv[1], "--disposable-root-copy")) return 2;
-    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0, readiness = 0, install_cache = 0, export_reports = 0, exec_wrapper = 0, system_launcher = 0, unlock_helper = 0, system_app = 0;
+    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0, readiness = 0, install_cache = 0, export_reports = 0, exec_wrapper = 0, system_launcher = 0, unlock_helper = 0, system_app = 0, multitouch = 0;
     for (int i=2; i<argc; ++i) {
         if (!strcmp(argv[i], "--role-volumes")) roles = 1;
         else if (!strcmp(argv[i], "--existing-volumes")) existing = 1;
@@ -274,6 +274,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[i], "--verify-data")) verify_data = 1;
         else if (!strcmp(argv[i], "--create-keybag")) keybag = 1;
         else if (!strcmp(argv[i], "--install-readiness")) readiness = 1;
+        else if (!strcmp(argv[i], "--install-multitouch")) multitouch = 1;
         else if (!strcmp(argv[i], "--install-cache")) install_cache = 1;
         else if (!strcmp(argv[i], "--export-reports")) export_reports = 1;
         else if (!strcmp(argv[i], "--install-system-app")) system_app = 1;
@@ -416,6 +417,27 @@ int main(int argc, char **argv) {
         compare_tree("/usr/share/InfernoProbe.app","/mnt1/Applications/InfernoProbe.app");
         printf("INFERNO_SYSTEM_APP_READBACK bytes=%llu mismatches=%llu\n",verified_bytes-prior_bytes,mismatches);fflush(0);
         sync();if(unmount("/mnt1",0))return 61;if(mismatches)return 62;
+    }
+    if(multitouch) {
+        if(!existing || mount_at(preboot_device,"/mnt2",0))return 64;
+        const char *base="/mnt2/000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000/usr/standalone/firmware";
+        char directory[256],target[256];
+        snprintf(directory,sizeof(directory),"%s/FUD",base);
+        snprintf(target,sizeof(target),"%s/Multitouch.img4",directory);
+        struct file_stat prior;
+        int result=0;
+        if(access(base,0) || !lstat(target,&prior) || *__error()!=2)result=65;
+        if(!result && ensure(directory))result=66;
+        if(!result && copyfile("/usr/share/inferno-multitouch.img4",target,0,15))result=67;
+        if(!result) {
+            unsigned long long prior_bytes=verified_bytes;
+            compare_tree("/usr/share/inferno-multitouch.img4",target);
+            printf("INFERNO_MULTITOUCH_READBACK bytes=%llu mismatches=%llu path=%s\n",verified_bytes-prior_bytes,mismatches,target);fflush(0);
+            if(mismatches)result=68;
+        }
+        sync();if(unmount("/mnt2",0))return 69;
+        if(result){printf("INFERNO_MULTITOUCH_FAILED result=%d\n",result);fflush(0);return result;}
+        printf("INFERNO_MULTITOUCH_STAGED: unsigned format container; no guest loader success claimed\n");fflush(0);
     }
     if(install_cache) {
         if(mount_at(system_device,"/mnt1",0))return 40;
