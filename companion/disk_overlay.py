@@ -20,6 +20,7 @@ from pathlib import Path
 import platform
 import stat
 import subprocess
+import time
 import urllib.request
 
 DEFAULT_TOOLS = Path.home() / '.local/share/inferno/disk-overlay-tools'
@@ -110,7 +111,7 @@ def reject_writable_handles(identity):
         except (FileNotFoundError, PermissionError, ProcessLookupError):
             pass
 
-def validate_base(base, expected, image_format="raw"):
+def validate_base(base, expected, image_format="raw", journal=None, allow_attestation=True):
     base = base.resolve(strict=True)
     before = base.stat()
     if not stat.S_ISREG(before.st_mode) or before.st_mode & 0o222:
@@ -126,13 +127,119 @@ def validate_base(base, expected, image_format="raw"):
     fields = ('st_dev', 'st_ino', 'st_size', 'st_mtime_ns', 'st_ctime_ns', 'st_mode')
     if any(getattr(before, key) != getattr(after, key) for key in fields):
         raise ValueError('Overlay backing base changed during verification')
-    return {'path': str(base), 'format': image_format, 'sha256': expected, 'bytes': after.st_size,
-            'device': after.st_dev, 'inode': after.st_ino, 'mtime_ns': after.st_mtime_ns,
-            'ctime_ns': after.st_ctime_ns, 'mode': oct(stat.S_IMODE(after.st_mode))}
+    reject_writable_handles(after)
+    identity = {'path': str(base), 'format': image_format, 'sha256': expected, 'bytes': after.st_size,
+                'device': after.st_dev, 'inode': after.st_ino, 'mtime_ns': after.st_mtime_ns,
+                'ctime_ns': after.st_ctime_ns, 'mode': oct(stat.S_IMODE(after.st_mode))}
+    return apply_ctime_attestation(identity, journal) if allow_attestation else identity
+
+
+CTIME_SCHEMA = 'inferno.redundant-chmod-ctime-attestation.v1'
+CTIME_REASON = 'root-redundant-chmod-0444'
+IDENTITY_KEYS = {'path','format','sha256','bytes','device','inode','mtime_ns','ctime_ns','mode'}
+
+
+def ctime_sidecar(base):
+    return Path(str(base) + '.ctime-revalidation.json')
+
+
+def bounded_json(path):
+    with Path(path).open('rb') as stream:
+        data = stream.read(4 * 1024 * 1024 + 1)
+    if len(data) > 4 * 1024 * 1024:
+        raise ValueError('Metadata evidence exceeds 4MiB bound')
+    return json.loads(data), hashlib.sha256(data).hexdigest()
+
+
+def historical_identities(value, path, old_ctime):
+    matches = []
+    if isinstance(value, dict):
+        if set(value) == IDENTITY_KEYS and value.get('path') == str(path) and value.get('ctime_ns') == old_ctime:
+            matches.append(value)
+        for child in value.values():
+            matches.extend(historical_identities(child, path, old_ctime))
+    elif isinstance(value, list):
+        for child in value:
+            matches.extend(historical_identities(child, path, old_ctime))
+    return matches
+
+
+def check_ctime_pair(historical, current):
+    if set(historical) != IDENTITY_KEYS or set(current) != IDENTITY_KEYS:
+        raise ValueError('Attestation requires exact full identities')
+    if historical['mode'] != '0o444' or current['mode'] != '0o444':
+        raise ValueError('Only already-0444 backing files qualify')
+    if (type(historical['ctime_ns']) is not int or type(current['ctime_ns']) is not int or
+            not 0 < historical['ctime_ns'] < current['ctime_ns']):
+        raise ValueError('Attestation requires a later exact ctime')
+    if any(
+            historical[key] != current[key] for key in IDENTITY_KEYS - {'ctime_ns'}):
+        raise ValueError('Attestation permits only one ctime difference')
+
+
+def apply_ctime_attestation(current, journal):
+    path = ctime_sidecar(current['path'])
+    if not path.exists() and not path.is_symlink():
+        return current
+    before = path.lstat()
+    if (not stat.S_ISREG(before.st_mode) or stat.S_IMODE(before.st_mode) != 0o444 or
+            before.st_size > 64 * 1024):
+        raise ValueError('Ctime attestation must be a regular nonsymlink 0444 file')
+    reject_writable_handles(before)
+    record, record_hash = bounded_json(path)
+    if (set(record) != {'schema','reason','historical','current','historical_source','created_time','creator_sha256'} or
+            record.get('schema') != CTIME_SCHEMA or record.get('reason') != CTIME_REASON):
+        raise ValueError('Unsupported ctime attestation')
+    historical = record['historical']
+    check_ctime_pair(historical, record['current'])
+    if record['current'] != current:
+        raise ValueError('Current identity differs from exact attested identity')
+    source = record['historical_source']
+    original, original_hash = bounded_json(source['path'])
+    if original_hash != source['sha256'] or historical not in historical_identities(
+            original, current['path'], historical['ctime_ns']):
+        raise ValueError('Historical source hash or identity no longer matches')
+    after = path.lstat()
+    if any(getattr(before, k) != getattr(after, k) for k in
+           ('st_dev','st_ino','st_size','st_mtime_ns','st_ctime_ns','st_mode')):
+        raise ValueError('Ctime attestation changed during verification')
+    reject_writable_handles(after)
+    if journal is not None:
+        journal.append({'sidecar':str(path), 'sidecar_sha256':record_hash,
+                        'historical':historical, 'actual_verified':current,
+                        'historical_source':source, 'verified_time':time.time(),
+                        'scope':'Fresh full content hash and read-only identity; exact ctime exception only. No report or disk rewritten.'})
+    return historical
+
+
+def attest_ctime(base, historical_record, old_ctime):
+    """Explicit one-incident creator. Never changes backing bytes or permissions."""
+    base = base.resolve(strict=True)
+    source = historical_record.resolve(strict=True)
+    old_record, old_hash = bounded_json(source)
+    candidates = historical_identities(old_record, base, old_ctime)
+    if not candidates or any(value != candidates[0] for value in candidates):
+        raise ValueError('Historical source lacks one unambiguous exact identity')
+    old = candidates[0]
+    path = ctime_sidecar(base)
+    if path.exists() or path.is_symlink():
+        raise ValueError('Ctime attestation already exists; never replace it')
+    current = validate_base(base, old['sha256'], old['format'], allow_attestation=False)
+    check_ctime_pair(old, current)
+    if digest(source) != old_hash:
+        raise ValueError('Historical source changed during verification')
+    record = {'schema':CTIME_SCHEMA, 'reason':CTIME_REASON, 'historical':old, 'current':current,
+              'historical_source':{'path':str(source), 'sha256':old_hash},
+              'created_time':time.time(), 'creator_sha256':digest(Path(__file__))}
+    with path.open('x') as stream:
+        json.dump(record, stream, indent=2); stream.write('\n'); stream.flush(); os.fsync(stream.fileno())
+    path.chmod(0o444)  # Only the newly created sidecar, never the backing inode.
+    return {'sidecar':str(path), 'sha256':digest(path), **record}
 
 
 def create_overlay(path, base, expected, tool):
-    identity = validate_base(base, expected)
+    journal = []
+    identity = validate_base(base, expected, journal=journal)
     if path.exists():
         raise ValueError('Overlay destination already exists')
     tool_run(tool, 'create', '-f', 'qcow2', '-F', 'raw', '-b', identity['path'],
@@ -143,7 +250,7 @@ def create_overlay(path, base, expected, tool):
             info['virtual-size'] != identity['bytes']):
         raise ValueError('Created overlay does not match backing identity')
     return {'schema': 'inferno.raw-backed-overlay.v1', 'path': str(path), 'format': 'qcow2',
-            'backing': identity, 'tool': tool, 'image_info': info,
+            'backing': identity, 'tool': tool, 'image_info': info, 'metadata_revalidation':journal,
             'dependency_warning': 'Retain this immutable raw base at the exact recorded path; overlay is not standalone.',
             'source_sha256': digest(Path(__file__))}
 
@@ -155,11 +262,12 @@ def verify_backing(record):
                 chain['report_sha256'] != record['backing_report_sha256'] or
                 chain['stopped_manifest_sha256'] != record['stopped_manifest_sha256']):
             raise ValueError('Recorded overlay dependency chain changed')
-        return {'unchanged': True, 'layers': chain['layers']}
-    current = validate_base(Path(record['backing']['path']), record['backing']['sha256'])
+        return {'unchanged': True, 'layers': chain['layers'], 'metadata_revalidation':chain['metadata_revalidation']}
+    journal = []
+    current = validate_base(Path(record['backing']['path']), record['backing']['sha256'], journal=journal)
     if current != record['backing']:
         raise ValueError('Overlay backing identity changed since creation')
-    return {'unchanged': True, 'sha256': current['sha256']}
+    return {'unchanged': True, 'sha256': current['sha256'], 'metadata_revalidation':journal}
 
 
 MAX_OVERLAY_DEPTH = 4
@@ -209,14 +317,16 @@ def load_stopped_overlay(report_path, tool, seen=()):
         if name in AUXILIARY_SIZES:
             if entry['bytes'] != AUXILIARY_SIZES[name] or digest(path) != entry['sha256']:
                 raise ValueError('Stopped auxiliary hash/size mismatch: ' + name)
-    own = validate_base(root_path, manifest['root.qcow2']['sha256'], 'qcow2')
+    journal = []
+    own = validate_base(root_path, manifest['root.qcow2']['sha256'], 'qcow2', journal=journal)
     record = json.loads((directory / 'root-overlay.json').read_text())
     if record != report.get('root_overlay') or record.get('path') != str(root_path):
         raise ValueError('Root overlay sidecar does not match its owned stopped report')
     if record.get('backing_after_stop', {}).get('unchanged') is not True:
         raise ValueError('Source did not verify backing after shutdown')
     if record['schema'] == 'inferno.raw-backed-overlay.v1':
-        verify_backing(record)
+        verified = verify_backing(record)
+        journal.extend(verified['metadata_revalidation'])
         layers = [own, record['backing']]
     elif record['schema'] == 'inferno.recorded-overlay-chain.v1':
         parent = load_stopped_overlay(Path(record['backing_report']), tool, seen)
@@ -224,6 +334,7 @@ def load_stopped_overlay(report_path, tool, seen=()):
                 parent['stopped_manifest_sha256'] != record['stopped_manifest_sha256']):
             raise ValueError('Ancestor recorded identity or report hash changed')
         layers = [own, *parent['layers']]
+        journal.extend(parent['metadata_revalidation'])
     else:
         raise ValueError('Unsupported owned overlay record schema')
     if len(layers) > MAX_OVERLAY_DEPTH:  # Adding a child makes len(layers) qcow2 layers.
@@ -237,7 +348,8 @@ def load_stopped_overlay(report_path, tool, seen=()):
         raise ValueError('Backing report changed during verification')
     return {'report': str(report_path), 'report_sha256': report_hash,
             'stopped_manifest': str(manifest_path), 'stopped_manifest_sha256': digest(manifest_path),
-            'layers': layers, 'virtual_size': info['virtual-size'], 'auxiliary': manifest}
+            'layers': layers, 'virtual_size': info['virtual-size'], 'auxiliary': manifest,
+            'metadata_revalidation':journal}
 
 
 def protect_dependencies(layers, child):
@@ -275,13 +387,22 @@ def create_recorded_overlay(path, source_report, tool):
             'backing_report': chain['report'], 'backing_report_sha256': chain['report_sha256'],
             'stopped_manifest': chain['stopped_manifest'], 'stopped_manifest_sha256': chain['stopped_manifest_sha256'],
             'dependencies': chain['layers'], 'retention_markers': markers, 'tool': tool,
+            'metadata_revalidation':chain['metadata_revalidation'],
             'image_info': info, 'source_sha256': digest(Path(__file__)),
             'dependency_warning': 'Retain every immutable layer and recorded report at its exact absolute path.'}
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['bootstrap'])
+    parser.add_argument('command', choices=['bootstrap', 'attest-ctime'])
+    parser.add_argument('--base', type=Path)
+    parser.add_argument('--historical-record', type=Path)
+    parser.add_argument('--old-ctime-ns', type=int)
     parser.add_argument('--tools-root', type=Path, default=DEFAULT_TOOLS)
     args = parser.parse_args()
-    print(json.dumps(bootstrap(args.tools_root), indent=2))
+    if args.command == 'attest-ctime':
+        if args.base is None or args.historical_record is None or args.old_ctime_ns is None:
+            parser.error('attest-ctime requires --base, --historical-record and --old-ctime-ns')
+        print(json.dumps(attest_ctime(args.base, args.historical_record, args.old_ctime_ns), indent=2))
+    else:
+        print(json.dumps(bootstrap(args.tools_root), indent=2))
