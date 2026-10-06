@@ -2,6 +2,29 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 08:37 continuation: original launch accepted; owned delegate ABI fixed
+
+Normal restart25 cleared the launch denial: original proxySystem/valid1 and
+callbackaccepted1 with nil error at08:28:41. Actual original crash report proves
+owned process249 entered UIApplicationMain, then crashed retaining the app
+delegate. This is execution evidence, not a visible app/counter success.
+
+The self-authored NSObject declaration omitted its eight-byte isa header. The
+actual app instruction1000048f0 stored _window at self+0, corrupting that header;
+original UIKit subsequently retained UIApplication.delegate. Original NSObject
+metadata and UUID/slide-normalized stack are preserved97f9fafeb9/bf4382166d.
+Fixdbebfc856a adds Class isa in the owned declaration. Build14 is71776bytes,
+SHA4689426545a8fd19f1e1b15f2138611cb63593ed49bc56d0f1b407e9970d29b1;
+actual disassembly now stores/loads at self+8. All38imports pass original cache
+audit. Build/layout evidence2f2e07ce00; guest recovery remains pending.
+
+Stopped25 QMPquit26/emulator0 after266.952seconds retains all seven disks, root
+842037b918db760b2b033658c5cae735f45efd84674537c187e34c8e86093e58.
+Stage42 will replace only the owned System app executable; emulator, metadata,
+launcher and input helpers stay unchanged. FrontBoard did not relay app stderr
+to serial, so a separate marker transport may be needed after visible execution.
+Keep the strict runner's missing-marker failure distinct from reviewed UI proof.
+
 ### 08:26 continuation: persisted classification restart comparison
 
 Boot24 repeatedly reported a valid original LaunchServices proxy of type System,

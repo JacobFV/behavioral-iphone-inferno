@@ -10,27 +10,32 @@ Suggested opening instruction:
 > Prefer integrated execution over adding routine unit tests. Never use my main
 > display. Do not resume the archived framework reimplementation.
 
-## Active execution, 2026-10-06 08:26 local
+## Active execution, 2026-10-06 08:37 local
 
-Boot25 is running from normally stopped24 and all six paired namespaces; report
-`.local-build/reports/app-boot-25`, session97366, private VNC
-`/tmp/inferno-boot-irq2mnl9/vnc.sock`. Root exclusively owns gestures using
-`/tmp/inferno-explicit-gesture-25.py`. Same e3da emulator, launcher13, HID45,
-readiness42 and owned app; no staging between24 and25. Observation-only strict
-journey sends no input and ends the VM after the counter1 capture.
+Boot25 stopped normally, QMPquit26/emulator0; fullraw evidence8d9d9eccf2
+(cherry-picked locally). All7disks retained; rootSHA
+842037b918db760b2b033658c5cae735f45efd84674537c187e34c8e86093e58.
+Normalrestart cleared Security3: proxySystem and original callbackaccepted1/nil.
+Owned process249 entered UIKit but crashed retaining a corrupted appdelegate.
+Root found actual self+0 windowstore due to missing NSObject isa declaration.
+Fixdbebfc856a/build14 adds correct8byteheader; actualstore/load+self8 and38imports
+verified2f2e07ce00. Newapp71776bytes SHA
+4689426545a8fd19f1e1b15f2138611cb63593ed49bc56d0f1b407e9970d29b1.
 
-Actual24 registered System but still got the original Security3 denial. Its
-normal stop and all seven disk hashes are preserved a017ad3320; root SHA256
-952f3cd3d1962e15daf026ded5557d799a7c50847b122452a606fb9e3bd6d7d2.
-Original FBS compares path+mtime for an existing-app replacement, so25 tests a
-normal restart's effect on cached metadata. No success claim until real original
-launch results, UIKit markers and reviewed screenshots. Native worker prepares
-read-only effective-type/trust diagnostics if the denial persists.
+Bootworker prepares stage42 FROM STOPPED25 pairedtuple, replacing ONLY
+/Applications/InfernoProbe.app/InfernoProbe. Native worker adds narrow existing
+stager executable-only option. Launcher13/HID45/readiness42/emulator e3da and
+Info.plist stay unchanged. Nextboot26 awaits actualreadback/normalstop/hashes
+and rootcapacityclearance. Root owns allgestures after review. Old25endpoint
+is stale. No owned app screen or counter success yet.
 
-Obsolete generated preparation41 disks have been verified and retired e5d625691c;
-all actual boot tuples remain. Recheck capacity before another disk copy.
-Earlier live-session endpoints below are historical and stale. Continue from25,
-then the owned app journey and measurements, without a checkpoint handoff.
+FrontBoard app stderr was not observed in serial despite actual UIKit entry;
+native independently traces original output routing. Strictjourney may stay
+waitingformarkers even if UI works. Record actual visual and marker results
+separately; do not counterfeit markers. Preserve everyactualboot tuple/baseline21.
+Prep13 verifiedretired b640de3eb0 (~6.82GiB), prep12 authorized after reviewed
+510264c851 secondhash/liveguards, nextobsoletecandidate under read-only audit.
+Continue actual fixed app boot/journey, then measurements without handoff.
 
 ## What is ready
 
