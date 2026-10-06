@@ -65,9 +65,19 @@ ScreenTime/SetUpLater. **Current screen is ScreenTime with top-right spinner**,
 still present in capture1791294820 after request27
 `415f49b9deae41a8a7c6a3da309f3dae` ACK0. No repeat/newinput since. Original
 ScreenTimeAgent158/dmd159/Setup169/budd179 remain alive in actualprocesssnapshots.
-Native traces original BuddyScreenTime callback; diskworker owns independent
-ScreenTimeCore initialization/persistence/firstunlock dependencies. No patch or
-bypass proposed. Keep20live while identifying actual completion requirement.
+Original Buddy SetUpLater invokes STManagementState.setScreenTimeEnabled:NO;
+completion stops spinner and advances even on error, so pending callback remains
+actual boundary. Original ScreenTimeAgent starts its XPC dispatcher but gates
+STDaemon.start on first-unlock; process158 existed in15s snapshot before owned
+unlock30s, not proof its query registered. Evidence8b998bd029.
+IMPORTANT: native's original MobileKeyBagLockState UserEventPlugin proves d00d
+posts only lock-status; d00f posts first_unlock. Therefore actionbit2->d00d is
+NOT sufficient. No callback patch has been made. Diskworker reactivated to trace
+exact accepted state/async path producing d00f; native owns plugin/Buddy evidence.
+No directnotifyd injection, guessedflags or migrationguard change. Keep20live.
+Current2a0e emulator+manifest archived at binaries/simulated-sep-1d8b129c88aa.
+Extra verified retirement of obsolete prep23 reclaimed7.32GB (f998a36433), now
+18GiB free; baseline21/22 and every actual appboot tuple remain preserved.
 
 Guest HID max32accepted requests, **27used/5remain**; noautomatic replay/respawn.
 Source/emulator/helper unchanged during navigation. Root local convenience
