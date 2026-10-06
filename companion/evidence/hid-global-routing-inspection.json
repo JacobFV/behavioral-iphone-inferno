@@ -1,0 +1,30 @@
+{
+  "scope": "Read-only original iOS14.0 beta5 18A5351d routing and virtual HID authorization inspection; no guest inputs or policy changes.",
+  "sources": {
+    "system_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+    "backboardd_sha256": "304d45d72dcba7e16928ec9192897c269280846f6d06dcccfdb4b991cbf040d2",
+    "backboardd_origin": "Unchanged System volume from prepared13-container.apfs; extracted Volume1/usr/libexec/backboardd outside Git.",
+    "original_decoded_kernel_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910"
+  },
+  "sender_path": {
+    "foundation": "BackBoardHIDEventFoundation __BKHandleIOHIDEventFromSender 0x1c23a3ae0",
+    "no_service": "At 0x1c23a3dd8 lookup senderID in sender cache; 0x1c23a1be4 senderInfoForSenderID returns BKHIDUnknownSender.unknownSenderInfo on a dictionary miss (0x1c23a1cd4). No service at 0x1c23a3f10 logs unknown sender and forwards unknown sender object.",
+    "zero_limit": "No special zero ID branch in inspected lookup or initializer (0x1c23a1f28). Runtime cache contents and upstream transformations have not been observed; this does not prove every externally dispatched sender0 event is dropped.",
+    "accessibility": "Original accessibilityHIDServices 0x1c2391db0 creates seven reserved nonzero IDs, not zero. These are not authorized identities for an owned helper to impersonate.",
+    "backboard_processor": "BKHIDDigitizerEventProcessor processEvent:sender:dispatcher: 0x100048d68 accepts BKHIDAccessibilitySender or BKIOHIDService; other classes lead to ignoring digitizer event from non-digitizer sender log at 0x100049128. Accessibility path obtains mainDisplayDigitizerService at 0x100048ed0, so it is not proof of service-independent touch.",
+    "display_integrated": "Original processor reads field0xb0019 at 0x100048ef8. Its presence alone does not satisfy sender/service checks.",
+    "unresolved": "Global normalized coordinate contract, complete display selection, and event acceptance remain unproven. Do not substitute app-local UIKit enqueue/context semantics."
+  },
+  "virtual_device_candidate": {
+    "user_api": "IOHIDUserDeviceCreateWithOptions: original recovery0x47df8, corresponding System IOKit mapping base0x1812d3000. Matches IOHIDResource at0x47eb8, IOServiceOpen type0 at0x47ee8.",
+    "kernel_auth": "IOHIDResourceDeviceUserClient::initWithTask 0xfffffff00834397c calls copyClientEntitlement for com.apple.hid.manager.user-access-device at0xfffffff0083439d8 or com.apple.developer.hid.virtual.device at0xfffffff008343a38; OSBoolean true required. Developer true branch0xfffffff008343a80 reaches successful initializer0xfffffff008343c0c.",
+    "minimal_candidate_entitlement": "com.apple.developer.hid.virtual.device=true",
+    "privilege": "Manager path sets byte+0x168; developer path does not. createDevice 0xfffffff008345988\u20130xfffffff0083459e8 sets Privileged from that internal flag. Do not supply Privileged or impersonate an existing provider.",
+    "rejected_properties": [
+      "IOClass",
+      "IOProviderClass",
+      "IOKitDebug"
+    ],
+    "limits": "This establishes original userclient authorization only. A real virtual digitizer must be created from an owned HID report descriptor and observed as an OS-assigned service; matching, BackBoard acceptance and actual UI response still require execution evidence."
+  }
+}
