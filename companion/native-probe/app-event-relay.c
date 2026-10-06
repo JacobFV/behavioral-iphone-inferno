@@ -6,6 +6,7 @@
 #include "../app-probe/OwnedClock.h"
 extern int printf(const char *,...),fflush(void *),inferno_owned_process(int);
 extern unsigned alarm(unsigned);
+extern int inferno_owned_incarnation(int,unsigned long long *,int *,int *);
 static unsigned number(char **p,unsigned maximum,int *valid) {
     unsigned n=0,digits=0;
     while(**p>='0' && **p<='9') {unsigned d=*(*p)++-'0';if(d>maximum || n>(maximum-d)/10) {*valid=0;return 0;}n=n*10+d;digits++;}
@@ -15,12 +16,24 @@ static int token(char **p,char *out,unsigned size) {
     unsigned n=0;while(**p && **p!=' ') {if(n+1>=size)return -1;out[n++]=*(*p)++;}
     out[n]=0;if(**p!=' ')return -1;(*p)++;return 0;
 }
-static struct {unsigned pid,last,timing_last,timing_mask,numer,denom;unsigned long long ticks;} seen[32];
+static struct {unsigned pid,last,timing_last,timing_mask,numer,denom;unsigned long long ticks,main_tick,lifecycle_ticks;unsigned lifecycle_last,generation;unsigned long long unique;int idversion,identity_logged;} seen[32];
 static unsigned used,relayed;
 static unsigned long long ticks_number(char **p,int *valid) {
     unsigned long long n=0;unsigned digits=0;
     while(**p>='0' && **p<='9') {unsigned d=*(*p)++-'0';if(n>(18446744073709551615ULL-d)/10) {*valid=0;return 0;}n=n*10+d;digits++;}
     if(!digits || !n)*valid=0;return n;
+}
+static int process_identity(unsigned slot,int pid) {
+    unsigned long long unique=0;int version=0,error=0;
+    int result=inferno_owned_incarnation(pid,&unique,&version,&error);
+    if(!seen[slot].identity_logged) {
+        printf("INFERNO_EVENT_PROCESS_IDENTITY pid=%d query_result=%d errno=%d uniqueid=%llu idversion=%d source=original-libproc fallback=main-tick-and-pid\n",pid,result,error,unique,version);fflush(0);
+        seen[slot].identity_logged=1;
+        if(result==56 && unique) {seen[slot].unique=unique;seen[slot].idversion=version;}
+    } else if(seen[slot].unique && (result!=56 || unique!=seen[slot].unique || version!=seen[slot].idversion)) {
+        printf("INFERNO_EVENT_PROCESS_IDENTITY_REJECT pid=%d query_result=%d errno=%d uniqueid=%llu idversion=%d\n",pid,result,error,unique,version);fflush(0);return 1;
+    }
+    return 0;
 }
 static int timing_record(char *p,const char *boot) {
     const char *raw=p;char magic[24],record_boot[37],hook[32];int valid=1;
@@ -35,15 +48,40 @@ static int timing_record(char *p,const char *boot) {
     if(!inferno_owned_process((int)pid))return 38;
     unsigned slot=0;while(slot<used && seen[slot].pid!=pid)slot++;
     if(slot==used) {if(used==32)return 39;seen[used++].pid=pid;}
+    if(process_identity(slot,(int)pid))return 42;
     if(sequence!=seen[slot].timing_last+1 || (seen[slot].timing_mask&bit) || (sequence==1 && bit!=1))return 40;
     if(seen[slot].timing_last && (ticks<seen[slot].ticks || numer!=seen[slot].numer || denom!=seen[slot].denom))return 41;
+    if(sequence==1)seen[slot].main_tick=ticks;
     seen[slot].timing_last=sequence;seen[slot].timing_mask|=bit;seen[slot].ticks=ticks;seen[slot].numer=numer;seen[slot].denom=denom;
     printf("INFERNO_TIMING_RELAY_RAW source=guest-loopback record=%s\n",raw);
     printf("INFERNO_TIMING_RELAY_RECORD boot=%s pid=%u sequence=%u hook=%s ticks=%llu numer=%u denom=%u complete=%u source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0\n",boot,pid,sequence,hook,ticks,numer,denom,seen[slot].timing_mask==31);
     fflush(0);relayed++;return 0;
 }
+static int lifecycle_record(char *p,const char *boot) {
+    const char *raw=p;char magic[24],record_boot[37],hook[32];int valid=1;
+    if(token(&p,magic,sizeof(magic)) || strcmp(magic,"INFERNO_LIFECYCLE_V1") || token(&p,record_boot,sizeof(record_boot)) || strcmp(record_boot,boot))return 51;
+    unsigned pid=number(&p,2147483647,&valid);if(!valid || !pid || *p++!=' ')return 52;
+    unsigned seq=number(&p,40,&valid);if(!valid || !seq || *p++!=' ')return 53;
+    unsigned generation=number(&p,8,&valid);if(!valid || *p++!=' ')return 54;
+    if(token(&p,hook,sizeof(hook)) || (strcmp(hook,"active") && strcmp(hook,"resign") && strcmp(hook,"background") && strcmp(hook,"foreground")))return 55;
+    unsigned long long main_tick=ticks_number(&p,&valid);if(!valid || *p++!=' ')return 56;
+    unsigned long long ticks=ticks_number(&p,&valid);if(!valid || *p++!=' ')return 57;
+    unsigned numer=number(&p,4294967295U,&valid);if(!valid || !numer || *p++!=' ')return 58;
+    unsigned denom=number(&p,4294967295U,&valid);if(!valid || !denom || *p)return 59;
+    if(!inferno_owned_process((int)pid))return 60;
+    unsigned slot=0;while(slot<used && seen[slot].pid!=pid)slot++;
+    if(slot==used || seen[slot].timing_mask!=31 || main_tick!=seen[slot].main_tick || numer!=seen[slot].numer || denom!=seen[slot].denom)return 61;
+    if(process_identity(slot,(int)pid))return 64;
+    if(seq!=seen[slot].lifecycle_last+1 || ticks<main_tick || ticks<seen[slot].lifecycle_ticks)return 62;
+    if(!strcmp(hook,"foreground")) {if(generation!=seen[slot].generation+1)return 63;}
+    else if(generation!=seen[slot].generation)return 63;
+    seen[slot].lifecycle_last=seq;seen[slot].lifecycle_ticks=ticks;seen[slot].generation=generation;
+    printf("INFERNO_LIFECYCLE_RELAY_RAW source=guest-loopback record=%s\n",raw);
+    printf("INFERNO_LIFECYCLE_RELAY_RECORD boot=%s pid=%u sequence=%u generation=%u hook=%s main_ticks=%llu ticks=%llu numer=%u denom=%u source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0\n",boot,pid,seq,generation,hook,main_tick,ticks,numer,denom);
+    fflush(0);relayed++;return 0;
+}
 static int record(char *p,const char *boot) {
-    if(p[0] && p[1] && p[2] && p[3] && p[4] && p[5] && p[6] && p[7] && p[8]=='T')return timing_record(p,boot);
+    if(p[0] && p[1] && p[2] && p[3] && p[4] && p[5] && p[6] && p[7]) {if(p[8]=='T')return timing_record(p,boot);if(p[8]=='L')return lifecycle_record(p,boot);}
     const char *raw=p;
     char magic[24],record_boot[37],event[32];int valid=1;
     if(token(&p,magic,sizeof(magic)) || strcmp(magic,"INFERNO_EVENT_V1") || token(&p,record_boot,sizeof(record_boot)) || strcmp(record_boot,boot))return 1;

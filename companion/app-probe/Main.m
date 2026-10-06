@@ -9,6 +9,17 @@ static struct {const char *hook;unsigned long long ticks;} timing[5];
 static struct {const char *name;NSUInteger count;} pending_events[16];
 static unsigned timing_used,timing_mask,pending_used;
 static int timing_queued,timing_flushed,timing_failed;
+static struct {const char *hook;unsigned generation;unsigned long long ticks;} lifecycle[40];
+static unsigned lifecycle_used,lifecycle_sent,foreground_generation;
+static int lifecycle_queued,lifecycle_failed;
+static void lifecycle_flush(void *);
+static void lifecycle_capture(const char *hook,unsigned long long ticks) {
+    if(lifecycle_failed)return;
+    if(lifecycle_used==40 || foreground_generation>8 || !ticks) {lifecycle_failed=1;return;}
+    lifecycle[lifecycle_used].hook=hook;lifecycle[lifecycle_used].generation=foreground_generation;lifecycle[lifecycle_used++].ticks=ticks;
+    if(timing_flushed && !lifecycle_queued) {lifecycle_queued=1;dispatch_async_f(&_dispatch_main_q,0,lifecycle_flush);}
+}
+
 static const char *timing_stage="pending";
 static UILabel *diagnostic_footer;
 static void timing_flush(void *unused);
@@ -95,6 +106,21 @@ static void timing_timeout(void *unused) {
     if(timing_flushed || timing_failed)return;
     timing_failed=1;timing_stage="bootstrap-timeout";update_footer();
 }
+static void lifecycle_flush(void *unused) {
+    (void)unused;lifecycle_queued=0;
+    if(lifecycle_failed || !event_identity_valid || !timing_flushed) {timing_stage="lifecycle-unavailable";update_footer();return;}
+    struct inferno_timebase base={0,0};
+    if(mach_timebase_info(&base) || !base.numer || !base.denom) {lifecycle_failed=1;timing_stage="lifecycle-timebase-error";update_footer();return;}
+    while(lifecycle_sent<lifecycle_used) {
+        unsigned i=lifecycle_sent;char line[192];
+        int n=snprintf(line,sizeof(line),"INFERNO_LIFECYCLE_V1 %s %d %u %u %s %llu %llu %u %u\n",event_boot,getpid(),i+1,lifecycle[i].generation,lifecycle[i].hook,timing[0].ticks,lifecycle[i].ticks,base.numer,base.denom);
+        if(n<=0 || n>=(int)sizeof(line)) {lifecycle_failed=1;timing_stage="lifecycle-format-error";break;}
+        network_result=inferno_send_event(line,(unsigned)n,&network_errno);
+        if(network_result) {lifecycle_failed=1;timing_stage="lifecycle-send-error";break;}
+        lifecycle_sent++;
+    }
+    update_footer();
+}
 static void timing_flush(void *unused) {
     (void)unused;
     if(timing_failed || timing_mask!=31)return;
@@ -116,6 +142,7 @@ static void timing_flush(void *unused) {
     timing_flushed=1;
     for(unsigned i=0;i<pending_used;i++)marker(pending_events[i].name,pending_events[i].count);
     pending_used=0;update_footer();
+    if(!lifecycle_queued) {lifecycle_queued=1;dispatch_async_f(&_dispatch_main_q,0,lifecycle_flush);}
 }
 
 @interface InfernoProbeController : UIViewController {
@@ -219,8 +246,21 @@ static void timing_flush(void *unused) {
     maybe_flush();
     return 1;
 }
+- (void)applicationWillResignActive:(UIApplication *)application {
+    unsigned long long tick=mach_absolute_time();(void)application;
+    lifecycle_capture("resign",tick);
+}
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    unsigned long long tick=mach_absolute_time();(void)application;
+    lifecycle_capture("background",tick);
+}
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    unsigned long long tick=mach_absolute_time();(void)application;
+    foreground_generation++;lifecycle_capture("foreground",tick);
+}
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    capture("active",16,mach_absolute_time());
+    unsigned long long tick=mach_absolute_time();
+    capture("active",16,tick);lifecycle_capture("active",tick);
     (void)application;
     marker("active", 0);
     maybe_flush();
