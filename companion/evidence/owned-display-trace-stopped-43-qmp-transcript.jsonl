@@ -1,0 +1,142 @@
+{"direction": "receive", "time": 1791317031.3758528, "raw": "{\"QMP\": {\"version\": {\"qemu\": {\"micro\": 2, \"minor\": 2, \"major\": 10}, \"package\": \"\"}, \"capabilities\": [\"oob\"]}}\r\n"}
+{"direction": "send", "time": 1791317031.3759272, "raw": "{\"execute\": \"qmp_capabilities\", \"id\": 1}\n"}
+{"direction": "receive", "time": 1791317031.8121676, "raw": "{\"return\": {}, \"id\": 1}\r\n"}
+{"direction": "send", "time": 1791317031.8122444, "raw": "{\"execute\": \"query-status\", \"id\": 2}\n"}
+{"direction": "receive", "time": 1791317031.8265746, "raw": "{\"return\": {\"status\": \"prelaunch\", \"running\": false}, \"id\": 2}\r\n"}
+{"direction": "send", "time": 1791317031.8266544, "raw": "{\"execute\": \"query-cpus-fast\", \"id\": 3}\n"}
+{"direction": "receive", "time": 1791317031.8273082, "raw": "{\"return\": [{\"thread-id\": 2768020, \"qom-type\": \"apple-a13-cpu\", \"qom-path\": \"/machine/cluster0/cpu0\", \"cpu-index\": 0, \"target\": \"aarch64\"}, {\"thread-id\": 2768021, \"qom-type\": \"apple-a13-cpu\", \"qom-path\": \"/machine/cluster0/cpu1\", \"cpu-index\": 1, \"target\": \"aarch64\"}], \"id\": 3}\r\n"}
+{"direction": "send", "time": 1791317031.8273742, "raw": "{\"execute\": \"query-mice\", \"id\": 4}\n"}
+{"direction": "receive", "time": 1791317031.8276806, "raw": "{\"return\": [{\"index\": 1, \"name\": \"Apple Multitouch HID SPI\", \"current\": true, \"absolute\": true}], \"id\": 4}\r\n"}
+{"direction": "send", "time": 1791317031.8280466, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 5, \"arguments\": {\"name\": \"apple_mt_spi_host_event\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791317031.8287024, "raw": "{\"return\": {}, \"id\": 5}\r\n"}
+{"direction": "send", "time": 1791317031.8287158, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 6, \"arguments\": {\"name\": \"apple_mt_spi_enqueue\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791317031.8292558, "raw": "{\"return\": {}, \"id\": 6}\r\n"}
+{"direction": "send", "time": 1791317031.8292632, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 7, \"arguments\": {\"name\": \"apple_mt_spi_dequeue\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791317031.8297992, "raw": "{\"return\": {}, \"id\": 7}\r\n"}
+{"direction": "send", "time": 1791317031.829806, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 8, \"arguments\": {\"name\": \"apple_mt_spi_tx_drained\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791317031.8303778, "raw": "{\"return\": {}, \"id\": 8}\r\n"}
+{"direction": "send", "time": 1791317031.8303833, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 9, \"arguments\": {\"name\": \"apple_mt_spi_boot_command\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791317031.8309762, "raw": "{\"return\": {}, \"id\": 9}\r\n"}
+{"direction": "send", "time": 1791317031.8309827, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 10, \"arguments\": {\"name\": \"apple_mt_spi_control\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791317031.8315063, "raw": "{\"return\": {}, \"id\": 10}\r\n"}
+{"direction": "send", "time": 1791317031.8319175, "raw": "{\"execute\": \"cont\", \"id\": 11}\n"}
+{"direction": "receive", "time": 1791317031.8322175, "raw": "{\"timestamp\": {\"seconds\": 1791317031, \"microseconds\": 832107}, \"event\": \"RESUME\"}\r\n"}
+{"direction": "receive", "time": 1791317031.8322508, "raw": "{\"return\": {}, \"id\": 11}\r\n"}
+{"direction": "send", "time": 1791317061.8823922, "raw": "{\"execute\": \"screendump\", \"id\": 12, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-43/frames/0000.ppm\"}}\n"}
+{"direction": "receive", "time": 1791317061.8830004, "raw": "{\"timestamp\": {\"seconds\": 1791317052, \"microseconds\": 790176}, \"event\": \"VNC_CONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317061.8835673, "raw": "{\"timestamp\": {\"seconds\": 1791317052, \"microseconds\": 791874}, \"event\": \"VNC_INITIALIZED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317061.884097, "raw": "{\"timestamp\": {\"seconds\": 1791317057, \"microseconds\": 732616}, \"event\": \"VNC_DISCONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317061.8891811, "raw": "{\"return\": {}, \"id\": 12}\r\n"}
+{"direction": "send", "time": 1791317091.9411976, "raw": "{\"execute\": \"screendump\", \"id\": 13, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-43/frames/0001.ppm\"}}\n"}
+{"direction": "receive", "time": 1791317091.9418092, "raw": "{\"timestamp\": {\"seconds\": 1791317085, \"microseconds\": 909006}, \"event\": \"VNC_CONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317091.9423604, "raw": "{\"timestamp\": {\"seconds\": 1791317085, \"microseconds\": 910176}, \"event\": \"VNC_INITIALIZED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317091.9428952, "raw": "{\"timestamp\": {\"seconds\": 1791317090, \"microseconds\": 853591}, \"event\": \"VNC_DISCONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317091.9482334, "raw": "{\"return\": {}, \"id\": 13}\r\n"}
+{"direction": "send", "time": 1791317122.0049405, "raw": "{\"execute\": \"screendump\", \"id\": 14, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-43/frames/0002.ppm\"}}\n"}
+{"direction": "receive", "time": 1791317122.0055437, "raw": "{\"timestamp\": {\"seconds\": 1791317113, \"microseconds\": 711421}, \"event\": \"VNC_CONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317122.0060904, "raw": "{\"timestamp\": {\"seconds\": 1791317113, \"microseconds\": 713166}, \"event\": \"VNC_INITIALIZED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317122.0066192, "raw": "{\"timestamp\": {\"seconds\": 1791317118, \"microseconds\": 541677}, \"event\": \"VNC_DISCONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317122.012123, "raw": "{\"return\": {}, \"id\": 14}\r\n"}
+{"direction": "send", "time": 1791317152.072741, "raw": "{\"execute\": \"screendump\", \"id\": 15, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-43/frames/0003.ppm\"}}\n"}
+{"direction": "receive", "time": 1791317152.0731058, "raw": "{\"timestamp\": {\"seconds\": 1791317129, \"microseconds\": 899479}, \"event\": \"VNC_CONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317152.0734348, "raw": "{\"timestamp\": {\"seconds\": 1791317129, \"microseconds\": 900439}, \"event\": \"VNC_INITIALIZED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317152.073761, "raw": "{\"timestamp\": {\"seconds\": 1791317134, \"microseconds\": 728643}, \"event\": \"VNC_DISCONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317152.0800383, "raw": "{\"return\": {}, \"id\": 15}\r\n"}
+{"direction": "send", "time": 1791317173.120706, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 16, \"arguments\": {\"name\": \"apple_adp_submit\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791317173.121051, "raw": "{\"timestamp\": {\"seconds\": 1791317152, \"microseconds\": 676796}, \"event\": \"VNC_CONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317173.1213717, "raw": "{\"timestamp\": {\"seconds\": 1791317152, \"microseconds\": 678239}, \"event\": \"VNC_INITIALIZED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317173.1216905, "raw": "{\"timestamp\": {\"seconds\": 1791317160, \"microseconds\": 237825}, \"event\": \"VNC_DISCONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317173.1217258, "raw": "{\"return\": {}, \"id\": 16}\r\n"}
+{"direction": "send", "time": 1791317173.1217546, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 17, \"arguments\": {\"name\": \"apple_adp_bh\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791317173.122472, "raw": "{\"return\": {}, \"id\": 17}\r\n"}
+{"direction": "send", "time": 1791317173.1226757, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 18, \"arguments\": {\"name\": \"apple_adp_pipe\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791317173.1235096, "raw": "{\"return\": {}, \"id\": 18}\r\n"}
+{"direction": "send", "time": 1791317173.123612, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 19, \"arguments\": {\"name\": \"apple_adp_output_ready\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791317173.1245909, "raw": "{\"return\": {}, \"id\": 19}\r\n"}
+{"direction": "send", "time": 1791317173.1246612, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 20, \"arguments\": {\"name\": \"apple_adp_irq_write\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791317173.1256325, "raw": "{\"return\": {}, \"id\": 20}\r\n"}
+{"direction": "send", "time": 1791317182.1429696, "raw": "{\"execute\": \"screendump\", \"id\": 21, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-43/frames/0004.ppm\"}}\n"}
+{"direction": "receive", "time": 1791317182.1433342, "raw": "{\"timestamp\": {\"seconds\": 1791317173, \"microseconds\": 472893}, \"event\": \"VNC_CONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317182.1436708, "raw": "{\"timestamp\": {\"seconds\": 1791317173, \"microseconds\": 474580}, \"event\": \"VNC_INITIALIZED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317182.143987, "raw": "{\"timestamp\": {\"seconds\": 1791317178, \"microseconds\": 415652}, \"event\": \"VNC_DISCONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317182.1482778, "raw": "{\"return\": {}, \"id\": 21}\r\n"}
+{"direction": "send", "time": 1791317187.1581292, "raw": "{\"execute\": \"query-mice\", \"id\": 22}\n"}
+{"direction": "receive", "time": 1791317187.1586013, "raw": "{\"return\": [{\"index\": 1, \"name\": \"Apple Multitouch HID SPI\", \"current\": true, \"absolute\": true}], \"id\": 22}\r\n"}
+{"direction": "send", "time": 1791317187.1587038, "raw": "{\"execute\": \"screendump\", \"id\": 23, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-43/probe-before.ppm\"}}\n"}
+{"direction": "receive", "time": 1791317187.1636913, "raw": "{\"return\": {}, \"id\": 23}\r\n"}
+{"direction": "send", "time": 1791317212.2175176, "raw": "{\"execute\": \"screendump\", \"id\": 24, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-43/frames/0005.ppm\"}}\n"}
+{"direction": "receive", "time": 1791317212.2181296, "raw": "{\"timestamp\": {\"seconds\": 1791317187, \"microseconds\": 512428}, \"event\": \"VNC_CONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317212.2186852, "raw": "{\"timestamp\": {\"seconds\": 1791317187, \"microseconds\": 513938}, \"event\": \"VNC_INITIALIZED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317212.2192144, "raw": "{\"timestamp\": {\"seconds\": 1791317192, \"microseconds\": 706658}, \"event\": \"VNC_DISCONNECTED\", \"data\": {\"server\": {\"auth\": \"none\", \"family\": \"unix\", \"service\": \"/tmp/inferno-boot-irry34sm/vnc.sock\", \"host\": \"\", \"websocket\": false}, \"client\": {\"family\": \"unix\", \"service\": \"\", \"host\": \"\", \"websocket\": false}}}\r\n"}
+{"direction": "receive", "time": 1791317212.2245538, "raw": "{\"return\": {}, \"id\": 24}\r\n"}
+{"direction": "send", "time": 1791317214.0312407, "raw": "{\"execute\": \"screendump\", \"id\": 25, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-43/probe-after.ppm\"}}\n"}
+{"direction": "receive", "time": 1791317214.0384445, "raw": "{\"return\": {}, \"id\": 25}\r\n"}
+{"direction": "send", "time": 1791317214.2434738, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 26, \"arguments\": {\"command-line\": \"xp /1wx 0x230045818\"}}\n"}
+{"direction": "receive", "time": 1791317214.244181, "raw": "{\"return\": \"0000000230045818: 0x00000000\\r\\n\", \"id\": 26}\r\n"}
+{"direction": "send", "time": 1791317214.2442453, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 27, \"arguments\": {\"command-line\": \"xp /1wx 0x23004581c\"}}\n"}
+{"direction": "receive", "time": 1791317214.2446709, "raw": "{\"return\": \"000000023004581c: 0xc0180c08\\r\\n\", \"id\": 27}\r\n"}
+{"direction": "send", "time": 1791317214.244729, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 28, \"arguments\": {\"command-line\": \"xp /1wx 0x230046020\"}}\n"}
+{"direction": "receive", "time": 1791317214.2450292, "raw": "{\"return\": \"0000000230046020: 0x00070045\\r\\n\", \"id\": 28}\r\n"}
+{"direction": "send", "time": 1791317214.2450488, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 29, \"arguments\": {\"command-line\": \"xp /1wx 0x23004603c\"}}\n"}
+{"direction": "receive", "time": 1791317214.245335, "raw": "{\"return\": \"000000023004603c: 0x033c0700\\r\\n\", \"id\": 29}\r\n"}
+{"direction": "send", "time": 1791317214.2453518, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 30, \"arguments\": {\"command-line\": \"xp /1wx 0x230050004\"}}\n"}
+{"direction": "receive", "time": 1791317214.2456496, "raw": "{\"return\": \"0000000230050004: 0x80070001\\r\\n\", \"id\": 30}\r\n"}
+{"direction": "send", "time": 1791317214.245669, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 31, \"arguments\": {\"command-line\": \"xp /1wx 0x23005001c\"}}\n"}
+{"direction": "receive", "time": 1791317214.2459571, "raw": "{\"return\": \"000000023005001c: 0x057c8000\\r\\n\", \"id\": 31}\r\n"}
+{"direction": "send", "time": 1791317214.245972, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 32, \"arguments\": {\"command-line\": \"xp /1wx 0x230050030\"}}\n"}
+{"direction": "receive", "time": 1791317214.2462764, "raw": "{\"return\": \"0000000230050030: 0x02230000\\r\\n\", \"id\": 32}\r\n"}
+{"direction": "send", "time": 1791317214.2462904, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 33, \"arguments\": {\"command-line\": \"xp /1wx 0x230050040\"}}\n"}
+{"direction": "receive", "time": 1791317214.2465782, "raw": "{\"return\": \"0000000230050040: 0x027e0000\\r\\n\", \"id\": 33}\r\n"}
+{"direction": "send", "time": 1791317214.2465942, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 34, \"arguments\": {\"command-line\": \"xp /1wx 0x230050060\"}}\n"}
+{"direction": "receive", "time": 1791317214.2468784, "raw": "{\"return\": \"0000000230050060: 0x00000d00\\r\\n\", \"id\": 34}\r\n"}
+{"direction": "send", "time": 1791317214.2468927, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 35, \"arguments\": {\"command-line\": \"xp /1wx 0x230050070\"}}\n"}
+{"direction": "receive", "time": 1791317214.2472003, "raw": "{\"return\": \"0000000230050070: 0x033c0700\\r\\n\", \"id\": 35}\r\n"}
+{"direction": "send", "time": 1791317214.2472456, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 36, \"arguments\": {\"command-line\": \"xp /1wx 0x230050080\"}}\n"}
+{"direction": "receive", "time": 1791317214.2475529, "raw": "{\"return\": \"0000000230050080: 0x033c0700\\r\\n\", \"id\": 36}\r\n"}
+{"direction": "send", "time": 1791317214.2475877, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 37, \"arguments\": {\"command-line\": \"xp /1wx 0x230058004\"}}\n"}
+{"direction": "receive", "time": 1791317214.2478821, "raw": "{\"return\": \"0000000230058004: 0x00040000\\r\\n\", \"id\": 37}\r\n"}
+{"direction": "send", "time": 1791317214.2479002, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 38, \"arguments\": {\"command-line\": \"xp /1wx 0x23005801c\"}}\n"}
+{"direction": "receive", "time": 1791317214.2482684, "raw": "{\"return\": \"000000023005801c: 0x00000000\\r\\n\", \"id\": 38}\r\n"}
+{"direction": "send", "time": 1791317214.248304, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 39, \"arguments\": {\"command-line\": \"xp /1wx 0x230058030\"}}\n"}
+{"direction": "receive", "time": 1791317214.248627, "raw": "{\"return\": \"0000000230058030: 0x00000000\\r\\n\", \"id\": 39}\r\n"}
+{"direction": "send", "time": 1791317214.2486525, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 40, \"arguments\": {\"command-line\": \"xp /1wx 0x230058040\"}}\n"}
+{"direction": "receive", "time": 1791317214.2489681, "raw": "{\"return\": \"0000000230058040: 0x00000000\\r\\n\", \"id\": 40}\r\n"}
+{"direction": "send", "time": 1791317214.2489989, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 41, \"arguments\": {\"command-line\": \"xp /1wx 0x230058060\"}}\n"}
+{"direction": "receive", "time": 1791317214.2493029, "raw": "{\"return\": \"0000000230058060: 0x00000000\\r\\n\", \"id\": 41}\r\n"}
+{"direction": "send", "time": 1791317214.2493224, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 42, \"arguments\": {\"command-line\": \"xp /1wx 0x230058070\"}}\n"}
+{"direction": "receive", "time": 1791317214.2496204, "raw": "{\"return\": \"0000000230058070: 0x00000000\\r\\n\", \"id\": 42}\r\n"}
+{"direction": "send", "time": 1791317214.2496412, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 43, \"arguments\": {\"command-line\": \"xp /1wx 0x230058080\"}}\n"}
+{"direction": "receive", "time": 1791317214.249978, "raw": "{\"return\": \"0000000230058080: 0x00000000\\r\\n\", \"id\": 43}\r\n"}
+{"direction": "send", "time": 1791317233.2852838, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 44, \"arguments\": {\"name\": \"apple_adp_submit\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791317233.286251, "raw": "{\"return\": {}, \"id\": 44}\r\n"}
+{"direction": "send", "time": 1791317233.2864213, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 45, \"arguments\": {\"name\": \"apple_adp_bh\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791317233.2873154, "raw": "{\"return\": {}, \"id\": 45}\r\n"}
+{"direction": "send", "time": 1791317233.2874703, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 46, \"arguments\": {\"name\": \"apple_adp_pipe\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791317233.2883992, "raw": "{\"return\": {}, \"id\": 46}\r\n"}
+{"direction": "send", "time": 1791317233.28856, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 47, \"arguments\": {\"name\": \"apple_adp_output_ready\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791317233.2895372, "raw": "{\"return\": {}, \"id\": 47}\r\n"}
+{"direction": "send", "time": 1791317233.2896318, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 48, \"arguments\": {\"name\": \"apple_adp_irq_write\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791317233.290545, "raw": "{\"return\": {}, \"id\": 48}\r\n"}
+{"direction": "send", "time": 1791317242.3059492, "raw": "{\"execute\": \"screendump\", \"id\": 49, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-43/frames/0006.ppm\"}}\n"}
+{"direction": "receive", "time": 1791317242.3129752, "raw": "{\"return\": {}, \"id\": 49}\r\n"}
+{"direction": "send", "time": 1791317257.5432465, "raw": "{\"execute\": \"query-status\", \"id\": 50}\n"}
+{"direction": "receive", "time": 1791317257.543709, "raw": "{\"return\": {\"status\": \"running\", \"running\": true}, \"id\": 50}\r\n"}
+{"direction": "send", "time": 1791317257.5437455, "raw": "{\"execute\": \"query-cpus-fast\", \"id\": 51}\n"}
+{"direction": "receive", "time": 1791317257.5445106, "raw": "{\"return\": [{\"thread-id\": 2768020, \"qom-type\": \"apple-a13-cpu\", \"qom-path\": \"/machine/cluster0/cpu0\", \"cpu-index\": 0, \"target\": \"aarch64\"}, {\"thread-id\": 2768021, \"qom-type\": \"apple-a13-cpu\", \"qom-path\": \"/machine/cluster0/cpu1\", \"cpu-index\": 1, \"target\": \"aarch64\"}], \"id\": 51}\r\n"}
+{"direction": "send", "time": 1791317257.5445812, "raw": "{\"execute\": \"screendump\", \"id\": 52, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-43/framebuffer.ppm\"}}\n"}
+{"direction": "receive", "time": 1791317257.5516524, "raw": "{\"return\": {}, \"id\": 52}\r\n"}
+{"direction": "send", "time": 1791317257.5548434, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 53, \"arguments\": {\"name\": \"apple_mt_spi_host_event\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791317257.5558894, "raw": "{\"return\": {}, \"id\": 53}\r\n"}
+{"direction": "send", "time": 1791317257.5559258, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 54, \"arguments\": {\"name\": \"apple_mt_spi_enqueue\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791317257.556779, "raw": "{\"return\": {}, \"id\": 54}\r\n"}
+{"direction": "send", "time": 1791317257.5568032, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 55, \"arguments\": {\"name\": \"apple_mt_spi_dequeue\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791317257.5576181, "raw": "{\"return\": {}, \"id\": 55}\r\n"}
+{"direction": "send", "time": 1791317257.5576396, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 56, \"arguments\": {\"name\": \"apple_mt_spi_tx_drained\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791317257.5584898, "raw": "{\"return\": {}, \"id\": 56}\r\n"}
+{"direction": "send", "time": 1791317257.5585063, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 57, \"arguments\": {\"name\": \"apple_mt_spi_boot_command\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791317257.559388, "raw": "{\"return\": {}, \"id\": 57}\r\n"}
+{"direction": "send", "time": 1791317257.5594058, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 58, \"arguments\": {\"name\": \"apple_mt_spi_control\", \"enable\": false}}\n"}
+{"direction": "receive", "time": 1791317257.5602138, "raw": "{\"return\": {}, \"id\": 58}\r\n"}
+{"direction": "send", "time": 1791317257.5602345, "raw": "{\"execute\": \"quit\", \"id\": 59}\n"}
+{"direction": "receive", "time": 1791317257.5605972, "raw": "{\"timestamp\": {\"seconds\": 1791317257, \"microseconds\": 560331}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"}
+{"direction": "receive", "time": 1791317257.5612557, "raw": "{\"return\": {}, \"id\": 59}\r\n"}
