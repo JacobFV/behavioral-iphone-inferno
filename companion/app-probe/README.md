@@ -167,3 +167,26 @@ The strict journey failed `waiting-for-app`; QMP quit returned emulator exit0.
 Raw logs, frame captures, binary/source identity and QMP transcript are retained
 under `.local-build/reports/app-boot-1/`. This is a job-loading boundary before
 any observed registration call, not evidence of a failing registration API.
+
+`prepare-stage.py --inspect-only` builds a recovery job that mounts System and Data
+read-only, logs owned-path lstat mode/owner/size, compares the four owned assets,
+and normally unmounts without staging changes. Actual `app-path-inspection-1`
+against a copy of stopped preparation23 found all owned files intact and byte-equal;
+launcher was67952 bytes, regular0755 root:wheel, with readable0755 parent directories.
+The installed launcher's SHA256 is
+`0a95bb65be29149522d321c527de7efb17b4d3a9a8b5e4d68c4081110c479476`
+from `stage-committed/build-evidence.json`. The earlier launcher-only build has a
+different hash and must not identify these staged bytes.
+
+`app-boot-2` then ran360 seconds: the diagnostic job and original SpringBoard and
+backboardd processes executed, while launchd reported the owned launcher as a
+missing executable. That message can also denote executable-access or architecture
+failure; it does not prove deletion. The boot log explicitly mounts Data at
+`/private/var`, so changing to a nested private/var Data layout is unwarranted.
+Host inspection found both launcher and actually executed readiness helper are
+ARM64/ALL, iOSminimum14, LC_MAIN offset16384, `/usr/lib/dyld`, PIE, cryptid0 and
+LLVM ad-hoc signed. Launcher adds Foundation/CoreServices/libobjc dependencies.
+Framebuffers advanced from Apple logo to a moving progress bar around43%; a
+precautionary migration stackshot is not proof of a hard deadlock. Post-boot
+file/access inspection and preserving the paired migration state are the next
+checks. No app execution or touch is established.
