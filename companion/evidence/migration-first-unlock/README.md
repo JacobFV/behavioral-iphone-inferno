@@ -52,3 +52,22 @@ owned ad-hoc helper. Its compiled object is byte-identical to the prior build;
 no Apple executable, signature identity, or simulator protocol is changed.
 The accompanying boot7 excerpt is a live serial snapshot, not a completed-boot
 claim. Follow-up execution results are deliberately not asserted here.
+
+## Entitled single attempt (boot8)
+
+The same owned helper with only `com.apple.keystore.device=true` now reaches a
+new failure: selector9 returns `e00002bc`, exposed as public result -1, instead
+of boot7's permission rejection `e00002e2` / -2. Before and after first-unlock
+queries both return0; Data X_OK remains EPERM. Raw state0 remains uninterpreted.
+The exact serial excerpt and nearby simulator opcode log are retained, with
+explicit live-snapshot provenance rather than a claimed final boot/disk hash.
+
+Original MobileKeyBag at 0x711c calls `_aks_unlock_device` at 0x250a4; that
+function marshals (handle, secret pointer, secret length) to IOConnectCallMethod
+selector9 at 0x250fc. NULL passcode takes the explicit zero-length branch at
+0x719c, and NULL options use the default bag. The independently traced original
+kernel selector9 path sends SEP DeviceStateTransition opcode0x18. This differs
+from selector7's first-unlock query, which uses ChangeLockState opcode0x04.
+The simulator log now reports Unknown (0x18); its generic response is not an
+implemented device-state transition. No additional passcode attempt, fabricated
+notification, or emulator change is part of this evidence update.
