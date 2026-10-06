@@ -1,0 +1,53 @@
+[
+  {
+    "QMP": {
+      "version": {
+        "qemu": {
+          "micro": 2,
+          "minor": 2,
+          "major": 10
+        },
+        "package": ""
+      },
+      "capabilities": [
+        "oob"
+      ]
+    }
+  },
+  {
+    "return": {},
+    "id": "qmp_capabilities"
+  },
+  {
+    "return": {
+      "enabled": true,
+      "present": true
+    },
+    "id": "query-kvm"
+  },
+  {
+    "return": {
+      "status": "running",
+      "running": true
+    },
+    "id": "query-status"
+  },
+  {
+    "return": [
+      {
+        "thread-id": 276639,
+        "qom-type": "host-arm-cpu",
+        "props": {
+          "core-id": 0,
+          "thread-id": 0,
+          "socket-id": 0,
+          "cluster-id": 0
+        },
+        "qom-path": "/machine/unattached/device[0]",
+        "cpu-index": 0,
+        "target": "aarch64"
+      }
+    ],
+    "id": "query-cpus-fast"
+  }
+]

@@ -1,0 +1,62 @@
+{
+  "kind": "reviewed_joint_usb_recovery_execution",
+  "built_source": "7e7033796707d639b35f3351192c2d5422c66382",
+  "linux_binary_sha256": "075b221cb771cd26ddde2d6218058c9ba1e15a236e5d1d161be936129084cf87",
+  "ios_binary_sha256": "075b221cb771cd26ddde2d6218058c9ba1e15a236e5d1d161be936129084cf87",
+  "linux_accelerator": "kvm (query-kvm enabled=true)",
+  "ios_accelerator": "tcg",
+  "linux_inputs": {
+    "noble-server-cloudimg-arm64.img": {
+      "url": "https://cloud-images.ubuntu.com/noble/20260926/noble-server-cloudimg-arm64.img",
+      "sha256": "1d6bffe64b848468ac97f821d369a4846d983de1800ccf6b5ec8853e85cefc55",
+      "bytes": 620224512
+    },
+    "noble-server-cloudimg-arm64-vmlinuz-generic": {
+      "url": "https://cloud-images.ubuntu.com/noble/20260926/unpacked/noble-server-cloudimg-arm64-vmlinuz-generic",
+      "sha256": "71fe6776ef591ea452661a5933e11d2044c5df6aaf76cf39b8d9655fa4e47904",
+      "bytes": 18585914
+    },
+    "noble-server-cloudimg-arm64-initrd-generic": {
+      "url": "https://cloud-images.ubuntu.com/noble/20260926/unpacked/noble-server-cloudimg-arm64-initrd-generic",
+      "sha256": "f77f65eccd619be537e44a7bb2664048e27f20fc8c8e7d4eeb5cf63d0c8cd213",
+      "bytes": 29286178
+    }
+  },
+  "ios_inputs": {
+    "kernel": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/range-inputs/kernelcache.research.iphone12b",
+      "sha256": "cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3",
+      "bytes": 17429507
+    },
+    "dtb": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/range-inputs/DeviceTree.n104ap.im4p",
+      "sha256": "dbd9be96c4b18f48a1842879237ae8f27043b894a2ed6139e396dbedca232411",
+      "bytes": 42553
+    },
+    "trustcache": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/range-inputs/038-44135-124.dmg.trustcache",
+      "sha256": "af33b3466bd828bf1ccaa1ab35d060bfcce62ade26ee74acf176501b00ea0d7f",
+      "bytes": 4931
+    },
+    "ramdisk": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/range-inputs/038-44135-124.dmg",
+      "sha256": "4013d9b3bb6c7fa0ff82397effc032b6afdb6f3c5e1672782698119dd9b3f704",
+      "bytes": 104685595
+    }
+  },
+  "linux_full_report": "/home/brandonin/.local/share/inferno/usb/run8/report.json",
+  "ios_full_report": ".local-build/reports/recovery-usb-async-2/report.json",
+  "reconnect_full_report": ".local-build/reports/recovery-usb-async-reconnect/report.json",
+  "artifact_sha256": {
+    "linux-serial.txt": "59afadc65ab3b56ce6558f9f78380a4a5c6bdaaa3e3c312eabc3fdd803a9f04e",
+    "linux-stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "linux-kvm-qmp.json": "532dc0b86e1703cb61ac3304663d2b5f073a33e5e3429f8f1b4690270c9a52c5",
+    "ios-serial.txt": "e978498e033cd023e66af4a4be310763242b707dc2febaed64978dd8d42ec733",
+    "ios-stderr.txt": "971fbc7432de8c48c2cbd087ebf58c0aedf9e3ab86ff3bbbfac862894884c3c8",
+    "ios-qmp.jsonl": "c27db9cbd853da43e9b0705ea20d9dd05b0a514d1e90d5090f6ba55d7b4f3e93",
+    "disconnect.txt": "761870fdfac6762d492ba278273b4c2cb2f3e46b8f2959659f9f0a599afba823",
+    "root-reconnect-query.txt": "b9fbe160b6b589c340d52badf4e9723a580b79dee29bc3a235981303e88fe7b2",
+    "query-source.py": "a7be42103f274623d4bebd6fbb9839f34f0f44d9ca1efdea489a117163aa5644"
+  },
+  "review": "Root inspected raw Linux USB enumeration and usbmuxd logs. Original service API QueryType identified com.apple.mobile.restored version15. Clean first iOS shutdown removed device; same Linux VM enumerated the second iOS process as USB device003. Root independently ran lsusb, idevice_id and the read-only restored query over loopback SSH; all succeeded. The query source is retained. No restore transaction was started. This proves recovery USB/control service, not installed iOS, app launch, touch, or performance. The Linux serial artifact is a snapshot taken after root reconnect verification; complete logs remain at full_report paths."
+}

@@ -4,6 +4,16 @@
 
 ### Further executed checkpoints
 
+- **Recovery USB works:** source7e70337967 fixes remote USB's synchronous BQL
+  release and preserves EHCI address/status completion ordering. Actual Linux
+  KVM + iOS TCG run8 enumerated `05ac:12a8`; usbmuxd connected to the device.
+  The original libimobiledevice restored API queried `com.apple.mobile.restored`,
+  protocol15. Clean iOS shutdown removed the device; the same Linux VM then
+  enumerated a fresh iOS process as device003. Root independently repeated lsusb,
+  idevice_id and the read-only service query over loopback SSH. Raw evidence and
+  exact binary/source identities: `companion/evidence/usb-recovery*`. This is a
+  recovery service connection, not a restore transaction or installed iOS boot.
+
 - **Owned native code:** an SDK-free ARM64 Mach-O, linked against a self-authored
   libSystem declaration and ad-hoc signed only as our own code, executed from a
   cloned recovery ramdisk. Root read its marker in actual serial output:
