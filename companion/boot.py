@@ -105,8 +105,11 @@ def main():
     parser.add_argument('--root-image', type=Path,
                         help='raw 4096-sector GPT base; copied before any guest writes')
     parser.add_argument('--root-sha256', help='required expected SHA256 of --root-image')
-    parser.add_argument('--disk-boot', action='store_true',
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument('--disk-boot', action='store_true',
                         help='experimental direct root boot instead of recovery ramdisk')
+    modes.add_argument('--ramdisk-boot', action='store_true',
+                       help='boot rd=md0 without recovery reformat arguments; keeps NVMe visible')
     args = parser.parse_args()
     if not 1 <= args.seconds <= 86400:
         parser.error('--seconds must be between 1 and 86400')
@@ -176,8 +179,11 @@ def main():
                        '-display', 'none', '-vnc', 'unix:' + str(Path(tmp) / 'vnc.sock'),
                        '-monitor', 'none', '-serial', 'file:' + str(output / 'serial.log'),
                        '-qmp', 'unix:' + endpoint + ',server=on,wait=off', '-no-reboot']
-            if args.disk_boot:
+            if args.disk_boot or args.ramdisk_boot:
                 command[2] += ',boot-mode=exit_recovery'
+            if args.ramdisk_boot:
+                command[command.index('-append') + 1] = 'rd=md0 ' + BOOT_ARGS
+            if args.disk_boot:
                 index = command.index('-initrd')
                 del command[index:index + 2]
             disk_dir = output / 'disks'
