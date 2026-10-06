@@ -151,6 +151,10 @@ interrupted or incomplete strict journey. Capture failures are recorded separate
 and do not replace the original attempt error or prevent shutdown. A saved frame
 is evidence of its pixels only; it does not establish an app milestone.
 
+In observation mode the operator also reviews visible counter1 and sends
+`probe-capture-after` after the genuine tap1 marker. The runner does not
+automatically capture or quit on a marker that might precede rendering.
+
 ## Opt-in raw-backed root overlays
 
 The default remains a private raw root copy. `--root-overlay` instead creates

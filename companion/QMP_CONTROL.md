@@ -126,7 +126,10 @@ python3 companion/qmp_control.py --report REPORT probe-capture-before
 The command accepts exactly `{}` and requires `--probe-journey`. It rejects a
 missing appearance marker, an already observed tap1, a repeated request, or the
 legacy automatic hardware mode. It sends no input. Then send the separately
-controlled tap; a genuine tap1 marker triggers the after capture and completion.
+controlled tap. A genuine tap1 marker then waits for operator review of visible
+counter1 and the exact-empty-arguments `probe-capture-after` command; only that
+request captures the after image and completes the journey. The after command
+rejects a missing tap marker, missing before capture, or repeated request.
 This prevents an early app appearance marker from automatically capturing the
 lock screen before the operator has uncovered the app. The explicit legacy
 `--probe-hardware-tap` mode retains its previous automatic capture/input sequence.
