@@ -18,12 +18,19 @@ From this repository, run `./companion/run status` to inspect readiness,
 `./companion/run build` when committed source changes require rebuilding.
 For the next coding session, start with [NEXT_SESSION.md](../NEXT_SESSION.md).
 
+The 2026-10-06 execution reached real iOS 14 recovery userland and captured its
+828x1792 Apple-logo/progress framebuffer. Installed iOS/SpringBoard and an app
+journey remain unproven. See [BOOT.md](BOOT.md) for the hash-checked image profile,
+simulated-SEP build and bounded headless runner; [USB.md](USB.md) describes the
+isolated Linux USB companion. Raw milestone evidence is under `evidence/`.
+
 ## Initial milestones
 
 1. Build the actual upstream aarch64 system emulator with Apple-device support.
 2. Execute the firmware-free QMP smoke and retain the binary/source identity.
 3. Prepare an explicitly documented iOS image profile outside Git, then establish
-   a real boot, display and input path. This has not been performed yet.
+   a real boot, display and input path. Recovery-userland boot and a framebuffer
+   capture now work; installed iOS and touch input are not established.
 4. Install one owned, unencrypted application and execute an end-to-end journey.
 5. Measure cold/warm launch, memory, CPU, reliability and parallel density before
    claiming cheap runner economics. Add the existing visualization dashboard only

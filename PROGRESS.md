@@ -2,6 +2,25 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+**Executed milestone:** the simulated-SEP rebuild at source 877b07069a completed,
+passed the firmware-free QMP smoke, then executed a bounded 120-second recovery
+boot. Raw serial shows `BSD root: md0`, launchd's `Early boot complete`,
+`restored_external` running, USB enabled and `waiting for host to trigger start
+of restore`. QMP shutdown returned exit 0. Root independently inspected the logs
+and the captured 828x1792 framebuffer: Apple logo and an empty progress bar.
+This proves kernel and recovery-userland execution with a real framebuffer;
+it does not establish installed iOS/SpringBoard boot, touch interaction or an app
+journey. Committed raw evidence and reviewed summary are under
+`companion/evidence/recovery-ramdisk*`; full local report/disks are under
+`.local-build/reports/simulated-sep-boot-1/`.
+
+The complete official IPSW download and local profile preparation also completed.
+Archive SHA256: `706742ed60327a5247c29ccc5bf7e6ce9bbf11dd30a468f8f6fc9da76bdca96d`.
+`companion/run prepare` extracted all four components from the complete local
+archive, verified their SHA384 against BuildManifest, and produced the same SHA256
+values as the early HTTP-range extraction. The durable profile is
+`/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/profile.json`.
+
 Read current upstream setup documentation and the pinned t8030 source. Upstream's
 documented example is iPhone12,1 / n104ap, iOS 14.0 beta 5 build 18A5351d; current
 upstream lists 14.x as supported, with later versions still upcoming. Its full
@@ -9,7 +28,7 @@ restore instructions forge tickets and use real SEP firmware. This work instead
 tests the existing direct-kernel, simulated-SEP recovery path under our rule
 against signature forgery. This is an experiment, not proven full restore support.
 
-Apple's public 5,507,405,643-byte IPSW is being acquired outside Git at
+Apple's public 5,507,405,643-byte IPSW was acquired outside Git at
 `/home/brandonin/.local/share/inferno/images/ios14b5/`. HTTP range extraction with
 ZIP CRC checking supplied the four initial inputs without waiting for the full
 download. BuildManifest confirms n104ap research erase build 18A5351d. Their
@@ -28,7 +47,7 @@ Commit 877b07069a adds an explicit `--simulated-sep` build option and a two-line
 guard around upstream's hard-coded data-encryption switch. It selects existing
 simulated-SEP/unencrypted-device-tree code; default builds retain upstream behavior.
 The original binary/manifest are retained in `.local-build/binaries/emulated-sep/`.
-The next actual run will use the rebuilt variant. Companion boot/preparation tools
+Subsequent runs use the rebuilt variant. Companion boot/preparation tools
 are documented in companion/BOOT.md; all runtime assets remain outside Git.
 
 ## 2026-10-05: user-directed pivot

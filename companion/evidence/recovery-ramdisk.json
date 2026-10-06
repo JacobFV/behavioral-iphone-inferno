@@ -1,0 +1,51 @@
+{
+  "kind": "t8030_recovery_ramdisk_experiment",
+  "binary_sha256": "fed2f7ff2e975ca243942fefa7dbac0b578b12c745b7ea72bb98b9c1ac1b284a",
+  "profile_sha256": "a13d0023dfbad44d9005c07992e584d2e0e0634e409bb3696ead44566623b8c4",
+  "inputs": {
+    "kernel": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/range-inputs/kernelcache.research.iphone12b",
+      "sha256": "cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3",
+      "bytes": 17429507
+    },
+    "dtb": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/range-inputs/DeviceTree.n104ap.im4p",
+      "sha256": "dbd9be96c4b18f48a1842879237ae8f27043b894a2ed6139e396dbedca232411",
+      "bytes": 42553
+    },
+    "trustcache": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/range-inputs/038-44135-124.dmg.trustcache",
+      "sha256": "af33b3466bd828bf1ccaa1ab35d060bfcce62ade26ee74acf176501b00ea0d7f",
+      "bytes": 4931
+    },
+    "ramdisk": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/range-inputs/038-44135-124.dmg",
+      "sha256": "4013d9b3bb6c7fa0ff82397effc032b6afdb6f3c5e1672782698119dd9b3f704",
+      "bytes": 104685595
+    }
+  },
+  "elapsed_seconds": 121.165474,
+  "exit_code": 0,
+  "framebuffer_sha256": "289b609a40ddd2a263664a65715c659ceb3a710d64957b088c2f06fe84f65db4",
+  "serial_bytes": 53339,
+  "built_source": "877b07069ac6c8af459979bad391221c4290b548",
+  "runner_revision": "8667c0d1715634da09e02483f544d35447f9e983",
+  "runner_sha256": "80ab54403e3484ba1d38afe7ba9aa07892cef1aad241b343a6edc436127953c0",
+  "reviewed_milestones": {
+    "kernel_execution": true,
+    "ramdisk_root_mounted": true,
+    "recovery_launchd_and_restored_external": true,
+    "waiting_for_restore_host": true,
+    "framebuffer": "828x1792 Apple logo with empty progress bar",
+    "installed_ios_springboard": false,
+    "app_journey": false
+  },
+  "review_basis": "Raw serial/QMP/stderr logs read and framebuffer visually inspected by root; not inferred from emulator liveness.",
+  "full_report": ".local-build/reports/simulated-sep-boot-1/report.json",
+  "artifact_sha256": {
+    "recovery-ramdisk-serial.txt": "a6272785865e9a7f021cb44097baec771eb85fa1c588cd72524e6898933ab2ca",
+    "recovery-ramdisk-stderr.txt": "ab34b1bb00269b5b1172599c6749229edf51b9173e9e756f07eb39541551e994",
+    "recovery-ramdisk-qmp.jsonl": "f74571d49566f48d189734398ee38294794bee2273a04939c13ad53afdaef33a",
+    "recovery-ramdisk-framebuffer.png": "91541814bc6f69122dabf5e04e21c1e15705a3f93e80450931f4459283309aed"
+  }
+}
