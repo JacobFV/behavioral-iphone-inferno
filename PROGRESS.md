@@ -2,6 +2,31 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 11:57 continuation: unchanged38 strict and three warm resumes
+
+38 repeats frozen50/app22/launcher22/reader54/HID54. Reviewed0→1 and bothQMP
+captures completed; keepalive retainedVM. PID266/main3436522534, originalquery56/
+unique266/idversion751, boot024BD83E-EB10-4666-9C04-687E7C21E9DC.
+Initialrequest→main118.474ms/main→active935.840833ms/request→active1054.314833ms.
+Three same-incarnation Home/OPEN cycles reached reviewedcounter1 with
+OPEN→active721.109708/765.457792/702.042583ms. Immutableprefix/rawsource evidence
+`warm-timing-38-actual`, reviewedimages `warm-timing-38-visual`.
+
+First capture-only VNC frames afterOPEN1/3 stillshowedHome afteractive; laterframes
+showedcounter1. No presentationinterval inferred. Originaldisplay refresh depends
+on aconnectedVNCclient and canstimulate guestdrawing;9e5b2c1a00 preservesinitial
+andsettledsameconnectionframes plusboundedpersistentobservation andrequest/receipt
+clocktimes. Stationaryactual38transportcheckpassed, changing-scenecheckpending.
+
+NormalF6double openedAppSwitcher; rootidentifiedInfernoProbe card and dismissed
+onlythatcard byupwardtouch. OnlyClockremainsvisibly. Originalps600predatesdismiss
+andstillcontainsPID266; rejectedasabsence. Waitingps1200 beforeOPEN4. Separate
+processparser5d698579fd requirescompletedabsence capturedbeforeOPEN, distinct
+originalincarnation/newmain/fivehooks andseparatecounter0review; cachesuncontrolled.
+Reportfix5ae918025d replacesambiguousfalseplaceholderswithnullablealias andscoped
+rawsource-backedmilestones infutureruns; neverautomatedvisualverification.
+No historicalreportrewrites. Continuouswork,38stilllive.
+
 ### 11:35 continuation: three real warm resumes in the same owned process
 
 Existing emulator F6→SMCMenu input succeeded where two touch Home swipes did not.
