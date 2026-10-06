@@ -2,6 +2,24 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 11:31 continuation: strict37 retained live, first timing and resources
+
+New warm-control candidate app22/launcher22/reader54/HID54 from frozen50 completed
+reviewed counter0→1 and both strictQMPcaptures. Opt-in keepalive actually retained
+VM after completion. Originalproc identity query returned56/errno0/uniqueid263/
+idversion743; firstmain3549314015, boot7F2B1017-7FE9-4E9C-AF95-AE72CA29523A.
+Validated firstlaunch request→main122.90125ms, main→active839.54ms,
+request→active962.44125ms. These are guest lifecycle intervals, not frame times.
+60s idle whole-emulator sample:17.21CPUseconds/28.68325%onehostcore,
+5848629248bytes RSS/8threads,61samples; no appmemory or cost/density claim.
+
+Home swipes32600→15000/400ms and32270→9145/800ms delivered ACK0 but both
+settled captures retained appcounter1 and no lifecycle resign/background.
+No OPEN issued, no warm timing established. Native worker investigating ordinary
+system Home input; root retains input ownership. Live evidence
+`owned-launch-timing-37-live`, parser audit `warm-timing-37-preopen`.
+No stopped-disk postflight claim yet; continuous work, VM still running.
+
 ### 11:11 continuation: repeated timestamped journey36 completed
 
 36 repeats frozen49/app20/launcher20/reader53/HID45 without binary changes.
