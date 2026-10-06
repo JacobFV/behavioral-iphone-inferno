@@ -359,3 +359,27 @@ completion. The earlier readiness-only boot ran 240 seconds without an observer
 marker, consistent with its job being absent from the original cached mapping;
 that run supplies no process-list evidence. Combined runtime observations remain
 required to identify live services or crash causes.
+
+Postboot-inspection-1 exported the complete 353,242-byte datamigrator stackshot
+from a read-only Data mount; console normalization reproduced the guest's FNV64
+and byte count. SHA256 is
+`82f458a5e820a2fc326ae419677cf48ba27bdb610dbce887b873a1608b6116c3`.
+The owned launcher remained byte-identical to its staged source (SHA256
+`0a95bb65be29149522d321c527de7efb17b4d3a9a8b5e4d68c4081110c479476`),
+and root plus a child with supplementary groups cleared and uid/gid501 could
+access all tested parents and the launcher with X_OK. This does not reproduce
+all full-system launchd sandbox/exec policy; it rules out deletion and ordinary
+recovery-visible file permission failure.
+
+`symbolize-cache.cpp` is an AGPL-3.0-or-later read-only adapter for the separately
+obtained InfernoFSPatcher parser by Visual Ehrmanntraut, pinned revision
+3008aaaa0909824a71ee3040c9edc58703c250f5. Build with host C++17 and its src include
+path; invoke with original cache path and hexadecimal VM addresses on stdin.
+It resolves nearest symbols, retaining the offset rather than claiming exact
+function boundaries. Original cache UUID11ad39c9-e3c9-3067-a337-7287744fdcb5 matches
+the stackshot. Full symbolized evidence remains external under
+native-probe/postboot2-exports. SpringBoard and the migration plugin wait for
+LaunchServices database seeding; lsd's installation queue waits in
+MIInstallerClient enumerateInstalledAppsWithOptions; installd is TH_RUN, parsing
+Info.plist while MobileInstallation enumerates directories. This snapshot shows
+active installation work, not a proven deadlock. No migration service was disabled.
