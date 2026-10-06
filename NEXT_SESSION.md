@@ -48,7 +48,15 @@ that directory together: the binary references local libraries/resources.
 
 ## Current execution boundary
 
-Keep working; no handoff or missing user input. **Boot21 is live**, session53413,
+Keep working; no handoff or missing user input. **Boot21 stopped normally**;
+boot22 is being prepared from its paired tuple, root
+`7df2996c9d33233e92556a5a9d13882f50beac47e9b2edd43b2072ac7114b402`.
+Runner4d3230563e observes app appearance/tap markers without automatic input.
+Do not pass --probe-hardware-tap. Root owns all real gestures. Boot21's sole
+swipe reached language chooser; original kernel received the first-unlock event.
+Screen Time completion and owned app execution remain unproven.
+
+Previous21 launch provenance (endpoint below is now stale):
 from normally stopped20 root
 `046663baf81b5c4c97ce4c38d968693a9b2ec8b8d46fa4f66ed231d1d8bc446f`
 and paired20; no guest staging/helper change. Stopped20QMPquit96/emulator0 after

@@ -2,6 +2,22 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 07:21 continuation: kernel receipt and observation-only app runner
+
+Boot21 emitted exactly one first-unlock event; the original kernel logged
+Sending lock change0 for handle0 value1. Original API state3/first0->1 remains
+correct. Root's one swipe reached the language chooser; Screen Time was not
+revisited. Normal QMP shutdown/emulator0 preserved all seven namespace hashes,
+root7df2996c9d33233e92556a5a9d13882f50beac47e9b2edd43b2072ac7114b402.
+
+Runner4d3230563e makes --probe-journey observe operator input by default. The
+legacy automatic hardware tap requires a separate flag and rejects guest HID
+serial mode. Actual image-free control smoke retained zero input commands in
+default mode; synthetic markers are control evidence only. Boot22 will use the
+same emulator/helper and stopped21 tuple with this corrected runner. Verified
+obsolete generated cache-patching-1 disks retired f7810818f9; all actual app boots,
+baseline preparations and source/patch evidence remain. Continue normal setup.
+
 ### 07:10 continuation: original first-unlock completion
 
 Actual20 ordinary input progressed through offline setup to Screen Time. Its
