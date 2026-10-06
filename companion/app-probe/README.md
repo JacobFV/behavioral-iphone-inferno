@@ -2,7 +2,8 @@
 
 This small Objective-C app uses the guest's real UIKit and Foundation. It shows
 a navy screen, cyan subtitle, white `Tap count: 0`, and a large orange
-`INCREMENT` button. A touch-up-inside increments the visible count. It has no
+`INCREMENT` button. A touch-up-inside increments the visible count. Its diagnostic
+event transport connects only to guest loopback127.0.0.1:37373; it has no external
 network or account behavior. All declarations and text linker stubs here are
 self-authored ABI descriptions; no Apple SDK or implementation is included.
 
@@ -60,11 +61,16 @@ Markers go to stderr and NSLog with prefix `INFERNO_UIKIT_PROBE_V1` and events
 `main`, `window-visible-requested`, `view-loaded`, `appeared`, `active`, and
 `tap count=1` (then subsequent counts). Stderr reaches serial only when the
 launch route connects it there; capture the actual process/system log otherwise.
-The current FrontBoard route does not send app stderr to the console. The owned
-event-file relay is under integration: boot28 proves its original global cache
-path fails at open with errno1, despite uid501 and a valid boot UUID. The normal
-app container path is being investigated. Missing markers must still fail the
-strict runner; the three reviewed visual journeys do not establish relay success.
+The current FrontBoard route does not send app stderr to the console. The app's
+original Foundation cache path now writes successfully, but the separate helper
+cannot read the container file: actual31 found its exact descriptor and metadata,
+then open returned errno1. The new bounded loopback transport sends the same
+actual records directly from the app. Its receiver checks the boot UUID, claimed
+PID's exact executable and uid, grammar and sequence before preserving the raw
+line and emitting a marker. This checks the claimed PID; TCP peer PID is not
+authenticated. It is fixture telemetry, not a security authentication protocol.
+Guest bind/connect/relay execution is still pending; build checks alone do not
+establish transport success. Missing markers must still fail the strict runner.
 A requested window is not a captured visible screen. Acceptance needs the actual
 before/after framebuffer and the matching interaction marker from the guest.
 
