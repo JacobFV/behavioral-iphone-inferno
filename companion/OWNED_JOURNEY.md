@@ -125,6 +125,17 @@ cleanup. Wait for the boot process to exit, then inspect the final report,
 serial/control/QMP logs, stopped disk hashes and unchanged backing dependencies.
 An incomplete or interrupted attempt stays incomplete; preserve its failure.
 
+```sh
+companion/run verify-journey --report "$attempt" --output "$attempt/verified-journey.json"
+```
+
+The verifier matches raw guest events, explicit controls, serial input, actual
+frame hashes and QMP capture/shutdown records. It does not classify screenshot
+pixels; visual review remains separate. Without an optional host arrival
+observer, chronology relies on the exact reviewed runner capture gates plus
+accepted commands, not independent serial-arrival timestamps. Unknown gate source
+revisions fail rather than silently inheriting that interpretation.
+
 For a normally stopped attempt without an existing stopped manifest:
 
 ```sh

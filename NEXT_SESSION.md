@@ -34,8 +34,14 @@ noautomaticinput/retry. Needs actual41 journey validation aftercommit.
 Bootworker owns reusable stopped preservation tool, testingreadonly39/40 inisolated
 worktree. Its FDclaim must explicitly mention /proc unreadableprocess coverage.
 Diskworker derives39/40launch clocks and audits finalmilestones; noVMinput.
-No newVM launched yet. Nextbounded41 from unchanged50 for actual trackedworkflow
-validation afterrootauthorization tobootworker; root exclusiveinput. Do notscale
+41 is now live from unchanged50 for actual trackedworkflow validation.
+Runner2700068/QEMU2700630, VNC`/tmp/inferno-boot-y58vv3hs/vnc.sock`,
+report`.local-build/reports/app-boot-41`, root exclusiveinput. Initialview shows
+Apple bootlogo; noinputsent yet. Bootstartedfrom1a094be530, newownedcontrol
+sourcevalidated bynativeworker; negativeCLIchecks42ca32fed0.
+Preservationtool549705a758 merged, wrapper1a094be530. Use trackedpreserve
+afterrootfinish; it records FDpermissiongaps. Diskworker now producing tracked
+verify-journey command; it must not require transientarrivalobserver. Do notscale
 concurrency beyondthisboundedwork or inferdensity/economics fromonepair.
 
 Unchangedfourbits/backings below remain the current execution baseline.
