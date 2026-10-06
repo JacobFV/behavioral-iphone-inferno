@@ -789,12 +789,23 @@ done:
                                    msg->id, (uint8_t)error, 0);
     }
     if (code == 0x18 || error != 0) {
+        uint32_t header_size = UINT32_MAX, version = UINT32_MAX;
+        uint32_t flags = UINT32_MAX;
+
+        if (msg->size >= KEYSTORE_IPC_HEADER_SIZE) {
+            header_size = ldl_le_p(&hdr->header_body_size);
+            version = ldl_le_p(&hdr->ipc_version);
+            flags = ldl_le_p(&hdr->flags);
+        }
         qemu_log_mask(LOG_GUEST_ERROR,
                       "INFERNO SEP system bag code=0x%02x handle=%u op=%u "
                       "options=0x%" PRIx64 " secret_length=%u result=%d "
-                      "unlocked_since_boot=%u\n",
+                      "unlocked_since_boot=%u request_size=%u header_size=%u "
+                      "version=%u flags=0x%x out_capacity=%u\n",
                       code, handle, operation, options, secret_len, error,
-                      s->inferno_system_bag_unlocked_since_boot);
+                      s->inferno_system_bag_unlocked_since_boot,
+                      msg->size, header_size, version, flags,
+                      s->ool_state[EP_KEYSTORE].out_size);
     }
     return true;
 }

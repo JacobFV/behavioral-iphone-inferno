@@ -56,7 +56,8 @@
     "opcode_04_query": "selector0, owner:uint64, handle:uint32=0, desired_state:int32=-1, secret_blob_length:uint32=0; response selector0,state:uint32,action_flags:uint64=0",
     "opcode_19_query": "selector0, owner:uint64, handle:uint32=0, query_options:uint32=1; response selector0,DER_length:uint32,DER bytes",
     "der_subset": "SET { SEQUENCE { UTF8String \"ss\", INTEGER state } }; all unspecified fields absent. In particular no guessed sls enum.",
-    "error_transport": "Mailbox byte3 is signed8 status, no DMA response on error. -11 is bad argument; -1 generic unsupported. No secret bytes logged."
+    "error_transport": "Mailbox byte3 is signed8 status, no DMA response on error. -11 is bad argument; -1 generic unsupported. No secret bytes logged.",
+    "diagnostics": "Bounded metadata includes request size, safely read header size/version/flags and output byte capacity; no secret bytes."
   },
   "addresses": {
     "unlock_the_device": "0xfffffff008f644a0",
