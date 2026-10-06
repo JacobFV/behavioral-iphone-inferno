@@ -48,10 +48,25 @@ that directory together: the binary references local libraries/resources.
 
 ## Current execution boundary
 
-Keep working; no handoff or missing user input. Actual installed iOS reaches the
-original Hello setup UI. Owned app registration and the original first-unlock API
-transition are proven. Owned UIKit execution, touch navigation and a counter
-journey remain unproven. Do not return to the archived framework implementation.
+Keep working; no handoff or missing user input. **Boot19 is live**, worker
+session82240, report app-boot-19, private VNC
+`/tmp/inferno-boot-vd6_c64j/vnc.sock`. Same emulator/900second traces/private serial/
+mailbox. Original class entitlement fixed actual open/Create; owned virtual
+touchscreen and IOHIDEventDriver are registered. Visible input is now proven.
+Root reviewed Hello then sent exactly two requests:
+- info tap f3c727904558499385ca652ec1bf65a5,29400/31250,150ms;
+- upward swipe93d5678a3a6d4a4c88b265183844687f,16384/32270 to16384/9145,1500ms.
+Original report/ACK results0. Immediate frame was still Hello; later1791292900
+capture shows information panel, and settled1791292946 capture shows Enter
+Passcode / iPhone requires your passcode after restarting. Both requests preceded
+the first changed capture, so do not claim isolated timing attribution.
+
+This is our fresh simulated-SEP VM; no passcode was ever set. Existing original
+empty unlock returns0 and first-unlock0->1, raw lockstate0 remains uninterpreted.
+Native/disk workers are investigating exact original lock/passcode state versus
+simulated SEP, without credential guesses, fabricated notifications or bypass.
+Root exclusively owns input. No more requests yet. Preserve active19; no next
+candidate ready. Owned UIKit/app counter journey remains unproven.
 
 At 06:18 local, **app-boot-18 is normally stopped**, QMPquit49/emulator0 after
 946.498589seconds. Root SHA256
@@ -150,10 +165,10 @@ monitor-frontend smoke proved transport plumbing only. Actual UART roundtrip is 
 remain unproven. The one root-triggered test is described above.
 
 **Live control:** root exclusively owns input. Runner owns the sole QMP connection;
-use `companion/qmp_control.py --report .local-build/reports/app-boot-18 ...`.
+use `companion/qmp_control.py --report .local-build/reports/app-boot-19 ...`.
 Never attach a second QMP client or read SPI RXDATA. Fixed seven register reads
 are allowlisted. Trace events must remain bounded and disabled afterward. VNC
-socket comes from current18 command.json; earlier socket paths are stale. No host
+socket comes from current19 command.json; earlier socket paths are stale. No host
 windows, network display endpoints, clipboard or arbitrary guest commands.
 
 **Lineage and retention:** stopped15 root
@@ -177,10 +192,10 @@ Evidence and exact original-code inspection are under companion/evidence/.
 
 ## Next concrete work
 
-1. Run boot19 from verified39 with the reviewed entitlement-only build44.
-   Original Sandbox class-allowlist analysis and root review are done.
-   Keep transport and descriptor unchanged. Require actual service-open result
-   and registered virtual device before claiming that boundary solved.
+1. Investigate original passcode/lock state versus simulated SEP after actual
+   input reached Enter Passcode in19. Correct only an evidenced emulator mismatch;
+   no passcode guess, guard bypass or fabricated unlock notification. Keep19 live
+   until a reviewed next candidate exists.
 2. Stage from a normally stopped paired tuple only after the next candidate is
    ready. Commit source, actual build manifests, readbacks, raw logs and hashes.
    Never copy or hash a live disk as an immutable source.

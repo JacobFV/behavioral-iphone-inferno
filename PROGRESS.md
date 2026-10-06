@@ -2,23 +2,22 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
-### Current execution boundary (06:13 local)
+### Current execution boundary (06:23 local)
 
-Boot18 normal shutdown is requested so the reviewed entitlement-only helper44
-can be staged from its stopped paired tuple. Actual18 diagnostic found original
-IOHIDResource but type0 open returned0xe00002e2 and device Create returnedNULL.
-Original kernel/Sandbox policy inspection proves the caller must list
-IOHIDResourceDeviceUserClient in com.apple.security.iokit-user-client-class.
-Candidate44 adds exactly this singleton array alongside the existing developer
-virtual-device boolean; all file-backed compiled sections match43 byte for byte.
-Root independently verified actual binary, entitlements and section hashes.
-Evidence/source: c82e3c8442 and9718260ef9. No broad grant or policy change.
+Boot19 is live from verified39. Exact original class entitlement solved the
+observed open denial: IOServiceOpen0, Create success1, owned IOHIDUserDevice
+4294968461 and matched IOHIDEventDriver4294968464. Root reviewed actual Hello,
+then sent one information tap and one upward swipe through the private console
+channel. Original down/move/up reports and ACKs returned0. Later actual captures
+show the information panel followed by Enter Passcode. Visible input/navigation
+is now proven; the first capture was too early and no latency claim is made.
+Raw transcripts, exact requests and before/after images are retained.
 
-Next is actual stage39 readback/normal stop and boot19, then verify original
-open/device creation before root sends a bounded gesture. No input occurred in18.
-Actual17 already proved private host serial to original guest console parsing
-and ACK, but Create failed and no HID report/UI navigation occurred. Firmware
-touch still fails normal manifest-digest validation, separately unresolved.
+This fresh simulated-SEP VM has never had a passcode set. Its original empty
+unlock returns0 and first-unlock0->1, while raw lockstate remains0. The current
+boundary is the displayed restart passcode requirement. Native/disk workers are
+tracing exact original lock/passcode state versus the simulated-SEP response;
+no fabricated unlock notification, credential guess or guard bypass is proposed.
 Owned UIKit execution and counter journey remain unproven. Keep working.
 
 Earlier investigation in this sequence:
