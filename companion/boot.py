@@ -115,7 +115,9 @@ def main():
     parser.add_argument('--launchd-unsecure-cache', action='store_true',
                         help='use original loader support for an edited launchd configuration on a disposable disk')
     parser.add_argument('--probe-journey', action='store_true',
-                        help='require owned UIKit probe appearance, one QMP tap and before/after captures')
+                        help='observe owned UIKit appearance/operator tap markers and capture before/after; sends no input')
+    parser.add_argument('--probe-hardware-tap', action='store_true',
+                        help='explicitly allow legacy QMP hardware tap; requires --probe-journey, not guest-HID serial')
     parser.add_argument('--capture-interval', type=float, default=0,
                         help='save periodic headless framebuffers; zero disables, otherwise at least 5 seconds')
     parser.add_argument('--usb-socket', type=Path,
@@ -142,6 +144,10 @@ def main():
             parser.error('--touch-trace-seconds must be between 1 and 1800')
     if args.probe_journey and not args.disk_boot:
         parser.error('--probe-journey requires --disk-boot')
+    if args.probe_hardware_tap and not args.probe_journey:
+        parser.error('--probe-hardware-tap requires --probe-journey')
+    if args.probe_hardware_tap and args.guest_hid_serial:
+        parser.error('--probe-hardware-tap cannot be combined with --guest-hid-serial')
     if args.launchd_unsecure_cache and not args.disk_boot:
         parser.error('--launchd-unsecure-cache requires --disk-boot')
     if args.auxiliary_state and not args.root_image:
@@ -216,7 +222,7 @@ def main():
                                     'namespaces': auxiliary, 'copied_before_use': True}
     (output / 'profile.json').write_text(json.dumps(profile, indent=2) + '\n')
     (output / 'build-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
-    journey = ProbeJourney(output) if args.probe_journey else None
+    journey = ProbeJourney(output, hardware_tap=args.probe_hardware_tap) if args.probe_journey else None
     if journey:
         report['probe_journey'] = journey.report
         report['probe_journey_source_sha256'] = digest(Path(__file__).with_name('probe_journey.py'))

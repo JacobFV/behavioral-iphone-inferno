@@ -1,0 +1,12 @@
+{"direction": "receive", "time": 1791296292.846148, "raw": "{\"QMP\": {\"version\": {\"qemu\": {\"micro\": 2, \"minor\": 2, \"major\": 10}, \"package\": \"\"}, \"capabilities\": [\"oob\"]}}\r\n"}
+{"direction": "send", "time": 1791296292.8462234, "raw": "{\"execute\": \"qmp_capabilities\", \"id\": 1}\n"}
+{"direction": "receive", "time": 1791296292.8465004, "raw": "{\"return\": {}, \"id\": 1}\r\n"}
+{"direction": "send", "time": 1791296292.8469515, "raw": "{\"execute\": \"query-mice\", \"id\": 2}\n"}
+{"direction": "receive", "time": 1791296292.847413, "raw": "{\"return\": [{\"index\": 1, \"name\": \"QEMU Virtio Tablet\", \"current\": true, \"absolute\": true}], \"id\": 2}\r\n"}
+{"direction": "send", "time": 1791296292.8474615, "raw": "{\"execute\": \"screendump\", \"id\": 3, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/research/probe-observation-smoke/observe-default/probe-before.ppm\"}}\n"}
+{"direction": "receive", "time": 1791296292.8501754, "raw": "{\"return\": {}, \"id\": 3}\r\n"}
+{"direction": "send", "time": 1791296292.851608, "raw": "{\"execute\": \"screendump\", \"id\": 4, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/research/probe-observation-smoke/observe-default/probe-after.ppm\"}}\n"}
+{"direction": "receive", "time": 1791296292.8535857, "raw": "{\"return\": {}, \"id\": 4}\r\n"}
+{"direction": "send", "time": 1791296292.8545427, "raw": "{\"execute\": \"quit\", \"id\": 5}\n"}
+{"direction": "receive", "time": 1791296292.8550239, "raw": "{\"timestamp\": {\"seconds\": 1791296292, \"microseconds\": 854825}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"}
+{"direction": "receive", "time": 1791296292.8550868, "raw": "{\"return\": {}, \"id\": 5}\r\n"}

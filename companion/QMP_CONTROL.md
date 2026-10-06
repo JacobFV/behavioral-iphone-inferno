@@ -97,3 +97,18 @@ as unknown monitor commands, duplicate/extra-key requests were refused locally,
 raw output was logged and the drain thread stopped cleanly. That is a socket/log
 plumbing check, not a guest UART, console-read or HID test. Those require the
 original guest and the owned helper to execute.
+
+## Owned app journey observation
+
+`--probe-journey` observes the owned app's appearance and operator-produced tap
+markers, captures `probe-before.ppm` and `probe-after.ppm`, and still fails an
+incomplete journey. It sends no input by default. The operator must review the
+first capture and use the explicitly requested input route; captures still need
+visual review even when the markers complete the observation.
+
+The old hardware-input experiment requires the separate explicit
+`--probe-hardware-tap` flag. It cannot be combined with `--guest-hid-serial`, and
+the hardware SPI consumption problem makes it unsuitable for the current guest.
+Reports record `input_mode` and `automatic_input`. Previously loaded runners keep
+their original behavior until stopped; changing this source does not hot-patch a
+live run.
