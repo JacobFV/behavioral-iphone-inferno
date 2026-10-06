@@ -4,11 +4,14 @@ import hashlib
 
 
 class ProbeJourney:
-    def __init__(self, output):
+    def __init__(self, output, hardware_tap=False):
         self.output = output
+        self.hardware_tap = hardware_tap
         self.state = 'waiting-for-app'
         self.ready_at = None
         self.report = {'state': self.state, 'completed': False,
+                       'input_mode': 'automatic-hardware-tap' if hardware_tap else 'operator-observation',
+                       'automatic_input': hardware_tap,
                        'visual_review_required': True, 'captures': {}}
 
     def command(self, qmp, name, arguments=None):
@@ -48,6 +51,10 @@ class ProbeJourney:
         elif self.state == 'waiting-for-first-frame' and now >= self.ready_at:
             self.report['input_devices'] = self.command(qmp, 'query-mice')
             self.capture(qmp, 'probe-before')
+            if not self.hardware_tap:
+                self.state = 'waiting-for-operator-tap-marker'
+                self.report['state'] = self.state
+                return
             # Main.m lays out a large central button starting at 58% height.
             # This is a probe-specific target, subject to actual image review.
             x, y = round(32767 * .5), round(32767 * .62)
@@ -63,7 +70,7 @@ class ProbeJourney:
             self.command(qmp, 'input-send-event', {'events': [
                 {'type': 'btn', 'data': {'button': 'left', 'down': False}}]})
             self.state = 'waiting-for-tap-marker'
-        elif self.state == 'waiting-for-tap-marker' and tapped in serial:
+        elif self.state in ('waiting-for-tap-marker', 'waiting-for-operator-tap-marker') and tapped in serial:
             self.report['tap_marker_observed'] = True
             self.state = 'waiting-for-updated-frame'
             self.ready_at = now + 1

@@ -1,0 +1,20 @@
+[
+  {
+    "flags": [
+      "--probe-hardware-tap"
+    ],
+    "exit": 2,
+    "stderr": "usage: boot.py [-h] --profile PROFILE [--touch-trace-startup]\n               [--touch-trace-seconds TOUCH_TRACE_SECONDS] [--control-mailbox]\n               [--guest-hid-serial] [--binary BINARY] [--manifest MANIFEST]\n               [--seconds SECONDS] [--output OUTPUT] [--guest-errors]\n               [--launchd-unsecure-cache] [--probe-journey]\n               [--probe-hardware-tap] [--capture-interval CAPTURE_INTERVAL]\n               [--usb-socket USB_SOCKET] [--root-image ROOT_IMAGE]\n               [--root-sha256 ROOT_SHA256] [--auxiliary-state AUXILIARY_STATE]\n               [--disk-boot | --ramdisk-boot | --recovery-preserve-disk]\nboot.py: error: --probe-hardware-tap requires --probe-journey\n"
+  },
+  {
+    "flags": [
+      "--disk-boot",
+      "--probe-journey",
+      "--probe-hardware-tap",
+      "--guest-hid-serial",
+      "--control-mailbox"
+    ],
+    "exit": 2,
+    "stderr": "usage: boot.py [-h] --profile PROFILE [--touch-trace-startup]\n               [--touch-trace-seconds TOUCH_TRACE_SECONDS] [--control-mailbox]\n               [--guest-hid-serial] [--binary BINARY] [--manifest MANIFEST]\n               [--seconds SECONDS] [--output OUTPUT] [--guest-errors]\n               [--launchd-unsecure-cache] [--probe-journey]\n               [--probe-hardware-tap] [--capture-interval CAPTURE_INTERVAL]\n               [--usb-socket USB_SOCKET] [--root-image ROOT_IMAGE]\n               [--root-sha256 ROOT_SHA256] [--auxiliary-state AUXILIARY_STATE]\n               [--disk-boot | --ramdisk-boot | --recovery-preserve-disk]\nboot.py: error: --probe-hardware-tap cannot be combined with --guest-hid-serial\n"
+  }
+]
