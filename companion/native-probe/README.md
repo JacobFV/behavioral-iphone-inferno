@@ -260,3 +260,11 @@ Its SHA384 matches the n104ap Research Developer Erase Install SEP BuildManifest
 entry. Extraction provenance is in external `native-probe/sep-original.json`.
 No decryption, ticket, Apple signature, payload edit or format wrapper is involved
 in this first test; it retains IM4P bytes despite the loader-required filename.
+
+Independent host verification found that 12,465 seeded compressed Data files
+extract as zero bytes with 7-Zip despite nonzero original System files. The seed
+is therefore not yet byte-validated. `--disk-helper-verify-data` performs a
+read-only guest size and streaming byte comparison of the identified Measure
+localization sample, distinguishing a host-reader issue from a guest-visible
+copy problem before choosing a repair. Generated profile provenance now records
+the actual helper flags, moved restore job and optional unchanged SEP payload.

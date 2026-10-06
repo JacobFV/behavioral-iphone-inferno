@@ -106,6 +106,25 @@ static int copy_contents(const char *source, const char *destination) {
     if (!error) error = copyfile(source, destination, 0, 7 | (1 << 18) | (1 << 19));
     return error;
 }
+static int compare_sample(const char *source, const char *destination) {
+    int a = open(source, 0), b = open(destination, 0), equal = 1;
+    if (a < 0 || b < 0) { printf("INFERNO_DATA_VERIFY_OPEN_FAILED errno=%d\n", *__error()); if (a>=0) close(a); if (b>=0) close(b); return -1; }
+    long long size_a = lseek(a, 0, 2), size_b = lseek(b, 0, 2);
+    printf("INFERNO_DATA_VERIFY_SIZE source=%lld destination=%lld\n", size_a, size_b); fflush(0);
+    lseek(a, 0, 0); lseek(b, 0, 0);
+    unsigned char left[4096], right[4096]; unsigned long long count_a=0, count_b=0;
+    for (;;) {
+        long n = read(a, left, sizeof(left)), m = read(b, right, sizeof(right));
+        if (n < 0 || m < 0) { printf("INFERNO_DATA_VERIFY_READ_FAILED source=%ld destination=%ld errno=%d\n", n,m,*__error()); equal=0; break; }
+        count_a += n; count_b += m;
+        if (n != m) equal=0;
+        if (n == m) for (long i=0;i<n;i++) if (left[i] != right[i]) equal=0;
+        if (!n && !m) break;
+    }
+    close(a); close(b);
+    printf("INFERNO_DATA_VERIFY_RESULT equal=%d source_bytes=%llu destination_bytes=%llu\n", equal,count_a,count_b); fflush(0);
+    return equal ? 0 : -1;
+}
 static int ensure(const char *path) {
     if (!mkdir(path, 0755) || *__error() == 17) return 0;
     printf("INFERNO_PREP_MKDIR_FAILED %s errno=%d\n", path, *__error());
@@ -113,13 +132,14 @@ static int ensure(const char *path) {
 }
 int main(int argc, char **argv) {
     if (argc < 2 || strcmp(argv[1], "--disposable-root-copy")) return 2;
-    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0;
+    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0;
     for (int i=2; i<argc; ++i) {
         if (!strcmp(argv[i], "--role-volumes")) roles = 1;
         else if (!strcmp(argv[i], "--existing-volumes")) existing = 1;
         else if (!strcmp(argv[i], "--init-gigalocker")) gigalocker = 1;
         else if (!strcmp(argv[i], "--seed-data")) seed_data = 1;
         else if (!strcmp(argv[i], "--copy-sep")) copy_sep = 1;
+        else if (!strcmp(argv[i], "--verify-data")) verify_data = 1;
         else return 2;
     }
     printf("INFERNO_PREP_BEGIN: disposable /dev/disk0s1 existing=%d roles=%d gigalocker=%d\n", existing, roles, gigalocker); fflush(0);
@@ -174,6 +194,12 @@ int main(int argc, char **argv) {
     }
     sync();
     if (unmount("/mnt2", 0) || unmount("/mnt1", 0)) return 11;
+    }
+    if (verify_data) {
+        if (!data_device[0] || mount_at(system_device, "/mnt1", 1) || mount_at(data_device, "/mnt2", 1)) return 26;
+        int result = compare_sample("/mnt1/private/var/staged_system_apps/Measure.app/hr.lproj/Localizable.strings", "/mnt2/staged_system_apps/Measure.app/hr.lproj/Localizable.strings");
+        if (unmount("/mnt2", 0) || unmount("/mnt1", 0)) return 27;
+        if (result) return 28;
     }
     if (copy_sep) {
         if (mount_at(preboot_device, "/mnt2", 0)) return 23;
