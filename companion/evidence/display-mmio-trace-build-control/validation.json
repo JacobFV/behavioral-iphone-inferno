@@ -1,0 +1,55 @@
+{
+  "scope": "Actual build and firmware-free QMP controls only. No guest MMIO/pipe trace emission, iOS boot or rendering claim.",
+  "build_command": [
+    "bash",
+    "companion/run",
+    "build",
+    "--build-root",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build",
+    "--jobs",
+    "8",
+    "--simulated-sep",
+    "--enable-kvm"
+  ],
+  "build_exit_code": 0,
+  "source_revision": "09811d4d1d4dfa3c10ee8f59360f282624fc1df2",
+  "binary_sha256": "670caae5e8b86dbd07968b053ce0667328cce648935cefb8649357400f9c8e59",
+  "actual_smoke_command": [
+    "python3",
+    "companion/evidence/display-trace-control-smoke.py",
+    "--repo",
+    "/home/brandonin/Documents/behavioral-iphone-inferno",
+    "--binary",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "--manifest",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build-manifest.json",
+    "--output",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/display-trace-control-smoke-3"
+  ],
+  "actual_smoke_exit_code": 0,
+  "events": [
+    "apple_adp_submit",
+    "apple_adp_bh",
+    "apple_adp_pipe",
+    "apple_adp_output_ready",
+    "apple_adp_irq_write",
+    "apple_adp_unknown_mmio",
+    "apple_adp_gp_config_write"
+  ],
+  "checks": [
+    "all7 available/default disabled",
+    "1-second requested window deadline disabled all7",
+    "second30-second window early close disabled all7",
+    "normal QMPquit and emulator0"
+  ],
+  "artifacts_sha256": {
+    "report.json": "7428a1fb73977034bb955c1e9b6edb456f377ae3eaed0aed40cde0bc03926bc8",
+    "qmp-transcript.jsonl": "9965eb8e10388bbc6b6de881cbc0fa0950c3c92e5405334f940e15488d09698b",
+    "control-transcript.jsonl": "30b015f4a7966bb19a4dc2199b7d80bb1674664e4abc69039ed95676dce9c0a8",
+    "display-trace-control.jsonl": "294a76bb268ccb5d156ca55e6275f59de185d4830afc822a04295b59be2688de",
+    "build-manifest.json": "0b72d85ba4b2c9029e7a10cbce357d663a06417a307c9d3522ef4a4d4872a0b1",
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build.log": "499b1ffb4250e1548e4981eec0c967ed8bd43280aa61a36f90327e4df6ad20d1"
+  },
+  "prior_diagnostic_archive": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/binaries/display-trace-labels-1545a8435798/KEEP-DIAGNOSTIC.json"
+}
