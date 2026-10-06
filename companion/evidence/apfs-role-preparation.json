@@ -1,0 +1,50 @@
+{
+  "kind": "t8030_recovery_ramdisk_experiment",
+  "binary_sha256": "594278fae8fb0af2cc36d6a56e0c550d8bfc40a8515b51ffa1046896d553f3e1",
+  "profile_sha256": "9806316c204136d34ac7ffb5330fd6f94f4fcc74513d82857ee67a4ba76ce621",
+  "inputs": {
+    "kernel": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/kernel-kernelcache.research.iphone12b",
+      "sha256": "cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3",
+      "bytes": 17429507
+    },
+    "dtb": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+      "sha256": "dbd9be96c4b18f48a1842879237ae8f27043b894a2ed6139e396dbedca232411",
+      "bytes": 42553
+    },
+    "trustcache": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache",
+      "sha256": "af33b3466bd828bf1ccaa1ab35d060bfcce62ade26ee74acf176501b00ea0d7f",
+      "bytes": 4931
+    },
+    "ramdisk": {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/helper-attempt-6/ramdisk.raw",
+      "sha256": "614e3cc34c5ec93778014d617cfdd77d6833ab154e64934cc913ee898801c30f",
+      "bytes": 104685568
+    }
+  },
+  "root_base": {
+    "path": "/home/brandonin/.local/share/inferno/images/ios14b5/os-inspection/official-os-4k.raw",
+    "sha256": "93f97dae602a8fc844f0f88819d3fe358b1cf14ee5e193b0beb7009376032594",
+    "bytes": 8589934592,
+    "copied_before_use": true
+  },
+  "elapsed_seconds": 47.583798,
+  "exit_code": 0,
+  "serial_bytes": 73646,
+  "error": {
+    "type": "KeyboardInterrupt",
+    "detail": "Signal 15"
+  },
+  "built_source": "eeba4eae725e9c9487c42aba76ffc68edd7bff22",
+  "runner_revision": null,
+  "runner_sha256": "4b3ecf2353c722a6f1ad875e5b551e46eecb1b27fed9aa5c0c0930d4ee76fa65",
+  "review": "Root inspected serial commands and zero newfs statuses for Preboot/xART/Hardware, discovered volume identities, copied original firmware, and cleanly unmounted System and Preboot. Own helper has explicit xART entitlement with ad-hoc signature only. QMP shutdown followed completion. This is disk preparation, not installed iOS or app execution.",
+  "full_report": ".local-build/reports/disk-preparation-8/report.json",
+  "artifact_sha256": {
+    "serial.txt": "c6a1c5bd15f4a6e9eb8ef64058e9ac50c44ccbb48edf05ed0d2417ba3ec7a636",
+    "stderr.txt": "2673d06da5e3b7c0a9802c37127d3af9d38ec4655b8b44b74c71182df6fea23d",
+    "qmp.jsonl": "f816e48ea0e3f9856fea372d3bce598b7480deb9ed632f16c7f885ff9696b6b0"
+  }
+}

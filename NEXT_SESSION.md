@@ -50,11 +50,12 @@ that directory together: the binary references local libraries/resources.
 
 Owned native recovery code executes. A direct System boot reaches Darwin
 Bootstrapper but needs auxiliary APFS preparation. The latest owned helper
-created Preboot, xART and Hardware and copied original firmware; direct-root-3
-is testing the result. See PROGRESS.md and companion/native-probe/README.md.
+created Preboot, xART and Hardware and copied original firmware. Direct-root-3
+passed mount-phase-1, then failed data-protection because gigalocker storage is
+missing. Investigate original guest initialization rather than fabricated blobs. See PROGRESS.md and companion/native-probe/README.md.
 Linux USB companion boots under KVM. EHCI attachment panics due to the blocking
-remote handler; xHCI descriptor enumeration also fails. A focused asynchronous
-USB fix is in progress. No installed iOS, UIKit journey or benchmark is proven.
+remote handler; xHCI descriptor enumeration also fails. The focused asynchronous
+USB fix is built at source51f658872b and actual joint enumeration is underway. No installed iOS, UIKit journey or benchmark is proven.
 
 ## Next concrete work
 

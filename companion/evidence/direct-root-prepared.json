@@ -1,0 +1,50 @@
+{
+  "kind": "t8030_direct_root_experiment",
+  "binary_sha256": "594278fae8fb0af2cc36d6a56e0c550d8bfc40a8515b51ffa1046896d553f3e1",
+  "profile_sha256": "7939d609b99b8223863dba0b0af9d181526b420c0023cc9520563fd7e0979ed8",
+  "inputs": {
+    "kernel": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/kernel-kernelcache.research.iphone12b",
+      "sha256": "cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3",
+      "bytes": 17429507
+    },
+    "dtb": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+      "sha256": "dbd9be96c4b18f48a1842879237ae8f27043b894a2ed6139e396dbedca232411",
+      "bytes": 42553
+    },
+    "trustcache": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache",
+      "sha256": "af33b3466bd828bf1ccaa1ab35d060bfcce62ade26ee74acf176501b00ea0d7f",
+      "bytes": 4931
+    },
+    "ramdisk": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/ramdisk-038-44135-124.dmg",
+      "sha256": "4013d9b3bb6c7fa0ff82397effc032b6afdb6f3c5e1672782698119dd9b3f704",
+      "bytes": 104685595
+    }
+  },
+  "root_base": {
+    "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-8/disks/root.raw",
+    "sha256": "8103442bd0bf6f4e1aca44c203ee4c0793c87b740dd9395a399e08b604679afc",
+    "bytes": 8589934592,
+    "copied_before_use": true
+  },
+  "elapsed_seconds": 13.814468,
+  "exit_code": 0,
+  "serial_bytes": 37927,
+  "error": {
+    "type": "RuntimeError",
+    "detail": "Emulator exited during boot attempt; see serial.log and stderr.log"
+  },
+  "built_source": "eeba4eae725e9c9487c42aba76ffc68edd7bff22",
+  "runner_revision": null,
+  "runner_sha256": "4b3ecf2353c722a6f1ad875e5b551e46eecb1b27fed9aa5c0c0930d4ee76fa65",
+  "review": "Root inspected fsck clean checks and actual xART/Preboot mounts. mount-phase-1 passed; data-protection then panicked with exit2 because gigalocker storage was absent. Installed iOS and app execution remain unproven.",
+  "full_report": ".local-build/reports/direct-root-3/report.json",
+  "artifact_sha256": {
+    "serial.txt": "1e4b132c65ff695eac183d8b13d36c398136bfd098dea867ccb62ab3dc550021",
+    "stderr.txt": "18e1f0a19a8f1e62d158b13b7273f29bd13dbec6ce4b873d8bd7c8d02e68fbe4",
+    "qmp.jsonl": "fb9b0cf661b4f77db496ea9bf2bcedf8637165ca913d874ba90ce45a3860244e"
+  }
+}

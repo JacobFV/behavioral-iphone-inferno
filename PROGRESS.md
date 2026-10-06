@@ -40,7 +40,11 @@
   run8 created Preboot, xART and Hardware, copied firmware and cleanly unmounted
   both mounted volumes. Root inspected the raw serial commands, statuses and
   completion marker. Logs: `.local-build/reports/disk-preparation-8/`.
-  Direct boot of a disposable copy is the next verification boundary.
+  Direct-root-3 mounted xART and Preboot and passed mount-phase-1. It then
+  panicked during data-protection (exit2): missing gigalocker storage. The
+  original guest initialization utility is being investigated. Committed raw
+  evidence: `companion/evidence/apfs-role-preparation*` and
+  `companion/evidence/direct-root-prepared*`.
 - **Reproduced OS conversion:** root ran both committed OS utilities; full raw
   image, APFS payload and 4096-sector wrapper hashes match the original conversion.
   Logs: `.local-build/research/os-reproduced.log` and
