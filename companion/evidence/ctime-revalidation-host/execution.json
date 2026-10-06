@@ -1,0 +1,94 @@
+{
+  "scope": "Actual host filesystem fixture, synthetic owned bytes only. No firmware/guest/retained backing or historical report mutated.",
+  "source_sha256": "16180ed475f586b60031c129bf2a11169597dca10fc77a804d9fcdf0f20e3978",
+  "checks": [
+    {
+      "name": "same-mode-chmod-exact-normalization",
+      "original": {
+        "path": "/tmp/inferno-ctime-fixture-5bqbqif6/root.raw",
+        "format": "raw",
+        "sha256": "5a357705ac5e14175469bd32ab59385bbab558605ef7efe18b3d15519a7db244",
+        "bytes": 768,
+        "device": 66306,
+        "inode": 54544388,
+        "mtime_ns": 1791320867848354660,
+        "ctime_ns": 1791320867848354660,
+        "mode": "0o444"
+      },
+      "actual": {
+        "path": "/tmp/inferno-ctime-fixture-5bqbqif6/root.raw",
+        "format": "raw",
+        "sha256": "5a357705ac5e14175469bd32ab59385bbab558605ef7efe18b3d15519a7db244",
+        "bytes": 768,
+        "device": 66306,
+        "inode": 54544388,
+        "mtime_ns": 1791320867848354660,
+        "ctime_ns": 1791320867941564219,
+        "mode": "0o444"
+      },
+      "journal": [
+        {
+          "sidecar": "/tmp/inferno-ctime-fixture-5bqbqif6/root.raw.ctime-revalidation.json",
+          "sidecar_sha256": "6caa359d43c2c1a3869c4502fb5ebd95e71fed95cf2a4d2685cfbedf9339b836",
+          "historical": {
+            "path": "/tmp/inferno-ctime-fixture-5bqbqif6/root.raw",
+            "format": "raw",
+            "sha256": "5a357705ac5e14175469bd32ab59385bbab558605ef7efe18b3d15519a7db244",
+            "bytes": 768,
+            "device": 66306,
+            "inode": 54544388,
+            "mtime_ns": 1791320867848354660,
+            "ctime_ns": 1791320867848354660,
+            "mode": "0o444"
+          },
+          "actual_verified": {
+            "path": "/tmp/inferno-ctime-fixture-5bqbqif6/root.raw",
+            "format": "raw",
+            "sha256": "5a357705ac5e14175469bd32ab59385bbab558605ef7efe18b3d15519a7db244",
+            "bytes": 768,
+            "device": 66306,
+            "inode": 54544388,
+            "mtime_ns": 1791320867848354660,
+            "ctime_ns": 1791320867941564219,
+            "mode": "0o444"
+          },
+          "historical_source": {
+            "path": "/tmp/inferno-ctime-fixture-5bqbqif6/historical.json",
+            "sha256": "a58f155ac166970ea4710158eb253f12347b9d9c227f4a4cae41859a0025f26e"
+          },
+          "verified_time": 1791320868.286982,
+          "scope": "Fresh full content hash and read-only identity; exact ctime exception only. No report or disk rewritten."
+        }
+      ],
+      "original_source_unchanged": true
+    },
+    {
+      "name": "exclusive-attestation",
+      "rejected": "Ctime attestation already exists; never replace it"
+    },
+    {
+      "name": "writable-sidecar",
+      "rejected": "Ctime attestation must be a regular nonsymlink 0444 file"
+    },
+    {
+      "name": "changed-historical-source",
+      "rejected": "Historical source hash or identity no longer matches"
+    },
+    {
+      "name": "subsequent-same-mode-chmod",
+      "rejected": "Current identity differs from exact attested identity"
+    },
+    {
+      "name": "changed-content",
+      "rejected": "Overlay backing base SHA256 mismatch"
+    },
+    {
+      "name": "retained-writable-descriptor",
+      "rejected": "Backing inode still has an open writable descriptor: /proc/2860412/fd/3"
+    },
+    {
+      "name": "non-ctime-difference",
+      "rejected": "Attestation requires a later exact ctime"
+    }
+  ]
+}
