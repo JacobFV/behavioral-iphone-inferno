@@ -17,5 +17,11 @@
     "flow": "Server forwards to _LSServer_OpenApplication. Its explicit error branch at0x100970 invokes block with w1=0 and x2=NSError. Thus callback captures BOOL and error rather than inventing an error-out-pointer signature."
   },
   "candidate_behavior": "Same dictionary registration, identifier, credentials, and configuration:nil. Log only bounded error domain, code, localizedDescription. A global block avoids stack-capture lifetime assumptions. If original synchronous call returns without callback, log open-callback-not-delivered and exit70; do not block an unknown callback queue. Existing120-second process watchdog bounds IPC. No userInfo dump, new options, entitlements, or signer identities.",
-  "observed_result": "app-boot-11 callback accepted0, NSPOSIXErrorDomain code60, localizedDescription Operation timed out. A transport/service timeout, not proof of app execution denial."
+  "observed_result": "app-boot-11 callback accepted0, NSPOSIXErrorDomain code60, localizedDescription Operation timed out. A transport/service timeout, not proof of app execution denial.",
+  "service_chain": {
+    "server": "_LSServer_OpenApplication at0xe79e8 -> Common at0xe7aa8 constructs _LSSpringBoardCall.",
+    "frontboard": "callSpringBoardWithCompletionHandler: starts0xed394; resolves FBSOpenApplicationService via original initializer0xee520. With no explicit target endpoint it calls serviceWithDefaultShellEndpoint at0xed418-0xed424, then openApplication:withOptions:clientHandle:completion: at0xed924. The completion at0xed988 forwards BOOL(error==nil) and the original NSError.",
+    "timeout": "Original error-handling branch at0xedbe8 compares code60 and emits timeout-waiting-for-launch log at0xedc60. Therefore observed POSIX60 is an original service result, not a synthesized fixture diagnosis.",
+    "runtime_progress": "Later app-boot-11 reaches visible Hola setup UI and callback errors change to FBSOpenApplicationServiceErrorDomain code1. This is distinct from earlier timeout; underlying denial reason and owned app execution remain unproven."
+  }
 }
