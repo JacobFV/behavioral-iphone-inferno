@@ -26,7 +26,8 @@
     "message_d00d": "Callback compares 0xe3ffd00d at 0x3a50-0x3a5c, loads kMobileKeyBagLockStatusNotifyToken at 0x3a64, and posts that token at 0x3ab8. It does not enter the first-unlock producer.",
     "message_d00f": "Callback compares 0xe3ffd00f at 0x3a40-0x3a4c and branches via 0x3abc/0x3acc to post_first_unlock_if_necessary at 0x3ae8.",
     "first_unlock_producer": "Queries MKBNotifyStateIsSet at 0x3b04; if unset, loads com.apple.mobile.keybagd.first_unlock at 0x3b20, notify_post at 0x3b48, then MKBNotifyStateSet at 0x3b4c. An already-set state skips posting. Query failure logs and treats the state as unset.",
-    "limitation": "The event callback does not itself requery MKBDeviceUnlockedSinceBoot. Correct original kernel transition-to-d00f semantics must be established before any simulator response action change. Keybagd filename in the notification is not evidence that keybagd produces it."
+    "limitation": "The event callback does not itself requery MKBDeviceUnlockedSinceBoot. Correct original kernel transition-to-d00f semantics must be established before any simulator response action change. Keybagd filename in the notification is not evidence that keybagd produces it.",
+    "notify_once_backing": "Original recovery MobileKeyBag MKBNotifyStateIsSet 0x9630 tails to aks_notify_state_is_set 0x281b4: IOConnectCallMethod selector0x67 with one scalar output, converted to nonzero BOOL at 0x28228-0x28234. MKBNotifyStateSet 0x9634 tails to aks_notify_state_set 0x28164: selector0x66 with no inputs/outputs. This is a separate original kernel notification-once state, not a first-unlock query."
   },
   "live_boot20": {
     "report": "app-boot-20",
