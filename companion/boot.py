@@ -15,6 +15,7 @@ import tempfile
 import time
 from disk_overlay import DEFAULT_TOOLS, validate_tools, validate_base, create_overlay, verify_backing, load_stopped_overlay, create_recorded_overlay
 from probe_journey import ProbeJourney
+from boot_milestones import observe as observe_milestones
 from qmp_control import ControlMailbox, StartupTouchTrace, SerialGestureTransport
 
 
@@ -258,7 +259,10 @@ def main():
     output = (args.output or repo / '.local-build/reports' / ('boot-' + stamp)).resolve()
     output.mkdir(parents=True, exist_ok=False, mode=0o700)
     report = {'kind': ('t8030_direct_root_experiment' if args.disk_boot else 't8030_recovery_ramdisk_experiment'), 'attempt_completed': False,
-              'ios_booted': False, 'app_executed': False,
+              'ios_booted': None, 'app_executed': None,
+              'milestones': {name: {'state': 'unestablished', 'evidence': []} for name in
+                             ('kernel_serial', 'launchd_userland', 'owned_app_lifecycle', 'strict_owned_journey')},
+              'milestone_source_sha256': digest(Path(__file__).with_name('boot_milestones.py')),
               'milestone_note': 'QMP running and framebuffer captures alone do not establish iOS boot.',
               'profile_path': str(profile_path), 'profile_sha256': digest(profile_path),
               'inputs': inputs, 'binary': str(binary), 'binary_sha256': binary_hash,
@@ -494,8 +498,13 @@ def main():
         report['elapsed_seconds'] = round(time.monotonic() - started, 6)
         serial = output / 'serial.log'
         report['serial_bytes'] = serial.stat().st_size if serial.exists() else 0
+        report['observed_milestones'] = observe_milestones(output, report)
+        for key in ('ios_booted', 'app_executed', 'milestones'):
+            report[key] = report['observed_milestones'][key]
         (output / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
-    print(json.dumps({'attempt_completed': report['attempt_completed'], 'ios_booted': False,
+    print(json.dumps({'attempt_completed': report['attempt_completed'], 'ios_booted': report['ios_booted'],
+                      'app_executed': report['app_executed'],
+                      'milestones': {key: value['state'] for key, value in report['milestones'].items()},
                       'report': str(output / 'report.json')}))
     return 0 if report['attempt_completed'] else 1
 
