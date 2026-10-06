@@ -28,6 +28,28 @@ with no display, guest image or CPU, talks QMP, verifies that the executable lis
 claim iOS boot or app compatibility. Build instructions will be recorded with the
 working build script and local evidence in PROGRESS.md.
 
+## Build and run the control-plane check
+
+The initial dependency lock targets Ubuntu24.04 ARM64, matching the current host.
+It is not yet a universal distribution/x86 bootstrap. Existing system tools are
+Python3 with venv, GCC/Make, CMake, pkg-config, Git, curl, dpkg-deb and development
+headers for GLib, Pixman, zlib and PNG. Additional locked packages are extracted
+locally; Nettle3.10.2 is compiled locally. No sudo or system-wide installation is
+used. Meson and Ninja wheels and downloaded packages have explicit hash checks.
+
+From the repository root:
+
+```sh
+companion/build-linux.sh --build-root "$PWD/.local-build" --jobs 8
+python3 companion/smoke.py --binary .local-build/build/qemu-system-aarch64
+```
+
+Build identity is recorded in `.local-build/build-manifest.json`; raw QMP results
+and stderr go under `.local-build/reports/`. Neither report is an iOS acceptance
+claim. The build enables TCG, Pixman/PNG, VNC, slirp, LZFSE, Nettle and GnuTLS and
+uses no GTK/SDL window frontend. The smoke itself exposes only a temporary local
+Unix socket and starts no VNC server.
+
 ## Source facts and limits
 
 At the pinned source, t8030 defaults to 4 GiB guest RAM and an 828x1792 display.
