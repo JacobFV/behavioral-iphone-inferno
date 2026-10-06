@@ -1,0 +1,36 @@
+{
+  "prepare_command": [
+    "python3",
+    "companion/native-probe/prepare.py",
+    "--profile",
+    "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/profile.json",
+    "--raw-ramdisk",
+    "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/ramdisk-payload.raw",
+    "--probe",
+    "/home/brandonin/.local/share/inferno/native-probe/helper-build-42/inferno-probe",
+    "--hfsplus",
+    "/home/brandonin/.local/share/inferno/native-probe/tools/hfsplus",
+    "--disk-helper",
+    "/home/brandonin/.local/share/inferno/native-probe/helper-build-46/inferno-prepare-root",
+    "--disk-helper-existing",
+    "--system-app-executable",
+    "/home/brandonin/.local/share/inferno/app-probe/exec-build-22/InfernoProbe.app/InfernoProbe",
+    "--system-launcher",
+    "/home/brandonin/.local/share/inferno/app-probe/exec-build-22/inferno-launcher-open-error",
+    "--readiness-probe",
+    "/home/brandonin/.local/share/inferno/native-probe/helper-build-54/inferno-readiness",
+    "--hid-input-helper",
+    "/home/brandonin/.local/share/inferno/native-probe/helper-build-55/inferno-hid-input",
+    "--output",
+    "/home/brandonin/.local/share/inferno/native-probe/helper-attempt-55"
+  ],
+  "artifact_sha256": {
+    "app-probe/exec-build-22/InfernoProbe.app/InfernoProbe": "d05f1b32523684a5c89d41cb2c35fbf0207b62adf864c27fab4d5973bf8e6176",
+    "app-probe/exec-build-22/inferno-launcher-open-error": "0f6626102deedabe4f5c93dafbd3c757387836c463d6b59bf3204932e550bf17",
+    "native-probe/helper-build-54/inferno-readiness": "2440b210892898f43bd2f2afe3907ee5b682262d1d71c47e8c940757aa46c0b2",
+    "native-probe/helper-build-55/inferno-hid-input": "853bed149abbed99b3157150dbcd1d25292f9a873e643d0e424e66e7fc1a8538"
+  },
+  "base_report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-44/report.json",
+  "stage_report": "disk-preparation-55",
+  "state": "planned only; wait explicit root stop47 then forensic preservation"
+}

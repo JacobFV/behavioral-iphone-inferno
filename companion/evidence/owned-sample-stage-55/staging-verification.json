@@ -1,0 +1,21 @@
+{
+  "kind": "verified-recovery-staging-retention",
+  "report_sha256": "e23bd14b364a229fde1369f9aad2480277dbc2ed455faa52b65c4ca2a670100a",
+  "attempt_error": {
+    "type": "KeyboardInterrupt",
+    "detail": "Signal 15"
+  },
+  "attempt_completed": false,
+  "raw_serial_sha256": "769c14195ed96a591c8585174f3a04af2230871ae6af90fbb4dd38e16742401b",
+  "required_readbacks": [
+    "INFERNO_HID_INPUT_READBACK bytes=88944 mismatches=0",
+    "INFERNO_READINESS_READBACK bytes=86983 mismatches=0",
+    "INFERNO_SYSTEM_LAUNCHER_READBACK bytes=69264 mismatches=0",
+    "INFERNO_APP_EXECUTABLE_READBACK bytes=74976 mismatches=0 info_plist_written=0",
+    "INFERNO_PREP_COMPLETE: requested preparation operations succeeded"
+  ],
+  "normal_unmount_after_each_readback": true,
+  "retention_checks_sha256": "bb80edb0defae5b39cca0ffafbdfeb37fa0bef3c1449730f51eea42116f3f9d8",
+  "manifest_sha256": "ed45571309e76a18e297533827afffbc19a5113453d2cefd38e165cf08df0a8a",
+  "scope": "Intentional early-stop recovery staging after four actual zero-mismatch readbacks and clean unmounts. Generic failed-attempt verifier used only for unchanged disk/header/ancestor/FD/shutdown checks, retained separately. This stage-specific manifest is not a failed app result. Root must independently review/freeze before use."
+}
