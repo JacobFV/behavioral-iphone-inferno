@@ -3,6 +3,7 @@
 extern void *dlopen(const char *,int),*dlsym(void *,const char *);
 extern int printf(const char *,...),fflush(void *),usleep(unsigned);
 extern unsigned long long mach_absolute_time(void);
+extern unsigned mach_task_self_;
 typedef void *Object;
 static Object device;
 static Object (*dictionary)(Object,long,const void *,const void *);
@@ -13,6 +14,10 @@ static int (*report)(Object,unsigned long long,const unsigned char *,long);
 static unsigned (*copy_service)(Object);
 static int (*registry_id)(unsigned,unsigned long long *),(*object_release)(unsigned),(*iterator_create)(unsigned,const char *,unsigned,unsigned *),(*conforms)(unsigned,const char *),(*object_class)(unsigned,char *),(*children)(unsigned,const char *,unsigned *);
 static unsigned (*iterator_next)(unsigned);
+static Object (*service_matching)(const char *);
+static unsigned (*matching_service)(unsigned,Object);
+static int (*service_open)(unsigned,unsigned,unsigned,unsigned *),(*service_close)(unsigned);
+static int descriptor_parser_exported;
 static const void *key_callbacks,*value_callbacks;
 static Object true_value;
 /* HID1.11 short items: Digitizers/TouchScreen Application, one Finger Logical.
@@ -38,6 +43,10 @@ static int initialize(void) {
     LOAD(io,object_class,"IOObjectGetClass");LOAD(io,children,"IORegistryEntryGetChildIterator");
     LOAD(io,registry_id,"IORegistryEntryGetRegistryEntryID");LOAD(io,object_release,"IOObjectRelease");
     LOAD(io,iterator_create,"IORegistryEntryCreateIterator");LOAD(io,iterator_next,"IOIteratorNext");LOAD(io,conforms,"IOObjectConformsTo");
+    LOAD(io,service_matching,"IOServiceMatching");LOAD(io,matching_service,"IOServiceGetMatchingService");
+    LOAD(io,service_open,"IOServiceOpen");LOAD(io,service_close,"IOServiceClose");
+    /* Original iOS IOKit lacks the legacy parser export; never invent its ABI. */
+    descriptor_parser_exported=dlsym(io,"HIDOpenReportDescriptor")!=0;
     key_callbacks=dlsym(cf,"kCFTypeDictionaryKeyCallBacks");value_callbacks=dlsym(cf,"kCFTypeDictionaryValueCallBacks");
     Object *truth=(Object *)dlsym(cf,"kCFBooleanTrue");
     if(!key_callbacks || !value_callbacks || !truth)return -101;
@@ -56,6 +65,24 @@ static void node_inventory(unsigned service,const char *relation) {
     int id_status=registry_id(service,&id),class_status=object_class(service,cls);cls[127]=0;
     printf("INFERNO_HID_DEVICE_NODE relation=%s registry_id=%llu id_status=0x%x class=%s class_status=0x%x\n",relation,id,(unsigned)id_status,cls,(unsigned)class_status);fflush(0);
 }
+static void creation_diagnostics(void) {
+    printf("INFERNO_HID_DESCRIPTOR_CHECK bytes=%lu parser_exported=%d parser_invoked=0 result=unavailable\n",(unsigned long)sizeof(descriptor),descriptor_parser_exported);fflush(0);
+    Object match=service_matching("IOHIDResource");
+    if(!match){printf("INFERNO_HID_RESOURCE_MATCH dictionary=0 service=0\n");fflush(0);return;}
+    /* GetMatchingService consumes the dictionary. Type zero/current task are
+     * the exact original IOHIDUserDeviceCreate open path. No method is called. */
+    unsigned resource=matching_service(0,match),connection=0;
+    printf("INFERNO_HID_RESOURCE_MATCH dictionary=1 service=%u\n",resource);fflush(0);
+    if(!resource)return;
+    node_inventory(resource,"resource_before_create");
+    int status=service_open(resource,mach_task_self_,0,&connection);
+    printf("INFERNO_HID_RESOURCE_OPEN type=0 status=0x%x connection=%u\n",(unsigned)status,connection);fflush(0);
+    if(!status && connection) {
+        int close_status=service_close(connection);
+        printf("INFERNO_HID_RESOURCE_CLOSE status=0x%x\n",(unsigned)close_status);fflush(0);
+    }
+    object_release(resource);
+}
 static void device_inventory(void) {
     unsigned service=copy_service(device);if(!service)return;
     node_inventory(service,"owned_device");
@@ -72,6 +99,7 @@ static void device_inventory(void) {
 }
 static int create_device(void) {
     int status=initialize();if(status)return status;
+    creation_diagnostics();
     Object properties=dictionary(0,0,key_callbacks,value_callbacks);
     Object desc=data(0,descriptor,sizeof(descriptor));
     if(!properties || !desc){if(properties)release(properties);if(desc)release(desc);return -102;}
