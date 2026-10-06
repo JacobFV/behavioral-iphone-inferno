@@ -31,3 +31,9 @@ those require the separate boot logs.
 The build manifest's HEAD precedes its final working-tree fix commit; all source
 file hashes were checked against committed6ed274f6a2. Compilers, signers, original
 firmware, binaries, ramdisks and disk images remain outside Git.
+
+After the host reached99% disk usage, the stopped rejected stage30 generated disk
+set was retired (about7.66GB allocated). Its exact hashes, report, raw serial and
+reproducible source remain preserved; successful stage31 and its source were not
+removed. The retirement record distinguishes retained evidence from discarded
+reproducible disk products.
