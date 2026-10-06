@@ -108,5 +108,21 @@
     "0x1aed32130": "e50303aa884a0e9001852a9103008052040080d2df6f9816",
     "0x1aed320f0": "e20317aae30315aae40314aa05008052e60313aaef6f9896",
     "0x1aed31d1c": "e5230091e0031baae2031aaae30317aae40319aae0320e97"
+  },
+  "current_user_caveat": {
+    "original_job_source": "/home/brandonin/.local/share/inferno/native-probe/cache-inspection/Volume1/System/Library/xpc/launchd.plist",
+    "original_job_sha256": "e5847afbcf6c025ee7f15620918eb6bc79bc916a29301bba8b034cf4775f3c24",
+    "ProgramArguments": [
+      "/usr/libexec/containermanagerd",
+      "--runmode=exclusive",
+      "--default-user=mobile",
+      "--bundle-container-mode=global",
+      "--bundle-container-owner=_installd",
+      "--system-container-mode=global",
+      "--system-container-owner=root"
+    ],
+    "parser": "exclusive recognized at0x100029978\u2013990; success/root branch sets runmode0 at0x100029b50. agent maps runmode1 at0x100029ac8.",
+    "client_identity": "MCMClientIdentity::clientIdentityWithXPCConnection:xpcMessage: starts with configuration defaultUser at0x10001d45c\u201346c. runmode compare1 at0x10001d774\u2013778 skips substitution only for agent mode. Otherwise obtains client posixUser at0x10001d780\u20137a0 and supplies it to userIdentityForPersonaUniqueString:POSIXUser: at0x10001d7c0\u20137cc.",
+    "conclusion": "The --default-user=mobile option alone does not prove a UID0 reader selects the same user namespace as UID501 app. Actual returned URL/error must be inspected; no forced identity/persona or authorization change is proposed."
   }
 }
