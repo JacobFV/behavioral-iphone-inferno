@@ -98,3 +98,17 @@ and usbmuxd initialization establish Linux KVM execution and service readiness.
 They do not establish iOS KVM support. The guest clock initially reflected its
 saved filesystem time until synchronization; use host report times for elapsed
 measurements. Controller transport enumeration remains a separate experiment.
+
+The controlled TCG/xHCI attachment (run5 paired with `recovery-usb-3`) stayed
+alive but failed descriptor enumeration: Linux logged repeated `device descriptor
+read/64` and `read/8` error `-110`, followed by `unable to enumerate USB device`.
+`lsusb` retained only root hubs and `idevice_id -l` was empty. Actual guest
+commands and kernel logs are in run5 `guest-usb-diagnosis.log`.
+
+Source explains why xHCI is not a drop-in replacement: xHCI sets
+`USBPacket.parameter` for control transfers (`hcd-xhci.c:1727`), while the remote
+raw-packet handler bypasses USB core's parameter decoding (`core.c:383`) and
+does not transmit that field. xHCI's direct SET_ADDRESS callback also reaches
+an unset `handle_control` callback on usb-tcp-remote. EHCI remains the documented
+controller, with its observed reentrancy failure unresolved. No upstream guard
+or driver was modified for these experiments.
