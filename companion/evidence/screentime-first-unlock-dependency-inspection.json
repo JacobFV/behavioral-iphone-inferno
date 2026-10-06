@@ -1,0 +1,37 @@
+{
+  "scope": "Read-only original ScreenTimeAgent startup and accepted device-state response analysis after boot20 Screen Time Set Up Later spinner. No guest mutation, input, notification injection or simulator changes.",
+  "sources": {
+    "original_kernel_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+    "original_system_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+    "ScreenTimeAgent_sha256": "a7d76c0b58de3de23a67c70a0abb0d64cff0039c805eb2ad3127e4d00178a73a",
+    "agent_origin": "Unchanged official-os.raw System/Library/PrivateFrameworks/ScreenTimeCore.framework/ScreenTimeAgent, extracted outside Git."
+  },
+  "actual": {
+    "report": "app-boot-20/serial.log",
+    "timeline": "Parent observes ScreenTimeAgent158 in first15s snapshot913..945; owned beforefirst0 at1394, accepted unlock1396, afterfirst1 at1399; samePID158 at1541 and6030.",
+    "limit": "Process existence before transition does not prove its startup query/observer registration occurred before transition, or that it is currently waiting for it."
+  },
+  "original_startup": {
+    "main": "0x1000029d8",
+    "order": "Creates STDaemon, installs STXPCEventDispatcher handlers, calls MKBUserUnlockedSinceBoot(0) at100002a78.",
+    "true_branch": "Nonzero calls STDaemon.start at100002a8c.",
+    "zero_branch": "Registers notifyd observer for literal com.apple.mobile.keybagd.first_unlock (CFString1000df930); sets handler at100002b64; main proceeds runloop without invoking daemon.start.",
+    "handler": "Block100002d98 calls retained daemon.start at100002db8 then clears observer handler at100002dd4.",
+    "query_basis": "Original MKBUserUnlockedSinceBoot0xcef0 (System mapping+1822b6000) calls aks_get_lock_state(-uid), returns extracted bit2 atcf64..68. Foruid0 caches true after observing bit. This is not sls/passcode-presence enum."
+  },
+  "request_path": {
+    "framework": "Original STManagementState::setScreenTimeEnabled:completionHandler:0x19c1e0b08 obtains connection proxy and sends request at19c1e0c38; completion/error blocks invoke caller completion.",
+    "agent": "STManagementStateServer::setScreenTimeEnabled:completionHandler:100047c5c forwards through screenTimeManager getter100047c94 and same operation100047cb4.",
+    "limit": "Daemon merely being alive does not prove these server listeners resumed or request reached handler. Native worker traces actual Buddy callback and keybagd event consumer separately."
+  },
+  "original_protocol_return": {
+    "call": "unlock_the_device8f64568 invokes device_state_transition8f640f0 withoperation0.",
+    "success_gate": "Opcode18 IPC8f64178 must return0; nonzero at8f6417c skips handling. Success invokes handle_device_state_return8f6418c with decoded response actions/deadline.",
+    "action_bit2": "Handler8f63bc4 checks bit2 and handle!=-1; invokes notify_change_device_state(handle,5,0,0) at8f63bdc. This flag is an action request, not the state first-unlock bit despite same bit number.",
+    "notification_transport": "notify_change_device_state8f61b88 switchtable8f61f8c case5 goes8f61f18; messageClients slot430 sends0xe3ffd00d with4-byte handle at8f61f48..60. It does not directly call notifyd.",
+    "framework_consumer": "Original MKB aksNotificationCB1e658 recognizes0xe3ffd00d and invokes registered MKBEvents callback with event1 at1e678..6a0. Event0xe3ffd00f maps callbackevent0.",
+    "remaining_chain": "Original keybagd mapping from MKBEvents callbackevent1 through independent state query to first_unlock notifyd post must be established; do not equate raw IOKit message with an unconditional first_unlock notification."
+  },
+  "interpretation": "Existing simulator sets first-unlock state after accepted owned empty-secret operation but returns actionflags0. Original early-starting services can queryfalse and await the original first-unlock event indefinitely. This is a source-supported candidate explaining setup wait, not yet proof of runtime cause.",
+  "limits": "No fabricated notifyd post or unconditional unlock event is proposed. A future protocol completion would need original consumer proof and only report a real accepted false-to-true transition; rejected/repeated operations and state queries must not produce it. No permission or property expansion follows from this evidence."
+}
