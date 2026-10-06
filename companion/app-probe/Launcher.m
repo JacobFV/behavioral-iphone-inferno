@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 // Requests registration and launch through original guest CoreServices only.
 #import "LaunchServicesNarrow.h"
+#include "EventRecord.h"
+#include "OwnedClock.h"
 
 static const char *utf8(NSString *text) {
     const char *value = [text UTF8String];
@@ -23,6 +25,8 @@ static void status(const char *event, int attempt, int result) {
 // immediately after the call, without a run-loop wait.
 static BOOL openCallbackFinished, openCallbackAccepted;
 static int openCallbackAttempt;
+static unsigned long long openRequestTicks,openCallbackTicks;
+extern int getpid(void);
 #endif
 int main(int argc, char **argv) {
     if (argc != 3) {
@@ -82,8 +86,11 @@ int main(int argc, char **argv) {
                     openCallbackFinished = 0;
                     openCallbackAccepted = 0;
                     openCallbackAttempt = attempt;
+                    openCallbackTicks=0;
+                    openRequestTicks=mach_absolute_time();
                     [workspace openApplicationWithBundleIdentifier:identifier configuration:nil
                         completionHandler:^(BOOL accepted, id errorObject) {
+                            openCallbackTicks=mach_absolute_time();
                             NSError *error = errorObject;
                             char message[1536];
                             snprintf(message, sizeof(message),
@@ -114,6 +121,16 @@ int main(int argc, char **argv) {
                         // Do not block an unknown callback queue if behavior differs.
                         status("open-callback-not-delivered", attempt, 1);
                         return 70;
+                    }
+                    char boot[37];struct inferno_timebase base={0,0};
+                    int bootResult=inferno_boot_uuid(boot);
+                    int timeResult=mach_timebase_info(&base);
+                    if(!bootResult && !timeResult && base.numer && base.denom && openRequestTicks && openCallbackTicks>=openRequestTicks) {
+                        char timing[320];
+                        snprintf(timing,sizeof(timing),"INFERNO_LAUNCH_TIMING_V1 boot=%s pid=%d attempt=%d request_ticks=%llu callback_ticks=%llu numer=%u denom=%u accepted=%d\n",boot,getpid(),attempt,openRequestTicks,openCallbackTicks,base.numer,base.denom,openCallbackAccepted);
+                        emit(timing);
+                    } else {
+                        char timing[192];snprintf(timing,sizeof(timing),"INFERNO_LAUNCH_TIMING_ERROR boot_result=%d time_result=%d valid_order=%d\n",bootResult,timeResult,openRequestTicks && openCallbackTicks>=openRequestTicks);emit(timing);
                     }
                     BOOL opened = openCallbackAccepted;
 #else

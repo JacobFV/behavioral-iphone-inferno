@@ -3,7 +3,26 @@
 #import "UIKitNarrow.h"
 #include "EventRecord.h"
 #include "LoopbackEvent.h"
+#include "OwnedClock.h"
 extern int open(const char *,int,...),close(int),ftruncate(int,long long),fchmod(int,unsigned short),getpid(void),getuid(void),*__error(void);
+static struct {const char *hook;unsigned long long ticks;} timing[5];
+static struct {const char *name;NSUInteger count;} pending_events[16];
+static unsigned timing_used,timing_mask,pending_used;
+static int timing_queued,timing_flushed,timing_failed;
+static const char *timing_stage="pending";
+static UILabel *diagnostic_footer;
+static void timing_flush(void *unused);
+static void timing_timeout(void *unused);
+static void capture(const char *hook,unsigned bit,unsigned long long ticks) {
+    if(timing_mask&bit)return; // first launch only
+    if(timing_used==5 || !ticks) {timing_failed=1;timing_stage="capture-error";return;}
+    timing[timing_used].hook=hook;timing[timing_used++].ticks=ticks;timing_mask|=bit;
+}
+static void maybe_flush(void) {
+    if(!timing_failed && !timing_queued && timing_mask==31) {
+        timing_queued=1;dispatch_async_f(&_dispatch_main_q,0,timing_flush);
+    }
+}
 static int event_fd=-1;
 static unsigned event_sequence,event_bytes;
 static int event_identity_valid,network_result=-2,network_errno;
@@ -53,6 +72,11 @@ static void event_store(const char *event,NSUInteger count) {
 }
 
 static void marker(const char *event, NSUInteger count) {
+    if(!timing_flushed) {
+        if(pending_used<16) {pending_events[pending_used].name=event;pending_events[pending_used++].count=count;}
+        else {timing_failed=1;timing_stage="event-buffer-full";}
+        return;
+    }
     event_store(event,count);
     char buffer[160];
     int length = snprintf(buffer, sizeof(buffer),
@@ -61,6 +85,37 @@ static void marker(const char *event, NSUInteger count) {
         write(2, buffer, (unsigned long)length);
     }
     NSLog(@"INFERNO_UIKIT_PROBE_V1 event=%s count=%lu", event, count);
+}
+
+static void update_footer(void) {
+    [diagnostic_footer setText:[NSString stringWithFormat:@"TIMING %s EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d NET=%d e=%d\n%s",timing_stage,event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno,network_result,network_errno,event_path]];
+}
+static void timing_timeout(void *unused) {
+    (void)unused;
+    if(timing_flushed || timing_failed)return;
+    timing_failed=1;timing_stage="bootstrap-timeout";update_footer();
+}
+static void timing_flush(void *unused) {
+    (void)unused;
+    if(timing_failed || timing_mask!=31)return;
+    struct inferno_timebase base={0,0};
+    if(mach_timebase_info(&base) || !base.numer || !base.denom) {
+        timing_failed=1;timing_stage="timebase-error";update_footer();return;
+    }
+    event_start(); // all first-launch boundaries already captured and returned
+    if(!event_identity_valid) {timing_failed=1;timing_stage="identity-error";update_footer();return;}
+    timing_stage="sending";
+    for(unsigned i=0;i<timing_used;i++) {
+        char line[192];
+        int n=snprintf(line,sizeof(line),"INFERNO_TIMING_V1 %s %d %u %s %llu %u %u\n",event_boot,getpid(),i+1,timing[i].hook,timing[i].ticks,base.numer,base.denom);
+        if(n<=0 || n>=(int)sizeof(line)) {timing_failed=1;timing_stage="format-error";break;}
+        network_result=inferno_send_event(line,(unsigned)n,&network_errno);
+        if(network_result) {timing_failed=1;timing_stage="send-error";break;}
+    }
+    if(!timing_failed)timing_stage="sent-not-acknowledged";
+    timing_flushed=1;
+    for(unsigned i=0;i<pending_used;i++)marker(pending_events[i].name,pending_events[i].count);
+    pending_used=0;update_footer();
 }
 
 @interface InfernoProbeController : UIViewController {
@@ -109,7 +164,8 @@ static void marker(const char *event, NSUInteger count) {
     [_button addTarget:self action:@selector(increment:) forControlEvents:(1UL << 6)];
     [view addSubview:_button]; // UIControlEventTouchUpInside
     _footer = [[UILabel alloc] initWithFrame:Rect(0, 0, 0, 0)];
-    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d NET=%d e=%d\n%s",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno,network_result,network_errno,event_path]];
+    diagnostic_footer=_footer;
+    update_footer();
     [_footer setNumberOfLines:0];
     [_footer setLineBreakMode:1];
     [_footer setFont:[UIFont systemFontOfSize:12]];
@@ -117,11 +173,11 @@ static void marker(const char *event, NSUInteger count) {
     [_footer setTextAlignment:1];
     [view addSubview:_footer];
     marker("view-loaded", _count);
-    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d NET=%d e=%d\n%s",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno,network_result,network_errno,event_path]];
+    update_footer();
 }
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d NET=%d e=%d\n%s",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno,network_result,network_errno,event_path]];
+    update_footer();
     CGRect bounds = [[self view] bounds];
     CGFloat width = bounds.size.width;
     CGFloat height = bounds.size.height;
@@ -132,8 +188,10 @@ static void marker(const char *event, NSUInteger count) {
     [_footer setFrame:Rect(16, height * 0.75, width - 32, height * 0.21)];
 }
 - (void)viewDidAppear:(BOOL)animated {
+    capture("appeared",8,mach_absolute_time());
     [super viewDidAppear:animated];
     marker("appeared", _count);
+    maybe_flush();
 }
 - (void)increment:(id)sender {
     (void)sender;
@@ -149,23 +207,29 @@ static void marker(const char *event, NSUInteger count) {
 @end
 @implementation InfernoProbeDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)options {
+    capture("launch-delegate",2,mach_absolute_time());
     (void)application;
     (void)options;
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [_window setRootViewController:[[InfernoProbeController alloc] init]];
     [_window makeKeyAndVisible];
+    capture("window-request",4,mach_absolute_time());
     marker("window-visible-requested", 0);
+    dispatch_after_f(dispatch_time(0,120000000000LL),&_dispatch_main_q,0,timing_timeout);
+    maybe_flush();
     return 1;
 }
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    capture("active",16,mach_absolute_time());
     (void)application;
     marker("active", 0);
+    maybe_flush();
 }
 @end
 
 int main(int argc, char **argv) {
+    capture("main",1,mach_absolute_time());
     @autoreleasepool {
-        event_start();
         marker("main", 0);
         return UIApplicationMain(argc, argv, nil, @"InfernoProbeDelegate");
     }
