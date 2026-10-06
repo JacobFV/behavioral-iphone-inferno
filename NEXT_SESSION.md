@@ -53,15 +53,28 @@ original Hello setup UI. Owned app registration and the original first-unlock AP
 transition are proven. Owned UIKit execution, touch navigation and a counter
 journey remain unproven. Do not return to the archived framework implementation.
 
-At 05:55 local, **app-boot-17 is live**, bootworker session72753, from verified
-stage37 root SHA256
-`860a6fe36cfbce1fcb2b3c906d42f326fe2af88e5399161980a1a3a1d6827617` and all six
-paired namespaces in `.local-build/reports/disk-preparation-37`.
-Emulator SHA256 `fda9447b41d7bd170a0abf6b56f4b0db822ff9ca84add3e648299d2aa7f59505`,
-source `9f92661b1b3154fb19de51ef9c9a1a6ed6e97d4f`; private serial/mailbox,900second
+At 06:08 local, **app-boot-18 is live**, bootworker session96389, from verified
+stage38 root SHA256
+`78de9f6dc03f5481f6f8428997eb6f205c044ad7dc5a87f9b21ed2d1c64fc161` and all paired38
+namespaces. Same emulatorfda9447b/source9f92661b, private serial/mailbox,900second
 startup trace,30second frames,strictjourney,maximum7200seconds,noUSB.
-Actual helper runs and console is ready, but original IOHIDUserDeviceCreate
-returnsNULL (backend-103), so no virtual service or HID report yet.
+Actual HID diagnostic build43 (68976bytes SHA256
+`c1e93f41382f13cfbd4348cf0bf4ab6216c4a45c164d2855d616f9fb502c31bf`) finds
+IOHIDResource class/registryID4294968036, but original type0 IOServiceOpen returns
+0xe00002e2/connection0; original Create returnsNULL. No HID report or input in18.
+Original code maps this to outer mac_iokit_check_open after client initialization.
+Disk worker is decoding exact Sandbox operation51/class allowlist; native is
+preparing only after confirmation a possible singleton
+com.apple.security.iokit-user-client-class entry IOHIDResourceDeviceUserClient,
+retaining developer virtual-device bool. No broad manager/admin grant or policy
+patch. A candidate must preserve compiled text/sections and be reviewed before
+stop18. Next39 source must be stopped18 with all paired namespaces.
+
+Stage38 installed only the diagnostic HID bytes; prior readiness/job unchanged,
+actual readbacks68976 and69207 matched, clean unmount/QMP0/all7 hashes retained.
+Stopped17 root0f3cbf476afa0e1842a2cc477ca658c6e518c599fda112be30f9c62019f30015
+and paired17 are preserved; normal QMP0 after635.876seconds. Native source453e802ac6,
+integrated33e6e96ec7. Current serial socket comes from18 command.json;17 is stopped.
 
 **Actual console roundtrip:** root sent one TAP after reviewed Hello, request
 `b1b5fc18ecbd4c0e9af9838aefbfba1b`, x29400 y31250 duration150ms. Original UART to
@@ -69,9 +82,8 @@ returnsNULL (backend-103), so no virtual service or HID report yet.
 No report was emitted, no info screen opened; before/after show Hello animation
 only. Evidence `app-guest-console-roundtrip-live*` and local17/hid-info-tap-1.
 Root owns input; do not replay that ID or claim API/ACK success as UI delivery.
-Native now prepares exact original IOHIDResource matching/open/close diagnostics
-to distinguish failure stages. HIDOpenReportDescriptor is not an exported API;
-no original-parser success is claimed. Keep17 live until next candidate reviewed.
+Those diagnostics executed in18 as recorded above. HIDOpenReportDescriptor is not
+an exported API; no original-parser success is claimed.
 
 **Firmware boundary:** stage36 added one 583090-byte unsigned IMG4 container to
 Preboot/<96-zero boot hash>/usr/standalone/firmware/FUD/Multitouch.img4. It preserves
@@ -124,10 +136,10 @@ monitor-frontend smoke proved transport plumbing only. Actual UART roundtrip is 
 remain unproven. The one root-triggered test is described above.
 
 **Live control:** root exclusively owns input. Runner owns the sole QMP connection;
-use `companion/qmp_control.py --report .local-build/reports/app-boot-17 ...`.
+use `companion/qmp_control.py --report .local-build/reports/app-boot-18 ...`.
 Never attach a second QMP client or read SPI RXDATA. Fixed seven register reads
 are allowlisted. Trace events must remain bounded and disabled afterward. VNC
-socket comes from current17 command.json; earlier socket paths are stale. No host
+socket comes from current18 command.json; earlier socket paths are stale. No host
 windows, network display endpoints, clipboard or arbitrary guest commands.
 
 **Lineage and retention:** stopped15 root
@@ -151,10 +163,10 @@ Evidence and exact original-code inspection are under companion/evidence/.
 
 ## Next concrete work
 
-1. Review/build exact original service match/open/close diagnostic candidate, then
-   stop17 normally and stage from its complete paired state. Keep the successful
-   command transport unchanged. Resolve actual API failure before more gestures;
-   never widen entitlements from a NULL return alone.
+1. Finish exact original Sandbox class-allowlist analysis. If confirmed, review
+   the narrow entitlement-only candidate, stop18 normally, stage39 and boot19.
+   Keep transport and descriptor unchanged. Require actual service-open result
+   and registered virtual device before claiming that boundary solved.
 2. Stage from a normally stopped paired tuple only after the next candidate is
    ready. Commit source, actual build manifests, readbacks, raw logs and hashes.
    Never copy or hash a live disk as an immutable source.
