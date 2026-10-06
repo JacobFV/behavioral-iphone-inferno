@@ -1,0 +1,39 @@
+{
+  "synthetic_only": true,
+  "guest_execution": false,
+  "parser_sha256": "3a8e8f63df06caafa786d1d8bc750a748e87b9805a67c0e0d3c5668f49d821fb",
+  "fixture_sha256": "48f276b70762a40780386dc6608c5ed995b2f0469977bd063c73ef97a1eb785b",
+  "exact_open_to_active_ns": 30,
+  "denied_identity_explicit_fallback": "PID/main-tick continuity only; kernel incarnation unavailable",
+  "prefixed_NSLog_ignored": true,
+  "malformed_cases": [
+    {
+      "case": "foreground_in_place",
+      "rejected": "App was not demonstrably backgrounded immediately before OPEN; foreground-in-place is not warm resume"
+    },
+    {
+      "case": "generation_mismatch",
+      "rejected": "Lifecycle generation mismatch"
+    },
+    {
+      "case": "mixed_main_tick",
+      "rejected": "Mixed lifecycle boot/PID/main-tick/timebase"
+    },
+    {
+      "case": "duplicate_named_open",
+      "rejected": "Expected exactly one OPEN timing for named request; found 2"
+    },
+    {
+      "case": "rejected_callback",
+      "rejected": "Named OPEN callback was not accepted"
+    },
+    {
+      "case": "identity_rejected",
+      "rejected": "Original process-incarnation check rejected the timed PID"
+    },
+    {
+      "case": "missing_active",
+      "rejected": "Missing, partial or oversized lifecycle sequence"
+    }
+  ]
+}
