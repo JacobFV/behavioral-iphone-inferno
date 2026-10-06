@@ -408,3 +408,14 @@ upstream-documented configuration experiment: only voicemail.vmd, CommCenter,
 CommCenterMobileHelper, CommCenterRootHelper, and locationd receive Disabled=true.
 Every other field and job is checked unchanged. This configuration was prepared
 without creating or modifying another disk, and is not part of the matrix run.
+
+The next integrated configuration restores the owned app startup job as mobile
+with `/usr/bin/inferno-launcher`, leaving its original Data bundle path, app ID,
+environment, and other fields unchanged. Relative to the initial mobile job,
+only ProgramArguments[0], KeepAlive={SuccessfulExit:false}, and ThrottleInterval=30
+change. Failed attempts can retry after migration delays; successful launcher
+exit stops retrying. Its original 120-second watchdog remains unchanged. The
+same configuration includes precisely the five documented service Disabled
+flags. Disk-preparation-26 uses a copy of stopped25 and stages only this cache;
+no app or Data content is recopied. Runtime registration and app opening still
+require independent execution evidence.
