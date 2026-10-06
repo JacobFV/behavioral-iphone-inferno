@@ -1,0 +1,122 @@
+{
+  "kind": "actual_firmware_free_two_overlay_chain_execution",
+  "ios_booted": false,
+  "source_sha256": "77807f20b78097355f4b9835643c1db30bd7ebf3fce7f488ecf3819a223a68ee",
+  "binary_sha256": "e3da84b179ce328e06a0f917aabb8e4d80c8a4cf64701212464831a270e1741e",
+  "base_before_after_sha256": "292027e115d40f708257795eb98ecf8304b681c1cced30b01fb274cb49f5177a",
+  "layer1_before_after_sha256": "77312122c1e9c411044740d3ce5010eeb07d037fc41b1d87544ab25e3972bd28",
+  "independent_reads": [
+    {
+      "command": [
+        "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-io",
+        "-r",
+        "-f",
+        "qcow2",
+        "-c",
+        "read -P 0xb6 65536 4096",
+        "-c",
+        "read -P 0xa5 131072 4096",
+        "-c",
+        "read -P 0x11 196608 4096",
+        "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/two/disks/root.qcow2"
+      ],
+      "stdout": "read 4096/4096 bytes at offset 65536\n4 KiB, 1 ops; 00.00 sec (85.424 MiB/sec and 21868.4395 ops/sec)\nread 4096/4096 bytes at offset 131072\n4 KiB, 1 ops; 00.00 sec (95.930 MiB/sec and 24557.9568 ops/sec)\nread 4096/4096 bytes at offset 196608\n4 KiB, 1 ops; 00.00 sec (255.377 MiB/sec and 65376.5690 ops/sec)\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-io",
+        "-r",
+        "-f",
+        "qcow2",
+        "-c",
+        "read -P 0xa5 65536 4096",
+        "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/one/disks/root.qcow2"
+      ],
+      "stdout": "read 4096/4096 bytes at offset 65536\n4 KiB, 1 ops; 00.00 sec (75.679 MiB/sec and 19373.8376 ops/sec)\n",
+      "stderr": "",
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-io",
+        "-r",
+        "-f",
+        "raw",
+        "-c",
+        "read -P 0 65536 4096",
+        "-c",
+        "read -P 0x11 196608 4096",
+        "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/raw/disks/root.raw"
+      ],
+      "stdout": "read 4096/4096 bytes at offset 65536\n4 KiB, 1 ops; 00.00 sec (15.325 MiB/sec and 3923.1687 ops/sec)\nread 4096/4096 bytes at offset 196608\n4 KiB, 1 ops; 00.00 sec (84.449 MiB/sec and 21618.8170 ops/sec)\n",
+      "stderr": "",
+      "exit_code": 0
+    }
+  ],
+  "rejection_checks": {
+    "wrong-base-hash": "Overlay backing base SHA256 mismatch",
+    "report-cycle": "Overlay report cycle or depth limit exceeded",
+    "depth-limit": "Overlay report cycle or depth limit exceeded",
+    "preexisting-writable-fd": "Backing inode still has an open writable descriptor: /proc/2434625/fd/3",
+    "missing-quit-ack": "Backing source must record normal emulator exit0 and QMP quit acknowledgement"
+  },
+  "two_stopped_chain_layers": [
+    {
+      "path": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/two/disks/root.qcow2",
+      "format": "qcow2",
+      "sha256": "9743ebb738ebd0ca2b4212f413c84dfec1b669836a50d5a1e7c4b3bb2d263d0a",
+      "bytes": 393216,
+      "device": 66306,
+      "inode": 53640299,
+      "mtime_ns": 1791303643713867475,
+      "ctime_ns": 1791303643892089844,
+      "mode": "0o444"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/one/disks/root.qcow2",
+      "format": "qcow2",
+      "sha256": "77312122c1e9c411044740d3ce5010eeb07d037fc41b1d87544ab25e3972bd28",
+      "bytes": 458752,
+      "device": 66306,
+      "inode": 53640281,
+      "mtime_ns": 1791303643269867829,
+      "ctime_ns": 1791303643409365526,
+      "mode": "0o444"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/raw/disks/root.raw",
+      "format": "raw",
+      "sha256": "292027e115d40f708257795eb98ecf8304b681c1cced30b01fb274cb49f5177a",
+      "bytes": 16777216,
+      "device": 66306,
+      "inode": 53640272,
+      "mtime_ns": 1791303643130321748,
+      "ctime_ns": 1791303643130321748,
+      "mode": "0o444"
+    }
+  ],
+  "qcow_checks": [
+    {
+      "image-end-offset": 458752,
+      "total-clusters": 256,
+      "check-errors": 0,
+      "allocated-clusters": 2,
+      "filename": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/one/disks/root.qcow2",
+      "format": "qcow2"
+    },
+    {
+      "image-end-offset": 393216,
+      "total-clusters": 256,
+      "check-errors": 0,
+      "allocated-clusters": 1,
+      "filename": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/two/disks/root.qcow2",
+      "format": "qcow2"
+    }
+  ],
+  "overlay_allocated_bytes": [
+    401408,
+    331776
+  ]
+}

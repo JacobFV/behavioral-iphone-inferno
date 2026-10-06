@@ -1,0 +1,112 @@
+{
+  "schema": "inferno.recorded-overlay-chain.v1",
+  "path": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/two/disks/root.qcow2",
+  "format": "qcow2",
+  "backing_report": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/one/report.json",
+  "backing_report_sha256": "4d325ff5eac17e1f319d39ce6f0d187da1cf9239622ecc38a75a7d97e9138f46",
+  "stopped_manifest": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/one/stopped-disk-hashes.json",
+  "stopped_manifest_sha256": "8768dd6b9b09e9edc9578287f2322d327edf23bb69ad200c3d3a8d2c06adfaf3",
+  "dependencies": [
+    {
+      "path": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/one/disks/root.qcow2",
+      "format": "qcow2",
+      "sha256": "77312122c1e9c411044740d3ce5010eeb07d037fc41b1d87544ab25e3972bd28",
+      "bytes": 458752,
+      "device": 66306,
+      "inode": 53640281,
+      "mtime_ns": 1791303643269867829,
+      "ctime_ns": 1791303643409365526,
+      "mode": "0o444"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/raw/disks/root.raw",
+      "format": "raw",
+      "sha256": "292027e115d40f708257795eb98ecf8304b681c1cced30b01fb274cb49f5177a",
+      "bytes": 16777216,
+      "device": 66306,
+      "inode": 53640272,
+      "mtime_ns": 1791303643130321748,
+      "ctime_ns": 1791303643130321748,
+      "mode": "0o444"
+    }
+  ],
+  "retention_markers": [
+    "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/one/disks/KEEP-OVERLAY-BACKING.json",
+    "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/raw/disks/KEEP-OVERLAY-BACKING.json"
+  ],
+  "tool": {
+    "root": "/home/brandonin/.local/share/inferno/disk-overlay-tools",
+    "binary": "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-img",
+    "sha256": "f26da24f8a7fd880ab13f6fcabf42d099fb68ea86df5de0c55e6faadfe2d9a6e",
+    "provenance": "/home/brandonin/.local/share/inferno/disk-overlay-tools/tool-provenance.json",
+    "provenance_sha256": "bc5893936a16a2b2dd5cf7e6408da5742a3e1909d7c8d3606ff100ec7236c9f2"
+  },
+  "image_info": {
+    "children": [
+      {
+        "name": "file",
+        "info": {
+          "children": [],
+          "virtual-size": 197120,
+          "filename": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/two/disks/root.qcow2",
+          "format": "file",
+          "actual-size": 200704,
+          "format-specific": {
+            "type": "file",
+            "data": {}
+          },
+          "dirty-flag": false
+        }
+      }
+    ],
+    "backing-filename-format": "qcow2",
+    "virtual-size": 16777216,
+    "filename": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/two/disks/root.qcow2",
+    "cluster-size": 65536,
+    "format": "qcow2",
+    "actual-size": 200704,
+    "format-specific": {
+      "type": "qcow2",
+      "data": {
+        "compat": "1.1",
+        "compression-type": "zlib",
+        "lazy-refcounts": false,
+        "refcount-bits": 16,
+        "corrupt": false,
+        "extended-l2": false
+      }
+    },
+    "full-backing-filename": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/one/disks/root.qcow2",
+    "backing-filename": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/one/disks/root.qcow2",
+    "dirty-flag": false
+  },
+  "source_sha256": "77807f20b78097355f4b9835643c1db30bd7ebf3fce7f488ecf3819a223a68ee",
+  "dependency_warning": "Retain every immutable layer and recorded report at its exact absolute path.",
+  "backing_after_stop": {
+    "unchanged": true,
+    "layers": [
+      {
+        "path": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/one/disks/root.qcow2",
+        "format": "qcow2",
+        "sha256": "77312122c1e9c411044740d3ce5010eeb07d037fc41b1d87544ab25e3972bd28",
+        "bytes": 458752,
+        "device": 66306,
+        "inode": 53640281,
+        "mtime_ns": 1791303643269867829,
+        "ctime_ns": 1791303643409365526,
+        "mode": "0o444"
+      },
+      {
+        "path": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3/raw/disks/root.raw",
+        "format": "raw",
+        "sha256": "292027e115d40f708257795eb98ecf8304b681c1cced30b01fb274cb49f5177a",
+        "bytes": 16777216,
+        "device": 66306,
+        "inode": 53640272,
+        "mtime_ns": 1791303643130321748,
+        "ctime_ns": 1791303643130321748,
+        "mode": "0o444"
+      }
+    ]
+  }
+}

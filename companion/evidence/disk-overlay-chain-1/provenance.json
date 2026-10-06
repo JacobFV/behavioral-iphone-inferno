@@ -1,0 +1,29 @@
+{
+  "kind": "actual_firmware_free_two_overlay_chain_validation",
+  "implementation_commit": "f15b82c6df",
+  "source_directory": "/home/brandonin/.local/share/inferno/disk-overlay-validation/chain-test/run-3",
+  "source_script": "Exact executed script retained; invoke with --companion-dir, --binary, and a fresh --output directory. Creates only owned synthetic data.",
+  "claim": "Actual unchanged QEMU machine none block reads/writes, two overlay levels; no iOS/app claim. Original qemu-io independently checked persisted data; raw and first overlay hashes unchanged.",
+  "guards": "Wrong hash, cycle, depth, missing quit acknowledgement and an already-open writable descriptor rejected. Readonly modes set only on newly created synthetic fixtures by the test, never on user/guest images.",
+  "excluded": "All raw/qcow2 image files, sockets, tool binaries and rejection fixtures remain outside Git.",
+  "files_sha256": {
+    "first-overlay-retention.json": "bdb409317ec589e93c4c781638429c9d2c49caa73488175a6fcc5c311bd60cc9",
+    "raw-backing-retention.json": "40a24a512708cfc5a092374d05d5ea5d43033d5d04dafad5041e8c3c693cdedf",
+    "summary.json": "7c57183319a07850f8405accf801257abd514ec43e208012863e13b4c6636a4b",
+    "executed-validation.py": "74f7fffde86879d6efe609335fd2ad8310f3ed253b0c833fd0369cfe07207902",
+    "one/report.json": "4d325ff5eac17e1f319d39ce6f0d187da1cf9239622ecc38a75a7d97e9138f46",
+    "one/stopped-disk-hashes.json": "8768dd6b9b09e9edc9578287f2322d327edf23bb69ad200c3d3a8d2c06adfaf3",
+    "one/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "one/root-overlay.json": "369c724b5eca5856373c1a9a3ea20e040e23eadc9aaf0f371213c68c99360c40",
+    "one/stdout.log": "4eb27e7db071c8bcc44b71d8981ae7a6ce6676c2c72a7b8f9d40601f09f3f963",
+    "one/qmp-transcript.jsonl": "6b5033b9c31d10c66bd8857d847f7372f002f3672caad889b2a86c586e081d03",
+    "one/command.json": "2ebccd5247b9413e0f4b78451b6c8d9a341476936b4dff0075a229d00204df41",
+    "two/report.json": "eb4818b7b401f3ddfbcfe3f2fffe20db337b05ae8250cbdfa8f9998cec7510f8",
+    "two/stopped-disk-hashes.json": "761b53497c7bad4203241a6c501f515a4a101adac8c9fdbbd62e4747f5b300c0",
+    "two/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "two/root-overlay.json": "012c3ea332fc1d579b4ba1b3b5bf8afffc825e7a0e479cf0a6d610f03593941e",
+    "two/stdout.log": "26079f6ecdc4394fc7a5a4593e4a35dbfc045544d5a3aed897f77a514e268369",
+    "two/qmp-transcript.jsonl": "1af2b489a7e4e31d6c9dab2a7b3de98648bf92ebfd2a7685a1c09d7282ee1811",
+    "two/command.json": "67b7a09f7f74e4e3d5f50f1150eccc1cbd339f4589763baf11f65666603a0c91"
+  }
+}
