@@ -53,8 +53,21 @@ Original owned app registration, normal first-unlock and visible Hello setup UI
 are now proven. Owned UIKit execution and actual touch response remain unproven. Firmware, System/Data preparation, keybag creation and renderer patches
 are established; do not return to the archived framework implementation.
 
-At05:15 local, **app-boot-15 is stopped and firmware-only stage36 is running**,
-native session13795. Stopped15 rootSHA
+At05:20 local, **app-boot-16 is live**, bootworker session5753, from verified
+firmware-only stage36 rootSHA
+6a7dba55d2e16890eec2a76d980a10016cdde0ad2265387048cd76ee699db1ac with all paired36
+namespaces. Same fda9447b emulator, unchanged app/helpers, private mailbox,
+900second bounded startup trace,30second captures,strictjourney,noUSB.
+Stage36 readback583090bytes/mismatches0, clean unmount/QMP0/all7hashes completed.
+**Actual loader result:** original FUD discovers staged file and enters normal
+IMG4 validation, but Img4DecodeCopyManifestDigest fails end-of-sequence, callback
+error34, kFWValidationFailed0xe0000001. No firmware/protocol/touch success. Do not
+fabricate a manifest/signature/ticket or introduce another validation bypass.
+Native and disk workers now inspect exact original IOHID event injection APIs and
+authorization as a separate owned UI-automation path. No helper or input yet;
+hardware touch remains explicitly unresolved. Keep16 live for setup/registry.
+
+Previous stopped lineage: Stopped15 rootSHA
 8cf8592076adef4f9daa20ff6520cc2bf157c81009561fc58041e07e91c24182 and all six paired
 auxiliary disks are preserved in app-boot-15; QMPquit/emulator0 after960.150192s.
 Stage36 uses this stopped tuple with the archived stable recovery binary. Boot15

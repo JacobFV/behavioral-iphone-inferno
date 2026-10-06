@@ -2,7 +2,17 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
-### Current execution boundary (05:15 local)
+### Current execution boundary (05:20 local)
+
+Boot16 is live from verified firmware-only stage36. Actual original FUD discovery
+succeeds, but original IMG4 validation fails when copying the absent manifest
+digest (callback34, status0xe0000001). Staging succeeded; firmware loading did not.
+No manifest/signature is fabricated and no further validation patch is proposed.
+Original IOHID event APIs and exact authorization are being inspected as a separate
+owned automation path toward the app journey, leaving hardware touch unresolved.
+Live16 retains the same emulator/app/helpers and a900second bounded trace window.
+
+Earlier investigation in this sequence:
 
 Boot14 failed before userland with an early framebuffer initialization panic.
 Its PC and preceding bandwidth failure match historical preparation16; an
