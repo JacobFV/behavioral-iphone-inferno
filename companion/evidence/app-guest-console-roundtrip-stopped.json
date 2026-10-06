@@ -1,0 +1,178 @@
+{
+  "kind": "stopped_guest_uart_console_roundtrip",
+  "source_report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-17",
+  "binary_sha256": "fda9447b41d7bd170a0abf6b56f4b0db822ff9ca84add3e648299d2aa7f59505",
+  "binary_source": "9f92661b1b3154fb19de51ef9c9a1a6ed6e97d4f",
+  "elapsed_seconds": 635.876219,
+  "emulator_exit": 0,
+  "quit_response": {
+    "return": {},
+    "id": 39
+  },
+  "stop_reason": "Authorized isolated HID creation diagnostic staging; one real console roundtrip established, virtual device creation failed.",
+  "serial_transport": {
+    "endpoint": "/tmp/inferno-boot-vjawrdl5/gesture-serial.sock",
+    "connected": true,
+    "drained_bytes": 511598,
+    "transmissions": [
+      {
+        "request_id": "b1b5fc18ecbd4c0e9af9838aefbfba1b",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 68
+      }
+    ],
+    "automatic_replay": false,
+    "connected_time": 1791290798.3649836,
+    "peer_closed": true,
+    "drain_thread_stopped": true,
+    "closed_time": 1791291433.47823
+  },
+  "trace_cleanup": {
+    "limit_seconds": 900,
+    "events": [
+      "apple_mt_spi_host_event",
+      "apple_mt_spi_enqueue",
+      "apple_mt_spi_dequeue",
+      "apple_mt_spi_tx_drained",
+      "apple_mt_spi_boot_command",
+      "apple_mt_spi_control"
+    ],
+    "enable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 5
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 6
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 7
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 8
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 9
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 10
+        }
+      }
+    ],
+    "disable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 33
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 34
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 35
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 36
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 37
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 38
+        }
+      }
+    ],
+    "start_time": 1791290798.3653378,
+    "deadline_time": 1791291698.3653378,
+    "stop_time": 1791291432.9597034,
+    "stop_reason": "runner cleanup",
+    "all_disabled": true
+  },
+  "visual_evidence": "app-guest-console-roundtrip-live.json retains before/after frames and original hashes. Both show original Hello setup; no response beyond greeting animation.",
+  "observations": [
+    "Exactly one operator tap command, matching guest REQUEST/ACK status-103.",
+    "Original IOHIDUserDeviceCreate returnedNULL at startup and request; no report emitted.",
+    "UART/console roundtrip proven; virtual touchscreen and UI input acceptance unproven.",
+    "No owned UIKit marker.",
+    "Trace disabled during cleanup before900second deadline; all six QMP replies succeeded."
+  ],
+  "files": {
+    "app-guest-console-roundtrip-stopped-serial.log": {
+      "bytes": 511598,
+      "sha256": "be5541793422d680e5a27cdcfa16e7db278ca44fcbd31ff10799e8bf676b8547"
+    },
+    "app-guest-console-roundtrip-stopped-serial-input-transcript.jsonl": {
+      "bytes": 524,
+      "sha256": "7e765a9c392b5c6d4514145f313a47f51b4940473d8a88b1797ea2ce9b639676"
+    },
+    "app-guest-console-roundtrip-stopped-control-transcript.jsonl": {
+      "bytes": 604,
+      "sha256": "de54a2ad8c1be85fd96f3539278073289fe217b776d770d9c512d7d46134bc8d"
+    },
+    "app-guest-console-roundtrip-stopped-qmp-transcript.jsonl": {
+      "bytes": 15174,
+      "sha256": "3bdb50866820a76a70bbf1aa3ba6ecd11f1c6c579b0e29b8aa5db5e1779a3645"
+    },
+    "app-guest-console-roundtrip-stopped-report.json": {
+      "bytes": 32523,
+      "sha256": "2f95786c938c74d3bf0883b2db7ccdabb1577b6d4631da519803a38e0beb52f1"
+    },
+    "app-guest-console-roundtrip-stopped-stopped-disk-hashes.json": {
+      "bytes": 1716,
+      "sha256": "540480b775557af254bd5591b2892081e2f9fad4cb04a9f1bfc817d4cc004efa"
+    },
+    "app-guest-console-roundtrip-stopped-guest-errors.log": {
+      "bytes": 6681,
+      "sha256": "997738219dbbb0038466f61b2e7473fca392d9641a76a28f1dd00cbb966348f7"
+    },
+    "app-guest-console-roundtrip-stopped-stderr.log": {
+      "bytes": 2827,
+      "sha256": "90d324fa1e1c26c49589cda1ea8076ea1c3f9073a1f1fccf44bdc91ae15d91eb"
+    }
+  }
+}
