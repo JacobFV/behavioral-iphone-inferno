@@ -1,0 +1,81 @@
+{
+  "scope": "Actual copied frozen auxiliary opened writable by firmware-free QEMU; no guest execution claim",
+  "source": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/disks/firmware.raw",
+  "source_sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74",
+  "source_identity_unchanged": true,
+  "private_mode": "0600",
+  "duplicate_rejected": true,
+  "command": [
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "-machine",
+    "none",
+    "-accel",
+    "tcg",
+    "-m",
+    "128M",
+    "-S",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "none",
+    "-drive",
+    "file=/tmp/inferno-private-aux-check-48-final/firmware.raw,format=raw,if=none,id=private",
+    "-qmp",
+    "unix:/tmp/inferno-private-aux-check-48-final/qmp.sock,server=on,wait=off"
+  ],
+  "query_block": {
+    "return": [
+      {
+        "device": "private",
+        "locked": false,
+        "removable": true,
+        "inserted": {
+          "iops_rd": 0,
+          "detect_zeroes": "off",
+          "active": true,
+          "image": {
+            "virtual-size": 8388608,
+            "filename": "/tmp/inferno-private-aux-check-48-final/firmware.raw",
+            "format": "raw",
+            "actual-size": 0,
+            "dirty-flag": false
+          },
+          "iops_wr": 0,
+          "ro": false,
+          "children": [
+            {
+              "node-name": "#block082",
+              "child": "file"
+            }
+          ],
+          "node-name": "#block174",
+          "backing_file_depth": 0,
+          "drv": "raw",
+          "iops": 0,
+          "bps_wr": 0,
+          "write_threshold": 0,
+          "encrypted": false,
+          "bps": 0,
+          "bps_rd": 0,
+          "cache": {
+            "no-flush": false,
+            "direct": false,
+            "writeback": true
+          },
+          "file": "/tmp/inferno-private-aux-check-48-final/firmware.raw"
+        },
+        "type": "unknown"
+      }
+    ],
+    "id": 2
+  },
+  "quit": {
+    "return": {},
+    "id": 3
+  },
+  "exit_code": 0,
+  "boot_source_sha256": "3f300239d6c624457a541295806a8f780f84456814d38f16fb20b9e5a114fdd4",
+  "binary_sha256": "670caae5e8b86dbd07968b053ce0667328cce648935cefb8649357400f9c8e59"
+}

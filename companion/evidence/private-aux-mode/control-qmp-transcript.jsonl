@@ -1,0 +1,8 @@
+{"direction": "receive", "time": 1791321128.9337735, "raw": "{\"QMP\": {\"version\": {\"qemu\": {\"micro\": 2, \"minor\": 2, \"major\": 10}, \"package\": \"\"}, \"capabilities\": [\"oob\"]}}\r\n"}
+{"direction": "send", "time": 1791321128.9338758, "raw": "{\"execute\": \"qmp_capabilities\", \"id\": 1}\n"}
+{"direction": "receive", "time": 1791321128.9342115, "raw": "{\"return\": {}, \"id\": 1}\r\n"}
+{"direction": "send", "time": 1791321128.9342782, "raw": "{\"execute\": \"query-block\", \"id\": 2}\n"}
+{"direction": "receive", "time": 1791321128.935333, "raw": "{\"return\": [{\"device\": \"private\", \"locked\": false, \"removable\": true, \"inserted\": {\"iops_rd\": 0, \"detect_zeroes\": \"off\", \"active\": true, \"image\": {\"virtual-size\": 8388608, \"filename\": \"/tmp/inferno-private-aux-check-48-final/firmware.raw\", \"format\": \"raw\", \"actual-size\": 0, \"dirty-flag\": false}, \"iops_wr\": 0, \"ro\": false, \"children\": [{\"node-name\": \"#block082\", \"child\": \"file\"}], \"node-name\": \"#block174\", \"backing_file_depth\": 0, \"drv\": \"raw\", \"iops\": 0, \"bps_wr\": 0, \"write_threshold\": 0, \"encrypted\": false, \"bps\": 0, \"bps_rd\": 0, \"cache\": {\"no-flush\": false, \"direct\": false, \"writeback\": true}, \"file\": \"/tmp/inferno-private-aux-check-48-final/firmware.raw\"}, \"type\": \"unknown\"}], \"id\": 2}\r\n"}
+{"direction": "send", "time": 1791321128.9353724, "raw": "{\"execute\": \"quit\", \"id\": 3}\n"}
+{"direction": "receive", "time": 1791321128.9358814, "raw": "{\"timestamp\": {\"seconds\": 1791321128, \"microseconds\": 935606}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"}
+{"direction": "receive", "time": 1791321128.9359748, "raw": "{\"return\": {}, \"id\": 3}\r\n"}
