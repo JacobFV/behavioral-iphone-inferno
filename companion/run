@@ -18,6 +18,7 @@ case "$command" in
     resources) exec python3 "$root/companion/measure-process.py" "$@" ;;
     density) exec python3 "$root/companion/measure-density.py" "$@" ;;
     preserve-stopped) exec python3 "$root/companion/preserve-stopped.py" "$@" ;;
+    sample-result) exec python3 "$root/companion/sample-result.py" "$@" ;;
     verify-journey) exec python3 "$root/companion/verify-journey.py" "$@" ;;
     build) exec "$root/companion/build-linux.sh" --build-root "$root/.local-build" --jobs 8 "$@" ;;
     version) exec "$root/.local-build/build/qemu-system-aarch64" --version "$@" ;;
@@ -35,6 +36,7 @@ case "$command" in
           '  resources  measure one live emulator process' \
           '  density  measure exactly two live sibling emulator processes' \
           '  preserve-stopped  verify normal shutdown and retain seven-disk hashes' \
+          '  sample-result  reconstruct one named original-tool sample without input' \
           '  verify-journey  corroborate a stopped strict journey from raw records' \
           '  build    rebuild the current committed fork; optional --jobs 1..8' \
           '  version  print the actual executable version' ;;
