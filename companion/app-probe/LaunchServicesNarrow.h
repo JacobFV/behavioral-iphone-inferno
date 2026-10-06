@@ -20,6 +20,7 @@ __attribute__((objc_root_class))
 @end
 @interface LSApplicationWorkspace : NSObject
 + (instancetype)defaultWorkspace;
+- (BOOL)registerApplication:(NSURL *)url;
 - (BOOL)openApplicationWithBundleID:(NSString *)identifier;
 @end
 @interface LSApplicationProxy : NSObject
@@ -33,7 +34,6 @@ __attribute__((objc_root_class))
 - (BOOL)isValid;
 @end
 extern Class NSClassFromString(NSString *name);
-extern int LSRegisterURL(const void *url, unsigned char update);
 extern void NSLog(NSString *format, ...);
 extern int snprintf(char *buffer, unsigned long size, const char *format, ...);
 extern long write(int descriptor, const void *buffer, unsigned long length);

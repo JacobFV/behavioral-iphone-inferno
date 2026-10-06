@@ -1,10 +1,10 @@
 --- !tapi-tbd
 # SPDX-License-Identifier: AGPL-3.0-or-later
-# Self-authored symbol declaration; original guest implements the function.
+# Self-authored symbol declaration; original guest provides this class.
 tbd-version: 4
 targets: [ arm64-ios ]
 install-name: '/System/Library/Frameworks/CoreServices.framework/CoreServices'
 exports:
   - targets: [ arm64-ios ]
-    symbols: [ _LSRegisterURL ]
+    objc-classes: [ LSApplicationWorkspace ]
 ...
