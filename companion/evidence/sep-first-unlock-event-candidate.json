@@ -1,0 +1,46 @@
+{
+  "scope": "Candidate source review, not guest execution evidence",
+  "baseline": "abe249fe3bd74df88130da035f21330a7c046d36",
+  "source_sha256": "ade1a996e23c185aadd62acdfcd5fb6e7210bab2690f89264671226c4d999d81",
+  "event": {
+    "endpoint": 18,
+    "tag": 0,
+    "op": 1,
+    "param": 0,
+    "data": 0,
+    "wire_hex": "1200010000000000"
+  },
+  "guards": [
+    "Compiled only with INFERNO_SIMULATED_SEP.",
+    "Existing exact header/version/flags/selector/size validation retained.",
+    "Only code0x18, handle0, operation0, options0, secret_length0 can transition.",
+    "Output capacity is validated before committing state.",
+    "Local first_unlock is false for all other paths and true only when accepted state was previously false.",
+    "State commits before the IPC response sender, which DMA-writes the response then queues its normal reply.",
+    "The asynchronous event is queued immediately after that reply; no new timer or queue.",
+    "Response action flags and deadlines remain zero.",
+    "Repeated accepted unlocks, state queries, rejected requests and insufficient output capacity emit no first-unlock event."
+  ],
+  "ordering_source": {
+    "handler": "apple_sep_sim_handle_messages holds s->lock for request handling.",
+    "sender": "apple_sep_sim_send_message -> apple_a7iop_send_ap -> apple_a7iop_mailbox_send_ap -> apple_a7iop_mailbox_send.",
+    "queue": "mailbox/core.c locks inbox, inserts QTAILQ tail; receive removes FIRST. FIFO preserves reply-before-event order.",
+    "limitations": "Existing transport does not expose delivery acknowledgement to this sender. Log says queued, not consumed or UI complete."
+  },
+  "required_runtime_validation": [
+    "Original helper still reports unlock result0 and first0->1.",
+    "Exactly one queued-event log for the accepted first transition.",
+    "Original event consumers start/complete normally; Screen Time UI advances only via its original callback.",
+    "No assertion of Screen Time completion from source review alone."
+  ],
+  "receiver_evidence_commit": "6e6341f6ee (integrated main 43122424c0)",
+  "receiver_evidence_file": "companion/evidence/screentime-first-unlock-dependency-inspection.json",
+  "protocol_check": {
+    "command": "cc -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined -g sep-first-unlock-event-check.c -o sep-first-unlock-event-check; ./sep-first-unlock-event-check",
+    "source": "/home/brandonin/.local/share/inferno/native-probe/sep-first-unlock-event-check.c",
+    "source_sha256": "5828388a0db7f3290467ea02e386baea2639c226f5649f88ab04cf1f05990789",
+    "extraction": "Exact candidate inferno_sep_system_bag_message function copied automatically into prior isolated harness; transport stubs capture sends and returned response bytes. This does not execute real DMA, mailbox IRQ, OS or UI.",
+    "result": "PASS, exit0, no sanitizer reports. Reply then exactly one event only on first accepted transition; repeated unlock and queries reply only; rejected handle/options/operation/nonempty-secret/output capacity and all truncated requests0..115 preserve state and emit no event.",
+    "harness_correction": "Initial harness asserted DER sls value at offset102 (its length byte); corrected test-only offset to103. Candidate source unchanged."
+  }
+}

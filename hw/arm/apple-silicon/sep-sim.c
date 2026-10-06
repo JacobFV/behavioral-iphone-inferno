@@ -674,8 +674,10 @@ static void apple_sep_sim_keystore_send_ipc_resp(AppleSEPSimState *s,
 #ifdef INFERNO_SIMULATED_SEP
 /*
  * Partial protocol for the disposable, empty-secret simulated system bag.
- * See companion/evidence/sep-unlock-protocol-inspection.json. Neither timers
- * nor notifications are synthesized; other device transitions are unsupported.
+ * See companion/evidence/sep-unlock-protocol-inspection.json. No timers
+ * are modeled. The accepted first unlock completes through the original SKS
+ * mailbox event path (sep-first-unlock-event-candidate.json); other device
+ * transitions are unsupported.
  */
 static bool inferno_sep_system_bag_message(AppleSEPSimState *s,
                                            const KeystoreMessage *msg,
@@ -690,6 +692,7 @@ static bool inferno_sep_system_bag_message(AppleSEPSimState *s,
     KeystoreIPCHeader *reply = (KeystoreIPCHeader *)response;
     uint8_t *out = response + KEYSTORE_IPC_HEADER_SIZE;
     uint32_t size = 0, state;
+    bool first_unlock = false;
     int error = -11; /* Original err_sks_to_aks: bad argument. */
 
     if (code != 0x04 && code != 0x18 && code != 0x19) {
@@ -755,6 +758,7 @@ static bool inferno_sep_system_bag_message(AppleSEPSimState *s,
         goto done;
     }
     if (code == 0x18) {
+        first_unlock = !s->inferno_system_bag_unlocked_since_boot;
         s->inferno_system_bag_unlocked_since_boot = true;
     }
     state = BIT(22) | (s->inferno_system_bag_unlocked_since_boot ? BIT(2) : 0);
@@ -787,6 +791,18 @@ static bool inferno_sep_system_bag_message(AppleSEPSimState *s,
            sizeof(reply->audit_session_id));
     memcpy(reply->ipc_digest, hdr->ipc_digest, sizeof(reply->ipc_digest));
     apple_sep_sim_keystore_send_ipc_resp(s, msg, response, size);
+    if (first_unlock) {
+        /* Original SKS asynchronous event: tag=event 0, op=first-unlock 1,
+         * param=volume flag 0, data=system handle 0. The original kernel emits
+         * its first-unlock IOKit message; the installed plugin owns notification
+         * delivery. State is committed and the IPC reply queued before this
+         * event on the existing FIFO. Response action flags remain zero.
+         */
+        apple_sep_sim_send_message(s, EP_KEYSTORE, 0, 1, 0, 0);
+        qemu_log_mask(LOG_GUEST_ERROR,
+                      "INFERNO SEP first-unlock event queued ep=%u tag=0 "
+                      "op=1 param=0 handle=0 after_reply=1\n", EP_KEYSTORE);
+    }
     error = 0;
 done:
     if (error != 0) {
