@@ -73,16 +73,21 @@ def main():
             log.flush()
             subprocess.run(argv, check=True, stdout=log, stderr=subprocess.STDOUT)
 
-    obj = output / 'Main.o'
-    run([clang, '--target=arm64-apple-ios14', '-fobjc-runtime=ios-14.0',
-         '-fno-objc-arc', '-fno-stack-protector', '-ffreestanding', '-O2',
-         '-Wall', '-Wextra', '-c', str(source / 'Main.m'), '-o', str(obj)])
-    command = [linker, '-arch', 'arm64', '-platform_version', 'ios', '14.0', '14.0',
-               '-e', '_main', '-no_uuid', '-adhoc_codesign']
-    for name in ('libSystem', 'libobjc', 'Foundation', 'UIKit'):
-        command += ['-needed_library', str(source / 'stubs' / (name + '.tbd'))]
-    run(command + [str(obj), '-o', str(bundle / 'InfernoProbe')])
+    def build(name, executable, libraries):
+        obj = output / (name + '.o')
+        run([clang, '--target=arm64-apple-ios14', '-fobjc-runtime=ios-14.0',
+             '-fno-objc-arc', '-fno-stack-protector', '-ffreestanding', '-O2',
+             '-Wall', '-Wextra', '-c', str(source / (name + '.m')), '-o', str(obj)])
+        command = [linker, '-arch', 'arm64', '-platform_version', 'ios', '14.0', '14.0',
+                   '-e', '_main', '-no_uuid', '-adhoc_codesign']
+        for library in libraries:
+            command += ['-needed_library', str(source / 'stubs' / (library + '.tbd'))]
+        run(command + [str(obj), '-o', str(executable)])
+
+    build('Main', bundle / 'InfernoProbe', ('libSystem', 'libobjc', 'Foundation', 'UIKit'))
+    build('Launcher', output / 'inferno-launcher', ('libSystem', 'libobjc', 'Foundation', 'CoreServices'))
     shutil.copyfile(source / 'Info.plist', bundle / 'Info.plist')
+    shutil.copyfile(source / 'org.inferno.app-probe.plist', output / 'org.inferno.app-probe.plist')
     evidence = {
         'status': 'built; guest installation and execution untested',
         'git_revision': subprocess.check_output(['git', '-C', str(repo), 'rev-parse', 'HEAD'], text=True).strip(),
@@ -92,8 +97,10 @@ def main():
                   for path in (clang, linker)},
         'sources': {str(path.relative_to(source)): sha(path) for path in sorted(source.rglob('*')) if path.is_file()},
         'bundle': {path.name: sha(path) for path in sorted(bundle.iterdir())},
+        'launcher_sha256': sha(output / 'inferno-launcher'),
         'signing': {'method': 'LLVM ad-hoc; no certificate or Apple identity',
-                    **signature(bundle / 'InfernoProbe')},
+                    'app': signature(bundle / 'InfernoProbe'),
+                    'launcher': signature(output / 'inferno-launcher')},
     }
     (output / 'build-evidence.json').write_text(json.dumps(evidence, indent=2) + '\n')
     print(bundle)

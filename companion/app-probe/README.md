@@ -58,3 +58,52 @@ Markers go to stderr and NSLog with prefix `INFERNO_UIKIT_PROBE_V1` and events
 launch route connects it there; capture the actual process/system log otherwise.
 A requested window is not a captured visible screen. Acceptance needs the actual
 before/after framebuffer and the matching interaction marker from the guest.
+
+## Separate owned launcher
+
+The same build produces `inferno-launcher` and the owned
+`org.inferno.app-probe.plist` template. The app ID is now
+`org.inferno.companion.probe`. Both executables are independently ad-hoc signed;
+the evidence records both signatures and hashes. No privileged entitlement is
+added on this initial attempt. The launcher uses self-authored declarations and
+the original CoreServices implementation, not registration database fabrication.
+
+Proposed staging on a NEW disposable disk only:
+
+- Data: `/private/var/inferno/InfernoProbe.app` and
+  `/private/var/inferno/inferno-launcher`, root:wheel; directories and executables
+  mode0755, Info.plist0644. These are proposed readable/executable permissions,
+  not proof that LaunchServices accepts this location.
+- Owned job template: `/System/Library/LaunchDaemons/org.inferno.app-probe.plist`,
+  root:wheel0644, requiring an explicit writable cloned System preparation phase.
+  The job runs as mobile, routes stdout/stderr to `/dev/console`, and does not
+  KeepAlive. Original launchd's embedded Bootstrap.Paths includes this directory,
+  but not `/Library/LaunchDaemons`; no shipped launchctl was found in the inspected
+  System inventory. A plist placed only on Data has no established bootstrap route.
+
+The launcher calls `LSRegisterURL(bundleURL, false)` and logs its numeric OSStatus,
+then queries `LSApplicationProxy` for validity, bundle URL, container and type.
+Only after successful registration and valid proxy does it call
+`LSApplicationWorkspace.openApplicationWithBundleID:`. It retries at most30 times,
+with three seconds between attempts; default SIGALRM terminates the process after
+120 seconds even if framework IPC blocks. An accepted open request exits0; retry
+exhaustion exits1. A watchdog termination will not print an ordinary exit marker.
+`request-accepted-not-visual-proof` explicitly means only service acknowledgement.
+App markers and the actual screenshot/tap journey are still required.
+
+The original same-build recovery CoreServices1114.5 binary was inspected:
+`registerApplication:` at0x41f4c calls LSRegisterURL at0xd1838; `openApplicationWithBundleID:`
+at0x3c700 returns a Boolean callback result. Its registration method explicitly
+logs that it does not send the applicationsDidInstall notification, so an icon
+appearing is not guaranteed. The helper calls LSRegisterURL directly to preserve
+its numeric failure status. The System shared-cache variant and the whole route
+remain unexecuted. The source symbol declarations are not a promise of acceptance.
+
+If permission, container or signing policy rejects this honest owned bundle,
+retain the actual error and inspect that rejection before changing the fixture.
+No Apple signer identity is placed in registration dictionaries. The primary
+[Procursus uiopen implementation](https://github.com/ProcursusTeam/uikittools-ng/blob/main/uiopen.m)
+uses the same open-by-ID method; its [entitlement file](https://github.com/ProcursusTeam/uikittools-ng/blob/main/uiopen.plist)
+provides launch privilege, but whether our guest requires that permission is
+still an execution question. Do not copy its broad utility entitlement sets
+without a demonstrated need.
