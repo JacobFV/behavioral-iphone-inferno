@@ -25,8 +25,8 @@ synthetic references are not native iOS acceptance evidence.
 `python3 companion/smoke.py --binary PATH` starts `-machine none -accel tcg -S`
 with no display, guest image or CPU, talks QMP, verifies that the executable lists
 `t8030`, and shuts it down. It reports control-plane results only; it does not
-claim iOS boot or app compatibility. Build instructions will be recorded with the
-working build script and local evidence in PROGRESS.md.
+claim iOS boot or app compatibility. The working build instructions follow; local execution evidence is recorded in
+PROGRESS.md.
 
 ## Build and run the control-plane check
 
@@ -47,7 +47,9 @@ python3 companion/smoke.py --binary .local-build/build/qemu-system-aarch64
 Build identity is recorded in `.local-build/build-manifest.json`; raw QMP results
 and stderr go under `.local-build/reports/`. Neither report is an iOS acceptance
 claim. The build enables TCG, Pixman/PNG, VNC, slirp, LZFSE, Nettle and GnuTLS and
-uses no GTK/SDL window frontend. The smoke itself exposes only a temporary local
+uses no GTK/SDL window frontend. Retain the entire build root: the executable
+uses local dependency paths and upstream branding resources, so it is not a
+standalone redistributable binary. The smoke itself exposes only a temporary local
 Unix socket and starts no VNC server.
 
 ## Source facts and limits
