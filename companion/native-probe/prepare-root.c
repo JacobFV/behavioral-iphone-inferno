@@ -70,6 +70,42 @@ static int volume_name(const char *point, char *out, size_t capacity) {
     snprintf(out, capacity, "%s", value);
     return 0;
 }
+/* Darwin mount.h statfs64 ABI. Only filesystem space is logged. */
+struct filesystem_space {
+    uint32_t block_size; int io_size;
+    unsigned long long blocks, free_blocks, available_blocks, files, free_files;
+    int fsid[2]; uint32_t owner, type, flags, subtype;
+    char type_name[16], mounted_on[1024], mounted_from[1024];
+    uint32_t extended_flags, reserved[7];
+};
+extern int statfs(const char *, struct filesystem_space *);
+_Static_assert(sizeof(struct filesystem_space) == 2168, "Darwin statfs64 ABI");
+static int space(const char *point, const char *stage) {
+    struct filesystem_space fs;
+    if (statfs(point, &fs)) return -1;
+    printf("INFERNO_SPACE %s block_size=%u available_blocks=%llu available_bytes=%llu\n",
+           stage, fs.block_size, fs.available_blocks, fs.available_blocks * fs.block_size); fflush(0);
+    return 0;
+}
+static int copy_contents(const char *source, const char *destination) {
+    void *directory = opendir(source);
+    if (!directory) return -1;
+    struct directory_entry *entry;
+    int error = 0;
+    while ((entry = readdir(directory))) {
+        if (!strcmp(entry->name, ".") || !strcmp(entry->name, "..")) continue;
+        char from[2048], to[2048];
+        int from_size = snprintf(from, sizeof(from), "%s/%s", source, entry->name);
+        int to_size = snprintf(to, sizeof(to), "%s/%s", destination, entry->name);
+        if (from_size < 0 || from_size >= sizeof(from) || to_size < 0 || to_size >= sizeof(to)) { error = -1; break; }
+        printf("INFERNO_COPY %s -> %s\n", from, to); fflush(0);
+        if (copyfile(from, to, 0, 15 | (1 << 15) | (1 << 18) | (1 << 19))) { error = -1; break; }
+    }
+    if (error) { printf("INFERNO_COPY_FAILED errno=%d\n", *__error()); fflush(0); }
+    closedir(directory);
+    if (!error) error = copyfile(source, destination, 0, 7 | (1 << 18) | (1 << 19));
+    return error;
+}
 static int ensure(const char *path) {
     if (!mkdir(path, 0755) || *__error() == 17) return 0;
     printf("INFERNO_PREP_MKDIR_FAILED %s errno=%d\n", path, *__error());
@@ -77,11 +113,12 @@ static int ensure(const char *path) {
 }
 int main(int argc, char **argv) {
     if (argc < 2 || strcmp(argv[1], "--disposable-root-copy")) return 2;
-    int roles = 0, existing = 0, gigalocker = 0;
+    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0;
     for (int i=2; i<argc; ++i) {
         if (!strcmp(argv[i], "--role-volumes")) roles = 1;
         else if (!strcmp(argv[i], "--existing-volumes")) existing = 1;
         else if (!strcmp(argv[i], "--init-gigalocker")) gigalocker = 1;
+        else if (!strcmp(argv[i], "--seed-data")) seed_data = 1;
         else return 2;
     }
     printf("INFERNO_PREP_BEGIN: disposable /dev/disk0s1 existing=%d roles=%d gigalocker=%d\n", existing, roles, gigalocker); fflush(0);
@@ -95,7 +132,12 @@ int main(int argc, char **argv) {
         char *hardware[] = {"/sbin/newfs_apfs", "-s25165824", "-A", "-o", "role=h", "-v", "Hardware", "/dev/disk0s1", 0};
         if (run(xart) || run(hardware)) return 4;
     }
-    char system_device[64] = {0}, preboot_device[64] = {0}, xart_device[64] = {0};
+    if (seed_data) {
+        char *data[] = {"/sbin/newfs_apfs", "-A", "-o", "role=d", "-v", "Data", "/dev/disk0s1", 0};
+        char *update[] = {"/sbin/newfs_apfs", "-A", "-o", "role=p", "-v", "Update", "/dev/disk0s1", 0};
+        if (run(data) || run(update)) return 15;
+    }
+    char system_device[64] = {0}, preboot_device[64] = {0}, xart_device[64] = {0}, data_device[64] = {0}, hardware_device[64] = {0};
     /* Discover actual volume identities, never infer an index from creation order. */
     for (int i = 1; i <= 16; ++i) {
         char device[64], name[1024];
@@ -108,6 +150,8 @@ int main(int argc, char **argv) {
             if (!access("/mnt1/System/Library/CoreServices/SystemVersion.plist", 0) &&
                 !access("/mnt1/usr/standalone/firmware", 0))
                 snprintf(system_device, sizeof(system_device), "%s", device);
+            if (!strcmp(name, "Data")) snprintf(data_device, sizeof(data_device), "%s", device);
+            if (!strcmp(name, "Hardware")) snprintf(hardware_device, sizeof(hardware_device), "%s", device);
             if (!strcmp(name, "xART")) snprintf(xart_device, sizeof(xart_device), "%s", device);
             if (!strcmp(name, "Preboot")) snprintf(preboot_device, sizeof(preboot_device), "%s", device);
         }
@@ -129,6 +173,19 @@ int main(int argc, char **argv) {
     }
     sync();
     if (unmount("/mnt2", 0) || unmount("/mnt1", 0)) return 11;
+    }
+    if (seed_data) {
+        if (!data_device[0] || !hardware_device[0]) return 16;
+        if (mount_at(system_device, "/mnt1", 1) || mount_at(data_device, "/mnt2", 0)) return 17;
+        if (space("/mnt2", "before-data-seed") || copy_contents("/mnt1/private/var", "/mnt2") || space("/mnt2", "after-data-seed")) return 18;
+        if (ensure("/mnt4") || mount_at(hardware_device, "/mnt4", 0)) return 19;
+        const char *dirs[] = {"/mnt4/FactoryData", "/mnt4/FactoryData/System", "/mnt4/FactoryData/System/Library", "/mnt4/FactoryData/System/Library/Caches", "/mnt4/FactoryData/System/Library/Caches/com.apple.factorydata", 0};
+        for (int i=0; dirs[i]; ++i) if (ensure(dirs[i])) return 20;
+        if (!access("/mnt1/System/Library/Caches/com.apple.factorydata", 0) &&
+            copy_contents("/mnt1/System/Library/Caches/com.apple.factorydata", dirs[4])) return 21;
+        sync();
+        if (unmount("/mnt4", 0) || unmount("/mnt2", 0) || unmount("/mnt1", 0)) return 22;
+        printf("INFERNO_DATA_COMPLETE: original var seeded; Update and Hardware mount paths prepared\n"); fflush(0);
     }
     if (gigalocker) {
         if (!xart_device[0] || ensure("/mnt7") || mount_at(xart_device, "/mnt7", 0)) return 12;
