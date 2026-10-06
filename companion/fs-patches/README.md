@@ -44,3 +44,25 @@ run duration (600 seconds for this cache), not treated as instantaneous. The hel
 has no network operations, key extraction, or signing operations. Its SHA256
 implementation was checked against the standard empty and `abc` vectors on the
 host; actual guest hashes must also match independently calculated host hashes.
+
+## Actual application evidence
+
+`.local-build/reports/cache-patching-1/serial.log` records both full guest hashes:
+
+- Original: `59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1`.
+- Patched: `af1001abe5b075afd337bf110562746c3e006e9d93951e163fc5daae062aeab8`.
+
+All 45 records (180 replacement bytes) were validated before writes. The entire
+2,052,489,216-byte file was hashed before and after, and byte readback passed.
+Serial ends with `INFERNO_CACHE_UNMOUNT status=0` and
+`INFERNO_CACHE_RESULT status=0`. The experiment used a copy of app-staging-1 root
+and all auxiliary namespaces. After helper success, the runner was intentionally
+interrupted to execute its finally-block QMP quit; quit was acknowledged. Its
+`attempt_completed: false`/KeyboardInterrupt is the deliberate early runner
+stop, not a helper failure or installed-OS boot claim. Stopped disk identities
+are recorded in `cache-patching-1/stopped-disk-hashes.json`.
+
+The durable generator independently reproduced the 1104-byte plan SHA256
+`c20a73ee8aa777ea36595cf60fb1ed86b9fc4a3bad42645a34045536ab01b079`,
+including a complete outside-record comparison. Local build, preparation, plan
+and upstream provenance are under `~/.local/share/inferno/fs-patcher-modified/`.
