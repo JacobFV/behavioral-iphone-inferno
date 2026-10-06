@@ -170,3 +170,26 @@ entitlement remains exactly `com.apple.developer.hid.virtual.device=true`.
 The only proposed installed change is the HID helper (68,976 bytes, SHA256
 `c1e93f41382f13cfbd4348cf0bf4ab6216c4a45c164d2855d616f9fb502c31bf`).
 Existing readiness, app, jobs, and firmware stay byte-identical for this comparison.
+
+
+### Entitlement-only candidate after boot 18
+
+Original Sandbox operation51 evaluates `iokit-user-client-class` against the
+caller's `com.apple.security.iokit-user-client-class` entitlement string array;
+the traced terminal denial names that exact key. The developer virtual-device
+Boolean admits the driver-specific initialization but does not replace this
+outer class gate. The candidate adds only the singleton class array
+`[IOHIDResourceDeviceUserClient]` alongside the existing Boolean. It does not
+add manager/admin permissions or change an operating-system policy.
+
+Build44 is a copy of the exact build43 executable re-signed with the owned
+ad-hoc signer; no compilation occurred. All file-backed Mach-O sections and both
+compiled object files are byte-identical. The 6,180-byte __TEXT,__text SHA256
+remains `5c8b0b4357e4b5d2f902312679c053d1cc6a76c7daab7a1db55fc0c057617408`.
+The only bytes differing before the signature are offsets1168/1169 (__LINKEDIT
+file size) and1556/1557 (LC_CODE_SIGNATURE size). The signature begins at67600
+in both. The extracted two-key entitlement dictionary and all comparisons are
+in entitlement-only-audit.json. Original import audits remain16/22 passed.
+Candidate is69,168bytes SHA256
+`89d623ff804b02bba4096df1a33f3ddef574c3c6ac720feadd7996b033954d36`.
+This is a prepared candidate, not proof of successful OS opening or input.
