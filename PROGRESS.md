@@ -2,6 +2,25 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 13:58 continuation: healthy46 retained, failure47 reproduced with expanded trace
+
+46 completed reviewed strict counter0→1 and Home/reopen retaining1. Normal shutdown,
+tracked verifier and seven-disk/ancestor retention passed. Evidence
+`display-mmio-46-visual`, `display-mmio-46-actual`,
+`owned-display-mmio-warm-stopped-46` preserves the actual execution.
+
+Identical47 has now reproduced genuine tap1 with counter0 through continuous20s.
+Strict after-capture remains withheld. Expanded tracing again shows no subsequent
+submissions; its new unknown-register reads also occur in healthy runs. Full trace
+analysis and one ordinary Home diagnostic are ongoing; no rendering fix is claimed.
+
+The fixed original-spindump route was reviewed and helper55 actually built. All33
+imports resolve against original libraries; its two existing HID entitlements are
+unchanged. `sample-helper-55-build` preserves raw build/link/sign/import evidence.
+Guest execution is untested.47 retains helper54 and cannot use SAMPLE. The next
+staging will change only the owned HID helper relative to frozen50, branching44
+and restaging all four required owned artifacts to preserve the layer limit.
+
 ### 13:36 continuation: healthy seven-event comparison45, identical repeat underway
 
 Actual build09811d4d1d produced emulator670caae5e8b86dbd07968b053ce0667328cce648935cefb8649357400f9c8e59;

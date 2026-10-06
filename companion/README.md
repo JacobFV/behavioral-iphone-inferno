@@ -38,7 +38,12 @@ pair with an idle foreground fixture, not a maximum-capacity result. See
 Boot41 then exposed a persistent display freeze after a genuine tap: both VNC
 and QMP retained counter0 despite responsive lifecycle events. That attempt is
 retained as a failure. Comparison42 completed the tracked strict/warm workflow
-with read-only display diagnostics; the intermittent freeze remains under investigation.
+with read-only display diagnostics. Runs44 and47 reproduced the freeze with
+bounded display traces: interrupts were acknowledged but drawing submissions
+stopped. Healthy45/46 provide comparison traces. The next diagnostic samples
+the original compositor processes through the original guest tool; helper build
+and import checks pass, while guest sampling remains untested. The intermittent
+freeze remains under investigation.
 Broader reliability and active-workload measurements remain ongoing. See [BOOT.md](BOOT.md) for the image profile and headless runner,
 [USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.
 

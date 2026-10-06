@@ -7,9 +7,11 @@ The user explicitly wants continuous work across status questions and intermedia
 milestones. No pause or handoff requested. Parallel workers are authorized for
 independent work in isolated worktrees; commit progressively.
 
-## Current execution, 2026-10-06 13:36 local
+## Current execution, 2026-10-06 13:58 local
 
-All through45 stopped.44 failed visual;45healthy. ONE46 starting now. Active task: investigate the intermittent
+All through46 stopped.44 failed visual;45/46 healthy. 47 reproduced tap1/display0 with seven-event trace. Root requested normal runner
+SIGINT2 cleanup at1791320331.1935923; bootworker preserving failed attempt then
+staging helper55 in a new branch44 overlay. Active task: investigate the intermittent
 real display freeze in41 while finishing a reproducible installed-iOS runner.
 Do not treat a healthy comparison as a fix.
 
@@ -83,16 +85,38 @@ unknownreadscoexistwithhealthydraws; notcausalalone.44lackednewMMIOeventsso cann
 compareunknownregistervalues retrospectively. Evidencecd4ce49f5d+ce6485d05d/
 display-mmio-45-actual,447fe4390d/display-mmio-45-visual,rawd264d0757c/
 owned-display-mmio-stopped-45*. No fix for41/44.
-ONE46authorizedstartingnow identical670caae5/frozen50/TCG/keepalive. Rootallinput,
-repeat7event60swindowaroundbetaClose/counter; no needrepeatvolumecheck/rebuild.
-Nativeworkerreadytraceanalysis; bootworkerlifecycleonly. No parallelguest.
+46 completed strict0→1 plus ordinary Home/reopen retaining1, tracked verifierPASS,
+normal finish/emulator0 and all7/ancestors preserved. Evidence display-mmio-46-actual,
+display-mmio-46-visual and owned-display-mmio-warm-stopped-46 (c861f267de).
+RootSHA882fff64f2dc20e47958a6b2869a4f72bbe0b37324bb176b687ac1a20722b60a.
+47 identical670caae5/frozen50 boot908A7F55-687E-4EA7-BDFB-9DADA365B441.
+Runner2844717/QEMU2845204, privateVNC/tmp/inferno-boot-7fqpaqep/vnc.sock.
+Tap99afb731b5bc4d9cb00536b6b3bd749a produced realtap1 but reviewed0; continuous20s
+14frames identicaldc59a32cf4e6f5d2a67981de0779dcf263ce997f9767fc06a8924f7e523f27af.
+Strictbefore277a9d366c5fc152f600332530df9dcd33b493457bac55061e63824228e7f241.
+No strictafter/secondtap/OPEN. First60swindowall7off1791320219.133. Pretapbyte40424.
+Nativeworker auditing fullMMIOtrace; preliminaryzero submits/configwritesaftertap,
+only repeatedzeroGP0/1+184/main45004reads alsoseenhealthy. Second30sHomewindow
+started1791320241, beforeHome58015. RootoneF6at1791320247.454; actualresign/backgroundPID299/main6452403977,
+14Homeframesstill0. Window2all7disabled1791320271.273. Homeprefix58015→75275:
+49ready/46W1C/138unknownreads,zero submits/configwrites. Firstwindowafter40424:
+50ready/47W1C/141unknownreads,zero submits/configwrites. Rootvisualevidence
+display-mmio-47-visual, trace display-stall-47-actual.
 
-Originalspindumpstaticreview11dee2e9ec/original-spindump-inspection found original
-/usr/sbin/spindump supports targetedPID/duration/interval,-onlyTarget,-noBinary,
--noFile,-stdout,-noSymbolicate,-timelimit. OriginalbinarySHA2b4874df... retained
-outsideGit. No current invocationroute, no spindumpexecution/authorizationresult,
-no newhelper/stagingauthorizedyet. Considerfuturetargetedstackdiagnosis onlyif
-MMIOtracesunrevealing; no newgrants or copiedAppleimplementationbinary.
+Originalspindumpstaticreview11dee2e9ec led to explicit fixed SAMPLE route.
+Host e4d3aa7ff7+cd880116a9 requires exactonecurrentbootREADY capability, max2requests,
+no arbitraryPID/argv. Guestsource d78ebc73b4 (reviewed d2ac5ba0cc), actualbuild55
+retained d54e8144b1 (9a1735b60b). HID55 only newartifact88944bytes SHA
+853bed149abbed99b3157150dbcd1d25292f9a873e643d0e424e66e7fc1a8538.
+All33imports originalcachechecked, exact2existingHIDentitlements unchanged.
+Fixed original/usr/sbin/spindump targets SpringBoard/backboardd,2s/100ms,-onlyTarget,
+noBinary/noFile/stdout/noSymbolicate/timelimit20,256KiBretention,cooperative60guestsec.
+Originaltool execution/stackshot acceptance UNTESTED. No SAMPLE on47(oldhelper54).
+Read-only resultparser merged c280dbe200+476b108364; missingchunks/end cannotprove
+completion. Validpartialprefix retained, output outsideGit/ignored, usefulness
+alwaysrequiresoriginaloutputreview. Hostsyntheticchecks pass; no actualsampleyet.
+After47stop bootworker authorized recovery staging branch44, all4 app22/launcher22/
+reader54/HID55, freeze newlayer3; app48 notyetlaunchauthorized. No concurrentVMs.
 
 ## Trace and control workflow
 
@@ -116,7 +140,7 @@ Use tracked commands in companion/OWNED_JOURNEY.md:
 - With keepalive, `... finish-run` after strict completion requests normal cleanup.
 - `... query-display-registers`:18 fixed audited nonconsuming MMIO reads, sequential
   not atomic, no framebuffer DMA/arbitrary addresses.
-- `... trace-display-window --arguments '{"seconds":60}'`:5 fixed events,
+- `... trace-display-window --arguments '{"seconds":60}'`:7 fixed events,
   integer1..60, no overlap, cooperative deadline via sole mailbox poll and cleanup.
   Journal display-trace-control.jsonl records actual results. Trace can affect timing.
 
@@ -137,7 +161,7 @@ independent arrival observer, chronology uses reviewed capture-gate source hash.
 
 ## Current immutable guest tuple
 
-Four owned artifacts, unchanged in37–43:
+Four owned artifacts, unchanged in37–47:
 
 - App22 `~/.local/share/inferno/app-probe/exec-build-22/InfernoProbe.app/InfernoProbe`,
   74976bytes SHA d05f1b32523684a5c89d41cb2c35fbf0207b62adf864c27fab4d5973bf8e6176.
@@ -158,7 +182,7 @@ for that owned path and NSObject isa ABI fix. No signer/trust metadata changes.
 Baseline emulator through42: source1cebf0c00be038e7156d82578214c2cafa109873,
 SHAe3da84b179ce328e06a0f917aabb8e4d80c8a4cf64701212464831a270e1741e.
 Archived read-only `.local-build/binaries/simulated-sep-first-unlock-e3da84b179ce/`.
-Current binary described above43; build command retains configuration:
+Current binary described above45–47; build command retains configuration:
 `companion/run build --simulated-sep --enable-kvm` (8 jobs).
 KVM compile capability does NOT mean guest native/KVM execution; iOS uses TCG2CPU/
 4GiB, simulatedSEP, upstream direct-kernel patches and software rendering.
@@ -168,7 +192,7 @@ Recovery archive `.local-build/binaries/simulated-sep-7e7033796707/`.
 ## Backing chain: keep exact paths and every dependency
 
 All under `.local-build/reports/`,0444+KEEP. Max4 qcow layers:
-37–43 layer4 → stage50 layer3 → stage44 layer2 → boot27 layer1 → stage43raw.
+37–47 layer4 → stage50 layer3 → stage44 layer2 → boot27 layer1 → stage43raw.
 
 - disk-preparation-43/disks/root.raw,34359738368logicalbytes,
   SHA69e8378c71d1f29840baa7ae16811d3f6285bf27042501a79e8139f8a5ad61d5.
