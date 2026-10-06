@@ -35,6 +35,14 @@ struct entry { unsigned long long inode,seek; unsigned short length,namelen; uns
 extern void *opendir(const char *);
 extern struct entry *readdir(void *);
 extern int closedir(void *);
+static void fixture_inventory(void) {
+    const char *paths[]={"/var","/private/var","/private/var/inferno","/private/var/inferno/inferno-launcher","/private/var/inferno/InfernoProbe.app","/private/var/inferno/InfernoProbe.app/InfernoProbe","/var/inferno/inferno-launcher",0};
+    for(unsigned i=0;paths[i];i++) {
+        struct file_stat st;int status=lstat(paths[i],&st);
+        printf("INFERNO_FIXTURE_STAT %s result=%d errno=%d mode=%o uid=%u gid=%u size=%lld\n",paths[i],status,*__error(),status?0:st.mode,status?0:st.uid,status?0:st.gid,status?-1:st.size);
+    }
+    fflush(0);
+}
 static void crash_inventory(void) {
     const char *paths[]={"/private/var/mobile/Library/Logs/CrashReporter","/private/var/logs/CrashReporter","/private/var/log",0};
     for(unsigned i=0;paths[i];i++) {
@@ -62,6 +70,7 @@ int main(void) {
         int status=-1;
         if(pid>0)while(waitpid(pid,&status,0)<0)if(*__error()!=4)break;
         printf("INFERNO_READINESS_END seconds=%u status=%d\n",elapsed,status);fflush(0);
+        fixture_inventory();
         crash_inventory();
     }
     return 0;
