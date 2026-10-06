@@ -53,5 +53,6 @@ int main(int argc,char **argv){
   failures+=attempt("/usr/bin/inferno-launcher",1,1,"system-mobile-noargs");
   printf("INFERNO_EXEC_MATRIX_COMPLETE failures=%d\n",failures);fflush(0);return failures?1:0;
  }
+ if(argc==2 && !strcmp(argv[1],"--system"))return attempt("/usr/bin/inferno-launcher",1,0,"system-mobile-register");
  return attempt("/private/var/inferno/inferno-launcher",1,0,"data-mobile-register");
 }

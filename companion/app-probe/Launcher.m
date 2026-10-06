@@ -24,8 +24,8 @@ int main(int argc, char **argv) {
         return 64;
     }
     // SIGALRM's default termination bounds even a blocked framework IPC call.
-    status("start-watchdog-120s", 0, 0);
     alarm(120);
+    status("start-watchdog-120s", 0, 0);
     for (int attempt = 1; attempt <= 30; ++attempt) {
         @autoreleasepool {
             NSString *path = [NSString stringWithUTF8String:argv[1]];
