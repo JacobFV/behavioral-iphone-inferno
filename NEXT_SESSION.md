@@ -31,14 +31,36 @@ actualhostarrivals `app-loopback-33-observations`,de305a4732.
 read-only. 33/34dedicatedsessionsremove toolsessiondependency, notproofthepriorcause.
 32rawevidence6bad3afdb7/resourcesd3a83032aa/hosttimeline2c92865d5a.
 
-**Active nextwork**: nativeworker implementing firstlaunchmeasurement candidate
-per `companion/evidence/owned-launch-timing-design.json`6501e1c7bc. App fixedbuffer
-rawguestmachtime atmain/delegatelaunch/windowrequest/appeared/active, nofile/network/
-NSLogbeforemeasuredboundaries; deferflushviaordinarymaincallback. Separatebounded
-versionedtimingrecords; preserveexistingstrictmarkers. Launcherstampsbeforeoriginal
-open+callbackentry, printsaftercallback. No kill/relaunchcontrol yet. No newgrants.
-Worker ownsapp/relay/launcher/build; rootreviewhashes beforebootworkerstage49/boot35.
-Stage49 MUSTbranch44andreplacethreechangedcomponents, retainingHID45. Notyetbuilt.
+**Active next work**: stage49 running (boot worker session72085), branched from
+frozen44 with app20 + launcher20 + readiness53. Recovery profile helper-attempt50.
+Root independently checked these artifacts; no guest35 started yet. Wait for actual
+readback/unmount/normalstop/all7/ancestors, then run prepared root freeze script
+`/tmp/inferno-freeze-stage49.py` before boot35. Root input utility35 is ready.
+Observer35 adds actual timing prefixes: `/tmp/inferno-observe-event-arrivals-35.py`.
+
+Timing candidate source b5a166398f; actual build/import audit ff443b226e.
+- App20 `~/.local/share/inferno/app-probe/exec-build-20/InfernoProbe.app/InfernoProbe`,
+  74528 bytes SHAa8a237ac146b914181b7f303042ed14b9e5f628a7696d45f644c420be1c2b3d6.
+- Launcher20 same exec-build-20/inferno-launcher-open-error,68992 bytes,
+  SHAd0960e468abff812a5595fc62f8a27fd9fecee81a4d75da27b1e3e4a77c5f82d.
+- Reader53 `~/.local/share/inferno/native-probe/helper-build-53/inferno-readiness`,
+  69792 bytes SHA464cba8618939788a707211dff6d27f49fec3614370a27c47cf65a364b5b5a96.
+HID45, job and Info unchanged. All144 imports verified original cache; no new grants.
+
+App buffers five raw guest mach ticks at main/delegate/windowrequest/appeared/active.
+Identity setup/file/network/NSLog deferred via original main dispatch after required
+hooks. Separate bounded timing records + original strict markers. Reader validates
+current boot, exact claimedPID/uid501, sequence/hooks/timebase/order; peer PID remains
+unauthenticated. Candidate listener128connections (52 had64), bounded7200s/512records.
+Launcher stamps original open request and callback, prints after callback. No process
+termination or relaunch control yet. Watchdog runs on mainqueue,120s; does not interrupt
+blocked main thread. Missing measurements must fail clearly.
+
+Disk worker owns new companion/launch-timing.py parser: raw offsets/hashes, complete
+sameboot/timebase records, exact integer conversion, missing/partial rejection.
+Actual35 needed before claiming any launch duration. No warm/cache-cold timing yet.
+Two-run independent raw/hash comparison integrated2b53a16d2e. Status command now
+verifies saved raw events and frames (a6fc97b661; executed evidenceeee9994079).
 
 Read-only `probe-status` mailbox now integrated48ca4f1132; actualfirmware-free
 plumbingpassed, noinput/QMP/statechange. Future35willtestactualguestlivestate.
