@@ -1,0 +1,76 @@
+{
+  "scope": "Host-only synthetic records; no original tool output, guest sample, VM input or launch.",
+  "guest_contract_revision": "d2ac5ba0cc",
+  "source_sha256": "a087240ad132a6941372e50e3b1f73a86752d67d18b86f5d4bfe76a7839947b3",
+  "checks": [
+    {
+      "name": "complete-synthetic",
+      "input_sha256": "bc284953ca9e8c0a09ba847db0b0b58e57536dd81b4c9dd812908741cc007a76",
+      "transport_complete": true,
+      "reason": null,
+      "decoded_bytes": 5
+    },
+    {
+      "name": "missing-end",
+      "input_sha256": "f5c3a7e0b24980703a750fd9f046128b69677ae76084ec0bc2fc237dd2178a5c",
+      "transport_complete": false,
+      "reason": "duplicate, missing or out-of-order record",
+      "decoded_bytes": 0
+    },
+    {
+      "name": "duplicate-data",
+      "input_sha256": "f9f2425d8de58dcbe048e2a68c7604880a01c9d2ea7179ba53d551c18b36e36d",
+      "transport_complete": false,
+      "reason": "DATA offsets are not contiguous",
+      "decoded_bytes": 5
+    },
+    {
+      "name": "gap",
+      "input_sha256": "ef39f6940cdfde9f54983009a27fd7519dc92f304287df68a709220fc86a8584",
+      "transport_complete": false,
+      "reason": "DATA offsets are not contiguous",
+      "decoded_bytes": 0
+    },
+    {
+      "name": "wrong-length",
+      "input_sha256": "df0cefa01a6046c2dfe30d3b641f64f4f4a4da64b99ee85dff7c8ae94b9238b5",
+      "transport_complete": false,
+      "reason": "DATA decoded length invalid",
+      "decoded_bytes": 0
+    },
+    {
+      "name": "mixed-target",
+      "input_sha256": "012b38dfe2e50161f963c420496f2049d56ff53fac986efb6f0f42e123922603",
+      "transport_complete": false,
+      "reason": "mixed target",
+      "decoded_bytes": 0
+    },
+    {
+      "name": "failed-flags",
+      "input_sha256": "467d66c6f1e9db97be3e3aca32cb3135a8a36b1e5862293a93514fb5e7f94c32",
+      "transport_complete": false,
+      "reason": "END reports incomplete, failed or truncated sample",
+      "decoded_bytes": 5
+    },
+    {
+      "name": "unterminated-end",
+      "input_sha256": "561d2854ef8b70e0388ce69902cca8efc8598efa59cb8d1958061661469a842f",
+      "transport_complete": false,
+      "reason": "selected record lacks physical LF terminator",
+      "decoded_bytes": 0
+    },
+    {
+      "name": "wrong-total",
+      "input_sha256": "d32c595f6f1af06cec4d58f3a4743fab5643b1bad44f3262f059cb141fd39cb1",
+      "transport_complete": false,
+      "reason": "END byte/chunk totals differ",
+      "decoded_bytes": 5
+    },
+    {
+      "name": "actual-host-CLI-on-explicitly-synthetic-records",
+      "exit_code": 0,
+      "stdout": "{\"output\": \"/tmp/inferno-sample-parser-4gqmi2lt/result\", \"transport_complete\": true, \"output_usefulness\": \"not_assessed\", \"reason\": null}\n",
+      "existing_output_exit": 2
+    }
+  ]
+}
