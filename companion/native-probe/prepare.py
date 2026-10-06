@@ -26,6 +26,7 @@ p.add_argument('--readiness-probe', type=Path, help='owned observation-only syst
 p.add_argument('--launchd-cache', type=Path, help='explicit merged launchd configuration; no signature operation')
 p.add_argument('--launchd-cache-sha256', help='required merged configuration SHA256')
 p.add_argument('--export-reports', action='store_true', help='read-only bounded crash report export from copied Data')
+p.add_argument('--system-launcher',type=Path,help='owned launcher copy for System versus Data execution comparison')
 p.add_argument('--exec-wrapper',type=Path,help='owned System wrapper to diagnose mobile exec')
 p.add_argument('--output', required=True, type=Path)
 a = p.parse_args()
@@ -37,7 +38,7 @@ if bool(a.sep_payload) != bool(a.sep_sha256):
     p.error('--sep-payload and --sep-sha256 must be supplied together')
 if a.sep_payload and (not a.disk_helper or not a.sep_payload.is_file() or hashlib.sha256(a.sep_payload.read_bytes()).hexdigest() != a.sep_sha256):
     p.error('SEP payload requires disk helper and matching file hash')
-if (a.disk_helper_roles or a.disk_helper_existing or a.disk_helper_gigalocker or a.disk_helper_data or a.disk_helper_verify_data or a.disk_helper_keybag or a.readiness_probe or a.export_reports or a.exec_wrapper) and not a.disk_helper:
+if (a.disk_helper_roles or a.disk_helper_existing or a.disk_helper_gigalocker or a.disk_helper_data or a.disk_helper_verify_data or a.disk_helper_keybag or a.readiness_probe or a.export_reports or a.exec_wrapper or a.system_launcher) and not a.disk_helper:
     p.error('--disk-helper-roles requires --disk-helper')
 for required in (a.profile, a.raw_ramdisk, a.probe, a.hfsplus):
     if not required.is_file():
@@ -66,6 +67,11 @@ if a.disk_helper:
         hfs('chmod', '644', '/usr/share/inferno-sep-payload')
         hfs('extract', '/usr/share/inferno-sep-payload', a.output / 'readback-sep')
         assert sha(a.output / 'readback-sep') == a.sep_sha256
+    if a.system_launcher:
+        hfs('add', a.system_launcher, '/usr/share/inferno-system-launcher')
+        hfs('chmod', '755', '/usr/share/inferno-system-launcher')
+        hfs('extract', '/usr/share/inferno-system-launcher', a.output / 'readback-system-launcher')
+        assert sha(a.output / 'readback-system-launcher') == sha(a.system_launcher)
     if a.exec_wrapper:
         hfs('add', a.exec_wrapper, '/usr/share/inferno-exec-launcher')
         hfs('chmod', '755', '/usr/share/inferno-exec-launcher')
@@ -83,7 +89,7 @@ if a.disk_helper:
         readiness_job.write_bytes(plistlib.dumps({'Label': 'org.inferno.readiness', 'ProgramArguments': ['/usr/bin/inferno-readiness'], 'RunAtLoad': True, 'StandardOutPath': '/dev/console', 'StandardErrorPath': '/dev/console', 'UserName': 'root'}))
         hfs('add', readiness_job, '/usr/share/org.inferno.readiness.plist')
         hfs('chmod', '644', '/usr/share/org.inferno.readiness.plist')
-    jobs.append(('prepare-root', ['/usr/bin/inferno-prepare-root', '--disposable-root-copy'] + (['--role-volumes'] if a.disk_helper_roles else []) + (['--existing-volumes'] if a.disk_helper_existing else []) + (['--init-gigalocker'] if a.disk_helper_gigalocker else []) + (['--seed-data'] if a.disk_helper_data else []) + (['--copy-sep'] if a.sep_payload else []) + (['--verify-data'] if a.disk_helper_verify_data else []) + (['--create-keybag'] if a.disk_helper_keybag else []) + (['--install-readiness'] if a.readiness_probe else []) + (['--install-cache'] if a.launchd_cache else []) + (['--export-reports'] if a.export_reports else []) + (['--install-exec-wrapper'] if a.exec_wrapper else [])))
+    jobs.append(('prepare-root', ['/usr/bin/inferno-prepare-root', '--disposable-root-copy'] + (['--role-volumes'] if a.disk_helper_roles else []) + (['--existing-volumes'] if a.disk_helper_existing else []) + (['--init-gigalocker'] if a.disk_helper_gigalocker else []) + (['--seed-data'] if a.disk_helper_data else []) + (['--copy-sep'] if a.sep_payload else []) + (['--verify-data'] if a.disk_helper_verify_data else []) + (['--create-keybag'] if a.disk_helper_keybag else []) + (['--install-readiness'] if a.readiness_probe else []) + (['--install-cache'] if a.launchd_cache else []) + (['--export-reports'] if a.export_reports else []) + (['--install-exec-wrapper'] if a.exec_wrapper else []) + (['--install-system-launcher'] if a.system_launcher else [])))
 for name, args in jobs:
     label = 'org.inferno.probe.' + name
     local = a.output / (label + '.plist')
@@ -103,6 +109,7 @@ if a.sep_payload:
 profile['provenance']['preparation'] = '; '.join(steps) + '. Original source image and Apple executable bytes unchanged; cloned ramdisk configuration changed.'
 profile['provenance']['helper_flags'] = {key: getattr(a, key) for key in ('disk_helper_roles', 'disk_helper_existing', 'disk_helper_gigalocker', 'disk_helper_data', 'disk_helper_verify_data', 'disk_helper_keybag', 'export_reports')}
 profile['provenance']['sep_payload_sha256'] = a.sep_sha256
+profile['provenance']['system_launcher_sha256'] = sha(a.system_launcher) if a.system_launcher else None
 profile['provenance']['exec_wrapper_sha256'] = sha(a.exec_wrapper) if a.exec_wrapper else None
 profile['provenance']['launchd_cache_sha256'] = a.launchd_cache_sha256
 profile['provenance']['readiness_sha256'] = sha(a.readiness_probe) if a.readiness_probe else None

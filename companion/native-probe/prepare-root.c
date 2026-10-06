@@ -264,7 +264,7 @@ static int ensure(const char *path) {
 }
 int main(int argc, char **argv) {
     if (argc < 2 || strcmp(argv[1], "--disposable-root-copy")) return 2;
-    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0, readiness = 0, install_cache = 0, export_reports = 0, exec_wrapper = 0;
+    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0, readiness = 0, install_cache = 0, export_reports = 0, exec_wrapper = 0, system_launcher = 0;
     for (int i=2; i<argc; ++i) {
         if (!strcmp(argv[i], "--role-volumes")) roles = 1;
         else if (!strcmp(argv[i], "--existing-volumes")) existing = 1;
@@ -276,6 +276,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[i], "--install-readiness")) readiness = 1;
         else if (!strcmp(argv[i], "--install-cache")) install_cache = 1;
         else if (!strcmp(argv[i], "--export-reports")) export_reports = 1;
+        else if (!strcmp(argv[i], "--install-system-launcher")) system_launcher = 1;
         else if (!strcmp(argv[i], "--install-exec-wrapper")) exec_wrapper = 1;
         else return 2;
     }
@@ -385,6 +386,14 @@ int main(int argc, char **argv) {
         compare_tree("/usr/share/inferno-exec-launcher","/mnt1/usr/bin/inferno-exec-launcher");
         printf("INFERNO_EXEC_WRAPPER_READBACK bytes=%llu mismatches=%llu\n",verified_bytes-prior_bytes,mismatches);fflush(0);
         sync();if(unmount("/mnt1",0))return 49;if(mismatches)return 50;
+    }
+    if(system_launcher) {
+        if(mount_at(system_device,"/mnt1",0))return 51;
+        if(copyfile("/usr/share/inferno-system-launcher","/mnt1/usr/bin/inferno-launcher",0,15))return 52;
+        unsigned long long prior_bytes=verified_bytes;
+        compare_tree("/usr/share/inferno-system-launcher","/mnt1/usr/bin/inferno-launcher");
+        printf("INFERNO_SYSTEM_LAUNCHER_READBACK bytes=%llu mismatches=%llu\n",verified_bytes-prior_bytes,mismatches);fflush(0);
+        sync();if(unmount("/mnt1",0))return 53;if(mismatches)return 54;
     }
     if(install_cache) {
         if(mount_at(system_device,"/mnt1",0))return 40;
