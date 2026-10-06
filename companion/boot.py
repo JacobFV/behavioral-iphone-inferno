@@ -13,6 +13,7 @@ import stat
 import subprocess
 import tempfile
 import time
+from probe_journey import ProbeJourney
 
 
 DISKS = [('root', 32 << 30, 1), ('firmware', 8 << 20, 2),
@@ -102,6 +103,8 @@ def main():
     parser.add_argument('--output', type=Path)
     parser.add_argument('--guest-errors', action='store_true',
                         help='record QEMU guest-error diagnostics in guest-errors.log')
+    parser.add_argument('--probe-journey', action='store_true',
+                        help='require owned UIKit probe appearance, one QMP tap and before/after captures')
     parser.add_argument('--usb-socket', type=Path,
                         help='existing local Unix socket of a running isolated USB companion')
     parser.add_argument('--root-image', type=Path,
@@ -115,6 +118,8 @@ def main():
     modes.add_argument('--recovery-preserve-disk', action='store_true',
                        help='recovery environment with explicit nand-enable-reformat=0')
     args = parser.parse_args()
+    if args.probe_journey and not args.disk_boot:
+        parser.error('--probe-journey requires --disk-boot')
     if not 1 <= args.seconds <= 86400:
         parser.error('--seconds must be between 1 and 86400')
     # Complete validation before allocating disks or launching the emulator.
@@ -163,6 +168,10 @@ def main():
                                'bytes': root_image.stat().st_size, 'copied_before_use': True}
     (output / 'profile.json').write_text(json.dumps(profile, indent=2) + '\n')
     (output / 'build-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
+    journey = ProbeJourney(output) if args.probe_journey else None
+    if journey:
+        report['probe_journey'] = journey.report
+        report['probe_journey_source_sha256'] = digest(Path(__file__).with_name('probe_journey.py'))
     process = qmp = connection = None
     started = time.monotonic()
     previous_handlers = {}
@@ -241,9 +250,13 @@ def main():
                 if 'error' in response:
                     raise RuntimeError(f'QMP {name} failed: {response["error"]}')
             while time.monotonic() < deadline and process.poll() is None:
+                if journey:
+                    journey.poll(qmp, time.monotonic())
                 time.sleep(min(.2, max(0, deadline - time.monotonic())))
             if process.poll() is not None:
                 raise RuntimeError('Emulator exited during boot attempt; see serial.log and stderr.log')
+            if journey:
+                journey.finish()
             for name in ('query-status', 'query-cpus-fast'):
                 report['observations'].append(qmp.execute(name))
             screenshot = qmp.execute('screendump', {'filename': str(output / 'framebuffer.ppm')})

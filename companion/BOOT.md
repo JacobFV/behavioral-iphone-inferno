@@ -97,3 +97,15 @@ cannot be used with data encryption at the moment.` QMP sent its greeting but
 reset before capability negotiation; serial output was empty. This is execution
 evidence of an initialization failure, not guest kernel execution. Local raw
 evidence: `.local-build/reports/first-t8030-boot/`.
+
+## Owned app interaction experiment
+
+`--disk-boot --probe-journey` requires the app from `companion/app-probe/` to be
+installed and launched separately, with its stderr routed to the serial console.
+The runner waits for its exact appearance marker, captures `probe-before.ppm`,
+sends one absolute QMP pointer press/release near the large button's center,
+requires the `tap count=1` marker, and captures `probe-after.ppm`. It fails if any
+required step is absent within the duration. Raw QMP events, image hashes and
+marker observations are saved in the normal report. Review both actual images
+before accepting a visible counter change; command success alone is insufficient.
+This optional flow is implemented but has not yet executed against the UIKit app.
