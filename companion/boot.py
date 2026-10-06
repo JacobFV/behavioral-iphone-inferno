@@ -307,6 +307,8 @@ def main():
                     next_capture = time.monotonic() + args.capture_interval
                 if journey:
                     journey.poll(qmp, time.monotonic())
+                    if journey.report['completed']:
+                        break
                 time.sleep(min(.2, max(0, deadline - time.monotonic())))
             if process.poll() is not None:
                 raise RuntimeError('Emulator exited during boot attempt; see serial.log and stderr.log')
