@@ -82,9 +82,11 @@ def run(args):
     with (output / 'prepare.log').open('wb') as log:
         subprocess.run(['xorriso', '-as', 'mkisofs', '-quiet', '-V', 'cidata', '-J', '-r',
                         '-o', str(output / 'seed.iso'), str(seed)], stdout=log, stderr=log, check=True)
+    disk_source = (args.disk or args.cache / 'noble-server-cloudimg-arm64.img').resolve(strict=True)
+    disk_hash = sha(disk_source)
     subprocess.run(['cp', '--reflink=auto', '--sparse=always',
-                    str(args.cache / 'noble-server-cloudimg-arm64.img'), str(output / 'guest.qcow2')], check=True)
-    command = [str(binary), '-M', 'virt', '-accel', 'tcg', '-cpu', 'max', '-smp', '2', '-m', '1G',
+                    str(disk_source), str(output / 'guest.qcow2')], check=True)
+    command = [str(binary), '-M', 'virt', '-accel', 'tcg', '-cpu', 'max', '-smp', '2', '-m', args.memory,
                '-kernel', str(args.cache / 'noble-server-cloudimg-arm64-vmlinuz-generic'),
                '-initrd', str(args.cache / 'noble-server-cloudimg-arm64-initrd-generic'),
                '-append', 'root=LABEL=cloudimg-rootfs rw console=ttyAMA0',
@@ -92,12 +94,15 @@ def run(args):
                '-device', 'virtio-blk-pci,drive=os',
                '-drive', f'if=none,id=seed,file={output}/seed.iso,format=raw,readonly=on',
                '-device', 'virtio-blk-pci,drive=seed',
-               '-netdev', 'user,id=net0', '-device', 'virtio-net-pci,netdev=net0,romfile=',
+               '-netdev', 'user,id=net0' + (f',hostfwd=tcp:127.0.0.1:{args.ssh_port}-:22' if args.ssh_port else ''), '-device', 'virtio-net-pci,netdev=net0,romfile=',
                '-device', 'usb-ehci,id=ehci', '-device',
                'usb-tcp-remote,bus=ehci.0,conn-type=unix,conn-addr=' + str(endpoint),
-               '-display', 'none', '-monitor', 'none', '-serial', 'file:' + str(output / 'serial.log')]
+               '-display', 'none', '-monitor', 'none',
+               '-qmp', 'unix:' + str(output / 'qmp.sock') + ',server=on,wait=off',
+               '-serial', 'file:' + str(output / 'serial.log')]
     report = {'kind': 'linux_usb_enumeration_companion', 'inputs': inputs,
               'binary': str(binary), 'binary_sha256': sha(binary), 'runner_sha256': sha(Path(__file__)), 'command': command,
+              'disk_source': str(disk_source), 'disk_source_sha256': disk_hash,
               'usb_socket': str(endpoint), 'guest_ready': False, 'ios_booted': False,
               'restore_attempted': False, 'started_utc': datetime.datetime.now(datetime.timezone.utc).isoformat()}
     (output / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
@@ -143,6 +148,9 @@ def main():
     parser.add_argument('--prepare-only', action='store_true')
     parser.add_argument('--binary', type=Path)
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--disk', type=Path, help='copy an existing stopped companion QCOW2 to retain installed packages')
+    parser.add_argument('--memory', choices=['1G', '2G', '4G'], default='2G')
+    parser.add_argument('--ssh-port', type=int, help='optional loopback-only host SSH forwarding port')
     parser.add_argument('--seconds', type=int, default=1800)
     args = parser.parse_args()
     args.cache = args.cache.resolve()
@@ -151,6 +159,8 @@ def main():
         return 0
     if not args.binary or not args.output or args.seconds < 1:
         parser.error('run requires --binary, --output, and positive --seconds')
+    if args.ssh_port is not None and not 1024 <= args.ssh_port <= 65535:
+        parser.error('--ssh-port must be between 1024 and 65535')
     return run(args)
 
 
