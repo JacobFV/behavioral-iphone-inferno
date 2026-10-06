@@ -1,0 +1,60 @@
+{
+  "scope": "Read-only installed original kernel personality and superclass inspection while boot19 tests userclient authorization; no input or policy changes.",
+  "source": {
+    "original_kernel_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+    "original_system_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+    "prelink_xml_file_offset": "0x29c4e48",
+    "xml_end_offset": "0x2ad694c",
+    "parse_method": "XML dictionary with ID/IDREF resolution; no assumed integer values from ID labels."
+  },
+  "normal_personality": {
+    "container_bundle": "com.apple.iokit.IOHIDEventDriverSafeBoot",
+    "personality": "HID Pointing/Consumer/System Control Driver",
+    "personality_near_file_offset": "0x2ace250",
+    "IOClass": "IOHIDEventDriver",
+    "IOProviderClass": "IOHIDInterface",
+    "CFBundleIdentifier": "com.apple.iokit.IOHIDFamily",
+    "IOMatchDefer": true,
+    "HIDDefaultBehavior": "",
+    "DeviceUsagePairs": [
+      {
+        "DeviceUsagePage": 1,
+        "DeviceUsage": 2
+      },
+      {
+        "DeviceUsagePage": 1,
+        "DeviceUsage": 8
+      },
+      {
+        "DeviceUsagePage": 1,
+        "DeviceUsage": 128
+      },
+      {
+        "DeviceUsagePage": 11
+      },
+      {
+        "DeviceUsagePage": 12
+      },
+      {
+        "DeviceUsagePage": 13
+      },
+      {
+        "DeviceUsagePage": 16
+      },
+      {
+        "DeviceUsagePage": 144
+      }
+    ],
+    "interpretation": "Generic personality includes all Digitizer page13 usages without a vendor/product restriction. Standard TouchScreen application usage4 belongs to this pair; Finger logical collection need not independently match a personality. A separate vendor-specific VMWare personality is irrelevant to owned identity."
+  },
+  "superclass": {
+    "original_constructor": "__GLOBAL__sub_I_IOHIDEventDriver.cpp0xfffffff008336338",
+    "proof": "At83363c0..83363dc, constructs metaclass IOHIDEventDriver (gMetaClass0xfffffff0099e6f60) with superclass IOHIDEventService gMetaClass0xfffffff0099e6ec0.",
+    "original_conforms_rpc": "is_io_object_conforms_to0xfffffff008093d78 invokes OSMetaClassBase::metaCast(char const*) at8093d90 and returns nonNULL as true at8093d9c..8093da4. This tests ancestry rather than exact IOClass string.",
+    "system_wrapper": "Original System IOKit IOObjectConformsTo0x1812d95a0 invokes its RPC path at1812d95d0 and consumes returned Boolean.",
+    "answer": "IOObjectConformsTo(node,\"IOHIDEventService\") covers an IOHIDEventDriver descendant."
+  },
+  "expected_topology": "Owned IOHIDUserDevice publishes IOHIDInterface; matched generic IOHIDEventDriver is expected beneath that interface. Existing helper recursive IOService iterator searches descendants rather than only immediate children, so it can cover this shape.",
+  "limits": "Static personality eligibility and ancestry do not establish matching completion, successful parse/start, BackBoard acceptance or touch delivery. IOMatchDefer=true means creation alone is not evidence of event-service registration; preserve bounded readiness wait and record actual classes/IDs. No additional entitlement or property is justified by this inspection.",
+  "primary_corroboration": "https://github.com/apple-oss-distributions/IOHIDFamily/blob/IOHIDFamily-1446.140.2/IOHIDFamily/IOHIDEventDriver.cpp (OSDefineMetaClassAndStructors(IOHIDEventDriver, IOHIDEventService)); installed original constructor above is authoritative."
+}
