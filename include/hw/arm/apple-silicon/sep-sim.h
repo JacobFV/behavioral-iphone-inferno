@@ -61,6 +61,9 @@ struct AppleSEPSimState {
     AddressSpace *dma_as;
     QemuMutex lock;
     bool rsep;
+#ifdef INFERNO_SIMULATED_SEP
+    bool inferno_system_bag_unlocked_since_boot;
+#endif
     uint32_t status;
     AppleSEPSimOOLInfo ool_info[SEP_ENDPOINT_MAX];
     AppleSEPSimOOLState ool_state[SEP_ENDPOINT_MAX];

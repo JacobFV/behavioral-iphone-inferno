@@ -671,6 +671,135 @@ static void apple_sep_sim_keystore_send_ipc_resp(AppleSEPSimState *s,
                                msg->id, 0, resp_size << 16);
 }
 
+#ifdef INFERNO_SIMULATED_SEP
+/*
+ * Partial protocol for the disposable, empty-secret simulated system bag.
+ * See companion/evidence/sep-unlock-protocol-inspection.json. Neither timers
+ * nor notifications are synthesized; other device transitions are unsupported.
+ */
+static bool inferno_sep_system_bag_message(AppleSEPSimState *s,
+                                           const KeystoreMessage *msg,
+                                           const uint8_t *request)
+{
+    uint8_t code = msg->tag & KEYSTORE_MSG_TAG_CODE_MASK;
+    const KeystoreIPCHeader *hdr = (const KeystoreIPCHeader *)request;
+    const uint8_t *body;
+    uint32_t handle = UINT32_MAX, operation = UINT32_MAX, secret_len = UINT32_MAX;
+    uint64_t options = UINT64_MAX;
+    uint8_t response[KEYSTORE_IPC_HEADER_SIZE + 32] = { 0 };
+    KeystoreIPCHeader *reply = (KeystoreIPCHeader *)response;
+    uint8_t *out = response + KEYSTORE_IPC_HEADER_SIZE;
+    uint32_t size = 0, state;
+    int error = -11; /* Original err_sks_to_aks: bad argument. */
+
+    if (code != 0x04 && code != 0x18 && code != 0x19) {
+        return false;
+    }
+    if (msg->size < KEYSTORE_IPC_HEADER_SIZE + 4) {
+        goto done;
+    }
+    body = request + KEYSTORE_IPC_HEADER_SIZE;
+    if (ldl_le_p(&hdr->header_body_size) != KEYSTORE_IPC_HEADER_SIZE - 4 ||
+        ldl_le_p(&hdr->ipc_version) != KEYSTORE_IPC_VERSION_1 ||
+        ldl_le_p(&hdr->flags) != 0 || ldl_le_p(body) != 0) {
+        goto done;
+    }
+    if (msg->size >= KEYSTORE_IPC_HEADER_SIZE + 16) {
+        handle = ldl_le_p(body + 12);
+    }
+    if (code == 0x18) {
+        if (msg->size < KEYSTORE_IPC_HEADER_SIZE + 32) {
+            goto done;
+        }
+        operation = ldl_le_p(body + 16);
+        options = ldq_le_p(body + 20);
+        secret_len = ldl_le_p(body + 28);
+        if (secret_len != (uint32_t)msg->size - KEYSTORE_IPC_HEADER_SIZE - 32) {
+            goto done;
+        }
+        error = -1; /* Unsupported requests are explicit errors, not echoes. */
+        if (handle != 0 || operation != 0 || options != 0 || secret_len != 0) {
+            goto done;
+        }
+        size = KEYSTORE_IPC_HEADER_SIZE + 20; /* selector, action flags, deadline */
+    } else if (code == 0x04) {
+        if (msg->size < KEYSTORE_IPC_HEADER_SIZE + 24) {
+            goto done;
+        }
+        operation = ldl_le_p(body + 16);
+        secret_len = ldl_le_p(body + 20);
+        if (secret_len != (uint32_t)msg->size - KEYSTORE_IPC_HEADER_SIZE - 24) {
+            goto done;
+        }
+        if (handle != 0 || operation != UINT32_MAX) {
+            return false; /* Preserve upstream's other operations. */
+        }
+        if (secret_len != 0) {
+            goto done;
+        }
+        size = KEYSTORE_IPC_HEADER_SIZE + 16;
+    } else {
+        if (msg->size != KEYSTORE_IPC_HEADER_SIZE + 20) {
+            goto done;
+        }
+        options = ldl_le_p(body + 16);
+        error = -1;
+        if (handle != 0 || options != 1) {
+            goto done;
+        }
+        size = KEYSTORE_IPC_HEADER_SIZE + 8 + 13;
+    }
+    if (s->ool_state[EP_KEYSTORE].out_size < size) {
+        error = -11;
+        goto done;
+    }
+    if (code == 0x18) {
+        s->inferno_system_bag_unlocked_since_boot = true;
+    }
+    state = BIT(22) | (s->inferno_system_bag_unlocked_since_boot ? BIT(2) : 0);
+    if (code == 0x04) {
+        stl_le_p(out + 4, state);
+        /* Action flags stay zero: a state query has no requested side effects. */
+    } else if (code == 0x19) {
+        /* DER SET { SEQUENCE { UTF8String "ss", INTEGER state } }.
+         * Unknown extended-state fields are absent, never invented enum values.
+         */
+        const uint8_t der[] = {
+            0x31, 0x0b, 0x30, 0x09, 0x0c, 0x02, 's', 's',
+            0x02, 0x03, 0x40, 0x00, 0x00
+        };
+        stl_le_p(out + 4, sizeof(der));
+        memcpy(out + 8, der, sizeof(der));
+        out[8 + sizeof(der) - 1] = state & 0xff;
+    }
+    stl_le_p(&reply->header_body_size, KEYSTORE_IPC_HEADER_SIZE - 4);
+    stl_le_p(&reply->ipc_version, KEYSTORE_IPC_VERSION_1);
+    memcpy(&reply->time_msecs, &hdr->time_msecs, sizeof(reply->time_msecs));
+    memcpy(&reply->id, &hdr->id, sizeof(reply->id));
+    memcpy(&reply->proc_uid, &hdr->proc_uid, sizeof(reply->proc_uid));
+    memcpy(&reply->audit_session_id, &hdr->audit_session_id,
+           sizeof(reply->audit_session_id));
+    memcpy(reply->ipc_digest, hdr->ipc_digest, sizeof(reply->ipc_digest));
+    apple_sep_sim_keystore_send_ipc_resp(s, msg, response, size);
+    error = 0;
+done:
+    if (error != 0) {
+        /* Original sep_deliver_msg_gated reads mailbox byte 3 as signed status. */
+        apple_sep_sim_send_message(s, msg->ep, msg->tag | KEYSTORE_MSG_TAG_REPLY,
+                                   msg->id, (uint8_t)error, 0);
+    }
+    if (code == 0x18 || error != 0) {
+        qemu_log_mask(LOG_GUEST_ERROR,
+                      "INFERNO SEP system bag code=0x%02x handle=%u op=%u "
+                      "options=0x%" PRIx64 " secret_length=%u result=%d "
+                      "unlocked_since_boot=%u\n",
+                      code, handle, operation, options, secret_len, error,
+                      s->inferno_system_bag_unlocked_since_boot);
+    }
+    return true;
+}
+#endif
+
 static void apple_sep_sim_handle_keystore_msg(AppleSEPSimState *s,
                                               KeystoreMessage *msg)
 {
@@ -679,6 +808,12 @@ static void apple_sep_sim_handle_keystore_msg(AppleSEPSimState *s,
     dma_memory_read(s->dma_as, s->ool_state[EP_KEYSTORE].in_addr, msg_buf,
                     msg->size, MEMTXATTRS_UNSPECIFIED);
     const KeystoreIPCHeader *msg_hdr = (KeystoreIPCHeader *)msg_buf;
+#ifdef INFERNO_SIMULATED_SEP
+    if (inferno_sep_system_bag_message(s, msg, msg_buf)) {
+        g_free(msg_buf);
+        return;
+    }
+#endif
 #if 0
     char fn[128];
     snprintf(fn, sizeof(fn), "/home/ios/SKSMessages/0x%02X_%lld.bin", msg_code,
@@ -1110,6 +1245,9 @@ static void apple_sep_sim_reset_hold(Object *obj, ResetType type)
 
     QEMU_LOCK_GUARD(&s->lock);
 
+#ifdef INFERNO_SIMULATED_SEP
+    s->inferno_system_bag_unlocked_since_boot = false;
+#endif
     a7iop->iop_mailbox->ap_dir_en = true;
     a7iop->iop_mailbox->iop_dir_en = true;
     a7iop->ap_mailbox->iop_dir_en = true;

@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "kind": "original-kernel protocol inspection and partial simulated implementation",
+  "original_kernel_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+  "provenance": "Same decoded original 18A5351d research kernel as unlock-authorization-inspection.json; original binaries and disassembly remain outside Git.",
+  "actual_trigger": {
+    "report": "app-boot-8",
+    "serial_lines": "893-912",
+    "guest_errors_line": 4044,
+    "observed": "One authorized original MKBUnlockDevice(NULL,NULL) call returned -1; kernel selector9 returned e00002bc, with simulator Unknown(0x18) between queries.",
+    "original_default": "Unimplemented opcode echoed request as response without rebuilding its response hash.",
+    "causal_inspection": "Opcode18 response decoder expects20 body bytes but null-secret request has32. It requires complete consumption; mismatch returns -1, which err_sks_to_aks maps to e00002bc. No passcode-rejection inference."
+  },
+  "wire": {
+    "header_bytes": 84,
+    "endianness": "little",
+    "opcode_18_request_body": [
+      {
+        "offset": 0,
+        "bytes": 4,
+        "field": "selector",
+        "supported": 0
+      },
+      {
+        "offset": 4,
+        "bytes": 8,
+        "field": "caller owner identifier",
+        "handling": "preserved by protocol header; not interpreted as Apple identity"
+      },
+      {
+        "offset": 12,
+        "bytes": 4,
+        "field": "bag handle",
+        "supported": 0
+      },
+      {
+        "offset": 16,
+        "bytes": 4,
+        "field": "device transition operation",
+        "supported": 0
+      },
+      {
+        "offset": 20,
+        "bytes": 8,
+        "field": "options",
+        "supported": 0
+      },
+      {
+        "offset": 28,
+        "bytes": 4,
+        "field": "secret blob length",
+        "supported": 0
+      }
+    ],
+    "opcode_18_response_body": "selector:uint32=0, action_flags:uint64=0, deadline:uint64=0",
+    "opcode_04_query": "selector0, owner:uint64, handle:uint32=0, desired_state:int32=-1, secret_blob_length:uint32=0; response selector0,state:uint32,action_flags:uint64=0",
+    "opcode_19_query": "selector0, owner:uint64, handle:uint32=0, query_options:uint32=1; response selector0,DER_length:uint32,DER bytes",
+    "der_subset": "SET { SEQUENCE { UTF8String \"ss\", INTEGER state } }; all unspecified fields absent. In particular no guessed sls enum.",
+    "error_transport": "Mailbox byte3 is signed8 status, no DMA response on error. -11 is bad argument; -1 generic unsupported. No secret bytes logged."
+  },
+  "addresses": {
+    "unlock_the_device": "0xfffffff008f644a0",
+    "operation_zero_and_options": "0xfffffff008f6455c",
+    "opcode_18_ipc_builder": "0xfffffff008f777c8",
+    "opcode_18_selection": "0xfffffff008f77890",
+    "opcode_18_codec": "0xfffffff008f7ee24",
+    "opcode_18_consumed_length_check": "0xfffffff008f7f054",
+    "error_mapping": "0xfffffff008f7582c; table0xfffffff0070e38e8",
+    "opcode_04_codec": "0xfffffff008f7b684",
+    "opcode_04_request_handle": "0xfffffff008f7b7a4",
+    "opcode_04_request_desired_state": "0xfffffff008f7b7c0",
+    "selector_07_query_minus_one": "0xfffffff008f6feb0",
+    "selector_07_cached_ss": "0xfffffff008f74b1c",
+    "response_action_handler": "0xfffffff008f639d4",
+    "mailbox_signed_error_read": "0xfffffff008f6a6d0"
+  },
+  "state_model": {
+    "scope": "Only INFERNO_SIMULATED_SEP builds; existing upstream simulation is an unencrypted placeholder, not production SEP security.",
+    "reset": "unlocked_since_boot=false on every device reset",
+    "transition": "Only structurally valid system-handle0 operation0 options0 empty-secret requests with enough output capacity change unlocked_since_boot to true.",
+    "queries": "Both scalar0x04 and DER0x19 report bit22 plus bit2 only when the accepted transition occurred. Neither query changes state.",
+    "proven_bits": {
+      "2": "MKBDeviceUnlockedSinceBoot at0x7d40 extracts this bit; original Security canPersistMetrics at0x1a96c corroborates.",
+      "22": "Original MKB KBisxARTBasedKeyBag at0x6d8c-0x6d90 extracts this bit."
+    },
+    "unmodeled": "No guessed locked/unlocked bits, sls enum, passcode verification, timers, key extraction, Apple authentication, notification injection or security-policy bypass. Unknown fields are absent; original decoder defaults absent fields to zero, which must not be labeled unlocked.",
+    "other_opcode_04_operations": "Structurally validated, then retain upstream behavior unless system0 query-1.",
+    "other_opcode_18_or_19_requests": "Explicit errors without state changes."
+  },
+  "action_flags": {
+    "0": "Arms lock timer using second output as absolute IPC-usec deadline.",
+    "1": "Tickles system-keybag update port.",
+    "2": "Calls original notify_change_device_state(handle,5,0,0).",
+    "3_4_5": "Error-producing flags; not lock-state bits.",
+    "implementation": "All action flags/deadline zero; no fabricated notifications."
+  },
+  "options_limit": "Owned NULL-options client defaults to type5; unlock computes options0 unless type2. Original device_opts_adjust_for_metal_smasher may additionally setbit3 depending on battery-policy state. Boot8 did not capture raw wire options; implementation accepts only0 and logs/rejects any adjustment.",
+  "validation": {
+    "host_parser_check": "External isolated extracted-helper harness, cc -std=c11 -Wall -Wextra -Werror -fsanitize=address,undefined",
+    "harness_sha256": "7ec166224f8b196f33c8d19aa1a0a26a21443f135ab3c8e036094199c6accf1b",
+    "result": "PASS: before/after state, exact reply lengths, DER ss, unsupported options/secret, short buffers and output-capacity rejection",
+    "not_guest_evidence": "Original API result, first-unlock, migration progress, full build and boot remain required follow-up checks."
+  }
+}
