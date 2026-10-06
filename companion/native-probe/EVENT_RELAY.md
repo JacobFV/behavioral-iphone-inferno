@@ -43,3 +43,13 @@ The installed original framework's inherited method has ABI
 NSString*,BOOL,BOOL*,NSError** and returns an autoreleased object; its url method
 returns the manager-owned location. Authorization success remains an execution
 question and bounded error codes are logged without adding grants.
+
+Actual boot30 MCM lookup returned error55 (not entitled), while the app's own
+writer remained READY. The next reader uses original libproc metadata instead,
+without any new grant: UID501 PID enumeration capped512, exact executable path
+and SHORTBSDINFO UID check, at most4 matching processes/128 FDs each, vnode-only
+FD metadata, exact event basename/uid501/regular/single-link/16KiB bound. It
+rechecks process identity and requires the opened file's device+inode to equal
+the original FD metadata before reading. MAC checks remain active; their actual
+return and errno are recorded, not bypassed. It reads no process environment or
+other file contents. The app footer separately displays its actual cache path.
