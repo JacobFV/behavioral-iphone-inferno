@@ -407,7 +407,7 @@ int main(int argc, char **argv) {
     }
     if(system_app) {
         if(mount_at(system_device,"/mnt1",0))return 59;
-        if(ensure("/mnt1/Applications/InfernoProbe.app") || copyfile("/usr/share/InfernoProbe.app","/mnt1/Applications/InfernoProbe.app",0,15|32768))return 60;
+        if(ensure("/mnt1/Applications/InfernoProbe.app") || copy_contents("/usr/share/InfernoProbe.app","/mnt1/Applications/InfernoProbe.app"))return 60;
         unsigned long long prior_bytes=verified_bytes;
         compare_tree("/usr/share/InfernoProbe.app","/mnt1/Applications/InfernoProbe.app");
         printf("INFERNO_SYSTEM_APP_READBACK bytes=%llu mismatches=%llu\n",verified_bytes-prior_bytes,mismatches);fflush(0);
