@@ -17,9 +17,10 @@ p.add_argument('--disk-helper', type=Path, help='explicitly install disposable-r
 p.add_argument('--disk-helper-roles', action='store_true', help='also add xART and Hardware; requires owned helper signed with xart entitlement')
 p.add_argument('--disk-helper-existing', action='store_true', help='use existing prepared volumes without adding them again')
 p.add_argument('--disk-helper-gigalocker', action='store_true', help='run original seputil initialization on mounted xART')
+p.add_argument('--disk-helper-data', action='store_true', help='add Data/Update and copy original var plus Hardware factory path')
 p.add_argument('--output', required=True, type=Path)
 a = p.parse_args()
-if (a.disk_helper_roles or a.disk_helper_existing or a.disk_helper_gigalocker) and not a.disk_helper:
+if (a.disk_helper_roles or a.disk_helper_existing or a.disk_helper_gigalocker or a.disk_helper_data) and not a.disk_helper:
     p.error('--disk-helper-roles requires --disk-helper')
 for required in (a.profile, a.raw_ramdisk, a.probe, a.hfsplus):
     if not required.is_file():
@@ -43,7 +44,7 @@ if a.disk_helper:
     hfs('rm', '/System/Library/LaunchDaemons/com.apple.restored_external.plist')
     hfs('add', a.disk_helper, '/usr/bin/inferno-prepare-root')
     hfs('chmod', '755', '/usr/bin/inferno-prepare-root')
-    jobs.append(('prepare-root', ['/usr/bin/inferno-prepare-root', '--disposable-root-copy'] + (['--role-volumes'] if a.disk_helper_roles else []) + (['--existing-volumes'] if a.disk_helper_existing else []) + (['--init-gigalocker'] if a.disk_helper_gigalocker else [])))
+    jobs.append(('prepare-root', ['/usr/bin/inferno-prepare-root', '--disposable-root-copy'] + (['--role-volumes'] if a.disk_helper_roles else []) + (['--existing-volumes'] if a.disk_helper_existing else []) + (['--init-gigalocker'] if a.disk_helper_gigalocker else []) + (['--seed-data'] if a.disk_helper_data else [])))
 for name, args in jobs:
     label = 'org.inferno.probe.' + name
     local = a.output / (label + '.plist')

@@ -213,3 +213,11 @@ hung in the separate seputil shutdown utility. The enabled guest-errors trace ha
 no SEP or XART opcode during that wait. They do not establish clean completion.
 The helper therefore tests initialization followed by sync and normal unmount;
 it does not claim the separate shutdown utility succeeded.
+
+`--disk-helper-data` adds empty Data and Update role volumes, copies each original
+System `private/var` child into the Data root with metadata, and prepares Hardware's
+`FactoryData/System/Library/Caches/com.apple.factorydata` directory. It reports
+Darwin statfs available bytes before and after the Data seed. This operation is
+explicit and only intended for a new disposable copy without those volumes.
+A successful compile is not proof of successful guest seeding; require the
+`INFERNO_DATA_COMPLETE` marker plus reviewed tool and filesystem logs.
