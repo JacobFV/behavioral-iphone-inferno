@@ -86,6 +86,7 @@ def main():
 
     build('Main', bundle / 'InfernoProbe', ('libSystem', 'libobjc', 'Foundation', 'UIKit'))
     build('Launcher', output / 'inferno-launcher', ('libSystem', 'libobjc', 'Foundation', 'CoreServices'))
+    build('ExecLauncher', output / 'inferno-exec-launcher', ('libSystem',), 'c')
     build('Stage', output / 'inferno-stage-app', ('libSystem',), 'c')
     shutil.copyfile(source / 'Info.plist', bundle / 'Info.plist')
     shutil.copyfile(source / 'org.inferno.app-probe.plist', output / 'org.inferno.app-probe.plist')
@@ -100,10 +101,12 @@ def main():
         'bundle': {path.name: sha(path) for path in sorted(bundle.iterdir())},
         'launcher_sha256': sha(output / 'inferno-launcher'),
         'stager_sha256': sha(output / 'inferno-stage-app'),
+        'exec_wrapper_sha256': sha(output / 'inferno-exec-launcher'),
         'signing': {'method': 'LLVM ad-hoc; no certificate or Apple identity',
                     'app': signature(bundle / 'InfernoProbe'),
                     'launcher': signature(output / 'inferno-launcher'),
-                    'stager': signature(output / 'inferno-stage-app')},
+                    'stager': signature(output / 'inferno-stage-app'),
+                    'exec_wrapper': signature(output / 'inferno-exec-launcher')},
     }
     (output / 'build-evidence.json').write_text(json.dumps(evidence, indent=2) + '\n')
     print(bundle)

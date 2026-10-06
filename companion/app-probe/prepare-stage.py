@@ -21,6 +21,7 @@ def main():
     p.add_argument('--raw-sha256', required=True)
     p.add_argument('--build', required=True, type=Path)
     p.add_argument('--hfsplus', required=True, type=Path)
+    p.add_argument('--launcher-noargs', action='store_true', help='invoke exact built launcher without args; expected usage/exit64, no registration')
     p.add_argument('--inspect-only', action='store_true', help='mount cloned volumes read-only and compare existing owned assets')
     p.add_argument('--output', required=True, type=Path)
     a = p.parse_args()
@@ -59,7 +60,7 @@ def main():
     for name, (path, expected) in assets.items():
         destination = '/usr/share/' + name
         hfs('add', path, destination)
-        hfs('chmod', '644', destination)
+        hfs('chmod', '755' if a.launcher_noargs and name == 'inferno-stage-launcher' else '644', destination)
         readback = a.output / ('readback-' + name)
         hfs('extract', destination, readback)
         if sha(readback) != expected:
@@ -72,7 +73,7 @@ def main():
     job = a.output / 'org.inferno.stage-app.plist'
     job.write_bytes(plistlib.dumps({
         'Label': 'org.inferno.stage-app',
-        'ProgramArguments': ['/usr/bin/inferno-stage-app', '--inspect-only' if a.inspect_only else '--disposable-app-stage'],
+        'ProgramArguments': ['/usr/bin/inferno-stage-app', '--launcher-noargs' if a.launcher_noargs else ('--inspect-only' if a.inspect_only else '--disposable-app-stage')],
         'RunAtLoad': True, 'UserName': 'root',
         'StandardOutPath': '/dev/console', 'StandardErrorPath': '/dev/console',
     }))
