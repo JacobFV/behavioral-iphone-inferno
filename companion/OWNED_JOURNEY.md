@@ -7,6 +7,38 @@ launcher22, readiness54 and HID54 with emulator SHA256
 `e3da84b179ce328e06a0f917aabb8e4d80c8a4cf64701212464831a270e1741e`.
 This is TCG with simulated SEP and the upstream direct-kernel patches.
 
+## Current freeze investigation
+
+The repeatable baseline above records the original journey. Current diagnostic
+runs49 onward use frozen `disk-preparation-55/report.json`, app22/launcher22/
+readiness54/HID55, and emulator SHA256
+`670caae5e8b86dbd07968b053ce0667328cce648935cefb8649357400f9c8e59`
+from source09811d4d1d. Use that base for the ongoing freeze investigation. Its
+three immutable backing ancestors and exact ctime-revalidation sidecars must
+remain at their recorded paths. Never chmod an already-read-only ancestor;
+ctime is part of the verified identity. See NEXT_SESSION.md for those identities.
+
+HID55 supports two explicit original-tool samples per boot. On a genuine tap
+with a persistently stale counter0, preserve continuous observation and let the
+bounded display trace disable. Before Home or reopen, sample BACKBOARDD then
+SPRINGBOARD once each, with the exact current boot UUID:
+
+```sh
+companion/run owned-control --report "$attempt" --output "$attempt/sample-backboardd-001" \
+  sample --boot-uuid EXACT-CURRENT-GUEST-BOOT-UUID --target BACKBOARDD
+# Wait for this request's actual END or FAILED record before the next request.
+companion/run owned-control --report "$attempt" --output "$attempt/sample-springboard-001" \
+  sample --boot-uuid EXACT-CURRENT-GUEST-BOOT-UUID --target SPRINGBOARD
+```
+
+Host acceptance does not establish a complete sample. Reconstruct each response
+with [sample-result](SAMPLE_RESULT.md), inspect the actual text, and verify that
+UUIDs and image slides come from this boot before offline symbol mapping.
+Run49's two complete twenty-stackshot reports are the healthy comparison.
+Sampling perturbs timing and does not itself explain or fix the freeze.
+See [SAMPLE_CONTROL.md](native-probe/SAMPLE_CONTROL.md) for fixed targets,
+identity checks, output bounds and the original tool's limitations.
+
 ## Start one disposable guest
 
 Run from the repository root. Choose a **new** output directory for every attempt.
