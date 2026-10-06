@@ -6,6 +6,6 @@ targets: [ arm64-ios ]
 install-name: '/System/Library/Frameworks/Foundation.framework/Foundation'
 exports:
   - targets: [ arm64-ios ]
-    symbols: [ _NSLog, ___CFConstantStringClassReference ]
-    objc-classes: [ NSString ]
+    symbols: [ _NSClassFromString, _NSLog, ___CFConstantStringClassReference ]
+    objc-classes: [ NSString, NSURL ]
 ...
