@@ -1,0 +1,21 @@
+{
+  "live_report_snapshot_sha256": "41e45c73cf062cbcfe21c1d9a2269d482a56ba7ca96ac88757974b7588a68380",
+  "report_fields": {
+    "binary": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "binary_sha256": "f088a8c99437afaa9da220ee2f2e2a09f4dbf5b8638e897ec01c670c5273a7b7",
+    "companion_revision": "7c3f213e0dd29d9ca932d4c1a162d4f1ad615878",
+    "control_source_sha256": "38e74c55760f2db95767c53515dd95f9b70e4eda3b7e48f4480283e43bdc84a5"
+  },
+  "source_files": {
+    "hw/display/apple_displaypipe_v4.c": "55eadad98e75a72b457f9499d7799fb561cc22b223512f2badcad205ccb318fb",
+    "hw/display/trace-events": "d23222eadefa4554fbb3507c8b3691f1a780956d373cd51629adaeb27b5177dd",
+    "companion/qmp_control.py": "38e74c55760f2db95767c53515dd95f9b70e4eda3b7e48f4480283e43bdc84a5"
+  },
+  "source_semantics": {
+    "status_register": "0x45818",
+    "OUTPUT_READY": "1<<10 (0x400)",
+    "FRAME_PROCESSED": "1<<20 (0x100000)",
+    "read": "one atomic sample traced and returned; HMP shares handler",
+    "write": "atomic AND with complement of W1C value"
+  }
+}

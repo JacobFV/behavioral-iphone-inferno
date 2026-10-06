@@ -1,0 +1,11 @@
+# Run59 first status-read window
+
+Read-only audit of guest-errors bytes [4594, 300868), retained as an immutable full prefix. Run `python3 audit.py` to regenerate the event index and results. Snapshot checksums cover raw LF-delimited journals, checkpoints and the VNC report; all ten referenced VNC PNG hashes were checked against the retained outside-Git images. No guest control was performed by this audit.
+
+The 296,274-byte bracket contains 71 status reads and 71 W1C writes. Every read is immediately followed, among traced ADP events, by a W1C of the identical value: 39 output-ready (0x400), 32 frame-processed (0x100000). All before values equal the write and all post values are zero. There are no zero or mixed-bit status reads in this bracket. This establishes actual sampled values and adjacent trace ordering, not general atomicity against all untraced activity.
+
+There are 32 submits, 32 BH enter/exit pairs, 32 pipe0 drawn and 32 pipe1 disabled records. The 71 unknown main reads at 0x45004 all return zero; their nearest status-read offsets are retained individually. Equal counts do not establish that this unknown register acknowledges an interrupt. Its preceding ADP event is another unknown MMIO read in all 71 cases.
+
+All eight trace-enable and eight trace-disable successes match raw QMP response IDs. Last disable returned at 1791329153.9568691; the after checkpoint is later at 1791329167.7502546. The checkpoint interval is 24.0494222 host seconds, while the requested tracing duration was ten seconds. Buffered file visibility prevents treating these bytes as exact event timestamps or deriving an event frequency. The retained sole-owner QMP prefix has no HMP/input command; control contains only the explicit trace window and serial-input prefix is empty. Thus there is no recorded debug register query to contaminate this particular sample, although the trace itself cannot tag the caller as guest versus debugger.
+
+A VNC viewer was connected at 1791329144.0098345 through 1791329156.6753955. Parent independently reviewed its last observed-0008 as lockscreen, after an earlier Apple-logo view. This is not an audit of presentation timing, a no-viewer condition, or evidence of a freeze fix. Continuous refresh, startup phase and newly enabled status tracing prevent direct performance comparison to older counter-tap windows.
