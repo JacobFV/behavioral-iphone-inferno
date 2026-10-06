@@ -30,8 +30,25 @@
     "action_bit2": "Handler8f63bc4 checks bit2 and handle!=-1; invokes notify_change_device_state(handle,5,0,0) at8f63bdc. This flag is an action request, not the state first-unlock bit despite same bit number.",
     "notification_transport": "notify_change_device_state8f61b88 switchtable8f61f8c case5 goes8f61f18; messageClients slot430 sends0xe3ffd00d with4-byte handle at8f61f48..60. It does not directly call notifyd.",
     "framework_consumer": "Original MKB aksNotificationCB1e658 recognizes0xe3ffd00d and invokes registered MKBEvents callback with event1 at1e678..6a0. Event0xe3ffd00f maps callbackevent0.",
-    "remaining_chain": "Original keybagd mapping from MKBEvents callbackevent1 through independent state query to first_unlock notifyd post must be established; do not equate raw IOKit message with an unconditional first_unlock notification."
+    "remaining_chain": "Resolved: response actionbit2 produces d00d lock-status only. The original first-unlock producer receives d00f through a separate SEP asynchronous mailbox event. See original_async_first_unlock below and native evidence commit0f99e54849."
   },
-  "interpretation": "Existing simulator sets first-unlock state after accepted owned empty-secret operation but returns actionflags0. Original early-starting services can queryfalse and await the original first-unlock event indefinitely. This is a source-supported candidate explaining setup wait, not yet proof of runtime cause.",
-  "limits": "No fabricated notifyd post or unconditional unlock event is proposed. A future protocol completion would need original consumer proof and only report a real accepted false-to-true transition; rejected/repeated operations and state queries must not produce it. No permission or property expansion follows from this evidence."
+  "interpretation": "Existing simulator updates first-unlock query state but omits the original asynchronous transition report. Original early-starting services can queryfalse and await first_unlock indefinitely. Complete receiver-to-original-producer evidence identifies a narrow missing protocol completion; actual ScreenTime callback recovery remains to be executed.",
+  "limits": "No fabricated notifyd post or unconditional unlock event is proposed. A future protocol completion would need original consumer proof and only report a real accepted false-to-true transition; rejected/repeated operations and state queries must not produce it. No permission or property expansion follows from this evidence.",
+  "original_async_first_unlock": {
+    "endpoint": "AppleKeyStore::sep_endpoint8f6ac4c..68 matches literal sep-endpoint,sks atVAfffffff0074e5818, then registers sep_action8f6b1b0 through AppleSEPDeviceService::getEndpoint at8f6ad44. Existing emulator maps sks toEP_KEYSTORE18.",
+    "dispatch": "sep_action8f6b20c..22c treats tag highbit as synchronous reply; tags3,7,6 have separate handlers; other tags enqueue a deferred event at8f6b2ec..314. TemplateVAfffffff0070e38b8 hasuint32type1 and20zerobytes; raw8-byte mailbox is copied intoevent+8. event_enqueue8f6b914 copies24bytes and schedules its worker at8f6bb40..44.",
+    "decode": "handle_events_gated8f6bb6c checks eventtype1; at8f6bb84..9c maps mailbox data to handle, tag&0x7f to eventtype, op to firstflag and param to volumeflag, then tailcalls notify_change_device_state.",
+    "wire_fields": {
+      "endpoint": 18,
+      "tag": 0,
+      "op": 1,
+      "param": 0,
+      "data": 0
+    },
+    "meaning": "This exact wire tuple decodes as notify_change_device_state(handle0,event0,firstflag1,volumeflag0). It is an asynchronous state-transition report, not an opcode18 response action and not a direct notifyd post.",
+    "original_handlers": "Case0/1 first invalidates cached state via kext_msg_cache_device_state(NULL,0) at8f61c88. For event0, handle0 and firstflag1, branch8f61df8..e18 reaches messageClients0xe3ffd00f at8f61e4c..64 with4-bytehandle. It then deletes effaceable lockerSkey through ordinary driver at8f61e74, notifies volumes8f61e9c, and emits0xe3ffd00d at8f61f48..60.",
+    "cache_and_ack": "msg_cache_device_state8f878e8..944 withNULL simply clears its cached-valid byte and returns0. No special mailbox acknowledgement exists in the reviewed receiver/enqueue/state-handler path. Downstream ordinary clients may issue normal state queries; this is not proof that every transitively invoked client is message-free.",
+    "usermode_producer": "Native original MobileKeyBagLockState plugin SHA bf9e21aea10f155fb2bb38d65047aa0d5bcaef900d13b8251a71da0d66b4cb6b: d00d posts lock-status only; d00f invokes notify-once first_unlock producer. Its MKBNotifyStateIsSet/Set use original kernel selectors0x67/0x66. Native evidence0f99e54849 preserves exact callback addresses.",
+    "ordering_limit": "Original SEP implementation itself was not inspected; receiver semantics establish accepted report format, not hardware timing. A bounded simulated implementation could commit the already-authorized first0-to1 state, enqueue its successful IPC reply, then enqueue this report through existing FIFO. Only that first successful empty-secret system transition may report it; queries, rejected requests and repeated success must not."
+  }
 }
