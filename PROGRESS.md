@@ -2,6 +2,19 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 10:49 continuation: unchanged strict repeat34 passed
+
+Boot34 repeated the complete journey from immutable48 with identical emulator,
+app19/reader52/launcher13/HID45. Actual lifecycle and tap1 records, reviewed0→1,
+both strict QMPcaptures, normalQMPquit33/emulator0/errornull/306.12654s.
+Root141426688bytes SHA37888e60f0654a3088d64a1ed35a9ff8eace071645d9c76fba684e5e411a65b4;
+all7hashes recorded and all4ancestors unchanged. This is two consecutive completed
+strict runs33/34;32 remains interrupted. No statistical reliability claim.
+Next owned timing candidate buffers original guest monotonic timestamps before
+logging and sends them after lifecycle hooks. Design6501e1c7bc, implementation
+assigned to nativeworker, not yet staged. Read-only live probe-status mailbox
+integrated48ca4f1132 with actual firmware-free plumbing checks (not iOS evidence).
+
 ### 10:42 continuation: first complete strict UIKit journey
 
 Boot33 completed the strict runner journey using exactly the frozen48/app19/

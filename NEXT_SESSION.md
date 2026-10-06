@@ -7,42 +7,42 @@ continuous work across status questions and intermediate milestones. Parallel
 workers are authorized for independent work; use isolated worktrees and commit.
 No handoff or pause has been requested.
 
-## Current execution, 2026-10-06 10:44 local
+## Current execution, 2026-10-06 10:49 local
 
-**Boot33 completed the strict real UIKit journey. Boot34 is the unchanged repeat,
-currently live.** Both use frozen preparation48, app19, readiness52, launcher13,
-HID45 and e3da emulator. No guest changes between32/33/34.
+**Boot33 AND34 completed the strict real UIKit journey. No VM currently live.**
+Both use frozen48/app19/reader52/launcher13/HID45/e3da emulator. Two consecutive
+passes with genuine lifecycle/tap1, root-reviewed0→1 and both strictQMPcaptures.
+No statisticalreliability claim;32 is interrupted, never countit asstrictcomplete.
 
-34: `.local-build/reports/app-boot-34`, runner PID2577555 (emulator PID differs),
-private VNC `/tmp/inferno-boot-1dou5_fq/vnc.sock`, dedicated process session,
-7200-second runner bound. Root owns all input. Helper script
-`/tmp/inferno-explicit-gesture-34.py` writes unique requests and actual responses.
-Arrival observer session87083 is read-only; source `/tmp/inferno-observe-event-arrivals.py`.
-Last root34 frame was boot logo at1791308669.82274; no input yet.
-Never use an endpoint from a stopped run. Check live report/command first.
+34 report `.local-build/reports/app-boot-34/report.json`, normalQMPquit33/emulator0/
+errornull/306.12654s. All7hashes andall4backingancestorsunchanged. Root141426688bytes
+SHA37888e60f0654a3088d64a1ed35a9ff8eace071645d9c76fba684e5e411a65b4.
+QMPbeforeSHAf54fb9ed7354a8d8b95a90087541a66e91245f7fda5b613088a6c32f288580f7;
+afterSHAcf314295d9a451e0fc2a9c98957b4bc50e5d34397e2ea95082669eea43c91fad.
+Both PNGderivatives reviewed/pixelequal; capture-conversion.json ready. Bootworker
+preservingfull34evidence. Rootobserver87083finished; observations tracked separately.
 
-33: actual appeared0/tap1 records, reviewed visible0→1, both strict QMP captures,
-normal QMPquit/emulator0/errornull, elapsed285.89601s; all7 disk hashes and all4
-backing ancestors unchanged. Root97779712bytes SHA
+33 normalemulator0/errornull/285.89601s, root97779712bytesSHA
 118a7ae8db7902db87d3449c212fb2dd59dcaae30ef44bb4528c1e931b60fb87.
-Raw QMPbeforeSHA04fd675f2856bd11b8b1e16e9b8cb0fac810f8b2fa82b79c2ade214616e4d9ae;
-afterSHAb8bffbf0b0dde7547d5d64a03c211741b6dd9bcd2686da996a3980cbce97c158.
-Evidence `companion/evidence/owned-loopback-strict-journey-33*`, commitscae829e719/
-462d24353c; actual host arrival records `app-loopback-33-observations`, de305a4732.
-Pixel-identical PNG derivatives of both QMP frames independently reviewed by root.
+Evidence `companion/evidence/owned-loopback-strict-journey-33*`, cae829e719/462d24353c;
+actualhostarrivals `app-loopback-33-observations`,de305a4732.
 
-32 proved transport and visual0→1 but received Signal15 before strictafter.
-Keep it **incomplete**, despite real cleanupframe1 and normal QMPshutdown.
-Signal sender unknown; observers do not send signals. 33/34 dedicated sessions
-avoid dependency on tool-session lifetime; this does not prove the prior cause.
-32 raw evidence6bad3afdb7; resourcesd3a83032aa; hosttimeline2c92865d5a.
+32 provedtransport+visual0→1 butSignal15 beforestrictafter. Senderunknown; observers
+read-only. 33/34dedicatedsessionsremove toolsessiondependency, notproofthepriorcause.
+32rawevidence6bad3afdb7/resourcesd3a83032aa/hosttimeline2c92865d5a.
 
-Next: complete34 strict capture repeat. Then implement original-clock measurement
-variant after review of `companion/evidence/owned-launch-timing-design.json`
-(6501e1c7bc), retaining visual proof and separate host/guest clocks. Native worker
-has read-only design complete; no timing variant built or staged yet.
-Disk worker is adding read-only `probe-status` mailbox command in isolated tree;
-34 is already running prior imports. Integrate code/evidence when ready.
+**Active nextwork**: nativeworker implementing firstlaunchmeasurement candidate
+per `companion/evidence/owned-launch-timing-design.json`6501e1c7bc. App fixedbuffer
+rawguestmachtime atmain/delegatelaunch/windowrequest/appeared/active, nofile/network/
+NSLogbeforemeasuredboundaries; deferflushviaordinarymaincallback. Separatebounded
+versionedtimingrecords; preserveexistingstrictmarkers. Launcherstampsbeforeoriginal
+open+callbackentry, printsaftercallback. No kill/relaunchcontrol yet. No newgrants.
+Worker ownsapp/relay/launcher/build; rootreviewhashes beforebootworkerstage49/boot35.
+Stage49 MUSTbranch44andreplacethreechangedcomponents, retainingHID45. Notyetbuilt.
+
+Read-only `probe-status` mailbox now integrated48ca4f1132; actualfirmware-free
+plumbingpassed, noinput/QMP/statechange. Future35willtestactualguestlivestate.
+Do notstopatmilestones. No handoffrequested.
 
 ## Strict journey / operator input recipe
 
