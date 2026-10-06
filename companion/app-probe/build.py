@@ -73,11 +73,11 @@ def main():
             log.flush()
             subprocess.run(argv, check=True, stdout=log, stderr=subprocess.STDOUT)
 
-    def build(name, executable, libraries):
+    def build(name, executable, libraries, extension="m"):
         obj = output / (name + '.o')
         run([clang, '--target=arm64-apple-ios14', '-fobjc-runtime=ios-14.0',
              '-fno-objc-arc', '-fno-stack-protector', '-ffreestanding', '-O2',
-             '-Wall', '-Wextra', '-c', str(source / (name + '.m')), '-o', str(obj)])
+             '-Wall', '-Wextra', '-c', str(source / (name + '.' + extension)), '-o', str(obj)])
         command = [linker, '-arch', 'arm64', '-platform_version', 'ios', '14.0', '14.0',
                    '-e', '_main', '-no_uuid', '-adhoc_codesign']
         for library in libraries:
@@ -86,6 +86,7 @@ def main():
 
     build('Main', bundle / 'InfernoProbe', ('libSystem', 'libobjc', 'Foundation', 'UIKit'))
     build('Launcher', output / 'inferno-launcher', ('libSystem', 'libobjc', 'Foundation', 'CoreServices'))
+    build('Stage', output / 'inferno-stage-app', ('libSystem',), 'c')
     shutil.copyfile(source / 'Info.plist', bundle / 'Info.plist')
     shutil.copyfile(source / 'org.inferno.app-probe.plist', output / 'org.inferno.app-probe.plist')
     evidence = {
@@ -98,9 +99,11 @@ def main():
         'sources': {str(path.relative_to(source)): sha(path) for path in sorted(source.rglob('*')) if path.is_file()},
         'bundle': {path.name: sha(path) for path in sorted(bundle.iterdir())},
         'launcher_sha256': sha(output / 'inferno-launcher'),
+        'stager_sha256': sha(output / 'inferno-stage-app'),
         'signing': {'method': 'LLVM ad-hoc; no certificate or Apple identity',
                     'app': signature(bundle / 'InfernoProbe'),
-                    'launcher': signature(output / 'inferno-launcher')},
+                    'launcher': signature(output / 'inferno-launcher'),
+                    'stager': signature(output / 'inferno-stage-app')},
     }
     (output / 'build-evidence.json').write_text(json.dumps(evidence, indent=2) + '\n')
     print(bundle)
