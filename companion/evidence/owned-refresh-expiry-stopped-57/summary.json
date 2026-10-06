@@ -1,0 +1,255 @@
+{
+  "kind": "normal-stopped-finite-refresh-expiry-journey",
+  "exit_code": 0,
+  "error": null,
+  "elapsed_seconds": 506.045061,
+  "binary_sha256": "670caae5e8b86dbd07968b053ce0667328cce648935cefb8649357400f9c8e59",
+  "binary_source": "09811d4d1d4dfa3c10ee8f59360f282624fc1df2",
+  "host_source": "48294c265e70d23a80261ed204b75a657b0a49b0",
+  "runner_sha256": "9f8825f721d2b50e535b27a814849527e66e540516730ba1322ce15a49275b32",
+  "root": {
+    "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/root.qcow2",
+    "bytes": 110952448,
+    "sha256": "e928b462fb5539aa3683233786efb754c6366f1f8cd0b0528474242ce52a08d5",
+    "format": "qcow2",
+    "standalone": false,
+    "backing_chain": [
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/disks/root.qcow2",
+        "format": "qcow2",
+        "sha256": "00fccb3ec7542ce5c9edd7970b627a15e962856d0438f11e3e4b520cecc6be80",
+        "bytes": 3604480,
+        "device": 66306,
+        "inode": 43819284,
+        "mtime_ns": 1791320456164191291,
+        "ctime_ns": 1791320615119518081,
+        "mode": "0o444"
+      },
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-44/disks/root.qcow2",
+        "format": "qcow2",
+        "sha256": "a26c50b4f51e5bb8a7c67889e2078649324851849f826f0eb754680f91f66f5d",
+        "bytes": 3145728,
+        "device": 66306,
+        "inode": 54023150,
+        "mtime_ns": 1791303958934848321,
+        "ctime_ns": 1791304092478945340,
+        "mode": "0o444"
+      },
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-27/disks/root.qcow2",
+        "format": "qcow2",
+        "sha256": "6898ad82af6bfb96168d2b7dd8febcfa977ef703679739197a40a08d735b6d4c",
+        "bytes": 140443648,
+        "device": 66306,
+        "inode": 54022764,
+        "mtime_ns": 1791303468549104874,
+        "ctime_ns": 1791303552337965412,
+        "mode": "0o444"
+      },
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-43/disks/root.raw",
+        "format": "raw",
+        "sha256": "69e8378c71d1f29840baa7ae16811d3f6285bf27042501a79e8139f8a5ad61d5",
+        "bytes": 34359738368,
+        "device": 66306,
+        "inode": 54022559,
+        "mtime_ns": 1791302373066551086,
+        "ctime_ns": 1791302496834897121,
+        "mode": "0o444"
+      }
+    ]
+  },
+  "strict_journey": {
+    "state": "completed",
+    "completed": true,
+    "input_mode": "operator-observation",
+    "automatic_input": false,
+    "visual_review_required": true,
+    "captures": {
+      "probe-before": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/probe-before.ppm",
+        "width": 828,
+        "height": 1792,
+        "sha256": "a0cb9cd7a90bd52b0c12e19f0d93bc1db4cc2f4ad89f69cb5b6a7db5bd52d8dd"
+      },
+      "probe-after": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/probe-after.ppm",
+        "width": 828,
+        "height": 1792,
+        "sha256": "b6ec1347408a659a54443f7a03043fecbd968953d08f21aa62580c4bd960a5b8"
+      }
+    },
+    "appearance_marker_observed": true,
+    "input_devices": {
+      "return": [
+        {
+          "index": 1,
+          "name": "Apple Multitouch HID SPI",
+          "current": true,
+          "absolute": true
+        }
+      ],
+      "id": 27
+    },
+    "before_capture_operator_requested": true,
+    "tap_marker_observed": true,
+    "after_capture_operator_requested": true
+  },
+  "observer_lifecycle": {
+    "kind": "opt-in-active-headless-refresh",
+    "requested_seconds": 60,
+    "automatic_input": false,
+    "auto_restart": false,
+    "state": "ended",
+    "clock_ticks_per_second": 100,
+    "page_size": 4096,
+    "coverage_complete_for_whole_boot": false,
+    "limits": [
+      "VNC refresh stimulates guest display work; not passive observation.",
+      "Observer CPU/RSS below is separate from emulator resources.",
+      "CPU is sampled delta, not exact child lifetime CPU; RSS peak is sampled.",
+      "No claim to fix earlier missing display submissions.",
+      "Coverage starts at actual connection and ends on disconnect/exit; not guest presentation."
+    ],
+    "command": [
+      "/usr/bin/python3",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/vnc-control.py",
+      "--socket",
+      "/tmp/inferno-boot-c7cg6449/vnc.sock",
+      "--output",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer",
+      "--observe-seconds",
+      "60",
+      "--runner-observer",
+      "--settle-seconds",
+      "0"
+    ],
+    "socket": "/tmp/inferno-boot-c7cg6449/vnc.sock",
+    "script_sha256": "99016edaf5f58ef7a6e2433a03d5a465d46c440053bdcfc2ec06a93124d5d29f",
+    "lifecycle_source_sha256": "a19f60baf3aa4351998ca8fe977f5989797af7bcb125c6185948981c3c9c134a",
+    "spawn_time": 1791327661.821256,
+    "spawn_monotonic": 746845.697734288,
+    "pid": 3027433,
+    "start_ticks": 74684569,
+    "rss_peak_bytes": 47022080,
+    "cpu_observed_seconds": 4.22,
+    "coverage_active": false,
+    "observer_report_sha256": "17729cfdd8f6873ebd150053c940afcfc8a3d9350f0af301a71c0d448046619b",
+    "connection_established_time": 1791327661.8500829,
+    "first_frame_received_time": 1791327661.877803,
+    "requested_phase_completed": true,
+    "connection_closed_time": 1791327722.1214876,
+    "exit_code": 0,
+    "exit_observed_time": 1791327722.2718334,
+    "cleanup_child_exit_code": 0
+  },
+  "scope": [
+    "Finite60-second observer naturally exited0, child reaped/no autorestart while QEMU continued; live inventory retained. All explicit gestures followed observer close.",
+    "Root reviewed post-expiry strict counter0\u21921; selected visuals/actions separately root-owned. Independent stopped journey verifier passed.",
+    "Observer sampledCPU4.22s/RSSpeak47022080 separate from emulator. Active refresh stimulates rendering, not passive observation or missing-submission fix.",
+    "Final finish-run/QMPquit/emulator0; runner/QEMU/observer absent, no forced kill/error. Default all7/header/ancestor/exact attestations passed; readable /proc scope only."
+  ],
+  "files": {
+    "stopped-disk-hashes-verification.json": {
+      "bytes": 27242,
+      "sha256": "6bc1230631a77798003720975b14b6138f1c813b562679c04f9fea768b79c869"
+    },
+    "display-trace-control.jsonl": {
+      "bytes": 4550,
+      "sha256": "a52475e0d5d706713ebbada59a471c6f69ca5998b7297727244ff495adfccb14"
+    },
+    "report.json": {
+      "bytes": 95210,
+      "sha256": "a50012b995d7590b97e0190677f57c6025d777c753ebda9ef7dbe6126ee95137"
+    },
+    "stopped-disk-hashes.json": {
+      "bytes": 3687,
+      "sha256": "ac0364bee3de697cb47742dce87bd2528a3d9397faf908c810767f894846398e"
+    },
+    "journey-verification.json": {
+      "bytes": 16352,
+      "sha256": "b155838d907830a2fd3796fe23d85f1770836b166eb330566b8471d344619605"
+    },
+    "stderr.log": {
+      "bytes": 2827,
+      "sha256": "90d324fa1e1c26c49589cda1ea8076ea1c3f9073a1f1fccf44bdc91ae15d91eb"
+    },
+    "launch.json": {
+      "bytes": 1275,
+      "sha256": "635154893b4a801e3c7590f047e989c6de8f6cbdf6f31d7f28b4619b6e2d1ab3"
+    },
+    "disk-preparation-44-root.qcow2.ctime-revalidation.json": {
+      "bytes": 1290,
+      "sha256": "aa9c767703c1760bc681ace4b90a965cb9d0f7a8bc7e15c182346e69d4a6de6e"
+    },
+    "disk-preparation-43-root.raw.ctime-revalidation.json": {
+      "bytes": 1289,
+      "sha256": "b1843054a524773ca6c690ef1a01ea0833940ad424278ea4156255054f0fdc10"
+    },
+    "control-transcript.jsonl": {
+      "bytes": 4563,
+      "sha256": "4affe617c194c9cf244e3fd64d8108686e7244118c1323c80337fa6e2e5bae8e"
+    },
+    "headless-refresh-expiry-check.json": {
+      "bytes": 442,
+      "sha256": "33a79b2f9fd411973f74ac227f15914c0e609ab4dbde9f49388f47a9e3d11bd9"
+    },
+    "root-overlay.json": {
+      "bytes": 16502,
+      "sha256": "112ad42cd30b3889f8f5d892b48c778240512bc0bc654aa05d0d224a8596e02d"
+    },
+    "trace-after-counter-final.json": {
+      "bytes": 1053,
+      "sha256": "f4b7e75a904ee284753c8e9b5c409414ed1e0dd11d924605a58844d54e7955e8"
+    },
+    "serial-input-transcript.jsonl": {
+      "bytes": 2202,
+      "sha256": "24687bf941099b29d57d1865cd81c276a2cb7d7a65382034d072a4f0bd1d4f62"
+    },
+    "guest-errors.log": {
+      "bytes": 97045,
+      "sha256": "5752adc78e519202af18bab2726c0b562c99a6a9af242fd427749690d9b91c29"
+    },
+    "qmp-transcript.jsonl": {
+      "bytes": 24497,
+      "sha256": "ca1a2da66d24f342cd645fb45e0d96797dd427d686005e457eb64930fce12cea"
+    },
+    "command.json": {
+      "bytes": 3390,
+      "sha256": "a831715c458a662fcead4f325360095a6af641744d55bc077026a2e4cb32e879"
+    },
+    "serial.log": {
+      "bytes": 338183,
+      "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730"
+    },
+    "app-boot-27-root.qcow2.ctime-revalidation.json": {
+      "bytes": 1278,
+      "sha256": "9a52a6eb83e7ba1dc79bcd7fe06edceede41c4fb9577e6f9ccf8f1a844d092bc"
+    },
+    "build-manifest.json": {
+      "bytes": 2401,
+      "sha256": "0b72d85ba4b2c9029e7a10cbce357d663a06417a307c9d3522ef4a4d4872a0b1"
+    },
+    "headless-refresh/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "headless-refresh/resources.jsonl": {
+      "bytes": 27284,
+      "sha256": "5707bba684e16e2073a5e284c1101f4b1f6c2d6a347cf9ddc30d85d88d328b72"
+    },
+    "headless-refresh/stdout.log": {
+      "bytes": 15693,
+      "sha256": "8fad9d4f873facd312d1be230dd970dd29700d381e99d8f3a2278ab21c315172"
+    },
+    "headless-refresh/lifecycle.json": {
+      "bytes": 21166,
+      "sha256": "1e757676184738b2eaa92781353dd3aed2aa0d90194db2f217137d3b9f79174a"
+    },
+    "headless-refresh/observer/report.json": {
+      "bytes": 17607,
+      "sha256": "17729cfdd8f6873ebd150053c940afcfc8a3d9350f0af301a71c0d448046619b"
+    }
+  }
+}
