@@ -381,15 +381,17 @@ int main(int argc, char **argv) {
     if(exec_wrapper) {
         if(mount_at(system_device,"/mnt1",0))return 47;
         if(copyfile("/usr/share/inferno-exec-launcher","/mnt1/usr/bin/inferno-exec-launcher",0,15))return 48;
+        unsigned long long prior_bytes=verified_bytes;
         compare_tree("/usr/share/inferno-exec-launcher","/mnt1/usr/bin/inferno-exec-launcher");
-        printf("INFERNO_EXEC_WRAPPER_READBACK bytes=%llu mismatches=%llu\n",verified_bytes,mismatches);fflush(0);
+        printf("INFERNO_EXEC_WRAPPER_READBACK bytes=%llu mismatches=%llu\n",verified_bytes-prior_bytes,mismatches);fflush(0);
         sync();if(unmount("/mnt1",0))return 49;if(mismatches)return 50;
     }
     if(install_cache) {
         if(mount_at(system_device,"/mnt1",0))return 40;
         if(copyfile("/usr/share/inferno-launchd-cache.plist","/mnt1/System/Library/xpc/launchd.plist",0,15))return 41;
+        unsigned long long prior_bytes=verified_bytes;
         compare_tree("/usr/share/inferno-launchd-cache.plist","/mnt1/System/Library/xpc/launchd.plist");
-        printf("INFERNO_CACHE_READBACK bytes=%llu mismatches=%llu\n",verified_bytes,mismatches);fflush(0);
+        printf("INFERNO_CACHE_READBACK bytes=%llu mismatches=%llu\n",verified_bytes-prior_bytes,mismatches);fflush(0);
         sync();if(unmount("/mnt1",0))return 42;
         if(mismatches)return 43;
         printf("INFERNO_LAUNCHD_CACHE_INSTALLED: explicit configuration only; signature unchanged\n");fflush(0);
