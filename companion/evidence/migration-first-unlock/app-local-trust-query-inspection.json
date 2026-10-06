@@ -1,0 +1,39 @@
+{
+  "scope": "Design and export audit only. No guest helper, registration, notification, trust field or guard change.",
+  "source_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+  "framework": "/System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices",
+  "exports": {
+    "method": "Existing self-authored audit-imports.py export-trie and reexport resolver, not local symbol presence",
+    "_OBJC_CLASS_$_FBSApplicationInfo": "defined in original FrontBoardServices export trie",
+    "_OBJC_CLASS_$_FBSApplicationLibrary": "defined; not needed for fresh-info proposal"
+  },
+  "minimal_declarations": [
+    "@interface FBSApplicationInfo : NSObject",
+    "+ (instancetype)alloc;",
+    "- (instancetype)initWithApplicationProxy:(LSApplicationProxy *)proxy;",
+    "- (unsigned long)type;",
+    "- (unsigned long)unauthoritativeTrustState;",
+    "- (void)release;",
+    "@end"
+  ],
+  "sequence": [
+    "Use already retrieved exact owned bundle LSApplicationProxy after successful normal registration.",
+    "Allocate original FBSApplicationInfo and invoke initWithApplicationProxy:, check nil.",
+    "Read type and unauthoritativeTrustState once and log both numeric values with fresh_local_info=1.",
+    "Release object; retain existing launch behavior. Do not mutate or post notification."
+  ],
+  "original_implementation": {
+    "constructor": "initWithApplicationProxy:0x1860bfe9c -> _initWithApplicationProxy:0x1860bfea8 -> _initWithApplicationProxy:overrideURL:0x1860bfeb8",
+    "type_store": "0x1860c0094 calls original _applicationTypeForProxy:;0x1860c00a4 stores numeric type in ivar resolved from0x1d45e81fc",
+    "type_getter": "0x1860c19d4 returns same ivar as64-bit scalar",
+    "trust_getter": "0x1860c1ed4 calls original FBSSignatureValidationService trustStateForApplication:; local type0/1 yields8, >=2 uses normal MIS validator",
+    "load_hook": "Base FBSApplicationInfo _loadFromProxy:0x1860c1160 is a no-op; constructor owns type initialization."
+  },
+  "linkage": "If implemented, add narrow FrontBoardServices TBD with only audited FBSApplicationInfo class symbol and explicit framework linkage, then run complete actual import audit. Alternative dynamic class lookup requires ensuring framework loaded; do not assume NSClassFromString availability means framework already loaded.",
+  "limitations": [
+    "Fresh local object is not a remote query of SpringBoard cached SBApplicationInfo.",
+    "If proxy System and fresh local type1/trust8 while remoteSecurity3 persists, local result isolates differing remote info or request path but does not authorize cache/guard modification.",
+    "Prior inspected FBS library existing-info cache replacement checks only bundle path/mtime. A boot reconstructing from persisted LS record is a cleaner comparison than manufactured update notifications.",
+    "No on-disk FBSApplicationInfo cache persistence has been established by this bounded inspection; do not claim its absence globally."
+  ]
+}
