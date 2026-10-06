@@ -1,0 +1,20 @@
+companion/boot.py:430:             next_capture = time.monotonic() + args.capture_interval
+companion/boot.py:431:             if args.capture_interval:
+companion/boot.py:432:                 (output / 'frames').mkdir()
+companion/boot.py:433:                 report['periodic_captures'] = []
+companion/boot.py:434:             while time.monotonic() < deadline and process.poll() is None:
+companion/boot.py:435:                 if touch_trace:
+companion/boot.py:436:                     touch_trace.poll(qmp)
+companion/boot.py:437:                 if control:
+companion/boot.py:438:                     control.poll(qmp)
+companion/boot.py:439:                 if args.capture_interval and time.monotonic() >= next_capture:
+companion/boot.py:440:                     captures = report['periodic_captures']
+companion/boot.py:441:                     frame = output / 'frames' / f'{len(captures):04d}.ppm'
+companion/boot.py:442:                     captured = qmp.execute('screendump', {'filename': str(frame)})
+companion/boot.py:443:                     if 'error' in captured or not frame.is_file():
+companion/boot.py:444:                         raise RuntimeError(f'Periodic framebuffer capture failed: {captured}')
+companion/boot.py:445:                     captures.append({'elapsed_seconds': round(time.monotonic() - started, 3),
+companion/boot.py:446:                                      'path': str(frame), 'sha256': digest(frame)})
+companion/boot.py:447:                     next_capture = time.monotonic() + args.capture_interval
+companion/boot.py:448:                 if journey:
+companion/boot.py:449:                     journey.poll(qmp, time.monotonic())
