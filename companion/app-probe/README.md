@@ -38,14 +38,14 @@ Boot25 executed the owned process through UIApplicationMain, then crashed when
 UIKit retained its delegate. Our narrow NSObject declaration had omitted the
 original eight-byte isa header: compiled `_window` stores overwrote self+0.
 The corrected declaration preserves that header, and actual build14 instructions
-store/load `_window` at self+8. The fixed app's visible execution and counter
-journey are pending the next guest run. See `../evidence/owned-app-isa-fix/` and
+store/load `_window` at self+8. Boots26,27 and28 each captured the fixed app at counter0, then counter1
+after one explicit counter tap. See `../evidence/owned-app-isa-fix/` and
 `../evidence/migration-first-unlock/owned-app-first-crash-25-analysis.json`.
 
-Stage only on a new disposable copy of a normally stopped, hash-verified paired
-disk tuple. The original recovery copyfile path supports an executable-only
+Stage only on a new disposable copy or validated writable overlay of a normally
+stopped, hash-verified paired disk tuple. Retain every immutable backing layer. The original recovery copyfile path supports an executable-only
 replacement and byte/metadata readback, followed by normal unmount. Preserve
-Info.plist, launcher, input helpers and emulator for this ABI comparison.
+unchanged components when isolating a change; record every replaced binary.
 
 For an actual journey, review the app framebuffer before targeting its large
 button and capture the visible change from `Tap count: 0` to `Tap count: 1`.
@@ -60,6 +60,11 @@ Markers go to stderr and NSLog with prefix `INFERNO_UIKIT_PROBE_V1` and events
 `main`, `window-visible-requested`, `view-loaded`, `appeared`, `active`, and
 `tap count=1` (then subsequent counts). Stderr reaches serial only when the
 launch route connects it there; capture the actual process/system log otherwise.
+The current FrontBoard route does not send app stderr to the console. The owned
+event-file relay is under integration: boot28 proves its original global cache
+path fails at open with errno1, despite uid501 and a valid boot UUID. The normal
+app container path is being investigated. Missing markers must still fail the
+strict runner; the three reviewed visual journeys do not establish relay success.
 A requested window is not a captured visible screen. Acceptance needs the actual
 before/after framebuffer and the matching interaction marker from the guest.
 
@@ -72,7 +77,7 @@ the evidence records both signatures and hashes. No privileged entitlement is
 added on this initial attempt. The launcher uses self-authored declarations and
 the original CoreServices implementation, not registration database fabrication.
 
-Proposed staging on a NEW disposable disk only:
+Historical initial Data-path staging proposal (not the current installed path):
 
 - Data: `/private/var/inferno/InfernoProbe.app` and
   `/private/var/inferno/inferno-launcher`, root:wheel; directories and executables
@@ -85,16 +90,18 @@ Proposed staging on a NEW disposable disk only:
   but not `/Library/LaunchDaemons`; no shipped launchctl was found in the inspected
   System inventory. A plist placed only on Data has no established bootstrap route.
 
-The launcher calls original `LSApplicationWorkspace.registerApplication:` and logs
-its Boolean return value,
+The current launcher calls original `registerApplicationDictionary:` with the
+owned Info.plist, actual Path and exact System classification described above,
 then queries `LSApplicationProxy` for validity, bundle URL, container and type.
 Only after successful registration and valid proxy does it call
-`LSApplicationWorkspace.openApplicationWithBundleID:`. It retries at most30 times,
+`openApplicationWithBundleIdentifier:configuration:completionHandler:` with a
+nil configuration and the original BOOL/NSError callback. It retries at most30 times,
 with three seconds between attempts; default SIGALRM terminates the process after
 120 seconds even if framework IPC blocks. An accepted open request exits0; retry
 exhaustion exits1. A watchdog termination will not print an ordinary exit marker.
 `request-accepted-not-visual-proof` explicitly means only service acknowledgement.
-App markers and the actual screenshot/tap journey are still required.
+Strict acceptance also requires app markers and reviewed before/after captures.
+The visual journey is proven; the event relay remains incomplete.
 
 The original same-build recovery CoreServices1114.5 binary was inspected:
 `registerApplication:` at0x41f4c calls LSRegisterURL at0xd1838; `openApplicationWithBundleID:`
@@ -104,7 +111,8 @@ appearing is not guaranteed. LSRegisterURL is a local function, not an exported
 interface in this guest. An earlier direct import caused an actual missing-lazy-
 symbol SIGABRT in app-boot-5 at launcher offset0x417c (return from the call at0x4178).
 The corrected helper invokes the original Objective-C method and reports BOOL,
-not a fabricated OSStatus. The corrected registration route awaits execution.
+not a fabricated OSStatus. The subsequent dictionary route registered successfully; the corrected System
+classification and a normal restart produced actual accepted launches25–28.
 
 If permission, container or signing policy rejects this honest owned bundle,
 retain the actual error and inspect that rejection before changing the fixture.
