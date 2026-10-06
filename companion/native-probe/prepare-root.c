@@ -378,7 +378,11 @@ int main(int argc, char **argv) {
         if(mount_at(system_device,"/mnt1",0))return 37;
         if(copyfile("/usr/share/inferno-readiness","/mnt1/usr/bin/inferno-readiness",0,15) ||
            copyfile("/usr/share/org.inferno.readiness.plist","/mnt1/System/Library/LaunchDaemons/org.inferno.readiness.plist",0,15))return 38;
-        sync();if(unmount("/mnt1",0))return 39;
+        unsigned long long prior_bytes=verified_bytes;
+        compare_tree("/usr/share/inferno-readiness","/mnt1/usr/bin/inferno-readiness");
+        compare_tree("/usr/share/org.inferno.readiness.plist","/mnt1/System/Library/LaunchDaemons/org.inferno.readiness.plist");
+        printf("INFERNO_READINESS_READBACK bytes=%llu mismatches=%llu\n",verified_bytes-prior_bytes,mismatches);fflush(0);
+        sync();if(unmount("/mnt1",0))return 39;if(mismatches)return 63;
         printf("INFERNO_READINESS_INSTALLED\n");fflush(0);
     }
     if(exec_wrapper) {

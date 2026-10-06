@@ -1,0 +1,10 @@
+--- !tapi-tbd
+tbd-version: 4
+targets: [ arm64-ios ]
+install-name: '/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit'
+current-version: 1.0
+compatibility-version: 1.0
+exports:
+  - targets: [ arm64-ios ]
+    symbols: [ _IOServiceMatching, _IOServiceNameMatching, _IOServiceGetMatchingServices, _IOIteratorNext, _IOObjectRelease, _IOObjectGetClass, _IOObjectConformsTo, _IORegistryEntryGetName, _IORegistryEntryGetRegistryEntryID, _IORegistryEntryGetParentIterator, _IORegistryEntryGetChildIterator, _IOServiceGetBusyState ]
+...
