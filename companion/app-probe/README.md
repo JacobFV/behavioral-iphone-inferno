@@ -138,3 +138,14 @@ Stop the recovery runner cleanly, hash the ENTIRE stopped disk set, and use that
 report's root plus auxiliary state for the separate direct app-boot experiment.
 Neither successful staging nor a launcher service acknowledgement proves an app
 screen, launch or tap; the framebuffer and interaction evidence remain necessary.
+
+Executed staging on 2026-10-06: sourcec325a4a3d2 built and ran against a copied
+prepared21 root with its paired auxiliary namespaces. Raw serial at
+`.local-build/reports/app-staging-1/serial.log` shows writable System mount,
+Data identity, four successful full guest comparisons (71776,954,67952,844 bytes),
+and both normal unmounts returning0. QMP quit after the completion marker returned
+emulator exit0; the runner records an interrupted observation because SIGTERM
+ended its requested240-second window early. The stopped root SHA256 is
+`b9230ec175e388eb0da068adaa3a9fd2da07d63f1149332017aad73450893dca`;
+all seven namespace hashes are in that report's `stopped-disk-hashes.json`.
+The original prepared21 was unchanged. This proves owned-file staging only.
