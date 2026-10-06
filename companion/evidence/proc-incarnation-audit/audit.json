@@ -1,0 +1,65 @@
+{
+  "scope": "Read-only installed original proc_pidinfo flavor17 layout and authorization audit for observational same-process-incarnation comparison. No guest execution or grant change.",
+  "primary_sources": {
+    "header": {
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/xnu-7195.81.3/bsd/sys/proc_info.h",
+      "sha256": "7773ddaccec1956ab289ffa23ab9e4827d7e6f38d1513f1797b0e208502dd06a",
+      "lines": "107-116,787-789"
+    },
+    "implementation": {
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/xnu-7195.81.3/bsd/kern/proc_info.c",
+      "sha256": "308c352ae1ce43533568371df840a7e1350328ecd8f816a995fee6d3d0eb81c4",
+      "lines": "1415-1425,1955-1957,2020-2092,2974-3013"
+    },
+    "qualification": "Source tag later than installed beta; critical fields, dispatch and MAC order independently checked against actual original kernel."
+  },
+  "installed_identity": {
+    "kernel_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+    "cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+    "analysis_kernel_dylib_sha256": "b579d59566989b55bc3d9b6a419b2d6c515a5fed7fea85ef030f12f6a967854b"
+  },
+  "contract": {
+    "declaration": "int proc_pidinfo(int pid, int flavor, uint64_t arg, void *buffer, int buffersize);",
+    "flavor": 17,
+    "arg": 0,
+    "size": 56,
+    "offsets": {
+      "executable_uuid": 0,
+      "uint64_uniqueid": 16,
+      "uint64_parent_uniqueid": 24,
+      "int32_idversion": 32,
+      "uint32_reserved2": 36,
+      "uint64_reserved3": 40,
+      "uint64_reserved4": 48
+    },
+    "success": "Require exact return56. Public wrapper maps syscall-1 to0 retainingerrno; zero/short result is unknown/failure, not identity match.",
+    "arg_zero": "Only live proc_find; nonzero arg can request zombie lookup, not wanted for active warm measurement."
+  },
+  "installed_checks": {
+    "public_wrapper": "0x180252ba8..bdc moves five publicargs into __proc_info(call2,pid,flavor,arg,buffer,size), maps-1 to0.",
+    "size_dispatch": "Table0xfffffff007efd1e4 index16 offset-2088 targets0xfffffff007efc9bc: compare buffersize>=56, smaller routes ENOMEM.",
+    "copy_dispatch": "Table0xfffffff007efd264 index16 offset-620 targets0xfffffff007efcff8; atd00c..d044 zero56, call proc_piduniqidentifierinfo, copyout56, successretval56.",
+    "field_filler": "0xfffffff007eff680..6cc loads kernel proc uniqueid tooffset16, executableUUID16bytes at0, parentuniqueid24, idversion32, clearsreserved36/40/48.",
+    "auth_dispatch": "Flavor17 is set in installed mask0x40122800; c8e8 passes check_same_user=0, c8f8 calls proc_security_policy(call2,flavor17).",
+    "mac_first": "proc_security_policy fffffff007efe634 calls mac_proc_check_proc_info, e638 returns nonzero before privilege. e644..64c PRIV_GLOBAL_PROC_INFO1002 occurs afterward; check_same_user0 bypasses only UIDcomparison, not MAC."
+  },
+  "interpretation": {
+    "same_incarnation": "Within same guest boot, compare successful kernel uniqueid and idversion plus exact owned PID/executable/UID before and after. ExecutableUUID is binary identity, not incarnation. Different/failed query cannot establish same incarnation.",
+    "limit": "Actual guest return56 and errno must be recorded. Source audit does not assert entitlement-free success, root exemption, or authenticated TCPpeer. No new grant suggested."
+  },
+  "verification": {
+    "command": [
+      "clang",
+      "--target=arm64-apple-ios14",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-c",
+      "/tmp/inferno-qmp-control/companion/evidence/proc-incarnation-audit/abi.c",
+      "-o",
+      "/tmp/inferno-uniqueid-abi.o"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "meaning": "ARM64 compile-time layout only, not guest test"
+  }
+}
