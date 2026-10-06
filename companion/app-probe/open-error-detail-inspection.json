@@ -1,0 +1,87 @@
+{
+  "scope": "Original read-only FBS/Setup analysis and source-only owned logging candidate; no build, staging, input or VM changes.",
+  "source_cache": {
+    "path": "/home/brandonin/.local/share/inferno/fs-patcher-input/System/Library/Caches/com.apple.dyld/dyld_shared_cache_arm64e",
+    "sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+    "uuid": "11ad39c9-e3c9-3067-a337-7287744fdcb5"
+  },
+  "image": "/System/Library/PrivateFrameworks/FrontBoardServices.framework/FrontBoardServices",
+  "analysis_transform": "Sparse analysis-only Mach-O: all original mapped segment bytes; move __TEXT to file offset0 and adjust only its segment/section file offsets. No guest use.",
+  "segments": [
+    {
+      "name": "__TEXT",
+      "vm": "0x1860bd000",
+      "bytes": 561152,
+      "analysis_segment_sha256": "21ed25e03a89e5c65131cc702c3085cd8b35e00ce7c37e7bb50c2e7da898af62"
+    },
+    {
+      "name": "__DATA_CONST",
+      "vm": "0x1d0957560",
+      "bytes": 98368,
+      "analysis_segment_sha256": "f0c7c686dd74cdfad4c255b70e10c2aab4814a30f872541bc3cd21e78542b8c0"
+    },
+    {
+      "name": "__DATA",
+      "vm": "0x1d45e4c18",
+      "bytes": 21248,
+      "analysis_segment_sha256": "185687037ddc138bf3bf2de2833e446f6e5842bed4940d7291f3df0aad364062"
+    },
+    {
+      "name": "__DATA_DIRTY",
+      "vm": "0x1ddd7e228",
+      "bytes": 5804,
+      "analysis_segment_sha256": "0b55fe2eb6bf1046a6491d7fcff8211deb5290fcb893559dd91c98031c4b3b4e"
+    },
+    {
+      "name": "__AUTH_CONST",
+      "vm": "0x1da3c9270",
+      "bytes": 38960,
+      "analysis_segment_sha256": "cdb998e99f2757aedc3d565117c79fe384a18ed4a4194ff33ca363ba1ac30113"
+    },
+    {
+      "name": "__OBJC_CONST",
+      "vm": "0x1da3d2aa0",
+      "bytes": 17712,
+      "analysis_segment_sha256": "5f4655e93a5a594fc2a02896cfa51cf272ac1c6f6b36a7ca659af80af734877e"
+    },
+    {
+      "name": "__AUTH",
+      "vm": "0x1de353018",
+      "bytes": 4448,
+      "analysis_segment_sha256": "df397f62bfd847817cae72bd0e07a3b72269f7daca9910f6cc895a3bbaf9dacb"
+    },
+    {
+      "name": "__LINKEDIT",
+      "vm": "0x1e11f4000",
+      "bytes": 148214402,
+      "analysis_segment_sha256": "e33aaa02514a03c553d2c36eaa5ff2f176cc2fbb8e74cf2864a5f65c87d9f1a9"
+    }
+  ],
+  "error_code": "FBSOpenApplicationServiceErrorCodeToString0x1860cde50: case1 branches0x1860cde8c and returns CFString0x1da3ca3b0 RequestDenied. This is generic, not proof that Setup is the denial cause.",
+  "error_fields": {
+    "builder": "0x1860f83e0",
+    "description": "0x1860f8464-0x1860f849c formats The request to open <identifier> failed. into NSLocalizedDescription.",
+    "failure_reason": "0x1860f84a8-0x1860f84c0 stores incoming reason under NSLocalizedFailureReason.",
+    "code_description": "0x1860f84d0-0x1860f84f8 stores code label under BSErrorCodeDescription.",
+    "underlying_error": "0x1860f8504-0x1860f851c stores incoming NSError under NSUnderlyingError.",
+    "callback_propagation": "Completion0x1860f8634 preserves an existing matching FBS domain error at0x1860f8690-0x1860f86d8; other domains are wrapped as InvalidResponse with underlying NSError. Final callback0x1860f87f0-0x1860f8808 receives result and error.",
+    "logging_route": "FBLogCommon at0x1860f8764 and OS_LOG_TYPE_ERROR branch0x1860f8778-0x1860f8790 provide original FBS logging; callback fields are a more direct bounded diagnostic in the owned launcher."
+  },
+  "candidate": "Preserve original BOOL,NSError callback ABI, nil configuration, registration, retry and watchdog behavior. Only read localizedFailureReason and one NSUnderlyingError; log bounded strings/domain/code with nil-safe selectors. Do not dump unrelated userInfo or traverse an arbitrary chain.",
+  "validation": "clang arm64-apple-ios14 -fsyntax-only -Wall -Wextra -Werror with existing dictionary/open diagnostic macros passed; no executable or guest stage created.",
+  "setup_remaining": {
+    "original_setup_sha256": "f178dba8e881fb836ca17d0a4be12d352affc10cd828339f15e775df3661d6c5",
+    "flow": "BuddyFundamentalFlow _flowMapByClass at0x1001058bc constructs ordered array; successive stores0x10010611c-0x100106194.",
+    "after_screen_time": [
+      "BuddySeedDiagnosticsController",
+      "BuddyDiagnosticsController",
+      "BuddyAppActivityController",
+      "BuddyHarmonyController",
+      "BuddyUserInterfaceStyleSelector",
+      "BuddyHomeButtonController",
+      "BuddyMagnifyController"
+    ],
+    "tail": "Finished controller is included in later tail at0x100106220/0x100106278; migration tail varies.",
+    "estimate": "Up to roughly eight ordinary choices after Screen Time if every candidate pane appears. Runtime predicates can skip panes, and a confirmation sheet may add input; this is a capacity estimate, not a guaranteed screen count. Five remaining requests from27/32 would be tight. Current restarted helper has its own budget."
+  }
+}

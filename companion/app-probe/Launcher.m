@@ -85,6 +85,22 @@ int main(int argc, char **argv) {
                                 openCallbackAttempt, accepted, utf8([error domain]),
                                 [error code], utf8([error localizedDescription]));
                             emit(message);
+                            if (error) {
+                                // Original FBS stores the specific denial in these
+                                // fields; inspect only one underlying NSError.
+                                id underlyingObject = [[error userInfo] objectForKey:@"NSUnderlyingError"];
+                                NSError *underlying =
+                                    [underlyingObject respondsToSelector:@selector(domain)] &&
+                                    [underlyingObject respondsToSelector:@selector(code)] &&
+                                    [underlyingObject respondsToSelector:@selector(localizedDescription)]
+                                    ? underlyingObject : nil;
+                                snprintf(message, sizeof(message),
+                                    "INFERNO_LAUNCHER_V1 event=open-error-detail attempt=%d failure_reason=%.512s underlying_present=%d underlying_domain=%.160s underlying_code=%ld underlying_description=%.512s\n",
+                                    openCallbackAttempt, utf8([error localizedFailureReason]),
+                                    underlying != nil, utf8([underlying domain]),
+                                    [underlying code], utf8([underlying localizedDescription]));
+                                emit(message);
+                            }
                             openCallbackAccepted = accepted;
                             openCallbackFinished = 1;
                         }];
