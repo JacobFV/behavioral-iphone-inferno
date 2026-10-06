@@ -7,26 +7,44 @@ continuous work across status questions and intermediate milestones. Parallel
 workers are authorized for independent work; use isolated worktrees and commit.
 No handoff or pause has been requested.
 
-## Current execution, 2026-10-06 11:35 local
+## Current execution, 2026-10-06 11:52 local
 
-**37 finish-run accepted; cleanup/postflight in progress. Next unchanged38 repeat.**
-Root completed strict0→1 and three real Home/reopen cycles with retainedcounter1.
-F6 via fixed privateVNC --home-button succeeds (source2f3a7320da); two prior edge
-swipes failed and remain documented. Original SMCbutton6 logs and resign/background,
-then explicitOPEN/foreground/active. UUID7F2B1017-7FE9-4E9C-AF95-AE72CA29523A,
-PID263/main3549314015, originalproc query56/errno0/unique263/idversion743.
-OPEN IDs84c675a5758b4affbac318cf5021fd38,3fae7dfd909d441fb31eb521880637d5,
-c88b8b2f79ea489a84169be185fd97ab. Gen2/3/4, finalseq19active.
-OPEN→active747.806458/709.094792/735.643458ms, guestlifecycleonly.
-Evidence33341fb2f8 and visual9bafc4690d. Parser9297c814e2 handles exact original
-SMCprefix before lifecycleRAW without missing/duplicate relaxation.
-Prewarm60s28.68325%onecore, postwarm60s34.06656%, bothRSS5848629248/8threads.
-Postresource21931 complete. Eventobserver18552 should finishwithVM; preserve.
-Bootworker owns37postflight/commit then38launch after37stopped usingunchanged50,
-same4artifacts/7200dedicatedsession/keepalive. Root allinput, noautomatic actions.
-38 endpoint/UUID notyetknown. Create freshrootgesture/OPEN utilities and observer.
-Nativeworker designing futurefresh-processmeasurement only, noimplementationyet.
-No handoffrequested; keepworkingthroughrepeat and nextmeasurements.
+**38 LIVE: strict + three warm cycles complete, fresh-process experiment waitingps1200.**
+Report `.local-build/reports/app-boot-38`, privateVNC `/tmp/inferno-boot-whc_a5vq/vnc.sock`,
+runnerPID2658992/7200s/keepalive. Rootonlyinput; normalfinish-run eventually.
+UUID024BD83E-EB10-4666-9C04-687E7C21E9DC PID266/main3436522534,
+originalproc56/errno0/unique266/idversion751. Frozen50samebits37.
+Observer session37514 `/tmp/inferno-observe-event-arrivals-38.py`; gesture/openutilities
+`/tmp/inferno-explicit-gesture-38.py`, `/tmp/inferno-explicit-open-38.py`.
+Initial3unlockswipes, betaclosec2f820c003cc4902bfa4c8c6ca4d0a2e,
+counter583cf77abd454a5ab03ecfa73375be15, strictcapturescomplete.
+3HomeF6single +OPEN IDs460d5babcba946369c9b88993ee332ed,
+e9a0a8cd68464c99ae0a8225f2e589c9,025f6f2bf165401abc28582ac1959bda.
+OPEN→active721.109708/765.457792/702.042583ms; sameincarnation/gen2,3,4.
+Immutabletimingprefixe6a513b395, rootreviewedallHome/counter1 cycles.
+InitialcaptureafterOPEN1/3stillHome despiteactive; subsequentcapturecounter1.
+Sourceinspection108d2333a8: VNCabsence skipsrefresh; refreshstimulatesguestdrawing.
+Rootfix9e5b2c1a00 capture-onlypreservesinitial+settled and optional--observe-seconds
+0..300 sameconnection, separatecapturetimes. No presentationtimeclaim.
+
+F6double --app-switcher09b920c7fd actuallyshowedInfernoProbecardright/Clockleft.
+RootreviewedthenONLYowncardup swipe10e2b4b73dcd406f8ca3229fe11ec032
+x26000/y22000→3000/600ms. ActualaftercaptureonlyClock; notyetterminationproof.
+Lastps600completedBEFOREdismissandstillhadPID266; invalidabsenceevidence.
+Diskworkerwatchingnextps1200 (~11:58-12:00 likely), buildingnewseparate
+process-launch-timing.py withcapture-absence/derive, strictoldPIDabsence beforeOPEN.
+DO NOT OPEN4 until completecleanoriginalpsabsence captured/hashprefix+hosttime.
+Then rootstartpersistentVNCobserveracrossOPEN4 tocheckframebehavior; newPID/unique
+andnewmain afterOPEN +fresh5hooks +counter0 required. CurrentreceiveracceptsnewPID,
+rejectsPIDreuse. Samebootfreshprocess/sharedcachesuncontrolled, notcachecold.
+Native design4be174df99/4fa73f8b4e, parserdesigna38a753164. Bootworkerauditing
+hardcodedreportmilestonefalse separately; noVMinput orstopbyworkers.
+
+37 stoppednormal0/errornull/1018.044699s, all7/all4ancestorsunchanged.
+Root149094400SHA7e6a5e08eb32cab420911ba18016162804a1531b35d544905a530021fdf8afd9.
+Raw6ef102ba93, warm33341fb2f8/visual9bafc4690d, observer5310667da0.
+37warm747.806458/709.094792/735.643458ms, guestlifecycleonly.
+No pause/handoffrequested; continueactivework.
 
 37 uses FOUR new reviewed artifacts:
 - App22 `~/.local/share/inferno/app-probe/exec-build-22/InfernoProbe.app/InfernoProbe`,
