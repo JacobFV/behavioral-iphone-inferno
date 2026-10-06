@@ -19,5 +19,12 @@
     "first_match": "Touchscreen slotself+0x30 checked100088b20..40; if occupied logs already have a main display digitizer at100088b60, preserves prior slot. If empty logs acquired main display digitizer100088c38, stores matchedservice100088c50..58. mainDisplayDigitizerService1000884c8 returns that slot via dispatch-sync block1000885ac.",
     "bounded_diagnostic": "Inspect actual owned IOHIDEventDriver child registryID, Built-In boolean, PrimaryUsagePage/PrimaryUsage and DisplayIntegrated, plus competing registered digitizer event services. Original HBPP bootloader being present does not itself prove it registered an IOHIDEventService or captured the slot. Original acquisition logs can distinguish matching where available.",
     "limit": "These fields do not expose private backboard main-slot contents by themselves, and selection does not prove every system-edge gesture uses this one service. No property change authorized by this finding."
+  },
+  "kernel_display_integration_producer": {
+    "kernel_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+    "service_property": "IOHIDEventService::parseSupportedElements atfffffff00831ef34; page13 branch00831f0cc..d0 and usage4 path00831f14c..158 reach setProperty(DisplayIntegrated,true)00831f19c..1a8. Literal atfffffff0073ad49a. Standard touchscreen descriptor therefore infers service property; Built-In independent provider copy at00831e718..778.",
+    "event_factory": "IOHIDEventDriver::createDigitizerTransducerEventForReport008334d24 writes options0 atstack+0xc via008335240 then calls IOHIDEvent::digitizerEvent at008335270. Factory008337904 adds absolutebit0,008337944 adds rangebit16 when inrange. It does not add displayIntegratedbit19. Generic post-factory setters0083352bc and00833534c set touch0xb0009 and mask0xb0007 respectively.",
+    "distinction": "DisplayIntegrated service property and digitizer eventfield0xb0019 are different representations. Reviewed generic kernel producer does not copy property into the eventfield. That does not prove final event delivered to UIKit keeps fieldfalse: usermode filters/transformations were not fully traced.",
+    "diagnostic_limit": "Read-only event-service property snapshot can verify service matching but cannot settle serialized eventfield. Need actual ordinary event observation or exact downstream original producer before any field-change claim. No property, kernel or report change proposed."
   }
 }
