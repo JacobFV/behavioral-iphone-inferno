@@ -53,9 +53,10 @@ original Hello setup UI. Owned app registration and the original first-unlock AP
 transition are proven. Owned UIKit execution, touch navigation and a counter
 journey remain unproven. Do not return to the archived framework implementation.
 
-At 06:13 local, normal shutdown of **app-boot-18** has been requested from
-bootworker session96389. Stage39 must use the normally stopped18 root and all six
-paired namespaces, never a live copy. Boot18 used verified stage38 root SHA256
+At 06:18 local, **app-boot-18 is normally stopped**, QMPquit49/emulator0 after
+946.498589seconds. Root SHA256
+`868fd033c50a409e793862ec760d56ac88d458e57e601e9e1ba9acac629414ea` and all six
+paired namespaces are preserved. Stage39 used this stopped tuple. Boot18 used verified stage38 root SHA256
 `78de9f6dc03f5481f6f8428997eb6f205c044ad7dc5a87f9b21ed2d1c64fc161`, emulatorfda9447b
 /source9f92661b, private serial/mailbox,900second startup trace,30second frames,
 strictjourney,maximum7200seconds,noUSB. Actual raw QMP confirms all six trace
@@ -72,12 +73,14 @@ manager/admin grant. Root independently verified actual69168byte binary SHA256
 entitlements and equality of every file-backed Mach-O section against43.
 Source/evidence integrated as9718260ef9/c82e3c8442.
 
-Native worker is authorized to stage39 after stopped18 handoff, replacing only
-HID helper with44 and reusing unchanged build42 readiness/535byte job. Require
-actual69168 and69207byte readbacks, clean unmount/QMP0 and all seven hashes.
+Stage39 replaced only HID helper with44 and reused unchanged build42 readiness/
+535byte job. Actual69168 and69207byte readbacks had zero mismatches; clean
+unmount and QMPquit6/emulator0 confirmed. All seven stopped hashes retained, root
+`29c65e9d70aefe2ff3c2cdea7bd3c04ff68540049c29fa7a0f07807fe825e03d`.
 Bootworker then runs19 with unchanged emulator and private serial transport;
 root exclusively owns input after reviewing actual device creation and screen.
-Free space was22GiB before stage39; recheck before boot19. All real boot tuples
+Free space is22GiB after stage39 and verified retirement of redundant prep38
+disks (b0700b140e); recheck before boot19. All real boot tuples
 remain preserved. Redundant generated preparation27/37 disks also retired after
 full verification (012fec5293); do not treat them as available.
 
@@ -174,8 +177,8 @@ Evidence and exact original-code inspection are under companion/evidence/.
 
 ## Next concrete work
 
-1. Finish normal stop18, stage the reviewed entitlement-only build44 in39 and
-   run boot19. Original Sandbox class-allowlist analysis and root review are done.
+1. Run boot19 from verified39 with the reviewed entitlement-only build44.
+   Original Sandbox class-allowlist analysis and root review are done.
    Keep transport and descriptor unchanged. Require actual service-open result
    and registered virtual device before claiming that boundary solved.
 2. Stage from a normally stopped paired tuple only after the next candidate is
