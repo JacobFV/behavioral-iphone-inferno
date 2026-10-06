@@ -1,0 +1,112 @@
+{
+  "kind": "original_installed_mobile_container_lookup_inspection",
+  "purpose": "Resolve existing data container after actual app29 Foundation writer READY/errno0 while LS dataContainerURL is nil. No creation/grant/policy change proposed.",
+  "sources": {
+    "shared_cache": {
+      "path": "/home/brandonin/.local/share/inferno/fs-patcher-input/System/Library/Caches/com.apple.dyld/dyld_shared_cache_arm64e",
+      "sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1"
+    },
+    "framework": {
+      "image": "/System/Library/PrivateFrameworks/MobileContainerManager.framework/MobileContainerManager",
+      "analysis_only": "/tmp/inferno-MobileContainerManager-complete",
+      "extraction_map": "/tmp/inferno-MobileContainerManager-complete.json"
+    },
+    "library": "/usr/lib/system/libsystem_containermanager.dylib",
+    "containermanagerd": {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/container-inspection/usr/libexec/containermanagerd",
+      "sha256": "5a3803aa2527532e96d2048d222d99d01d82352b7545944d54bdafb5d9691d24",
+      "origin": "Original official-os.raw usr/libexec/containermanagerd; extracted read-only outside Git."
+    }
+  },
+  "objc_contract": {
+    "class": "MCMAppDataContainer",
+    "selector": "containerWithIdentifier:createIfNecessary:existed:error:",
+    "arguments": [
+      "exact owned NSString bundle identifier",
+      "BOOL NO",
+      "BOOL* existed (optional)",
+      "NSError** error (optional)"
+    ],
+    "returns": "Autoreleased MCM container or nil; inspect NSError on failure. Use original -url accessor; no UUID construction or directory enumeration.",
+    "preferred_lookup_only": "containerWithIdentifier:error: convenience selector also explicitly forwards createIfNecessary=0, existed=NULL.",
+    "scope_limit": "Correct API does not prove the current reader is authorized for a different bundle identifier. Preserve original error and do not add guessed grants."
+  },
+  "address_evidence": [
+    {
+      "va": "0x1aed30054",
+      "symbol": "+[MCMAppDataContainer typeContainerClass]",
+      "bounded_instructions": [
+        "mov w0,#2",
+        "ret"
+      ],
+      "meaning": "App data class2, distinct from app bundle class1."
+    },
+    {
+      "va": "0x1aed320ac",
+      "symbol": "+[MCMContainer containerWithIdentifier:createIfNecessary:existed:error:]",
+      "observed": "Retains identifier, allocates receiving subclass, invokes initWithIdentifier:createIfNecessary:existed:temp:error: at0x1aed32104 with x2 identifier,x3 requested create,x4 existed*,w5=0 permanent,x6 NSError**. Returns via objc_autoreleaseReturnValue at0x1aed3212c."
+    },
+    {
+      "va": "0x1aed32130",
+      "symbol": "+[MCMContainer containerWithIdentifier:error:]",
+      "bounded_instructions": [
+        "mov x5,x3",
+        "adrp x8,selector-page",
+        "add x1,x8,#0xaa1",
+        "mov w3,#0",
+        "mov x4,#0",
+        "b objc_msgSend"
+      ],
+      "selector_literal": "containerWithIdentifier:createIfNecessary:existed:error: at0x1cb682aa1"
+    },
+    {
+      "va": "0x1aed31c48",
+      "symbol": "-[MCMContainer initWithIdentifier:createIfNecessary:existed:temp:error:]",
+      "observed": "Reads subclass typeContainerClass; UTF8 identifier; forwards create/temp/existed/error to original low-level manager API. Error variable initialized1; non1 maps original error into NSError rather than fabricating a path."
+    },
+    {
+      "va": "0x1aed31d1c",
+      "bounded_instructions": [
+        "add x5,sp,#8",
+        "mov x0,x27",
+        "mov x2,x26",
+        "mov x3,x23",
+        "mov x4,x25",
+        "bl 0x1ab0be8b0"
+      ],
+      "meaning": "x0 mapped container class; x1 UTF8 identifier; x2 create; x3 temporary; x4 existed*; x5 low-level error*. The optimized veneer resolves to original container_create_or_lookup_for_current_user0x187b48aa8."
+    },
+    {
+      "va": "0x1aed31778",
+      "symbol": "-[MCMContainer url]",
+      "meaning": "Original URL accessor supplies manager-owned path; caller should retain/copy URL if keeping it beyond autorelease lifetime."
+    },
+    {
+      "va": "0x187b47de0",
+      "symbol": "original low-level create/lookup request construction",
+      "bounded_instructions": [
+        "adrp x1,Command-page",
+        "add x1,x1,#0x8d5",
+        "mov x2,#0",
+        "bl xpc_dictionary_set_uint64"
+      ],
+      "meaning": "Ordinary create/lookup is Command0; requested creation remains separately represented by CreateIfNecessary, not an alternate privileged provisioning routine."
+    }
+  ],
+  "authorization_boundary": {
+    "daemon_gate": "checkEntitlementsAndInitClientObject around0x10004eb9c\u20130x10004f238 reads original client identity/entitlements and per-command rules. Reject branch records error0x37 at0x10004f21c.",
+    "container_gate": "-[MCMClientConnection isEntitledForLookupWithClass:identifier:] at0x100063f04 calls _lookupForContainerClass: at0x10006400c and checks supplied identifier membership; nil lookup returnsfalse at0x100064068.",
+    "literal_evidence": {
+      "0x1000ba290": "com.apple.private.MobileContainerManager.allowed",
+      "0x1000ba2b0": "com.apple.private.MobileContainerManager.otherIdLookup",
+      "0x1000ba2d0": "com.apple.private.MobileContainerManager.lookup"
+    },
+    "limit": "These literals document existing policy, not a recommendation to grant them. Current helper authorization is unproven until original lookup result. No root-equals-authorized assumption."
+  },
+  "raw_byte_checks": {
+    "0x1aed30054": "40008052c0035fd6",
+    "0x1aed32130": "e50303aa884a0e9001852a9103008052040080d2df6f9816",
+    "0x1aed320f0": "e20317aae30315aae40314aa05008052e60313aaef6f9896",
+    "0x1aed31d1c": "e5230091e0031baae2031aaae30317aae40319aae0320e97"
+  }
+}
