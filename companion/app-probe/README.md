@@ -261,5 +261,23 @@ The original System inventory contains root `Applications/MobileSMS.app` and
 owned bundle bytes while retaining the Data copy: executable SHA256
 `c11f4d430ee8543da2bdade55e5f5beb8685692345dc6fe2ccbad114ad6f55ec`, Info.plist
 `ad9946fd7093f8f438f70200f5e096667e47989da70be2187a7324c6ed20a153`.
-No alternate signer identity or registration dictionary is introduced. The
-System application variant has not yet been executed.
+No alternate signer identity or registration dictionary was introduced in this
+path comparison. Actual `app-boot-7` System-path attempts also returned NO and
+invalid proxies; completed batches exited1. Raw evidence and stopped disk hashes
+are retained under `companion/evidence/app-system-registration*`.
+
+`DictionaryLauncher.m` now builds a separate `inferno-launcher-dictionary`
+candidate. Original control-flow inspection in
+`registration-path-inspection.json` shows that the URL route passes a NULL
+registration dictionary and can skip new-bundle registration, whereas original
+`registerApplicationDictionary:` passes that dictionary into the registration
+path. The candidate reads the exact owned Info.plist, verifies its bundle ID,
+adds only the actual `Path`, and logs the original BOOL result as
+`register-dictionary-boolean`. It adds no entitlements, signing metadata,
+container records, or alternate identities. The URL executable and app retain
+their prior hashes; both variants remain independently buildable.
+
+Build10's original-cache export audit resolves all71 imports across the two
+launchers and app. This verifies imports, not registration or execution. The
+dictionary candidate is prepared for a separate staged comparison; the first
+SEP protocol comparison continues with the unchanged URL launcher.
