@@ -61,4 +61,5 @@ mkdir -p "$build_root/build"
    --disable-tools --disable-install-blobs --disable-werror \
    --extra-cflags="$CPPFLAGS" --extra-ldflags="$LDFLAGS"
  ninja -j"$jobs" qemu-system-aarch64)
+python3 "$script_dir/build-manifest.py" "$build_root"
 printf 'Binary: %s\n' "$build_root/build/qemu-system-aarch64"
