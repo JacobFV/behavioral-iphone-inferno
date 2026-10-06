@@ -1,11 +1,19 @@
-# Headless early boot experiment
+# Headless iOS execution
 
-`companion/run boot --profile /absolute/profile.json --seconds 120` starts the
-actual t8030 device with TCG, two CPUs, 4 GiB RAM, simulated SEP and a recovery
-ramdisk. This is an early execution experiment, not a completed restore or an
-installed iOS system. Direct kernel startup applies upstream kernel patches.
-Use `companion/run build --simulated-sep` for this path: upstream builds with
-data encryption enabled reject simulated SEP during machine initialization.
+The current installed iOS14 beta5 path has completed setup, launched original
+Clock, and run the owned UIKit counter through two consecutive strict journeys
+(boots33/34). Each retained actual lifecycle/tap records, reviewed counter0→1,
+both QMP screenshots, normal emulator exit0 and unchanged backing ancestors.
+See `evidence/owned-loopback-strict-journey-33.json` and the corresponding34 record.
+`NEXT_SESSION.md` identifies the active run, frozen image state and exact binaries.
+
+The command below without `--disk-boot` starts the earlier recovery experiment:
+`companion/run boot --profile /absolute/profile.json --seconds 120`.
+It uses the actual t8030 device with TCG, two CPUs,4GiB RAM, simulatedSEP and a
+recovery ramdisk. A recovery boot is distinct from the proven installed-iOS path.
+Direct kernel startup applies upstream patches. Use
+`companion/run build --simulated-sep` for this path: upstream builds with data
+encryption enabled reject simulatedSEP during machine initialization.
 
 Prepare the documented iPhone 11 iOS 14.0 beta 5 (18A5351d) inputs from a local
 IPSW downloaded from the Apple URL in upstream's File Setup guide:

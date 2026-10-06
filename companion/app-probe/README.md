@@ -110,7 +110,8 @@ exhaustion exits1. A watchdog termination will not print an ordinary exit marker
 `request-accepted-not-visual-proof` explicitly means only service acknowledgement.
 Strict acceptance also requires app markers and reviewed before/after captures.
 The visual journey, event relay and both strict operator captures are proven
-in one uninterrupted run33. Same-input repeatability is the next active check.
+in two consecutive unchanged runs33/34. Guest monotonic launch measurement
+is the next active integration.
 
 The original same-build recovery CoreServices1114.5 binary was inspected:
 `registerApplication:` at0x41f4c calls LSRegisterURL at0xd1838; `openApplicationWithBundleID:`

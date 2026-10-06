@@ -24,10 +24,10 @@ Owned virtual-HID input opened original Clock and then the owned UIKit fixture.
 Boot26 captured the owned app's counter at0 and, after one explicit tap, at1.
 The original launch gate accepted its corrected System classification after a
 normal restart; correcting our NSObject header fixed the actual startup crash.
-Boot33 completed the strict owned-app journey: actual lifecycle and tap records,
-reviewed counter0→1, both QMP captures and normal emulator exit0. A same-input
-repeat is active. Whole-emulator resource samples are recorded; intrinsic launch
-timing and reliability/density measurements remain active work. See [BOOT.md](BOOT.md) for the image profile and headless runner,
+Boots33 and34 completed the strict owned-app journey from the same frozen state:
+actual lifecycle and tap records, reviewed counter0→1, both QMP captures and
+normal emulator exit0. Whole-emulator resource samples are recorded; guest launch
+timing and broader reliability/density measurements remain active work. See [BOOT.md](BOOT.md) for the image profile and headless runner,
 [USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.
 
 ## Initial milestones
