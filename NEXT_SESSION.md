@@ -7,14 +7,37 @@ The user explicitly wants continuous work across status questions and intermedia
 milestones. No pause or handoff requested. Parallel workers are authorized for
 independent work in isolated worktrees; commit progressively.
 
-## Current execution, 2026-10-06 13:58 local
+## Current execution, 2026-10-06 14:24 local
 
-All through46 stopped.44 failed visual;45/46 healthy. 47 reproduced tap1/display0 with seven-event trace. Root requested normal runner
-SIGINT2 cleanup at1791320331.1935923; failed attempt preserved4420e9f401, rootSHA
+All guests through49 STOPPED.49 completed strict0→1, actual BACKBOARDD and
+SPRINGBOARD samples, and Home/reopen retaining1; normalfinish/emulator0/noerror.
+TrackedjourneyverifierPASS. Bootworker rerunningdefaultdiskpreservation with
+bcb494c27a (compareonlyjournalverified_timeindependently; identitiesexact).
+Next: ONE50samefrozen55/emulator670 after49retentionreview. Rootallinput.
+Goal: reproduce real displayfreeze and collect original compositor stacks while
+stalled, comparing49healthybaseline. No renderingbehaviorfixyet.
+
+49boot558C3965-E50B-4A05-A02B-9A5AA952F3A9/appPID244/main2485749412.
+Counter878d8f31544848fe80f77d51cf9a996c; QMPbefore
+ a46a85e164f1f4329f6dcb1f2024e9c1656a64a914edc5bf27078b6e1d61169e,
+afterc2b09805bcb6fa8506b30c28844ba671977b59fa22411131e6319c10865d7bd6.
+Trace7completecycles39601→84582, all7disabled1791321497.206beforeanysamples.
+BACKBOARDDf9525a093dc5465a939ad2424822c541:PID60/unique60/version205,
+13070bytes53chunks. SPRINGBOARD80a3a72d48374a67841089ae659558ef:
+PID57/unique57/version117,17190bytes69chunks. Both20stackshots,originaltool0,
+EOF/noerrors/truncation/kill,postidentitymatch. SharedcacheUUID11AD39C9-E3C9-3067-
+A337-7287744FDCB5 slide14514000. Kernel/kextsymbolwarnings; userstacksUUIDmapped.
+Healthybackboardrender-serveranddisplay.primary normalmach_msg waits.
+OPEN609b0281ac2e45aab61a5e90a31047df afterHome retained1; warmparsercomplete,
+diagnosticcontextnotperformancetrial. Evidence8d955f5852/original-stack-samples-49,
+697cde035f/display-mmio-49-actual,97e6666ae5/owned-sample-49-visual.
+
+47 failed and is preserved4420e9f401, rootSHA
 35ba0bc4d3cd12a22524127f3d1acc317f47951cd58ecee4c24f2cb5abbb5e7f forensic_onlytrue.
-Trackedverifierrejectsstrictincomplete. Bootworker staging helper55 in branch44. Active task: investigate the intermittent
-real display freeze in41 while finishing a reproducible installed-iOS runner.
-Do not treat a healthy comparison as a fix.
+Trackedverifierrejectsstrictincomplete. 48failedpreexecutionauxmode;fixed97f7230fa8.
+Neitherisfuturebase. Currentbase55/ctimeattestations detailedbelow, keepallpaths.
+
+## Prior display diagnosis
 
 - 41: real tap1 but VNC and QMP remain counter0, including continuous30-second
   observations. Ordinary F6 Home and one OPEN produced real background/foreground
@@ -112,10 +135,10 @@ retained d54e8144b1 (9a1735b60b). HID55 only newartifact88944bytes SHA
 All33imports originalcachechecked, exact2existingHIDentitlements unchanged.
 Fixed original/usr/sbin/spindump targets SpringBoard/backboardd,2s/100ms,-onlyTarget,
 noBinary/noFile/stdout/noSymbolicate/timelimit20,256KiBretention,cooperative60guestsec.
-Originaltool execution/stackshot acceptance UNTESTED. No SAMPLE on47(oldhelper54).
+Originaltool execution/stackshot acceptance proven49healthy. No SAMPLE on47(oldhelper54).
 Read-only resultparser merged c280dbe200+476b108364; missingchunks/end cannotprove
 completion. Validpartialprefix retained, output outsideGit/ignored, usefulness
-alwaysrequiresoriginaloutputreview. Hostsyntheticchecks pass; no actualsampleyet.
+alwaysrequiresoriginaloutputreview. Hostsyntheticchecks andactual49reconstruction pass.
 Stage55 completed real recovery readbacks for all4 app22/launcher22/reader54/HID55,
 normal unmounts/COMPLETE, intentionalSignal15normalQMPquit/emulator0 retained.
 Evidence1ef9b0a7da/owned-sample-stage-55. Root independently rechecks all7/ancestors,
@@ -140,9 +163,7 @@ wasinheritedbynewprivatecopies. Evidenceprivate-aux-mode includesactualstderr.
 Narrowfix97f7230fa8 reservesnewprivateauxdestination, copy/hashchecks, chmod0600
 ONLYnewcopy. Actualfirmware-freeQMPquery-blockro=false/quit0; frozen55source
 bytes/inode/ctime/mtime/modeunchanged, duplicateoutputreject. NotaniOSmilestone.
-ONE49 LIVE runner2865059/QEMU2865546, VNC/tmp/inferno-boot-8cjvuetl/vnc.sock,
-serialconnected1791321238.615004, all6privateaux0600. Sourcea99b7e5feb,
-same55/670, initialboot; noSAMPLEyet. Rootallinput, firstactualSAMPLEonlyafterreviewednormaljourney
+49completedasabove. Futureguest rootallinput; SAMPLEonlyafterreviewedjourney
 outcome toavoidperturbingreproduction. UseBACKBOARDD thenSPRINGBOARD atmostonceeach,
 waitEND/FAILED; errorsareevidence, no grants/retries. No nativeperformanceclaim.
 
