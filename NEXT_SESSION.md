@@ -27,22 +27,38 @@ All guests through40 are stopped normally. Continuous work remains active.
 - Initial sampler report snapshots retained independently of finalizedreports.
   Newreports show ios_booted:null, app_executed:true and four scopedmilestones.
 
-Active next work: remove temporary operator-script dependencies. Root owns
-`companion/owned-control.py`, wrapperaliases and `companion/OWNED_JOURNEY.md`.
-Newtool records one explicit HIDgesture or ownedOPEN with freshID and sourcehashes;
-noautomaticinput/retry. Needs actual41 journey validation aftercommit.
-Bootworker owns reusable stopped preservation tool, testingreadonly39/40 inisolated
-worktree. Its FDclaim must explicitly mention /proc unreadableprocess coverage.
-Diskworker derives39/40launch clocks and audits finalmilestones; noVMinput.
-41 is now live from unchanged50 for actual trackedworkflow validation.
-Runner2700068/QEMU2700630, VNC`/tmp/inferno-boot-y58vv3hs/vnc.sock`,
-report`.local-build/reports/app-boot-41`, root exclusiveinput. Initialview shows
-Apple bootlogo; noinputsent yet. Bootstartedfrom1a094be530, newownedcontrol
-sourcevalidated bynativeworker; negativeCLIchecks42ca32fed0.
-Preservationtool549705a758 merged, wrapper1a094be530. Use trackedpreserve
-afterrootfinish; it records FDpermissiongaps. Diskworker now producing tracked
-verify-journey command; it must not require transientarrivalobserver. Do notscale
-concurrency beyondthisboundedwork or inferdensity/economics fromonepair.
+Active investigation:41 exposed real displayfreeze and is now STOPPEDFAILED.
+- Newtracked owned-control produced actualunlock/alert/counterinput, eachrawretained.
+- Genuine tap1 (ID1d07d32c05e943898d1981622edb831b) but counter0 remained inVNC
+  andperiodicQMP; all22frames continuous30s exactlysamef417855a9... andQMPbefore
+  SHA1330d2cfefb010993f4bed3d4be731d416dbc91237833891fc57be050772e41c.
+- OrdinaryF6Home gave realresign/background PID254/main2674666039 butnostate
+  redraw. ONEdiagnosticOPEN e2193a1d1e0f4dc48daffda12ce85c50 accepted0 child339,
+  realforeground/active generation2, stillall22frames0. No secondcountertap.
+- Strictafter deliberatelyNOTcalled. Rootrecorded operator-stop.json andSIGINT2
+  torunner2700068; emulator2700630 exited0 viaactualQMPquit45, finalcapture44;
+  reportKeyboardInterrupt Signal2/strictincomplete. Newverify-journey rejects41.
+- Actualrawprefix cb7ee66e75/display-staleness-41-live, sourceinspection609c0096b8
+  +7914f94386; diagnosticreopen evidence beingcommitted now.
+- Initial/warmclockparsers can derive actualhooks but this is NOT visualsuccess.
+  Homecallbacks refute persistentapp-mainloop blockage; sharedQMP/VNCpixels
+  exclude clientcacheonly. No causalbehaviorpatch justifiedyet.
+
+Tracked workflowtools areintegrated: owned-control d8131b8b4e (helperSHA7d8ffa...),
+preserve-stopped549705a758, verify-journey13684cbcbe/f961972b0d/3bcaa74944,
+wrapperaliases/docs. Failedretentionbc61d114ca adds explicit--failed-attempt,
+rootforensic_only:true andloaderreject; normaldefaultrejectsreporterror.
+Important frozen50 is intentional recoverySignal15/attempt_completed:false after
+verifiedstaging: DO NOT blanketrejectallreporterrors andbreakknownbackingchain.
+Forensicmarker restriction preservesestablishedrecovery-stagingsemantics.
+
+Next boundedONE42 now authorized tobootworker AFTER41trackedforensicretention.
+Samefrozen50/emulator/guestbits; newhostcontrol0ffa45811e adds fixed18 audited
+nonconsuming ADPregisterreads `companion/run control --report REPORT query-display-registers`.
+OriginalDT ADPbase0x230000000. Readirqstatus/enable/version/frame_size andeach
+pipecontrol/format/start/end/stride/src/dest. No arbitraryaddresses/writes,
+noemulatorbehaviorpatch/build. RootexclusiveUIandregisterqueries. Workerwill
+send42endpointwhenready; notyetknown. Do notstartadditionalVMs.
 
 Unchangedfourbits/backings below remain the current execution baseline.
 

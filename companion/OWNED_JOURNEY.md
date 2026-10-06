@@ -85,6 +85,22 @@ guest running for additional observations. Without it, strict completion ends
 the attempt. Live `report.json` is an initial snapshot; query `probe-status` for
 current state.
 
+If a genuine tap is logged but the frame remains at0, leave the after capture
+pending and retain the mismatch. Boot41 exposed this failure even with continuous
+VNC observation; ordinary Home/reopen produced lifecycle events but did not
+restore drawing. A successful callback or lifecycle parser is insufficient.
+New runners support this fixed read-only diagnostic through the same mailbox:
+
+```sh
+companion/run control --report "$attempt" query-display-registers
+```
+
+It reads18 audited, nonconsuming display registers and retains the actual QMP
+responses in the control transcript. Reads are sequential, not atomic, and do
+not include framebuffer memory. Older running processes do not acquire new
+commands merely because the checkout has changed. A register snapshot alone
+does not establish the cause of a rendering failure.
+
 ## Warm resume and timing
 
 Use `observe --home-button` with a new output directory. It sends the emulator's
@@ -150,6 +166,12 @@ guests. Keep every backing layer. Linux `/proc` permission gaps are recorded;
 descriptor checks cover readable processes at verification time, not a host-wide
 exclusive lock. Existing retained attempts can be rechecked using a different
 new output filename without rewriting their original evidence.
+
+For an explicitly failed attempt that nevertheless completed normal QMP cleanup,
+`preserve-stopped --failed-attempt` records the attempt error and marks the root
+`forensic_only:true`. The overlay loader rejects that manifest as a new backing
+base. The flag cannot bypass emulator-exit, QMP-shutdown, disk or ancestor checks.
+It does not convert the failed journey into a pass. Boot41 retains this scope.
 
 For a specifically bounded two-guest experiment, start a second sibling from the
 same base, with separate output/endpoints, and complete the reviewed journey in

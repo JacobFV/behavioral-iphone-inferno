@@ -35,6 +35,9 @@ old process. Boots39/40 completed the strict journey concurrently, then a shared
 was64.57% of one host core; peak sampled PSS sum was10.76GiB. This is a measured
 pair with an idle foreground fixture, not a maximum-capacity result. See
 [OWNED_JOURNEY.md](OWNED_JOURNEY.md) for the repeatable operator workflow.
+Boot41 then exposed a persistent display freeze after a genuine tap: both VNC
+and QMP retained counter0 despite responsive lifecycle events. That attempt is
+retained as a failure; read-only display diagnostics are the next investigation.
 Broader reliability and active-workload measurements remain ongoing. See [BOOT.md](BOOT.md) for the image profile and headless runner,
 [USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.
 

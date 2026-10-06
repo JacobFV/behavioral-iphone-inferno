@@ -2,6 +2,28 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 12:42 continuation: retained visual failure in tracked workflow validation
+
+The new tracked owned-control CLI executed real unlock, alert and counter input
+in41 using unchanged frozen50 bits. The guest accepted one counter tap and emitted
+tap1, but both VNC and periodic QMP pixels remained counter0. Continuous30-second
+VNC observation did not recover. Ordinary Home produced actual resign/background;
+one explicit owned OPEN returned the same process to foreground/active, while
+another continuous30-second observation remained counter0. No second tap was sent.
+
+The after-capture was deliberately withheld. Root recorded the explicit SIGINT2
+to the runner; normal QMP cleanup exited emulator0 and preserved the failed strict
+state. The reusable verifier rejects41 as incomplete. Live failure prefixes,
+reviewed images and diagnostic reopening are retained under `display-staleness-41*`.
+This is a real reliability failure after the earlier completed journeys, not a pass
+inferred from lifecycle callbacks. Its cause is not yet established.
+
+Tracked preservation now supports explicit failed-attempt forensics while marking
+the resulting root manifest ineligible for overlay reuse. Descriptor permission
+coverage is recorded. Next42 keeps the same guest and emulator, adding only a
+fixed read-only display-register query through the existing sole-owner mailbox.
+No rendering behavior patch has been made on speculation.
+
 ### 12:24 continuation: fresh process and two concurrent strict journeys
 
 38 completed the fresh-process experiment: normal AppSwitcher dismissal of the
