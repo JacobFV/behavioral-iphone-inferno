@@ -134,3 +134,11 @@ paths. Preserve `.local-build/binaries/share/` alongside this snapshot. It conta
 upstream's `source/pc-bios/keymaps/`. Attempts3 and4 failed before guest execution
 because the relocated icon and then VNC `en-us` keymap were missing. The original
 local dependency libraries and build manifest must also remain available.
+
+A separate read-only 7-Zip verification extracted the firmware tree from the
+original official System image, the prepared System volume, and prepared Preboot.
+All 19 files (2,578,484 bytes), relative paths and directory entries matched;
+each file SHA256 matched across all three trees. Raw reader logs and the detailed
+inventory are outside Git under `/home/brandonin/.local/share/inferno/native-probe/`
+as `verification-original.log`, `verification-prepared.log`, and
+`firmware-verification.json`. No prepared disk bytes were changed for inspection.
