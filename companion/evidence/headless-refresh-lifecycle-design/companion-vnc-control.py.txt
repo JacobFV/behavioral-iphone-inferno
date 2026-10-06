@@ -1,0 +1,147 @@
+companion/vnc-control.py:19: class Client:
+companion/vnc-control.py:20:     def __init__(self, endpoint, report):
+companion/vnc-control.py:21:         self.report = report
+companion/vnc-control.py:22:         self.sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+companion/vnc-control.py:23:         self.sock.settimeout(15)
+companion/vnc-control.py:24:         self.sock.connect(str(endpoint))
+companion/vnc-control.py:25:         banner = self.read(12)
+companion/vnc-control.py:26:         if banner != b'RFB 003.008\n':
+companion/vnc-control.py:27:             raise ValueError(f'Expected QEMU RFB3.8: {banner!r}')
+companion/vnc-control.py:28:         self.sock.sendall(banner)
+companion/vnc-control.py:29:         security = self.read(self.read(1)[0])
+companion/vnc-control.py:30:         if 1 not in security:
+companion/vnc-control.py:31:             raise ValueError('Private socket does not offer None security')
+companion/vnc-control.py:32:         self.sock.sendall(b'\x01')
+companion/vnc-control.py:33:         if self.read(4) != bytes(4):
+companion/vnc-control.py:34:             raise ValueError('VNC security handshake failed')
+companion/vnc-control.py:35:         self.sock.sendall(b'\x01')  # Shared client; preserve other connections.
+companion/vnc-control.py:36:         header = self.read(24)
+companion/vnc-control.py:37:         self.width, self.height = struct.unpack('>HH', header[:4])
+companion/vnc-control.py:38:         length = struct.unpack('>I', header[20:24])[0]
+companion/vnc-control.py:39:         if length > 4096 or not 0 < self.width*self.height <= 16000000:
+companion/vnc-control.py:40:             raise ValueError('Unsupported framebuffer dimensions/name')
+companion/vnc-control.py:41:         name = self.read(length).decode(errors='replace')
+companion/vnc-control.py:42:         report['server'] = {'banner': banner.decode().strip(), 'name': name,
+companion/vnc-control.py:43:                             'width': self.width, 'height': self.height}
+companion/vnc-control.py:44:         pf = struct.pack('>BBBBHHHBBBxxx', 32, 24, 0, 1, 255, 255, 255, 16, 8, 0)
+companion/vnc-control.py:45:         self.sock.sendall(b'\x00\x00\x00\x00' + pf)
+companion/vnc-control.py:46:         self.sock.sendall(struct.pack('>BBHi', 2, 0, 1, 0))
+companion/vnc-control.py:47: 
+companion/vnc-control.py:55:         return bytes(data)
+companion/vnc-control.py:56: 
+companion/vnc-control.py:57:     def capture(self, path):
+companion/vnc-control.py:58:         requested = time.time()
+companion/vnc-control.py:59:         requested_mono = time.monotonic()
+companion/vnc-control.py:60:         self.sock.sendall(struct.pack('>BBHHHH', 3, 0, 0, 0, self.width, self.height))
+companion/vnc-control.py:61:         canvas = Image.new('RGB', (self.width, self.height))
+companion/vnc-control.py:62:         coverage = bytearray(self.width*self.height)
+companion/vnc-control.py:63:         deadline = time.monotonic()+15
+companion/vnc-control.py:64:         while time.monotonic() < deadline:
+companion/vnc-control.py:65:             kind = self.read(1)[0]
+companion/vnc-control.py:66:             if kind == 2:  # Bell has no payload.
+companion/vnc-control.py:67:                 continue
+companion/vnc-control.py:68:             if kind == 3:
+companion/vnc-control.py:69:                 length = struct.unpack('>xxxI', self.read(7))[0]
+companion/vnc-control.py:70:                 if length > 1024*1024:
+companion/vnc-control.py:71:                     raise ValueError('Oversized server text')
+companion/vnc-control.py:72:                 self.read(length)
+companion/vnc-control.py:73:                 continue
+companion/vnc-control.py:74:             if kind != 0:
+companion/vnc-control.py:75:                 raise ValueError(f'Unexpected server message {kind}')
+companion/vnc-control.py:76:             count = struct.unpack('>xH', self.read(3))[0]
+companion/vnc-control.py:77:             for _ in range(count):
+companion/vnc-control.py:78:                 x, y, width, height, encoding = struct.unpack('>HHHHi', self.read(12))
+companion/vnc-control.py:79:                 if encoding != 0 or x+width > self.width or y+height > self.height:
+companion/vnc-control.py:80:                     raise ValueError('Unexpected encoding or rectangle bounds')
+companion/vnc-control.py:81:                 if not width or not height:
+companion/vnc-control.py:82:                     continue
+companion/vnc-control.py:83:                 pixels = self.read(width*height*4)
+companion/vnc-control.py:84:                 canvas.paste(Image.frombytes('RGB', (width, height), pixels, 'raw', 'BGRX'), (x,y))
+companion/vnc-control.py:85:                 for row in range(y,y+height):
+companion/vnc-control.py:86:                     start=row*self.width+x
+companion/vnc-control.py:87:                     coverage[start:start+width]=b'\x01'*width
+companion/vnc-control.py:88:             if all(coverage):
+companion/vnc-control.py:89:                 received = time.time()
+companion/vnc-control.py:90:                 received_mono = time.monotonic()
+companion/vnc-control.py:91:                 canvas.save(path)
+companion/vnc-control.py:92:                 self.report['captures'].append({'path': str(path),
+companion/vnc-control.py:93:                     'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'time': time.time(),
+companion/vnc-control.py:94:                     'requested_time': requested, 'received_time': received,
+companion/vnc-control.py:95:                     'request_to_receive_seconds': received_mono-requested_mono})
+companion/vnc-control.py:96:                 return
+companion/vnc-control.py:97:         raise TimeoutError('Incomplete VNC framebuffer')
+companion/vnc-control.py:118: def main():
+companion/vnc-control.py:119:     parser = argparse.ArgumentParser(description=__doc__)
+companion/vnc-control.py:120:     parser.add_argument('--socket', required=True, type=Path)
+companion/vnc-control.py:121:     parser.add_argument('--output', required=True, type=Path)
+companion/vnc-control.py:122:     actions=parser.add_mutually_exclusive_group()
+companion/vnc-control.py:123:     actions.add_argument('--tap', nargs=2, type=int, metavar=('X','Y'))
+companion/vnc-control.py:124:     actions.add_argument('--swipe', nargs=4, type=int, metavar=('X0','Y0','X1','Y1'))
+companion/vnc-control.py:125:     actions.add_argument('--home-button', action='store_true',
+companion/vnc-control.py:126:                          help='one fixed 150ms F6 press/release through emulator SMC Menu')
+companion/vnc-control.py:127:     actions.add_argument('--app-switcher', action='store_true',
+companion/vnc-control.py:128:                          help='two fixed 150ms F6 presses with a 100ms gap')
+companion/vnc-control.py:129:     parser.add_argument('--hold-seconds', type=float, default=None,
+companion/vnc-control.py:130:                         help='stationary press before release or swipe (0..10 seconds)')
+companion/vnc-control.py:131:     parser.add_argument('--swipe-seconds', type=float, default=.5,
+companion/vnc-control.py:132:                         help='duration of the 20-step swipe (0.1..10 seconds)')
+companion/vnc-control.py:133:     parser.add_argument('--settle-seconds', type=float, default=1,
+companion/vnc-control.py:134:                         help='wait before a second capture, including observation-only (0..10 seconds)')
+companion/vnc-control.py:135:     parser.add_argument('--observe-seconds', type=float, default=0,
+companion/vnc-control.py:136:                         help='keep observation-only connection active, capture at 1Hz (0..300 seconds)')
+companion/vnc-control.py:137:     args=parser.parse_args()
+companion/vnc-control.py:138:     if (args.home_button or args.app_switcher) and args.hold_seconds is not None:
+companion/vnc-control.py:139:         parser.error('Home button actions use fixed 150ms presses')
+companion/vnc-control.py:140:     has_input = bool(args.tap or args.swipe or args.home_button or args.app_switcher)
+companion/vnc-control.py:141:     if not 0 <= args.observe_seconds <= 300 or (args.observe_seconds and has_input):
+companion/vnc-control.py:142:         parser.error('--observe-seconds must be finite within 0..300 and cannot accompany input')
+companion/vnc-control.py:143:     hold=args.hold_seconds if args.hold_seconds is not None else (0 if args.swipe else .15)
+companion/vnc-control.py:144:     if not (0 <= hold <= 10 and .1 <= args.swipe_seconds <= 10 and 0 <= args.settle_seconds <= 10):
+companion/vnc-control.py:145:         parser.error('timings must be finite and within their documented bounds')
+companion/vnc-control.py:146:     if not args.socket.is_absolute() or not args.socket.is_socket():
+companion/vnc-control.py:147:         parser.error('expected existing absolute private Unix socket')
+companion/vnc-control.py:148:     args.output.mkdir(parents=True, exist_ok=False)
+companion/vnc-control.py:149:     report={'kind':'headless_unix_vnc_observation', 'socket':str(args.socket),
+companion/vnc-control.py:150:             'captures':[], 'pointer_events':[], 'home_button_events':[], 'completed':False,
+companion/vnc-control.py:151:             'timing_seconds':{'hold':hold, 'swipe':args.swipe_seconds, 'settle':args.settle_seconds},
+companion/vnc-control.py:152:             'observation_seconds':args.observe_seconds,
+companion/vnc-control.py:153:             'capture_limit':'Frame receipt is not guest presentation time; display refresh can stimulate guest rendering.',
+companion/vnc-control.py:154:             'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+companion/vnc-control.py:155:     client=None
+companion/vnc-control.py:156:     try:
+companion/vnc-control.py:157:         client=Client(args.socket,report)
+companion/vnc-control.py:158:         client.capture(args.output/'before.png')
+companion/vnc-control.py:159:         if not has_input:
+companion/vnc-control.py:160:             deadline = time.monotonic()+args.observe_seconds
+companion/vnc-control.py:161:             time.sleep(args.settle_seconds)
+companion/vnc-control.py:162:             client.capture(args.output/'settled.png')
+companion/vnc-control.py:163:             sequence = 0
+companion/vnc-control.py:164:             while time.monotonic() < deadline:
+companion/vnc-control.py:165:                 time.sleep(min(1, max(0, deadline-time.monotonic())))
+companion/vnc-control.py:166:                 sequence += 1
+companion/vnc-control.py:167:                 client.capture(args.output/f'observed-{sequence:04d}.png')
+companion/vnc-control.py:168:         if args.home_button or args.app_switcher:
+companion/vnc-control.py:169:             client.home_button(True)
+companion/vnc-control.py:170:             time.sleep(.15)
+companion/vnc-control.py:171:             client.home_button(False)
+companion/vnc-control.py:199:     finally:
+companion/vnc-control.py:200:         if client:
+companion/vnc-control.py:201:             if report['home_button_events'] and report['home_button_events'][-1]['down']:
+companion/vnc-control.py:202:                 try:
+companion/vnc-control.py:203:                     client.home_button(False)
+companion/vnc-control.py:204:                 except OSError:
+companion/vnc-control.py:205:                     pass
+companion/vnc-control.py:206:             if report['pointer_events'] and report['pointer_events'][-1]['down']:
+companion/vnc-control.py:207:                 event=report['pointer_events'][-1]
+companion/vnc-control.py:208:                 try:
+companion/vnc-control.py:209:                     client.pointer(event['x'],event['y'],False)
+companion/vnc-control.py:210:                 except OSError:
+companion/vnc-control.py:211:                     pass
+companion/vnc-control.py:212:             client.sock.close()
+companion/vnc-control.py:213:         (args.output/'report.json').write_text(json.dumps(report,indent=2)+'\n')
+companion/vnc-control.py:214:     print(json.dumps(report))
+companion/vnc-control.py:215:     return 0 if report['completed'] else 1
+companion/vnc-control.py:216: 
+companion/vnc-control.py:217: 
+companion/vnc-control.py:218: if __name__ == '__main__':
+companion/vnc-control.py:219:     raise SystemExit(main())

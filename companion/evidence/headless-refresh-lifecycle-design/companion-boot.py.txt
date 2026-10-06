@@ -1,0 +1,63 @@
+companion/boot.py:309:         with tempfile.TemporaryDirectory(prefix='inferno-boot-') as tmp, \
+companion/boot.py:310:                 (output / 'stderr.log').open('wb') as stderr, \
+companion/boot.py:311:                 (output / 'stdout.log').open('wb') as stdout:
+companion/boot.py:312:             endpoint = str(Path(tmp) / 'qmp.sock')
+companion/boot.py:313:             usb_address = str(usb_socket or Path(tmp) / 'absent-usb.sock').replace(',', ',,')
+companion/boot.py:314:             command = [str(binary), '-machine', 't8030,kaslr-off=true,usb-conn-type=unix,usb-conn-addr=' + usb_address + ',trustcache=' + inputs['trustcache']['path'].replace(',', ',,'),
+companion/boot.py:315:                        '-accel', 'tcg', '-smp', '2', '-m', '4G', '-S',
+companion/boot.py:316:                        '-kernel', inputs['kernel']['path'], '-dtb', inputs['dtb']['path'],
+companion/boot.py:317:                        '-initrd', inputs['ramdisk']['path'], '-append', BOOT_ARGS,
+companion/boot.py:318:                        '-display', 'none', '-vnc', 'unix:' + str(Path(tmp) / 'vnc.sock'),
+companion/boot.py:319:                        '-monitor', 'none', '-serial', 'file:' + str(output / 'serial.log'),
+companion/boot.py:320:                        '-qmp', 'unix:' + endpoint + ',server=on,wait=off', '-no-reboot']
+companion/boot.py:321:             if args.guest_hid_serial:
+companion/boot.py:322:                 serial_path = Path(tmp) / 'gesture-serial.sock'
+companion/boot.py:430:             next_capture = time.monotonic() + args.capture_interval
+companion/boot.py:431:             if args.capture_interval:
+companion/boot.py:432:                 (output / 'frames').mkdir()
+companion/boot.py:433:                 report['periodic_captures'] = []
+companion/boot.py:434:             while time.monotonic() < deadline and process.poll() is None:
+companion/boot.py:435:                 if touch_trace:
+companion/boot.py:436:                     touch_trace.poll(qmp)
+companion/boot.py:437:                 if control:
+companion/boot.py:438:                     control.poll(qmp)
+companion/boot.py:439:                 if args.capture_interval and time.monotonic() >= next_capture:
+companion/boot.py:440:                     captures = report['periodic_captures']
+companion/boot.py:441:                     frame = output / 'frames' / f'{len(captures):04d}.ppm'
+companion/boot.py:442:                     captured = qmp.execute('screendump', {'filename': str(frame)})
+companion/boot.py:443:                     if 'error' in captured or not frame.is_file():
+companion/boot.py:444:                         raise RuntimeError(f'Periodic framebuffer capture failed: {captured}')
+companion/boot.py:445:                     captures.append({'elapsed_seconds': round(time.monotonic() - started, 3),
+companion/boot.py:446:                                      'path': str(frame), 'sha256': digest(frame)})
+companion/boot.py:447:                     next_capture = time.monotonic() + args.capture_interval
+companion/boot.py:448:                 if journey:
+companion/boot.py:449:                     journey.poll(qmp, time.monotonic())
+companion/boot.py:467:     finally:
+companion/boot.py:468:         if process is not None and process.poll() is None:
+companion/boot.py:469:             try:
+companion/boot.py:470:                 if qmp:
+companion/boot.py:471:                     if control:
+companion/boot.py:472:                         try:
+companion/boot.py:473:                             control.close(qmp)
+companion/boot.py:474:                         except Exception as exc:
+companion/boot.py:475:                             report['display_trace_cleanup_error'] = str(exc)
+companion/boot.py:476:                     if touch_trace:
+companion/boot.py:477:                         try:
+companion/boot.py:478:                             touch_trace.stop(qmp, 'runner cleanup')
+companion/boot.py:479:                         except Exception as exc:
+companion/boot.py:480:                             report['touch_trace_cleanup_error'] = str(exc)
+companion/boot.py:481:                     capture_final_frame(qmp, output, report)
+companion/boot.py:482:                     report['quit_response'] = qmp.execute('quit')
+companion/boot.py:483:                 process.wait(timeout=5)
+companion/boot.py:484:             except (Exception, KeyboardInterrupt):
+companion/boot.py:485:                 process.terminate()
+companion/boot.py:486:                 try:
+companion/boot.py:487:                     process.wait(timeout=5)
+companion/boot.py:488:                 except subprocess.TimeoutExpired:
+companion/boot.py:489:                     process.kill()
+companion/boot.py:490:                     process.wait()
+companion/boot.py:491:         if qmp:
+companion/boot.py:492:             report['qmp_commands'] = qmp.responses
+companion/boot.py:493:             qmp.close()
+companion/boot.py:494:         if serial_transport:
+companion/boot.py:495:             serial_transport.close()

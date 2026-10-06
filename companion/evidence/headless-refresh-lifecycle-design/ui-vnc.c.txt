@@ -1,0 +1,39 @@
+ui/vnc.c:3254: static void vnc_refresh(DisplayChangeListener *dcl)
+ui/vnc.c:3255: {
+ui/vnc.c:3256:     VncDisplay *vd = container_of(dcl, VncDisplay, dcl);
+ui/vnc.c:3257:     VncState *vs, *vn;
+ui/vnc.c:3258:     int has_dirty, rects = 0;
+ui/vnc.c:3259: 
+ui/vnc.c:3260:     if (QTAILQ_EMPTY(&vd->clients)) {
+ui/vnc.c:3261:         update_displaychangelistener(&vd->dcl, VNC_REFRESH_INTERVAL_MAX);
+ui/vnc.c:3262:         return;
+ui/vnc.c:3263:     }
+ui/vnc.c:3264: 
+ui/vnc.c:3265:     graphic_hw_update(vd->dcl.con);
+ui/vnc.c:3266: 
+ui/vnc.c:3267:     if (vnc_trylock_display(vd)) {
+ui/vnc.c:3268:         update_displaychangelistener(&vd->dcl, VNC_REFRESH_INTERVAL_BASE);
+ui/vnc.c:3269:         return;
+ui/vnc.c:3270:     }
+ui/vnc.c:3271: 
+ui/vnc.c:3272:     has_dirty = vnc_refresh_server_surface(vd);
+ui/vnc.c:3273:     vnc_unlock_display(vd);
+ui/vnc.c:3274: 
+ui/vnc.c:3275:     QTAILQ_FOREACH_SAFE(vs, &vd->clients, next, vn) {
+ui/vnc.c:3276:         rects += vnc_update_client(vs, has_dirty);
+ui/vnc.c:3277:         /* vs might be free()ed here */
+ui/vnc.c:3278:     }
+ui/vnc.c:3279: 
+ui/vnc.c:3280:     if (has_dirty && rects) {
+ui/vnc.c:3281:         vd->dcl.update_interval /= 2;
+ui/vnc.c:3282:         if (vd->dcl.update_interval < VNC_REFRESH_INTERVAL_BASE) {
+ui/vnc.c:3283:             vd->dcl.update_interval = VNC_REFRESH_INTERVAL_BASE;
+ui/vnc.c:3284:         }
+ui/vnc.c:3285:     } else {
+ui/vnc.c:3286:         vd->dcl.update_interval += VNC_REFRESH_INTERVAL_INC;
+ui/vnc.c:3287:         if (vd->dcl.update_interval > VNC_REFRESH_INTERVAL_MAX) {
+ui/vnc.c:3288:             vd->dcl.update_interval = VNC_REFRESH_INTERVAL_MAX;
+ui/vnc.c:3289:         }
+ui/vnc.c:3290:     }
+ui/vnc.c:3291: }
+ui/vnc.c:3292: 
