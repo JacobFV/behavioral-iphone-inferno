@@ -165,5 +165,20 @@
     },
     "other_original_classes": "AppleS5L8960XGPIOIC::disableVectorHard clears0xe at0xfffffff0087c3a88; AppleT8101GPIOIC clears0xe at0xfffffff0087bf9f8. Do not generalize T8006 encoding to every generation.",
     "remaining_evidence": "Actual matched aop-gpio IORegistry class is required to bind the original class-specific encoding to this guest. Its original DT compatible strings are gpio,t8030 and gpio,s5l8960x; these alone do not prove which personality matched."
+  },
+  "actual_s5l8960x_observation": {
+    "runtime": "Parent reports app-boot-15 read-only observer found aop-gpio AppleARMIODevice child AppleS5L8960XGPIOIC, registry id4294967777. This resolves earlier controller-class uncertainty; raw run log is execution authority.",
+    "initVector": "At0xfffffff0087c37c4, original initVector reads byte7 of interrupt specifier (6 from second word0x06000001). At0xfffffff0087c38d0-dc it clears group mask0x70000, ORs group<<16 and literal0x20e, then invokes _safeReconfigure at0xfffffff0087c391c. Starting reset config0x7000e therefore produces observed0x6020e exactly.",
+    "enableVector": "Original enableVector reads second interrupt word at0xfffffff0087c3b70; virtual slot0x620 resolves _decodeVectorInfo at0xfffffff0087c45e8. It clears mode mask0xe then ORs decoded mode at0xfffffff0087c3ca8-cac and writes MMIO at0xfffffff0087c3cbc.",
+    "decode_low_bits": {
+      "0": "0xa falling edge",
+      "1": "0x6 low level",
+      "2": "0x8 rising edge",
+      "3": "0x4 high level",
+      "bit2_set": "0xc either edge"
+    },
+    "disableVectorHard": "Original0xfffffff0087c3a88 clears mode0xe to input mode0, writesMMIO at0xfffffff0087c3a98. Current emulator mode0 does not generate interrupts, matching disable intent.",
+    "comparison": "Current hw/gpio/apple_gpio.c matches every decoded interrupt mode. Original specifier0x06000001 enables mode6, expected config0x60206 if otherbits unchanged; harddisable would yield0x60200. Observed0x6020e instead matches initial vector configuration. No GPIO encoding behavior patch justified.",
+    "inference_limit": "Matching initVector output does not prove no subsequent writes ever occurred. It does show initialized-but-not-armed state is supported by exact original code; absent input delivery still requires firmware/protocol lifecycle evidence."
   }
 }
