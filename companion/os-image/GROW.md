@@ -65,3 +65,21 @@ and sbin/launchd (400400 bytes,
 The final grown disk SHA256 is
 `298fe787029085dbbdaf30d066a115f5575aed05dc5a97a73fd5f5b6b0364d00`;
 local verification details are in the run's `growth-verification.json`.
+
+## Prepared-volume follow-up
+
+A second independent experiment starts with the stopped `disk-preparation-14`
+root, SHA256 `39c82acf4ca222d7bfcab23ec064067bebc88537497b8459d600a30b394d040e`,
+which contains System, Data, Preboot, xART, Hardware and Update plus the gigalocker
+and untouched SEP IM4P. Growth preserves existing volume contents; it does not
+validate or fix the separately investigated compressed Data seed issue.
+The expanded GPT wrapper is `prepared-14-32g.raw` outside Git, SHA256
+`c02eb9352b9c40cd415c7c58f2ae30c05ffd698b7f96960d1a6469bad568e72c`.
+The same owned helper and prepared recovery profile run in
+`.local-build/reports/container-growth-2/`, on another disposable copy.
+
+The second guest also returned API status 0, grew the container from 1,878,803
+to 8,388,347 blocks, preserved both System file fingerprints, and cleanly
+unmounted. System statfs reports 8,379,643 total and 6,557,917 available blocks;
+this is smaller than the container total because other prepared roles reserve
+space. Growth does not require creating the prepared volumes again.
