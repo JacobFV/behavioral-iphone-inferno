@@ -7,40 +7,49 @@ continuous work across status questions and intermediate milestones. Parallel
 workers are authorized for independent work; use isolated worktrees and commit.
 No handoff or pause has been requested.
 
-## Current execution, 2026-10-06 11:52 local
+## Current execution, 2026-10-06 12:04 local
 
-**38 LIVE: strict + three warm cycles complete, fresh-process experiment waitingps1200.**
-Report `.local-build/reports/app-boot-38`, privateVNC `/tmp/inferno-boot-whc_a5vq/vnc.sock`,
-runnerPID2658992/7200s/keepalive. Rootonlyinput; normalfinish-run eventually.
-UUID024BD83E-EB10-4666-9C04-687E7C21E9DC PID266/main3436522534,
-originalproc56/errno0/unique266/idversion751. Frozen50samebits37.
-Observer session37514 `/tmp/inferno-observe-event-arrivals-38.py`; gesture/openutilities
-`/tmp/inferno-explicit-gesture-38.py`, `/tmp/inferno-explicit-open-38.py`.
-Initial3unlockswipes, betaclosec2f820c003cc4902bfa4c8c6ca4d0a2e,
-counter583cf77abd454a5ab03ecfa73375be15, strictcapturescomplete.
-3HomeF6single +OPEN IDs460d5babcba946369c9b88993ee332ed,
-e9a0a8cd68464c99ae0a8225f2e589c9,025f6f2bf165401abc28582ac1959bda.
-OPEN→active721.109708/765.457792/702.042583ms; sameincarnation/gen2,3,4.
-Immutabletimingprefixe6a513b395, rootreviewedallHome/counter1 cycles.
-InitialcaptureafterOPEN1/3stillHome despiteactive; subsequentcapturecounter1.
-Sourceinspection108d2333a8: VNCabsence skipsrefresh; refreshstimulatesguestdrawing.
-Rootfix9e5b2c1a00 capture-onlypreservesinitial+settled and optional--observe-seconds
-0..300 sameconnection, separatecapturetimes. No presentationtimeclaim.
+**38 finish-run accepted; next bounded TWO concurrent siblingguests39/40 for density.**
+38 strict0→1 +3warm +controlledsamebootfreshprocess allactuallypassed.
+38UUID024BD83E-EB10-4666-9C04-687E7C21E9DC oldPID266/main3436522534/
+unique266/idversion751. 3warmOPEN460d5babcba946369c9b88993ee332ed,
+e9a0a8cd68464c99ae0a8225f2e589c9,025f6f2bf165401abc28582ac1959bda;
+OPEN→active721.109708/765.457792/702.042583ms, immutablee6a513b395.
+Visual27f3949383; QMPbefore2b7a0ca82de9f9c8b5da5d0e5f0c3bdd57e2da85349d42a0737e854ce66e004e,
+after9eb84c7fcf9c038ae719032969e5b90968e73c95a8736cb7f90f7e750423c2f9.
 
-F6double --app-switcher09b920c7fd actuallyshowedInfernoProbecardright/Clockleft.
-RootreviewedthenONLYowncardup swipe10e2b4b73dcd406f8ca3229fe11ec032
-x26000/y22000→3000/600ms. ActualaftercaptureonlyClock; notyetterminationproof.
-Lastps600completedBEFOREdismissandstillhadPID266; invalidabsenceevidence.
-Diskworkerwatchingnextps1200 (~11:58-12:00 likely), buildingnewseparate
-process-launch-timing.py withcapture-absence/derive, strictoldPIDabsence beforeOPEN.
-DO NOT OPEN4 until completecleanoriginalpsabsence captured/hashprefix+hosttime.
-Then rootstartpersistentVNCobserveracrossOPEN4 tocheckframebehavior; newPID/unique
-andnewmain afterOPEN +fresh5hooks +counter0 required. CurrentreceiveracceptsnewPID,
-rejectsPIDreuse. Samebootfreshprocess/sharedcachesuncontrolled, notcachecold.
-Native design4be174df99/4fa73f8b4e, parserdesigna38a753164. Bootworkerauditing
-hardcodedreportmilestonefalse separately; noVMinput orstopbyworkers.
+F6doubleAppSwitcher09b920c7fd, ownedcarddismiss10e2b4b73dcd406f8ca3229fe11ec032.
+ps600predismissrejected. Completeoriginalps1200 afterdismiss175rows nooldPID266/
+ownedpath, observedbeforeOPEN4. Absenceacc0e5a4a4 + rootmanifest
+`.local-build/reports/app-boot-38/process-absence-1200-root.json`.
+OPEN4/process-open-1 cbbc727d104943feb867d4705efe3c19 producedfreshPID492/
+unique492/idversion1414/main33927344147. Original5hooks,newcounter0 reviewed.
+Request→main135.582625ms/main→active749.045292ms/request→active884.627917ms.
+Strongnewprocessafterobservedabsence, cachesuncontrolled. Parser5d698579fd,
+actuala773825459, visualfccbbf4f92. PersistentVNC60s42captures session21502complete,
+firstreviewedcounter0frame0011 receivedhost1791313222.666357 (~2.266s afterserial
+send); priorframe0010Home. Hostsampledarrival, NOT guestpresentationtime.
+Capturefix9e5b2c1a00 preservesinitial+settledsameconnection andoptionalobserve0..300s.
+Resource-after-process-launch60s61records16.29CPUsec27.14995%onecore,
+peak5807898624bytes8threads,session12283complete. Eventobserver37514completed.
+Rootfinish-runaccepted12:04, bootworkerdoingpostflight38/commit.
 
-37 stoppednormal0/errornull/1018.044699s, all7/all4ancestorsunchanged.
+NEXT39/40explicitlyauthorized boundedN=2feasibility after38stopped/noFD.
+Bootworkerwillcheckresources thenstart39, then40once39endpointready, bothfrozen50
+same4bits/emulator andnewhostrunner5ae918025d reportingfix/keepalive/dedicated7200s.
+Rootexclusiveinput; workerNOinput. Rootstrict0→1each, reviewedcounter1both,
+thenNOconnectedVNC/inputduringaligned60s:
+`python3 companion/measure-density.py --report ABS39 --report ABS40 --base-report ABSstage50/report.json --output NEWDIR`
+Sampler2f09425c41; exactly2samebase/differentlyisolatedroot/7disks/endpoints/PIDs,
+CPU1Hz,smapsRSS/PSS5s,hostPSI/rawreads/time/skew,ownsamplerCPU. Actualsingle38
+preflight passed; actualtwoexecutionpending. No capacity/costextrapolation.
+After sample explicitfinish-runboth thenall7/ancestorspostflight. Createfreshroot
+inpututilities+observers39/40 whenreportsready. Endpoints/UUIDnotyetknown.
+Reportfix5ae918025d usesnullablegenericiosalias+rawsourcegranularmilestones,
+noautomatedvisualverification. Historical38reportnotrewritten.
+Nativeworkerfinishedsampler; diskworkerfinishedprocessparser; reuseifneeded.
+
+37stoppednormal0/errornull/1018.044699s/all7/all4ancestorsunchanged.
 Root149094400SHA7e6a5e08eb32cab420911ba18016162804a1531b35d544905a530021fdf8afd9.
 Raw6ef102ba93, warm33341fb2f8/visual9bafc4690d, observer5310667da0.
 37warm747.806458/709.094792/735.643458ms, guestlifecycleonly.
