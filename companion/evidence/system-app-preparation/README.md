@@ -47,3 +47,13 @@ reports, profiles, stopped hashes and source artifacts remain available; per-set
 retirement manifests record their hashes. Preparations21, 27, 29, 31, 32, 33 and
 all actual boot tuples were left intact. Only these four generated disks
 directories were removed.
+
+After boot14's separately preserved early panic, generated preparations31–34
+were explicitly retired to restore host space, reclaiming30,630,694,912 allocated
+bytes. All28 namespace files were fully rehashed against stopped manifests, then
+checked for unchanged inode/size/mtime and absence of process/FD references
+immediately before removal. Reports retain acknowledged QMP quit and emulator0.
+All evidence, profiles, source inputs and actual boot disk tuples remain intact;
+current reusable preparation35 is retained. Earlier per-stage statements that
+32/33 were immutable describe those controlled comparisons; their generated
+copies are now retired with exact hashes and reproducible lineage preserved.
