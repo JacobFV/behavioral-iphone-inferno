@@ -1,0 +1,565 @@
+iBoot version: ChefKiss Inferno
+corecrypto_kext_start called
+FIPSPOST_KEXT [45960906] fipspost_post:158: PASSED: (7 ms) - fipspost_post_integrity
+FIPSPOST_KEXT [46101285] fipspost_post:164: PASSED: (4 ms) - fipspost_post_hmac
+FIPSPOST_KEXT [46115862] fipspost_post:165: PASSED: (0 ms) - fipspost_post_aes_ecb
+FIPSPOST_KEXT [46134564] fipspost_post:166: PASSED: (0 ms) - fipspost_post_aes_cbc
+FIPSPOST_KEXT [47737031] fipspost_post:167: PASSED: (65 ms) - fipspost_post_rsa_sig
+FIPSPOST_KEXT [48887421] fipspost_post:168: PASSED: (45 ms) - fipspost_post_ecdsa
+FIPSPOST_KEXT [49328399] fipspost_post:169: PASSED: (18 ms) - fipspost_post_ecdh
+FIPSPOST_KEXT [49341412] fipspost_post:170: PASSED: (0 ms) - fipspost_post_drbg_ctr
+FIPSPOST_KEXT [49368023] fipspost_post:171: PASSED: (0 ms) - fipspost_post_aes_ccm
+FIPSPOST_KEXT [51768624] fipspost_post:173: PASSED: (99 ms) - fipspost_post_pbkdf
+FIPSPOST_KEXT [52177983] fipspost_post:174: PASSED: (0 ms) - fipspost_post_kdf_ctr
+FIPSPOST_KEXT [52227019] fipspost_post:175: PASSED: (1 ms) - fipspost_post_aes_gcm
+FIPSPOST_KEXT [52244723] fipspost_post:176: PASSED: (0 ms) - fipspost_post_aes_xts
+FIPSPOST_KEXT [54032219] fipspost_post:177: PASSED: (74 ms) - fipspost_post_tdes_cbc
+FIPSPOST_KEXT [54050594] fipspost_post:178: PASSED: (0 ms) - fipspost_post_drbg_hmac
+FIPSPOST_KEXT [54082585] fipspost_post:201: all tests PASSED (345 ms)
+Darwin Image4 Validator Version 3.0.0: Wed Aug 12 22:19:21 PDT 2020; root:AppleImage4-106.0.4.0.1~129/AppleImage4/RELEASE_ARM64E
+AppleImage4: failed to read nvram property: nonce-seeds: 2
+AppleImage4: error reading seeds: 2
+AMFI is running in RESEARCH mode!
+AUC:[0xffffffe19bd08f10]::init(0xffffffe19bd319a0)
+
+AUC:[0xffffffe19bd08f10]::probe(0xffffffe19bac6120, 0xffffffe808223dac)
+
+AppleT803xIO::start: chip-revision: C0
+IOAccessoryManager::configureAccessoryPowerGated: dock-0pin: Configuring Accessory Power to (1)
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerGated: PowerModeOff
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: _powerState=1, _powerStateInternal=0, _sleeping=0, _accessoryPowerModeExtOffRequested 0
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: !getAccessoryPowerReady(); set PowerModeOff?
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: handleAccessoryPowerWillChange, confirm PowerModeOff
+[ERROR] IOPort::_setSupportedTransportsForRegistryEntry(): Could not find transports-supported property! (entry: dock-0pin)
+[ERROR] IOPort::_setSupportedTransportsForRegistryEntry(): Error setting supported transports for Port-Inductive@101!
+[ERROR] IOPort::_setSupportedFeaturesForRegistryEntry(): Could not find features-supported property! (entry: dock-0pin)
+[ERROR] IOPort::_setSupportedFeaturesForRegistryEntry(): Error setting supported features for Port-Inductive@101!
+IOPort::start(): Registering service... (portType: 14, portNumber: 101, providerPath: IOService:/AppleARMPE/dock-0pin)
+Port-Inductive handleAccessoryDetect, detect change = 0 (override 100), ID change = 0 (override 0), result 0 
+AppleARMBacklight::start: Using new Backlight Architecture 1
+AppleARMBacklight::start: no DBV offset data
+AppleARMBacklight::start: no DBV max data
+AppleARMBacklight::start: _calibratedMaxCurrent=15000
+AppleARMBacklight::start: _calibratedMidCurrent=3750
+AppleARMBacklight::start: mA2Nits2ndOrderCoef=-1
+AppleARMBacklight::start: mA2Nits1stOrderCoef=63
+AppleARMBacklight::start: mA2Nits0thOrderCoef=-3
+AppleARMBacklight::start: nits2mAmps2ndOrderCoef=1357
+AppleARMBacklight::start: nits2mAmps1stOrderCoef=15551
+AppleARMBacklight::start: nits2mAmps0thOrderCoef=45
+AppleARMBacklight::start: _lMaxProduct=42598400
+AppleARMBacklight::start: _lMidProduct=10158080
+AppleARMBacklight::start: _lMinProduct=183500
+AppleARMBacklight::start: Backlight calibration data 0
+AppleARMBacklight::start: No valid backlight cal data in syscfg.. Use defaults
+IOAccessoryTRM::start(): inRestoreMode: NO, dockSupportsTRM: NO (m_mgrPrimaryPortID: 512)
+AppleCredentialManager: init: called, instance = <ptr>.
+ACMFirstResponderKernelService: init: called, .
+ACMRM-S: init: called, starting PersistentStore service.
+ACMRM-C: init: called, starting AccessoryCache service.
+ACMKernelService: initValueFromBootArgAliasesUInt32: acc-cache size = 16 (default).
+ACMKernelService: initValueFromBootArgAliasesUInt32: acc-cache expiration = 2592000 (default).
+ACMRM: init: called, starting TRM service.
+ACMRM-A: init: called, starting TRM Analytics service.
+ACMKernelService: initValueFromBootArgAliasesUInt32: analytics collection period = 86400 (default).
+ACMKernelService: initValueFromBootArgAliasesUInt32: policy mode timeout = 259200 (default).
+ACMRM-A: notifyStandardModeTimeoutChanged: called, value = 259200 (modified = YES).
+ACMKernelService: initValueFromBootArgAliasesUInt32: (bounded) grace period timeout = 3600 (default).
+ACMRM-A: notifyGracePeriodTimeoutChanged: called, value = 3600 (modified = YES).
+ACMKernelService: initValueFromBootArgAliasesUInt32: enabled = 1 (default).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO* BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO* LegHW=NO OSEnv=NO | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _loadDisabledByOSEnvironment: disabled by OSEnvironment: NO.
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO* | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _mapAndPublishTRM: set TRM_PolicyTimeout = 259200.
+ACMRM: _mapAndPublishTRM: sending kIOMessageServicePropertyChange(n=1) while DISABLED, TRM: 259200 -/ff 4294967295 -/ff miss=ff (CUR: 259200 -/ff 4294967295 -/ff).
+AppleCredentialManager: init: returning, result = true, instance = <ptr>.
+AppleARMBootPerf: Error: profile region not found (2)
+AppleARMBootPerf: Error: failed to publish profile data (2)
+virtual bool CoreAnalyticsHub::start(IOService *)::105:CoreAnalyticsHub start
+AppleT803xIO::start: this: <ptr>, ACCE virt addr: <ptr>, phys addr: 0x210f00000
+AppleT803xIO::start: this: <ptr>, ACCP virt addr: <ptr>, phys addr: 0x211f00000
+AppleARMBacklight::start: _calibratedMinCurrent=74 uA
+AppleARMBacklight::start: _lMaxProduct=42598400, _lMidProduct=10158080, _lMinProduct=183500, _lMaxPanel=42598399, _lMidPanel=11169963, _lMinPanel=99640, _milliAmps2NitsScaleFactor=732648
+AppleARMBacklight::start: dim-ramp-max-step=100
+IOAccessoryTRM::start(): Registering service IOAccessoryTRM... (m_mgrPrimaryPortID: 512)
+AppleARMBacklight::start: _minDACLevel=143 _maxDACLevel=1879
+AppleSSE::start called
+AppleSSE::start returning, result = 1
+AUC:[0xffffffe19bd08f10]::start(0xffffffe19bac6120)
+
+AppleS8000AES::start: registers at phys:0x0x235008000/0x0x23d2d0000 virt:0x<ptr>/0x0x4000 / 0x<ptr>/0x0x4000
+AppleS8000AES::start: aes-version: 3
+AppleS8000AES::start: using-acg: no
+AppleInterruptController::start: _aicVersion = 2 _aicBaseAddress = 0x<ptr> _aicNumExtInts = 0x00000240 _aicNumIPIs = 0x00000004
+AppleInterruptController::start: Num Shared Timestamps == 0
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleT8015TempSensor::start: Got temperatureOffsetValue of 13 for locationID 0x54703169
+AppleSEPKeyStore:321:0: starting (BUILT: Aug 12 2020 22:51:30)
+AppleSEPKeyStore:545:0: _sep_enabled = 1
+AppleCredentialManager: start: called, instance = <ptr>.
+ACMRM: _publishIOResource: AppleUSBRestrictedModeTimeout = 259200.
+AppleS5L8940XI2CController::start: i2c1 this: <ptr> _i2cBaseAddress: <ptr>
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: smc-i2c0 this: <ptr> _i2cBaseAddress: <ptr>
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: i2c3 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: i2c2 this: <ptr> _i2cBaseAddress: <ptr>
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleT8015TempSensor::start: Got temperatureOffsetValue of 4 for locationID 0x54613069
+AppleS5L8940XI2CController::start: i2c0 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: smc-i2c1 this: <ptr> _i2cBaseAddress: <ptr>
+AppleSamsungSPIController::start: spi3: _spiBaseAddress = 0x23510c000:<ptr>, _spiVersion = 1 _spiInternalCS = 0
+000006.234726 AppleT8030TypeCPhy@0: AppleT8027TypeCPhy::start: usb3-phy-parent not specified
+AppleDieTempController::start: 
+AppleDieTempController::initLoopConfig: Loop 0 kp: 0xc0000
+AppleDieTempController::initLoopConfig: Loop 0 ki: 0x70e8000
+AppleDieTempController::initLoopConfig: Loop 0 control type: 2
+AppleDieTempController::initLoopConfig: Loop 1 kp: 0xc0000
+AppleDieTempController::initLoopConfig: Loop 1 ki: 0x70e8000
+AppleDieTempController::initLoopConfig: Loop 1 control type: 4
+AppleDieTempController::initLoopConfig: Loop 2 kp: 0x2f9999
+AppleDieTempController::initLoopConfig: Loop 2 ki: 0x1180000
+AppleDieTempController::initLoopConfig: Loop 2 control type: 16
+AppleDieTempController::initLoopConfig: Successfully configured 3 loops
+AppleDieTempController::handleBootArgs: In handleBootArgs routine
+AppleSamsungSPIController::start: spi1: _spiBaseAddress = 0x235104000:<ptr>, _spiVersion = 1 _spiInternalCS = 0
+AppleCredentialManager: start: initializing power management, instance = <ptr>.
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleCredentialManager: start: started, instance = <ptr>.
+AppleCredentialManager: start: returning, result = true, instance = <ptr>.
+AppleDieTempController::readBootDVDFactor: pmgr null service
+AppleDieTempController::cpuPerfControllerArrivalHandler: boot_dvd_factor 0x00010000
+virtual bool AppleARMLightEmUp::start(IOService *): starting...
+AppleEmbeddedPCIE::start this = <ptr>, gAPCIEdebugFlags = 0x80000001
+M3 Normal mode not enabled on Fastsim
+virtual bool IOMobileFramebufferLegacy::start(IOService *)
+IOMFB: driver commit: 
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+Identified Serial Port uart7 at 0x23521c000(<ptr>)
+AppleS5L8960XWatchDogTimer::start: _wdtBaseAddress: <ptr> _wdtResetCount=0xe4e1c00 _useSMCEnforcedWatchdog=0
+watchdog disabled by boot-argAppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+Identified Serial Port uart0 at 0x235200000(<ptr>)
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+AppleSynopsysMIPIDSIController::start: this: <ptr>, _dsimBaseAddress = <ptr> physical = 0x230400000 length 786432
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleDisplayPMU::start: display-pmu _pmuIICNub: <ptr> built 22:19:31 Aug 12 2020
+virtual bool AppleSynopsysMIPIDSIController::start(IOService *) panicOnError NOT Supported
+AppleSynopsysMIPIDSIController::start Failed to get phy settings count
+AppleDialogSPMIPMU::start: spmi-pmu _pmuNub: <ptr> built 22:52:54 Aug 12 2020
+RTBuddy(ANS2): start(<ptr>) - (Aug 12 2020@22:50:37)
+RTBuddy(ANS2): Boot args override: wdt = -1
+virtual bool AppleSynopsysMIPIDSIController::start(IOService *)  Slow Adaptive Clocking enabled with 9 frequencies
+RTBuddy(SMC): start(<ptr>) - (Aug 12 2020@22:50:37)
+RTBuddy(SMC): Boot args override: wdt = -1
+RTBuddy(SMC): Resuming...
+
+LPM: Log data is NOT valid. 0x0 0x0
+AppleDialogSPMIPMU::start: Primary PMU detected
+AppleARMRTC started!#####
+AppleDialogSPMIPMURTC started!******
+Failed to read info-leg_scrpadAppleS8000AES::start: using DART Mapper: <ptr>
+AppleDialogSPMIPMURTC::handleStart: ro=0 nvram=0 helper=0 AppleDialogSPMIPMU _pmuNub: <ptr> 0x1102:0x9f04-0x9f15 built 22:52:53 Aug 12 2020
+AppleICA60:probe vendorID 0x0 prodID 0x1 fabID 0xa0 revision 0x0 sensor 0x1 mic-bias-index 1
+AppleDialogSPMIPMURTC tick read!&&&&&&&
+AppleDialogSPMIPMURTC ending!%%%
+Starting AppleSMC kext(<ptr>) - (Aug 12 2020@22:51:44)
+AppleSMCEmbedded::setPowerState(): ENTER powerStateOrdinal=1, _activeKeyCommand=17 newState=1
+RTBuddy(ANS2): Resuming...
+
+AppleARMRTC registering service!@@@@@@
+AppleARMRTC service registered!$$$$$
+AppleARMRTC publishing service!^^^^^^
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+RTBuddy(SIO): start(<ptr>) - (Aug 12 2020@22:50:37)
+RTBuddy(SIO): Boot args override: wdt = -1
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+RTBuddy(SIO): Resuming...
+
+AppleAuthCPRelay:_sendCommandGated CMD=0x1 _receivedStatus ERROR ( status = 0xe00002e9 )
+AppleAuthCPRelay:_getCert failed to send command kAuthCommandIDGetCert
+AppleAuthCPRelay:start _getCert() failed (status = 0xe00002e9)
+Failed to enable notifications (0x84)!
+
+ERROR: Unable to enable notification interface (kSMCKeyNotFound).
+
+pci (build 22:19:24 Aug 12 2020), flags 0x20c3008
+pci (build 22:19:24 Aug 12 2020), flags 0x20c3008
+virtual bool AppleSEPManager::start(IOService *): 
+virtual bool AppleSEPManager::start(IOService *): SEP memory IS coherent
+virtual bool AppleSEPManager::start(IOService *): control endpoints created
+virtual bool AppleSEPManager::start(IOService *): PM init done
+IOReturn AppleSEPManager::_setPowerState(unsigned long *): power state 0 -> 2
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 1
+virtual bool AppleSEPManager::start(IOService *): registered
+RTBuddy(AOP): start(<ptr>) - (Aug 12 2020@22:50:37)
+RTBuddy(AOP): Boot args override: wdt = -1
+RTBuddy(AOP): Resuming...
+
+virtual IOService *AppleANS2NVMeController::probe(IOService *, SInt32 *)::194:Found (ANS2) provider, returning score 100000
+virtual IOService *AppleANS2NVMeController::probe(IOService *, SInt32 *)::194:Found (ANS2) provider, returning score 100000
+AppleSPUFirmwareService: found node AOP
+[ PCI configuration begin ]
+AppleCredentialManager: handleEventGated: called, event(5).
+AppleCredentialManager: handleEventGated: AppleSEPManager has been matched.
+virtual bool AppleANS2NVMeController::start(IOService *)::394:Found the ANS2Endpoint1
+virtual bool AppleANS2NVMeController::start(IOService *)::394:Found the ANS2Endpoint1
+bool AppleEmbeddedNVMeController::SetNamespacesStruct()::186:Obtained 7 namespaces from DT
+bool AppleEmbeddedNVMeController::SetNamespacesStruct()::186:Obtained 7 namespaces from DT
+AppleSmartIO (RTBuddy-based)::start (<ptr>) - (Aug 12 2020@22:19:30)
+virtual IOFilterInterruptEventSource *AppleANS2NVMeController::CreateDeviceInterrupt(IOInterruptEventSource::Action, IOFilterInterruptEventSource::Filter, IOService *)::2719:ANS2 NVMe interrupt index - 0x4
+virtual IOFilterInterruptEventSource *AppleANS2NVMeController::CreateDeviceInterrupt(IOInterruptEventSource::Action, IOFilterInterruptEventSource::Filter, IOService *)::2719:ANS2 NVMe interrupt index - 0x4
+apfs_module_start:2411: load: com.apple.filesystems.apfs, v1677.0.5, apfs-1677.0.5, 2020/08/12
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=0 entrysize=64
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=0 entrysize=64
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=1 entrysize=128
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=1 entrysize=128
+virtual void AppleANS2NVMeController::SetModeselRegister(uint32_t)::1186:Setting modesel to 0
+virtual void AppleANS2NVMeController::SetModeselRegister(uint32_t)::1186:Setting modesel to 0
+[ PCI configuration end, bridges 3, devices 0 ]
+com.apple.AppleFSCompressionTypeZlib kmod start
+apcie[3:pci-bridge3]::_mapRIDToSID no mapper defined and device <ptr> (0:3:0) does not support hot-plug
+apcie[2:pci-bridge2]::_mapRIDToSID no mapper defined and device <ptr> (0:2:0) does not support hot-plug
+IOSurfaceRoot::installMemoryRegions()
+IOSurface disallowing global lookups
+apfs_sysctl_register:1253: done registering sysctls.
+bool IOMFB::UPPipe_H11P::setup_tunables_base_target(): Tunables Target 9
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1964:nvme: Vendor ID     : 0x1b36
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1964:nvme: Vendor ID     : 0x1b36
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1965:nvme: Model Number  : QEMU NVMe Ctrl                          
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1965:nvme: Model Number  : QEMU NVMe Ctrl                          
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1966:nvme: Serial Number : ChefKiss-ANS        
+com.apple.AppleFSCompressionTypeZlib load succeeded
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1966:nvme: Serial Number : ChefKiss-ANS        
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1967:nvme: Firmware Rev  : ChefKiss
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1967:nvme: Firmware Rev  : ChefKiss
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2000:nvme: S3E B0 Sandisk 3d-g3 tlc 3D 4 plane 8GB bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2000:nvme: S3E B0 Sandisk 3d-g3 tlc 3D 4 plane 8GB NAND
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2009:ECCVersion   : 1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2009:ECCVersion   : 1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2010:FTL Rev      : 23.1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2010:FTL Rev      : 23.1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2011:DM_Version   : 101
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2011:DM_Version   : 101
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2012:=======================
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2012:=======================
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2019:Found 16 namespaces in current NAND
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2019:Found 16 namespaces in current NAND
+IOMFB setup_table: Could not find table 'display-temp-compensation' in registry. Using default table.
+IOMFB setup_table: Could not find table 'display-temp-compensation' in registry. Using default table.
+L2TP domain init
+L2TP domain init complete
+Load request for com.apple.nke.pptp failed: -603946998
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[1] as nstype[1]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[1] as nstype[1]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[2] as nstype[2]
+IOMFB setup_table: Could not find table 'display-backlight-compensation' in registry. Using default table.
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[2] as nstype[2]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[3] as nstype[3]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[3] as nstype[3]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[4] as nstype[4]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[4] as nstype[4]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[5] as nstype[5]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[5] as nstype[5]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[6] as nstype[6]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[6] as nstype[6]
+Waiting on <dict ID="0"><key>IOProviderClass</key><string ID="1">IOMedia</string><key>IOPropertyMatch</key><dict ID="2"><key>Partition ID</key><integer size="64" ID="3">0x1</integer></dict></dict>
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[7] as nstype[8]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[7] as nstype[8]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[8] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[8] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[9] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[9] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[10] as nstype[0]
+virtual IOMFBStatus IOMFB::UPPipe_H11P::apt_fixed_rr_changed(IOMFB::AppleRegisterStream *): error: fixed refresh rate only supported on APT devices
+virtual IOMFBStatus IOMFB::UPPipe_H11P::apt_fixed_rr_changed(IOMFB::AppleRegisterStream *): forcing refresh rate: disabled
+IOMFB set_ffr_index: Disabling overdrive (missing EDT data)
+IOMFB set_panel_id: missing EDT data raw-panel-serial-number
+IOMFBStatus IOMFB::UPPipe_H11P::set_run_mode_safe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H11P::RunMode): Int no need to defer: 0 -> 1
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[10] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[11] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[11] as nstype[0]
+Identified Serial Port uart4 at 0x235210000(<ptr>)
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[12] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[12] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[13] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[13] as nstype[0]
+IOMFB: dynamic enabling of PCC is not supported on this platform, you need to power cycle display to see this change take effect
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[14] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[14] as nstype[0]
+000011.579141 AppleT8027USBXDCI@: AppleUSBXDCIARM::start: _dock is NULL, defaulting to device mode
+000011.652386 AppleT8027USBXDCI@: IOUSBDeviceController::prepareDefaults: model iPhone version 12.1
+000011.676558 usb-drd-port-hs@00100000: AppleUSB30XHCITypeCPort::start: _dock is NULL, defaulting to device mode
+000011.684233 usb-drd-port-hs@00100000: AppleUSBHostPort::initBusCurrent: insufficient power to enable this port
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[15] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[15] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[16] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[16] as nstype[0]
+000011.745882 usb-drd-port-hs@00100000: AppleUSB30XHCITypeCPort::cableChangeOccurred: cable detect disabled: transport type 2 connect type 2 restricted mode 0
+000011.747603 usb-drd-port-hs@00100000: AppleUSB30XHCITypeCPort::cableChangeOccurred: no action for transport type 2 connect type 2 restricted mode 0
+bool AppleEmbeddedNVMeController::SetSwapWriteLimit(uint32_t)::2192: Swap limit set to 0bytes, 0GB
+bool AppleEmbeddedNVMeController::SetSwapWriteLimit(uint32_t)::2192: Swap limit set to 0bytes, 0GB
+uint32_t AppleEmbeddedNVMeNVRAM::GetNVRAMSize()::745:NVRAM size is 8192 bytes
+uint32_t AppleEmbeddedNVMeNVRAM::GetNVRAMSize()::745:NVRAM size is 8192 bytes
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1578:allocateAll 1
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1578:allocateAll 1
+AppleARMBacklight::start: Pre-strobe iDAC=1879 overriden in EDT 
+AppleARMBacklight::armFunctionCallback: Using 1 Backlight Controllers
+AppleARMBacklight::armFunctionCallback: Dual backlight controller system
+IOMFB read_bic - disable BIC (config init failed)
+Video Mode Cebu/Sicily/Ellis
+IOMFB updateFrequencies: minimum-frequency property not found, using getClockFrequency(0) instead.
+virtual bool IOMFB::UPBlock_Config_H11P::did_power_on(IOMFB::AppleRegisterStream *): tunables_managed
+/Library/Caches/com.apple.xbs/Sources/AppleSMC/AppleSMC-589.0.5/AppleSMCEmbeddedCharger/AppleSMCCharger.cpp:408 _setPowerStateGated() ENTER powerStateOrdinal=1, _powerState=1
+IOMFB did_power_on: timings not set; reading 'display-timing-info' from origin 2
+IOMFBStatus IOMFB::UPPipe_H11P::set_run_mode_safe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H11P::RunMode): Int no need to defer: 1 -> 2
+dev_init:297: disk0 device accelerated crypto: 0 (compiled @ Aug 12 2020 22:19:57)
+dev_init:300: disk0 device_handle block size 4096 block count 1878803 features 0 internal 
+AppleSMCSensorDispatcher::start: Found 8 sensors from the device tree
+nx_kernel_mount:1134: disk0 initializing cache w/hash_size 4096 and cache size 10064
+nx_kernel_mount:1234: disk0 container cleanly-unmounted flag set.
+AppleSMCSensorDispatcher::start: Start success
+
+ApplePinotLCD: _lcdPanelID: 0xa1c432d1 _lcdPanelClass: 2
+static bool IOMobileFramebufferLegacy::readDataInEDT(IOService *, bool, const char *, const uint32_t, uint32_t *): property KSF_version not found in EDT, assumed false.
+IOMFB updateFrequencies: minimum-frequency property not found, using getClockFrequency(0) instead.
+IOMFB init_power_lut: failed to read color accuracy index
+function-brightness_update not found 
+function-mcc_dataset not found 
+IOMFB arm_fn_search: Couldn't allocate AppleARMFunction for function-temperature_update
+IOMFB arm_fn_search: failed with 0xe00002bc (function-temperature_update)
+IOMFB arm_fn_search: Couldn't allocate AppleARMFunction for function-link_enable
+IOMFB arm_fn_search: failed with 0xe00002bc (function-link_enable)
+IOMFB setup_table: Could not find table 'display-backlight-compensation' in registry. Using default table.
+IOMFB: function-pcc_update found
+nx_kernel_mount:1402: disk0 checkpoint search: largest xid 78, best xid 78 @ 47
+import_iboot_forwarded_roothash:2577: importing root hash ...
+apfs_extract_root_hash_arm:10001: could not retrieve system-volume-auth-blob from device tree
+import_iboot_forwarded_roothash:2580: apfs_extract_root_hash_and_manifest failed with error: No such file or directory (2)
+Got boot device = IOService:/AppleARMPE/arm-io@10F00000/AppleT803xIO/ans@77400000/AppleASCWrapV2/iop-ans-nub/RTBuddyV2/RTBuddyService/AppleANS2NVMeController/NS_01@1/IOBlockStorageDriver/QEMU NVMe Ctrl Media/IOGUIDPartitionScheme/Untitled 1@1
+BSD root: disk0s1, major 1, minor 1
+apfs_vfsop_mountroot:2188: apfs: mountroot called!
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 2, NSTYPE - 2
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 2, NSTYPE - 2
+dev_init:297: disk0s1 device accelerated crypto: 3 (compiled @ Aug 12 2020 22:19:57)
+dev_init:300: disk0s1 device_handle block size 4096 block count 1878803 features 22 internal solidstate
+nx_kernel_mount:1134: disk0s1 initializing cache w/hash_size 4096 and cache size 10064
+nx_kernel_mount:1234: disk0s1 container cleanly-unmounted flag set.
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 3, NSTYPE - 3
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 3, NSTYPE - 3
+nx_kernel_mount:1402: disk0s1 checkpoint search: largest xid 78, best xid 78 @ 47
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 6, NSTYPE - 6
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 6, NSTYPE - 6
+[effaceable:ERR ] unable to find content
+[effaceable:INIT] started
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 7, NSTYPE - 8
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 7, NSTYPE - 8
+apfs_vfsop_mount:1848: Promoter has been locked for disk0s1
+failed to find root-snapshot-name snapshot
+handle_mount:627: vol-uuid: 5133F48D-5D9E-499B-A8BA-45E692E36FD9 block size: 4096 block count: 1878803 (unencrypted; flags: 0x1; features: 8.0.12)
+virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::269: Logical Blocks Size = 4096 
+ virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::269: Logical Blocks Size = 4096 
+ virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::272: Block Count = 256 
+ virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::272: Block Count = 256 
+ virtual bool AppleNVMeNamespaceDevice::start(IOService *)::111:NVMe Namespace Device registration done for NSID: 7, NSTYPE: 8
+virtual bool AppleNVMeNamespaceDevice::start(IOService *)::111:NVMe Namespace Device registration done for NSID: 7, NSTYPE: 8
+virtual bool AppleEmbeddedNVMeController::StartController()::1547:Setting NAND status to Ready
+virtual bool AppleEmbeddedNVMeController::StartController()::1547:Setting NAND status to Ready
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6634: Volume AzulSeed18A5351d.N104N841DeveloperOS is not in a volume group
+apfs_vfsop_mount:2171: disk0s1s1:0 mounted volume: AzulSeed18A5351d.N104N841DeveloperOS
+AppleAstrisGpioProbe::platformInit():[WARNING] Bailing out.. Set swd_updates_arg boot-arg to allow swd updates!
+AppleAstrisGpioProbe::start():[ERROR] could not do platform initialization
+dyld: setting comm page to 0x0
+Tue Oct  6 08:20:44 2026  com.apple.xpc.launchd[1] <Notice>: hello
+Darwin Bootstrapper Version 7.0.0: Mon Aug 10 04:09:14 PDT 2020; root:libxpc_executables-2038.0.13~13/launchd/RELEASE_ARM64E
+boot-args = debug=0x14e serial=3 wdt=-1 tlto_us=-1 mtxspin=-1 agm-genuine=1 agm-authentic=1 agm-trusted=1 -vm_compressor_wk_sw
+Tue Oct  6 08:20:45 2026 localhost com.apple.xpc.launchd[1] (com.apple.xpc.launchd.domain.system) <Notice>: entering ondemand mode
+Tue Oct  6 08:20:45 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: fsck
+** Checking the container superblock.
+** Checking the object map.
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume AzulSeed18A5351d.N104N841DeveloperOS was formatted by newfs_apfs (945.200.129.100.10) and last modified by apfs_kext (945.200.129.100.10).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume Data was formatted by newfs_apfs (1677.0.5) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume Preboot was formatted by newfs_apfs (1677.0.5) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume xART was formatted by newfs_apfs (1677.0.5) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume Hardware was formatted by newfs_apfs (1677.0.5) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume Update was formatted by newfs_apfs (1677.0.5) and last modified by .
+** QUICKCHECK ONLY; FILESYSTEM CLEAN
+Tue Oct  6 08:20:53 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: mount-phase-1
+mount: found boot container: /dev/disk0s1, data volume: /dev/disk0s1s2 env: 1
+spaceman_metazone_init:189: disk0s1 metazone for device 0 of size 131072 blocks (encrypted: 1747731-1813267 unencrypted: 1813267-1878803)
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 1 blocks starting at paddr 32768
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 2 blocks starting at paddr 0
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 3 blocks starting at paddr 1441792
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 4 blocks starting at paddr 1671168
+dev_dump:256: Aggregate constructed: dev=<ptr> di=0 dv_num_slice=15 dv_num_slice_blk=131072 dv_num_lslice_blk=43795
+handle_mount:627: vol-uuid: A2188D3C-6964-48A9-9ABC-C88CFE626487 block size: 4096 block count: 1878803 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume xART role 100 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s4:0 mounted volume: xART
+/dev/disk0s1s4 on /private/xarts (apfs, local, nodev, nosuid, journaled, noatime, nobrowse)
+spaceman_trim_free_blocks:3361: disk0s1 scan took 0.286467 s, trims took 0.113956 s
+spaceman_trim_free_blocks:3369: disk0s1 68784 blocks free in 3823 extents
+spaceman_trim_free_blocks:3377: disk0s1 68784 blocks trimmed in 3823 extents (29 us/trim, 33548 trims/s)
+spaceman_trim_free_blocks:3380: disk0s1 trim distribution 1:874 2+:1327 4+:1279 16+:304 64+:21 256+:18
+handle_mount:627: vol-uuid: 9D1C4D39-62ED-41B6-870D-071F5C4B7934 block size: 4096 block count: 1878803 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume Preboot role 10 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s3:0 mounted volume: Preboot
+/dev/disk0s1s3 on /private/preboot (apfs, local, nodev, nosuid, read-only, journaled, noatime, nobrowse)
+Tue Oct  6 08:20:54 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: data-protection
+init_data_protection: Gigalocker file (/private/xarts/81879F33-B0F2-573A-AE12-6B517C322E33.gl) exists
+init_data_protection: Gigalocker initialization completed
+void AppleSEPFirmware::_copyInFirmware(IOMemoryDescriptor *): sepos_va:<ptr> sepos_avail_size: 0x1000000
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 1
+void AppleSEPBooter::_bootAction(void *, void *): SEP accepted Tz0
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 2
+IOReturn AppleSEPBooter::bootSEP(AppleSEPFirmware *, bool, AppleSEPSharedMemoryBuffer *, bool): SEP booting
+IOReturn AppleSEPBooter::bootSEP(AppleSEPFirmware *, bool, AppleSEPSharedMemoryBuffer *, bool): Shmbuf for SEP: { slave addr = 0x100c000, size = 0x20000 }
+void AppleSEPManager::_notifyOSActiveGated(): SEP/OS is alive
+void AppleSEPBooter::_bootAction(void *, void *): SEP accepted IMG4
+IOReturn AppleSEPARTRequests::handle_first_connected(): Configuring in buffer
+void AppleSEPARTService::_ensure_nvram_readable(): Waiting for IODTNVRAM
+void AppleSEPARTService::_ensure_nvram_readable(): Got IODTNVRAM OK
+apfs_rawdev_create:637: Enable bypass mode on inode 16 on xART@disk0s1 as 2.0
+SEP EP 16 enabled
+void AppleSEPManager::_updateDeviceTree(): updateDeviceTreeThread started
+static void AppleSEPManager::_updateDeviceTreeThread(void *): updateDeviceTree Success
+IOReturn AppleSEPARTRequests::handle_first_connected(): Configuring out buffer
+Tue Oct  6 08:20:56 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: finish-obliteration
+Obliterator: In INIT check
+IORegistryEntryGetProperty failed, may be does not exist
+Obliterator: No obliteration needed, continue booting, returning 0
+Tue Oct  6 08:20:57 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: commit-boot-mode
+Tue Oct  6 08:20:57 2026 localhost com.apple.xpc.launchd[1] <Notice>: boot-mode committed: (null)
+Tue Oct  6 08:20:57 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: restore-datapartition
+Tue Oct  6 08:20:57 2026 localhost com.apple.xpc.launchd[1] <Notice>: restore-datapartition: optional boot task not present
+Tue Oct  6 08:20:57 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: mount-phase-2
+mount: found boot container: /dev/disk0s1, data volume: /dev/disk0s1s2 env: 1
+migrate_media_keys_if_needed:1206: no media keys to migrate for container = disk0s1
+mount: failed to migrate Media Keys, error = c002
+handle_mount:627: vol-uuid: 360579AF-F2BC-4412-834F-712D92E40B3D block size: 4096 block count: 1878803 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+apfs_lowdisk_check_volume:267: sending lowdisk notification: 8192 for vol: Data with apfs_lowdisk_status: 8192
+nx_volume_group_update:6634: Volume Data is not in a volume group
+apfs_vfsop_mount:2171: disk0s1s2:0 mounted volume: Data
+/dev/disk0s1s2 on /private/var (apfs, local, nodev, nosuid, journaled, noatime)
+set_cloneinfo_id_epoch:23137: set cloneinfo_id_epoch to 16
+handle_mount:627: vol-uuid: 1A7424FA-B491-48D7-8C27-D48C13F7F907 block size: 4096 block count: 1878803 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+apfs_lowdisk_check_volume:267: sending lowdisk notification: 8192 for vol: Update with apfs_lowdisk_status: 8192
+nx_volume_group_update:6628: Volume Update role c0 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s6:0 mounted volume: Update
+/dev/disk0s1s6 on /private/var/MobileSoftwareUpdate (apfs, local, nodev, nosuid, journaled, noatime, nobrowse)
+handle_mount:627: vol-uuid: 5C915B1E-CAF5-4B64-AEF1-5691D0A2E801 block size: 4096 block count: 1878803 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume Hardware role 140 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s5:0 mounted volume: Hardware
+/dev/disk0s1s5 on /private/var/hardware (apfs, local, nodev, nosuid, journaled, noatime, nobrowse)
+Tue Oct  6 08:20:59 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: init-with-data-volume
+Tue Oct  6 08:21:00 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: MSUEarlyBootTask
+main: MSUEarlyBootTask running
+main: Content from the ramdisk will be present at /private/var/MobileSoftwareUpdate/000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000-MSUData if it exists
+MSUEarlyBootTask: I have nothing to do. Goodbye!!
+Tue Oct  6 08:21:01 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: fips
+Tracing: disabled
+FIPSPOST_USER [861849251] fipspost_post:158: PASSED: (25 ms) - fipspost_post_integrity
+FIPSPOST_USER [862059499] fipspost_post:164: PASSED: (4 ms) - fipspost_post_hmac
+FIPSPOST_USER [862082744] fipspost_post:165: PASSED: (0 ms) - fipspost_post_aes_ecb
+FIPSPOST_USER [862518606] fipspost_post:166: PASSED: (17 ms) - fipspost_post_aes_cbc
+FIPSPOST_USER [865468611] fipspost_post:167: PASSED: (122 ms) - fipspost_post_rsa_sig
+FIPSPOST_USER [867711365] fipspost_post:168: PASSED: (92 ms) - fipspost_post_ecdsa
+FIPSPOST_USER [868086093] fipspost_post:169: PASSED: (15 ms) - fipspost_post_ecdh
+FIPSPOST_USER [868479245] fipspost_post:170: PASSED: (15 ms) - fipspost_post_drbg_ctr
+FIPSPOST_USER [868520654] fipspost_post:171: PASSED: (1 ms) - fipspost_post_aes_ccm
+FIPSPOST_USER [874049810] fipspost_post:173: PASSED: (229 ms) - fipspost_post_pbkdf
+FIPSPOST_USER [874264550] fipspost_post:174: PASSED: (7 ms) - fipspost_post_kdf_ctr
+FIPSPOST_USER [877262292] fipspost_post:175: PASSED: (121 ms) - fipspost_post_aes_gcm
+FIPSPOST_USER [877581109] fipspost_post:176: PASSED: (7 ms) - fipspost_post_aes_xts
+FIPSPOST_USER [877632846] fipspost_post:177: PASSED: (1 ms) - fipspost_post_tdes_cbc
+FIPSPOST_USER [877911944] fipspost_post:178: PASSED: (0 ms) - fipspost_post_drbg_hmac
+FIPSPOST_USER [880888163] fipspost_post:180: PASSED: (123 ms) - fipspost_post_ffdh
+FIPSPOST_USER [883451992] fipspost_post:181: PASSED: (106 ms) - fipspost_post_rsa_enc_dec
+FIPSPOST_USER [883465799] fipspost_post:201: all tests PASSED (926 ms)
+Tue Oct  6 08:21:02 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: keybag
+****** IN MKB_INIT ****
+AppleSEPKeyStore:2878:16: SEP timeout multiplier = 10
+SEP EP 18 enabled
+AppleSEPKeyStore:5995:16: negotiated to ipc header theirs:v1, ours:v2 -> negotiated:v1
+AppleSEPKeyStore:5926:16: failed to create refkey -536870212
+MKB_INIT: mount is with NO CPROTECT:0x14809018 on  (/private/var)
+;MKB_INIT: mount point (/private/var) does not support Data Protection
+MKB_INIT: System Keybag loaded
+MKB_INIT: Could not open /private/var/keybags/systembag.kb: No such file or directory
+MKB_INIT: Could not open /private/var/keybags/systembag.kb: No such file or directory
+orageMKB_INIT: Unable to load /private/var/keybags/systembag.kb
+L0MKB_INIT: Failed to validate keybag file: -1, 0
+MKB_INIT: Could not open /private/var/keybags/systembag.kb.writing: No such file or directory
+(eIkMKB_INIT: Unable to load /private/var/keybags/systembag.kb.writing
+MKB_INIT: Failed to validate keybag file: -1
+ 0
+MKB_INIT: Can't load secure keybag Object: -8
+0
+MKB_INIT: Unable to load keybag with Crypto: -8
+MKB_INIT: Can't load the keybag. tears in rain... Time to die
+MKB_INIT: FATAL KEYBAG ERROR: kb_load
+MKB_INIT: Rebooting...
+FATAL KEYBAG ERROR: kb_load
+REBOOTING INTO RECOVERY MODE.
+AppleSEPManager: Received Paging off notification
+apfs_rawdev_destroy:687: Disable bypass mode on inode 16 as 2.0
+apfs_stop_bg_work:1019: System is shutting down stop any bg work
+apfs_vfsop_unmount:2375: disk0s1: unmounting volume 'Hardware'
+apfs_vfsop_unmount:2406: waiting for cleaners to finish: purgatory 
+nx_volume_group_update:6628: Volume Hardware role 140 Not a System or data volume
+apfs: total mem allocated: 1183106 (1 mb);
+apfs_vfsop_unmount:2682: all done.  going home.  (numMountedAPFSVolumes 5)
+apfs_vfsop_unmount:2375: disk0s1: unmounting volume 'Update'
+apfs_vfsop_unmount:2406: waiting for cleaners to finish: purgatory 
+nx_volume_group_update:6628: Volume Update role c0 Not a System or data volume
+apfs: total mem allocated: 1181730 (1 mb);
+apfs_vfsop_unmount:2682: all done.  going home.  (numMountedAPFSVolumes 4)
+apfs_vfsop_unmount:2375: disk0s1: unmounting volume 'Data'
+apfs_vfsop_unmount:2406: waiting for cleaners to finish: purgatory 
+nx_volume_group_update:6634: Volume Data is not in a volume group
+apfs: total mem allocated: 1176489 (1 mb);
+apfs_vfsop_unmount:2682: all done.  going home.  (numMountedAPFSVolumes 3)
+apfs_vfsop_unmount:2375: disk0s1: unmounting volume 'Preboot'
+nx_volume_group_update:6628: Volume Preboot role 10 Not a System or data volume
+apfs: total mem allocated: 1172825 (1 mb);
+apfs_vfsop_unmount:2682: all done.  going home.  (numMountedAPFSVolumes 2)
+apfs_vfsop_unmount:2375: disk0s1: unmounting volume 'xART'
+apfs_vfsop_unmount:2406: waiting for cleaners to finish: purgatory 
+nx_volume_group_update:6628: Volume xART role 100 Not a System or data volume
+apfs: total mem allocated: 1170953 (1 mb);
+apfs_vfsop_unmount:2682: all done.  going home.  (numMountedAPFSVolumes 1)
+apfs_vfsop_unmount:2375: disk0s1: unmounting volume 'AzulSeed18A5351d.N104N841DeveloperOS'
+nx_volume_group_update:6634: Volume AzulSeed18A5351d.N104N841DeveloperOS is not in a volume group
+dev_dump:256: Aggregate destructed: dev=<ptr> di=0 dv_num_slice=15 dv_num_slice_blk=131072 dv_num_lslice_blk=43795
+apfs: total mem allocated: 3616 (0 mb);
+apfs_vfsop_unmount:2682: all done.  going home.  (numMountedAPFSVolumes 0)
+000038.783673 AppleT8027USBXDCI@: AppleUSBXDCI::goOnBus: not on bus

@@ -48,23 +48,21 @@ that directory together: the binary references local libraries/resources.
 
 ## Current execution boundary
 
-Owned native recovery code executes. A direct System boot reaches Darwin
-Bootstrapper but needs auxiliary APFS preparation. The latest owned helper
-created Preboot, xART and Hardware and copied original firmware. Direct-root-3
-passed mount-phase-1, then failed data-protection because gigalocker storage was
-missing. Run12 invoked the original guest initializer and cleanly unmounted xART;
-Run13 created Data/Update, seeded original var, prepared Hardware factorydata
-paths and cleanly unmounted; 260,640,768 bytes remain available. Root independent
-7-Zip extraction found 12,465 compressed Data files read as zero bytes; guest
-verification/copy correction is pending. Do not accept the seed as byte-valid.
-Direct-root-4 passed gigalocker init, then failed missing SEP firmware. Original
-manifest-verified IM4P staging is being tested without wrapping or signatures. A separate growth helper experiment and minimal owned UIKit fixture are
-being prepared in isolated worktrees. See PROGRESS.md and companion/native-probe/README.md.
-Linux USB companion boots under KVM. EHCI attachment panics due to the blocking
-remote handler; xHCI descriptor enumeration also fails. The asynchronous USB fix
-and EHCI address-order correction at7e70337967 passed actual enumeration,
-read-only restored QueryType and disconnect/reconnect on the same Linux VM.
-Root independently repeated the service query; see usb-recovery evidence. No installed iOS, UIKit journey or benchmark is proven.
+Recovery, owned native code, USB enumeration/service/reconnect and prepared APFS
+volumes have executed. Full Data byte/metadata comparison passed in guest run17;
+the host 7-Zip zero-stream observation was misleading. Prepared32GiB base is
+`.local-build/reports/container-growth-2/disks/root.raw`, SHA256
+`ad7f097b696dd3f12a0409fcd4da659a2e18ab1449c66bef9c11f733c1549ae5`.
+Direct-root-5 accepts original unchanged SEP IM4P through simulated SEP, passes
+mount/data-protection/FIPS and stops at missing system keybag. Original recovery
+MKB creation executes; effaceable-storage initialization is being completed.
+Carry all auxiliary namespaces with the root via `--auxiliary-state` after this
+step, not just the root image. Root and helper code/evidence are committed as work
+proceeds. No installed SpringBoard or UIKit journey is established.
+
+Owned counter app and launcher are being prepared under companion/app-probe.
+Headless `--probe-journey` is implemented but awaits actual app launch and image
+review. Continue execution, not a checkpoint handoff. See latest PROGRESS.md.
 
 ## Next concrete work
 

@@ -1,0 +1,46 @@
+{
+  "kind": "t8030_recovery_ramdisk_experiment",
+  "binary_sha256": "075b221cb771cd26ddde2d6218058c9ba1e15a236e5d1d161be936129084cf87",
+  "profile_sha256": "2756ed3785852762a5ca6b39f9e7ac876caeda8f51c881fe6ba972c497939965",
+  "inputs": {
+    "kernel": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/kernel-kernelcache.research.iphone12b",
+      "sha256": "cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3",
+      "bytes": 17429507
+    },
+    "dtb": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+      "sha256": "dbd9be96c4b18f48a1842879237ae8f27043b894a2ed6139e396dbedca232411",
+      "bytes": 42553
+    },
+    "trustcache": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache",
+      "sha256": "af33b3466bd828bf1ccaa1ab35d060bfcce62ade26ee74acf176501b00ea0d7f",
+      "bytes": 4931
+    },
+    "ramdisk": {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/grow-attempt-1/ramdisk.raw",
+      "sha256": "81aee8241eab2da9b6a8a3dc0093008aec852728dbba158959baa188f7505247",
+      "bytes": 104685568
+    }
+  },
+  "root_base": {
+    "path": "/home/brandonin/.local/share/inferno/images/ios14b5/os-inspection/prepared-14-32g.raw",
+    "sha256": "c02eb9352b9c40cd415c7c58f2ae30c05ffd698b7f96960d1a6469bad568e72c",
+    "bytes": 34359738368,
+    "copied_before_use": true
+  },
+  "elapsed_seconds": 60.17944,
+  "exit_code": 0,
+  "serial_bytes": 44469,
+  "built_source": "7e7033796707d639b35f3351192c2d5422c66382",
+  "runner_revision": "03ca740f3cce4c9378287cd016ddd0c91c7cc8ab",
+  "full_report": ".local-build/reports/container-growth-2/report.json",
+  "review": "Root inspected original APFSContainerResize return0, kernel resize1878803 to8388347 physical container blocks, System statfs8379643 blocks after role reservations,6557917 available blocks, matching guest file fingerprints and clean unmounts. Host SHA256 verification separately matched original SystemVersion/launchd and complete original SEP payload/gigalocker to pre-growth prepared14. No APFS metadata manually edited. Actual source report and provenance retained.",
+  "artifact_sha256": {
+    "serial.txt": "e030f121c448ecd9481012d490b8783ec00b93394eebdf950bb755dbfcaa2d03",
+    "stderr.txt": "92311f6e13edcbd5a7efc3a8757a1df10c345a091a37efabb9ff281c2f1e3efa",
+    "qmp.jsonl": "53b3c631e85920f0e0214082921312d3f74dabbcd0c172614a5cca39c4cd9267",
+    "guest-errors.txt": "1a3f1c9068513ecb6c506b7bd610c304be9c8635ebd03e68fb0f85c57d4379ed"
+  }
+}

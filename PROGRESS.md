@@ -4,6 +4,29 @@
 
 ### Further executed checkpoints
 
+- **Current full-system boundary:** original SEP IM4P bytes, manifest-verified and
+  copied unchanged into Preboot, are accepted by the existing simulated SEP
+  protocol. Direct-root-5 passes data-protection, both mount stages and FIPS,
+  then stops at missing system keybag initialization. This is not execution of
+  real SEP firmware or completed SpringBoard boot. Original recovery APIs are
+  being used to initialize the disposable VM's effaceable storage and keybag.
+  Raw evidence: `companion/evidence/direct-root-keybag-boundary*`.
+- **Data is guest-verified:** full recursive read-only comparison passed all
+  13,025 files (269,210,433 bytes), modes/owners and symlink; 16,665 total entries
+  including root, zero mismatches. Both volumes unmounted cleanly. The host
+  7-Zip extraction failure was a reader limitation, so no Data recopy occurred.
+  Raw evidence: `companion/evidence/data-guest-verification*`. An identical first
+  attempt failed before launchd in framebuffer initialization; that transient
+  boot failure is retained in disk-preparation-16 and remains a reliability issue.
+- **Prepared disk expanded:** original APFS API enlarged the prepared container
+  inside a 32GiB GPT disk with about25GiB available. Guest and host file checks
+  preserved System files, gigalocker and original SEP payload; clean unmount and
+  QMP exit were observed. Raw evidence: `companion/evidence/prepared-container-growth*`.
+- **Owned UIKit fixture built:** `companion/app-probe/` builds an ARM64 counter
+  app using self-authored declarations and LLVM ad-hoc signing. It has not run in
+  the guest. The opt-in runner `--probe-journey` requires appearance/tap markers
+  and before/after screenshots; actual app execution of that flow is pending.
+
 - **Recovery USB works:** source7e70337967 fixes remote USB's synchronous BQL
   release and preserves EHCI address/status completion ordering. Actual Linux
   KVM + iOS TCG run8 enumerated `05ac:12a8`; usbmuxd connected to the device.

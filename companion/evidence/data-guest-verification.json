@@ -1,0 +1,50 @@
+{
+  "kind": "t8030_recovery_ramdisk_experiment",
+  "binary_sha256": "075b221cb771cd26ddde2d6218058c9ba1e15a236e5d1d161be936129084cf87",
+  "profile_sha256": "337a3576e1a0991314a7c25eb8b62c4de7c9d6bc3103ffd32c7eb1d315367dc7",
+  "inputs": {
+    "kernel": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/kernel-kernelcache.research.iphone12b",
+      "sha256": "cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3",
+      "bytes": 17429507
+    },
+    "dtb": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+      "sha256": "dbd9be96c4b18f48a1842879237ae8f27043b894a2ed6139e396dbedca232411",
+      "bytes": 42553
+    },
+    "trustcache": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache",
+      "sha256": "af33b3466bd828bf1ccaa1ab35d060bfcce62ade26ee74acf176501b00ea0d7f",
+      "bytes": 4931
+    },
+    "ramdisk": {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/helper-attempt-14/ramdisk.raw",
+      "sha256": "56f0d930b8f7ba743d904e29a79185922faa1143ca6dd45547178624ec456823",
+      "bytes": 104685568
+    }
+  },
+  "root_base": {
+    "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/container-growth-2/disks/root.raw",
+    "sha256": "ad7f097b696dd3f12a0409fcd4da659a2e18ab1449c66bef9c11f733c1549ae5",
+    "bytes": 34359738368,
+    "copied_before_use": true
+  },
+  "elapsed_seconds": 325.408722,
+  "exit_code": 0,
+  "serial_bytes": 49431,
+  "error": {
+    "type": "KeyboardInterrupt",
+    "detail": "Signal 15"
+  },
+  "built_source": "7e7033796707d639b35f3351192c2d5422c66382",
+  "runner_revision": "458416817bb8b7ab83bcb60ce095b0070d97c860",
+  "full_report": ".local-build/reports/disk-preparation-17/report.json",
+  "review": "Root reviewed full recursive comparison source and actual serial execution:16665 entries including root,13025 files,1 symlink,269210433 bytes,0 mismatches. Read-only guest filesystem checks compared stream bytes, mode/uid/gid and symlink target; both volumes cleanly unmounted. This resolves the misleading host7-Zip zero-stream extraction for the copied compressed Data files; no Data repair was needed. The first identical run16 failed before launchd with a framebuffer-associated null-pointer kernel abort; retry17 executed with unchanged binary/profile/base.",
+  "artifact_sha256": {
+    "serial.txt": "6d0ab75fdca23b0ab1cdab6de90c008b2f00899095003a31f922b64671fed2ae",
+    "stderr.txt": "92311f6e13edcbd5a7efc3a8757a1df10c345a091a37efabb9ff281c2f1e3efa",
+    "qmp.jsonl": "a8cadf07f68cade1f63a6ac7e1635021338b354f7cebbb47e5d3aa89d8e4530a",
+    "guest-errors.txt": "1a3f1c9068513ecb6c506b7bd610c304be9c8635ebd03e68fb0f85c57d4379ed"
+  }
+}
