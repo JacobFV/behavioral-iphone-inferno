@@ -333,3 +333,10 @@ initialization now passed during boot, and launchd logged `Early boot complete.
 Continuing system boot.` The system enabled backlight and started additional
 daemons. AppleCredentialManager also logged a timed-out SEP
 operation; UI and owned-app execution still require separate evidence.
+
+`--readiness-probe FILE` stages the separately built owned observation helper
+and root launchd job into a disposable System copy. It runs original `/bin/ps`
+at 15, 45, 90 and 150 seconds and inventories the guest's crash/log directories.
+Output goes to the serial console. It neither restarts nor patches any daemon.
+This diagnoses whether splash-only system boots actually start SpringBoard and
+backboardd before considering changes to graphics or service behavior.
