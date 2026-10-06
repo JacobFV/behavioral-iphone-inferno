@@ -177,9 +177,9 @@ static void compare_tree(const char *source, const char *destination) {
 }
 /* Mirrors original restored format_effaceable_storage selectors, never raw storage writes. */
 static int initialize_effaceable(void) {
-    void *io=dlopen("/System/Library/Frameworks/IOKit.framework/IOKit",2);
+    void *io=dlopen("/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",2);
     void *lib=dlopen("/usr/lib/libSystem.B.dylib",2);
-    if(!io || !lib)return -1;
+    if(!io || !lib){printf("INFERNO_EFFACEABLE_DLOPEN_FAILED %s\n",dlerror());fflush(0);return -1;}
     void *(*matching)(const char *)=dlsym(io,"IOServiceMatching");
     unsigned (*getservice)(unsigned,void *)=dlsym(io,"IOServiceGetMatchingService");
     int (*serviceopen)(unsigned,unsigned,unsigned,unsigned *)=dlsym(io,"IOServiceOpen");
@@ -187,7 +187,7 @@ static int initialize_effaceable(void) {
     int (*serviceclose)(unsigned)=dlsym(io,"IOServiceClose");
     int (*release)(unsigned)=dlsym(io,"IOObjectRelease");
     unsigned *task=dlsym(lib,"mach_task_self_");
-    if(!matching || !getservice || !serviceopen || !scalar || !serviceclose || !release || !task)return -1;
+    if(!matching || !getservice || !serviceopen || !scalar || !serviceclose || !release || !task){printf("INFERNO_EFFACEABLE_DLSYM_FAILED %s\n",dlerror());fflush(0);return -1;}
     unsigned service=getservice(0,matching("AppleEffaceableStorage")),connection=0;
     if(!service)return -1;
     int status=serviceopen(service,*task,0,&connection);
@@ -197,6 +197,10 @@ static int initialize_effaceable(void) {
     if(!status && !formatted){
         status=scalar(connection,4,0,0,0,0);
         printf("INFERNO_EFFACEABLE_FORMAT status=%d\n",status);fflush(0);
+        if(!status){count=1;status=scalar(connection,3,0,0,&formatted,&count);
+            printf("INFERNO_EFFACEABLE_RECHECK status=%d formatted=%llu\n",status,formatted);fflush(0);
+            if(!formatted)status=-1;
+        }
     }
     if(connection)serviceclose(connection);
     release(service);return status;
