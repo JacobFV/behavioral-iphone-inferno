@@ -142,3 +142,25 @@ each file SHA256 matched across all three trees. Raw reader logs and the detaile
 inventory are outside Git under `/home/brandonin/.local/share/inferno/native-probe/`
 as `verification-original.log`, `verification-prepared.log`, and
 `firmware-verification.json`. No prepared disk bytes were changed for inspection.
+
+## Explicit xART parent entitlement experiment
+
+The original newfs_apfs code checks its **parent's** `com.apple.private.apfs.xart`
+entitlement before creating role256: read-only disassembly shows `getppid()`,
+`csops(parent, CS_OPS_ENTITLEMENTS_BLOB, ...)`, then that dictionary key. The first
+helper had no entitlements. This explains its userland exit77 independently of
+any later encryption or kernel restriction; successful role creation still
+requires actual execution evidence.
+
+Pass a third absolute `ldid` path to `build.sh` to sign our owned helper with its
+explicit `entitlements.plist`, and pass `--disk-helper-roles` to `prepare.py` to
+request xART+Hardware after Preboot. No Apple executable is modified. The signer
+uses ad-hoc mode, no identity, certificate or private key. The build manifest
+records signer and entitlement hashes, and the extracted entitlement blob is
+retained beside the binary. The marker itself remains LLVM ad-hoc signed.
+
+Local signer source: https://github.com/ProcursusTeam/ldid revision
+`af86971ae72ec3ed3d0a699107c4e882324c941b`. Its original license remains in the
+external checkout. Build it locally with libplist and OpenSSL development packages
+extracted with `apt download`/`dpkg-deb -x`; no system installation is necessary.
+The exact local build output is `native-probe/ldid-build.log` outside Git.

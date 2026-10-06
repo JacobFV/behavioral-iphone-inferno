@@ -76,7 +76,8 @@ static int ensure(const char *path) {
     return -1;
 }
 int main(int argc, char **argv) {
-    if (argc != 2 || strcmp(argv[1], "--disposable-root-copy")) {
+    if ((argc != 2 && argc != 3) || strcmp(argv[1], "--disposable-root-copy") ||
+        (argc == 3 && strcmp(argv[2], "--role-volumes"))) {
         printf("Requires --disposable-root-copy; host must supply a disposable cloned root image.\n");
         return 2;
     }
@@ -86,6 +87,11 @@ int main(int argc, char **argv) {
     devices();
     char *preboot[] = {"/sbin/newfs_apfs", "-A", "-o", "role=b", "-v", "Preboot", "/dev/disk0s1", 0};
     if (run(preboot)) return 4;
+    if (argc == 3) {
+        char *xart[] = {"/sbin/newfs_apfs", "-s10485760", "-A", "-o", "role=x", "-v", "xART", "/dev/disk0s1", 0};
+        char *hardware[] = {"/sbin/newfs_apfs", "-s25165824", "-A", "-o", "role=h", "-v", "Hardware", "/dev/disk0s1", 0};
+        if (run(xart) || run(hardware)) return 4;
+    }
     char system_device[64] = {0}, preboot_device[64] = {0};
     /* Discover actual volume identities, never infer an index from creation order. */
     for (int i = 1; i <= 16; ++i) {

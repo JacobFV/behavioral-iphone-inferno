@@ -14,8 +14,11 @@ p.add_argument('--raw-ramdisk', required=True, type=Path)
 p.add_argument('--probe', required=True, type=Path)
 p.add_argument('--hfsplus', required=True, type=Path)
 p.add_argument('--disk-helper', type=Path, help='explicitly install disposable-root APFS preparation helper')
+p.add_argument('--disk-helper-roles', action='store_true', help='also add xART and Hardware; requires owned helper signed with xart entitlement')
 p.add_argument('--output', required=True, type=Path)
 a = p.parse_args()
+if a.disk_helper_roles and not a.disk_helper:
+    p.error('--disk-helper-roles requires --disk-helper')
 for required in (a.profile, a.raw_ramdisk, a.probe, a.hfsplus):
     if not required.is_file():
         p.error(f'missing input: {required}')
@@ -36,7 +39,7 @@ jobs = [('native', ['/usr/bin/inferno-probe']), ('asr-help', ['/usr/sbin/asr', '
 if a.disk_helper:
     hfs('add', a.disk_helper, '/usr/bin/inferno-prepare-root')
     hfs('chmod', '755', '/usr/bin/inferno-prepare-root')
-    jobs.append(('prepare-root', ['/usr/bin/inferno-prepare-root', '--disposable-root-copy']))
+    jobs.append(('prepare-root', ['/usr/bin/inferno-prepare-root', '--disposable-root-copy'] + (['--role-volumes'] if a.disk_helper_roles else [])))
 for name, args in jobs:
     label = 'org.inferno.probe.' + name
     local = a.output / (label + '.plist')
