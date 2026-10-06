@@ -19,6 +19,12 @@ extern int getattrlist(const char *,struct attrs *,void *,size_t,unsigned long);
 struct fs { u32 bsize; int iosize; unsigned long long blocks,bfree,bavail,files,ffree;
  int fsid[2]; u32 owner,type,flags,subtype; char typename[16],on[1024],from[1024]; u32 ext,reserved[7]; };
 extern int statfs(const char *,struct fs *);
+struct file_stat { int dev;u16 mode,nlink;unsigned long long ino;u32 uid,gid;int rdev;
+ long long times[8],size,blocks;int blksize;u32 flags,gen;int spare;long long qspare[2]; };
+_Static_assert(sizeof(struct file_stat)==144,"Darwin stat64 ABI");
+extern int lstat(const char *,struct file_stat *);
+static void inspect(const char *path){struct file_stat st={0};int r=lstat(path,&st);
+ printf("INFERNO_STAGE_LSTAT path=%s result=%d errno=%d mode=%o uid=%u gid=%u bytes=%lld flags=0x%x\n",path,r,*__error(),st.mode,st.uid,st.gid,st.size,st.flags);fflush(0);}
 _Static_assert(sizeof(struct fs)==2168,"Darwin statfs64 ABI");
 static int run(char *const a[]) {
  printf("INFERNO_STAGE_EXEC"); for(int i=0;a[i];++i) printf(" %s",a[i]); printf("\n");fflush(0);
@@ -44,24 +50,34 @@ static int copy(const char *src,const char *dst,u16 mode) {
  return same(src,dst);
 }
 int main(int argc,char **argv) {
- if(argc!=2||strcmp(argv[1],"--disposable-app-stage"))return 64;
+ if(argc!=2)return 64;int readonly=!strcmp(argv[1],"--inspect-only");
+ if(!readonly&&strcmp(argv[1],"--disposable-app-stage"))return 64;
  int system=0,data=0,result=1;struct fs fs;
  printf("INFERNO_STAGE_BEGIN\n");fflush(0);
  for(int i=0;access("/dev/disk0s1s2",0)&&i<30;++i)sleep(1);
- char *mountsys[]={"/sbin/mount_apfs","-o","rw","/dev/disk0s1s1","/mnt1",0};
+ char *mountsys[]={"/sbin/mount_apfs","-o",readonly?"ro":"rw","/dev/disk0s1s1","/mnt1",0};
  if(run(mountsys))goto done;system=1;
  if(statfs("/mnt1",&fs))goto done;
  printf("INFERNO_STAGE_SYSTEM_MOUNT flags=0x%x device=%s\n",fs.flags,fs.from);fflush(0);
- if((fs.flags&1)||access("/mnt1/System/Library/CoreServices/SystemVersion.plist",0))goto done;
- char *mountdata[]={"/sbin/mount_apfs","-o","rw","/dev/disk0s1s2","/mnt2",0};
+ if((!readonly&&(fs.flags&1))||access("/mnt1/System/Library/CoreServices/SystemVersion.plist",0))goto done;
+ char *mountdata[]={"/sbin/mount_apfs","-o",readonly?"ro":"rw","/dev/disk0s1s2","/mnt2",0};
  if(run(mountdata))goto done;data=1;
  struct attrs attr={5,0,0,0x80002000,0,0,0};struct volname name={0};
  if(getattrlist("/mnt2",&attr,&name,sizeof(name),0)||name.offset<8||
     (unsigned long)name.offset+4+name.length>sizeof(name)||!name.length)goto done;
  char *vol=(char *)&name.offset+name.offset;
  if(vol[name.length-1]||strcmp(vol,"Data"))goto done;
- if(statfs("/mnt2",&fs)||(fs.flags&1))goto done;
+ if(statfs("/mnt2",&fs)||(!readonly&&(fs.flags&1)))goto done;
  printf("INFERNO_STAGE_DATA_MOUNT name=%s flags=0x%x device=%s\n",vol,fs.flags,fs.from);fflush(0);
+ if(readonly){
+  const char *paths[]={"/mnt2","/mnt2/inferno","/mnt2/inferno/inferno-launcher","/mnt2/inferno/InfernoProbe.app","/mnt2/inferno/InfernoProbe.app/InfernoProbe","/mnt1/System/Library/Frameworks/CoreServices.framework/CoreServices",0};
+  for(int i=0;paths[i];++i)inspect(paths[i]);
+  result=same("/usr/share/inferno-stage-app","/mnt2/inferno/InfernoProbe.app/InfernoProbe")|
+         same("/usr/share/inferno-stage-info","/mnt2/inferno/InfernoProbe.app/Info.plist")|
+         same("/usr/share/inferno-stage-launcher","/mnt2/inferno/inferno-launcher")|
+         same("/usr/share/inferno-stage-job","/mnt1/System/Library/LaunchDaemons/org.inferno.app-probe.plist");
+  goto done;
+ }
  if(mkdir("/mnt2/inferno",0755)||chown("/mnt2/inferno",0,0))goto done;
  if(mkdir("/mnt2/inferno/InfernoProbe.app",0755)||chown("/mnt2/inferno/InfernoProbe.app",0,0))goto done;
  if(copy("/usr/share/inferno-stage-app","/mnt2/inferno/InfernoProbe.app/InfernoProbe",0755)||
@@ -70,7 +86,7 @@ int main(int argc,char **argv) {
     copy("/usr/share/inferno-stage-job","/mnt1/System/Library/LaunchDaemons/org.inferno.app-probe.plist",0644))goto done;
  result=0;
 done:
- printf("INFERNO_STAGE_COPY_RESULT result=%d errno=%d\n",result,*__error());fflush(0);sync();
+ printf("INFERNO_STAGE_COPY_RESULT result=%d errno=%d\n",result,*__error());fflush(0);if(!readonly)sync();
  if(data){int r=unmount("/mnt2",0);printf("INFERNO_STAGE_UNMOUNT data=%d errno=%d\n",r,*__error());if(r)result=2;}
  if(system){int r=unmount("/mnt1",0);printf("INFERNO_STAGE_UNMOUNT system=%d errno=%d\n",r,*__error());if(r)result=2;}
  printf("INFERNO_STAGE_DONE result=%d\n",result);fflush(0);return result;

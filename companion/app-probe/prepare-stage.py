@@ -21,6 +21,7 @@ def main():
     p.add_argument('--raw-sha256', required=True)
     p.add_argument('--build', required=True, type=Path)
     p.add_argument('--hfsplus', required=True, type=Path)
+    p.add_argument('--inspect-only', action='store_true', help='mount cloned volumes read-only and compare existing owned assets')
     p.add_argument('--output', required=True, type=Path)
     a = p.parse_args()
     if sha(a.raw_ramdisk) != a.raw_sha256:
@@ -71,7 +72,7 @@ def main():
     job = a.output / 'org.inferno.stage-app.plist'
     job.write_bytes(plistlib.dumps({
         'Label': 'org.inferno.stage-app',
-        'ProgramArguments': ['/usr/bin/inferno-stage-app', '--disposable-app-stage'],
+        'ProgramArguments': ['/usr/bin/inferno-stage-app', '--inspect-only' if a.inspect_only else '--disposable-app-stage'],
         'RunAtLoad': True, 'UserName': 'root',
         'StandardOutPath': '/dev/console', 'StandardErrorPath': '/dev/console',
     }))
