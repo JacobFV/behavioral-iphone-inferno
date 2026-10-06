@@ -38,6 +38,8 @@ DISPLAY_REGISTERS = (
                                ('data_start', 0x30), ('data_end', 0x40),
                                ('stride', 0x60), ('src_dimensions', 0x70),
                                ('dest_dimensions', 0x80)))
+DISPLAY_TRACE_EVENTS = ('apple_adp_submit', 'apple_adp_bh', 'apple_adp_pipe',
+                        'apple_adp_output_ready', 'apple_adp_irq_write')
 LIMIT = 4096
 
 
@@ -86,6 +88,10 @@ def validate(request):
         raise ValueError('Arguments must be an object')
     if name in ('query-mice', 'query-touch-registers', 'query-display-registers', 'probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after') and args == {}:
         return name, args
+    if name == 'trace-display-window':
+        if set(args) == {'seconds'} and type(args['seconds']) is int and 1 <= args['seconds'] <= 60:
+            return name, args
+        raise ValueError('Display trace requires only integer seconds from1 to60')
     if name == 'guest-open-app':
         open_line(args)
         return name, args
@@ -145,6 +151,63 @@ def write_private(path, value):
     os.replace(temporary, path)
 
 
+class DisplayTraceWindow:
+    """Disabled by default; exact event set, sole-owner deadline and cleanup."""
+    def __init__(self, output):
+        self.journal = output / 'display-trace-control.jsonl'
+        self.pending = []
+        self.deadline = None
+
+    def record(self, **fields):
+        fd = os.open(self.journal, os.O_WRONLY | os.O_APPEND | os.O_CREAT | os.O_NOFOLLOW, 0o600)
+        with os.fdopen(fd, 'a') as log:
+            log.write(json.dumps({'time': time.time(), 'monotonic_ns': time.monotonic_ns(), **fields}) + '\n')
+
+    def start(self, qmp, seconds):
+        if self.pending:
+            raise ValueError('Display trace already active or cleanup incomplete; cannot extend/restart')
+        self.deadline = time.monotonic() + seconds
+        self.record(stage='start', seconds=seconds, events=list(DISPLAY_TRACE_EVENTS))
+        try:
+            for name in DISPLAY_TRACE_EVENTS:
+                # Retain an uncertain enable for mandatory cleanup if execute raises.
+                self.pending.append(name)
+                self.record(stage='before-enable', event=name)
+                response = qmp.execute('trace-event-set-state', {'name': name, 'enable': True})
+                self.record(stage='after-enable', event=name, response=response)
+                if 'error' in response:
+                    self.pending.remove(name)  # explicit rejection, not an uncertain send
+                    raise RuntimeError(f'Display trace event unavailable: {name}: {response}')
+        except Exception:
+            self.deadline = time.monotonic()
+            self.stop(qmp, 'start failed')
+            raise
+        return {'seconds': seconds, 'events': list(DISPLAY_TRACE_EVENTS),
+                'scope': 'Opt-in diagnostic tracing; deadline checked by sole runner poll; no guest behavior changes.'}
+
+    def stop(self, qmp, reason):
+        if not self.pending:
+            return
+        self.record(stage='stop', reason=reason, pending=list(self.pending))
+        for name in list(self.pending):
+            self.record(stage='before-disable', event=name)
+            try:
+                response = qmp.execute('trace-event-set-state', {'name': name, 'enable': False})
+                self.record(stage='after-disable', event=name, response=response)
+                if 'error' not in response:
+                    self.pending.remove(name)
+            except Exception as exc:
+                self.record(stage='disable-error', event=name, error=str(exc))
+        self.record(stage='stop-result', reason=reason, all_disabled=not self.pending,
+                    pending=list(self.pending))
+        if self.pending:
+            raise RuntimeError('Display trace cleanup incomplete: ' + ','.join(self.pending))
+
+    def poll(self, qmp):
+        if self.pending and time.monotonic() >= self.deadline:
+            self.stop(qmp, 'deadline')
+
+
 class ControlMailbox:
     def __init__(self, output, journey=None, keep_running=False):
         self.path = output / 'control'
@@ -154,8 +217,14 @@ class ControlMailbox:
         self.serial_transport = None
         self.journey = journey
         self.run_control = {'keep_running': keep_running, 'finish_requested': False}
+        self.display_trace = DisplayTraceWindow(output)
+
+    def close(self, qmp):
+        # Runner calls before quit; propagate cleanup error for its report, not a retry loop.
+        self.display_trace.stop(qmp, 'runner cleanup')
 
     def poll(self, qmp):
+        self.display_trace.poll(qmp)
         private_dir(self.path)
         for path in sorted(self.path.glob('request-*.json'))[:4]:
             if not re.fullmatch(r'request-[0-9a-f]{32}\.json', path.name):
@@ -166,7 +235,9 @@ class ControlMailbox:
                 record.update(raw=raw.decode('utf-8', errors='replace'), sha256=hashlib.sha256(raw).hexdigest())
                 request = json.loads(raw)
                 name, args = validate(request)
-                if name == 'probe-status':
+                if name == 'trace-display-window':
+                    response = {'return': self.display_trace.start(qmp, args['seconds'])}
+                elif name == 'probe-status':
                     if self.journey is None:
                         raise ValueError('This boot did not enable --probe-journey')
                     response = {'return': {**self.journey.report, **self.run_control}}
@@ -354,7 +425,7 @@ class StartupTouchTrace:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report', type=Path, required=True, help='Active boot output directory with --control-mailbox')
-    parser.add_argument('command', choices=['probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after', 'query-mice', 'query-touch-registers', 'query-display-registers', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture', 'guest-open-app'])
+    parser.add_argument('command', choices=['probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after', 'query-mice', 'query-touch-registers', 'query-display-registers', 'trace-display-window', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture', 'guest-open-app'])
     parser.add_argument('--arguments', default='{}', help='Allowlisted QMP arguments as JSON')
     args = parser.parse_args()
     directory = args.report.resolve(strict=True) / 'control'

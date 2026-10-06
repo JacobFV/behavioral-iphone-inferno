@@ -1,0 +1,22 @@
+{
+  "kind": "diagnostic_only_candidate",
+  "justification": "Actual boot41 console stalled despite realtap/background; boot42 healthy snapshots lack submit/BH history.",
+  "files": {
+    "hw/display/apple_displaypipe_v4.c": "b45e2343bfd360c6083da4f7cf2305bce3985a09b57a0bcd6fa5f2780db92983",
+    "hw/display/trace-events": "bc91ed5897a0808002d390f19b84be268c4963a2a20ac4ff969c83c3e870dd33",
+    "companion/qmp_control.py": "575e1762d2cb30d7105939a38498feb1efda87d99ba1157e245b6b4190f2f340"
+  },
+  "command": "companion/run control --report REPORT trace-display-window --arguments '{\"seconds\": 30}'",
+  "events": [
+    "apple_adp_submit",
+    "apple_adp_bh",
+    "apple_adp_pipe",
+    "apple_adp_output_ready",
+    "apple_adp_irq_write"
+  ],
+  "behavior": "Disabled by default. No extra DMA/pixel reads or changed scheduling/draw/IRQ/W1C operations; trace uses local or existing stored model values. Pending BH submissions may legitimately coalesce.",
+  "runner_integration_required": "Parent owns boot.py: in finally, within if qmp before capture_final_frame/quit, call control.close(qmp) when control exists, catch Exception and set report[display_trace_cleanup_error], then continue normal quit.",
+  "cleanup": "ControlMailbox.close calls same-owner stop. Every enable/disable request/outcome journaled. Failed/uncertain disables retain pending events and raise for runner error recording. Deadline checked at poll entry; deadline failure propagates to runner cleanup rather than unlimited polling. Partial start failure sets immediate deadline and attempts rollback.",
+  "timing_limit": "1..60s requested cooperative sole-runner deadline; host scheduling or blocked QMP calls can delay actual disable. Raw start/stop and all_disabled report actual outcome; no wall-clock hard-realtime claim.",
+  "verification": "Python compile, negative argument/overlap checks, fakeQMP deadline/partialstart/cleanup failures and upstream trace parser passed. No new emulator built and no actual trace execution claimed."
+}

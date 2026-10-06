@@ -224,3 +224,10 @@ apple_gfx_iosfc_unmap_memory(void *a, void *b, void *c, void *d, void *e, void *
 apple_gfx_iosfc_unmap_memory_region(void* mem, void *region) "unmapping @ %p from memory region %p"
 apple_gfx_iosfc_raise_irq(uint32_t vector) "vector=0x%x"
 
+
+# apple_displaypipe_v4.c (diagnostic only, opt-in)
+apple_adp_submit(uint64_t value, bool schedule, uint32_t status, uint32_t enable) "value=0x%"PRIx64" schedule=%d status=0x%x enable=0x%x"
+apple_adp_bh(const char *phase, uint32_t gp0, uint32_t gp1, uint32_t status, uint32_t enable) "phase=%s gp0=0x%x gp1=0x%x status=0x%x enable=0x%x"
+apple_adp_pipe(uint32_t pipe, const char *outcome, uint32_t control, uint32_t source, uint32_t stride, uint32_t width, uint32_t height, uint32_t bytes) "pipe=%u outcome=%s control=0x%x source=0x%x stride=%u width=%u height=%u bytes=%u"
+apple_adp_output_ready(uint32_t before, uint32_t status, uint32_t enable) "before=0x%x status=0x%x enable=0x%x"
+apple_adp_irq_write(const char *kind, uint64_t value, uint32_t before, uint32_t status, uint32_t enable) "kind=%s value=0x%"PRIx64" before=0x%x status=0x%x enable=0x%x"
