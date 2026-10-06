@@ -74,24 +74,25 @@ It reads eventservice properties and observes original Darwin notification
 not counted as event. No posting/state mutation. Launcher12 SHA
 4d0add516f2af0b98b5bdbf6f246229b6f2284a409e3832ad6cd8a8ad77082fa,
 68576bytes, originalimports audited44e2b450dd.
-**Actual23 now reached normal lock screen then Home and stock Clock execution.**
-Root screenshots: root-initial (lockscreen), hid-lockscreen-swipe-1-after (Home
-behind betaalert), hid-finish-reminder-notnow-tap-1-after (unobstructedHome),
-hid-stock-clock-tap-1-after (WorldClock). Evidence b4b23b0808/c95d780e6b.
-Root sent six23requests: unlockswipe, betaclose, optionalreminderNotNow, Clocktap,
-Homefastswipe (stayedClock), aboveindicatorHomeswipe (pendingcapture). Normal
-systemHomegesture remainsunproven; no more speculativeHIDpropertychanges.
-Ownedfixture zeroUIKit; detailedNSError is SBMainWorkspace Security underlying
-FBSOpenApplicationErrorDomain3. Originalpredicate unauthoritativeTrustState!=8;
-FBSproxySystem/Hidden type1/Internal0 -> trust8; defaultUsertype2 -> original
-MISValidateSignatureAndCopyInfo. Our dictionaryonlyInfo.plist+Path; omitted
-ApplicationType defaultsUser, notexplicitUser. Native tracesexacttrustpath;
-diskworker tracesnormalinstalld MIInstalledInfoGatherer::_determineApplicationType
-100019ef8 andMIBundle::bundleType10002727c. No fabricatedsigner/profile/trustfields
-or newguardbypass. Need originaltruthfulclassification evidence beforemetadatafix.
-ActualHIDproperties Built-In=true,usage13/4,DisplayIntegrated=true, ownVirtualname;
-watcher registers0/initialclear0 butinitialcheck1 isNOTevent. No laternotification.
-OriginalIOKit downstreamfills eventb0019 forqualifyingservice; no flagpatchneeded.
+**Boot23 stopped normally** QMPquit45/emulator0 after841.273s, sixoperatorrequests.
+Full journals/all7 hashes being preserved bybootworker; traces disabledcleanup.
+Actual23 reached Home and stock Clock (b4b23b0808/c95d780e6b), but both normal
+Home swipes left Clock. SystemHomegesture remainsunproven. OwnedfixturezeroUI.
+DetailedNSError SBMainWorkspace Security/FBSOpenApplicationErrorDomain3 traced
+through original FBS unauthoritativeTrustState; defaultUser triggersMISvalidation.
+
+Original installd classifier nowproven3c10d3d7a3: identified .app whoseparentexact
+systemAppsDirectory `/Applications` ->bundleType1 -> ApplicationTypeSystem in
+normalLSdictionary. Our directrecordhadomittedApplicationType, defaultingUser.
+Minimal source d3bdce836f addsSystem ONLY exactownedpath/id, no signer/profile/
+truststate fields. Builtlauncher13 68592bytes SHA
+`8dbc2086d0f13614cb5a8c2efb4cf85c0438ea423979b1b8f5c7bfa4f0eefbf0`,
+24importsverified1d2fd1df39; rootindependentlyhashed. Onlythislauncher changes in
+nextstage41. Originalapp/HID45/readiness42/emu unchanged. Bootworkerpreparing;
+rootcapacityclearingobsoletegeneratedprep15 (done88faf99fa6),prep40 (hashinprogress
+session17755). Waitcapacitysignal beforecopy41; then actualreadback/cleanunmount/
+QMP0/all7hashes andboot24 sameobservationdefault profile are authorized.
+Rootownsallgestures. Noextraapprovalsneeded. Keepworkinguntilownedappjourney.
 
 Capacity cleared24GiB beforestage40: verified obsolete generated cache1/appstage1/
 prep22/prep17 retired, original inputs/recipes/evidence, baseline21 and ALL actual
