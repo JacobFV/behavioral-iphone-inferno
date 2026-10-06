@@ -153,6 +153,35 @@ existing Unix socket. Capture was actually verified against app-boot-3; pointer
 input remains unverified until a visible guest response is observed. QEMU VNC
 reported832x1792 while QMP reports828x1792; retain that surface-width distinction.
 
+For installed iOS Home navigation, `--home-button` sends a single fixed150ms
+F6 press/release over that private VNC socket. The existing emulator maps F6 to
+SMC Menu; actual37 showed original SMC button6 notifications, app background,
+and visible SpringBoard Home. Exact RFB packets, timestamps and before/after
+captures are recorded. This does not establish touch edge-swipe support: two
+such swipes in37 had no effect. Arbitrary keyboard input is not exposed.
+
+For a retained strict journey followed by warm measurements, start the boot with
+`--probe-journey --control-mailbox --guest-hid-serial --probe-keep-running` in
+addition to its verified image/profile arguments. After reviewed0→1 and both
+strictcaptures, the VM remains live. Review Home and actual appbackground before
+sending a fresh explicit `guest-open-app` request with the current boot UUID.
+The guest opens only the owned bundle; there is no automatic input or retry.
+
+```sh
+python3 companion/qmp_control.py --report /absolute/attempt guest-open-app \
+  --arguments '{"request_id":"NEW32LOWERCASEHEX","boot_uuid":"EXACT-CURRENT-GUEST-BOOT-UUID"}'
+python3 companion/warm-timing.py --report /absolute/attempt \
+  --request-id NEW32LOWERCASEHEX --output /fresh/trial.json
+python3 companion/qmp_control.py --report /absolute/attempt finish-run
+```
+
+Replace both placeholders with actual values. The parser requires same-incarnation
+background→OPEN→foreground/active raw guest clocks and validated records; review
+the returned app separately. Successful callbacks alone are not UI evidence.
+`finish-run` uses normal QMP cleanup and is accepted only after strict completion
+when keepalive was enabled. Three actual37 cycles retained counter1 and original
+process identity; individual intervals are in `evidence/warm-timing-37-actual`.
+
 Shutdown cleanup makes a bounded, best-effort final framebuffer capture before
 QMP quit when the normal completion path did not capture one, including an
 interrupted or incomplete strict journey. Capture failures are recorded separately
