@@ -22,5 +22,41 @@
     "include/hw/misc/apple-silicon/smc.h": "07910efa18a9498d95688ca7429c9e918a1381e2e3c5abddb402e09b8929dc53",
     "hw/arm/apple-silicon/t8030.c": "a99faeb68b5cceba5615a80306db1f9e2fa10a9b56d4051d9cff88be922a64a5"
   },
-  "success_criteria": "Actual original app resign/background, visible Home, same owned process incarnation retained; then explicit namedOPEN canmeasurewarm. No inference fromVNCsend/QEMUacceptancealone."
+  "success_criteria": "Actual original app resign/background, visible Home, same owned process incarnation retained; then explicit namedOPEN canmeasurewarm. No inference fromVNCsend/QEMUacceptancealone.",
+  "runtime_corroboration": {
+    "state": "LIVE boot37 prefix observation; not a stopped-disk snapshot",
+    "operator": "root exclusively sent fixed ordinary VNCF6 down/up150ms",
+    "serial_path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-37/serial.log",
+    "observed_prefix_bytes": 399258,
+    "observed_prefix_sha256": "4f01531d357eecff26b329392634a8da4c58504b0b633558cd1aa282f9d7ffef",
+    "raw_lines": [
+      {
+        "splitline": 6883,
+        "text": "AppleSMCPMU::_smcNotifyCallout(): HID buttonIndex=6 buttonState=1 notificationAppleSMCPMU::_smcNotifyCallout(): HID buttonIndex=6 buttonState=0 notificationINFERNO_LIFECYCLE_RELAY_RAW source=guest-loopback record=INFERNO_LIFECYCLE_V1 7F2B1017-7FE9-4E9C-AF95-AE72CA29523A 263 8 1 resign 3549314015 19080430833 125 3"
+      },
+      {
+        "splitline": 6885,
+        "text": "INFERNO_LIFECYCLE_RELAY_RECORD boot=7F2B1017-7FE9-4E9C-AF95-AE72CA29523A pid=263 sequence=8 generation=1 hook=resign main_ticks=3549314015 ticks=19080430833 numer=125 denom=3 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      },
+      {
+        "splitline": 6887,
+        "text": "INFERNO_LIFECYCLE_RELAY_RAW source=guest-loopback record=INFERNO_LIFECYCLE_V1 7F2B1017-7FE9-4E9C-AF95-AE72CA29523A 263 9 1 background 3549314015 19095891439 125 3"
+      },
+      {
+        "splitline": 6889,
+        "text": "INFERNO_LIFECYCLE_RELAY_RECORD boot=7F2B1017-7FE9-4E9C-AF95-AE72CA29523A pid=263 sequence=9 generation=1 hook=background main_ticks=3549314015 ticks=19095891439 numer=125 denom=3 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    ],
+    "frame": {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-37/home-button-1/after.png",
+      "sha256": "aeefa041ed58d19d19fee8c4aa81b116ed01d2e6fffa6c7541c26b899c234e2e",
+      "interpretation": "Root independently reviewed actual Home screen"
+    },
+    "control_report": {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-37/home-button-1/report.json",
+      "sha256": "102fcb5b8256c0fcaf16f923627e683cf73d65e2eeb49fb0fb6fbab9784dc51e"
+    },
+    "result": "Original AppleSMCPMU logs buttonIndex6 state1 then0; same ownedPID263 emits actualresignseq8/backgroundseq9. This corroborates normalF6\u2192SMC\u2192Home runtime delivery. Failedtouchswipesremainfailed; no helper/model change needed.",
+    "next_action": "Root then explicitly sent namedOPEN84c675a5758b4affbac318cf5021fd38; its warm measurement is tracked separately."
+  }
 }
