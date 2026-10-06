@@ -2,23 +2,24 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
-### Current execution boundary (06:23 local)
+### Current execution boundary (06:36 local)
 
-Boot19 is live from verified39. Exact original class entitlement solved the
-observed open denial: IOServiceOpen0, Create success1, owned IOHIDUserDevice
-4294968461 and matched IOHIDEventDriver4294968464. Root reviewed actual Hello,
-then sent one information tap and one upward swipe through the private console
-channel. Original down/move/up reports and ACKs returned0. Later actual captures
-show the information panel followed by Enter Passcode. Visible input/navigation
-is now proven; the first capture was too early and no latency claim is made.
-Raw transcripts, exact requests and before/after images are retained.
+Boot20 is live with emulator2a0e467b/source1d8b129c88, directly from normally
+stopped19 rootb94b587763c0b9ec82f1720c0cf52ef7b15db51f158534b333e61183a11c5841
+and its paired namespaces. Actual original MKB reports state3 before/after,
+empty unlock0 and first-unlock0->1. The narrow simulated-SEP correction adds
+original no-passcode sls3 beside existing ss; no transition/guard/notification
+change. Exact original decoder, SBF and ManagedConfiguration evidence proves
+missing sls had defaulted0 and incorrectly signaled a passcode present.
 
-This fresh simulated-SEP VM has never had a passcode set. Its original empty
-unlock returns0 and first-unlock0->1, while raw lockstate remains0. The current
-boundary is the displayed restart passcode requirement. Native/disk workers are
-tracing exact original lock/passcode state versus the simulated-SEP response;
-no fabricated unlock notification, credential guess or guard bypass is proposed.
-Owned UIKit execution and counter journey remain unproven. Keep working.
+Root reviewed Hello and swiped: actual language chooser appeared, replacing the
+false passcode prompt. English selection then reached the country list, which
+responds to ordinary swipes. Root continues normal setup toward owned app launch.
+Build, raw original API results and actual captures are committed. Virtual-HID
+open/Create, registered IOHIDEventDriver and visible tap/swipe response are proven.
+App registration still succeeds; FrontBoard launch denial/zero UIKit markers
+persist while setup is active. No credentials entered or account impersonation.
+Owned UIKit execution/counter journey remain unproven. Keep working.
 
 Earlier investigation in this sequence:
 
