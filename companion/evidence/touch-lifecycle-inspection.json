@@ -1,0 +1,42 @@
+{
+  "kind": "read_only_original_touch_lifecycle_inspection",
+  "kernel_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+  "dt_im4p_sha256": "dbd9be96c4b18f48a1842879237ae8f27043b894a2ed6139e396dbedca232411",
+  "method": "Original symbolized research kernel and chained-offset vtable inspection; original unencrypted DT decoded in memory. Binary/disassembly remain outside Git. No live guest intervention.",
+  "protocol_name_source": {
+    "cacheConfig": "AppleHIDTransportDevice::cacheConfig at0xfffffff0084f41e0 reads dictionary key Protocol at0xfffffff0084f42ec\u20134308, requires OSString, invokes createProtocol at0xfffffff0084f4344.",
+    "static_alternative": "AppleHIDTransportDeviceSPI::newStaticConfig at0xfffffff008565598 reads provider OSData key protocol at0xfffffff008565608, converts with OSString::withCString at0xfffffff008565658, stores Protocol at0xfffffff008565698.",
+    "original_dt_multitouch": {
+      "bootloader-type": "HBPP",
+      "protocol": "absent",
+      "protocol-config": "absent",
+      "use-static-config": "absent",
+      "compatible": "gen-mt-decider"
+    },
+    "start_branch": "startGated reads bootloader-type and formats AppleHIDTransportBootloader%s, allocates0xfffffff0084f16d0, attaches bootloader0xfffffff0084f17a0, starts with transport/downloader0xfffffff0084f184c. If bootloader exists and use-static-config absent,0xfffffff0084f1894\u2013189c skips optional newStaticConfig/cacheConfig/setPower(2) branch."
+  },
+  "protocol_creation": {
+    "entry": "AppleHIDTransportDevice::createProtocol0xfffffff0084f3a70",
+    "class_name": "AppleHIDTransportProtocol%s from Protocol string; no hardcoded HIDSPI value inferred for this runtime",
+    "sequence": [
+      "Allocate class0xfffffff0084f3cb0; safeMetaCast0xfffffff0084f3ccc; init0xfffffff0084f3d3c",
+      "Attach to transport0xfffffff0084f3d7c; reject false0xfffffff0084f3d80",
+      "Start with transport provider0xfffffff0084f3dbc; reject false0xfffffff0084f3dc0"
+    ],
+    "provider_prerequisites": "Protocol::start requires AppleHIDTransportDevice cast0xfffffff008519c0c and successful subclass handleStart0xfffffff008519c78. HIDSPI::handleStart further requires AppleHIDTransportDeviceSPI cast0xfffffff008541580 and successful workloop/reporter/timer setup.",
+    "registry": "Protocol::start calls registerService(0) at0xfffffff008519cc0. A successfully attached/started protocol is an immediate IOService child, not merely an unregistered helper."
+  },
+  "normal_hidspi_open_chain": {
+    "powerHasChanged": "AppleHIDTransportProtocolHIDSPI::powerHasChanged entry0xfffffff0085441a0 requires incoming numeric state2 for normal initialization path, no existing HSMDevice and internal field+0x1b0==4; numeric labels not inferred.",
+    "transfer_start": "Calls HSMTransferDevice::start at0xfffffff0085446e4 with HSMSPI subobject protocol+0xe0 and owned buffer/config/callback pointers.",
+    "callback": "On successful HSMTransferDevice initialization,0xfffffff008546da8\u2013ddc calls HSMSPI::setCallback(this+8). Vtable slot0x10 selects thunk0xfffffff00854ddd0 adjusting this by\u2212224 to HIDSPI::setCallback.",
+    "open": "HIDSPI::setCallback0xfffffff00854da70 closes previous callback if changed, stores new callback, and when nonnull calls transport->open(this,0,HIDSPI::handleInterrupt callback) at0xfffffff00854dcb4. Transport stored at protocol+0xf0.",
+    "conclusion": "A kernel protocol opens SPI transport. No evidence establishes a standalone multitouchd as the prerequisite."
+  },
+  "limits": [
+    "This maps original code, not proof which branch the current guest executed.",
+    "Zero immediate children would implicate earlier config/creation/attachment or later teardown; it does not identify a specific missing firmware file.",
+    "Original DT selects HBPP and lacks static protocol metadata; continue normal bootloader configuration/image path rather than inventing DT properties.",
+    "Boot14 early panic prevented observer; subsequent registry execution must supply actual class/client evidence."
+  ]
+}
