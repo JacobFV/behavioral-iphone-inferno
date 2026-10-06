@@ -246,3 +246,20 @@ The corrected build8 audit resolves53 imports, while the old launcher's
 LSRegisterURL import is absent. The audit requires an explicit original cache,
 LLVM objdump and output path; all binary inputs remain outside Git. Runtime method
 behavior and registration policy still require actual guest execution.
+
+
+The corrected launcher in `app-boot-6` reached original
+`registerApplication:` and observed NO repeatedly, with an invalid application
+proxy and nil bundle URL for the Data app. This is an actual registration result,
+not an inferred execution failure. No numeric OSStatus is available from this BOOL
+method. The caller's120-second alarm eventually ended that attempt with signal14.
+
+A prepared controlled variant uses wrapper `--system-app` and
+`org.inferno.app-probe-system-app.plist` to target `/Applications/InfernoProbe.app`.
+The original System inventory contains root `Applications/MobileSMS.app` and
+`Applications/Setup.app`, establishing this directory layout. Stage only the exact
+owned bundle bytes while retaining the Data copy: executable SHA256
+`c11f4d430ee8543da2bdade55e5f5beb8685692345dc6fe2ccbad114ad6f55ec`, Info.plist
+`ad9946fd7093f8f438f70200f5e096667e47989da70be2187a7324c6ed20a153`.
+No alternate signer identity or registration dictionary is introduced. The
+System application variant has not yet been executed.

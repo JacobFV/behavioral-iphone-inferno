@@ -10,6 +10,7 @@ extern int kill(int,int),access(const char *,int),open(const char *,int,...),clo
 extern long read(int,void*,unsigned long);
 extern int execve(const char *,char *const[],char *const[]),*__error(void);
 extern void _exit(int);
+static char *application_path="/private/var/inferno/InfernoProbe.app";
 static int attempt(char *path,int mobile,int noargs,const char *label){
  int timeout=noargs?60:150;
  printf("INFERNO_EXEC_WRAPPER_BEGIN case=%s path=%s watchdog=%d uid=%u gid=%u\n",label,path,timeout,getuid(),getgid());fflush(0);
@@ -21,7 +22,7 @@ static int attempt(char *path,int mobile,int noargs,const char *label){
   printf("INFERNO_EXEC_WRAPPER_CHILD uid=%u gid=%u\n",getuid(),getgid());fflush(0);
   *__error()=0;int console_fd=open("/dev/console",1),console_errno=*__error();
   printf("INFERNO_EXEC_WRAPPER_CONSOLE_OPEN fd=%d errno=%d uid=%u gid=%u\n",console_fd,console_errno,getuid(),getgid());fflush(0);if(console_fd>=0)close(console_fd);
-  char *argv[]={path,"/private/var/inferno/InfernoProbe.app","org.inferno.companion.probe",0};
+  char *argv[]={path,application_path,"org.inferno.companion.probe",0};
   if(noargs)argv[1]=0;
   char *env[]={"PATH=/usr/bin:/bin:/usr/sbin:/sbin","HOME=/var/mobile","CFFIXED_USER_HOME=/var/mobile","TMPDIR=/var/tmp",0};
   *__error()=0;int xr=access(argv[0],1),xe=*__error();
@@ -55,6 +56,7 @@ int main(int argc,char **argv){
   failures+=attempt("/usr/bin/inferno-launcher",1,1,"system-mobile-noargs");
   printf("INFERNO_EXEC_MATRIX_COMPLETE failures=%d\n",failures);fflush(0);return failures?1:0;
  }
+ if(argc==2 && !strcmp(argv[1],"--system-app")){application_path="/Applications/InfernoProbe.app";return attempt("/usr/bin/inferno-launcher",1,0,"system-mobile-system-app");}
  if(argc==2 && !strcmp(argv[1],"--system"))return attempt("/usr/bin/inferno-launcher",1,0,"system-mobile-register");
  return attempt("/private/var/inferno/inferno-launcher",1,0,"data-mobile-register");
 }
