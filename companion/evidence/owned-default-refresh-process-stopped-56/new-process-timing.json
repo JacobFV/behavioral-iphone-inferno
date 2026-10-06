@@ -1,0 +1,2737 @@
+{
+  "source_sha256": {
+    "process-launch-timing.py": "2756e9be59b0dcbd1565e19b2e956fc6337eb7624be10ad894bbd492261bebfc",
+    "warm-timing.py": "33b55f724f29ba0b319d0ee64abc41afeb03787424f393d6c1ea41ab6f349ac3",
+    "launch-timing.py": "69dcaae0ed48955344dff3285eb0e94a87d0416f782ad66b507004131221f3c2"
+  },
+  "limits": [
+    "One completed ps enumeration proves observed absence, not continuous absence or termination cause.",
+    "Host capture chronology is separate from guest clock intervals.",
+    "Strong classification requires original kernel process identities; no fallback is promoted to strong.",
+    "No cold-cache, native-device, statistical reliability or intrinsic presentation claim.",
+    "Visual AppSwitcher dismissal and returned app state require separate review."
+  ],
+  "serial": {
+    "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-56/serial.log",
+    "bytes": 398963,
+    "sha256": "1367896494a5ae0e6b8b13399e2fe888be2e97c7cb337f9c736f44fb2b36e128"
+  },
+  "kind": "process_launch_after_observed_absence",
+  "status": "complete",
+  "boot_uuid": "02034EC7-A855-43F7-927E-070ECEBC70B4",
+  "old_pid": 261,
+  "new_pid": 375,
+  "request_id": "7f06261169f8480896cf96522609f600",
+  "absence_manifest": {
+    "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-56/process-absence-600.json",
+    "bytes": 86157,
+    "sha256": "43c90acf01af9fbaa8fd29e4919fc9f4e0dd6814499e63c166f4131be0f57793"
+  },
+  "absence_window": {
+    "nominal_seconds": 600,
+    "begin": {
+      "line": 3491,
+      "byte_start": 372939,
+      "byte_end": 372977,
+      "sha256": "a121b5804b71878e07e7fc5da2392220ecd3eca4abfd1aed697bfd7ce4a08d83",
+      "text": "INFERNO_READINESS_BEGIN seconds=600"
+    },
+    "header": {
+      "line": 3513,
+      "byte_start": 375323,
+      "byte_end": 375353,
+      "sha256": "cfe3d812f1f54acc2dd576831f5fd21a3e2b5fc0b4d5247b8274d42995fb7a6a",
+      "text": "  PID  PPID   UID STAT COMM"
+    },
+    "end": {
+      "line": 3688,
+      "byte_start": 389013,
+      "byte_end": 389086,
+      "sha256": "05efa4b0a4fa1aacbbd70d842f4438b1e0de9e662260a0b1ee71cb6df61eb819",
+      "text": "INFERNO_READINESS_END seconds=600 status=0 ps_watchdog=600 timed_out=0"
+    },
+    "dismiss_ack": {
+      "line": 3488,
+      "byte_start": 372654,
+      "byte_end": 372773,
+      "sha256": "4290aebb633c1a651852803c6139ebadd322526a45743cc5743bf238ee92a7fc",
+      "text": "INFERNO_HID_ACK request_id=6ab3edcde9cc490589b1a9d29b09c112 attempt_status=0 delivery=unproven timestamp=10993300993"
+    },
+    "row_count": 174,
+    "matching_rows": [],
+    "process_rows": [
+      {
+        "pid": 1,
+        "ppid": 0,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/sbin/launchd",
+        "reference": {
+          "line": 3514,
+          "byte_start": 375353,
+          "byte_end": 375392,
+          "sha256": "28639eea648cf19f6f3dbec44b5174a9251aa8b808bb7e1e3ec9ee0777c5e38e",
+          "text": "    1     0     0 Ss   /sbin/launchd"
+        }
+      },
+      {
+        "pid": 27,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/UserEventAgent",
+        "reference": {
+          "line": 3515,
+          "byte_start": 375392,
+          "byte_end": 375445,
+          "sha256": "116caa6d84bd7f2b4735f1073773e1a589f4e8c225dbd05a98ad42506d298771",
+          "text": "   27     1     0 Ss   /usr/libexec/UserEventAgent"
+        }
+      },
+      {
+        "pid": 28,
+        "ppid": 1,
+        "uid": 272,
+        "state": "Ss",
+        "comm": "/usr/libexec/logd",
+        "reference": {
+          "line": 3516,
+          "byte_start": 375445,
+          "byte_end": 375488,
+          "sha256": "1a424fb0440613fcae9b7c9fd13ad1dfe7a65b16587213455260893a2ae8ceaf",
+          "text": "   28     1   272 Ss   /usr/libexec/logd"
+        }
+      },
+      {
+        "pid": 29,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/AssistantServices.framework/assistantd",
+        "reference": {
+          "line": 3517,
+          "byte_start": 375488,
+          "byte_end": 375586,
+          "sha256": "bf53f7fdebda94a9acd82c2c7f6a1748ca4b84f6f5a61adce932c175c9f81eb9",
+          "text": "   29     1   501 Ss   /System/Library/PrivateFrameworks/AssistantServices.framework/assistantd"
+        }
+      },
+      {
+        "pid": 30,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/runningboardd",
+        "reference": {
+          "line": 3518,
+          "byte_start": 375586,
+          "byte_end": 375638,
+          "sha256": "01fdd58c028e1f8dbdfaabe3c852d621acf47b7cb96b7192273ff619aed7e119",
+          "text": "   30     1     0 Ss   /usr/libexec/runningboardd"
+        }
+      },
+      {
+        "pid": 31,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/fseventsd",
+        "reference": {
+          "line": 3519,
+          "byte_start": 375638,
+          "byte_end": 375686,
+          "sha256": "48bd635966726bd4d57dd5b7257625fa4f17ec4debb9e23b47995e45e9f2730d",
+          "text": "   31     1     0 Ss   /usr/libexec/fseventsd"
+        }
+      },
+      {
+        "pid": 32,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/sbin/mediaserverd",
+        "reference": {
+          "line": 3520,
+          "byte_start": 375686,
+          "byte_end": 375734,
+          "sha256": "a12f59b12d76a64ceae650c32fc4a3eef0148be1a35a34038980f786d2fa36ab",
+          "text": "   32     1   501 Ss   /usr/sbin/mediaserverd"
+        }
+      },
+      {
+        "pid": 33,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/MediaRemote.framework/Support/mediaremoted",
+        "reference": {
+          "line": 3521,
+          "byte_start": 375734,
+          "byte_end": 375836,
+          "sha256": "d13e4ea1bf6469e4b443f0e01f3d3d49cfb8845ee61f09906b043fe623818fe1",
+          "text": "   33     1   501 Ss   /System/Library/PrivateFrameworks/MediaRemote.framework/Support/mediaremoted"
+        }
+      },
+      {
+        "pid": 34,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/routined",
+        "reference": {
+          "line": 3522,
+          "byte_start": 375836,
+          "byte_end": 375883,
+          "sha256": "c14bba7625240276d3c4d3629d6b1a4a11e7bd81c9f8df112d266e6999c8eaa1",
+          "text": "   34     1   501 Ss   /usr/libexec/routined"
+        }
+      },
+      {
+        "pid": 35,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/misd",
+        "reference": {
+          "line": 3523,
+          "byte_start": 375883,
+          "byte_end": 375926,
+          "sha256": "22c55d058f27d92f316f0f3ffcb6b22c7909f1ddb6f932554b79ef77d524c266",
+          "text": "   35     1     0 Ss   /usr/libexec/misd"
+        }
+      },
+      {
+        "pid": 36,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/configd",
+        "reference": {
+          "line": 3524,
+          "byte_start": 375926,
+          "byte_end": 375972,
+          "sha256": "1eeea31059e330ad2f8c3cae276eafb8e45444a972fa40953be8e053c784e978",
+          "text": "   36     1     0 Ss   /usr/libexec/configd"
+        }
+      },
+      {
+        "pid": 37,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/Frameworks/HealthKit.framework/healthd",
+        "reference": {
+          "line": 3525,
+          "byte_start": 375972,
+          "byte_end": 376052,
+          "sha256": "c349b27fe584b3a840fb3c196372eb6c4f87aafaf96ce0fa960c273e81068292",
+          "text": "   37     1   501 Ss   /System/Library/Frameworks/HealthKit.framework/healthd"
+        }
+      },
+      {
+        "pid": 39,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/System/Library/CoreServices/powerd.bundle/powerd",
+        "reference": {
+          "line": 3526,
+          "byte_start": 376052,
+          "byte_end": 376127,
+          "sha256": "6e194a486eb5aa1dc28095b819a505b3757faf86133f2af4d31cfb4671f9a78f",
+          "text": "   39     1     0 Ss   /System/Library/CoreServices/powerd.bundle/powerd"
+        }
+      },
+      {
+        "pid": 40,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/atc",
+        "reference": {
+          "line": 3527,
+          "byte_start": 376127,
+          "byte_end": 376169,
+          "sha256": "9d27e6a3d66358fa48276e1907a2657d231122ac60b107ebddd6adaff4766d56",
+          "text": "   40     1   501 Ss   /usr/libexec/atc"
+        }
+      },
+      {
+        "pid": 41,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/sbin/WirelessRadioManagerd",
+        "reference": {
+          "line": 3528,
+          "byte_start": 376169,
+          "byte_end": 376226,
+          "sha256": "1925fbcbf672cd3ee4698cc9d425314c3bb32af3f76b90c6b94a82643afe8cd2",
+          "text": "   41     1   501 Ss   /usr/sbin/WirelessRadioManagerd"
+        }
+      },
+      {
+        "pid": 43,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/keybagd",
+        "reference": {
+          "line": 3529,
+          "byte_start": 376226,
+          "byte_end": 376272,
+          "sha256": "759cf66eedfb8378c72be648e7566eaf164e9dc19f8a407d1dad872f2c1e3e15",
+          "text": "   43     1     0 Ss   /usr/libexec/keybagd"
+        }
+      },
+      {
+        "pid": 44,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/remoted",
+        "reference": {
+          "line": 3530,
+          "byte_start": 376272,
+          "byte_end": 376318,
+          "sha256": "7ce0f2a4424f70fe174dbe9489dcd1faf4245c6ca9c75e7a355607a571053018",
+          "text": "   44     1     0 Ss   /usr/libexec/remoted"
+        }
+      },
+      {
+        "pid": 46,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/FamilyNotification.framework/familynotificationd",
+        "reference": {
+          "line": 3531,
+          "byte_start": 376318,
+          "byte_end": 376426,
+          "sha256": "d5ee0ea506f4e69dad523b4735893e26683b04d2e77b533666681ea2bc0a7b97",
+          "text": "   46     1   501 Ss   /System/Library/PrivateFrameworks/FamilyNotification.framework/familynotificationd"
+        }
+      },
+      {
+        "pid": 47,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/sbin/wifid",
+        "reference": {
+          "line": 3532,
+          "byte_start": 376426,
+          "byte_end": 376467,
+          "sha256": "982c1c38efbb90a55acccfa500b92f2e4142c860330e916f7dc87194d3fef8ea",
+          "text": "   47     1     0 Ss   /usr/sbin/wifid"
+        }
+      },
+      {
+        "pid": 49,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/Support/softwareupdated",
+        "reference": {
+          "line": 3533,
+          "byte_start": 376467,
+          "byte_end": 376581,
+          "sha256": "0d48ff3e89f1e152067fad00aabc78c92b524e931c9a475d68db3f72a064a7aa",
+          "text": "   49     1   501 Ss   /System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/Support/softwareupdated"
+        }
+      },
+      {
+        "pid": 50,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd",
+        "reference": {
+          "line": 3534,
+          "byte_start": 376581,
+          "byte_end": 376687,
+          "sha256": "00169c0968367d419085056a6ee528fbdf53e8bb2befe6e075e908c2c85904d3",
+          "text": "   50     1   501 Ss   /System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd"
+        }
+      },
+      {
+        "pid": 51,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/seld",
+        "reference": {
+          "line": 3535,
+          "byte_start": 376687,
+          "byte_end": 376730,
+          "sha256": "f274ebb3b2b26a944b3e0e07d39bef9dd87db6b08786c3d5ea91e7cc30775502",
+          "text": "   51     1   501 Ss   /usr/libexec/seld"
+        }
+      },
+      {
+        "pid": 52,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/IDS.framework/identityservicesd.app/identityservicesd",
+        "reference": {
+          "line": 3536,
+          "byte_start": 376730,
+          "byte_end": 376843,
+          "sha256": "e812de3913905c401aa6e708855bb86c4f360ba1b183af6d2ef731a0bbeb8956",
+          "text": "   52     1   501 Ss   /System/Library/PrivateFrameworks/IDS.framework/identityservicesd.app/identityservicesd"
+        }
+      },
+      {
+        "pid": 55,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/wcd",
+        "reference": {
+          "line": 3537,
+          "byte_start": 376843,
+          "byte_end": 376885,
+          "sha256": "a5a943a557b426f3acb9be1ebea2541da4add7ba2c74817b6aaafc1c2348a4b6",
+          "text": "   55     1   501 Ss   /usr/libexec/wcd"
+        }
+      },
+      {
+        "pid": 56,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CoreDuetContext.framework/Resources/contextstored",
+        "reference": {
+          "line": 3538,
+          "byte_start": 376885,
+          "byte_end": 376994,
+          "sha256": "a1b25205f3e20bd90040dd283edbdbd559ba1a8dd952648e93ad2a7e56ad856f",
+          "text": "   56     1   501 Ss   /System/Library/PrivateFrameworks/CoreDuetContext.framework/Resources/contextstored"
+        }
+      },
+      {
+        "pid": 57,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/CoreServices/SpringBoard.app/SpringBoard",
+        "reference": {
+          "line": 3539,
+          "byte_start": 376994,
+          "byte_end": 377077,
+          "sha256": "5ab40d53c16fc40d0fb5a98bfcab64c2c33cbc78b6b8b39f18d7139c56713f14",
+          "text": "   57     1   501 Ss   /System/Library/CoreServices/SpringBoard.app/SpringBoard"
+        }
+      },
+      {
+        "pid": 58,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/thermalmonitord",
+        "reference": {
+          "line": 3540,
+          "byte_start": 377077,
+          "byte_end": 377131,
+          "sha256": "66f2c648b4393c868d0553afc5f0309dc9448734c60aa75428ed143c865b83cf",
+          "text": "   58     1     0 Ss   /usr/libexec/thermalmonitord"
+        }
+      },
+      {
+        "pid": 59,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/AskPermission.framework/Support/askpermissiond",
+        "reference": {
+          "line": 3541,
+          "byte_start": 377131,
+          "byte_end": 377237,
+          "sha256": "8c615c4da35e88273db6061c43f093681569657380df6d33c76f470569539e3f",
+          "text": "   59     1   501 Ss   /System/Library/PrivateFrameworks/AskPermission.framework/Support/askpermissiond"
+        }
+      },
+      {
+        "pid": 60,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/backboardd",
+        "reference": {
+          "line": 3542,
+          "byte_start": 377237,
+          "byte_end": 377286,
+          "sha256": "40c300009a8f3a6d9bd33bbdb553f49ee255b9d6e5643488394d2fb1b97096d8",
+          "text": "   60     1   501 Ss   /usr/libexec/backboardd"
+        }
+      },
+      {
+        "pid": 61,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/sharingd",
+        "reference": {
+          "line": 3543,
+          "byte_start": 377286,
+          "byte_end": 377333,
+          "sha256": "da0bd4cb4efd8b1534b568ce972bae102620db4a7cf0c78d1e5e2feae9b166eb",
+          "text": "   61     1   501 Ss   /usr/libexec/sharingd"
+        }
+      },
+      {
+        "pid": 62,
+        "ppid": 1,
+        "uid": 266,
+        "state": "Ss",
+        "comm": "/usr/libexec/timed",
+        "reference": {
+          "line": 3544,
+          "byte_start": 377333,
+          "byte_end": 377377,
+          "sha256": "4ba18b1256ae2e09304e819a260dbd3dddb9e99c3fe3f0f3a52330a4de690584",
+          "text": "   62     1   266 Ss   /usr/libexec/timed"
+        }
+      },
+      {
+        "pid": 63,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/bin/inferno-readiness",
+        "reference": {
+          "line": 3545,
+          "byte_start": 377377,
+          "byte_end": 377429,
+          "sha256": "d1b88f4c91968ac7ccefc1740453d80ee45fe02419a9202be94012d80ea8bc22",
+          "text": "   63     1     0 Ss   /usr/bin/inferno-readiness"
+        }
+      },
+      {
+        "pid": 64,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/cloudpaird",
+        "reference": {
+          "line": 3546,
+          "byte_start": 377429,
+          "byte_end": 377478,
+          "sha256": "ea170736f113f2846422a1129c60e456cdd42eed541b922a1682f8c145ca4a6b",
+          "text": "   64     1   501 Ss   /usr/libexec/cloudpaird"
+        }
+      },
+      {
+        "pid": 65,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/containermanagerd",
+        "reference": {
+          "line": 3547,
+          "byte_start": 377478,
+          "byte_end": 377534,
+          "sha256": "058bec4afadfabc42dd0d78c75b24692432c10ae5db71b02d1fe0ee3f4b3cf64",
+          "text": "   65     1     0 Ss   /usr/libexec/containermanagerd"
+        }
+      },
+      {
+        "pid": 66,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/IMCore.framework/imagent.app/imagent",
+        "reference": {
+          "line": 3548,
+          "byte_start": 377534,
+          "byte_end": 377630,
+          "sha256": "7abeb49e9929725780c93b76c24019438c6eac75df79bd699fd9b2dc1c75ec01",
+          "text": "   66     1   501 Ss   /System/Library/PrivateFrameworks/IMCore.framework/imagent.app/imagent"
+        }
+      },
+      {
+        "pid": 67,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/NanoPreferencesSync.framework/nanoprefsyncd",
+        "reference": {
+          "line": 3549,
+          "byte_start": 377630,
+          "byte_end": 377733,
+          "sha256": "320bd7ab1d115540f3d932f4369bcf8c1424ad46335b5385d563a0b17cffcbac",
+          "text": "   67     1   501 Ss   /System/Library/PrivateFrameworks/NanoPreferencesSync.framework/nanoprefsyncd"
+        }
+      },
+      {
+        "pid": 69,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/lockdownd",
+        "reference": {
+          "line": 3550,
+          "byte_start": 377733,
+          "byte_end": 377781,
+          "sha256": "c368768bfcbc3f086f40191fbd7f1ad3176b12e20ed07aa9037834f2a3b19912",
+          "text": "   69     1     0 Ss   /usr/libexec/lockdownd"
+        }
+      },
+      {
+        "pid": 70,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/SleepDaemon.framework/sleepd",
+        "reference": {
+          "line": 3551,
+          "byte_start": 377781,
+          "byte_end": 377869,
+          "sha256": "cc4832869b7cbc0834473a5c41439cc645d229313858dcac7490b0f47f2bc809",
+          "text": "   70     1   501 Ss   /System/Library/PrivateFrameworks/SleepDaemon.framework/sleepd"
+        }
+      },
+      {
+        "pid": 71,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/AggregateDictionary.framework/Support/aggregated",
+        "reference": {
+          "line": 3552,
+          "byte_start": 377869,
+          "byte_end": 377977,
+          "sha256": "e1d6a83371c9f5fe981c63fec7153676b04b1fab7f3705dab50f4e340c361a70",
+          "text": "   71     1   501 Ss   /System/Library/PrivateFrameworks/AggregateDictionary.framework/Support/aggregated"
+        }
+      },
+      {
+        "pid": 72,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "OTACrashCopier",
+        "reference": {
+          "line": 3553,
+          "byte_start": 377977,
+          "byte_end": 378017,
+          "sha256": "7d1b4352ade9588d042fc6f142c182e4d279c551081abb87a21f0e75c9eb7382",
+          "text": "   72     1   501 Ss   OTACrashCopier"
+        }
+      },
+      {
+        "pid": 73,
+        "ppid": 1,
+        "uid": 241,
+        "state": "Ss",
+        "comm": "/usr/sbin/distnoted",
+        "reference": {
+          "line": 3554,
+          "byte_start": 378017,
+          "byte_end": 378062,
+          "sha256": "d0d2416385ccfd012d898019d06bfed3d2846da44e5d9f5e82ff82d3013d30d4",
+          "text": "   73     1   241 Ss   /usr/sbin/distnoted"
+        }
+      },
+      {
+        "pid": 75,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/AppleCredentialManager.framework/AppleCredentialManagerDaemon",
+        "reference": {
+          "line": 3555,
+          "byte_start": 378062,
+          "byte_end": 378183,
+          "sha256": "2f9f9d4f48d1a418575214086157abc60df57d87bf00d687d471f1a72f96bf3e",
+          "text": "   75     1     0 Ss   /System/Library/PrivateFrameworks/AppleCredentialManager.framework/AppleCredentialManagerDaemon"
+        }
+      },
+      {
+        "pid": 76,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/MapsSupport.framework/navd",
+        "reference": {
+          "line": 3556,
+          "byte_start": 378183,
+          "byte_end": 378269,
+          "sha256": "a2221c8f8f93a3cb8778131c550f324e3f36084311ec5c10f2b1ea2df4e78c8d",
+          "text": "   76     1   501 Ss   /System/Library/PrivateFrameworks/MapsSupport.framework/navd"
+        }
+      },
+      {
+        "pid": 77,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/peakpowermanagerd",
+        "reference": {
+          "line": 3557,
+          "byte_start": 378269,
+          "byte_end": 378325,
+          "sha256": "256e5b0f680613e8907a7d9cf02c755dd2e7515de3fc8db1bfaf4bbdaf1c53ac",
+          "text": "   77     1     0 Ss   /usr/libexec/peakpowermanagerd"
+        }
+      },
+      {
+        "pid": 79,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/sbin/notifyd",
+        "reference": {
+          "line": 3558,
+          "byte_start": 378325,
+          "byte_end": 378368,
+          "sha256": "15525c87d674a22f92024ee7a5b93c278d7ea51c37f933968342d41fbdc2015a",
+          "text": "   79     1     0 Ss   /usr/sbin/notifyd"
+        }
+      },
+      {
+        "pid": 80,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/rapportd",
+        "reference": {
+          "line": 3559,
+          "byte_start": 378368,
+          "byte_end": 378415,
+          "sha256": "838d911ed8b6620e78b7a540cd5f115eaa936f4d2f16697fef028489bfb2cf62",
+          "text": "   80     1   501 Ss   /usr/libexec/rapportd"
+        }
+      },
+      {
+        "pid": 83,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/AppleMediaServices.framework/amsaccountsd",
+        "reference": {
+          "line": 3560,
+          "byte_start": 378415,
+          "byte_end": 378516,
+          "sha256": "aff13b5f81c30f5a21537e7ec29aa55f20465607ba9967579d2fa1796ec51e50",
+          "text": "   83     1   501 Ss   /System/Library/PrivateFrameworks/AppleMediaServices.framework/amsaccountsd"
+        }
+      },
+      {
+        "pid": 84,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/sbin/fairplayd.H2",
+        "reference": {
+          "line": 3561,
+          "byte_start": 378516,
+          "byte_end": 378564,
+          "sha256": "c2f1f7ed94770f480d946305d578e8b03457d7ea89028c39095fccae0b174b92",
+          "text": "   84     1   501 Ss   /usr/sbin/fairplayd.H2"
+        }
+      },
+      {
+        "pid": 85,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/sbin/cfprefsd",
+        "reference": {
+          "line": 3562,
+          "byte_start": 378564,
+          "byte_end": 378608,
+          "sha256": "1ecd1a56fe0855c5e2b3cd1f86560a85c4b655375b095c745219d3aa24f087fe",
+          "text": "   85     1     0 Ss   /usr/sbin/cfprefsd"
+        }
+      },
+      {
+        "pid": 86,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CoreAccessories.framework/XPCServices/ACCHWComponentAuthService.xpc/ACCHWComponentAuthService",
+        "reference": {
+          "line": 3563,
+          "byte_start": 378608,
+          "byte_end": 378761,
+          "sha256": "2203c6a22804daada4466aa30ddd636bdd97517a5ee2501f7faa3db7e58c44a0",
+          "text": "   86     1   501 Ss   /System/Library/PrivateFrameworks/CoreAccessories.framework/XPCServices/ACCHWComponentAuthService.xpc/ACCHWComponentAuthService"
+        }
+      },
+      {
+        "pid": 87,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/dasd",
+        "reference": {
+          "line": 3564,
+          "byte_start": 378761,
+          "byte_end": 378804,
+          "sha256": "95e4ca65694c23c6acbc02507c75046939fd08aa76dcfd79e91f9505dc90d58a",
+          "text": "   87     1   501 Ss   /usr/libexec/dasd"
+        }
+      },
+      {
+        "pid": 88,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/PowerUIAgent",
+        "reference": {
+          "line": 3565,
+          "byte_start": 378804,
+          "byte_end": 378855,
+          "sha256": "b92ad5746b157cb9dd3f7ec70b9cc701ead662d779afa3f211fdaaf96889db89",
+          "text": "   88     1   501 Ss   /usr/libexec/PowerUIAgent"
+        }
+      },
+      {
+        "pid": 89,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/lsd",
+        "reference": {
+          "line": 3566,
+          "byte_start": 378855,
+          "byte_end": 378897,
+          "sha256": "4c78404f6da1b7dca4090e91f631af9928b151bcc8c82561a166516297e5bd22",
+          "text": "   89     1   501 Ss   /usr/libexec/lsd"
+        }
+      },
+      {
+        "pid": 90,
+        "ppid": 1,
+        "uid": 25,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/WirelessDiagnostics.framework/Support/awdd",
+        "reference": {
+          "line": 3567,
+          "byte_start": 378897,
+          "byte_end": 378999,
+          "sha256": "ec2284c8d7dcac8873c114eb8006e44f0eac43d78d923ce63cd2599b8b616dd0",
+          "text": "   90     1    25 Ss   /System/Library/PrivateFrameworks/WirelessDiagnostics.framework/Support/awdd"
+        }
+      },
+      {
+        "pid": 91,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/MobileGestaltHelper",
+        "reference": {
+          "line": 3568,
+          "byte_start": 378999,
+          "byte_end": 379057,
+          "sha256": "561cc6f9b15b7a0189239e9060b5127711b51cea84a446beeb8fbce19713f91f",
+          "text": "   91     1   501 Ss   /usr/libexec/MobileGestaltHelper"
+        }
+      },
+      {
+        "pid": 92,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/mobileassetd",
+        "reference": {
+          "line": 3569,
+          "byte_start": 379057,
+          "byte_end": 379108,
+          "sha256": "a0b8a363892a493fa128e2c7cb629f9cd0161c4715225e184974a2c5c52832fb",
+          "text": "   92     1     0 Ss   /usr/libexec/mobileassetd"
+        }
+      },
+      {
+        "pid": 93,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/coreduetd",
+        "reference": {
+          "line": 3570,
+          "byte_start": 379108,
+          "byte_end": 379156,
+          "sha256": "c31be92ecaef7aef2ed6eb6189bf38d2270e2206695e51e61460f8de1969b71a",
+          "text": "   93     1   501 Ss   /usr/libexec/coreduetd"
+        }
+      },
+      {
+        "pid": 94,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/nanoregistryd",
+        "reference": {
+          "line": 3571,
+          "byte_start": 379156,
+          "byte_end": 379208,
+          "sha256": "d89c4d63446545679d2ef8c9fabc6b19f3409ff5e98d065924193bd16b5ded05",
+          "text": "   94     1   501 Ss   /usr/libexec/nanoregistryd"
+        }
+      },
+      {
+        "pid": 95,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/System/Library/CoreServices/osanalyticshelper",
+        "reference": {
+          "line": 3572,
+          "byte_start": 379208,
+          "byte_end": 379280,
+          "sha256": "64a27f14cb512f3a3d5166f2a937da91246020fe54019d9fa12e69265aa1f725",
+          "text": "   95     1     0 Ss   /System/Library/CoreServices/osanalyticshelper"
+        }
+      },
+      {
+        "pid": 96,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/ApplePushService.framework/apsd",
+        "reference": {
+          "line": 3573,
+          "byte_start": 379280,
+          "byte_end": 379371,
+          "sha256": "7ea368b5e64fbb820b4929be8bee76039649ffd8554140070667deb374b0010a",
+          "text": "   96     1   501 Ss   /System/Library/PrivateFrameworks/ApplePushService.framework/apsd"
+        }
+      },
+      {
+        "pid": 97,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/Frameworks/Accounts.framework/accountsd",
+        "reference": {
+          "line": 3574,
+          "byte_start": 379371,
+          "byte_end": 379452,
+          "sha256": "2112453b62a46c5a9e6c321bf166917d15f5c81d56c157c63444988256d9047e",
+          "text": "   97     1   501 Ss   /System/Library/Frameworks/Accounts.framework/accountsd"
+        }
+      },
+      {
+        "pid": 98,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/nsurlsessiond",
+        "reference": {
+          "line": 3575,
+          "byte_start": 379452,
+          "byte_end": 379504,
+          "sha256": "bab2e8c765205ec88fe03a096d9a5725ae935a6924a890f29f2723ee4a29f293",
+          "text": "   98     1   501 Ss   /usr/libexec/nsurlsessiond"
+        }
+      },
+      {
+        "pid": 99,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/pfd",
+        "reference": {
+          "line": 3576,
+          "byte_start": 379504,
+          "byte_end": 379546,
+          "sha256": "a3aa1d2a7caf55dd6a9e1ae6f77c50d81ab0b17fcfb04d8c242377b496673bf6",
+          "text": "   99     1     0 Ss   /usr/libexec/pfd"
+        }
+      },
+      {
+        "pid": 100,
+        "ppid": 1,
+        "uid": 64,
+        "state": "Ss",
+        "comm": "/usr/libexec/securityd",
+        "reference": {
+          "line": 3577,
+          "byte_start": 379546,
+          "byte_end": 379594,
+          "sha256": "c9be6eab5fa5b3e4c3a84e97eded32435aec40b6e90a9c7621feb8e1f91b42f9",
+          "text": "  100     1    64 Ss   /usr/libexec/securityd"
+        }
+      },
+      {
+        "pid": 101,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/TCC.framework/tccd",
+        "reference": {
+          "line": 3578,
+          "byte_start": 379594,
+          "byte_end": 379672,
+          "sha256": "361edb2e280c4d78ce1b1541a4f5acee5fe6b5e089d3590934c19ee6f0ce632d",
+          "text": "  101     1   501 Ss   /System/Library/PrivateFrameworks/TCC.framework/tccd"
+        }
+      },
+      {
+        "pid": 102,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/WiFiPolicy.framework/XPCServices/WiFiCloudAssetsXPCService.xpc/WiFiCloudAssetsXPCService",
+        "reference": {
+          "line": 3579,
+          "byte_start": 379672,
+          "byte_end": 379820,
+          "sha256": "3641048b8c2ea07f38a16676c890b59aac69114c0c1968fb463acbe0b6db52fe",
+          "text": "  102     1     0 Ss   /System/Library/PrivateFrameworks/WiFiPolicy.framework/XPCServices/WiFiCloudAssetsXPCService.xpc/WiFiCloudAssetsXPCService"
+        }
+      },
+      {
+        "pid": 104,
+        "ppid": 1,
+        "uid": 24,
+        "state": "Ss",
+        "comm": "/usr/libexec/symptomsd",
+        "reference": {
+          "line": 3580,
+          "byte_start": 379820,
+          "byte_end": 379868,
+          "sha256": "868ea5466d519ddb669eabe1453336e88f4662aac8e7bbd265b038e3a43dbb96",
+          "text": "  104     1    24 Ss   /usr/libexec/symptomsd"
+        }
+      },
+      {
+        "pid": 105,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CarKit.framework/Support/carkitd",
+        "reference": {
+          "line": 3581,
+          "byte_start": 379868,
+          "byte_end": 379960,
+          "sha256": "3ea68979666e71f17ae17149861d4755de4db173e38d9230bf075aaf1ba6b360",
+          "text": "  105     1   501 Ss   /System/Library/PrivateFrameworks/CarKit.framework/Support/carkitd"
+        }
+      },
+      {
+        "pid": 106,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/GeoServices.framework/geod",
+        "reference": {
+          "line": 3582,
+          "byte_start": 379960,
+          "byte_end": 380046,
+          "sha256": "807af9b7695aa0cfff581d27a94a7b98074176b7b1e2e9f1f285becb8d5349d0",
+          "text": "  106     1   501 Ss   /System/Library/PrivateFrameworks/GeoServices.framework/geod"
+        }
+      },
+      {
+        "pid": 107,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/findmydeviced",
+        "reference": {
+          "line": 3583,
+          "byte_start": 380046,
+          "byte_end": 380098,
+          "sha256": "0822b8d7c30c174b4a40ca308728aa1824c6eeac6c5d5132189f50693fd78908",
+          "text": "  107     1   501 Ss   /usr/libexec/findmydeviced"
+        }
+      },
+      {
+        "pid": 108,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/fmflocatord",
+        "reference": {
+          "line": 3584,
+          "byte_start": 380098,
+          "byte_end": 380148,
+          "sha256": "13e16a9cd68796c02b58773acfd4d51c12e80f4d644a2286dd9c87d0faf94ac2",
+          "text": "  108     1   501 Ss   /usr/libexec/fmflocatord"
+        }
+      },
+      {
+        "pid": 109,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/nehelper",
+        "reference": {
+          "line": 3585,
+          "byte_start": 380148,
+          "byte_end": 380195,
+          "sha256": "2fe804ee1c61d242f3ce79e605e3e2ca032bce7b221df8c48d0efc4ef409db4e",
+          "text": "  109     1     0 Ss   /usr/libexec/nehelper"
+        }
+      },
+      {
+        "pid": 110,
+        "ppid": 1,
+        "uid": 65,
+        "state": "Ss",
+        "comm": "/usr/sbin/mDNSResponder",
+        "reference": {
+          "line": 3586,
+          "byte_start": 380195,
+          "byte_end": 380244,
+          "sha256": "140d27f81d925763317b265c661ecb3b88271be8d3a68c1fcfae500ab7354018",
+          "text": "  110     1    65 Ss   /usr/sbin/mDNSResponder"
+        }
+      },
+      {
+        "pid": 111,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/System/Library/Frameworks/Security.framework/CloudKeychainProxy.bundle/CloudKeychainProxy",
+        "reference": {
+          "line": 3587,
+          "byte_start": 380244,
+          "byte_end": 380360,
+          "sha256": "f6d5214f4f36fd763400995e09498383aa526560595fc006936799b46b95fffe",
+          "text": "  111     1     0 Ss   /System/Library/Frameworks/Security.framework/CloudKeychainProxy.bundle/CloudKeychainProxy"
+        }
+      },
+      {
+        "pid": 112,
+        "ppid": 1,
+        "uid": 263,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CoreAnalytics.framework/Support/analyticsd",
+        "reference": {
+          "line": 3588,
+          "byte_start": 380360,
+          "byte_end": 380462,
+          "sha256": "d0528a931c32170fb46f3bc174c1a12bb8f0becd07a64f688689038dbf53186d",
+          "text": "  112     1   263 Ss   /System/Library/PrivateFrameworks/CoreAnalytics.framework/Support/analyticsd"
+        }
+      },
+      {
+        "pid": 113,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/sbin/filecoordinationd",
+        "reference": {
+          "line": 3589,
+          "byte_start": 380462,
+          "byte_end": 380515,
+          "sha256": "99399234d584180930faadf7b3e18513f4d89a951d354e072778a17a42e928db",
+          "text": "  113     1     0 Ss   /usr/sbin/filecoordinationd"
+        }
+      },
+      {
+        "pid": 115,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/wifianalyticsd",
+        "reference": {
+          "line": 3590,
+          "byte_start": 380515,
+          "byte_end": 380568,
+          "sha256": "edaa280b9437214fcaba6dfb5d9d2981d41585169f40d1c8bff23988823ea3e4",
+          "text": "  115     1     0 Ss   /usr/libexec/wifianalyticsd"
+        }
+      },
+      {
+        "pid": 116,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/PassKitCore.framework/passd",
+        "reference": {
+          "line": 3591,
+          "byte_start": 380568,
+          "byte_end": 380655,
+          "sha256": "f7eee382fef502eb92fff8ac1827530b8b529e1743f9dd9f531a887ad00ebaaa",
+          "text": "  116     1   501 Ss   /System/Library/PrivateFrameworks/PassKitCore.framework/passd"
+        }
+      },
+      {
+        "pid": 117,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/WatchListKit.framework/Support/watchlistd",
+        "reference": {
+          "line": 3592,
+          "byte_start": 380655,
+          "byte_end": 380756,
+          "sha256": "67f570f9785efe3a9a4b14867dde6144f65b8cac35bd398644c265755bd3f803",
+          "text": "  117     1   501 Ss   /System/Library/PrivateFrameworks/WatchListKit.framework/Support/watchlistd"
+        }
+      },
+      {
+        "pid": 118,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/rtcreportingd",
+        "reference": {
+          "line": 3593,
+          "byte_start": 380756,
+          "byte_end": 380808,
+          "sha256": "2b26f10f25e6e82db0e3c8b19a4fa4fdb074ef70f2ddc332388f88ffdabae5f6",
+          "text": "  118     1   501 Ss   /usr/libexec/rtcreportingd"
+        }
+      },
+      {
+        "pid": 119,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/StoreBookkeeperClient.framework/Support/storebookkeeperd",
+        "reference": {
+          "line": 3594,
+          "byte_start": 380808,
+          "byte_end": 380924,
+          "sha256": "5b3819d683bc9ae68c7dc8b3bf776a0f8b171e5c7ed47e5d4b592712ed3deb43",
+          "text": "  119     1   501 Ss   /System/Library/PrivateFrameworks/StoreBookkeeperClient.framework/Support/storebookkeeperd"
+        }
+      },
+      {
+        "pid": 120,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CacheDelete.framework/deleted",
+        "reference": {
+          "line": 3595,
+          "byte_start": 380924,
+          "byte_end": 381013,
+          "sha256": "c2c4023ed30c299149a8a8cc8f5a5734f60e36747c2dff313b480c5590bbbf8b",
+          "text": "  120     1   501 Ss   /System/Library/PrivateFrameworks/CacheDelete.framework/deleted"
+        }
+      },
+      {
+        "pid": 121,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/siriknowledged",
+        "reference": {
+          "line": 3596,
+          "byte_start": 381013,
+          "byte_end": 381066,
+          "sha256": "cb9ff9da0fc0484b111d1c558dd6ed6e7f26f286b0742c1dc85b3b5995aa9efe",
+          "text": "  121     1   501 Ss   /usr/libexec/siriknowledged"
+        }
+      },
+      {
+        "pid": 122,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/TextInput/kbd",
+        "reference": {
+          "line": 3597,
+          "byte_start": 381066,
+          "byte_end": 381121,
+          "sha256": "7a990387ff80d22bdb7729030a3ed3540fe8b1459343b12372434356ea556644",
+          "text": "  122     1   501 Ss   /System/Library/TextInput/kbd"
+        }
+      },
+      {
+        "pid": 123,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/coreidvd",
+        "reference": {
+          "line": 3598,
+          "byte_start": 381121,
+          "byte_end": 381168,
+          "sha256": "d15ef21db5a0a17bace7b3c05c0e8fb8b51137be5ccc56e849aa5c3f989f4ce8",
+          "text": "  123     1   501 Ss   /usr/libexec/coreidvd"
+        }
+      },
+      {
+        "pid": 124,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/AuthKit.framework/akd",
+        "reference": {
+          "line": 3599,
+          "byte_start": 381168,
+          "byte_end": 381249,
+          "sha256": "2bdaac3a64f61dc61fdacc1024af760cd1458345547908e44dcb27109ac6aa17",
+          "text": "  124     1   501 Ss   /System/Library/PrivateFrameworks/AuthKit.framework/akd"
+        }
+      },
+      {
+        "pid": 125,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/iTunesStore.framework/Support/itunesstored",
+        "reference": {
+          "line": 3600,
+          "byte_start": 381249,
+          "byte_end": 381351,
+          "sha256": "21f26404ab7e7edcc5fc119ae179fbffe4d18e5039d6faacc050f5093174cf38",
+          "text": "  125     1   501 Ss   /System/Library/PrivateFrameworks/iTunesStore.framework/Support/itunesstored"
+        }
+      },
+      {
+        "pid": 126,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CoreSuggestions.framework/suggestd",
+        "reference": {
+          "line": 3601,
+          "byte_start": 381351,
+          "byte_end": 381445,
+          "sha256": "19519c4c264b95454a68d0deccafec720ada8e520148719e4ae9d084f33575b5",
+          "text": "  126     1   501 Ss   /System/Library/PrivateFrameworks/CoreSuggestions.framework/suggestd"
+        }
+      },
+      {
+        "pid": 128,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CallHistory.framework/Support/CallHistorySyncHelper",
+        "reference": {
+          "line": 3602,
+          "byte_start": 381445,
+          "byte_end": 381556,
+          "sha256": "e09cdd90084dd76917ff2996bffc58fa9ec700ccbf30c3e8a9de5592ba79f339",
+          "text": "  128     1   501 Ss   /System/Library/PrivateFrameworks/CallHistory.framework/Support/CallHistorySyncHelper"
+        }
+      },
+      {
+        "pid": 129,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/HomeKitDaemon.framework/Support/homed",
+        "reference": {
+          "line": 3603,
+          "byte_start": 381556,
+          "byte_end": 381653,
+          "sha256": "137ecb6a15008238cc78fee3b3ea8efcff4d2e3ec9b7e32355087eff33a250ff",
+          "text": "  129     1   501 Ss   /System/Library/PrivateFrameworks/HomeKitDaemon.framework/Support/homed"
+        }
+      },
+      {
+        "pid": 130,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/BookLibrary.framework/Support/bookassetd",
+        "reference": {
+          "line": 3604,
+          "byte_start": 381653,
+          "byte_end": 381753,
+          "sha256": "47bce035c0d0e2dbd0c482e13819ba8a9fe61c260328ab497c3ff5a8dd16d58e",
+          "text": "  130     1   501 Ss   /System/Library/PrivateFrameworks/BookLibrary.framework/Support/bookassetd"
+        }
+      },
+      {
+        "pid": 131,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CloudKitDaemon.framework/Support/cloudd",
+        "reference": {
+          "line": 3605,
+          "byte_start": 381753,
+          "byte_end": 381852,
+          "sha256": "7678ecda0a1553299fa4704f1195a8af3e3c55702fc06067da49bfeb842cf052",
+          "text": "  131     1   501 Ss   /System/Library/PrivateFrameworks/CloudKitDaemon.framework/Support/cloudd"
+        }
+      },
+      {
+        "pid": 132,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/sbin/mDNSResponderHelper",
+        "reference": {
+          "line": 3606,
+          "byte_start": 381852,
+          "byte_end": 381907,
+          "sha256": "4c966e3b5543b786480efa5ece606b9c12017026ac938f475dd8238b36589576",
+          "text": "  132     1     0 Ss   /usr/sbin/mDNSResponderHelper"
+        }
+      },
+      {
+        "pid": 133,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/AssistantServices.framework/XPCServices/com.apple.siri.embeddedspeech.xpc/com.apple.siri.embeddedspeech",
+        "reference": {
+          "line": 3607,
+          "byte_start": 381907,
+          "byte_end": 382070,
+          "sha256": "5ca2528b5ac4ccf8c73c53362b3e9bb515b8af15aa32d827f0d9ce8cb0a72c8d",
+          "text": "  133     1   501 Ss   /System/Library/PrivateFrameworks/AssistantServices.framework/XPCServices/com.apple.siri.embeddedspeech.xpc/com.apple.siri.embeddedspeech"
+        }
+      },
+      {
+        "pid": 134,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/searchpartyd",
+        "reference": {
+          "line": 3608,
+          "byte_start": 382070,
+          "byte_end": 382121,
+          "sha256": "e74e09ea1d70db592f83f416a12a69a51153a4d5b2ee9913ad247c69e3f0f7c8",
+          "text": "  134     1   501 Ss   /usr/libexec/searchpartyd"
+        }
+      },
+      {
+        "pid": 135,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/MusicLibrary.framework/Support/medialibraryd",
+        "reference": {
+          "line": 3609,
+          "byte_start": 382121,
+          "byte_end": 382225,
+          "sha256": "9254df03f38a446ebcf3c9baae37b17630ecf1cc423a9fcb1353acd93eee160f",
+          "text": "  135     1   501 Ss   /System/Library/PrivateFrameworks/MusicLibrary.framework/Support/medialibraryd"
+        }
+      },
+      {
+        "pid": 136,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/seserviced",
+        "reference": {
+          "line": 3610,
+          "byte_start": 382225,
+          "byte_end": 382274,
+          "sha256": "16459a7db613f23b3eb24ec3ad2d242fa681c40ba67f8464ee43951aae51d00f",
+          "text": "  136     1   501 Ss   /usr/libexec/seserviced"
+        }
+      },
+      {
+        "pid": 138,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CoreSpeech.framework/corespeechd",
+        "reference": {
+          "line": 3611,
+          "byte_start": 382274,
+          "byte_end": 382366,
+          "sha256": "5980ff98469ec7974a1e435a983567fda6917e8d8cf40b21f4e4dc0646bfb75d",
+          "text": "  138     1   501 Ss   /System/Library/PrivateFrameworks/CoreSpeech.framework/corespeechd"
+        }
+      },
+      {
+        "pid": 139,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/fmfd",
+        "reference": {
+          "line": 3612,
+          "byte_start": 382366,
+          "byte_end": 382409,
+          "sha256": "e3133ea3fb16401b944672aca5c20cc1654ebd2b6ee7f0da39f58b9868924f58",
+          "text": "  139     1   501 Ss   /usr/libexec/fmfd"
+        }
+      },
+      {
+        "pid": 140,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/networkserviceproxy",
+        "reference": {
+          "line": 3613,
+          "byte_start": 382409,
+          "byte_end": 382467,
+          "sha256": "4e59d275faed369368be535fa17d9030828b96992ee8623b7ef4e2ffd4842a3a",
+          "text": "  140     1   501 Ss   /usr/libexec/networkserviceproxy"
+        }
+      },
+      {
+        "pid": 142,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CoreAccessories.framework/Support/accessoryd",
+        "reference": {
+          "line": 3614,
+          "byte_start": 382467,
+          "byte_end": 382571,
+          "sha256": "b82666c17f2bb66a860a39f585ba3e59e1465486450abadac69046cd5fe6f2f6",
+          "text": "  142     1   501 Ss   /System/Library/PrivateFrameworks/CoreAccessories.framework/Support/accessoryd"
+        }
+      },
+      {
+        "pid": 145,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/TelephonyUtilities.framework/callservicesd",
+        "reference": {
+          "line": 3615,
+          "byte_start": 382571,
+          "byte_end": 382673,
+          "sha256": "8e5c5dd0576286ccb9bac5210e8dbcfc8957c31bda1571b3e185f152818e362b",
+          "text": "  145     1   501 Ss   /System/Library/PrivateFrameworks/TelephonyUtilities.framework/callservicesd"
+        }
+      },
+      {
+        "pid": 147,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/VoiceServices.framework/Support/voiced",
+        "reference": {
+          "line": 3616,
+          "byte_start": 382673,
+          "byte_end": 382771,
+          "sha256": "e8d1cec6bd88ac33f6b0fb9dfa21bd1c11163fc5949e635c4fce64ed6209bca0",
+          "text": "  147     1   501 Ss   /System/Library/PrivateFrameworks/VoiceServices.framework/Support/voiced"
+        }
+      },
+      {
+        "pid": 148,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CalendarDaemon.framework/Support/calaccessd",
+        "reference": {
+          "line": 3617,
+          "byte_start": 382771,
+          "byte_end": 382874,
+          "sha256": "2afff43bcc5e2665bd1efb67d6cad40878ca139e13ac5a03316149444567a66b",
+          "text": "  148     1   501 Ss   /System/Library/PrivateFrameworks/CalendarDaemon.framework/Support/calaccessd"
+        }
+      },
+      {
+        "pid": 149,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/misagent",
+        "reference": {
+          "line": 3618,
+          "byte_start": 382874,
+          "byte_end": 382921,
+          "sha256": "510486778fc016378739a1311bf5006180f879e54eb462705e6600d7d8261319",
+          "text": "  149     1   501 Ss   /usr/libexec/misagent"
+        }
+      },
+      {
+        "pid": 150,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/mobileactivationd",
+        "reference": {
+          "line": 3619,
+          "byte_start": 382921,
+          "byte_end": 382977,
+          "sha256": "a2d89efcba3344510aa5b0bfb4ca4644ba98e09d978e3b1ddc095e330a81eb15",
+          "text": "  150     1   501 Ss   /usr/libexec/mobileactivationd"
+        }
+      },
+      {
+        "pid": 151,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/pkd",
+        "reference": {
+          "line": 3620,
+          "byte_start": 382977,
+          "byte_end": 383019,
+          "sha256": "34c672c6ffb93eb63751785c49185f2188eaf248c169255e16c935bd8840bf0d",
+          "text": "  151     1     0 Ss   /usr/libexec/pkd"
+        }
+      },
+      {
+        "pid": 152,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/UserActivity.framework/Agents/useractivityd",
+        "reference": {
+          "line": 3621,
+          "byte_start": 383019,
+          "byte_end": 383122,
+          "sha256": "928389a764ce7b9a2f81d6ee45c881be6ff4bc1f551bcd15045300120fc223bc",
+          "text": "  152     1   501 Ss   /System/Library/PrivateFrameworks/UserActivity.framework/Agents/useractivityd"
+        }
+      },
+      {
+        "pid": 153,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/SpringBoard.framework/XPCServices/SBRendererService.xpc/SBRendererService",
+        "reference": {
+          "line": 3622,
+          "byte_start": 383122,
+          "byte_end": 383255,
+          "sha256": "f424eab033da1dd8ba3ae5b0e7aadb60f39d16d8f909cd2c4f27a78aff414f93",
+          "text": "  153     1   501 Ss   /System/Library/PrivateFrameworks/SpringBoard.framework/XPCServices/SBRendererService.xpc/SBRendererService"
+        }
+      },
+      {
+        "pid": 154,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/ScreenTimeCore.framework/ScreenTimeAgent",
+        "reference": {
+          "line": 3623,
+          "byte_start": 383255,
+          "byte_end": 383355,
+          "sha256": "c1acce91d6c5c4880ffe90167b9208ad385b5b27f893db15127995c0152187bb",
+          "text": "  154     1   501 Ss   /System/Library/PrivateFrameworks/ScreenTimeCore.framework/ScreenTimeAgent"
+        }
+      },
+      {
+        "pid": 155,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/dmd",
+        "reference": {
+          "line": 3624,
+          "byte_start": 383355,
+          "byte_end": 383397,
+          "sha256": "c07a27dbdf781361b922c3dbd633bf3ff0850d3f2d188599f936f71f5b511da8",
+          "text": "  155     1   501 Ss   /usr/libexec/dmd"
+        }
+      },
+      {
+        "pid": 156,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/ChronoCore.framework/Support/chronod",
+        "reference": {
+          "line": 3625,
+          "byte_start": 383397,
+          "byte_end": 383493,
+          "sha256": "19d525f26739bcdbe2d9dccf1439ae7b266af41fe20bdf66833f382fc5decf8d",
+          "text": "  156     1   501 Ss   /System/Library/PrivateFrameworks/ChronoCore.framework/Support/chronod"
+        }
+      },
+      {
+        "pid": 157,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/FontServices.framework/Support/fontservicesd",
+        "reference": {
+          "line": 3626,
+          "byte_start": 383493,
+          "byte_end": 383597,
+          "sha256": "122f1cc3d0559fc092c938e852354d72b7b60f4fcb34dab66291c1d962d3956f",
+          "text": "  157     1   501 Ss   /System/Library/PrivateFrameworks/FontServices.framework/Support/fontservicesd"
+        }
+      },
+      {
+        "pid": 159,
+        "ppid": 1,
+        "uid": 276,
+        "state": "Ss",
+        "comm": "/System/Library/CoreServices/iconservicesagent",
+        "reference": {
+          "line": 3627,
+          "byte_start": 383597,
+          "byte_end": 383669,
+          "sha256": "1a4aa37e3c09970155b8f41531350674d2b5e515e9d9eaadf5d297eb3aae953c",
+          "text": "  159     1   276 Ss   /System/Library/CoreServices/iconservicesagent"
+        }
+      },
+      {
+        "pid": 160,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/profiled",
+        "reference": {
+          "line": 3628,
+          "byte_start": 383669,
+          "byte_end": 383716,
+          "sha256": "7bfa1a03bdf914db13ceb2d4159c4131f48d9133f4f0625716e20c018a01f1dd",
+          "text": "  160     1   501 Ss   /usr/libexec/profiled"
+        }
+      },
+      {
+        "pid": 167,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CloudDocsDaemon.framework/bird",
+        "reference": {
+          "line": 3629,
+          "byte_start": 383716,
+          "byte_end": 383806,
+          "sha256": "0c350ace169eae45b0b6f01339c14cd224072d513e2836f25ac3e10300303f9e",
+          "text": "  167     1   501 Ss   /System/Library/PrivateFrameworks/CloudDocsDaemon.framework/bird"
+        }
+      },
+      {
+        "pid": 168,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/nanoregistrylaunchd",
+        "reference": {
+          "line": 3630,
+          "byte_start": 383806,
+          "byte_end": 383864,
+          "sha256": "42ccfe42460a571a46fb5110f1df283dc9774ec38e82093f0c1fdeec60942944",
+          "text": "  168     1     0 Ss   /usr/libexec/nanoregistrylaunchd"
+        }
+      },
+      {
+        "pid": 169,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/FontServices.framework/XPCServices/com.apple.FontServices.UserFontManager.xpc/com.apple.FontServices.UserFontManager",
+        "reference": {
+          "line": 3631,
+          "byte_start": 383864,
+          "byte_end": 384040,
+          "sha256": "82d522f606484395f2c34f3343db4c693f03da0a05ea557fcd22ca68be5536e0",
+          "text": "  169     1   501 Ss   /System/Library/PrivateFrameworks/FontServices.framework/XPCServices/com.apple.FontServices.UserFontManager.xpc/com.apple.FontServices.UserFontManager"
+        }
+      },
+      {
+        "pid": 171,
+        "ppid": 63,
+        "uid": 0,
+        "state": "S",
+        "comm": "/usr/bin/inferno-readiness",
+        "reference": {
+          "line": 3632,
+          "byte_start": 384040,
+          "byte_end": 384092,
+          "sha256": "596567f64d2a73ad9699f03a8c7589c7f01b54d90fcde74c1e218e520b864fb5",
+          "text": "  171    63     0 S    /usr/bin/inferno-readiness"
+        }
+      },
+      {
+        "pid": 172,
+        "ppid": 63,
+        "uid": 0,
+        "state": "S",
+        "comm": "/usr/bin/inferno-hid-input",
+        "reference": {
+          "line": 3633,
+          "byte_start": 384092,
+          "byte_end": 384144,
+          "sha256": "7535d4f428c21455ddf9864e0199b06f714cfd5b959978db9f1bb6a103b0a0b7",
+          "text": "  172    63     0 S    /usr/bin/inferno-hid-input"
+        }
+      },
+      {
+        "pid": 174,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd",
+        "reference": {
+          "line": 3634,
+          "byte_start": 384144,
+          "byte_end": 384250,
+          "sha256": "8cc80ee311e1e0bbdb9384150f1ef0ae69dd06be6dde3e95cbb50ea0e654307d",
+          "text": "  174     1     0 Ss   /System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd"
+        }
+      },
+      {
+        "pid": 176,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/iTunesCloud.framework/Support/itunescloudd",
+        "reference": {
+          "line": 3635,
+          "byte_start": 384250,
+          "byte_end": 384352,
+          "sha256": "364beb2fd72cb66b91dced441249c100689e7b030ed797de245153063acb2509",
+          "text": "  176     1   501 Ss   /System/Library/PrivateFrameworks/iTunesCloud.framework/Support/itunescloudd"
+        }
+      },
+      {
+        "pid": 177,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/AppStoreDaemon.framework/Support/appstored",
+        "reference": {
+          "line": 3636,
+          "byte_start": 384352,
+          "byte_end": 384454,
+          "sha256": "b8ae58c67fb78829d348905bed742a71abccc9359a472996c23d145d777f5f9c",
+          "text": "  177     1   501 Ss   /System/Library/PrivateFrameworks/AppStoreDaemon.framework/Support/appstored"
+        }
+      },
+      {
+        "pid": 178,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/languageassetd",
+        "reference": {
+          "line": 3637,
+          "byte_start": 384454,
+          "byte_end": 384507,
+          "sha256": "c121e03d733fc08c192e6b834fe4755e47d30796ff676b29a6d7c3dbe5260e19",
+          "text": "  178     1   501 Ss   /usr/libexec/languageassetd"
+        }
+      },
+      {
+        "pid": 179,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CoreFollowUp.framework/followupd",
+        "reference": {
+          "line": 3638,
+          "byte_start": 384507,
+          "byte_end": 384599,
+          "sha256": "34a7e24fd1c9bf55bb25d2fae3e6a77599e0bd092f54c793bd2b19d9723de1a6",
+          "text": "  179     1   501 Ss   /System/Library/PrivateFrameworks/CoreFollowUp.framework/followupd"
+        }
+      },
+      {
+        "pid": 180,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/IntlPreferences.framework/Support/localizationswitcherd",
+        "reference": {
+          "line": 3639,
+          "byte_start": 384599,
+          "byte_end": 384714,
+          "sha256": "21463c55dd70a3a2470ac0ef02013b123ff755ea3e2cfa6fcd89070fe03f1681",
+          "text": "  180     1   501 Ss   /System/Library/PrivateFrameworks/IntlPreferences.framework/Support/localizationswitcherd"
+        }
+      },
+      {
+        "pid": 181,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/webbookmarksd",
+        "reference": {
+          "line": 3640,
+          "byte_start": 384714,
+          "byte_end": 384766,
+          "sha256": "e35fb70cdd5d764092b1eb73cd4616042104762c83c3bc6cab9232c32e14dd54",
+          "text": "  181     1   501 Ss   /usr/libexec/webbookmarksd"
+        }
+      },
+      {
+        "pid": 184,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/InstallCoordination.framework/Support/installcoordinationd",
+        "reference": {
+          "line": 3641,
+          "byte_start": 384766,
+          "byte_end": 384884,
+          "sha256": "e36be34957a1920ce6f844c5f2adea5ebc687309b11c81cd4888a65fca7ae44c",
+          "text": "  184     1   501 Ss   /System/Library/PrivateFrameworks/InstallCoordination.framework/Support/installcoordinationd"
+        }
+      },
+      {
+        "pid": 185,
+        "ppid": 1,
+        "uid": 33,
+        "state": "Ss",
+        "comm": "/usr/libexec/installd",
+        "reference": {
+          "line": 3642,
+          "byte_start": 384884,
+          "byte_end": 384931,
+          "sha256": "c7a86ed14243d50f2301553fec09ea29d16adccccabc8a15f0203a2ff6921d9e",
+          "text": "  185     1    33 Ss   /usr/libexec/installd"
+        }
+      },
+      {
+        "pid": 186,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/MobileInstallation.framework/XPCServices/com.apple.MobileInstallationHelperService.xpc/com.apple.MobileInstallationHelperService",
+        "reference": {
+          "line": 3643,
+          "byte_start": 384931,
+          "byte_end": 385119,
+          "sha256": "c5f83b19f0bc8391b4e198db8517d8f6d9828df66a77b6fcc6c5202c447b182c",
+          "text": "  186     1     0 Ss   /System/Library/PrivateFrameworks/MobileInstallation.framework/XPCServices/com.apple.MobileInstallationHelperService.xpc/com.apple.MobileInstallationHelperService"
+        }
+      },
+      {
+        "pid": 187,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/aned",
+        "reference": {
+          "line": 3644,
+          "byte_start": 385119,
+          "byte_end": 385162,
+          "sha256": "76a934b7a09c868c7af5592d1f8d0d35a5234fa6dcc19509c56743b19123fb1c",
+          "text": "  187     1   501 Ss   /usr/libexec/aned"
+        }
+      },
+      {
+        "pid": 188,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/VoiceShortcuts.framework/siriactionsd",
+        "reference": {
+          "line": 3645,
+          "byte_start": 385162,
+          "byte_end": 385259,
+          "sha256": "a562ef352ea25c32815761fe4dfc1ba07082bcbf89b2957cf0d5b7f07c2b8a6e",
+          "text": "  188     1   501 Ss   /System/Library/PrivateFrameworks/VoiceShortcuts.framework/siriactionsd"
+        }
+      },
+      {
+        "pid": 189,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/TVRemoteCore.framework/Support/TVRemoteConnectionService",
+        "reference": {
+          "line": 3646,
+          "byte_start": 385259,
+          "byte_end": 385375,
+          "sha256": "e37a574339b65c54cefcff0dfdcb48fd658742b6c8745d4712c7982fd8760725",
+          "text": "  189     1   501 Ss   /System/Library/PrivateFrameworks/TVRemoteCore.framework/Support/TVRemoteConnectionService"
+        }
+      },
+      {
+        "pid": 190,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/ClipServices.framework/clipserviced",
+        "reference": {
+          "line": 3647,
+          "byte_start": 385375,
+          "byte_end": 385470,
+          "sha256": "d8b711cf56f5c45abdadbaf52d21f0efb78f5bcf63a58837ef6f4737a9e7c407",
+          "text": "  190     1   501 Ss   /System/Library/PrivateFrameworks/ClipServices.framework/clipserviced"
+        }
+      },
+      {
+        "pid": 191,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/videosubscriptionsd",
+        "reference": {
+          "line": 3648,
+          "byte_start": 385470,
+          "byte_end": 385528,
+          "sha256": "ee28329aa49079f31af97b68dff2d8111af945f330c78bc5ff1242f16d60b451",
+          "text": "  191     1   501 Ss   /usr/libexec/videosubscriptionsd"
+        }
+      },
+      {
+        "pid": 192,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/online-auth-agent",
+        "reference": {
+          "line": 3649,
+          "byte_start": 385528,
+          "byte_end": 385584,
+          "sha256": "1c4108891333526810cc7cefdaf1cd7a6ed965d2668a2eee98ce990c0af500a4",
+          "text": "  192     1     0 Ss   /usr/libexec/online-auth-agent"
+        }
+      },
+      {
+        "pid": 193,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/swcd",
+        "reference": {
+          "line": 3650,
+          "byte_start": 385584,
+          "byte_end": 385627,
+          "sha256": "309045a5ce45b580630c5300b599207038fbd8fc12f33955d1aca667836f4977",
+          "text": "  193     1   501 Ss   /usr/libexec/swcd"
+        }
+      },
+      {
+        "pid": 195,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CoreParsec.framework/parsec-fbf",
+        "reference": {
+          "line": 3651,
+          "byte_start": 385627,
+          "byte_end": 385718,
+          "sha256": "6c5dedd74e7731c90df4a3502e38b2dcec61181c17e26e72a019706213978507",
+          "text": "  195     1   501 Ss   /System/Library/PrivateFrameworks/CoreParsec.framework/parsec-fbf"
+        }
+      },
+      {
+        "pid": 196,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/AXAssetLoader.framework/Support/axassetsd",
+        "reference": {
+          "line": 3652,
+          "byte_start": 385718,
+          "byte_end": 385819,
+          "sha256": "412f3b239f25232a2b35cb9d3b873c294d13f30cc52659c3b832f494e4283402",
+          "text": "  196     1   501 Ss   /System/Library/PrivateFrameworks/AXAssetLoader.framework/Support/axassetsd"
+        }
+      },
+      {
+        "pid": 201,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/Search.framework/searchd",
+        "reference": {
+          "line": 3653,
+          "byte_start": 385819,
+          "byte_end": 385903,
+          "sha256": "94e95331c23d6b552c020f30bb28ce0a941241564fa996aa768d78043865d0c5",
+          "text": "  201     1   501 Ss   /System/Library/PrivateFrameworks/Search.framework/searchd"
+        }
+      },
+      {
+        "pid": 202,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/XPCServices/com.apple.MobileSoftwareUpdate.CleanupPreparePathService.xpc/com.apple.MobileSoftwareUpdate.CleanupPreparePathService",
+        "reference": {
+          "line": 3654,
+          "byte_start": 385903,
+          "byte_end": 386123,
+          "sha256": "5663567735fd0cefb9b698271f806f4f7828db5f64d0bf03cf23f355eb0a067a",
+          "text": "  202     1     0 Ss   /System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/XPCServices/com.apple.MobileSoftwareUpdate.CleanupPreparePathService.xpc/com.apple.MobileSoftwareUpdate.CleanupPreparePathService"
+        }
+      },
+      {
+        "pid": 203,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/logd_helper",
+        "reference": {
+          "line": 3655,
+          "byte_start": 386123,
+          "byte_end": 386173,
+          "sha256": "95ff2e65b5e1ee3382f45d5498bb0aad07e3e83d7c1fa65c81b7fb11f410066a",
+          "text": "  203     1     0 Ss   /usr/libexec/logd_helper"
+        }
+      },
+      {
+        "pid": 206,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/Applications/Screen Time.app/PlugIns/ScreenTimeWidgetExtension.appex/ScreenTimeWidgetExtension",
+        "reference": {
+          "line": 3656,
+          "byte_start": 386173,
+          "byte_end": 386294,
+          "sha256": "386e6ed1c25e1943a7ce4acb63d63588992e8011bf4ff30a0e7f544d10cd6ceb",
+          "text": "  206     1   501 Ss   /Applications/Screen Time.app/PlugIns/ScreenTimeWidgetExtension.appex/ScreenTimeWidgetExtension"
+        }
+      },
+      {
+        "pid": 209,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/nfcd",
+        "reference": {
+          "line": 3657,
+          "byte_start": 386294,
+          "byte_end": 386337,
+          "sha256": "ee7ffb6c29ba10154520f118de52c280269f05859c4105e07400508020577a0a",
+          "text": "  209     1   501 Ss   /usr/libexec/nfcd"
+        }
+      },
+      {
+        "pid": 210,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/OTATaskingAgent",
+        "reference": {
+          "line": 3658,
+          "byte_start": 386337,
+          "byte_end": 386391,
+          "sha256": "c74a36f1a8313062f79a63ff336bc6cf9a8decfe11564fe83425391664938aa7",
+          "text": "  210     1     0 Ss   /usr/libexec/OTATaskingAgent"
+        }
+      },
+      {
+        "pid": 216,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/remindd",
+        "reference": {
+          "line": 3659,
+          "byte_start": 386391,
+          "byte_end": 386437,
+          "sha256": "14c8752c64cb22b37785eac567db10d9fde18bd4a69e7f00ed7a34c09fe5a34b",
+          "text": "  216     1   501 Ss   /usr/libexec/remindd"
+        }
+      },
+      {
+        "pid": 217,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/iCloudNotification.framework/ind",
+        "reference": {
+          "line": 3660,
+          "byte_start": 386437,
+          "byte_end": 386529,
+          "sha256": "266370e247bd2d77fc51de9ad84bc38e7f80b72040757e8f8e7c49e6042daef2",
+          "text": "  217     1   501 Ss   /System/Library/PrivateFrameworks/iCloudNotification.framework/ind"
+        }
+      },
+      {
+        "pid": 218,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/biometrickitd",
+        "reference": {
+          "line": 3661,
+          "byte_start": 386529,
+          "byte_end": 386581,
+          "sha256": "fd5c02aae0d1f78b2c54383fbf789ca9a07b1cf6f2c9b80daa45b0dfc2c3f078",
+          "text": "  218     1     0 Ss   /usr/libexec/biometrickitd"
+        }
+      },
+      {
+        "pid": 219,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/FamilyCircle.framework/familycircled",
+        "reference": {
+          "line": 3662,
+          "byte_start": 386581,
+          "byte_end": 386677,
+          "sha256": "60907c80ba91969f8af4d719a48a4779cafbfe7dfa2490a3e8dd5cdcb3b954f2",
+          "text": "  219     1   501 Ss   /System/Library/PrivateFrameworks/FamilyCircle.framework/familycircled"
+        }
+      },
+      {
+        "pid": 220,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CoreCDP.framework/cdpd",
+        "reference": {
+          "line": 3663,
+          "byte_start": 386677,
+          "byte_end": 386760,
+          "sha256": "18540e87a0de5572e8e8d661b199393c410115b4cb340ddf49b63a85d3c6307c",
+          "text": "  220     1   501 Ss   /System/Library/PrivateFrameworks/CoreCDP.framework/cdpd"
+        }
+      },
+      {
+        "pid": 221,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/ProtectedCloudStorage.framework/Helpers/ProtectedCloudKeySyncing",
+        "reference": {
+          "line": 3664,
+          "byte_start": 386760,
+          "byte_end": 386884,
+          "sha256": "e372d26116625ea761409cd4ac056bc72626870d661c6e4a86a9d6f294427536",
+          "text": "  221     1   501 Ss   /System/Library/PrivateFrameworks/ProtectedCloudStorage.framework/Helpers/ProtectedCloudKeySyncing"
+        }
+      },
+      {
+        "pid": 222,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/Frameworks/Contacts.framework/Support/contactsd",
+        "reference": {
+          "line": 3665,
+          "byte_start": 386884,
+          "byte_end": 386973,
+          "sha256": "c97398317d47692eecb15bc94fd4830eae7a6c67700b6605aecb850c30553089",
+          "text": "  222     1   501 Ss   /System/Library/Frameworks/Contacts.framework/Support/contactsd"
+        }
+      },
+      {
+        "pid": 223,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/IMDPersistence.framework/XPCServices/IMDPersistenceAgent.xpc/IMDPersistenceAgent",
+        "reference": {
+          "line": 3666,
+          "byte_start": 386973,
+          "byte_end": 387113,
+          "sha256": "007c5349b2e34b2b0457f5276f39d767f8222d74a1fcd405995cc00a1524b6de",
+          "text": "  223     1   501 Ss   /System/Library/PrivateFrameworks/IMDPersistence.framework/XPCServices/IMDPersistenceAgent.xpc/IMDPersistenceAgent"
+        }
+      },
+      {
+        "pid": 224,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CloudKitDaemon.framework/Support/ckdiscretionaryd",
+        "reference": {
+          "line": 3667,
+          "byte_start": 387113,
+          "byte_end": 387222,
+          "sha256": "f4c562d7e314b6d237ae28e3416512bec2c795fa4ee84c76898fb9ffe1cbf44e",
+          "text": "  224     1   501 Ss   /System/Library/PrivateFrameworks/CloudKitDaemon.framework/Support/ckdiscretionaryd"
+        }
+      },
+      {
+        "pid": 226,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/DistributedEvaluation.framework/XPCServices/com.apple.siri-distributed-evaluation.xpc/com.apple.siri-distributed-evaluation",
+        "reference": {
+          "line": 3668,
+          "byte_start": 387222,
+          "byte_end": 387405,
+          "sha256": "822a07b8127d23fb80127e05ca0147b2f702f1ea4733c1d55e85c3a8f964e07e",
+          "text": "  226     1   501 Ss   /System/Library/PrivateFrameworks/DistributedEvaluation.framework/XPCServices/com.apple.siri-distributed-evaluation.xpc/com.apple.siri-distributed-evaluation"
+        }
+      },
+      {
+        "pid": 227,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/usr/libexec/nesessionmanager",
+        "reference": {
+          "line": 3669,
+          "byte_start": 387405,
+          "byte_end": 387460,
+          "sha256": "86943466f52121823b31e2bef65844f2e1d2ecd757895a26a0b145254c8f4257",
+          "text": "  227     1     0 Ss   /usr/libexec/nesessionmanager"
+        }
+      },
+      {
+        "pid": 228,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/symptomsd-diag",
+        "reference": {
+          "line": 3670,
+          "byte_start": 387460,
+          "byte_end": 387513,
+          "sha256": "b6222fb94bbae0421997600a9c4079788c8d58ff6dba604afd933fad98499581",
+          "text": "  228     1   501 Ss   /usr/libexec/symptomsd-diag"
+        }
+      },
+      {
+        "pid": 230,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/duetexpertd",
+        "reference": {
+          "line": 3671,
+          "byte_start": 387513,
+          "byte_end": 387563,
+          "sha256": "dcb128d5c0161a374f533b3b1b6b99bd28ee16e3b37eadd2687668d5a9643116",
+          "text": "  230     1   501 Ss   /usr/libexec/duetexpertd"
+        }
+      },
+      {
+        "pid": 231,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/ContextKit.framework/XPCServices/ContextService.xpc/ContextService",
+        "reference": {
+          "line": 3672,
+          "byte_start": 387563,
+          "byte_end": 387689,
+          "sha256": "1ff834d324057917bed84dfe42be5c719402053a176fc437932d1e61a4f32c5c",
+          "text": "  231     1   501 Ss   /System/Library/PrivateFrameworks/ContextKit.framework/XPCServices/ContextService.xpc/ContextService"
+        }
+      },
+      {
+        "pid": 232,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/ActionPredictionHeuristics.framework/XPCServices/HeuristicInterpreter.xpc/HeuristicInterpreter",
+        "reference": {
+          "line": 3673,
+          "byte_start": 387689,
+          "byte_end": 387843,
+          "sha256": "b25c8d0e34a3f8bb1236d41b20b540c455838d927c1265c321f8241e59281936",
+          "text": "  232     1   501 Ss   /System/Library/PrivateFrameworks/ActionPredictionHeuristics.framework/XPCServices/HeuristicInterpreter.xpc/HeuristicInterpreter"
+        }
+      },
+      {
+        "pid": 234,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/adid",
+        "reference": {
+          "line": 3674,
+          "byte_start": 387843,
+          "byte_end": 387886,
+          "sha256": "b3f1b01892159261d88da43ab913df971702f24cc7912c89cc53c00414871e84",
+          "text": "  234     1   501 Ss   /usr/libexec/adid"
+        }
+      },
+      {
+        "pid": 241,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/Pasteboard.framework/Support/pasted",
+        "reference": {
+          "line": 3675,
+          "byte_start": 387886,
+          "byte_end": 387981,
+          "sha256": "53b1d6f18e3bb98964cac0163e4a99716dbbf46a975d5d5046719dab8df2764a",
+          "text": "  241     1   501 Ss   /System/Library/PrivateFrameworks/Pasteboard.framework/Support/pasted"
+        }
+      },
+      {
+        "pid": 242,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/SiriInference.framework/Support/siriinferenced",
+        "reference": {
+          "line": 3676,
+          "byte_start": 387981,
+          "byte_end": 388087,
+          "sha256": "e13b4f39c406e5597ce5de91c8f9aba34906001628d4e50051194128a065d80f",
+          "text": "  242     1   501 Ss   /System/Library/PrivateFrameworks/SiriInference.framework/Support/siriinferenced"
+        }
+      },
+      {
+        "pid": 246,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/diagnosticextensionsd",
+        "reference": {
+          "line": 3677,
+          "byte_start": 388087,
+          "byte_end": 388147,
+          "sha256": "c44431b2f7b04e1f6046f06aa4e96704a40020504dcefb4bb047b79f3fd5a609",
+          "text": "  246     1   501 Ss   /usr/libexec/diagnosticextensionsd"
+        }
+      },
+      {
+        "pid": 247,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/AccessibilityUI.framework/XPCServices/com.apple.accessibility.AccessibilityUIServer.xpc/com.apple.accessibility.AccessibilityUIServer",
+        "reference": {
+          "line": 3678,
+          "byte_start": 388147,
+          "byte_end": 388340,
+          "sha256": "dae1612931c32f219c4dcc8abcbe300ffe239a40b845c771fb831e86be46a162",
+          "text": "  247     1   501 Ss   /System/Library/PrivateFrameworks/AccessibilityUI.framework/XPCServices/com.apple.accessibility.AccessibilityUIServer.xpc/com.apple.accessibility.AccessibilityUIServer"
+        }
+      },
+      {
+        "pid": 258,
+        "ppid": 1,
+        "uid": 0,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CloudServices.framework/Helpers/com.apple.sbd",
+        "reference": {
+          "line": 3679,
+          "byte_start": 388340,
+          "byte_end": 388445,
+          "sha256": "9a627e25797cbe03c9c65cd289d8df7e1069255e5173a21beb717bb7953f3c0a",
+          "text": "  258     1     0 Ss   /System/Library/PrivateFrameworks/CloudServices.framework/Helpers/com.apple.sbd"
+        }
+      },
+      {
+        "pid": 260,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/Applications/Spotlight.app/Spotlight",
+        "reference": {
+          "line": 3680,
+          "byte_start": 388445,
+          "byte_end": 388508,
+          "sha256": "bb98b60ef6825297160185d206ccc9d0888db055fdf2bf6c2a2886d97c5133e4",
+          "text": "  260     1   501 Ss   /Applications/Spotlight.app/Spotlight"
+        }
+      },
+      {
+        "pid": 295,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/EmailDaemon.framework/maild",
+        "reference": {
+          "line": 3681,
+          "byte_start": 388508,
+          "byte_end": 388595,
+          "sha256": "781f511b1f6bf6546f468fb76650c41bcdf04abb8004b9c065e70557b4a479cc",
+          "text": "  295     1   501 Ss   /System/Library/PrivateFrameworks/EmailDaemon.framework/maild"
+        }
+      },
+      {
+        "pid": 296,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/CommunicationsFilter.framework/CMFSyncAgent",
+        "reference": {
+          "line": 3682,
+          "byte_start": 388595,
+          "byte_end": 388698,
+          "sha256": "16b2160bd485762927e4558111d25990da5502867f2f179bd31fc018b037982e",
+          "text": "  296     1   501 Ss   /System/Library/PrivateFrameworks/CommunicationsFilter.framework/CMFSyncAgent"
+        }
+      },
+      {
+        "pid": 312,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/CoreServices/EscrowSecurityAlert.app/EscrowSecurityAlert",
+        "reference": {
+          "line": 3683,
+          "byte_start": 388698,
+          "byte_end": 388796,
+          "sha256": "229816e0adf71f10aa7ceea1758fdeefe5ff29131d79a0e5562bee257fc32859",
+          "text": "  312     1   501 Ss   /System/Library/CoreServices/EscrowSecurityAlert.app/EscrowSecurityAlert"
+        }
+      },
+      {
+        "pid": 315,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/splashboardd",
+        "reference": {
+          "line": 3684,
+          "byte_start": 388796,
+          "byte_end": 388847,
+          "sha256": "0db25a32a8f9e606cff8776ad65b0e7e3e0516bd60d2d1979f6c6746b86fde6f",
+          "text": "  315     1   501 Ss   /usr/libexec/splashboardd"
+        }
+      },
+      {
+        "pid": 320,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/usr/libexec/asd",
+        "reference": {
+          "line": 3685,
+          "byte_start": 388847,
+          "byte_end": 388889,
+          "sha256": "1d39c475c86fdd9722491b09c13f3b4b0c014bf2ae7bd0b4019d23822a89b318",
+          "text": "  320     1   501 Ss   /usr/libexec/asd"
+        }
+      },
+      {
+        "pid": 357,
+        "ppid": 1,
+        "uid": 501,
+        "state": "Ss",
+        "comm": "/System/Library/PrivateFrameworks/MapsSupport.framework/mapspushd",
+        "reference": {
+          "line": 3686,
+          "byte_start": 388889,
+          "byte_end": 388980,
+          "sha256": "b3c2ee595b5f6d73d560a09d258724a96ab3c69e18877cffd7c80fa257a7e94f",
+          "text": "  357     1   501 Ss   /System/Library/PrivateFrameworks/MapsSupport.framework/mapspushd"
+        }
+      },
+      {
+        "pid": 360,
+        "ppid": 63,
+        "uid": 0,
+        "state": "R",
+        "comm": "/bin/ps",
+        "reference": {
+          "line": 3687,
+          "byte_start": 388980,
+          "byte_end": 389013,
+          "sha256": "5f4d08d7d0be149641f42548d36d90a16cd816a2a1d7eefd44361ae582de395c",
+          "text": "  360    63     0 R    /bin/ps"
+        }
+      }
+    ],
+    "rejection_reasons": []
+  },
+  "process_identities": {
+    "261": {
+      "uniqueid": 261,
+      "idversion": 736,
+      "reference": {
+        "line": 2420,
+        "byte_start": 265800,
+        "byte_end": 265943,
+        "sha256": "80739127ff3e9031ac37b40629dffdc1e7543ece6ed16d7adade9e137eac179a",
+        "text": "INFERNO_EVENT_PROCESS_IDENTITY pid=261 query_result=56 errno=0 uniqueid=261 idversion=736 source=original-libproc fallback=main-tick-and-pid"
+      }
+    },
+    "375": {
+      "uniqueid": 375,
+      "idversion": 1068,
+      "reference": {
+        "line": 3740,
+        "byte_start": 394002,
+        "byte_end": 394146,
+        "sha256": "788d1420dce5daa61d76ce1307a44acb746fa42e280b730f566840eace4d7309",
+        "text": "INFERNO_EVENT_PROCESS_IDENTITY pid=375 query_result=56 errno=0 uniqueid=375 idversion=1068 source=original-libproc fallback=main-tick-and-pid"
+      }
+    }
+  },
+  "timebase": {
+    "numer": 125,
+    "denom": 3
+  },
+  "request_ticks": 18229135976,
+  "callback_ticks": 18259071375,
+  "new_hooks": {
+    "main": {
+      "ticks": 18231441663,
+      "raw": {
+        "line": 3741,
+        "byte_start": 394146,
+        "byte_end": 394286,
+        "sha256": "2cdf08f1678e6d9b488043b16382d6c147a8f02c213c0cea958be73f7a45fd90",
+        "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 02034EC7-A855-43F7-927E-070ECEBC70B4 375 1 main 18231441663 125 3"
+      },
+      "validated": {
+        "line": 3742,
+        "byte_start": 394286,
+        "byte_end": 394504,
+        "sha256": "0fb9c03e43a4c3eef200e306c095702314f9bafe8c3297750cdc55f5a16d3fc3",
+        "text": "INFERNO_TIMING_RELAY_RECORD boot=02034EC7-A855-43F7-927E-070ECEBC70B4 pid=375 sequence=1 hook=main ticks=18231441663 numer=125 denom=3 complete=0 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    },
+    "launch-delegate": {
+      "ticks": 18238254794,
+      "raw": {
+        "line": 3743,
+        "byte_start": 394504,
+        "byte_end": 394655,
+        "sha256": "2cad80c372b56e503b8b8db8f3c74cd3a87d50a9868a2a78e65a743e1015193e",
+        "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 02034EC7-A855-43F7-927E-070ECEBC70B4 375 2 launch-delegate 18238254794 125 3"
+      },
+      "validated": {
+        "line": 3744,
+        "byte_start": 394655,
+        "byte_end": 394884,
+        "sha256": "252de0cf8abc16c9846ed9eae4f6a9cb025a0578326d61c9a70083f4a17e7525",
+        "text": "INFERNO_TIMING_RELAY_RECORD boot=02034EC7-A855-43F7-927E-070ECEBC70B4 pid=375 sequence=2 hook=launch-delegate ticks=18238254794 numer=125 denom=3 complete=0 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    },
+    "window-request": {
+      "ticks": 18244546308,
+      "raw": {
+        "line": 3745,
+        "byte_start": 394884,
+        "byte_end": 395034,
+        "sha256": "c5a95241a05d67112cdaa6059c7c91d1514ec13d5650c539fe7166c91872c10d",
+        "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 02034EC7-A855-43F7-927E-070ECEBC70B4 375 3 window-request 18244546308 125 3"
+      },
+      "validated": {
+        "line": 3750,
+        "byte_start": 395772,
+        "byte_end": 396000,
+        "sha256": "64d6aacb1ce8efe601ba23598d910c15c9df9215656a6cd64d75a9f3bf6cb2cb",
+        "text": "INFERNO_TIMING_RELAY_RECORD boot=02034EC7-A855-43F7-927E-070ECEBC70B4 pid=375 sequence=3 hook=window-request ticks=18244546308 numer=125 denom=3 complete=0 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    },
+    "active": {
+      "ticks": 18246981218,
+      "raw": {
+        "line": 3751,
+        "byte_start": 396000,
+        "byte_end": 396142,
+        "sha256": "c37dc6af2e41cf0a97f8ae0fdeac5298e06466fe30b48e39466f33c0c9453c4c",
+        "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 02034EC7-A855-43F7-927E-070ECEBC70B4 375 4 active 18246981218 125 3"
+      },
+      "validated": {
+        "line": 3752,
+        "byte_start": 396142,
+        "byte_end": 396362,
+        "sha256": "5ac3b5c04b539174ee23c2b85dec1ec73b28188ee2a3a440e8d64edf1f502428",
+        "text": "INFERNO_TIMING_RELAY_RECORD boot=02034EC7-A855-43F7-927E-070ECEBC70B4 pid=375 sequence=4 hook=active ticks=18246981218 numer=125 denom=3 complete=0 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    },
+    "appeared": {
+      "ticks": 18247196214,
+      "raw": {
+        "line": 3754,
+        "byte_start": 396491,
+        "byte_end": 396635,
+        "sha256": "7d19772dccb96572646023fd43c68cad15131c61003e2d47d67715224c25b735",
+        "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 02034EC7-A855-43F7-927E-070ECEBC70B4 375 5 appeared 18247196214 125 3"
+      },
+      "validated": {
+        "line": 3755,
+        "byte_start": 396635,
+        "byte_end": 396857,
+        "sha256": "0e7ea218a1c7e905eb93683f7ed97552028f03b45b6ffb5c51de91274268c139",
+        "text": "INFERNO_TIMING_RELAY_RECORD boot=02034EC7-A855-43F7-927E-070ECEBC70B4 pid=375 sequence=5 hook=appeared ticks=18247196214 numer=125 denom=3 complete=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    }
+  },
+  "new_lifecycle": [
+    {
+      "hook": "main",
+      "raw": {
+        "line": 3756,
+        "byte_start": 396857,
+        "byte_end": 396979,
+        "sha256": "a04865d1a94652549ed72b2cd725b6d27eaae328f4ffff23f4595848b4c60081",
+        "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 02034EC7-A855-43F7-927E-070ECEBC70B4 375 1 main 0"
+      },
+      "validated": {
+        "line": 3757,
+        "byte_start": 396979,
+        "byte_end": 397139,
+        "sha256": "9416911c75c3ebc80a63fb460de202b8c3e736492ea751183fee3b3f13e8ed3d",
+        "text": "INFERNO_EVENT_RELAY_RECORD boot=02034EC7-A855-43F7-927E-070ECEBC70B4 pid=375 sequence=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    },
+    {
+      "hook": "appeared",
+      "raw": {
+        "line": 3768,
+        "byte_start": 398219,
+        "byte_end": 398345,
+        "sha256": "61d8b6cfe88a229f44be66fcc1f405f74924084d3ff1aba323de732262959088",
+        "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 02034EC7-A855-43F7-927E-070ECEBC70B4 375 5 appeared 0"
+      },
+      "validated": {
+        "line": 3769,
+        "byte_start": 398345,
+        "byte_end": 398505,
+        "sha256": "99e8cf09db274ff5ab9041ed4986ce68c617b2372819b1495384aa20dbe8cc3c",
+        "text": "INFERNO_EVENT_RELAY_RECORD boot=02034EC7-A855-43F7-927E-070ECEBC70B4 pid=375 sequence=5 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    },
+    {
+      "hook": "active",
+      "raw": {
+        "line": 3765,
+        "byte_start": 397889,
+        "byte_end": 398013,
+        "sha256": "cabf898d0485a5d1dd9f3fc5e767882e8462e1f1c612c94f703d3be72ca7f0d3",
+        "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 02034EC7-A855-43F7-927E-070ECEBC70B4 375 4 active 0"
+      },
+      "validated": {
+        "line": 3766,
+        "byte_start": 398013,
+        "byte_end": 398173,
+        "sha256": "80aeed366479e327a8849c6f1a6f079219a1832918564b9e9eb92a2da8422795",
+        "text": "INFERNO_EVENT_RELAY_RECORD boot=02034EC7-A855-43F7-927E-070ECEBC70B4 pid=375 sequence=4 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    }
+  ],
+  "open_reference": {
+    "line": 3748,
+    "byte_start": 395319,
+    "byte_end": 395520,
+    "sha256": "402f34aa76fa44b3290d8b6bd2329046cb4d6855ed1072e2f9c49a87c9fa7223",
+    "text": "INFERNO_OPEN_TIMING_V1 request_id=7f06261169f8480896cf96522609f600 boot=02034EC7-A855-43F7-927E-070ECEBC70B4 pid=374 request_ticks=18229135976 callback_ticks=18259071375 numer=125 denom=3 accepted=1"
+  },
+  "host_control_reference": {
+    "line": 9,
+    "byte_start": 4864,
+    "byte_end": 5454,
+    "sha256": "ae2d756a93c33877f3abc5df0a2de575e604673bbc782a2ed8b9aa32fb9b75d1",
+    "text": "{\"time\": 1791327445.5959086, \"request_file\": \"request-cfd69d479df145079b37db31d3153a2c.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-open-app\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"7f06261169f8480896cf96522609f600\\\", \\\"boot_uuid\\\": \\\"02034EC7-A855-43F7-927E-070ECEBC70B4\\\"}, \\\"created\\\": 1791327445.5821257}\\n\", \"sha256\": \"f367685400450ec5a130767c1c6f7d9fabeee5f2f2820278b62312011d3d84e1\", \"response\": {\"request_id\": \"7f06261169f8480896cf96522609f600\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 86}}"
+  },
+  "host_serial_reference": {
+    "line": 11,
+    "byte_start": 2759,
+    "byte_end": 3058,
+    "sha256": "abc1dfb35ee7eb0709a700b2225eb95b7479b00c0debd871a57ad5f2e1c84986",
+    "text": "{\"time\": 1791327445.596158, \"stage\": \"before-send\", \"request_id\": \"7f06261169f8480896cf96522609f600\", \"operation\": \"OPEN\", \"raw\": \"INFERNO_OPEN_V1 7f06261169f8480896cf96522609f600 02034EC7-A855-43F7-927E-070ECEBC70B4\\n\", \"sha256\": \"c893c70ca157a3140c9baec2262704fb4ba4e799ed20cbe302402980e8fee4e5\"}"
+  },
+  "host_sources": {
+    "control": {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-56/control-transcript.jsonl",
+      "bytes": 5454,
+      "sha256": "0cc2a84301cf9fb5bdb1c20852de4ccee539d549afbac215fc744473b6b8c3b8"
+    },
+    "serial_input": {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-56/serial-input-transcript.jsonl",
+      "bytes": 3321,
+      "sha256": "0e3a7437511bc75b33a4dd99d8c69d8c1a2b433aa1ca0d30afd45d41c47b7f99"
+    }
+  },
+  "intervals": {
+    "request_to_main": {
+      "delta_ticks": 2305687,
+      "nanoseconds_numerator": 288210875,
+      "nanoseconds_denominator": 3,
+      "milliseconds_approximate": 96.07029166666666
+    },
+    "main_to_appeared": {
+      "delta_ticks": 15754551,
+      "nanoseconds_numerator": 656439625,
+      "nanoseconds_denominator": 1,
+      "milliseconds_approximate": 656.439625
+    },
+    "main_to_active": {
+      "delta_ticks": 15539555,
+      "nanoseconds_numerator": 1942444375,
+      "nanoseconds_denominator": 3,
+      "milliseconds_approximate": 647.4814583333333
+    },
+    "request_to_active": {
+      "delta_ticks": 17845242,
+      "nanoseconds_numerator": 743551750,
+      "nanoseconds_denominator": 1,
+      "milliseconds_approximate": 743.55175
+    },
+    "request_to_callback": {
+      "delta_ticks": 29935399,
+      "nanoseconds_numerator": 3741924875,
+      "nanoseconds_denominator": 3,
+      "milliseconds_approximate": 1247.3082916666667
+    }
+  }
+}
