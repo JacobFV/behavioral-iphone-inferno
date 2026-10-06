@@ -327,7 +327,10 @@ int main(int argc, char **argv) {
     if(install_cache) {
         if(mount_at(system_device,"/mnt1",0))return 40;
         if(copyfile("/usr/share/inferno-launchd-cache.plist","/mnt1/System/Library/xpc/launchd.plist",0,15))return 41;
+        compare_tree("/usr/share/inferno-launchd-cache.plist","/mnt1/System/Library/xpc/launchd.plist");
+        printf("INFERNO_CACHE_READBACK bytes=%llu mismatches=%llu\n",verified_bytes,mismatches);fflush(0);
         sync();if(unmount("/mnt1",0))return 42;
+        if(mismatches)return 43;
         printf("INFERNO_LAUNCHD_CACHE_INSTALLED: explicit configuration only; signature unchanged\n");fflush(0);
     }
     if (keybag) {
