@@ -1,0 +1,50 @@
+{
+  "synthetic_only": true,
+  "guest_execution": false,
+  "parser_sha256": "69dcaae0ed48955344dff3285eb0e94a87d0416f782ad66b507004131221f3c2",
+  "positive_fixture_sha256": "6eede321507e73b6e0db56012312b8d2c575ae0547f9fd891bab92c93a550898",
+  "exact_request_to_main_nanoseconds": "3/2",
+  "CR_CR_LF_raw_offsets_verified": true,
+  "malformed_cases": [
+    {
+      "case": "partial_last_line",
+      "rejected": "Incomplete INFERNO_LAUNCH_TIMING_V1 line at byte 2596"
+    },
+    {
+      "case": "missing_hook",
+      "rejected": "Expected one complete five-hook sequence; found 4 timing records"
+    },
+    {
+      "case": "duplicate_sequence",
+      "rejected": "Timing sequence must be unique and consecutive in serial order"
+    },
+    {
+      "case": "mixed_timebase",
+      "rejected": "Mixed timing boot, app PID or timebase"
+    },
+    {
+      "case": "decreasing_ticks",
+      "rejected": "Hook ticks decrease"
+    },
+    {
+      "case": "unknown_hook",
+      "rejected": "Unknown or duplicate hook"
+    },
+    {
+      "case": "missing_provenance",
+      "rejected": "Expected exactly five validated timing provenance records"
+    },
+    {
+      "case": "ambiguous_request",
+      "rejected": "Expected one unambiguous accepted launcher request; found 2"
+    },
+    {
+      "case": "request_after_main",
+      "rejected": "Accepted request occurs after main; cannot attribute launch"
+    },
+    {
+      "case": "missing_lifecycle",
+      "rejected": "Missing actual lifecycle main for timed app PID"
+    }
+  ]
+}
