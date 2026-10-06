@@ -48,23 +48,33 @@ that directory together: the binary references local libraries/resources.
 
 ## Current execution boundary
 
-Recovery, owned native code, USB enumeration/service/reconnect and prepared APFS
-volumes have executed. Full Data byte/metadata comparison passed in guest run17;
-the host 7-Zip zero-stream observation was misleading. Prepared32GiB base is
-`.local-build/reports/container-growth-2/disks/root.raw`, SHA256
-`ad7f097b696dd3f12a0409fcd4da659a2e18ab1449c66bef9c11f733c1549ae5`.
-Direct-root-6 passes keybag and reaches launchd early-boot completion, but the
-reviewed framebuffer is still Inferno branding. Prepared21 has initialized
-keybag and effaceable state; use its complete stopped disk set. Carry all six
-auxiliary namespaces using `--auxiliary-state` along with the explicit hash-checked
-root image. App-staging-1 added and guest-verified our four owned app/launcher/job
-files; actual app and readiness-observer boots are in progress. Diagnose the UI
-blocker using actual logs and upstream software-rendering requirements. No installed
-SpringBoard or UIKit journey is established. Continue work; no user input is missing.
+Keep working; no handoff or missing user input. Full-system SpringBoard/backboardd
+processes now execute and frames show actual Apple boot/migration progress after
+pinned upstream software-rendering patches. This is not yet visible SpringBoard
+or an owned UIKit app. Full guest cache hashes and raw boot logs are committed.
 
-Owned counter app and launcher are being prepared under companion/app-probe.
-Headless `--probe-journey` is implemented but awaits actual app launch and image
-review. Continue execution, not a checkpoint handoff. See latest PROGRESS.md.
+Current long run is `.local-build/reports/app-boot-3` (1800s, started about02:07
+local), preserving stopped app-boot-2 migration state. Linux USB companion run9 is
+headless, KVM/EHCI, private socket under the external usb/run9 folder and loopback
+SSH22325. Full-system lockdown responds with version14.0/build18A5351d; syslog
+service is not available yet. Do not terminate migration at a status checkpoint.
+
+The app job loads from merged `/System/Library/xpc/launchd.plist` through the
+original `launchd_unsecure_cache=1` mode (`--launchd-unsecure-cache`); only own jobs
+were added, existing signatures unchanged. Launchd reports “Missing executable”
+for the Data launcher. Read-only guest checks before and after boot show unchanged
+launcher/app bytes, correct modes and root/mobile X_OK success. Exact launcher
+runs in recovery with original Foundation/CoreServices, expected noargs exit64.
+A separate `.local-build/reports/app-exec-diagnostic-1` now runs a System wrapper
+that drops to mobile credentials and directly execs that same launcher to report
+the underlying errno. It has no USB; long boot3 remains independent.
+
+Native postboot report export and UUID-matched symbolication show LaunchServices
+seeding waited on active installd bundle-metadata parsing, not a proven deadlock.
+Boot3 advanced to SystemAppMigrator. Preserve all six auxiliary namespaces with
+root using `--auxiliary-state`; never just copy root. Latest source/evidence and
+worker ownership are in PROGRESS.md, companion/app-probe and native-probe READMEs.
+Continue toward a reviewed app screenshot plus actual QMP tap/count change.
 
 ## Next concrete work
 
