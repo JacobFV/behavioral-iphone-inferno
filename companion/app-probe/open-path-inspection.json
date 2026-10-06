@@ -9,12 +9,13 @@
     "selector": "openApplicationWithBundleIdentifier:configuration:completionHandler:",
     "offset": "0x3ea30",
     "abi": "void method(id self, SEL, NSString *identifier, id configuration, void (^)(BOOL, NSError *) completion)",
-    "flow": "Passes completion directly to the same synchronous proxy method. optionsFromOpenConfiguration: at0x3e3e0 creates default options and explicitly handles nil configuration."
+    "flow": "Passes completion to the same synchronous proxy method. optionsFromOpenConfiguration: at0x3e3e0 handles nil configuration, then unconditionally sets LSBlockUntilComplete=true at0x3e594-0x3e5ac. Thus the original callback API has different wait semantics from the empty-options BOOL wrapper; our code adds no explicit options."
   },
   "callback_evidence": {
     "method": "-[_LSDOpenClient openApplicationWithIdentifier:options:completionHandler:]",
     "offset": "0x100850",
     "flow": "Server forwards to _LSServer_OpenApplication. Its explicit error branch at0x100970 invokes block with w1=0 and x2=NSError. Thus callback captures BOOL and error rather than inventing an error-out-pointer signature."
   },
-  "candidate_behavior": "Same dictionary registration, identifier, credentials, and configuration:nil. Log only bounded error domain, code, localizedDescription. A global block avoids stack-capture lifetime assumptions. If original synchronous call returns without callback, log open-callback-not-delivered and exit70; do not block an unknown callback queue. Existing120-second process watchdog bounds IPC. No userInfo dump, new options, entitlements, or signer identities."
+  "candidate_behavior": "Same dictionary registration, identifier, credentials, and configuration:nil. Log only bounded error domain, code, localizedDescription. A global block avoids stack-capture lifetime assumptions. If original synchronous call returns without callback, log open-callback-not-delivered and exit70; do not block an unknown callback queue. Existing120-second process watchdog bounds IPC. No userInfo dump, new options, entitlements, or signer identities.",
+  "observed_result": "app-boot-11 callback accepted0, NSPOSIXErrorDomain code60, localizedDescription Operation timed out. A transport/service timeout, not proof of app execution denial."
 }

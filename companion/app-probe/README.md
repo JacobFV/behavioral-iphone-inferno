@@ -292,4 +292,9 @@ localized description. `open-path-inspection.json` records the synchronous proxy
 and block ABI evidence. No callback wait or new launch options are invented;
 the existing process watchdog remains. Build11's original-cache audit resolves
 all90 imports across the three launchers and app. Earlier launcher and app
-artifacts retain their exact hashes. Guest callback results remain unproven.
+artifacts retain their exact hashes. Actual `app-boot-11` callback returns
+accepted=0, NSPOSIXErrorDomain code60 (operation timed out), which is not proof of
+an app execution denial. Completing the original options-helper trace shows
+that even nil configuration automatically adds `LSBlockUntilComplete=true`.
+This is the original method's waiting behavior, unlike the empty-options BOOL
+wrapper; the candidate does not supply explicit launch options.
