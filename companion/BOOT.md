@@ -171,8 +171,8 @@ and `--overlay-tools-root` for boot. Package URLs, SHA256 hashes and extracted-f
 hashes are recorded and checked. The existing emulator executable is unchanged.
 
 The source must be a stopped, retained raw image with every write mode bit cleared.
-The runner refuses writable bases and qcow2 backing chains; it never changes file
-permissions itself. After verifying and freezing a selected base, place an explicit
+The runner refuses writable bases and unrecorded qcow2 inputs; it never changes
+file permissions itself. After verifying and freezing a selected base, place an explicit
 `KEEP-OVERLAY-BACKING.json` marker in its `disks/` directory before launching a
 dependent boot. Record the raw base path/hash and intended dependent attempt in
 that marker, then update it with the actual attempt's overlay/report path. The
@@ -183,8 +183,14 @@ the marker or retire the backing file while any dependent overlay is retained.
 `root-overlay.json` and the normal report record the immutable backing path,
 full hash, file identity, qcow2 format, tool provenance and dependency warning.
 An overlay is **not standalone**: retain its base at that exact absolute path.
-Do not use `root.qcow2` as the next `--root-image`; flattening/export and chains
-are not implemented. Permission bits and hashes provide an operational contract,
+Do not use `root.qcow2` as the next `--root-image`. For a retained, normally
+stopped owned overlay, use `--overlay-base-report /absolute/report.json` instead
+of raw-root and auxiliary arguments. It validates the recorded quit and all
+stopped hashes, follows only recorded immutable ancestors, and copies the six
+auxiliary namespaces from that same report. Up to four qcow2 layers are allowed.
+Every source layer must already have all write mode bits cleared and no open
+writable descriptors. Reports, retention markers and every backing layer must
+remain at their recorded paths. Flattening/export is not implemented. Permission bits and hashes provide an operational contract,
 not protection against a privileged process replacing the file. The base is
 verified before creation and again after the emulator stops; changes fail the
 attempt. Reported `elapsed_seconds` includes postflight backing verification and
