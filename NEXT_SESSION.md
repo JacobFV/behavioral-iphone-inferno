@@ -18,8 +18,12 @@ counterf741a80b874042d38ca91b95d47ea1fe at1791329882.0656703.
 QMPbefored95aa1a05fc6e7e316e6eb7650c130eb510629c8246e8cbd92866eefc6456620,
 aftere3f5a0a26ba159cbe8d5adc2ca32d9706f186b027d173faf97404344e5092ed3.
 
-ONE61 AUTHORIZED andbootworkerlaunching controlledpredecessorcomparison:
-base disk-preparation-50/report.json (NOT55), samef088/defaultobserverOFF.
+ONE61 LIVE controlledpredecessorcomparison: runner3098207/QEMU3098661,
+hostf967103b8d; VNC/tmp/inferno-boot-andi_y6p/vnc.sock.
+Base disk-preparation-50/report.json (NOT55), samef088/defaultobserverOFF.
+Rootreviewboot-view/observed0014lock; HID_READYconfirmed(noSAMPLEbanner).
+Unlock1 547755100c2345dd8b9122fec1d3f8b2 at1791330151.75501 sent,
+after-unlock00120sobservationpending. Noother61inputs/traceyet.
 **HID54 does NOT support SAMPLE. NeverissueSAMPLE61.** Rootallinputs/control.
 InitialdisplaytracingOFF as60; ifstaleaftergenuinetap, continuous20sconfirmthen
 bounded10sstatusreadwindow; preservefailure, no falseaftercapture/secondtap.
