@@ -81,5 +81,18 @@
   "uncertainties": [
     "No actual blocked-thread stack obtained. Journal/logging block is a candidate, not established cause.",
     "UI repaint after ordinary scene transition may distinguish a recovery, but does not alone identify the original stalled component."
-  ]
+  ],
+  "followup_after_ordinary_home": {
+    "parent_observation": "Original resign/background samePID254/main2674666039 at ticks9577949196/9594579451 after tap, while console pixels remained stale. This disproves permanently blocked tap-handler/main-runloop hypothesis.",
+    "source_silent_paths": [
+      "gp_draw returns if RUN or ENABLED is zero, without runtime log.",
+      "Draw bottom half raises FRAME_PROCESSED even when neither pipe draws.",
+      "No normal display-register/draw logs: ADP_INFO is compile-disabled.",
+      "IRQ is level based on int_enable & int_status; repeated status bits coalesce until guest W1C. No observed registers establish this as the cause."
+    ],
+    "negative_log_observation": "No compressed-frame, failed-DMA or unknown-pixel-format strings found in actual41 guest-errors/stderr at inspection.",
+    "scheduler_guard": "util/async.c aio_bh_call records reentrancy trace and still invokes callback; guard does not silently drop draw callback.",
+    "host_snapshot": "display-staleness-41-host-threads.json; main host thread in poll, others poll/futex at one instant. Kernel stack files denied EACCES; no attach/stop attempted.",
+    "next_diagnostic": "Future bounded submit/BH/control-status trace or exact read-only registers can distinguish missing guest submission from inactive pipes; no display policy or redraw behavior patch is justified by current evidence."
+  }
 }
