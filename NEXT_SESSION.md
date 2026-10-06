@@ -44,13 +44,21 @@ No SAMPLE/Home/OPEN54. No55launchyet; wait observer implementation/review.
 Opt-in finite≤300s runner-owned no-input observer IMPLEMENTED606d2fbf0b,
 --headless-refresh-seconds300, defaultoff/privateUnix/noautorestart. Nativeworker
 sourcechecks and root actualfakeRFB child checks pass; independentdisk_path final
-review pending. Fixed final-report race and report-I/O-failure cleanup. ActualiOS55 LIVE runner3007096/QEMU3007540/observer3007558(start_ticks74545267),
-host5eb59960b1, same55/670 plusflag300. VNC/tmp/inferno-boot-jcbk3zky/vnc.sock.
-Serialconnected1791326268.7968633, observerconnected6268.845939/firstframe6268.8713353.
-Root reviewed actual Infernosplash observed0003. No inputs yet; rootownsallinputs.
-Observer paths headless-refresh/lifecycle.json and headless-refresh/observer/*.png.
-Rootshouldreview livechildframes and finishstrictjourney whilechildstillactive,
-thenverify actualcoverage/resources/gracefulstop andnormalall7preservation.
+review pending. Fixed final-report race and report-I/O-failure cleanup. ActualiOS55 STOPPED clean: normal0/noerror, strictverified, postflightretentionrunning.
+Host5eb59960b1, same55/670 plusflag300; rootreviewowned-refresh-55-visual.
+Boot5FEA8DD4-78B4-4FFD-A625-5BDD3ED55913/PID254/main2741120644,
+counter9df4b010d9f04611aca5be3405beb86e. QMPbefore
+3f87da4038c45d575a88192b885113a44aeac816a46e950f998f7f86f0215843,
+after6d3b4fedcf7c4d6dcf4bbcda15adaa417f34d28a7191cdf68ac4510218a3404e.
+Observer3007558/start74545267 connected1791326268.845939, firstframe6268.8713353,
+controlledstop6540.6307318/closed6540.6308424/observedexit6540.6472638, exit0,
+noerror/forcedkill, processabsent.185frames. Requested300sphase incomplete by
+normalearlyfinish; not claimed wholeboot. CPU25.01s/RSSpeak47116288 preliminary
+rawstats; disk_path independentlyauditing exactchronology/metrics. NoSAMPLE55.
+Boot_runnerpreserving raw55. Afterreview startONE56 samecurrenthost/frozen55/670
+with defaultobserverOFF to continuefreezeinvestigationandcheckdefaultpath.
+Nativeobserverimplementationcomplete606d2fbf0b, rootchecks5eb59960b1 passed;
+independentreviewno blockers. No furthercodechangesassigned.
 Boot1C81A853-1B79-4FBC-8EBD-E365B46D4827/PID252/main2739827127.
 No SAMPLE53; both slots unused. Selected actual reviewed pixels/action records
 are in owned-extended-53-visual. Same frozen55/670, no rendering fix.
