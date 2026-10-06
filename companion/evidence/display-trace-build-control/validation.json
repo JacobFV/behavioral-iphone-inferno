@@ -1,0 +1,53 @@
+{
+  "scope": "Actual Linux build and firmware-free QMP control validation only. No iOS boot, Apple display-device trace emission, app or rendering acceptance claimed.",
+  "build_command": [
+    "bash",
+    "companion/run",
+    "build",
+    "--build-root",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build",
+    "--jobs",
+    "8",
+    "--simulated-sep",
+    "--enable-kvm"
+  ],
+  "build_exit_code": 0,
+  "source_revision": "0132ad93ca4a004820ba6371d0fb3f905518cb73",
+  "binary_sha256": "1e369a50d11a417a50d8a05d9bc8dad7ebd443ca4d9b2db0b71271e55139a6b7",
+  "actual_smoke_command": [
+    "python3",
+    "companion/evidence/display-trace-control-smoke.py",
+    "--repo",
+    "/home/brandonin/Documents/behavioral-iphone-inferno",
+    "--binary",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "--manifest",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build-manifest.json",
+    "--output",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/display-trace-control-smoke-1"
+  ],
+  "actual_smoke_exit_code": 0,
+  "events": [
+    "apple_adp_submit",
+    "apple_adp_bh",
+    "apple_adp_pipe",
+    "apple_adp_output_ready",
+    "apple_adp_irq_write"
+  ],
+  "actual_checks": [
+    "all five events available and disabled by default",
+    "explicit1-second mailbox enable, then sole-owner deadline disables all five",
+    "explicit30-second mailbox enable, then early ControlMailbox.close disables all five",
+    "QMPquit47 acknowledged; emulator exit0"
+  ],
+  "artifacts_sha256": {
+    "report.json": "05bd6e595353b07478be5d31247d3c95d67ad1038d90a16fd99fab53aa14ee33",
+    "qmp-transcript.jsonl": "103118d678ee0b9d2954df35ed339ff2d6180164cebbca31e65b4ee41a8b6f0a",
+    "control-transcript.jsonl": "2ae1c3c05aab6d50fb898850ba7b41be941f62c9deeac45389f337cda797ae8b",
+    "display-trace-control.jsonl": "74d439ae7c65b2bbe912286d027782840609ddf433c23a55c619751d0f921181",
+    "build-manifest.json": "70214a5689f37e604ae064eaac22df9ce9d355abe2df59d7478bb565d46581e9",
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build.log": "0727b1ae3e50a144b6587e23050f22a071a5e59d9636dedb2d679240a196d5d6"
+  },
+  "baseline_retained": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/binaries/simulated-sep-first-unlock-e3da84b179ce/KEEP-BASELINE.json"
+}
