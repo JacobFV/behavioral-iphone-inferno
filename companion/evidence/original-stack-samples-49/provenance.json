@@ -1,0 +1,86 @@
+{
+  "source_report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49",
+  "scope": "Two explicitly requested original-tool samples from healthy boot49; live serial prefix through second END, not final-run evidence.",
+  "source_parser": {
+    "path": "companion/sample-result.py",
+    "sha256": "2e376a7ad5e3336f199feb23f887e10284209fe50caeb69b4fdf1915fbef3663"
+  },
+  "source_symbolizer": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/symbolize-cache",
+    "sha256": "6db73f0ae7a811e125fb61f8322bd8ef2a70934985b4d23c78eb64b790dab0c9"
+  },
+  "files": {
+    "symbolize-original.py": {
+      "size": 3547,
+      "sha256": "e7d1937f0d02cf27c07e1618f7fe6a954ba83e4dfd1f88ee5ef7f592d278a8a1"
+    },
+    "serial-prefix.log": {
+      "size": 380875,
+      "sha256": "1512a0b1b414978beb38a6cd63a9a20cd477c1ea49aaae536bd69c8671422266"
+    },
+    "backboardd/symbolication-audit.json": {
+      "size": 3192,
+      "sha256": "e356025798339e04cb614fd0dc6c317184af7fc57a8a8cfd0f2afc695877eeca"
+    },
+    "backboardd/symbolizer-stderr.txt": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "backboardd/original-output.txt": {
+      "size": 13070,
+      "sha256": "e0200bca1ad74d6164eacc1250fa7de3f828a63795e7c9aaa7d5a33c68d8a78b"
+    },
+    "backboardd/result.json": {
+      "size": 81442,
+      "sha256": "d3f01898780a25a444e7be7e322a083543d70e7a83249ae62e8bd2e988eae1df"
+    },
+    "backboardd/symbolizer-raw.txt": {
+      "size": 3934,
+      "sha256": "d5d982334df659cb183acaf473a5185879ad4130646d05cc7145c63d842c48a1"
+    },
+    "backboardd/request.json": {
+      "size": 136,
+      "sha256": "d3941d67a58f2d529544e10ceb4946a84df9d3eec6665d5a65f2919629a167e8"
+    },
+    "backboardd/symbolized.txt": {
+      "size": 23028,
+      "sha256": "9b40b83e5984e822877e3d7e9310424407432fb82ff68483428e60adae344991"
+    },
+    "springboard/symbolication-audit.json": {
+      "size": 4585,
+      "sha256": "33430eeb17d2e39a6b38c8430f929201e245a5cb195d15828f6220ec230cfa74"
+    },
+    "springboard/symbolizer-stderr.txt": {
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "springboard/original-output.txt": {
+      "size": 17190,
+      "sha256": "d0f35645c0a8e288da487698d5b3ad61668420557c678fa5d222a0e22d5f682d"
+    },
+    "springboard/result.json": {
+      "size": 105482,
+      "sha256": "b8c37a4623aab32038da34989e3f4f7fd2a2e1be1ed2ca4bade0ddcd1533faa4"
+    },
+    "springboard/symbolizer-raw.txt": {
+      "size": 9783,
+      "sha256": "d628ebee5cbfc29aae06055c577d49d58aaf924261b3db654b2eeb9ce1f5c9ce"
+    },
+    "springboard/request.json": {
+      "size": 137,
+      "sha256": "9e023dea70b509bebcf4fd211ed26f68b5af89e05b845519004431b70c11b23a"
+    },
+    "springboard/symbolized.txt": {
+      "size": 30770,
+      "sha256": "c0fd8a0bd81f87b4b6fd45ad61f90309318bde0bee50882bad0df43c309cea3e"
+    }
+  },
+  "conclusions": [
+    "Both original spindump invocations completed20samples with useful user-mode image UUID/base metadata, no truncation/timeouts, and unchanged target incarnation.",
+    "Backboard render-server and primary display threads mostly wait through Mach/CFRunLoop in this healthy baseline; ordinary waits alone are not a failure explanation.",
+    "SpringBoard samples include main runloop and attention/idle-timer activity; no stalled display inference from this healthy observation.",
+    "Original kernel/kext symbol-owner warnings preserved; kernel addresses remain unassigned.",
+    "Original cache nearest symbols and offset kept alongside raw frames; sampled instruction addresses do not overlap sparse patches, but this does not rule out patched code in call-path behavior.",
+    "Numeric-PID sample identity is checked before/after, not an atomic process handle. Stackshot sampling perturbs scheduling and is not a launch/resource benchmark."
+  ]
+}
