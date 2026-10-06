@@ -103,8 +103,8 @@ def run(args):
                '-drive', f'if=none,id=seed,file={output}/seed.iso,format=raw,readonly=on',
                '-device', 'virtio-blk-pci,drive=seed',
                '-netdev', 'user,id=net0' + (f',hostfwd=tcp:127.0.0.1:{args.ssh_port}-:22' if args.ssh_port else ''), '-device', 'virtio-net-pci,netdev=net0,romfile=',
-               '-device', 'usb-ehci,id=ehci', '-device',
-               'usb-tcp-remote,bus=ehci.0,conn-type=unix,conn-addr=' + str(endpoint),
+               '-device', args.controller + ',id=usbctrl', '-device',
+               'usb-tcp-remote,bus=usbctrl.0,conn-type=unix,conn-addr=' + str(endpoint),
                '-display', 'none', '-monitor', 'none',
                '-qmp', 'unix:' + str(output / 'qmp.sock') + ',server=on,wait=off',
                '-serial', 'file:' + str(output / 'serial.log')]
@@ -162,6 +162,7 @@ def main():
     parser.add_argument('--output', type=Path)
     parser.add_argument('--resume-from', type=Path, help='copy stopped run disk, seed and private credentials, preserving cloud-init instance')
     parser.add_argument('--disk', type=Path, help='copy an existing stopped companion QCOW2 to retain installed packages')
+    parser.add_argument('--controller', choices=['usb-ehci', 'qemu-xhci'], default='usb-ehci')
     parser.add_argument('--accel', choices=['tcg', 'kvm'], default='tcg')
     parser.add_argument('--cpus', type=int, choices=[1, 2], default=2)
     parser.add_argument('--memory', choices=['1G', '2G', '4G'], default='2G')

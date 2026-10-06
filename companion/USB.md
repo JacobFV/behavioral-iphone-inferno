@@ -84,3 +84,17 @@ kernel panic and returns failure even if daemon readiness occurred earlier.
 `--accel kvm` selects KVM with `-cpu host` for this Linux companion only,
 requiring a KVM-enabled binary and usable `/dev/kvm`. TCG remains the default;
 this flag does not alter t8030 acceleration.
+
+The one-vCPU EHCI retry (run4) reproduced the same abort: reducing vCPU count
+alone does not fix it. EHCI's guarded asynchronous bottom half can overlap a
+vCPU MMIO read when the remote USB handler drops BQL while waiting. Controller
+selection is exposed as `--controller usb-ehci|qemu-xhci` for isolated experiments;
+no upstream reentrancy guard has been disabled.
+
+Run6 booted the same installed Linux disk with one CPU, xHCI and KVM. QMP
+`query-kvm` returned `enabled: true, present: true`; raw queries are retained in
+`$HOME/.local/share/inferno/usb/run6/kvm-qmp.json`. Actual SSH, Linux kernel logs,
+and usbmuxd initialization establish Linux KVM execution and service readiness.
+They do not establish iOS KVM support. The guest clock initially reflected its
+saved filesystem time until synchronization; use host report times for elapsed
+measurements. Controller transport enumeration remains a separate experiment.
