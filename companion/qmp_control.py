@@ -25,6 +25,19 @@ TOUCH_TRACE_EVENTS = ('apple_mt_spi_host_event', 'apple_mt_spi_enqueue',
 # include SPI RXDATA (+0x20), which consumes data, or permit arbitrary addresses.
 TOUCH_REGISTERS = (0x24a820088, 0x235104000, 0x235104004, 0x235104008,
                    0x23510400c, 0x235104034, 0x23510404c)
+# Original N104 DT arm-io ranges[1]=0x200000000 plus disp0 reg[0]=0x30000000.
+# Each selected read returns stored state only (apple_displaypipe_v4.c).
+# Excludes submit register0x4602c, unimplemented registers and framebuffer/DMA data.
+DISPLAY_BASE = 0x230000000
+DISPLAY_REGISTERS = (
+    ('int_status', 0x45818), ('int_enable', 0x4581c),
+    ('version', 0x46020), ('frame_size', 0x4603c),
+) + tuple((f'gp{pipe}_{name}', 0x50000 + pipe * 0x8000 + offset)
+          for pipe in range(2)
+          for name, offset in (('control', 0x4), ('pixel_format', 0x1c),
+                               ('data_start', 0x30), ('data_end', 0x40),
+                               ('stride', 0x60), ('src_dimensions', 0x70),
+                               ('dest_dimensions', 0x80)))
 LIMIT = 4096
 
 
@@ -71,7 +84,7 @@ def validate(request):
     name, args = request['execute'], request['arguments']
     if not isinstance(args, dict):
         raise ValueError('Arguments must be an object')
-    if name in ('query-mice', 'query-touch-registers', 'probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after') and args == {}:
+    if name in ('query-mice', 'query-touch-registers', 'query-display-registers', 'probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after') and args == {}:
         return name, args
     if name == 'guest-open-app':
         open_line(args)
@@ -182,6 +195,16 @@ class ControlMailbox:
                     if self.serial_transport is None:
                         raise ValueError('This boot did not enable --guest-hid-serial')
                     response = self.serial_transport.transmit(args)
+                elif name == 'query-display-registers':
+                    started = time.monotonic_ns()
+                    response = {'registers': [
+                        {'name': label, 'address': hex(DISPLAY_BASE + offset),
+                         'response': qmp.execute('human-monitor-command', {
+                             'command-line': f'xp /1wx 0x{DISPLAY_BASE + offset:x}'})}
+                        for label, offset in DISPLAY_REGISTERS],
+                        'start_monotonic_ns': started,
+                        'end_monotonic_ns': time.monotonic_ns(),
+                        'scope': 'Fixed nonconsuming ADP reads; sequential, not atomic; no framebuffer contents.'}
                 elif name == 'query-touch-registers':
                     response = {'registers': [
                         {'address': hex(address), 'response': qmp.execute(
@@ -331,7 +354,7 @@ class StartupTouchTrace:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report', type=Path, required=True, help='Active boot output directory with --control-mailbox')
-    parser.add_argument('command', choices=['probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after', 'query-mice', 'query-touch-registers', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture', 'guest-open-app'])
+    parser.add_argument('command', choices=['probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after', 'query-mice', 'query-touch-registers', 'query-display-registers', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture', 'guest-open-app'])
     parser.add_argument('--arguments', default='{}', help='Allowlisted QMP arguments as JSON')
     args = parser.parse_args()
     directory = args.report.resolve(strict=True) / 'control'

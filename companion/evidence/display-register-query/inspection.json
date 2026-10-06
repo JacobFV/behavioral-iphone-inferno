@@ -1,0 +1,32 @@
+{
+  "scope": "Telemetry only through existing sole QMP mailbox owner. Future runner must load this version; no live41 mutation or query performed.",
+  "mapping": {
+    "board": "hw/arm/apple-silicon/t8030.c:2890 armio_base=ranges[1];2131 disp0 node;2152 sysbus_mmio_map(base+reg[0])",
+    "dt_input_sha256": "dbd9be96c4b18f48a1842879237ae8f27043b894a2ed6139e396dbedca232411",
+    "base": "0x230000000"
+  },
+  "read_semantics": {
+    "hw/display/apple_displaypipe_v4.c:616": "int_status qatomic_read only; int_enable qatomic_read only. Clearing occurs only in separate write handler.",
+    "hw/display/apple_displaypipe_v4.c:604": "version constant and frame_size stored dimensions only.",
+    "hw/display/apple_displaypipe_v4.c:425": "gp control/pixel format/data_start/end/stride/src/dest dimensions return stored fields. No reads issue DMA or trigger drawing."
+  },
+  "interpretation": {
+    "int_status": "bit10 OUTPUT_READY; bit20 FRAME_PROCESSED; status bits not frame counters. Current IRQ level is nonzero(status & enable).",
+    "gp_control": "bit0 RUN,bit31 ENABLED. Draw callback returns silently when either is0.",
+    "pixel_format": "bit30 COMPRESSED; current implementation logs and drops compressed frame if draw reached.",
+    "addresses": "Stored DMA addresses are register values only; query never reads framebuffer or DMA memory.",
+    "limit": "Sequential snapshot may change during18reads. It cannot establish prior submit/BH counts or reconstruct when drawing stopped; repeated snapshots/context may narrow next instrumentation."
+  },
+  "exclusions": [
+    "No writes",
+    "No arbitrary address argument",
+    "No submit register0x4602c read (unimplemented read)",
+    "No guard or policy change",
+    "No direct second QMP connection"
+  ],
+  "source_hashes": {
+    "hw/display/apple_displaypipe_v4.c": "efc1c384b3d9aa0a6c75ac5dd0daef074da87426205b0a96b647cfe0d735376a",
+    "hw/arm/apple-silicon/t8030.c": "a99faeb68b5cceba5615a80306db1f9e2fa10a9b56d4051d9cff88be922a64a5",
+    "companion/qmp_control.py": "e8a892917bd56906728264b916f829c91e44ab493288b771e4598f57fce1fc9c"
+  }
+}
