@@ -53,22 +53,33 @@ original Hello setup UI. Owned app registration and the original first-unlock AP
 transition are proven. Owned UIKit execution, touch navigation and a counter
 journey remain unproven. Do not return to the archived framework implementation.
 
-At 06:08 local, **app-boot-18 is live**, bootworker session96389, from verified
-stage38 root SHA256
-`78de9f6dc03f5481f6f8428997eb6f205c044ad7dc5a87f9b21ed2d1c64fc161` and all paired38
-namespaces. Same emulatorfda9447b/source9f92661b, private serial/mailbox,900second
-startup trace,30second frames,strictjourney,maximum7200seconds,noUSB.
-Actual HID diagnostic build43 (68976bytes SHA256
-`c1e93f41382f13cfbd4348cf0bf4ab6216c4a45c164d2855d616f9fb502c31bf`) finds
-IOHIDResource class/registryID4294968036, but original type0 IOServiceOpen returns
-0xe00002e2/connection0; original Create returnsNULL. No HID report or input in18.
-Original code maps this to outer mac_iokit_check_open after client initialization.
-Disk worker is decoding exact Sandbox operation51/class allowlist; native is
-preparing only after confirmation a possible singleton
-com.apple.security.iokit-user-client-class entry IOHIDResourceDeviceUserClient,
-retaining developer virtual-device bool. No broad manager/admin grant or policy
-patch. A candidate must preserve compiled text/sections and be reviewed before
-stop18. Next39 source must be stopped18 with all paired namespaces.
+At 06:13 local, normal shutdown of **app-boot-18** has been requested from
+bootworker session96389. Stage39 must use the normally stopped18 root and all six
+paired namespaces, never a live copy. Boot18 used verified stage38 root SHA256
+`78de9f6dc03f5481f6f8428997eb6f205c044ad7dc5a87f9b21ed2d1c64fc161`, emulatorfda9447b
+/source9f92661b, private serial/mailbox,900second startup trace,30second frames,
+strictjourney,maximum7200seconds,noUSB. Actual raw QMP confirms all six trace
+disables at the900second deadline. No input or HID report was sent in18.
+
+Actual diagnostic build43 finds original IOHIDResource registryID4294968036,
+but type0 IOServiceOpen returns0xe00002e2/connection0 and Create returnsNULL.
+Original kernel and Sandbox policy analysis now proves the exact missing class
+allowlist entitlement. Candidate44 adds only
+`com.apple.security.iokit-user-client-class = [IOHIDResourceDeviceUserClient]`
+alongside `com.apple.developer.hid.virtual.device = true`. No policy patch or
+manager/admin grant. Root independently verified actual69168byte binary SHA256
+`89d623ff804b02bba4096df1a33f3ddef574c3c6ac720feadd7996b033954d36`, extracted
+entitlements and equality of every file-backed Mach-O section against43.
+Source/evidence integrated as9718260ef9/c82e3c8442.
+
+Native worker is authorized to stage39 after stopped18 handoff, replacing only
+HID helper with44 and reusing unchanged build42 readiness/535byte job. Require
+actual69168 and69207byte readbacks, clean unmount/QMP0 and all seven hashes.
+Bootworker then runs19 with unchanged emulator and private serial transport;
+root exclusively owns input after reviewing actual device creation and screen.
+Free space was22GiB before stage39; recheck before boot19. All real boot tuples
+remain preserved. Redundant generated preparation27/37 disks also retired after
+full verification (012fec5293); do not treat them as available.
 
 Stage38 installed only the diagnostic HID bytes; prior readiness/job unchanged,
 actual readbacks68976 and69207 matched, clean unmount/QMP0/all7 hashes retained.
@@ -127,7 +138,7 @@ startup but sends no report automatically. Before an operator gesture it waits
 boundedly for its descendant IOHIDEventService, logs actual IDs/classes and sends
 7-byte down/move/up reports with a release attempt on controlled interruption.
 
-Current17 uses `--guest-hid-serial --control-mailbox`. Runner connects to private
+Current runs use `--guest-hid-serial --control-mailbox`. Runner connects to private
 Unix serial socket before cont and drains it continuously; QEMU preserves exact
 serial output in logfile. Mailbox `guest-hid-gesture` accepts only tap/swipe,
 32hex requestID, integer coords0..32767 and duration1..2000ms. Exact protocol in
@@ -163,8 +174,8 @@ Evidence and exact original-code inspection are under companion/evidence/.
 
 ## Next concrete work
 
-1. Finish exact original Sandbox class-allowlist analysis. If confirmed, review
-   the narrow entitlement-only candidate, stop18 normally, stage39 and boot19.
+1. Finish normal stop18, stage the reviewed entitlement-only build44 in39 and
+   run boot19. Original Sandbox class-allowlist analysis and root review are done.
    Keep transport and descriptor unchanged. Require actual service-open result
    and registered virtual device before claiming that boundary solved.
 2. Stage from a normally stopped paired tuple only after the next candidate is

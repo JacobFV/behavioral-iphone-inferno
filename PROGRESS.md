@@ -2,20 +2,23 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
-### Current execution boundary (05:55 local)
+### Current execution boundary (06:13 local)
 
-Boot17 is live from verified stage37 with the owned virtual touchscreen helper
-and private serial command channel. Actual helper execution/console readiness
-and one host-to-guest command/ACK roundtrip are proven. The original virtual-device
-API returnsNULL at startup and on the one explicit tap request (status-103), so
-no HID reports or UI navigation occurred. Root reviewed before/after Hello frames.
-The narrow next diagnostic queries original IOHIDResource matching and type0
-IOServiceOpen/Close results; no broad entitlement or guard change is justified.
+Boot18 normal shutdown is requested so the reviewed entitlement-only helper44
+can be staged from its stopped paired tuple. Actual18 diagnostic found original
+IOHIDResource but type0 open returned0xe00002e2 and device Create returnedNULL.
+Original kernel/Sandbox policy inspection proves the caller must list
+IOHIDResourceDeviceUserClient in com.apple.security.iokit-user-client-class.
+Candidate44 adds exactly this singleton array alongside the existing developer
+virtual-device boolean; all file-backed compiled sections match43 byte for byte.
+Root independently verified actual binary, entitlements and section hashes.
+Evidence/source: c82e3c8442 and9718260ef9. No broad grant or policy change.
 
-Stage37 byte/metadata readbacks matched68736 and69207bytes, unmount/QMP0 and all
-seven stopped hashes retained. Firmware touch still fails normal manifest-digest
-validation and remains a separate unresolved milestone. Exact source/build,
-original routing/authorization inspection and real console traces are committed.
+Next is actual stage39 readback/normal stop and boot19, then verify original
+open/device creation before root sends a bounded gesture. No input occurred in18.
+Actual17 already proved private host serial to original guest console parsing
+and ACK, but Create failed and no HID report/UI navigation occurred. Firmware
+touch still fails normal manifest-digest validation, separately unresolved.
 Owned UIKit execution and counter journey remain unproven. Keep working.
 
 Earlier investigation in this sequence:
