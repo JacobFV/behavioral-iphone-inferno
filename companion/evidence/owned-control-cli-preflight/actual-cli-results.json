@@ -1,0 +1,64 @@
+{
+  "scope": "Host CLI rejection checks against a real stopped report; no guest action submitted. Positive guest execution pending41.",
+  "source_sha256": "7d8ffa2979d68d67ef11f9c33e7278aa814d14c5defaa6c6862f1a3c7acb8cd9",
+  "checks": [
+    {
+      "argv": [
+        "companion/run",
+        "owned-control",
+        "--report",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-40",
+        "--output",
+        ".local-build/reports/owned-control-negative-stopped",
+        "tap",
+        "16384",
+        "20316",
+        "--duration-ms",
+        "150"
+      ],
+      "started_time": 1791314781.2162025,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "usage: owned-control.py [-h] --report REPORT --output OUTPUT\n                        {tap,swipe,open} ...\nowned-control.py: error: Run has already stopped\n",
+      "created_output": false
+    },
+    {
+      "argv": [
+        "companion/run",
+        "owned-control",
+        "--report",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-40",
+        "--output",
+        ".local-build/reports/owned-control-negative-invalid-coordinate",
+        "tap",
+        "32768",
+        "0",
+        "--duration-ms",
+        "150"
+      ],
+      "started_time": 1791314781.2585626,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "usage: owned-control.py [-h] --report REPORT --output OUTPUT\n                        {tap,swipe,open} ...\nowned-control.py: error: Gesture coordinates must be integers from 0 to 32767\n",
+      "created_output": false
+    },
+    {
+      "argv": [
+        "companion/run",
+        "owned-control",
+        "--report",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-40",
+        "--output",
+        ".local-build/reports/owned-control-negative-invalid-boot",
+        "open",
+        "--boot-uuid",
+        "invalid"
+      ],
+      "started_time": 1791314781.3007886,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "usage: owned-control.py [-h] --report REPORT --output OUTPUT\n                        {tap,swipe,open} ...\nowned-control.py: error: OPEN boot_uuid must be the exact current 36-character boot UUID\n",
+      "created_output": false
+    }
+  ]
+}
