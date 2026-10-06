@@ -13,7 +13,7 @@ import stat
 import subprocess
 import tempfile
 import time
-from disk_overlay import DEFAULT_TOOLS, validate_tools, validate_base, create_overlay, verify_backing
+from disk_overlay import DEFAULT_TOOLS, validate_tools, validate_base, create_overlay, verify_backing, load_stopped_overlay, create_recorded_overlay
 from probe_journey import ProbeJourney
 from qmp_control import ControlMailbox, StartupTouchTrace, SerialGestureTransport
 
@@ -143,6 +143,8 @@ def main():
                         help='existing local Unix socket of a running isolated USB companion')
     parser.add_argument('--root-image', type=Path,
                         help='raw 4096-sector GPT base; privately copied by default')
+    parser.add_argument('--overlay-base-report', type=Path,
+                        help='opt-in child overlay from a normally stopped owned overlay report; copies its six auxiliaries')
     parser.add_argument('--root-overlay', action='store_true',
                         help='opt-in qcow2 root over retained read-only raw base; six auxiliary disks stay copied raw')
     parser.add_argument('--overlay-tools-root', type=Path, default=DEFAULT_TOOLS,
@@ -175,6 +177,8 @@ def main():
         parser.error('--probe-hardware-tap cannot be combined with --guest-hid-serial')
     if args.launchd_unsecure_cache and not args.disk_boot:
         parser.error('--launchd-unsecure-cache requires --disk-boot')
+    if args.overlay_base_report and (args.root_image or args.root_sha256 or args.root_overlay or args.auxiliary_state):
+        parser.error('--overlay-base-report excludes raw root arguments, --root-overlay and --auxiliary-state')
     if args.auxiliary_state and not args.root_image:
         parser.error('--auxiliary-state requires an explicit --root-image and hash')
     if not 1 <= args.seconds <= 86400:
@@ -184,6 +188,7 @@ def main():
     # Complete validation before allocating disks or launching the emulator.
     auxiliary = {}
     overlay_tool = None
+    overlay_chain = None
     try:
         profile_path = args.profile.resolve(strict=True)
         profile, inputs = load_profile(profile_path)
@@ -202,8 +207,8 @@ def main():
             raise ValueError('--root-image and --root-sha256 must be supplied together')
         if args.root_overlay and not args.root_image:
             raise ValueError('--root-overlay requires --root-image and --root-sha256')
-        if args.disk_boot and not args.root_image:
-            raise ValueError('--disk-boot requires --root-image')
+        if args.disk_boot and not (args.root_image or args.overlay_base_report):
+            raise ValueError('--disk-boot requires --root-image or --overlay-base-report')
         root_image = args.root_image.resolve(strict=True) if args.root_image else None
         if root_image:
             if not root_image.is_file() or (not args.root_overlay and digest(root_image) != args.root_sha256):
@@ -215,6 +220,12 @@ def main():
         if args.root_overlay:
             validate_base(root_image, args.root_sha256)
             overlay_tool = validate_tools(args.overlay_tools_root)
+        if args.overlay_base_report:
+            overlay_tool = validate_tools(args.overlay_tools_root)
+            overlay_chain = load_stopped_overlay(args.overlay_base_report, overlay_tool)
+            state_report_path = Path(overlay_chain['report'])
+            for name, size, _ in DISKS[1:]:
+                auxiliary[name] = overlay_chain['auxiliary'][name + '.raw']
         if args.auxiliary_state:
             state_dir = args.auxiliary_state.resolve(strict=True)
             state_report_path = state_dir / 'report.json'
@@ -248,6 +259,9 @@ def main():
         report['root_base'] = {'path': str(root_image), 'sha256': args.root_sha256,
                                'bytes': root_image.stat().st_size, 'copied_before_use': not args.root_overlay,
                                'retained_immutable_backing': args.root_overlay}
+    if overlay_chain:
+        report['overlay_base_report'] = {key: overlay_chain[key] for key in
+                                         ('report', 'report_sha256', 'stopped_manifest', 'stopped_manifest_sha256')}
     if auxiliary:
         report['auxiliary_base'] = {'report': str(state_report_path),
                                     'report_sha256': digest(state_report_path),
@@ -316,13 +330,19 @@ def main():
             disk_dir = output / 'disks'
             disk_dir.mkdir()
             for nsid, (name, size, nstype) in enumerate(DISKS, 1):
-                use_overlay = name == 'root' and args.root_overlay
+                use_overlay = name == 'root' and bool(args.root_overlay or overlay_chain)
                 disk_format = 'qcow2' if use_overlay else 'raw'
                 disk = disk_dir / (name + ('.qcow2' if use_overlay else '.raw'))
                 if use_overlay:
-                    report['root_overlay'] = create_overlay(disk, root_image, args.root_sha256, overlay_tool)
+                    if overlay_chain:
+                        report['root_overlay'] = create_recorded_overlay(disk, Path(overlay_chain['report']), overlay_tool)
+                        if (report['root_overlay']['backing_report_sha256'] != overlay_chain['report_sha256'] or
+                                report['root_overlay']['stopped_manifest_sha256'] != overlay_chain['stopped_manifest_sha256']):
+                            raise ValueError('Overlay source report changed after initial validation')
+                    else:
+                        report['root_overlay'] = create_overlay(disk, root_image, args.root_sha256, overlay_tool)
                     (output / 'root-overlay.json').write_text(json.dumps(report['root_overlay'], indent=2) + '\n')
-                    size = root_image.stat().st_size
+                    size = report['root_overlay']['image_info']['virtual-size']
                 elif name == 'root' and root_image:
                     subprocess.run(['cp', '--reflink=auto', '--sparse=always', '--',
                                     str(root_image), str(disk)], check=True)
@@ -337,7 +357,7 @@ def main():
                         handle.truncate(size)
                 initial = 'private copy of hash-verified root base' if name == 'root' and root_image else 'fresh sparse zero-filled raw'
                 if use_overlay:
-                    initial = 'private qcow2 overlay over retained hash-verified read-only raw base'
+                    initial = 'private qcow2 overlay over retained hash-verified read-only backing'
                 if name in auxiliary:
                     initial = 'private copy of recorded auxiliary namespace'
                 report['disks'].append({'path': str(disk), 'initial_state': initial,
