@@ -11,7 +11,16 @@
       "protocol": "absent",
       "protocol-config": "absent",
       "use-static-config": "absent",
-      "compatible": "gen-mt-decider"
+      "compatible": "gen-mt-decider",
+      "image-tag": {
+        "raw_hex": "7766746d",
+        "little_endian_integer": "0x6d746677",
+        "fourcc": "mtfw"
+      },
+      "fdr-classes": [
+        "GpCl",
+        "multi-touch-calibration"
+      ]
     },
     "start_branch": "startGated reads bootloader-type and formats AppleHIDTransportBootloader%s, allocates0xfffffff0084f16d0, attaches bootloader0xfffffff0084f17a0, starts with transport/downloader0xfffffff0084f184c. If bootloader exists and use-static-config absent,0xfffffff0084f1894\u2013189c skips optional newStaticConfig/cacheConfig/setPower(2) branch."
   },
@@ -47,5 +56,13 @@
     "config_consumption": "Bootloader::loadImage at 0xfffffff0084f68b4 reads downloader+0x140 at 0xfffffff0084f6910, retains and clears pending object, and eventually calls loadPersonality at 0xfffffff0084f71ec. Bootloader::cacheConfig forwards the dictionary to Device::cacheConfig at 0xfffffff0084f9bb0.",
     "inference": "Firmware delivery is an original path that supplies runtime personality/protocol configuration absent from the DT. A registered HBPP bootloader with no protocol child and only initial configuration reset traffic is consistent with awaiting this delivery; it does not prove a particular missing file or failed validation.",
     "next_evidence": "Correlate actual registry child classes with original FUD consumer file path and its real failure/result before staging unchanged official firmware material. Do not invent static DT protocol properties."
+  },
+  "container_and_validation_limits": {
+    "selection": "AIDImageDownloader::readImageTag reads OSData image-tag at 0xfffffff0084162ec. init forwards this tag to AppleFirmwareUpdateKext::initWithData at 0xfffffff008417030. Original validateFirmware signatureType 0 calls validateImage4; that method requires nonzero tag and firmware pointer before AppleFirmwareDecodeImage4 at 0xfffffff00838cdb8. Actual usermode signatureType remains to be observed.",
+    "container_decode": "AppleFirmwareDecodeImage4 constructs firmware with flags 5 at 0xfffffff00838dd1c. img4_firmware_evaluate payload decoding invokes Img4DecodeInitPayload at 0xfffffff0083800d0, falling back to Img4DecodeInit on return 2 at 0xfffffff0083800ec. Manifest source flag bit 0 selects the same input (__img4_firmware_get_manifest at 0xfffffff00837fbcc-fc00). __Img4DecodeInitAsManifest at 0xfffffff008380288 tries IM4M then whole IMG4 before trust evaluation at 0xfffffff008380308. IM4P payload parser acceptance does not prove standalone IM4P accepted by this complete path.",
+    "payload_consumption": "Only successful firmware callback obtains decoded image bytes (0xfffffff00838ddf0-de0c) for validationComplete. AID downloader then expects original FTAB or serialized configuration payload, not arbitrary IM4P bytes. No image/container was fabricated or supplied by this inspection.",
+    "existing_upstream_patch": "hw/arm/apple-silicon/kernel_patches.c:ck_kp_img4_patches locates byte pattern210943b2 in AppleImage4 text, callback finds preceding PACIBSP and overwrites entry with MOV W0,0; RET. In original AppleImage4 this pattern is at0xfffffff00838a56c, function entry0xfffffff00838a3b4 __Img4DecodePerformTrustEvaluationWithCallbacksInternal. It changes trust evaluation, not preceding container/manifest parsing.",
+    "actual_patch_log": "app-boot-15/stderr.log line12 records allow unsigned firmware in img4_firmware_evaluate patch applied in __TEXT_EXEC. No new bypass or firmware signature edits proposed.",
+    "dt_scope": "Bounded read-only parse of pinned original DT returned218980 bytes. multi-touch is the only node containing image-tag; spi1 contains no image-tag or firmware/FUD/FDR-named properties. Runtime registry inheritance may differ and is not asserted from this DT scan."
   }
 }
