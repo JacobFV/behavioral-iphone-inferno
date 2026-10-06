@@ -2,9 +2,12 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
-### Current execution boundary (04:51 local)
+### Current execution boundary (04:54 local)
 
-Boot14 is starting from verified observer-only stage35 and paired namespaces.
+Boot14 failed before userland with an early framebuffer initialization panic.
+Its PC and preceding bandwidth failure match historical preparation16; an
+identical retry17 succeeded then. Current retry15 will use unchanged verified
+observer-only stage35 and paired namespaces after redundant preparation cleanup.
 Original installed iOS reaches reviewed Hello setup UI; the owned application
 registers successfully with a valid LaunchServices proxy. Original empty-secret
 unlock returns0 and first-unlock changes0->1. Raw lock-state0 remains
@@ -21,7 +24,7 @@ Boot14 adds bounded read-only registry observations and refined command-phase
 tracing to distinguish missing client attachment from an interrupt/protocol fault.
 Stage35 verified69,159bytes of binary plus unchanged descriptor, normal unmount,
 QMP exit0 and all seven stopped disk hashes. The new emulator built successfully
-and passed an image-free control check. Full guest results are pending. No touch
+and passed an image-free control check. The observer did not execute before14 panicked; full guest results are pending. No touch
 behavior change, fabricated unlock event, security guard suppression or activation
 workaround was introduced. Root owns live input; all UI stays on private Unix
 sockets. NEXT_SESSION.md records exact active lineage and source/binary identities.

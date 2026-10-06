@@ -53,7 +53,7 @@ Original owned app registration, normal first-unlock and visible Hello setup UI
 are now proven. Owned UIKit execution and actual touch response remain unproven. Firmware, System/Data preparation, keybag creation and renderer patches
 are established; do not return to the archived framework implementation.
 
-At04:51 local, **app-boot-14 is starting**, bootworker session84539, from
+At04:54 local, **app-boot-14 failed before userland; identical retry15 is next** from
 verified observer-only stage35 root
 SHAdd1062ad10cf09dc3b18f1c84d8bc2eb6d2d6ed2ff54bdc2c546284d44d403de and all six
 paired namespaces in .local-build/reports/disk-preparation-35. Stage35 derives
@@ -81,6 +81,11 @@ MT trace events before cont and automatically disables after180seconds. Private
 control mailbox supports query-mice and seven fixed nondestructive touch-register
 reads. Never attach a second QMP client or read SPI RXDATA. Root owns all live
 input. Same7200seconds maximum,30secondframes,strictjourney,guest-errors,noUSB.
+Boot14 exited after9.127seconds with the same early framebuffer bandwidth failure
+and panicPC00979a36c seen in historical prep16. Prep17 previously succeeded with
+identical inputs to16. No observer ran in14; its raw evidence and all seven disks
+are retained. Retry15 uses identical35 inputs after verified obsolete generated
+prep31-34 disk copies are retired to recover space; all reports/sources persist.
 Await actual registry/phase results before behavior changes or more gestures.
 
 Boot11 reached original Hello setup UI (reviewedframe0017 and finalRussianHello).
