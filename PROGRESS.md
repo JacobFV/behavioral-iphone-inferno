@@ -2,6 +2,23 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 13:36 continuation: healthy seven-event comparison45, identical repeat underway
+
+Actual build09811d4d1d produced emulator670caae5e8b86dbd07968b053ce0667328cce648935cefb8649357400f9c8e59;
+seven-event firmware-free enable/deadline/cleanup checks passed. Real45 then
+completed reviewed counter0→1 and both strict QMP captures, verifierPASS and
+normal disk preservation. Initial10second window produced about24KB/s of trace,
+including successful drawing alongside zero returns from unimplemented reads.
+The counter observation bracket contained six complete draw cycles, in contrast
+to stalled44's zero submissions. This remains a healthy diagnostic reference.
+
+Evidence `display-mmio-45-actual`, `display-mmio-45-visual`,
+`owned-display-mmio-stopped-45*` retains raw records and actual pixel review.
+One identical46 is now starting to seek the failure with the additional register
+telemetry. No rendering behavior fix or performance improvement has been claimed.
+Original spindump options were inspected locally as a possible future diagnostic;
+no new guest route or execution was introduced.
+
 ### 13:24 continuation: traced reproduction44 narrows the failure boundary
 
 44 reproduced persistent counter0 after one genuine tap1. VNC and periodic QMP

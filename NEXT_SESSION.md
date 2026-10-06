@@ -7,9 +7,9 @@ The user explicitly wants continuous work across status questions and intermedia
 milestones. No pause or handoff requested. Parallel workers are authorized for
 independent work in isolated worktrees; commit progressively.
 
-## Current execution, 2026-10-06 13:28 local
+## Current execution, 2026-10-06 13:36 local
 
-All through44 stopped.44 failed visual. ONE45 starting now. Active task: investigate the intermittent
+All through45 stopped.44 failed visual;45healthy. ONE46 starting now. Active task: investigate the intermittent
 real display freeze in41 while finishing a reproducible installed-iOS runner.
 Do not treat a healthy comparison as a fix.
 
@@ -71,10 +71,28 @@ Diagnostic-only unknownADPmain/GP/blendread/write and GPconfigurationtrace merge
 BinarySHA670caae5e8b86dbd07968b053ce0667328cce648935cefb8649357400f9c8e59,
 source09811d4d1d4dfa3c10ee8f59360f282624fc1df2. ONE45authorized/launched now,
 runner2790834. Rootallinput, initial10strace toassessvolume(timeboundnotbytebound).
-Nativeworkerindependentlyreviewingoriginalspindumplocalusage forpossiblefuturetargeted
-stacks ifneeded; no newguestroute/staging/execution authorizedyet.
-Use owned-control --trace-checkpoints plusread-onlydisplay-trace-checkpoint command.
-Hostfile-visible boundariesonly; bufferingprecludesexacteventtime/causality.
+45 completedstrictsinglecounter0→1, bothactualQMP/rootvisualreview, verifierPASS,
+normalstop/all7/ancestors. RootSHAa38ea455e1934b375cf0788d79054ba48b56c9d7617a7dfc70666a9861849248.
+BootC95B96C7-BE13-47B4-A0D0-85560590FD85/PID255/main2848266498.
+Tap90438a0d9b3d48f4af36125a02cf08ca. Before31459033647a584013a4e7570fa8684fed1e9a11c727064e00a94412ac2dbe51,
+after39edbb9493068b0a4fe856bee8bb9a69d6950ca8170bf13cbcc1c822fbdb6326.
+Initial10strace volume239364newbytes~24KB/s,23drawcycles,2745unknownMMIOrecords.
+Counter60swindowactualdisabledall7, bytebracket284895→324709 contained6complete
+GP0drawcycles and6GP1disabled,48GPconfigwrites+423unknownMMIOevents. Zero-valued
+unknownreadscoexistwithhealthydraws; notcausalalone.44lackednewMMIOeventsso cannot
+compareunknownregistervalues retrospectively. Evidencecd4ce49f5d+ce6485d05d/
+display-mmio-45-actual,447fe4390d/display-mmio-45-visual,rawd264d0757c/
+owned-display-mmio-stopped-45*. No fix for41/44.
+ONE46authorizedstartingnow identical670caae5/frozen50/TCG/keepalive. Rootallinput,
+repeat7event60swindowaroundbetaClose/counter; no needrepeatvolumecheck/rebuild.
+Nativeworkerreadytraceanalysis; bootworkerlifecycleonly. No parallelguest.
+
+Originalspindumpstaticreview11dee2e9ec/original-spindump-inspection found original
+/usr/sbin/spindump supports targetedPID/duration/interval,-onlyTarget,-noBinary,
+-noFile,-stdout,-noSymbolicate,-timelimit. OriginalbinarySHA2b4874df... retained
+outsideGit. No current invocationroute, no spindumpexecution/authorizationresult,
+no newhelper/stagingauthorizedyet. Considerfuturetargetedstackdiagnosis onlyif
+MMIOtracesunrevealing; no newgrants or copiedAppleimplementationbinary.
 
 ## Trace and control workflow
 
