@@ -1,0 +1,13 @@
+{"direction": "receive", "time": 1791283469.5267594, "raw": "{\"QMP\": {\"version\": {\"qemu\": {\"micro\": 2, \"minor\": 2, \"major\": 10}, \"package\": \"\"}, \"capabilities\": [\"oob\"]}}\r\n"}
+{"direction": "send", "time": 1791283469.5268254, "raw": "{\"execute\": \"qmp_capabilities\", \"id\": 1}\n"}
+{"direction": "receive", "time": 1791283470.9036653, "raw": "{\"return\": {}, \"id\": 1}\r\n"}
+{"direction": "send", "time": 1791283470.9037514, "raw": "{\"execute\": \"query-status\", \"id\": 2}\n"}
+{"direction": "receive", "time": 1791283470.9315171, "raw": "{\"return\": {\"status\": \"prelaunch\", \"running\": false}, \"id\": 2}\r\n"}
+{"direction": "send", "time": 1791283470.9315972, "raw": "{\"execute\": \"query-cpus-fast\", \"id\": 3}\n"}
+{"direction": "receive", "time": 1791283470.9321923, "raw": "{\"return\": [{\"thread-id\": 1296753, \"qom-type\": \"apple-a13-cpu\", \"qom-path\": \"/machine/cluster0/cpu0\", \"cpu-index\": 0, \"target\": \"aarch64\"}, {\"thread-id\": 1296754, \"qom-type\": \"apple-a13-cpu\", \"qom-path\": \"/machine/cluster0/cpu1\", \"cpu-index\": 1, \"target\": \"aarch64\"}], \"id\": 3}\r\n"}
+{"direction": "send", "time": 1791283470.9322338, "raw": "{\"execute\": \"cont\", \"id\": 4}\n"}
+{"direction": "receive", "time": 1791283470.9327438, "raw": "{\"timestamp\": {\"seconds\": 1791283470, \"microseconds\": 932538}, \"event\": \"RESUME\"}\r\n"}
+{"direction": "receive", "time": 1791283470.932848, "raw": "{\"return\": {}, \"id\": 4}\r\n"}
+{"direction": "send", "time": 1791283550.9363265, "raw": "{\"execute\": \"quit\", \"id\": 5}\n"}
+{"direction": "receive", "time": 1791283550.936889, "raw": "{\"timestamp\": {\"seconds\": 1791283550, \"microseconds\": 936537}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"}
+{"direction": "receive", "time": 1791283550.9399981, "raw": "{\"return\": {}, \"id\": 5}\r\n"}
