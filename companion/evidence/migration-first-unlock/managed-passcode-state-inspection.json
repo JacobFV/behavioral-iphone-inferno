@@ -1,0 +1,24 @@
+{
+  "scope": "Read-only original installed ManagedConfiguration corroboration of fresh null-secret simulated VM passcode-screen mismatch; no UI/credential operation",
+  "source_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+  "source_cache_uuid": "11ad39c9-e3c9-3067-a337-7287744fdcb5",
+  "image": "/System/Library/PrivateFrameworks/ManagedConfiguration.framework/ManagedConfiguration",
+  "analysis_method": "Original mapped cache segments extracted for analysis; original ObjC class/method metadata gives function identities; direct ARM64 call/compare and literal log string give state interpretation. No Apple implementation stored in Git.",
+  "isPasscodeSet": {
+    "class": "MCPasscodeManager",
+    "method_entry": "0x182fa8944",
+    "call": "0x182fa8954 calls original MKBGetDeviceLockState(NULL) at0x1822bd77c",
+    "comparison": "0x182fa8958 cmp w0,3; 0x182fa895c cset w0,ne",
+    "conclusion": "Exactly state3 reports no passcode; state0 reports a passcode present."
+  },
+  "unlockDeviceWithPasscode": {
+    "class": "MCPasscodeManager",
+    "method_entry": "0x182fa8b08",
+    "query": "0x182fa8bb4 calls MKBGetDeviceLockState(NULL); 8bb8 compares3",
+    "state3_branch": "0x182fa8be4 loads original literal MobileKeyBag is disabled.; branch8bfc skips actual MKBUnlockDevice call at8c08",
+    "limit": "This names the original no-passcode/disabled state; it is not a command to disable existing passcode protection."
+  },
+  "owned_initialization": "prepare-root.c calls original MKBKeyBagCreateSystem(NULL,\"/mnt2\"); no passcode set by owned preparation. Current simulator supports only empty-secret system-bag unlock; real SEP credential internals are not inferred.",
+  "current_model": "Current GetDeviceState DER includes ss only, deliberately omitting previously unproven sls. Original decoder defaults absent sls to0, causing passcode-present interpretation despite no configured VM secret.",
+  "candidate_scope": "Add exact sls INTEGER3 only to existing INFERNO_SIMULATED_SEP system-bag GetDeviceState response. Preserve ss first-unlock state and all operation guards; no notifications, guessed passcode, credential attempt or new transitions."
+}
