@@ -48,13 +48,20 @@ that directory together: the binary references local libraries/resources.
 
 ## Current execution boundary
 
-Keep working; no handoff or missing user input. **Boot21 stopped normally**;
-boot22 is being prepared from its paired tuple, root
+Keep working; no handoff or missing user input. **Boot22 is live**, session14442,
+report `.local-build/reports/app-boot-22`, private VNC
+`/tmp/inferno-boot-pinsov4t/vnc.sock`. Its normally stopped21 paired source root is
 `7df2996c9d33233e92556a5a9d13882f50beac47e9b2edd43b2072ac7114b402`.
-Runner4d3230563e observes app appearance/tap markers without automatic input.
-Do not pass --probe-hardware-tap. Root owns all real gestures. Boot21's sole
-swipe reached language chooser; original kernel received the first-unlock event.
-Screen Time completion and owned app execution remain unproven.
+Same e3da emulator/helper44. Runner4d3230563e observes app appearance/tap markers
+without automatic input. Do not pass --probe-hardware-tap. Root owns all gestures;
+`/tmp/inferno-explicit-gesture-22.py` targets22. Current normal UI at country
+selection after English; four requests sent (swipe, English, two country scrolls).
+Original kernel received first-unlock, API state3/first0->1. Screen Time completion
+and owned app execution remain unproven. Exact raw journals in22 report.
+Source-only launcher diagnostic e7eee456ad is committed but NOT built/staged;
+original RequestDenied generic1 hides failureReason/underlying error. Consider
+staging only if denial persists after Setup. Old21 is stopped, all7 hashes/raw
+preserved7a6ae49d0b. Obsolete cache-patching-1 generated disks retiredf7810818f9.
 
 Previous21 launch provenance (endpoint below is now stale):
 from normally stopped20 root
