@@ -1,0 +1,49 @@
+{
+  "scope": "Read-only analysis of original iOS 14 beta 5 components extracted from the immutable original System image. No original implementation bytes are committed.",
+  "sources": [
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/setup-inspection/Setup",
+      "bytes": 2019232,
+      "sha256": "f178dba8e881fb836ca17d0a4be12d352affc10cd828339f15e775df3661d6c5"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/setup-inspection/MobileKeyBagLockState",
+      "bytes": 35568,
+      "sha256": "bf9e21aea10f155fb2bb38d65047aa0d5bcaef900d13b8251a71da0d66b4cb6b"
+    }
+  ],
+  "setup": {
+    "controller": "BuddyScreenTimeController",
+    "fresh_run_skip": "setupSkipped at 0x100089658 checks hasCompletedInitialRun; fresh-run branch 0x100089734-0x100089754 calls setScreenTimeEnabled:NO.",
+    "call": "setScreenTimeEnabled: at 0x100089058 starts navigation spinner at 0x100089104, disables view interaction at 0x100089164, calls STManagementState setScreenTimeEnabled:completionHandler: at 0x100089208.",
+    "completion": "Completion 0x100089268 schedules main queue at 0x100089308. Inner block 0x100089338 stops spinner at 0x1000893bc, enables interaction at 0x100089410, logs success or NSError, then calls delegate flowItemDone: at 0x100089588.",
+    "interpretation": "A returned NSError alone would not preserve the spinner. Missing completion or a blocked main queue remains possible; this inspection does not prove the live blocked instruction."
+  },
+  "plugin": {
+    "original_path": "/System/Library/UserEventPlugins/MobileKeyBagLockState.plugin/MobileKeyBagLockState",
+    "registration": "_start matches AppleKeyStore at 0x38c4-0x38dc and registers IOGeneralInterest callback 0x39ec at 0x392c.",
+    "startup_query": "MKBDeviceUnlockedSinceBoot at 0x3944 is compared exactly to 1 at 0x3948. If 1, post_first_unlock_if_necessary at 0x3ae8 is invoked at 0x3950.",
+    "message_d00d": "Callback compares 0xe3ffd00d at 0x3a50-0x3a5c, loads kMobileKeyBagLockStatusNotifyToken at 0x3a64, and posts that token at 0x3ab8. It does not enter the first-unlock producer.",
+    "message_d00f": "Callback compares 0xe3ffd00f at 0x3a40-0x3a4c and branches via 0x3abc/0x3acc to post_first_unlock_if_necessary at 0x3ae8.",
+    "first_unlock_producer": "Queries MKBNotifyStateIsSet at 0x3b04; if unset, loads com.apple.mobile.keybagd.first_unlock at 0x3b20, notify_post at 0x3b48, then MKBNotifyStateSet at 0x3b4c. An already-set state skips posting. Query failure logs and treats the state as unset.",
+    "limitation": "The event callback does not itself requery MKBDeviceUnlockedSinceBoot. Correct original kernel transition-to-d00f semantics must be established before any simulator response action change. Keybagd filename in the notification is not evidence that keybagd produces it."
+  },
+  "live_boot20": {
+    "report": "app-boot-20",
+    "observation": "ScreenTimeAgent PID158 appears in the first readiness process snapshot before the owned helper performs the actual first-unlock query/action. Agent presence does not prove STDaemon.start ran.",
+    "timeline_serial_lines": {
+      "unlock_helper_begin": 912,
+      "readiness15_begin": 956,
+      "keybagd_pid43": 1036,
+      "ScreenTimeAgent_pid158": 1240,
+      "readiness15_end": 1304,
+      "actual_unlock_sequence": "2194-2216"
+    },
+    "actual_unlock": "state3/first0 -> one empty-secret unlock result0 -> state3/first1",
+    "limitations": [
+      "Live process snapshot alone does not establish its blocked instruction.",
+      "No direct notification, guest service mutation, or additional input was performed for this inspection."
+    ],
+    "line_number_note": "Python splitlines numbering, matching committed excerpt; CR/LF terminal output can differ from grep physical-line numbering."
+  }
+}
