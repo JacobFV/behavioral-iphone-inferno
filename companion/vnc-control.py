@@ -105,12 +105,22 @@ def main():
     actions=parser.add_mutually_exclusive_group()
     actions.add_argument('--tap', nargs=2, type=int, metavar=('X','Y'))
     actions.add_argument('--swipe', nargs=4, type=int, metavar=('X0','Y0','X1','Y1'))
+    parser.add_argument('--hold-seconds', type=float, default=None,
+                        help='stationary press before release or swipe (0..10 seconds)')
+    parser.add_argument('--swipe-seconds', type=float, default=.5,
+                        help='duration of the 20-step swipe (0.1..10 seconds)')
+    parser.add_argument('--settle-seconds', type=float, default=1,
+                        help='wait after release before capture (0..10 seconds)')
     args=parser.parse_args()
+    hold=args.hold_seconds if args.hold_seconds is not None else (0 if args.swipe else .15)
+    if not (0 <= hold <= 10 and .1 <= args.swipe_seconds <= 10 and 0 <= args.settle_seconds <= 10):
+        parser.error('timings must be finite and within their documented bounds')
     if not args.socket.is_absolute() or not args.socket.is_socket():
         parser.error('expected existing absolute private Unix socket')
     args.output.mkdir(parents=True, exist_ok=False)
     report={'kind':'headless_unix_vnc_observation', 'socket':str(args.socket),
             'captures':[], 'pointer_events':[], 'completed':False,
+            'timing_seconds':{'hold':hold, 'swipe':args.swipe_seconds, 'settle':args.settle_seconds},
             'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
     client=None
     try:
@@ -122,16 +132,16 @@ def main():
             if any(not 0 <= px < client.width or not 0 <= py < client.height for px,py in points):
                 raise ValueError('Pointer outside framebuffer')
             client.pointer(x,y,True)
+            if hold:
+                time.sleep(hold)
             if args.swipe:
                 target_x,target_y=args.swipe[2:]
                 for step in range(1,21):
-                    time.sleep(.025)
+                    time.sleep(args.swipe_seconds/20)
                     client.pointer(round(x+(target_x-x)*step/20),round(y+(target_y-y)*step/20),True)
                 x,y=target_x,target_y
-            else:
-                time.sleep(.15)
             client.pointer(x,y,False)
-            time.sleep(1)
+            time.sleep(args.settle_seconds)
             client.capture(args.output/'after.png')
         report['completed']=True
     except Exception as error:
