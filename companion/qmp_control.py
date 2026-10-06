@@ -78,6 +78,39 @@ def open_line(args):
     return f'INFERNO_OPEN_V1 {identifier} {boot}\n'.encode('ascii')
 
 
+def sample_line(args):
+    if set(args) != {'request_id', 'boot_uuid', 'target'}:
+        raise ValueError('SAMPLE requires exact request_id, boot_uuid and target fields')
+    open_line({key: args[key] for key in ('request_id', 'boot_uuid')})
+    if args['target'] not in ('SPRINGBOARD', 'BACKBOARDD'):
+        raise ValueError('SAMPLE target must be SPRINGBOARD or BACKBOARDD')
+    return f"INFERNO_SAMPLE_V1 {args['request_id']} {args['boot_uuid']} {args['target']}\n".encode('ascii')
+
+
+def sample_capability(output, args):
+    sample_line(args)
+    path = output / 'serial.log'
+    with path.open('rb') as stream:
+        data = stream.read(64 * 1024 * 1024 + 1)
+    if len(data) > 64 * 1024 * 1024:
+        raise ValueError('SAMPLE capability log exceeds 64 MiB')
+    expected = (f"INFERNO_SAMPLE_READY enabled=1 boot={args['boot_uuid']} max_requests=2 "
+                'targets=SPRINGBOARD,BACKBOARDD automatic_sample=0').encode('ascii')
+    found = []
+    banner_count = 0
+    offset = 0
+    for raw in data.splitlines(keepends=True):
+        if raw.startswith(b'INFERNO_SAMPLE_READY '):
+            banner_count += 1
+        if raw.rstrip(b'\r\n') == expected:
+            found.append({'path': str(path), 'byte_start': offset, 'byte_end': offset + len(raw),
+                          'sha256': hashlib.sha256(raw).hexdigest(), 'text': expected.decode('ascii')})
+        offset += len(raw)
+    if len(found) != 1 or banner_count != 1:
+        raise ValueError('Exactly one matching enabled SAMPLE_READY capability is required; legacy guests cannot sample')
+    return found[0]
+
+
 def validate(request):
     if not isinstance(request, dict) or set(request) != {'execute', 'arguments', 'created'}:
         raise ValueError('Expected execute, arguments and created only')
@@ -93,6 +126,9 @@ def validate(request):
         if set(args) == {'seconds'} and type(args['seconds']) is int and 1 <= args['seconds'] <= 60:
             return name, args
         raise ValueError('Display trace requires only integer seconds from1 to60')
+    if name == 'guest-stack-sample':
+        sample_line(args)
+        return name, args
     if name == 'guest-open-app':
         open_line(args)
         return name, args
@@ -259,6 +295,10 @@ class ControlMailbox:
                     capture = (self.journey.operator_capture_before if name == 'probe-capture-before'
                                else self.journey.operator_capture_after)
                     response = {'return': capture(qmp)}
+                elif name == 'guest-stack-sample':
+                    if self.serial_transport is None:
+                        raise ValueError('This boot did not enable --guest-hid-serial')
+                    response = self.serial_transport.transmit_sample(args)
                 elif name == 'guest-open-app':
                     if self.serial_transport is None:
                         raise ValueError('This boot did not enable --guest-hid-serial')
@@ -302,7 +342,10 @@ class SerialGestureTransport:
         self.thread = None
         self.stopping = threading.Event()
         self.seen = set()
+        self.hid_attempts = 0
         self.open_attempts = 0
+        self.sample_attempts = 0
+        self.output = output
         self.report = {'endpoint': str(path), 'connected': False, 'drained_bytes': 0,
                        'transmissions': [], 'automatic_replay': False}
         self.journal = output / 'serial-input-transcript.jsonl'
@@ -348,15 +391,31 @@ class SerialGestureTransport:
     def transmit_open(self, args):
         return self._transmit(open_line(args), args['request_id'], 'OPEN')
 
+    def transmit_sample(self, args):
+        capability = sample_capability(self.output, args)
+        result = self._transmit(sample_line(args), args['request_id'], 'SAMPLE')
+        result['sample_capability'] = capability
+        return result
+
     def _transmit(self, line, identifier, operation):
         if identifier in self.seen:
             raise ValueError('Duplicate serial request ID; never replay a possibly transmitted request')
         if not self.report['connected'] or self.stopping.is_set() or not self.thread.is_alive():
             raise ValueError('Serial transport is not connected and draining')
+        if len(self.seen) >= 42:
+            raise ValueError('At most 42 shared HID/OPEN/SAMPLE attempts are allowed per run')
+        if operation == 'HID':
+            if self.hid_attempts >= 32:
+                raise ValueError('At most 32 explicit HID attempts are allowed per run')
+            self.hid_attempts += 1
         if operation == 'OPEN':
             if self.open_attempts >= 8:
                 raise ValueError('At most eight explicit OPEN attempts are allowed per run')
             self.open_attempts += 1
+        if operation == 'SAMPLE':
+            if self.sample_attempts >= 2:
+                raise ValueError('At most two explicit SAMPLE attempts are allowed per run')
+            self.sample_attempts += 1
         self.seen.add(identifier)
         attempt = {'time': time.time(), 'stage': 'before-send', 'request_id': identifier, 'operation': operation,
                    'raw': line.decode('ascii'), 'sha256': hashlib.sha256(line).hexdigest()}
@@ -426,13 +485,15 @@ class StartupTouchTrace:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report', type=Path, required=True, help='Active boot output directory with --control-mailbox')
-    parser.add_argument('command', choices=['probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after', 'query-mice', 'query-touch-registers', 'query-display-registers', 'trace-display-window', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture', 'guest-open-app'])
+    parser.add_argument('command', choices=['probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after', 'query-mice', 'query-touch-registers', 'query-display-registers', 'trace-display-window', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture', 'guest-open-app', 'guest-stack-sample'])
     parser.add_argument('--arguments', default='{}', help='Allowlisted QMP arguments as JSON')
     args = parser.parse_args()
     directory = args.report.resolve(strict=True) / 'control'
     private_dir(directory)
     request = {'execute': args.command, 'arguments': json.loads(args.arguments), 'created': time.time()}
     validate(request)
+    if args.command == 'guest-stack-sample':
+        sample_capability(args.report.resolve(), request['arguments'])
     token = uuid.uuid4().hex
     write_private(directory / ('request-' + token + '.json'), request)
     reply = directory / ('reply-' + token + '.json')

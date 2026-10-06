@@ -43,9 +43,16 @@ def main():
             action.add_argument(field, type=int)
         action.add_argument('--duration-ms', type=int, required=True)
     actions.add_parser('open').add_argument('--boot-uuid', required=True)
+    sample = actions.add_parser('sample')
+    sample.add_argument('--boot-uuid', required=True)
+    sample.add_argument('--target', choices=('SPRINGBOARD', 'BACKBOARDD'), required=True)
     args = parser.parse_args()
     request = {'request_id': uuid.uuid4().hex}
-    if args.action == 'open':
+    if args.action == 'sample':
+        command = 'guest-stack-sample'
+        request.update(boot_uuid=args.boot_uuid, target=args.target)
+        validator = qmp_control.sample_line
+    elif args.action == 'open':
         command = 'guest-open-app'
         request['boot_uuid'] = args.boot_uuid
         validator = qmp_control.open_line
@@ -64,6 +71,8 @@ def main():
         if Path(record['control_mailbox']).resolve() != report / 'control':
             raise ValueError('Report control mailbox does not match its directory')
         qmp_control.private_dir(report / 'control')
+        if args.action == 'sample':
+            qmp_control.sample_capability(report, request)
         if args.trace_checkpoints:
             trace_checkpoint(report)  # Fail preflight before any command submission.
         args.output.mkdir(parents=True, mode=0o700, exist_ok=False)
