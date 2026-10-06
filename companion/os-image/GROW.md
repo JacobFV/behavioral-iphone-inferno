@@ -83,3 +83,12 @@ to 8,388,347 blocks, preserved both System file fingerprints, and cleanly
 unmounted. System statfs reports 8,379,643 total and 6,557,917 available blocks;
 this is smaller than the container total because other prepared roles reserve
 space. Growth does not require creating the prepared volumes again.
+
+The stopped prepared grown disk is `container-growth-2/disks/root.raw`, SHA256
+`ad7f097b696dd3f12a0409fcd4da659a2e18ab1449c66bef9c11f733c1549ae5`.
+QMP acknowledged quit. Host extraction independently matched all four baseline
+files: SystemVersion.plist, launchd, the entire 6 MiB gigalocker
+(SHA256 `b69dae56a14d1a8314ed40664c4033ea0a550eea2673e04df42a66ac6b9faf2c`),
+and the entire original SEP IM4P
+(SHA256 `76587673e56bbb89e178a015ebbe20fee29f841d07fa6f6cce0e9dad6800dfbe`).
+The run's `growth-verification.json` records the extraction hashes.
