@@ -1,0 +1,2439 @@
+{
+  "kind": "t8030_direct_root_experiment",
+  "attempt_completed": true,
+  "ios_booted": null,
+  "app_executed": true,
+  "milestones": {
+    "kernel_serial": {
+      "state": "observed",
+      "evidence": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+          "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+          "byte_start": 33,
+          "byte_end": 63,
+          "line": 2,
+          "text": "corecrypto_kext_start called"
+        }
+      ],
+      "scope": "Original kernel/kext diagnostic text; not boot completion."
+    },
+    "launchd_userland": {
+      "state": "observed",
+      "evidence": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+          "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+          "byte_start": 46066,
+          "byte_end": 46181,
+          "line": 761,
+          "text": "Tue Oct  6 16:01:06 2026 localhost com.apple.xpc.launchd[1] <Notice>: Early boot complete. Continuing system boot."
+        }
+      ],
+      "scope": "t8030_direct_root_experiment"
+    },
+    "owned_app_lifecycle": {
+      "state": "observed",
+      "scope": "Owned fixture main and appeared through validated loopback records only.",
+      "boot_uuid": "B566821E-4F77-42A9-9C45-CCD72EDE1F80",
+      "pid": 257,
+      "peer_pid_authenticated": false,
+      "evidence": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+          "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+          "byte_start": 62336,
+          "byte_end": 62481,
+          "line": 937,
+          "text": "INFERNO_EVENT_RELAY_READY boot=B566821E-4F77-42A9-9C45-CCD72EDE1F80 lifetime=7200 transport=tcp address=127.0.0.1 port=37373 connections_max=128"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+          "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+          "byte_start": 243367,
+          "byte_end": 243487,
+          "line": 4018,
+          "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 B566821E-4F77-42A9-9C45-CCD72EDE1F80 257 1 main 0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+          "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+          "byte_start": 243489,
+          "byte_end": 243647,
+          "line": 4020,
+          "text": "INFERNO_EVENT_RELAY_RECORD boot=B566821E-4F77-42A9-9C45-CCD72EDE1F80 pid=257 sequence=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+          "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+          "byte_start": 243649,
+          "byte_end": 243691,
+          "line": 4022,
+          "text": "INFERNO_UIKIT_PROBE_V1 event=main count=0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+          "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+          "byte_start": 246301,
+          "byte_end": 246425,
+          "line": 4066,
+          "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 B566821E-4F77-42A9-9C45-CCD72EDE1F80 257 5 appeared 0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+          "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+          "byte_start": 246427,
+          "byte_end": 246585,
+          "line": 4068,
+          "text": "INFERNO_EVENT_RELAY_RECORD boot=B566821E-4F77-42A9-9C45-CCD72EDE1F80 pid=257 sequence=5 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+          "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+          "byte_start": 246587,
+          "byte_end": 246633,
+          "line": 4070,
+          "text": "INFERNO_UIKIT_PROBE_V1 event=appeared count=0"
+        }
+      ]
+    },
+    "strict_owned_journey": {
+      "state": "observed",
+      "evidence": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+          "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+          "byte_start": 246301,
+          "byte_end": 246425,
+          "line": 4066,
+          "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 B566821E-4F77-42A9-9C45-CCD72EDE1F80 257 5 appeared 0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+          "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+          "byte_start": 246427,
+          "byte_end": 246585,
+          "line": 4068,
+          "text": "INFERNO_EVENT_RELAY_RECORD boot=B566821E-4F77-42A9-9C45-CCD72EDE1F80 pid=257 sequence=5 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+          "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+          "byte_start": 246587,
+          "byte_end": 246633,
+          "line": 4070,
+          "text": "INFERNO_UIKIT_PROBE_V1 event=appeared count=0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+          "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+          "byte_start": 317065,
+          "byte_end": 317184,
+          "line": 5494,
+          "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 B566821E-4F77-42A9-9C45-CCD72EDE1F80 257 8 tap 1"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+          "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+          "byte_start": 317186,
+          "byte_end": 317344,
+          "line": 5496,
+          "text": "INFERNO_EVENT_RELAY_RECORD boot=B566821E-4F77-42A9-9C45-CCD72EDE1F80 pid=257 sequence=8 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+          "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+          "byte_start": 317346,
+          "byte_end": 317387,
+          "line": 5498,
+          "text": "INFERNO_UIKIT_PROBE_V1 event=tap count=1"
+        }
+      ],
+      "automated_visual_verification": false,
+      "visual_review": "Operator review remains required; frame hashes do not interpret pixels.",
+      "input_mode": "operator-observation",
+      "frames": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/probe-before.ppm",
+          "sha256": "a0cb9cd7a90bd52b0c12e19f0d93bc1db4cc2f4ad89f69cb5b6a7db5bd52d8dd",
+          "role": "probe-before"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/probe-after.ppm",
+          "sha256": "b6ec1347408a659a54443f7a03043fecbd968953d08f21aa62580c4bd960a5b8",
+          "role": "probe-after"
+        }
+      ],
+      "operator_capture_requests_recorded": true
+    }
+  },
+  "milestone_source_sha256": "4aefd213f1587f2b93969378f34183053375d5d2a088e013d4626ebab0a5571a",
+  "milestone_note": "QMP running and framebuffer captures alone do not establish iOS boot.",
+  "profile_path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/profile.json",
+  "profile_sha256": "7939d609b99b8223863dba0b0af9d181526b420c0023cc9520563fd7e0979ed8",
+  "inputs": {
+    "kernel": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/kernel-kernelcache.research.iphone12b",
+      "sha256": "cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3",
+      "bytes": 17429507
+    },
+    "dtb": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+      "sha256": "dbd9be96c4b18f48a1842879237ae8f27043b894a2ed6139e396dbedca232411",
+      "bytes": 42553
+    },
+    "trustcache": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache",
+      "sha256": "af33b3466bd828bf1ccaa1ab35d060bfcce62ade26ee74acf176501b00ea0d7f",
+      "bytes": 4931
+    },
+    "ramdisk": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/ramdisk-038-44135-124.dmg",
+      "sha256": "4013d9b3bb6c7fa0ff82397effc032b6afdb6f3c5e1672782698119dd9b3f704",
+      "bytes": 104685595
+    }
+  },
+  "binary": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+  "binary_sha256": "670caae5e8b86dbd07968b053ce0667328cce648935cefb8649357400f9c8e59",
+  "build_manifest_path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build-manifest.json",
+  "build_manifest_sha256": "0b72d85ba4b2c9029e7a10cbce357d663a06417a307c9d3522ef4a4d4872a0b1",
+  "build_manifest": {
+    "schema": "inferno.local-linux-build.v1",
+    "purpose": "build provenance only; no guest boot or firmware execution claim",
+    "sep_mode": "simulated-unencrypted",
+    "kvm_enabled": true,
+    "upstream_base": "cc4302a99167abec69b714cfd00c38caece7e7de",
+    "source_revision": "09811d4d1d4dfa3c10ee8f59360f282624fc1df2",
+    "source_diff": "",
+    "mlib_revision": "d0fd65a8695218ffabf2aa543ce51ca3af69536f",
+    "host_machine": "aarch64",
+    "host_platform": "Linux-6.17.0-1026-nvidia-aarch64-with-glibc2.39",
+    "python": "3.12.3",
+    "compiler": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "meson": "1.7.2",
+    "ninja": "1.11.1.git.kitware.jobserver-1",
+    "inputs": {
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/build-linux.sh": "eca6961c7c82b6a14a15ba184f944aa2e1e1660dbf6546e40e3508cf17337267",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/bootstrap-linux.py": "8e1982776284e01d33e993c8400dc55c3af7532143f9c744dea2a7fc595a227d",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/linux-dependencies-arm64.json": "754a310b006a6b504a214390a3c59b7d5811da7f0600a7b4ef35f7fa48bff40d",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/build-tools-arm64.txt": "310ef416baa0a946c58bb88e7b7e007bdef03a0fae7e099846f6d3a1a926c372",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/downloads/nettle-3.10.2.tar.gz": "fe9ff51cb1f2abb5e65a6b8c10a92da0ab5ab6eaf26e7fc2b675c45f1fb519b5",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/config-host.mak": "0419523d1df6e73d6aacebdd361ba4ce5204b5b68e864990b0c5ac6f18e28f79",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/config.status": "e7f1a539641d37b6cf47e81d15385189e6961c8a58acdb17008f36735319b242",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/meson-info/intro-buildoptions.json": "14ce66bcd20612203c921bbaf0fd4520bd97bc1f9c26aed368dd4d72a80777a9"
+    },
+    "binary": {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+      "sha256": "670caae5e8b86dbd07968b053ce0667328cce648935cefb8649357400f9c8e59",
+      "bytes": 114759624
+    },
+    "system_dependencies": {
+      "glib-2.0": "2.80.0",
+      "pixman-1": "0.42.2",
+      "zlib": "1.3",
+      "libpng": "1.6.43"
+    },
+    "keycodemapdb_revision": "f5772a62ec52591ff6870b7e8ef32482371f22c6"
+  },
+  "runner_sha256": "9f8825f721d2b50e535b27a814849527e66e540516730ba1322ce15a49275b32",
+  "companion_revision": "48294c265e70d23a80261ed204b75a657b0a49b0",
+  "duration_limit_seconds": 7200.0,
+  "disks": [
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/root.qcow2",
+      "initial_state": "private qcow2 overlay over retained hash-verified read-only backing",
+      "bytes": 34359738368,
+      "format": "qcow2",
+      "nsid": 1,
+      "nstype": 1
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/firmware.raw",
+      "initial_state": "private copy of recorded auxiliary namespace",
+      "bytes": 8388608,
+      "format": "raw",
+      "nsid": 2,
+      "nstype": 2,
+      "private_copy_mode": "0o600"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/syscfg.raw",
+      "initial_state": "private copy of recorded auxiliary namespace",
+      "bytes": 131072,
+      "format": "raw",
+      "nsid": 3,
+      "nstype": 3,
+      "private_copy_mode": "0o600"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/ctrl_bits.raw",
+      "initial_state": "private copy of recorded auxiliary namespace",
+      "bytes": 8192,
+      "format": "raw",
+      "nsid": 4,
+      "nstype": 4,
+      "private_copy_mode": "0o600"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/nvram.raw",
+      "initial_state": "private copy of recorded auxiliary namespace",
+      "bytes": 8192,
+      "format": "raw",
+      "nsid": 5,
+      "nstype": 5,
+      "private_copy_mode": "0o600"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/effaceable.raw",
+      "initial_state": "private copy of recorded auxiliary namespace",
+      "bytes": 4096,
+      "format": "raw",
+      "nsid": 6,
+      "nstype": 6,
+      "private_copy_mode": "0o600"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/panic_log.raw",
+      "initial_state": "private copy of recorded auxiliary namespace",
+      "bytes": 1048576,
+      "format": "raw",
+      "nsid": 7,
+      "nstype": 8,
+      "private_copy_mode": "0o600"
+    }
+  ],
+  "observations": [
+    {
+      "return": {
+        "status": "running",
+        "running": true
+      },
+      "id": 45
+    },
+    {
+      "return": [
+        {
+          "thread-id": 3027427,
+          "qom-type": "apple-a13-cpu",
+          "qom-path": "/machine/cluster0/cpu0",
+          "cpu-index": 0,
+          "target": "aarch64"
+        },
+        {
+          "thread-id": 3027428,
+          "qom-type": "apple-a13-cpu",
+          "qom-path": "/machine/cluster0/cpu1",
+          "cpu-index": 1,
+          "target": "aarch64"
+        }
+      ],
+      "id": 46
+    }
+  ],
+  "overlay_base_report": {
+    "report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/report.json",
+    "report_sha256": "e23bd14b364a229fde1369f9aad2480277dbc2ed455faa52b65c4ca2a670100a",
+    "stopped_manifest": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/stopped-disk-hashes.json",
+    "stopped_manifest_sha256": "ed45571309e76a18e297533827afffbc19a5113453d2cefd38e165cf08df0a8a"
+  },
+  "auxiliary_base": {
+    "report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/report.json",
+    "report_sha256": "e23bd14b364a229fde1369f9aad2480277dbc2ed455faa52b65c4ca2a670100a",
+    "namespaces": {
+      "firmware": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/disks/firmware.raw",
+        "bytes": 8388608,
+        "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74",
+        "format": "raw"
+      },
+      "syscfg": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/disks/syscfg.raw",
+        "bytes": 131072,
+        "sha256": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+        "format": "raw"
+      },
+      "ctrl_bits": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/disks/ctrl_bits.raw",
+        "bytes": 8192,
+        "sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+        "format": "raw"
+      },
+      "nvram": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/disks/nvram.raw",
+        "bytes": 8192,
+        "sha256": "761d2b1b508d8a07e842f767b65a153fd1b47c46a88cf160412f708b58c548bb",
+        "format": "raw"
+      },
+      "effaceable": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/disks/effaceable.raw",
+        "bytes": 4096,
+        "sha256": "0f559fb9b151252796f2122984cd498c790673cde9888b8a6e2d106653dcc902",
+        "format": "raw"
+      },
+      "panic_log": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/disks/panic_log.raw",
+        "bytes": 1048576,
+        "sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+        "format": "raw"
+      }
+    },
+    "copied_before_use": true
+  },
+  "probe_journey": {
+    "state": "completed",
+    "completed": true,
+    "input_mode": "operator-observation",
+    "automatic_input": false,
+    "visual_review_required": true,
+    "captures": {
+      "probe-before": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/probe-before.ppm",
+        "width": 828,
+        "height": 1792,
+        "sha256": "a0cb9cd7a90bd52b0c12e19f0d93bc1db4cc2f4ad89f69cb5b6a7db5bd52d8dd"
+      },
+      "probe-after": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/probe-after.ppm",
+        "width": 828,
+        "height": 1792,
+        "sha256": "b6ec1347408a659a54443f7a03043fecbd968953d08f21aa62580c4bd960a5b8"
+      }
+    },
+    "appearance_marker_observed": true,
+    "input_devices": {
+      "return": [
+        {
+          "index": 1,
+          "name": "Apple Multitouch HID SPI",
+          "current": true,
+          "absolute": true
+        }
+      ],
+      "id": 27
+    },
+    "before_capture_operator_requested": true,
+    "tap_marker_observed": true,
+    "after_capture_operator_requested": true
+  },
+  "probe_journey_source_sha256": "1c4cbb542a79b85560433d62726123b99555ad0a47522d5ecd659faf3a04f308",
+  "control_mailbox": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/control",
+  "probe_run_control": {
+    "keep_running": true,
+    "finish_requested": true
+  },
+  "control_source_sha256": "1859298b8b8dc99d0c46786fd09dd81c0ef6f2e7fbf80b1511a7b8a4aefb8c03",
+  "touch_startup_trace": {
+    "limit_seconds": 900,
+    "events": [
+      "apple_mt_spi_host_event",
+      "apple_mt_spi_enqueue",
+      "apple_mt_spi_dequeue",
+      "apple_mt_spi_tx_drained",
+      "apple_mt_spi_boot_command",
+      "apple_mt_spi_control"
+    ],
+    "enable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 5
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 6
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 7
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 8
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 9
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 10
+        }
+      }
+    ],
+    "disable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 48
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 49
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 50
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 51
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 52
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 53
+        }
+      }
+    ],
+    "start_time": 1791327661.8160205,
+    "deadline_time": 1791328561.8160207,
+    "stop_time": 1791328149.8716567,
+    "stop_reason": "runner cleanup",
+    "all_disabled": true
+  },
+  "headless_refresh": {
+    "kind": "opt-in-active-headless-refresh",
+    "requested_seconds": 60,
+    "automatic_input": false,
+    "auto_restart": false,
+    "state": "ended",
+    "clock_ticks_per_second": 100,
+    "page_size": 4096,
+    "coverage_complete_for_whole_boot": false,
+    "limits": [
+      "VNC refresh stimulates guest display work; not passive observation.",
+      "Observer CPU/RSS below is separate from emulator resources.",
+      "CPU is sampled delta, not exact child lifetime CPU; RSS peak is sampled.",
+      "No claim to fix earlier missing display submissions.",
+      "Coverage starts at actual connection and ends on disconnect/exit; not guest presentation."
+    ],
+    "command": [
+      "/usr/bin/python3",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/vnc-control.py",
+      "--socket",
+      "/tmp/inferno-boot-c7cg6449/vnc.sock",
+      "--output",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer",
+      "--observe-seconds",
+      "60",
+      "--runner-observer",
+      "--settle-seconds",
+      "0"
+    ],
+    "socket": "/tmp/inferno-boot-c7cg6449/vnc.sock",
+    "script_sha256": "99016edaf5f58ef7a6e2433a03d5a465d46c440053bdcfc2ec06a93124d5d29f",
+    "lifecycle_source_sha256": "a19f60baf3aa4351998ca8fe977f5989797af7bcb125c6185948981c3c9c134a",
+    "spawn_time": 1791327661.821256,
+    "spawn_monotonic": 746845.697734288,
+    "pid": 3027433,
+    "start_ticks": 74684569,
+    "resource_last": {
+      "time": 1791327722.0603993,
+      "monotonic": 746905.936877488,
+      "proc_stat": "3027433 (python3) R 3026891 3026891 3026891 0 -1 4194304 113009 0 0 0 398 24 0 0 20 0 1 0 74684569 78196736 11480 18446744073709551615 4194304 10541936 281474016647216 0 0 0 0 16781312 16386 0 0 0 17 16 0 0 0 0 0 10616216 12102000 807395328 281474016650557 281474016650874 281474016650874 281474016657383 0\n",
+      "start_ticks": 74684569,
+      "cpu_ticks": 422,
+      "rss_bytes": 47022080
+    },
+    "resource_first": {
+      "time": 1791327661.8216658,
+      "monotonic": 746845.698143777,
+      "proc_stat": "3027433 (python3) R 3026891 3026891 3026891 0 -1 4194304 7 0 0 0 0 0 0 0 20 0 1 0 74684569 8192000 0 18446744073709551615 4194304 10541936 281474016647216 0 0 0 0 0 0 0 0 0 17 5 0 0 0 0 0 10616216 12102000 807395328 281474016650557 281474016650874 281474016650874 281474016657383 0\n",
+      "start_ticks": 74684569,
+      "cpu_ticks": 0,
+      "rss_bytes": 0
+    },
+    "rss_peak_bytes": 47022080,
+    "cpu_observed_seconds": 4.22,
+    "coverage_active": false,
+    "observer_report": {
+      "kind": "headless_unix_vnc_observation",
+      "socket": "/tmp/inferno-boot-c7cg6449/vnc.sock",
+      "captures": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/before.png",
+          "sha256": "b69759b56f5acaeb3dc999b7f7a94a8d5b0327ad161a9f734d0df0dc6b982746",
+          "time": 1791327661.9006927,
+          "requested_time": 1791327661.8501954,
+          "received_time": 1791327661.877803,
+          "request_to_receive_seconds": 0.027607887983322144
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/settled.png",
+          "sha256": "b69759b56f5acaeb3dc999b7f7a94a8d5b0327ad161a9f734d0df0dc6b982746",
+          "time": 1791327662.003274,
+          "requested_time": 1791327661.9029112,
+          "received_time": 1791327661.9835563,
+          "request_to_receive_seconds": 0.08064642897807062
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0001.png",
+          "sha256": "b69759b56f5acaeb3dc999b7f7a94a8d5b0327ad161a9f734d0df0dc6b982746",
+          "time": 1791327663.1530256,
+          "requested_time": 1791327663.0067182,
+          "received_time": 1791327663.1333325,
+          "request_to_receive_seconds": 0.1266140410443768
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0002.png",
+          "sha256": "b69759b56f5acaeb3dc999b7f7a94a8d5b0327ad161a9f734d0df0dc6b982746",
+          "time": 1791327664.4442942,
+          "requested_time": 1791327664.1565614,
+          "received_time": 1791327664.42464,
+          "request_to_receive_seconds": 0.26807867700699717
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0003.png",
+          "sha256": "b69759b56f5acaeb3dc999b7f7a94a8d5b0327ad161a9f734d0df0dc6b982746",
+          "time": 1791327665.5547662,
+          "requested_time": 1791327665.4475906,
+          "received_time": 1791327665.535049,
+          "request_to_receive_seconds": 0.08745873300358653
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0004.png",
+          "sha256": "b69759b56f5acaeb3dc999b7f7a94a8d5b0327ad161a9f734d0df0dc6b982746",
+          "time": 1791327666.8628516,
+          "requested_time": 1791327666.5586047,
+          "received_time": 1791327666.8431654,
+          "request_to_receive_seconds": 0.2845602680463344
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0005.png",
+          "sha256": "b69759b56f5acaeb3dc999b7f7a94a8d5b0327ad161a9f734d0df0dc6b982746",
+          "time": 1791327668.376053,
+          "requested_time": 1791327667.8655655,
+          "received_time": 1791327668.3558998,
+          "request_to_receive_seconds": 0.4903344470076263
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0006.png",
+          "sha256": "b69759b56f5acaeb3dc999b7f7a94a8d5b0327ad161a9f734d0df0dc6b982746",
+          "time": 1791327670.0838997,
+          "requested_time": 1791327669.3790848,
+          "received_time": 1791327670.0641441,
+          "request_to_receive_seconds": 0.685059336014092
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0007.png",
+          "sha256": "b69759b56f5acaeb3dc999b7f7a94a8d5b0327ad161a9f734d0df0dc6b982746",
+          "time": 1791327671.9946086,
+          "requested_time": 1791327671.087861,
+          "received_time": 1791327671.9748166,
+          "request_to_receive_seconds": 0.8869557459838688
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0008.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327674.1007383,
+          "requested_time": 1791327672.998135,
+          "received_time": 1791327674.0841026,
+          "request_to_receive_seconds": 1.0859672860242426
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0009.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327675.2313294,
+          "requested_time": 1791327675.10428,
+          "received_time": 1791327675.2147408,
+          "request_to_receive_seconds": 0.11046085099224001
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0010.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327676.4300227,
+          "requested_time": 1791327676.2349591,
+          "received_time": 1791327676.400514,
+          "request_to_receive_seconds": 0.16555514105129987
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0011.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327677.6401446,
+          "requested_time": 1791327677.4330158,
+          "received_time": 1791327677.6235018,
+          "request_to_receive_seconds": 0.19048606301657856
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0012.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327678.9215493,
+          "requested_time": 1791327678.6436462,
+          "received_time": 1791327678.9049811,
+          "request_to_receive_seconds": 0.261334965005517
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0013.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327680.2500525,
+          "requested_time": 1791327679.9254177,
+          "received_time": 1791327680.2333105,
+          "request_to_receive_seconds": 0.3078928510658443
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0014.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327681.6299164,
+          "requested_time": 1791327681.2532218,
+          "received_time": 1791327681.6131334,
+          "request_to_receive_seconds": 0.3599115980323404
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0015.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327683.0598443,
+          "requested_time": 1791327682.633366,
+          "received_time": 1791327683.043257,
+          "request_to_receive_seconds": 0.40989102702587843
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0016.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327684.5411706,
+          "requested_time": 1791327684.0634649,
+          "received_time": 1791327684.5245593,
+          "request_to_receive_seconds": 0.46109428396448493
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0017.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327686.0709796,
+          "requested_time": 1791327685.5447445,
+          "received_time": 1791327686.0543926,
+          "request_to_receive_seconds": 0.5096483819652349
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0018.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327687.6464255,
+          "requested_time": 1791327687.0710921,
+          "received_time": 1791327687.6298304,
+          "request_to_receive_seconds": 0.5587382889352739
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0019.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327689.2757578,
+          "requested_time": 1791327688.6465375,
+          "received_time": 1791327689.2591171,
+          "request_to_receive_seconds": 0.6125796809792519
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0020.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327690.9557917,
+          "requested_time": 1791327690.27598,
+          "received_time": 1791327690.9391518,
+          "request_to_receive_seconds": 0.6631718960124999
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0021.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327692.686363,
+          "requested_time": 1791327691.9560027,
+          "received_time": 1791327692.6696868,
+          "request_to_receive_seconds": 0.7136839819140732
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0022.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327694.4660861,
+          "requested_time": 1791327693.686471,
+          "received_time": 1791327694.4494007,
+          "request_to_receive_seconds": 0.7629298259271309
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0023.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327696.296168,
+          "requested_time": 1791327695.466195,
+          "received_time": 1791327696.2794232,
+          "request_to_receive_seconds": 0.8132282010046765
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0024.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327698.1763935,
+          "requested_time": 1791327697.2963738,
+          "received_time": 1791327698.1597626,
+          "request_to_receive_seconds": 0.8633889270713553
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0025.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327700.1249945,
+          "requested_time": 1791327699.1764936,
+          "received_time": 1791327700.0956268,
+          "request_to_receive_seconds": 0.9191335539799184
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0026.png",
+          "sha256": "fbabef9882d3f271abf72dff032218050cb4693490c977a53025169d7a932e30",
+          "time": 1791327702.087081,
+          "requested_time": 1791327701.1251268,
+          "received_time": 1791327702.0704265,
+          "request_to_receive_seconds": 0.9452994239982218
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0027.png",
+          "sha256": "676b676e0cc4e6ff2800f8cfc58ac698968e416d1fd21508d05d51f4c120bd39",
+          "time": 1791327704.1354961,
+          "requested_time": 1791327703.0872922,
+          "received_time": 1791327704.1059804,
+          "request_to_receive_seconds": 1.0186886539449915
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0028.png",
+          "sha256": "07f36878f675db13b07ac81f4f9b00e9ac1a624075520ce50e2fb8dc34001022",
+          "time": 1791327706.4759374,
+          "requested_time": 1791327705.1356146,
+          "received_time": 1791327706.1840563,
+          "request_to_receive_seconds": 1.0484414759557694
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0029.png",
+          "sha256": "00e0388c92ffdfde8a1644c61f14ddafe0f264bdbe2e2eca79a51db6ca84d8c7",
+          "time": 1791327708.2199774,
+          "requested_time": 1791327707.4760485,
+          "received_time": 1791327707.927672,
+          "request_to_receive_seconds": 0.4516235589981079
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0030.png",
+          "sha256": "630191adbeb99f99e5ad9e1209fbf4eef203434e7e6ef96d3d9694adc40c33a2",
+          "time": 1791327709.785391,
+          "requested_time": 1791327709.2200804,
+          "received_time": 1791327709.4932177,
+          "request_to_receive_seconds": 0.2731376669835299
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0031.png",
+          "sha256": "ca5b668845ec72a485cbed7113468889ca5fe34be4b53576150e3d5c32229358",
+          "time": 1791327711.4536133,
+          "requested_time": 1791327710.7854984,
+          "received_time": 1791327711.1615708,
+          "request_to_receive_seconds": 0.3760724380845204
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0032.png",
+          "sha256": "bd61b8062172367f490b21e510261b788256df173f5432861fdadfc2f5b3b5bc",
+          "time": 1791327713.0386846,
+          "requested_time": 1791327712.453722,
+          "received_time": 1791327712.7468848,
+          "request_to_receive_seconds": 0.2931630910607055
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0033.png",
+          "sha256": "adcb482df1992283a98136f94730cf72a868638388d0d313f84eef73440b2d3f",
+          "time": 1791327714.5807364,
+          "requested_time": 1791327714.0389163,
+          "received_time": 1791327714.2886927,
+          "request_to_receive_seconds": 0.24977690901141614
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0034.png",
+          "sha256": "bf839006797d73ae0b88d98e635e621aa329ffe16b44eda38255e8034c5afd68",
+          "time": 1791327716.10078,
+          "requested_time": 1791327715.580856,
+          "received_time": 1791327715.808993,
+          "request_to_receive_seconds": 0.22813708102330565
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0035.png",
+          "sha256": "8567787a0ac37b60e25a8918d0c3e8daa80d3f3ecb5c6f398331f0cce3b04119",
+          "time": 1791327717.613749,
+          "requested_time": 1791327717.1008894,
+          "received_time": 1791327717.3214757,
+          "request_to_receive_seconds": 0.2205868560122326
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0036.png",
+          "sha256": "f144b3ea8fec29a94546cfceaa6ea8bc5716d606640791cfa8ba9015da872675",
+          "time": 1791327719.022017,
+          "requested_time": 1791327718.6138613,
+          "received_time": 1791327718.7300084,
+          "request_to_receive_seconds": 0.1161469459766522
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0037.png",
+          "sha256": "a5a3b438bd9a3ec9fa844dc9cddbe7e435ab76fbc1b43e08a3eccfb3de0f0565",
+          "time": 1791327720.5888715,
+          "requested_time": 1791327720.0222347,
+          "received_time": 1791327720.2972212,
+          "request_to_receive_seconds": 0.2749869200633839
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/headless-refresh/observer/observed-0038.png",
+          "sha256": "122a390efbd5f9aead561839cd6ed0aa812d7aade98c9b862538c990eea5e3e5",
+          "time": 1791327722.1214404,
+          "requested_time": 1791327721.5890944,
+          "received_time": 1791327721.829828,
+          "request_to_receive_seconds": 0.24073368695098907
+        }
+      ],
+      "pointer_events": [],
+      "home_button_events": [],
+      "completed": true,
+      "timing_seconds": {
+        "hold": 0.15,
+        "swipe": 0.5,
+        "settle": 0.0
+      },
+      "observation_seconds": 60.0,
+      "capture_limit": "Frame receipt is not guest presentation time; display refresh can stimulate guest rendering.",
+      "script_sha256": "99016edaf5f58ef7a6e2433a03d5a465d46c440053bdcfc2ec06a93124d5d29f",
+      "server": {
+        "banner": "RFB 003.008",
+        "name": "ChefKiss Inferno",
+        "width": 832,
+        "height": 1792
+      },
+      "connection_established_time": 1791327661.8500829,
+      "connection_established_monotonic": 746845.726561235,
+      "first_frame_received_time": 1791327661.877803,
+      "connection_closed_time": 1791327722.1214876,
+      "connection_closed_monotonic": 746905.997966096
+    },
+    "observer_report_sha256": "17729cfdd8f6873ebd150053c940afcfc8a3d9350f0af301a71c0d448046619b",
+    "connection_established_time": 1791327661.8500829,
+    "first_frame_received_time": 1791327661.877803,
+    "requested_phase_completed": true,
+    "connection_closed_time": 1791327722.1214876,
+    "exit_code": 0,
+    "exit_observed_time": 1791327722.2718334,
+    "cleanup_child_exit_code": 0
+  },
+  "serial_transport": {
+    "endpoint": "/tmp/inferno-boot-c7cg6449/gesture-serial.sock",
+    "connected": true,
+    "drained_bytes": 338183,
+    "transmissions": [
+      {
+        "request_id": "f371553db00e4308b37f60a0d81b0a3f",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 82
+      },
+      {
+        "request_id": "85a52c33a3e04c31997a7a04c7414771",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 82
+      },
+      {
+        "request_id": "d726846592d448ba88b53ba13a54e89e",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 68
+      },
+      {
+        "request_id": "6c20fa1828bb405d9fe3af8a8e0911f8",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 68
+      }
+    ],
+    "automatic_replay": false,
+    "connected_time": 1791327661.8157465,
+    "peer_closed": true,
+    "drain_thread_stopped": true,
+    "closed_time": 1791328150.086655
+  },
+  "launchd_unsecure_cache": true,
+  "root_overlay": {
+    "schema": "inferno.recorded-overlay-chain.v1",
+    "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/root.qcow2",
+    "format": "qcow2",
+    "backing_report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/report.json",
+    "backing_report_sha256": "e23bd14b364a229fde1369f9aad2480277dbc2ed455faa52b65c4ca2a670100a",
+    "stopped_manifest": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/stopped-disk-hashes.json",
+    "stopped_manifest_sha256": "ed45571309e76a18e297533827afffbc19a5113453d2cefd38e165cf08df0a8a",
+    "dependencies": [
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/disks/root.qcow2",
+        "format": "qcow2",
+        "sha256": "00fccb3ec7542ce5c9edd7970b627a15e962856d0438f11e3e4b520cecc6be80",
+        "bytes": 3604480,
+        "device": 66306,
+        "inode": 43819284,
+        "mtime_ns": 1791320456164191291,
+        "ctime_ns": 1791320615119518081,
+        "mode": "0o444"
+      },
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-44/disks/root.qcow2",
+        "format": "qcow2",
+        "sha256": "a26c50b4f51e5bb8a7c67889e2078649324851849f826f0eb754680f91f66f5d",
+        "bytes": 3145728,
+        "device": 66306,
+        "inode": 54023150,
+        "mtime_ns": 1791303958934848321,
+        "ctime_ns": 1791304092478945340,
+        "mode": "0o444"
+      },
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-27/disks/root.qcow2",
+        "format": "qcow2",
+        "sha256": "6898ad82af6bfb96168d2b7dd8febcfa977ef703679739197a40a08d735b6d4c",
+        "bytes": 140443648,
+        "device": 66306,
+        "inode": 54022764,
+        "mtime_ns": 1791303468549104874,
+        "ctime_ns": 1791303552337965412,
+        "mode": "0o444"
+      },
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-43/disks/root.raw",
+        "format": "raw",
+        "sha256": "69e8378c71d1f29840baa7ae16811d3f6285bf27042501a79e8139f8a5ad61d5",
+        "bytes": 34359738368,
+        "device": 66306,
+        "inode": 54022559,
+        "mtime_ns": 1791302373066551086,
+        "ctime_ns": 1791302496834897121,
+        "mode": "0o444"
+      }
+    ],
+    "retention_markers": [
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/disks/KEEP-OVERLAY-BACKING.json",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-44/disks/KEEP-OVERLAY-BACKING.json",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-27/disks/KEEP-OVERLAY-BACKING.json",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-43/disks/KEEP-OVERLAY-BACKING.json"
+    ],
+    "tool": {
+      "root": "/home/brandonin/.local/share/inferno/disk-overlay-tools",
+      "binary": "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-img",
+      "sha256": "f26da24f8a7fd880ab13f6fcabf42d099fb68ea86df5de0c55e6faadfe2d9a6e",
+      "provenance": "/home/brandonin/.local/share/inferno/disk-overlay-tools/tool-provenance.json",
+      "provenance_sha256": "bc5893936a16a2b2dd5cf7e6408da5742a3e1909d7c8d3606ff100ec7236c9f2"
+    },
+    "metadata_revalidation": [
+      {
+        "sidecar": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-44/disks/root.qcow2.ctime-revalidation.json",
+        "sidecar_sha256": "aa9c767703c1760bc681ace4b90a965cb9d0f7a8bc7e15c182346e69d4a6de6e",
+        "historical": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-44/disks/root.qcow2",
+          "format": "qcow2",
+          "sha256": "a26c50b4f51e5bb8a7c67889e2078649324851849f826f0eb754680f91f66f5d",
+          "bytes": 3145728,
+          "device": 66306,
+          "inode": 54023150,
+          "mtime_ns": 1791303958934848321,
+          "ctime_ns": 1791304092478945340,
+          "mode": "0o444"
+        },
+        "actual_verified": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-44/disks/root.qcow2",
+          "format": "qcow2",
+          "sha256": "a26c50b4f51e5bb8a7c67889e2078649324851849f826f0eb754680f91f66f5d",
+          "bytes": 3145728,
+          "device": 66306,
+          "inode": 54023150,
+          "mtime_ns": 1791303958934848321,
+          "ctime_ns": 1791320615119518081,
+          "mode": "0o444"
+        },
+        "historical_source": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/root-overlay.json",
+          "sha256": "4ac6b06407ba55ec30f7da25525d354cc16508e839920c5ae6131737a16ddafe"
+        },
+        "verified_time": 1791327644.3439507,
+        "scope": "Fresh full content hash and read-only identity; exact ctime exception only. No report or disk rewritten."
+      },
+      {
+        "sidecar": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-27/disks/root.qcow2.ctime-revalidation.json",
+        "sidecar_sha256": "9a52a6eb83e7ba1dc79bcd7fe06edceede41c4fb9577e6f9ccf8f1a844d092bc",
+        "historical": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-27/disks/root.qcow2",
+          "format": "qcow2",
+          "sha256": "6898ad82af6bfb96168d2b7dd8febcfa977ef703679739197a40a08d735b6d4c",
+          "bytes": 140443648,
+          "device": 66306,
+          "inode": 54022764,
+          "mtime_ns": 1791303468549104874,
+          "ctime_ns": 1791303552337965412,
+          "mode": "0o444"
+        },
+        "actual_verified": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-27/disks/root.qcow2",
+          "format": "qcow2",
+          "sha256": "6898ad82af6bfb96168d2b7dd8febcfa977ef703679739197a40a08d735b6d4c",
+          "bytes": 140443648,
+          "device": 66306,
+          "inode": 54022764,
+          "mtime_ns": 1791303468549104874,
+          "ctime_ns": 1791320615119518081,
+          "mode": "0o444"
+        },
+        "historical_source": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/root-overlay.json",
+          "sha256": "4ac6b06407ba55ec30f7da25525d354cc16508e839920c5ae6131737a16ddafe"
+        },
+        "verified_time": 1791327644.593556,
+        "scope": "Fresh full content hash and read-only identity; exact ctime exception only. No report or disk rewritten."
+      },
+      {
+        "sidecar": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-43/disks/root.raw.ctime-revalidation.json",
+        "sidecar_sha256": "b1843054a524773ca6c690ef1a01ea0833940ad424278ea4156255054f0fdc10",
+        "historical": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-43/disks/root.raw",
+          "format": "raw",
+          "sha256": "69e8378c71d1f29840baa7ae16811d3f6285bf27042501a79e8139f8a5ad61d5",
+          "bytes": 34359738368,
+          "device": 66306,
+          "inode": 54022559,
+          "mtime_ns": 1791302373066551086,
+          "ctime_ns": 1791302496834897121,
+          "mode": "0o444"
+        },
+        "actual_verified": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-43/disks/root.raw",
+          "format": "raw",
+          "sha256": "69e8378c71d1f29840baa7ae16811d3f6285bf27042501a79e8139f8a5ad61d5",
+          "bytes": 34359738368,
+          "device": 66306,
+          "inode": 54022559,
+          "mtime_ns": 1791302373066551086,
+          "ctime_ns": 1791320615119518081,
+          "mode": "0o444"
+        },
+        "historical_source": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/root-overlay.json",
+          "sha256": "4ac6b06407ba55ec30f7da25525d354cc16508e839920c5ae6131737a16ddafe"
+        },
+        "verified_time": 1791327661.2596486,
+        "scope": "Fresh full content hash and read-only identity; exact ctime exception only. No report or disk rewritten."
+      }
+    ],
+    "image_info": {
+      "children": [
+        {
+          "name": "file",
+          "info": {
+            "children": [],
+            "virtual-size": 197120,
+            "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/root.qcow2",
+            "format": "file",
+            "actual-size": 200704,
+            "format-specific": {
+              "type": "file",
+              "data": {}
+            },
+            "dirty-flag": false
+          }
+        }
+      ],
+      "backing-filename-format": "qcow2",
+      "virtual-size": 34359738368,
+      "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/root.qcow2",
+      "cluster-size": 65536,
+      "format": "qcow2",
+      "actual-size": 200704,
+      "format-specific": {
+        "type": "qcow2",
+        "data": {
+          "compat": "1.1",
+          "compression-type": "zlib",
+          "lazy-refcounts": false,
+          "refcount-bits": 16,
+          "corrupt": false,
+          "extended-l2": false
+        }
+      },
+      "full-backing-filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/disks/root.qcow2",
+      "backing-filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/disks/root.qcow2",
+      "dirty-flag": false
+    },
+    "source_sha256": "16180ed475f586b60031c129bf2a11169597dca10fc77a804d9fcdf0f20e3978",
+    "dependency_warning": "Retain every immutable layer and recorded report at its exact absolute path.",
+    "backing_after_stop": {
+      "unchanged": true,
+      "layers": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/disks/root.qcow2",
+          "format": "qcow2",
+          "sha256": "00fccb3ec7542ce5c9edd7970b627a15e962856d0438f11e3e4b520cecc6be80",
+          "bytes": 3604480,
+          "device": 66306,
+          "inode": 43819284,
+          "mtime_ns": 1791320456164191291,
+          "ctime_ns": 1791320615119518081,
+          "mode": "0o444"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-44/disks/root.qcow2",
+          "format": "qcow2",
+          "sha256": "a26c50b4f51e5bb8a7c67889e2078649324851849f826f0eb754680f91f66f5d",
+          "bytes": 3145728,
+          "device": 66306,
+          "inode": 54023150,
+          "mtime_ns": 1791303958934848321,
+          "ctime_ns": 1791304092478945340,
+          "mode": "0o444"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-27/disks/root.qcow2",
+          "format": "qcow2",
+          "sha256": "6898ad82af6bfb96168d2b7dd8febcfa977ef703679739197a40a08d735b6d4c",
+          "bytes": 140443648,
+          "device": 66306,
+          "inode": 54022764,
+          "mtime_ns": 1791303468549104874,
+          "ctime_ns": 1791303552337965412,
+          "mode": "0o444"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-43/disks/root.raw",
+          "format": "raw",
+          "sha256": "69e8378c71d1f29840baa7ae16811d3f6285bf27042501a79e8139f8a5ad61d5",
+          "bytes": 34359738368,
+          "device": 66306,
+          "inode": 54022559,
+          "mtime_ns": 1791302373066551086,
+          "ctime_ns": 1791302496834897121,
+          "mode": "0o444"
+        }
+      ],
+      "metadata_revalidation": [
+        {
+          "sidecar": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-44/disks/root.qcow2.ctime-revalidation.json",
+          "sidecar_sha256": "aa9c767703c1760bc681ace4b90a965cb9d0f7a8bc7e15c182346e69d4a6de6e",
+          "historical": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-44/disks/root.qcow2",
+            "format": "qcow2",
+            "sha256": "a26c50b4f51e5bb8a7c67889e2078649324851849f826f0eb754680f91f66f5d",
+            "bytes": 3145728,
+            "device": 66306,
+            "inode": 54023150,
+            "mtime_ns": 1791303958934848321,
+            "ctime_ns": 1791304092478945340,
+            "mode": "0o444"
+          },
+          "actual_verified": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-44/disks/root.qcow2",
+            "format": "qcow2",
+            "sha256": "a26c50b4f51e5bb8a7c67889e2078649324851849f826f0eb754680f91f66f5d",
+            "bytes": 3145728,
+            "device": 66306,
+            "inode": 54023150,
+            "mtime_ns": 1791303958934848321,
+            "ctime_ns": 1791320615119518081,
+            "mode": "0o444"
+          },
+          "historical_source": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/root-overlay.json",
+            "sha256": "4ac6b06407ba55ec30f7da25525d354cc16508e839920c5ae6131737a16ddafe"
+          },
+          "verified_time": 1791328150.3867977,
+          "scope": "Fresh full content hash and read-only identity; exact ctime exception only. No report or disk rewritten."
+        },
+        {
+          "sidecar": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-27/disks/root.qcow2.ctime-revalidation.json",
+          "sidecar_sha256": "9a52a6eb83e7ba1dc79bcd7fe06edceede41c4fb9577e6f9ccf8f1a844d092bc",
+          "historical": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-27/disks/root.qcow2",
+            "format": "qcow2",
+            "sha256": "6898ad82af6bfb96168d2b7dd8febcfa977ef703679739197a40a08d735b6d4c",
+            "bytes": 140443648,
+            "device": 66306,
+            "inode": 54022764,
+            "mtime_ns": 1791303468549104874,
+            "ctime_ns": 1791303552337965412,
+            "mode": "0o444"
+          },
+          "actual_verified": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-27/disks/root.qcow2",
+            "format": "qcow2",
+            "sha256": "6898ad82af6bfb96168d2b7dd8febcfa977ef703679739197a40a08d735b6d4c",
+            "bytes": 140443648,
+            "device": 66306,
+            "inode": 54022764,
+            "mtime_ns": 1791303468549104874,
+            "ctime_ns": 1791320615119518081,
+            "mode": "0o444"
+          },
+          "historical_source": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/root-overlay.json",
+            "sha256": "4ac6b06407ba55ec30f7da25525d354cc16508e839920c5ae6131737a16ddafe"
+          },
+          "verified_time": 1791328150.6462505,
+          "scope": "Fresh full content hash and read-only identity; exact ctime exception only. No report or disk rewritten."
+        },
+        {
+          "sidecar": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-43/disks/root.raw.ctime-revalidation.json",
+          "sidecar_sha256": "b1843054a524773ca6c690ef1a01ea0833940ad424278ea4156255054f0fdc10",
+          "historical": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-43/disks/root.raw",
+            "format": "raw",
+            "sha256": "69e8378c71d1f29840baa7ae16811d3f6285bf27042501a79e8139f8a5ad61d5",
+            "bytes": 34359738368,
+            "device": 66306,
+            "inode": 54022559,
+            "mtime_ns": 1791302373066551086,
+            "ctime_ns": 1791302496834897121,
+            "mode": "0o444"
+          },
+          "actual_verified": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-43/disks/root.raw",
+            "format": "raw",
+            "sha256": "69e8378c71d1f29840baa7ae16811d3f6285bf27042501a79e8139f8a5ad61d5",
+            "bytes": 34359738368,
+            "device": 66306,
+            "inode": 54022559,
+            "mtime_ns": 1791302373066551086,
+            "ctime_ns": 1791320615119518081,
+            "mode": "0o444"
+          },
+          "historical_source": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/root-overlay.json",
+            "sha256": "4ac6b06407ba55ec30f7da25525d354cc16508e839920c5ae6131737a16ddafe"
+          },
+          "verified_time": 1791328167.3261151,
+          "scope": "Fresh full content hash and read-only identity; exact ctime exception only. No report or disk rewritten."
+        }
+      ]
+    }
+  },
+  "invocation": [
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "-machine",
+    "t8030,kaslr-off=true,usb-conn-type=unix,usb-conn-addr=/tmp/inferno-boot-c7cg6449/absent-usb.sock,trustcache=/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache,boot-mode=exit_recovery",
+    "-accel",
+    "tcg",
+    "-smp",
+    "2",
+    "-m",
+    "4G",
+    "-S",
+    "-kernel",
+    "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/kernel-kernelcache.research.iphone12b",
+    "-dtb",
+    "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+    "-append",
+    "debug=0x14e serial=3 wdt=-1 tlto_us=-1 mtxspin=-1 agm-genuine=1 agm-authentic=1 agm-trusted=1 -vm_compressor_wk_sw launchd_unsecure_cache=1",
+    "-display",
+    "none",
+    "-vnc",
+    "unix:/tmp/inferno-boot-c7cg6449/vnc.sock",
+    "-monitor",
+    "none",
+    "-chardev",
+    "socket,id=gesture-serial,path=/tmp/inferno-boot-c7cg6449/gesture-serial.sock,server=on,wait=off,logfile=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log,logappend=off,logtimestamp=off",
+    "-serial",
+    "chardev:gesture-serial",
+    "-qmp",
+    "unix:/tmp/inferno-boot-c7cg6449/qmp.sock,server=on,wait=off",
+    "-no-reboot",
+    "-d",
+    "guest_errors",
+    "-D",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/guest-errors.log",
+    "-drive",
+    "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/root.qcow2,format=qcow2,if=none,id=root",
+    "-device",
+    "nvme-ns,drive=root,bus=nvme-bus.0,nsid=1,nstype=1,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/firmware.raw,format=raw,if=none,id=firmware",
+    "-device",
+    "nvme-ns,drive=firmware,bus=nvme-bus.0,nsid=2,nstype=2,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/syscfg.raw,format=raw,if=none,id=syscfg",
+    "-device",
+    "nvme-ns,drive=syscfg,bus=nvme-bus.0,nsid=3,nstype=3,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/ctrl_bits.raw,format=raw,if=none,id=ctrl_bits",
+    "-device",
+    "nvme-ns,drive=ctrl_bits,bus=nvme-bus.0,nsid=4,nstype=4,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/nvram.raw,format=raw,if=none,id=nvram",
+    "-device",
+    "apple-nvram,drive=nvram,bus=nvme-bus.0,nsid=5,nstype=5,id=nvram,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/effaceable.raw,format=raw,if=none,id=effaceable",
+    "-device",
+    "nvme-ns,drive=effaceable,bus=nvme-bus.0,nsid=6,nstype=6,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/disks/panic_log.raw,format=raw,if=none,id=panic_log",
+    "-device",
+    "nvme-ns,drive=panic_log,bus=nvme-bus.0,nsid=7,nstype=8,logical_block_size=4096,physical_block_size=4096"
+  ],
+  "pid": 3027417,
+  "greeting": {
+    "QMP": {
+      "version": {
+        "qemu": {
+          "micro": 2,
+          "minor": 2,
+          "major": 10
+        },
+        "package": ""
+      },
+      "capabilities": [
+        "oob"
+      ]
+    }
+  },
+  "periodic_captures": [
+    {
+      "elapsed_seconds": 30.637,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0000.ppm",
+      "sha256": "3967c0c39b87d262bb4e5d0b87dc740d6344616342ffc8e72d3a5088881e22b6"
+    },
+    {
+      "elapsed_seconds": 60.772,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0001.ppm",
+      "sha256": "45aa51b3d0afc4cc0f20396634356c288484a403e291dc2227bcf8f4bc0c57ab"
+    },
+    {
+      "elapsed_seconds": 90.839,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0002.ppm",
+      "sha256": "b29d8a5b3b3666890818304a031728658edb83e45627c251e45e256a305e9013"
+    },
+    {
+      "elapsed_seconds": 120.914,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0003.ppm",
+      "sha256": "332cee750796a47e3cc74ba6cfb88f3bb422f2d4ec1138e4455d3731f6a75ef0"
+    },
+    {
+      "elapsed_seconds": 150.982,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0004.ppm",
+      "sha256": "c26e48e6b84fb3adc2ba3cff7c2c37429d41ec9c7857325e3455bbbce6724720"
+    },
+    {
+      "elapsed_seconds": 181.051,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0005.ppm",
+      "sha256": "9364453b638f7d4ec03c195f0ccfc815d5ef1f8ac69f3d6c18999f925d50c9b8"
+    },
+    {
+      "elapsed_seconds": 211.11,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0006.ppm",
+      "sha256": "9364453b638f7d4ec03c195f0ccfc815d5ef1f8ac69f3d6c18999f925d50c9b8"
+    },
+    {
+      "elapsed_seconds": 241.182,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0007.ppm",
+      "sha256": "a0cb9cd7a90bd52b0c12e19f0d93bc1db4cc2f4ad89f69cb5b6a7db5bd52d8dd"
+    },
+    {
+      "elapsed_seconds": 271.261,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0008.ppm",
+      "sha256": "89d429dab9a95c65296d86df0fe2d9bef91576ad587143df598cfeb7c5b91c6e"
+    },
+    {
+      "elapsed_seconds": 301.336,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0009.ppm",
+      "sha256": "7d8dde07140b99af0a129bffbea261ba820ed00ad1ae0b5188ee4890b423d2e3"
+    },
+    {
+      "elapsed_seconds": 331.404,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0010.ppm",
+      "sha256": "7d8dde07140b99af0a129bffbea261ba820ed00ad1ae0b5188ee4890b423d2e3"
+    },
+    {
+      "elapsed_seconds": 361.467,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0011.ppm",
+      "sha256": "181826565e016e0cbeefbbaa57cc3d2f72d3c8142e3601f772fc0aebf8788c91"
+    },
+    {
+      "elapsed_seconds": 391.536,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0012.ppm",
+      "sha256": "181826565e016e0cbeefbbaa57cc3d2f72d3c8142e3601f772fc0aebf8788c91"
+    },
+    {
+      "elapsed_seconds": 421.606,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0013.ppm",
+      "sha256": "2f0db6d7fd1b4dbad242591b60366262868b0cbbb2ae38f747833473df90099a"
+    },
+    {
+      "elapsed_seconds": 451.669,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0014.ppm",
+      "sha256": "2f0db6d7fd1b4dbad242591b60366262868b0cbbb2ae38f747833473df90099a"
+    },
+    {
+      "elapsed_seconds": 481.746,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0015.ppm",
+      "sha256": "b6ec1347408a659a54443f7a03043fecbd968953d08f21aa62580c4bd960a5b8"
+    }
+  ],
+  "screendump": {
+    "return": {},
+    "id": 47
+  },
+  "framebuffer_captured": true,
+  "framebuffer_sha256": "b6ec1347408a659a54443f7a03043fecbd968953d08f21aa62580c4bd960a5b8",
+  "quit_response": {
+    "return": {},
+    "id": 54
+  },
+  "qmp_commands": [
+    {
+      "request": {
+        "execute": "qmp_capabilities",
+        "id": 1
+      },
+      "response": {
+        "return": {},
+        "id": 1
+      }
+    },
+    {
+      "request": {
+        "execute": "query-status",
+        "id": 2
+      },
+      "response": {
+        "return": {
+          "status": "prelaunch",
+          "running": false
+        },
+        "id": 2
+      }
+    },
+    {
+      "request": {
+        "execute": "query-cpus-fast",
+        "id": 3
+      },
+      "response": {
+        "return": [
+          {
+            "thread-id": 3027427,
+            "qom-type": "apple-a13-cpu",
+            "qom-path": "/machine/cluster0/cpu0",
+            "cpu-index": 0,
+            "target": "aarch64"
+          },
+          {
+            "thread-id": 3027428,
+            "qom-type": "apple-a13-cpu",
+            "qom-path": "/machine/cluster0/cpu1",
+            "cpu-index": 1,
+            "target": "aarch64"
+          }
+        ],
+        "id": 3
+      }
+    },
+    {
+      "request": {
+        "execute": "query-mice",
+        "id": 4
+      },
+      "response": {
+        "return": [
+          {
+            "index": 1,
+            "name": "Apple Multitouch HID SPI",
+            "current": true,
+            "absolute": true
+          }
+        ],
+        "id": 4
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 5,
+        "arguments": {
+          "name": "apple_mt_spi_host_event",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 5
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 6,
+        "arguments": {
+          "name": "apple_mt_spi_enqueue",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 6
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 7,
+        "arguments": {
+          "name": "apple_mt_spi_dequeue",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 7
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 8,
+        "arguments": {
+          "name": "apple_mt_spi_tx_drained",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 8
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 9,
+        "arguments": {
+          "name": "apple_mt_spi_boot_command",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 9
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 10,
+        "arguments": {
+          "name": "apple_mt_spi_control",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 10
+      }
+    },
+    {
+      "request": {
+        "execute": "cont",
+        "id": 11
+      },
+      "response": {
+        "return": {},
+        "id": 11
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 12,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0000.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 12
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 13,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0001.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 13
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 14,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0002.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 14
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 15,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0003.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 15
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 16,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0004.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 16
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 17,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0005.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 17
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 18,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0006.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 18
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 19,
+        "arguments": {
+          "name": "apple_adp_submit",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 19
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 20,
+        "arguments": {
+          "name": "apple_adp_bh",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 20
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 21,
+        "arguments": {
+          "name": "apple_adp_pipe",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 21
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 22,
+        "arguments": {
+          "name": "apple_adp_output_ready",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 22
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 23,
+        "arguments": {
+          "name": "apple_adp_irq_write",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 23
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 24,
+        "arguments": {
+          "name": "apple_adp_unknown_mmio",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 24
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 25,
+        "arguments": {
+          "name": "apple_adp_gp_config_write",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 25
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 26,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0007.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 26
+      }
+    },
+    {
+      "request": {
+        "execute": "query-mice",
+        "id": 27
+      },
+      "response": {
+        "return": [
+          {
+            "index": 1,
+            "name": "Apple Multitouch HID SPI",
+            "current": true,
+            "absolute": true
+          }
+        ],
+        "id": 27
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 28,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/probe-before.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 28
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 29,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0008.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 29
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 30,
+        "arguments": {
+          "name": "apple_adp_submit",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 30
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 31,
+        "arguments": {
+          "name": "apple_adp_bh",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 31
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 32,
+        "arguments": {
+          "name": "apple_adp_pipe",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 32
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 33,
+        "arguments": {
+          "name": "apple_adp_output_ready",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 33
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 34,
+        "arguments": {
+          "name": "apple_adp_irq_write",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 34
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 35,
+        "arguments": {
+          "name": "apple_adp_unknown_mmio",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 35
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 36,
+        "arguments": {
+          "name": "apple_adp_gp_config_write",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 36
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 37,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0009.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 37
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 38,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0010.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 38
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 39,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0011.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 39
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 40,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0012.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 40
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 41,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0013.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 41
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 42,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0014.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 42
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 43,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/probe-after.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 43
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 44,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/frames/0015.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 44
+      }
+    },
+    {
+      "request": {
+        "execute": "query-status",
+        "id": 45
+      },
+      "response": {
+        "return": {
+          "status": "running",
+          "running": true
+        },
+        "id": 45
+      }
+    },
+    {
+      "request": {
+        "execute": "query-cpus-fast",
+        "id": 46
+      },
+      "response": {
+        "return": [
+          {
+            "thread-id": 3027427,
+            "qom-type": "apple-a13-cpu",
+            "qom-path": "/machine/cluster0/cpu0",
+            "cpu-index": 0,
+            "target": "aarch64"
+          },
+          {
+            "thread-id": 3027428,
+            "qom-type": "apple-a13-cpu",
+            "qom-path": "/machine/cluster0/cpu1",
+            "cpu-index": 1,
+            "target": "aarch64"
+          }
+        ],
+        "id": 46
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 47,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/framebuffer.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 47
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 48,
+        "arguments": {
+          "name": "apple_mt_spi_host_event",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 48
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 49,
+        "arguments": {
+          "name": "apple_mt_spi_enqueue",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 49
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 50,
+        "arguments": {
+          "name": "apple_mt_spi_dequeue",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 50
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 51,
+        "arguments": {
+          "name": "apple_mt_spi_tx_drained",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 51
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 52,
+        "arguments": {
+          "name": "apple_mt_spi_boot_command",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 52
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 53,
+        "arguments": {
+          "name": "apple_mt_spi_control",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 53
+      }
+    },
+    {
+      "request": {
+        "execute": "quit",
+        "id": 54
+      },
+      "response": {
+        "return": {},
+        "id": 54
+      }
+    }
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 506.045061,
+  "serial_bytes": 338183,
+  "observed_milestones": {
+    "schema": "inferno.boot-observations.v1",
+    "scope": "Retained serial/control observations, not automated visual verification or arbitrary-app compatibility.",
+    "ios_booted": null,
+    "app_executed": true,
+    "ios_booted_note": "Deprecated ambiguous alias; consult granular milestones. Recovery userland is not installed-system readiness.",
+    "milestones": {
+      "kernel_serial": {
+        "state": "observed",
+        "evidence": [
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+            "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+            "byte_start": 33,
+            "byte_end": 63,
+            "line": 2,
+            "text": "corecrypto_kext_start called"
+          }
+        ],
+        "scope": "Original kernel/kext diagnostic text; not boot completion."
+      },
+      "launchd_userland": {
+        "state": "observed",
+        "evidence": [
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+            "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+            "byte_start": 46066,
+            "byte_end": 46181,
+            "line": 761,
+            "text": "Tue Oct  6 16:01:06 2026 localhost com.apple.xpc.launchd[1] <Notice>: Early boot complete. Continuing system boot."
+          }
+        ],
+        "scope": "t8030_direct_root_experiment"
+      },
+      "owned_app_lifecycle": {
+        "state": "observed",
+        "scope": "Owned fixture main and appeared through validated loopback records only.",
+        "boot_uuid": "B566821E-4F77-42A9-9C45-CCD72EDE1F80",
+        "pid": 257,
+        "peer_pid_authenticated": false,
+        "evidence": [
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+            "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+            "byte_start": 62336,
+            "byte_end": 62481,
+            "line": 937,
+            "text": "INFERNO_EVENT_RELAY_READY boot=B566821E-4F77-42A9-9C45-CCD72EDE1F80 lifetime=7200 transport=tcp address=127.0.0.1 port=37373 connections_max=128"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+            "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+            "byte_start": 243367,
+            "byte_end": 243487,
+            "line": 4018,
+            "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 B566821E-4F77-42A9-9C45-CCD72EDE1F80 257 1 main 0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+            "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+            "byte_start": 243489,
+            "byte_end": 243647,
+            "line": 4020,
+            "text": "INFERNO_EVENT_RELAY_RECORD boot=B566821E-4F77-42A9-9C45-CCD72EDE1F80 pid=257 sequence=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+            "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+            "byte_start": 243649,
+            "byte_end": 243691,
+            "line": 4022,
+            "text": "INFERNO_UIKIT_PROBE_V1 event=main count=0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+            "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+            "byte_start": 246301,
+            "byte_end": 246425,
+            "line": 4066,
+            "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 B566821E-4F77-42A9-9C45-CCD72EDE1F80 257 5 appeared 0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+            "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+            "byte_start": 246427,
+            "byte_end": 246585,
+            "line": 4068,
+            "text": "INFERNO_EVENT_RELAY_RECORD boot=B566821E-4F77-42A9-9C45-CCD72EDE1F80 pid=257 sequence=5 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+            "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+            "byte_start": 246587,
+            "byte_end": 246633,
+            "line": 4070,
+            "text": "INFERNO_UIKIT_PROBE_V1 event=appeared count=0"
+          }
+        ]
+      },
+      "strict_owned_journey": {
+        "state": "observed",
+        "evidence": [
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+            "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+            "byte_start": 246301,
+            "byte_end": 246425,
+            "line": 4066,
+            "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 B566821E-4F77-42A9-9C45-CCD72EDE1F80 257 5 appeared 0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+            "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+            "byte_start": 246427,
+            "byte_end": 246585,
+            "line": 4068,
+            "text": "INFERNO_EVENT_RELAY_RECORD boot=B566821E-4F77-42A9-9C45-CCD72EDE1F80 pid=257 sequence=5 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+            "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+            "byte_start": 246587,
+            "byte_end": 246633,
+            "line": 4070,
+            "text": "INFERNO_UIKIT_PROBE_V1 event=appeared count=0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+            "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+            "byte_start": 317065,
+            "byte_end": 317184,
+            "line": 5494,
+            "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 B566821E-4F77-42A9-9C45-CCD72EDE1F80 257 8 tap 1"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+            "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+            "byte_start": 317186,
+            "byte_end": 317344,
+            "line": 5496,
+            "text": "INFERNO_EVENT_RELAY_RECORD boot=B566821E-4F77-42A9-9C45-CCD72EDE1F80 pid=257 sequence=8 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+            "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+            "byte_start": 317346,
+            "byte_end": 317387,
+            "line": 5498,
+            "text": "INFERNO_UIKIT_PROBE_V1 event=tap count=1"
+          }
+        ],
+        "automated_visual_verification": false,
+        "visual_review": "Operator review remains required; frame hashes do not interpret pixels.",
+        "input_mode": "operator-observation",
+        "frames": [
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/probe-before.ppm",
+            "sha256": "a0cb9cd7a90bd52b0c12e19f0d93bc1db4cc2f4ad89f69cb5b6a7db5bd52d8dd",
+            "role": "probe-before"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/probe-after.ppm",
+            "sha256": "b6ec1347408a659a54443f7a03043fecbd968953d08f21aa62580c4bd960a5b8",
+            "role": "probe-after"
+          }
+        ],
+        "operator_capture_requests_recorded": true
+      }
+    },
+    "serial": {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-57/serial.log",
+      "sha256": "b042e65c1168cd6f556efcadb0de0c20257703d9ab75fe710c80e402afe55730",
+      "bytes": 338183
+    }
+  }
+}
