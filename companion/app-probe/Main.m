@@ -15,7 +15,11 @@ static int lifecycle_queued,lifecycle_failed;
 static void lifecycle_flush(void *);
 static void lifecycle_capture(const char *hook,unsigned long long ticks) {
     if(lifecycle_failed)return;
-    if(lifecycle_used==40 || foreground_generation>8 || !ticks) {lifecycle_failed=1;return;}
+    if(lifecycle_used==40 || foreground_generation>8 || !ticks) {
+        lifecycle_failed=1;
+        if(timing_flushed && !lifecycle_queued) {lifecycle_queued=1;dispatch_async_f(&_dispatch_main_q,0,lifecycle_flush);}
+        return;
+    }
     lifecycle[lifecycle_used].hook=hook;lifecycle[lifecycle_used].generation=foreground_generation;lifecycle[lifecycle_used++].ticks=ticks;
     if(timing_flushed && !lifecycle_queued) {lifecycle_queued=1;dispatch_async_f(&_dispatch_main_q,0,lifecycle_flush);}
 }
