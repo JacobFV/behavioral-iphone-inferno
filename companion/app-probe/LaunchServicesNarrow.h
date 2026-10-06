@@ -32,7 +32,17 @@ __attribute__((objc_root_class))
 - (BOOL)registerApplication:(NSURL *)url;
 - (BOOL)registerApplicationDictionary:(NSDictionary *)dictionary;
 - (BOOL)openApplicationWithBundleID:(NSString *)identifier;
+#if INFERNO_OPEN_DIAGNOSTIC
+- (void)openApplicationWithBundleIdentifier:(NSString *)identifier configuration:(id)configuration completionHandler:(void (^)(BOOL, id))completion;
+#endif
 @end
+#if INFERNO_OPEN_DIAGNOSTIC
+@interface NSError : NSObject
+- (NSString *)domain;
+- (long)code;
+- (NSString *)localizedDescription;
+@end
+#endif
 @interface LSApplicationProxy : NSObject
 + (instancetype)applicationProxyForIdentifier:(NSString *)identifier;
 - (NSURL *)bundleURL;

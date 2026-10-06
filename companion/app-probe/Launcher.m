@@ -18,6 +18,12 @@ static void status(const char *event, int attempt, int result) {
              event, attempt, result);
     emit(text);
 }
+#if INFERNO_OPEN_DIAGNOSTIC
+// Original synchronous XPC method; its BOOL wrapper reads the callback result
+// immediately after the call, without a run-loop wait.
+static BOOL openCallbackFinished, openCallbackAccepted;
+static int openCallbackAttempt;
+#endif
 int main(int argc, char **argv) {
     if (argc != 3) {
         emit("usage: inferno-launcher /absolute/InfernoProbe.app org.inferno.companion.probe\n");
@@ -66,7 +72,31 @@ int main(int argc, char **argv) {
                          utf8([[proxy containerURL] path]), utf8([proxy applicationType]));
                 emit(detail);
                 if (registration && valid) {
+#if INFERNO_OPEN_DIAGNOSTIC
+                    openCallbackFinished = 0;
+                    openCallbackAccepted = 0;
+                    openCallbackAttempt = attempt;
+                    [workspace openApplicationWithBundleIdentifier:identifier configuration:nil
+                        completionHandler:^(BOOL accepted, id errorObject) {
+                            NSError *error = errorObject;
+                            char message[1536];
+                            snprintf(message, sizeof(message),
+                                "INFERNO_LAUNCHER_V1 event=open-callback attempt=%d accepted=%d domain=%.160s code=%ld description=%.1024s\n",
+                                openCallbackAttempt, accepted, utf8([error domain]),
+                                [error code], utf8([error localizedDescription]));
+                            emit(message);
+                            openCallbackAccepted = accepted;
+                            openCallbackFinished = 1;
+                        }];
+                    if (!openCallbackFinished) {
+                        // Do not block an unknown callback queue if behavior differs.
+                        status("open-callback-not-delivered", attempt, 1);
+                        return 70;
+                    }
+                    BOOL opened = openCallbackAccepted;
+#else
                     BOOL opened = [workspace openApplicationWithBundleID:identifier];
+#endif
                     status("open-request", attempt, opened);
                     if (opened) {
                         // This is only a service acknowledgement, not screenshot evidence.
