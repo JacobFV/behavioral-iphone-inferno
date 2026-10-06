@@ -6,12 +6,14 @@ source_repo=$(git -C "$script_dir" rev-parse --show-toplevel)
 build_root=""
 jobs=8
 simulated_sep=false
+kvm_option=--disable-kvm
 while (($#)); do
     case "$1" in
         --build-root) build_root=$2; shift 2 ;;
         --jobs) jobs=$2; shift 2 ;;
         --simulated-sep) simulated_sep=true; shift ;;
-        *) echo "Usage: $0 --build-root ABSOLUTE_PATH [--jobs 1..8] [--simulated-sep]" >&2; exit 2 ;;
+        --enable-kvm) kvm_option=--enable-kvm; shift ;;
+        *) echo "Usage: $0 --build-root ABSOLUTE_PATH [--jobs 1..8] [--simulated-sep] [--enable-kvm]" >&2; exit 2 ;;
     esac
 done
 [[ "$build_root" = /* && "$jobs" =~ ^[1-8]$ ]] || { echo 'Require absolute build root and 1..8 jobs' >&2; exit 2; }
@@ -69,6 +71,7 @@ git -C "$source_tree" submodule update --init util/mlib
 mkdir -p "$build_root/build"
 (cd "$build_root/build"
  "$source_tree/configure" --target-list=aarch64-softmmu --without-default-features \
+   "$kvm_option" \
    --enable-tcg --enable-pixman --enable-png --enable-fdt=system --enable-slirp \
    --enable-lzfse --enable-nettle --enable-gnutls --enable-vnc \
    --disable-gtk --disable-sdl --disable-opengl --disable-guest-agent \

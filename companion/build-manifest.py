@@ -26,6 +26,7 @@ record = {
     'purpose': 'build provenance only; no guest boot or firmware execution claim',
     'sep_mode': ('simulated-unencrypted' if '-DINFERNO_SIMULATED_SEP' in
                  (root / 'build/config.status').read_text() else 'emulated-encrypted'),
+    'kvm_enabled': '--enable-kvm' in (root / 'build/config.status').read_text(),
     'upstream_base': 'cc4302a99167abec69b714cfd00c38caece7e7de',
     'source_revision': output(['git', '-C', str(source), 'rev-parse', 'HEAD']),
     'source_diff': output(['git', '-C', str(source), 'diff', '--stat']),
