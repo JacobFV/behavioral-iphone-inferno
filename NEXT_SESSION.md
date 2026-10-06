@@ -7,48 +7,64 @@ continuous work across status questions and intermediate milestones. Parallel
 workers are authorized for independent work; use isolated worktrees and commit.
 No handoff or pause has been requested.
 
-## Current execution, 2026-10-06 11:07 local
+## Current execution, 2026-10-06 11:18 local
 
-**Boot36 is live, same timing binaries as successful35.** Private VNC
-`/tmp/inferno-boot-jw8en1i_/vnc.sock`, report `.local-build/reports/app-boot-36`,
-runnerPID2594889 dedicated7200 session. Root owns input; utility
-`/tmp/inferno-explicit-gesture-36.py`; observer session99028 from timingobserver35.
-Actual timing parser live complete in launch-timing-live.json, bootAEE5FC26-9B9D-
-4321-B6E8-71A52A6F41E1 appPID260, timebase125/3. Request→main116.572583ms,
-main→appeared697.905708ms/main→active807.78175ms/request→active924.354333ms.
-These are lifecycle intervals, no screen-presentation/native-device/warm claim.
-Root reviewed lock, first swipe f11bde4c2c6548f2a3859d5835c1b1c7; reviewed persistent
-cover at1791310018.7203543, second swipe670ab78497d943169145dc987a694d73 sent.
-NEXT: review settled beta dialog, Close, counter0, strictbefore, onetap, review1,
-strictafter (36 uses default stop, not new keepalive). Then preserve and freeVMslot.
+**Boot37 starting/live for actual warm reopen.** Report `.local-build/reports/app-boot-37`,
+runnerPID2607728 dedicated7200 session, frozen50. Endpoint forthcoming from bootworker.
+IMPORTANT37 has --probe-keep-running: strictafter DOES NOT stop VM. Root will complete
+strict0→1, then review ordinary Home/background, explicit OPEN and retainedcounter1,
+read actual warm clocks, optionally repeat/sample resources, then explicit finish-run.
+No automatic input. Root input `/tmp/inferno-explicit-gesture-37.py` ready; observer
+`/tmp/inferno-observe-event-arrivals-37.py` includes OPEN/lifecycle/processidentity.
 
-35 completed strict0→1 and five actual timestamp hooks; rawjourneyaf110621e2,
-timing/arrival evidence3619d5d00b. NormalQMPquit/emulator0/errornull/373.293673s,
-root107151360bytesSHA9a9c32bccc19e75b6e1931c60e48356fef00a9eae1bf4b54727dcd603afc3e72,
-all7/all4ancestors unchanged. Firstboot35 request→main245.107292ms,
-main→active694.6705ms/request→active939.777792ms. Same frozen49 as36.
-Boots33/34 previously strictpassed app19/reader52; independent raw/hash comparison
-2b53a16d2e.32 remains interrupted before strictafter, never countcomplete.
+37 uses FOUR new reviewed artifacts:
+- App22 `~/.local/share/inferno/app-probe/exec-build-22/InfernoProbe.app/InfernoProbe`,
+  74976bytes SHAd05f1b32523684a5c89d41cb2c35fbf0207b62adf864c27fab4d5973bf8e6176.
+- Launcher22 same exec-build-22/inferno-launcher-open-error,69264bytes,
+  SHA0f6626102deedabe4f5c93dafbd3c757387836c463d6b59bf3204932e550bf17.
+- Reader54 `~/.local/share/inferno/native-probe/helper-build-54/inferno-readiness`,
+  86448bytes SHA2440b210892898f43bd2f2afe3907ee5b682262d1d71c47e8c940757aa46c0b2.
+- HID54 same helper-build-54/inferno-hid-input,70848bytes,
+  SHAf670cb9ec09933514326df8f6cb4995883b22d58852b12d7511ae075cec06943.
+All172 imports originalcache verified, Info/jobs/exacttwoHIDentitlements unchanged.
+Source55a62fcecd+a05d8f22e7, build15e54f955a. Preliminaryapp21 superseded (footerfix),
+do not use. Frozen50 root3604480bytesSHA
+3745a6abe402cd6b645a29a7fd5a9853b7ac06e9c8e3ca6bfa9099f21db5a693.
+Root checked all7/noFD/normalstop/ancestors and froze0444+KEEP85f02d7af6.
+Actual fourreadbacks0, normal unmount, emulator0, stageevidence844b2ae7f6,
+recoveryhelper-attempt51.37layer4→50layer3→44layer2→27layer1→43raw; retainall.
 
-**Next implementation (active, not staged):** nativeworker owns app subsequent
-resign/background/active timing + fixed OPEN through sole existing HIDconsole reader.
-Fresh launcher child with fixedpath/ID, mobileidentity, openonly mode/no registration,
-finite8 requests, onechild, no replay or arbitraryargv. No processkill yet.
-Needs actualHome/background then sameincarnation reopen; icon visibility unknown.
-Design68aae80dd7. Original proc-incarnation ABI must be audited.
-Diskworker owns matching host OPEN mailbox after native agrees exactgrammar;
-shared duplicateID set with HID, bounded/no automaticcommands. Coordinate directly.
-Host keepalive47a2758de9 integrated and firmware-free checked: explicit
---probe-keep-running requires journey+mailbox, excludesautomaticinput. Afterstrictafter
-holdsVM; finish-run exact{} only aftercomplete triggers normalcleanup. For37, not36.
+Host code: keepalive47a2758de9, OPENeeba9e022d, warm parsereee20c38c8. Commands:
+`python3 companion/qmp_control.py --report ABS_REPORT probe-status`
+`python3 companion/qmp_control.py --report ABS_REPORT guest-open-app --arguments '{"request_id":"NEW32LOWERHEX","boot_uuid":"EXACTCURRENTGUESTUUID"}'`
+`python3 companion/warm-timing.py --report REPORT --request-id ID --output NEW.json`
+`python3 companion/qmp_control.py --report ABS_REPORT finish-run`
+OPEN accepts only those two fields, emits fixed INFERNO_OPEN_V1, shares conservative
+HID replay set, max8 attempts. Guest rejects foreignboot/busy/duplicates, soleconsole
+reader forks one fresh mobile child for exactowned originalLS OPENonly/no registration.
+No appkill/processcold action exists. Child cleanup signals only unreaped ownchild.
 
-Stage49 immutable: branch44, app20+launcher20+reader53 (below), HID45unchanged;
-actual three readbacks zero mismatches, normal unmount/QMPexit/all7/ancestors.
-Root froze0444+KEEP692545d682; root3407872bytesSHA
-62e4861109fe7e8c840268e49f8f402c898a5e2ca728f7fde408f77f2eeb2057.
-Stageevidencedff5d24650, recoveryhelper-attempt50. Newfuturestage50 mustbranch44
-and replace allchangedcomponents, including newHID ifwarmcontrol; no staging until
-newartifacts reviewed. No handoffrequested; keepworking acrossmilestones.
+Warm app emits deferred 40-record lifecycle buffer: initialactive generation0,
+resign/background/foreground/active, generationincrements at originalforeground,
+PID+firstmaintick retained. Originalproc flavor17 uniqueid/idversion corroborates
+incarnation ifquery succeeds; denial explicitly leaves main-tick/PID-only scope.
+Audit29299f61d0, no newgrants. ActualguestOPEN/Home/warmidentity stillpending.
+MainHome gesture from app unproven; try one reviewed normal quickbottomswipe,
+then inspect actualHome and background records before OPEN. Do not replay blindly.
+Warmparser rejects foreground-in-place; needs lastbackground before OPEN and next
+foreground+active, sameboot/PID/maintick/timebase/generation, exactnamedhostrequest.
+All timings guest-emulated lifecycle, not visible-frame/native-device/cold timing.
+
+35/36 completed strict + firstlaunchclock repeat fromfrozen49, no VMleftactive.
+35 rawaf110621e2 / timing3619d5d00b;36 raw7f3bbd4c1e / timing9eb37b3e1a.
+35 request→main245.107292ms, main→active694.6705ms, request→active939.777792ms;
+36 request→main116.572583ms, main→active807.78175ms, request→active924.354333ms.
+36 normalexit0/errornull/385.872285s, all7/all4ancestorsunchanged, root116916224bytes
+SHA34a377fec3e470965c0046f1a681c27cf317ed26f5406f5baa8f6ea96c71960f.
+33/34 priorstrictpasses app19/reader52; rawcomparison2b53a16d2e.32 interruptedbeforeafter.
+No statisticalreliability claim. No pause/handoff requested; keepworking.
+
+## Prior first-launch-only candidate (35/36)
 
 Timing candidate source b5a166398f; actual build/import audit ff443b226e.
 - App20 `~/.local/share/inferno/app-probe/exec-build-20/InfernoProbe.app/InfernoProbe`,
