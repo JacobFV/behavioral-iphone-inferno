@@ -1,0 +1,15 @@
+{
+  "command": [
+    "bash",
+    "companion/run",
+    "preserve-stopped",
+    "--report",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/report.json",
+    "--output",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/stopped-disk-hashes.json"
+  ],
+  "exit_code": 1,
+  "stderr": "preserve-stopped: Fresh ancestor verification differs from stopped report",
+  "diagnosis": "Fresh metadata_revalidation entries differed only in verified_time; retained original report and ancestor-recheck.json demonstrate exact substantive identities. No canonical output created by rejection.",
+  "fix_commit": "baa1c48f1d"
+}
