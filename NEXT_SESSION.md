@@ -10,7 +10,19 @@ Suggested opening instruction:
 > Prefer integrated execution over adding routine unit tests. Never use my main
 > display. Do not resume the archived framework reimplementation.
 
-## CURRENT, 2026-10-06 10:36 local: repeat strict journey after32 interruption
+## CURRENT, 2026-10-06 10:42 local: strict33 COMPLETE; repeat34 next
+
+33 completed both strict operator captures with actual appeared0/tap1 records,
+root-reviewed visible0→1, normal emulator0/errornull/285.89601s. Boot worker owns
+stopped all7/ancestor checks and immediate34 launch from SAME frozen48, samebits.
+Root owns all input and before/after review. Do not stop at this milestone.
+33 report `.local-build/reports/app-boot-33/report.json`; arrival observer finished.
+Root generated pixel-identical QMP PNG derivatives and capture-conversion.json.
+Next: repeat34 strict; then integrate owned monotonic timing design for real
+process-start and same-process foreground measurements (native worker researching).
+No further staging required for34, no new grants, no automatic guest input.
+
+## PREVIOUS, 2026-10-06 10:36 local: repeat strict journey after32 interruption
 
 Boot32 proves real guest-loopback lifecycle/tap transport, visual counter0→1,
 and strict before-capture. It received Signal15 before operator-after; preserve

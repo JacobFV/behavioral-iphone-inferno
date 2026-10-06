@@ -2,6 +2,20 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 10:42 continuation: first complete strict UIKit journey
+
+Boot33 completed the strict runner journey using exactly the frozen48/app19/
+readiness52/emulator inputs from32. Actual original iOS launch accepted attempt8,
+then genuine lifecycle records reached the bounded loopback receiver. Root
+reviewed counter0, requested QMPbefore, sent one owned virtual-HID counter tap,
+reviewed counter1 and requested QMPafter. Both raw828x1792captures are preserved.
+The runner reports completedtrue, errornull, normal emulator exit0,285.89601s.
+BeforeSHA04fd675f2856bd11b8b1e16e9b8cb0fac810f8b2fa82b79c2ade214616e4d9ae;
+afterSHAb8bffbf0b0dde7547d5d64a03c211741b6dd9bcd2686da996a3980cbce97c158.
+Lossless PNG derivatives were decoded and compared byte-for-byte to raw pixels.
+Next34 repeats from unchanged frozen48 after stopped tuple/ancestor verification.
+No reliability percentage or intrinsic cold/warm timing is claimed from one pass.
+
 ### 10:36 continuation: real loopback events and strict before-capture
 
 Boot32 app19/readiness52 delivered actual main, view-loaded, window-visible,
