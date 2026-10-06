@@ -12,6 +12,8 @@ clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builti
 "$linker" -arch arm64 -platform_version ios 14.0 14.0 -e _main -needed_library "$source_dir/libSystem.tbd" -no_uuid -adhoc_codesign -o "$output/inferno-prepare-root" "$output/prepare-root.o"
 clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -c "$source_dir/readiness.c" -o "$output/readiness.o"
 "$linker" -arch arm64 -platform_version ios 14.0 14.0 -e _main -needed_library "$source_dir/libSystem.tbd" -no_uuid -adhoc_codesign -o "$output/inferno-readiness" "$output/readiness.o"
+clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -c "$source_dir/unlock-empty.c" -o "$output/unlock-empty.o"
+"$linker" -arch arm64 -platform_version ios 14.0 14.0 -e _main -needed_library "$source_dir/libSystem.tbd" -no_uuid -adhoc_codesign -o "$output/inferno-unlock-empty" "$output/unlock-empty.o"
 if [[ $# == 3 ]]; then
     "$3" -Cadhoc -S"$source_dir/entitlements.plist" "$output/inferno-prepare-root"
     "$3" -e "$output/inferno-prepare-root" > "$output/helper-entitlements.plist"
@@ -19,7 +21,7 @@ fi
 python3 - "$source_dir" "$linker" "$output" "${3:-}" <<'PY'
 import hashlib, json, pathlib, shutil, subprocess, sys
 source, linker, output = map(pathlib.Path, sys.argv[1:4])
-paths = [source / 'readiness.c', output / 'inferno-readiness', source / 'probe.S', source / 'build.sh', source / 'libSystem.tbd', source / 'prepare-root.c', source / 'entitlements.plist', pathlib.Path(shutil.which('clang')).resolve(), linker.resolve(), output / 'inferno-probe', output / 'inferno-prepare-root']
+paths = [source / 'unlock-empty.c', output / 'inferno-unlock-empty', source / 'readiness.c', output / 'inferno-readiness', source / 'probe.S', source / 'build.sh', source / 'libSystem.tbd', source / 'prepare-root.c', source / 'entitlements.plist', pathlib.Path(shutil.which('clang')).resolve(), linker.resolve(), output / 'inferno-probe', output / 'inferno-prepare-root']
 if sys.argv[4]: paths += [pathlib.Path(sys.argv[4]).resolve(), output / 'helper-entitlements.plist']
 data = {'helper_entitlements': bool(sys.argv[4]), 'files': {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}, 'clang': subprocess.check_output(['clang', '--version'], text=True), 'linker': subprocess.check_output([str(linker), '--version'], text=True), 'source_revision': subprocess.check_output(['git', '-C', str(source), 'rev-parse', 'HEAD'], text=True).strip(), 'signing': 'Owned code only: LLVM ad-hoc marker; helper additionally ldid ad-hoc with explicit xart entitlement when requested; no Apple identity/certificate/signature'}
 (output / 'build.json').write_text(json.dumps(data, indent=2) + '\n')
