@@ -175,6 +175,32 @@ static void compare_tree(const char *source, const char *destination) {
     } else mismatch(source,"unsupported-file-type");
     if(verified_entries%1000==0){printf("INFERNO_TREE_PROGRESS entries=%llu bytes=%llu mismatches=%llu\n",verified_entries,verified_bytes,mismatches);fflush(0);}
 }
+/* Mirrors original restored format_effaceable_storage selectors, never raw storage writes. */
+static int initialize_effaceable(void) {
+    void *io=dlopen("/System/Library/Frameworks/IOKit.framework/IOKit",2);
+    void *lib=dlopen("/usr/lib/libSystem.B.dylib",2);
+    if(!io || !lib)return -1;
+    void *(*matching)(const char *)=dlsym(io,"IOServiceMatching");
+    unsigned (*getservice)(unsigned,void *)=dlsym(io,"IOServiceGetMatchingService");
+    int (*serviceopen)(unsigned,unsigned,unsigned,unsigned *)=dlsym(io,"IOServiceOpen");
+    int (*scalar)(unsigned,unsigned,const unsigned long long *,unsigned,unsigned long long *,unsigned *)=dlsym(io,"IOConnectCallScalarMethod");
+    int (*serviceclose)(unsigned)=dlsym(io,"IOServiceClose");
+    int (*release)(unsigned)=dlsym(io,"IOObjectRelease");
+    unsigned *task=dlsym(lib,"mach_task_self_");
+    if(!matching || !getservice || !serviceopen || !scalar || !serviceclose || !release || !task)return -1;
+    unsigned service=getservice(0,matching("AppleEffaceableStorage")),connection=0;
+    if(!service)return -1;
+    int status=serviceopen(service,*task,0,&connection);
+    unsigned long long formatted=0;unsigned count=1;
+    if(!status)status=scalar(connection,3,0,0,&formatted,&count);
+    printf("INFERNO_EFFACEABLE_QUERY status=%d formatted=%llu count=%u\n",status,formatted,count);fflush(0);
+    if(!status && !formatted){
+        status=scalar(connection,4,0,0,0,0);
+        printf("INFERNO_EFFACEABLE_FORMAT status=%d\n",status);fflush(0);
+    }
+    if(connection)serviceclose(connection);
+    release(service);return status;
+}
 static int ensure(const char *path) {
     if (!mkdir(path, 0755) || *__error() == 17) return 0;
     printf("INFERNO_PREP_MKDIR_FAILED %s errno=%d\n", path, *__error());
@@ -291,6 +317,7 @@ int main(int argc, char **argv) {
         char *init[] = {"/usr/libexec/seputil", "--gigalocker-init", 0};
         char *load[] = {"/usr/libexec/seputil", "--wait", "--load", "/mnt1/000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000/usr/standalone/firmware/sep-firmware.img4", 0};
         if(run(init) || run(load))return 30;
+        if(initialize_effaceable())return 36;
         void *framework=dlopen("/System/Library/PrivateFrameworks/MobileKeyBag.framework/MobileKeyBag",2);
         if(!framework){printf("INFERNO_KEYBAG_DLOPEN_FAILED %s\n",dlerror());fflush(0);return 31;}
         /* Original restored_external uses NULL secret and /mnt2; no generated blob in owned code. */

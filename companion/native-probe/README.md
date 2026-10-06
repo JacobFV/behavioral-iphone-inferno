@@ -297,3 +297,21 @@ That failed run is not treated as completed initialization. The next owned
 ad-hoc signature adds only that observed IOKit user-client class entitlement.
 After SEP activation the original gigalocker shutdown command is needed before
 unmount; this differs from the pre-bootstrap hang in the earlier init-only run.
+
+Full read-only guest verification completed in disk-preparation-17: 16,665 entries
+including the tree root, 13,025 regular files, one symlink, 269,210,433 regular
+file bytes, and zero mismatches. Both volumes cleanly unmounted. The independent
+host inventory had the same 16,664 descendants and file byte total; its zero-byte
+compressed Data streams are a 7-Zip reader limitation here, not a guest copy
+failure. No Data repair was performed. The identical preceding run16 panicked
+before launchd; its raw logs are retained, without attributing that transient
+failure to the verifier.
+
+Run19 passed the observed entitlement check and clean SEP shutdown/unmount, but
+MKBCreate still returned -1 against unformatted virtual effaceable storage. The
+next keybag experiment mirrors original restored's IOKit sequence: selector3
+queries whether AppleEffaceableStorage is formatted (one uint64 output), and
+selector4 formats only when that result is zero. Existing formatted storage is
+preserved; the original selector7 clear operation is not invoked. No owned code
+writes raw effaceable bytes. All auxiliary virtual namespaces must be retained
+with the prepared root before testing a subsequent direct boot.
