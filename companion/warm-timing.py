@@ -38,6 +38,15 @@ def parse(data, request_id):
     rejects = []
     for raw, ref in rows(data):
         text = ref['text']
+        # Original SMC button logging omits its newline. Accept only the exact
+        # observed one/two button6 notifications before a lifecycle RAW record.
+        marker = text.find('INFERNO_LIFECYCLE_RELAY_RAW ')
+        if marker > 0 and re.fullmatch(
+                r'(?:AppleSMCPMU::_smcNotifyCallout\(\): HID buttonIndex=6 buttonState=[01] notification){1,2}',
+                text[:marker]):
+            ref = {**ref, 'record_byte_start': ref['byte_start'] + marker,
+                   'original_smc_prefix': text[:marker]}
+            text = text[marker:]
         if text.startswith('INFERNO_EVENT_PROCESS_IDENTITY_REJECT '):
             rejects.append(ref)
         for prefix, pattern, key in [('INFERNO_OPEN_TIMING_V1', OPEN, 'open'), ('INFERNO_LIFECYCLE_RELAY_RAW', RAW, 'raw'), ('INFERNO_LIFECYCLE_RELAY_RECORD', VALID, 'valid'), ('INFERNO_EVENT_PROCESS_IDENTITY ', IDENTITY, 'identity')]:
