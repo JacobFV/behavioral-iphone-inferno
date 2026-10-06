@@ -44,5 +44,29 @@
   "limits": [
     "Nearest Objective-C method labeling alone would incorrectly label the block as the method body; exact block pointer and selector data resolve it.",
     "Source of delegate corruption is not established by this original-framework trace; parent independently audits owned code."
-  ]
+  ],
+  "original_NSObject_ABI": {
+    "class": "0x1ddd159c8",
+    "class_ro": "0x1d9e78e80",
+    "flags": 2,
+    "instanceStart": 0,
+    "instanceSize": 8,
+    "ivar_list": "0x1d0436a80",
+    "ivars": [
+      {
+        "name": "isa",
+        "type": "# (Class)",
+        "offset": 0,
+        "alignment_log2": 3,
+        "size": 8
+      }
+    ],
+    "implication": "Original root instance requires an 8-byte isa header. Parent independently found the self-authored NSObject declaration omitted it, compiling owned delegate _window store at self+0; that would overwrite this header."
+  },
+  "owned_frame": {
+    "runtime": "0x104f74a78",
+    "runtime_image_base": "0x104f70000",
+    "original": "0x100004a78",
+    "instruction_context": "Immediately follows original owned binary bl UIApplicationMain at0x100004a74. Original stage-committed InfernoProbe disassembly checked."
+  }
 }
