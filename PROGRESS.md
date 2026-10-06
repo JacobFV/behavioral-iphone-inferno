@@ -2,6 +2,27 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 16:21 continuation: completed58 and discriminating status-read diagnostic
+
+Unchanged frozen55/emulator670 completed another reviewed strict0→1 in58;
+boot2C5B5B48-7021-49E1-A7BB-2B014BEE2774/PID220, singlecounter
+546b14a894ac4168ac072d9daf298573. No samples/Home/OPEN. Root reviewed both
+VNC and actual QMP captures before normal finish. Visual evidence4950e186a7;
+final disk postflight is underway. The runner and emulator have exited.
+
+An ordered raw audit of44/47/49/53/57 shows5/5/12/42/14 complete submit→BH→
+FRAME_PROCESSED-clear chains. Both failed attempts acknowledged their final
+traced completion before submissions became silent. This does not support lost
+pending drawing or BH coalescing inside those captured windows; preceding
+untraced activity remains unknown. Auditdcf3aeb9ab retains exact trace bytes.
+
+Reviewed sourcebfcc434c20 adds one default-off event for the exact INT_STATUS
+value already returned by the emulator. No extra read or state write is added.
+The existing bounded trace control now includes eight events. Host diagnostic
+reads share the path and must not be called guest reads. Independent source
+review found no blocker; build and actual8-event QMP control checks are next,
+after preserving the old binary. This is diagnostic visibility, not a fix.
+
 ### 16:12 continuation: natural observer expiry and subsequent strict journey57
 
 The actual60s observer closed naturally after60.271405s and exited0 while the

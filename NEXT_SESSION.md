@@ -22,18 +22,22 @@ afterb6ec1347408a659a54443f7a03043fecbd968953d08f21aa62580c4bd960a5b8.
 NoSAMPLE/Home/OPEN57. Final strict/default all7+ancestor+attestation preservation
 PASS e629bf388a, normal0/noerror506.045061s. Root110952448bytes SHA
  e928b462fb5539aa3683233786efb754c6366f1f8cd0b0528474242ce52a08d5.
-ONE58 LIVE runner3036310/QEMU3036868, sourcee629bf388a, frozen55/emulator670,
-observer defaultOFF. VNC/tmp/inferno-boot-9mgjrkd_/vnc.sock.
-Boot2C5B5B48-7021-49E1-A7BB-2B014BEE2774/PID220/main1916654210.
-Root reviewed lock, unlock1bf7fb18eb38543be945480fe03c282dd ACK0 then stilllock;
-unlock2 8769e7e55c0a4e319cc4892183b8c37e sent, observation pending.
-No58counter/trace/SAMPLE/Home/OPEN yet.
-Minimal status-read diagnostic917abb9dc4 independentlyreviewed/approved, NOT
-merged or built while58 is running. After58 stop, merge/rebuild+actualbounded
-8-event control check before next iOS59. Root source auditdcf3aeb9ab shows all
-traced44/47/49/53/57 submits completed and FRAME_PROCESSED was W1C-cleared;
-no capturedlostBH. New diagnostic exact known INT_STATUS returnedvalue, defaultoff,
-no statewrites; host HMP query reads sharepath. No behaviorfix.
+58 STOPPED after reviewed strict0→1, normalattempttrue/errornull506.744416s,
+runner3036310/QEMU3036868 absent. Sourcee629bf388a, frozen55/emulator670,
+observerdefaultOFF. Boot2C5B5B48-7021-49E1-A7BB-2B014BEE2774/PID220/main1916654210.
+Counter546b14a894ac4168ac072d9daf298573 actualtap1+ACK0, reviewedbothQMPimages:
+before3bcbcef160426e1acb6cf8faea3d14432b5009d3ae342b27d06548780002198c,
+afterb122f344d9ab28b73c5138fa91d25b30b319ae2d5a3e36a0b1347f3873fda8a8.
+NoSAMPLE/Home/OPEN. Rootvisual4950e186a7; bootworkerownsfinalpostflight.
+Minimal diagnostic mergedbfcc434c20 after58processesabsent; nativeimplementation
+917abb9dc4 independentlyapprovedbydisk_path androot. Bootworker authorized:
+archive670+manifestoutsideGitwithoutoverwriting; buildsimulatedSEP/KVM8jobs;
+actualfirmware-free QMP8eventdefaultoff/10sdeadline/cleanup withlogs/hashes.
+NO59 launch untilroot reviewsbuild/controlresult. No guestbehaviorchange.
+Root sourceauditdcf3aeb9ab shows alltraced44/47/49/53/57 submitscompletedand
+FRAME_PROCESSEDwasW1C-cleared; no capturedlostBH. Newdiagnostic exactknown
+INT_STATUS returnedvalue; hostHMPqueries sharepath. StartactualiOSwindow10s,
+noqueryduringwindow. Frozen55 guest and all diskdependencies unchanged.
 Root owns all guest input. Native worker auditing source/trace state-machine gaps;
 disk worker completed57 observer audit. No rendering fix or freeze reproduction57.
 

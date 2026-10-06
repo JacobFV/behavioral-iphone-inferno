@@ -188,6 +188,16 @@ time rather than bytes. Offsets are local to the named block after existing
 shadow-alias normalization. Read events record the unchanged zero return value;
 write events record the incoming value, not implementation of that register.
 
+The later source change `bfcc434c20` adds an eighth event,
+`apple_adp_status_read`, for the exact value returned by known INT_STATUS reads
+at normalized offset0x45818. It changes no register state. Rebuild the emulator
+before using that host trace set: the seven-event670 binary does not provide
+this new event. Begin actual volume assessment with a10-second window. Fixed
+HMP/QMP register queries use the same read path; avoid them within the window,
+or preserve their provenance and do not attribute every read to the guest.
+The original seven-event records remain valid evidence of their own binary.
+The new diagnostic's build and actual execution status are in NEXT_SESSION.md.
+
 ## Warm resume and timing
 
 Use `observe --home-button` with a new output directory. It sends the emulator's
