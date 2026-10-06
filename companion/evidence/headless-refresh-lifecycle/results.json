@@ -1,0 +1,41 @@
+{
+  "scope": "local fake RFB server and real observer subprocess only; no QEMU or iOS",
+  "results": [
+    {
+      "check": "invalid duration rejection",
+      "passed": true
+    },
+    {
+      "check": "finite expiry",
+      "passed": true,
+      "frame_requests": 3,
+      "exit_code": 0,
+      "coverage_seconds": 1.0041961669921875,
+      "requested_phase_completed": true,
+      "raw_child_resource_sample": {
+        "time": 1791326042.2517982,
+        "monotonic": 745226.128276224,
+        "proc_stat": "2969637 (python3) R 2969604 2969550 2969550 0 -1 4194304 14 0 0 0 0 0 0 0 20 0 1 0 74522612 8192000 55 18446744073709551615 4194304 10541936 281474910999840 0 0 0 0 0 0 0 0 0 17 2 0 0 0 0 0 10616216 12102000 288915456 281474911004296 281474911004510 281474911004510 281474911010791 0\n",
+        "start_ticks": 74522612,
+        "cpu_ticks": 0,
+        "rss_bytes": 225280
+      }
+    },
+    {
+      "check": "graceful early stop",
+      "passed": true,
+      "frame_requests": 2,
+      "exit_code": 0,
+      "coverage_seconds": 0.015423059463500977,
+      "requested_phase_completed": false,
+      "raw_child_resource_sample": {
+        "time": 1791326043.3135443,
+        "monotonic": 745227.190022265,
+        "proc_stat": "2970748 (python3) R 2969604 2969550 2969550 0 -1 4194304 5 0 0 0 0 0 0 0 20 0 1 0 74522718 8192000 0 18446744073709551615 4194304 10541936 281473940907360 0 0 0 0 0 0 0 0 0 17 4 0 0 0 0 0 10616216 12102000 12115968 281473940911751 281473940911966 281473940911966 281473940918247 0\n",
+        "start_ticks": 74522718,
+        "cpu_ticks": 0,
+        "rss_bytes": 0
+      }
+    }
+  ]
+}
