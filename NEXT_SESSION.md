@@ -140,7 +140,9 @@ wasinheritedbynewprivatecopies. Evidenceprivate-aux-mode includesactualstderr.
 Narrowfix97f7230fa8 reservesnewprivateauxdestination, copy/hashchecks, chmod0600
 ONLYnewcopy. Actualfirmware-freeQMPquery-blockro=false/quit0; frozen55source
 bytes/inode/ctime/mtime/modeunchanged, duplicateoutputreject. NotaniOSmilestone.
-ONE49 authorizednextsame55/670; rootallinput, firstactualSAMPLEonlyafterreviewednormaljourney
+ONE49 LIVE runner2865059/QEMU2865546, VNC/tmp/inferno-boot-8cjvuetl/vnc.sock,
+serialconnected1791321238.615004, all6privateaux0600. Sourcea99b7e5feb,
+same55/670, initialboot; noSAMPLEyet. Rootallinput, firstactualSAMPLEonlyafterreviewednormaljourney
 outcome toavoidperturbingreproduction. UseBACKBOARDD thenSPRINGBOARD atmostonceeach,
 waitEND/FAILED; errorsareevidence, no grants/retries. No nativeperformanceclaim.
 
