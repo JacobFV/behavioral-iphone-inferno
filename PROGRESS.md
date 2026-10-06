@@ -43,3 +43,26 @@ Next milestone: prepare a documented, authorized iOS image profile outside Git
 and establish real boot/display/input, then run one owned app. No firmware was
 downloaded and no native/simulator parity claim is made. Current bootstrap is
 Ubuntu24.04 ARM64 only; other runner architectures need their own dependency lock.
+
+## Session handoff readiness
+
+`companion/run` now provides status, check, build and version commands independent
+of the invoking working directory. NEXT_SESSION.md contains the concrete next
+boot/app tasks, source facts and persistent user preferences. The root README and
+AGENTS.md both point to it.
+
+The independent readiness audit found no Git alternates, no /tmp-target symlinks
+in .local-build and no unresolved executable libraries. Optional trace metadata
+was generated; future builds generate it automatically. Build PATH is normalized
+to the local tool venv and system binaries. Dependencies remain local and durable.
+
+A fresh actual check passed with an empty inherited environment except PATH and
+locale: `env -i PATH=/usr/bin:/bin LC_ALL=C.UTF-8 ./companion/run check`.
+Evidence: `.local-build/reports/session-handoff-smoke/report.json`.
+`./companion/run status` confirms the binary matches the saved build manifest and
+that the most recent matching QMP execution passed. No heavy rebuild was needed
+for these launcher/documentation additions. No iOS boot/app claims have changed.
+
+Setup work is intentionally handed off so the user can close the old session and
+open a new session rooted here. There are no continuing framework workers or
+emulator processes from this setup. Continue with NEXT_SESSION.md in the new one.
