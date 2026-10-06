@@ -31,7 +31,8 @@
   "trust": {
     "getter": "FBSApplicationInfo unauthoritativeTrustState0x1860c1ed4 invokes FBSSignatureValidationService trustStateForApplication: at0x1860c1f04",
     "service": "0x1860c36d8 queries type at0x1860c3738; unsigned type<2 returns8 at0x1860c3744; >=2 calls _validateApp: at0x1860c375c",
-    "validator": "_validateApp:0x1860c37fc checks isProvisioningProfileValidated and calls validateSignatureForPath:options: at0x1860c3960"
+    "validator": "_validateApp:0x1860c37fc checks isProvisioningProfileValidated and calls validateSignatureForPath:options: at0x1860c3960",
+    "MIS_wrapper": "_FBSMISInterfaceWrapperImpl validateSignatureForPath:options:0x1860c35c0 forwards path/options/NULL output to soft_MISValidateSignatureAndCopyInfo at0x18611e924. Dynamic symbol literal MISValidateSignatureAndCopyInfo at0x18611e8f0; no actual MIS numeric return is in current launcher diagnostic."
   },
   "type_mapping": {
     "method": "+[FBSApplicationInfo _applicationTypeForProxy:]0x1860c1164",
@@ -48,6 +49,7 @@
   "limitations": [
     "This identifies the actual authorization predicate, not the lower-level validation error or correct installation category for an owned ad-hoc fixture.",
     "A /Applications path alone does not establish permission to assert System classification. Original installation/classification provenance remains a separate investigation.",
-    "No fabricated trusted/signature/profile metadata or bypass is proposed."
+    "No fabricated trusted/signature/profile metadata or bypass is proposed.",
+    "Pinned upstream kernel_patches.c already has all-binaries-in-trustcache lookup patch; an additional owned CDHash entry is not established to change independent userspace MIS validation."
   ]
 }
