@@ -1,0 +1,33 @@
+Original CoreServices standalone analysis offsets; cache SHA59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1
+Selected exact disassembly from /tmp/inferno-coreservices-complete-disasm.txt
+-[LSBundleProxy containerURL]:
+  1283c0:	fd c3 00 91	add	x29, sp, #0x30
+  1283c4:	f4 03 00 aa	mov	x20, x0
+  1283c8:	48 05 00 d0	adrp	x8, 170 ; 0x1d2000
+  1283cc:	13 b5 44 f9	ldr	x19, [x8, #0x968]
+  1283d0:	e1 03 13 aa	mov	x1, x19
+  1283d4:	e9 94 00 94	bl	0x14d778 ; Objc message: -[x0 invalidateSettings]
+  1283d8:	fd 03 1d aa	mov	x29, x29
+  1283dc:	0f 95 00 94	bl	0x14d818 ; symbol stub for: _objc_retainAutoreleasedReturnValue
+  1283e0:	f5 03 00 aa	mov	x21, x0
+  1283e4:	fd 94 00 94	bl	0x14d7d8 ; symbol stub for: _objc_release
+  1283e8:	15 01 00 b4	cbz	x21, 0x128408
+  1283ec:	e0 03 14 aa	mov	x0, x20
+  12848c:	c0 02 00 34	cbz	w0, 0x1284e4
+  1284e0:	0b 00 00 14	b	0x12850c
+  1284e4:	68 05 00 90	adrp	x8, 172 ; 0x1d4000
+  1284e8:	00 6d 45 f9	ldr	x0, [x8, #0xad8] ; Objc class ref: bad class ref
+  1284ec:	53 94 00 94	bl	0x14d638 ; symbol stub for: _objc_alloc
+  1284f0:	48 05 00 b0	adrp	x8, 169 ; 0x1d1000
+  1284f4:	01 e1 46 f9	ldr	x1, [x8, #0xdc0]
+  1284f8:	02 06 00 90	adrp	x2, 192 ; 0x1e8000
+  1284fc:	42 00 08 91	add	x2, x2, #0x200
+  128500:	23 00 80 52	mov	w3, #0x1
+  128504:	9d 94 00 94	bl	0x14d778 ; Objc message: -[x0 invalidateSettings]
+-[LSBundleProxy _managedPersonas]:
+-[LSBundleProxy _usesSystemPersona]:
+-[LSBundleProxy _hasAssociatedPersonas]:
+
+Literal extraction from standalone Mach-O segment mapping:
+qword at0x1d2968 -> selector string dataContainerURL
+CFString at0x1e8200 -> characters /var/mobile/

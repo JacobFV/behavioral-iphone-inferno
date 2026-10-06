@@ -5,7 +5,7 @@
 extern int open(const char *,int,...),close(int),ftruncate(int,long long),fchmod(int,unsigned short),getpid(void),getuid(void),*__error(void);
 static int event_fd=-1;
 static unsigned event_sequence,event_bytes;
-static char event_boot[37];
+static char event_boot[37],event_path[INFERNO_EVENT_PATH_LIMIT];
 static const char *event_stage="not-started";
 static int event_errno,event_uid,event_failed;
 static void event_error(const char *stage,int error) {
@@ -17,7 +17,15 @@ static void event_start(void) {
     int boot_result=inferno_boot_uuid(event_boot);
     if(event_uid!=501) {event_error("uid",0);return;}
     if(boot_result) {event_error("boot",inferno_boot_query_errno);return;}
-    event_fd=open(INFERNO_EVENT_PATH,1|0x200|0x100,0600);
+    NSString *home=NSHomeDirectory();
+    if(!home || [home isEqualToString:@"/var/mobile"] || [home isEqualToString:@"/var/mobile/"] || [home isEqualToString:@"/private/var/mobile"] || [home isEqualToString:@"/private/var/mobile/"]) {event_error("no-container",0);return;}
+    NSError *directory_error=nil;
+    NSURL *cache=[[NSFileManager defaultManager] URLForDirectory:13 inDomain:1 appropriateForURL:nil create:1 error:&directory_error];
+    if(!cache) {event_error("cache-url",directory_error?(int)[directory_error code]:0);return;}
+    const char *path=[[[cache path] stringByAppendingPathComponent:@"org.inferno.companion.probe.events"] UTF8String];
+    int length=path?snprintf(event_path,sizeof(event_path),"%s",path):-1;
+    if(length<=0 || length>=(int)sizeof(event_path) || event_path[0]!='/') {event_error("cache-path",0);return;}
+    event_fd=open(event_path,1|0x200|0x100,0600);
     if(event_fd<0) {event_error("open",*__error());return;}
     struct inferno_event_stat st;
     const char *failure=0;int error=0;

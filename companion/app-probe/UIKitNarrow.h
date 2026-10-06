@@ -26,6 +26,9 @@ __attribute__((objc_root_class))
 @end
 @interface NSString : NSObject
 + (instancetype)stringWithFormat:(NSString *)format, ...;
+- (const char *)UTF8String;
+- (NSString *)stringByAppendingPathComponent:(NSString *)component;
+- (BOOL)isEqualToString:(NSString *)other;
 @end
 @interface UIColor : NSObject
 + (instancetype)colorWithRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha;
@@ -76,3 +79,15 @@ extern int UIApplicationMain(int argc, char **argv, NSString *principal, NSStrin
 extern void NSLog(NSString *format, ...);
 extern int snprintf(char *buffer, unsigned long size, const char *format, ...);
 extern long write(int descriptor, const void *buffer, unsigned long length);
+
+@interface NSURL : NSObject
+- (NSString *)path;
+@end
+@interface NSError : NSObject
+- (long)code;
+@end
+@interface NSFileManager : NSObject
++ (instancetype)defaultManager;
+- (NSURL *)URLForDirectory:(NSUInteger)directory inDomain:(NSUInteger)domain appropriateForURL:(NSURL *)url create:(BOOL)create error:(NSError **)error;
+@end
+extern NSString *NSHomeDirectory(void);
