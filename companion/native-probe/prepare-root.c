@@ -29,8 +29,8 @@ static void devices(void) {
     closedir(directory);
     int fd = open("/dev/rdisk0", 0);
     if (fd >= 0) {
-        unsigned char data[32];
-        if (lseek(fd, 4096, 0) == 4096 && read(fd, data, sizeof(data)) == sizeof(data)) {
+        unsigned char data[4096];
+        if (lseek(fd, 4096, 0) == 4096 && read(fd, data, sizeof(data)) == (long)sizeof(data)) {
             printf("INFERNO_PREP_DISK0_OFFSET4096 ");
             for (int i=0;i<32;i++) printf("%02x", data[i]);
             printf("\n");
