@@ -222,5 +222,5 @@ printed adjacent to the failure, so EPERM does not establish its cause.
 and System/mobile each run the exact launcher bytes with no arguments, expect
 exit64, and have a60-second child bound. The latter case requires an owned exact
 copy at `/usr/bin/inferno-launcher`. Each child logs executable/read access and an
-actual one-byte read before exec. This separates credentials and volume effects
+actual read of up to16KiB before exec (the Mach-O header region). This separates credentials and volume effects
 without making registration calls as root. This matrix is prepared, not yet run.
