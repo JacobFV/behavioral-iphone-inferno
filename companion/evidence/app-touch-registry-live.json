@@ -1,0 +1,150 @@
+{
+  "kind": "live_actual_original_IORegistry_snapshot",
+  "captured_epoch": 1791288713.9685526,
+  "live_run": true,
+  "stopped_disk_hashes_recorded": false,
+  "source_report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-15",
+  "binary_sha256": "fda9447b41d7bd170a0abf6b56f4b0db822ff9ca84add3e648299d2aa7f59505",
+  "binary_source": "9f92661b1b3154fb19de51ef9c9a1a6ed6e97d4f",
+  "input_root": {
+    "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-35/disks/root.raw",
+    "sha256": "dd1062ad10cf09dc3b18f1c84d8bc2eb6d2d6ed2ff54bdc2c546284d44d403de",
+    "bytes": 34359738368,
+    "copied_before_use": true
+  },
+  "helper": {
+    "path": "/usr/bin/inferno-readiness",
+    "bytes": 68624,
+    "sha256": "0d3cbe60769ee848a32e42ebb2fd883fc3b7b769128b2b3be168b204b0badbd7",
+    "source_commits": [
+      "e4a30b64b4b7aa7639919fa7d2da631b5f71b9cc",
+      "b74f70f49d"
+    ],
+    "staging_evidence_commit": "4111d81055",
+    "build_manifest": "/home/brandonin/.local/share/inferno/native-probe/helper-build-40/build.json",
+    "build_manifest_sha256": "f030f154d0f3146a166a7a41d97916e1e5b6392ee20f089d7bc364bb6924a321",
+    "build_manifest_declared_revision": "e4a30b64b4b7aa7639919fa7d2da631b5f71b9cc",
+    "source_hashes": {
+      "/home/brandonin/Documents/inferno-native-probe/companion/native-probe/ioreg-touch.c": "418428beffb3c505f6a47b01394287e40aae28770e79b199f96ec09486a5ad81",
+      "/home/brandonin/Documents/inferno-native-probe/companion/native-probe/IOKit.tbd": "74939f89e4649360d60c50c60b7b05573728def27f79bf36702b4385cdc7ad4b",
+      "/home/brandonin/Documents/inferno-native-probe/companion/native-probe/readiness.c": "40e5dcfd49915a0f282d9bcd55a2500ea7aa715e7b8dfd738a393bb42cd16cd0"
+    }
+  },
+  "observations": [
+    "RESET first-byte, req-boot-queued and completed; pending_hbpp2 at completion",
+    "Fixed nondestructive register reply retained: GPIO6020e and idle SPI",
+    "aop-gpio AppleARMIODevice child AppleS5L8960XGPIOIC",
+    "AppleHIDTransportDeviceSPI under multi-touch AppleARMSPIDevice; sole child in this bounded snapshot AppleHIDTransportBootloaderHBPP",
+    "Snapshot complete nodes6 statuses0, child exit0, no timeout",
+    "No claim that firmware loaded or an operational touch HID protocol attached; snapshot only walks one parent/child level"
+  ],
+  "startup_disable_actual_qmp": [
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 24,
+        "arguments": {
+          "name": "apple_mt_spi_host_event",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 24
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 25,
+        "arguments": {
+          "name": "apple_mt_spi_enqueue",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 25
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 26,
+        "arguments": {
+          "name": "apple_mt_spi_dequeue",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 26
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 27,
+        "arguments": {
+          "name": "apple_mt_spi_tx_drained",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 27
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 28,
+        "arguments": {
+          "name": "apple_mt_spi_boot_command",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 28
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 29,
+        "arguments": {
+          "name": "apple_mt_spi_control",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 29
+      }
+    }
+  ],
+  "report_snapshot_note": "Live report was persisted at startup; actual subsequent trace-disable replies are in raw QMP and extracted above. No final-run or live-disk hash claim.",
+  "files": {
+    "app-touch-registry-live-serial-prefix.log": {
+      "sha256": "eedf608710d7122d4c9f82fcfff1be6b93c3441ce5ef598aef888b737f9a0a8a",
+      "bytes": 65523
+    },
+    "app-touch-registry-live-qmp-transcript.jsonl": {
+      "sha256": "45d0a0ca274fbea57cf1fa14e946e3883f4053a28ae452f2c73d7a12394bb0bc",
+      "bytes": 18893
+    },
+    "app-touch-registry-live-control-transcript.jsonl": {
+      "sha256": "29235e96c7ea562c9adaa8031bbca03a91a47e13358db7a0e63b5f7c8af37ed7",
+      "bytes": 1984
+    },
+    "app-touch-registry-live-guest-errors.log": {
+      "sha256": "e479c7c803f3b574f971a3974224843a6d1b56384947625d915c5f40c5457453",
+      "bytes": 6732
+    },
+    "app-touch-registry-live-report.json": {
+      "sha256": "9ce2b0925b6a9aea68e84c5ae768c99ae32883c90e32b1b83b40c11df039d49b",
+      "bytes": 13857
+    }
+  }
+}
