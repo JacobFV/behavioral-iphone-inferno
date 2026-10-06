@@ -49,3 +49,11 @@ restore-service availability. The bounded process is terminated at the deadline;
 its disk and logs are retained for diagnosis. `--disk OLD_OUTPUT/guest.qcow2`
 copies a stopped guest disk into a new run to retain already installed packages;
 never copy a live writable disk. A new NoCloud instance/key is generated.
+
+To recover an interrupted attempt without changing its cloud-init identity, use
+`--resume-from OLD_OUTPUT`. This copies the stopped working disk, seed and
+private guest credentials into the new output directory. The old run remains
+intact; do not use this option while it is running. Initial 1 GiB execution
+reached Ubuntu userland and downloaded apt indices, then became very slow;
+run3 retries the same instance with `--memory 4G` and `--ssh-port 22322` for
+inspection. This observation does not by itself prove the cause was memory.

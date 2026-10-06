@@ -8,6 +8,7 @@ import json
 import os
 from pathlib import Path
 import signal
+import shutil
 import subprocess
 import time
 import urllib.request
@@ -79,6 +80,13 @@ def run(args):
               'runcmd': [['sh', '-c', '/usr/local/bin/inferno-enumerate &']]}
     (seed / 'user-data').write_text('#cloud-config\n' + json.dumps(config, indent=2) + '\n')
     (seed / 'network-config').write_text('version: 2\nethernets:\n  eth0:\n    match:\n      name: "en*"\n    dhcp4: true\n')
+    if args.resume_from:
+        previous = args.resume_from.resolve(strict=True)
+        for name in ('meta-data', 'user-data', 'network-config'):
+            shutil.copy2(previous / 'seed' / name, seed / name)
+        for name in ('guest-key', 'guest-key.pub'):
+            shutil.copy2(previous / name, output / name)
+        args.disk = previous / 'guest.qcow2'
     with (output / 'prepare.log').open('wb') as log:
         subprocess.run(['xorriso', '-as', 'mkisofs', '-quiet', '-V', 'cidata', '-J', '-r',
                         '-o', str(output / 'seed.iso'), str(seed)], stdout=log, stderr=log, check=True)
@@ -148,6 +156,7 @@ def main():
     parser.add_argument('--prepare-only', action='store_true')
     parser.add_argument('--binary', type=Path)
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--resume-from', type=Path, help='copy stopped run disk, seed and private credentials, preserving cloud-init instance')
     parser.add_argument('--disk', type=Path, help='copy an existing stopped companion QCOW2 to retain installed packages')
     parser.add_argument('--memory', choices=['1G', '2G', '4G'], default='2G')
     parser.add_argument('--ssh-port', type=int, help='optional loopback-only host SSH forwarding port')
@@ -159,6 +168,8 @@ def main():
         return 0
     if not args.binary or not args.output or args.seconds < 1:
         parser.error('run requires --binary, --output, and positive --seconds')
+    if args.resume_from and args.disk:
+        parser.error('--resume-from and --disk are mutually exclusive')
     if args.ssh_port is not None and not 1024 <= args.ssh_port <= 65535:
         parser.error('--ssh-port must be between 1024 and 65535')
     return run(args)
