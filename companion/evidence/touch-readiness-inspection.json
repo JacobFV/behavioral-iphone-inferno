@@ -156,5 +156,14 @@
     "decode": "GPIO group6 selected, INPUT_ENABLE set, GPIO function, CFG_DISABLE, inputlevel0. SPI RUN clear, modeled transfer MODE invalid, counts zero. CFG bits3/4/14 are unmodeled by current source.",
     "trace": "Six trace events enabled before cont; parent reports exactly one type0 first-byte event through180s and unchanged registers after rendered setup. Extended command-boundary trace is required to establish completion/pending response.",
     "provenance_limit": "Values and complete-window count reported by parent; consult raw run transcript for execution evidence."
+  },
+  "original_gpio_encoding": {
+    "AppleT8006GPIOIC": {
+      "disableVectorHard": "Entry0xfffffff0087bd9e4; ORs config with0xe at0xfffffff0087bdadc; MMIO write at0xfffffff0087bdaec.",
+      "enableVector": "Entry0xfffffff0087bdb50; clears mode bits0xe at0xfffffff0087bdcd4, ORs derived mode at0xfffffff0087bdcd8, MMIO write at0xfffffff0087bdce4.",
+      "interpretation": "Confirms that mode0xe is intentional interrupt-disable encoding for this original class and matches emulator behavior."
+    },
+    "other_original_classes": "AppleS5L8960XGPIOIC::disableVectorHard clears0xe at0xfffffff0087c3a88; AppleT8101GPIOIC clears0xe at0xfffffff0087bf9f8. Do not generalize T8006 encoding to every generation.",
+    "remaining_evidence": "Actual matched aop-gpio IORegistry class is required to bind the original class-specific encoding to this guest. Its original DT compatible strings are gpio,t8030 and gpio,s5l8960x; these alone do not prove which personality matched."
   }
 }
