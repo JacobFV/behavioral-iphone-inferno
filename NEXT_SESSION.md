@@ -54,27 +54,34 @@ pinned upstream software-rendering patches. This is not yet visible SpringBoard
 or an owned UIKit app. Full guest cache hashes and raw boot logs are committed.
 
 Current long run is `.local-build/reports/app-boot-3` (1800s, started about02:07
-local), preserving stopped app-boot-2 migration state. Linux USB companion run9 is
-headless, KVM/EHCI, private socket under the external usb/run9 folder and loopback
-SSH22325. Full-system lockdown responds with version14.0/build18A5351d; syslog
-service is not available yet. Do not terminate migration at a status checkpoint.
+local), preserving stopped app-boot-2 migration state. Near its planned boundary,
+reviewed frame58 shows Apple migration progress, not setup/home UI. Preserve the
+stopped root and all six auxiliary namespaces, export the latest migration stack,
+and determine whether the next boot resumes work or restarts migration.
+
+Independent `.local-build/reports/app-boot-4` started about02:31 local, with
+stage26 System launcher and exactly five upstream-documented unsupported services
+disabled. Its owned readiness job and SpringBoard/backboardd run, but no launcher
+marker or launcher process appeared in early snapshots. Investigate direct mobile
+launchd context (including console stdio setup); a root wrapper dropping to mobile
+has already executed the exact System launcher bytes successfully. Data execution
+returned EPERM for both root/mobile despite successful header reads. Raw evidence
+is in `companion/evidence/app-exec-matrix*`. Do not infer the underlying policy or
+claim app execution from this location comparison.
 
 The app job loads from merged `/System/Library/xpc/launchd.plist` through the
-original `launchd_unsecure_cache=1` mode (`--launchd-unsecure-cache`); only own jobs
-were added, existing signatures unchanged. Launchd reports “Missing executable”
-for the Data launcher. Read-only guest checks before and after boot show unchanged
-launcher/app bytes, correct modes and root/mobile X_OK success. Exact launcher
-runs in recovery with original Foundation/CoreServices, expected noargs exit64.
-A separate `.local-build/reports/app-exec-diagnostic-1` now runs a System wrapper
-that drops to mobile credentials and directly execs that same launcher to report
-the underlying errno. It has no USB; long boot3 remains independent.
+original `launchd_unsecure_cache=1` mode (`--launchd-unsecure-cache`). Signatures
+remain unchanged. Linux USB run9 is headless KVM/EHCI with loopback SSH22325;
+full-system lockdown responds with version14.0/build18A5351d, while starting the
+syslog service returns PASSWORD_PROTECTED. No syslog stream was obtained.
 
 Native postboot report export and UUID-matched symbolication show LaunchServices
 seeding waited on active installd bundle-metadata parsing, not a proven deadlock.
-Boot3 advanced to SystemAppMigrator. Preserve all six auxiliary namespaces with
-root using `--auxiliary-state`; never just copy root. Latest source/evidence and
-worker ownership are in PROGRESS.md, companion/app-probe and native-probe READMEs.
-Continue toward a reviewed app screenshot plus actual QMP tap/count change.
+Boot3 advanced to SystemAppMigrator. `companion/vnc-control.py` captures the live
+private Unix VNC socket and can inject bounded pointer events without host windows;
+capture is proven, actual touch response remains unproven. Latest source/evidence
+and worker ownership are in PROGRESS.md and companion/app-probe/native-probe
+READMEs. Continue toward a reviewed app screenshot plus actual tap/count change.
 
 ## Next concrete work
 

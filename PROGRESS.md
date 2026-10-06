@@ -2,6 +2,31 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### Current execution boundary (02:37 local)
+
+Full-system SpringBoard and backboardd processes execute; reviewed frames show
+Apple migration progress, not yet visible setup/home UI or the owned UIKit app.
+App-boot-3 is reaching its planned 30-minute observation boundary;
+its stopped root and all six auxiliary namespaces must remain paired. App-boot-4
+is the independent live integration with the five upstream-documented unsupported
+services disabled and a System-path launcher. Its readiness job runs, but no
+launcher marker has appeared yet. Continue execution and diagnosis without a
+handoff or a request to resume.
+
+The controlled execution matrix is decisive about location, not underlying
+policy: the same owned launcher bytes read correctly from Data but direct exec
+returns EPERM for root and mobile. From System, the mobile child actually runs
+those bytes and prints the expected no-argument usage message (exit64). Raw
+serial and source identities are committed under `companion/evidence/app-exec-matrix*`.
+The direct mobile launchd job remains a separate, unproven execution context;
+its stdio setup and job state are being investigated. No app launch is claimed.
+
+The private Unix-socket VNC capture tool has independently captured the live
+migration display without opening a host window. Touch support remains unproven
+until an actual guest response is observed. Latest detailed evidence and exact
+staging configurations are in the app-probe and native-probe READMEs. Earlier
+checkpoint notes below are historical and retain their original limitations.
+
 ### Further executed checkpoints
 
 - **Current full-system boundary:** original guest IOKit initialized the disposable

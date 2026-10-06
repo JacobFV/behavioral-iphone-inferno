@@ -19,8 +19,9 @@ From this repository, run `./companion/run status` to inspect readiness,
 For the next coding session, start with [NEXT_SESSION.md](../NEXT_SESSION.md).
 
 The 2026-10-06 execution reached real iOS 14 recovery userland and captured its
-828x1792 Apple-logo/progress framebuffer. Installed iOS/SpringBoard and an app
-journey remain unproven. See [BOOT.md](BOOT.md) for the hash-checked image profile,
+828x1792 Apple-logo/progress framebuffer. Full-system SpringBoard/backboardd processes now execute and the framebuffer
+shows Apple migration progress. Visible setup/home UI and an app journey remain
+unproven. See [BOOT.md](BOOT.md) for the hash-checked image profile,
 simulated-SEP build and bounded headless runner; [USB.md](USB.md) describes the
 isolated Linux USB companion. Raw milestone evidence is under `evidence/`.
 
