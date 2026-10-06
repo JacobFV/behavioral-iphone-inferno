@@ -1,0 +1,234 @@
+{
+  "kind": "owned_guest_launch_hook_timing",
+  "parser_sha256": "69dcaae0ed48955344dff3285eb0e94a87d0416f782ad66b507004131221f3c2",
+  "limits": [
+    "Guest emulated mach_absolute_time intervals, not native-device performance.",
+    "First observed owned app launch only; no warm/cleared-cache classification.",
+    "Host log arrival times are not substituted for captured hook ticks.",
+    "Relay verifies claimed app PID/UID/executable, not TCP peer authentication.",
+    "Launcher acknowledgement is not visual rendering completion."
+  ],
+  "serial": {
+    "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-60/serial.log",
+    "bytes_read": 326918,
+    "sha256": "c471474ad3033fa95921fa3f0297109d795a3763aa11b4b2ed890e2ffedb8e52",
+    "hash_scope": "full log"
+  },
+  "status": "complete",
+  "boot_uuid": "0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F",
+  "app_pid": 241,
+  "timebase": {
+    "numer": 125,
+    "denom": 3
+  },
+  "hooks": [
+    {
+      "hook": "main",
+      "sequence": 1,
+      "ticks": 2319371986,
+      "raw": {
+        "line": 936,
+        "byte_start": 79116,
+        "byte_end": 79255,
+        "sha256": "44d4d5081eb0238836b0a500854f7f072e0156fc56da7c715aeab64217c13e0b",
+        "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F 241 1 main 2319371986 125 3"
+      },
+      "validated": {
+        "line": 942,
+        "byte_start": 80028,
+        "byte_end": 80245,
+        "sha256": "a697af4bfe3cd49c5f8d27d648ae3bc37bec1187e815491e3ef0b44dddfbf00b",
+        "text": "INFERNO_TIMING_RELAY_RECORD boot=0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F pid=241 sequence=1 hook=main ticks=2319371986 numer=125 denom=3 complete=0 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    },
+    {
+      "hook": "launch-delegate",
+      "sequence": 2,
+      "ticks": 2324980379,
+      "raw": {
+        "line": 946,
+        "byte_start": 80497,
+        "byte_end": 80647,
+        "sha256": "7f1c3cbf60c0ceb22a3ec4c45e3171f7825dc0ed09db977cb261078be11d2fa2",
+        "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F 241 2 launch-delegate 2324980379 125 3"
+      },
+      "validated": {
+        "line": 947,
+        "byte_start": 80647,
+        "byte_end": 80875,
+        "sha256": "c32fda846904952a4371aae97561c539f8a4a22df3847c4067a2ae6408b85ef5",
+        "text": "INFERNO_TIMING_RELAY_RECORD boot=0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F pid=241 sequence=2 hook=launch-delegate ticks=2324980379 numer=125 denom=3 complete=0 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    },
+    {
+      "hook": "window-request",
+      "sequence": 3,
+      "ticks": 2338961579,
+      "raw": {
+        "line": 948,
+        "byte_start": 80875,
+        "byte_end": 81024,
+        "sha256": "1a298657db37fc3166487f7875792deab3e4e2c474b0a89ffc4da60b3b529953",
+        "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F 241 3 window-request 2338961579 125 3"
+      },
+      "validated": {
+        "line": 961,
+        "byte_start": 82089,
+        "byte_end": 82316,
+        "sha256": "deeaec728c72830ebefceefb26e51f59341e2a287a103a41fe6c402ec5e340d3",
+        "text": "INFERNO_TIMING_RELAY_RECORD boot=0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F pid=241 sequence=3 hook=window-request ticks=2338961579 numer=125 denom=3 complete=0 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    },
+    {
+      "hook": "active",
+      "sequence": 4,
+      "ticks": 2347457471,
+      "raw": {
+        "line": 962,
+        "byte_start": 82316,
+        "byte_end": 82457,
+        "sha256": "57cf7c75429d54abdad056ef9669a9b08133de676de657d076ca6c4b323c7c9b",
+        "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F 241 4 active 2347457471 125 3"
+      },
+      "validated": {
+        "line": 963,
+        "byte_start": 82457,
+        "byte_end": 82676,
+        "sha256": "2bfb587ff4e9f8e7749d677671fe460b10c3ab32b590546f78674ef51a72aed9",
+        "text": "INFERNO_TIMING_RELAY_RECORD boot=0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F pid=241 sequence=4 hook=active ticks=2347457471 numer=125 denom=3 complete=0 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    },
+    {
+      "hook": "appeared",
+      "sequence": 5,
+      "ticks": 2349516528,
+      "raw": {
+        "line": 975,
+        "byte_start": 83609,
+        "byte_end": 83752,
+        "sha256": "2bbac488a24f1b01ea588c2907e4284f09e8fde64c829781ccaea83331a94a26",
+        "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F 241 5 appeared 2349516528 125 3"
+      },
+      "validated": {
+        "line": 976,
+        "byte_start": 83752,
+        "byte_end": 83973,
+        "sha256": "46bb34e0fd9e9523c2dea30742336818bab60aa8ce38d74d3f6c128d0d024a5f",
+        "text": "INFERNO_TIMING_RELAY_RECORD boot=0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F pid=241 sequence=5 hook=appeared ticks=2349516528 numer=125 denom=3 complete=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    }
+  ],
+  "accepted_launcher": {
+    "launcher_pid": 170,
+    "attempt": 2,
+    "request_ticks": 2296659952,
+    "callback_ticks": 2380267721,
+    "reference": {
+      "line": 939,
+      "byte_start": 79508,
+      "byte_end": 79675,
+      "sha256": "e735c1defe75b1ffa55ca0928da9a356c93c6d63dbc99eed362a83c2e5f3732c",
+      "text": "INFERNO_LAUNCH_TIMING_V1 boot=0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F pid=170 attempt=2 request_ticks=2296659952 callback_ticks=2380267721 numer=125 denom=3 accepted=1"
+    }
+  },
+  "earlier_rejected_launcher_requests": [
+    {
+      "launcher_pid": 170,
+      "attempt": 1,
+      "request_ticks": 1930861978,
+      "callback_ticks": 2006040537,
+      "reference": {
+        "line": 819,
+        "byte_start": 68856,
+        "byte_end": 69023,
+        "sha256": "28b56e9f4ba539b9a74d0fe2795e596170dbfb288d90e48c590dc90826bd098e",
+        "text": "INFERNO_LAUNCH_TIMING_V1 boot=0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F pid=170 attempt=1 request_ticks=1930861978 callback_ticks=2006040537 numer=125 denom=3 accepted=0"
+      }
+    }
+  ],
+  "validated_lifecycle": [
+    {
+      "hook": "main",
+      "raw": {
+        "line": 979,
+        "byte_start": 84243,
+        "byte_end": 84365,
+        "sha256": "d16a4d1ced2672257dcb086e98687d1b147ae6b59bed1f5786e39c75de04d676",
+        "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F 241 1 main 0"
+      },
+      "validated": {
+        "line": 980,
+        "byte_start": 84365,
+        "byte_end": 84525,
+        "sha256": "57b3bfd5f8187f848a9c6e32563ecede6b6dc55f68409546a15b23c303380c99",
+        "text": "INFERNO_EVENT_RELAY_RECORD boot=0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F pid=241 sequence=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    },
+    {
+      "hook": "appeared",
+      "raw": {
+        "line": 1069,
+        "byte_start": 92553,
+        "byte_end": 92679,
+        "sha256": "6bedbce55374e26c6db8267846799e33a3222024b4bc5538c217297ac96b3ab3",
+        "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F 241 5 appeared 0"
+      },
+      "validated": {
+        "line": 1070,
+        "byte_start": 92679,
+        "byte_end": 92839,
+        "sha256": "81bcbd685704e7874957501968d02b00033a318d7b1f67e257d50ee902b07b26",
+        "text": "INFERNO_EVENT_RELAY_RECORD boot=0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F pid=241 sequence=5 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    },
+    {
+      "hook": "active",
+      "raw": {
+        "line": 1003,
+        "byte_start": 86687,
+        "byte_end": 86811,
+        "sha256": "6bc10c675cb73805b331d2e158847994e89de733ce36744fa4398fd8e82181c3",
+        "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F 241 4 active 0"
+      },
+      "validated": {
+        "line": 1004,
+        "byte_start": 86811,
+        "byte_end": 86971,
+        "sha256": "397f8a768896d598e2e4c30ff83ef734272de57636a0ca71663db713b796582f",
+        "text": "INFERNO_EVENT_RELAY_RECORD boot=0C3D46B7-8963-4DAA-BE95-B6BDAE12D68F pid=241 sequence=4 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+      }
+    }
+  ],
+  "intervals": {
+    "request_to_main": {
+      "delta_ticks": 22712034,
+      "nanoseconds_numerator": 946334750,
+      "nanoseconds_denominator": 1,
+      "milliseconds_approximate": 946.33475
+    },
+    "main_to_appeared": {
+      "delta_ticks": 30144542,
+      "nanoseconds_numerator": 3768067750,
+      "nanoseconds_denominator": 3,
+      "milliseconds_approximate": 1256.0225833333334
+    },
+    "main_to_active": {
+      "delta_ticks": 28085485,
+      "nanoseconds_numerator": 3510685625,
+      "nanoseconds_denominator": 3,
+      "milliseconds_approximate": 1170.2285416666666
+    },
+    "request_to_callback": {
+      "delta_ticks": 83607769,
+      "nanoseconds_numerator": 10450971125,
+      "nanoseconds_denominator": 3,
+      "milliseconds_approximate": 3483.657041666667
+    },
+    "request_to_active": {
+      "delta_ticks": 50797519,
+      "nanoseconds_numerator": 6349689875,
+      "nanoseconds_denominator": 3,
+      "milliseconds_approximate": 2116.563291666667
+    }
+  }
+}
