@@ -15,7 +15,12 @@ static inline CGRect Rect(CGFloat x, CGFloat y, CGFloat width, CGFloat height) {
 #endif
 @class NSString, NSDictionary, UIApplication;
 __attribute__((objc_root_class))
-@interface NSObject
+@interface NSObject {
+    // Original ARM64 NSObject has an eight-byte isa at offset zero. Clang
+    // folds ivar offsets in direct NSObject subclasses, so omitting this
+    // header makes our delegate's _window overwrite its class pointer.
+    Class isa;
+}
 + (instancetype)alloc;
 - (instancetype)init;
 @end
