@@ -130,6 +130,9 @@ class HeadlessRefresh:
         if code is None and time.monotonic() - self.report["spawn_monotonic"] > self.seconds + 30:
             self.report["error"] = "observer exceeded requested duration plus 30s startup/IO allowance"
         if code is not None:
+            # Re-read after observed exit: the child may publish its final report
+            # between the initial read and poll().
+            self.read_observer()
             self.finished = True
             self.report.update(exit_code=code, exit_observed_time=time.time(), state='ended')
             data = self.report.get('observer_report', {})
