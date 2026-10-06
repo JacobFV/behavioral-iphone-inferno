@@ -7,7 +7,8 @@
 53 completed strict0→1, three Home/reopen cycles retaining1, original Clock
 stopwatch exercise, and a final Home/reopen back to owned counter1. Root reviewed
 actual VNC and QMP images; selected images and input records are retained in
-`owned-extended-53-visual`. Normal finish was requested; postflight is running.
+`owned-extended-53-visual`. Normal shutdown exited0/noerror; tracked journey and default all7/ancestor
+retention verified (e03c54c43e), including exact metadata-attestation journals.
 No SAMPLE was issued and no persistent display freeze occurred.
 
 Three actual60s whole-QEMU resource intervals measured active/noVNC101.2163%,

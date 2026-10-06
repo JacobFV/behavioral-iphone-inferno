@@ -28,9 +28,11 @@ counter58985af15a484360a9c1442be4386a66. QMPbefore
  a6d6e3770ab9468bc05f7d08a66edc241db8b62804356c3e3f2a5a1a9640aead,
 afterd7dbd86ff62a04a18448e026d30f37fea81de150740a3c005f07f93231ece4c9.
 No SAMPLE/Home/OPEN52. Root52SHAbc57c2296671a99304913ad9b34ddac76402cbe6203a58e4e5909a61bb4ef0f7.
-53 finish-run accepted after strict0→1, three Home/reopen cycles, original Clock
+53 STOPPED/verified e03c54c43e after strict0→1, three Home/reopen cycles, original Clock
 stopwatch, three actual60s resource intervals, and fourth Home/reopen retaining1.
-Normal postflight is assigned to boot_runner; review verified retention before54.
+Normal0/noerror, tracked journey and default all7/ancestors/attestation retention PASS.
+Root119013376 bytes SHA bebab8542c7587c0577684d60db21762c2007e13153dfced53fc3e0a577880ed.
+Boot_runner is starting ONE54 unchanged; root owns all inputs.
 Boot1C81A853-1B79-4FBC-8EBD-E365B46D4827/PID252/main2739827127.
 No SAMPLE53; both slots unused. Selected actual reviewed pixels/action records
 are in owned-extended-53-visual. Same frozen55/670, no rendering fix.
