@@ -9,6 +9,7 @@ import os
 from pathlib import Path
 import signal
 import socket
+import stat
 import subprocess
 import tempfile
 import time
@@ -99,6 +100,8 @@ def main():
     parser.add_argument('--manifest', type=Path)
     parser.add_argument('--seconds', type=float, default=120)
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--usb-socket', type=Path,
+                        help='existing local Unix socket of a running isolated USB companion')
     args = parser.parse_args()
     if not 1 <= args.seconds <= 86400:
         parser.error('--seconds must be between 1 and 86400')
@@ -114,6 +117,9 @@ def main():
         manifest = json.loads(manifest_path.read_text())
         if manifest['binary']['sha256'] != binary_hash:
             raise ValueError('Binary SHA256 does not match build manifest')
+        usb_socket = args.usb_socket.resolve(strict=True) if args.usb_socket else None
+        if usb_socket and not stat.S_ISSOCK(usb_socket.stat().st_mode):
+            raise ValueError('--usb-socket must name an existing Unix socket')
     except (OSError, ValueError, KeyError, TypeError) as exc:
         parser.error(str(exc))
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ')
@@ -142,7 +148,8 @@ def main():
                 (output / 'stderr.log').open('wb') as stderr, \
                 (output / 'stdout.log').open('wb') as stdout:
             endpoint = str(Path(tmp) / 'qmp.sock')
-            command = [str(binary), '-machine', 't8030,kaslr-off=true,usb-conn-type=unix,usb-conn-addr=' + str(Path(tmp) / 'absent-usb.sock') + ',trustcache=' + inputs['trustcache']['path'].replace(',', ',,'),
+            usb_address = str(usb_socket or Path(tmp) / 'absent-usb.sock').replace(',', ',,')
+            command = [str(binary), '-machine', 't8030,kaslr-off=true,usb-conn-type=unix,usb-conn-addr=' + usb_address + ',trustcache=' + inputs['trustcache']['path'].replace(',', ',,'),
                        '-accel', 'tcg', '-smp', '2', '-m', '4G', '-S',
                        '-kernel', inputs['kernel']['path'], '-dtb', inputs['dtb']['path'],
                        '-initrd', inputs['ramdisk']['path'], '-append', BOOT_ARGS,
