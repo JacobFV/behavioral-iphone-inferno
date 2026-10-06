@@ -2,6 +2,26 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 11:04 continuation: real guest launch clocks and strict journey35
+
+App20/launcher20/readiness53 executed in installed iOS from frozen49. All five
+original mach_absolute_time boundaries arrived with bootB3EEF1B2-E87F-4F9F-93D6-
+BF1DB3C4DDBA, appPID255, timebase125/3 and validated relay provenance. The host
+parser49d0803fd8 derives exact rational durations from raw clock records:
+accepted open request→main245.107292ms; main→appeared578.8ms; main→active694.6705ms;
+request→callback880.016958ms; request→active939.777792ms. These are guest-emulated
+lifecycle intervals, not frame presentation, native-device speed, warm launch or
+cleared-cache startup. Deferred logging occurs after the measured first hooks.
+
+35 also completed reviewed counter0→1, one explicit countertap, both strictQMP
+captures and normalQMPexit0/errornull/373.293673s. Root107151360bytesSHA
+9a9c32bccc19e75b6e1931c60e48356fef00a9eae1bf4b54727dcd603afc3e72;
+all7hashes/all4ancestors unchanged. Rawjourneyaf110621e2, timing/arrival evidence
+`companion/evidence/owned-launch-timing-35`. Samebits36 now running from49.
+Next warm measurement requires actual Home/background proof and same-process
+OPEN through a single existing console reader; implementation in progress,
+no new permissions or framework patches. Host opt-in keepalive also in progress.
+
 ### 10:49 continuation: unchanged strict repeat34 passed
 
 Boot34 repeated the complete journey from immutable48 with identical emulator,
