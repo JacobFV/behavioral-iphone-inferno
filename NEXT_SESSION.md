@@ -48,14 +48,18 @@ that directory together: the binary references local libraries/resources.
 
 ## Current execution boundary
 
-Keep working; no handoff or missing user input. **Boot20 normal stop requested**
-at07:10, session28505. Next21 must run directly from normally stopped20 and all
-paired namespaces; no guest staging/helper change. New emulator SHA256
+Keep working; no handoff or missing user input. **Boot21 is live**, session53413,
+from normally stopped20 root
+`046663baf81b5c4c97ce4c38d968693a9b2ec8b8d46fa4f66ed231d1d8bc446f`
+and paired20; no guest staging/helper change. Stopped20QMPquit96/emulator0 after
+2371.705seconds,27requests,all7hashes/raw preserved ae3c600241. New emulator SHA256
 `e3da84b179ce328e06a0f917aabb8e4d80c8a4cf64701212464831a270e1741e`, source
 `1cebf0c00be038e7156d82578214c2cafa109873`; actual build/QMP control check
 passed ee01a1ef62. Same serial/mailbox,900second traces,30second frames,noUSB,
-7200maximum. Root exclusively owns input. Old20 socket will be stale afterstop;
-read21command.json for currentendpoint, do not use earlierones.
+7200maximum. Root exclusively owns input. Current21 VNC socket
+`/tmp/inferno-boot-gq0mb9io/vnc.sock`; old20 endpoint is stale. Root convenience
+script `/tmp/inferno-explicit-gesture-21.py` targets21; oldscript targetsstopped20.
+No input yet in21; actual originalAPI and UI result pending startup.
 
 **Reviewed event correction:** exact original SKS async wire EP18/tag0/op1/param0/
 data0 goes through original kernel event queue/cacheinvalidate/d00f and installed
@@ -68,7 +72,8 @@ operation or migrationguardchange. Actual helper/API+ScreenTime recovery still
 requires21. Isolated exactfunction harness ASan/UBSanpassed guards/truncation/
 reply-eventorder, distinct fromguest proof. Native sourcea2a51118dd.
 
-Actual MKB state3 before/after, empty unlock0, first0->1. Root's ordinary UI
+**Historical boot20 observations (stopped):** actual MKB state3 before/after,
+empty unlock0, first0->1. Root's ordinary UI
 journey reached: language English, regionUnitedStates, QuickStart/manual, WiFi/
 ContinueWithoutWiFi, DataPrivacy, CreatePasscode/options/Don'tUse/confirmation,
 AppsData/Don'tTransfer, Terms/Agree/confirmation, CustomizeSettings, updateinfo,
@@ -86,7 +91,8 @@ IMPORTANT: native's original MobileKeyBagLockState UserEventPlugin proves d00d
 posts only lock-status; d00f posts first_unlock. Therefore actionbit2->d00d is
 NOT sufficient. No callback patch has been made. Diskworker reactivated to trace
 exact accepted state/async path producing d00f; native owns plugin/Buddy evidence.
-No directnotifyd injection, guessedflags or migrationguard change. Keep20live.
+No directnotifyd injection, guessedflags or migrationguard change. That diagnosis
+now led to reviewed eventcandidate and active21 above.
 Current2a0e emulator+manifest archived at binaries/simulated-sep-1d8b129c88aa.
 Extra verified retirement of obsolete prep23 reclaimed7.32GB (f998a36433), now
 18GiB free; baseline21/22 and every actual appboot tuple remain preserved.
@@ -247,8 +253,8 @@ Evidence and exact original-code inspection are under companion/evidence/.
 
 ## Next concrete work
 
-1. Finish normalstop20/all7hashes then run21 with reviewed built e3da emulator.
-   Require actual one event, original MKB results and UI/ScreenTime progress.
+1. Verify active21 e3da emulator: require actual one event, original MKB results
+   and UI/ScreenTime progress. Normalstop20/all7hashes are complete.
    Preserve setup state; no helper/staging change or directnotification.
 2. Stage from a normally stopped paired tuple only after the next candidate is
    ready. Commit source, actual build manifests, readbacks, raw logs and hashes.
