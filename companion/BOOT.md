@@ -7,6 +7,21 @@ installed iOS system. Direct kernel startup applies upstream kernel patches.
 Use `companion/run build --simulated-sep` for this path: upstream builds with
 data encryption enabled reject simulated SEP during machine initialization.
 
+Prepare the documented iPhone 11 iOS 14.0 beta 5 (18A5351d) inputs from a local
+IPSW downloaded from the Apple URL in upstream's File Setup guide:
+
+```sh
+companion/run prepare --ipsw /absolute/iPhone11,8,iPhone12,1_14.0_18A5351d_Restore.ipsw \
+  --output /absolute/outside-repository/ios14b5-profile
+companion/run boot --profile /absolute/outside-repository/ios14b5-profile/profile.json
+```
+
+Preparation checks the device/build and selects the n104ap research erase
+identity in BuildManifest.plist. It records the full archive and component hashes,
+and extracts only the kernel, device tree, restore trustcache and restore ramdisk.
+It does not create tickets or process SEP firmware. The URL is recorded as the
+documented acquisition location; a local file's hash does not itself prove origin.
+
 The profile must live outside tracked source and use this schema:
 
 ```json
@@ -20,7 +35,7 @@ The profile must live outside tracked source and use this schema:
 }
 ```
 
-Each input may also include `archive_member` for archive provenance. All four
+Each input may also include `archive_member` and `size` for archive provenance. All four
 files must be nonempty regular files with matching SHA256 before the emulator
 starts. Unknown profile settings are rejected. This profile does not accept SEP
 firmware, SEP ROM, tickets, arbitrary flags or existing writable disks.

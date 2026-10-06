@@ -1,5 +1,36 @@
 # Inferno companion execution record
 
+## 2026-10-06: real t8030 initialization and early-boot preparation
+
+Read current upstream setup documentation and the pinned t8030 source. Upstream's
+documented example is iPhone12,1 / n104ap, iOS 14.0 beta 5 build 18A5351d; current
+upstream lists 14.x as supported, with later versions still upcoming. Its full
+restore instructions forge tickets and use real SEP firmware. This work instead
+tests the existing direct-kernel, simulated-SEP recovery path under our rule
+against signature forgery. This is an experiment, not proven full restore support.
+
+Apple's public 5,507,405,643-byte IPSW is being acquired outside Git at
+`/home/brandonin/.local/share/inferno/images/ios14b5/`. HTTP range extraction with
+ZIP CRC checking supplied the four initial inputs without waiting for the full
+download. BuildManifest confirms n104ap research erase build 18A5351d. Their
+absolute paths, SHA256 and official Apple URL are in `range-inputs/profile.json`.
+No SEP ROM, SEP firmware, device keys or forged tickets were acquired/created.
+
+The first actual t8030 run, using original binary SHA256
+`26443d17c93b2e9957a3ab745bbe2ba39f3b4708a07316b55c3ebefc36f14d8d`, decoded the
+kernel and applied upstream's in-memory kernel patches, then failed with
+`Simulated SEP cannot be used with data encryption at the moment.` Serial output
+was empty. Root inspected the actual stderr and source guard; no guest execution
+is established by this attempt. Raw logs, QMP transcript, argv and inputs are at
+`.local-build/reports/first-t8030-boot/`.
+
+Commit 877b07069a adds an explicit `--simulated-sep` build option and a two-line
+guard around upstream's hard-coded data-encryption switch. It selects existing
+simulated-SEP/unencrypted-device-tree code; default builds retain upstream behavior.
+The original binary/manifest are retained in `.local-build/binaries/emulated-sep/`.
+The next actual run will use the rebuilt variant. Companion boot/preparation tools
+are documented in companion/BOOT.md; all runtime assets remain outside Git.
+
 ## 2026-10-05: user-directed pivot
 
 The user requested wrapping ../behavioral-iphone and creating this companion fork.

@@ -37,7 +37,7 @@ def load_profile(path):
     inputs = {}
     for name in ('kernel', 'dtb', 'trustcache', 'ramdisk'):
         entry = profile.get(name)
-        if not isinstance(entry, dict) or not {'path', 'sha256'} <= set(entry) or set(entry) - {'path', 'sha256', 'archive_member'}:
+        if not isinstance(entry, dict) or not {'path', 'sha256'} <= set(entry) or set(entry) - {'path', 'sha256', 'archive_member', 'size'}:
             raise ValueError(f'{name} requires path and sha256 (optional archive_member)')
         source = Path(entry['path'])
         if not source.is_absolute():
