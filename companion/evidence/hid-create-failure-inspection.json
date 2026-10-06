@@ -1,0 +1,31 @@
+{
+  "scope": "Read-only boot17 create failure triage; do not infer missing authorization from NULL wrapper return.",
+  "actual": "app-boot-17/serial.log769: IOHIDUserDeviceCreate success0 descriptor_bytes77; no service ID/report; helper remained alive.",
+  "owned_descriptor": {
+    "length": 77,
+    "sha256": "081869e493c2313369eee81d3797ccc9094d895ca178cd8007167d07be3b7bb4",
+    "structural_review": "Balanced TouchScreen Application and Finger Logical collections; tip/inrange/confidence3bits+padding5+contactID8+X16+Y16+contactCount8=56bits,7bytes. No invalid short item apparent; structural review is not original parser execution.",
+    "properties": [
+      "ReportDescriptor CFData",
+      "Product CFString",
+      "Manufacturer CFString",
+      "Transport Virtual CFString",
+      "Built-In CFBoolean true"
+    ],
+    "reserved_keys_absent": [
+      "IOUserClientClass",
+      "IOClass",
+      "IOProviderClass",
+      "IOKitDebug"
+    ]
+  },
+  "original_kernel_stages": {
+    "create_method": "IOHIDResourceDeviceUserClient::createDevice0xfffffff008345694: parses serialized XML into dictionary, rejects reserved keys, overwrites Privileged from internal entitlement flag, calls createAndStartDevice; no grant expansion implicated by NULL alone.",
+    "create_and_start": "0xfffffff008345424: IOHIDUserDevice::withProperties at83454dc; NULL=>e00002be (8345580). attach failure8345520=>e00002c9; start failure8345560=>detach and e00002c9.",
+    "open_authorization": "Prior evidence proves developer virtual-device entitlement branch. Actual boot17 IOServiceOpen return has not been captured, so entitlement lookup behavior remains unobserved."
+  },
+  "wrapper_other_failures": "Original IOKit CreateWithOptions also returnsNULL for absent IOHIDResource, failed IOServiceOpen, failed serialized create method, state-queue allocation, or analytics allocation after successful kernel create. Recovery addresses47ed4,47ef4,47f44,48008,480c0,480ec; System mapping adds1812d3000.",
+  "next_diagnostic": "Record matched IOHIDResource ID, original IOServiceOpen status, IOCFSerialize length, and selector0 status using same owned properties and existing entitlement. Close diagnostic connection cleanly; no contact report. Native worker owns implementation.",
+  "primary_source": "https://github.com/apple-oss-distributions/IOHIDFamily/blob/IOHIDFamily-1446.140.2/IOHIDFamily/IOHIDResourceUserClient.cpp",
+  "limitations": "Usermode wrapper NULL cannot establish which stage failed, or establish that original descriptor parser rejected it. No additional entitlement, identity, property or OS policy change recommended."
+}
