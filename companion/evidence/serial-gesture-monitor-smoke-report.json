@@ -1,0 +1,72 @@
+{
+  "kind": "actual_empty_QEMU_monitor_frontend_transport_check",
+  "guest_uart_tested": false,
+  "ios_hid_tested": false,
+  "note": "Socket chardev is attached to HMP monitor frontend solely for image-free bidirectional/log/drain plumbing; fixed gesture lines are unknown monitor commands. No guest or UI delivery claim.",
+  "invocation": [
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "-machine",
+    "none",
+    "-display",
+    "none",
+    "-S",
+    "-chardev",
+    "socket,id=serial-test,path=/tmp/inferno-serial-check-1ln22lo4/serial.sock,server=on,wait=off,logfile=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/research/serial-gesture-monitor-smoke/serial.log,logappend=off,logtimestamp=off",
+    "-monitor",
+    "chardev:serial-test",
+    "-qmp",
+    "unix:/tmp/inferno-serial-check-1ln22lo4/qmp.sock,server=on,wait=off"
+  ],
+  "responses": [
+    {
+      "request_id": "11111111111111111111111111111111",
+      "guest_acknowledgment": "not checked",
+      "ui_acceptance": "not observed by transport",
+      "transmission": "written-to-serial-socket",
+      "bytes_sent": 68
+    },
+    {
+      "request_id": "22222222222222222222222222222222",
+      "guest_acknowledgment": "not checked",
+      "ui_acceptance": "not observed by transport",
+      "transmission": "written-to-serial-socket",
+      "bytes_sent": 75
+    },
+    {
+      "rejected": "Duplicate gesture ID; never replay a possibly transmitted request"
+    },
+    {
+      "rejected": "Gesture requires exact tap or swipe fields"
+    }
+  ],
+  "serial_transport": {
+    "endpoint": "/tmp/inferno-serial-check-1ln22lo4/serial.sock",
+    "connected": true,
+    "drained_bytes": 20407,
+    "transmissions": [
+      {
+        "request_id": "11111111111111111111111111111111",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 68
+      },
+      {
+        "request_id": "22222222222222222222222222222222",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 75
+      }
+    ],
+    "automatic_replay": false,
+    "connected_time": 1791289984.8540025,
+    "peer_closed": true,
+    "drain_thread_stopped": true,
+    "closed_time": 1791289984.9095368
+  },
+  "binary_sha256": "fda9447b41d7bd170a0abf6b56f4b0db822ff9ca84add3e648299d2aa7f59505",
+  "module_sha256": "1ee3a18f231e2aba1913bb561e4cadc652c980931221b69720a43542c9a554ea",
+  "runner_sha256": "e360d4a2524f0e8f9e3aea5fdebc1a04847469f28b50d7ceeccb80d667ada8d3",
+  "exit_code": 0
+}
