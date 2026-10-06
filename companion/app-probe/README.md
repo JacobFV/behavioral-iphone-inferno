@@ -281,3 +281,15 @@ Build10's original-cache export audit resolves all71 imports across the two
 launchers and app. This verifies imports, not registration or execution. The
 dictionary candidate is prepared for a separate staged comparison; the first
 SEP protocol comparison continues with the unchanged URL launcher.
+
+Actual `app-boot-10` dictionary registration returns YES with a valid proxy at
+the owned System bundle path. The original open request still returns NO; this
+is registration success, not app execution. `DiagnosticLauncher.m` builds a
+third separate candidate, `inferno-launcher-open-error`, using original
+`openApplicationWithBundleIdentifier:configuration:completionHandler:` with nil
+configuration. Its inspected BOOL/NSError callback logs bounded domain, code and
+localized description. `open-path-inspection.json` records the synchronous proxy
+and block ABI evidence. No callback wait or new launch options are invented;
+the existing process watchdog remains. Build11's original-cache audit resolves
+all90 imports across the three launchers and app. Earlier launcher and app
+artifacts retain their exact hashes. Guest callback results remain unproven.

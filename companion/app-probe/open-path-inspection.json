@@ -1,0 +1,20 @@
+{
+  "scope": "Original CoreServices image SHA79beb264e9b2a9a6ac4bcd03ddf61e2f27bc91403253f7b11ada2ece7de92938, read-only method and block ABI inspection. No error diagnosis inferred before guest callback execution.",
+  "current_method": {
+    "selector": "openApplicationWithBundleID:",
+    "offset": "0x3c700",
+    "flow": "Calls [_LSDOpenService synchronousXPCProxyWithErrorHandler:nil], then openApplicationWithIdentifier:options:completionHandler: with an empty options dictionary. Its block at0x3c830 stores only BOOL w1, discarding the error argument. It reads the BOOL immediately after the call, with no run-loop wait."
+  },
+  "diagnostic_method": {
+    "selector": "openApplicationWithBundleIdentifier:configuration:completionHandler:",
+    "offset": "0x3ea30",
+    "abi": "void method(id self, SEL, NSString *identifier, id configuration, void (^)(BOOL, NSError *) completion)",
+    "flow": "Passes completion directly to the same synchronous proxy method. optionsFromOpenConfiguration: at0x3e3e0 creates default options and explicitly handles nil configuration."
+  },
+  "callback_evidence": {
+    "method": "-[_LSDOpenClient openApplicationWithIdentifier:options:completionHandler:]",
+    "offset": "0x100850",
+    "flow": "Server forwards to _LSServer_OpenApplication. Its explicit error branch at0x100970 invokes block with w1=0 and x2=NSError. Thus callback captures BOOL and error rather than inventing an error-out-pointer signature."
+  },
+  "candidate_behavior": "Same dictionary registration, identifier, credentials, and configuration:nil. Log only bounded error domain, code, localizedDescription. A global block avoids stack-capture lifetime assumptions. If original synchronous call returns without callback, log open-callback-not-delivered and exit70; do not block an unknown callback queue. Existing120-second process watchdog bounds IPC. No userInfo dump, new options, entitlements, or signer identities."
+}
