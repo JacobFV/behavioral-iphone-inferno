@@ -210,3 +210,17 @@ app paths. It records exec errno or child wait status. The parent polls up to150
 seconds, kills only its own child on timeout and reaps it. No added entitlements,
 Apple job edits or alternate registration identity are involved. Staging requires
 a stopped copied disk set; the active migration run remains untouched.
+
+
+`app-exec-diagnostic-1` now executes the System wrapper: root uid/gid0, child
+uid/gid501, then Data launcher `execve` fails with EPERM(1); child exits127
+(raw32512), without timeout. The240-second run ends through QMP quit, emulator0,
+and strict app journey remains waiting. No explicit AMFI/sandbox denial was
+printed adjacent to the failure, so EPERM does not establish its cause.
+
+`org.inferno.app-probe-matrix.plist` selects `--matrix`: Data/root, Data/mobile,
+and System/mobile each run the exact launcher bytes with no arguments, expect
+exit64, and have a60-second child bound. The latter case requires an owned exact
+copy at `/usr/bin/inferno-launcher`. Each child logs executable/read access and an
+actual one-byte read before exec. This separates credentials and volume effects
+without making registration calls as root. This matrix is prepared, not yet run.
