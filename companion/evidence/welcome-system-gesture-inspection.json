@@ -1,0 +1,16 @@
+{
+  "scope": "Read-only original code inspection for boot22 Welcome to iPhone screen unchanged after acknowledged bottom swipes; no input, guest edits, policy changes or entitlement changes.",
+  "sources": {
+    "system_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+    "backboardd_sha256": "304d45d72dcba7e16928ec9192897c269280846f6d06dcccfdb4b991cbf040d2",
+    "origin": "Original installed iOS14b5 System cache and usr/libexec/backboardd, extracted outside Git."
+  },
+  "reviewed_branches": {
+    "system_policy": "SBSystemGestureManager::_isGestureWithTypeAllowed: at1c5797c4c checks accessibility-disabled then active disable assertions. Returnsfalse on either; logs at1c5797cbc and1c5797d34 distinguish them. No HID sender identity check in this method. shouldEnableSystemGestureWithType:1c5b9b2a4 additionally allows only listed exception types when assertion set nonempty. Actual runtime assertion state unknown.",
+    "edge_geometry": "SBScreenEdgePanGestureRecognizer::isLocationWithinGrabberActiveZone1c5c6781c obtains delegate viewForSystemGestureRecognizer:, calls _UISystemGestureLocationInView at1c5c67880, examines bounds, grabberActiveZoneWidth and edges at1c5c67890..8fc. Reviewed method checks geometric active zone, not sender/vendor/entitlement. It does not alone establish outer recognizer eligibility.",
+    "not_applicable_observer": "BKTouchDeliveryGenericGestureFocusObserver::destinationsForEvent:fromSender:1000538c4 requires eventtype39 at100053984..98c; normal touchscreen digitizer istype11. This method cannot prove a touchscreen routing gate.",
+    "display_integrated_caveat": "BKHIDDigitizerEventProcessor::processEvent:sender:dispatcher:100048d68 has explicit field0xb0019 check at100048eec..f00, but this branch comes from accessibility sender handling; generic sender path jumps directly100048f08 withflag0. It is not evidence that this owned IOHIDUserDevice needs another display property."
+  },
+  "conclusion": "No exact original source evidence presently supports changing virtual-device metadata or permissions. App-local touch success does not prove system-edge eligibility. Native worker independently traces Setup completion and SpringBoard state; active assertion/gesture-recognizer state is the next discriminating boundary.",
+  "limits": "No claim that Home gesture actually reached recognizer, no claim original OS rejects virtual input, and no bypass proposed."
+}
