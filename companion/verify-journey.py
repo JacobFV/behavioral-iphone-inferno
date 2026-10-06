@@ -27,7 +27,8 @@ def unique(items, message):
     return items[0]
 
 class Audit:
-    def __init__(self, report):
+    def __init__(self, report, strict_prefix=None):
+        self.strict_prefix = strict_prefix
         self.folder = report.resolve()
         self.sources = {}
         self.data = {}
@@ -107,25 +108,75 @@ class Audit:
         require(response.get('transmission') == 'written-to-serial-socket' and response.get('bytes_sent') == len(wire), 'incomplete tap transmission')
         require(t0 < sent['value']['time'] <= delivered['value']['time'] < t1, 'tap transmission ordering invalid')
         ack = unique([r for r in serial if re.fullmatch(rf'INFERNO_HID_ACK request_id={rid} attempt_status=0 delivery=unproven timestamp=[0-9]+',r['value'])], 'guest tap attempt acknowledgment')
+        prefix_boundary = None
+        prefix_manifest = None
+        if self.strict_prefix is not None:
+            prefix_manifest = json.loads(self.read(str(self.strict_prefix.resolve())))
+            prefix_path = Path(prefix_manifest['serial_prefix_path'])
+            require(prefix_path.is_absolute(), 'Strict prefix path must be absolute')
+            prefix = self.read(str(prefix_path))
+            require(len(prefix) == prefix_manifest['serial_prefix_bytes'] and sha(prefix) == prefix_manifest['serial_prefix_sha256'], 'Strict prefix size/hash mismatch')
+            require(prefix.endswith(b'\n') and serial_data.startswith(prefix), 'Strict snapshot is not complete-line final serial prefix')
+            begin, end = prefix_manifest['read_started_host_epoch'], prefix_manifest['captured_host_epoch']
+            require(isinstance(begin,(int,float)) and isinstance(end,(int,float)) and t1 < begin <= end,
+                    'Strict prefix was not captured after completed strict control')
+            opens = [self.command(r) for r in controls if self.command(r).get('execute') == 'guest-open-app' and r['value']['time'] > t1]
+            require(opens and all(end < r['created'] for r in opens), 'Strict prefix must precede every subsequent OPEN creation')
+            prefix_boundary = len(prefix)
         records = []
         for row in serial:
             match = RAW.fullmatch(row['value'])
             if match:
                 records.append((match.groups(), row))
-        chains = {}
-        for event, count in [('main','0'),('appeared','0'),('tap','1')]:
-            fields, raw = unique([(f,r) for f,r in records if f[3:] == (event,count)], f'{event} raw record')
+        # Pair provenance before selecting chronology; later processes are never
+        # excluded merely by taking the first matching line.
+        candidates = []
+        for fields, raw in records:
+            event, count = fields[3:]
+            if (event, count) not in [('main','0'), ('appeared','0'), ('tap','1')]:
+                continue
             boot, pid, sequence = fields[:3]
             valid = unique([r for r in serial if VALID.fullmatch(r['value']) and VALID.fullmatch(r['value']).groups() == fields[:3]], f'{event} validated provenance')
-            marker = unique([r for r in serial if r['value'] == f'INFERNO_UIKIT_PROBE_V1 event={event} count={count}'], f'{event} marker')
-            require(raw['reference']['byte_end'] <= valid['reference']['byte_start'] < marker['reference']['byte_start'] <= valid['reference']['byte_end'] + 1024, f'{event} provenance ordering invalid')
+            markers = [r for r in serial if r['value'] == f'INFERNO_UIKIT_PROBE_V1 event={event} count={count}'
+                       and valid['reference']['byte_start'] < r['reference']['byte_start'] <= valid['reference']['byte_end'] + 1024]
+            marker = unique(markers, f'{event} paired marker')
+            require(raw['reference']['byte_end'] <= valid['reference']['byte_start'], f'{event} provenance ordering invalid')
             arrival = None
             if arrivals is not None:
                 arrival = unique([r for r in arrivals if r['value']['byte_start'] == marker['reference']['byte_start']], f'{event} marker arrival')
                 v = arrival['value']; fragment = serial_data[v['byte_start']:v['byte_end']]
                 require(not v['preexisting'] and fragment.endswith(b'\n') and fragment[:-1].hex() == v['raw_hex'], f'{event} arrival raw reference mismatch/preexisting')
                 require(sha(fragment[:-1]) == v['sha256'], f'{event} arrival hash mismatch')
-            chains[event] = {'boot':boot,'pid':int(pid),'sequence':int(sequence),'raw':raw,'validated':valid,'marker':marker,'arrival':arrival}
+            candidates.append({'event':event,'boot':boot,'pid':int(pid),'sequence':int(sequence),'raw':raw,'validated':valid,'marker':marker,'arrival':arrival})
+        relevant_markers = [r for r in serial if r['value'] in {
+            'INFERNO_UIKIT_PROBE_V1 event=main count=0',
+            'INFERNO_UIKIT_PROBE_V1 event=appeared count=0',
+            'INFERNO_UIKIT_PROBE_V1 event=tap count=1'}]
+        require({r['reference']['byte_start'] for r in relevant_markers} ==
+                {c['marker']['reference']['byte_start'] for c in candidates},
+                'Unpaired lifecycle marker exists')
+        chains = {}
+        for event in ['main','appeared','tap']:
+            matching = [c for c in candidates if c['event'] == event]
+            if arrivals is not None:
+                matching = [c for c in matching if
+                            (t0 < c['arrival']['value']['observed_time'] < t1 if event == 'tap'
+                             else c['arrival']['value']['observed_time'] < t0)]
+            elif prefix_boundary is not None:
+                matching = [c for c in matching if c['marker']['reference']['byte_end'] <= prefix_boundary]
+            chains[event] = unique(matching, f'{event} strict chronology record')
+        strict_identity = (chains['main']['boot'], chains['main']['pid'])
+        later = [c for c in candidates if all(c is not selected for selected in chains.values())]
+        for c in later:
+            require((arrivals is not None and c['arrival']['value']['observed_time'] > t1) or
+                    (prefix_boundary is not None and c['raw']['reference']['byte_start'] >= prefix_boundary),
+                    'Additional lifecycle record is not proven after strict capture')
+            require(c['boot'] == strict_identity[0] and c['pid'] != strict_identity[1],
+                    'Additional lifecycle record has wrong boot or duplicate strict PID')
+            require(c['raw']['reference']['byte_start'] > chains['tap']['marker']['reference']['byte_end'],
+                    'Additional lifecycle raw record precedes strict tap provenance')
+        require(len({c['marker']['reference']['byte_start'] for c in candidates}) == len(candidates),
+                'A marker is paired with multiple raw records')
         main, appeared, tap = [chains[k] for k in ['main','appeared','tap']]
         require(main['sequence'] == 1 and main['sequence'] < appeared['sequence'] < tap['sequence'], 'event sequence invalid')
         require(len({(c['boot'],c['pid']) for c in chains.values()}) == 1, 'mixed app identity')
@@ -150,6 +201,9 @@ class Audit:
             ex=exchange('screendump',path)
             require(controlrow['value']['time'] <= ex['request']['value']['time'] <= ex['reply']['value']['time'], 'capture QMP chronology invalid')
             captures.append({'role':role,'width':width,'height':height,'sha256':sha(data),'qmp':ex})
+        if prefix_manifest is not None:
+            require(captures[1]['qmp']['reply']['value']['time'] < prefix_manifest['read_started_host_epoch'],
+                    'Strict prefix read started before after-capture QMP completion')
         require(captures[0]['qmp']['reply']['value']['time'] < sent['value']['time'], 'before frame completed after input')
         quit_exchange=exchange('quit')
         require(report.get('quit_response') == self.command(quit_exchange['reply']), 'reported quit response differs from raw QMP reply')
@@ -163,12 +217,12 @@ class Audit:
             require(t1 < f['value']['time'] < quit_exchange['request']['value']['time'], 'finish-run ordering invalid')
         for name, source in self.sources.items():
             require(sha((self.folder/name).read_bytes()) == source['sha256'], f'source changed during verification: {name}')
-        return {'status':'verified','chronology_basis':('raw observer arrival references plus source-gated capture commands' if arrivals is not None else 'source-gated capture commands; independent marker arrival times unavailable'),'reviewed_capture_gate_source_sha256':gate_sha,'boot_uuid':main['boot'],'app_pid':main['pid'],'relay_ready':ready,'events':chains,'before':before,'tap_command':gesture,'tap_wire':sent,'tap_wire_completion':delivered,'tap_attempt_ack':ack,'after':after,'captures':captures,'finish_run':finish,'quit':quit_exchange,'shutdown':shutdown,'exit_code':0}
+        return {'status':'verified','chronology_basis':('raw observer arrival references plus source-gated capture commands' if arrivals is not None else 'source-gated capture commands; independent marker arrival times unavailable'),'reviewed_capture_gate_source_sha256':gate_sha,'boot_uuid':main['boot'],'app_pid':main['pid'],'relay_ready':ready,'events':chains,'strict_prefix_manifest':prefix_manifest,'post_strict_other_process_records':later,'before':before,'tap_command':gesture,'tap_wire':sent,'tap_wire_completion':delivered,'tap_attempt_ack':ack,'after':after,'captures':captures,'finish_run':finish,'quit':quit_exchange,'shutdown':shutdown,'exit_code':0}
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--report',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--report',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--strict-prefix',type=Path,help='independently retained completed strict serial prefix manifest');a=p.parse_args()
     if a.output.exists():p.error('output must be a new file')
-    audit=Audit(a.report)
+    audit=Audit(a.report,a.strict_prefix)
     try:
         result=audit.verify();code=0
     except (Invalid,OSError,ValueError,KeyError,TypeError) as exc:
