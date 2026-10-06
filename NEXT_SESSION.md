@@ -119,7 +119,7 @@ Apple signature forging or activation impersonation is authorized.
 
 ## Next concrete work
 
-1. Inspect actual app-boot-9 unlock phase/state/return markers and registration
+1. Inspect actual app-boot-10 unlock phase/state/return markers and registration
    BOOL/proxy results. Keep source revisions, hashes, raw logs and stopped root
    plus all six auxiliary namespaces paired. Do not treat helper JSON as proof.
 2. Resolve the concrete next failure using original APIs and narrow owned code.
