@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "kind": "read-only original implementation inspection",
+  "firmware_build": "18A5351d",
+  "scope": "Authorization for one original MKBUnlockDevice(NULL,NULL) call against the freshly created disposable simulated-device system keybag.",
+  "provenance": {
+    "input": "verified-profile/kernel-kernelcache.research.iphone12b",
+    "input_sha256": "cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3",
+    "format": "IM4P containing an unencrypted LZFSE research kernel payload at byte offset 62",
+    "conversion": "lzfse_decode_buffer using the existing pinned build dependency; decoded copy retained outside Git",
+    "decoder_library_sha256": "f74e10a0250ac347b6d53dfc1a284ac140b1fb77757a71dca48bdee07941ee6a",
+    "decoded_bytes": 54613232,
+    "decoded_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+    "inspection_tools": [
+      "llvm-nm-18",
+      "llvm-objdump-18"
+    ],
+    "mobilekeybag_original_sha256": "c335b3f43eee16816e4aec47cb99e02d8d7388d6941b23b2a25d5fd4a2dc5871"
+  },
+  "finding": {
+    "required_owned_helper_entitlement": {
+      "com.apple.keystore.device": true
+    },
+    "entitlement_literal_virtual_address": "0xfffffff0074e6377",
+    "client_start": {
+      "symbol": "AppleKeyStoreUserClient::start(IOService*)",
+      "entitlement_check_virtual_address": "0xfffffff008f6e13c",
+      "helper": "AppleKeyStore::callingProcHasEntitlement(char const*, OSDictionary*)",
+      "flag_set_virtual_address": "0xfffffff008f6e150",
+      "client_flag_offset": "0xf8",
+      "client_flag_bit": 4
+    },
+    "selector_dispatch": {
+      "selector": 9,
+      "symbol": "AppleKeyStoreUserClient::handleUserClientCommandGated(void*, void*)",
+      "jump_table_virtual_address": "0xfffffff008f74de0",
+      "jump_table_index": 8,
+      "selector_entry_virtual_address": "0xfffffff008f6fecc",
+      "effective_handle_call_virtual_address": "0xfffffff008f6fefc",
+      "flag_condition": "Effective handle is 0 or <= -3; the observed system bag handle is 0.",
+      "flag_check_virtual_address": "0xfffffff008f6ff24",
+      "rejection_virtual_address": "0xfffffff008f72e74",
+      "rejection_value": "0xe00002e2",
+      "rejection_construction": "0xe00002c2 + 0x20",
+      "later_secretFromInput_call_virtual_address": "0xfffffff008f6ff34",
+      "later_unlock_the_device_call_virtual_address": "0xfffffff008f6ff50"
+    },
+    "conclusion": "Missing client flag bit 4 rejects this system-bag operation before secret processing and before unlock_the_device. This branch explains the observed selector 9 error without requiring a SEP rejection or a passcode interpretation."
+  },
+  "mobilekeybag_mapping": {
+    "MKBUnlockDevice_virtual_address": "0x711c",
+    "aks_unlock_device_call_virtual_address": "0x71ac",
+    "convertAKSErrorToMKB_virtual_address": "0x10d3c",
+    "raw_to_public_return": {
+      "0xe00002e2": -2,
+      "0xe00002c1": -2
+    },
+    "interpretation": "The public -2 alone is ambiguous; the adjacent original kernel log specifically identifies e00002e2."
+  },
+  "execution_boundary": {
+    "reported_boot_observation": "Boot 7: selector 9 returned e00002e2 adjacent to the one NULL-secret unlock call; MKB returned -2 and first-unlock remained 0.",
+    "this_artifact_is_execution_evidence": false,
+    "this_inspection_changed_guest_or_emulator": false,
+    "next_validation": "A separately recorded controlled run may add only this entitlement to owned ad-hoc helper code and repeat one original API call. Success and first-unlock must be established by actual guest results."
+  },
+  "limits": [
+    "Does not claim all possible selector 9 errors originate in this authorization branch.",
+    "Does not infer lock-state enum meanings from the malformed simulated GetDeviceState response.",
+    "Contains no Apple implementation binaries, complete disassembly, device keys, signatures, or keybag material."
+  ]
+}
