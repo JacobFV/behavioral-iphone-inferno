@@ -428,6 +428,16 @@ static void apple_mt_spi_handle_hbpp_mem_rmw(AppleMTSPIState *s)
     }
 }
 
+/* Metadata only: RX position is the zero-based received-byte position. */
+static void apple_mt_spi_trace_boot_command(AppleMTSPIState *s,
+                                             const char *phase, uint8_t type)
+{
+    trace_apple_mt_spi_boot_command(phase, type, s->rx.len,
+                                    (unsigned)apple_mt_spi_buf_get_pos(&s->rx),
+                                    s->rx.capacity, s->tx.len,
+                                    s->pending_hbpp.len);
+}
+
 static void apple_mt_spi_handle_hbpp(AppleMTSPIState *s)
 {
     uint8_t packet_type;
@@ -435,15 +445,17 @@ static void apple_mt_spi_handle_hbpp(AppleMTSPIState *s)
     packet_type = apple_mt_spi_buf_read_byte(&s->rx, 0);
 
     if (apple_mt_spi_buf_pos_at_start(&s->rx)) {
-        trace_apple_mt_spi_boot_command(packet_type);
         apple_mt_spi_buf_set_capacity(
             &s->rx, apple_mt_spi_hbpp_packet_hdr_len(packet_type));
+        apple_mt_spi_trace_boot_command(s, "first-byte", packet_type);
     }
 
     switch (packet_type) {
     case HBPP_PACKET_RESET:
         if (apple_mt_spi_buf_is_full(&s->rx)) {
             apple_mt_spi_push_pending_hbpp_word(s, HBPP_PACKET_REQ_BOOT);
+            apple_mt_spi_trace_boot_command(s, "req-boot-queued",
+                                             packet_type);
         }
         break;
     case HBPP_PACKET_NOP:
@@ -455,6 +467,8 @@ static void apple_mt_spi_handle_hbpp(AppleMTSPIState *s)
     case HBPP_PACKET_INT_ACK:
         if (apple_mt_spi_buf_pos_at_start(&s->rx)) {
             apple_mt_spi_buf_append(&s->tx, &s->pending_hbpp);
+            apple_mt_spi_trace_boot_command(s, "int-ack-consumed",
+                                             packet_type);
         }
         break;
     case HBPP_PACKET_MEM_READ:
@@ -479,6 +493,10 @@ static void apple_mt_spi_handle_hbpp(AppleMTSPIState *s)
     default:
         error_report("%s: Unknown packet type 0x%02X", __func__, packet_type);
         break;
+    }
+
+    if (apple_mt_spi_buf_is_full(&s->rx)) {
+        apple_mt_spi_trace_boot_command(s, "completed", packet_type);
     }
 }
 

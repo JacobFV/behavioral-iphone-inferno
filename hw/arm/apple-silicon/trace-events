@@ -10,5 +10,6 @@ apple_mt_spi_host_event(int dx, int dy, int x, int y, int old_buttons, int butto
 apple_mt_spi_enqueue(unsigned stage, unsigned frame, int x, int y, unsigned length, uint64_t virtual_ns) "stage=%u frame=%u sensor=(%d,%d) bytes=%u virtual_ns=%" PRIu64
 apple_mt_spi_dequeue(unsigned type, unsigned length) "type=%u bytes=%u"
 apple_mt_spi_tx_drained(bool fw_empty, unsigned boot_pending) "fw_empty=%d boot_pending_bytes=%u"
-apple_mt_spi_boot_command(unsigned type) "type=%u"
+# Boot phases are emitted only at command boundaries, never per payload byte.
+apple_mt_spi_boot_command(const char *phase, unsigned type, unsigned rx_len, unsigned rx_pos, unsigned rx_capacity, unsigned tx_len, unsigned pending_hbpp) "phase=%s type=%u rx_len=%u rx_pos=%u rx_capacity=%u tx_len=%u pending_hbpp=%u"
 apple_mt_spi_control(unsigned type, unsigned length) "type=%u bytes=%u"
