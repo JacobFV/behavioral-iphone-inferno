@@ -69,16 +69,19 @@ pass, failed41/44/47reject,6corruptionsreject; independentreviewclear.
 strict-completed-prefix.json + strict-completed.serial-prefix.log,365187bytes,
 SHAbc22bcc013d20d21ae5d263c8c721bbe21be7139260903a8527db081490f5ca9,
 readstart1791327080.2869885/captured7080.2903452. Keeporiginalignoredpaths.
-AFTERprefixrootreviewed app-switcher-001/after.png ownedcardonright.
-Dismissswipe6ab3edcde9cc490589b1a9d29b09c112 at1791327144.7780752:
-26000,22000→26000,3000 duration600ms; ACK0. Reviewed
-after-dismiss-001/observed-0010.png shows onlyClockcard. Waitingcomplete
-originalps600 afterdismissal to prove old261/exactexe absent beforeOPEN.
-NoOPENyet/noSAMPLE56. Keepstrictprefixoriginalpathsandcontentsimmutable.
-DoNOTfinishuntilnewprocessjourneyresolved. Rootallinputs. Finalverifierneeds
---strict-prefix .local-build/reports/app-boot-56/strict-completed-prefix.json.
-ProcessabsenceCLI requires--after-request-id DISMISS_ID andvalidcompleteps.
-
+56 FINISHrequestedafterfreshprocesssuccess. Appswitcherreviewed/dismiss6ab3edcde9cc490589b1a9d29b09c112
+at7144.7780752:26000,22000→26000,3000 duration600; ACK0; onlyClockcardafter.
+Completeoriginalps600174rows old261/exactexe absent, independentlycaptured7406.7529864
+(process-absence-600.json +serial/controlprefixes). OPEN7f06261169f8480896cf96522609f600
+at7445.548763→new375/main18231441663, all5hooks anddistinctkernelidentity.
+Rootreviewnew-process-view/observed0010 counter0. new-process-timing.jsoncomplete,
+743.55175ms OPEN→active guesttime, no cold-cache/native/frame claim.
+Rootvisualsowned-process-56-visual, strictprefix1b708d72cb. NoSAMPLE56.
+Bootrunnernormalpostflight now; MUSTverify --strict-prefix REPORT/strict-completed-prefix.json.
+Nativeauditingnewprocess/provenanceactual56. Preservealloriginalprefixpathsandcontents.
+Nextafterverified56: ONE57 sameguest/emulator with opt-inobserver60s to validate
+actualfiniteexpiry/noautorestart whileVMcontinues tostrictjourney; rootownsallinputs.
+No57launchedyet. No renderingfix; stillsampleactualfreeze beforeHome.
 Nativeobserverimplementationcomplete606d2fbf0b, rootchecks5eb59960b1 passed;
 independentreviewno blockers. No furthercodechangesassigned.
 Boot1C81A853-1B79-4FBC-8EBD-E365B46D4827/PID252/main2739827127.
