@@ -48,7 +48,35 @@ for kind, (path, record) in boot_evidence.items():
     print('Latest', kind + ':', path)
     print('Attempt binary matches current build:', record.get('binary_sha256') == digest)
     print('Attempt error:', record.get('error', 'none reported; inspect raw logs'))
-print('Full iOS / SpringBoard boot: NOT YET ESTABLISHED')
-print('UIKit app journey: NOT YET ESTABLISHED (owned recovery native probe has executed)')
+direct = boot_evidence.get('t8030_direct_root_experiment')
+if direct:
+    path, record = direct
+    journey = record.get('probe_journey', {})
+    print('Latest owned-app journey state:', journey.get('state', 'not enabled'))
+    if 'exit_code' not in record:
+        print('Live journey: initial report may be stale; query probe-status through the mailbox')
+    elif journey.get('completed'):
+        try:
+            serial = (path.parent / 'serial.log').read_bytes()
+            if not all(marker in serial for marker in (
+                    b'INFERNO_UIKIT_PROBE_V1 event=appeared count=0',
+                    b'INFERNO_UIKIT_PROBE_V1 event=tap count=1')):
+                raise ValueError('required actual guest markers missing')
+            for label in ('probe-before', 'probe-after'):
+                capture = journey['captures'][label]
+                frame = path.parent / (label + '.ppm')
+                if hashlib.sha256(frame.read_bytes()).hexdigest() != capture['sha256']:
+                    raise ValueError(label + ' frame hash mismatch')
+            if record.get('error') or record.get('exit_code') != 0:
+                raise ValueError('run did not exit cleanly')
+            print('Saved strict UIKit journey: COMPLETE; actual markers and both frame hashes verified')
+            print('Visual review and input provenance: inspect the report and control transcript')
+        except (OSError, KeyError, TypeError, ValueError) as exc:
+            print('Saved strict UIKit journey: evidence verification failed:', exc)
+    else:
+        print('Latest strict UIKit journey: incomplete or not enabled; see prior retained attempts')
+else:
+    print('Saved installed-iOS execution report: none')
+print('Recovery/QMP-only evidence does not establish an installed-iOS or app journey')
 print('Boot instructions: companion/BOOT.md; execution notes: PROGRESS.md')
 sys.exit(0 if build_matches and evidence and evidence[1].get('passed') else 1)
