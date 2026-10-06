@@ -313,7 +313,8 @@ static pixman_format_code_t adp_v4_gp_fmt_to_pixman(ADPV4GenPipe *genpipe)
     return 0;
 }
 
-static void adp_v4_gp_read(ADPV4GenPipe *genpipe, AddressSpace *dma_as)
+static void adp_v4_gp_read(ADPV4GenPipe *genpipe, AddressSpace *dma_as,
+                           uint32_t trace_pipe)
 {
     uint32_t len;
 
@@ -324,7 +325,7 @@ static void adp_v4_gp_read(ADPV4GenPipe *genpipe, AddressSpace *dma_as)
         qemu_log_mask(LOG_GUEST_ERROR,
                       "gp%d: dropping frame as it's compressed.\n",
                       genpipe->index);
-        trace_apple_adp_pipe(genpipe->index, "compressed", genpipe->state.config_control,
+        trace_apple_adp_pipe(trace_pipe, "compressed", genpipe->state.config_control,
                              genpipe->state.data_start, genpipe->state.stride,
                              genpipe->state.src_width, genpipe->state.src_height, 0);
         return;
@@ -347,7 +348,7 @@ static void adp_v4_gp_read(ADPV4GenPipe *genpipe, AddressSpace *dma_as)
     } else {
         qemu_log_mask(LOG_GUEST_ERROR, "gp%d: failed to read from DMA.\n",
                       genpipe->index);
-        trace_apple_adp_pipe(genpipe->index, "dma-failed", genpipe->state.config_control,
+        trace_apple_adp_pipe(trace_pipe, "dma-failed", genpipe->state.config_control,
                              genpipe->state.data_start, genpipe->state.stride,
                              genpipe->state.src_width, genpipe->state.src_height, len);
     }
@@ -912,7 +913,8 @@ type_init(adp_v4_register_types);
 
 // TODO: handle source/dest position, etc.
 static void adp_v4_gp_draw(ADPV4GenPipe *genpipe, AddressSpace *dma_as,
-                           pixman_image_t *disp_image, QemuConsole *console)
+                           pixman_image_t *disp_image, QemuConsole *console,
+                           uint32_t trace_pipe)
 {
     pixman_format_code_t fmt;
     pixman_image_t *image;
@@ -921,14 +923,14 @@ static void adp_v4_gp_draw(ADPV4GenPipe *genpipe, AddressSpace *dma_as,
             0 ||
         REG_FIELD_EX32(genpipe->state.config_control, GP_CONFIG_CONTROL,
                        ENABLED) == 0) {
-        trace_apple_adp_pipe(genpipe->index, "disabled", genpipe->state.config_control,
+        trace_apple_adp_pipe(trace_pipe, "disabled", genpipe->state.config_control,
                              genpipe->state.data_start, genpipe->state.stride,
                              genpipe->state.src_width, genpipe->state.src_height, 0);
         return;
     }
 
     qemu_mutex_lock(&genpipe->lock);
-    adp_v4_gp_read(genpipe, dma_as);
+    adp_v4_gp_read(genpipe, dma_as, trace_pipe);
     qemu_mutex_unlock(&genpipe->lock);
 
     if (genpipe->state.buf_len != 0) {
@@ -946,12 +948,12 @@ static void adp_v4_gp_draw(ADPV4GenPipe *genpipe, AddressSpace *dma_as,
 
         dpy_gfx_update(console, 0, 0, genpipe->state.dest_width,
                        genpipe->state.dest_height);
-        trace_apple_adp_pipe(genpipe->index, "drawn", genpipe->state.config_control,
+        trace_apple_adp_pipe(trace_pipe, "drawn", genpipe->state.config_control,
                              genpipe->state.data_start, genpipe->state.stride,
                              genpipe->state.src_width, genpipe->state.src_height,
                              genpipe->state.buf_len);
     } else {
-        trace_apple_adp_pipe(genpipe->index, "no-buffer", genpipe->state.config_control,
+        trace_apple_adp_pipe(trace_pipe, "no-buffer", genpipe->state.config_control,
                              genpipe->state.data_start, genpipe->state.stride,
                              genpipe->state.src_width, genpipe->state.src_height, 0);
     }
@@ -967,8 +969,8 @@ static void adp_v4_update_disp_bh(void *opaque)
                        qatomic_read(&adp->int_status), qatomic_read(&adp->int_enable));
     disp_image = qemu_console_surface(adp->console)->image;
 
-    adp_v4_gp_draw(&adp->genpipe[0], &adp->dma_as, disp_image, adp->console);
-    adp_v4_gp_draw(&adp->genpipe[1], &adp->dma_as, disp_image, adp->console);
+    adp_v4_gp_draw(&adp->genpipe[0], &adp->dma_as, disp_image, adp->console, 0);
+    adp_v4_gp_draw(&adp->genpipe[1], &adp->dma_as, disp_image, adp->console, 1);
 
     qatomic_or(&adp->int_status, R_CONTROL_INT_FRAME_PROCESSED_MASK);
     adp_v4_update_irqs(adp);
