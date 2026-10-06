@@ -30,8 +30,12 @@ afterd7dbd86ff62a04a18448e026d30f37fea81de150740a3c005f07f93231ece4c9.
 No SAMPLE/Home/OPEN52. Root52SHAbc57c2296671a99304913ad9b34ddac76402cbe6203a58e4e5909a61bb4ef0f7.
 ONE53 LIVE runner2930546/QEMU2931057, VNC /tmp/inferno-boot-z8xj9z87/vnc.sock,
 serial connected1791323387.5888894, host5355e76644, same55/670.
-If53 strict succeeds, extend with ordinary Home/reopen display transitions, leaving
-both samples unused unless a persistent visual stall occurs. Preserve strict captures.
+53 completed strict0→1 plus THREE ordinary Home/reopen cycles retaining1;
+boot1C81A853-1B79-4FBC-8EBD-E365B46D4827/PID252/main2739827127.
+Original Clock then opened normally, stopwatchstarted18146d88fb6d4185b9d4e31b56cf1431,
+reviewed00:02.16→00:19.64. LIVE60s host resources at stopwatch-resources,
+no VNC/input during interval, periodicQMP30s stays enabled. Both SAMPLEslots unused.
+Keep investigatingfreeze; no fixclaim. Root owns actions and will reviewaftermeasure.
 Six-run serial audit428a2c9f2f found startup IOMFB warnings shared by failed44/47
 and healthy45/46/49/50; no failure-specific warning near/after counter marker.
 Root owns all input; on stall collect both original samples BEFORE Home.
