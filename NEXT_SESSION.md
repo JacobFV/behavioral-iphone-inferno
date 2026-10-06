@@ -32,9 +32,16 @@ No SAMPLE/Home/OPEN52. Root52SHAbc57c2296671a99304913ad9b34ddac76402cbe6203a58e4
 stopwatch, three actual60s resource intervals, and fourth Home/reopen retaining1.
 Normal0/noerror, tracked journey and default all7/ancestors/attestation retention PASS.
 Root119013376 bytes SHA bebab8542c7587c0577684d60db21762c2007e13153dfced53fc3e0a577880ed.
-ONE54 LIVE runner2960397/QEMU2960921, host e03c54c43e, same55/670.
-VNC /tmp/inferno-boot-s8h8k4dp/vnc.sock; serial connected1791325518.76177.
-Root reviewed Apple boot screen; boot-observation-002 running. No inputs yet.
+54 finish requested after healthy strict0→1, root visual evidence owned-sample-54-visual.
+Boot00BD2671-C99D-448F-BFA1-C5C34E112D2B/PID227/main2108659149;
+counterb9c1c599fbc34131951b6c8152cd1822. One reviewed unlock, slow animation thenbeta.
+QMPbefore719c87e6df42022f0e6a2e573ca7aafa64a86979054efa00194e23884352b977,
+after22cb0e692d514fd8c4007a55196cde636203199103acf4ba2384e3b99046f7cd.
+All7traceoff1791325711.7881105 BEFOREcounter5712.3461127; no tap tracecoverage.
+No SAMPLE/Home/OPEN54. Boot_runner assigned normalpostflight; no55launchyet.
+Native_probe implementing opt-in finite≤300s runner-owned no-input observer,
+defaultoff, privateUnixVNC, childcleanup/coverage/resources separate. Isolated
+worktree; rootmustreview/merge andvalidate actualheadlessjourney. Noemulatorfix.
 Boot1C81A853-1B79-4FBC-8EBD-E365B46D4827/PID252/main2739827127.
 No SAMPLE53; both slots unused. Selected actual reviewed pixels/action records
 are in owned-extended-53-visual. Same frozen55/670, no rendering fix.
