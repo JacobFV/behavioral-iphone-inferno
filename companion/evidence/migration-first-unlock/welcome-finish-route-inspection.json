@@ -1,0 +1,31 @@
+{
+  "scope": "Read-only original code investigation of Welcome to iPhone completion. No input, guest change, notification injection or bypass.",
+  "sources": {
+    "Setup_sha256": "f178dba8e881fb836ca17d0a4be12d352affc10cd828339f15e775df3661d6c5",
+    "original_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+    "original_cache_uuid": "11ad39c9-e3c9-3067-a337-7287744fdcb5",
+    "frameworks": [
+      "/System/Library/PrivateFrameworks/OnBoardingKit.framework/OnBoardingKit",
+      "/System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard"
+    ],
+    "analysis_images": [
+      "/tmp/inferno-OnBoardingKit-complete",
+      "/tmp/inferno-SpringBoard-complete"
+    ]
+  },
+  "welcome_ui": {
+    "class": "BuddyFinishedController derives from original OBSetupAssistantFinishedController.",
+    "iphone_without_home_button": "loadView0x10005ec88-0x10005ed08 selects setInstructionalText: with GET_STARTED_IPHONE_X; no app-local swipe recognizer is installed there.",
+    "other_branch": "Device type1 or hasHomeButton takes0x10005ed0c branch, installing a Get Started button via setButtonTitle:action: at0x10005edd4. Its callback0x10005ee34 disables interaction and calls delegate flowItemDone: at0x10005eea8.",
+    "implication": "The visible Swipe up to get started instruction expects the normal system home gesture; this is distinct from an app-local button and the Hello cover-sheet interaction."
+  },
+  "automatic_readiness": {
+    "did_show": "BuddyNavigationFlowController navigationController:didShowViewController:operation:animated: at0x10002cc14 compares displayed class with BuddyFinishedController at0x10002d618-0x10002d638; if equal calls lifecycleDelegate willEndLifecycleDueToCause:1 at0x10002d640-0x10002d664.",
+    "setup_producer": "SetupController willEndLifecycleDueToCause: starts0x100010c4c. It posts BYSetupAssistantUISessionNoLongerExclusiveNotification through original CFNotificationCenterPostNotification at0x100010d04-0x100010d20.",
+    "springboard_receiver": "SBPrepareLaunchSentinelIfNecessary registers this notification at0x1c5a07710-0x1c5a07744. Callback0x1c5a07748 invokes setInSetupModeReadyToExit:YES at0x1c5a07778-0x1c5a07784. Setter0x1c5a08834 stores byte+0x10.",
+    "getter": "SBSetupManager isInSetupModeReadyToExit0x1c5a07a78 first checks in-setup state, then byte+0x10.",
+    "gesture_gate": "Original indirect-home-pan path checks isInSetupModeReadyToExit at0x1c5c845b8-0x1c5c845d8; false logs Preventing the indirect home pan gesture because Buddy is not ready to exit at0x1c5c84608. This is a real policy route, not evidence it failed in the guest.",
+    "limitation": "No live readiness query or gesture-recognizer state is available from this read-only inspection. Delayed didShow callback, lost notification or input classification are possibilities only, not established diagnoses."
+  },
+  "operator_observation_supplied_by_parent": "Boot22 Welcome unchanged after a1500ms swipe; a distinct250ms near-bottom swipe was then issued by parent. No worker input."
+}
