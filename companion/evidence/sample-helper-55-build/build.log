@@ -1,0 +1,36 @@
++ set -euo pipefail
++ [[ 3 != 2 ]]
++ [[ 3 != 3 ]]
+++ realpath -s /home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18
++ linker=/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18
+++ realpath -m /home/brandonin/.local/share/inferno/native-probe/helper-build-55
++ output=/home/brandonin/.local/share/inferno/native-probe/helper-build-55
++++ dirname -- companion/native-probe/build.sh
+++ cd -- companion/native-probe
+++ pwd
++ source_dir=/tmp/inferno-sample-guest/companion/native-probe
++ mkdir -p /home/brandonin/.local/share/inferno/native-probe/helper-build-55
++ clang --target=arm64-apple-ios14 -c /tmp/inferno-sample-guest/companion/native-probe/probe.S -o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/probe.o
++ /home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18 -arch arm64 -platform_version ios 14.0 14.0 -e _start -needed_library /tmp/inferno-sample-guest/companion/native-probe/libSystem.tbd -no_uuid -adhoc_codesign -o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/inferno-probe /home/brandonin/.local/share/inferno/native-probe/helper-build-55/probe.o
++ clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -c /tmp/inferno-sample-guest/companion/native-probe/prepare-root.c -o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/prepare-root.o
++ /home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18 -arch arm64 -platform_version ios 14.0 14.0 -e _main -needed_library /tmp/inferno-sample-guest/companion/native-probe/libSystem.tbd -no_uuid -adhoc_codesign -o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/inferno-prepare-root /home/brandonin/.local/share/inferno/native-probe/helper-build-55/prepare-root.o
++ clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -Wall -Wextra -Werror -DIOREG_TOUCH_LIBRARY -c /tmp/inferno-sample-guest/companion/native-probe/ioreg-touch.c -o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/ioreg-touch.o
++ clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -Wall -Wextra -Werror -c /tmp/inferno-sample-guest/companion/native-probe/app-event-relay.c -o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/app-event-relay.o
++ clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -Wall -Wextra -Werror -c /tmp/inferno-sample-guest/companion/native-probe/app-event-proc.c -o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/app-event-proc.o
++ clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -c /tmp/inferno-sample-guest/companion/native-probe/readiness.c -o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/readiness.o
++ /home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18 -arch arm64 -platform_version ios 14.0 14.0 -e _main -needed_library /tmp/inferno-sample-guest/companion/native-probe/libSystem.tbd -no_uuid -adhoc_codesign -needed_library /tmp/inferno-sample-guest/companion/native-probe/IOKit.tbd -o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/inferno-readiness /home/brandonin/.local/share/inferno/native-probe/helper-build-55/readiness.o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/ioreg-touch.o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/app-event-relay.o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/app-event-proc.o
++ clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -c /tmp/inferno-sample-guest/companion/native-probe/unlock-empty.c -o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/unlock-empty.o
++ /home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18 -arch arm64 -platform_version ios 14.0 14.0 -e _main -needed_library /tmp/inferno-sample-guest/companion/native-probe/libSystem.tbd -no_uuid -adhoc_codesign -o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/inferno-unlock-empty /home/brandonin/.local/share/inferno/native-probe/helper-build-55/unlock-empty.o
++ clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -Wall -Wextra -Werror -c /tmp/inferno-sample-guest/companion/native-probe/sample-control.c -o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/sample-control.o
++ clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -Wall -Wextra -Werror -c /tmp/inferno-sample-guest/companion/native-probe/open-control.c -o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/open-control.o
++ clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -Wall -Wextra -Werror -c /tmp/inferno-sample-guest/companion/native-probe/hid-input.c -o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/hid-input.o
++ clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -Wall -Wextra -Werror -c /tmp/inferno-sample-guest/companion/native-probe/hid-user-device.c -o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/hid-user-device.o
++ /home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18 -arch arm64 -platform_version ios 14.0 14.0 -e _main -needed_library /tmp/inferno-sample-guest/companion/native-probe/libSystem.tbd -no_uuid -adhoc_codesign -o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/inferno-hid-input /home/brandonin/.local/share/inferno/native-probe/helper-build-55/hid-input.o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/hid-user-device.o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/open-control.o /home/brandonin/.local/share/inferno/native-probe/helper-build-55/sample-control.o
++ [[ 3 == 3 ]]
++ /home/brandonin/.local/share/inferno/native-probe/ldid/ldid -Cadhoc -S/tmp/inferno-sample-guest/companion/native-probe/hid-entitlements.plist /home/brandonin/.local/share/inferno/native-probe/helper-build-55/inferno-hid-input
++ /home/brandonin/.local/share/inferno/native-probe/ldid/ldid -e /home/brandonin/.local/share/inferno/native-probe/helper-build-55/inferno-hid-input
++ /home/brandonin/.local/share/inferno/native-probe/ldid/ldid -Cadhoc -S/tmp/inferno-sample-guest/companion/native-probe/entitlements.plist /home/brandonin/.local/share/inferno/native-probe/helper-build-55/inferno-prepare-root
++ /home/brandonin/.local/share/inferno/native-probe/ldid/ldid -e /home/brandonin/.local/share/inferno/native-probe/helper-build-55/inferno-prepare-root
++ /home/brandonin/.local/share/inferno/native-probe/ldid/ldid -Cadhoc -S/tmp/inferno-sample-guest/companion/native-probe/unlock-entitlements.plist /home/brandonin/.local/share/inferno/native-probe/helper-build-55/inferno-unlock-empty
++ /home/brandonin/.local/share/inferno/native-probe/ldid/ldid -e /home/brandonin/.local/share/inferno/native-probe/helper-build-55/inferno-unlock-empty
++ python3 - /tmp/inferno-sample-guest/companion/native-probe /home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18 /home/brandonin/.local/share/inferno/native-probe/helper-build-55 /home/brandonin/.local/share/inferno/native-probe/ldid/ldid

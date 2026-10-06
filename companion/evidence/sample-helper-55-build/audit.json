@@ -1,0 +1,68 @@
+{
+  "source_revision": "d2ac5ba0cc",
+  "artifact": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/helper-build-55/inferno-hid-input",
+    "size": 88944,
+    "sha256": "853bed149abbed99b3157150dbcd1d25292f9a873e643d0e424e66e7fc1a8538"
+  },
+  "retained_files": {
+    "macho-audit.log": {
+      "size": 8326,
+      "sha256": "7334e6144fae99b6fdae1eb9a5592d402de66ccd8a25226608c17dce64f415d9"
+    },
+    "sample-import-audit.json": {
+      "size": 11274,
+      "sha256": "78ca1d6abbbe811be9f225c88f38f4ee7774d79a6c6c2fb287c4774594be93d3"
+    },
+    "build.json": {
+      "size": 6100,
+      "sha256": "e64842db31e7dfe885482d13a884150a0885b72b5047aca40f0d8fb1567469a4"
+    },
+    "hid-helper-entitlements.plist": {
+      "size": 371,
+      "sha256": "a0201949d3734799856a50ca6d6d9ee7194955f56ee3769a8b4ad79726230db6"
+    },
+    "build.log": {
+      "size": 7346,
+      "sha256": "fc0947a95595ae8608a58c00e7dcf4473cdc4b94c8f1aa26cd61ff7cb96f0216"
+    },
+    "import-audit.log": {
+      "size": 47,
+      "sha256": "b994e21f0cc8d9ec7591794cb1dad272a139ef62ee781114b36de605955b5b59"
+    }
+  },
+  "new_original_imports": [
+    {
+      "executable": "/home/brandonin/.local/share/inferno/native-probe/helper-build-55/inferno-hid-input",
+      "symbol": "_dup2",
+      "declared_provider": "/usr/lib/libSystem.B.dylib",
+      "export_chain": [
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/system/libsystem_kernel.dylib"
+      ]
+    },
+    {
+      "executable": "/home/brandonin/.local/share/inferno/native-probe/helper-build-55/inferno-hid-input",
+      "symbol": "_pipe",
+      "declared_provider": "/usr/lib/libSystem.B.dylib",
+      "export_chain": [
+        "/usr/lib/libSystem.B.dylib",
+        "/usr/lib/system/libsystem_kernel.dylib"
+      ]
+    }
+  ],
+  "entitlements": {
+    "com.apple.developer.hid.virtual.device": true,
+    "com.apple.security.iokit-user-client-class": [
+      "IOHIDResourceDeviceUserClient"
+    ]
+  },
+  "entitlements_equal_build54": true,
+  "scope": [
+    "Host clang/LLVM build and actual installed original-cache export audit, not guest execution.",
+    "Only inferno-hid-input is the new staging candidate. Existing readiness54/app22/launcher22 artifacts remain selected unchanged.",
+    "Own ad-hoc signature with exactly prior two HID entitlements; no new privilege or Apple identity.",
+    "Original spindump exec/stackshot acceptance remains untested.",
+    "Guest watchdog is cooperative guest monotonic time; retained numeric-PID reuse limitation."
+  ]
+}
