@@ -315,3 +315,13 @@ selector4 formats only when that result is zero. Existing formatted storage is
 preserved; the original selector7 clear operation is not invoked. No owned code
 writes raw effaceable bytes. All auxiliary virtual namespaces must be retained
 with the prepared root before testing a subsequent direct boot.
+
+Actual disk-preparation-21 completed the keybag sequence: original effaceable
+query returned formatted=0, format returned0, requery returned formatted=1;
+original MKBKeyBagCreateSystem returned0 and wrote a 223-byte systembag.kb.
+Original seputil gigalocker shutdown returned0, all three mounted volumes cleanly
+unmounted, and both keybag/preparation completion markers appeared. The entire
+stopped virtual disk set is retained; a following direct boot must use its root
+and `--auxiliary-state` together. Run20 failed earlier because recovery contains
+IOKit only at its versioned path; no driver-format call executed in that run.
+This successful API initialization is not yet evidence of system or app boot.
