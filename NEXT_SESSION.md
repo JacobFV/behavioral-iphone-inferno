@@ -22,7 +22,8 @@ counterd2847363d7794abc935cadedc18d990b. QMPbefore
 after80a879d44c98c6d63fbe9a7afb3ab55e25ee66813643e5af780090d3def2595b.
 Root visual review3856d1678f, no SAMPLE/Home/OPEN. Trace disabled duringcleanup.
 51 rootSHA1f2740b53665988eb18bae8fef1e12c6b450b042f47a5ab9c3b9fb12b5e6c21e.
-ONE52 starting after51 verification/retention passed, samefrozen55/670.
+ONE52 LIVE runner2924993/QEMU2925556, VNC /tmp/inferno-boot-fw34ytkc/vnc.sock,
+serial connected1791322985.7063284, host16740b4bb4, samefrozen55/670.
 Root owns all input; on stall collect both original samples BEFORE Home.
 Goal: reproduce real display freeze and collect original compositor stacks while
 stalled, comparing49 healthy baseline. No rendering behavior fix yet.
