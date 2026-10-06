@@ -7,15 +7,26 @@ continuous work across status questions and intermediate milestones. Parallel
 workers are authorized for independent work; use isolated worktrees and commit.
 No handoff or pause has been requested.
 
-## Current execution, 2026-10-06 11:18 local
+## Current execution, 2026-10-06 11:29 local
 
-**Boot37 starting/live for actual warm reopen.** Report `.local-build/reports/app-boot-37`,
-runnerPID2607728 dedicated7200 session, frozen50. Endpoint forthcoming from bootworker.
-IMPORTANT37 has --probe-keep-running: strictafter DOES NOT stop VM. Root will complete
-strict0→1, then review ordinary Home/background, explicit OPEN and retainedcounter1,
-read actual warm clocks, optionally repeat/sample resources, then explicit finish-run.
-No automatic input. Root input `/tmp/inferno-explicit-gesture-37.py` ready; observer
-`/tmp/inferno-observe-event-arrivals-37.py` includes OPEN/lifecycle/processidentity.
+**Boot37 LIVE; strict counter0→1 complete, warm pending.** Report `.local-build/reports/app-boot-37`,
+runnerPID2607728 dedicated7200 session, frozen50. PrivateVNC `/tmp/inferno-boot-l2zy1ddh/vnc.sock`.
+IMPORTANT37 has --probe-keep-running: strictafter DID NOT stop VM. Root reviewed0/1,
+bothQMPcaptures complete. BootUUID7F2B1017-7FE9-4E9C-AF95-AE72CA29523A, appPID263.
+Originalproc identity succeeded56/errno0/uniqueid263/idversion743; main_ticks3549314015.
+Root input `/tmp/inferno-explicit-gesture-37.py`; OPEN `/tmp/inferno-explicit-open-37.py`.
+Observer session18552. Resource-before-warm60s session48941 collecting idle while noinput.
+Two initialunlockswipes, betaCloseaef0d7a0630b48cba73c5cb40dacb7fe,
+counter6384d179e9be4b16b4c8e54023ac0dde. Reviewed unobstructed0/1.
+Home1 32600→15000/400ms ID5db08aec46804c97bc7e9133a4306677 and
+Home2 32270→9145/800ms ID1a08aed865864c68a94c6d23019ad052 bothACK0,
+NO visiblechange/noresign. SettledframeSHA b7b126fdd034c9256d6d54fdeb02a40db78cc6204da0da59e2f57a0e2c56bca6.
+NoOPEN yet. Nativeworker investigating systemgesture; diskworker checkingparser.
+Lastlifecycle seq7 gen1active(afterbetaClose), priorseq6resign fromalert isexpected.
+Root retainsallinput. Do notclaimwarmuntil actualHome/background and namedOPEN
+with originalforeground/active+sameidentity+reviewedcountercontinuity.
+Finish only after remaininglivework via explicitfinish-run, normalcleanup.
+No automatic input. Continuouswork; no handoffrequested.
 
 37 uses FOUR new reviewed artifacts:
 - App22 `~/.local/share/inferno/app-probe/exec-build-22/InfernoProbe.app/InfernoProbe`,
