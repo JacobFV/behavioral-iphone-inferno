@@ -2,37 +2,33 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
-### Current execution boundary (02:47 local)
+### Current execution boundary (03:37 local)
 
-Full-system SpringBoard and backboardd processes execute; reviewed frames show
-Apple migration progress, not yet visible setup/home UI or the owned UIKit app.
-App-boot-3 completed1800.516194seconds with QMP quit/emulator0, retaining root
-SHA76e7624492f500575739e0c6c2a40bfc6385a647a3ccd834f259f1e3d7fe5466 and all six
-paired auxiliary namespaces. Raw logs and reviewed frames are committed under
-`companion/evidence/app-system-long*`.
+Full-system SpringBoard and backboardd execute; reviewed frames show Apple
+migration progress. Visible setup/home UI, owned UIKit execution and tap/count
+journey remain unproven. Continue execution without a handoff.
 
-Full read-only report export shows SystemAppMigrator returned NO before the
-MobileSlideShow phase. Its later wait chain reaches assetsd's original
-`PLFirstUnlockProtection waitUntilFirstUnlock`; CPU counts remain unchanged
-across the two later snapshots. This is a concrete first-unlock wait, not proof
-that every earlier migration succeeded. Full reports, raw exporter log and
-UUID-matched symbolization are in `companion/evidence/migration-first-unlock/`.
-The next integrated attempt will query the VM's original MobileKeyBag API and
-make one normal empty-passcode unlock attempt for the null-secret keybag created
-by our earlier helper. No synthetic notification or policy bypass is used.
+App-boot-7 completed974.001145seconds with normal QMP cleanup/emulator0. The
+System-path app registration returned NO in completed retry batches. Its one
+original empty-secret unlock call returned-2, with raw selector9 e00002e2 and
+first-unlock unchanged0. Exact original kernel inspection identified the missing
+com.apple.keystore.device entitlement gate before secret processing or SEP.
+These are actual negative results, not timeout guesses or app success.
 
-The controlled execution matrix establishes a path difference: exact launcher
-bytes read correctly from Data but execution returns EPERM for root and mobile;
-System/mobile execution prints the expected no-argument usage (exit64). In
-app-boot-5 the inherited-console System wrapper runs the launcher with arguments;
-mobile console open succeeds. It then aborts on a missing lazy symbol, traced to
-LSRegisterURL, which is local rather than exported. The launcher is being fixed
-to use the original workspace registration method. No registration or app-launch
-success is claimed. App-boot-4 remains the independent live migration observation.
+Disk-preparation-32 adds only that proven entitlement to our ad-hoc-signed helper;
+the compiled object is unchanged. Guest67600-byte readback, unmounts and emulator0
+passed. Root SHA34240b9546eaea73e1ddae0997a194f1ba9c23e5302d3fb76abf69a35675e276
+and all six paired auxiliary namespaces feed active app-boot-8, with7200-second
+maximum and30-second frames. Observe actual before/after first-unlock and natural
+migration progress. Do not equate raw lock-state0 with unlocked: the upstream
+simulator's GetDeviceState response is a malformed placeholder DER.
 
-Private Unix-socket VNC capture is independently verified without a host window;
-touch remains unproven until a guest response is observed. Continue execution
-without a handoff or a request to resume. Earlier checkpoints below are historical.
+Earlier full migration reports show SystemAppMigrator returned NO and later
+assetsd waited in original PLFirstUnlockProtection. Full raw reports and matched
+symbolization are under companion/evidence/migration-first-unlock/. No fake
+notification, signature forging or migration-guard suppression is used.
+Private Unix VNC capture works; actual guest touch response is still unproven.
+Historical checkpoints below retain their original scope and chronology.
 
 ### Further executed checkpoints
 

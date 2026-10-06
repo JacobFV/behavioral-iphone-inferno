@@ -55,28 +55,30 @@ still unproven. Do not return to firmware acquisition or the archived framework
 implementation: firmware, original System/Data preparation, keybag creation,
 software-renderer cache patching and full-system launchd execution are established.
 
-At03:17 local, app-boot-6 has been stopped normally with preserved evidence. It uses advanced stopped
-app-boot-3 state, corrected System launcher, a root wrapper dropping to mobile,
-and a single empty-passcode unlock helper for our freshly created null-secret VM
-keybag. All three owned jobs eventually started after roughly ten minutes.
-Original workspace registration actually returns NO for the Data-path app, with
-an invalid proxy. The unlock helper printed only BEGIN and is absent from later
-completed ps listings; no before/after state or unlock call was observed. Its
-outcome is unknown, not an observed API failure. Host CPU load reached77 on20cores;
-raw read-only pressure/thread observations are in app-boot-6/host-contention.json.
-Do not stop or reprioritize unrelated host processes.
+App-boot-7 completed 974.001145 seconds with deliberate normal QMP cleanup,
+emulator exit0 and all seven stopped disk hashes preserved. System-path app
+registration returned NO through completed 30-attempt batches, with invalid proxy.
+The single original MKBUnlockDevice(NULL,NULL) call returned -2; original driver
+selector9 returned e00002e2 and first-unlock remained0. Original kernel inspection
+proved the helper lacked com.apple.keystore.device: that exact gate rejected the
+call before secret processing or SEP unlock. Raw evidence is committed under
+app-system-registration and migration-first-unlock; original authorization
+inspection is in companion/evidence/unlock-authorization-inspection.json.
 
-Disk-preparation-30 failed its owned app readback because of a nested bundle
-directory and was rejected before boot. Corrected disk-preparation-31 passed all
-byte/metadata checks and normal unmounts, preserving stopped29 paired lineage. It adds the exact unchanged owned bundle under
-`/Applications/InfernoProbe.app`, wrapper9 `--system-app`, phase-instrumented
-single-call unlock helper35 with600s watchdog, and extended process observer35.
-The original Data bundle remains. Bootworker has started this as app-boot-7 with
-7200s maximum,30s frames, guest-errors and strict probe journey; it is now the
-only live iOS VM. Input root SHA256 is
-c7033cac5a06b7ea924535c780d4baa54363dad88b73ab28d733e211eba56418, paired with
-`.local-build/reports/disk-preparation-31`. Stopped29 is a
-prepared comparison, not an independently executed successful boot.
+Disk-preparation-32 changes only our helper's ad-hoc entitlement declaration to
+add that single proven key. Its compiled object is unchanged. Guest readback of
+67600 bytes matched, normal unmounts and emulator exit0 passed. Root SHA256:
+34240b9546eaea73e1ddae0997a194f1ba9c23e5302d3fb76abf69a35675e276, paired with
+.local-build/reports/disk-preparation-32. App-boot-8 is running from that tuple,
+7200-second maximum, 30-second captures, guest-errors and strict app journey.
+This is the only active iOS boot; await actual API/state and migration evidence.
+
+Stage31 established the exact unchanged owned bundle at
+/Applications/InfernoProbe.app, wrapper9 --system-app, phase-instrumented
+single-call unlock with600s watchdog and extended process observer. Original Data
+bundle remains. Failed stage30 generated disks were retired only after preserving
+all hashes/logs and source29; successful inputs remain. CPU contention remains a
+measurement limitation; do not alter unrelated host processes.
 
 The launcher fix uses the original LSApplicationWorkspace registerApplication:
 method and logs its BOOL result honestly. The earlier LSRegisterURL was a local,
@@ -98,7 +100,7 @@ Apple signature forging or activation impersonation is authorized.
 
 ## Next concrete work
 
-1. Inspect actual app-boot-7 unlock phase/state/return markers and registration
+1. Inspect actual app-boot-8 unlock phase/state/return markers and registration
    BOOL/proxy results. Keep source revisions, hashes, raw logs and stopped root
    plus all six auxiliary namespaces paired. Do not treat helper JSON as proof.
 2. Resolve the concrete next failure using original APIs and narrow owned code.
