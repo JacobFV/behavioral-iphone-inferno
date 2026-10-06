@@ -20,7 +20,7 @@ p.add_argument('--disk-helper-gigalocker', action='store_true', help='run origin
 p.add_argument('--disk-helper-data', action='store_true', help='add Data/Update and copy original var plus Hardware factory path')
 p.add_argument('--sep-payload', type=Path, help='explicit original SEP payload to copy unchanged to the boot loader path')
 p.add_argument('--sep-sha256', help='required SHA256 of supplied SEP payload')
-p.add_argument('--disk-helper-verify-data', action='store_true', help='read-only guest byte comparison of a compressed Data seed sample')
+p.add_argument('--disk-helper-verify-data', action='store_true', help='read-only full guest Data tree bytes, modes, ownership and symlink comparison')
 p.add_argument('--output', required=True, type=Path)
 a = p.parse_args()
 if bool(a.sep_payload) != bool(a.sep_sha256):

@@ -106,24 +106,72 @@ static int copy_contents(const char *source, const char *destination) {
     if (!error) error = copyfile(source, destination, 0, 7 | (1 << 18) | (1 << 19));
     return error;
 }
-static int compare_sample(const char *source, const char *destination) {
-    int a = open(source, 0), b = open(destination, 0), equal = 1;
-    if (a < 0 || b < 0) { printf("INFERNO_DATA_VERIFY_OPEN_FAILED errno=%d\n", *__error()); if (a>=0) close(a); if (b>=0) close(b); return -1; }
-    long long size_a = lseek(a, 0, 2), size_b = lseek(b, 0, 2);
-    printf("INFERNO_DATA_VERIFY_SIZE source=%lld destination=%lld\n", size_a, size_b); fflush(0);
-    lseek(a, 0, 0); lseek(b, 0, 0);
-    unsigned char left[4096], right[4096]; unsigned long long count_a=0, count_b=0;
-    for (;;) {
-        long n = read(a, left, sizeof(left)), m = read(b, right, sizeof(right));
-        if (n < 0 || m < 0) { printf("INFERNO_DATA_VERIFY_READ_FAILED source=%ld destination=%ld errno=%d\n", n,m,*__error()); equal=0; break; }
-        count_a += n; count_b += m;
-        if (n != m) equal=0;
-        if (n == m) for (long i=0;i<n;i++) if (left[i] != right[i]) equal=0;
-        if (!n && !m) break;
-    }
-    close(a); close(b);
-    printf("INFERNO_DATA_VERIFY_RESULT equal=%d source_bytes=%llu destination_bytes=%llu\n", equal,count_a,count_b); fflush(0);
-    return equal ? 0 : -1;
+/* Darwin arm64 stat ABI: xnu-7195.141.2/bsd/sys/stat.h. */
+struct file_stat {
+    int dev; uint16_t mode, nlink; unsigned long long ino;
+    uint32_t uid, gid; int rdev;
+    long long times[8], size, blocks; int blksize;
+    uint32_t flags, gen; int spare; long long qspare[2];
+};
+_Static_assert(sizeof(struct file_stat) == 144, "Darwin stat64 ABI");
+extern int lstat(const char *, struct file_stat *);
+extern long readlink(const char *, char *, size_t);
+static unsigned long long verified_entries, verified_files, verified_bytes, verified_links, mismatches;
+static void mismatch(const char *path, const char *reason) {
+    ++mismatches; printf("INFERNO_TREE_MISMATCH %s reason=%s errno=%d\n", path, reason, *__error()); fflush(0);
+}
+static int child_path(char *out, size_t capacity, const char *parent, const char *name) {
+    int n=snprintf(out,capacity,"%s/%s",parent,name);
+    return n<0 || (size_t)n>=capacity ? -1 : 0;
+}
+static void compare_tree(const char *source, const char *destination) {
+    struct file_stat a,b;
+    if (lstat(source,&a) || lstat(destination,&b)) { mismatch(source,"lstat"); return; }
+    ++verified_entries;
+    if (a.mode != b.mode || a.uid != b.uid || a.gid != b.gid) mismatch(source,"mode/uid/gid");
+    unsigned type=a.mode & 0xf000;
+    if (type != (b.mode & 0xf000)) { mismatch(source,"type"); return; }
+    if (type == 0x8000) {
+        ++verified_files;
+        if (a.size != b.size) mismatch(source,"size");
+        int left=open(source,0),right=open(destination,0),equal=1;
+        if(left<0 || right<0) { mismatch(source,"open"); if(left>=0)close(left); if(right>=0)close(right); return; }
+        unsigned char x[16384],y[16384]; unsigned long long bytes=0;
+        for (;;) {
+            long n=read(left,x,sizeof(x)),m=read(right,y,sizeof(y));
+            if(n<0 || m<0) { equal=0; break; }
+            bytes+=n;
+            if(n!=m)equal=0;
+            if(n==m)for(long i=0;i<n;i++)if(x[i]!=y[i])equal=0;
+            if(!n && !m)break;
+        }
+        close(left);close(right);verified_bytes+=bytes;
+        if(!equal || bytes!=(unsigned long long)a.size)mismatch(source,"file-bytes");
+    } else if(type == 0xa000) {
+        char x[2048],y[2048]; long n=readlink(source,x,sizeof(x)),m=readlink(destination,y,sizeof(y));
+        int equal=n>=0 && n==m && n<sizeof(x);
+        if(equal)for(long i=0;i<n;i++)if(x[i]!=y[i])equal=0;
+        if(!equal)mismatch(source,"symlink-target");
+        ++verified_links;
+    } else if(type == 0x4000) {
+        void *dir=opendir(source);struct directory_entry *entry;
+        if(!dir){mismatch(source,"opendir-source");return;}
+        while((entry=readdir(dir))) {
+            if(!strcmp(entry->name,".") || !strcmp(entry->name,".."))continue;
+            char from[2048],to[2048];
+            if(child_path(from,sizeof(from),source,entry->name) || child_path(to,sizeof(to),destination,entry->name)){mismatch(source,"path-length");continue;}
+            compare_tree(from,to);
+        }
+        closedir(dir);dir=opendir(destination);
+        if(!dir){mismatch(destination,"opendir-destination");return;}
+        while((entry=readdir(dir))) {
+            if(!strcmp(entry->name,".") || !strcmp(entry->name,".."))continue;
+            char from[2048];struct file_stat extra;
+            if(child_path(from,sizeof(from),source,entry->name) || lstat(from,&extra))mismatch(entry->name,"destination-extra");
+        }
+        closedir(dir);
+    } else mismatch(source,"unsupported-file-type");
+    if(verified_entries%1000==0){printf("INFERNO_TREE_PROGRESS entries=%llu bytes=%llu mismatches=%llu\n",verified_entries,verified_bytes,mismatches);fflush(0);}
 }
 static int ensure(const char *path) {
     if (!mkdir(path, 0755) || *__error() == 17) return 0;
@@ -197,7 +245,9 @@ int main(int argc, char **argv) {
     }
     if (verify_data) {
         if (!data_device[0] || mount_at(system_device, "/mnt1", 1) || mount_at(data_device, "/mnt2", 1)) return 26;
-        int result = compare_sample("/mnt1/private/var/staged_system_apps/Measure.app/hr.lproj/Localizable.strings", "/mnt2/staged_system_apps/Measure.app/hr.lproj/Localizable.strings");
+        compare_tree("/mnt1/private/var", "/mnt2");
+        int result = mismatches != 0;
+        printf("INFERNO_TREE_RESULT entries=%llu files=%llu links=%llu bytes=%llu mismatches=%llu\n", verified_entries,verified_files,verified_links,verified_bytes,mismatches); fflush(0);
         if (unmount("/mnt2", 0) || unmount("/mnt1", 0)) return 27;
         if (result) return 28;
     }
