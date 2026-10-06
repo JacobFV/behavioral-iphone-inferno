@@ -7,7 +7,24 @@ The user explicitly wants continuous work across status questions and intermedia
 milestones. No pause or handoff requested. Parallel workers are authorized for
 independent work in isolated worktrees; commit progressively.
 
-## Current execution, 2026-10-06 15:23 local
+## Current execution, 2026-10-06 16:12 local
+
+57 has STOPPED normally after reviewed strict counter0→1, all inputs after the
+60s runner observer naturally expired. Root visual evidence5a048bc8d6:
+`owned-expiry-57-visual`. Independent lifecycle auditba367225e4:
+connection1791327661.850083→7722.121488; exit0 observed7722.271833;
+requested phase completed, no restart/signal/forced kill, not whole-boot coverage.
+61 raw process samples:4.22CPU seconds/60.238734s, sampled peakRSS47,022,080B.
+BootB566821E-4F77-42A9-9C45-CCD72EDE1F80/PID257/main2920406004;
+counter6c20fa1828bb405d9fe3af8a8e0911f8, actualtap1 and reviewed pixels1.
+QMPbeforea0cb9cd7a90bd52b0c12e19f0d93bc1db4cc2f4ad89f69cb5b6a7db5bd52d8dd,
+afterb6ec1347408a659a54443f7a03043fecbd968953d08f21aa62580c4bd960a5b8.
+NoSAMPLE/Home/OPEN57. Bootworker owns final strict verification and disk retention,
+then is authorized ONE58 unchanged frozen55/emulator670, observer defaultOFF.
+Root owns all guest input. Native worker auditing source/trace state-machine gaps;
+disk worker completed57 observer audit. No rendering fix or freeze reproduction57.
+
+## Earlier execution chronology (later entries supersede earlier live notes)
 
 All guests through50 STOPPED.50 completed strict counter0→1, normal QMP quit,
 emulator0/errornull, tracked journey verified and default all7/ancestor retention.

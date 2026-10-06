@@ -2,6 +2,23 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 16:12 continuation: natural observer expiry and subsequent strict journey57
+
+The actual60s observer closed naturally after60.271405s and exited0 while the
+VM continued. All four guest gestures and both strict captures occurred later,
+through separately recorded manual headless connections. Root reviewed the
+single counter0→1 transition in both VNC and QMP images and finished normally.
+No persistent stall occurred; no SAMPLE/Home/OPEN was issued. Source/emulator/
+guest configuration was unchanged apart from the explicit observer duration.
+
+Independent raw process audit found61 samples,4.22CPU seconds over60.238734s,
+and sampled peakRSS47,022,080bytes for the observer alone. Its requested phase
+completed; it did not restart or receive a termination signal. This establishes
+finite observer cleanup and continued app operation, not a freeze fix or
+whole-boot observation. Evidence: `owned-expiry-57-visual` and the independent
+observer audit. Final strict/disk postflight remains with the boot worker, then
+one default-off58 is authorized while source diagnosis continues independently.
+
 ### 16:02 continuation: actual56 fresh process and strict-prefix verification complete
 
 The complete originalps600 contained174 clean rows and neither oldPID261 nor
