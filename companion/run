@@ -16,6 +16,7 @@ case "$command" in
         exec python3 "$root/companion/$command.py" "$@" ;;
     resources) exec python3 "$root/companion/measure-process.py" "$@" ;;
     density) exec python3 "$root/companion/measure-density.py" "$@" ;;
+    preserve-stopped) exec python3 "$root/companion/preserve-stopped.py" "$@" ;;
     build) exec "$root/companion/build-linux.sh" --build-root "$root/.local-build" --jobs 8 "$@" ;;
     version) exec "$root/.local-build/build/qemu-system-aarch64" --version "$@" ;;
     help|-h|--help)
@@ -30,6 +31,7 @@ case "$command" in
           '  launch-timing|warm-timing|process-launch-timing  derive guest clocks' \
           '  resources  measure one live emulator process' \
           '  density  measure exactly two live sibling emulator processes' \
+          '  preserve-stopped  verify normal shutdown and retain seven-disk hashes' \
           '  build    rebuild the current committed fork; optional --jobs 1..8' \
           '  version  print the actual executable version' ;;
     *) printf 'Unknown command: %s\n' "$command" >&2; exit 2 ;;

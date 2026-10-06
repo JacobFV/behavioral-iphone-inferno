@@ -125,6 +125,21 @@ cleanup. Wait for the boot process to exit, then inspect the final report,
 serial/control/QMP logs, stopped disk hashes and unchanged backing dependencies.
 An incomplete or interrupted attempt stays incomplete; preserve its failure.
 
+For a normally stopped attempt without an existing stopped manifest:
+
+```sh
+companion/run preserve-stopped --report "$attempt" \
+  --output "$attempt/stopped-disk-hashes.json"
+```
+
+Both the manifest and its `stopped-disk-hashes-verification.json` sidecar must be
+new files. This command checks actual QMP shutdown records, the seven stopped
+namespaces and immutable backing ancestors. It neither freezes files nor launches
+guests. Keep every backing layer. Linux `/proc` permission gaps are recorded;
+descriptor checks cover readable processes at verification time, not a host-wide
+exclusive lock. Existing retained attempts can be rechecked using a different
+new output filename without rewriting their original evidence.
+
 For a specifically bounded two-guest experiment, start a second sibling from the
 same base, with separate output/endpoints, and complete the reviewed journey in
 each. Then close all VNC clients, send no input, and run:
