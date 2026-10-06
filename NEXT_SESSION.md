@@ -31,11 +31,14 @@ actualhostarrivals `app-loopback-33-observations`,de305a4732.
 read-only. 33/34dedicatedsessionsremove toolsessiondependency, notproofthepriorcause.
 32rawevidence6bad3afdb7/resourcesd3a83032aa/hosttimeline2c92865d5a.
 
-**Active next work**: stage49 running (boot worker session72085), branched from
-frozen44 with app20 + launcher20 + readiness53. Recovery profile helper-attempt50.
-Root independently checked these artifacts; no guest35 started yet. Wait for actual
-readback/unmount/normalstop/all7/ancestors, then run prepared root freeze script
-`/tmp/inferno-freeze-stage49.py` before boot35. Root input utility35 is ready.
+**Active next work**: boot35 now authorized/starting from frozen49, branched from
+frozen44 with app20 + launcher20 + readiness53. Recovery helper-attempt50 staging
+readbacks all zero mismatches: app74528, launcher68992, reader+job70327. Normal
+unmount/QMPquit/emulator0/all7/ancestors verified. Root independently hashedall7,
+checked no rootFD and froze0444+KEEP692545d682. Stage49root3407872bytesSHA
+62e4861109fe7e8c840268e49f8f402c898a5e2ca728f7fde408f77f2eeb2057.
+Bootworker starts35 dedicated7200 session, same emulator/HID, currentprobe-status.
+Root input utility `/tmp/inferno-explicit-gesture-35.py` ready. Endpoint forthcoming.
 Observer35 adds actual timing prefixes: `/tmp/inferno-observe-event-arrivals-35.py`.
 
 Timing candidate source b5a166398f; actual build/import audit ff443b226e.
