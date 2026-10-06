@@ -28,7 +28,39 @@ static int openCallbackAttempt;
 static unsigned long long openRequestTicks,openCallbackTicks;
 extern int getpid(void);
 #endif
+#if INFERNO_OPEN_DIAGNOSTIC
+static char controlledRequest[33];
+extern int getuid(void);
+static int controlled_open(const char *request) {
+    for(unsigned i=0;i<32;i++) {char c=request[i];if(!((c>='0'&&c<='9')||(c>='a'&&c<='f')))return 64;controlledRequest[i]=c;}
+    if(request[32] || getuid()!=501)return 64;
+    controlledRequest[32]=0;alarm(120);
+    @autoreleasepool {
+        Class cls=NSClassFromString(@"LSApplicationWorkspace");
+        if(!cls) {status("open-only-missing-class",0,1);return 69;}
+        LSApplicationWorkspace *workspace=[cls defaultWorkspace];
+        openCallbackFinished=0;openCallbackAccepted=0;openCallbackTicks=0;
+        openRequestTicks=mach_absolute_time();
+        [workspace openApplicationWithBundleIdentifier:@"org.inferno.companion.probe" configuration:nil completionHandler:^(BOOL accepted,id errorObject) {
+            openCallbackTicks=mach_absolute_time();
+            openCallbackAccepted=accepted;openCallbackFinished=1;
+            NSError *error=errorObject;char text[1024];
+            snprintf(text,sizeof(text),"INFERNO_OPEN_CALLBACK request_id=%s accepted=%d domain=%.160s code=%ld description=%.640s\n",controlledRequest,accepted,utf8([error domain]),[error code],utf8([error localizedDescription]));emit(text);
+        }];
+        char boot[37];struct inferno_timebase base={0,0};
+        int br=inferno_boot_uuid(boot),tr=mach_timebase_info(&base);
+        if(!openCallbackFinished || br || tr || !base.numer || !base.denom || !openRequestTicks || openCallbackTicks<openRequestTicks) {
+            status("open-only-incomplete-timing",0,1);return 70;
+        }
+        char text[384];snprintf(text,sizeof(text),"INFERNO_OPEN_TIMING_V1 request_id=%s boot=%s pid=%d request_ticks=%llu callback_ticks=%llu numer=%u denom=%u accepted=%d\n",controlledRequest,boot,getpid(),openRequestTicks,openCallbackTicks,base.numer,base.denom,openCallbackAccepted);emit(text);
+        alarm(0);return openCallbackAccepted?0:1;
+    }
+}
+#endif
 int main(int argc, char **argv) {
+#if INFERNO_OPEN_DIAGNOSTIC
+    if(argc==3 && !strcmp(argv[1],"--open-only"))return controlled_open(argv[2]);
+#endif
     if (argc != 3) {
         emit("usage: inferno-launcher /absolute/InfernoProbe.app org.inferno.companion.probe\n");
         return 64;

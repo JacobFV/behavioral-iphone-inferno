@@ -27,7 +27,7 @@ static int inferno_boot_uuid(char out[37]) {
     }
     return nonzero?0:-1;
 }
-static int inferno_event_name(const char *s) {
+static inline int inferno_event_name(const char *s) {
     return !strcmp(s,"main") || !strcmp(s,"view-loaded") || !strcmp(s,"appeared") ||
            !strcmp(s,"tap") || !strcmp(s,"window-visible-requested") || !strcmp(s,"active");
 }
