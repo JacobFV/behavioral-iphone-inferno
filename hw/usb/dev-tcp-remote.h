@@ -54,6 +54,7 @@ struct USBTCPRemoteState {
     QemuCond completed_queue_cond;
     QTAILQ_HEAD(, USBTCPCompletedPacket) completed_queue;
     QEMUBH *completed_bh;
+    QEMUBH *addr_bh;
     QEMUTimer *retry_timer;
     uint64_t next_wire_id;
     QEMUBH *cleanup_bh;

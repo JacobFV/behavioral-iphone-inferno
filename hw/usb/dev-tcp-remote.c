@@ -130,6 +130,15 @@ static void usb_tcp_remote_cleanup(void *opaque)
     migrate_del_blocker(&s->migration_blocker);
 }
 
+static void usb_tcp_remote_update_addr_bh(void *opaque)
+{
+    USBTCPRemoteState *s = opaque;
+    USBDevice *dev = USB_DEVICE(s);
+
+    dev->addr = s->addr;
+    trace_usb_set_addr(dev->addr);
+}
+
 static void usb_tcp_remote_completed_bh(void *opaque)
 {
     USBTCPRemoteState *s = opaque;
@@ -146,8 +155,13 @@ static void usb_tcp_remote_completed_bh(void *opaque)
         qemu_mutex_unlock(&s->completed_queue_mutex);
         if (s->addr != dev->addr && p->p->ep->nr == 0 &&
             p->p->pid == USB_TOKEN_IN && p->p->status == USB_RET_SUCCESS) {
-            dev->addr = s->addr;
-            trace_usb_set_addr(dev->addr);
+            /*
+             * Keep the old address until EHCI writes back the status qTD;
+             * otherwise ehci_verify_qh() discards the completed transfer.
+             * Pending BHs are pushed/popped at the list head. Schedule this
+             * first so the BH scheduled by usb_packet_complete() runs first.
+             */
+            qemu_bh_schedule(s->addr_bh);
         }
         if (usb_packet_is_inflight(p->p)) {
             if (p->p->status == USB_RET_REMOVE_FROM_QUEUE) {
@@ -521,6 +535,7 @@ static void usb_tcp_remote_realize(USBDevice *dev, Error **errp)
     QTAILQ_INIT(&s->completed_queue);
 
     s->completed_bh = qemu_bh_new(usb_tcp_remote_completed_bh, s);
+    s->addr_bh = qemu_bh_new(usb_tcp_remote_update_addr_bh, s);
     s->retry_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
                                   usb_tcp_remote_retry, s);
     s->cleanup_bh = qemu_bh_new(usb_tcp_remote_cleanup, s);
