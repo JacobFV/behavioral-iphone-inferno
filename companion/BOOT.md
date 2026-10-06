@@ -112,12 +112,15 @@ evidence: `.local-build/reports/first-t8030-boot/`.
 `--disk-boot --probe-journey` requires the app from `companion/app-probe/` to be
 installed and launched separately, with its stderr routed to the serial console.
 The runner waits for its exact appearance marker, captures `probe-before.ppm`,
-sends one absolute QMP pointer press/release near the large button's center,
-requires the `tap count=1` marker, and captures `probe-after.ppm`. It fails if any
+waits for an operator-produced `tap count=1` marker, and captures
+`probe-after.ppm`. It sends no input by default and fails if any
 required step is absent within the duration. Raw QMP events, image hashes and
 marker observations are saved in the normal report. Review both actual images
 before accepting a visible counter change; command success alone is insufficient.
 This optional flow is implemented but has not yet executed against the UIKit app.
+The legacy automatic QMP press/release additionally requires the explicit
+`--probe-hardware-tap` flag, which is incompatible with `--guest-hid-serial`.
+Use observation mode for the current operator-controlled virtual HID route.
 
 ## Explicit owned launchd configuration
 
