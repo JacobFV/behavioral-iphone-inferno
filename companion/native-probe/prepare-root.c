@@ -113,12 +113,13 @@ static int ensure(const char *path) {
 }
 int main(int argc, char **argv) {
     if (argc < 2 || strcmp(argv[1], "--disposable-root-copy")) return 2;
-    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0;
+    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0;
     for (int i=2; i<argc; ++i) {
         if (!strcmp(argv[i], "--role-volumes")) roles = 1;
         else if (!strcmp(argv[i], "--existing-volumes")) existing = 1;
         else if (!strcmp(argv[i], "--init-gigalocker")) gigalocker = 1;
         else if (!strcmp(argv[i], "--seed-data")) seed_data = 1;
+        else if (!strcmp(argv[i], "--copy-sep")) copy_sep = 1;
         else return 2;
     }
     printf("INFERNO_PREP_BEGIN: disposable /dev/disk0s1 existing=%d roles=%d gigalocker=%d\n", existing, roles, gigalocker); fflush(0);
@@ -173,6 +174,16 @@ int main(int argc, char **argv) {
     }
     sync();
     if (unmount("/mnt2", 0) || unmount("/mnt1", 0)) return 11;
+    }
+    if (copy_sep) {
+        if (mount_at(preboot_device, "/mnt2", 0)) return 23;
+        const char *sep = "/mnt2/000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000/usr/standalone/firmware/sep-firmware.img4";
+        if (copyfile("/usr/share/inferno-sep-payload", sep, 0, 15 | (1 << 18) | (1 << 19))) {
+            printf("INFERNO_SEP_COPY_FAILED errno=%d\n", *__error()); fflush(0); return 24;
+        }
+        sync();
+        if (unmount("/mnt2", 0)) return 25;
+        printf("INFERNO_SEP_COPY_COMPLETE: supplied bytes copied to loader path\n"); fflush(0);
     }
     if (seed_data) {
         if (!data_device[0] || !hardware_device[0]) return 16;
