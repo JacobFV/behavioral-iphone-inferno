@@ -10,7 +10,19 @@ Suggested opening instruction:
 > Prefer integrated execution over adding routine unit tests. Never use my main
 > display. Do not resume the archived framework reimplementation.
 
-## Active execution, 2026-10-06 08:37 local
+## Current boot26 transition, 2026-10-06 08:41 local
+
+Stage42 completed: original guest71776byte app-only readback0, normalunmount,
+PREP_COMPLETE,QMPquit6/emulator0. All7 hashes preserved f1608c9f1a; rootSHA
+2a4cc1c2cf6598b894be5d334675b3d0ca7c6af8a3def512107c44fab3c8dded.
+Root cleared boot26 capacity after reviewed prep8 retirement (~15.39GiBfree).
+Bootworker starting26 from paired42, sameemulator/launcher/HID/readiness,
+newapp14correctNSObjectheader only. Root script /tmp/inferno-explicit-gesture-26.py.
+Endpoint comes from new26 command.json. Rootownsinput; actualappresultpending.
+Preparation8/12/13 generatedcopies retired with secondfullhash/liveguards;
+originalofficial4kinput+allrecipes/logs/actualboot tuples/baseline21remain.
+
+## Previous execution, 2026-10-06 08:37 local
 
 Boot25 stopped normally, QMPquit26/emulator0; fullraw evidence8d9d9eccf2
 (cherry-picked locally). All7disks retained; rootSHA
