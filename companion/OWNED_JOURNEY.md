@@ -118,6 +118,22 @@ and device activity. Tracing can affect timing. Actual firmware-free validation
 in `evidence/display-trace-build-control` proves control behavior only, not iOS
 rendering. A healthy traced journey does not resolve the retained41 failure.
 
+For a diagnostic action, add `--trace-checkpoints` before the `owned-control`
+action subcommand. This records the fixed trace log's file identity and visible
+size immediately around that single submission. After reviewing the resulting
+frame, record another boundary without sending input:
+
+```sh
+companion/run display-trace-checkpoint --report "$attempt" \
+  --output "$attempt/trace-after-review.json"
+```
+
+Checkpoint outputs must be new files. These are host file-visible boundaries;
+buffering prevents exact device-event timestamps or attribution of every draw
+to the tap. Match inode/device and retain the final raw log when examining byte
+intervals. The43 trace has a documented pipe-index labeling defect; builds after
+9cadee702b pass explicit pipe labels without changing emulation behavior.
+
 ## Warm resume and timing
 
 Use `observe --home-button` with a new output directory. It sends the emulator's

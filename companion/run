@@ -11,6 +11,7 @@ case "$command" in
     boot) exec python3 "$root/companion/boot.py" "$@" ;;
     control) exec python3 "$root/companion/qmp_control.py" "$@" ;;
     owned-control) exec python3 "$root/companion/owned-control.py" "$@" ;;
+    display-trace-checkpoint) exec python3 "$root/companion/display-trace-checkpoint.py" "$@" ;;
     observe) exec python3 "$root/companion/vnc-control.py" "$@" ;;
     launch-timing|warm-timing|process-launch-timing)
         exec python3 "$root/companion/$command.py" "$@" ;;
@@ -28,6 +29,7 @@ case "$command" in
           '  boot     bounded headless recovery or installed-iOS attempt' \
           '  control  explicit action/status through the runner mailbox' \
           '  owned-control  record one explicit owned HID gesture or app OPEN' \
+          '  display-trace-checkpoint  record a read-only trace log boundary' \
           '  observe  headless private VNC captures or explicit Home button' \
           '  launch-timing|warm-timing|process-launch-timing  derive guest clocks' \
           '  resources  measure one live emulator process' \
