@@ -264,7 +264,7 @@ static int ensure(const char *path) {
 }
 int main(int argc, char **argv) {
     if (argc < 2 || strcmp(argv[1], "--disposable-root-copy")) return 2;
-    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0, readiness = 0, install_cache = 0, export_reports = 0;
+    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0, readiness = 0, install_cache = 0, export_reports = 0, exec_wrapper = 0;
     for (int i=2; i<argc; ++i) {
         if (!strcmp(argv[i], "--role-volumes")) roles = 1;
         else if (!strcmp(argv[i], "--existing-volumes")) existing = 1;
@@ -276,6 +276,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[i], "--install-readiness")) readiness = 1;
         else if (!strcmp(argv[i], "--install-cache")) install_cache = 1;
         else if (!strcmp(argv[i], "--export-reports")) export_reports = 1;
+        else if (!strcmp(argv[i], "--install-exec-wrapper")) exec_wrapper = 1;
         else return 2;
     }
     printf("INFERNO_PREP_BEGIN: disposable /dev/disk0s1 existing=%d roles=%d gigalocker=%d\n", existing, roles, gigalocker); fflush(0);
@@ -376,6 +377,13 @@ int main(int argc, char **argv) {
            copyfile("/usr/share/org.inferno.readiness.plist","/mnt1/System/Library/LaunchDaemons/org.inferno.readiness.plist",0,15))return 38;
         sync();if(unmount("/mnt1",0))return 39;
         printf("INFERNO_READINESS_INSTALLED\n");fflush(0);
+    }
+    if(exec_wrapper) {
+        if(mount_at(system_device,"/mnt1",0))return 47;
+        if(copyfile("/usr/share/inferno-exec-launcher","/mnt1/usr/bin/inferno-exec-launcher",0,15))return 48;
+        compare_tree("/usr/share/inferno-exec-launcher","/mnt1/usr/bin/inferno-exec-launcher");
+        printf("INFERNO_EXEC_WRAPPER_READBACK bytes=%llu mismatches=%llu\n",verified_bytes,mismatches);fflush(0);
+        sync();if(unmount("/mnt1",0))return 49;if(mismatches)return 50;
     }
     if(install_cache) {
         if(mount_at(system_device,"/mnt1",0))return 40;
