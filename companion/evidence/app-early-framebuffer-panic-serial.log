@@ -1,0 +1,354 @@
+iBoot version: ChefKiss Inferno
+corecrypto_kext_start called
+FIPSPOST_KEXT [21595943] fipspost_post:158: PASSED: (3 ms) - fipspost_post_integrity
+FIPSPOST_KEXT [21720207] fipspost_post:164: PASSED: (1 ms) - fipspost_post_hmac
+FIPSPOST_KEXT [21736722] fipspost_post:165: PASSED: (0 ms) - fipspost_post_aes_ecb
+FIPSPOST_KEXT [21757856] fipspost_post:166: PASSED: (0 ms) - fipspost_post_aes_cbc
+FIPSPOST_KEXT [22789650] fipspost_post:167: PASSED: (40 ms) - fipspost_post_rsa_sig
+FIPSPOST_KEXT [23213744] fipspost_post:168: PASSED: (14 ms) - fipspost_post_ecdsa
+FIPSPOST_KEXT [23256981] fipspost_post:169: PASSED: (1 ms) - fipspost_post_ecdh
+FIPSPOST_KEXT [23270114] fipspost_post:170: PASSED: (0 ms) - fipspost_post_drbg_ctr
+FIPSPOST_KEXT [23294030] fipspost_post:171: PASSED: (0 ms) - fipspost_post_aes_ccm
+FIPSPOST_KEXT [24452934] fipspost_post:173: PASSED: (48 ms) - fipspost_post_pbkdf
+FIPSPOST_KEXT [24614874] fipspost_post:174: PASSED: (0 ms) - fipspost_post_kdf_ctr
+FIPSPOST_KEXT [24643050] fipspost_post:175: PASSED: (1 ms) - fipspost_post_aes_gcm
+FIPSPOST_KEXT [24661196] fipspost_post:176: PASSED: (0 ms) - fipspost_post_aes_xts
+FIPSPOST_KEXT [24693634] fipspost_post:177: PASSED: (1 ms) - fipspost_post_tdes_cbc
+FIPSPOST_KEXT [24832894] fipspost_post:178: PASSED: (1 ms) - fipspost_post_drbg_hmac
+FIPSPOST_KEXT [24836761] fipspost_post:201: all tests PASSED (138 ms)
+Darwin Image4 Validator Version 3.0.0: Wed Aug 12 22:19:21 PDT 2020; root:AppleImage4-106.0.4.0.1~129/AppleImage4/RELEASE_ARM64E
+AMFI is running in RESEARCH mode!
+AUC:[0xffffffe19b723af0]::init(0xffffffe19b74e800)
+
+AUC:[0xffffffe19b723af0]::probe(0xffffffe19b4e2120, 0xffffffe807c3bdac)
+
+AppleT803xIO::start: chip-revision: C0
+AppleCredentialManager: init: called, instance = <ptr>.
+ACMFirstResponderKernelService: init: called, .
+ACMRM-S: init: called, starting PersistentStore service.
+ACMRM-C: init: called, starting AccessoryCache service.
+ACMKernelService: initValueFromBootArgAliasesUInt32: acc-cache size = 16 (default).
+ACMKernelService: initValueFromBootArgAliasesUInt32: acc-cache expiration = 2592000 (default).
+ACMRM: init: called, starting TRM service.
+ACMRM-A: init: called, starting TRM Analytics service.
+ACMKernelService: initValueFromBootArgAliasesUInt32: analytics collection period = 86400 (default).
+ACMKernelService: initValueFromBootArgAliasesUInt32: policy mode timeout = 259200 (default).
+AppleT803xIO::start: this: <ptr>, ACCE virt addr: <ptr>, phys addr: 0x210f00000
+AppleT803xIO::start: this: <ptr>, ACCP virt addr: <ptr>, phys addr: 0x211f00000
+ACMRM-A: notifyStandardModeTimeoutChanged: called, value = 259200 (modified = YES).
+ACMKernelService: initValueFromBootArgAliasesUInt32: (bounded) grace period timeout = 3600 (default).
+ACMRM-A: notifyGracePeriodTimeoutChanged: called, value = 3600 (modified = YES).
+IOAccessoryManager::configureAccessoryPowerGated: dock-0pin: Configuring Accessory Power to (1)
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerGated: PowerModeOff
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: _powerState=1, _powerStateInternal=0, _sleeping=0, _accessoryPowerModeExtOffRequested 0
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: !getAccessoryPowerReady(); set PowerModeOff?
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: handleAccessoryPowerWillChange, confirm PowerModeOff
+[ERROR] IOPort::_setSupportedTransportsForRegistryEntry(): Could not find transports-supported property! (entry: dock-0pin)
+[ERROR] IOPort::_setSupportedTransportsForRegistryEntry(): Error setting supported transports for Port-Inductive@101!
+ACMKernelService: initValueFromBootArgAliasesUInt32: enabled = 1 (default).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO* BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO* LegHW=NO OSEnv=NO | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _loadDisabledByOSEnvironment: disabled by OSEnvironment: NO.
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO* | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _mapAndPublishTRM: set TRM_PolicyTimeout = 259200.
+ACMRM: _mapAndPublishTRM: sending kIOMessageServicePropertyChange(n=1) while DISABLED, TRM: 259200 -/ff 4294967295 -/ff miss=ff (CUR: 259200 -/ff 4294967295 -/ff).
+AppleCredentialManager: init: returning, result = true, instance = <ptr>.
+[ERROR] IOPort::_setSupportedFeaturesForRegistryEntry(): Could not find features-supported property! (entry: dock-0pin)
+[ERROR] IOPort::_setSupportedFeaturesForRegistryEntry(): Error setting supported features for Port-Inductive@101!
+IOPort::start(): Registering service... (portType: 14, portNumber: 101, providerPath: IOService:/AppleARMPE/dock-0pin)
+AppleARMBootPerf: Error: profile region not found (2)
+AppleARMBootPerf: Error: failed to publish profile data (2)
+virtual bool CoreAnalyticsHub::start(IOService *)::105:CoreAnalyticsHub start
+Port-Inductive handleAccessoryDetect, detect change = 0 (override 100), ID change = 0 (override 0), result 0 
+AppleSSE::start called
+AppleSSE::start returning, result = 1
+AppleS5L8940XI2CController::start: i2c2 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: i2c3 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: smc-i2c0 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: smc-i2c1 this: <ptr> _i2cBaseAddress: <ptr>
+AUC:[0xffffffe19b723af0]::start(0xffffffe19b4e2120)
+
+000002.936128 AppleT8030TypeCPhy@0: AppleT8027TypeCPhy::start: usb3-phy-parent not specified
+AppleSEPKeyStore:321:0: starting (BUILT: Aug 12 2020 22:51:30)
+AppleSEPKeyStore:545:0: _sep_enabled = 1
+AppleCredentialManager: start: called, instance = <ptr>.
+ACMRM: _publishIOResource: AppleUSBRestrictedModeTimeout = 259200.
+AppleCredentialManager: start: initializing power management, instance = <ptr>.
+AppleCredentialManager: start: started, instance = <ptr>.
+AppleCredentialManager: start: returning, result = true, instance = <ptr>.
+AppleSynopsysMIPIDSIController::start: this: <ptr>, _dsimBaseAddress = <ptr> physical = 0x230400000 length 786432
+virtual bool AppleSynopsysMIPIDSIController::start(IOService *) panicOnError NOT Supported
+AppleS5L8940XI2CController::start: i2c1 this: <ptr> _i2cBaseAddress: <ptr>
+AppleDieTempController::start: 
+AppleDieTempController::initLoopConfig: Loop 0 kp: 0xc0000
+AppleDieTempController::initLoopConfig: Loop 0 ki: 0x70e8000
+AppleDieTempController::initLoopConfig: Loop 0 control type: 2
+AppleDieTempController::initLoopConfig: Loop 1 kp: 0xc0000
+AppleDieTempController::initLoopConfig: Loop 1 ki: 0x70e8000
+AppleDieTempController::initLoopConfig: Loop 1 control type: 4
+AppleDieTempController::initLoopConfig: Loop 2 kp: 0x2f9999
+AppleDieTempController::initLoopConfig: Loop 2 ki: 0x1180000
+AppleDieTempController::initLoopConfig: Loop 2 control type: 16
+AppleDieTempController::initLoopConfig: Successfully configured 3 loops
+AppleDieTempController::handleBootArgs: In handleBootArgs routine
+AppleDieTempController::cpuPerfControllerArrivalHandler: boot_dvd_factor 0x00010000
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleT8015TempSensor::start: Got temperatureOffsetValue of 13 for locationID 0x54703169
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleT8015TempSensor::start: Got temperatureOffsetValue of 4 for locationID 0x54613069
+AppleInterruptController::start: _aicVersion = 2 _aicBaseAddress = 0x<ptr> _aicNumExtInts = 0x00000240 _aicNumIPIs = 0x00000004
+AppleInterruptController::start: Num Shared Timestamps == 0
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleSamsungSPIController::start: spi1: _spiBaseAddress = 0x235104000:<ptr>, _spiVersion = 1 _spiInternalCS = 0
+AppleS8000AES::start: registers at phys:0x0x235008000/0x0x23d2d0000 virt:0x<ptr>/0x0x4000 / 0x<ptr>/0x0x4000
+AppleS8000AES::start: aes-version: 3
+AppleS8000AES::start: using-acg: no
+AppleT8015TempSensor::start: missing device treeAppleS5L8960XWatchDogTimer::start: _wdtBaseAddress: <ptr> _wdtResetCount=0xe4e1c00 _useSMCEnforcedWatchdog=0
+watchdog disabled by boot-arg value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleSynopsysMIPIDSIController::start Failed to get phy settings count
+Identified Serial Port uart7 at 0x23521c000(<ptr>)
+virtual bool IOMobileFramebufferLegacy::start(IOService *)
+IOMFB: driver commit: 
+virtual bool AppleSynopsysMIPIDSIController::start(IOService *)  Slow Adaptive Clocking enabled with 9 frequencies
+AppleARMBacklight::start: Using new Backlight Architecture 1
+AppleARMBacklight::start: no DBV offset data
+AppleARMBacklight::start: no DBV max data
+AppleARMBacklight::start: _calibratedMaxCurrent=15000
+AppleARMBacklight::start: _calibratedMidCurrent=3750
+AppleARMBacklight::start: mA2Nits2ndOrderCoef=-1
+AppleARMBacklight::start: mA2Nits1stOrderCoef=63
+AppleARMBacklight::start: mA2Nits0thOrderCoef=-3
+AppleARMBacklight::start: nits2mAmps2ndOrderCoef=1357
+AppleARMBacklight::start: nits2mAmps1stOrderCoef=15551
+AppleARMBacklight::start: nits2mAmps0thOrderCoef=45
+AppleARMBacklight::start: _lMaxProduct=42598400
+AppleARMBacklight::start: _lMidProduct=10158080
+AppleARMBacklight::start: _lMinProduct=183500
+AppleARMBacklight::start: Backlight calibration data 0
+AppleARMBacklight::start: No valid backlight cal data in syscfg.. Use defaults
+AppleARMBacklight::start: _calibratedMinCurrent=74 uA
+AppleARMBacklight::start: _lMaxProduct=42598400, _lMidProduct=10158080, _lMinProduct=183500, _lMaxPanel=42598399, _lMidPanel=11169963, _lMinPanel=99640, _milliAmps2NitsScaleFactor=732648
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleDisplayPMU::start: display-pmu _pmuIICNub: <ptr> built 22:19:31 Aug 12 2020
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleARMBacklight::start: dim-ramp-max-step=100
+AppleARMBacklight::start: _minDACLevel=143 _maxDACLevel=1879
+IOAccessoryTRM::start(): inRestoreMode: NO, dockSupportsTRM: NO (m_mgrPrimaryPortID: 512)
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+Identified Serial Port uart0 at 0x235200000(<ptr>)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+IOAccessoryTRM::start(): Registering service IOAccessoryTRM... (m_mgrPrimaryPortID: 512)
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+AppleDialogSPMIPMU::start: spmi-pmu _pmuNub: <ptr> built 22:52:54 Aug 12 2020
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+LPM: Log data is NOT valid. 0x0 0x0
+AppleDialogSPMIPMU::start: Primary PMU detected
+AppleARMRTC started!#####
+AppleDialogSPMIPMURTC started!******
+AppleEmbeddedPCIE::start this = <ptr>, gAPCIEdebugFlags = 0x80000001
+Failed to read info-leg_scrpadAppleDialogSPMIPMURTC::handleStart: ro=0 nvram=0 helper=0 AppleDialogSPMIPMU _pmuNub: <ptr> 0x1102:0x9f04-0x9f15 built 22:52:53 Aug 12 2020
+RTBuddy(SMC): start(<ptr>) - (Aug 12 2020@22:50:37)
+AppleDialogSPMIPMURTC tick read!&&&&&&&
+AppleDialogSPMIPMURTC ending!%%%
+RTBuddy(SMC): Boot args override: wdt = -1
+AppleSamsungSPIController::start: spi3: _spiBaseAddress = 0x23510c000:<ptr>, _spiVersion = 1 _spiInternalCS = 0
+AppleICA60:probe vendorID 0x0 prodID 0x1 fabID 0xa0 revision 0x0 sensor 0x1 mic-bias-index 1
+RTBuddy(SMC): Resuming...
+
+RTBuddy(AOP): start(<ptr>) - (Aug 12 2020@22:50:37)
+AppleARMRTC registering service!@@@@@@
+RTBuddy(ANS2): start(<ptr>) - (Aug 12 2020@22:50:37)
+virtual bool AppleARMLightEmUp::start(IOService *): starting...
+RTBuddy(AOP): Boot args override: wdt = -1
+RTBuddy(AOP): Resuming...
+
+AppleS5L8940XI2CController::start: i2c0 this: <ptr> _i2cBaseAddress: <ptr>
+RTBuddy(ANS2): Boot args override: wdt = -1
+AppleS8000AES::start: using DART Mapper: <ptr>
+Starting AppleSMC kext(<ptr>) - (Aug 12 2020@22:51:44)
+AppleSMCEmbedded::setPowerState(): ENTER powerStateOrdinal=1, _activeKeyCommand=17 newState=1
+AppleSPUFirmwareService: found node AOP
+AppleARMRTC service registered!$$$$$
+AppleARMRTC publishing service!^^^^^^
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+AppleAuthCPRelay:_sendCommandGated CMD=0x1 _receivedStatus ERROR ( status = 0xe00002e9 )
+AppleAuthCPRelay:_getCert failed to send command kAuthCommandIDGetCert
+AppleAuthCPRelay:start _getCert() failed (status = 0xe00002e9)
+Failed to enable notifications (0x84)!
+
+ERROR: Unable to enable notification interface (kSMCKeyNotFound).
+
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+RTBuddy(ANS2): Resuming...
+
+virtual IOService *AppleANS2NVMeController::probe(IOService *, SInt32 *)::194:Found (ANS2) provider, returning score 100000
+virtual IOService *AppleANS2NVMeController::probe(IOService *, SInt32 *)::194:Found (ANS2) provider, returning score 100000
+pci (build 22:19:24 Aug 12 2020), flags 0x20c3008
+pci (build 22:19:24 Aug 12 2020), flags 0x20c3008
+virtual bool AppleANS2NVMeController::start(IOService *)::394:Found the ANS2Endpoint1
+apfs_module_start:2411: load: com.apple.filesystems.apfs, v1677.0.5, apfs-1677.0.5, 2020/08/12
+virtual bool AppleANS2NVMeController::start(IOService *)::394:Found the ANS2Endpoint1
+bool AppleEmbeddedNVMeController::SetNamespacesStruct()::186:Obtained 7 namespaces from DT
+bool AppleEmbeddedNVMeController::SetNamespacesStruct()::186:Obtained 7 namespaces from DT
+virtual IOFilterInterruptEventSource *AppleANS2NVMeController::CreateDeviceInterrupt(IOInterruptEventSource::Action, IOFilterInterruptEventSource::Filter, IOService *)::2719:ANS2 NVMe interrupt index - 0x4
+virtual IOFilterInterruptEventSource *AppleANS2NVMeController::CreateDeviceInterrupt(IOInterruptEventSource::Action, IOFilterInterruptEventSource::Filter, IOService *)::2719:ANS2 NVMe interrupt index - 0x4
+com.apple.AppleFSCompressionTypeZlib kmod start
+virtual bool AppleSEPManager::start(IOService *): 
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=0 entrysize=64
+RTBuddy(SIO): start(<ptr>) - (Aug 12 2020@22:50:37)
+[ PCI configuration begin ]
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=0 entrysize=64
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=1 entrysize=128
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=1 entrysize=128
+virtual void AppleANS2NVMeController::SetModeselRegister(uint32_t)::1186:Setting modesel to 0
+virtual bool AppleSEPManager::start(IOService *): SEP memory IS coherent
+virtual void AppleANS2NVMeController::SetModeselRegister(uint32_t)::1186:Setting modesel to 0
+virtual bool AppleSEPManager::start(IOService *): control endpoints created
+IOReturn AppleSEPManager::_setPowerState(unsigned long *): power state 0 -> 2
+RTBuddy(SIO): Boot args override: wdt = -1
+RTBuddy(SIO): Resuming...
+
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 1
+IOSurfaceRoot::installMemoryRegions()
+IOSurface disallowing global lookups
+virtual bool AppleSEPManager::start(IOService *): PM init done
+virtual bool AppleSEPManager::start(IOService *): registered
+AppleSmartIO (RTBuddy-based)::start (<ptr>) - (Aug 12 2020@22:19:30)
+apfs_sysctl_register:1253: done registering sysctls.
+com.apple.AppleFSCompressionTypeZlib load succeeded
+L2TP domain init
+L2TP domain init complete
+Load request for com.apple.nke.pptp failed: -603946998
+bool IOMFB::UPPipe_H11P::setup_tunables_base_target(): Tunables Target 9
+IOMFB setup_table: Could not find table 'display-temp-compensation' in registry. Using default table.
+IOMFB setup_table: Could not find table 'display-temp-compensation' in registry. Using default table.
+IOMFB setup_table: Could not find table 'display-backlight-compensation' in registry. Using default table.
+AppleCredentialManager: handleEventGated: called, event(5).
+AppleCredentialManager: handleEventGated: AppleSEPManager has been matched.
+virtual IOMFBStatus IOMFB::UPPipe_H11P::apt_fixed_rr_changed(IOMFB::AppleRegisterStream *): error: fixed refresh rate only supported on APT devices
+virtual IOMFBStatus IOMFB::UPPipe_H11P::apt_fixed_rr_changed(IOMFB::AppleRegisterStream *): forcing refresh rate: disabled
+Waiting on <dict ID="0"><key>IOProviderClass</key><string ID="1">IOMedia</string><key>IOPropertyMatch</key><dict ID="2"><key>Partition ID</key><integer size="64" ID="3">0x1</integer></dict></dict>
+IOMFB set_ffr_index: Disabling overdrive (missing EDT data)
+IOMFB set_panel_id: missing EDT data raw-panel-serial-number
+IOMFBStatus IOMFB::UPPipe_H11P::set_run_mode_safe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H11P::RunMode): Int no need to defer: 0 -> 1
+IOMFB: dynamic enabling of PCC is not supported on this platform, you need to power cycle display to see this change take effect
+Video Mode Cebu/Sicily/Ellis
+IOMFB updateFrequencies: minimum-frequency property not found, using getClockFrequency(0) instead.
+[ PCI configuration end, bridges 3, devices 0 ]
+virtual bool IOMFB::UPBlock_Config_H11P::did_power_on(IOMFB::AppleRegisterStream *): tunables_managed
+000006.570949 AppleT8027USBXDCI@: AppleUSBXDCIARM::start: _dock is NULL, defaulting to device mode
+IOMFBStatus IOMFB::UPPipe_H11P::set_run_mode_safe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H11P::RunMode): Int no need to defer: 1 -> 2
+000006.594035 usb-drd-port-hs@00100000: AppleUSB30XHCITypeCPort::start: _dock is NULL, defaulting to device mode
+000006.598898 usb-drd-port-hs@00100000: AppleUSBHostPort::initBusCurrent: insufficient power to enable this port
+000006.665654 AppleT8027USBXDCI@: IOUSBDeviceController::prepareDefaults: model iPhone version 12.1
+000006.668045 usb-drd-port-hs@00100000: AppleUSB30XHCITypeCPort::cableChangeOccurred: cable detect disabled: transport type 2 connect type 2 restricted mode 0
+000006.669245 usb-drd-port-hs@00100000: AppleUSB30XHCITypeCPort::cableChangeOccurred: no action for transport type 2 connect type 2 restricted mode 0
+apcie[2:pci-bridge2]::_mapRIDToSID no mapper defined and device <ptr> (0:2:0) does not support hot-plug
+apcie[3:pci-bridge3]::_mapRIDToSID no mapper defined and device <ptr> (0:3:0) does not support hot-plug
+static bool IOMobileFramebufferLegacy::readDataInEDT(IOService *, bool, const char *, const uint32_t, uint32_t *): property KSF_version not found in EDT, assumed false.
+IOMFB updateFrequencies: minimum-frequency property not found, using getClockFrequency(0) instead.
+IOMFB: xxxxxxxx Using Legacy PMP RT Bandwidth API xxxxxxxx
+virtual IOMFBStatus IOMFB::UPPipe_H11P::rt_bandwidth_setup(): bandwidth values not found
+virtual bool IOMFB::UPPipe_H11P::late_init(): Realtime Bandwidth setup failed
+bool UnifiedPipeline::start_hardware_boot(): late_init failed
+bool UnifiedPipeline::start_hardware_gated(): start_hardware_boot failed.
+/Library/Caches/com.apple.xbs/Sources/IOMobileFramebuffer/IOMobileFramebuffer-221.0.2.3/Kernel/UnifiedPipeline/UnifiedPipeline.cpp ERROR: DRIVER DIDN'T LOAD (start_hardware() failed.)
+IOPlatformPanicAction -> AppleS5L8960XWatchDogTimer
+not enabling long period watchdog (cleared SoC watchdog if enabled prior), panic SoC watchdog disabled
+IOPlatformPanicAction -> AppleSynopsysMIPIDSIController
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> AppleT8030PMGR
+panic(cpu 1 caller 0xfffffff008128350): Kernel data abort. at pc 0xfffffff00979a36c, lr 0xfffffff00979a5ac (saved state: 0xffffffe807c3b780)
+	  x0: 0xffffffe19b70cf00  x1:  0x0000000000000070  x2:  0x0000000000000000  x3:  0x0000000000000000
+	  x4: 0x0000000000000000  x5:  0x0000000000000000  x6:  0x0000000000000100  x7:  0xfffffff009810000
+	  x8: 0xffffffe19b71dd00  x9:  0x30aaffe19b71dd00  x10: 0x0000000000000000  x11: 0xffffffe19b745590
+	  x12: 0x0000000000000000 x13: 0xfffffff0099c0ef0  x14: 0x0000000000000001  x15: 0x0000000000000001
+	  x16: 0x0000000000000000 x17: 0x0000000000000000  x18: 0x0000000001004000  x19: 0xffffffe19b70cf00
+	  x20: 0x0000000000000000 x21: 0xffffffe19b6c44e4  x22: 0x0000000000000001  x23: 0x0000000000000000
+	  x24: 0x0000000000000001 x25: 0xcda1ffe19b4dad00  x26: 0xffffffe19b6c3320  x27: 0x0000000000000001
+	  x28: 0xffffffe19b7455b8 fp:  0xffffffe807c3bae0  lr:  0xfffffff00979a5ac  sp:  0xffffffe807c3bad0
+	  pc:  0xfffffff00979a36c cpsr: 0x60402204         esr: 0x96000005          far: 0x0000000000000018
+
+Debugger message: panic
+Memory ID: 0x0
+OS release type: Not set yet
+OS version: Not set yet
+Kernel version: Darwin Kernel Version 20.0.0: Wed Aug 12 22:56:55 PDT 2020; root:xnu-7195.0.33~64/RELEASE_ARM64_T8030
+Kernel UUID: FDDAF386-4EA2-35FC-8235-1F167AEFD6F3
+iBoot version: ChefKiss Inferno
+secure boot?: YES
+Paniclog version: 13
+Kernel text base:  0xfffffff007004000
+mach_absolute_time: 0x9d89852
+Epoch Time:        sec       usec
+  Boot    : 0x6ac4e0d8 0x0002f185
+  Sleep   : 0x00000000 0x00000000
+  Wake    : 0x00000000 0x00000000
+  Calendar: 0x6ac4e0d9 0x000a4eef
+
+Panicked task 0xffffffe19b4b5f40: 2526 pages, 144 threads: pid 0: kernel_task
+Panicked thread: 0xffffffe19b748ba0, backtrace: 0xffffffe807c3af20, tid: 115
+		  lr: 0xfffffff007a2af48  fp: 0xffffffe807c3af60
+		  lr: 0xfffffff007a2ad48  fp: 0xffffffe807c3afd0
+		  lr: 0xfffffff007b64940  fp: 0xffffffe807c3aff0
+		  lr: 0xfffffff007b56e1c  fp: 0xffffffe807c3b0b0
+		  lr: 0xfffffff00811c5f4  fp: 0xffffffe807c3b0c0
+		  lr: 0xfffffff007a2aa30  fp: 0xffffffe807c3b440
+		  lr: 0xfffffff007a2aa30  fp: 0xffffffe807c3b4a0
+		  lr: 0xfffffff0097db97c  fp: 0xffffffe807c3b4c0
+		  lr: 0xfffffff008128350  fp: 0xffffffe807c3b630
+		  lr: 0xfffffff007b57d2c  fp: 0xffffffe807c3b6a0
+		  lr: 0xfffffff007b56f00  fp: 0xffffffe807c3b760
+		  lr: 0xfffffff00811c5f4  fp: 0xffffffe807c3b770
+		  lr: 0xfffffff00979a5ac  fp: 0xffffffe807c3bae0
+		  lr: 0xfffffff0097b71f4  fp: 0xffffffe807c3bb40
+		  lr: 0xfffffff0097b6ff0  fp: 0xffffffe807c3bba0
+		  lr: 0xfffffff0096f18fc  fp: 0xffffffe807c3bbf0
+		  lr: 0xfffffff008050900  fp: 0xffffffe807c3bc60
+		  lr: 0xfffffff0096fd73c  fp: 0xffffffe807c3bd00
+		  lr: 0xfffffff0097b6a80  fp: 0xffffffe807c3bd40
+		  lr: 0xfffffff008028ba4  fp: 0xffffffe807c3bde0
+		  lr: 0xfffffff008028844  fp: 0xffffffe807c3be10
+		  lr: 0xfffffff007a78ad0  fp: 0xffffffe807c3bf00
+		  lr: 0xfffffff00812495c  fp: 0x0000000000000000
+
+
+** Stackshot Succeeded ** Bytes Traced 14730 (Uncompressed 49168) **
+IOPlatformPanicAction -> AppleS5L8960XWatchDogTimer
+IOPlatformPanicAction -> AppleSynopsysMIPIDSIController
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> AppleT8030PMGR
+IOPlatformPanicAction -> AppleS5L8960XWatchDogTimer
+IOPlatformPanicAction -> AppleSynopsysMIPIDSIController
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> AppleT8030PMGR
+IOPlatformPanicAction -> AppleS5L8960XWatchDogTimer
+IOPlatformPanicAction -> AppleSynopsysMIPIDSIController
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> RTBuddyV2
+IOPlatformPanicAction -> AppleT8030PMGR
+wdog panic (attempt 1)
+not enabling long period watchdog (cleared SoC watchdog if enabled prior), panic SoC watchdog disabled
