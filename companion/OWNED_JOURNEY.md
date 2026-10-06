@@ -109,7 +109,7 @@ companion/run control --report "$attempt" trace-display-window \
   --arguments '{"seconds":60}'
 ```
 
-The five fixed events are disabled by default. The window accepts integer1..60
+The fixed events are disabled by default. The window accepts integer1..60
 seconds and rejects overlapping windows. The sole QMP owner disables them when
 its polling loop reaches the deadline and again during cleanup; this is a
 cooperative deadline, not a hard real-time limit. Inspect
@@ -133,6 +133,14 @@ buffering prevents exact device-event timestamps or attribution of every draw
 to the tap. Match inode/device and retain the final raw log when examining byte
 intervals. The43 trace has a documented pipe-index labeling defect; builds after
 9cadee702b pass explicit pipe labels without changing emulation behavior.
+
+After actual44 reproduced the stall, source09811d4d1d added two diagnostic events
+for unimplemented main/pipe/blend register accesses and implemented pipe
+configuration writes. The event set now has seven members. Start with a10-second
+window to inspect volume: polling can produce many records, and the bound is by
+time rather than bytes. Offsets are local to the named block after existing
+shadow-alias normalization. Read events record the unchanged zero return value;
+write events record the incoming value, not implementation of that register.
 
 ## Warm resume and timing
 

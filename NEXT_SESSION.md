@@ -62,14 +62,16 @@ actuallydisabled. No diagnosticOPENneeded. Deviceinterruptservicecontinues butgu
 stopsissuingmodeledsubmissions; no queuedBH failure or causalcompositorclaim.
 Rootrecordedoperator-stop/SIGINT2torunner2778291 at1791318208.773. NormalQMPcleanup
 emulator0, reportKeyboardInterruptSignal2/attempt_completedfalse; verifierrejects
-strictincomplete. Bootworkerownsforensicpreserve-stopped--failed-attempt/finalraw,
-plusarchive44binary1545a843. Evidence5f0f05ad1c/c49724d64a display-stall-44-actual
+strictincomplete. Trackedforensicpreservationpassedall7/ancestors,rootSHA
+1cd478c6c4a831c40ed1ad7908db6598476edfd2a99dd6ab6c75af551216501a. Finalrawd62cb6170b and44binaryarchive
+`.local-build/binaries/display-trace-labels-1545a8435798/` retained. Evidence5f0f05ad1c/c49724d64a display-stall-44-actual
 and a6902fb090 display-stall-44-visual. Keep allfailedmilestonesdistinct.
-Nativeworkerownsnextdiagnostic-only optinunknownADPmain/GP/blendread/write metadata
-and GPconfigurationwrites (actualunsupportedpaths currentlyreturn0/ignorewrites).
-NoextraDMA/state/semanticsfix; fixedboundedwindow. Need source review/build/control
-validation thenONE45sameguestbits. No45authorizedyet. Startshortwindow ifnewtrace
-volumehigh. Current runtimecannotgainnewinstrumentation withoutrebuild.
+Diagnostic-only unknownADPmain/GP/blendread/write and GPconfigurationtrace merged
+09811d4d1d. NoextraDMA/state/semanticsfix; fixed7eventboundedwindow. Bootworkerbuilding
+sameconfig+actual7eventcontrolsmoke3 now. No45authorizedyet; rootreviewbuildthenONE45
+sameguestbits withinitial10secondwindow toassessvolume (timeboundnotbytebound).
+Nativeworkerindependentlyreviewingoriginalspindumplocalusage forpossiblefuturetargeted
+stacks ifneeded; no newguestroute/staging/execution authorizedyet.
 Use owned-control --trace-checkpoints plusread-onlydisplay-trace-checkpoint command.
 Hostfile-visible boundariesonly; bufferingprecludesexacteventtime/causality.
 
