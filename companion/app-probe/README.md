@@ -27,30 +27,34 @@ Foundation and UIKit dependencies; it is unencrypted ARM64 iOS14 code.
 
 ## Execution boundary and next integration
 
-The bundle has compiled and linked; it has not run in the guest. The existing
-owned native-probe helper has executed in recovery, and its `copyfile` path can
-copy this bundle from a cloned recovery ramdisk onto a disposable mounted
-volume. That is the evidence-backed staging mechanism available so far.
-`companion/native-probe/prepare-root.c` owns the guest preparation flow. Do not
-change an existing prepared disk to stage this app: use a new disposable copy.
-The System volume is currently mounted read-only during that preparation;
-staging this fixture would require an explicit writable phase and clean unmount.
+Installed iOS14 beta5 now reaches SpringBoard Home and launches original Clock.
+The owned fixture is registered with the original LaunchServices dictionary API.
+The exact `/Applications/InfernoProbe.app` path is classified as `System`, matching
+original installd's normal classification. A normal restart after that correction
+changed the original FrontBoard result from Security3 to accepted with no error.
+No signer, profile or trusted-state fields were invented.
 
-Recovery has no established UIKit app launch route. Installed System boot is
-still being brought up. LaunchServices registration, SpringBoard launch and
-mobile installation have not executed; copying into `/Applications` alone is
-not evidence of installation or launch. A future run must first establish the
-full UI services, then use an observed registration/launch route or diagnose its
-failure. This build does not grant signing-policy acceptance on a physical iPhone.
+Boot25 executed the owned process through UIApplicationMain, then crashed when
+UIKit retained its delegate. Our narrow NSObject declaration had omitted the
+original eight-byte isa header: compiled `_window` stores overwrote self+0.
+The corrected declaration preserves that header, and actual build14 instructions
+store/load `_window` at self+8. The fixed app's visible execution and counter
+journey are pending the next guest run. See `../evidence/owned-app-isa-fix/` and
+`../evidence/migration-first-unlock/owned-app-first-crash-25-analysis.json`.
 
-For an actual journey, capture the running app's framebuffer, then target the
-large button using its observed bounds and capture `Tap count: 1`. The relevant upstream
-handler is `hw/arm/apple-silicon/mt-spi.c` (`Apple Multitouch HID SPI`). It registers a legacy
-absolute mouse handler, maps left-button state to touch and applies display
-calibration. QMP absolute-axis events plus button press/release are the candidate
-headless input path, still unproven for this app. Do not assume framebuffer
-pixels equal UIKit points. The button occupies 80% of view width near 58% of
-view height, away from screen edges.
+Stage only on a new disposable copy of a normally stopped, hash-verified paired
+disk tuple. The original recovery copyfile path supports an executable-only
+replacement and byte/metadata readback, followed by normal unmount. Preserve
+Info.plist, launcher, input helpers and emulator for this ABI comparison.
+
+For an actual journey, review the app framebuffer before targeting its large
+button and capture the visible change from `Tap count: 0` to `Tap count: 1`.
+The owned virtual touchscreen has delivered actual setup and stock-app input;
+its private serial mailbox requires an explicit operator request. The default
+`--probe-journey` only observes and never sends a gesture. The legacy hardware
+MT-SPI path remains unready and must not be substituted for proven input.
+Do not assume framebuffer pixels equal UIKit points. The button occupies80% of
+view width near58% of view height, away from screen edges.
 
 Markers go to stderr and NSLog with prefix `INFERNO_UIKIT_PROBE_V1` and events
 `main`, `window-visible-requested`, `view-loaded`, `appeared`, `active`, and
