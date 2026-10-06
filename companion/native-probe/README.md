@@ -458,3 +458,28 @@ Observer `seconds` fields identify cumulative requested sleep intervals, not
 precise wall time since boot. Original ps startup/printing can take minutes under
 load; use the runner's timestamps and serial dates when comparing actual timing.
 A partial ps listing does not establish absence of a process.
+
+### Bounded read-only touch-service observation
+
+`ioreg-touch.c` matches the original `AppleHIDTransportDeviceSPI` IOService class
+and the exact service name `aop-gpio`, then reports each match and its immediate
+IOService-plane parents/children. Output contains only names, classes, global
+registry IDs, service busy state and API return codes. It performs no property
+reads, user-client connection, method call, power change or interrupt operation.
+Limits are eight matches per query, sixteen entries per adjacent iterator and
+128 total nodes; every obtained handle is released. An output-limit marker means
+the inventory may be incomplete, not that further services are absent.
+
+The existing readiness observer forks this snapshot before each original process
+snapshot. Only the snapshot child gets an alarm600 watchdog; the parent also
+bounds and reaps only that child. Existing ps, fixture and crash observation
+continue. No additional launchd job, cache edit, or entitlement is required.
+`build-ioreg.sh` can also build the same snapshot as a standalone owned binary.
+
+Narrow declarations follow Apple's public IOKitUser-1726.140.1
+[IOKitLib.h](https://github.com/apple-oss-distributions/IOKitUser/blob/IOKitUser-1726.140.1/IOKitLib.h)
+(header SHA25627fbf513c326f0e2934f0518e15a951270ab24997e4ec9c1043b43b83fdc94ce).
+The original iOS14b5 cache export audit checks every actual import including
+explicit reexports; a successful build/audit does not establish guest execution.
+Preparation now also compares the readiness binary and its unchanged loose job
+bytes/metadata before normal unmount and success reporting.

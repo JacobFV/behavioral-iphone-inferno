@@ -55,12 +55,32 @@ static void crash_inventory(void) {
     }
     fflush(0);
 }
+extern int inferno_ioreg_touch_snapshot(void);
+static void registry_inventory(unsigned requested_seconds) {
+    int pid=fork(),status=-1,timed_out=0;
+    if(pid==0)_exit(inferno_ioreg_touch_snapshot());
+    if(pid>0) {
+        unsigned waited=0;
+        for(;;) {
+            int result=waitpid(pid,&status,1);
+            if(result==pid || (result<0 && *__error()!=4))break;
+            if(waited++>=600) {
+                timed_out=1;kill(pid,9);
+                while(waitpid(pid,&status,0)<0)if(*__error()!=4)break;
+                break;
+            }
+            unsigned remaining=1;while(remaining)remaining=sleep(remaining);
+        }
+    }
+    printf("INFERNO_READINESS_IOREG_END requested_seconds=%u status=%d timed_out=%d\n",requested_seconds,status,timed_out);fflush(0);
+}
 int main(void) {
     const unsigned targets[]={15,45,90,150,300,600,1200,1800,3600};
     unsigned elapsed=0;
     for(unsigned i=0;i<sizeof(targets)/sizeof(targets[0]);i++) {
         unsigned remaining=targets[i]-elapsed;while(remaining)remaining=sleep(remaining);elapsed=targets[i];
         printf("INFERNO_READINESS_BEGIN seconds=%u\n",elapsed);fflush(0);
+        registry_inventory(elapsed);
         int pid=fork();
         if(pid==0){
             char *args[]={"/bin/ps","-A","-ww","-o","pid,ppid,state,comm",0};
