@@ -4,13 +4,16 @@
 extern void *dlopen(const char *,int), *dlsym(void *,const char *);
 extern char *dlerror(void);
 extern int printf(const char *,...),fflush(void *);
-extern unsigned sleep(unsigned);
+extern unsigned sleep(unsigned),alarm(unsigned);
+extern long write(int,const void *,unsigned long);
 extern int access(const char *,int), *__error(void);
 static void data_access(const char *phase) {
     *__error()=0;int result=access("/private/var/inferno/inferno-launcher",1);int error=*__error();
     printf("INFERNO_UNLOCK_DATA_ACCESS phase=%s result=%d errno=%d\n",phase,result,error);fflush(0);
 }
 int main(void) {
+    static const char begin[]="INFERNO_UNLOCK_BEGIN watchdog=120 maximum_attempts=1\n";
+    write(1,begin,sizeof(begin)-1);alarm(120);
     sleep(30);
     void *framework=dlopen("/System/Library/PrivateFrameworks/MobileKeyBag.framework/MobileKeyBag",2);
     if(!framework){printf("INFERNO_UNLOCK_DLOPEN_FAILED %s\n",dlerror());fflush(0);return 2;}
