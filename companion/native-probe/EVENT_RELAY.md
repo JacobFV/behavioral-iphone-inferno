@@ -24,3 +24,12 @@ ABI declarations are narrow self-authored Darwin LP64 declarations (stat144bytes
 writer and reader. A host ASan/UBSan harness exercised foreign uid/boot rejection,
 unknown/overflow fields, accepted main/tap records and duplicate suppression.
 This is parser validation, not guest file-I/O evidence or an app journey.
+
+The container-aware revision resolves the writer's cache directory through original
+NSFileManager (NSCachesDirectory13/NSUserDomainMask1), rejecting the mobile-home
+fallback. The reader resolves only LSApplicationProxy for
+`org.inferno.companion.probe`, verifies its installed bundle URL, and uses the
+original dataContainerURL plus the fixed Library/Caches basename. Missing data
+container reports a failure and retries lookup every30seconds; it does not create
+one or search other apps. Container provisioning is a separate original install
+operation and is not asserted by these path changes. No sandbox grant is added.

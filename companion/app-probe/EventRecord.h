@@ -2,7 +2,8 @@
 // Owned fixed-path event protocol; no SDK implementation.
 #ifndef INFERNO_EVENT_RECORD_H
 #define INFERNO_EVENT_RECORD_H
-#define INFERNO_EVENT_PATH "/var/mobile/Library/Caches/org.inferno.companion.probe.events"
+#define INFERNO_EVENT_BASENAME "org.inferno.companion.probe.events"
+#define INFERNO_EVENT_PATH_LIMIT 1024
 #define INFERNO_EVENT_LIMIT 16384
 extern int sysctlbyname(const char *,void *,unsigned long *,void *,unsigned long);
 extern int strcmp(const char *,const char *);
