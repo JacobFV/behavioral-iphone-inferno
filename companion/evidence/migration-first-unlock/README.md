@@ -35,3 +35,20 @@ or timeout waiting for apps to demote. Thus the 10-minute pre-failure report is
 waiting for demotion completion. Linking that timeout to the later Returned NO
 is plausible but not established by a captured numeric error; the failure
 snapshot itself has no plugin user frames. No demotion or migration code changed.
+
+Boot7's bounded owned diagnostic subsequently observed first-unlock0 before and
+after exactly one MKBUnlockDevice(NULL,NULL), which returned-2. The adjacent
+original AppleSEPKeyStore log reports selector9/e00002e2. Data X_OK remained
+EPERM. Raw state0 is not labeled unlocked: the original extended-state decoder
+can map missing fields from malformed nonempty DER to zero; the separate
+first-unlock bit query is the meaningful observation here.
+
+Read-only tracing of the original kernel identifies the default-bag selector9
+gate as client flagbit4, set only by Boolean `com.apple.keystore.device` in the
+calling process's entitlements. Without it the driver returns NotPermitted
+before secret conversion or SEP unlock. Original keybagd and SpringBoard also
+carry this entitlement. The controlled follow-up declares only that key on our
+owned ad-hoc helper. Its compiled object is byte-identical to the prior build;
+no Apple executable, signature identity, or simulator protocol is changed.
+The accompanying boot7 excerpt is a live serial snapshot, not a completed-boot
+claim. Follow-up execution results are deliberately not asserted here.

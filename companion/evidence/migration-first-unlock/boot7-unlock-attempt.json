@@ -1,0 +1,36 @@
+{
+  "capture_utc": "2026-10-06T10:32:33.921883+00:00",
+  "live_serial_snapshot_sha256": "2e970a25dc6cfb9ba12c0ac3c63fbcc677e5a459e3d3d16ba95862de9b8e7b28",
+  "excerpt_sha256": "9e150345d4ff2648a5e832ebb79102cb85af32f4100f3a1bf9b16fb6be5e32a6",
+  "source_stopped_report": "disk-preparation-31",
+  "source_root_sha256": "c7033cac5a06b7ea924535c780d4baa54363dad88b73ab28d733e211eba56418",
+  "helper_before_entitlement_sha256": "bf55945b287fe11eeae2a71af65f37b557a085ab266c650c5b3ae4047a43f43f",
+  "observed": {
+    "first_unlocked_before": 0,
+    "MKBUnlockDevice_single_empty_result": -2,
+    "driver_selector": 9,
+    "driver_return_hex": "e00002e2",
+    "first_unlocked_after": 0,
+    "data_access_after": -1,
+    "data_access_errno": 1,
+    "raw_device_state_before_and_after": 0
+  },
+  "interpretation": "Permission rejection before original driver reaches secret conversion/SEP unlock; raw state0 is not interpreted as unlocked. No second attempt in this process.",
+  "kernel_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+  "gate_trace": {
+    "start_load_entitlement": "0xfffffff008f6e13c",
+    "entitlement": "com.apple.keystore.device",
+    "required_type": "Boolean true",
+    "client_flag_set": "0xfffffff008f6e150: client +0xf8 bit4",
+    "selector9_gate": "0xfffffff008f6ff24",
+    "permission_error_branch": "0xfffffff008f72e74"
+  },
+  "controlled_followup": {
+    "helper_sha256": "8005510dda90caddf7011e1e25bd4bf9d39fcf0073d15e96a7b072e26c42389b",
+    "only_entitlement": {
+      "com.apple.keystore.device": true
+    },
+    "unchanged_compiled_object_sha256": "c295cf6f93d8007aa84215a4189a3db110442fd828794dab609ba7e4ab89d674",
+    "identity": "Owned ad-hoc code; no Apple certificate or identity; no simulator or Apple executable modification."
+  }
+}
