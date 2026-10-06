@@ -1,0 +1,78 @@
+{
+  "kind": "read_only_capacity_retirement_proposal",
+  "status": "PROPOSED_ONLY_NO_FILES_REMOVED",
+  "audit_utc": "2026-10-06T15:35:05.240198+00:00",
+  "candidate": "obsolete generated disk-preparation-12 namespace copies only",
+  "files": [
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-12/disks/ctrl_bits.raw",
+      "bytes": 8192,
+      "allocated_bytes": 0,
+      "nlink": 1,
+      "sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-12/disks/effaceable.raw",
+      "bytes": 4096,
+      "allocated_bytes": 0,
+      "nlink": 1,
+      "sha256": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-12/disks/firmware.raw",
+      "bytes": 8388608,
+      "allocated_bytes": 0,
+      "nlink": 1,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-12/disks/nvram.raw",
+      "bytes": 8192,
+      "allocated_bytes": 8192,
+      "nlink": 1,
+      "sha256": "968a3a3e4c67ce15e744ed91a1405dbdd75f729799e357ca8aa4f43e3c7eda96"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-12/disks/panic_log.raw",
+      "bytes": 1048576,
+      "allocated_bytes": 0,
+      "nlink": 1,
+      "sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-12/disks/root.raw",
+      "bytes": 8589934592,
+      "allocated_bytes": 7171207168,
+      "nlink": 1,
+      "sha256": "0893d6f1eb0a3abb7ed500e0bd254528ce12b9a8fa00b0ef39975f55ec6ed243"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-12/disks/syscfg.raw",
+      "bytes": 131072,
+      "allocated_bytes": 0,
+      "nlink": 1,
+      "sha256": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471"
+    }
+  ],
+  "allocated_bytes_total": 7171215360,
+  "reclaim_limit": "Allocated-block sum is an estimate, not a post-removal measurement. Sparse logical size exceeds actual allocation.",
+  "execution_evidence": {
+    "serial": "disk-preparation-12/serial.log:581 INFERNO_PREP_COMPLETE: Preboot added, original firmware copied; final normal unmountcount0 at579.",
+    "qmp": "quitid5 successfulreply and SHUTDOWN host-qmp-quit; report exit0 elapsed34.522262",
+    "report_caveat": "Signal15 KeyboardInterrupt stops controller after guest completion, followed successful normal QMPquit; not an assertion of no controller interruption."
+  },
+  "retained_reproduction": {
+    "input_root": "disk-preparation-8/disks/root.raw remains8589934592bytes. preparation12 records inputSHA8103442bd0bf6f4e1aca44c203ee4c0793c87b740dd9395a399e08b604679afc.",
+    "chain": "Preparation8 report records copied official-os-4k.raw base; official-os-4k.raw and original official-os.raw remain. Preparation12 was an intermediate input to now-retired13, superseded by later retainedbaseline21 and all actual boots.",
+    "helper": "External helper-build-10 retains owned binaries/objects/build.json; source_revision5dbf1ad2defeafbc192c4df0087f520c17e9c186.",
+    "recipe": "External helper-attempt-10 retains preparation.json/profile/ramdisk; report ramdiskSHA67399eff767ec98dc01257e1dbb74eaddcfea4b38152c239c0a046d3db3dd371.",
+    "preserve": "Every preparation12 log/command/manifest, original source history and reproduction recipes remain; proposed deletion only exact listed copies. Retired13 reproduction now would start from retained8+12recipe+13recipe, rather than retained12 intermediate."
+  },
+  "live_reference_review": {
+    "open_fds": "/proc FD and cmdline scan found0 references at audit.",
+    "current_lineage": "Parent stopped25 and assigned nextstage42 source25; previous25 source24. Neither uses12.",
+    "historical_refs": "Reports and retired13manifest truthfully name12 as historical input. They are retained records; this proposal explicitly supersedes retention of12 as the shortest reproduction path for13.",
+    "must_recheck": "Second fullhash/inode/FD/active-command/source check before any deletion."
+  },
+  "excluded": "Every actual app-boot tuple, baseline disk-preparation-21, original firmware, source inputs/recipes and current guest remain untouched."
+}
