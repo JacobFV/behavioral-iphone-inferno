@@ -1,5 +1,25 @@
 # Read-only sample reconstruction
 
+The original-tool command is available only in a guest that advertises the matching
+`INFERNO_SAMPLE_READY` boot UUID. Helper55 builds successfully but has not yet
+executed a sample in iOS. Earlier frozen50 guests do not support it.
+
+After reviewing the current guest state, submit one explicitly selected target:
+
+```sh
+companion/run owned-control --report REPORT --output NEW_ACTION_DIR \
+  sample --boot-uuid CURRENT_BOOT_UUID --target BACKBOARDD
+```
+
+`SPRINGBOARD` is the other fixed target. The lifetime limit is two attempts total;
+there is no arbitrary PID, command, or automatic retry. Wait for the matching
+END or FAILED record before another action. The helper blocks its HID/OPEN
+commands while its tool child remains active. Sampling uses the unchanged original
+`/usr/sbin/spindump`; its output may report denied or unsupported operations.
+Do not interpret host transmission as successful sampling. The watchdog uses
+cooperative guest time, and sampling perturbs scheduling. See
+[native command constraints](native-probe/SAMPLE_CONTROL.md).
+
 After an explicit sample attempt, retain the original serial log and its owned-control `request.json`, then run:
 
 ```sh
