@@ -58,7 +58,7 @@ mkdir -p "$build_root/build"
    --enable-tcg --enable-pixman --enable-fdt=system --enable-slirp \
    --enable-lzfse --enable-nettle --enable-gnutls --enable-vnc \
    --disable-gtk --disable-sdl --disable-opengl --disable-guest-agent \
-   --disable-docs --disable-tools --disable-install-blobs --disable-werror \
+   --disable-tools --disable-install-blobs --disable-werror \
    --extra-cflags="$CPPFLAGS" --extra-ldflags="$LDFLAGS"
  ninja -j"$jobs" qemu-system-aarch64)
 printf 'Binary: %s\n' "$build_root/build/qemu-system-aarch64"
