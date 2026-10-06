@@ -16,7 +16,7 @@ struct directory_entry { unsigned long long inode, seekoff; uint16_t reclen, nam
 extern void *opendir(const char *);
 extern struct directory_entry *readdir(void *);
 extern int closedir(void *), open(const char *, int, ...), close(int);
-extern long read(int, void *, size_t);
+extern long read(int, void *, size_t), write(int,const void *,size_t);
 extern long long lseek(int, long long, int);
 static void devices(void) {
     void *directory = opendir("/dev");
@@ -205,6 +205,37 @@ static int initialize_effaceable(void) {
     if(connection)serviceclose(connection);
     release(service);return status;
 }
+static int export_crashes(void) {
+    const char *fixture[]={"/mnt2/inferno","/mnt2/inferno/inferno-launcher","/mnt2/inferno/InfernoProbe.app","/mnt2/inferno/InfernoProbe.app/InfernoProbe","/mnt2/inferno/InfernoProbe.app/Info.plist",0};
+    for(unsigned i=0;fixture[i];i++) {
+        struct file_stat st;int status=lstat(fixture[i],&st);
+        printf("INFERNO_POSTBOOT_FIXTURE %s status=%d errno=%d mode=%o uid=%u gid=%u size=%lld\n",fixture[i],status,*__error(),status?0:st.mode,status?0:st.uid,status?0:st.gid,status?-1:st.size);
+    }
+    fflush(0);
+    const char *directory_path="/mnt2/mobile/Library/Logs/CrashReporter";
+    void *directory=opendir(directory_path);if(!directory)return -1;
+    struct directory_entry *entry;unsigned long long total=0;unsigned files=0;
+    while((entry=readdir(directory)) && total<4194304) {
+        size_t n=entry->namelen;
+        if(!((n>=4 && !strcmp(entry->name+n-4,".ips")) || (n>=6 && !strcmp(entry->name+n-6,".crash"))))continue;
+        char path[2048];if(child_path(path,sizeof(path),directory_path,entry->name))continue;
+        struct file_stat st;if(lstat(path,&st) || (st.mode&0xf000)!=0x8000)continue;
+        int fd=open(path,0);if(fd<0)continue;
+        printf("INFERNO_REPORT_EXPORT_BEGIN name=%s size=%lld limit=524288\n",entry->name,st.size);fflush(0);
+        unsigned long long count=0,fnv=14695981039346656037ULL;int error=0;
+        char data[4096];
+        while(count<524288 && total<4194304) {
+            long got=read(fd,data,sizeof(data));if(got<0){error=1;break;}if(!got)break;
+            for(long i=0;i<got;i++){fnv^=(unsigned char)data[i];fnv*=1099511628211ULL;}
+            long sent=0;while(sent<got){long wrote=write(1,data+sent,got-sent);if(wrote<=0){error=1;break;}sent+=wrote;}
+            count+=got;total+=got;if(error)break;
+        }
+        close(fd);files++;
+        printf("\nINFERNO_REPORT_EXPORT_END bytes=%llu fnv1a64=%016llx complete=%d\n",count,fnv,!error && count==(unsigned long long)st.size);fflush(0);
+    }
+    closedir(directory);
+    printf("INFERNO_REPORT_EXPORT_TOTAL files=%u bytes=%llu\n",files,total);fflush(0);return 0;
+}
 static int ensure(const char *path) {
     if (!mkdir(path, 0755) || *__error() == 17) return 0;
     printf("INFERNO_PREP_MKDIR_FAILED %s errno=%d\n", path, *__error());
@@ -212,7 +243,7 @@ static int ensure(const char *path) {
 }
 int main(int argc, char **argv) {
     if (argc < 2 || strcmp(argv[1], "--disposable-root-copy")) return 2;
-    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0, readiness = 0, install_cache = 0;
+    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0, readiness = 0, install_cache = 0, export_reports = 0;
     for (int i=2; i<argc; ++i) {
         if (!strcmp(argv[i], "--role-volumes")) roles = 1;
         else if (!strcmp(argv[i], "--existing-volumes")) existing = 1;
@@ -223,6 +254,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[i], "--create-keybag")) keybag = 1;
         else if (!strcmp(argv[i], "--install-readiness")) readiness = 1;
         else if (!strcmp(argv[i], "--install-cache")) install_cache = 1;
+        else if (!strcmp(argv[i], "--export-reports")) export_reports = 1;
         else return 2;
     }
     printf("INFERNO_PREP_BEGIN: disposable /dev/disk0s1 existing=%d roles=%d gigalocker=%d\n", existing, roles, gigalocker); fflush(0);
@@ -332,6 +364,10 @@ int main(int argc, char **argv) {
         sync();if(unmount("/mnt1",0))return 42;
         if(mismatches)return 43;
         printf("INFERNO_LAUNCHD_CACHE_INSTALLED: explicit configuration only; signature unchanged\n");fflush(0);
+    }
+    if(export_reports) {
+        if(!data_device[0] || mount_at(data_device,"/mnt2",1))return 44;
+        int result=export_crashes();if(unmount("/mnt2",0))return 45;if(result)return 46;
     }
     if (keybag) {
         if (!xart_device[0] || !data_device[0] || ensure("/mnt7") ||
