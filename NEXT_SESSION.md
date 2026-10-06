@@ -53,7 +53,12 @@ Original owned app registration, normal first-unlock and visible Hello setup UI
 are now proven. Owned UIKit execution and actual touch response remain unproven. Firmware, System/Data preparation, keybag creation and renderer patches
 are established; do not return to the archived framework implementation.
 
-At05:12 local, **app-boot-15 is live**, bootworker session49137, from
+At05:15 local, **app-boot-15 is stopped and firmware-only stage36 is running**,
+native session13795. Stopped15 rootSHA
+8cf8592076adef4f9daa20ff6520cc2bf157c81009561fc58041e07e91c24182 and all six paired
+auxiliary disks are preserved in app-boot-15; QMPquit/emulator0 after960.150192s.
+Stage36 uses this stopped tuple with the archived stable recovery binary. Boot15
+was an identical successful retry from
 verified observer-only stage35 root
 SHAdd1062ad10cf09dc3b18f1c84d8bc2eb6d2d6ed2ff54bdc2c546284d44d403de and all six
 paired namespaces in .local-build/reports/disk-preparation-35. Stage35 derives
@@ -103,7 +108,12 @@ VM already uses96zero hash directory alongside SEP. Native prepares narrow
 Preboot-only install/readback option. Do not stage from live15: once candidate
 is built/reviewed, stop15 normally and use its complete paired stopped tuple.
 No new validation bypass, fake personalization, GPIO fix or DT property added.
-Keep15 live until this concrete next candidate is ready.
+Candidate was reviewed and independent original-byte equality verified; stage36
+now installs only the unsigned583090byte container SHA
+871a03fb79413e696d3bf952991ac46552a4007585c85f18cb6abbcdbf4943a2. Helper41 SHA
+81aadde6112c88709d46b6f50f7db43e1e91b8ceb3721c5dac8b740228486630 from3419586187.
+Require actual byte/metadata readback, normal unmount/QMP0 and all seven stopped
+hashes before boot16. Same trace emulator fda9447b...59505 and observer thereafter.
 Verified obsolete generated prep31-34 disk copies were retired, reclaiming
 30,630,694,912bytes; all reports/sources and actual boot disks persist.
 Await actual registry/phase results before behavior changes or more gestures.
