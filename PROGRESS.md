@@ -2,6 +2,22 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 08:15 continuation: original installer classification correction
+
+Original installd proof3c10d3d7a3 shows its normal LSdictionary includes
+ApplicationTypeSystem for an identified .app directly under configured
+/Applications. The owned helper's direct dictionary omitted that field and got
+User fallback. Source d3bdce836f reproduces the normal classification ONLY for
+the exact owned path/id; no signer/profile/trust metadata or policy change.
+Launcher13 SHA8dbc2086d0f13614cb5a8c2efb4cf85c0438ea423979b1b8f5c7bfa4f0eefbf0,
+68592bytes,24importsverified. Original app/HID45/readiness42/emu unchanged.
+
+Stopped23 QMP45/emulator0/all7hashes preserves actual Home/Clock, precise owned
+app denial, and two unsuccessful Home gestures. Stage41 from stopped23root
+2a31cd940773a4d007f10f05be255ab9ee96f6686c2051ce2cfefbe7cfa49940 has actual
+launcher68592 zero-mismatch readback, normal unmount, PREP_COMPLETE and QMP6/
+emulator0. Boot24 is authorized after hashes; continue to actual app journey.
+
 ### 08:06 continuation: actual Home and original Clock; owned app trust denial
 
 Diagnostic boot23 from verified stage40 resumes at the ordinary lock screen,
