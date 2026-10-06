@@ -1,0 +1,49 @@
+{
+  "status": "final reviewed-source candidate built/audited; not staged or guest-executed",
+  "source_commits": [
+    "09ef9189be",
+    "bfb1ac39c6"
+  ],
+  "artifacts": [
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-probe/exec-build-22/InfernoProbe.app/InfernoProbe",
+      "bytes": 74976,
+      "sha256": "d05f1b32523684a5c89d41cb2c35fbf0207b62adf864c27fab4d5973bf8e6176"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-probe/exec-build-22/inferno-launcher-open-error",
+      "bytes": 69264,
+      "sha256": "0f6626102deedabe4f5c93dafbd3c757387836c463d6b59bf3204932e550bf17"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/helper-build-54/inferno-readiness",
+      "bytes": 86448,
+      "sha256": "2440b210892898f43bd2f2afe3907ee5b682262d1d71c47e8c940757aa46c0b2"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/helper-build-54/inferno-hid-input",
+      "bytes": 70848,
+      "sha256": "f670cb9ec09933514326df8f6cb4995883b22d58852b12d7511ae075cec06943"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-probe/exec-build-22/InfernoProbe.app/Info.plist",
+      "bytes": 954,
+      "sha256": "ad9946fd7093f8f438f70200f5e096667e47989da70be2187a7324c6ed20a153"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/helper-build-54/warm-final-import-audit.json",
+      "bytes": 61473,
+      "sha256": "ab6f4d3d4c824d64ea048527d6e97198f7ba80549b9a2594347e13abe3172d87"
+    }
+  ],
+  "supersedes": "app21 only; app22 additionally queues visible error on lifecycle buffer exhaustion. Native54 unchanged; launcher22 identical21. Preliminary build evidence4313c74edf retained.",
+  "launcher_identical": true,
+  "audit": {
+    "passed": true,
+    "imports": 172,
+    "missing": []
+  },
+  "original_incarnation_audit": "boot_runner commit6ccecd7859; original flavor17 size56/MAC first; no guaranteed guest query permission",
+  "stage_contents": "Only owned app executable, System launcher, readiness observer, HID input helper; existing Info/job/wrapper/descriptor/firmware untouched. Staging not performed here.",
+  "evidence_caveat": "Host parser tests and import resolution are not warm foreground or API execution. Actual Home/background, explicit OPEN callback and same-incarnation next-active plus visual evidence required."
+}
