@@ -10,8 +10,9 @@ independent work in isolated worktrees; commit progressively.
 ## Current execution, 2026-10-06 13:58 local
 
 All through46 stopped.44 failed visual;45/46 healthy. 47 reproduced tap1/display0 with seven-event trace. Root requested normal runner
-SIGINT2 cleanup at1791320331.1935923; bootworker preserving failed attempt then
-staging helper55 in a new branch44 overlay. Active task: investigate the intermittent
+SIGINT2 cleanup at1791320331.1935923; failed attempt preserved4420e9f401, rootSHA
+35ba0bc4d3cd12a22524127f3d1acc317f47951cd58ecee4c24f2cb5abbb5e7f forensic_onlytrue.
+Trackedverifierrejectsstrictincomplete. Bootworker staging helper55 in branch44. Active task: investigate the intermittent
 real display freeze in41 while finishing a reproducible installed-iOS runner.
 Do not treat a healthy comparison as a fix.
 
