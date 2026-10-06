@@ -1,0 +1,60 @@
+-[InfernoProbeDelegate application:didFinishLaunchingWithOptions:]:
+100004898:	ff 43 03 d1	sub	sp, sp, #0xd0
+10000489c:	f4 4f 0b a9	stp	x20, x19, [sp, #0xb0]
+1000048a0:	fd 7b 0c a9	stp	x29, x30, [sp, #0xc0]
+1000048a4:	fd 03 03 91	add	x29, sp, #0xc0
+1000048a8:	f3 03 00 aa	mov	x19, x0
+1000048ac:	1f 20 03 d5	nop
+1000048b0:	c0 cd 03 58	ldr	x0, #0x79b8 ; Objc class ref: _OBJC_CLASS_$_UIWindow
+1000048b4:	86 00 00 94	bl	0x100004acc ; symbol stub for: _objc_alloc
+1000048b8:	f4 03 00 aa	mov	x20, x0
+1000048bc:	1f 20 03 d5	nop
+1000048c0:	80 cd 03 58	ldr	x0, #0x79b0 ; Objc class ref: _OBJC_CLASS_$_UIScreen
+1000048c4:	1f 20 03 d5	nop
+1000048c8:	01 cb 03 58	ldr	x1, #0x7960 ; Objc selector ref: mainScreen
+1000048cc:	7d 00 00 94	bl	0x100004ac0 ; Objc message: +[UIScreen mainScreen]
+1000048d0:	1f 20 03 d5	nop
+1000048d4:	a1 c9 03 58	ldr	x1, #0x7934 ; Objc selector ref: bounds
+1000048d8:	7a 00 00 94	bl	0x100004ac0 ; Objc message: -[x0 bounds]
+1000048dc:	1f 20 03 d5	nop
+1000048e0:	01 c5 03 58	ldr	x1, #0x78a0 ; Objc selector ref: initWithFrame:
+1000048e4:	e0 03 14 aa	mov	x0, x20
+1000048e8:	76 00 00 94	bl	0x100004ac0 ; Objc message: -[x0 initWithFrame:]
+1000048ec:	f4 03 00 aa	mov	x20, x0
+1000048f0:	60 06 00 f9	str	x0, [x19, #0x8]
+1000048f4:	1f 20 03 d5	nop
+1000048f8:	00 cc 03 58	ldr	x0, #0x7980 ; Objc class ref: InfernoProbeController
+1000048fc:	7a 00 00 94	bl	0x100004ae4 ; symbol stub for: _objc_alloc_init
+100004900:	e2 03 00 aa	mov	x2, x0
+100004904:	1f 20 03 d5	nop
+100004908:	41 c9 03 58	ldr	x1, #0x7928 ; Objc selector ref: setRootViewController:
+10000490c:	e0 03 14 aa	mov	x0, x20
+100004910:	6c 00 00 94	bl	0x100004ac0 ; Objc message: +[InfernoProbeController setRootViewController:]
+100004914:	60 06 40 f9	ldr	x0, [x19, #0x8]
+100004918:	1f 20 03 d5	nop
+10000491c:	e1 c8 03 58	ldr	x1, #0x791c ; Objc selector ref: makeKeyAndVisible
+100004920:	68 00 00 94	bl	0x100004ac0 ; Objc message: -[x0 makeKeyAndVisible]
+100004924:	93 2f 00 30	adr	x19, #1521 ; literal pool for: "window-visible-requested"
+100004928:	1f 20 03 d5	nop
+10000492c:	f3 7f 00 a9	stp	x19, xzr, [sp]
+100004930:	e2 30 00 70	adr	x2, #1567 ; literal pool for: "INFERNO_UIKIT_PROBE_V1 event=%s count=%lu\n"
+100004934:	1f 20 03 d5	nop
+100004938:	e0 43 00 91	add	x0, sp, #0x10
+10000493c:	01 14 80 52	mov	w1, #0xa0
+100004940:	5d 00 00 94	bl	0x100004ab4 ; symbol stub for: _snprintf
+100004944:	08 04 00 51	sub	w8, w0, #0x1
+100004948:	1f 79 02 71	cmp	w8, #0x9e
+10000494c:	a8 00 00 54	b.hi	0x100004960
+100004950:	e2 03 00 2a	mov	w2, w0
+100004954:	e1 43 00 91	add	x1, sp, #0x10
+100004958:	40 00 80 52	mov	w0, #0x2
+10000495c:	53 00 00 94	bl	0x100004aa8 ; symbol stub for: _write
+100004960:	f3 7f 00 a9	stp	x19, xzr, [sp]
+100004964:	20 be 01 10	adr	x0, #14276 ; Objc cfstring ref: @"INFERNO_UIKIT_PROBE_V1 event=%s count=%lu"
+100004968:	1f 20 03 d5	nop
+10000496c:	4c 00 00 94	bl	0x100004a9c ; symbol stub for: _NSLog
+100004970:	20 00 80 52	mov	w0, #0x1
+100004974:	fd 7b 4c a9	ldp	x29, x30, [sp, #0xc0]
+100004978:	f4 4f 4b a9	ldp	x20, x19, [sp, #0xb0]
+10000497c:	ff 43 03 91	add	sp, sp, #0xd0
+100004980:	c0 03 5f d6	ret

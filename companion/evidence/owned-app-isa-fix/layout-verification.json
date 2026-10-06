@@ -1,0 +1,22 @@
+{
+  "scope": "Owned app ABI correction; actual new guest execution pending",
+  "source_revision": "dbebfc856a",
+  "old_sha256": "c11f4d430ee8543da2bdade55e5f5beb8685692345dc6fe2ccbad114ad6f55ec",
+  "new_sha256": "4689426545a8fd19f1e1b15f2138611cb63593ed49bc56d0f1b407e9970d29b1",
+  "old_bytes": 71776,
+  "new_bytes": 71776,
+  "instructions": {
+    "0x1000048f0": {
+      "old": "600200f9",
+      "new": "600600f9",
+      "meaning": "str x0,[x19] -> str x0,[x19,#8] where x19 is delegate self"
+    },
+    "0x100004914": {
+      "old": "600240f9",
+      "new": "600640f9",
+      "meaning": "ldr x0,[x19] -> ldr x0,[x19,#8]"
+    }
+  },
+  "original_evidence": "migration-first-unlock/owned-app-first-crash-25-analysis.json",
+  "scope_limit": "App executable only will be staged; unchanged Info.plist, launcher13, HID45/readiness42 and emulator. No new entitlement or original framework modification."
+}
