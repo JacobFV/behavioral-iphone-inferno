@@ -133,3 +133,18 @@ rejects a missing tap marker, missing before capture, or repeated request.
 This prevents an early app appearance marker from automatically capturing the
 lock screen before the operator has uncovered the app. The explicit legacy
 `--probe-hardware-tap` mode retains its previous automatic capture/input sequence.
+
+### Live journey status
+
+`probe-status` accepts exactly `{}` and returns the current in-memory
+`ProbeJourney.report` through the private mailbox:
+
+```sh
+python3 companion/qmp_control.py --report REPORT probe-status
+```
+
+It requires `--probe-journey`, sends no QMP command or input, and does not advance
+the journey or capture a frame. The response is a snapshot bounded to4096bytes;
+an oversized report is rejected clearly. Use this for live state instead of the
+initial `report.json`, which may remain unchanged until the runner finishes.
+Previously started runners do not acquire this command automatically.

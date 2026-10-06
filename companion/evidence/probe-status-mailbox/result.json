@@ -1,0 +1,97 @@
+{
+  "kind": "actual_firmware_free_probe_status_mailbox_check",
+  "ios_boot": false,
+  "guest_app_execution": false,
+  "synthetic_host_marker": true,
+  "source_module_sha256": "603b06a40d579e27fa9a015b6382070ce489e26e30d31cdecd004c2fbeab8515",
+  "runtime_probe_journey_sha256": "1c4cbb542a79b85560433d62726123b99555ad0a47522d5ecd659faf3a04f308",
+  "binary_sha256": "e3da84b179ce328e06a0f917aabb8e4d80c8a4cf64701212464831a270e1741e",
+  "command": [
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "-machine",
+    "none",
+    "-display",
+    "none",
+    "-nodefaults",
+    "-S",
+    "-qmp",
+    "unix:/tmp/inferno-probe-status-2ao5ujcu/qmp.sock,server=on,wait=off"
+  ],
+  "checks": [
+    {
+      "label": "initial_live_state",
+      "exit_code": 0,
+      "stdout": "{\"return\": {\"state\": \"waiting-for-app\", \"completed\": false, \"input_mode\": \"operator-observation\", \"automatic_input\": false, \"visual_review_required\": true, \"captures\": {}}}\n",
+      "stderr": "",
+      "qmp_commands_added": 0,
+      "journey_unchanged": true
+    },
+    {
+      "label": "host_fixture_transition_live_state",
+      "exit_code": 0,
+      "stdout": "{\"return\": {\"state\": \"waiting-for-operator-before-capture\", \"completed\": false, \"input_mode\": \"operator-observation\", \"automatic_input\": false, \"visual_review_required\": true, \"captures\": {}, \"appearance_marker_observed\": true}}\n",
+      "stderr": "",
+      "qmp_commands_added": 0,
+      "journey_unchanged": true
+    },
+    {
+      "label": "nonempty_arguments_rejected",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/tmp/inferno-disk-overlay-chain/companion/qmp_control.py\", line 320, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"/tmp/inferno-disk-overlay-chain/companion/qmp_control.py\", line 304, in main\n    validate(request)\n  File \"/tmp/inferno-disk-overlay-chain/companion/qmp_control.py\", line 88, in validate\n    raise ValueError('Command or arguments are outside the input diagnostic allowlist')\nValueError: Command or arguments are outside the input diagnostic allowlist\n",
+      "qmp_commands_added": 0,
+      "journey_unchanged": true
+    },
+    {
+      "label": "disabled_journey_rejected",
+      "exit_code": 1,
+      "stdout": "{\"rejected\": \"This boot did not enable --probe-journey\"}\n",
+      "stderr": "",
+      "qmp_commands_added": 0,
+      "journey_unchanged": true
+    },
+    {
+      "label": "oversized_response_rejected",
+      "exit_code": 1,
+      "stdout": "{\"rejected\": \"Probe status exceeded 4096 bytes\"}\n",
+      "stderr": "",
+      "qmp_commands_added": 0,
+      "journey_unchanged": true
+    }
+  ],
+  "exit_code": 0,
+  "files": {
+    "stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "control-transcript.jsonl": {
+      "sha256": "d7cd2c8496036f88eab54956d71d7f0e056013c2f9095fc8e17192febd937a4f",
+      "bytes": 1631
+    },
+    "qmp-transcript.jsonl": {
+      "sha256": "1f9e26fb5395f6b0faaa7369740a032363b6adae3e7fecc2893d42938a123880",
+      "bytes": 1055
+    },
+    "serial.log": {
+      "sha256": "f2c15c59fd970228df4d93df4602ab3b8a694ff27a090ec3305d39e7302707bd",
+      "bytes": 46
+    },
+    "control/reply-4147286d15c44e2cac76ff994bd43da1.json": {
+      "sha256": "b4b497ec4667173ebe473738910af6d0bb9d3462159c7898b9d1e90e5282ae89",
+      "bytes": 229
+    },
+    "control/reply-9b2bfb0c931e46d5bbce11e55d4484f3.json": {
+      "sha256": "13b8c75723855e3c48a7bcc6d5407a6849f2f46ccb018ca193c1c9f32b767123",
+      "bytes": 49
+    },
+    "control/reply-ddf499fdb378476981ed367cfe7b3773.json": {
+      "sha256": "51bab3fa84eb64354b06efcbb7d7ed7eb9e8e28267da956b01306e0e5be1ab0f",
+      "bytes": 57
+    },
+    "control/reply-4180019e16f94973abc161c27cef8f6b.json": {
+      "sha256": "f63f70ef533ca38caab8252e553c805536cc340026955a169cf0c10cfb1e9345",
+      "bytes": 173
+    }
+  }
+}
