@@ -116,8 +116,24 @@ Originaltool execution/stackshot acceptance UNTESTED. No SAMPLE on47(oldhelper54
 Read-only resultparser merged c280dbe200+476b108364; missingchunks/end cannotprove
 completion. Validpartialprefix retained, output outsideGit/ignored, usefulness
 alwaysrequiresoriginaloutputreview. Hostsyntheticchecks pass; no actualsampleyet.
-After47stop bootworker authorized recovery staging branch44, all4 app22/launcher22/
-reader54/HID55, freeze newlayer3; app48 notyetlaunchauthorized. No concurrentVMs.
+Stage55 completed real recovery readbacks for all4 app22/launcher22/reader54/HID55,
+normal unmounts/COMPLETE, intentionalSignal15normalQMPquit/emulator0 retained.
+Evidence1ef9b0a7da/owned-sample-stage-55. Root independently rechecks all7/ancestors,
+rawreadback/unmountorder, headers/readableFDs and freezes0444+KEEP before48.
+Newstage55root3604480bytes SHA
+00fccb3ec7542ce5c9edd7970b627a15e962856d0438f11e3e4b520cecc6be80.
+48layer4→stage55layer3→stage44layer2→boot27layer1→stage43raw.
+No stage50dependencyfor48; keep50forhistorical37–47. No concurrentVMs.
+Temporary staging validation issue: root mistakenly repeated chmod0444 on existing
+readonly44/27/raw43 ancestors at1791320615119518081ns ctime. Freshfullhashaudit
+proves ONLYctime changed; allbytes/dev/inode/size/mtime/mode unchanged. Oldreports
+remain untouched. Evidence stage55-chmod-metadata-audit.json. Diskworker implementing
+fixedperfile explicitold/currentidentity sidecar, source-record-hash anchored,
+fullhash/noWritableFD validation, rejectsanyfuturemetadatachange; rootreviewpending.
+Never chmodalreadyreadonlyancestors again. NoVMrunning;48awaitsreviewedrepair.
+48notyetstarted; rootallinput, firstactualSAMPLEonlyafterreviewednormaljourney
+outcome toavoidperturbingreproduction. UseBACKBOARDD thenSPRINGBOARD atmostonceeach,
+waitEND/FAILED; errorsareevidence, no grants/retries. No nativeperformanceclaim.
 
 ## Trace and control workflow
 

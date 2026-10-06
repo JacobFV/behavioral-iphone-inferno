@@ -2,6 +2,22 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 14:04 continuation: frozen failure47 and staged original-tool diagnostic
+
+47's second Home window remained visually frozen through14frames despite actual
+same-process background callbacks. Both trace windows show no submissions after
+the freeze while display IRQ acknowledgments continue. Normal runner cleanup
+preserved emulator0 and all seven disks/ancestors; the attempt remains failed,
+its root is forensic-only, and tracked strict verification rejects it.
+
+Recovery stage55 read back app22/launcher22/reader54/HID55 with zero mismatches
+and clean unmounts. Intentional early-stop Signal15 is retained honestly; this
+verified recovery staging is distinct from a failed app attempt. Root is checking
+and freezing the new three-layer backing before48. The emulator remains670caae5;
+only the owned HID helper changes relative to50. The read-only sample parser now
+preserves a validated incomplete prefix and requires output outside Git or ignored.
+No original-tool guest sample has executed yet.
+
 ### 13:58 continuation: healthy46 retained, failure47 reproduced with expanded trace
 
 46 completed reviewed strict counter0→1 and Home/reopen retaining1. Normal shutdown,
