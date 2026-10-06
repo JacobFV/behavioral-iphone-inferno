@@ -10,7 +10,34 @@ Suggested opening instruction:
 > Prefer integrated execution over adding routine unit tests. Never use my main
 > display. Do not resume the archived framework reimplementation.
 
-## CURRENT, 2026-10-06 09:50 local: writer succeeds, reader needs existing container
+## CURRENT, 2026-10-06 10:05 local: MCM reader denial, narrow owned FD lookup next
+
+Boot30 stopped normally: cleanupcapture, QMPquit/emulator0,432.133048seconds,
+all7 hashes, all four ancestors unchanged. RootSHA
+1a8e01676ca5a8c891125f112c595c1250ca69432d4013e51d703cf45f249cba.
+Full evidence106e35dd9c. Actual app17 stays readyerrno0, counter0 reviewed;
+three gestures (two swipes, beta Close), no countertap this lookup trial.
+Original MCM lookup create0 returns object0/existed0/error55. Original code55
+means client not entitled; numeric code cannot identify which authorization gate.
+Evidence92e26eb9e0. Do not interpret it as missing container or change grants.
+
+Native now implements normal read-only libproc discovery restricted to exact
+owned executable PID/uid501, bounded open FDs and fixed owned event basename,
+with vnode device/inode matched to opened file. Diskworker independently audits
+original structs/exports/kernel authorization. App18 adds exact own cache path
+in a bounded readable footer for cross-check; behavior otherwise unchanged.
+Source2814e4a202 reviewed, binary73248bytes independently hashed
+13f9088c97afb4f6741b065151173c80a7b97fa261beee1243e8e1f104854ccf.
+Reader source/build still pending review. No staging47 yet.
+
+After candidate review,47 must be a sibling from protected frozen44, replacing
+app18 and new readiness plus unchanged535job, preserving launcher13/HID45/emulator.
+Then root freeze47 (`/tmp/inferno-freeze-stage47.py`) and boot31 layer4.
+Gestureutility31 ready. All actual runs/backing layers remain protected; noVM
+currently running. Continue actual event-backed journey and measurements.
+
+## PREVIOUS, 2026-10-06 09:50 local: writer succeeds, reader needs existing container
+
 
 Boot29 stopped normally: QMPquit30/emulator0 after377.9459seconds; bootworker
 preserves all seven hashes and ancestry. Actual app footer `ready errno=0`,
