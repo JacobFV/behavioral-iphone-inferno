@@ -2,6 +2,30 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 15:44 continuation: optional continuous observer proven in actual55
+
+The runner now accepts `--headless-refresh-seconds 1..300`, default disabled.
+It owns one no-input shared-RFB child on the private Unix socket, records raw
+child resource samples and connection coverage, and does not restart it. Review
+fixed a final-report race and a cleanup path where persistence failure could
+otherwise skip reaping. Local real-subprocess/fake-RFB checks passed; those were
+protocol/lifecycle checks only, followed by actual iOS execution below.
+
+55 completed the reviewed strict0→1 journey using only integrated observer
+frames and the two QMP captures. ObserverPID3007558 connected1791326268.845939;
+root finished while it was active. The runner requested stop1791326540.6307318,
+connection closed6540.6308424, and child exited0/reaped without forced kill or
+cleanup errors. The300s phase is correctly marked incomplete because normal
+runner finish ended it early.185 frames and raw separate child CPU/RSS samples
+are retained; independent chronology/resource recomputation is underway.
+
+Emulator exited0/noerror, strict verification and default all7/ancestor/metadata
+attestation retention passed. Root diskSHA
+414a6df9f7607ef06082b35594c210e2c2e06ca8fa34f715ea2b4532de7c8adc.
+Evidence: `owned-refresh-55-visual`, `owned-integrated-refresh-stopped-55` and
+`headless-refresh-lifecycle`. This addresses refresh coverage and cleanup, not
+the persistent no-submit freezes.56 continues with the option disabled.
+
 ### 15:31 continuation: healthy54 preserved, bounded observer integration underway
 
 54 completed reviewed strict0→1 and normal shutdown0/noerror in245.403623s.

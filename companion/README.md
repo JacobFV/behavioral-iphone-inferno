@@ -49,7 +49,10 @@ QMP captures can lag guest animation when no VNC observer drives regular display
 refresh. Headless VNC observation restored advancing stopwatch frames; this is
 separate from the persistent no-submit failures44/47. Actual resource conditions
 and their tracing/observer limits are retained in
-`evidence/stopwatch-resources-53-actual/`.
+`evidence/stopwatch-resources-53-actual/`. Run55 then validated the optional
+`--headless-refresh-seconds 1..300` runner-owned observer through strict counter
+0→1 and graceful early shutdown. Its actual coverage and separate resource use
+are recorded; the option remains disabled by default.
 Broader reliability and active-workload measurements remain ongoing. See [BOOT.md](BOOT.md) for the image profile and headless runner,
 [USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.
 
