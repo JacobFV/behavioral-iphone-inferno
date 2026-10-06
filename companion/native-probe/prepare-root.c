@@ -7,6 +7,8 @@ extern int fflush(void *), strcmp(const char *, const char *), access(const char
 extern int fork(void), execve(const char *, char *const[], char *const[]);
 extern int waitpid(int, int *, int), mkdir(const char *, uint16_t), unmount(const char *, int);
 extern int *__error(void);
+extern void *dlopen(const char *, int), *dlsym(void *, const char *);
+extern char *dlerror(void);
 extern void _exit(int), sync(void);
 extern unsigned int sleep(unsigned int);
 /* Darwin 64-bit dirent ABI (xnu-7195.141.2/bsd/sys/dirent.h). */
@@ -180,7 +182,7 @@ static int ensure(const char *path) {
 }
 int main(int argc, char **argv) {
     if (argc < 2 || strcmp(argv[1], "--disposable-root-copy")) return 2;
-    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0;
+    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0;
     for (int i=2; i<argc; ++i) {
         if (!strcmp(argv[i], "--role-volumes")) roles = 1;
         else if (!strcmp(argv[i], "--existing-volumes")) existing = 1;
@@ -188,6 +190,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[i], "--seed-data")) seed_data = 1;
         else if (!strcmp(argv[i], "--copy-sep")) copy_sep = 1;
         else if (!strcmp(argv[i], "--verify-data")) verify_data = 1;
+        else if (!strcmp(argv[i], "--create-keybag")) keybag = 1;
         else return 2;
     }
     printf("INFERNO_PREP_BEGIN: disposable /dev/disk0s1 existing=%d roles=%d gigalocker=%d\n", existing, roles, gigalocker); fflush(0);
@@ -281,6 +284,26 @@ int main(int argc, char **argv) {
         sync();
         if (unmount("/mnt7", 0)) return 14;
         printf("INFERNO_GIGALOCKER_COMPLETE: original seputil initialization and clean unmount succeeded\n"); fflush(0);
+    }
+    if (keybag) {
+        if (!xart_device[0] || !data_device[0] || ensure("/mnt7") ||
+            mount_at(xart_device,"/mnt7",0) || mount_at(preboot_device,"/mnt1",1) || mount_at(data_device,"/mnt2",0)) return 29;
+        char *init[] = {"/usr/libexec/seputil", "--gigalocker-init", 0};
+        char *load[] = {"/usr/libexec/seputil", "--wait", "--load", "/mnt1/000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000/usr/standalone/firmware/sep-firmware.img4", 0};
+        if(run(init) || run(load))return 30;
+        void *framework=dlopen("/System/Library/PrivateFrameworks/MobileKeyBag.framework/MobileKeyBag",2);
+        if(!framework){printf("INFERNO_KEYBAG_DLOPEN_FAILED %s\n",dlerror());fflush(0);return 31;}
+        /* Original restored_external uses NULL secret and /mnt2; no generated blob in owned code. */
+        int (*create)(void *,const char *)=(int (*)(void *,const char *))dlsym(framework,"MKBKeyBagCreateSystem");
+        if(!create){printf("INFERNO_KEYBAG_DLSYM_FAILED %s\n",dlerror());fflush(0);return 32;}
+        printf("INFERNO_KEYBAG_CREATE_BEGIN\n");fflush(0);
+        int status=create(0,"/mnt2");struct file_stat bag;
+        int stat_status=lstat("/mnt2/keybags/systembag.kb",&bag);
+        printf("INFERNO_KEYBAG_CREATE_RESULT status=%d stat=%d size=%lld mode=%o\n",status,stat_status,stat_status?-1:bag.size,stat_status?0:bag.mode);fflush(0);
+        sync();
+        if(unmount("/mnt2",0) || unmount("/mnt1",0) || unmount("/mnt7",0))return 33;
+        if((status && status!=-4) || stat_status || bag.size<=0)return 34;
+        printf("INFERNO_KEYBAG_COMPLETE: original framework created or found system keybag\n");fflush(0);
     }
     printf("INFERNO_PREP_COMPLETE: requested preparation operations succeeded\n"); fflush(0);
     return 0;
