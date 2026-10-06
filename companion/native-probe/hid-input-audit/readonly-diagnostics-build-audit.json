@@ -1,0 +1,31 @@
+{
+  "source_commit": "fd13200999d48c1da733ce4dcc33ca0b2ddc5366",
+  "binary": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/helper-build-45/inferno-hid-input",
+    "bytes": 69664,
+    "sha256": "0c0a5d9990cb5b0101f6491b7d2df0d6959cb0db5bde1cdfa9f40e6eabe69932"
+  },
+  "entitlements": {
+    "com.apple.developer.hid.virtual.device": true,
+    "com.apple.security.iokit-user-client-class": [
+      "IOHIDResourceDeviceUserClient"
+    ]
+  },
+  "entitlement_comparison": "Exact dictionary equality with signed HID44; no extra grant.",
+  "unchanged_checks": [
+    "Descriptor source byte-for-byte equal to parent commit",
+    "send_report/prepare/dispatch/close source byte-for-byte equal to parent commit"
+  ],
+  "readiness_to_reuse": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/helper-build-42/inferno-readiness",
+    "sha256": "3c360cba34c8d7616fc1ac173af4e7ebd21226f69addc9f11a2fcd6c0e8bcba1",
+    "note": "Reuse exact existing build42 artifact. Convenience build.sh also rebuilt readiness in45 with a different file hash; that extra output is not selected for staging."
+  },
+  "bind_audit": true,
+  "dynamic_audit": true,
+  "imports": {
+    "bind": 16,
+    "dynamic_audit_records": 36
+  },
+  "status": "Built and audited only; guest properties/notification delivery unobserved."
+}
