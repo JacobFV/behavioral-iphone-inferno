@@ -54,7 +54,7 @@
     ],
     "opcode_18_response_body": "selector:uint32=0, action_flags:uint64=0, deadline:uint64=0",
     "opcode_04_query": "selector0, owner:uint64, handle:uint32=0, desired_state:int32=-1, secret_blob_length:uint32=0; response selector0,state:uint32,action_flags:uint64=0",
-    "opcode_19_query": "selector0, owner:uint64, handle:uint32=0, query_options:uint32=1; response selector0,DER_length:uint32,DER bytes",
+    "opcode_19_query": "selector0, owner:uint64, handle:uint32=0, query_options:uint32=0 or1; response selector0,DER_length:uint32,DER bytes",
     "der_subset": "SET { SEQUENCE { UTF8String \"ss\", INTEGER state } }; all unspecified fields absent. In particular no guessed sls enum.",
     "error_transport": "Mailbox byte3 is signed8 status, no DMA response on error. -11 is bad argument; -1 generic unsupported. No secret bytes logged.",
     "diagnostics": "Bounded metadata includes request size, safely read header size/version/flags and output byte capacity; no secret bytes."
@@ -101,5 +101,25 @@
     "harness_sha256": "1d16b11a4464de3d3a897e0f2193bfdef4cd5f73672669485ce63fa0964d9dd4",
     "result": "PASS: before/after state, exact reply lengths, DER ss, unsupported options/secret, short buffers and output-capacity rejection",
     "not_guest_evidence": "Original API result, first-unlock, migration progress, full build and boot remain required follow-up checks."
+  },
+  "query_options_evidence": {
+    "runtime_trigger": "Boot9: original unlock succeeded and first-unlock changed0 to1, but original MKB state query returned-1 because options0 was rejected. These are separately recorded guest observations, not established by this inspection file.",
+    "meaning": {
+      "0": "Extended state: aks_get_extended_device_state IOKitselector35; also internal kern_get_extended_state.",
+      "1": "Ordinary state: aks_get_device_state IOKitselector17."
+    },
+    "original_MKB_addresses": {
+      "ordinary": "0x24c6c",
+      "extended": "0x24d78",
+      "shared_IOKit_and_DER_decoder": "0x24c78-0x24d30"
+    },
+    "original_kernel_addresses": {
+      "selector35_sets_option0": "0xfffffff008f70a34",
+      "selector17_keeps_default_option1": "0xfffffff008f70a38",
+      "shared_get_device_state_call": "0xfffffff008f72ec0",
+      "kernel_internal_option0": "0xfffffff008f6de50",
+      "kernel_internal_same_DER_decoder": "0xfffffff008f6de68"
+    },
+    "implementation": "Accept either proven read-only selector for system0; return same partial ss dictionary. Queries do not transition state; no sls labels invented."
   }
 }
