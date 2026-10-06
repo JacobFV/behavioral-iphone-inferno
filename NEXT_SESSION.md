@@ -7,9 +7,9 @@ The user explicitly wants continuous work across status questions and intermedia
 milestones. No pause or handoff requested. Parallel workers are authorized for
 independent work in isolated worktrees; commit progressively.
 
-## Current execution, 2026-10-06 13:10 local
+## Current execution, 2026-10-06 13:14 local
 
-No VM is live. All through43 stopped. Active task: investigate the intermittent
+All through43 stopped. ONE44 now starting; root owns input. Active task: investigate the intermittent
 real display freeze in41 while finishing a reproducible installed-iOS runner.
 Do not treat a healthy comparison as a fix.
 
@@ -42,14 +42,17 @@ Do not treat a healthy comparison as a fix.
   `owned-display-trace-stopped-43*`. Native worker auditing complete raw trace.
 
 Actual43 exposed a TELEMETRY LABEL DEFECT: original genpipe.index is never set,
-so both pipes print0. Source draw-call order and controls distinguish the healthy
-first drawn/second disabled pipe, but index alone cannot. Native worker owns tiny
-followup passing explicit0/1 solely to tracecalls, leaving migrated state and
-emulation behavior unchanged. Build only after root review/merge. Bootworker is
-archiving43 diagnostic binary before replacement. No44 launch authorized yet.
-Disk worker owns optional host log byte checkpoints in owned-control.py to help
-bracket file-visible trace records; trace log backend has no timestamps. Such
-checkpoints do not prove device-event times because logging can buffer writes.
+so both pipes print0. Final audit81aa670542 explicitly distinguishes source-order
+inference from rawlabels. Trace-onlyfix9cadee702b passes literal0/1 through draw/read
+solely to tracecalls, with no migratedstate or emulationbehavior change. Actual
+rebuild/control smoke26df7a776c passed: binarySHA
+1545a84357982b7f9c19a134ff63c070c538022b10bec5e0cd1d6a78da953884,
+sourceab7892d1acec279cb48a7a02553b4655eec87f44. No guestlabelclaim yet.
+Root authorized ONE44 samefrozen50/TCG/keepalive; bootworker launching now.
+Use owned-control --trace-checkpoints for betaClose/counter, plus
+`companion/run display-trace-checkpoint --report REPORT --output NEW.json` after
+review. Hostfile-visible byteboundaries only; bufferedlogging prevents exacttime.
+Bothbaselinee3da and43diagnostic1e369 archivedread-only before rebuild.
 
 ## Trace and control workflow
 
