@@ -365,10 +365,15 @@ def main():
                                     str(root_image), str(disk)], check=True)
                     size = disk.stat().st_size
                 elif name in auxiliary:
+                    # Reserve only a new private destination; cp otherwise inherits
+                    # a frozen source's read-only mode and QEMU cannot open it.
+                    with disk.open('xb'):
+                        pass
                     subprocess.run(['cp', '--reflink=auto', '--sparse=always', '--',
                                     auxiliary[name]['path'], str(disk)], check=True)
                     if digest(disk) != auxiliary[name]['sha256']:
                         raise ValueError(f'Auxiliary namespace {name} changed during copy')
+                    disk.chmod(0o600)
                 else:
                     with disk.open('xb') as handle:
                         handle.truncate(size)
@@ -379,6 +384,8 @@ def main():
                     initial = 'private copy of recorded auxiliary namespace'
                 report['disks'].append({'path': str(disk), 'initial_state': initial,
                                         'bytes': size, 'format': disk_format, 'nsid': nsid, 'nstype': nstype})
+                if name in auxiliary:
+                    report['disks'][-1]['private_copy_mode'] = oct(disk.stat().st_mode & 0o777)
                 device = 'apple-nvram' if name == 'nvram' else 'nvme-ns'
                 device_id = ',id=nvram' if name == 'nvram' else ''
                 command += ['-drive', f'file={str(disk).replace(",", ",,")},format={disk_format},if=none,id={name}',

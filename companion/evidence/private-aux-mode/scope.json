@@ -1,0 +1,6 @@
+{
+  "actual_failure": "QEMU cannot open private frozen-mode auxiliary before UART/guest execution; emulator exit1, no QMP quit acknowledgement. This is not a stopped normal guest tuple and is not eligible as a backing base.",
+  "fix": "Reserve fresh private auxiliary destination exclusively, copy verified bytes, chmod destination0600 only, report actual mode. Source unchanged.",
+  "validation": "Actual AST body of modified auxiliary branch executed against read-only stage55 firmware source. Existing destination rejected. Actual firmware-free QEMU query-block ro=false and normalquit0. Source bytes/inode/mode/ctime/mtime unchanged.",
+  "failed48_binary_sha256": "670caae5e8b86dbd07968b053ce0667328cce648935cefb8649357400f9c8e59"
+}
