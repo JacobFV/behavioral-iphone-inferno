@@ -1,0 +1,97 @@
+{
+  "scope": "Read-only original libproc ABI and authorization audit for metadata of the owned app event descriptor; no guest calls or policy changes performed by this audit.",
+  "source_identity": {
+    "primary_header": {
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/xnu-7195.81.3/bsd/sys/proc_info.h",
+      "sha256": "7773ddaccec1956ab289ffa23ab9e4827d7e6f38d1513f1797b0e208502dd06a"
+    },
+    "primary_implementation": {
+      "url": "https://github.com/apple-oss-distributions/xnu/blob/xnu-7195.81.3/bsd/kern/proc_info.c",
+      "sha256": "308c352ae1ce43533568371df840a7e1350328ecd8f816a995fee6d3d0eb81c4"
+    },
+    "qualification": "Primary source tag is later than the installed beta; critical layout and authorization are separately corroborated in the installed original binaries.",
+    "installed_system_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+    "original_decoded_kernel_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910"
+  },
+  "installed_exports": {
+    "provider": "/usr/lib/libSystem.B.dylib reexports /usr/lib/system/libsystem_kernel.dylib",
+    "proc_listpids": "0x180252abc",
+    "proc_pidinfo": "0x180252ba8",
+    "proc_pidpath": "0x180252f0c",
+    "proc_pidfdinfo": "0x180252cd4"
+  },
+  "public_contract": {
+    "proc_pidfdinfo": "int proc_pidfdinfo(int pid, int fd, int flavor, void *buffer, int buffersize); public fd/flavor order differs from the internal kernel function.",
+    "wrapper_evidence": "0x180252ce0\u20130x180252cf8 marshals public arguments to proc_info call number3. 0x180252cfc\u20130x180252d00 maps syscall -1 to result0, retaining errno.",
+    "proc_pidpath": "0x180252f1c and 0x180252f3c enforce buffer sizes 1024 through4096 inclusive. 0x180252f6c\u20130x180252f70 uses proc_info call2/flavor11; success returns string length, failure0.",
+    "constants": {
+      "PROC_UID_ONLY": 4,
+      "PROC_PIDLISTFDS": 1,
+      "PROC_PIDT_SHORTBSDINFO": 13,
+      "PROC_PIDFDVNODEPATHINFO": 2,
+      "PROX_FDTYPE_VNODE": 1
+    }
+  },
+  "arm64_layout": {
+    "proc_bsdshortinfo": {
+      "size": 64,
+      "pid": 0,
+      "uid": 36
+    },
+    "proc_fdinfo": {
+      "size": 8,
+      "fd": 0,
+      "type": 4
+    },
+    "proc_fileinfo": {
+      "size": 24
+    },
+    "vinfo_stat": {
+      "size": 136,
+      "device": 0,
+      "mode": 4,
+      "nlink": 6,
+      "inode": 8,
+      "uid": 16,
+      "gid": 20,
+      "size_field": 88
+    },
+    "vnode_info": {
+      "size": 152
+    },
+    "vnode_fdinfowithpath": {
+      "size": 1200,
+      "device": 24,
+      "mode": 28,
+      "inode": 32,
+      "uid": 40,
+      "path": 176,
+      "path_capacity": 1024
+    },
+    "installed_kernel_corroboration": "_pid_vnodeinfopath at0xfffffff007efe958: 0xfffffff007efe9ac zeros1200 bytes; 0xfffffff007efea04 sets vnode info offset24; 0xfffffff007efea3c\u20130xfffffff007efea48 sets path1024/offset176; 0xfffffff007efeaac\u20130xfffffff007efeac8 copies and returns1200."
+  },
+  "authorization": {
+    "installed_kernel": "_proc_security_policy 0xfffffff007efe5fc calls _mac_proc_check_proc_info at0xfffffff007efe634; nonzero branches directly to return at0xfffffff007efe638. Only afterward does it call _priv_check_cred with PRIV_GLOBAL_PROC_INFO1002 at0xfffffff007efe644\u20130xfffffff007efe64c. Same-user mismatch without privilege returns EPERM at0xfffffff007efe6b0.",
+    "primary_call_path": "proc_pidfdinfo line2689 calls proc_security_policy(PROC_INFO_CALL_PIDFDINFO, flavor, CHECK_SAME_USER). Flavor2 requires a vnode descriptor then pid_vnodeinfopath. LISTFDS also requires same-user or ordinary privilege; SHORTBSDINFO and PIDPATH omit the same-user restriction but still pass MAC.",
+    "limit": "Root privilege does not bypass the MAC check. Actual guest result and errno remain required; this audit establishes neither a new entitlement nor success."
+  },
+  "candidate_review": {
+    "commits": [
+      "9cb23adcf9",
+      "f0501a6f1c"
+    ],
+    "files": [
+      "companion/native-probe/app-event-proc.c",
+      "companion/native-probe/app-event-relay.c"
+    ],
+    "result": "No ABI or reviewed bounded-selection defect found.",
+    "bounds": "512 UID501 PIDs; exact /Applications/InfernoProbe.app/InfernoProbe; repeated executable/UID checks; at most4 matching processes and128 descriptors each; only vnode metadata; exact fixed event basename; regular uid501 single-link file no larger than16KiB.",
+    "race_check": "Relay compares opened-file fstat device/inode with returned descriptor metadata, then repeats type/UID/link/size restrictions before reading. Existing boot identity filtering remains required.",
+    "exclusions": "No process environment, unrelated file content, guessed UUID path, creation, entitlement expansion, or kernel-policy modification."
+  },
+  "verification": {
+    "owned_abi_source": "libproc-owned-abi-check.c",
+    "command": "clang --target=arm64-apple-ios14 -ffreestanding -fno-builtin -c companion/evidence/libproc-owned-abi-check.c -o /tmp/inferno-libproc-abi.o",
+    "result": "Passed arm64 compile-time sizeof/offsetof assertions; not guest execution."
+  }
+}

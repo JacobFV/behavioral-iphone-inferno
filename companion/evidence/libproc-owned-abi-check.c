@@ -1,0 +1,21 @@
+typedef unsigned int u32;typedef int i32;typedef unsigned short u16;typedef unsigned long long u64;typedef long long i64;
+struct Short {u32 pid,ppid,pgid,status;char comm[16];u32 flags,uid,gid,ruid,rgid,svuid,svgid,rfu;};
+struct FD {i32 fd;u32 type;};
+struct File {u32 flags,status;i64 offset;i32 type;u32 guard;};
+struct Stat {u32 dev;u16 mode,nlink;u64 ino;u32 uid,gid;i64 atime,atimensec,mtime,mtimensec,ctime,ctimensec,birthtime,birthtimensec,size,blocks;i32 blksize;u32 flags,gen,rdev;i64 spare[2];};
+struct Vnode {struct Stat stat;i32 type,pad; i32 fsid[2];};
+struct Path {struct Vnode vnode;char path[1024];};
+struct Info {struct File file;struct Path vnodepath;};
+#define OFF(t,m) __builtin_offsetof(t,m)
+_Static_assert(sizeof(struct Short)==64,"shortbsd64");
+_Static_assert(OFF(struct Short,uid)==36,"shortuid36");
+_Static_assert(sizeof(struct FD)==8,"fd8");
+_Static_assert(sizeof(struct File)==24,"file24");
+_Static_assert(sizeof(struct Stat)==136,"stat136");
+_Static_assert(sizeof(struct Vnode)==152,"vnode152");
+_Static_assert(sizeof(struct Info)==1200,"info1200");
+_Static_assert(OFF(struct Info,vnodepath.path)==176,"path176");
+_Static_assert(OFF(struct Info,vnodepath.vnode.stat.uid)==40,"uid40");
+_Static_assert(OFF(struct Info,vnodepath.vnode.stat.ino)==32,"ino32");
+_Static_assert(OFF(struct Info,vnodepath.vnode.stat.dev)==24,"dev24");
+_Static_assert(OFF(struct Info,vnodepath.vnode.stat.mode)==28,"mode28");
