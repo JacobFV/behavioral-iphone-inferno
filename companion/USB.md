@@ -155,3 +155,16 @@ shutdown path. No start-restore request was sent to suppress that timeout.
 After preserving the logs, Linux run8 shut down through guest `poweroff`; serial
 records `reboot: Power down`, and its emulator exited zero. Its stopped installed
 QCOW2 is available for reuse. No experimental VM is intentionally left running.
+
+## Full-system transport observation
+
+Run9 resumed the stopped installed Linux guest with KVM/EHCI and loopback SSH
+22325. Full-system app-boot-2/3 enumerated the simulated iPhone and `idevice_id`
+reported it. Original `ideviceinfo -s` returned14.0 and18A5351d. A client created
+without a pairing handshake successfully queried `com.apple.mobile.lockdown`.
+A request for the syslog service returned-17 (`LOCKDOWN_E_PASSWORD_PROTECTED`);
+the ordinary idevicesyslog handshake had returned-12 (`LOCKDOWN_E_MISSING_VALUE`).
+Definitions are in the original [libimobiledevice1.3 header](https://raw.githubusercontent.com/libimobiledevice/libimobiledevice/1.3.0/include/libimobiledevice/lockdown.h).
+No syslog stream was obtained. Actual outputs are retained in external
+`usb/run9/full-system-public-info.log`, `system-service-query.log`, and the two
+`full-system-syslog*.log` files. Guest serial/process diagnostics remain available.
