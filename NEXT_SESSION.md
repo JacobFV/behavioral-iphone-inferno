@@ -87,12 +87,26 @@ normalLSdictionary. Our directrecordhadomittedApplicationType, defaultingUser.
 Minimal source d3bdce836f addsSystem ONLY exactownedpath/id, no signer/profile/
 truststate fields. Builtlauncher13 68592bytes SHA
 `8dbc2086d0f13614cb5a8c2efb4cf85c0438ea423979b1b8f5c7bfa4f0eefbf0`,
-24importsverified1d2fd1df39; rootindependentlyhashed. Onlythislauncher changes in
-nextstage41. Originalapp/HID45/readiness42/emu unchanged. Bootworkerpreparing;
-rootcapacityclearingobsoletegeneratedprep15 (done88faf99fa6),prep40 (hashinprogress
-session17755). Waitcapacitysignal beforecopy41; then actualreadback/cleanunmount/
-QMP0/all7hashes andboot24 sameobservationdefault profile are authorized.
-Rootownsallgestures. Noextraapprovalsneeded. Keepworkinguntilownedappjourney.
+24importsverified1d2fd1df39. Stage41 actualreadback68592zero, cleanunmount,
+QMPquit6/emulator0 after44.084s; all7hashes/evidence db47abdb36.
+
+**Boot24 live**, session71884, report app-boot-24, privateVNC
+`/tmp/inferno-boot-zeegvfli/vnc.sock`. Source stopped41 root
+`fa9a7dd9d653475e6d1c62026447faa3bb3dc656f0a995f1f3133190bfc7ea3e` +paired41.
+Onlylauncher13 differs from23. Samee3da/HID45/readiness42/observationdefault,
+noUSB,900strace/30sframes/privateconsole. Root utility
+`/tmp/inferno-explicit-gesture-24.py`; zero24input so far. Awaitoriginalproxytype,
+FBSacceptance andownedUIKitmarker/screenshot. Actual24 earlybootcomplete08:16:08.
+Note strict --probe-journey automatically ends run after counter1 aftercapture;
+rootmustreviewactualappbeforetapping. Do notexpectliveVMafterjourneycompleted.
+
+Native found originaldictionaryregistration does sendapplicationsDidInstall7.
+But FBS existing-app replacement predicate comparesonlybundlepath+mtime, nottype;
+if24proxySystem butcachedUserdenialpersists, normalstop/restartfrompersistedLSrecord
+maynaturallyrefresh. No fakecallback or extra fields. Awaitactualfirst.
+Rootcapacityfreedprep14/15/40 generatedcopies; actual17GiBbefore24copy. Original
+sources/baseline21/allactualboottuples remain. No morecopiesuntilcapacitychecked.
+Keepworkinguntilownedappjourney and measurements; no handofforapprovalneeded.
 
 Capacity cleared24GiB beforestage40: verified obsolete generated cache1/appstage1/
 prep22/prep17 retired, original inputs/recipes/evidence, baseline21 and ALL actual
