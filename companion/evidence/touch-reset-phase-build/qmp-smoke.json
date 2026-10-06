@@ -1,0 +1,1202 @@
+{
+  "kind": "firmware_free_qmp_control_plane",
+  "passed": true,
+  "ios_booted": false,
+  "app_executed": false,
+  "binary": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+  "binary_sha256": "fda9447b41d7bd170a0abf6b56f4b0db822ff9ca84add3e648299d2aa7f59505",
+  "host": {
+    "system": "Linux",
+    "architecture": "aarch64",
+    "page_size": 4096
+  },
+  "upstream": {
+    "repository": "https://github.com/ChefKissInc/Inferno.git",
+    "revision": "cc4302a99167abec69b714cfd00c38caece7e7de",
+    "branch_at_fork": "master",
+    "local_branch": "companion/linux-runner",
+    "purpose": "Headless iOS app execution and measured automation on commodity runners",
+    "previous_project": "../behavioral-iphone",
+    "license": "Upstream derivative GPL-3.0; Inferno additions AGPL-3.0; see LICENSE and file notices"
+  },
+  "companion_revision": "0be5d31a3a356e196030ffb5b03f753842c720eb",
+  "commands": [
+    {
+      "request": {
+        "execute": "qmp_capabilities",
+        "id": "qmp_capabilities"
+      },
+      "response": {
+        "return": {},
+        "id": "qmp_capabilities"
+      }
+    },
+    {
+      "request": {
+        "execute": "query-version",
+        "id": "query-version"
+      },
+      "response": {
+        "return": {
+          "qemu": {
+            "micro": 2,
+            "minor": 2,
+            "major": 10
+          },
+          "package": ""
+        },
+        "id": "query-version"
+      }
+    },
+    {
+      "request": {
+        "execute": "query-machines",
+        "id": "query-machines"
+      },
+      "response": {
+        "return": [
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-5.2",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": true,
+            "default-ram-id": "mach-virt.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "catalina-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a7-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "ast2600-evb",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a7-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "mps3-an524",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m33-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "DDR"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "imx25-pdk",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "imx25.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "qcom-dc-scm-v1-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a7-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "musicpal",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm926-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "musicpal.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "realview-pbx-a9",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a9-arm-cpu",
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "none",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "raspi3b",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "sx1-v1",
+            "numa-mem-supported": false,
+            "default-cpu-type": "ti925t-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "omap1.dram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "palmetto-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm926-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "b-l475e-iot01a",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m4-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "sx1",
+            "numa-mem-supported": false,
+            "default-cpu-type": "ti925t-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "omap1.dram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "quanta-gsj",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a9-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "supermicrox11-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm926-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "emcraft-sf2",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m3-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "tiogapass-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm1176-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "quanta-q71l-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm926-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-10.1",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": false,
+            "default-ram-id": "mach-virt.ram",
+            "alias": "virt"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "netduino2",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m3-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "musca-b1",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m33-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "qcom-firework-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a7-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "highbank",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a9-arm-cpu",
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": true,
+            "default-ram-id": "highbank.dram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "rainier-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a7-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "versatileab",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm926-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "versatile.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-10.0",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": false,
+            "default-ram-id": "mach-virt.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "lm3s811evb",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m3-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "realview-eb",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm926-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "realview-eb-mpcore",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm11mpcore-arm-cpu",
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "quanta-gbs-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a9-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-5.0",
+            "numa-mem-supported": true,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": true,
+            "default-ram-id": "mach-virt.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "mps2-an500",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m7-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "mps.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "mps2-an505",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m33-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "mps.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "mori-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a9-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "versatilepb",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm926-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "versatile.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-7.0",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": true,
+            "default-ram-id": "mach-virt.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "mps3-an536",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-r52-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "DDR"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "microbit",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "raspi4b",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "raspi1ap",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-6.0",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": true,
+            "default-ram-id": "mach-virt.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "xlnx-zcu102",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 6,
+            "deprecated": false,
+            "default-ram-id": "ddr-ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "fby35-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a7-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "mps2-an511",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m3-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "mps.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "midway",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": true,
+            "default-ram-id": "highbank.dram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "gb200nvl-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a7-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "max78000fthr",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m4-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "mps2-an385",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m3-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "mps.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "bletchley-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a7-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "t8030",
+            "numa-mem-supported": false,
+            "default-cpu-type": "apple-a13-cpu",
+            "acpi": false,
+            "cpu-max": 7,
+            "deprecated": false,
+            "default-ram-id": "t8030.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "collie",
+            "numa-mem-supported": false,
+            "default-cpu-type": "sa1110-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "strongarm.sdram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "fp5280g2-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm1176-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "s8000",
+            "numa-mem-supported": false,
+            "default-cpu-type": "apple-a9-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-8.1",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": false,
+            "default-ram-id": "mach-virt.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "xilinx-zynq-a9",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a9-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "zynq.ext_ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-7.1",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": true,
+            "default-ram-id": "mach-virt.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "olimex-stm32-h405",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m4-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "g220a-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm1176-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "ast1030-evb",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m4-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "witherspoon-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm1176-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "xlnx-versal-virt",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": false,
+            "default-ram-id": "ddr"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "kudo-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a9-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "fby35",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 3,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "vexpress-a15",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": false,
+            "default-ram-id": "vexpress.highmem"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "npcm750-evb",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a9-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "mps2-an386",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m4-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "mps.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "yosemitev2-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm1176-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "netduinoplus2",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m4-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "mps2-an521",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m33-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "mps.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "vexpress-a9",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a9-arm-cpu",
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": false,
+            "default-ram-id": "vexpress.highmem"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "cubieboard",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a8-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "cubieboard.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "mcimx7d-sabre",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "mcimx7d-sabre.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "smdkc210",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a9-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "ast2700a1-evb",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a35-arm-cpu",
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "raspi0",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "ast2700fc",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 6,
+            "deprecated": false,
+            "alias": "ast2700fc"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "sabrelite",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": false,
+            "default-ram-id": "sabrelite.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-6.2",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": true,
+            "default-ram-id": "mach-virt.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-8.0",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": false,
+            "default-ram-id": "mach-virt.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-8.2",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": false,
+            "default-ram-id": "mach-virt.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "bpim2u",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a7-arm-cpu",
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": false,
+            "default-ram-id": "bpim2u.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "sonorapass-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm1176-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "mps3-an547",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m55-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "DDR"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "supermicro-x11spi-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm1176-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "npcm845-evb",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a35-arm-cpu",
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-5.1",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": true,
+            "default-ram-id": "mach-virt.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-9.2",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": false,
+            "default-ram-id": "mach-virt.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-9.1",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": false,
+            "default-ram-id": "mach-virt.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "fuji-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a7-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "raspi2b",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-7.2",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": true,
+            "default-ram-id": "mach-virt.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-9.0",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": false,
+            "default-ram-id": "mach-virt.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "realview-pb-a8",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a8-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "stm32vldiscovery",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m3-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "ast2700a0-evb",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a35-arm-cpu",
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": false,
+            "default-ram-id": "ram",
+            "alias": "ast2700-evb"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "integratorcp",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm926-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "integrator.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "mcimx6ul-evk",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "mcimx6ul-evk.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "imx8mp-evk",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": false,
+            "default-ram-id": "imx8mp-evk.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "raspi3ap",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "musca-a",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m33-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "nuri",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a9-arm-cpu",
+            "acpi": false,
+            "cpu-max": 2,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "virt-6.1",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a15-arm-cpu",
+            "acpi": true,
+            "cpu-max": 512,
+            "deprecated": true,
+            "default-ram-id": "mach-virt.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "romulus-bmc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm1176-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "canon-a1100",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "lm3s6965evb",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-m3-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "orangepi-pc",
+            "numa-mem-supported": false,
+            "default-cpu-type": "cortex-a7-arm-cpu",
+            "acpi": false,
+            "cpu-max": 4,
+            "deprecated": false,
+            "default-ram-id": "orangepi.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "ast2500-evb",
+            "numa-mem-supported": false,
+            "default-cpu-type": "arm1176-arm-cpu",
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "kzm",
+            "numa-mem-supported": false,
+            "acpi": false,
+            "cpu-max": 1,
+            "deprecated": false,
+            "default-ram-id": "kzm.ram"
+          },
+          {
+            "hotpluggable-cpus": false,
+            "name": "sbsa-ref",
+            "numa-mem-supported": false,
+            "default-cpu-type": "neoverse-n2-arm-cpu",
+            "acpi": false,
+            "cpu-max": 512,
+            "deprecated": false,
+            "default-ram-id": "sbsa-ref.ram"
+          }
+        ],
+        "id": "query-machines"
+      }
+    },
+    {
+      "request": {
+        "execute": "query-status",
+        "id": "query-status"
+      },
+      "response": {
+        "return": {
+          "status": "prelaunch",
+          "running": false
+        },
+        "id": "query-status"
+      }
+    },
+    {
+      "request": {
+        "execute": "query-cpus-fast",
+        "id": "query-cpus-fast"
+      },
+      "response": {
+        "return": [],
+        "id": "query-cpus-fast"
+      }
+    },
+    {
+      "request": {
+        "execute": "quit",
+        "id": "quit"
+      },
+      "response": {
+        "return": {},
+        "id": "quit"
+      }
+    }
+  ],
+  "invocation": [
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "-machine",
+    "none",
+    "-accel",
+    "tcg",
+    "-S",
+    "-display",
+    "none",
+    "-nodefaults",
+    "-monitor",
+    "none",
+    "-serial",
+    "none",
+    "-qmp",
+    "unix:/tmp/inferno-qmp-vuqe9lqh/qmp.sock,server=on,wait=off"
+  ],
+  "greeting": {
+    "QMP": {
+      "version": {
+        "qemu": {
+          "micro": 2,
+          "minor": 2,
+          "major": 10
+        },
+        "package": ""
+      },
+      "capabilities": [
+        "oob"
+      ]
+    }
+  },
+  "version": {
+    "qemu": {
+      "micro": 2,
+      "minor": 2,
+      "major": 10
+    },
+    "package": ""
+  },
+  "apple_machine_present": true,
+  "exit_code": 0,
+  "control_plane_elapsed_seconds": 0.066813
+}
