@@ -28,7 +28,7 @@ export CPPFLAGS="-I$deps/include -I$packages/include -I$packages/include/aarch64
 export LDFLAGS="-L$deps/lib -L$deps/lib64 -L$packages/lib/aarch64-linux-gnu -Wl,-rpath,$deps/lib -Wl,-rpath,$deps/lib64 -Wl,-rpath,$packages/lib/aarch64-linux-gnu"
 nettle_archive="$build_root/downloads/nettle-3.10.2.tar.gz"
 if [[ ! -f "$nettle_archive" ]]; then
-    for base in https://ftp.gnu.org/gnu https://mirrors.kernel.org/gnu https://ftpmirror.gnu.org/gnu; do
+    for base in https://mirrors.kernel.org/gnu https://ftp.gnu.org/gnu https://ftpmirror.gnu.org/gnu; do
         if curl --fail --location --retry 1 --connect-timeout 15 --max-time 120 \
             "$base/nettle/nettle-3.10.2.tar.gz" --output "$nettle_archive.part"; then
             mv "$nettle_archive.part" "$nettle_archive"
