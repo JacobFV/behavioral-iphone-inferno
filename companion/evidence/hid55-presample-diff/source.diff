@@ -1,0 +1,76 @@
+diff --git a/companion/native-probe/hid-input.c b/companion/native-probe/hid-input.c
+index 89d218ee98..eafbded866 100644
+--- a/companion/native-probe/hid-input.c
++++ b/companion/native-probe/hid-input.c
+@@ -1,6 +1,7 @@
+ /* Owned console command reader. No shell, replay, or automatic gesture. */
+ #include "hid-input.h"
+ #include "open-control.h"
++#include "sample-control.h"
+ extern int printf(const char *,...),fflush(void *),open(const char *,int,...),close(int),*__error(void),strcmp(const char *,const char *);
+ extern long read(int,void *,unsigned long);
+ extern int usleep(unsigned);
+@@ -107,6 +108,7 @@ int main(int argc,char **argv) {
+     if(fd<0){printf("INFERNO_HID_OPEN_FAILED errno=%d\n",*__error());fflush(0);return 66;}
+     printf("INFERNO_HID_BEGIN automatic_gestures=0\n");fflush(0);
+     inferno_open_start(fd);
++    inferno_sample_start(fd);
+     readiness_watch_start();
+     int backend=inferno_hid_prepare();
+     printf("INFERNO_HID_BACKEND_INITIALIZE status=%d delivery=unproven\n",backend);fflush(0);
+@@ -115,6 +117,7 @@ int main(int argc,char **argv) {
+     unsigned long long began=mach_absolute_time();
+     while(!stopping && count<32 && rejected<32) {
+         inferno_open_poll();
++        inferno_sample_poll();
+         readiness_watch_poll("idle");
+         unsigned long long ticks=mach_absolute_time()-began;
+         if((ticks/(unsigned long long)tb.denom)*tb.numer>=7200000000000ULL)break;
+@@ -125,12 +128,12 @@ int main(int argc,char **argv) {
+             unsigned char c=(unsigned char)buffer[i];
+             if(c=='\n') {
+                 if(discard){printf("INFERNO_HID_REJECT reason=line_encoding_or_length\n");fflush(0);rejected++;}
+-                else {line[used]=0;int control=inferno_open_handle(line);if(control<0)rejected++;else if(!control) {if(inferno_open_busy()) {printf("INFERNO_HID_REJECT reason=open_child_busy\n");fflush(0);rejected++;}else if(handle(line,seen,&count))rejected++;}}
++                else {line[used]=0;int control=inferno_sample_handle(line);if(!control)control=inferno_open_handle(line);if(control<0)rejected++;else if(!control) {if(inferno_open_busy() || inferno_sample_busy()) {printf("INFERNO_HID_REJECT reason=control_child_busy\n");fflush(0);rejected++;}else if(handle(line,seen,&count))rejected++;}}
+                 used=0;discard=0;
+             } else if(c<32 || c>126 || used>=sizeof(line)-1)discard=1;
+             else if(!discard)line[used++]=(char)c;
+         }
+     }
+     if(readiness_token>=0 && notify_cancel_read)notify_cancel_read(readiness_token);
+-    inferno_open_close();inferno_hid_close();close(fd);printf("INFERNO_HID_EXIT requests=%u rejected=%u stop=%d\n",count,rejected,stopping);fflush(0);return 0;
++    inferno_sample_close();inferno_open_close();inferno_hid_close();close(fd);printf("INFERNO_HID_EXIT requests=%u rejected=%u stop=%d\n",count,rejected,stopping);fflush(0);return 0;
+ }
+diff --git a/companion/native-probe/open-control.c b/companion/native-probe/open-control.c
+index b2bd1b3ada..77b7ec3131 100644
+--- a/companion/native-probe/open-control.c
++++ b/companion/native-probe/open-control.c
+@@ -2,6 +2,7 @@
+  * Sole-reader command demultiplexer. Fixed owned OPEN only; no app termination.
+  */
+ #include "open-control.h"
++#include "sample-control.h"
+ #include "../app-probe/EventRecord.h"
+ #include "../app-probe/OwnedClock.h"
+ extern int printf(const char *,...),fflush(void *),fork(void),close(int),waitpid(int,int *,int),kill(int,int),usleep(unsigned);
+@@ -9,9 +10,9 @@ extern int setgroups(int,const unsigned *),setgid(unsigned),setuid(unsigned),exe
+ extern void _exit(int);
+ static char boot[37],requests[8][33];
+ static unsigned request_count,all_count;
+-static char all_ids[40][33];
++static char all_ids[42][33];
+ int inferno_command_id_seen(const char *id) {for(unsigned i=0;i<all_count;i++)if(!strcmp(id,all_ids[i]))return 1;return 0;}
+-void inferno_command_id_remember(const char *id) {if(all_count<40) {for(unsigned i=0;i<33;i++)all_ids[all_count][i]=id[i];all_count++;}}
++void inferno_command_id_remember(const char *id) {if(all_count<42) {for(unsigned i=0;i<33;i++)all_ids[all_count][i]=id[i];all_count++;}}
+ 
+ static int enabled,console_fd=-1,child=-1,killed;
+ static unsigned long long began,killed_at;
+@@ -62,7 +63,7 @@ int inferno_open_handle(const char *line) {
+     if(parse_open(line,id,uuid))reason="syntax";
+     else if(!enabled)reason="disabled";
+     else if(strcmp(uuid,boot))reason="foreign_boot";
+-    else if(child>0)reason="busy";
++    else if(child>0 || inferno_sample_busy())reason="busy";
+     else if(request_count==8)reason="limit";
+     else if(inferno_command_id_seen(id))reason="duplicate";
+     if(reason) {printf("INFERNO_OPEN_REJECT reason=%s\n",reason);fflush(0);return -1;}
