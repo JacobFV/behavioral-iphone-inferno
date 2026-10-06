@@ -128,3 +128,15 @@ jobs and adds explicit `org.inferno.*` jobs. The existing `.sig` is unchanged; n
 signature is generated. This mode is opt-in, recorded in the invocation/report,
 and rejected for recovery boots. Actual execution must show the original loader's
 “Using unsecure cache” message and owned job output before claiming job loading.
+
+## Headless interaction during a long boot
+
+`python3 companion/vnc-control.py --socket /absolute/private/vnc.sock --output /fresh/output`
+captures the running guest without another QMP connection or a host window. Read
+the socket from the attempt's recorded `-vnc unix:...` argument. The narrow
+[RFB3.8 client](https://www.rfc-editor.org/rfc/rfc6143.html) uses Pillow and supports
+`--tap X Y` or `--swipe X0 Y0 X1 Y1` after reviewing the current screenshot. It
+records before/after PNGs, hashes and exact pointer packets. It accepts only an
+existing Unix socket. Capture was actually verified against app-boot-3; pointer
+input remains unverified until a visible guest response is observed. QEMU VNC
+reported832x1792 while QMP reports828x1792; retain that surface-width distinction.
