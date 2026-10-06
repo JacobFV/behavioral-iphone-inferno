@@ -1,0 +1,36 @@
+{
+  "claim": "Original registerApplication: repeatedly returns NO for the exact unchanged owned bundle at /Applications/InfernoProbe.app; proxy remains invalid. No open request, app appearance, or tap journey was observed.",
+  "elapsed_seconds": 974.001145,
+  "termination": "Deliberately stopped after completed negative registration batches and one observed unlock attempt, when the next controlled disk was ready. Runner SIGTERM invoked QMP cleanup; emulator exit0. Not a 7200-second observation.",
+  "registration_outcomes": "First launcher child ended with raw status14 (SIGALRM); later completed batches ended raw256 (exit1), wrapper timed_out=0. Repeated BOOL NO is an observed result, not an inferred reason.",
+  "unlock_outcome": {
+    "before": {
+      "state": 0,
+      "unlocked_since_boot": 0
+    },
+    "single_empty_attempt_result": -2,
+    "adjacent_kernel_log": "AppleSEPKeyStore:10649:68: operation failed (sel: 9 ret: e00002e2)",
+    "after": {
+      "state": 0,
+      "unlocked_since_boot": 0
+    },
+    "data_access_after": {
+      "result": -1,
+      "errno": 1
+    },
+    "interpretation": "One original API attempt was observed. No first unlock was observed. Raw state enum is not relabeled."
+  },
+  "frame": {
+    "source": "0031.ppm",
+    "meaning": "Apple migration progress, not the owned application or visible home/setup UI."
+  },
+  "files": {
+    "app-system-registration-serial.log": "ea67cb66d67326f9a17b3fd457fc9367b010e45d26716e0b30504cb2504b54ac",
+    "app-system-registration-qmp-transcript.jsonl": "e91b44dc6ba9815ba5513ce00fb7b6f9299376d1ca71c6e3b8990721bd4af297",
+    "app-system-registration-report.json": "d2ff49cbbb336c8ec560d3cf7eae56b1b58b9fe88e9bbd5ecd89c95b0bfab2fa",
+    "app-system-registration-stderr.log": "90d324fa1e1c26c49589cda1ea8076ea1c3f9073a1f1fccf44bdc91ae15d91eb",
+    "app-system-registration-guest-errors.log": "5e837c5e6ad9fec9ecb2c606a37a5a545e54a6e33d49ce82b2c0c4aa0cc3b291",
+    "app-system-registration-final.png": "92c5aa1dfe8e18d9e2611e949e592944e51bd1b632d029d29d7399fc101138c3",
+    "app-system-registration-stopped-disk-hashes.json": "83e9c0aff37fe71a7c892e72f6b693f1c69accb92962644fdda0c49494a61365"
+  }
+}
