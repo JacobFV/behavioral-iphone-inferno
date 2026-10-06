@@ -1,0 +1,87 @@
+{
+  "hw/display/apple_displaypipe_v4.c": {
+    "sha256": "46e4e7b44ffaa80db4b1a4e6e81c0209bc4f27a5f4c7ca621ae085922ee35282",
+    "excerpts": [
+      {
+        "first_line": 291,
+        "last_line": 296,
+        "text": "static void adp_v4_update_irqs(AppleDisplayPipeV4State *genpipe)\n{\n    qemu_set_irq(genpipe->irqs[0], (qatomic_read(&genpipe->int_enable) &\n                                    qatomic_read(&genpipe->int_status)) != 0);\n}\n"
+      },
+      {
+        "first_line": 570,
+        "last_line": 611,
+        "text": "        addr < (BLEND_BLOCK_BASE + BLEND_BLOCK_SIZE)) {\n        return adp_v4_blend_reg_write(&adp->blend_unit, addr - BLEND_BLOCK_BASE,\n                                      data);\n    }\n\n    switch (addr >> 2) {\n    case R_CONTROL_INT_STATUS: {\n        uint32_t before = qatomic_read(&adp->int_status);\n        ADP_INFO(\"disp: int status <- 0x%X\", (uint32_t)data);\n        qatomic_and(&adp->int_status, ~(uint32_t)data);\n        adp_v4_update_irqs(adp);\n        trace_apple_adp_irq_write(\"status-w1c\", data, before,\n                                  qatomic_read(&adp->int_status),\n                                  qatomic_read(&adp->int_enable));\n        break;\n    }\n    case R_CONTROL_INT_ENABLE: {\n        uint32_t before = qatomic_read(&adp->int_enable);\n        ADP_INFO(\"disp: int enable <- 0x%X\", (uint32_t)data);\n        qatomic_set(&adp->int_enable, (uint32_t)data);\n        adp_v4_update_irqs(adp);\n        trace_apple_adp_irq_write(\"enable\", data, before,\n                                  qatomic_read(&adp->int_status),\n                                  qatomic_read(&adp->int_enable));\n        break;\n    }\n    case (0x4602C >> 2): {\n        ADP_INFO(\"disp: REG_0x4602C <- 0x%X\", (uint32_t)data);\n        trace_apple_adp_submit(data, (data & BIT32(12)) != 0,\n                               qatomic_read(&adp->int_status),\n                               qatomic_read(&adp->int_enable));\n        if (data & BIT32(12)) {\n            qemu_bh_schedule(adp->update_disp_image_bh);\n        }\n        break;\n    }\n    default: {\n        ADP_INFO(\"disp: unknown @ 0x\" HWADDR_FMT_plx \" <- 0x\" HWADDR_FMT_plx,\n                 addr, data);\n        trace_apple_adp_unknown_mmio(\"main\", -1, true, addr, data);\n        break;\n    }"
+      },
+      {
+        "first_line": 646,
+        "last_line": 659,
+        "text": "    }\n    case R_CONTROL_INT_STATUS: {\n        ADP_INFO(\"disp: int status -> 0x%X\", qatomic_read(&adp->int_status));\n        return qatomic_read(&adp->int_status);\n    }\n    case R_CONTROL_INT_ENABLE: {\n        ADP_INFO(\"disp: int enable -> 0x%X\", qatomic_read(&adp->int_enable));\n        return qatomic_read(&adp->int_enable);\n    }\n    default: {\n        ADP_INFO(\"disp: unknown @ 0x\" HWADDR_FMT_plx \" -> 0x\" HWADDR_FMT_plx,\n                 addr, (hwaddr)0);\n        trace_apple_adp_unknown_mmio(\"main\", -1, false, addr, 0);\n        return 0;"
+      },
+      {
+        "first_line": 679,
+        "last_line": 718,
+        "text": "static void adp_v4_gfx_update(void *opaque)\n{\n    AppleDisplayPipeV4State *adp = opaque;\n    DirtyBitmapSnapshot *snap;\n    bool dirty;\n    uint32_t y, ys, before;\n\n    snap = memory_region_snapshot_and_clear_dirty(\n        adp->vram_mr, adp->vram_off + adp->fb_off,\n        adp->height * adp->width * sizeof(uint32_t), DIRTY_MEMORY_VGA);\n    ys = -1U;\n    for (y = 0; y < adp->height; ++y) {\n        dirty = memory_region_snapshot_get_dirty(\n            adp->vram_mr, snap,\n            adp->vram_off + adp->fb_off + adp->width * sizeof(uint32_t) * y,\n            adp->width * sizeof(uint32_t));\n        if (dirty && ys == -1U) {\n            ys = y;\n        }\n        if (!dirty && ys != -1U) {\n            dpy_gfx_update(adp->console, 0, ys, adp->width, y - ys);\n            ys = -1U;\n        }\n    }\n    if (ys != -1U) {\n        dpy_gfx_update(adp->console, 0, ys, adp->width, y - ys);\n    }\n    g_free(snap);\n\n    before = qatomic_read(&adp->int_status);\n    qatomic_or(&adp->int_status, R_CONTROL_INT_OUTPUT_READY_MASK);\n    adp_v4_update_irqs(adp);\n    trace_apple_adp_output_ready(before, qatomic_read(&adp->int_status),\n                                qatomic_read(&adp->int_enable));\n}\n\nstatic const GraphicHwOps adp_v4_ops = {\n    .invalidate = adp_v4_invalidate,\n    .gfx_update = adp_v4_gfx_update,\n};"
+      },
+      {
+        "first_line": 976,
+        "last_line": 995,
+        "text": "static void adp_v4_update_disp_bh(void *opaque)\n{\n    AppleDisplayPipeV4State *adp = opaque;\n    pixman_image_t *disp_image;\n\n    trace_apple_adp_bh(\"enter\", adp->genpipe[0].state.config_control,\n                       adp->genpipe[1].state.config_control,\n                       qatomic_read(&adp->int_status), qatomic_read(&adp->int_enable));\n    disp_image = qemu_console_surface(adp->console)->image;\n\n    adp_v4_gp_draw(&adp->genpipe[0], &adp->dma_as, disp_image, adp->console, 0);\n    adp_v4_gp_draw(&adp->genpipe[1], &adp->dma_as, disp_image, adp->console, 1);\n\n    qatomic_or(&adp->int_status, R_CONTROL_INT_FRAME_PROCESSED_MASK);\n    adp_v4_update_irqs(adp);\n    trace_apple_adp_bh(\"exit\", adp->genpipe[0].state.config_control,\n                       adp->genpipe[1].state.config_control,\n                       qatomic_read(&adp->int_status), qatomic_read(&adp->int_enable));\n}\n"
+      }
+    ]
+  },
+  "util/async.c": {
+    "sha256": "80b706a37088961b1d771cbfec3385ee1b6d9e04361e673807f42d0e90227f1c",
+    "excerpts": [
+      {
+        "first_line": 72,
+        "last_line": 88,
+        "text": "/* Called concurrently from any thread */\nstatic void aio_bh_enqueue(QEMUBH *bh, unsigned new_flags)\n{\n    AioContext *ctx = bh->ctx;\n    unsigned old_flags;\n\n    /*\n     * Synchronizes with atomic_fetch_and() in aio_bh_dequeue(), ensuring that\n     * insertion starts after BH_PENDING is set.\n     */\n    old_flags = qatomic_fetch_or(&bh->flags, BH_PENDING | new_flags);\n\n    if (!(old_flags & BH_PENDING)) {\n        /*\n         * At this point the bottom half becomes visible to aio_bh_poll().\n         * This insertion thus synchronizes with QSLIST_MOVE_ATOMIC in\n         * aio_bh_poll(), ensuring that:"
+      },
+      {
+        "first_line": 229,
+        "last_line": 239,
+        "text": "void qemu_bh_schedule_idle(QEMUBH *bh)\n{\n    aio_bh_enqueue(bh, BH_SCHEDULED | BH_IDLE);\n}\n\nvoid qemu_bh_schedule(QEMUBH *bh)\n{\n    aio_bh_enqueue(bh, BH_SCHEDULED);\n}\n\n/* This func is async."
+      }
+    ]
+  },
+  "hw/intc/apple_aic.c": {
+    "sha256": "70fd665c739705e0f6ad54187db9f1bdeebb5ed17d7cb7421564ef102fb19938",
+    "excerpts": [
+      {
+        "first_line": 135,
+        "last_line": 212,
+        "text": " * Check state and interrupt cpus, call with mutex locked\n */\nstatic void apple_aic_update(AppleAICState *s)\n{\n    uint32_t intr = 0;\n    uint32_t potential = 0;\n    int i;\n\n    for (i = 0; i < s->numCPU; i++) {\n        s->cpus[i].pendingIPI |= s->cpus[i].deferredIPI;\n        s->cpus[i].deferredIPI = 0;\n    }\n\n    for (i = 0; i < s->numCPU; i++) {\n        if ((s->cpus[i].pendingIPI & AIC_IPI_SELF) & (~s->cpus[i].ipi_mask)) {\n            intr |= (1 << i);\n        }\n        if ((~s->cpus[i].ipi_mask & AIC_IPI_NORMAL) &&\n            (s->cpus[i].pendingIPI & ((1 << s->numCPU) - 1))) {\n            intr |= (1 << i);\n        }\n    }\n\n    i = -1;\n    while ((i = find_next_bit32(s->eir_state, s->numIRQ, i + 1)) < s->numIRQ) {\n        int dest;\n        if ((test_bit32(i, s->eir_mask) == 0) && (dest = s->eir_dest[i])) {\n            if (((intr & dest) == 0)) {\n                /* The interrupt doesn't have a cpu that can process it yet */\n                uint32_t cpu = find_first_bit32(&s->eir_dest[i], s->numCPU);\n                intr |= (1 << cpu);\n                potential |= dest;\n            } else {\n                int k;\n                for (k = 0; k < s->numCPU; k++) {\n                    if (((intr & (1 << k)) == 0) && (potential & (1 << k))) {\n                        /*\n                         * cpu K isn't in the interrupt list\n                         * and can handle some of the previous interrupts\n                         */\n                        intr |= (1 << k);\n                        break;\n                    }\n                }\n            }\n        }\n    }\n    for (i = 0; i < s->numCPU; i++) {\n        if (intr & (1 << i)) {\n            qemu_irq_raise(s->cpus[i].irq);\n        }\n    }\n}\n\nstatic void apple_aic_set_irq(void *opaque, int irq, int level)\n{\n    AppleAICState *s = opaque;\n\n    QEMU_LOCK_GUARD(&s->mutex);\n\n    trace_aic_set_irq(irq, level);\n    if (level) {\n        set_bit32(irq, s->eir_state);\n    } else {\n        clear_bit32(irq, s->eir_state);\n    }\n}\n\nstatic void apple_aic_tick(void *opaque)\n{\n    AppleAICState *s = opaque;\n\n    QEMU_LOCK_GUARD(&s->mutex);\n\n    apple_aic_update(s);\n\n    timer_mod_ns(s->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + kAICWT);\n}"
+      },
+      {
+        "first_line": 340,
+        "last_line": 360,
+        "text": "    }\n    case REG_AIC_EIR_MASK_SET(0)... REG_AIC_EIR_MASK_SET(kAIC_NUM_EIRS): {\n        uint32_t eir = (addr - REG_AIC_EIR_MASK_SET(0)) / 4;\n        if (unlikely(eir >= s->numEIR)) {\n            break;\n        }\n        s->eir_mask[eir] |= val;\n        break;\n    }\n    case REG_AIC_EIR_MASK_CLR(0)... REG_AIC_EIR_MASK_CLR(kAIC_NUM_EIRS): {\n        uint32_t eir = (addr - REG_AIC_EIR_MASK_CLR(0)) / 4;\n\n        if (unlikely(eir >= s->numEIR)) {\n            break;\n        }\n\n        s->eir_mask[eir] &= ~val;\n        break;\n    }\n    case REG_AIC_WHOAMI_Pn(0)... REG_AIC_WHOAMI_Pn(AIC_CPU_COUNT) - 4: {\n        uint32_t cpu = ((addr - 0x5000) / 0x80);"
+      },
+      {
+        "first_line": 395,
+        "last_line": 423,
+        "text": "    case REG_AIC_IACK: {\n        int i;\n\n        qemu_irq_lower(o->irq);\n        if (o->pendingIPI & AIC_IPI_SELF & ~o->ipi_mask) {\n            o->ipi_mask |= AIC_IPI_SELF;\n            return kAIC_INT_IPI | kAIC_INT_IPI_SELF;\n        }\n\n        if (~o->ipi_mask & AIC_IPI_NORMAL) {\n            if (o->pendingIPI & ((1 << s->numCPU) - 1)) {\n                o->ipi_mask |= AIC_IPI_NORMAL;\n                return kAIC_INT_IPI | kAIC_INT_IPI_NORM;\n            }\n        }\n\n        i = -1;\n        while ((i = find_next_bit32(s->eir_state, s->numIRQ, i + 1)) <\n               s->numIRQ) {\n            if (test_bit32(i, s->eir_mask) == 0) {\n                if (s->eir_dest[i] & (1 << o->cpu_id)) {\n                    set_bit32(i, s->eir_mask);\n                    return kAIC_INT_EXT | AIC_INT_EXTID(i);\n                }\n            }\n        }\n        return kAIC_INT_SPURIOUS;\n    }\n    case REG_AIC_IPI_MASK_SET:"
+      }
+    ]
+  },
+  "hw/arm/apple-silicon/t8030.c": {
+    "sha256": "a99faeb68b5cceba5615a80306db1f9e2fa10a9b56d4051d9cff88be922a64a5",
+    "excerpts": [
+      {
+        "first_line": 2154,
+        "last_line": 2165,
+        "text": "\n    prop = apple_dt_get_prop(child, \"interrupts\");\n    assert_nonnull(prop);\n    uint32_t *ints = (uint32_t *)prop->data;\n\n    for (uint32_t i = 0; i < prop->len / sizeof(uint32_t); ++i) {\n        sysbus_connect_irq(sbd, i,\n                           qdev_get_gpio_in(DEVICE(t8030->aic), ints[i]));\n    }\n\n    object_property_add_child(OBJECT(t8030), \"disp0\", OBJECT(sbd));\n"
+      }
+    ]
+  },
+  "hw/display/trace-events": {
+    "sha256": "5d96c73312991536009451812a7e1d6b05b03b6f2d95d34017aad6b63efa3365",
+    "excerpts": [
+      {
+        "first_line": 228,
+        "last_line": 235,
+        "text": "# apple_displaypipe_v4.c (diagnostic only, opt-in)\napple_adp_submit(uint64_t value, bool schedule, uint32_t status, uint32_t enable) \"value=0x%\"PRIx64\" schedule=%d status=0x%x enable=0x%x\"\napple_adp_bh(const char *phase, uint32_t gp0, uint32_t gp1, uint32_t status, uint32_t enable) \"phase=%s gp0=0x%x gp1=0x%x status=0x%x enable=0x%x\"\napple_adp_pipe(uint32_t pipe, const char *outcome, uint32_t control, uint32_t source, uint32_t stride, uint32_t width, uint32_t height, uint32_t bytes) \"pipe=%u outcome=%s control=0x%x source=0x%x stride=%u width=%u height=%u bytes=%u\"\napple_adp_output_ready(uint32_t before, uint32_t status, uint32_t enable) \"before=0x%x status=0x%x enable=0x%x\"\napple_adp_irq_write(const char *kind, uint64_t value, uint32_t before, uint32_t status, uint32_t enable) \"kind=%s value=0x%\"PRIx64\" before=0x%x status=0x%x enable=0x%x\"\napple_adp_unknown_mmio(const char *block, int32_t pipe, bool write, uint64_t offset, uint64_t value) \"block=%s pipe=%d write=%d offset=0x%\"PRIx64\" value=0x%\"PRIx64\napple_adp_gp_config_write(uint32_t pipe, uint64_t offset, uint64_t value) \"pipe=%u offset=0x%\"PRIx64\" value=0x%\"PRIx64"
+      }
+    ]
+  }
+}
