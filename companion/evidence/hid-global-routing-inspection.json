@@ -46,5 +46,14 @@
       "sha256": "0de21eb96eacaa1588e744ee92a99d4516a4fb7d84363ff74fc2e9d1cc4b1d20",
       "status": "Apple published neighboring release; actual installed original kernel addresses above are authoritative for this experiment."
     }
-  ]
+  ],
+  "standard_touchscreen_report_path": {
+    "descriptor": "Owned standard Digitizer page0xD / TouchScreen usage4 application collection, Finger usage0x22 logical collection, absolute GenericDesktop X/Y logical range0..32767. No Apple vendor usage is needed in the inspected parser.",
+    "parse": "Original IOHIDEventDriver::parseDigitizerTransducerElement0xfffffff00832a254 checks GenericDesktop X/Y/Z at0xfffffff00832a2e8 and rejects relative axes. TouchScreen4, TouchPad5 or Finger0x22 select finger type at0xfffffff00832a484\u20130xfffffff00832a490. Calibration call0xfffffff00832a5ac.",
+    "coordinate_normalization": "Original calibrateJustifiedPreferredStateElement0xfffffff00832f190 reads logical min/max, applies existing bounds-removal percentage, calls setCalibration with output min0,max1 at0xfffffff00832f260\u20130xfffffff00832f264. With default zero removal, report axis0..32767 maps0..1; do not assume no environment override. createDigitizerTransducerEventForReport0xfffffff008334d24 uses calibrated fixed axes, corroborated Apple primary source.",
+    "display_integrated_service": "Original System IOKit0x18130be00\u20130x18130be18 falls back to IOHIDServiceConformsTo(page13,usage4) if optional property absent, and sets service+0x100=true. Existing explicit false property would prevent this fallback, so helper should not set a guessed override.",
+    "display_integrated_event": "Original System IOKit __IOHIDServiceEventCallback0x1813111c8\u20130x181311214 checks service+0x100, finds digitizer event, sets field0xb0019=1 if absent. This is original OS routing, no helper event rewriting required.",
+    "os_sender": "Original IOHIDEventService::dispatchEvent assigns registry entry ID as sender. The helper should feed its owned report through IOHIDUserDeviceHandleReport rather than invent a sender ID.",
+    "next_execution": "Create honestly identified virtual integrated touchscreen with developer-only entitlement, inspect original OS-created service and normal display properties, then bounded down/up report and screenshot response. Standard descriptor acceptance and actual UI interaction are not established by this static evidence."
+  }
 }
