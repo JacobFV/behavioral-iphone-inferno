@@ -2,23 +2,21 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
-### Current execution boundary (05:42 local)
+### Current execution boundary (05:55 local)
 
-Boot16 is being preserved for preparation37. It reached original Hello, repeated
-successful app registration/first-unlock, and confirmed hardware firmware rejection
-and HBPP-only registry state. Its bounded900second trace disabled normally.
+Boot17 is live from verified stage37 with the owned virtual touchscreen helper
+and private serial command channel. Actual helper execution/console readiness
+and one host-to-guest command/ACK roundtrip are proven. The original virtual-device
+API returnsNULL at startup and on the one explicit tap request (status-103), so
+no HID reports or UI navigation occurred. Root reviewed before/after Hello frames.
+The narrow next diagnostic queries original IOHIDResource matching and type0
+IOServiceOpen/Close results; no broad entitlement or guard change is justified.
 
-The reviewed next candidate is an owned virtual touchscreen through original
-IOHIDUserDevice APIs, with only the proven developer virtual-device entitlement.
-Original source confirms normal touchscreen report parsing, normalized display
-routing, Built-In metadata propagation and retained virtual identity. No invented
-sender/context, Apple identity, security guard change or firmware validation patch.
-Actual helper bytes/entitlement were independently checked; imports/build passed.
-The optional private serial runner transport passed a real bidirectional plumbing
-smoke, explicitly not guest UART or HID proof. Preparation37 will install the two
-owned binaries via the existing readiness job; no gestures run automatically.
-Next17 must prove actual virtual service creation and a root-triggered bounded tap
-with visible before/after frames. Owned UIKit/tap-counter journey remains unproven.
+Stage37 byte/metadata readbacks matched68736 and69207bytes, unmount/QMP0 and all
+seven stopped hashes retained. Firmware touch still fails normal manifest-digest
+validation and remains a separate unresolved milestone. Exact source/build,
+original routing/authorization inspection and real console traces are committed.
+Owned UIKit execution and counter journey remain unproven. Keep working.
 
 Earlier investigation in this sequence:
 

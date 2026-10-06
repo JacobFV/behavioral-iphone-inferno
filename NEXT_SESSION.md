@@ -53,16 +53,25 @@ original Hello setup UI. Owned app registration and the original first-unlock AP
 transition are proven. Owned UIKit execution, touch navigation and a counter
 journey remain unproven. Do not return to the archived framework implementation.
 
-At 05:42 local, **app-boot-16 is being stopped for verified helper staging37**,
-bootworker session5753, from firmware-only
-stage36 root SHA256
-`6a7dba55d2e16890eec2a76d980a10016cdde0ad2265387048cd76ee699db1ac` and all six
-paired namespaces in `.local-build/reports/disk-preparation-36`.
+At 05:55 local, **app-boot-17 is live**, bootworker session72753, from verified
+stage37 root SHA256
+`860a6fe36cfbce1fcb2b3c906d42f326fe2af88e5399161980a1a3a1d6827617` and all six
+paired namespaces in `.local-build/reports/disk-preparation-37`.
 Emulator SHA256 `fda9447b41d7bd170a0abf6b56f4b0db822ff9ca84add3e648299d2aa7f59505`,
-source `9f92661b1b3154fb19de51ef9c9a1a6ed6e97d4f`. Same app/launcher/unlock/observer;
-private control mailbox, 900-second startup trace, 30-second frames, strict
-journey, maximum7200seconds, no USB. Root reviewed frame0005: Hello and swipe-up
-prompt. Registry observations repeat HBPP-only touch transport. No input in16.
+source `9f92661b1b3154fb19de51ef9c9a1a6ed6e97d4f`; private serial/mailbox,900second
+startup trace,30second frames,strictjourney,maximum7200seconds,noUSB.
+Actual helper runs and console is ready, but original IOHIDUserDeviceCreate
+returnsNULL (backend-103), so no virtual service or HID report yet.
+
+**Actual console roundtrip:** root sent one TAP after reviewed Hello, request
+`b1b5fc18ecbd4c0e9af9838aefbfba1b`, x29400 y31250 duration150ms. Original UART to
+/dev/console worked: guest parsed the same ID, retried Create (NULL), ACK-103.
+No report was emitted, no info screen opened; before/after show Hello animation
+only. Evidence `app-guest-console-roundtrip-live*` and local17/hid-info-tap-1.
+Root owns input; do not replay that ID or claim API/ACK success as UI delivery.
+Native now prepares exact original IOHIDResource matching/open/close diagnostics
+to distinguish failure stages. HIDOpenReportDescriptor is not an exported API;
+no original-parser success is claimed. Keep17 live until next candidate reviewed.
 
 **Firmware boundary:** stage36 added one 583090-byte unsigned IMG4 container to
 Preboot/<96-zero boot hash>/usr/standalone/firmware/FUD/Multitouch.img4. It preserves
@@ -92,9 +101,9 @@ HID helper68736bytes SHA256
 `3619b68952b5b6fa324f1055b74dd04250fc6c764e4241b5525cbe7e1ac0df74`;
 readiness68672bytes SHA256
 `3c360cba34c8d7616fc1ac173af4e7ebd21226f69addc9f11a2fcd6c0e8bcba1`.
-Native will stage only these two owned binaries and identical535byte descriptor
-from stopped16 plus all paired disks; no new cachejob or app/firmware change.
-Require real readbacks/unmount/QMP0/stoppedhashes before next17.
+Stage37 installed these two owned binaries and identical535byte descriptor
+from stopped16; actual readbacks68736 and69207 matched, clean unmount/QMP0 and
+all seven hashes retained. No new cachejob or app/firmware change.
 
 The helper uses original IOHIDUserDevice APIs and an owned standard touchscreen
 report descriptor. Product/Manufacturer identify Inferno; Transport Virtual and
@@ -106,20 +115,19 @@ startup but sends no report automatically. Before an operator gesture it waits
 boundedly for its descendant IOHIDEventService, logs actual IDs/classes and sends
 7-byte down/move/up reports with a release attempt on controlled interruption.
 
-Next17 needs `--guest-hid-serial --control-mailbox`. Runner connects to private
+Current17 uses `--guest-hid-serial --control-mailbox`. Runner connects to private
 Unix serial socket before cont and drains it continuously; QEMU preserves exact
 serial output in logfile. Mailbox `guest-hid-gesture` accepts only tap/swipe,
 32hex requestID, integer coords0..32767 and duration1..2000ms. Exact protocol in
 QMP_CONTROL.md; no arbitrary commands, automatic gestures or replay. Image-free
-monitor-frontend smoke proved transport plumbing only. Actual UART roundtrip,
-virtual service creation and visible input remain unproven. Root's first planned
-probe is one bounded Hello info-button tap with before/after frames.
+monitor-frontend smoke proved transport plumbing only. Actual UART roundtrip is now proven; virtual service creation and visible input
+remain unproven. The one root-triggered test is described above.
 
 **Live control:** root exclusively owns input. Runner owns the sole QMP connection;
-use `companion/qmp_control.py --report .local-build/reports/app-boot-16 ...`.
+use `companion/qmp_control.py --report .local-build/reports/app-boot-17 ...`.
 Never attach a second QMP client or read SPI RXDATA. Fixed seven register reads
 are allowlisted. Trace events must remain bounded and disabled afterward. VNC
-socket comes from current16 command.json; earlier socket paths are stale. No host
+socket comes from current17 command.json; earlier socket paths are stale. No host
 windows, network display endpoints, clipboard or arbitrary guest commands.
 
 **Lineage and retention:** stopped15 root
@@ -127,7 +135,7 @@ windows, network display endpoints, clipboard or arbitrary guest commands.
 feeds36; normal QMP0 after960.150192s. Observer-only35 came from stopped12.
 Boot14 failed before userland at framebuffer panicPC00979a36c; identical15 retry
 succeeded, matching an older prep16/17 transient precedent. All actual boot tuples
-and reports remain. Verified redundant generated prep24/25/26/28/30/31/32/33/34/35
+and reports remain. Verified redundant generated prep24/25/26/28/29/30/31/32/33/34/35/36
 disk copies were retired; their hashes/evidence/sources remain. Do not refer to
 retired preparation disks as available. Check actual free space before new copies.
 
@@ -143,10 +151,10 @@ Evidence and exact original-code inspection are under companion/evidence/.
 
 ## Next concrete work
 
-1. Finish staged37 byte/metadata verification and boot17 with the reviewed helper
-   and optional private serial transport. Inspect actual virtual service creation
-   and console readiness; then root sends one bounded ordinary tap after reviewing
-   Hello. Do not claim report/API return0 as delivery; require visible UI change.
+1. Review/build exact original service match/open/close diagnostic candidate, then
+   stop17 normally and stage from its complete paired state. Keep the successful
+   command transport unchanged. Resolve actual API failure before more gestures;
+   never widen entitlements from a NULL return alone.
 2. Stage from a normally stopped paired tuple only after the next candidate is
    ready. Commit source, actual build manifests, readbacks, raw logs and hashes.
    Never copy or hash a live disk as an immutable source.
