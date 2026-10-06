@@ -10,7 +10,43 @@ Suggested opening instruction:
 > Prefer integrated execution over adding routine unit tests. Never use my main
 > display. Do not resume the archived framework reimplementation.
 
-## CURRENT, 2026-10-06 10:10 local: boot31 tests exact owned process reader
+## CURRENT, 2026-10-06 10:24 local: boot32 tests bounded guest-loopback relay
+
+Boot32 starting session2582 from frozen48, same e3da/launcher13/HID45, newapp19/
+readiness52. Root owns input, utility `/tmp/inferno-explicit-gesture-32.py` ready.
+Private endpoints forthcoming from bootworker. Strict beforecapture and aftercapture
+must be explicitly requested after actual image review; aftercapture stops VM.
+
+App19 sends the exact actual event line on one bounded TCP connection per marker
+to guest127.0.0.1:37373; it also retains its successful own local journal. Reader52
+binds ONLY guest loopback, accepts at most64connections/512records/7200s, bounded
+nonblocking polls and partial I/O. It validates complete newline, current boot UUID,
+claimed PID's exact executable+uid501, sequence/event/count, then prints validated
+raw line/provenance and derived UIKIT marker. It explicitly does NOT authenticate
+TCP peerPID. No hostports, external networking, newentitlements or guardchanges.
+Sourcead30a5919e, socketaudit97b64a9fde/0fae1865a3, build109importaudite71e4072f5.
+Root independent hashes: app19 73680bytes
+94cac3cdc252bacdef3c23e9b9dd9b7354fbe8e27d7b46def2d746084d1dbc44;
+readiness52 69680bytes
+7a8c6d97003613f29a4f144f0ba3471fa7effbcb4e1474db56783df96969141f.
+Actual guest socket/relay success is pending; do not substitute host parser tests.
+
+Stage48 actual app73680/readiness+job70215 readbacks0, clean unmount/QMPquit/emulator0,
+all7hashes/unchanged ancestors integrateda93951fcb8. Root independently checked all7,
+noFD, froze48root0444+KEEP marker2d76c08d58. RootSHA
+5f33b4830d17374c79b20587213c2d22fdf909b749b1a740bdf36a9ac49db2f8,2818048bytes.
+32layer4→48layer3→44layer2→27layer1→43raw. Preserve every exactpath. Any further
+stage must branch44 and include all owned component changes; no flatten/deletion.
+
+Stopped31 established exact app file/path, but reader openEPERM persisted:
+roota0b7ba0c2f3ea2fb07b37e6e253f4ab156ac6fd20aac61e529ba99a41a9d1aef,
+105250816bytes, QMPquit/emulator0/cleanupframe/472.049475s/all4ancestorsunchanged.
+Evidence92b2d0ff4a. Appcache path matches proc canonical/private prefix; actual
+regular0600uid501inode110058size368. Threegestures/no countertap. No strict records.
+Continue active execution, strictjourney and measurements; no handoff requested.
+
+## PREVIOUS, 2026-10-06 10:10 local: boot31 tests exact owned process reader
+
 
 Boot31 starting session8070 from frozen47 via --overlay-base-report, same e3da
 emulator/launcher13/HID45; app18/readiness51. Root owns input and reviewed strict
