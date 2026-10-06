@@ -7,25 +7,35 @@ The user explicitly wants continuous work across status questions and intermedia
 milestones. No pause or handoff requested. Parallel workers are authorized for
 independent work in isolated worktrees; commit progressively.
 
-## Current execution, 2026-10-06 16:25 local
+## Current execution, 2026-10-06 16:33 local
 
-ONE59 LIVE runner3048406/QEMU3048914, source7c3f213e0d,
-VNC/tmp/inferno-boot-e0ndrljg/vnc.sock, samefrozen55/defaultobserverOFF.
-Newbinaryf088a8c99437afaa9da220ee2f2e2a09f4dbf5b8638e897ec01c670c5273a7b7,
-buildsource2f29037290a97299957193006ec44b82e1efa291. Eightdefauloffevents.
-Build+actualfirmwarefreeboundedcontrol PASS7c3f213e0d: defaultoff/deadline/cleanup;
-none-machine lacksADP, so noeventemission/iOSclaimfromsmoke.
-Archived670outsideGit .local-build/binaries/display-mmio-670caae5e8b8/ readonly.
-Root reviewed59Applelogo; first10s tracewindow plus12s continuousVNC nowrunning
-status-read-volume-view. Beforecheckpoint4594bytes at1791329143.7008324.
-Firstwindowcompleted8offdeadline1791329153.9569144, aftercheckpoint300868bytes
-at9167.7502546. Preliminary71knownstatusreads/71W1C/32submits; diskworker
-independentprefixaudit underway. Rootreviewstatus-read-volume-view/observed0008
-lockscreen. NoHMP/query-display-registers anywhere. Unlock1
-996ee178c6074ee684160a3366237000 at9189.82519 sent;20sobservationpending.
-No59counter/SAMPLE/Home/OPEN. Root exclusivelyallUI/control.
-Nativeworker checking staticoriginaldriver mapping versusupstreampatchoverlap;
-no behaviorfix. Independent59read/W1C auditafterwindow willbediskworker.
+59 STOPPED/verified1a44806f71 normal0/noerror410.811885s. Strict0→1 and one
+Home/OPENretaining1, warm748.49175msguestOPEN→active. Defaultall7disks/ancestors/
+exactattestationsPASS. Root109576192bytes SHA
+f8085b968f72841f09002c5e1428ffb60ee3a58d22d5191243ab28d93061ec47.
+Rootvisual2255e697e9 `owned-status-read-59-visual`; raw `owned-eight-event-stopped-59`.
+Boot40E05455-4D23-43DE-BBE7-E84A01D99157/PID254/main2746486067;
+counter68f83f282a8047b88f90970369be8976; OPEN062c71ec8bfb4287b2627b0569cddd9f.
+QMPbefore19351839e27f8a4545a6089a5433f55a8a02a4407a3a60821df89dc7157671fd,
+after5176299227cd9a8d68776e9166c2284994e384e2eea5f1763e326ba746bccbf5.
+NoSAMPLE59. Four10s8eventwindows autooff; noHMP/query-display-registers.
+Independenttraceaudits7962fff51d/7124c5cf28/9bb9fa5a16/85476cbbd9:
+startup/counter/Home/OPEN reads71/30/28/32; submits32/6/10/7. AllmatchingW1C
+pairs clearstatus0, nozero/mixedread. HomefilebracketnotimmediatelypreHome.
+Originaldriverstaticmapping3420842769+93caaf5dc2: filterread/clear before
+separatehandler/gatednotifications; no directpatchrangeoverlap; notruntimeproof.
+
+ONE60 authorized andbootworkerlaunching unchangedfrozen55/newf088/defaultobserverOFF.
+Root will leave displaytracingOFFforinitialcounter; ifgenuinestall, observe20s,
+enableboundeddiagnostics then SAMPLEBACKBOARDD+SPRINGBOARD beforeHome.
+No guestbehaviorfix. RootownsallUI/control. Bootworkerownsstart/postflight;
+otherworkersidle aftercompletedboundedsource/traceaudits.
+
+Currentbinaryf088a8c99437afaa9da220ee2f2e2a09f4dbf5b8638e897ec01c670c5273a7b7,
+buildsource2f29037290a97299957193006ec44b82e1efa291, changebfcc434c20.
+Eightdefaultoffevents; actual59emissionproved. Build/control7c3f213e0d.
+Prior670 archivedreadonly .local-build/binaries/display-mmio-670caae5e8b8/.
+Frozen55 guest and every diskdependency/ctimeattestation unchanged.
 
 ## Recently completed execution
 

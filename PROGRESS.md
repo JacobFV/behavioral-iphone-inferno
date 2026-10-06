@@ -2,6 +2,41 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 16:33 continuation: actual status-read diagnostic and strict/warm59 complete
+
+The reviewed binaryf088a8c99437afaa9da220ee2f2e2a09f4dbf5b8638e897ec01c670c5273a7b7
+built from2f29037290. Actual firmware-free QMP checks verified eight events start
+disabled, expire after10s, and disable on early cleanup. That machine has no ADP;
+actual device emission was subsequently demonstrated during installed iOS59.
+Prior670 binary and manifest remain archived read-only outside Git.
+
+59 boot40E05455-4D23-43DE-BBE7-E84A01D99157/PID254/main2746486067 completed
+reviewed strictcounter0→1 and one Home/namedOPEN retaining1. The single counter
+request was68f83f282a8047b88f90970369be8976. OPEN062c71ec8bfb4287b2627b0569cddd9f
+resumed the same original kernel incarnation in748.49175ms guest OPEN→active;
+this traced interval is not native performance or frame presentation. No SAMPLE.
+Normal0/noerror410.811885s; strict, initial/warm timing and defaultall7/ancestor/
+exactattestation retention passed1a44806f71. Rootdisk109576192bytes SHA
+f8085b968f72841f09002c5e1428ffb60ee3a58d22d5191243ab28d93061ec47.
+Root selected visuals2255e697e9, raw `owned-eight-event-stopped-59`.
+
+Independent four-phase read/W1C audits found71/30/28/32 matching pairs and
+32/6/10/7 submits in startup/counter/Home/OPEN windows. Every read was followed
+among ADP traces by the same W1C value, with before=value and poststatus0.
+No zero or mixed-bit status reads; no host HMP/register query occurred. All four
+10s windows disabled all eight events at deadline. Home's file boundary starts
+at the previous counter checkpoint, not immediately before Home, so it is not
+per-action attribution. Evidence `status-read-59-actual` preserves raw slices.
+
+Static original-driver inspection maps status read/clear in the interrupt filter,
+followed by accumulated pending bits, a separate handler and gated swap
+notification. Direct-patch range checks found no mapped-range overlap, but do
+not prove runtime RAM equality or actual execution. Source evidence is in
+`original-adp-interrupt-path`; Apple disassembly remains outside Git. This
+explains the diagnostic limit: status acknowledgement is not compositor progress.
+The intermittent freeze remains unresolved. Unchanged60 is starting with no
+display trace during initial counter, retaining diagnostics if a stall appears.
+
 ### 16:21 continuation: completed58 and discriminating status-read diagnostic
 
 Unchanged frozen55/emulator670 completed another reviewed strict0→1 in58;
