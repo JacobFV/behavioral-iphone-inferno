@@ -10,7 +10,32 @@ Suggested opening instruction:
 > Prefer integrated execution over adding routine unit tests. Never use my main
 > display. Do not resume the archived framework reimplementation.
 
-## CURRENT, 2026-10-06 10:05 local: MCM reader denial, narrow owned FD lookup next
+## CURRENT, 2026-10-06 10:10 local: boot31 tests exact owned process reader
+
+Boot31 starting session8070 from frozen47 via --overlay-base-report, same e3da
+emulator/launcher13/HID45; app18/readiness51. Root owns input and reviewed strict
+captures, no automatic input. Utility `/tmp/inferno-explicit-gesture-31.py` ready.
+47 actual app73248/readiness+job70343 readbacks0, clean unmount, QMPquit/emulator0,
+all7 hashes and unchanged ancestors are integratede1509a9922. Root independently
+hashed all7/noFD and froze47root0444+KEEP marker e5a532cae6. RootSHA
+8f954f1841332698801ca12c8bae4659d6dcdf40f7de811b63b7ea50b15b47e1,2818048bytes.
+Ancestry31(layer4)→47(layer3)→44(layer2)→27(layer1)→43(raw); retain all exactpaths.
+Any further staging must branch from44 and include all changed owned components.
+
+Reader51 uses original libproc, exact owned executable+uid501, bounded process/FD
+metadata, fixed event basename, then verifies vnode device/inode against opened
+fstat before bounded reads. No MCM grant/creation/registration changes. Source
+5e9ffc83d9/0aab538f52, build55ab34faea, original ABI/permission proofcbfb87d7ac.
+Actual reader51 69808bytes SHA2f7db612c1bc2780a8f37280d12f1badbd0fad8cadfa9ca8d175af3f42fc940b.
+App18 source2814e4a202 adds exact successful cache path to footer, same writer/UI.
+73248bytes SHA13f9088c97afb4f6741b065151173c80a7b97fa261beee1243e8e1f104854ccf.
+Both independent root hashes matched. Await actual original libproc permission,
+path/footer match and genuine events before claiming strict journey success.
+Follow strict reviewed beforecapture→explicitcountertap→reviewedaftercapture.
+Aftercapture completes journey and stops runner, so finish resource sample first.
+
+## PREVIOUS, 2026-10-06 10:05 local: MCM reader denial, narrow owned FD lookup next
+
 
 Boot30 stopped normally: cleanupcapture, QMPquit/emulator0,432.133048seconds,
 all7 hashes, all four ancestors unchanged. RootSHA
