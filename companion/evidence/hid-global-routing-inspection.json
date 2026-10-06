@@ -13,7 +13,8 @@
     "accessibility": "Original accessibilityHIDServices 0x1c2391db0 creates seven reserved nonzero IDs, not zero. These are not authorized identities for an owned helper to impersonate.",
     "backboard_processor": "BKHIDDigitizerEventProcessor processEvent:sender:dispatcher: 0x100048d68 accepts BKHIDAccessibilitySender or BKIOHIDService; other classes lead to ignoring digitizer event from non-digitizer sender log at 0x100049128. Accessibility path obtains mainDisplayDigitizerService at 0x100048ed0, so it is not proof of service-independent touch.",
     "display_integrated": "Original processor reads field0xb0019 at 0x100048ef8. Its presence alone does not satisfy sender/service checks.",
-    "unresolved": "Global normalized coordinate contract, complete display selection, and event acceptance remain unproven. Do not substitute app-local UIKit enqueue/context semantics."
+    "unresolved": "Global normalized coordinate contract, complete display selection, and event acceptance remain unproven. Do not substitute app-local UIKit enqueue/context semantics.",
+    "integrated_display_rule": "Original backboardd0x100049018\u20130x100049038 requires (service.displayUUID != nil) XOR service.isBuiltIn ==1; else unsupported-service log. For integrated touchscreen this means Built-In=true and no external displayUUID. Usage mask at0x10004905c\u20130x100049080 accepts page0xD usages1,4,0x20. BKDigitizerArbiterAccess matcher:servicesDidMatch:0x100088a60 checks isBuiltIn before touchscreen usage0xD0004 may become mainDisplayDigitizerService."
   },
   "virtual_device_candidate": {
     "user_api": "IOHIDUserDeviceCreateWithOptions: original recovery0x47df8, corresponding System IOKit mapping base0x1812d3000. Matches IOHIDResource at0x47eb8, IOServiceOpen type0 at0x47ee8.",
@@ -23,8 +24,27 @@
     "rejected_properties": [
       "IOClass",
       "IOProviderClass",
-      "IOKitDebug"
+      "IOKitDebug",
+      "IOUserClientClass"
     ],
-    "limits": "This establishes original userclient authorization only. A real virtual digitizer must be created from an owned HID report descriptor and observed as an OS-assigned service; matching, BackBoard acceptance and actual UI response still require execution evidence."
-  }
+    "limits": "This establishes original userclient authorization only. A real virtual digitizer must be created from an owned HID report descriptor and observed as an OS-assigned service; matching, BackBoard acceptance and actual UI response still require execution evidence.",
+    "built_in_propagation": "Original IOHIDEventService::start copies provider Built-In at0xfffffff00831e718\u20130xfffffff00831e724; checks OSBoolean type at0xfffffff00831e73c; sets same boolean on event service at0xfffffff00831e76c\u20130xfffffff00831e778. No Privileged condition occurs in this property-copy branch. Original IOHIDUserDevice::initWithProperties0xfffffff008342c0c preserves supplied dictionary and uses Privileged only to force HIDVirtualDevice=true at0xfffffff008342cac\u20130xfffffff008342d94. An honestly named VM-integrated virtual device can use Built-In routing metadata without claiming Apple hardware identity; it remains virtual."
+  },
+  "primary_source_corroboration": [
+    {
+      "url": "https://github.com/apple-oss-distributions/IOHIDFamily/blob/IOHIDFamily-1446.140.2/IOHIDFamily/IOHIDUserDevice.cpp",
+      "sha256": "65a254c8c8c9287ce4e96100d338125d00c778f3f8dd260d769470b5c5d7c736",
+      "status": "Apple published neighboring release; actual installed original kernel addresses above are authoritative for this experiment."
+    },
+    {
+      "url": "https://github.com/apple-oss-distributions/IOHIDFamily/blob/IOHIDFamily-1446.140.2/IOHIDFamily/IOHIDEventService.cpp",
+      "sha256": "70d65c9481b0d77b2ff7920708cdd18be8d323525f4fc2f7b90f84db79ea6404",
+      "status": "Apple published neighboring release; actual installed original kernel addresses above are authoritative for this experiment."
+    },
+    {
+      "url": "https://github.com/apple-oss-distributions/IOHIDFamily/blob/IOHIDFamily-1446.140.2/IOHIDFamily/IOHIDEventDriver.cpp",
+      "sha256": "0de21eb96eacaa1588e744ee92a99d4516a4fb7d84363ff74fc2e9d1cc4b1d20",
+      "status": "Apple published neighboring release; actual installed original kernel addresses above are authoritative for this experiment."
+    }
+  ]
 }
