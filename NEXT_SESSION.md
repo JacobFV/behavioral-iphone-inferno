@@ -56,14 +56,27 @@ New emulator SHA256
 `1d8b129c88aae9ed23b4d017f0504bb677c2cc78`; actual build/QMP check0d269b2bea.
 Same serial/mailbox,900second traces,30second frames,noUSB,7200maximum.
 Private VNC `/tmp/inferno-boot-zmk8vt4z/vnc.sock`, root exclusively owns input.
-Actual MKB state3 before/after, empty unlock0, first0->1. Root swipe from reviewed
-Hello opened language chooser with no false passcode prompt. English tap opened
-country list; root scrolling to United States. Local20 has exact each-request
-JSON/hostresponse and direct VNC after captures. Owned UIKit still unproven.
-Gesture helper permits32 accepted requests total; track count while navigating.
-Root local convenience script /tmp/inferno-explicit-gesture.py sends only one
-explicit supplied gesture/newID and saves request/hostresponse, never replays.
+Actual MKB state3 before/after, empty unlock0, first0->1. Root's ordinary UI
+journey reached: language English, regionUnitedStates, QuickStart/manual, WiFi/
+ContinueWithoutWiFi, DataPrivacy, CreatePasscode/options/Don'tUse/confirmation,
+AppsData/Don'tTransfer, Terms/Agree/confirmation, CustomizeSettings, updateinfo,
+iMessageFaceTime/NotNow, Location/Disable/confirmation, Siri/SetUpLater,
+ScreenTime/SetUpLater. **Current screen is ScreenTime with top-right spinner**,
+still present in capture1791294820 after request27
+`415f49b9deae41a8a7c6a3da309f3dae` ACK0. No repeat/newinput since. Original
+ScreenTimeAgent158/dmd159/Setup169/budd179 remain alive in actualprocesssnapshots.
+Native traces original BuddyScreenTime callback; diskworker owns independent
+ScreenTimeCore initialization/persistence/firstunlock dependencies. No patch or
+bypass proposed. Keep20live while identifying actual completion requirement.
 
+Guest HID max32accepted requests, **27used/5remain**; noautomatic replay/respawn.
+Source/emulator/helper unchanged during navigation. Root local convenience
+script /tmp/inferno-explicit-gesture.py sends one suppliedgesture/newID and
+saves exactrequest/hostresponse; never replays. Direct captureonly VNC:
+`python3 companion/vnc-control.py --socket /tmp/inferno-boot-zmk8vt4z/vnc.sock --output NEW_DIRECTORY`.
+Actual fullrawjournals remain20 report, bounded committedscreens through4ae48e5369.
+OwnedUIKit markers stillabsent/FBS1. All six originalMTtraces disabled successfully
+at900s1791294360.909-.914; no ongoing trace.
 Stopped19 raw/all7 hashes preserved e8a94e4ad7. Redundant prep39 disk copies retired
 after fullhash/noFD/stat checks388c301de4; all actual boot disks remain. Last free
 space12GiB after20copy. No next source change/preparation is needed yet.
@@ -212,9 +225,9 @@ Evidence and exact original-code inspection are under companion/evidence/.
 
 ## Next concrete work
 
-1. Continue normal setup in live20. No-passcode correction has actual API and
-   visible UI proof; English selected and region selection ongoing. Root owns all
-   input, reviews each screen and waits for actual UI, max32 guest requests.
+1. Resolve actual ScreenTime SetUpLater pending callback in live20. Native and
+   diskworkers have original-code diagnostic ownership; root controls input and
+   retains27/32request budget. No repeated tap, no policy/migration suppression.
 2. Stage from a normally stopped paired tuple only after the next candidate is
    ready. Commit source, actual build manifests, readbacks, raw logs and hashes.
    Never copy or hash a live disk as an immutable source.
