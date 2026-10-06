@@ -15,7 +15,9 @@ Evidence f388fb81e6 (worker), root visuals77ae980672. Root disk116391936 bytes,
 SHA802d473d12897c72248dbb00a1e619791438db4a198e2da4ffd5a96270e2ff1d.
 50bootF8081A21-B796-416F-B4E7-D15E075E9CC1/PID256/main2869435882,
 countereab89cac47a841f3b5807bc1614af5b9. No samples/Home/OPEN50.
-ONE51 authorized using identical frozen55/emulator670, TCG strict keepalive.
+ONE51 LIVE runner2919835/QEMU2920440, VNC /tmp/inferno-boot-iw_noih9/vnc.sock,
+serial connected1791322630.3213754; host77ae980672, identical frozen55/emulator670,
+TCG strict keepalive.
 Root owns all input; on stall collect both original samples BEFORE Home.
 Goal: reproduce real display freeze and collect original compositor stacks while
 stalled, comparing49 healthy baseline. No rendering behavior fix yet.
