@@ -20,14 +20,14 @@ if binary.is_file():
 build_matches = bool(digest and manifest.get('binary', {}).get('sha256') == digest)
 reports = sorted((root / '.local-build/reports').glob('*/report.json'), key=lambda p: p.stat().st_mtime, reverse=True)
 evidence = None
-boot_evidence = None
+boot_evidence = {}
 for path in reports:
     try:
         record = json.loads(path.read_text())
     except (OSError, json.JSONDecodeError):
         continue
-    if record.get('kind') == 't8030_recovery_ramdisk_experiment' and boot_evidence is None:
-        boot_evidence = (path, record)
+    if record.get('kind') in ('t8030_recovery_ramdisk_experiment', 't8030_direct_root_experiment'):
+        boot_evidence.setdefault(record['kind'], (path, record))
     if (record.get('binary_sha256') == digest
             and record.get('kind') == 'firmware_free_qmp_control_plane' and evidence is None):
         evidence = (path, record)
@@ -44,11 +44,11 @@ if evidence:
     print('Report:', evidence[0])
 else:
     print('Matching QMP evidence: none; run companion/run check')
-if boot_evidence:
-    print('Latest recovery-ramdisk attempt:', boot_evidence[0])
-    print('Attempt binary matches current build:', boot_evidence[1].get('binary_sha256') == digest)
-    print('Attempt error:', boot_evidence[1].get('error', 'none reported; inspect raw logs'))
+for kind, (path, record) in boot_evidence.items():
+    print('Latest', kind + ':', path)
+    print('Attempt binary matches current build:', record.get('binary_sha256') == digest)
+    print('Attempt error:', record.get('error', 'none reported; inspect raw logs'))
 print('Full iOS / SpringBoard boot: NOT YET ESTABLISHED')
-print('App execution: NOT YET PERFORMED')
+print('UIKit app journey: NOT YET ESTABLISHED (owned recovery native probe has executed)')
 print('Boot instructions: companion/BOOT.md; execution notes: PROGRESS.md')
 sys.exit(0 if build_matches and evidence and evidence[1].get('passed') else 1)
