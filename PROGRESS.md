@@ -61,7 +61,10 @@
   Raw evidence: `companion/evidence/gigalocker-preparation*`. Data/Update creation and
   original var seeding completed in run13, with clean unmounts and 260,640,768
   bytes still available. Hardware factorydata paths were also prepared. Raw
-  evidence: `companion/evidence/data-preparation*`. Direct boot is next. Earlier committed raw
+  evidence: `companion/evidence/data-preparation*`. Independent root extraction
+  subsequently found 12,465 copied compressed files read as zero bytes despite
+  matching path inventories; guest reads must resolve reader limitations versus
+  a real copy fault. Data content validation has NOT passed. Earlier committed raw
   evidence: `companion/evidence/apfs-role-preparation*` and
   `companion/evidence/direct-root-prepared*`.
 - **Reproduced OS conversion:** root ran both committed OS utilities; full raw

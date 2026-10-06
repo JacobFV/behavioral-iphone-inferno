@@ -54,8 +54,11 @@ created Preboot, xART and Hardware and copied original firmware. Direct-root-3
 passed mount-phase-1, then failed data-protection because gigalocker storage was
 missing. Run12 invoked the original guest initializer and cleanly unmounted xART;
 Run13 created Data/Update, seeded original var, prepared Hardware factorydata
-paths and cleanly unmounted; 260,640,768 bytes remain available. Direct boot is
-next. A separate growth helper experiment and minimal owned UIKit fixture are
+paths and cleanly unmounted; 260,640,768 bytes remain available. Root independent
+7-Zip extraction found 12,465 compressed Data files read as zero bytes; guest
+verification/copy correction is pending. Do not accept the seed as byte-valid.
+Direct-root-4 passed gigalocker init, then failed missing SEP firmware. Original
+manifest-verified IM4P staging is being tested without wrapping or signatures. A separate growth helper experiment and minimal owned UIKit fixture are
 being prepared in isolated worktrees. See PROGRESS.md and companion/native-probe/README.md.
 Linux USB companion boots under KVM. EHCI attachment panics due to the blocking
 remote handler; xHCI descriptor enumeration also fails. The asynchronous USB fix
