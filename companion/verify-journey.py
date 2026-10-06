@@ -201,6 +201,9 @@ class Audit:
             ex=exchange('screendump',path)
             require(controlrow['value']['time'] <= ex['request']['value']['time'] <= ex['reply']['value']['time'], 'capture QMP chronology invalid')
             captures.append({'role':role,'width':width,'height':height,'sha256':sha(data),'qmp':ex})
+        if arrivals is not None:
+            require(all(c['arrival']['value']['observed_time'] > captures[1]['qmp']['reply']['value']['time'] for c in later),
+                    'Additional lifecycle arrived before strict after-capture completed')
         if prefix_manifest is not None:
             require(captures[1]['qmp']['reply']['value']['time'] < prefix_manifest['read_started_host_epoch'],
                     'Strict prefix read started before after-capture QMP completion')

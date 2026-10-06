@@ -21,11 +21,15 @@ class Corrupt(m.Audit):
    elif self.mode=='duplicate-raw':rows.append(dict(raw[0]))
    elif self.mode=='duplicate-marker':
     x=next(r for r in rows if r['value']=='INFERNO_UIKIT_PROBE_V1 event=main count=0');y={'value':x['value'],'reference':dict(x['reference'])};y['reference']['byte_start']+=1;rows.append(y)
-  elif name=='event-arrivals/observations.jsonl' and self.mode=='late-record-before-capture':
+  elif name=='event-arrivals/observations.jsonl' and self.mode in ('late-record-before-capture','late-record-during-capture'):
    matches=[r for r in rows if bytes.fromhex(r['value'].get('raw_hex','')).rstrip(b'\r')==b'INFERNO_UIKIT_PROBE_V1 event=main count=0'];assert len(matches)==2
-   matches[1]['value']['observed_time']=matches[0]['value']['observed_time']
+   if self.mode=='late-record-before-capture':matches[1]['value']['observed_time']=matches[0]['value']['observed_time']
+   else:
+    control=super().rows('control-transcript.jsonl',True)
+    after=next(r for r in control if json.loads(r['value']['raw']).get('execute')=='probe-capture-after')
+    matches[1]['value']['observed_time']=after['value']['time']+0.000001
   return rows
-for mode in ['missing-raw','wrong-pid','duplicate-raw','duplicate-marker','late-record-before-capture']:
+for mode in ['missing-raw','wrong-pid','duplicate-raw','duplicate-marker','late-record-before-capture','late-record-during-capture']:
  a=Corrupt(reports/'app-boot-38');a.mode=mode
  try:a.verify()
  except m.Invalid as e:results.append({'in_memory_corruption':mode,'status':'rejected','reason':str(e)})
