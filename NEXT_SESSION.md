@@ -10,6 +10,50 @@ Suggested opening instruction:
 > Prefer integrated execution over adding routine unit tests. Never use my main
 > display. Do not resume the archived framework reimplementation.
 
+## ACTIVE BOOT27, 2026-10-06 09:08 local
+
+Boot27 LIVE session72095, reportapp-boot-27, privateVNC
+/tmp/inferno-boot-alvyoubx/vnc.sock. Rootonlyinput; rootutility
+/tmp/inferno-explicit-gesture-27.py. Rootreviewedlockscreen afterkeybagstate3/
+first0->1, sentONEswipe173c4c7e076945bd8fffa1743851cdd3; awaitingactualapp.
+ActualeventrelayREADY bootUUID4C139D82-BBF5-4D7C-B0F1-88CF1E6F3106;
+appmarker/fileaccesspending. Roothosteventarrivalmonitor session47253,
+/tmp/inferno-observe-event-arrivals.py -> app-boot-27/event-arrivals;
+root120sresource sample session49475 ->resources-launch-window. Waitforresource
+sample beforecompletingjourney (aftercaptureendsVM).
+
+GUEST: unchanged e3da emulator/launcher13/HID45; newapp15 SHA
+121a752c1a348f6edb949ef04ed01ec26a399b967bf7d240ee87d283dcbd1746 (72384bytes)
+and readiness47 SHA5b9e2751fe33f88c07b4df54be1a2610cd2219ef01d88daa9952371788a4ebda
+(68848)+unchanged535job. Ownedfilewriter/reader bounded, bootUUID independently
+checked, no debuggrant/policychange. Source8a8b5bd40a, audited916a46b3a9.
+Actualstage43readbacks72384/69383 zero, normalunmount,QMP7/emulator0,
+evidence35c6ecc678. Fromstopped26 root a04c2e0c6bccd0989f6872736f666d8371ab498aecff5ea91670190e1e0130a6.
+
+DISKIMPORTANT:27usesNEWopt-inroot.qcow2 over STOPPED43rawrootSHA
+69e8378c71d1f29840baa7ae16811d3f6285bf27042501a79e8139f8a5ad61d5,
+absolute .local-build/reports/disk-preparation-43/disks/root.raw.
+Basefrozen0444; KEEP-OVERLAY-BACKING.json inside43/disks deliberatelyblocksold
+exact7fileretirementguard. NEVERRETIRE43WHILEANYDEPENDENTOVERLAYRETAINED.
+Overlay27notstandalone/notraw; preserveitsSHAplusfullbaseidentity+6auxrawhashes.
+Donotpassqcow2as--root-image. Source41d016e547/blockproof74ae2c58ca;
+actualiOSoverlayuserlandnowbooting, no completejourneyyet. Poststopbasehashrequired.
+Prep42generatedretired1904e16d43, everyactualboot+baseline21retained.
+
+RUNNERf313df5b18/28e514a5f1 observationmode requiresroot-reviewedbeforeANDafter:
+1. Waitgenuineappeared0, reviewactualappcounter0, then
+   python3 companion/qmp_control.py --report .local-build/reports/app-boot-27 probe-capture-before
+2. Explicitonecountertap16384/20316/150ms, waitgenuinetap1 andreviewactualcounter1.
+3. Aftermeasurementsdone, probe-capture-after captures/completes andrunnernormallyquits.
+Noautomaticinput/captureonmarker. Legacyhardwaremode separate. Finalcleanupcapture
+cc9ed313a0 nowactive. PreserveactualPPMbefore/after+rawmarkers+originalHIDACKs.
+
+26alreadySTOPPEDnormally695.39231s,QMP41/emulator0/all7hashes b50c839798;
+visualownedcounter0->1 b374a2a9ad proven, strictmarkersmissingin26.
+First60sidlehostemulatorsample23ccb7aab5:61samples,17.28CPUseconds/60=28.8%onecore,
+peakRSS5771657216bytes=5.375GiB; host20logicalCPU/load1.46->1.44. NotappRSS,
+launch/reliability/density/costclaim. Continue27strictrunnerthenrepeatmeasurements.
+
 ## Current actual result, 2026-10-06 08:49 local
 
 Boot26 LIVE session61122, privateVNC /tmp/inferno-boot-bvfnhswi/vnc.sock;
