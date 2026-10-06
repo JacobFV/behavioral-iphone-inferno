@@ -1,0 +1,16 @@
+{
+  "scope": "Read-only original API/path analysis after actual app uid501 boot query0/37 openEPERM1",
+  "actual": "boot28 original Caches parent exists0700uid501; fixed global event file absent. This does not establish the exact policy rule.",
+  "original_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+  "CoreServices_standalone_analysis_offsets": {
+    "LSApplicationProxy_dataContainerURL": "0x65518 forwards to underlying record",
+    "LSBundleProxy_containerURL": "0x1283ac first invokes dataContainerURL selector reference0x1d2968; absent result takes compatibility fallback",
+    "fallback_literal": "CFString0x1e8200 contains /var/mobile/; constructed at0x1284e4..0x128508"
+  },
+  "Foundation_original_addresses": {
+    "NSSearchPathForDirectoriesInDomains": "0x1808c1f38",
+    "NSFileManager_URLsForDirectory_inDomains": "0x1807e9d0c",
+    "NSFileManager_URLForDirectory_inDomain_appropriateForURL_create_error": "0x1807cfb60"
+  },
+  "conclusion": "Existing launcher container=/var/mobile does not prove a normal application data container. Use exact bundle dataContainerURL and original Foundation cache resolution; do not infer global Caches write permission or invent container metadata."
+}
