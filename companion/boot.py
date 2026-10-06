@@ -110,6 +110,8 @@ def main():
     parser.add_argument('--root-image', type=Path,
                         help='raw 4096-sector GPT base; copied before any guest writes')
     parser.add_argument('--root-sha256', help='required expected SHA256 of --root-image')
+    parser.add_argument('--auxiliary-state', type=Path,
+                        help='stopped boot report directory whose six auxiliary namespaces are copied')
     modes = parser.add_mutually_exclusive_group()
     modes.add_argument('--disk-boot', action='store_true',
                         help='experimental direct root boot instead of recovery ramdisk')
@@ -120,9 +122,12 @@ def main():
     args = parser.parse_args()
     if args.probe_journey and not args.disk_boot:
         parser.error('--probe-journey requires --disk-boot')
+    if args.auxiliary_state and not args.root_image:
+        parser.error('--auxiliary-state requires an explicit --root-image and hash')
     if not 1 <= args.seconds <= 86400:
         parser.error('--seconds must be between 1 and 86400')
     # Complete validation before allocating disks or launching the emulator.
+    auxiliary = {}
     try:
         profile_path = args.profile.resolve(strict=True)
         profile, inputs = load_profile(profile_path)
@@ -149,6 +154,21 @@ def main():
                 stream.seek(4096)
                 if stream.read(8) != b'EFI PART':
                     raise ValueError('Root image must have GPT with 4096-byte sectors (NVMe geometry)')
+        if args.auxiliary_state:
+            state_dir = args.auxiliary_state.resolve(strict=True)
+            state_report_path = state_dir / 'report.json'
+            state_report = json.loads(state_report_path.read_text())
+            if not isinstance(state_report, dict):
+                raise ValueError('Auxiliary source report must be a JSON object')
+            if not isinstance(state_report.get('exit_code'), int):
+                raise ValueError('Auxiliary source report must record a stopped emulator exit code')
+            if state_report.get('kind') not in ('t8030_recovery_ramdisk_experiment', 't8030_direct_root_experiment'):
+                raise ValueError('Auxiliary source must be a t8030 boot report')
+            for name, size, _ in DISKS[1:]:
+                source = (state_dir / 'disks' / (name + '.raw')).resolve(strict=True)
+                if not source.is_file() or source.stat().st_size != size:
+                    raise ValueError(f'Auxiliary namespace {name} has unexpected size')
+                auxiliary[name] = {'path': str(source), 'sha256': digest(source), 'bytes': size}
     except (OSError, ValueError, KeyError, TypeError) as exc:
         parser.error(str(exc))
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ')
@@ -166,6 +186,10 @@ def main():
     if root_image:
         report['root_base'] = {'path': str(root_image), 'sha256': args.root_sha256,
                                'bytes': root_image.stat().st_size, 'copied_before_use': True}
+    if auxiliary:
+        report['auxiliary_base'] = {'report': str(state_report_path),
+                                    'report_sha256': digest(state_report_path),
+                                    'namespaces': auxiliary, 'copied_before_use': True}
     (output / 'profile.json').write_text(json.dumps(profile, indent=2) + '\n')
     (output / 'build-manifest.json').write_text(json.dumps(manifest, indent=2) + '\n')
     journey = ProbeJourney(output) if args.probe_journey else None
@@ -211,10 +235,17 @@ def main():
                     subprocess.run(['cp', '--reflink=auto', '--sparse=always', '--',
                                     str(root_image), str(disk)], check=True)
                     size = disk.stat().st_size
+                elif name in auxiliary:
+                    subprocess.run(['cp', '--reflink=auto', '--sparse=always', '--',
+                                    auxiliary[name]['path'], str(disk)], check=True)
+                    if digest(disk) != auxiliary[name]['sha256']:
+                        raise ValueError(f'Auxiliary namespace {name} changed during copy')
                 else:
                     with disk.open('xb') as handle:
                         handle.truncate(size)
                 initial = 'private copy of hash-verified root base' if name == 'root' and root_image else 'fresh sparse zero-filled raw'
+                if name in auxiliary:
+                    initial = 'private copy of recorded auxiliary namespace'
                 report['disks'].append({'path': str(disk), 'initial_state': initial,
                                         'bytes': size, 'nsid': nsid, 'nstype': nstype})
                 device = 'apple-nvram' if name == 'nvram' else 'nvme-ns'

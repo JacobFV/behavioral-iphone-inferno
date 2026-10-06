@@ -58,6 +58,13 @@ For a prepared root disk, supply `--root-image /absolute/root.raw` and its expec
 `--root-sha256`. The runner validates its 4096-byte GPT and copies it into the
 attempt directory before guest writes; the source is never attached writable.
 The copy retains the source size instead of the default 32GiB blank namespace.
+Use `--auxiliary-state /absolute/stopped-attempt` to copy its six other namespaces
+alongside the explicit root image. The prior report must record emulator exit;
+the runner records each actual source hash and verifies each private copy before
+launch. This preserves this VM's initialized effaceable/NVRAM state between runs.
+Without this option auxiliary namespaces start fresh. Pair the state from the
+same stopped preparation with its root image; a root-only copy is insufficient
+once preparation starts writing auxiliary storage.
 Choose one boot mode:
 
 - Default recovery passes `-restore rd=md0`; the guest currently exposes a dummy
