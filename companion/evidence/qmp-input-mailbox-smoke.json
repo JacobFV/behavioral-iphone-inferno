@@ -1,0 +1,34 @@
+{
+  "kind": "actual_firmware_free_qmp_control_check",
+  "ios_boot": false,
+  "touch_delivery": false,
+  "source_commit": "cad55ee5b2",
+  "module_sha256_committed": "11a865ea79964b3e60165a0532c09dd2691f759f2682a5720aaa79bd36496493",
+  "module_sha256_at_execution": "2ec136dd8005972f246244a6ff9ca5059b1e767e9ea511892feb75e1b0afe466",
+  "source_difference": "The actual check used the same module before adding the six explicit mt-spi trace names; only the TRACE_EVENTS literal differed.",
+  "binary_sha256": "3eacda5c06578e64653313b8ed6774729846d57808e4dec88457a0b58e41b9bd",
+  "binary_source": "6fce1464b86bba383e9ae0a15a25e1c29889f9ae",
+  "machine": "none",
+  "display": "none",
+  "stopped": true,
+  "observations": [
+    "query-mice returned empty array on empty machine",
+    "input_event_abs was disabled; enabling succeeded",
+    "pointer request reached QMP and returned VM not running",
+    "quit mailbox request rejected locally; QMP quit only performed directly by test cleanup"
+  ],
+  "files": {
+    "qmp-input-mailbox-smoke-qmp-transcript.jsonl": {
+      "sha256": "cc805fd59b70da9860999eac7d09db395f8ced91b1be723a2e134309f14d8b8e",
+      "bytes": 1975
+    },
+    "qmp-input-mailbox-smoke-control-transcript.jsonl": {
+      "sha256": "cd757735b30220d1d96bb1456284a1ce483a7d1b36da214d293d0335ea330d60",
+      "bytes": 1842
+    },
+    "qmp-input-mailbox-smoke-stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  }
+}

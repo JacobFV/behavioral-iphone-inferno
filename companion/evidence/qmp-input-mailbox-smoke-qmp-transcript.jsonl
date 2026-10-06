@@ -1,0 +1,14 @@
+{"direction": "receive", "time": 1791285671.6280043, "raw": "{\"QMP\": {\"version\": {\"qemu\": {\"micro\": 2, \"minor\": 2, \"major\": 10}, \"package\": \"\"}, \"capabilities\": [\"oob\"]}}\r\n"}
+{"direction": "send", "time": 1791285671.6280723, "raw": "{\"execute\": \"qmp_capabilities\", \"id\": 1}\n"}
+{"direction": "receive", "time": 1791285671.62855, "raw": "{\"return\": {}, \"id\": 1}\r\n"}
+{"direction": "send", "time": 1791285671.629108, "raw": "{\"execute\": \"query-mice\", \"id\": 2, \"arguments\": {}}\n"}
+{"direction": "receive", "time": 1791285671.6305687, "raw": "{\"return\": [], \"id\": 2}\r\n"}
+{"direction": "send", "time": 1791285671.6308925, "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 3, \"arguments\": {\"name\": \"input_event_abs\"}}\n"}
+{"direction": "receive", "time": 1791285671.6316388, "raw": "{\"return\": [{\"name\": \"input_event_abs\", \"state\": \"disabled\"}], \"id\": 3}\r\n"}
+{"direction": "send", "time": 1791285671.6319082, "raw": "{\"execute\": \"trace-event-set-state\", \"id\": 4, \"arguments\": {\"name\": \"input_event_abs\", \"enable\": true}}\n"}
+{"direction": "receive", "time": 1791285671.633274, "raw": "{\"return\": {}, \"id\": 4}\r\n"}
+{"direction": "send", "time": 1791285671.6335511, "raw": "{\"execute\": \"input-send-event\", \"id\": 5, \"arguments\": {\"events\": [{\"type\": \"abs\", \"data\": {\"axis\": \"x\", \"value\": 16384}}]}}\n"}
+{"direction": "receive", "time": 1791285671.6338458, "raw": "{\"id\": 5, \"error\": {\"class\": \"GenericError\", \"desc\": \"VM not running\"}}\r\n"}
+{"direction": "send", "time": 1791285671.6341114, "raw": "{\"execute\": \"quit\", \"id\": 6}\n"}
+{"direction": "receive", "time": 1791285671.6343875, "raw": "{\"timestamp\": {\"seconds\": 1791285671, \"microseconds\": 634186}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"}
+{"direction": "receive", "time": 1791285671.6344213, "raw": "{\"return\": {}, \"id\": 6}\r\n"}
