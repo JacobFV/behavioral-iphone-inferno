@@ -15,13 +15,14 @@ Evidence f388fb81e6 (worker), root visuals77ae980672. Root disk116391936 bytes,
 SHA802d473d12897c72248dbb00a1e619791438db4a198e2da4ffd5a96270e2ff1d.
 50bootF8081A21-B796-416F-B4E7-D15E075E9CC1/PID256/main2869435882,
 countereab89cac47a841f3b5807bc1614af5b9. No samples/Home/OPEN50.
-51 STOPPED healthy strict0→1, normal quit/emulator0/errornull, postflight pending.
+51 STOPPED healthy strict0→1, normal quit/emulator0/errornull, postflight verified16740b4bb4.
 Boot71FD4D0F-EA77-4740-A7EE-74A082116AB8/PID254/main2806975603;
 counterd2847363d7794abc935cadedc18d990b. QMPbefore
 85395e9cd15f1a4d335d29806e5fab55b941b8dd9ba2bb62c3df5c94b85c2691,
 after80a879d44c98c6d63fbe9a7afb3ab55e25ee66813643e5af780090d3def2595b.
 Root visual review3856d1678f, no SAMPLE/Home/OPEN. Trace disabled duringcleanup.
-Worker authorized ONE52 only after51 verification/retention passes, samefrozen55/670.
+51 rootSHA1f2740b53665988eb18bae8fef1e12c6b450b042f47a5ab9c3b9fb12b5e6c21e.
+ONE52 starting after51 verification/retention passed, samefrozen55/670.
 Root owns all input; on stall collect both original samples BEFORE Home.
 Goal: reproduce real display freeze and collect original compositor stacks while
 stalled, comparing49 healthy baseline. No rendering behavior fix yet.
