@@ -26,7 +26,8 @@
 
 typedef struct USBTCPInflightPacket {
     USBPacket *p;
-    uint64_t handled;
+    uint64_t wire_id;
+    bool retry;
     QTAILQ_ENTRY(USBTCPInflightPacket) queue;
     uint8_t addr;
 } USBTCPInflightPacket;
@@ -53,7 +54,8 @@ struct USBTCPRemoteState {
     QemuCond completed_queue_cond;
     QTAILQ_HEAD(, USBTCPCompletedPacket) completed_queue;
     QEMUBH *completed_bh;
-    QEMUBH *addr_bh;
+    QEMUTimer *retry_timer;
+    uint64_t next_wire_id;
     QEMUBH *cleanup_bh;
     Error *migration_blocker;
 
