@@ -48,25 +48,33 @@ that directory together: the binary references local libraries/resources.
 
 ## Current execution boundary
 
-Keep working; no handoff or missing user input. **Boot19 is live**, worker
-session82240, report app-boot-19, private VNC
-`/tmp/inferno-boot-vd6_c64j/vnc.sock`. Same emulator/900second traces/private serial/
-mailbox. Original class entitlement fixed actual open/Create; owned virtual
-touchscreen and IOHIDEventDriver are registered. Visible input is now proven.
-Root reviewed Hello then sent exactly two requests:
+Keep working; no handoff or missing user input. **Boot19 normal stop requested**
+at06:29, worker session82240. Next20 must run directly from normally stopped19
+and all paired namespaces, with no guest staging/change. New emulator SHA256
+`2a0e467ba6261fbb6da4f1fa8f46bec09cc822a43954b1d3a0a2f06c09e32cf9`, source
+`1d8b129c88aae9ed23b4d017f0504bb677c2cc78`, compiled and actual QMP control check
+passed (0d269b2bea). QMP smoke is not guest verification. Same serial/mailbox,
+900second traces,30second frames,noUSB,7200maximum. Root owns all input.
+
+**New exact correction:** missing DER sls defaults0, which original SBF and
+ManagedConfiguration interpret as unlocked WITH a passcode. Original state3
+means disabled/no passcode; actual CreateSystem(NULL) passed pointerNULL/length0.
+Evidence10a04e0619/5edc796294. Simulator now returns sls INTEGER3 beside unchanged
+ss/first-unlock bits. DER23 padded24; all request/transition guards unchanged.
+No notification, passcode guess or policy bypass. Original API/rawstate3 and
+visible UI behavior must be verified in20. Old fda944 emulator+manifest archived
+at .local-build/binaries/simulated-sep-9f92661b1b31. Capacity13GiB before20copy;
+only one new tuple needed. Native candidate sourceef4007df33 integrated1d8b129c88.
+
+**Visible touch is proven in19:** root reviewed Hello then sent exactly two:
 - info tap f3c727904558499385ca652ec1bf65a5,29400/31250,150ms;
 - upward swipe93d5678a3a6d4a4c88b265183844687f,16384/32270 to16384/9145,1500ms.
 Original report/ACK results0. Immediate frame was still Hello; later1791292900
-capture shows information panel, and settled1791292946 capture shows Enter
-Passcode / iPhone requires your passcode after restarting. Both requests preceded
-the first changed capture, so do not claim isolated timing attribution.
-
-This is our fresh simulated-SEP VM; no passcode was ever set. Existing original
-empty unlock returns0 and first-unlock0->1, raw lockstate0 remains uninterpreted.
-Native/disk workers are investigating exact original lock/passcode state versus
-simulated SEP, without credential guesses, fabricated notifications or bypass.
-Root exclusively owns input. No more requests yet. Preserve active19; no next
-candidate ready. Owned UIKit/app counter journey remains unproven.
+capture shows information panel, settled1791292946 capture shows Enter Passcode.
+Both requests preceded the first changed capture; no isolated latency claim.
+Exact frames/journals preserved throughd654c5e48b. Original IOHIDResource open0,
+Create1, owned IOHIDUserDevice4294968461 and IOHIDEventDriver4294968464 are proven.
+No input beyond these two, no credentials entered. Owned UIKit remains unproven.
 
 At 06:18 local, **app-boot-18 is normally stopped**, QMPquit49/emulator0 after
 946.498589seconds. Root SHA256
@@ -192,10 +200,9 @@ Evidence and exact original-code inspection are under companion/evidence/.
 
 ## Next concrete work
 
-1. Investigate original passcode/lock state versus simulated SEP after actual
-   input reached Enter Passcode in19. Correct only an evidenced emulator mismatch;
-   no passcode guess, guard bypass or fabricated unlock notification. Keep19 live
-   until a reviewed next candidate exists.
+1. Finish normal stop19/all7 hashes and run20 with reviewed built emulator2a0e.
+   Require actual original lock-state API and visible setup behavior. Candidate
+   changes only the missing no-passcode state response; no guest staging needed.
 2. Stage from a normally stopped paired tuple only after the next candidate is
    ready. Commit source, actual build manifests, readbacks, raw logs and hashes.
    Never copy or hash a live disk as an immutable source.
