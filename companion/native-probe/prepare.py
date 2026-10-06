@@ -40,7 +40,7 @@ hfs('chmod', '755', '/usr/bin/inferno-probe')
 jobs = [('native', ['/usr/bin/inferno-probe']), ('asr-help', ['/usr/sbin/asr', '--help']), ('apfs-help', ['/sbin/newfs_apfs', '-h'])]
 if a.disk_helper:
     # Dedicated preparation does not run a restore transaction or its timeout.
-    hfs('rm', '/System/Library/LaunchDaemons/com.apple.restored_external.plist')
+    hfs('mv', '/System/Library/LaunchDaemons/com.apple.restored_external.plist', '/usr/share/com.apple.restored_external.plist.disabled')
     hfs('add', a.disk_helper, '/usr/bin/inferno-prepare-root')
     hfs('chmod', '755', '/usr/bin/inferno-prepare-root')
     jobs.append(('prepare-root', ['/usr/bin/inferno-prepare-root', '--disposable-root-copy'] + (['--role-volumes'] if a.disk_helper_roles else []) + (['--existing-volumes'] if a.disk_helper_existing else []) + (['--init-gigalocker'] if a.disk_helper_gigalocker else [])))

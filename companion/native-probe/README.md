@@ -201,11 +201,11 @@ volumes, mounts discovered xART on `/mnt7`, executes the original seputil init o
 the prepared root as always. `INFERNO_GIGALOCKER_COMPLETE` requires the original init
 call and clean unmount to succeed; absence or errors must remain explicit.
 
-Explicit disk-helper profiles remove only the cloned ramdisk's
-`com.apple.restored_external.plist` job. Disk preparation does not request a restore
+Explicit disk-helper profiles move the cloned ramdisk's
+`com.apple.restored_external.plist` job outside LaunchDaemons into `/usr/share/`. Disk preparation does not request a restore
 transaction, and that daemon otherwise shuts the guest down after its 120-second
 host-wait timeout. The original daemon binary and original recovery profile stay
-unchanged; the preparation operation log records the removed plist. Ordinary
+unchanged; the preparation operation log records the moved plist. Ordinary
 marker profiles continue to run the original recovery job.
 
 The initial attempts9 and10 returned0 from original gigalocker initialization but
@@ -213,3 +213,16 @@ hung in the separate seputil shutdown utility. The enabled guest-errors trace ha
 no SEP or XART opcode during that wait. They do not establish clean completion.
 The helper therefore tests initialization followed by sync and normal unmount;
 it does not claim the separate shutdown utility succeeded.
+
+`--disk-helper-data` adds empty Data and Update role volumes, copies each original
+System `private/var` child into the Data root with metadata, and prepares Hardware's
+`FactoryData/System/Library/Caches/com.apple.factorydata` directory. It reports
+Darwin statfs available bytes before and after the Data seed. This operation is
+explicit and only intended for a new disposable copy without those volumes.
+A successful compile is not proof of successful guest seeding; require the
+`INFERNO_DATA_COMPLETE` marker plus reviewed tool and filesystem logs.
+
+Preparation11 failed before helper execution after the old HFS writer deleted
+the restore plist: the kernel reported an HFS attributes-node error and launchd
+exec errno8, although extracted launchd SHA256 remained unchanged. Preparation
+now moves the job catalog entry without deleting its file/attribute records.
