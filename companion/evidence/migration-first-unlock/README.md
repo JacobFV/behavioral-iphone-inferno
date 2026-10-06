@@ -71,3 +71,19 @@ from selector7's first-unlock query, which uses ChangeLockState opcode0x04.
 The simulator log now reports Unknown (0x18); its generic response is not an
 implemented device-state transition. No additional passcode attempt, fabricated
 notification, or emulator change is part of this evidence update.
+
+## Controlled simulator protocol experiment (boot9)
+
+Using the unchanged stage32 root/helper and the separately recorded simulator
+build, the one normal MKBUnlockDevice(NULL,NULL) call now returns0. The original
+MKBDeviceUnlockedSinceBoot query changes from0 to1. The simulator operation log
+records accepted DeviceStateTransition0x18, handle0, operation0, options0, and
+zero-length secret. This is an actual normal-API first-unlock transition within
+the explicitly simulated no-passcode VM, not real SEP cryptographic execution.
+
+The extended-state query still returns-1 before and after; its distinct request
+format is not yet supported. Data X_OK remains EPERM, so first unlock alone has
+not resolved that separate execution restriction. No registration, app launch or
+UIKit success is asserted. Exact completed helper/nearby simulator log excerpts,
+build manifest and command are retained with live-prefix provenance; the
+running disk is not hashed or claimed to be a stopped snapshot here.
