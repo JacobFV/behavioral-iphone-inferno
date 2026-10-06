@@ -32,7 +32,9 @@ No SAMPLE/Home/OPEN52. Root52SHAbc57c2296671a99304913ad9b34ddac76402cbe6203a58e4
 stopwatch, three actual60s resource intervals, and fourth Home/reopen retaining1.
 Normal0/noerror, tracked journey and default all7/ancestors/attestation retention PASS.
 Root119013376 bytes SHA bebab8542c7587c0577684d60db21762c2007e13153dfced53fc3e0a577880ed.
-Boot_runner is starting ONE54 unchanged; root owns all inputs.
+ONE54 LIVE runner2960397/QEMU2960921, host e03c54c43e, same55/670.
+VNC /tmp/inferno-boot-s8h8k4dp/vnc.sock; serial connected1791325518.76177.
+Root reviewed Apple boot screen; boot-observation-002 running. No inputs yet.
 Boot1C81A853-1B79-4FBC-8EBD-E365B46D4827/PID252/main2739827127.
 No SAMPLE53; both slots unused. Selected actual reviewed pixels/action records
 are in owned-extended-53-visual. Same frozen55/670, no rendering fix.
