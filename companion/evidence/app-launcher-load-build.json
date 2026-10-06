@@ -1,0 +1,210 @@
+{
+  "status": "built; guest installation and execution untested",
+  "git_revision": "54f7c56569f83cfa9537c4eec53aa020526ca94b",
+  "commands": [
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-fobjc-runtime=ios-14.0",
+      "-fno-objc-arc",
+      "-fno-stack-protector",
+      "-ffreestanding",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-c",
+      "/tmp/inferno-app-probe/companion/app-probe/Main.m",
+      "-o",
+      "/home/brandonin/.local/share/inferno/app-probe/exec-build-1/Main.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "ios",
+      "14.0",
+      "14.0",
+      "-e",
+      "_main",
+      "-no_uuid",
+      "-adhoc_codesign",
+      "-needed_library",
+      "/tmp/inferno-app-probe/companion/app-probe/stubs/libSystem.tbd",
+      "-needed_library",
+      "/tmp/inferno-app-probe/companion/app-probe/stubs/libobjc.tbd",
+      "-needed_library",
+      "/tmp/inferno-app-probe/companion/app-probe/stubs/Foundation.tbd",
+      "-needed_library",
+      "/tmp/inferno-app-probe/companion/app-probe/stubs/UIKit.tbd",
+      "/home/brandonin/.local/share/inferno/app-probe/exec-build-1/Main.o",
+      "-o",
+      "/home/brandonin/.local/share/inferno/app-probe/exec-build-1/InfernoProbe.app/InfernoProbe"
+    ],
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-fobjc-runtime=ios-14.0",
+      "-fno-objc-arc",
+      "-fno-stack-protector",
+      "-ffreestanding",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-c",
+      "/tmp/inferno-app-probe/companion/app-probe/Launcher.m",
+      "-o",
+      "/home/brandonin/.local/share/inferno/app-probe/exec-build-1/Launcher.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "ios",
+      "14.0",
+      "14.0",
+      "-e",
+      "_main",
+      "-no_uuid",
+      "-adhoc_codesign",
+      "-needed_library",
+      "/tmp/inferno-app-probe/companion/app-probe/stubs/libSystem.tbd",
+      "-needed_library",
+      "/tmp/inferno-app-probe/companion/app-probe/stubs/libobjc.tbd",
+      "-needed_library",
+      "/tmp/inferno-app-probe/companion/app-probe/stubs/Foundation.tbd",
+      "-needed_library",
+      "/tmp/inferno-app-probe/companion/app-probe/stubs/CoreServices.tbd",
+      "/home/brandonin/.local/share/inferno/app-probe/exec-build-1/Launcher.o",
+      "-o",
+      "/home/brandonin/.local/share/inferno/app-probe/exec-build-1/inferno-launcher"
+    ],
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-fobjc-runtime=ios-14.0",
+      "-fno-objc-arc",
+      "-fno-stack-protector",
+      "-ffreestanding",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-c",
+      "/tmp/inferno-app-probe/companion/app-probe/ExecLauncher.c",
+      "-o",
+      "/home/brandonin/.local/share/inferno/app-probe/exec-build-1/ExecLauncher.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "ios",
+      "14.0",
+      "14.0",
+      "-e",
+      "_main",
+      "-no_uuid",
+      "-adhoc_codesign",
+      "-needed_library",
+      "/tmp/inferno-app-probe/companion/app-probe/stubs/libSystem.tbd",
+      "/home/brandonin/.local/share/inferno/app-probe/exec-build-1/ExecLauncher.o",
+      "-o",
+      "/home/brandonin/.local/share/inferno/app-probe/exec-build-1/inferno-exec-launcher"
+    ],
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-fobjc-runtime=ios-14.0",
+      "-fno-objc-arc",
+      "-fno-stack-protector",
+      "-ffreestanding",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-c",
+      "/tmp/inferno-app-probe/companion/app-probe/Stage.c",
+      "-o",
+      "/home/brandonin/.local/share/inferno/app-probe/exec-build-1/Stage.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "ios",
+      "14.0",
+      "14.0",
+      "-e",
+      "_main",
+      "-no_uuid",
+      "-adhoc_codesign",
+      "-needed_library",
+      "/tmp/inferno-app-probe/companion/app-probe/stubs/libSystem.tbd",
+      "/home/brandonin/.local/share/inferno/app-probe/exec-build-1/Stage.o",
+      "-o",
+      "/home/brandonin/.local/share/inferno/app-probe/exec-build-1/inferno-stage-app"
+    ]
+  ],
+  "tools": {
+    "/usr/bin/clang": {
+      "resolved": "/usr/lib/llvm-18/bin/clang",
+      "sha256": "6d99f6207153b8b2063ace5d2a6177debaf6a6b6f31649e03afac07b98ba0b4d",
+      "version": "Ubuntu clang version 18.1.3 (1ubuntu1)\nTarget: aarch64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin"
+    },
+    "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18": {
+      "resolved": "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/lld",
+      "sha256": "f8835e48488195c65fb3dcb946053284ddf6b1369922893785209a9073c4e57b",
+      "version": "Ubuntu LLD 18.1.3"
+    }
+  },
+  "sources": {
+    "ExecLauncher.c": "e15e1acf98212242715f9561ff34adcdda418e7eea3a19711adb3e29c563dc4b",
+    "Info.plist": "ad9946fd7093f8f438f70200f5e096667e47989da70be2187a7324c6ed20a153",
+    "LaunchServicesNarrow.h": "e25eec5765dcd3122929f882dcc52495fe5da0c49af34466e43ec1f51638b767",
+    "Launcher.m": "637b9b1e781eac0fc7419bba0af9fe83f967d08962607db406a43549d15c9008",
+    "Main.m": "4d93ccf0ea2ae0555930712fdc4e4a4b73574f2365140fd6408bc132820df326",
+    "README.md": "bf2387388ba87253838e1ad2244bd22cb209c66a8e64a781917dfbf91740e8c5",
+    "Stage.c": "dbb8a15bddfb957fd698cd0ce695d3beece3c491acb0891f29695941ebd08d72",
+    "UIKitNarrow.h": "ac835f6db174bc09b65096897e0ab9940215f0caed3b9077989586d1b572bd34",
+    "build.py": "ae05e09be070fb9fc6f66739f160ba7ac83eb6ab3f4512f04a6ba2192382aaa3",
+    "org.inferno.app-probe.plist": "ba859111110d5315a939acf658c47eeddb0ea5fd10ec9d22ae9452c58917e689",
+    "prepare-stage.py": "38b6df0bd53a461cd9317c6a1e8fbab5a97206b2b363c00a5763b0c5152ccfe2",
+    "stubs/CoreServices.tbd": "6767033b87aeae0d6021f1cbcbb06478a9fb22df423a7d0ecb95488a52e8d128",
+    "stubs/Foundation.tbd": "1a0f3baf0271f6afad6e6923edb1e3c65533f65faa7af90d6ba35852f463573c",
+    "stubs/UIKit.tbd": "1efa4c024d51eca90e36841c57c797b8b6661e79edd2482118fe131da8d12048",
+    "stubs/libSystem.tbd": "869cedcb4a94502c8b8f10110257cbb3b9fcbd62f544f32ec421515aa3a7c447",
+    "stubs/libobjc.tbd": "ec0610a0fb9efb199ae234ba248c1362174d4b8144a5169c3eee40f1f66686e4"
+  },
+  "bundle": {
+    "InfernoProbe": "c11f4d430ee8543da2bdade55e5f5beb8685692345dc6fe2ccbad114ad6f55ec",
+    "Info.plist": "ad9946fd7093f8f438f70200f5e096667e47989da70be2187a7324c6ed20a153"
+  },
+  "launcher_sha256": "0a95bb65be29149522d321c527de7efb17b4d3a9a8b5e4d68c4081110c479476",
+  "stager_sha256": "41987bdd77c1739a1302285d8e153b1a29c59f6d37e44976dafde4e3b550fbfc",
+  "exec_wrapper_sha256": "e712a33414604addf9a006fc21eae61c7cc2d52f6f7d3377af8671e991fb29a9",
+  "signing": {
+    "method": "LLVM ad-hoc; no certificate or Apple identity",
+    "app": {
+      "flags": 131074,
+      "version": 132096,
+      "code_directory_sha256": "90033bbded0d303f0ef2acc6dc3eaf5c7eff0b5d7a87368dab3ce331f758cc96"
+    },
+    "launcher": {
+      "flags": 131074,
+      "version": 132096,
+      "code_directory_sha256": "343d525e1667874f26eac3b2e6bc26a6cbcaf584ca62bb1d34500437c4fba051"
+    },
+    "stager": {
+      "flags": 131074,
+      "version": 132096,
+      "code_directory_sha256": "6aedf1e6dcc7b45379e12b54269642f379f5946afdf674bf019f9572e06f9c9e"
+    },
+    "exec_wrapper": {
+      "flags": 131074,
+      "version": 132096,
+      "code_directory_sha256": "1437517831523eb30db05e80633ba129779dba12ef3730fd0e575e83af9fa802"
+    }
+  }
+}
