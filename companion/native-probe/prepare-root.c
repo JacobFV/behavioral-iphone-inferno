@@ -300,6 +300,8 @@ int main(int argc, char **argv) {
         int status=create(0,"/mnt2");struct file_stat bag;
         int stat_status=lstat("/mnt2/keybags/systembag.kb",&bag);
         printf("INFERNO_KEYBAG_CREATE_RESULT status=%d stat=%d size=%lld mode=%o\n",status,stat_status,stat_status?-1:bag.size,stat_status?0:bag.mode);fflush(0);
+        char *shutdown[] = {"/usr/libexec/seputil", "--gigalocker-shutdown", 0};
+        if(run(shutdown))return 35;
         sync();
         if(unmount("/mnt2",0) || unmount("/mnt1",0) || unmount("/mnt7",0))return 33;
         if((status && status!=-4) || stat_status || bag.size<=0)return 34;
