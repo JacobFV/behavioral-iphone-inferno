@@ -1,0 +1,15 @@
+{"direction": "receive", "time": 1791301117.7838094, "raw": "{\"QMP\": {\"version\": {\"qemu\": {\"micro\": 2, \"minor\": 2, \"major\": 10}, \"package\": \"\"}, \"capabilities\": [\"oob\"]}}\r\n"}
+{"direction": "send", "time": 1791301117.7839053, "raw": "{\"execute\": \"qmp_capabilities\", \"id\": 1}\n"}
+{"direction": "receive", "time": 1791301118.2550626, "raw": "{\"return\": {}, \"id\": 1}\r\n"}
+{"direction": "send", "time": 1791301118.2551653, "raw": "{\"execute\": \"query-status\", \"id\": 2}\n"}
+{"direction": "receive", "time": 1791301118.2554493, "raw": "{\"return\": {\"status\": \"prelaunch\", \"running\": false}, \"id\": 2}\r\n"}
+{"direction": "send", "time": 1791301118.2554774, "raw": "{\"execute\": \"query-cpus-fast\", \"id\": 3}\n"}
+{"direction": "receive", "time": 1791301118.2567677, "raw": "{\"return\": [{\"thread-id\": 2397805, \"qom-type\": \"apple-a13-cpu\", \"qom-path\": \"/machine/cluster0/cpu0\", \"cpu-index\": 0, \"target\": \"aarch64\"}, {\"thread-id\": 2397806, \"qom-type\": \"apple-a13-cpu\", \"qom-path\": \"/machine/cluster0/cpu1\", \"cpu-index\": 1, \"target\": \"aarch64\"}], \"id\": 3}\r\n"}
+{"direction": "send", "time": 1791301118.256799, "raw": "{\"execute\": \"query-mice\", \"id\": 4}\n"}
+{"direction": "receive", "time": 1791301118.2692897, "raw": "{\"return\": [{\"index\": 1, \"name\": \"Apple Multitouch HID SPI\", \"current\": true, \"absolute\": true}], \"id\": 4}\r\n"}
+{"direction": "send", "time": 1791301118.26938, "raw": "{\"execute\": \"cont\", \"id\": 5}\n"}
+{"direction": "receive", "time": 1791301118.2697675, "raw": "{\"timestamp\": {\"seconds\": 1791301118, \"microseconds\": 269503}, \"event\": \"RESUME\"}\r\n"}
+{"direction": "receive", "time": 1791301118.2698834, "raw": "{\"return\": {}, \"id\": 5}\r\n"}
+{"direction": "send", "time": 1791301138.5913174, "raw": "{\"execute\": \"quit\", \"id\": 6}\n"}
+{"direction": "receive", "time": 1791301138.5917583, "raw": "{\"timestamp\": {\"seconds\": 1791301138, \"microseconds\": 591590}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"}
+{"direction": "receive", "time": 1791301138.5927472, "raw": "{\"return\": {}, \"id\": 6}\r\n"}
