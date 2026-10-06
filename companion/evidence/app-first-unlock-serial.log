@@ -1,0 +1,1740 @@
+iBoot version: ChefKiss Inferno
+corecrypto_kext_start called
+FIPSPOST_KEXT [7123471] fipspost_post:158: PASSED: (2 ms) - fipspost_post_integrity
+FIPSPOST_KEXT [7197873] fipspost_post:164: PASSED: (1 ms) - fipspost_post_hmac
+FIPSPOST_KEXT [7215036] fipspost_post:165: PASSED: (0 ms) - fipspost_post_aes_ecb
+FIPSPOST_KEXT [7251382] fipspost_post:166: PASSED: (0 ms) - fipspost_post_aes_cbc
+FIPSPOST_KEXT [7649550] fipspost_post:167: PASSED: (16 ms) - fipspost_post_rsa_sig
+FIPSPOST_KEXT [7838960] fipspost_post:168: PASSED: (7 ms) - fipspost_post_ecdsa
+FIPSPOST_KEXT [7873796] fipspost_post:169: PASSED: (1 ms) - fipspost_post_ecdh
+FIPSPOST_KEXT [7884759] fipspost_post:170: PASSED: (0 ms) - fipspost_post_drbg_ctr
+FIPSPOST_KEXT [7907011] fipspost_post:171: PASSED: (0 ms) - fipspost_post_aes_ccm
+FIPSPOST_KEXT [8381015] fipspost_post:173: PASSED: (19 ms) - fipspost_post_pbkdf
+FIPSPOST_KEXT [8390131] fipspost_post:174: PASSED: (0 ms) - fipspost_post_kdf_ctr
+FIPSPOST_KEXT [8414332] fipspost_post:175: PASSED: (0 ms) - fipspost_post_aes_gcm
+FIPSPOST_KEXT [8430041] fipspost_post:176: PASSED: (0 ms) - fipspost_post_aes_xts
+FIPSPOST_KEXT [8453262] fipspost_post:177: PASSED: (0 ms) - fipspost_post_tdes_cbc
+FIPSPOST_KEXT [8493465] fipspost_post:178: PASSED: (0 ms) - fipspost_post_drbg_hmac
+FIPSPOST_KEXT [8496471] fipspost_post:201: all tests PASSED (60 ms)
+Darwin Image4 Validator Version 3.0.0: Wed Aug 12 22:19:21 PDT 2020; root:AppleImage4-106.0.4.0.1~129/AppleImage4/RELEASE_ARM64E
+AMFI is running in RESEARCH mode!
+AppleT803xIO::start: chip-revision: C0
+IOAccessoryManager::configureAccessoryPowerGated: dock-0pin: Configuring Accessory Power to (1)
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerGated: PowerModeOff
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: _powerState=1, _powerStateInternal=0, _sleeping=0, _accessoryPowerModeExtOffRequested 0
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: !getAccessoryPowerReady(); set PowerModeOff?
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: handleAccessoryPowerWillChange, confirm PowerModeOff
+[ERROR] IOPort::_setSupportedTransportsForRegistryEntry(): Could not find transports-supported property! (entry: dock-0pin)
+[ERROR] IOPort::_setSupportedTransportsForRegistryEntry(): Error setting supported transports for Port-Inductive@101!
+[ERROR] IOPort::_setSupportedFeaturesForRegistryEntry(): Could not find features-supported property! (entry: dock-0pin)
+[ERROR] IOPort::_setSupportedFeaturesForRegistryEntry(): Error setting supported features for Port-Inductive@101!
+IOPort::start(): Registering service... (portType: 14, portNumber: 101, providerPath: IOService:/AppleARMPE/dock-0pin)
+AppleARMBacklight::start: Using new Backlight Architecture 1
+AppleARMBacklight::start: no DBV offset data
+AppleARMBacklight::start: no DBV max data
+AppleARMBacklight::start: _calibratedMaxCurrent=15000
+AppleARMBacklight::start: _calibratedMidCurrent=3750
+AppleARMBacklight::start: mA2Nits2ndOrderCoef=-1
+AppleARMBacklight::start: mA2Nits1stOrderCoef=63
+AppleARMBacklight::start: mA2Nits0thOrderCoef=-3
+AppleARMBacklight::start: nits2mAmps2ndOrderCoef=1357
+AppleARMBacklight::start: nits2mAmps1stOrderCoef=15551
+AppleARMBacklight::start: nits2mAmps0thOrderCoef=45
+AppleARMBacklight::start: _lMaxProduct=42598400
+AppleARMBacklight::start: _lMidProduct=10158080
+AppleARMBacklight::start: _lMinProduct=183500
+AppleARMBacklight::start: Backlight calibration data 0
+AppleARMBacklight::start: No valid backlight cal data in syscfg.. Use defaults
+IOAccessoryTRM::start(): inRestoreMode: NO, dockSupportsTRM: NO (m_mgrPrimaryPortID: 512)
+AUC:[0xffffffe19ba3c500]::init(0xffffffe19ba664e0)
+
+AUC:[0xffffffe19ba3c500]::probe(0xffffffe19b7fa260, 0xffffffe807f53dac)
+
+AppleCredentialManager: init: called, instance = <ptr>.
+ACMFirstResponderKernelService: init: called, .
+ACMRM-S: init: called, starting PersistentStore service.
+ACMRM-C: init: called, starting AccessoryCache service.
+ACMKernelService: initValueFromBootArgAliasesUInt32: acc-cache size = 16 (default).
+ACMKernelService: initValueFromBootArgAliasesUInt32: acc-cache expiration = 2592000 (default).
+ACMRM: init: called, starting TRM service.
+ACMRM-A: init: called, starting TRM Analytics service.
+ACMKernelService: initValueFromBootArgAliasesUInt32: analytics collection period = 86400 (default).
+ACMKernelService: initValueFromBootArgAliasesUInt32: policy mode timeout = 259200 (default).
+ACMRM-A: notifyStandardModeTimeoutChanged: called, value = 259200 (modified = YES).
+ACMKernelService: initValueFromBootArgAliasesUInt32: (bounded) grace period timeout = 3600 (default).
+ACMRM-A: notifyGracePeriodTimeoutChanged: called, value = 3600 (modified = YES).
+ACMKernelService: initValueFromBootArgAliasesUInt32: enabled = 1 (default).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO* BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO* LegHW=NO OSEnv=NO | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _loadDisabledByOSEnvironment: disabled by OSEnvironment: NO.
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO* | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _mapAndPublishTRM: set TRM_PolicyTimeout = 259200.
+ACMRM: _mapAndPublishTRM: sending kIOMessageServicePropertyChange(n=1) while DISABLED, TRM: 259200 -/ff 4294967295 -/ff miss=ff (CUR: 259200 -/ff 4294967295 -/ff).
+AppleCredentialManager: init: returning, result = true, instance = <ptr>.
+AppleARMBootPerf: Error: profile region not found (2)
+AppleARMBootPerf: Error: failed to publish profile data (2)
+virtual bool CoreAnalyticsHub::start(IOService *)::105:CoreAnalyticsHub start
+AppleT803xIO::start: this: <ptr>, ACCE virt addr: <ptr>, phys addr: 0x210f00000
+AppleT803xIO::start: this: <ptr>, ACCP virt addr: <ptr>, phys addr: 0x211f00000
+AppleInterruptController::start: _aicVersion = 2 _aicBaseAddress = 0x<ptr> _aicNumExtInts = 0x00000240 _aicNumIPIs = 0x00000004
+AppleInterruptController::start: Num Shared Timestamps == 0
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleS8000AES::start: registers at phys:0x0x235008000/0x0x23d2d0000 virt:0x<ptr>/0x0x4000 / 0x<ptr>/0x0x4000
+AppleS8000AES::start: aes-version: 3
+AppleS8000AES::start: using-acg: no
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleSamsungSPIController::start: spi3: _spiBaseAddress = 0x23510c000:<ptr>, _spiVersion = 1 _spiInternalCS = 0
+AppleS5L8940XI2CController::start: i2c0 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: i2c1 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: i2c2 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: i2c3 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: smc-i2c0 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: smc-i2c1 this: <ptr> _i2cBaseAddress: <ptr>
+000000.860763 AppleT8030TypeCPhy@0: AppleT8027TypeCPhy::start: usb3-phy-parent not specified
+Port-Inductive handleAccessoryDetect, detect change = 0 (override 100), ID change = 0 (override 0), result 0 
+AppleARMBacklight::start: _calibratedMinCurrent=74 uA
+AppleARMBacklight::start: _lMaxProduct=42598400, _lMidProduct=10158080, _lMinProduct=183500, _lMaxPanel=42598399, _lMidPanel=11169963, _lMinPanel=99640, _milliAmps2NitsScaleFactor=732648
+AppleARMBacklight::start: dim-ramp-max-step=100
+AppleARMBacklight::start: _minDACLevel=143 _maxDACLevel=1879
+IOAccessoryTRM::start(): Registering service IOAccessoryTRM... (m_mgrPrimaryPortID: 512)
+AppleSamsungSPIController::start: spi1: _spiBaseAddress = 0x235104000:<ptr>, _spiVersion = 1 _spiInternalCS = 0
+AppleSSE::start called
+AppleSSE::start returning, result = 1
+AUC:[0xffffffe19ba3c500]::start(0xffffffe19b7fa260)
+
+AppleSEPKeyStore:321:0: starting (BUILT: Aug 12 2020 22:51:30)
+AppleSEPKeyStore:545:0: _sep_enabled = 1
+AppleCredentialManager: start: called, instance = <ptr>.
+ACMRM: _publishIOResource: AppleUSBRestrictedModeTimeout = 259200.
+AppleCredentialManager: start: initializing power management, instance = <ptr>.
+AppleCredentialManager: start: started, instance = <ptr>.
+AppleCredentialManager: start: returning, result = true, instance = <ptr>.
+AppleEmbeddedPCIE::start this = <ptr>, gAPCIEdebugFlags = 0x80000001
+M3 Normal mode not enabled on Fastsim
+AppleSynopsysMIPIDSIController::start: this: <ptr>, _dsimBaseAddress = <ptr> physical = 0x230400000 length 786432
+virtual bool AppleSynopsysMIPIDSIController::start(IOService *) panicOnError NOT Supported
+AppleDieTempController::start: 
+AppleDieTempController::initLoopConfig: Loop 0 kp: 0xc0000
+AppleDieTempController::initLoopConfig: Loop 0 ki: 0x70e8000
+AppleDieTempController::initLoopConfig: Loop 0 control type: 2
+AppleDieTempController::initLoopConfig: Loop 1 kp: 0xc0000
+AppleDieTempController::initLoopConfig: Loop 1 ki: 0x70e8000
+AppleDieTempController::initLoopConfig: Loop 1 control type: 4
+AppleDieTempController::initLoopConfig: Loop 2 kp: 0x2f9999
+AppleDieTempController::initLoopConfig: Loop 2 ki: 0x1180000
+AppleDieTempController::initLoopConfig: Loop 2 control type: 16
+AppleDieTempController::initLoopConfig: Successfully configured 3 loops
+AppleDieTempController::handleBootArgs: In handleBootArgs routine
+AppleDieTempController::cpuPerfControllerArrivalHandler: boot_dvd_factor 0x00010000
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleT8015TempSensor::start: Got temperatureOffsetValue of 13 for locationID 0x54703169
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleT8015TempSensor::start: Got temperatureOffsetValue of 4 for locationID 0x54613069
+virtual bool AppleARMLightEmUp::start(IOService *): starting...
+virtual bool IOMobileFramebufferLegacy::start(IOService *)
+IOMFB: driver commit: 
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleS5L8960XWatchDogTimer::start: _wdtBaseAddress: <ptr> _wdtResetCount=0xe4e1c00 _useSMCEnforcedWatchdog=0
+watchdog disabled by boot-argAppleSynopsysMIPIDSIController::start Failed to get phy settings count
+virtual bool AppleSynopsysMIPIDSIController::start(IOService *)  Slow Adaptive Clocking enabled with 9 frequencies
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+RTBuddy(ANS2): start(<ptr>) - (Aug 12 2020@22:50:37)
+RTBuddy(ANS2): Boot args override: wdt = -1
+virtual IOService *AppleANS2NVMeController::probe(IOService *, SInt32 *)::194:Found (ANS2) provider, returning score 100000
+virtual IOService *AppleANS2NVMeController::probe(IOService *, SInt32 *)::194:Found (ANS2) provider, returning score 100000
+RTBuddy(ANS2): Resuming...
+
+Identified Serial Port uart0 at 0x235200000(<ptr>)
+Identified Serial Port uart7 at 0x23521c000(<ptr>)
+AppleDialogSPMIPMU::start: spmi-pmu _pmuNub: <ptr> built 22:52:54 Aug 12 2020
+AppleDisplayPMU::start: display-pmu _pmuIICNub: <ptr> built 22:19:31 Aug 12 2020
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+virtual bool AppleSEPManager::start(IOService *): 
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+virtual bool AppleSEPManager::start(IOService *): SEP memory IS coherent
+virtual bool AppleSEPManager::start(IOService *): control endpoints created
+AppleICA60:probe vendorID 0x0 prodID 0x1 fabID 0xa0 revision 0x0 sensor 0x1 mic-bias-index 1
+virtual bool AppleANS2NVMeController::start(IOService *)::394:Found the ANS2Endpoint1
+virtual bool AppleANS2NVMeController::start(IOService *)::394:Found the ANS2Endpoint1
+bool AppleEmbeddedNVMeController::SetNamespacesStruct()::186:Obtained 7 namespaces from DT
+bool AppleEmbeddedNVMeController::SetNamespacesStruct()::186:Obtained 7 namespaces from DT
+virtual IOFilterInterruptEventSource *AppleANS2NVMeController::CreateDeviceInterrupt(IOInterruptEventSource::Action, IOFilterInterruptEventSource::Filter, IOService *)::2719:ANS2 NVMe interrupt index - 0x4
+virtual IOFilterInterruptEventSource *AppleANS2NVMeController::CreateDeviceInterrupt(IOInterruptEventSource::Action, IOFilterInterruptEventSource::Filter, IOService *)::2719:ANS2 NVMe interrupt index - 0x4
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+AppleS8000AES::start: using DART Mapper: <ptr>
+RTBuddy(AOP): start(<ptr>) - (Aug 12 2020@22:50:37)
+RTBuddy(AOP): Boot args override: wdt = -1
+RTBuddy(AOP): Resuming...
+
+AppleSPUFirmwareService: found node AOP
+RTBuddy(SIO): start(<ptr>) - (Aug 12 2020@22:50:37)
+RTBuddy(SMC): start(<ptr>) - (Aug 12 2020@22:50:37)
+RTBuddy(SMC): Boot args override: wdt = -1
+RTBuddy(SIO): Boot args override: wdt = -1
+RTBuddy(SMC): Resuming...
+
+RTBuddy(SIO): Resuming...
+
+virtual bool AppleSEPManager::start(IOService *): PM init done
+virtual bool AppleSEPManager::start(IOService *): registered
+IOReturn AppleSEPManager::_setPowerState(unsigned long *): power state 0 -> 2
+AppleCredentialManager: handleEventGated: called, event(5).
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 1
+AppleCredentialManager: handleEventGated: AppleSEPManager has been matched.
+AppleSmartIO (RTBuddy-based)::start (<ptr>) - (Aug 12 2020@22:19:30)
+Starting AppleSMC kext(<ptr>) - (Aug 12 2020@22:51:44)
+AppleSMCEmbedded::setPowerState(): ENTER powerStateOrdinal=1, _activeKeyCommand=0 newState=1
+AppleAuthCPRelay:_sendCommandGated CMD=0x1 _receivedStatus ERROR ( status = 0xe00002e9 )
+AppleAuthCPRelay:_getCert failed to send command kAuthCommandIDGetCert
+AppleAuthCPRelay:start _getCert() failed (status = 0xe00002e9)
+pci (build 22:19:24 Aug 12 2020), flags 0x20c3008
+pci (build 22:19:24 Aug 12 2020), flags 0x20c3008
+[ PCI configuration begin ]
+Failed to enable notifications (0x84)!
+
+ERROR: Unable to enable notification interface (kSMCKeyNotFound).
+
+LPM: Log data is NOT valid. 0x0 0x0
+AppleDialogSPMIPMU::start: Primary PMU detected
+AppleARMRTC started!#####
+AppleDialogSPMIPMURTC started!******
+Failed to read info-leg_scrpadAppleDialogSPMIPMURTC::handleStart: ro=0 nvram=0 helper=0 AppleDialogSPMIPMU _pmuNub: <ptr> 0x1102:0x9f04-0x9f15 built 22:52:53 Aug 12 2020
+[ PCI configuration end, bridges 3, devices 0 ]
+AppleDialogSPMIPMURTC tick read!&&&&&&&
+AppleDialogSPMIPMURTC ending!%%%
+AppleARMRTC registering service!@@@@@@
+AppleARMRTC service registered!$$$$$
+AppleARMRTC publishing service!^^^^^^
+apcie[2:pci-bridge2]::_mapRIDToSID no mapper defined and device <ptr> (0:2:0) does not support hot-plug
+apcie[3:pci-bridge3]::_mapRIDToSID no mapper defined and device <ptr> (0:3:0) does not support hot-plug
+Identified Serial Port uart4 at 0x235210000(<ptr>)
+apfs_module_start:2411: load: com.apple.filesystems.apfs, v1677.0.5, apfs-1677.0.5, 2020/08/12
+com.apple.AppleFSCompressionTypeZlib kmod start
+IOSurfaceRoot::installMemoryRegions()
+IOSurface disallowing global lookups
+apfs_sysctl_register:1253: done registering sysctls.
+com.apple.AppleFSCompressionTypeZlib load succeeded
+bool IOMFB::UPPipe_H11P::setup_tunables_base_target(): Tunables Target 9
+IOMFB setup_table: Could not find table 'display-temp-compensation' in registry. Using default table.
+IOMFB setup_table: Could not find table 'display-temp-compensation' in registry. Using default table.
+L2TP domain init
+L2TP domain init complete
+Load request for com.apple.nke.pptp failed: -603946998
+IOMFB setup_table: Could not find table 'display-backlight-compensation' in registry. Using default table.
+Waiting on <dict ID="0"><key>IOProviderClass</key><string ID="1">IOMedia</string><key>IOPropertyMatch</key><dict ID="2"><key>Partition ID</key><integer size="64" ID="3">0x1</integer></dict></dict>
+virtual IOMFBStatus IOMFB::UPPipe_H11P::apt_fixed_rr_changed(IOMFB::AppleRegisterStream *): error: fixed refresh rate only supported on APT devices
+virtual IOMFBStatus IOMFB::UPPipe_H11P::apt_fixed_rr_changed(IOMFB::AppleRegisterStream *): forcing refresh rate: disabled
+IOMFB set_ffr_index: Disabling overdrive (missing EDT data)
+IOMFB set_panel_id: missing EDT data raw-panel-serial-number
+IOMFBStatus IOMFB::UPPipe_H11P::set_run_mode_safe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H11P::RunMode): Int no need to defer: 0 -> 1
+000001.821322 AppleT8027USBXDCI@: AppleUSBXDCIARM::start: _dock is NULL, defaulting to device mode
+IOMFB: dynamic enabling of PCC is not supported on this platform, you need to power cycle display to see this change take effect
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=0 entrysize=64
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=0 entrysize=64
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=1 entrysize=128
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=1 entrysize=128
+virtual void AppleANS2NVMeController::SetModeselRegister(uint32_t)::1186:Setting modesel to 0
+virtual void AppleANS2NVMeController::SetModeselRegister(uint32_t)::1186:Setting modesel to 0
+000001.841924 AppleT8027USBXDCI@: IOUSBDeviceController::prepareDefaults: model iPhone version 12.1
+IOMFB read_bic - disable BIC (config init failed)
+000001.878940 usb-drd-port-hs@00100000: AppleUSB30XHCITypeCPort::start: _dock is NULL, defaulting to device mode
+000001.881957 usb-drd-port-hs@00100000: AppleUSBHostPort::initBusCurrent: insufficient power to enable this port
+Video Mode Cebu/Sicily/Ellis
+IOMFB updateFrequencies: minimum-frequency property not found, using getClockFrequency(0) instead.
+virtual bool IOMFB::UPBlock_Config_H11P::did_power_on(IOMFB::AppleRegisterStream *): tunables_managed
+IOMFB did_power_on: timings not set; reading 'display-timing-info' from origin 2
+IOMFBStatus IOMFB::UPPipe_H11P::set_run_mode_safe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H11P::RunMode): Int no need to defer: 1 -> 2
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1964:nvme: Vendor ID     : 0x1b36
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1964:nvme: Vendor ID     : 0x1b36
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1965:nvme: Model Number  : QEMU NVMe Ctrl                          
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1965:nvme: Model Number  : QEMU NVMe Ctrl                          
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1966:nvme: Serial Number : ChefKiss-ANS        
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1966:nvme: Serial Number : ChefKiss-ANS        
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1967:nvme: Firmware Rev  : ChefKiss
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1967:nvme: Firmware Rev  : ChefKiss
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2000:nvme: S3E B0 Sandisk 3d-g3 tlc 3D 4 plane 32GB bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2000:nvme: S3E B0 Sandisk 3d-g3 tlc 3D 4 plane 32GB NAND
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2009:ECCVersion   : 1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2009:ECCVersion   : 1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2010:FTL Rev      : 23.1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2010:FTL Rev      : 23.1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2011:DM_Version   : 101
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2011:DM_Version   : 101
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2012:=======================
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2012:=======================
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2019:Found 16 namespaces in current NAND
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2019:Found 16 namespaces in current NAND
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[1] as nstype[1]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[1] as nstype[1]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[2] as nstype[2]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[2] as nstype[2]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[3] as nstype[3]
+static bool IOMobileFramebufferLegacy::readDataInEDT(IOService *, bool, const char *, const uint32_t, uint32_t *): property KSF_version not found in EDT, assumed false.
+IOMFB updateFrequencies: minimum-frequency property not found, using getClockFrequency(0) instead.
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[3] as nstype[3]
+IOMFB init_power_lut: failed to read color accuracy index
+function-brightness_update not found 
+function-mcc_dataset not found 
+IOMFB arm_fn_search: Couldn't allocate AppleARMFunction for function-temperature_update
+IOMFB arm_fn_search: failed with 0xe00002bc (function-temperature_update)
+IOMFB arm_fn_search: Couldn't allocate AppleARMFunction for function-link_enable
+IOMFB arm_fn_search: failed with 0xe00002bc (function-link_enable)
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[4] as nstype[4]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[4] as nstype[4]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[5] as nstype[5]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[5] as nstype[5]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[6] as nstype[6]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[6] as nstype[6]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[7] as nstype[8]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[7] as nstype[8]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[8] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[8] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[9] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[9] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[10] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[10] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[11] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[11] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[12] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[12] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[13] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[13] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[14] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[14] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[15] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[15] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[16] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[16] as nstype[0]
+bool AppleEmbeddedNVMeController::SetSwapWriteLimit(uint32_t)::2192: Swap limit set to 1073741824bytes, 1GB
+bool AppleEmbeddedNVMeController::SetSwapWriteLimit(uint32_t)::2192: Swap limit set to 1073741824bytes, 1GB
+000001.938919 usb-drd-port-hs@00100000: AppleUSB30XHCITypeCPort::cableChangeOccurred: cable detect disabled: transport type 2 connect type 2 restricted mode 0
+000001.939325 usb-drd-port-hs@00100000: AppleUSB30XHCITypeCPort::cableChangeOccurred: no action for transport type 2 connect type 2 restricted mode 0
+uint32_t AppleEmbeddedNVMeNVRAM::GetNVRAMSize()::745:NVRAM size is 8192 bytes
+uint32_t AppleEmbeddedNVMeNVRAM::GetNVRAMSize()::745:NVRAM size is 8192 bytes
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1578:allocateAll 1
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1578:allocateAll 1
+AppleSMCSensorDispatcher::start: Found 8 sensors from the device tree
+AppleARMBacklight::start: Pre-strobe iDAC=1879 overriden in EDT 
+AppleSMCSensorDispatcher::start: Start success
+
+IOMFB setup_table: Could not find table 'display-backlight-compensation' in registry. Using default table.
+AppleARMBacklight::armFunctionCallback: Using 1 Backlight Controllers
+AppleARMBacklight::armFunctionCallback: Dual backlight controller system
+/Library/Caches/com.apple.xbs/Sources/AppleSMC/AppleSMC-589.0.5/AppleSMCEmbeddedCharger/AppleSMCCharger.cpp:408 _setPowerStateGated() ENTER powerStateOrdinal=1, _powerState=1
+IOMFB: function-pcc_update found
+dev_init:297: disk0 device accelerated crypto: 0 (compiled @ Aug 12 2020 22:19:57)
+dev_init:300: disk0 device_handle block size 4096 block count 8388347 features 0 internal 
+nx_kernel_mount:1134: disk0 initializing cache w/hash_size 4096 and cache size 10064
+nx_kernel_mount:1234: disk0 container cleanly-unmounted flag set.
+ApplePinotLCD: _lcdPanelID: 0xa1c432d1 _lcdPanelClass: 2
+nx_kernel_mount:1402: disk0 checkpoint search: largest xid 16434, best xid 16434 @ 187
+import_iboot_forwarded_roothash:2577: importing root hash ...
+apfs_extract_root_hash_arm:10001: could not retrieve system-volume-auth-blob from device tree
+import_iboot_forwarded_roothash:2580: apfs_extract_root_hash_and_manifest failed with error: No such file or directory (2)
+Got boot device = IOService:/AppleARMPE/arm-io@10F00000/AppleT803xIO/ans@77400000/AppleASCWrapV2/iop-ans-nub/RTBuddyV2/RTBuddyService/AppleANS2NVMeController/NS_01@1/IOBlockStorageDriver/QEMU NVMe Ctrl Media/IOGUIDPartitionScheme/Untitled 1@1
+BSD root: disk0s1, major 1, minor 1
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 2, NSTYPE - 2
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 2, NSTYPE - 2
+apfs_vfsop_mountroot:2188: apfs: mountroot called!
+dev_init:297: disk0s1 device accelerated crypto: 3 (compiled @ Aug 12 2020 22:19:57)
+dev_init:300: disk0s1 device_handle block size 4096 block count 8388347 features 22 internal solidstate
+nx_kernel_mount:1134: disk0s1 initializing cache w/hash_size 4096 and cache size 10064
+nx_kernel_mount:1234: disk0s1 container cleanly-unmounted flag set.
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 3, NSTYPE - 3
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 3, NSTYPE - 3
+nx_kernel_mount:1402: disk0s1 checkpoint search: largest xid 16434, best xid 16434 @ 187
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 6, NSTYPE - 6
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 6, NSTYPE - 6
+apfs_vfsop_mount:1848: Promoter has been locked for disk0s1
+failed to find root-snapshot-name snapshot
+handle_mount:627: vol-uuid: 5133F48D-5D9E-499B-A8BA-45E692E36FD9 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.12)
+handle_mount:640: setting dev block size to 4096 from 512
+[effaceable:INIT] found current generation, 3, in group 0
+[effaceable:INIT] started
+nx_volume_group_update:6634: Volume AzulSeed18A5351d.N104N841DeveloperOS is not in a volume group
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 7, NSTYPE - 8
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 7, NSTYPE - 8
+apfs_vfsop_mount:2171: disk0s1s1:0 mounted volume: AzulSeed18A5351d.N104N841DeveloperOS
+virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::269: Logical Blocks Size = 4096 
+ virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::269: Logical Blocks Size = 4096 
+ virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::272: Block Count = 256 
+ virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::272: Block Count = 256 
+ virtual bool AppleNVMeNamespaceDevice::start(IOService *)::111:NVMe Namespace Device registration done for NSID: 7, NSTYPE: 8
+virtual bool AppleNVMeNamespaceDevice::start(IOService *)::111:NVMe Namespace Device registration done for NSID: 7, NSTYPE: 8
+virtual bool AppleEmbeddedNVMeController::StartController()::1547:Setting NAND status to Ready
+virtual bool AppleEmbeddedNVMeController::StartController()::1547:Setting NAND status to Ready
+AppleAstrisGpioProbe::platformInit():[WARNING] Bailing out.. Set swd_updates_arg boot-arg to allow swd updates!
+AppleAstrisGpioProbe::start():[ERROR] could not do platform initialization
+dyld: setting comm page to 0x0
+Tue Oct  6 10:49:43 2026 localhost com.apple.xpc.launchd[1] <Notice>: hello
+Darwin Bootstrapper Version 7.0.0: Mon Aug 10 04:09:14 PDT 2020; root:libxpc_executables-2038.0.13~13/launchd/RELEASE_ARM64E
+boot-args = debug=0x14e serial=3 wdt=-1 tlto_us=-1 mtxspin=-1 agm-genuine=1 agm-authentic=1 agm-trusted=1 -vm_compressor_wk_sw launchd_unsecure_cache=1
+Tue Oct  6 10:49:43 2026 localhost com.apple.xpc.launchd[1] (com.apple.xpc.launchd.domain.system) <Notice>: entering ondemand mode
+Tue Oct  6 10:49:43 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: fsck
+** Checking the container superblock.
+** Checking the object map.
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume AzulSeed18A5351d.N104N841DeveloperOS was formatted by newfs_apfs (945.200.129.100.10) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume Data was formatted by newfs_apfs (1677.0.5) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume Preboot was formatted by newfs_apfs (1677.0.5) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume xART was formatted by newfs_apfs (1677.0.5) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume Hardware was formatted by newfs_apfs (1677.0.5) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume Update was formatted by newfs_apfs (1677.0.5) and last modified by .
+** QUICKCHECK ONLY; FILESYSTEM CLEAN
+Tue Oct  6 10:49:44 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: mount-phase-1
+mount: found boot container: /dev/disk0s1, data volume: /dev/disk0s1s2 env: 1
+spaceman_metazone_init:189: disk0s1 metazone for device 0 of size 262135 blocks (encrypted: 8126212-8257279 unencrypted: 8257279-8388347)
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 1 blocks starting at paddr 4096000
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 2 blocks starting at paddr 2195456
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 3 blocks starting at paddr 2228224
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 4 blocks starting at paddr 2260992
+dev_dump:256: Aggregate constructed: dev=<ptr> di=0 dv_num_slice=15 dv_num_slice_blk=589824 dv_num_lslice_blk=130811
+handle_mount:627: vol-uuid: A2188D3C-6964-48A9-9ABC-C88CFE626487 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume xART role 100 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s4:0 mounted volume: xART
+/dev/disk0s1s4 on /private/xarts (apfs, local, nodev, nosuid, journaled, noatime, nobrowse)
+spaceman_trim_free_blocks:3361: disk0s1 scan took 0.049634 s, trims took 0.019663 s
+spaceman_trim_free_blocks:3369: disk0s1 6518322 blocks free in 4198 extents
+spaceman_trim_free_blocks:3377: disk0s1 6518322 blocks trimmed in 4198 extents (4 us/trim, 213497 trims/s)
+spaceman_trim_free_blocks:3380: disk0s1 trim distribution 1:1015 2+:1314 4+:1463 16+:324 64+:39 256+:43
+handle_mount:627: vol-uuid: 9D1C4D39-62ED-41B6-870D-071F5C4B7934 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume Preboot role 10 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s3:0 mounted volume: Preboot
+/dev/disk0s1s3 on /private/preboot (apfs, local, nodev, nosuid, read-only, journaled, noatime, nobrowse)
+Tue Oct  6 10:49:44 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: data-protection
+init_data_protection: Gigalocker file (/private/xarts/81879F33-B0F2-573A-AE12-6B517C322E33.gl) exists
+init_data_protection: Gigalocker initialization completed
+void AppleSEPFirmware::_copyInFirmware(IOMemoryDescriptor *): sepos_va:<ptr> sepos_avail_size: 0x1000000
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 1
+void AppleSEPBooter::_bootAction(void *, void *): SEP accepted Tz0
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 2
+IOReturn AppleSEPBooter::bootSEP(AppleSEPFirmware *, bool, AppleSEPSharedMemoryBuffer *, bool): SEP booting
+IOReturn AppleSEPBooter::bootSEP(AppleSEPFirmware *, bool, AppleSEPSharedMemoryBuffer *, bool): Shmbuf for SEP: { slave addr = 0x100c000, size = 0x20000 }
+void AppleSEPBooter::_bootAction(void *, void *): SEP accepted IMG4
+void AppleSEPManager::_notifyOSActiveGated(): SEP/OS is alive
+SEP EP 16 enabled
+void AppleSEPManager::_updateDeviceTree(): updateDeviceTreeThread started
+static void AppleSEPManager::_updateDeviceTreeThread(void *): updateDeviceTree Success
+IOReturn AppleSEPARTRequests::handle_first_connected(): Configuring in buffer
+void AppleSEPARTService::_ensure_nvram_readable(): Waiting for IODTNVRAM
+void AppleSEPARTService::_ensure_nvram_readable(): Got IODTNVRAM OK
+IOReturn AppleSEPARTRequests::handle_first_connected(): Configuring out buffer
+apfs_rawdev_create:637: Enable bypass mode on inode 16 on xART@disk0s1 as 2.0
+Tue Oct  6 10:49:44 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: finish-obliteration
+Obliterator: In INIT check
+IORegistryEntryGetProperty failed, may be does not exist
+Obliterator: No obliteration needed, continue booting, returning 0
+Tue Oct  6 10:49:44 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: commit-boot-mode
+Tue Oct  6 10:49:44 2026 localhost com.apple.xpc.launchd[1] <Notice>: boot-mode committed: (null)
+Tue Oct  6 10:49:44 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: restore-datapartition
+Tue Oct  6 10:49:44 2026 localhost com.apple.xpc.launchd[1] <Notice>: restore-datapartition: optional boot task not present
+Tue Oct  6 10:49:44 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: mount-phase-2
+mount: found boot container: /dev/disk0s1, data volume: /dev/disk0s1s2 env: 1
+migrate_media_keys_if_needed:1206: no media keys to migrate for container = disk0s1
+mount: failed to migrate Media Keys, error = c002
+handle_mount:627: vol-uuid: 360579AF-F2BC-4412-834F-712D92E40B3D block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6634: Volume Data is not in a volume group
+apfs_vfsop_mount:2171: disk0s1s2:0 mounted volume: Data
+/dev/disk0s1s2 on /private/var (apfs, local, nodev, nosuid, journaled, noatime)
+handle_mount:627: vol-uuid: 1A7424FA-B491-48D7-8C27-D48C13F7F907 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume Update role c0 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s6:0 mounted volume: Update
+/dev/disk0s1s6 on /private/var/MobileSoftwareUpdate (apfs, local, nodev, nosuid, journaled, noatime, nobrowse)
+handle_mount:627: vol-uuid: 5C915B1E-CAF5-4B64-AEF1-5691D0A2E801 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume Hardware role 140 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s5:0 mounted volume: Hardware
+/dev/disk0s1s5 on /private/var/hardware (apfs, local, nodev, nosuid, journaled, noatime, nobrowse)
+Tue Oct  6 03:49:45 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: init-with-data-volume
+Tue Oct  6 03:49:45 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: MSUEarlyBootTask
+main: MSUEarlyBootTask running
+main: Content from the ramdisk will be present at /private/var/MobileSoftwareUpdate/000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000-MSUData if it exists
+MSUEarlyBootTask: I have nothing to do. Goodbye!!
+Tue Oct  6 03:49:45 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: fips
+Tracing: disabled
+FIPSPOST_USER [113989914] fipspost_post:158: PASSED: (3 ms) - fipspost_post_integrity
+FIPSPOST_USER [114024402] fipspost_post:164: PASSED: (1 ms) - fipspost_post_hmac
+FIPSPOST_USER [114034343] fipspost_post:165: PASSED: (0 ms) - fipspost_post_aes_ecb
+FIPSPOST_USER [114044668] fipspost_post:166: PASSED: (0 ms) - fipspost_post_aes_cbc
+FIPSPOST_USER [114439388] fipspost_post:167: PASSED: (16 ms) - fipspost_post_rsa_sig
+FIPSPOST_USER [114664995] fipspost_post:168: PASSED: (8 ms) - fipspost_post_ecdsa
+FIPSPOST_USER [114718052] fipspost_post:169: PASSED: (1 ms) - fipspost_post_ecdh
+FIPSPOST_USER [114776323] fipspost_post:170: PASSED: (0 ms) - fipspost_post_drbg_ctr
+FIPSPOST_USER [114815171] fipspost_post:171: PASSED: (1 ms) - fipspost_post_aes_ccm
+FIPSPOST_USER [115371106] fipspost_post:173: PASSED: (22 ms) - fipspost_post_pbkdf
+FIPSPOST_USER [115401280] fipspost_post:174: PASSED: (0 ms) - fipspost_post_kdf_ctr
+FIPSPOST_USER [115650630] fipspost_post:175: PASSED: (10 ms) - fipspost_post_aes_gcm
+FIPSPOST_USER [115669728] fipspost_post:176: PASSED: (0 ms) - fipspost_post_aes_xts
+FIPSPOST_USER [115702768] fipspost_post:177: PASSED: (1 ms) - fipspost_post_tdes_cbc
+FIPSPOST_USER [115765006] fipspost_post:178: PASSED: (1 ms) - fipspost_post_drbg_hmac
+FIPSPOST_USER [116072530] fipspost_post:180: PASSED: (12 ms) - fipspost_post_ffdh
+FIPSPOST_USER [116360654] fipspost_post:181: PASSED: (11 ms) - fipspost_post_rsa_enc_dec
+FIPSPOST_USER [116368516] fipspost_post:201: all tests PASSED (102 ms)
+Tue Oct  6 03:49:45 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: keybag
+****** IN MKB_INIT ****
+AppleSEPKeyStore:2878:16: SEP timeout multiplier = 10
+SEP EP 18 enabled
+AppleSEPKeyStore:5995:16: negotiated to ipc header theirs:v1, ours:v2 -> negotiated:v1
+AppleSEPKeyStore:5926:16: failed to create refkey -536870212
+MKB_INIT: mount is with NO CPROTECT:0x14809018 on  (/private/var)
+PO	MKB_INIT: mount point (/private/var) does not support Data Protection
+MKB_INIT: System Keybag loaded
+****** STARTING EARLYBOOT SETUP ****
+MKB_INIT: STARTING EARLYBOOT SETUP
+MKB_INIT: Could not open /private/var//keybags/usersession.kb: No such file or directory
+MKB_INIT: LoadAllUserSessions: diskLoadUserSessions failed
+tx_flush:1033: disk0s1 tx xid 16435 took 7156097 us to sync and write superblock
+MKB_INIT: setup kernel personas
+MKB_INIT: DONE EARLYBOOT SETUP
+TUP
+****** DONE EARLYBOOT SETUP ****
+****** DONE MKB_INIT ****
+Tue Oct  6 03:49:52 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: usermanagerd
+Tue Oct  6 03:49:52 2026 localhost com.apple.xpc.launchd[1] <Notice>: usermanagerd: optional boot task not present
+Tue Oct  6 03:49:52 2026 localhost com.apple.xpc.launchd[1] <Notice>: launchd logging initialized
+Tue Oct  6 03:49:53 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: xpcroleaccountd
+Tue Oct  6 03:49:53 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: init_featureflags
+init_featureflags: skipping directory: /System/Library/FeatureFlags/Domain
+init_featureflags: skipping directory: /Library/Preferences/FeatureFlags/Domain
+Tue Oct  6 03:49:53 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: fud
+objc[20]: Class UARPManifestProperties is implemented in both /System/Library/PrivateFrameworks/CoreUARP.framework/CoreUARP and /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/Support/fud. One of the two will be used. Which one is undefined.
+fud: -[FudEarlyBoot doFUDEarlyBoot:](): Starting Early Boot
+fud: -[FudEarlyBoot updateFWForDeviceClass:dict:](): 
+deviceClass=com.apple.mau.plugin.generickext 
+dict={
+    IOMatchLaunchServiceID = 4294968023;
+}
+fud: -[FudEarlyBoot doFUDEarlyBoot:](): End Early Boot
+Tue Oct  6 03:49:53 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: tzinit
+Tue Oct  6 03:49:53 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: finish-restore
+Tue Oct  6 03:49:53 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: finish-demo-restore
+Tue Oct  6 03:49:53 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: sysstatuscheck
+Tue Oct  6 03:49:53 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: prng_seedctl
+PRNG diagnostics:
+0 user reseeds, 1 scheduled reseeds, 84 max samples in a scheduled reseed, 419 max samples in an entropy input
+generator 0: 2 rekeys, 466 requests, 5504 total bytes requested, 64 max bytes requested in a request, 3096 bytes requested since rekey, 3096 max bytes requested between rekeys
+generator 1: 2 rekeys, 105 requests, 1740 total bytes requested, 64 max bytes requested in a request, 1668 bytes requested since rekey, 1668 max bytes requested between rekeys
+pool 0: 0 samples, 1 drains, 84 max samples
+pool 1: 419 samples, 0 drains, 419 max samples
+pool 2: 39 samples, 0 drains, 39 max samples
+pool 3: 68 samples, 0 drains, 68 max samples
+pool 4: 90 samples, 0 drains, 90 max samples
+pool 5: 115 samples, 0 drains, 115 max samples
+pool 6: 37 samples, 0 drains, 37 max samples
+pool 7: 32 samples, 0 drains, 32 max samples
+pool 8: 44 samples, 0 drains, 44 max samples
+pool 9: 78 samples, 0 drains, 78 max samples
+pool 10: 318 samples, 0 drains, 318 max samples
+pool 11: 138 samples, 0 drains, 138 max samples
+pool 12: 62 samples, 0 drains, 62 max samples
+pool 13: 117 samples, 0 drains, 117 max samples
+pool 14: 59 samples, 0 drains, 59 max samples
+pool 15: 165 samples, 0 drains, 165 max samples
+pool 16: 108 samples, 0 drains, 108 max samples
+pool 17: 152 samples, 0 drains, 152 max samples
+pool 18: 67 samples, 0 drains, 67 max samples
+pool 19: 203 samples, 0 drains, 203 max samples
+pool 20: 85 samples, 0 drains, 85 max samples
+pool 21: 109 samples, 0 drains, 109 max samples
+pool 22: 41 samples, 0 drains, 41 max samples
+pool 23: 111 samples, 0 drains, 111 max samples
+pool 24: 74 samples, 0 drains, 74 max samples
+pool 25: 115 samples, 0 drains, 115 max samples
+pool 26: 68 samples, 0 drains, 68 max samples
+pool 27: 0 samples, 0 drains, 0 max samples
+pool 28: 0 samples, 0 drains, 0 max samples
+pool 29: 0 samples, 0 drains, 0 max samples
+pool 30: 0 samples, 0 drains, 0 max samples
+pool 31: 0 samples, 0 drains, 0 max samples
+failed to load virtual random: (-147) (-536870212)
+Tue Oct  6 03:49:53 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: launchd_cache_loader
+0 Found valid port: 2563 Valid: 1
+1 Found valid port: 0 Valid: 0
+2 Found valid port: 0 Valid: 0
+Using default cache paths
+Code: /System/Library/xpc/launchd.plist Sig: /System/Library/xpc/launchd.plist.sig
+Using unsecure cache: /System/Library/xpc/launchd.plist
+Trying to send bytes to launchd: 2563 16384
+Sending validated cache to launchd
+Cache sent to launchd successfully
+Tue Oct  6 03:49:53 2026 localhost com.apple.xpc.launchd[1] <Notice>: launchd UUID: 4C2464F5-9F87-31DE-B252-584E3391D4FA
+Tue Oct  6 03:49:53 2026 localhost com.apple.xpc.launchd[1] <Notice>: Early boot complete. Continuing system boot.
+apfs_load_inode_internal:6018: *** reset ino 43433 size back to 28281 (from 66297)
+AppleSEPKeyStore:10649:65: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:60: operation failed (sel: 17 ret: e00002bc)
+AppleARMBacklight::setBacklightEnableGated: Set backlight on
+AppleCredentialManagerUserClient: start: edu_mode = No, persona = Yes, user_id = c7 -> session_uid = ffffffff.
+AppleCredentialManagerUserClient: start: edu_mode = No, persona = Yes, user_id = c7 -> session_uid = ffffffff.
+AppleCredentialManagerUserClient: start: edu_mode = No, persona = Yes, user_id = c7 -> session_uid = ffffffff.
+ACMRM: _onDaemonStarted: called, allowedByMC=YES, alreadyStarted=NO.
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+AppleCredentialManager: getSEPEndpoint: Initializing SEP endpoint.
+SEP EP 10 enabled
+AppleCredentialManager: getSEPEndpoint: SEPEndpoint enabled.
+AppleAuthCPRelay:_sendCommandGated CMD=0x1 _receivedStatus ERROR ( status = 0xe00002e9 )
+AppleAuthCPRelay:_getCert failed to send command kAuthCommandIDGetCert
+AppleAuthCPRelay:_fetchPropertyGated _getCert() failed (status = 0xe00002e9)
+AppleAuthCPRelay::copyProperty: obj == NULL key = AccessoryCertificate
+AppleAuthCPRelay:_sendCommandGated CMD=0x1 _receivedStatus ERROR ( status = 0xe00002e9 )
+AppleAuthCPRelay:_getCert failed to send command kAuthCommandIDGetCert
+AppleAuthCPRelay:_fetchPropertyGated _getCert() failed (status = 0xe00002e9)
+AppleAuthCPRelay::copyProperty: obj == NULL key = AccessoryCertificate
+AppleAuthCPRelay:_sendCommandGated CMD=0x1 _receivedStatus ERROR ( status = 0xe00002e9 )
+AppleAuthCPRelay:_getCert failed to send command kAuthCommandIDGetCert
+AppleAuthCPRelay:_fetchPropertyGated _getCert() failed (status = 0xe00002e9)
+AppleAuthCPRelay::copyProperty: obj == NULL key = AccessoryCertificate
+IOMFB: load PCC M3 IMem : size 0x483c
+IOMFB: load PCC M3 DMem : size 0x4794
+AppleSEPKeyStore:10649:94: operation failed (sel: 17 ret: e00002bc)
+AppleAuthCPRelay:setAuthStatus set auth status = 0
+AppleAuthCPRelay:_sendCommandGated CMD=0x4 authSendData() failed (ret = 0xe00002c7)
+AppleAuthCPRelay:setTrustStatus failed to send command kAuthCommandIDSetTrustStatus
+AppleAuthCPRelay:setTrustStatus set trust status = 0
+AppleAuthCPUserClient::extSetAuthError
+AppleAuthCPRelay:setAuthError 3
+AppleAuthCPRelay:setAuthErrorDescription NullCertificateDataError
+AppleCredentialManager: sendSEPCommand: SEP cmd(10) took 5055 ms -> ioErr=0x1 acmErr=0.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManager.cpp:1839
+AppleCredentialManager: sendSEPCommand: returning, err = -536870186, req=1 info=0 inLen=8 outLen=0 lock=YES/5058ms resBuf=16384).
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManager.cpp:1248
+AppleSEPKeyStore:10649:109: operation failed (sel: 101 ret: e00002e2)
+AppleSEPKeyStore:10649:109: operation failed (sel: 93 ret: e00002bc)
+AppleSEPKeyStore:10649:109: operation failed (sel: 34 ret: e00002bc)
+AppleSEPKeyStore:10649:109: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:111: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:105: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:105: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:66: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:66: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:57: operation failed (sel: 35 ret: e00002bc)
+AppleSEPKeyStore:10649:57: operation failed (sel: 35 ret: e00002bc)
+AppleCredentialManager: sendSEPCommand: SEP cmd(25) took 5052 ms -> ioErr=0x1 acmErr=0.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManager.cpp:1839
+AppleCredentialManager: sendSEPCommand: returning, err = -536870186, req=4 info=0 inLen=12 outLen=1 lock=YES/5053ms resBuf=16384).
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManager.cpp:1263
+AppleCredentialManager: _performCommand: returning, err = -536870186, cmd=25 inLen=12 outLen=1.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManager.cpp:1196
+AppleCredentialManager: performCommandGated: returning, err = -536870186.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/ACMKernelLibPriv/../../ACMKernelLib/ACMKernelLib.cpp:48
+ACMKernelLib: performCommand: returning, err = -536870186.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/ACMKernelLibPriv/../../ACMKernelLib/ACMKernelLib.cpp:110
+ACMKernelLib: kernelTransport: returning, err = -536870186.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager_KernelLibs/AppleCredentialManager-417.0.6.0.1/common/LibCall.c:1119
+ACM: LibCall_ACMGetEnvironmentVariable: returning, err = -536870186.
+ACMKernelLib: ACMKernPrivGetEnvironmentVariable: returning, err = -536870186.
+ACMRM-S: _loadAll: called, isLockerAvailable=NO.
+ACMRM-S: _loadAll: fetching policy <- daemon (gen=0 len=41).
+ACMRM-S: _loadAll: fetching analytics <- daemon (gen=0 len=50).
+ACMRM: _logPolicy: LOADED: ver=8 smTm=1791277029 poRsn=0 gpTm=1791277008 smExp=NO gpBlk=NO suTm=1791277029 svTm=1791277029 gpRsn=0 cMs=NO.
+ACMRM: _logConfig: caller=_loadConfig ver=1 gSw=1 GP=2 Ask=3.
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO*).
+ACMRM: _mapAndPublishTRM: set TRM_GracePeriodTimeout = 3600.
+ACMRM: _mapAndPublishTRM: sending kIOMessageServicePropertyChange(n=1) while DISABLED, TRM: 259200 -/ff 3600 -/ff miss=ff (CUR: 259200 -/ff 3600 -/ff).
+ACMRM: _onDaemonStarted: timePolicyViolated=NO (saveTime=1791277029 bootCalTime=1791283812 (delta=6783) bootUpTime=32 nowUp=1791283812).
+ACMRM-A: _logAnalytics: caller=_loadAnalytics ver=5 rmLckDur=0 curPerTm=1791277008 rmLckTm=0 actRMLckTm=0 rmPubTm=0 rmPubDur=0 blFPCnt=0/0 uSdn=0.
+AssertMacros: ioErr == 0  (value: 0xffffffffe00002bc), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/Services/ACMRestrictedModeKernelService.cpp:1825
+ACMRM: _currentDeviceStateFromDeviceKeybag: returning, err = -536870212.
+AssertMacros: ioErr == 0  (value: 0xffffffffe00002bc), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/Services/ACMRestrictedModeKernelService.cpp:949
+ACMRM: _onDaemonStarted: returning, err = -5.
+AssertMacros: err == 0  (value: 0xfffffffffffffffb), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/Services/ACMRestrictedModeKernelService.cpp:338
+ACMRM: performKernelControlGated: returning, err = -5, code=3.
+AssertMacros: err == 0  (value: 0xfffffffffffffffb), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManager.cpp:1337
+AppleCredentialManager: _performKernelControl: returning, err = -5, code=3.
+AppleCredentialManager: performCommandGated: returning, err = -5.
+AssertMacros: err == 0  (value: 0xfffffffffffffffb), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManagerUserClient.cpp:285
+AppleCredentialManagerUserClient: extPerform: returning, err = -5.
+AppleCredentialManagerUserClient: externalMethod: returning, err = -5.
+AppleSEPKeyStore:10649:117: operation failed (sel: 35 ret: e00002bc)
+AppleSEPKeyStore:10649:117: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:117: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:117: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:117: operation failed (sel: 35 ret: e00002bc)
+AppleSEPKeyStore:10649:117: operation failed (sel: 32 ret: e00002bc)
+AppleSEPKeyStore:10649:117: operation failed (sel: 26 ret: e00002c1)
+AppleSEPKeyStore:10649:47: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:120: operation failed (sel: 35 ret: e00002bc)
+AppleSEPKeyStore:10649:120: operation failed (sel: 35 ret: e00002bc)
+AppleSEPKeyStore:10649:94: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:94: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:94: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:94: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:94: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:94: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:94: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:115: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:115: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:52: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:52: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:32: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:98: operation failed (sel: 26 ret: e00002bc)
+AppleSEPKeyStore:10649:87: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:121: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:87: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:121: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:131: operation failed (sel: 17 ret: e00002c2)
+AppleSEPKeyStore:10649:121: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:56: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:56: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:121: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:121: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:121: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:121: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:121: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:121: operation failed (sel: 17 ret: e00002bc)
+virtual bool CoreAnalyticsUserClient::initWithTask(task_t, void *, UInt32, OSDictionary *)::165:success
+IOReturn CoreAnalyticsHub::setClientGated(CoreAnalyticsUserClient *)::287:adding userClient
+IOReturn CoreAnalyticsHub::__newUserClientGated(task_t, void *, UInt32, OSDictionary *, IOUserClient **)::257:Successfully opened
+virtual IOReturn CoreAnalyticsUserClient::clientMemoryForType(UInt32, IOOptionBits *, IOMemoryDescriptor **)::269: got memory descriptor with 16432
+AppleSEPKeyStore:10649:71: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:56: operation failed (sel: 17 ret: e00002bc)
+000048.717285 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: PTP
+000048.717706 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000048.718144 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: iPod USB Interface
+000048.718519 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: USBAudioControl
+000048.719033 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: USBAudioStreaming
+000048.719699 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: IapOverUsbHid
+000048.719961 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: PTP + Apple Mobile Device
+000048.720134 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000048.720277 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000048.720492 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: PTP + Apple Mobile Device + Apple USB Ethernet
+000048.720812 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000048.720955 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000048.721110 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBEthernet
+000048.721284 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: PTP + Apple Mobile Device + Valeria
+000048.721480 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000048.721631 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000048.721787 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: Valeria
+000048.721946 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: Apple Mobile Device + Interdevice Audio
+000048.722389 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000048.722847 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: USBAudio2Control
+000048.723024 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: USBAudio2StreamIN
+000048.723345 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: USBAudio2StreamOUT
+000048.723512 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: IDAMInterface
+000048.723868 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: interface association: Interdevice Audio Interfaces (First: 1, Count: 4)
+000048.724388 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: PTP + Apple Mobile Device + NCM
+000048.724561 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000048.724717 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000048.724848 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBNCMControl
+000048.725002 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBNCMData
+000048.732828 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function USBAudioControl
+IOAccessoryPortUSB::start
+000048.740251 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function IapOverUsbHid
+000048.744334 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function AppleUSBEthernet
+000048.745753 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function USBAudioStreaming
+000048.754350 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function USBAudio2StreamIN
+000048.754741 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function USBAudio2StreamOUT
+000048.764456 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function AppleUSBNCMControl
+000048.765991 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function USBAudio2Control
+000048.771084 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function IDAMInterface
+000048.774860 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function AppleUSBNCMData
+AppleUSBDeviceMux build: Aug 12 2020 22:50:42
+000048.777908 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function AppleUSBMux
+000048.808028 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function Valeria
+IOAccessoryPortUSB::setUSBRoleSwitchMask Index 0 Value 1
+000048.843632 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function PTP
+000048.844033 AppleT8027USBXDCI@: IOUSBDeviceController::startUSBStack: starting usb stack
+000048.845770 AppleT8027USBXDCI@0: IOUSBDeviceController::startUSBStack: not connected
+000048.846293 AppleT8027USBXDCI@0: AppleUSBXDCI::goOnBus: not on bus
+000048.846850 AppleT8027USBXDCI@0: AppleUSBXDCIARM::cableChangeOccurred: cable detect disabled: transport type 2 connect type 2 restricted mode _lastRestrictedMode 0
+000048.847173 AppleT8027USBXDCI@0: AppleUSBXDCIARM::cableChangeOccurred: powering on for transport type 2 connect type 2 restricted mode 0
+IOAccessoryManager::configureAccessoryPowerGated: dock-0pin: Configuring Accessory Power to (3)
+Port-Inductive::configureAccessoryPowerInternal: _powerState=3, _powerStateInternal=1, _sleeping=0, _accessoryPowerModeExtOffRequested 0
+Port-Inductive::configureAccessoryPowerInternal: !getAccessoryPowerReady(); set PowerModeOff?
+Port-Inductive::configureAccessoryPowerInternal: handleAccessoryPowerWillChange, confirm PowerModeOff
+AppleSEPKeyStore:10649:139: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:139: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:139: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:139: operation failed (sel: 17 ret: e00002bc)
+AppleAuthCPRelay::copyProperty: obj == NULL key = AuthFullPass
+AppleAuthCPRelay::copyProperty: obj == NULL key = Signature
+AppleSEPKeyStore:10649:108: operation failed (sel: 35 ret: e00002bc)
+AppleSEPKeyStore:10649:146: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:148: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:121: operation failed (sel: 17 ret: e00002bc)
+INFERNO_UNLOCK_BEGIN watchdog=600 maximum_attempts=1
+INFERNO_EXEC_WRAPPER_BEGIN case=system-mobile-system-app path=/usr/bin/inferno-launcher watchdog=150 uid=0 gid=0
+AppleSEPKeyStore:10649:121: operation failed (sel: 17 ret: e00002bc)
+INFERNO_EXEC_WRAPPER_CHILD uid=501 gid=501
+INFERNO_EXEC_WRAPPER_CONSOLE_OPEN fd=3 errno=0 uid=501 gid=501
+INFERNO_EXEC_WRAPPER_ACCESS x=0 xerrno=0 r=0 rerrno=0 fd=3 open_errno=0 read_bytes=16384 read_errno=0
+AppleSEPKeyStore:10649:29: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:29: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:29: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:29: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:29: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:29: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:29: operation failed (sel: 17 ret: e00002bc)
+INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+2026-10-06 03:50:40.843 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=1 result=0
+2026-10-06 03:50:42.371 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=1 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=1 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:50:42.410 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=1 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+AppleSEPKeyStore:10649:157: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:157: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:157: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:150: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:150: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:76: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:150: operation failed (sel: 31 ret: e00002bc)
+AppleSEPKeyStore:10649:150: operation failed (sel: 31 ret: e00002bc)
+AppleSEPKeyStore:10649:150: operation failed (sel: 17 ret: e00002bc)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=2 result=0
+2026-10-06 03:50:45.474 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=2 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=2 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:50:45.476 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=2 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+AppleSEPKeyStore:10649:150: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:150: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:37: operation failed (sel: 17 ret: e00002bc)
+AppleSEPKeyStore:10649:37: operation failed (sel: 17 ret: e00002bc)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=3 result=0
+2026-10-06 03:50:48.579 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=3 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=3 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:50:48.581 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=3 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=4 result=0
+2026-10-06 03:50:51.592 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=4 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=4 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:50:51.593 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=4 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_READINESS_BEGIN seconds=15
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=5 result=0
+2026-10-06 03:50:54.710 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=5 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=5 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:50:54.715 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=5 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+  PID  PPID STAT COMM
+    1     0 Ss   /sbin/launchd
+   27     1 Ss   /usr/libexec/UserEventAgent
+   28     1 Ss   /usr/libexec/logd
+   29     1 Ss   /System/Library/PrivateFrameworks/AssistantServices.framework/assistantd
+   30     1 Ss   /usr/libexec/runningboardd
+   31     1 Ss   /usr/libexec/fseventsd
+   32     1 Ss   /usr/sbin/mediaserverd
+   33     1 Ss   /System/Library/PrivateFrameworks/MediaRemote.framework/Support/mediaremoted
+   34     1 Ss   /usr/libexec/routined
+   35     1 Ss   /usr/libexec/misd
+   36     1 Ss   /usr/libexec/configd
+   37     1 Ss   /System/Library/Frameworks/HealthKit.framework/healthd
+   39     1 Ss   /System/Library/CoreServices/powerd.bundle/powerd
+   40     1 Ss   /usr/libexec/atc
+   41     1 Ss   /usr/sbin/WirelessRadioManagerd
+   42     1 Ss   /usr/bin/inferno-exec-launcher
+   43     1 Ss   /usr/libexec/keybagd
+   44     1 Ss   /usr/libexec/remoted
+   46     1 Ss   /System/Library/PrivateFrameworks/FamilyNotification.framework/familynotificationd
+   47     1 Ss   /usr/sbin/wifid
+   48     1 Ss   /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/Support/fud
+   49     1 Ss   /System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/Support/softwareupdated
+   50     1 Ss   /System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd
+   51     1 Ss   /usr/libexec/seld
+   52     1 Ss   /System/Library/PrivateFrameworks/IDS.framework/identityservicesd.app/identityservicesd
+   54     1 Ss   /usr/libexec/atwakeup
+   55     1 Ss   /usr/libexec/wcd
+   56     1 Ss   /System/Library/PrivateFrameworks/CoreDuetContext.framework/Resources/contextstored
+   58     1 Ss   /usr/libexec/thermalmonitord
+   59     1 Ss   /System/Library/PrivateFrameworks/AskPermission.framework/Support/askpermissiond
+   60     1 Ss   /usr/libexec/backboardd
+   61     1 Ss   /usr/libexec/sharingd
+   62     1 Ss   /usr/libexec/timed
+   63     1 Ss   /usr/bin/inferno-readiness
+   64     1 Ss   /usr/libexec/cloudpaird
+   65     1 Ss   /usr/libexec/containermanagerd
+   66     1 Ss   /System/Library/PrivateFrameworks/IMCore.framework/imagent.app/imagent
+   67     1 Ss   /System/Library/PrivateFrameworks/NanoPreferencesSync.framework/nanoprefsyncd
+   68     1 Ss   /usr/bin/inferno-unlock-empty
+   69     1 Ss   /usr/libexec/lockdownd
+   70     1 Ss   /System/Library/PrivateFrameworks/SleepDaemon.framework/sleepd
+   71     1 Ss   /System/Library/PrivateFrameworks/AggregateDictionary.framework/Support/aggregated
+   72     1 Ss   OTACrashCopier
+   73     1 Ss   /usr/sbin/distnoted
+   75     1 Ss   /System/Library/PrivateFrameworks/AppleCredentialManager.framework/AppleCredentialManagerDaemon
+   76     1 Ss   /System/Library/PrivateFrameworks/MapsSupport.framework/navd
+   77     1 Ss   /usr/libexec/peakpowermanagerd
+   78     1 Ss   /usr/libexec/remindd
+   79     1 Ss   /usr/sbin/notifyd
+   80     1 Ss   /usr/libexec/rapportd
+   82     1 Ss   /usr/libexec/mtmergeprops
+   83     1 Ss   /System/Library/PrivateFrameworks/AppleMediaServices.framework/amsaccountsd
+   84     1 Ss   /usr/sbin/fairplayd.H2
+   85     1 Ss   /usr/sbin/cfprefsd
+   86     1 Ss   /usr/libexec/pfd
+   87     1 Rs   /usr/libexec/dasd
+   88     1 Ss   /usr/libexec/PowerUIAgent
+   89     1 Ss   /System/Library/PrivateFrameworks/WirelessDiagnostics.framework/Support/awdd
+   90     1 Ss   /usr/libexec/lsd
+   91     1 Ss   /System/Library/PrivateFrameworks/CoreAccessories.framework/XPCServices/ACCHWComponentAuthService.xpc/ACCHWComponentAuthService
+   92     1 Ss   /usr/libexec/MobileGestaltHelper
+   93     1 Ss   /usr/libexec/mobileassetd
+   94     1 Ss   /usr/libexec/coreduetd
+   95     1 Ss   /System/Library/CoreServices/osanalyticshelper
+   96     1 Ss   /usr/libexec/nanoregistryd
+   97     1 Ss   /System/Library/PrivateFrameworks/ApplePushService.framework/apsd
+   98     1 Ss   /usr/libexec/securityd
+   99     1 Ss   /System/Library/Frameworks/Accounts.framework/accountsd
+  100     1 Ss   /System/Library/PrivateFrameworks/WiFiPolicy.framework/XPCServices/WiFiCloudAssetsXPCService.xpc/WiFiCloudAssetsXPCService
+  102     1 Ss   /usr/libexec/nsurlsessiond
+  103     1 Ss   /System/Library/PrivateFrameworks/TCC.framework/tccd
+  105     1 Ss   /System/Library/PrivateFrameworks/IMDPersistence.framework/XPCServices/IMDPersistenceAgent.xpc/IMDPersistenceAgent
+  106     1 Ss   /usr/libexec/rtcreportingd
+  107     1 Ss   /usr/libexec/nehelper
+  108     1 Ss   /usr/libexec/symptomsd
+  109     1 Ss   /System/Library/PrivateFrameworks/DataMigration.framework/XPCServices/com.apple.datamigrator.xpc/com.apple.datamigrator
+  110     1 Ss   /System/Library/PrivateFrameworks/CarKit.framework/Support/carkitd
+  111     1 Ss   /System/Library/PrivateFrameworks/GeoServices.framework/geod
+  112     1 Ss   /usr/libexec/findmydeviced
+  113     1 Ss   /usr/libexec/fmflocatord
+  114     1 Ss   /usr/sbin/mDNSResponder
+  115     1 Ss   /System/Library/PrivateFrameworks/PassKitCore.framework/passd
+  116     1 Ss   /System/Library/PrivateFrameworks/CalendarDaemon.framework/Support/calaccessd
+  117     1 Ss   /Applications/PreBoard.app/PreBoard
+  118     1 Ss   /usr/libexec/misagent
+  119     1 Ss   /System/Library/PrivateFrameworks/FontServices.framework/Support/fontservicesd
+  120     1 Ss   /System/Library/CoreServices/SpringBoard.app/SpringBoard
+  121     1 Ss   /usr/libexec/searchpartyd
+  123     1 Ss   /System/Library/PrivateFrameworks/CoreAnalytics.framework/Support/analyticsd
+  124     1 Ss   /usr/libexec/wifianalyticsd
+  125     1 Ss   /System/Library/PrivateFrameworks/CallHistory.framework/Support/CallHistorySyncHelper
+  126     1 Ss   /System/Library/PrivateFrameworks/CacheDelete.framework/deleted
+  127     1 Ss   /System/Library/Frameworks/Security.framework/CloudKeychainProxy.bundle/CloudKeychainProxy
+  128     1 Ss   /System/Library/PrivateFrameworks/AssistantServices.framework/XPCServices/com.apple.siri.embeddedspeech.xpc/com.apple.siri.embeddedspeech
+  129     1 Ss   /usr/sbin/mDNSResponderHelper
+  130     1 Ss   /usr/libexec/seserviced
+  131     1 Ss   /System/Library/PrivateFrameworks/CoreSpeech.framework/corespeechd
+  132     1 Ss   /System/Library/PrivateFrameworks/SyncedDefaults.framework/Support/syncdefaultsd
+  133     1 Ss   /System/Library/PrivateFrameworks/CloudKitDaemon.framework/Support/cloudd
+  134     1 Ss   /usr/libexec/fmfd
+  135     1 Ss   /System/Library/PrivateFrameworks/MusicLibrary.framework/Support/medialibraryd
+  136     1 Ss   /usr/libexec/logd_helper
+  137     1 Ss   /usr/libexec/networkserviceproxy
+  139     1 Ss   /System/Library/PrivateFrameworks/CoreAccessories.framework/Support/accessoryd
+  141     1 Ss   /System/Library/PrivateFrameworks/TelephonyUtilities.framework/callservicesd
+  143     1 Ss   /System/Library/PrivateFrameworks/HomeKitDaemon.framework/Support/homed
+  144     1 Ss   /System/Library/PrivateFrameworks/MobileBackup.framework/backupd
+  145     1 Ss   /usr/libexec/pkd
+  146     1 Ss   /System/Library/PrivateFrameworks/UserActivity.framework/Agents/useractivityd
+  147     1 Ss   /System/Library/PrivateFrameworks/ScreenTimeCore.framework/ScreenTimeAgent
+  148     1 Ss   /usr/libexec/dmd
+  150     1 Ss   /usr/libexec/profiled
+  151     1 Ss   /System/Library/PrivateFrameworks/FontServices.framework/XPCServices/com.apple.FontServices.UserFontManager.xpc/com.apple.FontServices.UserFontManager
+  152     1 Ss   /usr/libexec/nanoregistrylaunchd
+  153     1 Ss   /System/Library/PrivateFrameworks/VoiceServices.framework/Support/voiced
+  154    42 S    /usr/bin/inferno-launcher
+  156     1 Ss   /System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/XPCServices/com.apple.MobileSoftwareUpdate.CleanupPreparePathService.xpc/com.apple.MobileSoftwareUpdate.CleanupPreparePathService
+  157     1 Ss   /usr/libexec/nfcd
+  158     1 Ss   /System/Library/PrivateFrameworks/CoreFollowUp.framework/followupd
+  159     1 Ss   /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/XPCServices/UARPUpdaterServiceHID.xpc/UARPUpdaterServiceHID
+  160     1 Ss   /System/Library/PrivateFrameworks/MapsSupport.framework/mapspushd
+  161     1 Ss   /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/XPCServices/GenericKextUpdaterService.xpc/GenericKextUpdaterService
+  163    63 R    /bin/ps
+INFERNO_READINESS_END seconds=15 status=0 ps_watchdog=600 timed_out=0
+INFERNO_FIXTURE_STAT /dev/console result=0 errno=0 mode=20622 uid=0 gid=0 size=0
+INFERNO_FIXTURE_STAT /usr/bin/inferno-launcher result=0 errno=0 mode=100755 uid=0 gid=0 size=67936
+INFERNO_FIXTURE_STAT /usr/bin/inferno-exec-launcher result=0 errno=0 mode=100755 uid=0 gid=0 size=67392
+INFERNO_FIXTURE_STAT /var result=0 errno=0 mode=120755 uid=0 gid=80 size=11
+INFERNO_FIXTURE_STAT /private/var result=0 errno=0 mode=40755 uid=0 gid=0 size=992
+INFERNO_FIXTURE_STAT /private/var/inferno result=0 errno=0 mode=40755 uid=0 gid=0 size=128
+INFERNO_FIXTURE_STAT /private/var/inferno/inferno-launcher result=0 errno=0 mode=100755 uid=0 gid=0 size=67952
+INFERNO_FIXTURE_STAT /private/var/inferno/InfernoProbe.app result=0 errno=0 mode=40755 uid=0 gid=0 size=128
+INFERNO_FIXTURE_STAT /private/var/inferno/InfernoProbe.app/InfernoProbe result=0 errno=0 mode=100755 uid=0 gid=0 size=71776
+INFERNO_FIXTURE_STAT /var/inferno/inferno-launcher result=0 errno=0 mode=100755 uid=0 gid=0 size=67952
+INFERNO_LOG_DIRECTORY /private/var/mobile/Library/Logs/CrashReporter opened=1 errno=0
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/. type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/.. type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/DiagnosticLogs type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/stacks+com.apple.datamigrator-2026-10-06-015846.ips type=8
+INFERNO_CRASH_PREFIX_BEGIN /private/var/mobile/Library/Logs/CrashReporter/stacks+com.apple.datamigrator-2026-10-06-015846.ips size=353242 limit=32768
+{"bug_type":"288","timestamp":"2026-10-06 01:58:46.63 -0700","os_version":"iPhone OS 14.0 (18A5351d)","incident_id":"1785D23D-2A68-4BBF-B1DF-BCE1CDC09009"}
+{
+  "build" : "iPhone OS 14.0 (18A5351d)",
+  "product" : "iPhone12,1",
+  "kernel" : "Darwin Kernel Version 20.0.0: Wed Aug 12 22:56:55 PDT 2020; root:xnu-7195.0.33~64\/RELEASE_ARM64_T8030",
+  "tuning" : {
+
+  },
+  "incident" : "1785D23D-2A68-4BBF-B1DF-BCE1CDC09009",
+  "crashReporterKey" : "8e4e079a6b35dd6a1667d657305681939b80a241",
+  "date" : "2026-10-06 01:58:46.60 -0700",
+  "reason" : "PRECAUTIONARY stackshot - migration might be hung or deadlocked. Plugin: com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic) (2 minutes) (overall migration start 812969806) (erase)",
+  "frontmostPids" : [
+    57
+  ],
+  "exception" : "0xbadedbad",
+  "absoluteTime" : 3551107208,
+  "memoryStatus" : {"compressorSize":0,"compressions":0,"decompressions":0,"busyBufferCount":0,"pageSize":16384,"memoryPressure":false,"memoryPages":{"active":20921,"throttled":0,"fileBacked":39165,"wired":30445,"purgeable":356,"inactive":3543,"free":131628,"speculative":31553}},
+  "processByPid" : {
+    "0" : {"pid":0,"residentMemoryBytes":49152,"timesDidThrottle":0,"systemTimeTask":0,"pageIns":0,"pageFaults":458,"userTimeTask":49.607524916000003,"procname":"kernel_task","copyOnWriteFaults":0,"threadById":{"259":{"continuation":[0,17073432],"userTime":1.075e-05,"systemTime":0,"id":259,"basePriority":81,"name":"AppleVTempDispatcher","user_usec":10,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108038661]},"534":{"continuation":[0,17073432],"userTime":0.00053850000000000002,"systemTime":0,"id":534,"basePriority":81,"name":"InterruptEventSourceBridge","user_usec":538,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108815269]},"437":{"continuation":[0,17073432],"userTime":7.3374999999999995e-05,"systemTime":0,"id":437,"basePriority":81,"name":"RTBuddyV2","user_usec":73,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108746613]},"526":{"continuation":[0,17073432],"userTime":0.0036644999999999998,"systemTime":0,"id":526,"basePriority":81,"name":"InterruptEventSourceBridge","user_usec":3664,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108812149]},"623":{"continuation":[0,17073432],"userTime":2.6125000000000001e-05,"systemTime":0,"id":623,"basePriority":81,"name":"AppleSEPManager","user_usec":26,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108861541]},"429":{"continuation":[0,17073432],"userTime":7.5000000000000002e-06,"systemTime":0,"id":429,"basePriority":81,"name":"AppleSEPARTService","user_usec":7,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108045781]},"276":{"continuation":[0,10831028],"userTime":8.3468754999999994,"name":"idle #1","id":276,"basePriority":0,"user_usec":8346875,"system_usec":0,"schedPriority":0,"state":["TH_RUN","TH_IDLE"],"systemTime":0},"357":{"continuation":[0,17073432],"userTime":7.1659999999999997e-06,"systemTime":0,"id":357,"basePriority":81,"name":"RTBuddyService","user_usec":7,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108746453]},"284":{"continuation":[0,17073432],"userTime":1.3125000000000001e-05,"systemTime":0,"id":284,"basePriority":81,"name":"AppleT8020MTRTempSensor","user_usec":13,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108037541]},"535":{"continuation":[0,17073432],"userTime":0.00020416600000000001,"systemTime":0,"id":535,"basePriority":81,"name":"InterruptEventSourceBridge","user_usec":204,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108812229]},"624":{"continuation":[0,17073432],"userTime":8.5830000000000007e-06,"systemTime":0,"id":624,"basePriority":81,"name":"AppleSEPManager","user_usec":8,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108863461]},"463":{"continuation":[0,15216236],"userTime":7.7707999999999995e-05,"systemTime":0,"id":463,"basePriority":81,"user_usec":77,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,13433012]},"527":{"continuation":[0,17073432],"userTime":8.3329999999999997e-06,"systemTime":0,"id":527,"basePriority":81,"name":"PCCMailboxHandler","user_usec":8,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108814629]},"551":{"continuation":[0,17073432],"userTime":2.5457999999999999e-05,"systemTime":0,"id":551,"basePriority":81,"name":"AppleSmartBatteryManager","user_usec":25,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108811349]},"480":{"continuation":[0,13672344],"userTime":0.00021891599999999999,"systemTime":0,"id":480,"basePriority":81,"name":"CFIL_UPD_GC","user_usec":218,"schedPriority":81,"system_usec":0,"state":["TH_WAIT"],"waitEvent":[0,43822208]},"552":{"continuation":[0,17073432],"userTime":5.541e-06,"systemTime":0,"id":552,"basePriority":81,"name":"AppleSMCPMU","user_usec":5,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108816069]},"640":{"userTime":15.981000291000001,"systemTime":0,"system_usec":0,"id":640,"basePriority":81,"user_usec":15981000,"kernelFrames":[[0,10811944],[0,10806204],[0,10735932],[0,15215380],[0,34312980],[0,17959260]],"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427115909773]},"472":{"continuation":[0,15216236],"userTime":3.7874999999999999e-05,"systemTime":0,"id":472,"basePriority":81,"user_usec":37,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44279752]},"641":{"continuation":[0,33821296],"userTime":0.00028033300000000001,"systemTime":0,"id":641,"basePriority":31,"user_usec":280,"system_usec":0,"schedPriority":31,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427115982589]},"625":{"continuation":[0,17073432],"userTime":0.00012716600000000001,"systemTime":0,"id":625,"basePriority":81,"name":"AppleSEPManager","user_usec":127,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108864261]},"464":{"continuation":[0,15216236],"userTime":1.6375000000000002e-05,"systemTime":0,"id":464,"basePriority":81,"user_usec":16,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44244704]},"528":{"continuation":[0,17073432],"userTime":8.3329999999999997e-06,"systemTime":0,"id":528,"basePriority":81,"name":"InterruptEventSourceBridge","user_usec":8,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108814789]},"553":{"continuation":[0,17073432],"userTime":6.8750000000000002e-06,"systemTime":0,"id":553,"basePriority":81,"name":"AppleSMCWirelessCharger","user_usec":6,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108051701]},"481":{"continuation":[0,13669664],"userTime":0.000231041,"systemTime":0,"id":481,"basePriority":81,"name":"CFIL_STATS_REPORT","user_usec":231,"schedPriority":81,"system_usec":0,"state":["TH_WAIT"],"waitEvent":[0,43822212]},"650":{"continuation":[0,10963132],"systemTime":0,"name":"thread call user #1","id":650,"basePriority":31,"schedFlags":["TH_SFLAG_EAGERPREEMPT"],"user_usec":25778,"schedPriority":31,"system_usec":0,"state":["TH_WAIT"],"userTime":0.025777999999999999},"1635":{"continuation":[0,17073432],"userTime":3.5333000000000002e-05,"systemTime":0,"id":1635,"basePriority":81,"name":"IOAccessoryPortUSB","user_usec":35,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109016117]},"473":{"continuation":[0,15216236],"userTime":1.5166e-05,"systemTime":0,"id":473,"basePriority":81,"user_usec":15,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44279768]},"626":{"continuation":[0,17073432],"userTime":1.5458e-05,"systemTime":0,"id":626,"basePriority":81,"name":"AppleSEPManager","user_usec":15,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108865381]},"465":{"continuation":[0,12891576],"userTime":0.01462225,"systemTime":0,"id":465,"basePriority":81,"user_usec":14622,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44238512]},"279":{"continuation":[0,17073432],"userTime":7.8329999999999994e-06,"systemTime":0,"id":279,"basePriority":81,"name":"AppleSMCSensorDispatcher","user_usec":7,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109864245]},"554":{"continuation":[0,17073432],"userTime":7.0829999999999998e-06,"systemTime":0,"id":554,"basePriority":81,"user_usec":7,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108811029]},"457":{"continuation":[0,17073432],"userTime":1.0291e-05,"systemTime":0,"id":457,"basePriority":81,"name":"AppleSmartIODMAController","user_usec":10,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108743573]},"474":{"continuation":[0,15277144],"userTime":6.8040999999999994e-05,"systemTime":0,"id":474,"basePriority":81,"name":"VM_freezer","user_usec":68,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43875272]},"449":{"continuation":[0,12453512],"userTime":9.0958000000000006e-05,"systemTime":0,"id":449,"basePriority":81,"user_usec":90,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43790176]},"466":{"continuation":[0,12875252],"userTime":0.000133666,"systemTime":0,"id":466,"basePriority":81,"user_usec":133,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44238960]},"644":{"continuation":[0,33821296],"userTime":0.00028745799999999998,"systemTime":0,"id":644,"basePriority":31,"user_usec":287,"system_usec":0,"schedPriority":31,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427115425533]},"458":{"continuation":[0,15484288],"userTime":0.001057791,"systemTime":0,"id":458,"basePriority":81,"user_usec":1057,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44276756]},"289":{"continuation":[0,17073432],"userTime":1.15e-05,"systemTime":0,"id":289,"basePriority":81,"name":"AppleT8015TempSensor","user_usec":11,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108748693]},"492":{"continuation":[0,17073432],"userTime":3.7957999999999998e-05,"systemTime":0,"id":492,"basePriority":81,"name":"InterruptEventSourceBridge","user_usec":37,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108814469]},"395":{"continuation":[0,17073432],"userTime":9.9580000000000002e-06,"systemTime":0,"id":395,"basePriority":81,"name":"AppleT8020DART","user_usec":9,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108048581]},"459":{"continuation":[0,14897252],"userTime":0.00014458299999999999,"systemTime":0,"id":459,"basePriority":81,"user_usec":144,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,42111360]},"637":{"continuation":[0,33821296],"userTime":0.024366374999999999,"systemTime":0,"id":637,"basePriority":31,"user_usec":24366,"system_usec":0,"schedPriority":31,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427115753213]},"476":{"continuation":[0,15243924],"userTime":0.00039399999999999998,"systemTime":0,"id":476,"basePriority":95,"name":"VM_memorystatus_1","user_usec":394,"schedPriority":95,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000420208631025]},"590":{"continuation":[0,11512208],"userTime":4.3708000000000002e-05,"systemTime":0,"id":590,"basePriority":31,"name":"VM_pressure","user_usec":43,"schedPriority":31,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,11512208]},"379":{"continuation":[0,17073432],"userTime":7.7079999999999997e-06,"systemTime":0,"id":379,"basePriority":81,"name":"AppleT8020DART","user_usec":7,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108047621]},"493":{"continuation":[0,17073432],"userTime":1.8291000000000002e-05,"systemTime":0,"id":493,"basePriority":81,"name":"InterruptEventSourceBridge","user_usec":18,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108814549]},"582":{"continuation":[0,17073432],"userTime":2.6665999999999998e-05,"systemTime":0,"id":582,"basePriority":81,"name":"AppleImage4","user_usec":26,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108045621]},"485":{"continuation":[0,17073432],"userTime":7.1250000000000004e-06,"systemTime":0,"id":485,"basePriority":81,"user_usec":7,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108754853]},"299":{"continuation":[0,17073432],"userTime":1.0499999999999999e-05,"systemTime":0,"id":299,"basePriority":81,"name":"AppleT8015TempSensor","user_usec":10,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108749253]},"591":{"continuation":[0,11450680],"userTime":3.0833000000000001e-05,"systemTime":0,"id":591,"basePriority":91,"name":"VM_object_reaper_thread","user_usec":30,"schedPriority":91,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44226864]},"494":{"userTime":4.7207999999999999e-05,"systemTime":0,"system_usec":0,"id":494,"basePriority":81,"user_usec":47,"kernelFrames":[[0,10811944],[0,10806204],[0,10735256],[0,15215796],[0,31002560],[0,17959260]],"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43996780]},"389":{"continuation":[0,17073432],"userTime":8.3329999999999997e-06,"systemTime":0,"id":389,"basePriority":81,"name":"AppleT8020DART","user_usec":8,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108038341]},"592":{"continuation":[0,11224064],"userTime":0.00019279099999999999,"systemTime":0,"id":592,"basePriority":91,"user_usec":192,"system_usec":0,"schedPriority":91,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43720540]},"495":{"userTime":0.015343125000000001,"systemTime":0,"system_usec":0,"id":495,"basePriority":81,"user_usec":15343,"kernelFrames":[[0,10811944],[0,10806204],[0,10735932],[0,15215380],[0,31019516],[0,17959260]],"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44300080]},"584":{"continuation":[0,11730564],"userTime":0.47533399999999998,"systemTime":0,"id":584,"basePriority":95,"user_usec":475334,"system_usec":0,"schedPriority":95,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,11730564]},"479":{"continuation":[0,17073432],"userTime":5.0832999999999999e-05,"systemTime":0,"id":479,"basePriority":81,"name":"AppleHIDTransportDeviceSPI","user_usec":50,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108742853]},"593":{"id":593,"schedPriority":91,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"schedFlags":["TH_SFLAG_PENDING_THROTTLE_PROMOTION"],"user_usec":296,"basePriority":91,"userTime":0.00029645799999999999,"waitEvent":[0,43746944],"continuation":[0,11508852],"systemTime":0,"name":"VM_compressor"},"649":{"continuation":[0,10963132],"userTime":0.051122582999999999,"name":"thread call kernel-high #2","id":649,"basePriority":92,"user_usec":51122,"system_usec":0,"schedPriority":92,"state":["TH_WAIT","TH_UNINT"],"systemTime":0},"594":{"continuation":[0,11254360],"userTime":8.1082999999999996e-05,"systemTime":0,"id":594,"basePriority":91,"name":"VM_swapout","user_usec":81,"schedPriority":91,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43720760]},"586":{"continuation":[0,17073432],"userTime":9.3749999999999992e-06,"systemTime":0,"id":586,"basePriority":81,"name":"AppleMobileApNonce","user_usec":9,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108818869]},"489":{"continuation":[0,17073432],"userTime":0.00043425000000000001,"systemTime":0,"id":489,"basePriority":81,"name":"IOSurfaceRoot","user_usec":434,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108820869]},"595":{"continuation":[0,11256972],"userTime":0.000147291,"systemTime":0,"id":595,"basePriority":91,"name":"VM_swapfile_create","user_usec":147,"schedPriority":91,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43738900]},"579":{"continuation":[0,17073432],"userTime":6.4160000000000001e-06,"systemTime":0,"id":579,"basePriority":81,"name":"AppleEffaceableBlockDevice","user_usec":6,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108817989]},"596":{"continuation":[0,11257808],"userTime":0.00010754100000000001,"systemTime":0,"id":596,"basePriority":91,"name":"VM_swapfile_gc","user_usec":107,"schedPriority":91,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43738904]},"499":{"continuation":[0,17073432],"userTime":0.0063709999999999999,"systemTime":0,"id":499,"basePriority":81,"name":"InterruptEventSourceBridge","user_usec":6371,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108812869]},"588":{"continuation":[0,11515792],"userTime":0.000143375,"systemTime":0,"id":588,"basePriority":91,"name":"VM_pageout_external_iothread","user_usec":143,"schedPriority":91,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43747008]},"1534":{"continuation":[0,12888096],"userTime":0.000118083,"systemTime":0,"id":1534,"basePriority":81,"name":"dlil_input_utun0","user_usec":118,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427114484509]},"589":{"continuation":[0,11508036],"userTime":3.0916e-05,"systemTime":0,"id":589,"basePriority":31,"name":"VM_pageout_garbage_collect","user_usec":30,"schedPriority":31,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,11508036]},"598":{"continuation":[0,10963132],"systemTime":0,"name":"thread call kernel #1","id":598,"basePriority":81,"schedFlags":["TH_SFLAG_EAGERPREEMPT"],"user_usec":120385,"schedPriority":81,"system_usec":0,"state":["TH_WAIT"],"userTime":0.12038550000000001},"1535":{"continuation":[0,12921096],"userTime":0.00053562499999999997,"systemTime":0,"id":1535,"basePriority":82,"name":"ifnet_start_utun0","user_usec":535,"schedPriority":82,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427114482165]},"101":{"id":101,"schedPriority":4,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"schedFlags":["TH_SFLAG_EAGERPREEMPT"],"user_usec":460234,"basePriority":4,"userTime":0.46023437499999997,"waitEvent":[0,43760748],"continuation":[0,11508596],"systemTime":0,"name":"VM_pageout_scan"},"2038":{"continuation":[0,33821296],"userTime":0.00015408300000000001,"systemTime":0,"id":2038,"basePriority":31,"user_usec":154,"system_usec":0,"schedPriority":31,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427115523837]},"110":{"id":110,"schedPriority":81,"system_usec":0,"kernelFrames":[[0,10811944],[0,10806204],[0,10735256],[0,16885320],[0,17959260]],"schedFlags":["TH_SFLAG_RW_PROMOTED"],"user_usec":2726457,"state":["TH_WAIT","TH_UNINT"],"basePriority":81,"userTime":2.726457291,"waitEvent":[0,44281600],"systemTime":0,"name":"IOServiceTerminateThread"},"102":{"continuation":[0,10831028],"userTime":6.8808496659999996,"name":"idle #0","id":102,"basePriority":0,"user_usec":6880849,"system_usec":0,"schedPriority":0,"state":["TH_RUN","TH_IDLE"],"systemTime":0},"111":{"continuation":[0,17073432],"userTime":0.0087982080000000001,"systemTime":0,"id":111,"basePriority":81,"name":"AppleT803xIO","user_usec":8798,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109860485]},"103":{"continuation":[0,10815964],"userTime":0.17808154100000001,"systemTime":0,"id":103,"basePriority":95,"name":"sched_maintenance_thread","user_usec":178081,"schedPriority":95,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,10815964]},"104":{"continuation":[0,10760392],"userTime":0.62492562500000004,"systemTime":0,"id":104,"basePriority":80,"name":"daemon.deferred-deallocation","user_usec":624925,"schedPriority":80,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44122128]},"105":{"id":105,"schedPriority":93,"system_usec":0,"kernelFrames":[[0,10823088]],"state":["TH_WAIT","TH_UNINT"],"user_usec":0,"basePriority":93,"userTime":0,"waitEvent":[0,44126960],"continuation":[0,10760392],"systemTime":0,"name":"daemon.thread-stack"},"114":{"continuation":[0,17073432],"userTime":0.041293583000000002,"systemTime":0,"id":114,"basePriority":81,"name":"IOPMrootDomain","user_usec":41293,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109822117]},"106":{"id":106,"schedPriority":80,"system_usec":0,"kernelFrames":[[0,10823088]],"state":["TH_WAIT","TH_UNINT"],"user_usec":0,"basePriority":80,"userTime":0,"waitEvent":[0,44126832],"continuation":[0,10760392],"systemTime":0,"name":"daemon.thread-exception"},"140":{"continuation":[0,10963132],"userTime":0.99422587500000004,"name":"thread call kernel-high #1","id":140,"basePriority":92,"user_usec":994225,"system_usec":0,"schedPriority":92,"state":["TH_WAIT","TH_UNINT"],"systemTime":0},"115":{"continuation":[0,10963132],"userTime":0.079787790999999997,"name":"thread call high #1","id":115,"basePriority":93,"user_usec":79787,"system_usec":0,"schedPriority":93,"state":["TH_WAIT","TH_UNINT"],"systemTime":0},"107":{"userTime":0.00021479100000000001,"systemTime":0,"system_usec":0,"id":107,"basePriority":95,"user_usec":214,"kernelFrames":[[0,10811944],[0,10806204],[0,11068420],[0,17959260]],"schedPriority":95,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43667430]},"221":{"continuation":[0,17073432],"userTime":9.0829999999999993e-06,"systemTime":0,"id":221,"basePriority":81,"name":"AppleSamsungSerial","user_usec":9,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108039941]},"141":{"continuation":[0,17073432],"userTime":6.9160000000000004e-06,"systemTime":0,"id":141,"basePriority":81,"name":"AppleARMBacklight","user_usec":6,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109865045]},"230":{"continuation":[0,17073432],"userTime":6.5409999999999997e-06,"systemTime":0,"id":230,"basePriority":81,"name":"AppleS5L8940XI2CController","user_usec":6,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108039861]},"116":{"continuation":[0,17073432],"userTime":0.00020945800000000001,"systemTime":0,"id":116,"basePriority":81,"name":"AppleT8030PCIe","user_usec":209,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109863445]},"108":{"userTime":7.7291000000000002e-05,"systemTime":0,"system_usec":0,"id":108,"basePriority":95,"user_usec":77,"kernelFrames":[[0,10811944],[0,10806204],[0,11068420],[0,17959260]],"schedPriority":95,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43667566]},"222":{"continuation":[0,17073432],"userTime":5.2079999999999999e-06,"systemTime":0,"id":222,"basePriority":81,"name":"AppleSamsungSerial","user_usec":5,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108046341]},"142":{"continuation":[0,17073432],"userTime":4.4159999999999997e-06,"systemTime":0,"id":142,"basePriority":81,"name":"AppleARMSlowAdaptiveClockingManager","user_usec":4,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109860725]},"231":{"continuation":[0,17073432],"userTime":0.0047230409999999999,"systemTime":0,"id":231,"basePriority":81,"name":"AppleT8015SPMIController","user_usec":4723,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108047781]},"109":{"continuation":[0,10962140],"userTime":0.0010127910000000001,"name":"thread_call_daemon","id":109,"basePriority":94,"user_usec":1012,"system_usec":0,"schedPriority":94,"state":["TH_WAIT","TH_UNINT"],"systemTime":0},"223":{"continuation":[0,17073432],"userTime":5.4580000000000001e-06,"systemTime":0,"id":223,"basePriority":81,"name":"AppleSamsungSPIController","user_usec":5,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108047061]},"401":{"continuation":[0,10963132],"userTime":1.144385625,"name":"thread call high #2","id":401,"basePriority":93,"user_usec":1144385,"system_usec":0,"schedPriority":93,"state":["TH_WAIT","TH_UNINT"],"systemTime":0},"240":{"continuation":[0,17073432],"userTime":5.9159999999999998e-06,"systemTime":0,"id":240,"basePriority":81,"name":"AUC","user_usec":5,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108036901]},"304":{"continuation":[0,17073432],"userTime":2.1625e-05,"systemTime":0,"id":304,"basePriority":81,"name":"AppleT8015TempSensor","user_usec":21,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108748533]},"232":{"continuation":[0,17073432],"userTime":5.2079999999999999e-06,"systemTime":0,"id":232,"basePriority":81,"name":"AppleT8015SPMIController","user_usec":5,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108047941]},"135":{"continuation":[0,11450072],"userTime":0.0055355409999999997,"systemTime":0,"id":135,"basePriority":95,"name":"VM_io_reprioritize_thread","user_usec":5535,"schedPriority":95,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43746744]},"224":{"continuation":[0,17073432],"userTime":5.0830000000000003e-06,"systemTime":0,"id":224,"basePriority":81,"name":"AppleSamsungSPIController","user_usec":5,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108039621]},"241":{"continuation":[0,17073432],"userTime":2.8458000000000001e-05,"systemTime":0,"id":241,"basePriority":81,"name":"IOAsynchronousScheduler","user_usec":28,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108049621]},"330":{"continuation":[0,17073432],"userTime":2.9791e-05,"systemTime":0,"id":330,"basePriority":81,"name":"AppleT8020DART","user_usec":29,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108045141]},"144":{"continuation":[0,17073432],"userTime":0.00103775,"systemTime":0,"id":144,"basePriority":81,"name":"AppleCredentialManager","user_usec":1037,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108042501]},"233":{"continuation":[0,17073432],"userTime":4.9579999999999998e-06,"systemTime":0,"id":233,"basePriority":81,"name":"AppleT8015SPMIController","user_usec":4,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108038821]},"322":{"continuation":[0,17073432],"userTime":9.6660000000000003e-06,"systemTime":0,"id":322,"basePriority":81,"name":"AppleT8015TempSensor","user_usec":9,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108745573]},"136":{"continuation":[0,15216236],"userTime":0.00015541599999999999,"systemTime":0,"id":136,"basePriority":81,"user_usec":155,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44232952]},"225":{"continuation":[0,17073432],"userTime":0.00045962500000000002,"systemTime":0,"id":225,"basePriority":81,"name":"AppleS5L8940XI2CController","user_usec":459,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108047221]},"314":{"continuation":[0,17073432],"userTime":9.7079999999999992e-06,"systemTime":0,"id":314,"basePriority":81,"name":"AppleT8015TempSensor","user_usec":9,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108749173]},"403":{"continuation":[0,17073432],"userTime":0.0004685,"systemTime":0,"id":403,"basePriority":81,"name":"AppleT8030USBXHCI@00000000","user_usec":468,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108048021]},"411":{"continuation":[0,17073432],"userTime":0.00086783300000000004,"systemTime":0,"id":411,"basePriority":81,"name":"AppleICA60","user_usec":867,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108751733]},"153":{"continuation":[0,17073432],"userTime":5.8329999999999999e-06,"systemTime":0,"id":153,"basePriority":81,"name":"AppleUSBHostResources","user_usec":5,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108042661]},"145":{"continuation":[0,17073432],"userTime":6.6660000000000002e-06,"systemTime":0,"id":145,"basePriority":81,"name":"AppleIPDormancyHandler","user_usec":6,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109862965]},"331":{"continuation":[0,17073432],"userTime":8.5830000000000007e-06,"systemTime":0,"id":331,"basePriority":81,"name":"IOSlowAdaptiveClockingDomain","user_usec":8,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108749653]},"420":{"id":420,"schedPriority":80,"system_usec":0,"kernelFrames":[[0,10811944],[0,10806204],[0,10735256],[0,16843928],[0,20510744],[0,20510228],[0,16836404],[0,16835024],[0,16827552],[0,16851348],[0,17959260]],"schedFlags":["TH_SFLAG_RW_PROMOTED"],"user_usec":1789,"state":["TH_WAIT","TH_UNINT"],"basePriority":80,"userTime":0.0017893749999999999,"waitEvent":[1,15838000454697592933],"systemTime":0,"name":"IOConfigThread_'RTBuddyService'"},"137":{"continuation":[0,17073432],"userTime":2.5165999999999999e-05,"systemTime":0,"id":137,"basePriority":81,"name":"AppleM68Buttons","user_usec":25,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109864645]},"226":{"continuation":[0,17073432],"userTime":0.0066937910000000002,"systemTime":0,"id":226,"basePriority":81,"name":"AppleS5L8940XI2CController","user_usec":6693,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108040181]},"250":{"continuation":[0,17073432],"userTime":3.4499999999999998e-05,"systemTime":0,"id":250,"basePriority":81,"name":"AppleSynopsysMIPIDSIController","user_usec":34,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108041221]},"332":{"userTime":0.000128708,"systemTime":0,"system_usec":0,"id":332,"basePriority":81,"schedFlags":["TH_SFLAG_RW_PROMOTED"],"user_usec":128,"schedPriority":81,"kernelFrames":[[0,10811944],[0,10806204],[0,10735256],[0,17071620],[0,30919416],[0,17090816],[0,30920360],[0,17959260]],"state":["TH_WAIT"],"waitEvent":[1,15838000427112534711]},"421":{"continuation":[0,17073432],"userTime":0.0022141249999999999,"systemTime":0,"id":421,"basePriority":81,"name":"AppleSEPManager","user_usec":2214,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108048661]},"235":{"continuation":[0,17073432],"userTime":3.2375000000000001e-05,"systemTime":0,"id":235,"basePriority":81,"name":"AppleSSE","user_usec":32,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108037381]},"138":{"continuation":[0,17073432],"userTime":8.4999999999999999e-06,"systemTime":0,"id":138,"basePriority":81,"name":"IOAccessoryDock0PinBuiltin","user_usec":8,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109860565]},"227":{"continuation":[0,17073432],"userTime":0.000235333,"systemTime":0,"id":227,"basePriority":81,"name":"AppleS5L8940XI2CController","user_usec":235,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108039461]},"341":{"continuation":[0,17073432],"userTime":1.4749999999999999e-05,"systemTime":0,"id":341,"basePriority":81,"name":"AppleT8020DART","user_usec":14,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108041301]},"405":{"continuation":[0,17073432],"userTime":7.6666000000000001e-05,"systemTime":0,"id":405,"basePriority":81,"name":"AppleSEPManager","user_usec":76,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108046741]},"219":{"continuation":[0,17073432],"userTime":7.3749999999999997e-06,"systemTime":0,"id":219,"basePriority":81,"name":"AppleT8030PMGR","user_usec":7,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108040981]},"413":{"userTime":0.0042548330000000004,"systemTime":0,"name":"AppleS8000AESAccelerator",
+INFERNO_CRASH_PREFIX_END bytes=32768
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/Panics type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/Assistant type=4
+INFERNO_LOG_DIRECTORY /private/var/logs/CrashReporter opened=0 errno=2
+INFERNO_LOG_DIRECTORY /private/var/log opened=1 errno=2
+INFERNO_LOG_ENTRY /private/var/log/. type=4
+INFERNO_LOG_ENTRY /private/var/log/.. type=4
+INFERNO_LOG_ENTRY /private/var/log/mDNSResponder type=4
+INFERNO_LOG_ENTRY /private/var/log/asl type=4
+INFERNO_LOG_ENTRY /private/var/log/ppp type=4
+INFERNO_LOG_ENTRY /private/var/log/com.apple.xpc.launchd type=4
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=6 result=0
+2026-10-06 03:50:57.763 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=6 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=6 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:50:57.764 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=6 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=7 result=0
+2026-10-06 03:51:00.790 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=7 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=7 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:00.795 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=7 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=8 result=0
+2026-10-06 03:51:03.876 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=8 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=8 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:03.880 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=8 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=9 result=0
+2026-10-06 03:51:06.998 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=9 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=9 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:07.002 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=9 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_UNLOCK_STAGE dlopen
+INFERNO_UNLOCK_STAGE resolve-symbols
+INFERNO_UNLOCK_STAGE query-state-before
+AppleSEPKeyStore:10649:68: operation failed (sel: 17 ret: e00002bc)
+INFERNO_UNLOCK_STAGE query-first-before
+INFERNO_UNLOCK_BEFORE state=-1 unlocked_since_boot=0
+INFERNO_UNLOCK_STAGE single-empty-attempt
+INFERNO_UNLOCK_SINGLE_EMPTY_ATTEMPT result=0
+INFERNO_UNLOCK_STAGE query-state-after
+AppleSEPKeyStore:10649:68: operation failed (sel: 17 ret: e00002bc)
+INFERNO_UNLOCK_STAGE query-first-after
+INFERNO_UNLOCK_AFTER state=-1 unlocked_since_boot=1
+INFERNO_UNLOCK_STAGE access-after
+INFERNO_UNLOCK_DATA_ACCESS phase=after result=-1 errno=1
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=10 result=0
+2026-10-06 03:51:10.029 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=10 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=10 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:10.033 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=10 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=11 result=0
+2026-10-06 03:51:13.145 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=11 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=11 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:13.147 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=11 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=12 result=0
+2026-10-06 03:51:16.263 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=12 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=12 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:16.266 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=12 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=13 result=0
+2026-10-06 03:51:19.280 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=13 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=13 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:19.283 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=13 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+AppleSEPKeyStore:10661:0: AppleKeyStoreUserClient: Assertion timer fired
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=14 result=0
+2026-10-06 03:51:22.395 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=14 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=14 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:22.401 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=14 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=15 result=0
+2026-10-06 03:51:25.487 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=15 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=15 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:25.488 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=15 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_READINESS_BEGIN seconds=45
+  PID  PPID STAT COMM
+    1     0 Ss   /sbin/launchd
+   27     1 Ss   /usr/libexec/UserEventAgent
+   28     1 Ss   /usr/libexec/logd
+   29     1 Ss   /System/Library/PrivateFrameworks/AssistantServices.framework/assistantd
+   30     1 Ss   /usr/libexec/runningboardd
+   31     1 Ss   /usr/libexec/fseventsd
+   32     1 Ss   /usr/sbin/mediaserverd
+   33     1 Ss   /System/Library/PrivateFrameworks/MediaRemote.framework/Support/mediaremoted
+   34     1 Ss   /usr/libexec/routined
+   35     1 Ss   /usr/libexec/misd
+   36     1 Ss   /usr/libexec/configd
+   37     1 Ss   /System/Library/Frameworks/HealthKit.framework/healthd
+   39     1 Ss   /System/Library/CoreServices/powerd.bundle/powerd
+   40     1 Ss   /usr/libexec/atc
+   41     1 Ss   /usr/sbin/WirelessRadioManagerd
+   42     1 Ss   /usr/bin/inferno-exec-launcher
+   43     1 Ss   /usr/libexec/keybagd
+   44     1 Ss   /usr/libexec/remoted
+   46     1 Ss   /System/Library/PrivateFrameworks/FamilyNotification.framework/familynotificationd
+   47     1 Ss   /usr/sbin/wifid
+   48     1 Ss   /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/Support/fud
+   49     1 Ss   /System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/Support/softwareupdated
+   50     1 Ss   /System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd
+   51     1 Ss   /usr/libexec/seld
+   52     1 Ss   /System/Library/PrivateFrameworks/IDS.framework/identityservicesd.app/identityservicesd
+   55     1 Ss   /usr/libexec/wcd
+   56     1 Ss   /System/Library/PrivateFrameworks/CoreDuetContext.framework/Resources/contextstored
+   58     1 Ss   /usr/libexec/thermalmonitord
+   59     1 Ss   /System/Library/PrivateFrameworks/AskPermission.framework/Support/askpermissiond
+   60     1 Ss   /usr/libexec/backboardd
+   61     1 Ss   /usr/libexec/sharingd
+   62     1 Ss   /usr/libexec/timed
+   63     1 Ss   /usr/bin/inferno-readiness
+   64     1 Ss   /usr/libexec/cloudpaird
+   65     1 Ss   /usr/libexec/containermanagerd
+   66     1 Ss   /System/Library/PrivateFrameworks/IMCore.framework/imagent.app/imagent
+   67     1 Ss   /System/Library/PrivateFrameworks/NanoPreferencesSync.framework/nanoprefsyncd
+   69     1 Ss   /usr/libexec/lockdownd
+   70     1 Ss   /System/Library/PrivateFrameworks/SleepDaemon.framework/sleepd
+   71     1 Ss   /System/Library/PrivateFrameworks/AggregateDictionary.framework/Support/aggregated
+   72     1 Ss   OTACrashCopier
+   73     1 Ss   /usr/sbin/distnoted
+   75     1 Ss   /System/Library/PrivateFrameworks/AppleCredentialManager.framework/AppleCredentialManagerDaemon
+   76     1 Ss   /System/Library/PrivateFrameworks/MapsSupport.framework/navd
+   77     1 Ss   /usr/libexec/peakpowermanagerd
+   78     1 Ss   /usr/libexec/remindd
+   79     1 Ss   /usr/sbin/notifyd
+   80     1 Ss   /usr/libexec/rapportd
+   83     1 Ss   /System/Library/PrivateFrameworks/AppleMediaServices.framework/amsaccountsd
+   84     1 Ss   /usr/sbin/fairplayd.H2
+   85     1 Ss   /usr/sbin/cfprefsd
+   86     1 Ss   /usr/libexec/pfd
+   87     1 Ss   /usr/libexec/dasd
+   88     1 Ss   /usr/libexec/PowerUIAgent
+   89     1 Ss   /System/Library/PrivateFrameworks/WirelessDiagnostics.framework/Support/awdd
+   90     1 Ss   /usr/libexec/lsd
+   91     1 Ss   /System/Library/PrivateFrameworks/CoreAccessories.framework/XPCServices/ACCHWComponentAuthService.xpc/ACCHWComponentAuthService
+   92     1 Ss   /usr/libexec/MobileGestaltHelper
+   93     1 Ss   /usr/libexec/mobileassetd
+   94     1 Ss   /usr/libexec/coreduetd
+   95     1 Ss   /System/Library/CoreServices/osanalyticshelper
+   96     1 Ss   /usr/libexec/nanoregistryd
+   97     1 Ss   /System/Library/PrivateFrameworks/ApplePushService.framework/apsd
+   98     1 Ss   /usr/libexec/securityd
+   99     1 Ss   /System/Library/Frameworks/Accounts.framework/accountsd
+  100     1 Ss   /System/Library/PrivateFrameworks/WiFiPolicy.framework/XPCServices/WiFiCloudAssetsXPCService.xpc/WiFiCloudAssetsXPCService
+  102     1 Ss   /usr/libexec/nsurlsessiond
+  103     1 Ss   /System/Library/PrivateFrameworks/TCC.framework/tccd
+  105     1 Ss   /System/Library/PrivateFrameworks/IMDPersistence.framework/XPCServices/IMDPersistenceAgent.xpc/IMDPersistenceAgent
+  106     1 Ss   /usr/libexec/rtcreportingd
+  107     1 Ss   /usr/libexec/nehelper
+  108     1 Ss   /usr/libexec/symptomsd
+  109     1 Ss   /System/Library/PrivateFrameworks/DataMigration.framework/XPCServices/com.apple.datamigrator.xpc/com.apple.datamigrator
+  110     1 Ss   /System/Library/PrivateFrameworks/CarKit.framework/Support/carkitd
+  111     1 Ss   /System/Library/PrivateFrameworks/GeoServices.framework/geod
+  112     1 Ss   /usr/libexec/findmydeviced
+  113     1 Ss   /usr/libexec/fmflocatord
+  114     1 Ss   /usr/sbin/mDNSResponder
+  115     1 Ss   /System/Library/PrivateFrameworks/PassKitCore.framework/passd
+  116     1 Ss   /System/Library/PrivateFrameworks/CalendarDaemon.framework/Support/calaccessd
+  117     1 Ss   /Applications/PreBoard.app/PreBoard
+  118     1 Ss   /usr/libexec/misagent
+  119     1 Ss   /System/Library/PrivateFrameworks/FontServices.framework/Support/fontservicesd
+  120     1 Ss   /System/Library/CoreServices/SpringBoard.app/SpringBoard
+  121     1 Ss   /usr/libexec/searchpartyd
+  123     1 Ss   /System/Library/PrivateFrameworks/CoreAnalytics.framework/Support/analyticsd
+  124     1 Ss   /usr/libexec/wifianalyticsd
+  125     1 Ss   /System/Library/PrivateFrameworks/CallHistory.framework/Support/CallHistorySyncHelper
+  126     1 Ss   /System/Library/PrivateFrameworks/CacheDelete.framework/deleted
+  127     1 Ss   /System/Library/Frameworks/Security.framework/CloudKeychainProxy.bundle/CloudKeychainProxy
+  128     1 Ss   /System/Library/PrivateFrameworks/AssistantServices.framework/XPCServices/com.apple.siri.embeddedspeech.xpc/com.apple.siri.embeddedspeech
+  129     1 Ss   /usr/sbin/mDNSResponderHelper
+  130     1 Ss   /usr/libexec/seserviced
+  131     1 Ss   /System/Library/PrivateFrameworks/CoreSpeech.framework/corespeechd
+  132     1 Ss   /System/Library/PrivateFrameworks/SyncedDefaults.framework/Support/syncdefaultsd
+  133     1 Ss   /System/Library/PrivateFrameworks/CloudKitDaemon.framework/Support/cloudd
+  134     1 Ss   /usr/libexec/fmfd
+  135     1 Ss   /System/Library/PrivateFrameworks/MusicLibrary.framework/Support/medialibraryd
+  136     1 Ss   /usr/libexec/logd_helper
+  137     1 Ss   /usr/libexec/networkserviceproxy
+  139     1 Ss   /System/Library/PrivateFrameworks/CoreAccessories.framework/Support/accessoryd
+  141     1 Ss   /System/Library/PrivateFrameworks/TelephonyUtilities.framework/callservicesd
+  143     1 Ss   /System/Library/PrivateFrameworks/HomeKitDaemon.framework/Support/homed
+  145     1 Ss   /usr/libexec/pkd
+  146     1 Ss   /System/Library/PrivateFrameworks/UserActivity.framework/Agents/useractivityd
+  147     1 Ss   /System/Library/PrivateFrameworks/ScreenTimeCore.framework/ScreenTimeAgent
+  148     1 Ss   /usr/libexec/dmd
+  150     1 Ss   /usr/libexec/profiled
+  151     1 Ss   /System/Library/PrivateFrameworks/FontServices.framework/XPCServices/com.apple.FontServices.UserFontManager.xpc/com.apple.FontServices.UserFontManager
+  152     1 Ss   /usr/libexec/nanoregistrylaunchd
+  153     1 Ss   /System/Library/PrivateFrameworks/VoiceServices.framework/Support/voiced
+  154    42 S    /usr/bin/inferno-launcher
+  156     1 Ss   /System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/XPCServices/com.apple.MobileSoftwareUpdate.CleanupPreparePathService.xpc/com.apple.MobileSoftwareUpdate.CleanupPreparePathService
+  157     1 Ss   /usr/libexec/nfcd
+  158     1 Ss   /System/Library/PrivateFrameworks/CoreFollowUp.framework/followupd
+  159     1 Ss   /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/XPCServices/UARPUpdaterServiceHID.xpc/UARPUpdaterServiceHID
+  161     1 Ss   /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/XPCServices/GenericKextUpdaterService.xpc/GenericKextUpdaterService
+  168     1 Ss   /System/Library/PrivateFrameworks/MapsSupport.framework/mapspushd
+  169    63 R    /bin/ps
+INFERNO_READINESS_END seconds=45 status=0 ps_watchdog=600 timed_out=0
+INFERNO_FIXTURE_STAT /dev/console result=0 errno=0 mode=20622 uid=0 gid=0 size=0
+INFERNO_FIXTURE_STAT /usr/bin/inferno-launcher result=0 errno=0 mode=100755 uid=0 gid=0 size=67936
+INFERNO_FIXTURE_STAT /usr/bin/inferno-exec-launcher result=0 errno=0 mode=100755 uid=0 gid=0 size=67392
+INFERNO_FIXTURE_STAT /var result=0 errno=0 mode=120755 uid=0 gid=80 size=11
+INFERNO_FIXTURE_STAT /private/var result=0 errno=0 mode=40755 uid=0 gid=0 size=992
+INFERNO_FIXTURE_STAT /private/var/inferno result=0 errno=0 mode=40755 uid=0 gid=0 size=128
+INFERNO_FIXTURE_STAT /private/var/inferno/inferno-launcher result=0 errno=0 mode=100755 uid=0 gid=0 size=67952
+INFERNO_FIXTURE_STAT /private/var/inferno/InfernoProbe.app result=0 errno=0 mode=40755 uid=0 gid=0 size=128
+INFERNO_FIXTURE_STAT /private/var/inferno/InfernoProbe.app/InfernoProbe result=0 errno=0 mode=100755 uid=0 gid=0 size=71776
+INFERNO_FIXTURE_STAT /var/inferno/inferno-launcher result=0 errno=0 mode=100755 uid=0 gid=0 size=67952
+INFERNO_LOG_DIRECTORY /private/var/mobile/Library/Logs/CrashReporter opened=1 errno=0
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/. type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/.. type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/DiagnosticLogs type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/stacks+com.apple.datamigrator-2026-10-06-015846.ips type=8
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/Panics type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/Assistant type=4
+INFERNO_LOG_DIRECTORY /private/var/logs/CrashReporter opened=0 errno=2
+INFERNO_LOG_DIRECTORY /private/var/log opened=1 errno=2
+INFERNO_LOG_ENTRY /private/var/log/. type=4
+INFERNO_LOG_ENTRY /private/var/log/.. type=4
+INFERNO_LOG_ENTRY /private/var/log/mDNSResponder type=4
+INFERNO_LOG_ENTRY /private/var/log/asl type=4
+INFERNO_LOG_ENTRY /private/var/log/ppp type=4
+INFERNO_LOG_ENTRY /private/var/log/com.apple.xpc.launchd type=4
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=16 result=0
+2026-10-06 03:51:28.527 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=16 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=16 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:28.530 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=16 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=17 result=0
+2026-10-06 03:51:31.558 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=17 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=17 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:31.560 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=17 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=18 result=0
+2026-10-06 03:51:34.667 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=18 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=18 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:34.668 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=18 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=19 result=0
+2026-10-06 03:51:37.691 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=19 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=19 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:37.694 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=19 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=20 result=0
+2026-10-06 03:51:40.710 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=20 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=20 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:40.711 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=20 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=21 result=0
+2026-10-06 03:51:43.736 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=21 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=21 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:43.737 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=21 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=22 result=0
+2026-10-06 03:51:46.769 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=22 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=22 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:46.775 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=22 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=23 result=0
+2026-10-06 03:51:49.799 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=23 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=23 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:49.804 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=23 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=24 result=0
+2026-10-06 03:51:52.816 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=24 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=24 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:52.820 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=24 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=25 result=0
+2026-10-06 03:51:55.850 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=25 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=25 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:55.854 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=25 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=26 result=0
+2026-10-06 03:51:59.011 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=26 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=26 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:51:59.013 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=26 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=27 result=0
+2026-10-06 03:52:02.083 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=27 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=27 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:02.086 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=27 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+tx_flush:1075: disk0s1 xid 16454 tx stats: # 20 finish 20 enter 168 wait 0 0us close 3us flush 366793us
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=28 result=0
+2026-10-06 03:52:05.112 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=28 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=28 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:05.115 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=28 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=29 result=0
+2026-10-06 03:52:08.134 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=29 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=29 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:08.136 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=29 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=30 result=0
+2026-10-06 03:52:11.173 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=register-boolean attempt=30 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=30 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:11.176 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=proxy attempt=30 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=attempts-exhausted attempt=30 result=1
+2026-10-06 03:52:11.178 inferno-launcher[154:1751] INFERNO_LAUNCHER_V1 event=attempts-exhausted attempt=30 result=1
+INFERNO_READINESS_BEGIN seconds=90
+INFERNO_EXEC_WRAPPER_WAIT case=system-mobile-system-app raw=256 timed_out=0 expected=0
+INFERNO_EXEC_WRAPPER_BEGIN case=system-mobile-system-app path=/usr/bin/inferno-launcher watchdog=150 uid=0 gid=0
+  PID  PPID STAT COMM
+    1     0 Ss   /sbin/launchd
+INFERNO_EXEC_WRAPPER_CHILD uid=501 gid=501
+   27     1 Ss   /usr/libexec/UserEventAgent
+   28     1 Ss   /usr/libexec/logd
+INFERNO_EXEC_WRAPPER_CONSOLE_OPEN fd=3 errno=0 uid=501 gid=501
+   29     1 Ss   /System/Library/PrivateFrameworks/AssistantServices.framework/assistantd
+   30     1 Ss   /usr/libexec/runningboardd
+INFERNO_EXEC_WRAPPER_ACCESS x=0 xerrno=0 r=0 rerrno=0 fd=3 open_errno=0 read_bytes=16384 read_errno=0
+   31     1 Ss   /usr/libexec/fseventsd
+   32     1 Ss   /usr/sbin/mediaserverd
+   33     1 Ss   /System/Library/PrivateFrameworks/MediaRemote.framework/Support/mediaremoted
+   34     1 Ss   /usr/libexec/routined
+   35     1 Ss   /usr/libexec/misd
+   36     1 Ss   /usr/libexec/configd
+   37     1 Ss   /System/Library/Frameworks/HealthKit.framework/healthd
+   39     1 Ss   /System/Library/CoreServices/powerd.bundle/powerd
+   40     1 Ss   /usr/libexec/atc
+   41     1 Ss   /usr/sbin/WirelessRadioManagerd
+   42     1 ?s   (inferno-exec-lau)
+   43     1 Ss   /usr/libexec/keybagd
+   44     1 Ss   /usr/libexec/remoted
+   46     1 Ss   /System/Library/PrivateFrameworks/FamilyNotification.framework/familynotificationd
+   47     1 Ss   /usr/sbin/wifid
+   48     1 Ss   /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/Support/fud
+   49     1 Ss   /System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/Support/softwareupdated
+   50     1 Ss   /System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd
+   51     1 Ss   /usr/libexec/seld
+   52     1 Ss   /System/Library/PrivateFrameworks/IDS.framework/identityservicesd.app/identityservicesd
+   55     1 Ss   /usr/libexec/wcd
+   56     1 Ss   /System/Library/PrivateFrameworks/CoreDuetContext.framework/Resources/contextstored
+   58     1 Ss   /usr/libexec/thermalmonitord
+   59     1 Ss   /System/Library/PrivateFrameworks/AskPermission.framework/Support/askpermissiond
+   60     1 Ss   /usr/libexec/backboardd
+   61     1 Ss   /usr/libexec/sharingd
+   62     1 Ss   /usr/libexec/timed
+   63     1 Ss   /usr/bin/inferno-readiness
+   64     1 Ss   /usr/libexec/cloudpaird
+   65     1 Ss   /usr/libexec/containermanagerd
+   66     1 Ss   /System/Library/PrivateFrameworks/IMCore.framework/imagent.app/imagent
+   67     1 Ss   /System/Library/PrivateFrameworks/NanoPreferencesSync.framework/nanoprefsyncd
+   69     1 Ss   /usr/libexec/lockdownd
+   70     1 Ss   /System/Library/PrivateFrameworks/SleepDaemon.framework/sleepd
+   71     1 Ss   /System/Library/PrivateFrameworks/AggregateDictionary.framework/Support/aggregated
+   72     1 Ss   OTACrashCopier
+   73     1 Ss   /usr/sbin/distnoted
+   75     1 Ss   /System/Library/PrivateFrameworks/AppleCredentialManager.framework/AppleCredentialManagerDaemon
+   76     1 Ss   /System/Library/PrivateFrameworks/MapsSupport.framework/navd
+   77     1 Ss   /usr/libexec/peakpowermanagerd
+INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+   78     1 Ss   /usr/libexec/remindd
+   79     1 Ss   /usr/sbin/notifyd
+   80     1 Ss   /usr/libexec/rapportd
+   83     1 Ss   /System/Library/PrivateFrameworks/AppleMediaServices.framework/amsaccountsd
+   84     1 Ss   /usr/sbin/fairplayd.H2
+   85     1 Ss   /usr/sbin/cfprefsd
+   86     1 Ss   /usr/libexec/pfd
+   87     1 Ss   /usr/libexec/dasd
+   88     1 Ss   /usr/libexec/PowerUIAgent
+   89     1 Ss   /System/Library/PrivateFrameworks/WirelessDiagnostics.framework/Support/awdd
+   90     1 Ss   /usr/libexec/lsd
+   91     1 Ss   /System/Library/PrivateFrameworks/CoreAccessories.framework/XPCServices/ACCHWComponentAuthService.xpc/ACCHWComponentAuthService
+   92     1 Ss   /usr/libexec/MobileGestaltHelper
+   93     1 Ss   /usr/libexec/mobileassetd
+   94     1 Ss   /usr/libexec/coreduetd
+   95     1 Ss   /System/Library/CoreServices/osanalyticshelper
+   96     1 Ss   /usr/libexec/nanoregistryd
+   97     1 Ss   /System/Library/PrivateFrameworks/ApplePushService.framework/apsd
+2026-10-06 03:52:12.512 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+   98     1 Ss   /usr/libexec/securityd
+   99     1 Ss   /System/Library/Frameworks/Accounts.framework/accountsd
+  100     1 Ss   /System/Library/PrivateFrameworks/WiFiPolicy.framework/XPCServices/WiFiCloudAssetsXPCService.xpc/WiFiCloudAssetsXPCService
+  102     1 Ss   /usr/libexec/nsurlsessiond
+  103     1 Ss   /System/Library/PrivateFrameworks/TCC.framework/tccd
+  105     1 Ss   /System/Library/PrivateFrameworks/IMDPersistence.framework/XPCServices/IMDPersistenceAgent.xpc/IMDPersistenceAgent
+  106     1 Ss   /usr/libexec/rtcreportingd
+  107     1 Ss   /usr/libexec/nehelper
+  108     1 Ss   /usr/libexec/symptomsd
+  109     1 Ss   /System/Library/PrivateFrameworks/DataMigration.framework/XPCServices/com.apple.datamigrator.xpc/com.apple.datamigrator
+  110     1 Ss   /System/Library/PrivateFrameworks/CarKit.framework/Support/carkitd
+  111     1 Ss   /System/Library/PrivateFrameworks/GeoServices.framework/geod
+  112     1 Ss   /usr/libexec/findmydeviced
+  113     1 Ss   /usr/libexec/fmflocatord
+  114     1 Ss   /usr/sbin/mDNSResponder
+  115     1 Ss   /System/Library/PrivateFrameworks/PassKitCore.framework/passd
+  116     1 Ss   /System/Library/PrivateFrameworks/CalendarDaemon.framework/Support/calaccessd
+  117     1 Ss   /Applications/PreBoard.app/PreBoard
+  118     1 Ss   /usr/libexec/misagent
+  119     1 Ss   /System/Library/PrivateFrameworks/FontServices.framework/Support/fontservicesd
+  120     1 Ss   /System/Library/CoreServices/SpringBoard.app/SpringBoard
+  121     1 Ss   /usr/libexec/searchpartyd
+  123     1 Ss   /System/Library/PrivateFrameworks/CoreAnalytics.framework/Support/analyticsd
+  124     1 Ss   /usr/libexec/wifianalyticsd
+  125     1 Ss   /System/Library/PrivateFrameworks/CallHistory.framework/Support/CallHistorySyncHelper
+  126     1 Ss   /System/Library/PrivateFrameworks/CacheDelete.framework/deleted
+  127     1 Ss   /System/Library/Frameworks/Security.framework/CloudKeychainProxy.bundle/CloudKeychainProxy
+  128     1 Ss   /System/Library/PrivateFrameworks/AssistantServices.framework/XPCServices/com.apple.siri.embeddedspeech.xpc/com.apple.siri.embeddedspeech
+  129     1 Ss   /usr/sbin/mDNSResponderHelper
+  130     1 Ss   /usr/libexec/seserviced
+  131     1 Ss   /System/Library/PrivateFrameworks/CoreSpeech.framework/corespeechd
+  132     1 Ss   /System/Library/PrivateFrameworks/SyncedDefaults.framework/Support/syncdefaultsd
+  133     1 Ss   /System/Library/PrivateFrameworks/CloudKitDaemon.framework/Support/cloudd
+  134     1 Ss   /usr/libexec/fmfd
+  135     1 Ss   /System/Library/PrivateFrameworks/MusicLibrary.framework/Support/medialibraryd
+  136     1 Ss   /usr/libexec/logd_helper
+  137     1 Ss   /usr/libexec/networkserviceproxy
+  139     1 Ss   /System/Library/PrivateFrameworks/CoreAccessories.framework/Support/accessoryd
+  141     1 Ss   /System/Library/PrivateFrameworks/TelephonyUtilities.framework/callservicesd
+  143     1 Ss   /System/Library/PrivateFrameworks/HomeKitDaemon.framework/Support/homed
+  145     1 Ss   /usr/libexec/pkd
+  146     1 Ss   /System/Library/PrivateFrameworks/UserActivity.framework/Agents/useractivityd
+  147     1 Ss   /System/Library/PrivateFrameworks/ScreenTimeCore.framework/ScreenTimeAgent
+  148     1 Ss   /usr/libexec/dmd
+  150     1 Ss   /usr/libexec/profiled
+  151     1 Ss   /System/Library/PrivateFrameworks/FontServices.framework/XPCServices/com.apple.FontServices.UserFontManager.xpc/com.apple.FontServices.UserFontManager
+  152     1 Ss   /usr/libexec/nanoregistrylaunchd
+  153     1 Ss   /System/Library/PrivateFrameworks/VoiceServices.framework/Support/voiced
+  154    42 Z    (inferno-launcher)
+  156     1 Ss   /System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/XPCServices/com.apple.MobileSoftwareUpdate.CleanupPreparePathService.xpc/com.apple.MobileSoftwareUpdate.CleanupPreparePathService
+  157     1 Ss   /usr/libexec/nfcd
+  158     1 Ss   /System/Library/PrivateFrameworks/CoreFollowUp.framework/followupd
+  159     1 Ss   /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/XPCServices/UARPUpdaterServiceHID.xpc/UARPUpdaterServiceHID
+  161     1 Ss   /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/XPCServices/GenericKextUpdaterService.xpc/GenericKextUpdaterService
+  176     1 Ss   /System/Library/PrivateFrameworks/MapsSupport.framework/mapspushd
+  178    63 R    /bin/ps
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=1 result=0
+2026-10-06 03:52:12.567 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=1 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=1 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:12.568 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=1 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_READINESS_END seconds=90 status=0 ps_watchdog=600 timed_out=0
+INFERNO_FIXTURE_STAT /dev/console result=0 errno=0 mode=20622 uid=0 gid=0 size=0
+INFERNO_FIXTURE_STAT /usr/bin/inferno-launcher result=0 errno=0 mode=100755 uid=0 gid=0 size=67936
+INFERNO_FIXTURE_STAT /usr/bin/inferno-exec-launcher result=0 errno=0 mode=100755 uid=0 gid=0 size=67392
+INFERNO_FIXTURE_STAT /var result=0 errno=0 mode=120755 uid=0 gid=80 size=11
+INFERNO_FIXTURE_STAT /private/var result=0 errno=0 mode=40755 uid=0 gid=0 size=992
+INFERNO_FIXTURE_STAT /private/var/inferno result=0 errno=0 mode=40755 uid=0 gid=0 size=128
+INFERNO_FIXTURE_STAT /private/var/inferno/inferno-launcher result=0 errno=0 mode=100755 uid=0 gid=0 size=67952
+INFERNO_FIXTURE_STAT /private/var/inferno/InfernoProbe.app result=0 errno=0 mode=40755 uid=0 gid=0 size=128
+INFERNO_FIXTURE_STAT /private/var/inferno/InfernoProbe.app/InfernoProbe result=0 errno=0 mode=100755 uid=0 gid=0 size=71776
+INFERNO_FIXTURE_STAT /var/inferno/inferno-launcher result=0 errno=0 mode=100755 uid=0 gid=0 size=67952
+INFERNO_LOG_DIRECTORY /private/var/mobile/Library/Logs/CrashReporter opened=1 errno=0
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/. type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/.. type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/DiagnosticLogs type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/stacks+com.apple.datamigrator-2026-10-06-015846.ips type=8
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/Panics type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/Assistant type=4
+INFERNO_LOG_DIRECTORY /private/var/logs/CrashReporter opened=0 errno=2
+INFERNO_LOG_DIRECTORY /private/var/log opened=1 errno=2
+INFERNO_LOG_ENTRY /private/var/log/. type=4
+INFERNO_LOG_ENTRY /private/var/log/.. type=4
+INFERNO_LOG_ENTRY /private/var/log/mDNSResponder type=4
+INFERNO_LOG_ENTRY /private/var/log/asl type=4
+INFERNO_LOG_ENTRY /private/var/log/ppp type=4
+INFERNO_LOG_ENTRY /private/var/log/com.apple.xpc.launchd type=4
+ApplePinotLCD::_lcdEnable: enable: 0
+AppleDisplayPMUFunctionLDOEnable: this=<ptr> _dpmuTarget=<ptr> dpmuLDOSelect=0x1 options=0x2 private_data=0x0 enable=0 result=0x0
+IOMFBStatus IOMFB::UPPipe_H11P::set_run_mode_safe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H11P::RunMode): Int no need to defer: 2 -> 1
+IOMFBStatus IOMFB::UPPipe_H11P::set_run_mode_safe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H11P::RunMode): Int no need to defer: 1 -> 0
+virtual void PCCMailboxHandler::outbox_read_callback(uint32_t): unexpected command: 0
+virtual void PCCMailboxHandler::outbox_read_callback(uint32_t): unexpected command: 0
+virtual void PCCMailboxHandler::outbox_read_callback(uint32_t): unexpected command: 0
+virtual void PCCMailboxHandler::outbox_read_callback(uint32_t): unexpected command: 0
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=2 result=0
+2026-10-06 03:52:15.673 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=2 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=2 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:15.680 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=2 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=3 result=0
+2026-10-06 03:52:18.710 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=3 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=3 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:18.714 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=3 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=4 result=0
+2026-10-06 03:52:21.777 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=4 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=4 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:21.779 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=4 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=5 result=0
+2026-10-06 03:52:24.875 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=5 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=5 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:24.876 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=5 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=6 result=0
+2026-10-06 03:52:27.923 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=6 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=6 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:27.924 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=6 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=7 result=0
+2026-10-06 03:52:30.976 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=7 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=7 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:30.980 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=7 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=8 result=0
+2026-10-06 03:52:34.034 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=8 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=8 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:34.039 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=8 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=9 result=0
+2026-10-06 03:52:37.079 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=9 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=9 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:37.084 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=9 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=10 result=0
+2026-10-06 03:52:40.105 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=10 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=10 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:40.109 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=10 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=11 result=0
+2026-10-06 03:52:43.194 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=11 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=11 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:43.195 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=11 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=12 result=0
+2026-10-06 03:52:46.287 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=12 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=12 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:46.296 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=12 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=13 result=0
+2026-10-06 03:52:49.387 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=13 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=13 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:49.392 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=13 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=14 result=0
+2026-10-06 03:52:52.434 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=14 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=14 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:52.438 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=14 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=15 result=0
+2026-10-06 03:52:55.456 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=15 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=15 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:55.458 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=15 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=16 result=0
+2026-10-06 03:52:58.527 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=16 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=16 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:52:58.530 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=16 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=17 result=0
+2026-10-06 03:53:01.565 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=17 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=17 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:01.568 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=17 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=18 result=0
+2026-10-06 03:53:04.607 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=18 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=18 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:04.608 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=18 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=19 result=0
+2026-10-06 03:53:07.647 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=19 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=19 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:07.649 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=19 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=20 result=0
+2026-10-06 03:53:10.685 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=20 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=20 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:10.689 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=20 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_READINESS_BEGIN seconds=150
+  PID  PPID STAT COMM
+    1     0 Ss   /sbin/launchd
+   27     1 Ss   /usr/libexec/UserEventAgent
+   28     1 Ss   /usr/libexec/logd
+   29     1 Ss   /System/Library/PrivateFrameworks/AssistantServices.framework/assistantd
+   30     1 Ss   /usr/libexec/runningboardd
+   31     1 Ss   /usr/libexec/fseventsd
+   32     1 Ss   /usr/sbin/mediaserverd
+   33     1 Ss   /System/Library/PrivateFrameworks/MediaRemote.framework/Support/mediaremoted
+   34     1 Ss   /usr/libexec/routined
+   35     1 Ss   /usr/libexec/misd
+   36     1 Ss   /usr/libexec/configd
+   37     1 Ss   /System/Library/Frameworks/HealthKit.framework/healthd
+   39     1 Ss   /System/Library/CoreServices/powerd.bundle/powerd
+   40     1 Ss   /usr/libexec/atc
+   41     1 Ss   /usr/sbin/WirelessRadioManagerd
+   43     1 Ss   /usr/libexec/keybagd
+   44     1 Ss   /usr/libexec/remoted
+   46     1 Ss   /System/Library/PrivateFrameworks/FamilyNotification.framework/familynotificationd
+   47     1 Ss   /usr/sbin/wifid
+   49     1 Ss   /System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/Support/softwareupdated
+   50     1 Ss   /System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd
+   51     1 Ss   /usr/libexec/seld
+   52     1 Ss   /System/Library/PrivateFrameworks/IDS.framework/identityservicesd.app/identityservicesd
+   55     1 Ss   /usr/libexec/wcd
+   56     1 Ss   /System/Library/PrivateFrameworks/CoreDuetContext.framework/Resources/contextstored
+   58     1 Ss   /usr/libexec/thermalmonitord
+   59     1 Ss   /System/Library/PrivateFrameworks/AskPermission.framework/Support/askpermissiond
+   60     1 Ss   /usr/libexec/backboardd
+   61     1 Ss   /usr/libexec/sharingd
+   62     1 Ss   /usr/libexec/timed
+   63     1 Ss   /usr/bin/inferno-readiness
+   64     1 Ss   /usr/libexec/cloudpaird
+   65     1 Ss   /usr/libexec/containermanagerd
+   66     1 Ss   /System/Library/PrivateFrameworks/IMCore.framework/imagent.app/imagent
+   67     1 Ss   /System/Library/PrivateFrameworks/NanoPreferencesSync.framework/nanoprefsyncd
+   69     1 Ss   /usr/libexec/lockdownd
+   70     1 Ss   /System/Library/PrivateFrameworks/SleepDaemon.framework/sleepd
+   71     1 Ss   /System/Library/PrivateFrameworks/AggregateDictionary.framework/Support/aggregated
+   72     1 Ss   OTACrashCopier
+   73     1 Ss   /usr/sbin/distnoted
+   75     1 Ss   /System/Library/PrivateFrameworks/AppleCredentialManager.framework/AppleCredentialManagerDaemon
+   76     1 Ss   /System/Library/PrivateFrameworks/MapsSupport.framework/navd
+   77     1 Ss   /usr/libexec/peakpowermanagerd
+   78     1 Ss   /usr/libexec/remindd
+   79     1 Ss   /usr/sbin/notifyd
+   80     1 Ss   /usr/libexec/rapportd
+   83     1 Ss   /System/Library/PrivateFrameworks/AppleMediaServices.framework/amsaccountsd
+   84     1 Ss   /usr/sbin/fairplayd.H2
+   85     1 Ss   /usr/sbin/cfprefsd
+   86     1 Ss   /usr/libexec/pfd
+   87     1 Ss   /usr/libexec/dasd
+   88     1 Ss   /usr/libexec/PowerUIAgent
+   89     1 Ss   /System/Library/PrivateFrameworks/WirelessDiagnostics.framework/Support/awdd
+   90     1 Ss   /usr/libexec/lsd
+   91     1 Ss   /System/Library/PrivateFrameworks/CoreAccessories.framework/XPCServices/ACCHWComponentAuthService.xpc/ACCHWComponentAuthService
+   92     1 Ss   /usr/libexec/MobileGestaltHelper
+   93     1 Ss   /usr/libexec/mobileassetd
+   94     1 Ss   /usr/libexec/coreduetd
+   95     1 Ss   /System/Library/CoreServices/osanalyticshelper
+   96     1 Ss   /usr/libexec/nanoregistryd
+   97     1 Ss   /System/Library/PrivateFrameworks/ApplePushService.framework/apsd
+   98     1 Ss   /usr/libexec/securityd
+   99     1 Ss   /System/Library/Frameworks/Accounts.framework/accountsd
+  100     1 Ss   /System/Library/PrivateFrameworks/WiFiPolicy.framework/XPCServices/WiFiCloudAssetsXPCService.xpc/WiFiCloudAssetsXPCService
+  102     1 Ss   /usr/libexec/nsurlsessiond
+  103     1 Ss   /System/Library/PrivateFrameworks/TCC.framework/tccd
+  105     1 Ss   /System/Library/PrivateFrameworks/IMDPersistence.framework/XPCServices/IMDPersistenceAgent.xpc/IMDPersistenceAgent
+  106     1 Ss   /usr/libexec/rtcreportingd
+  107     1 Ss   /usr/libexec/nehelper
+  108     1 Ss   /usr/libexec/symptomsd
+  109     1 Ss   /System/Library/PrivateFrameworks/DataMigration.framework/XPCServices/com.apple.datamigrator.xpc/com.apple.datamigrator
+  110     1 Ss   /System/Library/PrivateFrameworks/CarKit.framework/Support/carkitd
+  111     1 Ss   /System/Library/PrivateFrameworks/GeoServices.framework/geod
+  112     1 Ss   /usr/libexec/findmydeviced
+  113     1 Ss   /usr/libexec/fmflocatord
+  114     1 Ss   /usr/sbin/mDNSResponder
+  115     1 Ss   /System/Library/PrivateFrameworks/PassKitCore.framework/passd
+  116     1 Ss   /System/Library/PrivateFrameworks/CalendarDaemon.framework/Support/calaccessd
+  117     1 Ss   /Applications/PreBoard.app/PreBoard
+  118     1 Ss   /usr/libexec/misagent
+  119     1 Ss   /System/Library/PrivateFrameworks/FontServices.framework/Support/fontservicesd
+  120     1 Ss   /System/Library/CoreServices/SpringBoard.app/SpringBoard
+  121     1 Ss   /usr/libexec/searchpartyd
+  123     1 Ss   /System/Library/PrivateFrameworks/CoreAnalytics.framework/Support/analyticsd
+  124     1 Ss   /usr/libexec/wifianalyticsd
+  125     1 Ss   /System/Library/PrivateFrameworks/CallHistory.framework/Support/CallHistorySyncHelper
+  126     1 Ss   /System/Library/PrivateFrameworks/CacheDelete.framework/deleted
+  127     1 Ss   /System/Library/Frameworks/Security.framework/CloudKeychainProxy.bundle/CloudKeychainProxy
+  128     1 Ss   /System/Library/PrivateFrameworks/AssistantServices.framework/XPCServices/com.apple.siri.embeddedspeech.xpc/com.apple.siri.embeddedspeech
+  129     1 Ss   /usr/sbin/mDNSResponderHelper
+  130     1 Ss   /usr/libexec/seserviced
+  131     1 Ss   /System/Library/PrivateFrameworks/CoreSpeech.framework/corespeechd
+  132     1 Ss   /System/Library/PrivateFrameworks/SyncedDefaults.framework/Support/syncdefaultsd
+  133     1 Ss   /System/Library/PrivateFrameworks/CloudKitDaemon.framework/Support/cloudd
+  134     1 Ss   /usr/libexec/fmfd
+  135     1 Ss   /System/Library/PrivateFrameworks/MusicLibrary.framework/Support/medialibraryd
+  136     1 Ss   /usr/libexec/logd_helper
+  137     1 Ss   /usr/libexec/networkserviceproxy
+  139     1 Ss   /System/Library/PrivateFrameworks/CoreAccessories.framework/Support/accessoryd
+  141     1 Ss   /System/Library/PrivateFrameworks/TelephonyUtilities.framework/callservicesd
+  143     1 Ss   /System/Library/PrivateFrameworks/HomeKitDaemon.framework/Support/homed
+  145     1 Ss   /usr/libexec/pkd
+  146     1 Ss   /System/Library/PrivateFrameworks/UserActivity.framework/Agents/useractivityd
+  147     1 Ss   /System/Library/PrivateFrameworks/ScreenTimeCore.framework/ScreenTimeAgent
+  148     1 Ss   /usr/libexec/dmd
+  150     1 Ss   /usr/libexec/profiled
+  151     1 Ss   /System/Library/PrivateFrameworks/FontServices.framework/XPCServices/com.apple.FontServices.UserFontManager.xpc/com.apple.FontServices.UserFontManager
+  152     1 Ss   /usr/libexec/nanoregistrylaunchd
+  153     1 Ss   /System/Library/PrivateFrameworks/VoiceServices.framework/Support/voiced
+  156     1 Ss   /System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/XPCServices/com.apple.MobileSoftwareUpdate.CleanupPreparePathService.xpc/com.apple.MobileSoftwareUpdate.CleanupPreparePathService
+  157     1 Ss   /usr/libexec/nfcd
+  158     1 Ss   /System/Library/PrivateFrameworks/CoreFollowUp.framework/followupd
+  179     1 Ss   /usr/bin/inferno-exec-launcher
+  180   179 S    /usr/bin/inferno-launcher
+  181     1 Ss   /usr/libexec/OTATaskingAgent
+  191     1 Ss   /System/Library/PrivateFrameworks/MapsSupport.framework/mapspushd
+  192    63 R    /bin/ps
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=21 result=0
+2026-10-06 03:53:13.786 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=21 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=21 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:13.799 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=21 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_READINESS_END seconds=150 status=0 ps_watchdog=600 timed_out=0
+INFERNO_FIXTURE_STAT /dev/console result=0 errno=0 mode=20622 uid=0 gid=0 size=0
+INFERNO_FIXTURE_STAT /usr/bin/inferno-launcher result=0 errno=0 mode=100755 uid=0 gid=0 size=67936
+INFERNO_FIXTURE_STAT /usr/bin/inferno-exec-launcher result=0 errno=0 mode=100755 uid=0 gid=0 size=67392
+INFERNO_FIXTURE_STAT /var result=0 errno=0 mode=120755 uid=0 gid=80 size=11
+INFERNO_FIXTURE_STAT /private/var result=0 errno=0 mode=40755 uid=0 gid=0 size=992
+INFERNO_FIXTURE_STAT /private/var/inferno result=0 errno=0 mode=40755 uid=0 gid=0 size=128
+INFERNO_FIXTURE_STAT /private/var/inferno/inferno-launcher result=0 errno=0 mode=100755 uid=0 gid=0 size=67952
+INFERNO_FIXTURE_STAT /private/var/inferno/InfernoProbe.app result=0 errno=0 mode=40755 uid=0 gid=0 size=128
+INFERNO_FIXTURE_STAT /private/var/inferno/InfernoProbe.app/InfernoProbe result=0 errno=0 mode=100755 uid=0 gid=0 size=71776
+INFERNO_FIXTURE_STAT /var/inferno/inferno-launcher result=0 errno=0 mode=100755 uid=0 gid=0 size=67952
+INFERNO_LOG_DIRECTORY /private/var/mobile/Library/Logs/CrashReporter opened=1 errno=0
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/. type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/.. type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/DiagnosticLogs type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/stacks+com.apple.datamigrator-2026-10-06-015846.ips type=8
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/Panics type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/Assistant type=4
+INFERNO_LOG_DIRECTORY /private/var/logs/CrashReporter opened=0 errno=2
+INFERNO_LOG_DIRECTORY /private/var/log opened=1 errno=2
+INFERNO_LOG_ENTRY /private/var/log/. type=4
+INFERNO_LOG_ENTRY /private/var/log/.. type=4
+INFERNO_LOG_ENTRY /private/var/log/mDNSResponder type=4
+INFERNO_LOG_ENTRY /private/var/log/asl type=4
+INFERNO_LOG_ENTRY /private/var/log/ppp type=4
+INFERNO_LOG_ENTRY /private/var/log/com.apple.xpc.launchd type=4
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=22 result=0
+2026-10-06 03:53:16.823 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=22 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=22 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:16.827 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=22 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=23 result=0
+2026-10-06 03:53:19.940 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=23 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=23 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:19.943 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=23 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=24 result=0
+2026-10-06 03:53:22.966 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=24 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=24 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:22.967 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=24 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=25 result=0
+2026-10-06 03:53:26.080 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=25 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=25 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:26.085 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=25 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=26 result=0
+2026-10-06 03:53:29.120 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=26 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=26 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:29.124 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=26 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=27 result=0
+2026-10-06 03:53:32.172 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=27 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=27 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:32.176 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=27 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=28 result=0
+2026-10-06 03:53:35.220 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=28 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=28 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:35.224 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=28 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=29 result=0
+2026-10-06 03:53:38.278 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=29 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=29 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:38.283 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=29 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=30 result=0
+2026-10-06 03:53:41.394 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=register-boolean attempt=30 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=30 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:41.397 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=proxy attempt=30 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=attempts-exhausted attempt=30 result=1
+2026-10-06 03:53:41.398 inferno-launcher[180:2070] INFERNO_LAUNCHER_V1 event=attempts-exhausted attempt=30 result=1
+INFERNO_EXEC_WRAPPER_WAIT case=system-mobile-system-app raw=256 timed_out=0 expected=0
+INFERNO_EXEC_WRAPPER_BEGIN case=system-mobile-system-app path=/usr/bin/inferno-launcher watchdog=150 uid=0 gid=0
+INFERNO_EXEC_WRAPPER_CHILD uid=501 gid=501
+INFERNO_EXEC_WRAPPER_CONSOLE_OPEN fd=3 errno=0 uid=501 gid=501
+INFERNO_EXEC_WRAPPER_ACCESS x=0 xerrno=0 r=0 rerrno=0 fd=3 open_errno=0 read_bytes=16384 read_errno=0
+INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+2026-10-06 03:53:41.721 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=1 result=0
+2026-10-06 03:53:41.769 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=register-boolean attempt=1 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=1 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:41.771 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=proxy attempt=1 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=2 result=0
+2026-10-06 03:53:44.871 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=register-boolean attempt=2 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=2 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:44.874 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=proxy attempt=2 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=3 result=0
+2026-10-06 03:53:47.895 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=register-boolean attempt=3 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=3 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:47.898 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=proxy attempt=3 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=4 result=0
+2026-10-06 03:53:50.968 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=register-boolean attempt=4 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=4 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:50.971 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=proxy attempt=4 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=5 result=0
+2026-10-06 03:53:53.981 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=register-boolean attempt=5 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=5 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:53.983 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=proxy attempt=5 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=6 result=0
+2026-10-06 03:53:57.060 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=register-boolean attempt=6 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=6 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:53:57.063 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=proxy attempt=6 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=7 result=0
+2026-10-06 03:54:00.085 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=register-boolean attempt=7 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=7 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:54:00.087 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=proxy attempt=7 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=8 result=0
+2026-10-06 03:54:03.109 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=register-boolean attempt=8 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=8 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:54:03.112 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=proxy attempt=8 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+INFERNO_LAUNCHER_V1 event=register-boolean attempt=9 result=0
+2026-10-06 03:54:06.133 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=register-boolean attempt=9 result=0
+INFERNO_LAUNCHER_V1 event=proxy attempt=9 valid=0 bundle=(nil) container=/var/mobile type=(nil)
+2026-10-06 03:54:06.140 inferno-launcher[198:2218] INFERNO_LAUNCHER_V1 event=proxy attempt=9 valid=0 bundle=(nil) container=/var/mobile type=(nil)
