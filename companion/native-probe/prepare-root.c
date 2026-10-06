@@ -115,6 +115,7 @@ int main(int argc, char **argv) {
         if (result) return 6;
     }
     if (!system_device[0] || !preboot_device[0]) { printf("INFERNO_PREP_MISSING_VOLUME\n"); return 7; }
+    if (!existing) {
     if (mount_at(system_device, "/mnt1", 1) || mount_at(preboot_device, "/mnt2", 0)) return 8;
     const char *prefix = "/mnt2/000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
     char path[256];
@@ -128,6 +129,7 @@ int main(int argc, char **argv) {
     }
     sync();
     if (unmount("/mnt2", 0) || unmount("/mnt1", 0)) return 11;
+    }
     if (gigalocker) {
         if (!xart_device[0] || ensure("/mnt7") || mount_at(xart_device, "/mnt7", 0)) return 12;
         char *init[] = {"/usr/libexec/seputil", "--gigalocker-init", 0};
