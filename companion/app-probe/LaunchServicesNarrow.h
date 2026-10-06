@@ -41,6 +41,8 @@ __attribute__((objc_root_class))
 - (NSString *)domain;
 - (long)code;
 - (NSString *)localizedDescription;
+- (NSString *)localizedFailureReason;
+- (NSDictionary *)userInfo;
 @end
 #endif
 @interface LSApplicationProxy : NSObject
