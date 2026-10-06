@@ -100,3 +100,37 @@ Role arguments were observed in an
 Use `--ramdisk-boot` when executing this helper: ordinary recovery mode creates
 a dummy NVMe device because firmware update is incomplete. Non-restore md0 boot
 exposes the actual copied root container while still running recovery launchd.
+
+## Executed Preboot preparation (2026-10-06)
+
+The run below used source `bd3166ab28` and a fresh copy of the immutable original
+System wrapper. Actual serial in `disk-preparation-6/serial.log` records Preboot
+creation, discovering System as disk0s1s1 and Preboot as disk0s1s3, mounting System
+read-only and Preboot writable, and `INFERNO_PREP_COMPLETE`. Both volumes were
+cleanly unmounted before that marker. The runner then received SIGTERM and shut
+QEMU down through QMP with exit0; its bounded-attempt flag is false because of
+this deliberate early stop, not a claim of completed installed-iOS boot.
+
+```sh
+./companion/run boot \
+  --binary "$PWD/.local-build/binaries/simulated-sep-tcg/qemu-system-aarch64" \
+  --manifest "$PWD/.local-build/binaries/simulated-sep-tcg/build-manifest.json" \
+  --profile /home/brandonin/.local/share/inferno/native-probe/helper-attempt-5/profile.json \
+  --ramdisk-boot \
+  --root-image /home/brandonin/.local/share/inferno/images/ios14b5/os-inspection/official-os-4k.raw \
+  --root-sha256 93f97dae602a8fc844f0f88819d3fe358b1cf14ee5e193b0beb7009376032594 \
+  --seconds 150 --output .local-build/reports/disk-preparation-6
+```
+
+The stopped output disk SHA256 is
+`53af49ef3f3b04bd948def736fa81eb3100613c3b6bfbfbf5bee6082399fcc51` at
+`.local-build/reports/disk-preparation-6/disks/root.raw`. Treat it as an immutable
+base for a subsequent disk-boot experiment, letting boot.py copy it again.
+
+A saved executable is not standalone: relocation changes its runtime data search
+paths. Preserve `.local-build/binaries/share/` alongside this snapshot. It contains
+`icons/hicolor/512x512/apps/CKQEMUBootSplash@2x.png` copied from upstream's
+`source/ui/icons/CKQEMUBootSplash_512x512@2x.png`, and `qemu/keymaps/` copied from
+upstream's `source/pc-bios/keymaps/`. Attempts3 and4 failed before guest execution
+because the relocated icon and then VNC `en-us` keymap were missing. The original
+local dependency libraries and build manifest must also remain available.
