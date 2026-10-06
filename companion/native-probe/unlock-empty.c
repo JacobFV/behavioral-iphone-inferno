@@ -13,8 +13,8 @@ static void data_access(const char *phase) {
     printf("INFERNO_UNLOCK_DATA_ACCESS phase=%s result=%d errno=%d\n",phase,result,error);fflush(0);
 }
 int main(void) {
-    static const char begin[]="INFERNO_UNLOCK_BEGIN watchdog=120 maximum_attempts=1\n";
-    write(1,begin,sizeof(begin)-1);alarm(120);
+    static const char begin[]="INFERNO_UNLOCK_BEGIN watchdog=600 maximum_attempts=1\n";
+    write(1,begin,sizeof(begin)-1);alarm(600);
     sleep(30);
     mark("INFERNO_UNLOCK_STAGE dlopen\n");
     void *framework=dlopen("/System/Library/PrivateFrameworks/MobileKeyBag.framework/MobileKeyBag",2);
