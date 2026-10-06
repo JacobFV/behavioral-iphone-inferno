@@ -29,6 +29,7 @@
 #include "qemu/log.h"
 #include "system/dma.h"
 #include "ui/console.h"
+#include "trace.h"
 
 #ifdef CONFIG_PIXMAN
 #include "pixman.h"
@@ -323,6 +324,9 @@ static void adp_v4_gp_read(ADPV4GenPipe *genpipe, AddressSpace *dma_as)
         qemu_log_mask(LOG_GUEST_ERROR,
                       "gp%d: dropping frame as it's compressed.\n",
                       genpipe->index);
+        trace_apple_adp_pipe(genpipe->index, "compressed", genpipe->state.config_control,
+                             genpipe->state.data_start, genpipe->state.stride,
+                             genpipe->state.src_width, genpipe->state.src_height, 0);
         return;
     }
 
@@ -343,6 +347,9 @@ static void adp_v4_gp_read(ADPV4GenPipe *genpipe, AddressSpace *dma_as)
     } else {
         qemu_log_mask(LOG_GUEST_ERROR, "gp%d: failed to read from DMA.\n",
                       genpipe->index);
+        trace_apple_adp_pipe(genpipe->index, "dma-failed", genpipe->state.config_control,
+                             genpipe->state.data_start, genpipe->state.stride,
+                             genpipe->state.src_width, genpipe->state.src_height, len);
     }
 }
 
@@ -554,19 +561,30 @@ static void adp_v4_reg_write(void *opaque, hwaddr addr, uint64_t data,
 
     switch (addr >> 2) {
     case R_CONTROL_INT_STATUS: {
+        uint32_t before = qatomic_read(&adp->int_status);
         ADP_INFO("disp: int status <- 0x%X", (uint32_t)data);
         qatomic_and(&adp->int_status, ~(uint32_t)data);
         adp_v4_update_irqs(adp);
+        trace_apple_adp_irq_write("status-w1c", data, before,
+                                  qatomic_read(&adp->int_status),
+                                  qatomic_read(&adp->int_enable));
         break;
     }
     case R_CONTROL_INT_ENABLE: {
+        uint32_t before = qatomic_read(&adp->int_enable);
         ADP_INFO("disp: int enable <- 0x%X", (uint32_t)data);
         qatomic_set(&adp->int_enable, (uint32_t)data);
         adp_v4_update_irqs(adp);
+        trace_apple_adp_irq_write("enable", data, before,
+                                  qatomic_read(&adp->int_status),
+                                  qatomic_read(&adp->int_enable));
         break;
     }
     case (0x4602C >> 2): {
         ADP_INFO("disp: REG_0x4602C <- 0x%X", (uint32_t)data);
+        trace_apple_adp_submit(data, (data & BIT32(12)) != 0,
+                               qatomic_read(&adp->int_status),
+                               qatomic_read(&adp->int_enable));
         if (data & BIT32(12)) {
             qemu_bh_schedule(adp->update_disp_image_bh);
         }
@@ -648,7 +666,7 @@ static void adp_v4_gfx_update(void *opaque)
     AppleDisplayPipeV4State *adp = opaque;
     DirtyBitmapSnapshot *snap;
     bool dirty;
-    uint32_t y, ys;
+    uint32_t y, ys, before;
 
     snap = memory_region_snapshot_and_clear_dirty(
         adp->vram_mr, adp->vram_off + adp->fb_off,
@@ -672,8 +690,11 @@ static void adp_v4_gfx_update(void *opaque)
     }
     g_free(snap);
 
+    before = qatomic_read(&adp->int_status);
     qatomic_or(&adp->int_status, R_CONTROL_INT_OUTPUT_READY_MASK);
     adp_v4_update_irqs(adp);
+    trace_apple_adp_output_ready(before, qatomic_read(&adp->int_status),
+                                qatomic_read(&adp->int_enable));
 }
 
 static const GraphicHwOps adp_v4_ops = {
@@ -900,6 +921,9 @@ static void adp_v4_gp_draw(ADPV4GenPipe *genpipe, AddressSpace *dma_as,
             0 ||
         REG_FIELD_EX32(genpipe->state.config_control, GP_CONFIG_CONTROL,
                        ENABLED) == 0) {
+        trace_apple_adp_pipe(genpipe->index, "disabled", genpipe->state.config_control,
+                             genpipe->state.data_start, genpipe->state.stride,
+                             genpipe->state.src_width, genpipe->state.src_height, 0);
         return;
     }
 
@@ -922,6 +946,14 @@ static void adp_v4_gp_draw(ADPV4GenPipe *genpipe, AddressSpace *dma_as,
 
         dpy_gfx_update(console, 0, 0, genpipe->state.dest_width,
                        genpipe->state.dest_height);
+        trace_apple_adp_pipe(genpipe->index, "drawn", genpipe->state.config_control,
+                             genpipe->state.data_start, genpipe->state.stride,
+                             genpipe->state.src_width, genpipe->state.src_height,
+                             genpipe->state.buf_len);
+    } else {
+        trace_apple_adp_pipe(genpipe->index, "no-buffer", genpipe->state.config_control,
+                             genpipe->state.data_start, genpipe->state.stride,
+                             genpipe->state.src_width, genpipe->state.src_height, 0);
     }
 }
 
@@ -930,6 +962,9 @@ static void adp_v4_update_disp_bh(void *opaque)
     AppleDisplayPipeV4State *adp = opaque;
     pixman_image_t *disp_image;
 
+    trace_apple_adp_bh("enter", adp->genpipe[0].state.config_control,
+                       adp->genpipe[1].state.config_control,
+                       qatomic_read(&adp->int_status), qatomic_read(&adp->int_enable));
     disp_image = qemu_console_surface(adp->console)->image;
 
     adp_v4_gp_draw(&adp->genpipe[0], &adp->dma_as, disp_image, adp->console);
@@ -937,6 +972,9 @@ static void adp_v4_update_disp_bh(void *opaque)
 
     qatomic_or(&adp->int_status, R_CONTROL_INT_FRAME_PROCESSED_MASK);
     adp_v4_update_irqs(adp);
+    trace_apple_adp_bh("exit", adp->genpipe[0].state.config_control,
+                       adp->genpipe[1].state.config_control,
+                       qatomic_read(&adp->int_status), qatomic_read(&adp->int_enable));
 }
 
 // `display-timing-info`

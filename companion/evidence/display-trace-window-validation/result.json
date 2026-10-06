@@ -1,0 +1,785 @@
+{
+  "scope": "Host fake-QMP protocol only; no firmware/VM build or execution.",
+  "checks": [
+    "bounds/types/exact-fields rejected; no arbitrary trace event API",
+    "single deadline and no extension; all5 disabled at deadline",
+    "early cleanup disables all5 without second QMP owner",
+    "failed disables journaled and retained; successful cleanup clears pending",
+    "partial enable explicit failure rolls back prior enabled events"
+  ],
+  "journal": [
+    {
+      "time": 1791316448.5966773,
+      "monotonic_ns": 735632473155683,
+      "stage": "start",
+      "seconds": 1,
+      "events": [
+        "apple_adp_submit",
+        "apple_adp_bh",
+        "apple_adp_pipe",
+        "apple_adp_output_ready",
+        "apple_adp_irq_write"
+      ]
+    },
+    {
+      "time": 1791316448.5967119,
+      "monotonic_ns": 735632473189923,
+      "stage": "before-enable",
+      "event": "apple_adp_submit"
+    },
+    {
+      "time": 1791316448.5967264,
+      "monotonic_ns": 735632473204451,
+      "stage": "after-enable",
+      "event": "apple_adp_submit",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.596737,
+      "monotonic_ns": 735632473215155,
+      "stage": "before-enable",
+      "event": "apple_adp_bh"
+    },
+    {
+      "time": 1791316448.5967467,
+      "monotonic_ns": 735632473224739,
+      "stage": "after-enable",
+      "event": "apple_adp_bh",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5967555,
+      "monotonic_ns": 735632473233507,
+      "stage": "before-enable",
+      "event": "apple_adp_pipe"
+    },
+    {
+      "time": 1791316448.5967638,
+      "monotonic_ns": 735632473241923,
+      "stage": "after-enable",
+      "event": "apple_adp_pipe",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.596772,
+      "monotonic_ns": 735632473249939,
+      "stage": "before-enable",
+      "event": "apple_adp_output_ready"
+    },
+    {
+      "time": 1791316448.59678,
+      "monotonic_ns": 735632473258147,
+      "stage": "after-enable",
+      "event": "apple_adp_output_ready",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5967882,
+      "monotonic_ns": 735632473266115,
+      "stage": "before-enable",
+      "event": "apple_adp_irq_write"
+    },
+    {
+      "time": 1791316448.5967965,
+      "monotonic_ns": 735632473274355,
+      "stage": "after-enable",
+      "event": "apple_adp_irq_write",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5969236,
+      "monotonic_ns": 735632473401603,
+      "stage": "stop",
+      "reason": "deadline",
+      "pending": [
+        "apple_adp_submit",
+        "apple_adp_bh",
+        "apple_adp_pipe",
+        "apple_adp_output_ready",
+        "apple_adp_irq_write"
+      ]
+    },
+    {
+      "time": 1791316448.5969338,
+      "monotonic_ns": 735632473411939,
+      "stage": "before-disable",
+      "event": "apple_adp_submit"
+    },
+    {
+      "time": 1791316448.5969424,
+      "monotonic_ns": 735632473420355,
+      "stage": "after-disable",
+      "event": "apple_adp_submit",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5969508,
+      "monotonic_ns": 735632473428915,
+      "stage": "before-disable",
+      "event": "apple_adp_bh"
+    },
+    {
+      "time": 1791316448.5969589,
+      "monotonic_ns": 735632473437107,
+      "stage": "after-disable",
+      "event": "apple_adp_bh",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5969672,
+      "monotonic_ns": 735632473445219,
+      "stage": "before-disable",
+      "event": "apple_adp_pipe"
+    },
+    {
+      "time": 1791316448.596975,
+      "monotonic_ns": 735632473453091,
+      "stage": "after-disable",
+      "event": "apple_adp_pipe",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.596983,
+      "monotonic_ns": 735632473461171,
+      "stage": "before-disable",
+      "event": "apple_adp_output_ready"
+    },
+    {
+      "time": 1791316448.5969913,
+      "monotonic_ns": 735632473469235,
+      "stage": "after-disable",
+      "event": "apple_adp_output_ready",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5969994,
+      "monotonic_ns": 735632473477363,
+      "stage": "before-disable",
+      "event": "apple_adp_irq_write"
+    },
+    {
+      "time": 1791316448.597007,
+      "monotonic_ns": 735632473485219,
+      "stage": "after-disable",
+      "event": "apple_adp_irq_write",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5970156,
+      "monotonic_ns": 735632473493523,
+      "stage": "stop-result",
+      "reason": "deadline",
+      "all_disabled": true,
+      "pending": []
+    },
+    {
+      "time": 1791316448.597028,
+      "monotonic_ns": 735632473506179,
+      "stage": "start",
+      "seconds": 60,
+      "events": [
+        "apple_adp_submit",
+        "apple_adp_bh",
+        "apple_adp_pipe",
+        "apple_adp_output_ready",
+        "apple_adp_irq_write"
+      ]
+    },
+    {
+      "time": 1791316448.5970373,
+      "monotonic_ns": 735632473515267,
+      "stage": "before-enable",
+      "event": "apple_adp_submit"
+    },
+    {
+      "time": 1791316448.5970454,
+      "monotonic_ns": 735632473523507,
+      "stage": "after-enable",
+      "event": "apple_adp_submit",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.597054,
+      "monotonic_ns": 735632473531971,
+      "stage": "before-enable",
+      "event": "apple_adp_bh"
+    },
+    {
+      "time": 1791316448.597062,
+      "monotonic_ns": 735632473540147,
+      "stage": "after-enable",
+      "event": "apple_adp_bh",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5970697,
+      "monotonic_ns": 735632473547795,
+      "stage": "before-enable",
+      "event": "apple_adp_pipe"
+    },
+    {
+      "time": 1791316448.5970778,
+      "monotonic_ns": 735632473555651,
+      "stage": "after-enable",
+      "event": "apple_adp_pipe",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.597088,
+      "monotonic_ns": 735632473566051,
+      "stage": "before-enable",
+      "event": "apple_adp_output_ready"
+    },
+    {
+      "time": 1791316448.597096,
+      "monotonic_ns": 735632473573907,
+      "stage": "after-enable",
+      "event": "apple_adp_output_ready",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5971036,
+      "monotonic_ns": 735632473581699,
+      "stage": "before-enable",
+      "event": "apple_adp_irq_write"
+    },
+    {
+      "time": 1791316448.5971112,
+      "monotonic_ns": 735632473589203,
+      "stage": "after-enable",
+      "event": "apple_adp_irq_write",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5971198,
+      "monotonic_ns": 735632473597667,
+      "stage": "stop",
+      "reason": "runner cleanup",
+      "pending": [
+        "apple_adp_submit",
+        "apple_adp_bh",
+        "apple_adp_pipe",
+        "apple_adp_output_ready",
+        "apple_adp_irq_write"
+      ]
+    },
+    {
+      "time": 1791316448.597128,
+      "monotonic_ns": 735632473605955,
+      "stage": "before-disable",
+      "event": "apple_adp_submit"
+    },
+    {
+      "time": 1791316448.5971353,
+      "monotonic_ns": 735632473613475,
+      "stage": "after-disable",
+      "event": "apple_adp_submit",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.597143,
+      "monotonic_ns": 735632473621171,
+      "stage": "before-disable",
+      "event": "apple_adp_bh"
+    },
+    {
+      "time": 1791316448.5971508,
+      "monotonic_ns": 735632473628739,
+      "stage": "after-disable",
+      "event": "apple_adp_bh",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5971582,
+      "monotonic_ns": 735632473636227,
+      "stage": "before-disable",
+      "event": "apple_adp_pipe"
+    },
+    {
+      "time": 1791316448.5971656,
+      "monotonic_ns": 735632473643587,
+      "stage": "after-disable",
+      "event": "apple_adp_pipe",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.597173,
+      "monotonic_ns": 735632473650899,
+      "stage": "before-disable",
+      "event": "apple_adp_output_ready"
+    },
+    {
+      "time": 1791316448.5971801,
+      "monotonic_ns": 735632473658291,
+      "stage": "after-disable",
+      "event": "apple_adp_output_ready",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5971878,
+      "monotonic_ns": 735632473665763,
+      "stage": "before-disable",
+      "event": "apple_adp_irq_write"
+    },
+    {
+      "time": 1791316448.5971951,
+      "monotonic_ns": 735632473673363,
+      "stage": "after-disable",
+      "event": "apple_adp_irq_write",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5972033,
+      "monotonic_ns": 735632473681203,
+      "stage": "stop-result",
+      "reason": "runner cleanup",
+      "all_disabled": true,
+      "pending": []
+    },
+    {
+      "time": 1791316448.5972116,
+      "monotonic_ns": 735632473689731,
+      "stage": "start",
+      "seconds": 1,
+      "events": [
+        "apple_adp_submit",
+        "apple_adp_bh",
+        "apple_adp_pipe",
+        "apple_adp_output_ready",
+        "apple_adp_irq_write"
+      ]
+    },
+    {
+      "time": 1791316448.59722,
+      "monotonic_ns": 735632473697923,
+      "stage": "before-enable",
+      "event": "apple_adp_submit"
+    },
+    {
+      "time": 1791316448.5972276,
+      "monotonic_ns": 735632473705523,
+      "stage": "after-enable",
+      "event": "apple_adp_submit",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5972352,
+      "monotonic_ns": 735632473713123,
+      "stage": "before-enable",
+      "event": "apple_adp_bh"
+    },
+    {
+      "time": 1791316448.5972428,
+      "monotonic_ns": 735632473720819,
+      "stage": "after-enable",
+      "event": "apple_adp_bh",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5972517,
+      "monotonic_ns": 735632473729715,
+      "stage": "before-enable",
+      "event": "apple_adp_pipe"
+    },
+    {
+      "time": 1791316448.5972593,
+      "monotonic_ns": 735632473737219,
+      "stage": "after-enable",
+      "event": "apple_adp_pipe",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5972667,
+      "monotonic_ns": 735632473744659,
+      "stage": "before-enable",
+      "event": "apple_adp_output_ready"
+    },
+    {
+      "time": 1791316448.597274,
+      "monotonic_ns": 735632473752083,
+      "stage": "after-enable",
+      "event": "apple_adp_output_ready",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5972815,
+      "monotonic_ns": 735632473759491,
+      "stage": "before-enable",
+      "event": "apple_adp_irq_write"
+    },
+    {
+      "time": 1791316448.5972893,
+      "monotonic_ns": 735632473767331,
+      "stage": "after-enable",
+      "event": "apple_adp_irq_write",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5972974,
+      "monotonic_ns": 735632473775460,
+      "stage": "stop",
+      "reason": "test rejection",
+      "pending": [
+        "apple_adp_submit",
+        "apple_adp_bh",
+        "apple_adp_pipe",
+        "apple_adp_output_ready",
+        "apple_adp_irq_write"
+      ]
+    },
+    {
+      "time": 1791316448.5973055,
+      "monotonic_ns": 735632473783732,
+      "stage": "before-disable",
+      "event": "apple_adp_submit"
+    },
+    {
+      "time": 1791316448.5973148,
+      "monotonic_ns": 735632473792932,
+      "stage": "after-disable",
+      "event": "apple_adp_submit",
+      "response": {
+        "error": {
+          "desc": "injected explicit rejection"
+        }
+      }
+    },
+    {
+      "time": 1791316448.597323,
+      "monotonic_ns": 735632473800916,
+      "stage": "before-disable",
+      "event": "apple_adp_bh"
+    },
+    {
+      "time": 1791316448.5973303,
+      "monotonic_ns": 735632473808516,
+      "stage": "after-disable",
+      "event": "apple_adp_bh",
+      "response": {
+        "error": {
+          "desc": "injected explicit rejection"
+        }
+      }
+    },
+    {
+      "time": 1791316448.5974011,
+      "monotonic_ns": 735632473879028,
+      "stage": "before-disable",
+      "event": "apple_adp_pipe"
+    },
+    {
+      "time": 1791316448.5974092,
+      "monotonic_ns": 735632473887204,
+      "stage": "after-disable",
+      "event": "apple_adp_pipe",
+      "response": {
+        "error": {
+          "desc": "injected explicit rejection"
+        }
+      }
+    },
+    {
+      "time": 1791316448.597417,
+      "monotonic_ns": 735632473895124,
+      "stage": "before-disable",
+      "event": "apple_adp_output_ready"
+    },
+    {
+      "time": 1791316448.597425,
+      "monotonic_ns": 735632473902804,
+      "stage": "after-disable",
+      "event": "apple_adp_output_ready",
+      "response": {
+        "error": {
+          "desc": "injected explicit rejection"
+        }
+      }
+    },
+    {
+      "time": 1791316448.5974326,
+      "monotonic_ns": 735632473910596,
+      "stage": "before-disable",
+      "event": "apple_adp_irq_write"
+    },
+    {
+      "time": 1791316448.59744,
+      "monotonic_ns": 735632473918052,
+      "stage": "after-disable",
+      "event": "apple_adp_irq_write",
+      "response": {
+        "error": {
+          "desc": "injected explicit rejection"
+        }
+      }
+    },
+    {
+      "time": 1791316448.5974483,
+      "monotonic_ns": 735632473926436,
+      "stage": "stop-result",
+      "reason": "test rejection",
+      "all_disabled": false,
+      "pending": [
+        "apple_adp_submit",
+        "apple_adp_bh",
+        "apple_adp_pipe",
+        "apple_adp_output_ready",
+        "apple_adp_irq_write"
+      ]
+    },
+    {
+      "time": 1791316448.5974586,
+      "monotonic_ns": 735632473936708,
+      "stage": "stop",
+      "reason": "cleanup retry",
+      "pending": [
+        "apple_adp_submit",
+        "apple_adp_bh",
+        "apple_adp_pipe",
+        "apple_adp_output_ready",
+        "apple_adp_irq_write"
+      ]
+    },
+    {
+      "time": 1791316448.5974672,
+      "monotonic_ns": 735632473945124,
+      "stage": "before-disable",
+      "event": "apple_adp_submit"
+    },
+    {
+      "time": 1791316448.5974748,
+      "monotonic_ns": 735632473952820,
+      "stage": "after-disable",
+      "event": "apple_adp_submit",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5974822,
+      "monotonic_ns": 735632473960212,
+      "stage": "before-disable",
+      "event": "apple_adp_bh"
+    },
+    {
+      "time": 1791316448.5974896,
+      "monotonic_ns": 735632473967636,
+      "stage": "after-disable",
+      "event": "apple_adp_bh",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5974972,
+      "monotonic_ns": 735632473975412,
+      "stage": "before-disable",
+      "event": "apple_adp_pipe"
+    },
+    {
+      "time": 1791316448.597505,
+      "monotonic_ns": 735632473983076,
+      "stage": "after-disable",
+      "event": "apple_adp_pipe",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5975125,
+      "monotonic_ns": 735632473990532,
+      "stage": "before-disable",
+      "event": "apple_adp_output_ready"
+    },
+    {
+      "time": 1791316448.5975204,
+      "monotonic_ns": 735632473998420,
+      "stage": "after-disable",
+      "event": "apple_adp_output_ready",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5975394,
+      "monotonic_ns": 735632474017252,
+      "stage": "before-disable",
+      "event": "apple_adp_irq_write"
+    },
+    {
+      "time": 1791316448.597547,
+      "monotonic_ns": 735632474024996,
+      "stage": "after-disable",
+      "event": "apple_adp_irq_write",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.597555,
+      "monotonic_ns": 735632474032948,
+      "stage": "stop-result",
+      "reason": "cleanup retry",
+      "all_disabled": true,
+      "pending": []
+    },
+    {
+      "time": 1791316448.597564,
+      "monotonic_ns": 735632474041892,
+      "stage": "start",
+      "seconds": 1,
+      "events": [
+        "apple_adp_submit",
+        "apple_adp_bh",
+        "apple_adp_pipe",
+        "apple_adp_output_ready",
+        "apple_adp_irq_write"
+      ]
+    },
+    {
+      "time": 1791316448.597572,
+      "monotonic_ns": 735632474050228,
+      "stage": "before-enable",
+      "event": "apple_adp_submit"
+    },
+    {
+      "time": 1791316448.5975797,
+      "monotonic_ns": 735632474057924,
+      "stage": "after-enable",
+      "event": "apple_adp_submit",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5975878,
+      "monotonic_ns": 735632474065748,
+      "stage": "before-enable",
+      "event": "apple_adp_bh"
+    },
+    {
+      "time": 1791316448.5975952,
+      "monotonic_ns": 735632474073252,
+      "stage": "after-enable",
+      "event": "apple_adp_bh",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5976045,
+      "monotonic_ns": 735632474082532,
+      "stage": "before-enable",
+      "event": "apple_adp_pipe"
+    },
+    {
+      "time": 1791316448.5976121,
+      "monotonic_ns": 735632474090116,
+      "stage": "after-enable",
+      "event": "apple_adp_pipe",
+      "response": {
+        "error": {
+          "desc": "injected explicit rejection"
+        }
+      }
+    },
+    {
+      "time": 1791316448.597623,
+      "monotonic_ns": 735632474100996,
+      "stage": "stop",
+      "reason": "start failed",
+      "pending": [
+        "apple_adp_submit",
+        "apple_adp_bh"
+      ]
+    },
+    {
+      "time": 1791316448.5976312,
+      "monotonic_ns": 735632474109156,
+      "stage": "before-disable",
+      "event": "apple_adp_submit"
+    },
+    {
+      "time": 1791316448.5976388,
+      "monotonic_ns": 735632474116932,
+      "stage": "after-disable",
+      "event": "apple_adp_submit",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5976465,
+      "monotonic_ns": 735632474124676,
+      "stage": "before-disable",
+      "event": "apple_adp_bh"
+    },
+    {
+      "time": 1791316448.5976543,
+      "monotonic_ns": 735632474132404,
+      "stage": "after-disable",
+      "event": "apple_adp_bh",
+      "response": {
+        "return": {}
+      }
+    },
+    {
+      "time": 1791316448.5976622,
+      "monotonic_ns": 735632474140148,
+      "stage": "stop-result",
+      "reason": "start failed",
+      "all_disabled": true,
+      "pending": []
+    }
+  ],
+  "source_sha256": "575e1762d2cb30d7105939a38498feb1efda87d99ba1157e245b6b4190f2f340"
+}
