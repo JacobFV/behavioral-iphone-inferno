@@ -112,3 +112,21 @@ the hardware SPI consumption problem makes it unsuitable for the current guest.
 Reports record `input_mode` and `automatic_input`. Previously loaded runners keep
 their original behavior until stopped; changing this source does not hot-patch a
 live run.
+
+### Operator-confirmed owned app before capture
+
+The observation-only probe journey waits for a genuine `appeared count=0` serial
+marker, then waits for the operator to review the live app at zero. After that
+review, request the fixed before capture through the existing QMP owner:
+
+```sh
+python3 companion/qmp_control.py --report REPORT probe-capture-before
+```
+
+The command accepts exactly `{}` and requires `--probe-journey`. It rejects a
+missing appearance marker, an already observed tap1, a repeated request, or the
+legacy automatic hardware mode. It sends no input. Then send the separately
+controlled tap; a genuine tap1 marker triggers the after capture and completion.
+This prevents an early app appearance marker from automatically capturing the
+lock screen before the operator has uncovered the app. The explicit legacy
+`--probe-hardware-tap` mode retains its previous automatic capture/input sequence.

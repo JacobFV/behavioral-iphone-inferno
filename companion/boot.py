@@ -164,6 +164,8 @@ def main():
         parser.error('--probe-journey requires --disk-boot')
     if args.probe_hardware_tap and not args.probe_journey:
         parser.error('--probe-hardware-tap requires --probe-journey')
+    if args.probe_journey and not args.probe_hardware_tap and not args.control_mailbox:
+        parser.error('Observation --probe-journey requires --control-mailbox for operator before capture')
     if args.probe_hardware_tap and args.guest_hid_serial:
         parser.error('--probe-hardware-tap cannot be combined with --guest-hid-serial')
     if args.launchd_unsecure_cache and not args.disk_boot:
@@ -244,7 +246,7 @@ def main():
     if journey:
         report['probe_journey'] = journey.report
         report['probe_journey_source_sha256'] = digest(Path(__file__).with_name('probe_journey.py'))
-    control = ControlMailbox(output) if args.control_mailbox else None
+    control = ControlMailbox(output, journey=journey) if args.control_mailbox else None
     if control:
         report['control_mailbox'] = str(control.path)
         report['control_source_sha256'] = digest(Path(__file__).with_name('qmp_control.py'))

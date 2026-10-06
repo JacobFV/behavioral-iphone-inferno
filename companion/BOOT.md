@@ -109,9 +109,10 @@ evidence: `.local-build/reports/first-t8030-boot/`.
 
 ## Owned app interaction experiment
 
-`--disk-boot --probe-journey` requires the app from `companion/app-probe/` to be
+`--disk-boot --probe-journey --control-mailbox` requires the app from `companion/app-probe/` to be
 installed and launched separately, with its stderr routed to the serial console.
-The runner waits for its exact appearance marker, captures `probe-before.ppm`,
+The runner waits for its exact appearance marker and the operator's explicit
+`probe-capture-before` request after live visual review, captures `probe-before.ppm`,
 waits for an operator-produced `tap count=1` marker, and captures
 `probe-after.ppm`. It sends no input by default and fails if any
 required step is absent within the duration. Raw QMP events, image hashes and

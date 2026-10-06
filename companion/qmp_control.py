@@ -59,7 +59,7 @@ def validate(request):
     name, args = request['execute'], request['arguments']
     if not isinstance(args, dict):
         raise ValueError('Arguments must be an object')
-    if name in ('query-mice', 'query-touch-registers') and args == {}:
+    if name in ('query-mice', 'query-touch-registers', 'probe-capture-before') and args == {}:
         return name, args
     if name == 'guest-hid-gesture':
         gesture_line(args)
@@ -118,12 +118,13 @@ def write_private(path, value):
 
 
 class ControlMailbox:
-    def __init__(self, output):
+    def __init__(self, output, journey=None):
         self.path = output / 'control'
         self.path.mkdir(mode=0o700)
         self.journal = output / 'control-transcript.jsonl'
         self.journal.touch(mode=0o600, exist_ok=False)
         self.serial_transport = None
+        self.journey = journey
 
     def poll(self, qmp):
         private_dir(self.path)
@@ -136,7 +137,11 @@ class ControlMailbox:
                 record.update(raw=raw.decode('utf-8', errors='replace'), sha256=hashlib.sha256(raw).hexdigest())
                 request = json.loads(raw)
                 name, args = validate(request)
-                if name == 'guest-hid-gesture':
+                if name == 'probe-capture-before':
+                    if self.journey is None:
+                        raise ValueError('This boot did not enable --probe-journey')
+                    response = {'return': self.journey.operator_capture_before(qmp)}
+                elif name == 'guest-hid-gesture':
                     if self.serial_transport is None:
                         raise ValueError('This boot did not enable --guest-hid-serial')
                     response = self.serial_transport.transmit(args)
@@ -148,7 +153,7 @@ class ControlMailbox:
                 else:
                     response = qmp.execute(name, args)
                 record['response'] = response
-            except (OSError, ValueError, TypeError, KeyError) as exc:
+            except (OSError, ValueError, TypeError, KeyError, RuntimeError) as exc:
                 response = {'rejected': str(exc)}
                 record['response'] = response
             with self.journal.open('a') as journal:
@@ -280,7 +285,7 @@ class StartupTouchTrace:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report', type=Path, required=True, help='Active boot output directory with --control-mailbox')
-    parser.add_argument('command', choices=['query-mice', 'query-touch-registers', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture'])
+    parser.add_argument('command', choices=['probe-capture-before', 'query-mice', 'query-touch-registers', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture'])
     parser.add_argument('--arguments', default='{}', help='Allowlisted QMP arguments as JSON')
     args = parser.parse_args()
     directory = args.report.resolve(strict=True) / 'control'

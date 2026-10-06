@@ -39,6 +39,22 @@ class ProbeJourney:
             'path': str(path), 'width': width, 'height': height,
             'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
 
+    def operator_capture_before(self, qmp):
+        """Capture only after the operator has reviewed the visible app at zero."""
+        if self.hardware_tap or self.state != 'waiting-for-operator-before-capture':
+            raise ValueError('Probe is not awaiting an operator before capture')
+        serial = (self.output / 'serial.log').read_bytes()
+        if b'INFERNO_UIKIT_PROBE_V1 event=appeared count=0' not in serial:
+            raise ValueError('Owned app appearance marker is missing')
+        if b'INFERNO_UIKIT_PROBE_V1 event=tap count=1' in serial:
+            raise ValueError('Tap marker already observed; before capture is too late')
+        self.report['input_devices'] = self.command(qmp, 'query-mice')
+        self.capture(qmp, 'probe-before')
+        self.state = 'waiting-for-operator-tap-marker'
+        self.report['state'] = self.state
+        self.report['before_capture_operator_requested'] = True
+        return {'state': self.state, 'capture': self.report['captures']['probe-before']}
+
     def poll(self, qmp, now):
         serial_path = self.output / 'serial.log'
         serial = serial_path.read_bytes() if serial_path.exists() else b''
@@ -46,15 +62,12 @@ class ProbeJourney:
         tapped = b'INFERNO_UIKIT_PROBE_V1 event=tap count=1'
         if self.state == 'waiting-for-app' and appeared in serial:
             self.report['appearance_marker_observed'] = True
-            self.state = 'waiting-for-first-frame'
+            self.state = ('waiting-for-first-frame' if self.hardware_tap
+                          else 'waiting-for-operator-before-capture')
             self.ready_at = now + 1
         elif self.state == 'waiting-for-first-frame' and now >= self.ready_at:
             self.report['input_devices'] = self.command(qmp, 'query-mice')
             self.capture(qmp, 'probe-before')
-            if not self.hardware_tap:
-                self.state = 'waiting-for-operator-tap-marker'
-                self.report['state'] = self.state
-                return
             # Main.m lays out a large central button starting at 58% height.
             # This is a probe-specific target, subject to actual image review.
             x, y = round(32767 * .5), round(32767 * .62)
