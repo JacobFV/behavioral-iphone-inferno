@@ -118,3 +118,13 @@ required step is absent within the duration. Raw QMP events, image hashes and
 marker observations are saved in the normal report. Review both actual images
 before accepting a visible counter change; command success alone is insufficient.
 This optional flow is implemented but has not yet executed against the UIKit app.
+
+## Explicit owned launchd configuration
+
+`--disk-boot --launchd-unsecure-cache` appends the original loader's supported
+`launchd_unsecure_cache=1` argument. Use it with the disposable System configuration
+produced by `native-probe/merge-launchd-cache.py`: that file preserves original
+jobs and adds explicit `org.inferno.*` jobs. The existing `.sig` is unchanged; no
+signature is generated. This mode is opt-in, recorded in the invocation/report,
+and rejected for recovery boots. Actual execution must show the original loader's
+“Using unsecure cache” message and owned job output before claiming job loading.
