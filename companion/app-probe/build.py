@@ -88,6 +88,7 @@ def main():
     build('Launcher', output / 'inferno-launcher', ('libSystem', 'libobjc', 'Foundation', 'CoreServices'))
     build('ExecLauncher', output / 'inferno-exec-launcher', ('libSystem',), 'c')
     build('Stage', output / 'inferno-stage-app', ('libSystem',), 'c')
+    shutil.copyfile(source / 'org.inferno.app-probe-exec.plist', output / 'org.inferno.app-probe-exec.plist')
     shutil.copyfile(source / 'Info.plist', bundle / 'Info.plist')
     shutil.copyfile(source / 'org.inferno.app-probe.plist', output / 'org.inferno.app-probe.plist')
     evidence = {
