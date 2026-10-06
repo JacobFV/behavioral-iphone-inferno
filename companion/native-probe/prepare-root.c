@@ -264,7 +264,7 @@ static int ensure(const char *path) {
 }
 int main(int argc, char **argv) {
     if (argc < 2 || strcmp(argv[1], "--disposable-root-copy")) return 2;
-    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0, readiness = 0, install_cache = 0, export_reports = 0, exec_wrapper = 0, system_launcher = 0, unlock_helper = 0;
+    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0, readiness = 0, install_cache = 0, export_reports = 0, exec_wrapper = 0, system_launcher = 0, unlock_helper = 0, system_app = 0;
     for (int i=2; i<argc; ++i) {
         if (!strcmp(argv[i], "--role-volumes")) roles = 1;
         else if (!strcmp(argv[i], "--existing-volumes")) existing = 1;
@@ -276,6 +276,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[i], "--install-readiness")) readiness = 1;
         else if (!strcmp(argv[i], "--install-cache")) install_cache = 1;
         else if (!strcmp(argv[i], "--export-reports")) export_reports = 1;
+        else if (!strcmp(argv[i], "--install-system-app")) system_app = 1;
         else if (!strcmp(argv[i], "--install-unlock-helper")) unlock_helper = 1;
         else if (!strcmp(argv[i], "--install-system-launcher")) system_launcher = 1;
         else if (!strcmp(argv[i], "--install-exec-wrapper")) exec_wrapper = 1;
@@ -403,6 +404,14 @@ int main(int argc, char **argv) {
         compare_tree("/usr/share/inferno-unlock-empty","/mnt1/usr/bin/inferno-unlock-empty");
         printf("INFERNO_UNLOCK_HELPER_READBACK bytes=%llu mismatches=%llu\n",verified_bytes-prior_bytes,mismatches);fflush(0);
         sync();if(unmount("/mnt1",0))return 57;if(mismatches)return 58;
+    }
+    if(system_app) {
+        if(mount_at(system_device,"/mnt1",0))return 59;
+        if(ensure("/mnt1/Applications/InfernoProbe.app") || copyfile("/usr/share/InfernoProbe.app","/mnt1/Applications/InfernoProbe.app",0,15|32768))return 60;
+        unsigned long long prior_bytes=verified_bytes;
+        compare_tree("/usr/share/InfernoProbe.app","/mnt1/Applications/InfernoProbe.app");
+        printf("INFERNO_SYSTEM_APP_READBACK bytes=%llu mismatches=%llu\n",verified_bytes-prior_bytes,mismatches);fflush(0);
+        sync();if(unmount("/mnt1",0))return 61;if(mismatches)return 62;
     }
     if(install_cache) {
         if(mount_at(system_device,"/mnt1",0))return 40;
