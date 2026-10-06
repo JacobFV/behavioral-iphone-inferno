@@ -744,7 +744,7 @@ static bool inferno_sep_system_bag_message(AppleSEPSimState *s,
         }
         options = ldl_le_p(body + 16);
         error = -1;
-        if (handle != 0 || options != 1) {
+        if (handle != 0 || options > 1) {
             goto done;
         }
         size = KEYSTORE_IPC_HEADER_SIZE + 8 + 13;
