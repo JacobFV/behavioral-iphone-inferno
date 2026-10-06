@@ -1,0 +1,85 @@
+{
+  "kind": "read_only_actual_render_boundary_inspection",
+  "frames": [
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/frames/0006.ppm",
+      "file_sha256": "1330d2cfefb010993f4bed3d4be731d416dbc91237833891fc57be050772e41c",
+      "mtime": 1791315016.0231166,
+      "size": [
+        828,
+        1792
+      ],
+      "rgb_sha256": "9559466112613849370dd43e3c80c14075896ef0e2775fb3811e231b530ba55f",
+      "equals_vnc_first828columns": true
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/frames/0007.ppm",
+      "file_sha256": "1330d2cfefb010993f4bed3d4be731d416dbc91237833891fc57be050772e41c",
+      "mtime": 1791315046.1041267,
+      "size": [
+        828,
+        1792
+      ],
+      "rgb_sha256": "9559466112613849370dd43e3c80c14075896ef0e2775fb3811e231b530ba55f",
+      "equals_vnc_first828columns": true
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/frames/0008.ppm",
+      "file_sha256": "1330d2cfefb010993f4bed3d4be731d416dbc91237833891fc57be050772e41c",
+      "mtime": 1791315076.1671383,
+      "size": [
+        828,
+        1792
+      ],
+      "rgb_sha256": "9559466112613849370dd43e3c80c14075896ef0e2775fb3811e231b530ba55f",
+      "equals_vnc_first828columns": true
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/frames/0009.ppm",
+      "file_sha256": "1330d2cfefb010993f4bed3d4be731d416dbc91237833891fc57be050772e41c",
+      "mtime": 1791315106.2281513,
+      "size": [
+        828,
+        1792
+      ],
+      "rgb_sha256": "9559466112613849370dd43e3c80c14075896ef0e2775fb3811e231b530ba55f",
+      "equals_vnc_first828columns": true
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/frames/0010.ppm",
+      "file_sha256": "1330d2cfefb010993f4bed3d4be731d416dbc91237833891fc57be050772e41c",
+      "mtime": 1791315136.3021655,
+      "size": [
+        828,
+        1792
+      ],
+      "rgb_sha256": "9559466112613849370dd43e3c80c14075896ef0e2775fb3811e231b530ba55f",
+      "equals_vnc_first828columns": true
+    }
+  ],
+  "tap_raw_lines": [
+    "INFERNO_HID_V1 1d07d32c05e943898d1981622edb831b TAP 16384 20316 150",
+    "INFERNO_HID_REQUEST request_id=1d07d32c05e943898d1981622edb831b kind=TAP x0=16384 y0=20316 x1=16384 y1=20316 duration_ms=150 timestamp=5392813554",
+    "INFERNO_HID_REPORT request_id=1d07d32c05e943898d1981622edb831b phase=down x=16384 y=20316 touching=1 timestamp=5392999278 result=0x0",
+    "INFERNO_HID_REPORT request_id=1d07d32c05e943898d1981622edb831b phase=up x=16384 y=20316 touching=0 timestamp=5399431401 result=0x0",
+    "INFERNO_HID_ACK request_id=1d07d32c05e943898d1981622edb831b attempt_status=0 delivery=unproven timestamp=5399877332",
+    "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DE6327F9-F6FB-4F76-9743-283544F2862A 254 8 tap 1",
+    "INFERNO_UIKIT_PROBE_V1 event=tap count=1"
+  ],
+  "source_main_sha256": "44e3bb7e87ef37c5bbb12297987dbd7fe3b6ce70529fc8c63c95369e9f50c034",
+  "source_order": [
+    "increment count",
+    "UILabel setText returns",
+    "marker sends loopback record",
+    "marker then writes app journal, stderr and NSLog before returning"
+  ],
+  "conclusions": [
+    "Actual loopback tap1 proves handler reached after setText; does not prove subsequent synchronous logging returned or UI transaction committed.",
+    "Multiple periodic QMP console captures match persistent VNC pixels, after accounting for VNC832width padding versus QMP828width. This is not exclusively VNC-client stale cache.",
+    "No second tap, guest input, QMP connection, code mutation or process control performed by this audit."
+  ],
+  "uncertainties": [
+    "No actual blocked-thread stack obtained. Journal/logging block is a candidate, not established cause.",
+    "UI repaint after ordinary scene transition may distinguish a recovery, but does not alone identify the original stalled component."
+  ]
+}
