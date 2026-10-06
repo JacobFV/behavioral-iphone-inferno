@@ -49,9 +49,8 @@ that directory together: the binary references local libraries/resources.
 ## Current execution boundary
 
 Keep working; no handoff or missing user input. SpringBoard and backboardd execute.
-Original owned app registration and normal first-unlock are now proven. Visible
-setup/home UI, owned UIKit execution and an actual tap/count journey remain
-unproven. Firmware, System/Data preparation, keybag creation and renderer patches
+Original owned app registration, normal first-unlock and visible Hello setup UI
+are now proven. Owned UIKit execution and actual touch response remain unproven. Firmware, System/Data preparation, keybag creation and renderer patches
 are established; do not return to the archived framework implementation.
 
 At04:04 local, **app-boot-11 is active** from verified stopped stage34:
@@ -61,6 +60,22 @@ launcher at the existing System path, exact unchanged owned app and unlock helpe
 and emulator SHA3eacda5c06578e64653313b8ed6774729846d57808e4dec88457a0b58e41b9bd
 from source6fce1464b8. 7200-second maximum,30-second frames,strictjourney,guest-errors,
 no USB, private Unix VNC. Bootworker owns session41036 and evidence.
+
+**04:21 local live update:** Boot11 reached original Hello setup UI (reviewed
+frame0017, committed setup-ui-first-live evidence). Padded state response works:
+original query raw0/noerror, unlock0, first0->1. Rawstate0 remains uninterpreted.
+Launch callback first returned POSIX60 timeout, then FrontBoardServiceErrorDomain1
+while setup is visible. Nilconfiguration originally adds LSBlockUntilComplete=true;
+that semantic correction is recorded in open-path-inspection.json.
+
+Root owns all live VNC input. Fast and slow swipes/info taps completed RFBdelivery
+but did not show confirmed UI response; language animation is not touchproof.
+Current task: bootworker adds narrow single-owner QMP request mailbox and initial
+query-mice recording; diskworker adds disabled-by-default MT-SPI delivery trace
+points, no behavior change. Root will review/build then boot12 from STOPPED11
+paired state, preserving progressed setup. Do not reset11 until both are ready.
+No second QMP client: runner owns its connection. Live USB cannot reconnect from
+initial ENOENT; no restart/reset or activation/pairing workaround was attempted.
 
 Completed causal sequence:
 - Boot7: original unlock selector9 e00002e2/public-2. Original kernel proved

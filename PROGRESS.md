@@ -4,6 +4,15 @@
 
 ### Current execution boundary (04:04 local)
 
+**04:21 local:** Boot11 now displays reviewed original Hello setup UI. State-query
+padding is verified in guest, unlock0/first0->1 repeated. App remains registered
+but launch callback returns FrontBoard error1. Fast and slow privateVNC gestures
+have not produced confirmed navigation. Next work traces real input delivery
+without guessing coordinates or injecting guest events outside the normal device.
+Live11 remains running until targeted tracing/control instrumentation is ready;
+its stopped paired state will preserve migration progress for the next boot.
+
+
 Original app registration is proven: boot10 dictionary registrationYES and valid
 proxy at /Applications/InfernoProbe.app. Original one-shot unlock return0 and
 first-unlock0->1 are proven in boots9/10. Visible setup/home UI, owned UIKit

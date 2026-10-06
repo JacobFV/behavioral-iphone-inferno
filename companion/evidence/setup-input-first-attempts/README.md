@@ -12,3 +12,10 @@ Touch routing is under investigation; do not label these as successful gestures.
 No host window, clipboard, network listener, guest policy change or activation
 operation was used. The guest remains live; these are input/capture records, not
 stopped-disk hashes or final boot duration.
+
+A second information tap held1second and observed3seconds after release. A second
+swipe held0.5seconds, traversed20steps over3seconds, and observed10seconds after
+release. Both completed wire delivery, with the same Hello setup UI and no
+confirmed navigation. These results justify targeted input/MT-SPI tracing, not
+a speculative coordinate or device-behavior change. Source8502618b01 adds bounded
+optional gesture timing while retaining previous defaults.
