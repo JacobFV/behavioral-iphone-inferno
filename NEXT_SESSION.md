@@ -12,7 +12,10 @@ Suggested opening instruction:
 
 ## CURRENT, 2026-10-06 09:34 local: boot28 exposes event-file open failure
 
-Boot28 is live, session92046, private VNC `/tmp/inferno-boot-ap8o399_/vnc.sock`.
+Boot28 stopped normally: cleanup capture, QMPquit33/emulator0,456.72059seconds.
+All seven hashes are recorded; root.qcow2 SHA
+33b1be868398bdc0224c0792f3add8d36b4468a9fc11f0fe5c82ba6276552840.
+All44/27/43 ancestor hashes remained unchanged. Its private endpoint is stale.
 Root owns input; `/tmp/inferno-explicit-gesture-28.py` targets this run. Four inputs
 (two reviewed lock-screen swipes, beta Close, one counter tap) produced actual
 counter0 then1. The diagnostic footer is unequivocal: uid501, boot query0/37,
@@ -30,10 +33,10 @@ Boot28 uses new layer3 over44(layer2),27(layer1),43(raw). Keep all exact paths.
 For the next fix stage a sibling from frozen44, replacing all changed owned
 components, then boot a layer4 child. Do not stage from28 and exceed chain limits.
 
-Root event-arrival observer session75100 is live. Startup resource sample49419
+Root event-arrival observer session75100 completed. Startup resource sample49419
 completed121 samples/120seconds,170.22CPU seconds, peakRSS5593513984bytes; not
-app memory or launch duration. Idle-after-counter sample94003 is running for60s;
-do not stop28 until it completes. Continue with the actual path correction,
+app memory or launch duration. Idle-after-counter sample94003 completed61 samples/60seconds,21.57CPU seconds,
+peakRSS5630869504bytes. Both raw sample windows are preserved891d497a72. Continue with the actual path correction,
 strict event-backed journey and measurements; no handoff or pause requested.
 
 ## HISTORICAL, 2026-10-06 09:20 local:27 stopped, next diagnostic staging
