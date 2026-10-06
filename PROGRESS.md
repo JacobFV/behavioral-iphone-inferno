@@ -2,6 +2,39 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### Further executed checkpoints
+
+- **Owned native code:** an SDK-free ARM64 Mach-O, linked against a self-authored
+  libSystem declaration and ad-hoc signed only as our own code, executed from a
+  cloned recovery ramdisk. Root read its marker in actual serial output:
+  `INFERNO_OWNED_NATIVE_PROBE_V1: executed arm64 Darwin syscalls`.
+  `companion/native-probe/` contains source/preparation; raw evidence is
+  `companion/evidence/owned-native-probe*`. This is native recovery execution,
+  not a UIKit app or interactive app journey. Initial LC_MAIN without libSystem
+  and UNIXTHREAD experiments failed; their local logs are retained.
+- **Official System disk:** decoded the unencrypted OS UDIF, preserved its APFS
+  payload and wrapped it in valid 4096-sector GPT for Inferno NVMe. Direct boot
+  mounted the actual System volume and ran the full-system Darwin Bootstrapper.
+  It panicked at `mount-phase-1` (exit66): missing auxiliary volumes and the
+  preboot firmware path. This is not installed iOS boot completion. Raw evidence
+  is `companion/evidence/direct-root-first*`; preparation is documented under
+  `companion/os-image/`. The source volume is unencrypted System only, no Data.
+- **Linux USB companion:** official ARM64 Ubuntu booted headlessly; after
+  diagnosing a 1GiB TCG setup bottleneck, resumed a copied working disk with
+  4GiB and private QMP/loopback SSH. Actual usbmuxd/libimobiledevice installation
+  and daemon operation were observed. First joint attachment crashed Linux in
+  `ehci_irq` with an external abort and QEMU's re-entrant MMIO warning. Source
+  trace points to the synchronous remote USB handler releasing BQL while EHCI
+  MMIO remains active. A single-vCPU companion is being tested before any driver
+  changes. An earlier `guest_ready=true` report does not override this raw panic.
+  Logs are outside Git under `/home/brandonin/.local/share/inferno/usb/run3/` and
+  `.local-build/reports/recovery-usb-1/`.
+
+Continuing work uses disposable disk copies and guest utilities to populate the
+missing APFS roles and preboot firmware path. The original DT supplies a zero
+boot-manifest hash when no ticket is provided; creating its matching directory
+does not create a signature. No Apple ticket/signature fabrication was performed.
+
 **Executed milestone:** the simulated-SEP rebuild at source 877b07069a completed,
 passed the firmware-free QMP smoke, then executed a bounded 120-second recovery
 boot. Raw serial shows `BSD root: md0`, launchd's `Early boot complete`,
