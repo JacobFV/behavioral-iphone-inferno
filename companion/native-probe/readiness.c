@@ -58,7 +58,11 @@ static void crash_inventory(void) {
 extern int inferno_ioreg_touch_snapshot(void);
 static void registry_inventory(unsigned requested_seconds) {
     int pid=fork(),status=-1,timed_out=0;
-    if(pid==0)_exit(inferno_ioreg_touch_snapshot());
+    if(pid==0) {
+        char *args[]={"/usr/bin/inferno-readiness","--touch-registry-once",0};
+        char *env[]={"PATH=/usr/bin:/bin:/usr/sbin:/sbin",0};
+        execve(args[0],args,env);_exit(127);
+    }
     if(pid>0) {
         unsigned waited=0;
         for(;;) {
@@ -74,7 +78,9 @@ static void registry_inventory(unsigned requested_seconds) {
     }
     printf("INFERNO_READINESS_IOREG_END requested_seconds=%u status=%d timed_out=%d\n",requested_seconds,status,timed_out);fflush(0);
 }
-int main(void) {
+int main(int argc,char **argv) {
+    if(argc==2 && !strcmp(argv[1],"--touch-registry-once"))return inferno_ioreg_touch_snapshot();
+    if(argc!=1)return 64;
     const unsigned targets[]={15,45,90,150,300,600,1200,1800,3600};
     unsigned elapsed=0;
     for(unsigned i=0;i<sizeof(targets)/sizeof(targets[0]);i++) {

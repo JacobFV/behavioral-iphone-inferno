@@ -470,8 +470,9 @@ Limits are eight matches per query, sixteen entries per adjacent iterator and
 128 total nodes; every obtained handle is released. An output-limit marker means
 the inventory may be incomplete, not that further services are absent.
 
-The existing readiness observer forks this snapshot before each original process
-snapshot. Only the snapshot child gets an alarm600 watchdog; the parent also
+The existing readiness observer forks and execs its own --touch-registry-once
+mode before each original process snapshot, so IOKit runs in a fresh process.
+Only the snapshot child gets an alarm600 watchdog; the parent also
 bounds and reaps only that child. Existing ps, fixture and crash observation
 continue. No additional launchd job, cache edit, or entitlement is required.
 `build-ioreg.sh` can also build the same snapshot as a standalone owned binary.
