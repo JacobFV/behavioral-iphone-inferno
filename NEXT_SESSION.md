@@ -124,13 +124,17 @@ Newstage55root3604480bytes SHA
 00fccb3ec7542ce5c9edd7970b627a15e962856d0438f11e3e4b520cecc6be80.
 48layer4→stage55layer3→stage44layer2→boot27layer1→stage43raw.
 No stage50dependencyfor48; keep50forhistorical37–47. No concurrentVMs.
-Temporary staging validation issue: root mistakenly repeated chmod0444 on existing
+Resolved metadata incident: root mistakenly repeated chmod0444 on existing
 readonly44/27/raw43 ancestors at1791320615119518081ns ctime. Freshfullhashaudit
 proves ONLYctime changed; allbytes/dev/inode/size/mtime/mode unchanged. Oldreports
-remain untouched. Evidence stage55-chmod-metadata-audit.json. Diskworker implementing
-fixedperfile explicitold/currentidentity sidecar, source-record-hash anchored,
-fullhash/noWritableFD validation, rejectsanyfuturemetadatachange; rootreviewpending.
-Never chmodalreadyreadonlyancestors again. NoVMrunning;48awaitsreviewedrepair.
+remain untouched. Evidence stage55-chmod-metadata-audit.json. Exactattestation
+support f5e961bcaa validates fixedperfile .ctime-revalidation.json against source
+stage55/root-overlay.json hash, historical+currentfullidentity and freshfullhash.
+Threeactualsidecars created, retained stage55-actual-ctime-attestations.json.
+Futurectime/content/sourcechange rejects; explicitverificationjournalretainsactual
+metadata. Keep sidecars AND stage55source report forever withaffectedancestors.
+NEVER chmodalreadyreadonlyancestors again; checkmodebeforeanynecessarychmod.
+Root reloadingchainwithall3attestations before48; noVMcurrentlyrunning.
 48notyetstarted; rootallinput, firstactualSAMPLEonlyafterreviewednormaljourney
 outcome toavoidperturbingreproduction. UseBACKBOARDD thenSPRINGBOARD atmostonceeach,
 waitEND/FAILED; errorsareevidence, no grants/retries. No nativeperformanceclaim.

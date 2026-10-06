@@ -2,6 +2,20 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 14:09 continuation: exact metadata incident recorded and narrowly revalidated
+
+During independent stage55 retention, root mistakenly reapplied mode0444 to three
+already-read-only ancestors. This changed ctime and correctly caused strict identity
+validation to fail. Fresh full hashes establish identical contents; device, inode,
+size, mtime and permissions also remain identical. Historical reports were not edited.
+
+A fixed sibling attestation records each exact old/current identity and the preserved
+source-record hash. Validation still performs a fresh full hash and writable-descriptor
+checks; it accepts only that exact ctime change, records the actual metadata, and
+rejects a subsequent chmod, content change or changed historical source. Actual
+three-file attestations and the initial failed check are retained separately from
+successful guest milestones. The chain is being revalidated before48 proceeds.
+
 ### 14:04 continuation: frozen failure47 and staged original-tool diagnostic
 
 47's second Home window remained visually frozen through14frames despite actual
