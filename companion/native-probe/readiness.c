@@ -79,9 +79,18 @@ static void registry_inventory(unsigned requested_seconds) {
     }
     printf("INFERNO_READINESS_IOREG_END requested_seconds=%u status=%d timed_out=%d\n",requested_seconds,status,timed_out);fflush(0);
 }
+extern int inferno_app_event_watch(void);
 int main(int argc,char **argv) {
+    if(argc==2 && !strcmp(argv[1],"--app-events-watch"))return inferno_app_event_watch();
     if(argc==2 && !strcmp(argv[1],"--touch-registry-once"))return inferno_ioreg_touch_snapshot();
     if(argc!=1)return 64;
+    int event_pid=fork();
+    if(event_pid==0) {
+        char *args[]={"/usr/bin/inferno-readiness","--app-events-watch",0};
+        char *env[]={"PATH=/usr/bin:/bin:/usr/sbin:/sbin",0};
+        execve(args[0],args,env);_exit(127);
+    }
+    printf("INFERNO_READINESS_EVENT_CHILD pid=%d automatic_restarts=0\n",event_pid);fflush(0);
     int hid_pid=0;
     if(!access("/usr/bin/inferno-hid-input",1)) {
         hid_pid=fork();
@@ -97,6 +106,9 @@ int main(int argc,char **argv) {
     for(unsigned i=0;i<sizeof(targets)/sizeof(targets[0]);i++) {
         unsigned remaining=targets[i]-elapsed;while(remaining)remaining=sleep(remaining);elapsed=targets[i];
         printf("INFERNO_READINESS_BEGIN seconds=%u\n",elapsed);fflush(0);
+        if(event_pid>0) {int status=0;if(waitpid(event_pid,&status,1)==event_pid) {
+            printf("INFERNO_READINESS_EVENT_EXIT pid=%d status=%d\n",event_pid,status);fflush(0);event_pid=0;
+        }}
         if(hid_pid>0) {int status=0;if(waitpid(hid_pid,&status,1)==hid_pid) {
             printf("INFERNO_READINESS_HID_EXIT pid=%d status=%d\n",hid_pid,status);fflush(0);hid_pid=0;
         }}

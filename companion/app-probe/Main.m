@@ -1,8 +1,35 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 // Owned minimal UIKit fixture. All implementation comes from the running guest.
 #import "UIKitNarrow.h"
+#include "EventRecord.h"
+extern int open(const char *,int,...),close(int),ftruncate(int,long long),fchmod(int,unsigned short),getpid(void),getuid(void),*__error(void);
+static int event_fd=-1;
+static unsigned event_sequence,event_bytes;
+static char event_boot[37];
+static void event_error(const char *stage) {
+    NSLog(@"INFERNO_UIKIT_EVENT_FILE_ERROR stage=%s errno=%d",stage,*__error());
+}
+static void event_start(void) {
+    if(getuid()!=501 || inferno_boot_uuid(event_boot)) {event_error("boot-identity-or-uid");return;}
+    event_fd=open(INFERNO_EVENT_PATH,1|0x200|0x100,0600); // WRONLY|CREAT|NOFOLLOW
+    if(event_fd<0) {event_error("open");return;}
+    struct inferno_event_stat st;
+    if(fstat(event_fd,&st) || (st.mode&0170000)!=0100000 || st.uid!=501 || st.nlink!=1 || fchmod(event_fd,0600) || ftruncate(event_fd,0)) {
+        event_error("file-identity");close(event_fd);event_fd=-1;
+    }
+}
+static void event_store(const char *event,NSUInteger count) {
+    if(event_fd<0 || event_sequence>=64 || !inferno_event_name(event) || count>1000000)return;
+    char line[192];
+    int n=snprintf(line,sizeof(line),"INFERNO_EVENT_V1 %s %d %u %s %lu\n",event_boot,getpid(),++event_sequence,event,count);
+    if(n<=0 || n>=(int)sizeof(line) || event_bytes+(unsigned)n>INFERNO_EVENT_LIMIT)return;
+    unsigned done=0;
+    while(done<(unsigned)n) {long k=write(event_fd,line+done,(unsigned)n-done);if(k<0 && *__error()==4)continue;if(k<=0) {event_error("write");close(event_fd);event_fd=-1;return;}done+=(unsigned)k;}
+    event_bytes+=(unsigned)n;
+}
 
 static void marker(const char *event, NSUInteger count) {
+    event_store(event,count);
     char buffer[160];
     int length = snprintf(buffer, sizeof(buffer),
                           "INFERNO_UIKIT_PROBE_V1 event=%s count=%lu\n", event, count);
@@ -111,6 +138,7 @@ static void marker(const char *event, NSUInteger count) {
 
 int main(int argc, char **argv) {
     @autoreleasepool {
+        event_start();
         marker("main", 0);
         return UIApplicationMain(argc, argv, nil, @"InfernoProbeDelegate");
     }
