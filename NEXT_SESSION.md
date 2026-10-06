@@ -74,10 +74,24 @@ It reads eventservice properties and observes original Darwin notification
 not counted as event. No posting/state mutation. Launcher12 SHA
 4d0add516f2af0b98b5bdbf6f246229b6f2284a409e3832ad6cd8a8ad77082fa,
 68576bytes, originalimports audited44e2b450dd.
-Native and disk workers continue readonly original event/gesture route analysis.
-Generic kernel leaves eventintegrationbit0, but original IOKit downstream sets
-field0xb0019 for serviceusage13/4; do not infer missingflag from kernelonly.
-Actual readinessnotification/serviceproperties nextboot are discriminating evidence.
+**Actual23 now reached normal lock screen then Home and stock Clock execution.**
+Root screenshots: root-initial (lockscreen), hid-lockscreen-swipe-1-after (Home
+behind betaalert), hid-finish-reminder-notnow-tap-1-after (unobstructedHome),
+hid-stock-clock-tap-1-after (WorldClock). Evidence b4b23b0808/c95d780e6b.
+Root sent six23requests: unlockswipe, betaclose, optionalreminderNotNow, Clocktap,
+Homefastswipe (stayedClock), aboveindicatorHomeswipe (pendingcapture). Normal
+systemHomegesture remainsunproven; no more speculativeHIDpropertychanges.
+Ownedfixture zeroUIKit; detailedNSError is SBMainWorkspace Security underlying
+FBSOpenApplicationErrorDomain3. Originalpredicate unauthoritativeTrustState!=8;
+FBSproxySystem/Hidden type1/Internal0 -> trust8; defaultUsertype2 -> original
+MISValidateSignatureAndCopyInfo. Our dictionaryonlyInfo.plist+Path; omitted
+ApplicationType defaultsUser, notexplicitUser. Native tracesexacttrustpath;
+diskworker tracesnormalinstalld MIInstalledInfoGatherer::_determineApplicationType
+100019ef8 andMIBundle::bundleType10002727c. No fabricatedsigner/profile/trustfields
+or newguardbypass. Need originaltruthfulclassification evidence beforemetadatafix.
+ActualHIDproperties Built-In=true,usage13/4,DisplayIntegrated=true, ownVirtualname;
+watcher registers0/initialclear0 butinitialcheck1 isNOTevent. No laternotification.
+OriginalIOKit downstreamfills eventb0019 forqualifyingservice; no flagpatchneeded.
 
 Capacity cleared24GiB beforestage40: verified obsolete generated cache1/appstage1/
 prep22/prep17 retired, original inputs/recipes/evidence, baseline21 and ALL actual
