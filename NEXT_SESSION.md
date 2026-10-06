@@ -26,10 +26,11 @@ or errors; cause unknown. AppPID261 andreaderPID198alive, notloggingproof.
 
 Root froze27 root.qcow2 mode0444 AFTER normalstop/all7hash/noFD check, plus
 KEEP-OVERLAY-BACKING.json in27/disks (a5bfa97c37). Both27overlay AND43rawmust
-remain at exactpaths for planned descendants. Diskworker implementing explicit
---overlay-base-report for validated stoppedownedreports only, recursiveimmutable
-hashes/identities+same-source6auxcopy, max4qcowlevels. Two-levelsyntheticactual
-blockchecks passed; awaitingcommitreview before recovery44 (level2) then28(level3).
+remain at exactpaths for planned descendants. Recorded overlay chains are reviewed and integrated (f80c0bdc5c); actual
+two-layer block execution is retained (c025203bf5). The explicit
+--overlay-base-report validates stopped reports, recursive immutable ancestor
+hashes/identities and same-source auxiliary copies, with at most four QCOW layers.
+Recovery44 uses level2; boot28 will use level3.
 No conversion/deletion. Existingrawdefaultunchanged. Currentfree~4.7GiB enoughCOW.
 
 Diagnostic source0730259baf (worker8df53455dc), evidence014ea341e7 reviewed.
@@ -43,7 +44,10 @@ unchanged535job afterchainreview; probe42/preparer46 preserved.
 Resource27 window120s duringlaunch(unlike26idle):95.15CPUseconds=79.2915%onecore,
 peakRSS5671759872bytes,121samples. Hosteventarrivalcollector stopped normally;
 noappmarkerstimingclaim. Bothrawobservations/script preserved a5bfa97c37.
-NoVMcurrentlyrunning. Continue44/28diagnoseactualwriterfailure, strictgenuine
+Recovery44 has completed actual app72624 and readiness/job69559 byte readbacks
+with zero mismatches, clean unmount, QMPquit7 and emulator0. Ancestor postflight
+hashes are unchanged. Await the standard seven-disk manifest, then freeze44
+root.qcow2 and start28 using --overlay-base-report. Continue diagnosing the writer, strict genuine
 journey and repeatmeasurements; do notstop at the alreadyprovenvisualmilestone.
 
 ## HISTORICAL BOOT27, 2026-10-06 09:08 local
