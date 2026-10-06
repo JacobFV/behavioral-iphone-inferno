@@ -17,7 +17,7 @@ mkdir -p "$build_root"
 build_root=$(cd "$build_root" && pwd)
 python3 "$script_dir/bootstrap-linux.py" "$build_root"
 if [[ ! -x "$build_root/venv/bin/python" ]]; then python3 -m venv "$build_root/venv"; fi
-"$build_root/venv/bin/python" -m pip --cache-dir "$build_root/pip-cache" install --disable-pip-version-check 'meson==1.7.2' 'ninja==1.11.1.4'
+"$build_root/venv/bin/python" -m pip --cache-dir "$build_root/pip-cache" install --disable-pip-version-check --no-deps --only-binary=:all: --require-hashes -r "$script_dir/build-tools-arm64.txt"
 export PATH="$build_root/venv/bin:$PATH"
 packages="$build_root/packages/usr"
 deps="$build_root/deps"
@@ -28,7 +28,7 @@ export CPPFLAGS="-I$deps/include -I$packages/include -I$packages/include/aarch64
 export LDFLAGS="-L$deps/lib -L$deps/lib64 -L$packages/lib/aarch64-linux-gnu -Wl,-rpath,$deps/lib -Wl,-rpath,$deps/lib64 -Wl,-rpath,$packages/lib/aarch64-linux-gnu"
 nettle_archive="$build_root/downloads/nettle-3.10.2.tar.gz"
 if [[ ! -f "$nettle_archive" ]]; then
-    for base in https://ftpmirror.gnu.org/gnu https://ftp.gnu.org/gnu https://mirrors.kernel.org/gnu; do
+    for base in https://ftp.gnu.org/gnu https://mirrors.kernel.org/gnu https://ftpmirror.gnu.org/gnu; do
         if curl --fail --location --retry 1 --connect-timeout 15 --max-time 120 \
             "$base/nettle/nettle-3.10.2.tar.gz" --output "$nettle_archive.part"; then
             mv "$nettle_archive.part" "$nettle_archive"
