@@ -1,0 +1,146 @@
+{
+  "kext_patch_text_ranges": {
+    "com.apple.driver.AppleMobileFileIntegrity": {
+      "('__TEXT_EXEC', '__text')": [
+        "0xfffffff0082f0320",
+        "0xfffffff0082f8cb0"
+      ]
+    },
+    "com.apple.security.AppleImage4": {
+      "('__TEXT_EXEC', '__text')": [
+        "0xfffffff00837e9c8",
+        "0xfffffff00838c928"
+      ]
+    },
+    "com.apple.driver.AppleSEPManager": {
+      "('__TEXT_EXEC', '__text')": [
+        "0xfffffff008b39b78",
+        "0xfffffff008b6b818"
+      ]
+    },
+    "com.apple.filesystems.apfs": {
+      "('__TEXT_EXEC', '__text')": [
+        "0xfffffff008fdcee0",
+        "0xfffffff0090c1e70"
+      ]
+    }
+  },
+  "global_scan_range": [
+    "0xfffffff0079ec000",
+    "0xfffffff0097db9c0"
+  ],
+  "global_pattern_anchors": [
+    {
+      "function": "ck_kp_mac_mount_patch",
+      "pattern": "pattern",
+      "hits": [],
+      "within4096_of_audited_ranges": []
+    },
+    {
+      "function": "ck_kp_mac_mount_patch",
+      "pattern": "new_pattern",
+      "hits": [
+        "0xfffffff007bf3cf8",
+        "0xfffffff0095d89d8"
+      ],
+      "within4096_of_audited_ranges": []
+    },
+    {
+      "function": "ck_kp_kprintf_patch",
+      "pattern": "pattern",
+      "hits": [
+        "0xfffffff0080f62f8"
+      ],
+      "within4096_of_audited_ranges": []
+    },
+    {
+      "function": "ck_kp_kprintf_patch",
+      "pattern": "pattern_new",
+      "hits": [],
+      "within4096_of_audited_ranges": []
+    },
+    {
+      "function": "ck_kp_amx_patch",
+      "pattern": "pattern_new",
+      "hits": [],
+      "within4096_of_audited_ranges": []
+    },
+    {
+      "function": "ck_kp_amx_patch",
+      "pattern": "pattern",
+      "hits": [
+        "0xfffffff007b644a4"
+      ],
+      "within4096_of_audited_ranges": []
+    },
+    {
+      "function": "ck_kp_amx_patch",
+      "pattern": "pattern_newer",
+      "hits": [],
+      "within4096_of_audited_ranges": []
+    },
+    {
+      "function": "ck_kp_cs_patches",
+      "pattern": "pattern",
+      "hits": [
+        "0xfffffff007aca7b0",
+        "0xfffffff007b3a464",
+        "0xfffffff007b69460",
+        "0xfffffff007b6b6e4",
+        "0xfffffff007b6ca2c",
+        "0xfffffff007b6df98",
+        "0xfffffff007b6eeb4",
+        "0xfffffff007b6fd0c",
+        "0xfffffff007b6fde0",
+        "0xfffffff007b6feb8",
+        "0xfffffff007b6ff9c",
+        "0xfffffff007be42d0",
+        "0xfffffff007be50bc",
+        "0xfffffff007e11278",
+        "0xfffffff007e4e164",
+        "0xfffffff007ecee2c",
+        "0xfffffff0080b3a90",
+        "0xfffffff0081623dc",
+        "0xfffffff008b10580",
+        "0xfffffff008fff20c",
+        "0xfffffff00909f080",
+        "0xfffffff0090a3188",
+        "0xfffffff0092abd7c",
+        "0xfffffff0096821b0"
+      ],
+      "within4096_of_audited_ranges": []
+    },
+    {
+      "function": "ck_kp_cs_patches",
+      "pattern": "alt",
+      "hits": [],
+      "within4096_of_audited_ranges": []
+    }
+  ],
+  "ppl_range": [
+    "0xfffffff0097e0000",
+    "0xfffffff0097f9844"
+  ],
+  "audited_ranges": [
+    [
+      "0xfffffff0097449d4",
+      "0xfffffff009744b54"
+    ],
+    [
+      "0xfffffff009744ce8",
+      "0xfffffff009745800"
+    ],
+    [
+      "0xfffffff0097954a0",
+      "0xfffffff009795800"
+    ],
+    [
+      "0xfffffff0097b8b84",
+      "0xfffffff0097b8e6c"
+    ],
+    [
+      "0xfffffff0096fc934",
+      "0xfffffff0096fd000"
+    ]
+  ]
+}

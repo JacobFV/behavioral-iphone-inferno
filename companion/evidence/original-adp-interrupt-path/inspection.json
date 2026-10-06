@@ -12,12 +12,12 @@
       "sha256": "32b78ffb3f9f14a19716cb7d3d6a5baa59ea98bc502fb183d3ff429df0f20a21"
     },
     {
-      "path": "/tmp/inferno-adp-int-disasm.txt",
+      "path": "/home/brandonin/.local/share/inferno/native-probe/original-adp-interrupt-audit/inferno-adp-int-disasm.txt",
       "bytes": 57480,
       "sha256": "0bb4db7edaa1e56ea399822fb759d84c40cdc5339aa6c97d5a75510f8e775667"
     },
     {
-      "path": "/tmp/inferno-adp-swap-complete-disasm.txt",
+      "path": "/home/brandonin/.local/share/inferno/native-probe/original-adp-interrupt-audit/inferno-adp-swap-complete-disasm.txt",
       "bytes": 16382,
       "sha256": "9ee00cc46a6da264a457fa485e16a5b8dbcf9c7dcd056372d9e82511d011b0df"
     }
@@ -76,5 +76,21 @@
     "Virtual methods and internal state gates are not assigned unproven meanings.",
     "No evidence supports bypassing guards or fabricating completion."
   ],
-  "next_evidence": "Correlate bounded new status-read values with following W1C and45004 reads, avoiding HMP attribution confusion; if stalled while these remain normal, obtain original backboardd/SpringBoard stack samples during stall for comparison with healthy49. No new instrumentation beyond approved status read is proposed."
+  "next_evidence": "Correlate bounded new status-read values with following W1C and45004 reads, avoiding HMP attribution confusion; if stalled while these remain normal, obtain original backboardd/SpringBoard stack samples during stall for comparison with healthy49. No new instrumentation beyond approved status read is proposed.",
+  "direct_kernel_patch_comparison": {
+    "configuration": "simulated-unencrypted",
+    "actual58_source_revision": "09811d4d1d4dfa3c10ee8f59360f282624fc1df2",
+    "kernel_patch_source_sha256": "f0136983ea2716f719872eb7d16234e3c618f1b2de6135334cb4a30f6daacc80",
+    "actual58_source_equals_current_patch_source": true,
+    "actual58_stderr_sha256": "90d324fa1e1c26c49589cda1ea8076ea1c3f9073a1f1fccf44bdc91ae15d91eb",
+    "method": "Mapped original kmod header text ranges using same __kmod_info/+0x10 name and __kmod_start relationship as patcher. Scanned all original global text pattern anchors for mac-mount/kprintf/AMX/code-signature patch families with their exact masks/alignment. PPL patch range disjoint. Data/cstring patches disjoint from audited instruction ranges.",
+    "result": "No direct patch anchor within4096bytes of any mapped instruction range; scoped APFS/AMFI/SEPManager/AppleImage4 text ranges and PPL text are disjoint. Global callbacks inspect/write at most0x40 instructions from relevant anchors here, so conservative4096byte exclusion exceeds their reach.",
+    "limitations": [
+      "This is a static direct-patch overlap audit, not a runtime RAM byte comparison.",
+      "Boot stderr identifies applied patch names but does not print actual addresses.",
+      "Original driver still runs in an emulated platform with patched dependencies; unchanged local instructions do not prove actual execution or notifications.",
+      "Other uninspected dynamic state and external userland cache patches are not promoted to equivalent original behavior."
+    ],
+    "details": "patch-range-audit.json"
+  }
 }
