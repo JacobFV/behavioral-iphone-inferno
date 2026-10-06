@@ -197,10 +197,9 @@ through its own implementation, and invokes the SEP user client. The boot alias
 No blob is fabricated by the helper.
 
 `prepare.py --disk-helper-existing --disk-helper-gigalocker` uses already prepared
-volumes, mounts discovered xART on `/mnt7`, executes the original seputil init and
-shutdown operations in order, syncs, and unmounts. Use only a disposable copy of
-the prepared root as always. `INFERNO_GIGALOCKER_COMPLETE` requires both original
-tool calls to return success; absence or errors must remain explicit.
+volumes, mounts discovered xART on `/mnt7`, executes the original seputil init operation, syncs, and unmounts. Use only a disposable copy of
+the prepared root as always. `INFERNO_GIGALOCKER_COMPLETE` requires the original init
+call and clean unmount to succeed; absence or errors must remain explicit.
 
 Explicit disk-helper profiles remove only the cloned ramdisk's
 `com.apple.restored_external.plist` job. Disk preparation does not request a restore
@@ -208,3 +207,9 @@ transaction, and that daemon otherwise shuts the guest down after its 120-second
 host-wait timeout. The original daemon binary and original recovery profile stay
 unchanged; the preparation operation log records the removed plist. Ordinary
 marker profiles continue to run the original recovery job.
+
+The initial attempts9 and10 returned0 from original gigalocker initialization but
+hung in the separate seputil shutdown utility. The enabled guest-errors trace had
+no SEP or XART opcode during that wait. They do not establish clean completion.
+The helper therefore tests initialization followed by sync and normal unmount;
+it does not claim the separate shutdown utility succeeded.
