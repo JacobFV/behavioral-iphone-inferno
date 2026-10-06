@@ -112,3 +112,36 @@ does not transmit that field. xHCI's direct SET_ADDRESS callback also reaches
 an unset `handle_control` callback on usb-tcp-remote. EHCI remains the documented
 controller, with its observed reentrancy failure unresolved. No upstream guard
 or driver was modified for these experiments.
+
+The asynchronous remote USB fix plus deferred SET_ADDRESS writeback were actually
+verified with Linux KVM/EHCI and iOS TCG at source `7e70337967`. Run8 enumerated
+`05ac:12a8`, serial `00008030-1122334455667788`, and usbmuxd connected the device.
+The first emulator was shut down with QMP quit; Linux removed the USB device.
+A fresh recovery attempt reconnected to the same Linux VM and enumerated as USB
+device 003. A second read-only service query returned
+`com.apple.mobile.restored`, protocol version 15. Root independently repeated
+that query. This proves recovery-service transport, not installation, a full
+system boot, application execution or restore completion. EHCI remains the
+supported controller for this transport.
+
+`companion/query-restored.py --udid UDID` calls only the documented
+[libimobiledevice restored query API](https://github.com/libimobiledevice/libimobiledevice/blob/master/include/libimobiledevice/restore.h),
+then frees the client and device. Run it inside the Linux companion where usbmuxd
+and libimobiledevice are installed. It reports API return codes and exits nonzero
+on an API failure or a service type other than `com.apple.mobile.restored`.
+It does not invoke start-restore, reboot, pairing or signature operations.
+Use an external timeout to bound an unresponsive transport, for example:
+
+```sh
+ssh -i "$RUN/guest-key" -o UserKnownHostsFile="$RUN/known_hosts" \
+  -p 22324 inferno@127.0.0.1 \
+  'timeout 20 python3 - --udid 00008030-1122334455667788' \
+  < companion/query-restored.py
+```
+
+The exact committed query source was executed against the reconnected device;
+all five API calls returned zero. Its raw output is in run8
+`committable-query.log`. Linux KVM queries, build identity and earlier diagnosis
+are in the same directory. The matching iOS records are
+`.local-build/reports/recovery-usb-async-2/` and
+`.local-build/reports/recovery-usb-async-reconnect/`.
