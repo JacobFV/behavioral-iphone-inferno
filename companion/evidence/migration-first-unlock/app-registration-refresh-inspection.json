@@ -1,0 +1,26 @@
+{
+  "scope": "Read-only original registration notification and FrontBoard cache behavior; no notification posted, no state mutation.",
+  "source": {
+    "original_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+    "CoreServices_analysis": "/tmp/inferno-CoreServices-complete (addresses below are standalone offsets)",
+    "FrontBoardServices_analysis": "/tmp/inferno-fbs-disasm.txt (original cache virtual addresses)"
+  },
+  "registration": {
+    "entry": "LSApplicationWorkspace registerApplicationDictionary:0x41f3c forwards registerApplicationDictionary:withObserverNotification: with argument7 at0x41f44",
+    "success": "0x41acc registerApplicationWithDictionary returns0; 0x41adc-41af8 retrieves applicationProxyForIdentifier:placeholder:; 0x41b00-41b60 sends observerProxy sendNotification:7 forApplications:[proxy] withPlugins:nil",
+    "dispatch": "_LSInstallProgressService notification switch table0x5ec54 index7 targets0x5e218, applicationsDidInstall path with explicit original log at0x5e260",
+    "contrast": "registerApplication: uses LSRegisterURL and original0x41fac log explicitly says it does not send applicationsDidInstall; this is not the dictionary API currently used."
+  },
+  "FBS_consumer": {
+    "entry": "FBSApplicationLibrary applicationsDidInstall:0x186105a5c dispatches synchronously to work queue at0x186105e08",
+    "existing_objects": "Work block0x186105fa4 obtains existing info;0x1861065c4-65d4 invokes _workQueue_applicationHasBeenModified:applicationProxy:. False only clears installing at0x186106604-6610. True invokes replacement block0x1861066b0.",
+    "replacement": "0x18610676c-6784 removes installed model entry;0x186106788-67a8 constructs application info from current proxy, then records replacement for normal notification.",
+    "predicate": "_workQueue_applicationHasBeenModified:applicationProxy:0x18610477c compares original info bundleURL.path against proxy bundleURL.path (0x1861047f0-4830); if equal compares info lastModifiedDate with original filesystem timestamp helper0x1834d2aa0 (0x186104834-4868). Unchanged path and timestamp returnsfalse at0x18610486c. ApplicationType is not compared."
+  },
+  "implication": "An existing User info object can survive a metadata-only LS update at unchanged bundle path/timestamp despite the normal install notification. A normal subsequent boot reconstructing application info from persisted LS registration should avoid that old in-memory object; this is an inference pending actual boot comparison.",
+  "limits": [
+    "Do not infer that any actual24 denial is stale without observing proxy type and actual error.",
+    "No extra notification/API is required to send the install event: dictionary registration already does so.",
+    "No direct FrontBoard model manipulation, fabricated notification or forced trusted metadata proposed."
+  ]
+}
