@@ -14,6 +14,7 @@ import subprocess
 import tempfile
 import time
 from probe_journey import ProbeJourney
+from qmp_control import ControlMailbox
 
 
 DISKS = [('root', 32 << 30, 1), ('firmware', 8 << 20, 2),
@@ -97,6 +98,8 @@ def main():
     repo = Path(__file__).resolve().parents[1]
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--profile', type=Path, required=True)
+    parser.add_argument('--control-mailbox', action='store_true',
+                        help='enable private allowlisted pointer/input-trace requests via qmp_control.py')
     parser.add_argument('--binary', type=Path, default=repo / '.local-build/build/qemu-system-aarch64')
     parser.add_argument('--manifest', type=Path)
     parser.add_argument('--seconds', type=float, default=120)
@@ -204,6 +207,10 @@ def main():
     if journey:
         report['probe_journey'] = journey.report
         report['probe_journey_source_sha256'] = digest(Path(__file__).with_name('probe_journey.py'))
+    control = ControlMailbox(output) if args.control_mailbox else None
+    if control:
+        report['control_mailbox'] = str(control.path)
+        report['control_source_sha256'] = digest(Path(__file__).with_name('qmp_control.py'))
     process = qmp = connection = None
     started = time.monotonic()
     previous_handlers = {}
@@ -287,7 +294,7 @@ def main():
             report['greeting'] = qmp.receive()
             if 'QMP' not in report['greeting']:
                 raise RuntimeError('Missing QMP greeting')
-            for name in ('qmp_capabilities', 'query-status', 'query-cpus-fast', 'cont'):
+            for name in ('qmp_capabilities', 'query-status', 'query-cpus-fast', 'query-mice', 'cont'):
                 response = qmp.execute(name, timeout=max(.1, min(30, deadline - time.monotonic())))
                 if 'error' in response:
                     raise RuntimeError(f'QMP {name} failed: {response["error"]}')
@@ -296,6 +303,8 @@ def main():
                 (output / 'frames').mkdir()
                 report['periodic_captures'] = []
             while time.monotonic() < deadline and process.poll() is None:
+                if control:
+                    control.poll(qmp)
                 if args.capture_interval and time.monotonic() >= next_capture:
                     captures = report['periodic_captures']
                     frame = output / 'frames' / f'{len(captures):04d}.ppm'
