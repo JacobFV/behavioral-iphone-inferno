@@ -115,7 +115,7 @@ int main(int argc,char **argv) {
         registry_inventory(elapsed);
         int pid=fork();
         if(pid==0){
-            char *args[]={"/bin/ps","-A","-ww","-o","pid,ppid,state,comm",0};
+            char *args[]={"/bin/ps","-A","-ww","-o","pid,ppid,uid,state,comm",0};
             char *env[]={"PATH=/usr/bin:/bin:/usr/sbin:/sbin",0};
             execve(args[0],args,env);_exit(127);
         }

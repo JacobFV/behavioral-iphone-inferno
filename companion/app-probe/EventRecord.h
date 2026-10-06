@@ -9,9 +9,14 @@ extern int strcmp(const char *,const char *);
 struct inferno_event_stat { int dev;unsigned short mode,nlink;unsigned long long ino;unsigned uid,gid;int rdev;long long times[8],size,blocks;int blksize;unsigned flags,gen;int spare;long long qspare[2]; };
 _Static_assert(sizeof(struct inferno_event_stat)==144,"Darwin stat ABI");
 extern int fstat(int,struct inferno_event_stat *);
+static int inferno_boot_query_result,inferno_boot_query_errno;
+static unsigned long inferno_boot_query_length;
+extern int *__error(void);
 static int inferno_boot_uuid(char out[37]) {
     unsigned long n=37;
-    if(sysctlbyname("kern.bootsessionuuid",out,&n,0,0) || n!=37 || out[36])return -1;
+    inferno_boot_query_result=sysctlbyname("kern.bootsessionuuid",out,&n,0,0);
+    inferno_boot_query_errno=inferno_boot_query_result?*__error():0;inferno_boot_query_length=n;
+    if(inferno_boot_query_result || n!=37 || out[36])return -1;
     unsigned nonzero=0;
     for(unsigned i=0;i<36;i++) {
         char c=out[i];
