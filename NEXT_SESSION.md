@@ -48,164 +48,92 @@ that directory together: the binary references local libraries/resources.
 
 ## Current execution boundary
 
-Keep working; no handoff or missing user input. SpringBoard and backboardd execute.
-Original owned app registration, normal first-unlock and visible Hello setup UI
-are now proven. Owned UIKit execution and actual touch response remain unproven. Firmware, System/Data preparation, keybag creation and renderer patches
-are established; do not return to the archived framework implementation.
+Keep working; no handoff or missing user input. Actual installed iOS reaches the
+original Hello setup UI. Owned app registration and the original first-unlock API
+transition are proven. Owned UIKit execution, touch navigation and a counter
+journey remain unproven. Do not return to the archived framework implementation.
 
-At05:20 local, **app-boot-16 is live**, bootworker session5753, from verified
-firmware-only stage36 rootSHA
-6a7dba55d2e16890eec2a76d980a10016cdde0ad2265387048cd76ee699db1ac with all paired36
-namespaces. Same fda9447b emulator, unchanged app/helpers, private mailbox,
-900second bounded startup trace,30second captures,strictjourney,noUSB.
-Stage36 readback583090bytes/mismatches0, clean unmount/QMP0/all7hashes completed.
-**Actual loader result:** original FUD discovers staged file and enters normal
-IMG4 validation, but Img4DecodeCopyManifestDigest fails end-of-sequence, callback
-error34, kFWValidationFailed0xe0000001. No firmware/protocol/touch success. Do not
-fabricate a manifest/signature/ticket or introduce another validation bypass.
-Native and disk workers now inspect exact original IOHID event injection APIs and
-authorization as a separate owned UI-automation path. No helper or input yet;
-hardware touch remains explicitly unresolved. Keep16 live for setup/registry.
+At 05:24 local, **app-boot-16 is live**, bootworker session5753, from firmware-only
+stage36 root SHA256
+`6a7dba55d2e16890eec2a76d980a10016cdde0ad2265387048cd76ee699db1ac` and all six
+paired namespaces in `.local-build/reports/disk-preparation-36`.
+Emulator SHA256 `fda9447b41d7bd170a0abf6b56f4b0db822ff9ca84add3e648299d2aa7f59505`,
+source `9f92661b1b3154fb19de51ef9c9a1a6ed6e97d4f`. Same app/launcher/unlock/observer;
+private control mailbox, 900-second startup trace, 30-second frames, strict
+journey, maximum7200seconds, no USB. Root reviewed frame0005: Hello and swipe-up
+prompt. Registry observations repeat HBPP-only touch transport. No input in16.
 
-Previous stopped lineage: Stopped15 rootSHA
-8cf8592076adef4f9daa20ff6520cc2bf157c81009561fc58041e07e91c24182 and all six paired
-auxiliary disks are preserved in app-boot-15; QMPquit/emulator0 after960.150192s.
-Stage36 uses this stopped tuple with the archived stable recovery binary. Boot15
-was an identical successful retry from
-verified observer-only stage35 root
-SHAdd1062ad10cf09dc3b18f1c84d8bc2eb6d2d6ed2ff54bdc2c546284d44d403de and all six
-paired namespaces in .local-build/reports/disk-preparation-35. Stage35 derives
-from stopped12 root20a20cd1288df1bd556c0ff460a39b399f023c89e1918defd233ee09987eeb37.
-Actual guest binary/job readback69,159bytes matched; unmount/QMP exit succeeded.
-Only owned readiness observer changed: fresh-exec, bounded read-only IOKit
-snapshots of AppleHIDTransportDeviceSPI/aop-gpio and immediate relations. No
-property dumps, userclient calls, entitlement/cache/job/app/unlock changes.
+**Firmware boundary:** stage36 added one 583090-byte unsigned IMG4 container to
+Preboot/<96-zero boot hash>/usr/standalone/firmware/FUD/Multitouch.img4. It preserves
+the original IPSW IM4P byte for byte, with no manifest/signature/ticket generated.
+Original guest byte/metadata readback matched; clean unmount, QMP0 and seven
+stopped hashes retained. Original FUD discovers the file, enters IMG4 validation,
+then fails copying the absent manifest digest: callback34,
+kFWValidationFailed0xe0000001. Packaging success is not firmware-load success.
+Do not fabricate a manifest or add another validation bypass. Evidence:
+`companion/evidence/system-app-preparation/stage36/boot16-loader-observation/`.
 
-Boot13 stopped normally and its paired hashes are being retained. It repeated
-Hello setup, unlock0/first0->1 and registrationYES, but FrontBoard launcherror1.
-Three nondestructive register snapshots showed AOP GPIO34 config0x6020e (masked
-mode under the emulator decode), SPI CTRL0/CFG0x4018/PIN2/counts0. The original
-matched GPIO class must be identified before inferring a driver/model mismatch.
-Boot12 real VNC and QMP input reached MT-SPI and queued make/move/break reports;
-no traced dequeue, drain or control consumption occurred. No coordinate changes
-are justified. Original configureSPI can send four zero bytes during initial
-poweroff, so one RESET first-byte trace alone does not prove firmware boot.
+**Touch diagnosis:** actual VNC/QMP gestures in12 reached current absolute Apple
+Multitouch HID SPI and queued reports, but no dequeue/drain/control consumption.
+Boot15/16 registry: AppleHIDTransportDeviceSPI below multi-touch/AppleARMSPIDevice,
+only AppleHIDTransportBootloaderHBPP child; no operational HIDSPI protocol.
+Original firmware supplies the HIDSPI configuration. AOP GPIO driver is original
+AppleS5L8960XGPIOIC; its initVector produces observed0x6020e exactly and its mode
+encoding matches emulator. No GPIO or coordinate fix is justified. Completed
+four-byte RESET queues two-byte reply, no INT_ACK; that transfer is also used by
+original initial poweroff configuration. SPI CTRL0/CFG0x4018/PIN2/counts0 persist.
 
-Boot14 emulatorSHAfda9447b41d7bd170a0abf6b56f4b0db822ff9ca84add3e648299d2aa7f59505,
-source9f92661b1b3154fb19de51ef9c9a1a6ed6e97d4f adds only trace phase/buffer metadata
-for completed RESET, queued boot reply and consumed INT_ACK. Actual build and
-control-only smoke passed; neither proves guest success. Runner enables six
-MT trace events before cont and automatically disables after180seconds. Private
-control mailbox supports query-mice and seven fixed nondestructive touch-register
-reads. Never attach a second QMP client or read SPI RXDATA. Root owns all live
-input. Same7200seconds maximum,30secondframes,strictjourney,guest-errors,noUSB.
-Boot14 exited after9.127seconds with the same early framebuffer bandwidth failure
-and panicPC00979a36c seen in historical prep16. Prep17 previously succeeded with
-identical inputs to16. No observer ran in14; its raw evidence and all seven disks
-are retained. Retry15 uses identical35 inputs and has reached Early boot complete. RESET trace
-now proves four-byte completion and queued two-byte reply; no INT_ACK observed.
-Initial fixed-register snapshot matches13. Two observer snapshots completed with all statuses0: aop-gpio has original
-AppleS5L8960XGPIOIC child; transport has only AppleHIDTransportBootloaderHBPP child
-and no operational protocol. Actual original initVector produces6020e exactly;
-mode encoding matches emulator. No GPIO behavior change is justified. Original
-unlock0/first0->1 repeated. Frame0025 shows white setup surface/status/info/home
-indicator (Hello animation between words); no owned app. Root sent no touch.
+**Current implementation work:** investigate normal original IOHID event injection
+as a separate owned UI automation route; hardware touch remains unresolved.
+Original installed IOKit default client type3 requires exactly
+`com.apple.private.hid.client.event-dispatch=true`; accepted events enter the
+normal IOHIDSession queue. Denied dispatch also returns0, so only actual UI
+response proves success. Native owns exact digitizer ABI/helper design; disk
+worker owns authorization/display routing evidence; bootworker owns an optional
+private serial command transport design. No injection helper has run. No admin
+entitlement, synthetic unlock notification or security-guard change is proposed.
 
-Next candidate is an honest unsigned outer IMG4 preserving byte-identical IPSW
-N104_Multitouch.im4p, without any synthesized manifest/signature/ticket. Original
-FUD and kernel parsers permit an absent optional manifest; full execution remains
-unproven. Original restore deploys this missing component; normal updater expects
-Preboot/<boot-manifest-hash>/usr/standalone/firmware/FUD/Multitouch.img4. Original
-System MSUDataAccessor method/table corroborate this path, and this simulated
-VM already uses96zero hash directory alongside SEP. Native prepares narrow
-Preboot-only install/readback option. Do not stage from live15: once candidate
-is built/reviewed, stop15 normally and use its complete paired stopped tuple.
-No new validation bypass, fake personalization, GPIO fix or DT property added.
-Candidate was reviewed and independent original-byte equality verified; stage36
-now installs only the unsigned583090byte container SHA
-871a03fb79413e696d3bf952991ac46552a4007585c85f18cb6abbcdbf4943a2. Helper41 SHA
-81aadde6112c88709d46b6f50f7db43e1e91b8ceb3721c5dac8b740228486630 from3419586187.
-Require actual byte/metadata readback, normal unmount/QMP0 and all seven stopped
-hashes before boot16. Same trace emulator fda9447b...59505 and observer thereafter.
-Verified obsolete generated prep31-34 disk copies were retired, reclaiming
-30,630,694,912bytes; all reports/sources and actual boot disks persist.
-Await actual registry/phase results before behavior changes or more gestures.
+**Live control:** root exclusively owns input. Runner owns the sole QMP connection;
+use `companion/qmp_control.py --report .local-build/reports/app-boot-16 ...`.
+Never attach a second QMP client or read SPI RXDATA. Fixed seven register reads
+are allowlisted. Trace events must remain bounded and disabled afterward. VNC
+socket comes from current16 command.json; earlier socket paths are stale. No host
+windows, network display endpoints, clipboard or arbitrary guest commands.
 
-Boot11 reached original Hello setup UI (reviewedframe0017 and finalRussianHello).
-Padded state response works: originalqueryraw0/noerror, unlock0,first0->1. Rawstate0
-remains uninterpreted. Callback initiallyPOSIX60timeout thenFrontBoarderror1 while
-setupvisible. Nilconfiguration originallyadds LSBlockUntilComplete=true, recorded
-in open-path-inspection.json. Boot11stoppednormally1127.465699s/QMPemulator0; full
-rawlogs/finalframe/allsevenhashescommitted app-first-setup-stopped*.
+**Lineage and retention:** stopped15 root
+`8cf8592076adef4f9daa20ff6520cc2bf157c81009561fc58041e07e91c24182` plus paired15
+feeds36; normal QMP0 after960.150192s. Observer-only35 came from stopped12.
+Boot14 failed before userland at framebuffer panicPC00979a36c; identical15 retry
+succeeded, matching an older prep16/17 transient precedent. All actual boot tuples
+and reports remain. Verified redundant generated prep24/25/26/28/30/31/32/33/34
+disk copies were retired; their hashes/evidence/sources remain. Do not refer to
+retired preparation disks as available. Check actual free space before new copies.
 
-Fast and slow VNC swipes/info taps completed RFBdelivery without confirmed UI
-navigation. Languageanimation is nottouchproof. Existing source has correctleft
-button/absolute coordinates; nocoordinate ordevicebehaviorfix made. Newtraces
-observe hostevent→reportenqueue→SPIpacketdequeue/transmitdrain; draindoesnotprove
-UIKitacceptance. Enableonlyboundedwindow throughcompanion/qmp_control.py then
-disable. SeeQMP_CONTROL.md, useexistingrunnerowner, neversecondQMPclient.
-Root VNC helper nowacceptsbounded --hold-seconds/--swipe-seconds/--settle-seconds,
-defaultspreserved. Must read12command.json foritsnewprivateVNCsocket;11socketstale.
-
-LiveUSBcannotreconnectafterinitialENOENT; noreset/activation/pairingworkaround.
-Stopped32/33/34comparisonsandallactualbootstatesremain. Around42GiBfree.
-
-Completed causal sequence:
-- Boot7: original unlock selector9 e00002e2/public-2. Original kernel proved
-  missing com.apple.keystore.device entitlement on owned helper before SEP.
-- Stage32 adds only that singleton entitlement. Boot8 reached unsupported SEP
-  opcode18; request echo had wrong response shape, e00002bc/public-1.
-- Guarded INFERNO_SIMULATED_SEP partial model supports only validated system0,
-  operation0,options0,empty-secret transition. Normal queries report proven
-  first-unlock bit2 and xART bit22; other transitions return errors. Boot9 proved
-  original unlock return0 and original first-unlock0->1. No notification injected.
-- Query options0 and1 share original DER shape. After accepting both, boot10
-  still showed selector17 e00002bc. Original __blob decoder proved DER13 requires
-  transport padding to16bytes. Current binary fixes only that padding; original
-  state-query success still needs boot11 verification. No sls enum is guessed.
-- URL app registration skipped the unknown-app path because dictionary was NULL.
-  Stage33 dictionary launcher uses exact owned Info.plist plus actual Path.
-  Boot10 proved registrationYES/proxyvalid/correct bundle path. Open requests
-  returnedNO repeatedly, with roughly10-second delay. No app marker or UI.
-- Stage34 adds only original openApplicationWithBundleIdentifier:configuration:
-  completionHandler: callback diagnostics, configurationnil, exact BOOL/NSError
-  ABI. Log bounded error domain/code/description; no fabricated metadata or
-  entitlement. Guest68480-byte readback0mismatch/unmount/QMPstop passed; import
-  audit90symbols passed. Prior launcher variants remain unchanged and archived.
-
-Actual raw logs/build manifests/source inspection/stopped hashes are committed
-under companion/evidence/. Stage32/33/34 remain immutable paired comparisons.
-Obsolete generated prep24/25/26/28/30 disk copies were retired only after complete
-hash/evidence checks; logs/reports/sources and every actualboot tuple remain.
-Host CPU contention prevents benchmark claims; do not alter unrelated processes.
-
-Migration reports previously showed SystemAppMigrator returnedNO and assetsd
-waited in PLFirstUnlockProtection. First-unlock query success does not itself
-prove all migration or notifications complete. Current full guest observation is
-required. Latest reviewed boot10 frame was black; never label black as ready.
-No fake notification, guard suppression, Apple signature forging, real-device
-key extraction or activation impersonation is authorized.
+**Other proven behavior:** original empty-secret MKBUnlockDevice(NULL,NULL)
+returns0 and unlocked-since-boot changes0->1 through the guarded simulated SEP
+implementation. State query raw0 has no API error but is not assigned an invented
+lock-state enum. No unlock notification was injected. Dictionary LaunchServices
+registration returnsYES with valid proxy at /Applications/InfernoProbe.app.
+Original callback open request currently returns FBSOpenApplicationServiceErrorDomain
+code1; nil configuration uses original LSBlockUntilComplete behavior. No UIKit
+markers. Data-path X_OK/execEPERM persists, while the System-owned helper executes.
+Evidence and exact original-code inspection are under companion/evidence/.
 
 ## Next concrete work
 
-1. Inspect actual app-boot-14 registry/trace phase results, unlock and registration
-   BOOL/proxy results. Keep source revisions, hashes, raw logs and stopped root
-   plus all six auxiliary namespaces paired. Do not treat helper JSON as proof.
-2. Resolve the concrete next failure using original APIs and narrow owned code.
-   The unlocked-since-boot bit must change through the original API; do not fake
-   notifications or claim success from an attempted call. Keep the currently
-   running integrated attempt intact when useful, rather than resetting migration
-   at arbitrary status checkpoints.
-3. Review actual frames. `companion/vnc-control.py` captures/interacts through the
-   VM's private Unix VNC socket without a host window while the runner owns QMP.
-   Capture is proven; touch needs a visible guest response. If the real app appears,
-   complete and retain a before/after counter tap journey. An accepted launch
-   request is insufficient. Serial app markers may not be inherited through LS;
-   manual VNC input plus reviewed actual counter frames can provide direct evidence.
-4. Only after a successful owned app journey, measure actual cold/warm launch,
-   memory, CPU, reliability and parallel density. Current CPU-contended timings
-   are not comparative benchmarks. Reuse old fixtures/dashboard only where this
-   real backend supports them.
+1. Keep16 intact while the exact original HID API and private command transport
+   are made reviewable. Build the narrowly authorized owned helper only after
+   ABI, event fields and authorization are established. Do not claim API return0
+   as delivery; require visible before/after UI evidence.
+2. Stage from a normally stopped paired tuple only after the next candidate is
+   ready. Commit source, actual build manifests, readbacks, raw logs and hashes.
+   Never copy or hash a live disk as an immutable source.
+3. Root triggers bounded ordinary setup gestures after reviewing the live screen.
+   No account sign-in, activation impersonation or fabricated notifications. If
+   the owned app appears, retain actual before/after counter frames and markers.
+4. Only after the real app journey, measure launch, memory, CPU, reliability and
+   parallel density. Host load has varied heavily; present timings accordingly.
+   Reuse old fixtures/dashboard only where this real backend supports them.
 
 Linux USB run9 shut down normally at09:40:13UTC, emulator0, after full-system
 lockdown queries. Its stopped QCOW2 can resume when needed. Syslog StartService
