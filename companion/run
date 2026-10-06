@@ -7,12 +7,16 @@ if (($#)); then shift; fi
 case "$command" in
     status) exec python3 "$root/companion/status.py" "$@" ;;
     check) exec python3 "$root/companion/smoke.py" --binary "$root/.local-build/build/qemu-system-aarch64" "$@" ;;
+    prepare) exec python3 "$root/companion/prepare-profile.py" "$@" ;;
+    boot) exec python3 "$root/companion/boot.py" "$@" ;;
     build) exec "$root/companion/build-linux.sh" --build-root "$root/.local-build" --jobs 8 "$@" ;;
     version) exec "$root/.local-build/build/qemu-system-aarch64" --version "$@" ;;
     help|-h|--help)
-        printf '%s\n' 'Usage: companion/run {status|check|build|version}' \
+        printf '%s\n' 'Usage: companion/run {status|check|prepare|boot|build|version}' \
           '  status   inspect the durable build and saved execution evidence' \
           '  check    run a fresh headless, firmware-free QMP check' \
+          '  prepare  prepare a pinned recovery input profile outside Git' \
+          '  boot     bounded headless recovery attempt; requires --profile PATH' \
           '  build    rebuild the current committed fork; optional --jobs 1..8' \
           '  version  print the actual executable version' ;;
     *) printf 'Unknown command: %s\n' "$command" >&2; exit 2 ;;
