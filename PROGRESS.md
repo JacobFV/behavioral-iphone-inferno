@@ -2,6 +2,23 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 08:26 continuation: persisted classification restart comparison
+
+Boot24 repeatedly reported a valid original LaunchServices proxy of type System,
+but SpringBoard still returned Security / FBSOpenApplicationErrorDomain3; no owned
+UIKit marker appeared. Original FBS replacement logic compares bundle path and
+mtime, so an existing User-classified object could survive that metadata-only
+update. This is a hypothesis, not a demonstrated cause (81dc3199ad).
+
+Boot24 stopped normally after229.993951seconds, QMP25/emulator0; all seven
+namespaces and raw evidence are preserved in a017ad3320. Root SHA256
+952f3cd3d1962e15daf026ded5557d799a7c50847b122452a606fb9e3bd6d7d2.
+Boot25 now starts directly from that paired tuple with no staging, helper,
+launcher or emulator changes. It tests whether a normal restart refreshes the
+original app information. Actual launch and counter journey remain pending.
+Verified obsolete preparation41 retirement reclaimed10805116928bytes; all actual
+boot tuples remain. No automatic gestures or synthetic notification were sent.
+
 ### 08:15 continuation: original installer classification correction
 
 Original installd proof3c10d3d7a3 shows its normal LSdictionary includes

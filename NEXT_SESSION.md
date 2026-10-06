@@ -10,6 +10,28 @@ Suggested opening instruction:
 > Prefer integrated execution over adding routine unit tests. Never use my main
 > display. Do not resume the archived framework reimplementation.
 
+## Active execution, 2026-10-06 08:26 local
+
+Boot25 is running from normally stopped24 and all six paired namespaces; report
+`.local-build/reports/app-boot-25`, session97366, private VNC
+`/tmp/inferno-boot-irq2mnl9/vnc.sock`. Root exclusively owns gestures using
+`/tmp/inferno-explicit-gesture-25.py`. Same e3da emulator, launcher13, HID45,
+readiness42 and owned app; no staging between24 and25. Observation-only strict
+journey sends no input and ends the VM after the counter1 capture.
+
+Actual24 registered System but still got the original Security3 denial. Its
+normal stop and all seven disk hashes are preserved a017ad3320; root SHA256
+952f3cd3d1962e15daf026ded5557d799a7c50847b122452a606fb9e3bd6d7d2.
+Original FBS compares path+mtime for an existing-app replacement, so25 tests a
+normal restart's effect on cached metadata. No success claim until real original
+launch results, UIKit markers and reviewed screenshots. Native worker prepares
+read-only effective-type/trust diagnostics if the denial persists.
+
+Obsolete generated preparation41 disks have been verified and retired e5d625691c;
+all actual boot tuples remain. Recheck capacity before another disk copy.
+Earlier live-session endpoints below are historical and stale. Continue from25,
+then the owned app journey and measurements, without a checkpoint handoff.
+
 ## What is ready
 
 - Local fork of ChefKiss Inferno; upstream remote, branch companion/linux-runner.
