@@ -24,6 +24,8 @@ class HeadlessRefresh:
         self.finished = False
         self.report = {'kind': 'opt-in-active-headless-refresh', 'requested_seconds': seconds,
                        'automatic_input': False, 'auto_restart': False, 'state': 'not-started',
+                       'clock_ticks_per_second': os.sysconf('SC_CLK_TCK'),
+                       'page_size': os.sysconf('SC_PAGE_SIZE'),
                        'coverage_complete_for_whole_boot': False,
                        'limits': ['VNC refresh stimulates guest display work; not passive observation.',
                                   'Observer CPU/RSS below is separate from emulator resources.',
@@ -143,7 +145,7 @@ class HeadlessRefresh:
                 handle.close()
             self.handles = []
         else:
-            self.report['coverage_active'] = 'first_frame_received_time' in self.report and self.report['first_frame_received_time'] is not None
+            self.report['coverage_active'] = bool(self.report.get('first_frame_received_time')) and not self.report.get('connection_closed_time')
             if self.report['coverage_active']:
                 self.report['state'] = 'observing'
         self.save()

@@ -478,6 +478,10 @@ def main():
             if report['framebuffer_captured']:
                 report['framebuffer_sha256'] = digest(output / 'framebuffer.ppm')
             report['attempt_completed'] = True
+        if refresh and (refresh.report.get('error') or refresh.report.get('cleanup_errors')
+                        or refresh.report.get('cleanup_error')):
+            report['attempt_completed'] = False
+            raise RuntimeError('Headless refresh failed; see headless_refresh lifecycle diagnostics')
     except (Exception, KeyboardInterrupt) as exc:
         report['error'] = {'type': type(exc).__name__, 'detail': str(exc)}
     finally:
