@@ -76,23 +76,26 @@ static int ensure(const char *path) {
     return -1;
 }
 int main(int argc, char **argv) {
-    if ((argc != 2 && argc != 3) || strcmp(argv[1], "--disposable-root-copy") ||
-        (argc == 3 && strcmp(argv[2], "--role-volumes"))) {
-        printf("Requires --disposable-root-copy; host must supply a disposable cloned root image.\n");
-        return 2;
+    if (argc < 2 || strcmp(argv[1], "--disposable-root-copy")) return 2;
+    int roles = 0, existing = 0, gigalocker = 0;
+    for (int i=2; i<argc; ++i) {
+        if (!strcmp(argv[i], "--role-volumes")) roles = 1;
+        else if (!strcmp(argv[i], "--existing-volumes")) existing = 1;
+        else if (!strcmp(argv[i], "--init-gigalocker")) gigalocker = 1;
+        else return 2;
     }
-    printf("INFERNO_PREP_BEGIN: add Preboot on disposable /dev/disk0s1 only\n"); fflush(0);
+    printf("INFERNO_PREP_BEGIN: disposable /dev/disk0s1 existing=%d roles=%d gigalocker=%d\n", existing, roles, gigalocker); fflush(0);
     for (int i = 0; access("/dev/disk0s1", 0) && i < 30; ++i) sleep(1);
     if (access("/dev/disk0s1", 0)) { devices(); return 3; }
     devices();
     char *preboot[] = {"/sbin/newfs_apfs", "-A", "-o", "role=b", "-v", "Preboot", "/dev/disk0s1", 0};
-    if (run(preboot)) return 4;
-    if (argc == 3) {
+    if (!existing && run(preboot)) return 4;
+    if (!existing && roles) {
         char *xart[] = {"/sbin/newfs_apfs", "-s10485760", "-A", "-o", "role=x", "-v", "xART", "/dev/disk0s1", 0};
         char *hardware[] = {"/sbin/newfs_apfs", "-s25165824", "-A", "-o", "role=h", "-v", "Hardware", "/dev/disk0s1", 0};
         if (run(xart) || run(hardware)) return 4;
     }
-    char system_device[64] = {0}, preboot_device[64] = {0};
+    char system_device[64] = {0}, preboot_device[64] = {0}, xart_device[64] = {0};
     /* Discover actual volume identities, never infer an index from creation order. */
     for (int i = 1; i <= 16; ++i) {
         char device[64], name[1024];
@@ -105,6 +108,7 @@ int main(int argc, char **argv) {
             if (!access("/mnt1/System/Library/CoreServices/SystemVersion.plist", 0) &&
                 !access("/mnt1/usr/standalone/firmware", 0))
                 snprintf(system_device, sizeof(system_device), "%s", device);
+            if (!strcmp(name, "xART")) snprintf(xart_device, sizeof(xart_device), "%s", device);
             if (!strcmp(name, "Preboot")) snprintf(preboot_device, sizeof(preboot_device), "%s", device);
         }
         if (unmount("/mnt1", 0)) return 5;
@@ -124,6 +128,15 @@ int main(int argc, char **argv) {
     }
     sync();
     if (unmount("/mnt2", 0) || unmount("/mnt1", 0)) return 11;
+    if (gigalocker) {
+        if (!xart_device[0] || ensure("/mnt7") || mount_at(xart_device, "/mnt7", 0)) return 12;
+        char *init[] = {"/usr/libexec/seputil", "--gigalocker-init", 0};
+        char *shutdown[] = {"/usr/libexec/seputil", "--gigalocker-shutdown", 0};
+        if (run(init) || run(shutdown)) return 13;
+        sync();
+        if (unmount("/mnt7", 0)) return 14;
+        printf("INFERNO_GIGALOCKER_COMPLETE: original seputil initialization and shutdown succeeded\n"); fflush(0);
+    }
     printf("INFERNO_PREP_COMPLETE: Preboot added, original firmware copied\n"); fflush(0);
     return 0;
 }
