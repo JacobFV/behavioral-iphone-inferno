@@ -280,3 +280,13 @@ Direct-root-5 accepted the staged original IM4P and activated the simulated SEP
 endpoints. It passed phase-two mounts and FIPS checks, then stopped at the missing
 Data keybag. This does not demonstrate execution of real SEP firmware or a UIKit
 app. The next preparation step uses the original MobileKeyBag implementation.
+
+`--disk-helper-keybag` is an explicit disposable-volume experiment. It mounts
+existing xART/Data writable and Preboot read-only, invokes the original
+`seputil --gigalocker-init` and `seputil --wait --load` using the staged original
+payload, then calls `MKBKeyBagCreateSystem(NULL, "/mnt2")` from the original
+MobileKeyBag framework. The ABI and arguments are observed in the original
+restored_external and framework, which creates its own keybags directory and
+atomic keybag file. The owned code neither constructs nor edits keybag bytes.
+It logs the API result and output size, then syncs and unmounts. A returned
+existing-bag status (-4) is accepted only when a nonempty keybag is present.
