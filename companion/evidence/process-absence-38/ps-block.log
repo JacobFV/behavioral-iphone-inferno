@@ -1,0 +1,199 @@
+INFERNO_READINESS_BEGIN seconds=1200
+INFERNO_IOREG_BEGIN max_matches=8 max_adjacent=16 max_nodes=128 watchdog=600
+INFERNO_IOREG_MATCH kind=name query=aop-gpio status=0x0
+INFERNO_IOREG_NODE relation=match anchor=4294967585 id=4294967585 id_status=0x0 name=aop-gpio name_status=0x0 class=AppleARMIODevice class_status=0x0 is_service=1 busy=0 busy_status=0x0
+INFERNO_IOREG_ITER relation=parent anchor=4294967585 status=0x0
+INFERNO_IOREG_NODE relation=parent anchor=4294967585 id=4294967758 id_status=0x0 name=AppleT803xIO name_status=0x0 class=AppleT803xIO class_status=0x0 is_service=1 busy=1 busy_status=0x0
+INFERNO_IOREG_ITER_END relation=parent anchor=4294967585 count=1 limit_reached=0
+INFERNO_IOREG_ITER relation=child anchor=4294967585 status=0x0
+INFERNO_IOREG_NODE relation=child anchor=4294967585 id=4294967776 id_status=0x0 name=AppleS5L8960XGPIOIC name_status=0x0 class=AppleS5L8960XGPIOIC class_status=0x0 is_service=1 busy=0 busy_status=0x0
+INFERNO_IOREG_ITER_END relation=child anchor=4294967585 count=1 limit_reached=0
+INFERNO_IOREG_MATCH_END kind=name query=aop-gpio matches=1 limit_reached=0
+INFERNO_IOREG_MATCH kind=class query=AppleHIDTransportDeviceSPI status=0x0
+INFERNO_IOREG_NODE relation=match anchor=4294968026 id=4294968026 id_status=0x0 name=AppleHIDTransportDeviceSPI name_status=0x0 class=AppleHIDTransportDeviceSPI class_status=0x0 is_service=1 busy=0 busy_status=0x0
+INFERNO_IOREG_ITER relation=parent anchor=4294968026 status=0x0
+INFERNO_IOREG_NODE relation=parent anchor=4294968026 id=4294967615 id_status=0x0 name=multi-touch name_status=0x0 class=AppleARMSPIDevice class_status=0x0 is_service=1 busy=0 busy_status=0x0
+INFERNO_IOREG_ITER_END relation=parent anchor=4294968026 count=1 limit_reached=0
+INFERNO_IOREG_ITER relation=child anchor=4294968026 status=0x0
+INFERNO_IOREG_NODE relation=child anchor=4294968026 id=4294968030 id_status=0x0 name=AppleHIDTransportBootloaderHBPP name_status=0x0 class=AppleHIDTransportBootloaderHBPP class_status=0x0 is_service=1 busy=0 busy_status=0x0
+INFERNO_IOREG_ITER_END relation=child anchor=4294968026 count=1 limit_reached=0
+INFERNO_IOREG_MATCH_END kind=class query=AppleHIDTransportDeviceSPI matches=1 limit_reached=0
+INFERNO_IOREG_COMPLETE nodes=6 gpio_status=0 touch_status=0 limit_reached=0
+INFERNO_READINESS_IOREG_END requested_seconds=1200 status=0 timed_out=0
+  PID  PPID   UID STAT COMM
+    1     0     0 Ss   /sbin/launchd
+   27     1     0 Ss   /usr/libexec/UserEventAgent
+   28     1   272 Ss   /usr/libexec/logd
+   29     1   501 Ss   /System/Library/PrivateFrameworks/AssistantServices.framework/assistantd
+   30     1     0 Ss   /usr/libexec/runningboardd
+   31     1     0 Ss   /usr/libexec/fseventsd
+   32     1   501 Ss   /usr/sbin/mediaserverd
+   33     1   501 Ss   /System/Library/PrivateFrameworks/MediaRemote.framework/Support/mediaremoted
+   34     1   501 Ss   /usr/libexec/routined
+   35     1     0 Ss   /usr/libexec/misd
+   36     1     0 Ss   /usr/libexec/configd
+   37     1   501 Ss   /System/Library/Frameworks/HealthKit.framework/healthd
+   39     1     0 Ss   /System/Library/CoreServices/powerd.bundle/powerd
+   40     1   501 Ss   /usr/libexec/atc
+   41     1   501 Ss   /usr/sbin/WirelessRadioManagerd
+   43     1     0 Ss   /usr/libexec/keybagd
+   44     1     0 Ss   /usr/libexec/remoted
+   46     1   501 Ss   /System/Library/PrivateFrameworks/FamilyNotification.framework/familynotificationd
+   47     1     0 Ss   /usr/sbin/wifid
+   49     1   501 Ss   /System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/Support/softwareupdated
+   50     1   501 Ss   /System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd
+   51     1   501 Ss   /usr/libexec/seld
+   52     1   501 Ss   /System/Library/PrivateFrameworks/IDS.framework/identityservicesd.app/identityservicesd
+   55     1   501 Ss   /usr/libexec/wcd
+   56     1   501 Ss   /System/Library/PrivateFrameworks/CoreDuetContext.framework/Resources/contextstored
+   57     1   501 Ss   /System/Library/CoreServices/SpringBoard.app/SpringBoard
+   58     1     0 Ss   /usr/libexec/thermalmonitord
+   59     1   501 Ss   /System/Library/PrivateFrameworks/AskPermission.framework/Support/askpermissiond
+   60     1   501 Ss   /usr/libexec/backboardd
+   61     1   501 Ss   /usr/libexec/sharingd
+   62     1   266 Ss   /usr/libexec/timed
+   63     1     0 Ss   /usr/bin/inferno-readiness
+   64     1   501 Ss   /usr/libexec/cloudpaird
+   65     1     0 Ss   /usr/libexec/containermanagerd
+   66     1   501 Ss   /System/Library/PrivateFrameworks/IMCore.framework/imagent.app/imagent
+   67     1   501 Ss   /System/Library/PrivateFrameworks/NanoPreferencesSync.framework/nanoprefsyncd
+   69     1     0 Ss   /usr/libexec/lockdownd
+   70     1   501 Ss   /System/Library/PrivateFrameworks/SleepDaemon.framework/sleepd
+   71     1   501 Ss   /System/Library/PrivateFrameworks/AggregateDictionary.framework/Support/aggregated
+   72     1   501 Ss   OTACrashCopier
+   73     1   241 Ss   /usr/sbin/distnoted
+   75     1     0 Ss   /System/Library/PrivateFrameworks/AppleCredentialManager.framework/AppleCredentialManagerDaemon
+   76     1   501 Ss   /System/Library/PrivateFrameworks/MapsSupport.framework/navd
+   77     1     0 Ss   /usr/libexec/peakpowermanagerd
+   79     1     0 Ss   /usr/sbin/notifyd
+   80     1   501 Ss   /usr/libexec/rapportd
+   83     1   501 Ss   /System/Library/PrivateFrameworks/AppleMediaServices.framework/amsaccountsd
+   84     1   501 Ss   /usr/sbin/fairplayd.H2
+   85     1     0 Ss   /usr/sbin/cfprefsd
+   86     1     0 Ss   /usr/libexec/pfd
+   87     1   501 Ss   /System/Library/PrivateFrameworks/CoreAccessories.framework/XPCServices/ACCHWComponentAuthService.xpc/ACCHWComponentAuthService
+   88     1   501 Ss   /usr/libexec/lsd
+   89     1   501 Ss   /usr/libexec/dasd
+   90     1   501 Ss   /usr/libexec/PowerUIAgent
+   91     1    25 Ss   /System/Library/PrivateFrameworks/WirelessDiagnostics.framework/Support/awdd
+   92     1   501 Ss   /usr/libexec/MobileGestaltHelper
+   93     1     0 Ss   /usr/libexec/mobileassetd
+   94     1   501 Ss   /usr/libexec/coreduetd
+   95     1   501 Ss   /usr/libexec/nanoregistryd
+   96     1   501 Ss   /System/Library/PrivateFrameworks/ApplePushService.framework/apsd
+   97     1     0 Ss   /System/Library/CoreServices/osanalyticshelper
+   98     1   501 Ss   /usr/libexec/nsurlsessiond
+   99     1   501 Ss   /System/Library/Frameworks/Accounts.framework/accountsd
+  100     1    64 Ss   /usr/libexec/securityd
+  101     1   501 Ss   /System/Library/PrivateFrameworks/TCC.framework/tccd
+  102     1     0 Ss   /System/Library/PrivateFrameworks/WiFiPolicy.framework/XPCServices/WiFiCloudAssetsXPCService.xpc/WiFiCloudAssetsXPCService
+  103     1     0 Ss   /usr/libexec/nehelper
+  104     1    24 Ss   /usr/libexec/symptomsd
+  105     1    65 Ss   /usr/sbin/mDNSResponder
+  106     1   501 Ss   /System/Library/PrivateFrameworks/CarKit.framework/Support/carkitd
+  107     1   501 Ss   /usr/libexec/findmydeviced
+  108     1   501 Ss   /usr/libexec/fmflocatord
+  110     1   501 Ss   /System/Library/PrivateFrameworks/GeoServices.framework/geod
+  111     1   501 Ss   /usr/libexec/rtcreportingd
+  112     1     0 Ss   /System/Library/Frameworks/Security.framework/CloudKeychainProxy.bundle/CloudKeychainProxy
+  113     1     0 Ss   /usr/sbin/filecoordinationd
+  114     1   263 Ss   /System/Library/PrivateFrameworks/CoreAnalytics.framework/Support/analyticsd
+  116     1     0 Ss   /usr/libexec/wifianalyticsd
+  117     1   501 Ss   /System/Library/PrivateFrameworks/WatchListKit.framework/Support/watchlistd
+  118     1   501 Ss   /System/Library/PrivateFrameworks/StoreBookkeeperClient.framework/Support/storebookkeeperd
+  119     1   501 Ss   /System/Library/PrivateFrameworks/PassKitCore.framework/passd
+  120     1   501 Ss   /usr/libexec/siriknowledged
+  121     1   501 Ss   /System/Library/TextInput/kbd
+  122     1     0 Ss   /usr/sbin/mDNSResponderHelper
+  123     1   501 Ss   /System/Library/PrivateFrameworks/iTunesStore.framework/Support/itunesstored
+  124     1   501 Ss   /usr/libexec/coreidvd
+  125     1   501 Ss   /System/Library/PrivateFrameworks/AuthKit.framework/akd
+  126     1   501 Ss   /System/Library/PrivateFrameworks/CoreSuggestions.framework/suggestd
+  128     1   501 Ss   /System/Library/PrivateFrameworks/CallHistory.framework/Support/CallHistorySyncHelper
+  129     1   501 Ss   /System/Library/PrivateFrameworks/BookLibrary.framework/Support/bookassetd
+  130     1   501 Ss   /System/Library/PrivateFrameworks/HomeKitDaemon.framework/Support/homed
+  131     1   501 Ss   /System/Library/PrivateFrameworks/AssistantServices.framework/XPCServices/com.apple.siri.embeddedspeech.xpc/com.apple.siri.embeddedspeech
+  132     1   501 Ss   /System/Library/PrivateFrameworks/CacheDelete.framework/deleted
+  133     1   501 Ss   /System/Library/PrivateFrameworks/CloudKitDaemon.framework/Support/cloudd
+  134     1   501 Ss   /usr/libexec/searchpartyd
+  135     1   501 Ss   /usr/libexec/seserviced
+  137     1   501 Ss   /System/Library/PrivateFrameworks/MusicLibrary.framework/Support/medialibraryd
+  138     1   501 Ss   /System/Library/PrivateFrameworks/CoreSpeech.framework/corespeechd
+  140     1   501 Ss   /usr/libexec/fmfd
+  141     1   501 Ss   /usr/libexec/networkserviceproxy
+  142     1   501 Ss   /System/Library/PrivateFrameworks/TelephonyUtilities.framework/callservicesd
+  144     1   501 Ss   /System/Library/PrivateFrameworks/CoreAccessories.framework/Support/accessoryd
+  147     1   501 Ss   /System/Library/PrivateFrameworks/CalendarDaemon.framework/Support/calaccessd
+  148     1   501 Ss   /usr/libexec/misagent
+  149     1   501 Ss   /usr/libexec/mobileactivationd
+  150     1   501 Ss   /System/Library/PrivateFrameworks/SpringBoard.framework/XPCServices/SBRendererService.xpc/SBRendererService
+  151     1   501 Ss   /System/Library/PrivateFrameworks/ChronoCore.framework/Support/chronod
+  152     1     0 Ss   /usr/libexec/pkd
+  153     1   501 Ss   /System/Library/PrivateFrameworks/FontServices.framework/Support/fontservicesd
+  154     1   276 Ss   /System/Library/CoreServices/iconservicesagent
+  155     1   501 Ss   /System/Library/PrivateFrameworks/UserActivity.framework/Agents/useractivityd
+  157     1   501 Ss   /System/Library/PrivateFrameworks/ScreenTimeCore.framework/ScreenTimeAgent
+  158     1   501 Ss   /usr/libexec/dmd
+  164     1   501 Ss   /usr/libexec/profiled
+  169     1     0 Ss   /System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd
+  170     1   501 Ss   /System/Library/PrivateFrameworks/CloudDocsDaemon.framework/bird
+  172     1   501 Ss   /System/Library/PrivateFrameworks/iTunesCloud.framework/Support/itunescloudd
+  173     1   501 Ss   /System/Library/PrivateFrameworks/AppStoreDaemon.framework/Support/appstored
+  174     1   501 Ss   /usr/libexec/languageassetd
+  175     1   501 Ss   /System/Library/PrivateFrameworks/CoreFollowUp.framework/followupd
+  176     1   501 Ss   /System/Library/PrivateFrameworks/IntlPreferences.framework/Support/localizationswitcherd
+  177     1   501 Ss   /usr/libexec/webbookmarksd
+  179     1   501 Ss   /System/Library/PrivateFrameworks/VoiceServices.framework/Support/voiced
+  181     1   501 Ss   /System/Library/PrivateFrameworks/InstallCoordination.framework/Support/installcoordinationd
+  182     1    33 Ss   /usr/libexec/installd
+  183     1     0 Ss   /System/Library/PrivateFrameworks/MobileInstallation.framework/XPCServices/com.apple.MobileInstallationHelperService.xpc/com.apple.MobileInstallationHelperService
+  184     1   501 Ss   /usr/libexec/aned
+  186     1   501 Ss   /System/Library/PrivateFrameworks/TVRemoteCore.framework/Support/TVRemoteConnectionService
+  187     1   501 Ss   /System/Library/PrivateFrameworks/ClipServices.framework/clipserviced
+  188     1   501 Ss   /usr/libexec/videosubscriptionsd
+  189     1     0 Ss   /usr/libexec/online-auth-agent
+  190     1   501 Ss   /usr/libexec/swcd
+  192     1   501 Ss   /System/Library/PrivateFrameworks/CoreParsec.framework/parsec-fbf
+  194     1   501 Ss   /System/Library/PrivateFrameworks/AXAssetLoader.framework/Support/axassetsd
+  197     1     0 Ss   /usr/libexec/nanoregistrylaunchd
+  198     1   501 Ss   /System/Library/PrivateFrameworks/Search.framework/searchd
+  200     1   501 Ss   /System/Library/PrivateFrameworks/FontServices.framework/XPCServices/com.apple.FontServices.UserFontManager.xpc/com.apple.FontServices.UserFontManager
+  201    63     0 S    /usr/bin/inferno-readiness
+  202    63     0 S    /usr/bin/inferno-hid-input
+  204     1   501 Ss   /Applications/Screen Time.app/PlugIns/ScreenTimeWidgetExtension.appex/ScreenTimeWidgetExtension
+  211     1     0 Ss   /System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/XPCServices/com.apple.MobileSoftwareUpdate.CleanupPreparePathService.xpc/com.apple.MobileSoftwareUpdate.CleanupPreparePathService
+  212     1     0 Ss   /usr/libexec/OTATaskingAgent
+  213     1     0 Ss   /usr/libexec/logd_helper
+  214     1   501 Ss   /usr/libexec/nfcd
+  217     1   501 Ss   /System/Library/PrivateFrameworks/CloudKitDaemon.framework/Support/ckdiscretionaryd
+  220     1   501 Ss   /System/Library/PrivateFrameworks/SiriInference.framework/Support/siriinferenced
+  228     1   501 Ss   /System/Library/PrivateFrameworks/iCloudNotification.framework/ind
+  229     1   501 Ss   /usr/libexec/remindd
+  230     1   501 Ss   /System/Library/PrivateFrameworks/FamilyCircle.framework/familycircled
+  231     1     0 Ss   /usr/libexec/biometrickitd
+  232     1   501 Ss   /System/Library/Frameworks/Contacts.framework/Support/contactsd
+  233     1   501 Ss   /System/Library/PrivateFrameworks/CoreCDP.framework/cdpd
+  234     1   501 Ss   /System/Library/PrivateFrameworks/ProtectedCloudStorage.framework/Helpers/ProtectedCloudKeySyncing
+  235     1   501 Ss   /System/Library/PrivateFrameworks/IMDPersistence.framework/XPCServices/IMDPersistenceAgent.xpc/IMDPersistenceAgent
+  236     1   501 Ss   /System/Library/PrivateFrameworks/VoiceShortcuts.framework/siriactionsd
+  238     1   501 Ss   /System/Library/PrivateFrameworks/DistributedEvaluation.framework/XPCServices/com.apple.siri-distributed-evaluation.xpc/com.apple.siri-distributed-evaluation
+  239     1     0 Ss   /usr/libexec/nesessionmanager
+  240     1   501 Ss   /usr/libexec/symptomsd-diag
+  243     1   501 Ss   /usr/libexec/adid
+  245     1   501 Ss   /usr/libexec/duetexpertd
+  247     1   501 Ss   /System/Library/PrivateFrameworks/ContextKit.framework/XPCServices/ContextService.xpc/ContextService
+  248     1   501 Ss   /System/Library/PrivateFrameworks/ActionPredictionHeuristics.framework/XPCServices/HeuristicInterpreter.xpc/HeuristicInterpreter
+  251     1   501 Ss   /System/Library/PrivateFrameworks/Pasteboard.framework/Support/pasted
+  253     1   501 Ss   /System/Library/PrivateFrameworks/AccessibilityUI.framework/XPCServices/com.apple.accessibility.AccessibilityUIServer.xpc/com.apple.accessibility.AccessibilityUIServer
+  260     1   501 Ss   /usr/libexec/diagnosticextensionsd
+  263     1     0 Ss   /System/Library/PrivateFrameworks/CloudServices.framework/Helpers/com.apple.sbd
+  264     1   501 Ss   /Applications/Spotlight.app/Spotlight
+  302     1   501 Ss   /System/Library/PrivateFrameworks/EmailDaemon.framework/maild
+  303     1   501 Ss   /System/Library/PrivateFrameworks/CommunicationsFilter.framework/CMFSyncAgent
+  360     1   501 Ss   /usr/libexec/splashboardd
+  420     1     0 Ss   /usr/libexec/ASPCarryLog
+  423     1     0 Ss   /usr/libexec/mmaintenanced
+  426     1   501 Ss   /usr/libexec/metrickitd
+  468     1   501 Ss   /System/Library/PrivateFrameworks/MapsSupport.framework/mapspushd
+  470    63     0 R    /bin/ps
+INFERNO_READINESS_END seconds=1200 status=0 ps_watchdog=600 timed_out=0
