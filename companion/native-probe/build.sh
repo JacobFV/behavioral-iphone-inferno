@@ -12,7 +12,7 @@ clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builti
 "$linker" -arch arm64 -platform_version ios 14.0 14.0 -e _main -needed_library "$source_dir/libSystem.tbd" -no_uuid -adhoc_codesign -o "$output/inferno-prepare-root" "$output/prepare-root.o"
 clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -Wall -Wextra -Werror -DIOREG_TOUCH_LIBRARY -c "$source_dir/ioreg-touch.c" -o "$output/ioreg-touch.o"
 clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -Wall -Wextra -Werror -c "$source_dir/app-event-relay.c" -o "$output/app-event-relay.o"
-clang --target=arm64-apple-ios14 -ffreestanding -fno-builtin -O2 -Wall -Wextra -Werror -c "$source_dir/app-event-proc.c" -o "$output/app-event-proc.o"
+clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -Wall -Wextra -Werror -c "$source_dir/app-event-proc.c" -o "$output/app-event-proc.o"
 clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -c "$source_dir/readiness.c" -o "$output/readiness.o"
 "$linker" -arch arm64 -platform_version ios 14.0 14.0 -e _main -needed_library "$source_dir/libSystem.tbd" -no_uuid -adhoc_codesign -needed_library "$source_dir/IOKit.tbd" -o "$output/inferno-readiness" "$output/readiness.o" "$output/ioreg-touch.o" "$output/app-event-relay.o" "$output/app-event-proc.o"
 clang --target=arm64-apple-ios14 -ffreestanding -fno-stack-protector -fno-builtin -O2 -c "$source_dir/unlock-empty.c" -o "$output/unlock-empty.o"
