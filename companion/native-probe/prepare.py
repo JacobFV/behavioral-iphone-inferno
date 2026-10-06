@@ -20,13 +20,14 @@ p.add_argument('--disk-helper-gigalocker', action='store_true', help='run origin
 p.add_argument('--disk-helper-data', action='store_true', help='add Data/Update and copy original var plus Hardware factory path')
 p.add_argument('--sep-payload', type=Path, help='explicit original SEP payload to copy unchanged to the boot loader path')
 p.add_argument('--sep-sha256', help='required SHA256 of supplied SEP payload')
+p.add_argument('--disk-helper-verify-data', action='store_true', help='read-only guest byte comparison of a compressed Data seed sample')
 p.add_argument('--output', required=True, type=Path)
 a = p.parse_args()
 if bool(a.sep_payload) != bool(a.sep_sha256):
     p.error('--sep-payload and --sep-sha256 must be supplied together')
 if a.sep_payload and (not a.disk_helper or not a.sep_payload.is_file() or hashlib.sha256(a.sep_payload.read_bytes()).hexdigest() != a.sep_sha256):
     p.error('SEP payload requires disk helper and matching file hash')
-if (a.disk_helper_roles or a.disk_helper_existing or a.disk_helper_gigalocker or a.disk_helper_data) and not a.disk_helper:
+if (a.disk_helper_roles or a.disk_helper_existing or a.disk_helper_gigalocker or a.disk_helper_data or a.disk_helper_verify_data) and not a.disk_helper:
     p.error('--disk-helper-roles requires --disk-helper')
 for required in (a.profile, a.raw_ramdisk, a.probe, a.hfsplus):
     if not required.is_file():
@@ -55,7 +56,7 @@ if a.disk_helper:
         hfs('chmod', '644', '/usr/share/inferno-sep-payload')
         hfs('extract', '/usr/share/inferno-sep-payload', a.output / 'readback-sep')
         assert sha(a.output / 'readback-sep') == a.sep_sha256
-    jobs.append(('prepare-root', ['/usr/bin/inferno-prepare-root', '--disposable-root-copy'] + (['--role-volumes'] if a.disk_helper_roles else []) + (['--existing-volumes'] if a.disk_helper_existing else []) + (['--init-gigalocker'] if a.disk_helper_gigalocker else []) + (['--seed-data'] if a.disk_helper_data else []) + (['--copy-sep'] if a.sep_payload else [])))
+    jobs.append(('prepare-root', ['/usr/bin/inferno-prepare-root', '--disposable-root-copy'] + (['--role-volumes'] if a.disk_helper_roles else []) + (['--existing-volumes'] if a.disk_helper_existing else []) + (['--init-gigalocker'] if a.disk_helper_gigalocker else []) + (['--seed-data'] if a.disk_helper_data else []) + (['--copy-sep'] if a.sep_payload else []) + (['--verify-data'] if a.disk_helper_verify_data else [])))
 for name, args in jobs:
     label = 'org.inferno.probe.' + name
     local = a.output / (label + '.plist')
@@ -67,7 +68,14 @@ hfs('ls', '/System/Library/LaunchDaemons')
 hfs('extract', '/usr/bin/inferno-probe', a.output / 'readback-probe')
 assert sha(a.output / 'readback-probe') == sha(a.probe)
 profile['ramdisk'] = {'path': str(raw.resolve()), 'size': raw.stat().st_size, 'sha256': sha(raw)}
-profile['provenance']['preparation'] = 'Cloned decoded HFSX recovery ramdisk; added owned ad-hoc Mach-O and three diagnostic launchd plists. No original assets changed.'
+steps = ['Cloned decoded HFSX recovery ramdisk', 'added owned ad-hoc marker and diagnostic launchd jobs']
+if a.disk_helper:
+    steps += ['moved the original restored_external launchd plist outside LaunchDaemons', 'added owned disk preparation helper and explicit launch arguments']
+if a.sep_payload:
+    steps += ['added supplied SEP payload byte-for-byte after SHA256 and readback verification']
+profile['provenance']['preparation'] = '; '.join(steps) + '. Original source image and Apple executable bytes unchanged; cloned ramdisk configuration changed.'
+profile['provenance']['helper_flags'] = {key: getattr(a, key) for key in ('disk_helper_roles', 'disk_helper_existing', 'disk_helper_gigalocker', 'disk_helper_data', 'disk_helper_verify_data')}
+profile['provenance']['sep_payload_sha256'] = a.sep_sha256
 (a.output / 'profile.json').write_text(json.dumps(profile, indent=2) + '\n')
 (a.output / 'preparation.json').write_text(json.dumps({'source_profile': str(a.profile), 'source_raw_sha256': sha(a.raw_ramdisk), 'probe_sha256': sha(a.probe), 'sep_payload_sha256': a.sep_sha256, 'disk_helper_sha256': sha(a.disk_helper) if a.disk_helper else None, 'hfsplus_sha256': sha(a.hfsplus), 'output_ramdisk_sha256': sha(raw), 'operations': log}, indent=2) + '\n')
 print(a.output / 'profile.json')
