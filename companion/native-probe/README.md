@@ -383,3 +383,14 @@ LaunchServices database seeding; lsd's installation queue waits in
 MIInstallerClient enumerateInstalledAppsWithOptions; installd is TH_RUN, parsing
 Info.plist while MobileInstallation enumerates directories. This snapshot shows
 active installation work, not a proven deadlock. No migration service was disabled.
+
+The independent full-system `app-exec-diagnostic-1` executed the owned System
+wrapper as root, dropped its child to uid/gid501, and observed `execve` of the
+unchanged Data launcher fail with errno1 (EPERM), child exit127, without timeout.
+The contemporaneous serial output contains no explicit AMFI or sandbox denial
+reason. This is more precise than launchd's earlier “Missing executable” label;
+it does not establish which execution-policy or file-read check rejected it.
+The next controlled matrix uses the exact same launcher bytes on System and Data,
+checks access and a 16KiB header read, and attempts no-argument execution as root
+and mobile. `--system-launcher` stages only that explicitly supplied owned copy,
+checks ramdisk and guest readback bytes, and leaves the existing Data assets alone.
