@@ -53,17 +53,35 @@ Original owned app registration, normal first-unlock and visible Hello setup UI
 are now proven. Owned UIKit execution and actual touch response remain unproven. Firmware, System/Data preparation, keybag creation and renderer patches
 are established; do not return to the archived framework implementation.
 
-At04:26 local, **app-boot-12 is active**, bootworker session34774, with control
-mailbox .local-build/reports/app-boot-12/control. It starts from STOPPED11 root
-SHAe586a8b12a489c76b02be4f6b37708fd619cb5995f70199f26a066ca75c4fc64 and paired
-.local-build/reports/app-boot-11, preserving actual setup/migration progress.
-App/helpers unchanged. Emulator58436578ddbe51e7b2cbeb2f474d907e5bf5a34bb6a49abfcf01947f3d60d34e
-sourcea51980a836 adds only disabled-by-default MT-SPI tracing plus companion QMP
-mailbox. Build/control-plane checks passed. Initial and live query-mice both
-report Apple Multitouch HID SPI, current=true,absolute=true. Trace events are
-currently disabled. Waiting for visible Hello before bounded trace/input window.
-Latest reviewed12frame0002 stillApplelogo. 7200secondsmaximum,30secondframes,
-strictjourney,guest-errors,noUSB. Root owns all live input; coordinate withworker.
+At04:51 local, **app-boot-14 is starting**, bootworker session84539, from
+verified observer-only stage35 root
+SHAdd1062ad10cf09dc3b18f1c84d8bc2eb6d2d6ed2ff54bdc2c546284d44d403de and all six
+paired namespaces in .local-build/reports/disk-preparation-35. Stage35 derives
+from stopped12 root20a20cd1288df1bd556c0ff460a39b399f023c89e1918defd233ee09987eeb37.
+Actual guest binary/job readback69,159bytes matched; unmount/QMP exit succeeded.
+Only owned readiness observer changed: fresh-exec, bounded read-only IOKit
+snapshots of AppleHIDTransportDeviceSPI/aop-gpio and immediate relations. No
+property dumps, userclient calls, entitlement/cache/job/app/unlock changes.
+
+Boot13 stopped normally and its paired hashes are being retained. It repeated
+Hello setup, unlock0/first0->1 and registrationYES, but FrontBoard launcherror1.
+Three nondestructive register snapshots showed AOP GPIO34 config0x6020e (masked
+mode under the emulator decode), SPI CTRL0/CFG0x4018/PIN2/counts0. The original
+matched GPIO class must be identified before inferring a driver/model mismatch.
+Boot12 real VNC and QMP input reached MT-SPI and queued make/move/break reports;
+no traced dequeue, drain or control consumption occurred. No coordinate changes
+are justified. Original configureSPI can send four zero bytes during initial
+poweroff, so one RESET first-byte trace alone does not prove firmware boot.
+
+Boot14 emulatorSHAfda9447b41d7bd170a0abf6b56f4b0db822ff9ca84add3e648299d2aa7f59505,
+source9f92661b1b3154fb19de51ef9c9a1a6ed6e97d4f adds only trace phase/buffer metadata
+for completed RESET, queued boot reply and consumed INT_ACK. Actual build and
+control-only smoke passed; neither proves guest success. Runner enables six
+MT trace events before cont and automatically disables after180seconds. Private
+control mailbox supports query-mice and seven fixed nondestructive touch-register
+reads. Never attach a second QMP client or read SPI RXDATA. Root owns all live
+input. Same7200seconds maximum,30secondframes,strictjourney,guest-errors,noUSB.
+Await actual registry/phase results before behavior changes or more gestures.
 
 Boot11 reached original Hello setup UI (reviewedframe0017 and finalRussianHello).
 Padded state response works: originalqueryraw0/noerror, unlock0,first0->1. Rawstate0
@@ -122,7 +140,7 @@ key extraction or activation impersonation is authorized.
 
 ## Next concrete work
 
-1. Inspect actual app-boot-12 unlock phase/state/return markers and registration
+1. Inspect actual app-boot-14 registry/trace phase results, unlock and registration
    BOOL/proxy results. Keep source revisions, hashes, raw logs and stopped root
    plus all six auxiliary namespaces paired. Do not treat helper JSON as proof.
 2. Resolve the concrete next failure using original APIs and narrow owned code.

@@ -2,45 +2,30 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
-### Current execution boundary (04:04 local)
+### Current execution boundary (04:51 local)
 
-**04:26 local:** Boot11 stopped normally with reviewed Hello setup UI and all
-paired hashes preserved. Activeboot12 uses that progressed state and a trace-only
-emulator change. Live QMP confirms current absolute Apple Multitouch HID SPI.
-Root is waiting for Hello, then will trace a bounded gesture through hostinput,
-queuedtouchreport and guestSPIread. Touch andownedUIKitexecutionremainunproven.
+Boot14 is starting from verified observer-only stage35 and paired namespaces.
+Original installed iOS reaches reviewed Hello setup UI; the owned application
+registers successfully with a valid LaunchServices proxy. Original empty-secret
+unlock returns0 and first-unlock changes0->1. Raw lock-state0 remains
+uninterpreted. Owned UIKit execution, successful touch navigation and a counter
+journey remain unproven; FrontBoard currently returns launcherror1.
 
+Actual boot12 VNC and QMP gestures reached the current absolute Apple Multitouch
+HID SPI device and queued reports, but no traced SPI dequeue/drain/control
+occurred. Boot13 repeated Hello; fixed nondestructive reads showed masked GPIO34
+and idle SPI. Original configureSPI sends four zero bytes even during poweroff,
+so its RESET-looking first byte is not proof of firmware startup.
 
-**04:21 local:** Boot11 now displays reviewed original Hello setup UI. State-query
-padding is verified in guest, unlock0/first0->1 repeated. App remains registered
-but launch callback returns FrontBoard error1. Fast and slow privateVNC gestures
-have not produced confirmed navigation. Next work traces real input delivery
-without guessing coordinates or injecting guest events outside the normal device.
-Live11 remains running until targeted tracing/control instrumentation is ready;
-its stopped paired state will preserve migration progress for the next boot.
-
-
-Original app registration is proven: boot10 dictionary registrationYES and valid
-proxy at /Applications/InfernoProbe.app. Original one-shot unlock return0 and
-first-unlock0->1 are proven in boots9/10. Visible setup/home UI, owned UIKit
-execution and tap/count journey remain unproven. Keep working without a handoff.
-
-Boot11 is active from verified stage34 paired state with original open-error
-callback diagnostics and emulator3eacda5c06578e64653313b8ed6774729846d57808e4dec88457a0b58e41b9bd,
-source6fce1464b8. Boot10 open requests returnedNO repeatedly; its state queries
-returned-1 due an exact transport padding defect. Original __blob decoder needs
-DER13 padded to16bytes; current binary corrects that while preserving declared
-length13 and state behavior. Builds/control-plane checks passed, but real query
-success and launch NSError must be observed in boot11. No app success claimed.
-
-The limited simulated SEP model is guarded by INFERNO_SIMULATED_SEP, accepts only
-validated empty-secret system-bag unlock, tracks volatile first-unlock, and emits
-consistent proven ss bits. No guessed sls enum, fabricated notification or policy
-bypass. Current launch diagnostics use the original synchronous callback with
-nilconfiguration, bounded error text and no new entitlements. All inputs, exact
-original inspection and actual execution logs are in companion/evidence/.
-NEXT_SESSION.md names live sessions, hashes and next concrete checks.
-Historical checkpoints below retain their original scope and chronology.
+Boot14 adds bounded read-only registry observations and refined command-phase
+tracing to distinguish missing client attachment from an interrupt/protocol fault.
+Stage35 verified69,159bytes of binary plus unchanged descriptor, normal unmount,
+QMP exit0 and all seven stopped disk hashes. The new emulator built successfully
+and passed an image-free control check. Full guest results are pending. No touch
+behavior change, fabricated unlock event, security guard suppression or activation
+workaround was introduced. Root owns live input; all UI stays on private Unix
+sockets. NEXT_SESSION.md records exact active lineage and source/binary identities.
+Keep working without a handoff. Historical checkpoints follow.
 
 ### Further executed checkpoints
 
