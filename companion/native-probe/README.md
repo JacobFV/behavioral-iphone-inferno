@@ -66,3 +66,31 @@ The profile is `/home/brandonin/.local/share/inferno/native-probe/attempt-5/prof
 Failed attempts remain in native-probe-1 through native-probe-4 report directories.
 The guest newfs_apfs help job also prints its real command syntax. No usage output
 was observed for the asr job, so its successful execution is not established.
+
+## Disposable root preparation helper
+
+`build.sh` also builds `inferno-prepare-root`. Preparation adds it only when
+`--disk-helper /absolute/inferno-prepare-root` is explicitly supplied. That profile
+must be booted with `--root-image` pointing to the original System-volume wrapper
+and `--root-sha256` matching it: boot.py creates a separate disposable copy before
+execution. Never use this helper with a non-disposable guest disk.
+
+The helper executes ordered `newfs_apfs -A` additions for Preboot (`role=b`),
+xART (`role=x`, 10 MiB) and Hardware (`role=h`, 24 MiB) in `/dev/disk0s1`.
+It never uses the destructive container-create `-C` switch. It discovers actual
+volume identities by mounting existing device nodes read-only and querying names;
+the System volume is recognized by its SystemVersion.plist and original firmware
+path. It then mounts System read-only and Preboot writable, and copies the original
+firmware subtree into `Preboot/<96 zero characters>/usr/standalone/firmware`.
+The zero directory matches the existing direct-kernel no-ticket boot-manifest
+hash; it is not a forged ticket. This phase does not create Data or seed user data.
+Every subprocess argv and wait status is printed. Any failure stops the helper.
+Only `INFERNO_PREP_COMPLETE` establishes completion, and raw logs must be reviewed.
+
+The owned C code declares only the ABI it calls, with no SDK headers or copied
+implementation. `copyfile` preserves data/metadata and symlinks recursively using
+the guest implementation; it avoids a handcrafted dirent layout. ABI references:
+[Darwin attr.h](https://github.com/apple-oss-distributions/xnu/blob/xnu-7195.141.2/bsd/sys/attr.h),
+[copyfile.h](https://github.com/apple-oss-distributions/copyfile/blob/main/copyfile.h).
+Role arguments were observed in an
+[upstream actual restore log](https://github.com/ChefKissInc/Inferno/discussions/219).
