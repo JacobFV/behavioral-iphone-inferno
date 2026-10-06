@@ -1,5 +1,12 @@
 # Original HID API and console input investigation
 
+Current execution status: boot17 proved the private serial roundtrip, but virtual
+Create returned NULL and no report was sent. Boot18 isolates this to original
+IOServiceOpen(type0) returning0xe00002e2 despite IOHIDResource presence. See
+`../../evidence/system-app-preparation/stage38/boot18-open-observation`. Earlier
+sections below retain the research/candidate chronology; they are not runtime
+success claims.
+
 Read-only findings, not successful input execution. SPI firmware validation
 remains failed as documented in stage36/boot16-loader-observation. An original
 OS event-dispatch route would be a distinct automation mechanism, not proof the
