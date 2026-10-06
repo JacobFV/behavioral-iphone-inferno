@@ -4,7 +4,7 @@ typedef signed char BOOL;
 #ifndef nil
 #define nil ((id)0)
 #endif
-@class NSString, NSURL;
+@class NSString, NSURL, NSDictionary;
 __attribute__((objc_root_class))
 @interface NSObject
 - (BOOL)respondsToSelector:(SEL)selector;
@@ -13,6 +13,15 @@ __attribute__((objc_root_class))
 @interface NSString : NSObject
 + (instancetype)stringWithUTF8String:(const char *)text;
 - (const char *)UTF8String;
+- (NSString *)stringByAppendingPathComponent:(NSString *)component;
+- (BOOL)isEqualToString:(NSString *)other;
+@end
+@interface NSDictionary : NSObject
++ (instancetype)dictionaryWithContentsOfFile:(NSString *)path;
+- (id)objectForKey:(id)key;
+@end
+@interface NSMutableDictionary : NSDictionary
+- (void)setObject:(id)object forKey:(id)key;
 @end
 @interface NSURL : NSObject
 + (instancetype)fileURLWithPath:(NSString *)path;
@@ -21,6 +30,7 @@ __attribute__((objc_root_class))
 @interface LSApplicationWorkspace : NSObject
 + (instancetype)defaultWorkspace;
 - (BOOL)registerApplication:(NSURL *)url;
+- (BOOL)registerApplicationDictionary:(NSDictionary *)dictionary;
 - (BOOL)openApplicationWithBundleID:(NSString *)identifier;
 @end
 @interface LSApplicationProxy : NSObject
