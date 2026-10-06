@@ -65,3 +65,24 @@ manifest/ticket/.im4m/.img4 patterns; known verified-profile and range-inputs
 inventories likewise contain no provided personalization ticket or IMG4 manifest.
 BuildManifest is component metadata, not a signed IM4M. This is a bounded inventory
 finding, not an assertion that no genuine manifest exists anywhere.
+
+## Transport/parser implementation, backend deliberately unresolved
+
+`hid-input.c` and `hid-input.h` implement only the bounded console protocol and
+backend interface. Explicit `--console-operator-input` is required; no gesture is
+created at startup. There is no shell or generic command execution. IDs are
+remembered for the process lifetime; malformed lines and duplicates are rejected.
+Limits are160bytes per line,32requests,32errors,7200seconds. SIGINT/SIGTERM/SIGALRM
+request clean stopping. The original console termios is not changed.
+
+The `INFERNO_HID_TRANSPORT_ONLY` compile mode returns explicit attempt status-100
+and emits no events. No production backend or sender identity has been selected:
+original backboard routing appears to require a recognized digitizer service,
+which remains under investigation. This code has not been staged or run in iOS.
+
+Validation: arm64-ios14 freestanding compilation with Wall/Wextra/Werror passed.
+An external host harness tested accepted boundary inputs, rejected out-of-range/
+trailing/malformed inputs and100,000 bounded malformed lines under GCC AddressSanitizer
+and UndefinedBehaviorSanitizer, with no findings. Clang's host ASan runtime was
+unavailable; GCC's installed runtime supplied this bounded parser check. These
+checks establish parser behavior only, not serial connectivity or OS input.
