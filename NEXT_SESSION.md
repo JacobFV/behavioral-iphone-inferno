@@ -53,7 +53,7 @@ Original owned app registration, normal first-unlock and visible Hello setup UI
 are now proven. Owned UIKit execution and actual touch response remain unproven. Firmware, System/Data preparation, keybag creation and renderer patches
 are established; do not return to the archived framework implementation.
 
-At04:59 local, **app-boot-15 is live**, bootworker session49137, from
+At05:12 local, **app-boot-15 is live**, bootworker session49137, from
 verified observer-only stage35 root
 SHAdd1062ad10cf09dc3b18f1c84d8bc2eb6d2d6ed2ff54bdc2c546284d44d403de and all six
 paired namespaces in .local-build/reports/disk-preparation-35. Stage35 derives
@@ -86,7 +86,24 @@ and panicPC00979a36c seen in historical prep16. Prep17 previously succeeded with
 identical inputs to16. No observer ran in14; its raw evidence and all seven disks
 are retained. Retry15 uses identical35 inputs and has reached Early boot complete. RESET trace
 now proves four-byte completion and queued two-byte reply; no INT_ACK observed.
-Initial fixed-register snapshot matches13. Observer output is still pending.
+Initial fixed-register snapshot matches13. Two observer snapshots completed with all statuses0: aop-gpio has original
+AppleS5L8960XGPIOIC child; transport has only AppleHIDTransportBootloaderHBPP child
+and no operational protocol. Actual original initVector produces6020e exactly;
+mode encoding matches emulator. No GPIO behavior change is justified. Original
+unlock0/first0->1 repeated. Frame0025 shows white setup surface/status/info/home
+indicator (Hello animation between words); no owned app. Root sent no touch.
+
+Next candidate is an honest unsigned outer IMG4 preserving byte-identical IPSW
+N104_Multitouch.im4p, without any synthesized manifest/signature/ticket. Original
+FUD and kernel parsers permit an absent optional manifest; full execution remains
+unproven. Original restore deploys this missing component; normal updater expects
+Preboot/<boot-manifest-hash>/usr/standalone/firmware/FUD/Multitouch.img4. Original
+System MSUDataAccessor method/table corroborate this path, and this simulated
+VM already uses96zero hash directory alongside SEP. Native prepares narrow
+Preboot-only install/readback option. Do not stage from live15: once candidate
+is built/reviewed, stop15 normally and use its complete paired stopped tuple.
+No new validation bypass, fake personalization, GPIO fix or DT property added.
+Keep15 live until this concrete next candidate is ready.
 Verified obsolete generated prep31-34 disk copies were retired, reclaiming
 30,630,694,912bytes; all reports/sources and actual boot disks persist.
 Await actual registry/phase results before behavior changes or more gestures.

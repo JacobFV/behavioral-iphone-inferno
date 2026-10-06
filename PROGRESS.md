@@ -2,14 +2,21 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
-### Current execution boundary (04:59 local)
+### Current execution boundary (05:12 local)
 
 Boot14 failed before userland with an early framebuffer initialization panic.
 Its PC and preceding bandwidth failure match historical preparation16; an
 identical retry17 succeeded then. Current retry15 uses unchanged verified
 observer-only stage35 and paired namespaces and has reached Early boot complete.
 The reset trace confirms four bytes completed and a two-byte reply queued; no
-INT_ACK has appeared. Actual registry output is pending. Verified retirement of
+INT_ACK has appeared. Actual read-only registry snapshots completed: transport has only HBPP bootloader
+child, no operational protocol; aop-gpio uses AppleS5L8960XGPIOIC. Its original
+initVector produces observed6020e exactly and interrupt encoding matches model.
+No GPIO fix is warranted. Missing original multitouch firmware deployment is the
+next concrete lead: original FUD resolves Preboot/<hash>/usr/standalone/firmware/FUD.
+A minimal unsigned IMG4 container preserving original IM4P is being prepared with
+no invented manifest/signature/ticket. Loader execution remains unproven; next
+stage will use stopped15 only after candidate preparation, retaining all evidence. Verified retirement of
 redundant preparation31-34 disks reclaimed30.63GB; all actual boot disks remain.
 Original installed iOS reaches reviewed Hello setup UI; the owned application
 registers successfully with a valid LaunchServices proxy. Original empty-secret
