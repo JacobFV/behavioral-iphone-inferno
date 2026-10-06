@@ -1,0 +1,154 @@
+{
+  "kind": "actual-four-component-recovery-staging",
+  "source_report": null,
+  "root": {
+    "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-55/disks/root.qcow2",
+    "bytes": 3604480,
+    "sha256": "00fccb3ec7542ce5c9edd7970b627a15e962856d0438f11e3e4b520cecc6be80",
+    "format": "qcow2",
+    "standalone": false,
+    "backing_chain": [
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-44/disks/root.qcow2",
+        "format": "qcow2",
+        "sha256": "a26c50b4f51e5bb8a7c67889e2078649324851849f826f0eb754680f91f66f5d",
+        "bytes": 3145728,
+        "device": 66306,
+        "inode": 54023150,
+        "mtime_ns": 1791303958934848321,
+        "ctime_ns": 1791304092478945340,
+        "mode": "0o444"
+      },
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-27/disks/root.qcow2",
+        "format": "qcow2",
+        "sha256": "6898ad82af6bfb96168d2b7dd8febcfa977ef703679739197a40a08d735b6d4c",
+        "bytes": 140443648,
+        "device": 66306,
+        "inode": 54022764,
+        "mtime_ns": 1791303468549104874,
+        "ctime_ns": 1791303552337965412,
+        "mode": "0o444"
+      },
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-43/disks/root.raw",
+        "format": "raw",
+        "sha256": "69e8378c71d1f29840baa7ae16811d3f6285bf27042501a79e8139f8a5ad61d5",
+        "bytes": 34359738368,
+        "device": 66306,
+        "inode": 54022559,
+        "mtime_ns": 1791302373066551086,
+        "ctime_ns": 1791302496834897121,
+        "mode": "0o444"
+      }
+    ],
+    "recovery_staging_verified": true
+  },
+  "retained_attempt_error": {
+    "type": "KeyboardInterrupt",
+    "detail": "Signal 15"
+  },
+  "attempt_completed": false,
+  "exit_code": 0,
+  "stage_verification": {
+    "kind": "verified-recovery-staging-retention",
+    "report_sha256": "e23bd14b364a229fde1369f9aad2480277dbc2ed455faa52b65c4ca2a670100a",
+    "attempt_error": {
+      "type": "KeyboardInterrupt",
+      "detail": "Signal 15"
+    },
+    "attempt_completed": false,
+    "raw_serial_sha256": "769c14195ed96a591c8585174f3a04af2230871ae6af90fbb4dd38e16742401b",
+    "required_readbacks": [
+      "INFERNO_HID_INPUT_READBACK bytes=88944 mismatches=0",
+      "INFERNO_READINESS_READBACK bytes=86983 mismatches=0",
+      "INFERNO_SYSTEM_LAUNCHER_READBACK bytes=69264 mismatches=0",
+      "INFERNO_APP_EXECUTABLE_READBACK bytes=74976 mismatches=0 info_plist_written=0",
+      "INFERNO_PREP_COMPLETE: requested preparation operations succeeded"
+    ],
+    "normal_unmount_after_each_readback": true,
+    "retention_checks_sha256": "bb80edb0defae5b39cca0ffafbdfeb37fa0bef3c1449730f51eea42116f3f9d8",
+    "manifest_sha256": "ed45571309e76a18e297533827afffbc19a5113453d2cefd38e165cf08df0a8a",
+    "scope": "Intentional early-stop recovery staging after four actual zero-mismatch readbacks and clean unmounts. Generic failed-attempt verifier used only for unchanged disk/header/ancestor/FD/shutdown checks, retained separately. This stage-specific manifest is not a failed app result. Root must independently review/freeze before use."
+  },
+  "scope": [
+    "Fresh sibling overlay from immutable stage44, replacing app22/launcher22/readiness54/HID55 and writing identical535-byte readiness descriptor. Info, launchd cache, grants and emulator unchanged.",
+    "HID55 is the only guest difference versus frozen50. Original-tool SAMPLE route has not executed yet.",
+    "Actual all-four readback/normal-unmount/PREP_COMPLETE establishes staging outcome; intentional early runner Signal15 remains in report. Generic forensic checker outputs retained unchanged; separate successful-staging manifest records eligibility rationale.",
+    "Root independently reviews and freezes before full-system boot. No app48 run or diagnostic collection claim."
+  ],
+  "files": {
+    "report.json": {
+      "bytes": 24846,
+      "sha256": "e23bd14b364a229fde1369f9aad2480277dbc2ed455faa52b65c4ca2a670100a"
+    },
+    "stopped-disk-hashes.json": {
+      "bytes": 3337,
+      "sha256": "ed45571309e76a18e297533827afffbc19a5113453d2cefd38e165cf08df0a8a"
+    },
+    "preparation.json": {
+      "bytes": 7130,
+      "sha256": "f1992b5475e262571227b116b1ea1a7a77b0d823ef3f7f522d6c51da6dc1c70c"
+    },
+    "profile.json": {
+      "bytes": 3502,
+      "sha256": "b9bb6aca311ff96603e781f0baa96e3f464a91da8a44bbb17876a34a34b69c71"
+    },
+    "operator-stop.json": {
+      "bytes": 572,
+      "sha256": "eccecb9ed9ba4607d0195ebe7c06ab1e1ea7c7c800ee0028420c299baee1e172"
+    },
+    "stderr.log": {
+      "bytes": 2757,
+      "sha256": "0c55e449dcede1336d5c7ebc336ee9413d1df11c71cd20bfa004978ea160165f"
+    },
+    "launch.json": {
+      "bytes": 1064,
+      "sha256": "ca239677361c07efee5b9b747dad5a46d5d6b77d203860eb76ebda4b375ec700"
+    },
+    "root-overlay.json": {
+      "bytes": 5737,
+      "sha256": "4ac6b06407ba55ec30f7da25525d354cc16508e839920c5ae6131737a16ddafe"
+    },
+    "guest-errors.log": {
+      "bytes": 1307,
+      "sha256": "1a3f1c9068513ecb6c506b7bd610c304be9c8635ebd03e68fb0f85c57d4379ed"
+    },
+    "staging-verification.json": {
+      "bytes": 1289,
+      "sha256": "4957d6e9215363bf1019f8851caa58a4350d91d09eea23215dee3b523fac46e3"
+    },
+    "retention-checks-verification.json": {
+      "bytes": 15098,
+      "sha256": "bb80edb0defae5b39cca0ffafbdfeb37fa0bef3c1449730f51eea42116f3f9d8"
+    },
+    "plan.json": {
+      "bytes": 1992,
+      "sha256": "b682fe4f220cbfe0b029063894676a6716b5e483444d6be921bb6a26e7c8fb58"
+    },
+    "qmp-transcript.jsonl": {
+      "bytes": 2528,
+      "sha256": "5a3d0746ed18f177b66c1bc742924532a322f6f7659958bd1a71542009f73ae8"
+    },
+    "retention-checks.json": {
+      "bytes": 3325,
+      "sha256": "96d97a2226a436a700a6b4615169e584edd1b294fa8c7d3a32cfc10f4bfcb866"
+    },
+    "command.json": {
+      "bytes": 3400,
+      "sha256": "68282676bd8b03179ed4fc03269b8d872a8f72d204aeca3509b8fafe16d585aa"
+    },
+    "serial.log": {
+      "bytes": 56971,
+      "sha256": "769c14195ed96a591c8585174f3a04af2230871ae6af90fbb4dd38e16742401b"
+    },
+    "org.inferno.readiness.plist": {
+      "bytes": 535,
+      "sha256": "238154a9609e05208acfb9e9c64570e8ea7831119a72c3f46d2c27c2a1a5fb91"
+    },
+    "build-manifest.json": {
+      "bytes": 2401,
+      "sha256": "430c6ebb3b317dccf841cb33992b045954c5d724be6c5713b9860835618fce44"
+    }
+  }
+}
