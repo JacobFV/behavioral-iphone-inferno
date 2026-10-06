@@ -201,3 +201,10 @@ volumes, mounts discovered xART on `/mnt7`, executes the original seputil init a
 shutdown operations in order, syncs, and unmounts. Use only a disposable copy of
 the prepared root as always. `INFERNO_GIGALOCKER_COMPLETE` requires both original
 tool calls to return success; absence or errors must remain explicit.
+
+Explicit disk-helper profiles remove only the cloned ramdisk's
+`com.apple.restored_external.plist` job. Disk preparation does not request a restore
+transaction, and that daemon otherwise shuts the guest down after its 120-second
+host-wait timeout. The original daemon binary and original recovery profile stay
+unchanged; the preparation operation log records the removed plist. Ordinary
+marker profiles continue to run the original recovery job.
