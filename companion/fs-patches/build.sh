@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 if [[ $# != 3 ]]; then echo 'usage: build.sh LD64_LLD LDID OUTPUT_DIRECTORY' >&2; exit 2; fi
-linker=$(realpath "$1")
+linker=$(realpath -s "$1")
 signer=$(realpath "$2")
 output=$(realpath -m "$3")
 source_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
