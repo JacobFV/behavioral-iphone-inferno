@@ -1,0 +1,19 @@
+{
+  "kind": "unknown_mmio_trace_candidate",
+  "justification": "Actual44 two bounded windows show no modeled submits despite tap/background and readiness acknowledgments. Current implemented-register snapshots cannot observe ignored commands or zero-return polls.",
+  "scope": [
+    "Six unknown main/GP/blend read/write default branches emit existingoffset/value or unchangedreturnzero.",
+    "Seven implemented GP configuration write cases emit existingarguments.",
+    "ExplicitGPindex0/1passedonlyasdiagnostic argument; main/blend pipe=-1. No migratedstatechange.",
+    "Offsets are handler-local: main normalized aftershadow subtraction; GP relative to its0x8000block; blend relative toblendbase. Shadowalias distinction not retained.",
+    "No extra register read, DMA, framebuffer hash, interrupt/timer/returnvalue or commandbehavior change."
+  ],
+  "runtime": "Same fixed trace-display-window seven-eventset now. Disabledbydefault; emptyarbitraryeventaccess remainsunavailable. Recommend initialactual10s window,1..60accepted, existingdeadline/cleanup unchanged.",
+  "volume": "No per-event rate limit added: repeated guest unknown-register polling may produce high event volume even in10s. This is bounded time, not bounded bytes, and can perturb scheduling. Observe loggrowth/diskspace and compare healthy/stalledmetadata; do not use tracedrun as latencybenchmark.",
+  "validation": "Sourcechecks sixdefaultcall sites/sevenknownwritecalls/explicitlabels; originaltracetool parses; hostfakeQMP fixed7enable/disable/deadline/rollback checks pass. No emulatorbuild or VMexecution yet.",
+  "hashes": {
+    "hw/display/apple_displaypipe_v4.c": "46e4e7b44ffaa80db4b1a4e6e81c0209bc4f27a5f4c7ca621ae085922ee35282",
+    "hw/display/trace-events": "5d96c73312991536009451812a7e1d6b05b03b6f2d95d34017aad6b63efa3365",
+    "companion/qmp_control.py": "9090429921db69f035910bcff2b650683392a5f906c183496faf1953045178a5"
+  }
+}

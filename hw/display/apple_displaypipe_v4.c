@@ -375,39 +375,45 @@ static void adp_v4_gp_image_changed_check(ADPV4GenPipe *genpipe, uint32_t old,
     ADP_V4_GP_REG_WRITE_SET_WITH_CHECK_VAL(_field, (uint32_t)data);
 
 static void adp_v4_gp_reg_write(ADPV4GenPipe *genpipe, hwaddr addr,
-                                uint64_t data)
+                                uint64_t data, uint32_t trace_pipe)
 {
     switch (addr >> 2) {
     case R_GP_CONFIG_CONTROL: {
+        trace_apple_adp_gp_config_write(trace_pipe, addr, data);
         ADP_INFO("gp%d: control <- 0x" HWADDR_FMT_plx, genpipe->index, data);
         genpipe->state.config_control = (uint32_t)data;
         break;
     }
     case R_GP_PIXEL_FORMAT: {
+        trace_apple_adp_gp_config_write(trace_pipe, addr, data);
         ADP_INFO("gp%d: pixel format <- 0x" HWADDR_FMT_plx, genpipe->index,
                  data);
         ADP_V4_GP_REG_WRITE_SET_WITH_CHECK(pixel_format);
         break;
     }
     case R_GP_LAYER_0_DATA_START: {
+        trace_apple_adp_gp_config_write(trace_pipe, addr, data);
         ADP_INFO("gp%d: layer 0 data start <- 0x" HWADDR_FMT_plx,
                  genpipe->index, data);
         genpipe->state.data_start = (uint32_t)data;
         break;
     }
     case R_GP_LAYER_0_DATA_END: {
+        trace_apple_adp_gp_config_write(trace_pipe, addr, data);
         ADP_INFO("gp%d: layer 0 data end <- 0x" HWADDR_FMT_plx, genpipe->index,
                  data);
         genpipe->state.data_end = (uint32_t)data;
         break;
     }
     case R_GP_LAYER_0_STRIDE: {
+        trace_apple_adp_gp_config_write(trace_pipe, addr, data);
         ADP_INFO("gp%d: layer 0 stride <- 0x" HWADDR_FMT_plx, genpipe->index,
                  data);
         ADP_V4_GP_REG_WRITE_SET_WITH_CHECK(stride);
         break;
     }
     case R_GP_LAYER_0_DIMENSIONS: {
+        trace_apple_adp_gp_config_write(trace_pipe, addr, data);
         ADP_V4_GP_REG_WRITE_SET_WITH_CHECK_VAL(src_height, data & 0xFFFF);
         ADP_V4_GP_REG_WRITE_SET_WITH_CHECK_VAL(src_width,
                                                (data >> 16) & 0xFFFF);
@@ -417,6 +423,7 @@ static void adp_v4_gp_reg_write(ADPV4GenPipe *genpipe, hwaddr addr,
         break;
     }
     case R_GP_DEST_DIMENSIONS: {
+        trace_apple_adp_gp_config_write(trace_pipe, addr, data);
         genpipe->state.dest_height = data & 0xFFFF;
         genpipe->state.dest_width = (data >> 16) & 0xFFFF;
         ADP_INFO("gp%d: dest dimensions <- 0x" HWADDR_FMT_plx " (%dx%d)",
@@ -427,12 +434,14 @@ static void adp_v4_gp_reg_write(ADPV4GenPipe *genpipe, hwaddr addr,
     default: {
         ADP_INFO("gp%d: unknown @ 0x" HWADDR_FMT_plx " <- 0x" HWADDR_FMT_plx,
                  genpipe->index, addr, data);
+        trace_apple_adp_unknown_mmio("gp", trace_pipe, true, addr, data);
         break;
     }
     }
 }
 
-static uint32_t adp_v4_gp_reg_read(ADPV4GenPipe *genpipe, hwaddr addr)
+static uint32_t adp_v4_gp_reg_read(ADPV4GenPipe *genpipe, hwaddr addr,
+                                    uint32_t trace_pipe)
 {
     switch (addr >> 2) {
     case R_GP_CONFIG_CONTROL: {
@@ -477,6 +486,7 @@ static uint32_t adp_v4_gp_reg_read(ADPV4GenPipe *genpipe, hwaddr addr)
     default: {
         ADP_INFO("gp%d: unknown @ 0x" HWADDR_FMT_plx " -> 0x" HWADDR_FMT_plx,
                  genpipe->index, addr, (hwaddr)0);
+        trace_apple_adp_unknown_mmio("gp", trace_pipe, false, addr, 0);
         return 0;
     }
     }
@@ -506,6 +516,7 @@ static void adp_v4_blend_reg_write(ADPV4BlendUnitState *blend, uint64_t addr,
     default: {
         ADP_INFO("blend: unknown @ 0x" HWADDR_FMT_plx " <- 0x" HWADDR_FMT_plx,
                  addr, data);
+        trace_apple_adp_unknown_mmio("blend", -1, true, addr, data);
         break;
     }
     }
@@ -525,6 +536,7 @@ static uint64_t adp_v4_blend_reg_read(ADPV4BlendUnitState *blend, uint64_t addr)
     default: {
         ADP_INFO("blend: unknown @ 0x" HWADDR_FMT_plx " -> 0x" HWADDR_FMT_plx,
                  addr, (hwaddr)0);
+        trace_apple_adp_unknown_mmio("blend", -1, false, addr, 0);
         return 0;
     }
     }
@@ -546,12 +558,12 @@ static void adp_v4_reg_write(void *opaque, hwaddr addr, uint64_t data,
 
     if (addr >= GP_BLOCK_BASE_FOR(0) && addr < GP_BLOCK_END_FOR(0)) {
         return adp_v4_gp_reg_write(&adp->genpipe[0],
-                                   addr - GP_BLOCK_BASE_FOR(0), data);
+                                   addr - GP_BLOCK_BASE_FOR(0), data, 0);
     }
 
     if (addr >= GP_BLOCK_BASE_FOR(1) && addr < GP_BLOCK_END_FOR(1)) {
         return adp_v4_gp_reg_write(&adp->genpipe[1],
-                                   addr - GP_BLOCK_BASE_FOR(1), data);
+                                   addr - GP_BLOCK_BASE_FOR(1), data, 1);
     }
 
     if (addr >= BLEND_BLOCK_BASE &&
@@ -594,6 +606,7 @@ static void adp_v4_reg_write(void *opaque, hwaddr addr, uint64_t data,
     default: {
         ADP_INFO("disp: unknown @ 0x" HWADDR_FMT_plx " <- 0x" HWADDR_FMT_plx,
                  addr, data);
+        trace_apple_adp_unknown_mmio("main", -1, true, addr, data);
         break;
     }
     }
@@ -609,12 +622,12 @@ static uint64_t adp_v4_reg_read(void *const opaque, hwaddr addr, unsigned size)
 
     if (addr >= GP_BLOCK_BASE_FOR(0) && addr < GP_BLOCK_END_FOR(0)) {
         return adp_v4_gp_reg_read(&adp->genpipe[0],
-                                  addr - GP_BLOCK_BASE_FOR(0));
+                                  addr - GP_BLOCK_BASE_FOR(0), 0);
     }
 
     if (addr >= GP_BLOCK_BASE_FOR(1) && addr < GP_BLOCK_END_FOR(1)) {
         return adp_v4_gp_reg_read(&adp->genpipe[1],
-                                  addr - GP_BLOCK_BASE_FOR(1));
+                                  addr - GP_BLOCK_BASE_FOR(1), 1);
     }
 
     if (addr >= BLEND_BLOCK_BASE &&
@@ -642,6 +655,7 @@ static uint64_t adp_v4_reg_read(void *const opaque, hwaddr addr, unsigned size)
     default: {
         ADP_INFO("disp: unknown @ 0x" HWADDR_FMT_plx " -> 0x" HWADDR_FMT_plx,
                  addr, (hwaddr)0);
+        trace_apple_adp_unknown_mmio("main", -1, false, addr, 0);
         return 0;
     }
     }

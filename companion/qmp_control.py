@@ -39,7 +39,8 @@ DISPLAY_REGISTERS = (
                                ('stride', 0x60), ('src_dimensions', 0x70),
                                ('dest_dimensions', 0x80)))
 DISPLAY_TRACE_EVENTS = ('apple_adp_submit', 'apple_adp_bh', 'apple_adp_pipe',
-                        'apple_adp_output_ready', 'apple_adp_irq_write')
+                        'apple_adp_output_ready', 'apple_adp_irq_write',
+                        'apple_adp_unknown_mmio', 'apple_adp_gp_config_write')
 LIMIT = 4096
 
 
