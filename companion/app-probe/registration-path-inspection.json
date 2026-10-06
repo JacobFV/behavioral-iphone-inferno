@@ -1,0 +1,53 @@
+{
+  "scope": "Read-only inspection of original guest CoreServices. No guest API trial or policy change is claimed.",
+  "image_sha256": "79beb264e9b2a9a6ac4bcd03ddf61e2f27bc91403253f7b11ada2ece7de92938",
+  "owned_bundle_identifier": "org.inferno.companion.probe",
+  "findings": [
+    {
+      "method": "-[LSApplicationWorkspace registerApplication:]",
+      "offset": "0x41f4c",
+      "abi": "BOOL method(id self, SEL selector, NSURL *url)",
+      "flow": "Calls local LSRegisterURL(url, false); compares returned OSStatus against zero. The local C function is not exported."
+    },
+    {
+      "method": "_LSRegisterBundleNode -> _LSFindOrRegisterBundleNode",
+      "offsets": [
+        "0xaf814",
+        "0xaf824",
+        "0xaf830"
+      ],
+      "flow": "URL path passes flags0x08000000 and NULL registration dictionary (x4). In _LSFindOrRegisterBundleNode the dictionary is retained as x26."
+    },
+    {
+      "method": "_LSFindOrRegisterBundleNode",
+      "offsets": [
+        "0xafaa0",
+        "0xafadc",
+        "0xafae0",
+        "0xafb7c",
+        "0xafb84",
+        "0xaff1c"
+      ],
+      "flow": "After bundle lookup returns -0x251b, the new-registration path tests x26 (dictionary). NULL branches to0xafb7c; optional bit26 fallback is not set in URL flags0x08000000, so it reaches error-return handling rather than registration. This is a concrete reason the URL path is unsuitable for an unlisted bundle on this branch; the guest BOOL alone does not reveal its exact internal OSStatus."
+    },
+    {
+      "method": "-[LSApplicationWorkspace registerApplicationDictionary:]",
+      "offset": "0x41f3c",
+      "abi": "BOOL method(id self, SEL selector, NSDictionary *dictionary)",
+      "flow": "Forwards to registerApplicationDictionary:withObserverNotification: with notification7. The latter requires CFBundleIdentifier and Path; IsPlaceholder uses boolValue and absent value is false."
+    },
+    {
+      "method": "_registerApplicationWithDictionary",
+      "offsets": [
+        "0x41c3c",
+        "0x41d08",
+        "0x41dd8",
+        "0x41de8",
+        "0x41e10"
+      ],
+      "flow": "Reads Path, constructs URL, initializes original LS context, passes non-null dictionary and flags0x02000001 to _LSFindOrRegisterBundleNode. This enables the original dictionary registration path."
+    }
+  ],
+  "candidate": "Use original registerApplicationDictionary: with a mutable copy of owned Info.plist plus Path=/Applications/InfernoProbe.app. Preserve org.inferno identity, original app bytes, plain ad-hoc signature, and current launcher credentials. No invented entitlement, signature, identity, container or activation record. Execution remains unproven.",
+  "metadata_limit": "No concrete mandatory missing field in our Info.plist was established. CFBundleIdentifier, CFBundleExecutable and CFBundlePackageType are already present. Dictionary wrapper checks do not prove all downstream optional metadata or database state will be accepted."
+}
