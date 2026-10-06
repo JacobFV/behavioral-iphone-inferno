@@ -15,8 +15,9 @@ jobs={}
 for path in a.job:
  job=plistlib.loads(path.read_bytes())
  if not str(job.get('Label','')).startswith('org.inferno.'):p.error('only explicitly owned org.inferno jobs permitted')
- if path.name in result['LaunchDaemons']:p.error('refusing to replace existing cache entry: '+path.name)
- result['LaunchDaemons'][path.name]=job;jobs[path.name]={'label':job['Label'],'sha256':sha(path)}
+ key='/System/Library/LaunchDaemons/'+path.name
+ if key in result['LaunchDaemons']:p.error('refusing to replace existing cache entry: '+key)
+ result['LaunchDaemons'][key]=job;jobs[key]={'label':job['Label'],'sha256':sha(path)}
 assert all(result['LaunchDaemons'][k]==v for k,v in original['LaunchDaemons'].items())
 a.output.parent.mkdir(parents=True,exist_ok=True)
 with a.output.open('xb') as f:f.write(plistlib.dumps(result,fmt=plistlib.FMT_BINARY,sort_keys=False))
