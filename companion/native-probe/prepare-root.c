@@ -80,14 +80,12 @@ int main(int argc, char **argv) {
         printf("Requires --disposable-root-copy; host must supply a disposable cloned root image.\n");
         return 2;
     }
-    printf("INFERNO_PREP_BEGIN: add volumes on disposable /dev/disk0s1 only\n"); fflush(0);
+    printf("INFERNO_PREP_BEGIN: add Preboot on disposable /dev/disk0s1 only\n"); fflush(0);
     for (int i = 0; access("/dev/disk0s1", 0) && i < 30; ++i) sleep(1);
     if (access("/dev/disk0s1", 0)) { devices(); return 3; }
     devices();
     char *preboot[] = {"/sbin/newfs_apfs", "-A", "-o", "role=b", "-v", "Preboot", "/dev/disk0s1", 0};
-    char *xart[] = {"/sbin/newfs_apfs", "-s10485760", "-A", "-o", "role=x", "-v", "xART", "/dev/disk0s1", 0};
-    char *hardware[] = {"/sbin/newfs_apfs", "-s25165824", "-A", "-o", "role=h", "-v", "Hardware", "/dev/disk0s1", 0};
-    if (run(preboot) || run(xart) || run(hardware)) return 4;
+    if (run(preboot)) return 4;
     char system_device[64] = {0}, preboot_device[64] = {0};
     /* Discover actual volume identities, never infer an index from creation order. */
     for (int i = 1; i <= 16; ++i) {
@@ -120,6 +118,6 @@ int main(int argc, char **argv) {
     }
     sync();
     if (unmount("/mnt2", 0) || unmount("/mnt1", 0)) return 11;
-    printf("INFERNO_PREP_COMPLETE: volumes added, original firmware copied\n"); fflush(0);
+    printf("INFERNO_PREP_COMPLETE: Preboot added, original firmware copied\n"); fflush(0);
     return 0;
 }

@@ -75,15 +75,17 @@ must be booted with `--root-image` pointing to the original System-volume wrappe
 and `--root-sha256` matching it: boot.py creates a separate disposable copy before
 execution. Never use this helper with a non-disposable guest disk.
 
-The helper executes ordered `newfs_apfs -A` additions for Preboot (`role=b`),
-xART (`role=x`, 10 MiB) and Hardware (`role=h`, 24 MiB) in `/dev/disk0s1`.
+The helper executes `newfs_apfs -A` to add Preboot (`role=b`) in `/dev/disk0s1`.
+An actual attempt to add xART was rejected by newfs_apfs with exit77, so that
+operation is excluded. The initial fatal disk-boot blocker is missing Preboot
+firmware; xART/Hardware necessity remains unproven.
 It never uses the destructive container-create `-C` switch. It discovers actual
 volume identities by mounting existing device nodes read-only and querying names;
 the System volume is recognized by its SystemVersion.plist and original firmware
 path. It then mounts System read-only and Preboot writable, and copies the original
 firmware subtree into `Preboot/<96 zero characters>/usr/standalone/firmware`.
 The zero directory matches the existing direct-kernel no-ticket boot-manifest
-hash; it is not a forged ticket. This phase does not create Data or seed user data.
+hash; it is not a forged ticket. This phase does not create xART, Hardware, Data, or seed user data.
 Every subprocess argv and wait status is printed. Any failure stops the helper.
 Only `INFERNO_PREP_COMPLETE` establishes completion, and raw logs must be reviewed.
 
@@ -94,3 +96,7 @@ the guest implementation; it avoids a handcrafted dirent layout. ABI references:
 [copyfile.h](https://github.com/apple-oss-distributions/copyfile/blob/main/copyfile.h).
 Role arguments were observed in an
 [upstream actual restore log](https://github.com/ChefKissInc/Inferno/discussions/219).
+
+Use `--ramdisk-boot` when executing this helper: ordinary recovery mode creates
+a dummy NVMe device because firmware update is incomplete. Non-restore md0 boot
+exposes the actual copied root container while still running recovery launchd.
