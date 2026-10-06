@@ -2,3 +2,13 @@
 
 apple_sep_iop_start(const char *role) "%s"
 apple_sep_iop_wakeup(const char *role) "%s"
+
+# mt-spi.c: disabled by default; enable only for a bounded gesture observation.
+# Host events and enqueues are per input/report, dequeue is per nonempty packet.
+# tx_drained marks guest clocking completion, not guest OS acceptance.
+apple_mt_spi_host_event(int dx, int dy, int x, int y, int old_buttons, int buttons) "abs=(%d,%d) sensor=(%d,%d) buttons=0x%x->0x%x"
+apple_mt_spi_enqueue(unsigned stage, unsigned frame, int x, int y, unsigned length, uint64_t virtual_ns) "stage=%u frame=%u sensor=(%d,%d) bytes=%u virtual_ns=%" PRIu64
+apple_mt_spi_dequeue(unsigned type, unsigned length) "type=%u bytes=%u"
+apple_mt_spi_tx_drained(bool fw_empty, unsigned boot_pending) "fw_empty=%d boot_pending_bytes=%u"
+apple_mt_spi_boot_command(unsigned type) "type=%u"
+apple_mt_spi_control(unsigned type, unsigned length) "type=%u bytes=%u"
