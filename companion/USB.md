@@ -145,3 +145,13 @@ all five API calls returned zero. Its raw output is in run8
 are in the same directory. The matching iOS records are
 `.local-build/reports/recovery-usb-async-2/` and
 `.local-build/reports/recovery-usb-async-reconnect/`.
+
+The longer reconnect observation was not a completed 300-second boot: restored
+waited 120 seconds for a start-restore request, timed out, tore down userspace,
+and the guest then panicked `Halt/Restart Timed Out`. The emulator exited with
+code zero around 160 seconds; the boot runner correctly marked the attempt
+incomplete. The successful read-only service queries occurred before this
+shutdown path. No start-restore request was sent to suppress that timeout.
+After preserving the logs, Linux run8 shut down through guest `poweroff`; serial
+records `reboot: Power down`, and its emulator exited zero. Its stopped installed
+QCOW2 is available for reuse. No experimental VM is intentionally left running.
