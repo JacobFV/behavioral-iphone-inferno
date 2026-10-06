@@ -148,3 +148,20 @@ the journey or capture a frame. The response is a snapshot bounded to4096bytes;
 an oversized report is rejected clearly. Use this for live state instead of the
 initial `report.json`, which may remain unchanged until the runner finishes.
 Previously started runners do not acquire this command automatically.
+
+### Keep a completed journey running
+
+Opt in with `--probe-keep-running --probe-journey --control-mailbox`. The flag
+excludes `--probe-hardware-tap`. Default runs still stop on strict completion.
+With the flag, a completed journey stays alive until the existing duration limit
+or an explicit empty-arguments command:
+
+```sh
+python3 companion/qmp_control.py --report REPORT finish-run
+```
+
+`finish-run` rejects incomplete journeys and runs without the opt-in. It requests
+an orderly loop exit and normal QMP cleanup; it sends no input or process signal.
+`probe-status` includes `keep_running` and `finish_requested`. Status is read-only;
+the original duration limit is never extended. These options affect new runners
+only. Completion still requires genuine guest markers and operator captures.
