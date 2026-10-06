@@ -48,68 +48,76 @@ that directory together: the binary references local libraries/resources.
 
 ## Current execution boundary
 
-Keep working; no handoff or missing user input. Full-system SpringBoard/backboardd
-processes now execute and frames show actual Apple boot/migration progress after
-pinned upstream software-rendering patches. This is not yet visible SpringBoard
-or an owned UIKit app. Full guest cache hashes and raw boot logs are committed.
+Keep working; no handoff or missing user input. Real full-system SpringBoard and
+backboardd processes execute, and reviewed frames show Apple migration progress.
+Visible setup/home UI, owned UIKit execution and an actual tap/count journey are
+still unproven. Do not return to firmware acquisition or the archived framework
+implementation: firmware, original System/Data preparation, keybag creation,
+software-renderer cache patching and full-system launchd execution are established.
 
-Current long run is `.local-build/reports/app-boot-3` (1800s, started about02:07
-local), preserving stopped app-boot-2 migration state. Near its planned boundary,
-reviewed frame58 shows Apple migration progress, not setup/home UI. Preserve the
-stopped root and all six auxiliary namespaces, export the latest migration stack,
-and determine whether the next boot resumes work or restarts migration.
+At03:13 local, `.local-build/reports/app-boot-6` is live. It uses advanced stopped
+app-boot-3 state, corrected System launcher, a root wrapper dropping to mobile,
+and a single empty-passcode unlock helper for our freshly created null-secret VM
+keybag. All three owned jobs eventually started after roughly ten minutes.
+Original workspace registration actually returns NO for the Data-path app, with
+an invalid proxy. The unlock helper printed only BEGIN and is absent from later
+completed ps listings; no before/after state or unlock call was observed. Its
+outcome is unknown, not an observed API failure. Host CPU load reached77 on20cores;
+raw read-only pressure/thread observations are in app-boot-6/host-contention.json.
+Do not stop or reprioritize unrelated host processes.
 
-Independent `.local-build/reports/app-boot-4` started about02:31 local, with
-stage26 System launcher and exactly five upstream-documented unsupported services
-disabled. Its owned readiness job and SpringBoard/backboardd run, but no launcher
-marker or launcher process appeared in early snapshots. Investigate direct mobile
-launchd context (including console stdio setup); a root wrapper dropping to mobile
-has already executed the exact System launcher bytes successfully. Data execution
-returned EPERM for both root/mobile despite successful header reads. Raw evidence
-is in `companion/evidence/app-exec-matrix*`. Do not infer the underlying policy or
-claim app execution from this location comparison.
+Native is preparing disk-preparation-30 from stopped29, preserving all paired
+auxiliary state. It adds the exact unchanged owned bundle under
+`/Applications/InfernoProbe.app`, wrapper9 `--system-app`, phase-instrumented
+single-call unlock helper35 with600s watchdog, and extended process observer35.
+The original Data bundle remains. Bootworker will run this as app-boot-7 with
+7200s maximum,30s frames, guest-errors and strict probe journey, stopping6 normally
+and preserving its evidence to limit our own CPU competition. Stopped29 is a
+prepared comparison, not an independently executed successful boot.
 
-The app job loads from merged `/System/Library/xpc/launchd.plist` through the
-original `launchd_unsecure_cache=1` mode (`--launchd-unsecure-cache`). Signatures
-remain unchanged. Linux USB run9 is headless KVM/EHCI with loopback SSH22325;
-full-system lockdown responds with version14.0/build18A5351d, while starting the
-syslog service returns PASSWORD_PROTECTED. No syslog stream was obtained.
+The launcher fix uses the original LSApplicationWorkspace registerApplication:
+method and logs its BOOL result honestly. The earlier LSRegisterURL was a local,
+non-exported symbol; actual dyld abort and negative export audit agree. Corrected
+launcher/app53 imports resolve through actual original-cache export tries and
+reexports. Root mobile System execution is proven, while the earlier Data launcher
+returned EPERM despite successful reads. Console open succeeded as mobile; the
+console-permission hypothesis was rejected. Exact inputs and commits are in the
+app-probe/native-probe READMEs and committed raw evidence.
 
-Native postboot report export and UUID-matched symbolication show LaunchServices
-seeding waited on active installd bundle-metadata parsing, not a proven deadlock.
-Boot3 advanced to SystemAppMigrator. `companion/vnc-control.py` captures the live
-private Unix VNC socket and can inject bounded pointer events without host windows;
-capture is proven, actual touch response remains unproven. Latest source/evidence
-and worker ownership are in PROGRESS.md and companion/app-probe/native-probe
-READMEs. Continue toward a reviewed app screenshot plus actual tap/count change.
+Full migration reports show SystemAppMigrator returned NO after a wait for app
+demotion, then MobileSlideShow's assetsd waited for first unlock. Advancing plugins
+is not proof of successful migration. UUID-matched symbolization and full raw
+exports are in `companion/evidence/migration-first-unlock/`. Original MKB supports
+a normal NULL-secret unlock for the own NULL-secret keybag. Query first-unlock
+returns0/1 or negative errors; do not label raw MKB lock-state enum values without
+proof. No fabricated notification, policy bypass, real-device key extraction,
+Apple signature forging or activation impersonation is authorized.
 
 ## Next concrete work
 
-The initial firmware/profile/recovery milestone below has now executed. Continue
-with the isolated Linux USB companion and a joint USB enumeration run; see
-companion/USB.md and the latest PROGRESS.md entries. `companion/run boot` accepts
-`--usb-socket /absolute/private/usb.sock` for a running companion. Full installed
-disk boot still needs an evidence-backed path that obeys the no-forged-signatures
-rule; do not silently follow upstream's ticket-forging restore instructions.
-No user input is needed for repeating the proven recovery run.
+1. Inspect actual app-boot-7 unlock phase/state/return markers and registration
+   BOOL/proxy results. Keep source revisions, hashes, raw logs and stopped root
+   plus all six auxiliary namespaces paired. Do not treat helper JSON as proof.
+2. Resolve the concrete next failure using original APIs and narrow owned code.
+   The unlocked-since-boot bit must change through the original API; do not fake
+   notifications or claim success from an attempted call. Keep the currently
+   running integrated attempt intact when useful, rather than resetting migration
+   at arbitrary status checkpoints.
+3. Review actual frames. `companion/vnc-control.py` captures/interacts through the
+   VM's private Unix VNC socket without a host window while the runner owns QMP.
+   Capture is proven; touch needs a visible guest response. If the real app appears,
+   complete and retain a before/after counter tap journey. An accepted launch
+   request is insufficient. Serial app markers may not be inherited through LS;
+   manual VNC input plus reviewed actual counter frames can provide direct evidence.
+4. Only after a successful owned app journey, measure actual cold/warm launch,
+   memory, CPU, reliability and parallel density. Current CPU-contended timings
+   are not comparative benchmarks. Reuse old fixtures/dashboard only where this
+   real backend supports them.
 
-1. Read the pinned Inferno setup documentation and the actual t8030 initialization
-   in `hw/arm/apple-silicon/t8030.c`. Determine one supported image/OS/device
-   combination and its complete input provenance. Do not equate version branches
-   in source with proven boot/app support.
-2. The official Apple IPSW and verified kernel/DTB/trustcache/ramdisk profile are
-   now outside Git in `/home/brandonin/.local/share/inferno/images/ios14b5/`.
-   `companion/run prepare` reproduces extraction and manifest/hash verification.
-   The user has a MacBook Air with limited memory available if preparation
-   needs macOS; prefer Linux work where feasible. Ask for only genuinely missing
-   inputs after identifying a concrete path.
-3. Build a headless boot profile with isolated writable disk state, serial logs,
-   QMP and local-only VNC. Prove boot/display/input through actual execution.
-   t8030 defaults to 4GiB guest RAM; CPU/KVM compatibility must be measured.
-4. Run one owned, unencrypted app and capture a real interaction journey before
-   adding fleet orchestration or importing the old dashboard.
-5. Measure real boot/app memory, latency, reliability and parallel density.
-   The image-free QMP check provides no iOS performance or compatibility evidence.
+Linux USB run9 shut down normally at09:40:13UTC, emulator0, after full-system
+lockdown queries. Its stopped QCOW2 can resume when needed. Syslog StartService
+returned PASSWORD_PROTECTED; no syslog stream exists. No active USB VM is needed
+for the current serial/VNC journey.
 
 ## Important source facts
 
