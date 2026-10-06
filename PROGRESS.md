@@ -25,10 +25,26 @@
   and daemon operation were observed. First joint attachment crashed Linux in
   `ehci_irq` with an external abort and QEMU's re-entrant MMIO warning. Source
   trace points to the synchronous remote USB handler releasing BQL while EHCI
-  MMIO remains active. A single-vCPU companion is being tested before any driver
-  changes. An earlier `guest_ready=true` report does not override this raw panic.
+  MMIO remains active. A single-vCPU EHCI retry failed the same way. xHCI avoids that panic but
+  cannot enumerate through this custom transport's control path. A focused
+  asynchronous transport fix is in progress. Linux KVM separately booted with
+  `query-kvm` reporting enabled; this establishes no iOS KVM capability. An earlier `guest_ready=true` report does not override this raw panic.
   Logs are outside Git under `/home/brandonin/.local/share/inferno/usb/run3/` and
   `.local-build/reports/recovery-usb-1/`.
+
+- **Guest disk preparation:** run6 created Preboot and copied the original
+  firmware tree; independent reader comparison found all 19 files byte-identical.
+  Direct-root-2 still failed mount-phase-1 because missing xART aborted fstab
+  construction. Original newfs_apfs checks its parent's xART entitlement. An
+  explicit entitlement on our own ad-hoc-signed helper resolved its exit77:
+  run8 created Preboot, xART and Hardware, copied firmware and cleanly unmounted
+  both mounted volumes. Root inspected the raw serial commands, statuses and
+  completion marker. Logs: `.local-build/reports/disk-preparation-8/`.
+  Direct boot of a disposable copy is the next verification boundary.
+- **Reproduced OS conversion:** root ran both committed OS utilities; full raw
+  image, APFS payload and 4096-sector wrapper hashes match the original conversion.
+  Logs: `.local-build/research/os-reproduced.log` and
+  `.local-build/research/os-wrapper-reproduced.log`.
 
 Continuing work uses disposable disk copies and guest utilities to populate the
 missing APFS roles and preboot firmware path. The original DT supplies a zero

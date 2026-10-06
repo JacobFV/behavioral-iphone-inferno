@@ -16,7 +16,9 @@ Suggested opening instruction:
   There is no GitHub-hosted fork or origin remote yet.
 - Actual aarch64 emulator built on this Ubuntu24.04 ARM64 host.
 - Local pinned dependencies/toolchain under `.local-build`; no sudo required.
-- One upstream build fix: Apple SoC explicitly links LZFSE. Runtime unchanged.
+- Minimal upstream integration changes link LZFSE, explicitly select simulated
+  SEP without data encryption, and allow an explicit recovery NAND argument.
+  Default upstream behavior is preserved; source/flags are in each build manifest.
 - Independent QMP check passed, including real t8030 machine enumeration.
 - Real iOS 14.0 beta 5 recovery boot now works with simulated SEP: kernel,
   `md0`, launchd, restored_external waiting for host, 828x1792 recovery framebuffer.
@@ -43,6 +45,16 @@ The build intentionally uses committed source. Commit source changes before
 rebuilding. It preserves a detached source checkout and all dependencies beneath
 `.local-build`, with no dependency on the previous session's /tmp worktrees. Keep
 that directory together: the binary references local libraries/resources.
+
+## Current execution boundary
+
+Owned native recovery code executes. A direct System boot reaches Darwin
+Bootstrapper but needs auxiliary APFS preparation. The latest owned helper
+created Preboot, xART and Hardware and copied original firmware; direct-root-3
+is testing the result. See PROGRESS.md and companion/native-probe/README.md.
+Linux USB companion boots under KVM. EHCI attachment panics due to the blocking
+remote handler; xHCI descriptor enumeration also fails. A focused asynchronous
+USB fix is in progress. No installed iOS, UIKit journey or benchmark is proven.
 
 ## Next concrete work
 
@@ -80,9 +92,8 @@ No user input is needed for repeating the proven recovery run.
   ramdisk/ticket/SEP inputs depend on the selected upstream boot path.
 - Upstream direct-kernel startup invokes kernel patches. Do not call future
   runs unmodified iOS or treat them as native-device reference captures.
-- Linux KVM acceleration is not established here. Metal/app compatibility is
-  unmeasured. Firmware preparation is the next engineering boundary, not a
-  blanket permissions block.
+- Linux companion KVM acceleration executed and was verified by QMP. iOS uses
+  TCG; iOS KVM and Metal/app compatibility remain unmeasured.
 - Current bootstrap is locked for Ubuntu24.04 ARM64. x86/Linux or another OS
   requires a reviewed host-specific dependency setup.
 - Default upstream data encryption rejects simulated SEP. The current working
@@ -95,5 +106,5 @@ No user input is needed for repeating the proven recovery run.
 Keep implementation moving across status questions. Use subagents when work can
 be divided cleanly. Commit as you go and document actual outcomes. Avoid routine
 unit-test proliferation; prioritize complete build/boot/app journeys. All UI work
-must stay off the user's main display. This session is ending intentionally so
-work can resume with this directory as its workspace.
+must stay off the user's main display. Continue active execution; do not turn these continuity notes into a pause or
+handoff unless the user requests one.

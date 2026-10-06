@@ -50,8 +50,28 @@ Each attempt creates seven fresh sparse raw namespaces: root 32 GiB, firmware
 8 MiB, syscfg 128 KiB, ctrl_bits 8 KiB, nvram 8 KiB, effaceable 4 KiB and panic_log
 1 MiB. Empty NVRAM takes upstream's recovery path. The simulated SEP choice is
 from `hw/arm/apple-silicon/t8030.c` when no SEP firmware/ROM is provided; it differs
-from upstream's full restore example. No USB companion is connected: its address
-is an absent socket in the attempt's private temporary directory.
+from upstream's full restore example. By default no USB companion is connected. Supply `--usb-socket` with an existing
+private Unix socket from the isolated Linux companion to test attachment. See
+[USB.md](USB.md) for the current transport failures and execution evidence.
+
+For a prepared root disk, supply `--root-image /absolute/root.raw` and its expected
+`--root-sha256`. The runner validates its 4096-byte GPT and copies it into the
+attempt directory before guest writes; the source is never attached writable.
+The copy retains the source size instead of the default 32GiB blank namespace.
+Choose one boot mode:
+
+- Default recovery passes `-restore rd=md0`; the guest currently exposes a dummy
+  NVMe disk, unsuitable for preparing a supplied APFS image.
+- `--ramdisk-boot` retains the ramdisk but exits recovery boot mode and passes
+  `rd=md0`. This executed the owned disk helper against real NVMe namespaces.
+- `--disk-boot` omits the initrd and exits recovery boot mode. Use the firmware's
+  StaticTrustCache in the profile for the full System image. This has reached
+  Darwin Bootstrapper, but installed iOS boot completion remains unproven.
+- `--recovery-preserve-disk` explicitly disables the recovery reformat argument.
+  Actual execution still exposed a dummy disk; it did not solve disk preparation.
+
+See [native-probe/README.md](native-probe/README.md) for the owned helper and
+[os-image/README.md](os-image/README.md) for original System image preparation.
 
 There are no display windows or TCP listeners. VNC and QMP use private Unix
 sockets; serial output goes to a file. The duration includes emulator startup,

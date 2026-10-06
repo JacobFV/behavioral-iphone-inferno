@@ -36,8 +36,12 @@ JSON report; never treat that image as verified.
 An initial scratch version of these scripts decoded and wrapped the official
 image. Raw source scripts and their hashes remain with runtime evidence under
 `/home/brandonin/.local/share/inferno/images/ios14b5/os-inspection/`. The committed
-versions expose arguments and add source GPT validation. Output geometry is the
-same; they have not yet repeated the full conversion.
+versions expose arguments and add source GPT validation. Root independently reran
+both committed utilities into `os-reproduced/`: decoded image, APFS payload and
+4096-byte GPT output all match the hashes below exactly. Raw execution logs are
+`.local-build/research/os-reproduced.log` and `os-wrapper-reproduced.log`. The
+wrapper report's `wrapper_sha256` identifies the Python script; `output_sha256`
+identifies the disk.
 
 - Original DMG: `cae20aff4f69e72b78f80fdaf92f26d1f3dac7890c66ca00d16bb6f3270368dd`.
 - Decoded raw: `96bebe305f5e0ab41ba61e976e52687646bfa1f189918956069caeda107ee9d6`.
