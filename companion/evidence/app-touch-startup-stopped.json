@@ -1,0 +1,156 @@
+{
+  "kind": "actual_guest_startup_touch_diagnostic",
+  "source_report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13",
+  "binary_sha256": "58436578ddbe51e7b2cbeb2f474d907e5bf5a34bb6a49abfcf01947f3d60d34e",
+  "binary_source": "a51980a8361589d9a14d0fff0249a9be2116991c",
+  "elapsed_seconds": 854.05577,
+  "stop_reason": "Authorized next comparison adds reset phase/buffer trace detail plus bounded original IORegistry observer; this stopped13 state is preserved separately.",
+  "next_run_lineage": "stage35 uses stopped12 plus readiness observer only; do not claim next run resumes this stopped13 root.",
+  "emulator_exit": 0,
+  "quit_response": {
+    "return": {},
+    "id": 67
+  },
+  "observations": [
+    "All six startup traces enabled before cont and disabled successfully after 180 seconds",
+    "Only boot_command type0 appeared; this instrumentation does not establish reset completion",
+    "Three fixed seven-register queries retained in control transcript; GPIO 0x0006020e and idle SPI values persisted",
+    "Original setup screen returned; app registration/proxy valid but open callback FBS code1",
+    "No owned UIKit execution marker"
+  ],
+  "startup_trace": {
+    "limit_seconds": 180,
+    "events": [
+      "apple_mt_spi_host_event",
+      "apple_mt_spi_enqueue",
+      "apple_mt_spi_dequeue",
+      "apple_mt_spi_tx_drained",
+      "apple_mt_spi_boot_command",
+      "apple_mt_spi_control"
+    ],
+    "enable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 5
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 6
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 7
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 8
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 9
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 10
+        }
+      }
+    ],
+    "disable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 31
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 32
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 33
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 34
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 35
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 36
+        }
+      }
+    ],
+    "start_time": 1791286572.7981856,
+    "deadline_time": 1791286752.7981856,
+    "stop_time": 1791286752.870103,
+    "stop_reason": "180-second deadline",
+    "all_disabled": true
+  },
+  "trace_lines": [
+    "apple_mt_spi_boot_command type=0"
+  ],
+  "owned_marker_count": 0,
+  "last_frame": {
+    "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/frames/0027.ppm",
+    "sha256": "42600c031458ea36ad7d234098c8b700904677185913a53f7e03e7151efee23c",
+    "png": "app-touch-startup-stopped-last.png"
+  },
+  "files": {
+    "app-touch-startup-stopped-serial.log": {
+      "sha256": "bf3a75413244ad2e2bcdd70312dd47ff85ba77c7ade07af4c4b0997bdf9191e4",
+      "bytes": 477682
+    },
+    "app-touch-startup-stopped-qmp-transcript.jsonl": {
+      "sha256": "f1475cdb151a7b6e33a39d8fffa21ec2e90fc50a047247f53770c476dafe5a87",
+      "bytes": 21431
+    },
+    "app-touch-startup-stopped-control-transcript.jsonl": {
+      "sha256": "1704bb04bc325058b9cbd8347ecb0539ef149688388960cdfc0e187f7e142169",
+      "bytes": 2973
+    },
+    "app-touch-startup-stopped-report.json": {
+      "sha256": "d13149c70069ac582a3078002287d4f1a214bb57955e603b33850c83baced1c9",
+      "bytes": 41585
+    },
+    "app-touch-startup-stopped-guest-errors.log": {
+      "sha256": "c4fc4c04db27ec88f2dd7fd1f6485cb5b92f30d7f292a9e6132f13cb3ca2ae24",
+      "bytes": 6687
+    }
+  }
+}
