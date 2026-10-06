@@ -14,7 +14,7 @@ import subprocess
 import tempfile
 import time
 from probe_journey import ProbeJourney
-from qmp_control import ControlMailbox
+from qmp_control import ControlMailbox, StartupTouchTrace
 
 
 DISKS = [('root', 32 << 30, 1), ('firmware', 8 << 20, 2),
@@ -98,6 +98,8 @@ def main():
     repo = Path(__file__).resolve().parents[1]
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--profile', type=Path, required=True)
+    parser.add_argument('--touch-trace-startup', action='store_true',
+                        help='trace six touch-model events before cont; disable automatically after 180 seconds')
     parser.add_argument('--control-mailbox', action='store_true',
                         help='enable private allowlisted pointer/input-trace requests via qmp_control.py')
     parser.add_argument('--binary', type=Path, default=repo / '.local-build/build/qemu-system-aarch64')
@@ -211,6 +213,10 @@ def main():
     if control:
         report['control_mailbox'] = str(control.path)
         report['control_source_sha256'] = digest(Path(__file__).with_name('qmp_control.py'))
+    touch_trace = StartupTouchTrace() if args.touch_trace_startup else None
+    if touch_trace:
+        report['touch_startup_trace'] = touch_trace.report
+        report['control_source_sha256'] = digest(Path(__file__).with_name('qmp_control.py'))
     process = qmp = connection = None
     started = time.monotonic()
     previous_handlers = {}
@@ -233,6 +239,8 @@ def main():
                        '-qmp', 'unix:' + endpoint + ',server=on,wait=off', '-no-reboot']
             if args.guest_errors:
                 command += ['-d', 'guest_errors', '-D', str(output / 'guest-errors.log')]
+            if args.touch_trace_startup and not args.guest_errors:
+                command += ['-D', str(output / 'touch-trace.log')]
             if args.disk_boot or args.ramdisk_boot:
                 command[2] += ',boot-mode=exit_recovery'
             if args.ramdisk_boot:
@@ -294,15 +302,23 @@ def main():
             report['greeting'] = qmp.receive()
             if 'QMP' not in report['greeting']:
                 raise RuntimeError('Missing QMP greeting')
-            for name in ('qmp_capabilities', 'query-status', 'query-cpus-fast', 'query-mice', 'cont'):
+            for name in ('qmp_capabilities', 'query-status', 'query-cpus-fast', 'query-mice'):
                 response = qmp.execute(name, timeout=max(.1, min(30, deadline - time.monotonic())))
                 if 'error' in response:
                     raise RuntimeError(f'QMP {name} failed: {response["error"]}')
+            if touch_trace:
+                touch_trace.start(qmp)
+                (output / 'report.json').write_text(json.dumps(report, indent=2) + '\n')
+            continued = qmp.execute('cont')
+            if 'error' in continued:
+                raise RuntimeError(f'QMP cont failed: {continued}')
             next_capture = time.monotonic() + args.capture_interval
             if args.capture_interval:
                 (output / 'frames').mkdir()
                 report['periodic_captures'] = []
             while time.monotonic() < deadline and process.poll() is None:
+                if touch_trace:
+                    touch_trace.poll(qmp)
                 if control:
                     control.poll(qmp)
                 if args.capture_interval and time.monotonic() >= next_capture:
@@ -337,6 +353,11 @@ def main():
         if process is not None and process.poll() is None:
             try:
                 if qmp:
+                    if touch_trace:
+                        try:
+                            touch_trace.stop(qmp, 'runner cleanup')
+                        except Exception as exc:
+                            report['touch_trace_cleanup_error'] = str(exc)
                     report['quit_response'] = qmp.execute('quit')
                 process.wait(timeout=5)
             except (Exception, KeyboardInterrupt):

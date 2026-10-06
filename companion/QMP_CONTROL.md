@@ -31,3 +31,21 @@ A real firmware-free QMP plumbing check recorded query-mice, trace get/set and a
 rejected quit command. Its deliberately stopped empty machine rejected pointer
 input with `VM not running`. This check is not evidence of guest touch delivery;
 that requires the actual guest traces and visible response.
+
+`--touch-trace-startup` enables exactly the six touch-model tracepoints through
+QMP before `cont`. The runner records start/deadline and enable/disable replies,
+and disables them after 180 seconds or earlier cleanup. With `--guest-errors`,
+trace output shares `guest-errors.log`; otherwise it uses `touch-trace.log`.
+This observes the existing device behavior without changing it.
+
+The private `query-touch-registers` alias takes no arguments. It issues seven
+fixed `human-monitor-command` requests: `xp /1wx` at GPIO `0x24a820088`, and SPI1
+`0x235104000`, `0x235104004`, `0x235104008`, `0x23510400c`, `0x235104034`,
+`0x23510404c`. These individual register reads were reviewed as nondestructive.
+RXDATA (`+0x20`) and bulk reads are excluded. There is no general monitor-command
+entry point. Each underlying request/reply appears in the raw QMP transcript;
+the combined alias response remains subject to the 4096-byte limit.
+
+```
+python3 companion/qmp_control.py --report /absolute/report query-touch-registers
+```
