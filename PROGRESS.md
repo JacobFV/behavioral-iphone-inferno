@@ -2,12 +2,15 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
-### Current execution boundary (04:54 local)
+### Current execution boundary (04:59 local)
 
 Boot14 failed before userland with an early framebuffer initialization panic.
 Its PC and preceding bandwidth failure match historical preparation16; an
-identical retry17 succeeded then. Current retry15 will use unchanged verified
-observer-only stage35 and paired namespaces after redundant preparation cleanup.
+identical retry17 succeeded then. Current retry15 uses unchanged verified
+observer-only stage35 and paired namespaces and has reached Early boot complete.
+The reset trace confirms four bytes completed and a two-byte reply queued; no
+INT_ACK has appeared. Actual registry output is pending. Verified retirement of
+redundant preparation31-34 disks reclaimed30.63GB; all actual boot disks remain.
 Original installed iOS reaches reviewed Hello setup UI; the owned application
 registers successfully with a valid LaunchServices proxy. Original empty-secret
 unlock returns0 and first-unlock changes0->1. Raw lock-state0 remains
