@@ -2,6 +2,35 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 15:23 continuation: extended53 and an actual refresh-cadence finding
+
+53 completed strict0→1, three Home/reopen cycles retaining1, original Clock
+stopwatch exercise, and a final Home/reopen back to owned counter1. Root reviewed
+actual VNC and QMP images; selected images and input records are retained in
+`owned-extended-53-visual`. Normal finish was requested; postflight is running.
+No SAMPLE was issued and no persistent display freeze occurred.
+
+Three actual60s whole-QEMU resource intervals measured active/noVNC101.2163%,
+stopped/noVNC29.9166%, and active/continuousVNC81.9497% of one host CPU core.
+Peak sampled procstat RSS was approximately5.474GiB. The first interval retained
+MT tracing while the others did not; the continuous observer's CPU is excluded.
+These are measured conditions, not an isolated stopwatch/VNC cost comparison.
+Exact identities, raw samples and bounds are in `stopwatch-resources-53-actual`.
+
+Periodic QMP stopwatch images lagged during no-VNC observation; reconnecting VNC
+caught up. Source and actual bounded traces explain a refresh dependence:
+no-client VNC skips graphic_hw_update; ADP's synchronous update raises the ready
+interrupt but QMP can return before later guest submit and draw completion.
+A53.874s no-VNC slice had2 draws; a roughly6.089s connected trace overlap had27.
+Buffered trace records do not provide exact per-event timestamps or a frame-rate
+benchmark. This is distinct from44/47, which stopped submitting even with VNC.
+See `stopwatch-display-refresh-53-analysis` and `stopwatch-refresh-trace-53-actual`.
+
+The HID54→55 pre-SAMPLE audit found the same HID backend and entitlements, but
+additional startup calls/logging, inactive polling and changed code layout.
+Separate staging runs also prevent treating the guest disks as bitwise equal.
+Five healthy55 runs do not prove a fix (`hid55-presample-diff`). Continuing54.
+
 ### 14:50 continuation: healthy52 preserved; original serial warnings compared
 
 52 completed reviewed strict counter0→1 with the same frozen55 guest and670

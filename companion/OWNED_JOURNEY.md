@@ -263,3 +263,16 @@ instrumented foreground idle. The raw sample and independent recomputation are
 in `evidence/density-39-40-actual`; reviewed surrounding images are in
 `evidence/density-39-40-visual`. Neither these samples nor the successful fixture
 establish maximum density, cost, native-device speed or general app compatibility.
+
+## Display observation cadence found in run53
+
+A QMP screendump completion does not establish completion of the guest's next
+render submission. With no VNC client, the VNC timer skips display refresh;
+periodic QMP requests can leave animation frames visibly behind wall time.
+Run53 confirmed this with the original Clock stopwatch, then advancing frames
+under a continuous headless VNC observer. Record observer connection intervals
+alongside measurements. The observer changes the display workload and its host
+CPU is outside whole-QEMU resource samples. Do not infer an active visual frame
+rate from sparse QMP captures. This does not explain away persistent44/47, where
+submissions stopped despite a continuous VNC client. See the actual53 trace,
+source-analysis and resource evidence directories.

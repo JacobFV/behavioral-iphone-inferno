@@ -43,7 +43,13 @@ bounded display traces: interrupts were acknowledged but drawing submissions
 stopped. Healthy45/46 provide comparison traces. Run49 completed another strict
 journey and captured twenty original-tool stackshots each of SpringBoard and
 backboardd, establishing a healthy user-stack reference. The intermittent
-freeze remains under investigation.
+freeze remains under investigation. Run53 extended the journey through original Clock
+stopwatch measurements and back to the owned app. It also showed that periodic
+QMP captures can lag guest animation when no VNC observer drives regular display
+refresh. Headless VNC observation restored advancing stopwatch frames; this is
+separate from the persistent no-submit failures44/47. Actual resource conditions
+and their tracing/observer limits are retained in
+`evidence/stopwatch-resources-53-actual/`.
 Broader reliability and active-workload measurements remain ongoing. See [BOOT.md](BOOT.md) for the image profile and headless runner,
 [USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.
 

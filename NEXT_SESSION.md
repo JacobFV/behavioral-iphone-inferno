@@ -7,7 +7,7 @@ The user explicitly wants continuous work across status questions and intermedia
 milestones. No pause or handoff requested. Parallel workers are authorized for
 independent work in isolated worktrees; commit progressively.
 
-## Current execution, 2026-10-06 14:37 local
+## Current execution, 2026-10-06 15:23 local
 
 All guests through50 STOPPED.50 completed strict counter0→1, normal QMP quit,
 emulator0/errornull, tracked journey verified and default all7/ancestor retention.
@@ -28,14 +28,28 @@ counter58985af15a484360a9c1442be4386a66. QMPbefore
  a6d6e3770ab9468bc05f7d08a66edc241db8b62804356c3e3f2a5a1a9640aead,
 afterd7dbd86ff62a04a18448e026d30f37fea81de150740a3c005f07f93231ece4c9.
 No SAMPLE/Home/OPEN52. Root52SHAbc57c2296671a99304913ad9b34ddac76402cbe6203a58e4e5909a61bb4ef0f7.
-ONE53 LIVE runner2930546/QEMU2931057, VNC /tmp/inferno-boot-z8xj9z87/vnc.sock,
-serial connected1791323387.5888894, host5355e76644, same55/670.
-53 completed strict0→1 plus THREE ordinary Home/reopen cycles retaining1;
-boot1C81A853-1B79-4FBC-8EBD-E365B46D4827/PID252/main2739827127.
-Original Clock then opened normally, stopwatchstarted18146d88fb6d4185b9d4e31b56cf1431,
-reviewed00:02.16→00:19.64. LIVE60s host resources at stopwatch-resources,
-no VNC/input during interval, periodicQMP30s stays enabled. Both SAMPLEslots unused.
-Keep investigatingfreeze; no fixclaim. Root owns actions and will reviewaftermeasure.
+53 finish-run accepted after strict0→1, three Home/reopen cycles, original Clock
+stopwatch, three actual60s resource intervals, and fourth Home/reopen retaining1.
+Normal postflight is assigned to boot_runner; review verified retention before54.
+Boot1C81A853-1B79-4FBC-8EBD-E365B46D4827/PID252/main2739827127.
+No SAMPLE53; both slots unused. Selected actual reviewed pixels/action records
+are in owned-extended-53-visual. Same frozen55/670, no rendering fix.
+Clock resource A active/noVNC:101.2163% one host core; B stopped/noVNC:29.9166%;
+C active/continuousheadlessVNC:81.9497%. Each60s, whole QEMU/procstat peakRSS
+about5.474GiB. A had MT tracing, B/C did not; C observer CPU excluded.
+No causal cost comparison/native parity/capacity claim. See
+stopwatch-resources-53-actual for exact samples/identities/time bounds.
+New concrete refresh finding: no-VNC53.874s trace has2 draw cycles corresponding
+to periodic QMP; connected ~6.089s trace overlap has27draws/29OUTPUT_READY.
+QMP screendump invokes synchronous ADP gfx_update but does not wait for later
+ guest submit/BH/frame completion. No-client VNC timer skips gfx_update.
+Actual QMP stopwatch pixels lagged, reconnecting VNC caught up. This differs
+from44/47 persistent zero submissions despite continuous VNC. Evidence:
+stopwatch-display-refresh-53-analysis and stopwatch-refresh-trace-53-actual.
+HID55 presample audit85387bb352: identical HID backend/entitlements, but extra
+startup UUID/timebase/logging and inactive polling/demux/layout changes are real;
+stages50/55 are separate recovery outcomes. Five healthy55 runs prove no fix.
+Next: preserve53 then ONE54 identical configuration; root owns all inputs.
 Six-run serial audit428a2c9f2f found startup IOMFB warnings shared by failed44/47
 and healthy45/46/49/50; no failure-specific warning near/after counter marker.
 Root owns all input; on stall collect both original samples BEFORE Home.
