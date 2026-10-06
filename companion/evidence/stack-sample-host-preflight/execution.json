@@ -1,0 +1,54 @@
+{
+  "scope": "Host-only parsing/preflight. No socket connection, guest request, VM launch or sample performed. Synthetic capability explicitly labeled; actual46 old helper rejects missing capability.",
+  "checks": [
+    {
+      "name": "extra-pid",
+      "rejected": "SAMPLE requires exact request_id, boot_uuid and target fields"
+    },
+    {
+      "name": "arbitrary-target",
+      "rejected": "SAMPLE target must be SPRINGBOARD or BACKBOARDD"
+    },
+    {
+      "name": "bad-id",
+      "rejected": "OPEN request_id must be 32 lowercase hexadecimal characters"
+    },
+    {
+      "name": "synthetic-legacy-preflight",
+      "exit_code": 2,
+      "stderr": "usage: owned-control.py [-h] --report REPORT --output OUTPUT\n                        [--trace-checkpoints]\n                        {tap,swipe,open,sample} ...\nowned-control.py: error: Exactly one matching enabled SAMPLE_READY capability is required; legacy guests cannot sample\n",
+      "mailbox_empty": true
+    },
+    {
+      "name": "synthetic-capability-parse-only",
+      "capability": {
+        "path": "/tmp/inferno-sample-preflight-2lx_eou5/serial.log",
+        "byte_start": 0,
+        "byte_end": 138,
+        "sha256": "d57c0fea90cf1135682f981ea4b8ecd7ef2a459cfe08cb2e7a9d9e17a10b66d4",
+        "text": "INFERNO_SAMPLE_READY enabled=1 boot=024BD83E-EB10-4666-9C04-687E7C21E9DC max_requests=2 targets=SPRINGBOARD,BACKBOARDD automatic_sample=0"
+      }
+    },
+    {
+      "name": "foreign-boot",
+      "rejected": "Exactly one matching enabled SAMPLE_READY capability is required; legacy guests cannot sample"
+    },
+    {
+      "name": "shared-replay-preflight",
+      "rejected": "Duplicate serial request ID; never replay a possibly transmitted request"
+    },
+    {
+      "name": "actual46-legacy-capability",
+      "rejected": "Exactly one matching enabled SAMPLE_READY capability is required; legacy guests cannot sample",
+      "serial_sha256": "3c7ff1a17583762ba79937a8dd18b3a5b0deff24e2d83b7342f3c3b95ab6a883"
+    },
+    {
+      "name": "sample-two-attempt-guard-no-socket",
+      "rejected": "At most two explicit SAMPLE attempts are allowed per run"
+    }
+  ],
+  "sources": {
+    "companion/qmp_control.py": "6f7d89ac74749e98516535fdb25993c8699aea993a591f87c02d884932d02673",
+    "companion/owned-control.py": "e129f01c38f6a492834c905dcd57c1092c1cae6cd75be54bf302769113d9d2ae"
+  }
+}
