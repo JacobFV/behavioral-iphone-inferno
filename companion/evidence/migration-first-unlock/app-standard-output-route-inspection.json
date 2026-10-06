@@ -24,8 +24,16 @@
     "setStandardErrorURL:": "0x18de3aecc"
   },
   "limits": [
-    "This is a normal debugger-options API surface, not proof that current launcher credentials can request it. Exact debug authorization and launch-service path opening permissions remain unverified.",
+    "Exact original debug authorization now established above; path opening permissions remain untested.",
     "Do not add broad debug entitlements or assume /dev/console is writable by a mobile app.",
     "No arbitrary event/log capture is needed: a bounded owned application event file with existing observer relay is an alternative under separate implementation authorization."
-  ]
+  ],
+  "authorization": {
+    "framework": "Original FrontBoard.framework/FrontBoard, extracted read-only /tmp/inferno-FrontBoard-complete",
+    "debug_options": "0x18de48c80-48ca0 reads key via GOT0x1d0e16d18, resolved CFString __DebugOptions",
+    "checks": "When options present,0x18de48cb0-48d04 calls hasEntitlement: for com.apple.frontboard.debugapplications, com.apple.backboardd.debugapplications or com.apple.springboard.debugapplications",
+    "constants": "0x1d0e171c0/1c8/1d0 respectively",
+    "denial": "Absent all3:0x18de48d08-48d20 builds error with original CFString0x1daa35280: Missing entitlement required to launch applications for debugging.",
+    "conclusion": "The existing unentitled launcher cannot assume access to this debugging-output route. No debug entitlement is added or recommended for marker collection."
+  }
 }
