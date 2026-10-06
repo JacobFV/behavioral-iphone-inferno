@@ -11,9 +11,11 @@ independent work in isolated worktrees; commit progressively.
 
 All guests through49 STOPPED.49 completed strict0→1, actual BACKBOARDD and
 SPRINGBOARD samples, and Home/reopen retaining1; normalfinish/emulator0/noerror.
-TrackedjourneyverifierPASS. Bootworker rerunningdefaultdiskpreservation with
-bcb494c27a (compareonlyjournalverified_timeindependently; identitiesexact).
-Next: ONE50samefrozen55/emulator670 after49retentionreview. Rootallinput.
+TrackedjourneyverifierPASS/defaultpreservationPASS1da67b8b30. Root49SHA
+4369bf694076b083091a5902cb3bb3c2091e4a8d325b77e687a39fe8c44ad199.
+ONE50LIVErunner2875906/QEMU2876439,VNC/tmp/inferno-boot-ym5duaox/vnc.sock,
+serialconnected1791321995.9060767, samefrozen55/emulator670/host1da67b8b30.
+Rootallinput; onstalltakebothsamplesBEFOREHome;healthy50needsnosamples.
 Goal: reproduce real displayfreeze and collect original compositor stacks while
 stalled, comparing49healthybaseline. No renderingbehaviorfixyet.
 
