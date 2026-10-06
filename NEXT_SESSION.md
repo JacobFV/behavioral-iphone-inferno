@@ -56,11 +56,15 @@ Actual normal setup now passed ScreenTimeLater (6f122251c4) into Analytics,
 Appearance, DisplayZoom, Welcome. Home remained unproven after two distinct
 final swipes; owned UIKit markers remain zero. Preserve these distinctions.
 
-**Stage40 is running**, bootworker session6503, from paired stopped22, using
+**Boot23 is live**, session69573, privateVNC `/tmp/inferno-boot-1oak9a0c/vnc.sock`,
+report app-boot-23; root utility `/tmp/inferno-explicit-gesture-23.py`.
+Stage40 completed actualreadbacks69664/69207/68576 all mismatches0, normalunmount,
+QMPquit6/emulator0,all7hashes. Source40 root
+`fe7d3472a62aa8d5399bec3405e3c37c8177d91d90db472eed57b69edb7fe9da`.
+Stage40 came from paired stopped22, using
 original stable recovery binary with explicit archived manifest, profile helper-
 attempt41. Only targets: HID45 observer and launcher12 detailed-error output.
-Exact build42 readiness/probe/preparer and535byte job unchanged. Require actual
-readback/unmount/normalexit/all7hashes, then boot23 is already authorized with
+Exact build42 readiness/probe/preparer and535byte job unchanged. Boot23 uses
 same e3da emulator, observation-default --probe-journey, noUSB/privateVNC/serial.
 Root exclusively owns input. Do not use --probe-hardware-tap.
 HID45 SHA0c0a5d9990cb5b0101f6491b7d2df0d6959cb0db5bde1cdfa9f40e6eabe69932,
