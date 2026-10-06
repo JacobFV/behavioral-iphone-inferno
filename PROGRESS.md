@@ -2,6 +2,18 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 07:45 continuation: Screen Time fixed; final Home gesture under investigation
+
+Live22 ordinary setup passed Screen Time SetUpLater and displayed iPhone
+Analytics, then App Analytics, Appearance, Display Zoom and Welcome to iPhone.
+This establishes actual recovery of the formerly pending Screen Time completion
+(6f122251c4). Same e3da emulator/helper44, observation-only runner, no auto input.
+The final Welcome screen remains after two distinct acknowledged swipes: slow
+1500ms and near-bottom250ms; 27 total requests/ACK0, five helper slots remain.
+Home and owned UIKit execution are still unproven. Original-code tracing now
+investigates Setup readiness versus the system Home gesture route. No fabricated
+notification, guard suppression or input replay. Continue active work.
+
 ### 07:21 continuation: kernel receipt and observation-only app runner
 
 Boot21 emitted exactly one first-unlock event; the original kernel logged

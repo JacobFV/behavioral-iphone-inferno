@@ -54,10 +54,12 @@ report `.local-build/reports/app-boot-22`, private VNC
 `7df2996c9d33233e92556a5a9d13882f50beac47e9b2edd43b2072ac7114b402`.
 Same e3da emulator/helper44. Runner4d3230563e observes app appearance/tap markers
 without automatic input. Do not pass --probe-hardware-tap. Root owns all gestures;
-`/tmp/inferno-explicit-gesture-22.py` targets22. Current normal UI at country
-selection after English; four requests sent (swipe, English, two country scrolls).
-Original kernel received first-unlock, API state3/first0->1. Screen Time completion
-and owned app execution remain unproven. Exact raw journals in22 report.
+`/tmp/inferno-explicit-gesture-22.py` targets22. Current UI Welcome to iPhone after normal setup. ScreenTimeLater now advanced
+to Analytics (6f122251c4), then appearance/display choices. Request26 slow swipe
+and27 fast swipe each ACK0 but Welcome remains. Five helper slots remain; root
+holds further gestures while native_probe traces original finish readiness and
+disk_path traces original systemgesture routing.
+Original kernel received first-unlock, API state3/first0->1. Screen Time completion is proven; Home and owned app execution remain unproven. Exact raw journals in22 report.
 Source-only launcher diagnostic e7eee456ad is committed but NOT built/staged;
 original RequestDenied generic1 hides failureReason/underlying error. Consider
 staging only if denial persists after Setup. Old21 is stopped, all7 hashes/raw
