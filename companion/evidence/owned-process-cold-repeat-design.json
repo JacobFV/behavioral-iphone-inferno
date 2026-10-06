@@ -1,0 +1,39 @@
+{
+  "status": "read-only design; no implementation, build, staging, guest input or stop",
+  "context": "Three actual warm cycles retained owned PID/main/uniqueid and counter1; unchanged repeat38 is independent. Do not change warm classification or overwrite its raw proof.",
+  "preferred_termination": {
+    "route": "Ordinary App Switcher UI dismissal of only the visually identified owned Inferno card. Existing emulator F6\u2192SMCMenu/Home was executed successfully; AppSwitcher doublepress and card dismissal remain untested.",
+    "original_evidence": "Original SpringBoard methods _doubleHomeButtonPressEventStream0x1c5888470, SBUIController handleHomeButtonDoublePressDown0x1c57fee20 and SBFluidSwitcherViewController handleHomeButtonDoublePress0x1c5905b14 exist; method presence is not proof this current device/session will present the switcher.",
+    "operator": "Root alone sends ordinary bounded physical Home/button/touch input, reviews switcher and owned card before dismissal. Never dismiss unrelated cards. No SpringBoard private method invocation or policy change.",
+    "proof": "Card disappearance is not process termination evidence. Require original metadata showing prior verified live incarnation no longer present before next explicit OPEN."
+  },
+  "fallback_self_exit": {
+    "route": "If ordinary UI cannot dismiss, a separately reviewed owned-fixture self-exit action is safer than introducing an arbitrary/external PID kill command. For example an explicitly labeled owned diagnostic UI action queues a bounded exit-request marker then invokes original _exit(0) on its own process.",
+    "scope": "Would require a new app candidate and visible operator action; no implementation authorized here. No UIApplication termination callback/notification fabricated; marker means request only, not successful exit.",
+    "identity_safety": "Self-exit has no PID-target/reuse race and cannot terminate another app. It changes testfixture behavior, so report as controlled self-exit process-cold rather than ordinary user force-quit.",
+    "not_selected": "Identity-checked external SIGTERM remains a standard API candidate but non-atomic PID revalidation and MAC permission uncertainty make it unnecessary if UI/self-exit suffices. Never arbitrary PID or escalation."
+  },
+  "bounded_liveness_observer": {
+    "target_source": "Only process incarnations already accepted from exact owned executable/uid501 timing records; no arbitrary PID request or broad process scan.",
+    "query": "Original proc_pidinfo flavor17 arg0, known56byte ABI plus exact proc_pidpath/UID as current working reader; keep actual return/errno/tick.",
+    "state": "Retain running/absent/unknown distinction. ESRCH/no-live-process across bounded repeated checks can support absent; EPERM or short/failed query is unknown, not death. PID now associated with another uniqueid/path means old incarnation retired, never signals it. Zombie/exit reason not inferred.",
+    "bounds": "Suggested at most4 cold trials and existing finite watched-slot cap, metadata atmost1Hz with change-only logging; reject if observer cannot establish prior absence. No framework property mutation."
+  },
+  "receiver_implications": {
+    "current": "seen[32] keyed byPID. Fresh differentPID gets new timing/event/lifecycle state; recycledPID fails old uniqueid/sequence checks. This is safe rejection but not full multi-incarnation support.",
+    "new_key": "CurrentbootUUID + kerneluniqueid/idversion when available + PID + originalmain tick. Preserve immutable retired history; never reset old histories merely on a newseq1.",
+    "bootstrap": "New main timingseq1 must belong to currently verified owned executable/uid and fresh incarnation, after observed prior absence. Sameidentity re-sent seq1 remains duplicate. If uniquequery unavailable, explicitly weaker PID+main proof or fail the stronger process-cold classification; no newgrants.",
+    "legacy_markers": "EVENT_V1 lacks main tick, so cannot safely distinguish delayed records afterPID reuse. Prefer EVENT_V2 adding main_tick while preserving existing derived strictUIKIT markers; until then reject reusedPID V1 instead of silently attaching old records to newprocess.",
+    "lifecycle": "Existing lifecycle records already include main_tick, independent generation/sequence. Start generation0 for newprocess; never interpret that as next warm generation of oldprocess.",
+    "clock": "Keep original rawticks and nonzero stabletimebase with sameboot; no host/guest clock mixing. One outstanding OPEN, no queued/replayedlaunch."
+  },
+  "cold_trial_acceptance": [
+    "Record prior known incarnation and actual liveness-absence evidence after explicitly chosen UI/self-exit action.",
+    "Only then root sends unique named existing OPEN. Retain launcher request/callback ticks and originalaccepted result.",
+    "Require fresh process incarnation, newmain tick after OPENrequest, allfive firstlaunch hooks, currentboot/timebase and actual visible owned app with counter0.",
+    "If originalOS restartedapp before explicitOPEN, newmain predatesrequest: reject controlled process-cold attribution, retain as separate automaticrestart observation.",
+    "Warm comparison requires sameincarnation/main and laterforegroundgeneration; do not merge coldrecords into previouswarmtrial."
+  ],
+  "limits": "Call this same-boot fresh-process launch with filesystem/dyld caches uncontrolled (usually warm), not cache-cold or reboot-cold. Each process has cold private heap/runtime state, but host page cache and guest shared caches remain. Appcounter resets because owned processglobal/object state is new, not proof cachedfiles cleared.",
+  "budget": "Current listener128 connections and8 OPEN total include warm pluscold requests. Account five timing+roughlyfiveinitial event+initiallifecycle pernewprocess and priorwarm traffic; bound planned trials or reject exhaustion, never silently enlarge unbounded transport."
+}
