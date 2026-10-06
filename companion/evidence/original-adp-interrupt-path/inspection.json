@@ -1,0 +1,80 @@
+{
+  "scope": "Static inspection of existing unencrypted original kernel; no guest execution proof or Apple implementation bytes retained",
+  "provenance": [
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/kernel-original-decoded",
+      "bytes": 54613232,
+      "sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/llvm-objdump-18",
+      "bytes": 923960,
+      "sha256": "32b78ffb3f9f14a19716cb7d3d6a5baa59ea98bc502fb183d3ff429df0f20a21"
+    },
+    {
+      "path": "/tmp/inferno-adp-int-disasm.txt",
+      "bytes": 57480,
+      "sha256": "0bb4db7edaa1e56ea399822fb759d84c40cdc5339aa6c97d5a75510f8e775667"
+    },
+    {
+      "path": "/tmp/inferno-adp-swap-complete-disasm.txt",
+      "bytes": 16382,
+      "sha256": "9ee00cc46a6da264a457fa485e16a5b8dbcf9c7dcd056372d9e82511d011b0df"
+    }
+  ],
+  "functions": {
+    "filter": "0xfffffff0097449d4 IOMFB::UPPipe_H11P::int_filter()",
+    "deferred_handler": "0xfffffff009744ce8 IOMFB::UPPipe_H11P::int_handler()",
+    "register_read": "0xfffffff00977b650 IOMFB::AppleRegisterStream::read(unsigned int)",
+    "register_write_direct": "0xfffffff00977b990 IOMFB::AppleRegisterStream::writeDirect(unsigned int,unsigned int)",
+    "frame_done": "0xfffffff0097954a0 IOMFB::UPPipe::frame_done(unsigned long long)",
+    "swap_complete": "0xfffffff0097b8b84 UnifiedPipeline::swap_request_complete(unsigned int,unsigned long long)",
+    "notify_dispatch": "0xfffffff0096fc934 IOMobileFramebufferLegacy::swap_info_notify_dispatch(IOMobileFramebufferLegacy::SwapInfoBlob*)"
+  },
+  "static_steps": [
+    {
+      "address": "0xfffffff009744a38..0xfffffff009744a48",
+      "finding": "Filter reads register0x45818 through AppleRegisterStream and preserves result in x21."
+    },
+    {
+      "address": "0xfffffff009744a80..0xfffffff009744a98",
+      "finding": "Mask status with0xfffffffe, and if nonzero write that mask directly to0x45818."
+    },
+    {
+      "address": "0xfffffff009744a9c..0xfffffff009744aa8",
+      "finding": "OR masked status into self+0x1b88 using OSBitOrAtomic."
+    },
+    {
+      "address": "0xfffffff009744b34..0xfffffff009744b3c",
+      "finding": "Return whether accumulated pending word self+0x1b88 is nonzero."
+    },
+    {
+      "address": "0xfffffff009744d54..0xfffffff009744d60",
+      "finding": "Separate handler clears pending word with OSBitAndAtomic(0), retaining returned prior bits in x21."
+    },
+    {
+      "address": "0xfffffff0097453b8..0xfffffff0097453e8",
+      "finding": "Following a virtual eligibility check, bit20 gates direct frame_done(timestamp) call."
+    },
+    {
+      "address": "0xfffffff0097453ec..0xfffffff009745404",
+      "finding": "Read0x45004; bit10 must be set in accumulated status and returned0x70 mask zero to continue ready path."
+    },
+    {
+      "address": "0xfffffff009745408..0xfffffff0097454a4",
+      "finding": "Internal pointer/state and virtual calls intervene before swap_request_complete call. Register read/W1C does not prove this call was reached."
+    },
+    {
+      "address": "0xfffffff0097b8c20..0xfffffff0097b8cdc",
+      "finding": "swap_request_complete has further state branching before direct swap_info_notify_dispatch call."
+    }
+  ],
+  "interpretation": [
+    "W1C belongs to interrupt filter before deferred handler completion.",
+    "Existing failed47 main+0x45004 reads are consistent with reaching handler beyond early acknowledgement, but trace has no PC/caller and alternate callers were not exhaustively excluded.",
+    "A status read followed by equivalent W1C supports expected filter behavior, not successful pipeline notification or compositor consumption.",
+    "Virtual methods and internal state gates are not assigned unproven meanings.",
+    "No evidence supports bypassing guards or fabricating completion."
+  ],
+  "next_evidence": "Correlate bounded new status-read values with following W1C and45004 reads, avoiding HMP attribution confusion; if stalled while these remain normal, obtain original backboardd/SpringBoard stack samples during stall for comparison with healthy49. No new instrumentation beyond approved status read is proposed."
+}
