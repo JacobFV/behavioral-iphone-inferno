@@ -325,3 +325,11 @@ stopped virtual disk set is retained; a following direct boot must use its root
 and `--auxiliary-state` together. Run20 failed earlier because recovery contains
 IOKit only at its versioned path; no driver-format call executed in that run.
 This successful API initialization is not yet evidence of system or app boot.
+
+Direct-root-6 reused prepared21 root (SHA256
+`d7fe3aa95b96795c8a14bbdd8e124621aab5706a21c0e0d52d4d72dcbe52d9f1`)
+and its six auxiliary namespaces through `--auxiliary-state`. Original keybag
+initialization now passed during boot, and launchd logged `Early boot complete.
+Continuing system boot.` The system enabled backlight and started additional
+daemons. AppleCredentialManager also logged a timed-out SEP
+operation; UI and owned-app execution still require separate evidence.
