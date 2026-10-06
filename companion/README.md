@@ -27,9 +27,15 @@ normal restart; correcting our NSObject header fixed the actual startup crash.
 Boots33 and34 completed the strict owned-app journey from the same frozen state:
 actual lifecycle and tap records, reviewed counter0→1, both QMP captures and
 normal emulator exit0. Boots35/36 also recorded original guest monotonic launch
-clocks. Live37 completed three Home/reopen cycles with the same corroborated app
-process and retained counter1. Whole-emulator resource samples are recorded;
-broader reliability, fresh-process launch and density measurements remain active work. See [BOOT.md](BOOT.md) for the image profile and headless runner,
+clocks. Boots37/38 each completed three Home/reopen cycles with the same original
+process identity and retained counter1. Boot38 additionally launched a genuinely
+new owned process after normal app-switcher dismissal and observed absence of the
+old process. Boots39/40 completed the strict journey concurrently, then a shared
+60-second resource observation and normal shutdown. Their combined average CPU
+was64.57% of one host core; peak sampled PSS sum was10.76GiB. This is a measured
+pair with an idle foreground fixture, not a maximum-capacity result. See
+[OWNED_JOURNEY.md](OWNED_JOURNEY.md) for the repeatable operator workflow.
+Broader reliability and active-workload measurements remain ongoing. See [BOOT.md](BOOT.md) for the image profile and headless runner,
 [USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.
 
 ## Initial milestones

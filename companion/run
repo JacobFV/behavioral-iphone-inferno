@@ -9,14 +9,27 @@ case "$command" in
     check) exec python3 "$root/companion/smoke.py" --binary "$root/.local-build/build/qemu-system-aarch64" "$@" ;;
     prepare) exec python3 "$root/companion/prepare-profile.py" "$@" ;;
     boot) exec python3 "$root/companion/boot.py" "$@" ;;
+    control) exec python3 "$root/companion/qmp_control.py" "$@" ;;
+    owned-control) exec python3 "$root/companion/owned-control.py" "$@" ;;
+    observe) exec python3 "$root/companion/vnc-control.py" "$@" ;;
+    launch-timing|warm-timing|process-launch-timing)
+        exec python3 "$root/companion/$command.py" "$@" ;;
+    resources) exec python3 "$root/companion/measure-process.py" "$@" ;;
+    density) exec python3 "$root/companion/measure-density.py" "$@" ;;
     build) exec "$root/companion/build-linux.sh" --build-root "$root/.local-build" --jobs 8 "$@" ;;
     version) exec "$root/.local-build/build/qemu-system-aarch64" --version "$@" ;;
     help|-h|--help)
-        printf '%s\n' 'Usage: companion/run {status|check|prepare|boot|build|version}' \
+        printf '%s\n' 'Usage: companion/run COMMAND [arguments]; COMMAND --help for options' \
           '  status   inspect the durable build and saved execution evidence' \
           '  check    run a fresh headless, firmware-free QMP check' \
           '  prepare  prepare a pinned recovery input profile outside Git' \
-          '  boot     bounded headless recovery attempt; requires --profile PATH' \
+          '  boot     bounded headless recovery or installed-iOS attempt' \
+          '  control  explicit action/status through the runner mailbox' \
+          '  owned-control  record one explicit owned HID gesture or app OPEN' \
+          '  observe  headless private VNC captures or explicit Home button' \
+          '  launch-timing|warm-timing|process-launch-timing  derive guest clocks' \
+          '  resources  measure one live emulator process' \
+          '  density  measure exactly two live sibling emulator processes' \
           '  build    rebuild the current committed fork; optional --jobs 1..8' \
           '  version  print the actual executable version' ;;
     *) printf 'Unknown command: %s\n' "$command" >&2; exit 2 ;;

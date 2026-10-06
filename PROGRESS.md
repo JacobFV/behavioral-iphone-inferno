@@ -2,6 +2,33 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 12:24 continuation: fresh process and two concurrent strict journeys
+
+38 completed the fresh-process experiment: normal AppSwitcher dismissal of the
+owned app, original ps1200 absence captured before OPEN, then new PID492 and
+original kernel unique492/idversion1414 instead of old PID266/unique266. Five
+fresh hooks and reviewed counter0 agree. Request→active884.627917ms is a guest
+lifecycle interval with uncontrolled caches. Normal emulator exit0 and retained
+seven-disk tuple follow. Raw/visual evidence: `process-launch-38-actual` and
+`process-launch-38-visual`; stopped evidence `owned-strict-warm-and-fresh-process-38*`.
+
+39 and40 ran together using the same frozen50 tuple and identical loaded source
+hashes. Each completed reviewed counter0→1, genuine input records, and both QMP
+captures. Both still showed counter1 after a common60-second resource window.
+Normal QMP cleanup exited0 for both; seven disks each and four shared unchanged
+ancestors were retained. Raw evidence: `owned-two-guest-strict-39-40*`.
+
+The independent raw-proc audit agrees with61CPU rounds and13smaps rounds:
+38.74CPU-seconds across60.000070138s (64.566591% of one host logical core),
+peak sampled RSSsum11,580,973,056bytes and PSSsum11,558,389,760bytes.
+Both emulator processes reported zero Swap/SwapPss throughout those samples.
+No VNC clients or input were present; periodic30-second QMP captures and startup
+900-second MT tracing remained enabled. This establishes an instrumented idle
+pair, not maximum density, active-workload throughput or cheap-runner economics.
+Raw measurements/audit: `density-39-40-actual`; root-reviewed frames/input evidence:
+`density-39-40-visual`. Continued work is replacing temporary operator scripts
+with tracked commands and validating that integrated workflow.
+
 ### 11:57 continuation: unchanged38 strict and three warm resumes
 
 38 repeats frozen50/app22/launcher22/reader54/HID54. Reviewed0→1 and bothQMP

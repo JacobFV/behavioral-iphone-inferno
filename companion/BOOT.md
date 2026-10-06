@@ -126,7 +126,8 @@ waits for an operator-produced `tap count=1` marker, and captures
 required step is absent within the duration. Raw QMP events, image hashes and
 marker observations are saved in the normal report. Review both actual images
 before accepting a visible counter change; command success alone is insufficient.
-This optional flow is implemented but has not yet executed against the UIKit app.
+This flow completed against the owned UIKit app in boots33–40, with retained raw
+events, reviewed images and normal shutdown.
 The legacy automatic QMP press/release additionally requires the explicit
 `--probe-hardware-tap` flag, which is incompatible with `--guest-hid-serial`.
 Use observation mode for the current operator-controlled virtual HID route.
@@ -149,8 +150,9 @@ the socket from the attempt's recorded `-vnc unix:...` argument. The narrow
 [RFB3.8 client](https://www.rfc-editor.org/rfc/rfc6143.html) uses Pillow and supports
 `--tap X Y` or `--swipe X0 Y0 X1 Y1` after reviewing the current screenshot. It
 records before/after PNGs, hashes and exact pointer packets. It accepts only an
-existing Unix socket. Capture was actually verified against app-boot-3; pointer
-input remains unverified until a visible guest response is observed. QEMU VNC
+existing Unix socket. Capture and the fixed F6 Home button have actual execution evidence. Current
+strict touch journeys use the separate owned virtual-HID serial route; do not
+substitute VNC pointer delivery for that verified route. QEMU VNC
 reported832x1792 while QMP reports828x1792; retain that surface-width distinction.
 
 Observation-only now retains `before.png`, waits `--settle-seconds` on the same
