@@ -1,0 +1,23 @@
+{
+  "kind": "read_only_original_hid_event_dispatch_authorization",
+  "source_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+  "image": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+  "analysis_text_segment_sha256": "11523e53b7b91042d5634d2d4d3c8b8557b21838cfb7cf12f29bd2f92319c426",
+  "analysis_text_bytes": 696320,
+  "analysis_method": "All original mapped segments extracted outside Git; __TEXT file-offset fields relocated for static inspection only. Native original recovery IOKit corroborates named internal functions. No framework or guard changed.",
+  "system_addresses": {
+    "default_client": "IOHIDEventSystemClientCreate0x181305dcc sets client type3 and tailcalls CreateWithType.",
+    "entitlement_source": "Connection creation copies audit-token entitlements, reads literal com.apple.private.hid.client.event-dispatch at0x181333488, compares xpc Boolean true at0x181333498 and sets bit3 at0x181333494-4c0. Internal-build alternate is a separate branch, not required when ordinary entitlement true.",
+    "server_gate": "__io_hideventsystem_dispatch_event0x1813380bc gets connection type; nonzero type must have bit3 at0x181338134. Type0 admin is separately entitlement-gated during creation; default3 avoids admin privileges.",
+    "event_route": "After gate, server reconstructs IOHIDEvent from serialized CFData at0x181338154, logs event then invokes __IOHIDEventSystemDispatchEvent0x181338174. That forwards to session dispatch0x181302da8-dac; __IOHIDSessionDispatchEvent0x1813187f0 enqueues original event and signals session queue. No emulated MT/SPI packet required by this route.",
+    "return_limit": "Denied dispatch logs missing entitlement but rejoins return0 at0x181338190. Return0 therefore cannot prove event accepted, routed to display, or UI acted."
+  },
+  "required_owned_entitlement": {
+    "com.apple.private.hid.client.event-dispatch": true
+  },
+  "limits": [
+    "This proves one original server authorization gate, not complete display routing. Digitizer event fields, display integration and context requirements need original caller/consumer evidence.",
+    "No synthetic unlock notification, no event-filter/admin entitlement, no guard bypass, and no claim that MT-SPI milestone is solved.",
+    "Only ordinary UI input through original APIs is contemplated; actual receiver/UI evidence remains required."
+  ]
+}
