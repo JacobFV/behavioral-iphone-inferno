@@ -224,3 +224,13 @@ exit64, and have a60-second child bound. The latter case requires an owned exact
 copy at `/usr/bin/inferno-launcher`. Each child logs executable/read access and an
 actual read of up to16KiB before exec (the Mach-O header region). This separates credentials and volume effects
 without making registration calls as root. This matrix is prepared, not yet run.
+
+
+`app-exec-matrix-1` executed all three cases. Data/root and Data/mobile both
+returned X_OK=-1/EPERM and execve=-1/EPERM, while R_OK, open and16384-byte read
+succeeded. The identical System launcher under mobile passed access/read,
+printed actual usage through stderr and NSLog and exited64 as expected. No child
+timed out. The run was deliberately ended after those results with runner SIGTERM,
+QMP quit acknowledged and emulator0; this is not a360-second observation. The
+independent long migration run remained active. Evidence establishes a working
+System/mobile launcher location, not app registration or Data app execution.
