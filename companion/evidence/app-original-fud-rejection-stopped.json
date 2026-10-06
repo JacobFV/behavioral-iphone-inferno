@@ -1,0 +1,169 @@
+{
+  "kind": "stopped_original_firmware_validation_rejection",
+  "source_report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-16",
+  "binary_sha256": "fda9447b41d7bd170a0abf6b56f4b0db822ff9ca84add3e648299d2aa7f59505",
+  "binary_source": "9f92661b1b3154fb19de51ef9c9a1a6ed6e97d4f",
+  "input_root": {
+    "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-36/disks/root.raw",
+    "sha256": "6a7dba55d2e16890eec2a76d980a10016cdde0ad2265387048cd76ee699db1ac",
+    "bytes": 34359738368,
+    "copied_before_use": true
+  },
+  "elapsed_seconds": 1498.615898,
+  "emulator_exit": 0,
+  "quit_response": {
+    "return": {},
+    "id": 67
+  },
+  "stop_reason": "Authorized private-copy staging of owned HID harness and readiness observer only; retain rejected firmware artifact and hardware initialization state.",
+  "observations": [
+    "Original FUD discovered the newly deployed file but Img4DecodeCopyManifestDigest failed end-of-sequence; callback error34/kFWValidationFailed0xe0000001",
+    "Unsigned container was not accepted as valid firmware; no signature, manifest or successful firmware load claim",
+    "Successful original registry snapshots retain attached SPI transport and bootloader child",
+    "Original setup UI visible; no owned UIKit marker",
+    "Startup tracing automatically disabled after900seconds with actual successful QMP replies"
+  ],
+  "hardware_touch_ready": false,
+  "registry_complete_count": 7,
+  "owned_marker_count": 0,
+  "startup_trace": {
+    "limit_seconds": 900,
+    "events": [
+      "apple_mt_spi_host_event",
+      "apple_mt_spi_enqueue",
+      "apple_mt_spi_dequeue",
+      "apple_mt_spi_tx_drained",
+      "apple_mt_spi_boot_command",
+      "apple_mt_spi_control"
+    ],
+    "enable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 5
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 6
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 7
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 8
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 9
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 10
+        }
+      }
+    ],
+    "disable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 41
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 42
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 43
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 44
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 45
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 46
+        }
+      }
+    ],
+    "start_time": 1791289097.7814798,
+    "deadline_time": 1791289997.7814798,
+    "stop_time": 1791289997.7999537,
+    "stop_reason": "900-second deadline",
+    "all_disabled": true
+  },
+  "phase_trace_lines": [
+    "apple_mt_spi_boot_command phase=first-byte type=0 rx_len=1 rx_pos=0 rx_capacity=4 tx_len=0 pending_hbpp=0",
+    "apple_mt_spi_boot_command phase=req-boot-queued type=0 rx_len=4 rx_pos=3 rx_capacity=4 tx_len=0 pending_hbpp=2",
+    "apple_mt_spi_boot_command phase=completed type=0 rx_len=4 rx_pos=3 rx_capacity=4 tx_len=0 pending_hbpp=2"
+  ],
+  "last_frame": {
+    "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-16/frames/0048.ppm",
+    "sha256": "02381021f43bf1c6d41b5c62de272834f64ce3ffd892e1ba829581721f9472a1",
+    "png": "app-original-fud-rejection-stopped-last.png"
+  },
+  "files": {
+    "app-original-fud-rejection-stopped-serial.log": {
+      "sha256": "ee64321400fc2e76ca2b92d19d06cdca24226a877bc93382ba31f67b84e78225",
+      "bytes": 828846
+    },
+    "app-original-fud-rejection-stopped-qmp-transcript.jsonl": {
+      "sha256": "4f59cf5c4964238cb8c0445027d2f1a8f1a30f4b8ec9b01488d7cde69aa36198",
+      "bytes": 22078
+    },
+    "app-original-fud-rejection-stopped-control-transcript.jsonl": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "app-original-fud-rejection-stopped-report.json": {
+      "sha256": "2c0e941b60c255c9f47220e126d74e01abef5f6676c7f501ae23976c098c4b36",
+      "bytes": 47586
+    },
+    "app-original-fud-rejection-stopped-guest-errors.log": {
+      "sha256": "e84cd70d742427f704ede78d7ba670c2d2573c0d29f1229885d723ae8fb330c2",
+      "bytes": 6815
+    },
+    "app-original-fud-rejection-stopped-stderr.log": {
+      "sha256": "90d324fa1e1c26c49589cda1ea8076ea1c3f9073a1f1fccf44bdc91ae15d91eb",
+      "bytes": 2827
+    }
+  }
+}
