@@ -153,6 +153,14 @@ existing Unix socket. Capture was actually verified against app-boot-3; pointer
 input remains unverified until a visible guest response is observed. QEMU VNC
 reported832x1792 while QMP reports828x1792; retain that surface-width distinction.
 
+Observation-only now retains `before.png`, waits `--settle-seconds` on the same
+connection, then saves `settled.png`. Optional `--observe-seconds 30` keeps the
+connection active with additional captures for up to300seconds; it cannot be
+combined with input. Each capture records request, receive and save times.
+A first full VNC framebuffer can precede new rendering; display refresh can also
+stimulate guest rendering. Keep observation active across a launch when examining
+visual arrival, and do not interpret lifecycle clocks as presentation times.
+
 For installed iOS Home navigation, `--home-button` sends a single fixed150ms
 F6 press/release over that private VNC socket. The existing emulator maps F6 to
 SMC Menu; actual37 showed original SMC button6 notifications, app background,

@@ -55,6 +55,8 @@ class Client:
         return bytes(data)
 
     def capture(self, path):
+        requested = time.time()
+        requested_mono = time.monotonic()
         self.sock.sendall(struct.pack('>BBHHHH', 3, 0, 0, 0, self.width, self.height))
         canvas = Image.new('RGB', (self.width, self.height))
         coverage = bytearray(self.width*self.height)
@@ -84,9 +86,13 @@ class Client:
                     start=row*self.width+x
                     coverage[start:start+width]=b'\x01'*width
             if all(coverage):
+                received = time.time()
+                received_mono = time.monotonic()
                 canvas.save(path)
                 self.report['captures'].append({'path': str(path),
-                    'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'time': time.time()})
+                    'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'time': time.time(),
+                    'requested_time': requested, 'received_time': received,
+                    'request_to_receive_seconds': received_mono-requested_mono})
                 return
         raise TimeoutError('Incomplete VNC framebuffer')
 
@@ -125,10 +131,15 @@ def main():
     parser.add_argument('--swipe-seconds', type=float, default=.5,
                         help='duration of the 20-step swipe (0.1..10 seconds)')
     parser.add_argument('--settle-seconds', type=float, default=1,
-                        help='wait after release before capture (0..10 seconds)')
+                        help='wait before a second capture, including observation-only (0..10 seconds)')
+    parser.add_argument('--observe-seconds', type=float, default=0,
+                        help='keep observation-only connection active, capture at 1Hz (0..300 seconds)')
     args=parser.parse_args()
     if (args.home_button or args.app_switcher) and args.hold_seconds is not None:
         parser.error('Home button actions use fixed 150ms presses')
+    has_input = bool(args.tap or args.swipe or args.home_button or args.app_switcher)
+    if not 0 <= args.observe_seconds <= 300 or (args.observe_seconds and has_input):
+        parser.error('--observe-seconds must be finite within 0..300 and cannot accompany input')
     hold=args.hold_seconds if args.hold_seconds is not None else (0 if args.swipe else .15)
     if not (0 <= hold <= 10 and .1 <= args.swipe_seconds <= 10 and 0 <= args.settle_seconds <= 10):
         parser.error('timings must be finite and within their documented bounds')
@@ -138,11 +149,22 @@ def main():
     report={'kind':'headless_unix_vnc_observation', 'socket':str(args.socket),
             'captures':[], 'pointer_events':[], 'home_button_events':[], 'completed':False,
             'timing_seconds':{'hold':hold, 'swipe':args.swipe_seconds, 'settle':args.settle_seconds},
+            'observation_seconds':args.observe_seconds,
+            'capture_limit':'Frame receipt is not guest presentation time; display refresh can stimulate guest rendering.',
             'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
     client=None
     try:
         client=Client(args.socket,report)
         client.capture(args.output/'before.png')
+        if not has_input:
+            deadline = time.monotonic()+args.observe_seconds
+            time.sleep(args.settle_seconds)
+            client.capture(args.output/'settled.png')
+            sequence = 0
+            while time.monotonic() < deadline:
+                time.sleep(min(1, max(0, deadline-time.monotonic())))
+                sequence += 1
+                client.capture(args.output/f'observed-{sequence:04d}.png')
         if args.home_button or args.app_switcher:
             client.home_button(True)
             time.sleep(.15)
