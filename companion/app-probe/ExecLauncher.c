@@ -19,6 +19,8 @@ static int attempt(char *path,int mobile,int noargs,const char *label){
    printf("INFERNO_EXEC_WRAPPER_CREDENTIALS_FAILED errno=%d\n",*__error());fflush(0);_exit(126);
   }
   printf("INFERNO_EXEC_WRAPPER_CHILD uid=%u gid=%u\n",getuid(),getgid());fflush(0);
+  *__error()=0;int console_fd=open("/dev/console",1),console_errno=*__error();
+  printf("INFERNO_EXEC_WRAPPER_CONSOLE_OPEN fd=%d errno=%d uid=%u gid=%u\n",console_fd,console_errno,getuid(),getgid());fflush(0);if(console_fd>=0)close(console_fd);
   char *argv[]={path,"/private/var/inferno/InfernoProbe.app","org.inferno.companion.probe",0};
   if(noargs)argv[1]=0;
   char *env[]={"PATH=/usr/bin:/bin:/usr/sbin:/sbin","HOME=/var/mobile","CFFIXED_USER_HOME=/var/mobile","TMPDIR=/var/tmp",0};
