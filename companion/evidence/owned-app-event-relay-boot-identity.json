@@ -1,0 +1,11 @@
+{
+  "scope": "Read-only boot-session freshness audit; no code or guest changes",
+  "kernel_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+  "original_method": "IOPMrootDomain::initializeBootSessionUUID at0xfffffff0080e7d2c",
+  "random_generation": "0xfffffff0080e7d68..7da4 uses same random-generator table/context and16-byte request as uuid_generate_random0xfffffff007fd0c70; sets version4 at7da8..7db4 and variant at7db8..7dc4",
+  "string_store": "snprintf37 at0xfffffff0080e7e30; stores37bytes to bootsessionuuid_string0xfffffff0099e40b8 at7e34..7e48",
+  "source_url": "https://github.com/apple-oss-distributions/xnu/blob/xnu-7195.81.3/iokit/Kernel/IOPMrootDomain.cpp#L3937",
+  "source_corroboration": "uuid_generate followed by uuid_unparse_upper, copy to bootsessionuuid_string, publish BootSessionUUID property; called during root-domain startup",
+  "conclusion": "Generated per startup using UUID random path; not the DeviceTree boot-manifest hash or persistent disk UUID. Actual successive guest UUID values remain an empirical check, not asserted from static analysis.",
+  "visual_limit": "viewDidAppear marker does not prove absence of CoverSheet. Runner default captures after1s then waits for explicit operator input; reviewed visible-app captures remain required."
+}
