@@ -99,7 +99,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--profile', type=Path, required=True)
     parser.add_argument('--touch-trace-startup', action='store_true',
-                        help='trace six touch-model events before cont; disable automatically after 180 seconds')
+                        help='trace six touch-model events before cont; disable after a bounded interval')
+    parser.add_argument('--touch-trace-seconds', type=int,
+                        help='startup trace limit from 1 to 1800 seconds; default 180; requires --touch-trace-startup')
     parser.add_argument('--control-mailbox', action='store_true',
                         help='enable private allowlisted pointer/input-trace requests via qmp_control.py')
     parser.add_argument('--binary', type=Path, default=repo / '.local-build/build/qemu-system-aarch64')
@@ -129,6 +131,11 @@ def main():
     modes.add_argument('--recovery-preserve-disk', action='store_true',
                        help='recovery environment with explicit nand-enable-reformat=0')
     args = parser.parse_args()
+    if args.touch_trace_seconds is not None:
+        if not args.touch_trace_startup:
+            parser.error('--touch-trace-seconds requires --touch-trace-startup')
+        if not 1 <= args.touch_trace_seconds <= 1800:
+            parser.error('--touch-trace-seconds must be between 1 and 1800')
     if args.probe_journey and not args.disk_boot:
         parser.error('--probe-journey requires --disk-boot')
     if args.launchd_unsecure_cache and not args.disk_boot:
@@ -213,7 +220,7 @@ def main():
     if control:
         report['control_mailbox'] = str(control.path)
         report['control_source_sha256'] = digest(Path(__file__).with_name('qmp_control.py'))
-    touch_trace = StartupTouchTrace() if args.touch_trace_startup else None
+    touch_trace = StartupTouchTrace(args.touch_trace_seconds if args.touch_trace_seconds is not None else 180) if args.touch_trace_startup else None
     if touch_trace:
         report['touch_startup_trace'] = touch_trace.report
         report['control_source_sha256'] = digest(Path(__file__).with_name('qmp_control.py'))
