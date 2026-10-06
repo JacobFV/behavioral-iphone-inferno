@@ -13,8 +13,8 @@
   idevice_id and the read-only service query over loopback SSH. Raw evidence and
   exact binary/source identities: `companion/evidence/usb-recovery*`. This is a
   recovery service connection, not a restore transaction or installed iOS boot.
-  Reconnected recovery later hit its120-second idle restore timeout and panicked
-  during shutdown; the300-second observation did not complete. Linux shut down
+  Reconnected recovery later hit its 120-second idle restore timeout and panicked
+  during shutdown; the 300-second observation did not complete. Linux shut down
   cleanly. This later failure does not replace the independently observed queries.
 
 - **Owned native code:** an SDK-free ARM64 Mach-O, linked against a self-authored
@@ -58,8 +58,10 @@
   original guest initialization utility subsequently succeeded in run12: original
   `seputil --gigalocker-init` returned0 and xART cleanly unmounted. The separate
   shutdown utility hung in runs9/10; run12 used sync and normal unmount.
-  Raw evidence: `companion/evidence/gigalocker-preparation*`. Data/Update and
-  original var seeding are now executing. Earlier committed raw
+  Raw evidence: `companion/evidence/gigalocker-preparation*`. Data/Update creation and
+  original var seeding completed in run13, with clean unmounts and 260,640,768
+  bytes still available. Hardware factorydata paths were also prepared. Raw
+  evidence: `companion/evidence/data-preparation*`. Direct boot is next. Earlier committed raw
   evidence: `companion/evidence/apfs-role-preparation*` and
   `companion/evidence/direct-root-prepared*`.
 - **Reproduced OS conversion:** root ran both committed OS utilities; full raw
