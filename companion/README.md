@@ -24,8 +24,10 @@ Owned virtual-HID input opened original Clock and then the owned UIKit fixture.
 Boot26 captured the owned app's counter at0 and, after one explicit tap, at1.
 The original launch gate accepted its corrected System classification after a
 normal restart; correcting our NSObject header fixed the actual startup crash.
-The visual journey is proven. App event transport to the strict runner and
-resource/reliability measurements remain active work. See [BOOT.md](BOOT.md) for the image profile and headless runner,
+Boot32 delivered real lifecycle and tap records to the strict runner through
+guest loopback and captured the strict before-frame, but was interrupted before
+the strict after-capture. Repeat33 is active. Whole-emulator resource samples
+are recorded; strict completion, launch timing and reliability remain active work. See [BOOT.md](BOOT.md) for the image profile and headless runner,
 [USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.
 
 ## Initial milestones
@@ -35,7 +37,7 @@ resource/reliability measurements remain active work. See [BOOT.md](BOOT.md) for
 3. Prepare an explicitly documented iOS image profile outside Git, then establish
    a real boot, display and input path. Recovery-userland boot and a framebuffer
    capture now work; installed iOS reaches Hello and accepts ordinary gestures
-   through an owned virtual touchscreen. Normal setup, first-unlock, Home, stock Clock and the owned visual counter journey are proven; strict app-event collection remains under integration.
+   through an owned virtual touchscreen. Normal setup, first-unlock, Home, stock Clock and the owned visual counter journey are proven; actual app-event collection is proven; uninterrupted strict capture completion remains under integration.
 4. Install one owned, unencrypted application and execute an end-to-end journey.
 5. Measure cold/warm launch, memory, CPU, reliability and parallel density before
    claiming cheap runner economics. Add the existing visualization dashboard only
