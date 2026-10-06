@@ -13,6 +13,7 @@ import stat
 import subprocess
 import tempfile
 import time
+from disk_overlay import DEFAULT_TOOLS, validate_tools, validate_base, create_overlay, verify_backing
 from probe_journey import ProbeJourney
 from qmp_control import ControlMailbox, StartupTouchTrace, SerialGestureTransport
 
@@ -141,7 +142,11 @@ def main():
     parser.add_argument('--usb-socket', type=Path,
                         help='existing local Unix socket of a running isolated USB companion')
     parser.add_argument('--root-image', type=Path,
-                        help='raw 4096-sector GPT base; copied before any guest writes')
+                        help='raw 4096-sector GPT base; privately copied by default')
+    parser.add_argument('--root-overlay', action='store_true',
+                        help='opt-in qcow2 root over retained read-only raw base; six auxiliary disks stay copied raw')
+    parser.add_argument('--overlay-tools-root', type=Path, default=DEFAULT_TOOLS,
+                        help='pinned tools directory created by disk_overlay.py bootstrap')
     parser.add_argument('--root-sha256', help='required expected SHA256 of --root-image')
     parser.add_argument('--auxiliary-state', type=Path,
                         help='stopped boot report directory whose six auxiliary namespaces are copied')
@@ -176,6 +181,7 @@ def main():
         parser.error('--capture-interval must be zero or between 5 and 86400 seconds')
     # Complete validation before allocating disks or launching the emulator.
     auxiliary = {}
+    overlay_tool = None
     try:
         profile_path = args.profile.resolve(strict=True)
         profile, inputs = load_profile(profile_path)
@@ -192,16 +198,21 @@ def main():
             raise ValueError('--usb-socket must name an existing Unix socket')
         if bool(args.root_image) != bool(args.root_sha256):
             raise ValueError('--root-image and --root-sha256 must be supplied together')
+        if args.root_overlay and not args.root_image:
+            raise ValueError('--root-overlay requires --root-image and --root-sha256')
         if args.disk_boot and not args.root_image:
             raise ValueError('--disk-boot requires --root-image')
         root_image = args.root_image.resolve(strict=True) if args.root_image else None
         if root_image:
-            if not root_image.is_file() or digest(root_image) != args.root_sha256:
+            if not root_image.is_file() or (not args.root_overlay and digest(root_image) != args.root_sha256):
                 raise ValueError('Root image missing or SHA256 mismatch')
             with root_image.open('rb') as stream:
                 stream.seek(4096)
                 if stream.read(8) != b'EFI PART':
                     raise ValueError('Root image must have GPT with 4096-byte sectors (NVMe geometry)')
+        if args.root_overlay:
+            validate_base(root_image, args.root_sha256)
+            overlay_tool = validate_tools(args.overlay_tools_root)
         if args.auxiliary_state:
             state_dir = args.auxiliary_state.resolve(strict=True)
             state_report_path = state_dir / 'report.json'
@@ -233,7 +244,8 @@ def main():
               'duration_limit_seconds': args.seconds, 'disks': [], 'observations': []}
     if root_image:
         report['root_base'] = {'path': str(root_image), 'sha256': args.root_sha256,
-                               'bytes': root_image.stat().st_size, 'copied_before_use': True}
+                               'bytes': root_image.stat().st_size, 'copied_before_use': not args.root_overlay,
+                               'retained_immutable_backing': args.root_overlay}
     if auxiliary:
         report['auxiliary_base'] = {'report': str(state_report_path),
                                     'report_sha256': digest(state_report_path),
@@ -302,8 +314,14 @@ def main():
             disk_dir = output / 'disks'
             disk_dir.mkdir()
             for nsid, (name, size, nstype) in enumerate(DISKS, 1):
-                disk = disk_dir / (name + '.raw')
-                if name == 'root' and root_image:
+                use_overlay = name == 'root' and args.root_overlay
+                disk_format = 'qcow2' if use_overlay else 'raw'
+                disk = disk_dir / (name + ('.qcow2' if use_overlay else '.raw'))
+                if use_overlay:
+                    report['root_overlay'] = create_overlay(disk, root_image, args.root_sha256, overlay_tool)
+                    (output / 'root-overlay.json').write_text(json.dumps(report['root_overlay'], indent=2) + '\n')
+                    size = root_image.stat().st_size
+                elif name == 'root' and root_image:
                     subprocess.run(['cp', '--reflink=auto', '--sparse=always', '--',
                                     str(root_image), str(disk)], check=True)
                     size = disk.stat().st_size
@@ -316,13 +334,15 @@ def main():
                     with disk.open('xb') as handle:
                         handle.truncate(size)
                 initial = 'private copy of hash-verified root base' if name == 'root' and root_image else 'fresh sparse zero-filled raw'
+                if use_overlay:
+                    initial = 'private qcow2 overlay over retained hash-verified read-only raw base'
                 if name in auxiliary:
                     initial = 'private copy of recorded auxiliary namespace'
                 report['disks'].append({'path': str(disk), 'initial_state': initial,
-                                        'bytes': size, 'nsid': nsid, 'nstype': nstype})
+                                        'bytes': size, 'format': disk_format, 'nsid': nsid, 'nstype': nstype})
                 device = 'apple-nvram' if name == 'nvram' else 'nvme-ns'
                 device_id = ',id=nvram' if name == 'nvram' else ''
-                command += ['-drive', f'file={str(disk).replace(",", ",,")},format=raw,if=none,id={name}',
+                command += ['-drive', f'file={str(disk).replace(",", ",,")},format={disk_format},if=none,id={name}',
                             '-device', f'{device},drive={name},bus=nvme-bus.0,nsid={nsid},nstype={nstype}{device_id},logical_block_size=4096,physical_block_size=4096']
             report['invocation'] = command
             (output / 'command.json').write_text(json.dumps(command, indent=2) + '\n')
@@ -428,6 +448,14 @@ def main():
             report['exit_code'] = process.returncode
         for sig, handler in previous_handlers.items():
             signal.signal(sig, handler)
+        if report.get('root_overlay'):
+            try:
+                report['root_overlay']['backing_after_stop'] = verify_backing(report['root_overlay'])
+            except Exception as exc:
+                report['root_overlay']['backing_after_stop'] = {'unchanged': False, 'error': str(exc)}
+                report['attempt_completed'] = False
+                report.setdefault('error', {'type': type(exc).__name__, 'detail': str(exc)})
+            (output / 'root-overlay.json').write_text(json.dumps(report['root_overlay'], indent=2) + '\n')
         report['elapsed_seconds'] = round(time.monotonic() - started, 6)
         serial = output / 'serial.log'
         report['serial_bytes'] = serial.stat().st_size if serial.exists() else 0
