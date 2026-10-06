@@ -9,7 +9,7 @@ for invalid in (0,301,-1,1.5,True):
     except ValueError: pass
     else: raise AssertionError(invalid)
 results.append({'check':'invalid duration rejection','passed':True})
-def run(early):
+def run(early, fail_save=False):
     with tempfile.TemporaryDirectory() as tmp:
         p=pathlib.Path(tmp); server=socket.socket(socket.AF_UNIX); endpoint=p/'vnc.sock';server.bind(str(endpoint));server.listen(1)
         seen=[]; errors=[]
@@ -39,7 +39,11 @@ def run(early):
             deadline=time.monotonic()+8
             while time.monotonic()<deadline:
                 observer.poll()
-                if early and observer.report.get('coverage_active'): break
+                if early and observer.report.get('coverage_active'):
+                    if fail_save:
+                        def broken_save(): raise OSError('simulated persistence failure')
+                        observer.save=broken_save
+                    break
                 if observer.finished: break
                 time.sleep(.05)
             else: raise AssertionError('deadline')
@@ -51,6 +55,6 @@ def run(early):
         assert bool(r['observer_report'].get('stop_requested'))==early
         assert r['requested_phase_completed']==(not early)
         assert r['resource_first']['start_ticks']==r['start_ticks']
-        return {'check':'graceful early stop' if early else 'finite expiry','passed':True,'frame_requests':len(seen),'exit_code':r['exit_code'],'coverage_seconds':r['connection_closed_time']-r['connection_established_time'],'requested_phase_completed':r['requested_phase_completed'],'raw_child_resource_sample':r['resource_first']}
-results.extend([run(False),run(True)])
+        return {'check':'cleanup despite report persistence failure' if fail_save else ('graceful early stop' if early else 'finite expiry'),'passed':True,'frame_requests':len(seen),'exit_code':r['exit_code'],'coverage_seconds':r['connection_closed_time']-r['connection_established_time'],'requested_phase_completed':r['requested_phase_completed'],'raw_child_resource_sample':r['resource_first']}
+results.extend([run(False),run(True),run(True,True)])
 print(json.dumps({'scope':'local fake RFB server and real observer subprocess only; no QEMU or iOS','results':results},indent=2))
