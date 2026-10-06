@@ -2,6 +2,24 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 12:54 continuation: tracked workflow succeeds in comparison42
+
+42 kept the same emulator and guest bits and added only fixed read-only display
+register queries. Reviewed0→1, both QMP captures, ordinary Home and one named
+reopen retaining counter1 completed. PID245/main2607881737 and original unique245/
+idversion690 remained stable; OPEN→active753.962583ms is a guest lifecycle interval.
+The tracked verifier passed using matched raw records and source-gated capture
+chronology, without a temporary host-arrival observer. Normal shutdown and tracked
+seven-disk/ancestor preservation passed. Raw evidence `owned-tracked-controls-stopped-42*`;
+root visual/input evidence `tracked-workflow-42-visual`.
+
+All actual display register reads were valid. The active pipe stayed enabled and
+switched buffer addresses across drawing; sampled IRQstatus was zero. These are
+healthy comparison snapshots, not a cause or fix for failed41. Its failure remains
+retained. Next work adds disabled-by-default, bounded display tracing to distinguish
+submission, draw and interrupt history. The prior emulator is archived read-only
+outside Git before any new build. No guest binaries are being changed.
+
 ### 12:42 continuation: retained visual failure in tracked workflow validation
 
 The new tracked owned-control CLI executed real unlock, alert and counter input

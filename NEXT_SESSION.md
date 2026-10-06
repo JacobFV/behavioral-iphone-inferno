@@ -52,13 +52,40 @@ Important frozen50 is intentional recoverySignal15/attempt_completed:false after
 verifiedstaging: DO NOT blanketrejectallreporterrors andbreakknownbackingchain.
 Forensicmarker restriction preservesestablishedrecovery-stagingsemantics.
 
-Next boundedONE42 now authorized tobootworker AFTER41trackedforensicretention.
-Samefrozen50/emulator/guestbits; newhostcontrol0ffa45811e adds fixed18 audited
-nonconsuming ADPregisterreads `companion/run control --report REPORT query-display-registers`.
-OriginalDT ADPbase0x230000000. Readirqstatus/enable/version/frame_size andeach
-pipecontrol/format/start/end/stride/src/dest. No arbitraryaddresses/writes,
-noemulatorbehaviorpatch/build. RootexclusiveUIandregisterqueries. Workerwill
-send42endpointwhenready; notyetknown. Do notstartadditionalVMs.
+42 is STOPPED NORMAL: trackedstrict0→1 + ONEwarmHome/reopenreviewedcounter1.
+BootDA68CFEE-439B-4994-8BBB-491D1F3F9792/PID245/main2607881737,
+originalquery56/unique245/idversion690. Tap019e7e2d01674a8080380d2bf823949f;
+OPENd8a8d90ec57649059edb116d83a07384/gen2/open→active753.962583ms.
+QMPbeforecdc80e684e34d2f397b2719062f3a3c10c6e1693f9ce8cc43ba22092ddc58b74,
+afterb9a217258c67075eedd3d3932a9bc26c30f2ba1474e6c6e33da6e75ff5c9b3ce.
+Root reviewedbothconvertedQMP andHome/reopenobserved0014. Trackedverify-journey
+PASS withouttransientarrivalobserver (source-gated chronology explicitlyscoped).
+Trackednormalpreserve-stoppedPASS/all7/ancestors, rootSHA
+428e48ccf05f9fcd7b3891d46bfb770a77a180fad0b1a357b8ba264fec2ec272.
+Raw5d74f49435/`owned-tracked-controls-stopped-42*`; visualc09f7dadcd/
+`tracked-workflow-42-visual`. NoVMlive. 42healthydoesNOTresolve41failure.
+
+Newhostcontrol0ffa45811e adds fixed18 audited nonconsuming ADPregisterreads:
+`companion/run control --report REPORT query-display-registers`.
+OriginalDT ADPbase0x230000000, controlSHAe8a892917bd56906728264b916f829c91e44ab493288b771e4598f57fce1fc9c.
+Actual42nine snapshots allvalid. Sevenfirstsnapshots126rawQMPpairs+audita0e134f3b4/
+`display-registers-42-actual`; Home/reopenedrawincludedrootvisualevidence.
+GP0enabled/run throughout/status0 atsamplinginstants; framebufferaddressalternates
+016c0000↔02230000, healthyreference only, nohistoricBH/submitcounts.
+
+ACTIVE NEXT: nativeworker inisolatedworktree ownsdiagnostic-only optintrace changes
+hw/display/apple_displaypipe_v4.c, hw/display/trace-events, companion/qmp_control.py.
+Tracecategories submit/schedule,BHentryexit, pipeoutcomes, outputreadyIRQ, guest
+W1C/enablewrites. Existingvaluesonly/noextraDMA/pixels/noemulationbehaviorchange.
+Bounded1..60s mailboxwindow/automaticpoll disable; nativeaddsControlMailbox.close(qmp).
+ROOTmustadd tinyboot.py finallyhook callingcontrol.close(qmp) beforecapture/quit,
+catchandrecorddisplay_trace_cleanup_error withoutpreventingquit. Nootherthread/QMPowner.
+Rootreviewsourcebeforemerge/build. Bootworkerawaitingno43launchyet. Archivebaseline
+alreadyverified/read-only `.local-build/binaries/simulated-sep-first-unlock-e3da84b179ce/`
+containsbinary/build-manifest/KEEP-BASELINE.json, e3da84... exact.
+Aftermergedinstrumentation, buildactualcandidate + firmwarefreecontroltraceexpiration
+scopecheck thenONE43samefrozen50 toobserve actualdisplaypipeline. No43 authorizedyet;
+rootwillauthorizeafterbuildreview. No guestartifact/stagingchange required.
 
 Unchangedfourbits/backings below remain the current execution baseline.
 
