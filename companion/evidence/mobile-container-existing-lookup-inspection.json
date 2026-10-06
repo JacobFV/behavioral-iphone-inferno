@@ -124,5 +124,48 @@
     "parser": "exclusive recognized at0x100029978\u2013990; success/root branch sets runmode0 at0x100029b50. agent maps runmode1 at0x100029ac8.",
     "client_identity": "MCMClientIdentity::clientIdentityWithXPCConnection:xpcMessage: starts with configuration defaultUser at0x10001d45c\u201346c. runmode compare1 at0x10001d774\u2013778 skips substitution only for agent mode. Otherwise obtains client posixUser at0x10001d780\u20137a0 and supplies it to userIdentityForPersonaUniqueString:POSIXUser: at0x10001d7c0\u20137cc.",
     "conclusion": "The --default-user=mobile option alone does not prove a UID0 reader selects the same user namespace as UID501 app. Actual returned URL/error must be inspected; no forced identity/persona or authorization change is proposed."
+  },
+  "actual_code55_followup": {
+    "trigger": "Actual app-boot30 serial logged INFERNO_EVENT_MCM_LOOKUP create=0 object=0 existed=0 error_code=55. Numeric-only log does not include the daemon source branch.",
+    "original_error_mapping": {
+      "library_compare": "0x187b459f4 cmp x20,#0x37; matching branch prints client is not entitled at0x187b45a40.",
+      "framework_domain": "MCMErrorDomain, CFString0x1dc81eae8; original initializer maps low-level error into NSError(domain,code,userInfo:nil) at0x1aed31d58\u2013dd0.",
+      "meaning": "Authorization failure, not missing-container evidence."
+    },
+    "relevant_class2_gate": {
+      "function": "-[MCMClientConnection createOrLookupContainerWithContainerIdentity:createIfNecessary:transient:useLocking:withError:]",
+      "checks": [
+        {
+          "va": "0x10006e3e4\u2013440",
+          "check": "requested identifier equals clientBundleIdentifier"
+        },
+        {
+          "va": "0x10006e43c\u2013460",
+          "check": "allowOtherIdLookup"
+        },
+        {
+          "va": "0x10006e4a8\u20134b8",
+          "check": "unrestricted"
+        },
+        {
+          "va": "0x10006e4cc\u20134e4",
+          "check": "isEntitledForLookupWithClass:identifier:"
+        },
+        {
+          "va": "0x10006e550\u2013580",
+          "check": "original sharedWhitelist isLookupWhitelistedFromCodeSignIdentifier:forContainerClass:containerIdentifier:"
+        }
+      ],
+      "failure_branch": "0x10006e580 tbz w23,#0,0x10006f124; error construction0x10006f184 mov w3,#0x37 and0x10006f190 call original error builder.",
+      "error_literal": "%@ not entitled to retrieve container class %ld with identifier %@",
+      "literal_cfstring": "0x1000bc0f0"
+    },
+    "other_producer": "checkEntitlementsAndInitClientObject connection-level rejection also stores0x37 at0x10004f21c. Current runtime output cannot distinguish these two producers.",
+    "practical_limit": "Do not treat code55 as proof of missing data or fix by creating containers. UID501 alone is not evidence the observer has the app signed bundle identity or cross-identifier authorization. Observe the owned app own successful cache path without changing grants if a direct path diagnostic is needed.",
+    "bounded_original_bytes": {
+      "0x10006e580": "375d0036",
+      "0x10006f180": "41618052e3068052040080d2260080526379ff97",
+      "0x10004f218": "ff3700f9e8068052ff2309a928008052"
+    }
   }
 }
