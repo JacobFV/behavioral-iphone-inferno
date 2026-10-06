@@ -74,7 +74,8 @@ See [native-probe/README.md](native-probe/README.md) for the owned helper and
 [os-image/README.md](os-image/README.md) for original System image preparation.
 
 There are no display windows or TCP listeners. VNC and QMP use private Unix
-sockets; serial output goes to a file. The duration includes emulator startup,
+sockets; serial output goes to a file. `--guest-errors` additionally records emulator device diagnostics (including
+simulated-SEP messages) in `guest-errors.log`. The duration includes emulator startup,
 with up to several additional seconds for QMP capture and graceful shutdown.
 Shutdown falls back to termination and kill if QMP is unavailable. The output
 retains disks, serial/stdout/stderr logs, raw QMP JSON lines (including asynchronous

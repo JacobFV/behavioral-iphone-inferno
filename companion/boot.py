@@ -100,6 +100,8 @@ def main():
     parser.add_argument('--manifest', type=Path)
     parser.add_argument('--seconds', type=float, default=120)
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--guest-errors', action='store_true',
+                        help='record QEMU guest-error diagnostics in guest-errors.log')
     parser.add_argument('--usb-socket', type=Path,
                         help='existing local Unix socket of a running isolated USB companion')
     parser.add_argument('--root-image', type=Path,
@@ -181,6 +183,8 @@ def main():
                        '-display', 'none', '-vnc', 'unix:' + str(Path(tmp) / 'vnc.sock'),
                        '-monitor', 'none', '-serial', 'file:' + str(output / 'serial.log'),
                        '-qmp', 'unix:' + endpoint + ',server=on,wait=off', '-no-reboot']
+            if args.guest_errors:
+                command += ['-d', 'guest_errors', '-D', str(output / 'guest-errors.log')]
             if args.disk_boot or args.ramdisk_boot:
                 command[2] += ',boot-mode=exit_recovery'
             if args.ramdisk_boot:
