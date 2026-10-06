@@ -1,0 +1,466 @@
+{
+  "scope": "Firmware-free machine none control-plane execution only; no iOS boot, trace emission, display or app claim.",
+  "binary_sha256": "f088a8c99437afaa9da220ee2f2e2a09f4dbf5b8638e897ec01c670c5273a7b7",
+  "manifest_sha256": "81027eba78a8636b2b1538ce0f8ea79c14e73baa4c5ee12caa7111b1ece5fdca",
+  "script_sha256": "13581205a835c42c160e5a2d2b92aa07c2e29b6be75d1254d8a83757c88cbf86",
+  "boot_source_sha256": "9f8825f721d2b50e535b27a814849527e66e540516730ba1322ce15a49275b32",
+  "control_source_sha256": "38e74c55760f2db95767c53515dd95f9b70e4eda3b7e48f4480283e43bdc84a5",
+  "events": [
+    "apple_adp_submit",
+    "apple_adp_bh",
+    "apple_adp_pipe",
+    "apple_adp_output_ready",
+    "apple_adp_irq_write",
+    "apple_adp_unknown_mmio",
+    "apple_adp_gp_config_write",
+    "apple_adp_status_read"
+  ],
+  "checks": {
+    "default_off": {
+      "apple_adp_submit": {
+        "return": [
+          {
+            "name": "apple_adp_submit",
+            "state": "disabled"
+          }
+        ],
+        "id": 2
+      },
+      "apple_adp_bh": {
+        "return": [
+          {
+            "name": "apple_adp_bh",
+            "state": "disabled"
+          }
+        ],
+        "id": 3
+      },
+      "apple_adp_pipe": {
+        "return": [
+          {
+            "name": "apple_adp_pipe",
+            "state": "disabled"
+          }
+        ],
+        "id": 4
+      },
+      "apple_adp_output_ready": {
+        "return": [
+          {
+            "name": "apple_adp_output_ready",
+            "state": "disabled"
+          }
+        ],
+        "id": 5
+      },
+      "apple_adp_irq_write": {
+        "return": [
+          {
+            "name": "apple_adp_irq_write",
+            "state": "disabled"
+          }
+        ],
+        "id": 6
+      },
+      "apple_adp_unknown_mmio": {
+        "return": [
+          {
+            "name": "apple_adp_unknown_mmio",
+            "state": "disabled"
+          }
+        ],
+        "id": 7
+      },
+      "apple_adp_gp_config_write": {
+        "return": [
+          {
+            "name": "apple_adp_gp_config_write",
+            "state": "disabled"
+          }
+        ],
+        "id": 8
+      },
+      "apple_adp_status_read": {
+        "return": [
+          {
+            "name": "apple_adp_status_read",
+            "state": "disabled"
+          }
+        ],
+        "id": 9
+      }
+    },
+    "explicitly_enabled": {
+      "apple_adp_submit": {
+        "return": [
+          {
+            "name": "apple_adp_submit",
+            "state": "enabled"
+          }
+        ],
+        "id": 18
+      },
+      "apple_adp_bh": {
+        "return": [
+          {
+            "name": "apple_adp_bh",
+            "state": "enabled"
+          }
+        ],
+        "id": 19
+      },
+      "apple_adp_pipe": {
+        "return": [
+          {
+            "name": "apple_adp_pipe",
+            "state": "enabled"
+          }
+        ],
+        "id": 20
+      },
+      "apple_adp_output_ready": {
+        "return": [
+          {
+            "name": "apple_adp_output_ready",
+            "state": "enabled"
+          }
+        ],
+        "id": 21
+      },
+      "apple_adp_irq_write": {
+        "return": [
+          {
+            "name": "apple_adp_irq_write",
+            "state": "enabled"
+          }
+        ],
+        "id": 22
+      },
+      "apple_adp_unknown_mmio": {
+        "return": [
+          {
+            "name": "apple_adp_unknown_mmio",
+            "state": "enabled"
+          }
+        ],
+        "id": 23
+      },
+      "apple_adp_gp_config_write": {
+        "return": [
+          {
+            "name": "apple_adp_gp_config_write",
+            "state": "enabled"
+          }
+        ],
+        "id": 24
+      },
+      "apple_adp_status_read": {
+        "return": [
+          {
+            "name": "apple_adp_status_read",
+            "state": "enabled"
+          }
+        ],
+        "id": 25
+      }
+    },
+    "deadline_disabled": {
+      "apple_adp_submit": {
+        "return": [
+          {
+            "name": "apple_adp_submit",
+            "state": "disabled"
+          }
+        ],
+        "id": 34
+      },
+      "apple_adp_bh": {
+        "return": [
+          {
+            "name": "apple_adp_bh",
+            "state": "disabled"
+          }
+        ],
+        "id": 35
+      },
+      "apple_adp_pipe": {
+        "return": [
+          {
+            "name": "apple_adp_pipe",
+            "state": "disabled"
+          }
+        ],
+        "id": 36
+      },
+      "apple_adp_output_ready": {
+        "return": [
+          {
+            "name": "apple_adp_output_ready",
+            "state": "disabled"
+          }
+        ],
+        "id": 37
+      },
+      "apple_adp_irq_write": {
+        "return": [
+          {
+            "name": "apple_adp_irq_write",
+            "state": "disabled"
+          }
+        ],
+        "id": 38
+      },
+      "apple_adp_unknown_mmio": {
+        "return": [
+          {
+            "name": "apple_adp_unknown_mmio",
+            "state": "disabled"
+          }
+        ],
+        "id": 39
+      },
+      "apple_adp_gp_config_write": {
+        "return": [
+          {
+            "name": "apple_adp_gp_config_write",
+            "state": "disabled"
+          }
+        ],
+        "id": 40
+      },
+      "apple_adp_status_read": {
+        "return": [
+          {
+            "name": "apple_adp_status_read",
+            "state": "disabled"
+          }
+        ],
+        "id": 41
+      }
+    },
+    "second_window_enabled": {
+      "apple_adp_submit": {
+        "return": [
+          {
+            "name": "apple_adp_submit",
+            "state": "enabled"
+          }
+        ],
+        "id": 50
+      },
+      "apple_adp_bh": {
+        "return": [
+          {
+            "name": "apple_adp_bh",
+            "state": "enabled"
+          }
+        ],
+        "id": 51
+      },
+      "apple_adp_pipe": {
+        "return": [
+          {
+            "name": "apple_adp_pipe",
+            "state": "enabled"
+          }
+        ],
+        "id": 52
+      },
+      "apple_adp_output_ready": {
+        "return": [
+          {
+            "name": "apple_adp_output_ready",
+            "state": "enabled"
+          }
+        ],
+        "id": 53
+      },
+      "apple_adp_irq_write": {
+        "return": [
+          {
+            "name": "apple_adp_irq_write",
+            "state": "enabled"
+          }
+        ],
+        "id": 54
+      },
+      "apple_adp_unknown_mmio": {
+        "return": [
+          {
+            "name": "apple_adp_unknown_mmio",
+            "state": "enabled"
+          }
+        ],
+        "id": 55
+      },
+      "apple_adp_gp_config_write": {
+        "return": [
+          {
+            "name": "apple_adp_gp_config_write",
+            "state": "enabled"
+          }
+        ],
+        "id": 56
+      },
+      "apple_adp_status_read": {
+        "return": [
+          {
+            "name": "apple_adp_status_read",
+            "state": "enabled"
+          }
+        ],
+        "id": 57
+      }
+    },
+    "early_cleanup_disabled": {
+      "apple_adp_submit": {
+        "return": [
+          {
+            "name": "apple_adp_submit",
+            "state": "disabled"
+          }
+        ],
+        "id": 66
+      },
+      "apple_adp_bh": {
+        "return": [
+          {
+            "name": "apple_adp_bh",
+            "state": "disabled"
+          }
+        ],
+        "id": 67
+      },
+      "apple_adp_pipe": {
+        "return": [
+          {
+            "name": "apple_adp_pipe",
+            "state": "disabled"
+          }
+        ],
+        "id": 68
+      },
+      "apple_adp_output_ready": {
+        "return": [
+          {
+            "name": "apple_adp_output_ready",
+            "state": "disabled"
+          }
+        ],
+        "id": 69
+      },
+      "apple_adp_irq_write": {
+        "return": [
+          {
+            "name": "apple_adp_irq_write",
+            "state": "disabled"
+          }
+        ],
+        "id": 70
+      },
+      "apple_adp_unknown_mmio": {
+        "return": [
+          {
+            "name": "apple_adp_unknown_mmio",
+            "state": "disabled"
+          }
+        ],
+        "id": 71
+      },
+      "apple_adp_gp_config_write": {
+        "return": [
+          {
+            "name": "apple_adp_gp_config_write",
+            "state": "disabled"
+          }
+        ],
+        "id": 72
+      },
+      "apple_adp_status_read": {
+        "return": [
+          {
+            "name": "apple_adp_status_read",
+            "state": "disabled"
+          }
+        ],
+        "id": 73
+      }
+    }
+  },
+  "command": [
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "-machine",
+    "none",
+    "-accel",
+    "tcg",
+    "-m",
+    "128M",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "none",
+    "-S",
+    "-qmp",
+    "unix:/tmp/inferno-trace-smoke-kk6aj02c/qmp.sock,server=on,wait=off"
+  ],
+  "greeting": {
+    "QMP": {
+      "version": {
+        "qemu": {
+          "micro": 2,
+          "minor": 2,
+          "major": 10
+        },
+        "package": ""
+      },
+      "capabilities": [
+        "oob"
+      ]
+    }
+  },
+  "ten_second_request": {
+    "return": {
+      "seconds": 10,
+      "events": [
+        "apple_adp_submit",
+        "apple_adp_bh",
+        "apple_adp_pipe",
+        "apple_adp_output_ready",
+        "apple_adp_irq_write",
+        "apple_adp_unknown_mmio",
+        "apple_adp_gp_config_write",
+        "apple_adp_status_read"
+      ],
+      "scope": "Opt-in diagnostic tracing; deadline checked by sole runner poll; no guest behavior changes."
+    }
+  },
+  "early_close_request": {
+    "return": {
+      "seconds": 10,
+      "events": [
+        "apple_adp_submit",
+        "apple_adp_bh",
+        "apple_adp_pipe",
+        "apple_adp_output_ready",
+        "apple_adp_irq_write",
+        "apple_adp_unknown_mmio",
+        "apple_adp_gp_config_write",
+        "apple_adp_status_read"
+      ],
+      "scope": "Opt-in diagnostic tracing; deadline checked by sole runner poll; no guest behavior changes."
+    }
+  },
+  "control_plane_checks_passed": true,
+  "quit_response": {
+    "return": {},
+    "id": 74
+  },
+  "exit_code": 0,
+  "retained_raw": {
+    "qmp-transcript.jsonl": "c36426f8e431201eb524c2e21058acf17308bc096191d65d63b6d1841517304f",
+    "control-transcript.jsonl": "b04c236bc8935468f8a6adbd2ccb44e9129a1c83f6515280bdb4fed94ef593a5",
+    "display-trace-control.jsonl": "0fc47b1d607880fc69e9d80765acb8f229552b9bcbae7c9c0a035ef16242a1a5"
+  }
+}
