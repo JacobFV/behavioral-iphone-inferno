@@ -298,3 +298,16 @@ an app execution denial. Completing the original options-helper trace shows
 that even nil configuration automatically adds `LSBlockUntilComplete=true`.
 This is the original method's waiting behavior, unlike the empty-options BOOL
 wrapper; the candidate does not supply explicit launch options.
+
+## Owned System bundle registration
+
+The dictionary launcher supplies `ApplicationType=System` only for the exact
+owned identifier `org.inferno.companion.probe` at `/Applications/InfernoProbe.app`.
+This reproduces the installed iOS installer's classification: an identified `.app`
+whose parent is its configured `/Applications` directory receives type1, rendered
+as `System` in the LaunchServices dictionary. See
+[original classification evidence](../evidence/owned-system-app-classification-inspection.json).
+Omitting the field had produced the original `User` fallback and the observed
+FrontBoard/MIS signature-validation denial. The fixture remains independently
+ad-hoc signed; no Apple signer, provisioning profile or trust-result metadata is
+asserted. Actual launch must still be verified from guest markers and captures.

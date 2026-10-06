@@ -56,6 +56,12 @@ int main(int argc, char **argv) {
                     return 65;
                 }
                 [record setObject:path forKey:@"Path"];
+                // Match original installd classification for this owned bundle
+                // directly on System. Do not assert signer/profile/trust fields.
+                // See evidence/owned-system-app-classification-inspection.json.
+                if ([path isEqualToString:@"/Applications/InfernoProbe.app"] &&
+                    [identifier isEqualToString:@"org.inferno.companion.probe"])
+                    [record setObject:@"System" forKey:@"ApplicationType"];
                 BOOL registration = [workspace registerApplicationDictionary:record];
                 status("register-dictionary-boolean", attempt, registration);
 #else
