@@ -15,8 +15,11 @@ for seq,(hook,gen,tick) in enumerate([('active',0,108),('resign',0,140),('backgr
 opening=f'INFERNO_OPEN_TIMING_V1 request_id={rid} boot={b} pid=300 request_ticks=200 callback_ticks=205 numer=3 denom=2 accepted=1';lines += [opening,'2026-10-06 12:00:00 inferno-launcher[300:1] '+opening]
 raw=('\r\r\n'.join(lines)+'\r\r\n').encode();ok=m.parse(raw,rid)
 assert ok['intervals']['open_to_active']['nanoseconds_numerator']==30 and ok['process_identity']['uniqueid']==999
+smc=b'AppleSMCPMU::_smcNotifyCallout(): HID buttonIndex=6 buttonState=1 notificationAppleSMCPMU::_smcNotifyCallout(): HID buttonIndex=6 buttonState=0 notification'
+framed=raw.replace(b'INFERNO_LIFECYCLE_RELAY_RAW',smc+b'INFERNO_LIFECYCLE_RELAY_RAW',1)
+assert m.parse(framed,rid)['intervals']==ok['intervals']
 fallback=m.parse(raw.replace(b'query_result=56 errno=0 uniqueid=999',b'query_result=0 errno=1 uniqueid=0'),rid);assert fallback['process_identity']['uniqueid'] is None
-cases={'foreground_in_place':raw.replace(b'background',b'active'),'generation_mismatch':raw.replace(b'270 4 1 foreground',b'270 4 0 foreground'),'mixed_main_tick':raw.replace(b'foreground 101 210',b'foreground 102 210'),'duplicate_named_open':raw+(opening+'\n').encode(),'rejected_callback':raw.replace(b'callback_ticks=205 numer=3 denom=2 accepted=1',b'callback_ticks=205 numer=3 denom=2 accepted=0'),'identity_rejected':raw+b'INFERNO_EVENT_PROCESS_IDENTITY_REJECT pid=270 query_result=0 errno=1 uniqueid=0 idversion=0\n','missing_active':raw.replace((lines[-4]+'\r\r\n').encode(),b'')}
+cases={'unrecognized_prefix':raw.replace(b'INFERNO_LIFECYCLE_RELAY_RAW',b'unknown-prefixINFERNO_LIFECYCLE_RELAY_RAW',1),'foreground_in_place':raw.replace(b'background',b'active'),'generation_mismatch':raw.replace(b'270 4 1 foreground',b'270 4 0 foreground'),'mixed_main_tick':raw.replace(b'foreground 101 210',b'foreground 102 210'),'duplicate_named_open':raw+(opening+'\n').encode(),'rejected_callback':raw.replace(b'callback_ticks=205 numer=3 denom=2 accepted=1',b'callback_ticks=205 numer=3 denom=2 accepted=0'),'identity_rejected':raw+b'INFERNO_EVENT_PROCESS_IDENTITY_REJECT pid=270 query_result=0 errno=1 uniqueid=0 idversion=0\n','missing_active':raw.replace((lines[-4]+'\r\r\n').encode(),b'')}
 results=[]
 for name,data in cases.items():
  try:m.parse(data,rid)

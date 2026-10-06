@@ -1,12 +1,16 @@
 {
   "synthetic_only": true,
   "guest_execution": false,
-  "parser_sha256": "3a8e8f63df06caafa786d1d8bc750a748e87b9805a67c0e0d3c5668f49d821fb",
+  "parser_sha256": "33b55f724f29ba0b319d0ee64abc41afeb03787424f393d6c1ea41ab6f349ac3",
   "fixture_sha256": "48f276b70762a40780386dc6608c5ed995b2f0469977bd063c73ef97a1eb785b",
   "exact_open_to_active_ns": 30,
   "denied_identity_explicit_fallback": "PID/main-tick continuity only; kernel incarnation unavailable",
   "prefixed_NSLog_ignored": true,
   "malformed_cases": [
+    {
+      "case": "unrecognized_prefix",
+      "rejected": "Missing, partial or oversized lifecycle sequence"
+    },
     {
       "case": "foreground_in_place",
       "rejected": "App was not demonstrably backgrounded immediately before OPEN; foreground-in-place is not warm resume"
