@@ -1,0 +1,1866 @@
+iBoot version: ChefKiss Inferno
+corecrypto_kext_start called
+FIPSPOST_KEXT [5282579] fipspost_post:158: PASSED: (1 ms) - fipspost_post_integrity
+FIPSPOST_KEXT [5317438] fipspost_post:164: PASSED: (1 ms) - fipspost_post_hmac
+FIPSPOST_KEXT [5327832] fipspost_post:165: PASSED: (0 ms) - fipspost_post_aes_ecb
+FIPSPOST_KEXT [5337761] fipspost_post:166: PASSED: (0 ms) - fipspost_post_aes_cbc
+FIPSPOST_KEXT [5678073] fipspost_post:167: PASSED: (14 ms) - fipspost_post_rsa_sig
+FIPSPOST_KEXT [5843501] fipspost_post:168: PASSED: (6 ms) - fipspost_post_ecdsa
+FIPSPOST_KEXT [5878218] fipspost_post:169: PASSED: (1 ms) - fipspost_post_ecdh
+FIPSPOST_KEXT [5887146] fipspost_post:170: PASSED: (0 ms) - fipspost_post_drbg_ctr
+FIPSPOST_KEXT [5907025] fipspost_post:171: PASSED: (0 ms) - fipspost_post_aes_ccm
+FIPSPOST_KEXT [6348042] fipspost_post:173: PASSED: (18 ms) - fipspost_post_pbkdf
+FIPSPOST_KEXT [6356685] fipspost_post:174: PASSED: (0 ms) - fipspost_post_kdf_ctr
+FIPSPOST_KEXT [6376442] fipspost_post:175: PASSED: (0 ms) - fipspost_post_aes_gcm
+FIPSPOST_KEXT [6390771] fipspost_post:176: PASSED: (0 ms) - fipspost_post_aes_xts
+FIPSPOST_KEXT [6414316] fipspost_post:177: PASSED: (0 ms) - fipspost_post_tdes_cbc
+FIPSPOST_KEXT [6454224] fipspost_post:178: PASSED: (1 ms) - fipspost_post_drbg_hmac
+FIPSPOST_KEXT [6457565] fipspost_post:201: all tests PASSED (50 ms)
+Darwin Image4 Validator Version 3.0.0: Wed Aug 12 22:19:21 PDT 2020; root:AppleImage4-106.0.4.0.1~129/AppleImage4/RELEASE_ARM64E
+AMFI is running in RESEARCH mode!
+AUC:[0xffffffe19b823810]::init(0xffffffe19b84e350)
+
+AUC:[0xffffffe19b823810]::probe(0xffffffe19b5e2580, 0xffffffe807d3bdac)
+
+AppleCredentialManager: init: called, instance = <ptr>.
+ACMFirstResponderKernelService: init: called, .
+ACMRM-S: init: called, starting PersistentStore service.
+ACMRM-C: init: called, starting AccessoryCache service.
+ACMKernelService: initValueFromBootArgAliasesUInt32: acc-cache size = 16 (default).
+ACMKernelService: initValueFromBootArgAliasesUInt32: acc-cache expiration = 2592000 (default).
+ACMRM: init: called, starting TRM service.
+ACMRM-A: init: called, starting TRM Analytics service.
+ACMKernelService: initValueFromBootArgAliasesUInt32: analytics collection period = 86400 (default).
+ACMKernelService: initValueFromBootArgAliasesUInt32: policy mode timeout = 259200 (default).
+ACMRM-A: notifyStandardModeTimeoutChanged: called, value = 259200 (modified = YES).
+ACMKernelService: initValueFromBootArgAliasesUInt32: (bounded) grace period timeout = 3600 (default).
+ACMRM-A: notifyGracePeriodTimeoutChanged: called, value = 3600 (modified = YES).
+ACMKernelService: initValueFromBootArgAliasesUInt32: enabled = 1 (default).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO* BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO* LegHW=NO OSEnv=NO | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _loadDisabledByOSEnvironment: disabled by OSEnvironment: NO.
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO* | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _mapAndPublishTRM: set TRM_PolicyTimeout = 259200.
+ACMRM: _mapAndPublishTRM: sending kIOMessageServicePropertyChange(n=1) while DISABLED, TRM: 259200 -/ff 4294967295 -/ff miss=ff (CUR: 259200 -/ff 4294967295 -/ff).
+AppleT803xIO::start: chip-revision: C0
+AppleT803xIO::start: this: <ptr>, ACCE virt addr: <ptr>, phys addr: 0x210f00000
+AppleT803xIO::start: this: <ptr>, ACCP virt addr: <ptr>, phys addr: 0x211f00000
+IOAccessoryManager::configureAccessoryPowerGated: dock-0pin: Configuring Accessory Power to (1)
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerGated: PowerModeOff
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: _powerState=1, _powerStateInternal=0, _sleeping=0, _accessoryPowerModeExtOffRequested 0
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: !getAccessoryPowerReady(); set PowerModeOff?
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: handleAccessoryPowerWillChange, confirm PowerModeOff
+[ERROR] IOPort::_setSupportedTransportsForRegistryEntry(): Could not find transports-supported property! (entry: dock-0pin)
+[ERROR] IOPort::_setSupportedTransportsForRegistryEntry(): Error setting supported transports for Port-Inductive@101!
+[ERROR] IOPort::_setSupportedFeaturesForRegistryEntry(): Could not find features-supported property! (entry: dock-0pin)
+[ERROR] IOPort::_setSupportedFeaturesForRegistryEntry(): Error setting supported features for Port-Inductive@101!
+IOPort::start(): Registering service... (portType: 14, portNumber: 101, providerPath: IOService:/AppleARMPE/dock-0pin)
+Port-Inductive handleAccessoryDetect, detect change = 0 (override 100), ID change = 0 (override 0), result 0 
+AppleARMBacklight::start: Using new Backlight Architecture 1
+AppleARMBacklight::start: no DBV offset data
+AppleARMBacklight::start: no DBV max data
+AppleARMBacklight::start: _calibratedMaxCurrent=15000
+AppleARMBacklight::start: _calibratedMidCurrent=3750
+AppleARMBacklight::start: mA2Nits2ndOrderCoef=-1
+AppleARMBacklight::start: mA2Nits1stOrderCoef=63
+AppleARMBacklight::start: mA2Nits0thOrderCoef=-3
+AppleARMBacklight::start: nits2mAmps2ndOrderCoef=1357
+AppleARMBacklight::start: nits2mAmps1stOrderCoef=15551
+AppleARMBacklight::start: nits2mAmps0thOrderCoef=45
+AppleARMBacklight::start: _lMaxProduct=42598400
+AppleARMBacklight::start: _lMidProduct=10158080
+AppleARMBacklight::start: _lMinProduct=183500
+AppleARMBacklight::start: Backlight calibration data 0
+AppleARMBacklight::start: No valid backlight cal data in syscfg.. Use defaults
+IOAccessoryTRM::start(): inRestoreMode: NO, dockSupportsTRM: NO (m_mgrPrimaryPortID: 512)
+AppleCredentialManager: init: returning, result = true, instance = <ptr>.
+AppleARMBootPerf: Error: profile region not found (2)
+AppleARMBootPerf: Error: failed to publish profile data (2)
+virtual bool CoreAnalyticsHub::start(IOService *)::105:CoreAnalyticsHub start
+AppleARMBacklight::start: _calibratedMinCurrent=74 uA
+AppleARMBacklight::start: _lMaxProduct=42598400, _lMidProduct=10158080, _lMinProduct=183500, _lMaxPanel=42598399, _lMidPanel=11169963, _lMinPanel=99640, _milliAmps2NitsScaleFactor=732648
+AppleARMBacklight::start: dim-ramp-max-step=100
+AppleARMBacklight::start: _minDACLevel=143 _maxDACLevel=1879
+IOAccessoryTRM::start(): Registering service IOAccessoryTRM... (m_mgrPrimaryPortID: 512)
+AppleSSE::start called
+AppleSSE::start returning, result = 1
+AUC:[0xffffffe19b823810]::start(0xffffffe19b5e2580)
+
+AppleSEPKeyStore:321:0: starting (BUILT: Aug 12 2020 22:51:30)
+AppleInterruptController::start: _aicVersion = 2 _aicBaseAddress = 0x<ptr> _aicNumExtInts = 0x00000240 _aicNumIPIs = 0x00000004
+AppleInterruptController::start: Num Shared Timestamps == 0
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleS8000AES::start: registers at phys:0x0x235008000/0x0x23d2d0000 virt:0x<ptr>/0x0x4000 / 0x<ptr>/0x0x4000
+AppleS8000AES::start: aes-version: 3
+AppleS8000AES::start: using-acg: no
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleSamsungSPIController::start: spi1: _spiBaseAddress = 0x235104000:<ptr>, _spiVersion = 1 _spiInternalCS = 0
+AppleSamsungSPIController::start: spi3: _spiBaseAddress = 0x23510c000:<ptr>, _spiVersion = 1 _spiInternalCS = 0
+AppleS5L8940XI2CController::start: i2c0 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: i2c1 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: i2c2 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: i2c3 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: smc-i2c0 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: smc-i2c1 this: <ptr> _i2cBaseAddress: <ptr>
+000000.733529 AppleT8030TypeCPhy@0: AppleT8027TypeCPhy::start: usb3-phy-parent not specified
+AppleSEPKeyStore:545:0: _sep_enabled = 1
+AppleCredentialManager: start: called, instance = <ptr>.
+ACMRM: _publishIOResource: AppleUSBRestrictedModeTimeout = 259200.
+M3 Normal mode not enabled on Fastsim
+virtual bool IOMobileFramebufferLegacy::start(IOService *)
+IOMFB: driver commit: 
+AppleSynopsysMIPIDSIController::start: this: <ptr>, _dsimBaseAddress = <ptr> physical = 0x230400000 length 786432
+AppleCredentialManager: start: initializing power management, instance = <ptr>.
+AppleCredentialManager: start: started, instance = <ptr>.
+AppleCredentialManager: start: returning, result = true, instance = <ptr>.
+virtual bool AppleSynopsysMIPIDSIController::start(IOService *) panicOnError NOT Supported
+AppleEmbeddedPCIE::start this = <ptr>, gAPCIEdebugFlags = 0x80000001
+AppleDieTempController::start: 
+AppleDieTempController::initLoopConfig: Loop 0 kp: 0xc0000
+AppleDieTempController::initLoopConfig: Loop 0 ki: 0x70e8000
+AppleDieTempController::initLoopConfig: Loop 0 control type: 2
+AppleDieTempController::initLoopConfig: Loop 1 kp: 0xc0000
+AppleDieTempController::initLoopConfig: Loop 1 ki: 0x70e8000
+AppleDieTempController::initLoopConfig: Loop 1 control type: 4
+AppleDieTempController::initLoopConfig: Loop 2 kp: 0x2f9999
+AppleDieTempController::initLoopConfig: Loop 2 ki: 0x1180000
+AppleDieTempController::initLoopConfig: Loop 2 control type: 16
+AppleDieTempController::initLoopConfig: Successfully configured 3 loops
+AppleDieTempController::handleBootArgs: In handleBootArgs routine
+AppleDieTempController::cpuPerfControllerArrivalHandler: boot_dvd_factor 0x00010000
+virtual bool AppleARMLightEmUp::start(IOService *): starting...
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleT8015TempSensor::start: Got temperatureOffsetValue of 13 for locationID 0x54703169
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleT8015TempSensor::start: Got temperatureOffsetValue of 4 for locationID 0x54613069
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleS5L8960XWatchDogTimer::start: _wdtBaseAddress: <ptr> _wdtResetCount=0xe4e1c00 _useSMCEnforcedWatchdog=0
+watchdog disabled by boot-argIdentified Serial Port uart0 at 0x235200000(<ptr>)
+Identified Serial Port uart7 at 0x23521c000(<ptr>)
+AppleS8000AES::start: using DART Mapper: <ptr>
+AppleDialogSPMIPMU::start: spmi-pmu _pmuNub: <ptr> built 22:52:54 Aug 12 2020
+AppleSynopsysMIPIDSIController::start Failed to get phy settings count
+virtual bool AppleSynopsysMIPIDSIController::start(IOService *)  Slow Adaptive Clocking enabled with 9 frequencies
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+RTBuddy(SMC): start(<ptr>) - (Aug 12 2020@22:50:37)
+RTBuddy(SMC): Boot args override: wdt = -1
+RTBuddy(SMC): Resuming...
+
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+Starting AppleSMC kext(<ptr>) - (Aug 12 2020@22:51:44)
+RTBuddy(ANS2): start(<ptr>) - (Aug 12 2020@22:50:37)
+AppleSMCEmbedded::setPowerState(): ENTER powerStateOrdinal=1, _activeKeyCommand=0 newState=1
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+virtual bool AppleSEPManager::start(IOService *): 
+RTBuddy(SIO): start(<ptr>) - (Aug 12 2020@22:50:37)
+RTBuddy(ANS2): Boot args override: wdt = -1
+virtual bool AppleSEPManager::start(IOService *): SEP memory IS coherent
+AppleDisplayPMU::start: display-pmu _pmuIICNub: <ptr> built 22:19:31 Aug 12 2020
+virtual bool AppleSEPManager::start(IOService *): control endpoints created
+virtual bool AppleSEPManager::start(IOService *): PM init done
+virtual bool AppleSEPManager::start(IOService *): registered
+IOReturn AppleSEPManager::_setPowerState(unsigned long *): power state 0 -> 2
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 1
+AppleICA60:probe vendorID 0x0 prodID 0x1 fabID 0xa0 revision 0x0 sensor 0x1 mic-bias-index 1
+RTBuddy(ANS2): Resuming...
+
+RTBuddy(SIO): Boot args override: wdt = -1
+RTBuddy(SIO): Resuming...
+
+RTBuddy(AOP): start(<ptr>) - (Aug 12 2020@22:50:37)
+RTBuddy(AOP): Boot args override: wdt = -1
+RTBuddy(AOP): Resuming...
+
+pci (build 22:19:24 Aug 12 2020), flags 0x20c3008
+pci (build 22:19:24 Aug 12 2020), flags 0x20c3008
+[ PCI configuration begin ]
+AppleSmartIO (RTBuddy-based)::start (<ptr>) - (Aug 12 2020@22:19:30)
+AppleSPUFirmwareService: found node AOP
+AppleCredentialManager: handleEventGated: called, event(5).
+AppleCredentialManager: handleEventGated: AppleSEPManager has been matched.
+virtual IOService *AppleANS2NVMeController::probe(IOService *, SInt32 *)::194:Found (ANS2) provider, returning score 100000
+virtual IOService *AppleANS2NVMeController::probe(IOService *, SInt32 *)::194:Found (ANS2) provider, returning score 100000
+AppleAuthCPRelay:_sendCommandGated CMD=0x1 _receivedStatus ERROR ( status = 0xe00002e9 )
+AppleAuthCPRelay:_getCert failed to send command kAuthCommandIDGetCert
+AppleAuthCPRelay:start _getCert() failed (status = 0xe00002e9)
+Failed to enable notifications (0x84)!
+
+ERROR: Unable to enable notification interface (kSMCKeyNotFound).
+
+virtual bool AppleANS2NVMeController::start(IOService *)::394:Found the ANS2Endpoint1
+virtual bool AppleANS2NVMeController::start(IOService *)::394:Found the ANS2Endpoint1
+[ PCI configuration end, bridges 3, devices 0 ]
+bboolool Apple AppleEmbeEmbeddedNVMeController::SetNamespacddedNVMesStreCouct():ntr:1olle86:r::ObtainSeted Nam7 namespaces from DT
+espacesStruct()::186:Obtained 7 namespaces from DT
+virtual IOFilterInterruptEventSource *AppleANS2NVMeController::CreateDeviceInterrupt(IOInterruptEventSource::Action, IOFilterInterruptEventSource::Filter, IOService *)::2719:ANS2 NVMe interrupt index - 0x4
+virtual IOFilterInterruptEventSource *AppleANS2NVMeController::CreateDeviceInterrupt(IOInterruptEventSource::Action, IOFilterInterruptEventSource::Filter, IOService *)::2719:ANS2 NVMe interrupt index - 0x4
+LPM: Log data is NOT valid. 0x0 0x0
+AppleDialogSPMIPMU::start: Primary PMU detected
+AppleARMRTC started!#####
+AppleDialogSPMIPMURTC started!******
+Failed to read info-leg_scrpadAppleDialogSPMIPMURTC::handleStart: ro=0 nvram=0 helper=0 AppleDialogSPMIPMU _pmuNub: <ptr> 0x1102:0x9f04-0x9f15 built 22:52:53 Aug 12 2020
+apcie[3:pci-bridge3]::_mapRIDToSID no mapper defined and device <ptr> (0:3:0) does not support hot-plug
+apcie[2:pci-bridge2]::_mapRIDToSID no mapper defined and device <ptr> (0:2:0) does not support hot-plug
+AppleDialogSPMIPMURTC tick read!&&&&&&&
+AppleDialogSPMIPMURTC ending!%%%
+AppleARMRTC registering service!@@@@@@
+AppleARMRTC service registered!$$$$$
+AppleARMRTC publishing service!^^^^^^
+Identified Serial Port uart4 at 0x235210000(<ptr>)
+apfs_module_start:2411: load: com.apple.filesystems.apfs, v1677.0.5, apfs-1677.0.5, 2020/08/12
+com.apple.AppleFSCompressionTypeZlib kmod start
+IOSurfaceRoot::installMemoryRegions()
+IOSurface disallowing global lookups
+apfs_sysctl_register:1253: done registering sysctls.
+com.apple.AppleFSCompressionTypeZlib load succeeded
+bool IOMFB::UPPipe_H11P::setup_tunables_base_target(): Tunables Target 9
+L2TP domain init
+IOMFB setup_table: Could not find table 'display-temp-compensation' in registry. Using default table.
+IOMFB setup_table: Could not find table 'display-temp-compensation' in registry. Using default table.
+L2TP domain init complete
+Load request for com.apple.nke.pptp failed: -603946998
+IOMFB setup_table: Could not find table 'display-backlight-compensation' in registry. Using default table.
+Waiting on <dict ID="0"><key>IOProviderClass</key><string ID="1">IOMedia</string><key>IOPropertyMatch</key><dict ID="2"><key>Partition ID</key><integer size="64" ID="3">0x1</integer></dict></dict>
+virtual IOMFBStatus IOMFB::UPPipe_H11P::apt_fixed_rr_changed(IOMFB::AppleRegisterStream *): error: fixed refresh rate only supported on APT devices
+virtual IOMFBStatus IOMFB::UPPipe_H11P::apt_fixed_rr_changed(IOMFB::AppleRegisterStream *): forcing refresh rate: disabled
+IOMFB set_ffr_index: Disabling overdrive (missing EDT data)
+IOMFB set_panel_id: missing EDT data raw-panel-serial-number
+IOMFBStatus IOMFB::UPPipe_H11P::set_run_mode_safe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H11P::RunMode): Int no need to defer: 0 -> 1
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=0 entrysize=64
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=0 entrysize=64
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=1 entrysize=128
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=1 entrysize=128
+virtual void AppleANS2NVMeController::SetModeselRegister(uint32_t)::1186:Setting modesel to 0
+virtual void AppleANS2NVMeController::SetModeselRegister(uint32_t)::1186:Setting modesel to 0
+IOMFB: dynamic enabling of PCC is not supported on this platform, you need to power cycle display to see this change take effect
+000001.471033 AppleT8027USBXDCI@: AppleUSBXDCIARM::start: _dock is NULL, defaulting to device mode
+000001.471872 AppleT8027USBXDCI@: IOUSBDeviceController::prepareDefaults: model iPhone version 12.1
+000001.488593 usb-drd-port-hs@00100000: AppleUSB30XHCITypeCPort::start: _dock is NULL, defaulting to device mode
+000001.490301 usb-drd-port-hs@00100000: AppleUSBHostPort::initBusCurrent: insufficient power to enable this port
+IOMFB read_bic - disable BIC (config init failed)
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1964:nvme: Vendor ID     : 0x1b36
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1964:nvme: Vendor ID     : 0x1b36
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1965:nvme: Model Number  : QEMU NVMe Ctrl                          
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1965:nvme: Model Number  : QEMU NVMe Ctrl                          
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1966:nvme: Serial Number : ChefKiss-ANS        
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1966:nvme: Serial Number : ChefKiss-ANS        
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1967:nvme: Firmware Rev  : ChefKiss
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1967:nvme: Firmware Rev  : ChefKiss
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2000:nvme: S3E B0 Sandisk 3d-g3 tlc 3D 4 plane 32GB bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2000:nvme: S3E B0 Sandisk 3d-g3 tlc 3D 4 plane 32GB NAND
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2009:ECCVersion   : 1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2009:ECCVersion   : 1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2010:FTL Rev      : 23.1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2010:FTL Rev      : 23.1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2011:DM_Version   : 101
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2011:DM_Version   : 101
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2012:=======================
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2012:=======================
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2019:Found 16 namespaces in current NAND
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2019:Found 16 namespaces in current NAND
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[1] as nstype[1]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[1] as nstype[1]
+Video Mode Cebu/Sicily/Ellis
+IOMFB updateFrequencies: minimum-frequency property not found, using getClockFrequency(0) insteabd.
+oobooll Ap ApplpleEeEmbmbeedddededNdNVMVMeContreColonletroller:r::Det:DeermineteNarmmespacesin()::eN24am35:Iespacedsentif()ied:: nsid[242] as ns35:Itypede[2]
+ntified nsid[2] as nstype[2]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[3] as nstype[3]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[3] as nstype[3]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[4] as nstype[4]
+virtual bool IOMFB::UPBlock_Config_H11P::did_power_on(IOMFB::AppleRegisterStream *): tunables_managed
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[4] as nstype[4]
+IOMFB did_power_on: timings not set; reading 'display-timing-info' from origin 2
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[5] as nstype[5]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[5] as nstype[5]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[6] as nstype[6]
+bool AppleEmbeddedNVMeIOMFBStContatus IOMFB::UProPipe_H11P::set_rulln_moer::de_sDafe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H11P::RunMode): Int no need to defer: 1 -> 2
+etermineNamespaces()::2435:Identified nsid[6] as nstype[6]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[7] as nstype[8]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[7] as nstype[8]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[8] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[8] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[9] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[9] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[10] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[10] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[11] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[11] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[12] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[12] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[13] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[13] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[14] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[14] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[15] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[15] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[16] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[16] as nstype[0]
+bool AppleEmbeddedNVMeController::SetSwapWriteLimit(uint32_t)::2192: Swap limit set to 1073741824bytes, 1GB
+bool AppleEmbeddedNVMeController::SetSwapWriteLimit(uint32_t)::2192: Swap limit set to 1073741824bytes, 1GB
+000001.546660 usb-drd-port-hs@00100000: AppleUSB30XHCITypeCPort::cableChangeOccurred: cable detect disabled: transport type 2 connect type 2 restricted mode 0
+000001.547894 usb-drd-port-hs@00100000: AppleUSB30XHCITypeCPort::cableChangeOccurred: no action for transport type 2 connect type 2 restricted mode 0
+uint32_t AppleEmbeddedNVMeNVRAM::GetNVRAMSize()::745:NVRAM size is 8192 bytes
+uint32_t AppleEmbeddedNVMeNVRAM::GetNVRAMSize()::745:NVRAM size is 8192 bytes
+static bool IOMobileFramebufferLegacy::readDataInEDT(IOService *, bool, const char *, const uint32_t, uint32_t *): property KSF_version not found in EDT, assumed false.
+IOMFB updateFrequencies: minimum-frequency property not found, using getClockFrequency(0) instead.
+IOMFB init_power_lut: failed to read color accuracy index
+function-brightness_update not found 
+function-mcc_dataset not found 
+IOMFB arm_fn_search: Couldn't allocate AppleARMFunction for function-temperature_update
+IOMFB arm_fn_search: failed with 0xe00002bc (function-temperature_update)
+IOMFB arm_fn_search: Couldn't allocate AppleARMFunction for function-link_enable
+IOMFB arm_fn_search: failed with 0xe00002bc (function-link_enable)
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1578:allocateAll 1
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1578:allocateAll 1
+AppleARMBacklight::start: Pre-strobe iDAC=1879 overriden in EDT 
+AppleARMBacklight::armFunctionCallback: Using 1 Backlight Controllers
+IOMFB setup_table: Could not find table 'display-backlight-compensation' in registry. Using default table.
+IOMFB: function-pcc_update found
+AppleARMBacklight::armFunctionCallback: Dual backlight controller system
+/Library/Caches/com.apple.xbs/Sources/AppleSMC/AppleSMC-589.0.5/AppleSMCEmbeddedCharger/AppleSMCCharger.cpp:408 _setPowerStateGated() ENTER powerStateOrdinal=1, _powerState=1
+AppleSMCSensorDispatcher::start: Found 8 sensors from the device tree
+AppleSMCSensorDispatcher::start: Start success
+
+dev_init:297: disk0 device accelerated crypto: 0 (compiled @ Aug 12 2020 22:19:57)
+dev_init:300: disk0 device_handle block size 4096 block count 8388347 features 0 internal 
+nx_kernel_mount:1134: disk0 initializing cache w/hash_size 4096 and cache size 10064
+nx_kernel_mount:1234: disk0 container cleanly-unmounted flag set.
+ApplePinotLCD: _lcdPanelID: 0xa1c432d1 _lcdPanelClass: 2
+nx_kernel_mount:1402: disk0 checkpoint search: largest xid 16410, best xid 16410 @ 139
+import_iboot_forwarded_roothash:2577: importing root hash ...
+apfs_extract_root_hash_arm:10001: could not retrieve system-volume-auth-blob from device tree
+import_iboot_forwarded_roothash:2580: apfs_extract_root_hash_and_manifest failed with error: No such file or directory (2)
+Got boot device = IOService:/AppleARMPE/arm-io@10F00000/AppleT803xIO/ans@77400000/AppleASCWrapV2/iop-ans-nub/RTBuddyV2/RTBuddyService/AppleANS2NVMeController/NS_01@1/IOBlockStorageDriver/QEMU NVMe Ctrl Media/IOGUIDPartitionScheme/Untitled 1@1
+BSD root: disk0s1, major 1, minor 1
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 2, NSTYPE - 2
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 2, NSTYPE - 2
+apfs_vfsop_mountroot:2188: apfs: mountroot called!
+dev_init:297: disk0s1 device accelerated crypto: 3 (compiled @ Aug 12 2020 22:19:57)
+dev_init:300: disk0s1 device_handle block size 4096 block count 8388347 features 22 internal solidstate
+nx_kernel_mount:1134: disk0s1 initializing cache w/hash_size 4096 and cache size 10064
+nx_kernel_mount:1234: disk0s1 container cleanly-unmounted flag set.
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 3, NSTYPE - 3
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 3, NSTYPE - 3
+nx_kernel_mount:1402: disk0s1 checkpoint search: largest xid 16410, best xid 16410 @ 139
+apfs_vfsop_mount:1848: Promoter has been locked for disk0s1
+failed to find root-snapshot-name snapshot
+handle_mount:627: vol-uuid: 5133F48D-5D9E-499B-A8BA-45E692E36FD9 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.12)
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 6, NSTYPE - 6
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 6, NSTYPE - 6
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6634: Volume AzulSeed18A5351d.N104N841DeveloperOS is not in a volume group
+[effaceable:INIT] found current generation, 3, in group 0
+apfs_vfsop_mount:2171: disk0s1s1:0 mounted volume: AzulSeed18A5351d.N104N841DeveloperOS
+[effaceable:INIT] started
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 7, NSTYPE - 8
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 7, NSTYPE - 8
+virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::269: Logical Blocks Size = 4096 
+ virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::269: Logical Blocks Size = 4096 
+ virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::272: Block Count = 256 
+ virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::272: Block Count = 256 
+ AppleAstrisGpioProbe::platformInit():[WARNING] Bailing out.. Set swd_updates_arg boot-arg to allow swd updates!
+AppleAstrisGpioProbe::start():[ERROR] could not do platform initialization
+virtual bool AppleNVMeNamespaceDevice::start(IOService *)::111:NVMe Namespace Device registration done for NSID: 7, NSTYPE: 8
+virtual bool AppleNVMeNamespaceDevice::start(IOService *)::111:NVMe Namespace Device registration done for NSID: 7, NSTYPE: 8
+virtual bool AppleEmbeddedNVMeController::StartController()::1547:Setting NAND status to Ready
+virtual bool AppleEmbeddedNVMeController::StartController()::1547:Setting NAND status to Ready
+dyld: setting comm page to 0x0
+Tue Oct  6 09:42:10 2026 localhost com.apple.xpc.launchd[1] <Notice>: hello
+Darwin Bootstrapper Version 7.0.0: Mon Aug 10 04:09:14 PDT 2020; root:libxpc_executables-2038.0.13~13/launchd/RELEASE_ARM64E
+boot-args = debug=0x14e serial=3 wdt=-1 tlto_us=-1 mtxspin=-1 agm-genuine=1 agm-authentic=1 agm-trusted=1 -vm_compressor_wk_sw launchd_unsecure_cache=1
+Tue Oct  6 09:42:10 2026 localhost com.apple.xpc.launchd[1] (com.apple.xpc.launchd.domain.system) <Notice>: entering ondemand mode
+Tue Oct  6 09:42:10 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: fsck
+** Checking the container superblock.
+** Checking the object map.
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume AzulSeed18A5351d.N104N841DeveloperOS was formatted by newfs_apfs (945.200.129.100.10) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume Data was formatted by newfs_apfs (1677.0.5) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume Preboot was formatted by newfs_apfs (1677.0.5) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume xART was formatted by newfs_apfs (1677.0.5) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume Hardware was formatted by newfs_apfs (1677.0.5) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume Update was formatted by newfs_apfs (1677.0.5) and last modified by .
+** QUICKCHECK ONLY; FILESYSTEM CLEAN
+Tue Oct  6 09:42:11 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: mount-phase-1
+mount: found boot container: /dev/disk0s1, data volume: /dev/disk0s1s2 env: 1
+spaceman_metazone_init:189: disk0s1 metazone for device 0 of size 262135 blocks (encrypted: 8126212-8257279 unencrypted: 8257279-8388347)
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 1 blocks starting at paddr 4096000
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 2 blocks starting at paddr 2195456
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 3 blocks starting at paddr 2228224
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 4 blocks starting at paddr 2260992
+dev_dump:256: Aggregate constructed: dev=<ptr> di=0 dv_num_slice=15 dv_num_slice_blk=589824 dv_num_lslice_blk=130811
+handle_mount:627: vol-uuid: A2188D3C-6964-48A9-9ABC-C88CFE626487 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume xART role 100 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s4:0 mounted volume: xART
+/dev/disk0s1s4 on /private/xarts (apfs, local, nodev, nosuid, journaled, noatime, nobrowse)
+spaceman_trim_free_blocks:3361: disk0s1 scan took 0.035793 s, trims took 0.020971 s
+spaceman_trim_free_blocks:3369: disk0s1 6518230 blocks free in 4197 extents
+spaceman_trim_free_blocks:3377: disk0s1 6518230 blocks trimmed in 4197 extents (4 us/trim, 200133 trims/s)
+spaceman_trim_free_blocks:3380: disk0s1 trim distribution 1:1011 2+:1317 4+:1463 16+:322 64+:41 256+:43
+handle_mount:627: vol-uuid: 9D1C4D39-62ED-41B6-870D-071F5C4B7934 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume Preboot role 10 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s3:0 mounted volume: Preboot
+/dev/disk0s1s3 on /private/preboot (apfs, local, nodev, nosuid, read-only, journaled, noatime, nobrowse)
+Tue Oct  6 09:42:11 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: data-protection
+init_data_protection: Gigalocker file (/private/xarts/81879F33-B0F2-573A-AE12-6B517C322E33.gl) exists
+init_data_protection: Gigalocker initialization completed
+void AppleSEPFirmware::_copyInFirmware(IOMemoryDescriptor *): sepos_va:<ptr> sepos_avail_size: 0x1000000
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 1
+void AppleSEPBooter::_bootAction(void *, void *): SEP accepted Tz0
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 2
+IOReturn AppleSEPBooter::bootSEP(AppleSEPFirmware *, bool, AppleSEPSharedMemoryBuffer *, bool): SEP booting
+IOReturn AppleSEPBooter::bootSEP(AppleSEPFirmware *, bool, AppleSEPSharedMemoryBuffer *, bool): Shmbuf for SEP: { slave addr = 0x100c000, size = 0x20000 }
+void AppleSEPBooter::_bootAction(void *, void *): SEP accepted IMG4
+void AppleSEPManager::_notifyOSActiveGated(): SEP/OS is alive
+IOReturn AppleSEPARTRequests::handle_first_connected(): Configuring in buffer
+SEP EP 16 enabled
+void AppleSEPManager::_updateDeviceTree(): updateDeviceTreeThread started
+static void AppleSEPManager::_updateDeviceTreeThread(void *): updateDeviceTree Success
+void AppleSEPARTService::_ensure_nvram_readable(): Waiting for IODTNVRAM
+void AppleSEPARTService::_ensure_nvram_readable(): Got IODTNVRAM OK
+IOReturn AppleSEPARTRequests::handle_first_connected(): Configuring out buffer
+apfs_rawdev_create:637: Enable bypass mode on inode 16 on xART@disk0s1 as 2.0
+Tue Oct  6 09:42:11 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: finish-obliteration
+Obliterator: In INIT check
+IORegistryEntryGetProperty failed, may be does not exist
+Obliterator: No obliteration needed, continue booting, returning 0
+Tue Oct  6 09:42:11 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: commit-boot-mode
+Tue Oct  6 09:42:11 2026 localhost com.apple.xpc.launchd[1] <Notice>: boot-mode committed: (null)
+Tue Oct  6 09:42:11 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: restore-datapartition
+Tue Oct  6 09:42:11 2026 localhost com.apple.xpc.launchd[1] <Notice>: restore-datapartition: optional boot task not present
+Tue Oct  6 09:42:11 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: mount-phase-2
+mount: found boot container: /dev/disk0s1, data volume: /dev/disk0s1s2 env: 1
+migrate_media_keys_if_needed:1206: no media keys to migrate for container = disk0s1
+mount: failed to migrate Media Keys, error = c002
+handle_mount:627: vol-uuid: 360579AF-F2BC-4412-834F-712D92E40B3D block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6634: Volume Data is not in a volume group
+apfs_vfsop_mount:2171: disk0s1s2:0 mounted volume: Data
+/dev/disk0s1s2 on /private/var (apfs, local, nodev, nosuid, journaled, noatime)
+handle_mount:627: vol-uuid: 1A7424FA-B491-48D7-8C27-D48C13F7F907 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume Update role c0 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s6:0 mounted volume: Update
+/dev/disk0s1s6 on /private/var/MobileSoftwareUpdate (apfs, local, nodev, nosuid, journaled, noatime, nobrowse)
+handle_mount:627: vol-uuid: 5C915B1E-CAF5-4B64-AEF1-5691D0A2E801 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume Hardware role 140 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s5:0 mounted volume: Hardware
+/dev/disk0s1s5 on /private/var/hardware (apfs, local, nodev, nosuid, journaled, noatime, nobrowse)
+Tue Oct  6 02:42:12 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: init-with-data-volume
+Tue Oct  6 02:42:12 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: MSUEarlyBootTask
+main: MSUEarlyBootTask running
+main: Content from the ramdisk will be present at /private/var/MobileSoftwareUpdate/000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000-MSUData if it exists
+MSUEarlyBootTask: I have nothing to do. Goodbye!!
+Tue Oct  6 02:42:12 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: fips
+Tracing: disabled
+FIPSPOST_USER [91258910] fipspost_post:158: PASSED: (3 ms) - fipspost_post_integrity
+FIPSPOST_USER [91291688] fipspost_post:164: PASSED: (0 ms) - fipspost_post_hmac
+FIPSPOST_USER [91302299] fipspost_post:165: PASSED: (0 ms) - fipspost_post_aes_ecb
+FIPSPOST_USER [91312666] fipspost_post:166: PASSED: (0 ms) - fipspost_post_aes_cbc
+FIPSPOST_USER [91646777] fipspost_post:167: PASSED: (13 ms) - fipspost_post_rsa_sig
+FIPSPOST_USER [91804616] fipspost_post:168: PASSED: (6 ms) - fipspost_post_ecdsa
+FIPSPOST_USER [91837041] fipspost_post:169: PASSED: (1 ms) - fipspost_post_ecdh
+FIPSPOST_USER [91855367] fipspost_post:170: PASSED: (0 ms) - fipspost_post_drbg_ctr
+FIPSPOST_USER [91879604] fipspost_post:171: PASSED: (0 ms) - fipspost_post_aes_ccm
+FIPSPOST_USER [92326039] fipspost_post:173: PASSED: (18 ms) - fipspost_post_pbkdf
+FIPSPOST_USER [92336053] fipspost_post:174: PASSED: (0 ms) - fipspost_post_kdf_ctr
+FIPSPOST_USER [92501724] fipspost_post:175: PASSED: (6 ms) - fipspost_post_aes_gcm
+FIPSPOST_USER [92519079] fipspost_post:176: PASSED: (0 ms) - fipspost_post_aes_xts
+FIPSPOST_USER [92541996] fipspost_post:177: PASSED: (0 ms) - fipspost_post_tdes_cbc
+FIPSPOST_USER [92556661] fipspost_post:178: PASSED: (0 ms) - fipspost_post_drbg_hmac
+FIPSPOST_USER [92795868] fipspost_post:180: PASSED: (9 ms) - fipspost_post_ffdh
+FIPSPOST_USER [93056800] fipspost_post:181: PASSED: (10 ms) - fipspost_post_rsa_enc_dec
+FIPSPOST_USER [93060791] fipspost_post:201: all tests PASSED (78 ms)
+Tue Oct  6 02:42:12 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: keybag
+****** IN MKB_INIT ****
+AppleSEPKeyStore:2878:16: SEP timeout multiplier = 10
+SEP EP 18 enabled
+AppleSEPKeyStore:5995:16: negotiated to ipc header theirs:v1, ours:v2 -> negotiated:v1
+AppleSEPKeyStore:5926:16: failed to create refkey -536870212
+MKB_INIT: mount is with NO CPROTECT:0x14809018 on  (/private/var)
+ }MKB_INIT: mount point (/private/var) does not support Data Protection
+MKB_INIT: System Keybag loaded
+****** STARTING EARLYBOOT SETUP ****
+MKB_INIT: STARTING EARLYBOOT SETUP
+MKB_INIT: Could not open /private/var//keybags/usersession.kb: No such file or directory
+MKB_INIT: LoadAllUserSessions: diskLoadUserSessions failed
+tx_flush:1033: disk0s1 tx xid 16411 took 4585161 us to sync and write superblock
+MKB_INIT: setup kernel personas
+MKB_INIT: DONE EARLYBOOT SETUP
+TUP
+****** DONE EARLYBOOT SETUP ****
+****** DONE MKB_INIT ****
+Tue Oct  6 02:42:17 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: usermanagerd
+Tue Oct  6 02:42:17 2026 localhost com.apple.xpc.launchd[1] <Notice>: usermanagerd: optional boot task not present
+Tue Oct  6 02:42:17 2026 localhost com.apple.xpc.launchd[1] <Notice>: launchd logging initialized
+Tue Oct  6 02:42:17 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: xpcroleaccountd
+Tue Oct  6 02:42:17 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: init_featureflags
+init_featureflags: skipping directory: /System/Library/FeatureFlags/Domain
+init_featureflags: skipping directory: /Library/Preferences/FeatureFlags/Domain
+Tue Oct  6 02:42:17 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: fud
+objc[20]: Class UARPManifestProperties is implemented in both /System/Library/PrivateFrameworks/CoreUARP.framework/CoreUARP and /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/Support/fud. One of the two will be used. Which one is undefined.
+fud: -[FudEarlyBoot doFUDEarlyBoot:](): Starting Early Boot
+fud: -[FudEarlyBoot updateFWForDeviceClass:dict:](): 
+deviceClass=com.apple.mau.plugin.generickext 
+dict={
+    IOMatchLaunchServiceID = 4294968027;
+}
+fud: -[FudEarlyBoot doFUDEarlyBoot:](): End Early Boot
+Tue Oct  6 02:42:17 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: tzinit
+Tue Oct  6 02:42:17 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: finish-restore
+Tue Oct  6 02:42:17 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: finish-demo-restore
+Tue Oct  6 02:42:17 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: sysstatuscheck
+Tue Oct  6 02:42:17 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: prng_seedctl
+PRNG diagnostics:
+0 user reseeds, 1 scheduled reseeds, 80 max samples in a scheduled reseed, 397 max samples in an entropy input
+generator 0: 2 rekeys, 473 requests, 5408 total bytes requested, 64 max bytes requested in a request, 3012 bytes requested since rekey, 3012 max bytes requested between rekeys
+generator 1: 2 rekeys, 96 requests, 1828 total bytes requested, 64 max bytes requested in a request, 1744 bytes requested since rekey, 1744 max bytes requested between rekeys
+pool 0: 0 samples, 1 drains, 80 max samples
+pool 1: 397 samples, 0 drains, 397 max samples
+pool 2: 40 samples, 0 drains, 40 max samples
+pool 3: 68 samples, 0 drains, 68 max samples
+pool 4: 88 samples, 0 drains, 88 max samples
+pool 5: 117 samples, 0 drains, 117 max samples
+pool 6: 37 samples, 0 drains, 37 max samples
+pool 7: 48 samples, 0 drains, 48 max samples
+pool 8: 109 samples, 0 drains, 109 max samples
+pool 9: 301 samples, 0 drains, 301 max samples
+pool 10: 100 samples, 0 drains, 100 max samples
+pool 11: 79 samples, 0 drains, 79 max samples
+pool 12: 115 samples, 0 drains, 115 max samples
+pool 13: 57 samples, 0 drains, 57 max samples
+pool 14: 130 samples, 0 drains, 130 max samples
+pool 15: 74 samples, 0 drains, 74 max samples
+pool 16: 141 samples, 0 drains, 141 max samples
+pool 17: 63 samples, 0 drains, 63 max samples
+pool 18: 167 samples, 0 drains, 167 max samples
+pool 19: 84 samples, 0 drains, 84 max samples
+pool 20: 258 samples, 0 drains, 258 max samples
+pool 21: 41 samples, 0 drains, 41 max samples
+pool 22: 102 samples, 0 drains, 102 max samples
+pool 23: 74 samples, 0 drains, 74 max samples
+pool 24: 115 samples, 0 drains, 115 max samples
+pool 25: 68 samples, 0 drains, 68 max samples
+pool 26: 0 samples, 0 drains, 0 max samples
+pool 27: 0 samples, 0 drains, 0 max samples
+pool 28: 0 samples, 0 drains, 0 max samples
+pool 29: 0 samples, 0 drains, 0 max samples
+pool 30: 0 samples, 0 drains, 0 max samples
+pool 31: 0 samples, 0 drains, 0 max samples
+failed to load virtual random: (-147) (-536870212)
+Tue Oct  6 02:42:17 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: launchd_cache_loader
+0 Found valid port: 5123 Valid: 1
+1 Found valid port: 0 Valid: 0
+2 Found valid port: 0 Valid: 0
+Using default cache paths
+Code: /System/Library/xpc/launchd.plist Sig: /System/Library/xpc/launchd.plist.sig
+Using unsecure cache: /System/Library/xpc/launchd.plist
+Trying to send bytes to launchd: 5123 16384
+Sending validated cache to launchd
+Cache sent to launchd successfully
+Tue Oct  6 02:42:17 2026 localhost com.apple.xpc.launchd[1] <Notice>: launchd UUID: 4C2464F5-9F87-31DE-B252-584E3391D4FA
+Tue Oct  6 02:42:17 2026 localhost com.apple.xpc.launchd[1] <Notice>: Early boot complete. Continuing system boot.
+tx_flush:1075: disk0s1 xid 16430 tx stats: # 20 finish 20 enter 10 wait 0 0us close 2us flush 232850us
+apfs_load_inode_internal:6018: *** reset ino 43433 size back to 28281 (from 66297)
+tx_flush:1075: disk0s1 xid 16450 tx stats: # 40 finish 40 enter 10 wait 0 0us close 5us flush 118279us
+AppleARMBacklight::setBacklightEnableGated: Set backlight on
+AppleCredentialManagerUserClient: start: edu_mode = No, persona = Yes, user_id = c7 -> session_uid = ffffffff.
+AppleAuthCPRelay:_sendCommandGated CMD=0x1 _receivedStatus ERROR ( status = 0xe00002e9 )
+AppleAuthCPRelay:_getCert failed to send command kAuthCommandIDGetCert
+AppleAuthCPRelay:_fetchPropertyGated _getCert() failed (status = 0xe00002e9)
+AppleAuthCPRelay::copyProperty: obj == NULL key = AccessoryCertificate
+AppleAuthCPRelay:_sendCommandGated CMD=0x1 _receivedStatus ERROR ( status = 0xe00002e9 )
+AppleAuthCPRelay:_getCert failed to send command kAuthCommandIDGetCert
+AppleAuthCPRelay:_fetchPropertyGated _getCert() failed (status = 0xe00002e9)
+AppleAuthCPRelay::copyProperty: obj == NULL key = AccessoryCertificate
+AppleAuthCPRelay:_sendCommandGated CMD=0x1 _receivedStatus ERROR ( status = 0xe00002e9 )
+AppleAuthCPRelay:_getCert failed to send command kAuthCommandIDGetCert
+AppleAuthCPRelay:_fetchPropertyGated _getCert() failed (status = 0xe00002e9)
+AppleAuthCPRelay::copyProperty: obj == NULL key = AccessoryCertificate
+IOMFB: load PCC M3 IMem : size 0x483c
+IOMFB: load PCC M3 DMem : size 0x4794
+AppleAuthCPRelay:setAuthStatus set auth status = 0
+AppleAuthCPRelay:_sendCommandGated CMD=0x4 authSendData() failed (ret = 0xe00002c7)
+AppleAuthCPRelay:setTrustStatus failed to send command kAuthCommandIDSetTrustStatus
+AppleAuthCPRelay:setTrustStatus set trust status = 0
+AppleAuthCPUserClient::extSetAuthError
+AppleAuthCPRelay:setAuthError 3
+AppleAuthCPRelay:setAuthErrorDescription NullCertificateDataError
+AppleCredentialManagerUserClient: start: edu_mode = No, persona = Yes, user_id = c7 -> session_uid = ffffffff.
+AppleCredentialManagerUserClient: start: edu_mode = No, persona = Yes, user_id = c7 -> session_uid = ffffffff.
+ACMRM: _onDaemonStarted: called, allowedByMC=YES, alreadyStarted=NO.
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+AppleCredentialManager: getSEPEndpoint: Initializing SEP endpoint.
+SEP EP 10 enabled
+AppleCredentialManager: getSEPEndpoint: SEPEndpoint enabled.
+tx_flush:1075: disk0s1 xid 16470 tx stats: # 60 finish 60 enter 10 wait 0 0us close 4us flush 80155us
+tx_flush:1075: disk0s1 xid 16490 tx stats: # 80 finish 80 enter 14 wait 0 0us close 3us flush 61090us
+AppleCredentialManager: sendSEPCommand: SEP cmd(10) took 5001 ms -> ioErr=0x1 acmErr=0.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManager.cpp:1839
+AppleCredentialManager: sendSEPCommand: returning, err = -536870186, req=1 info=0 inLen=8 outLen=0 lock=YES/5005ms resBuf=16384).
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManager.cpp:1248
+AppleSEPKeyStore:10649:109: operation failed (sel: 101 ret: e00002e2)
+AppleSEPKeyStore:10649:109: operation failed (sel: 93 ret: e00002bc)
+AppleSEPKeyStore:10649:109: operation failed (sel: 34 ret: e00002bc)
+tx_flush:1075: disk0s1 xid 16510 tx stats: # 100 finish 100 enter 15 wait 0 0us close 3us flush 49562us
+tx_flush:1075: disk0s1 xid 16530 tx stats: # 120 finish 120 enter 15 wait 0 0us close 2us flush 41895us
+AppleCredentialManager: sendSEPCommand: SEP cmd(25) took 5002 ms -> ioErr=0x1 acmErr=0.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManager.cpp:1839
+AppleCredentialManager: sendSEPCommand: returning, err = -536870186, req=4 info=0 inLen=12 outLen=1 lock=YES/5002ms resBuf=16384).
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManager.cpp:1263
+AppleCredentialManager: _performCommand: returning, err = -536870186, cmd=25 inLen=12 outLen=1.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManager.cpp:1196
+AppleCredentialManager: performCommandGated: returning, err = -536870186.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/ACMKernelLibPriv/../../ACMKernelLib/ACMKernelLib.cpp:48
+ACMKernelLib: performCommand: returning, err = -536870186.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/ACMKernelLibPriv/../../ACMKernelLib/ACMKernelLib.cpp:110
+ACMKernelLib: kernelTransport: returning, err = -536870186.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager_KernelLibs/AppleCredentialManager-417.0.6.0.1/common/LibCall.c:1119
+ACM: LibCall_ACMGetEnvironmentVariable: returning, err = -536870186.
+ACMKernelLib: ACMKernPrivGetEnvironmentVariable: returning, err = -536870186.
+ACMRM-S: _loadAll: called, isLockerAvailable=NO.
+ACMRM-S: _loadAll: fetching policy <- daemon (gen=0 len=41).
+ACMRM-S: _loadAll: fetching analytics <- daemon (gen=0 len=50).
+ACMRM: _logPolicy: LOADED: ver=8 smTm=1791277029 poRsn=0 gpTm=1791277008 smExp=NO gpBlk=NO suTm=1791277029 svTm=1791277029 gpRsn=0 cMs=NO.
+ACMRM: _logConfig: caller=_loadConfig ver=1 gSw=1 GP=2 Ask=3.
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO*).
+ACMRM: _mapAndPublishTRM: set TRM_GracePeriodTimeout = 3600.
+ACMRM: _mapAndPublishTRM: sending kIOMessageServicePropertyChange(n=1) while DISABLED, TRM: 259200 -/ff 3600 -/ff miss=ff (CUR: 259200 -/ff 3600 -/ff).
+ACMRM: _onDaemonStarted: timePolicyViolated=NO (saveTime=1791277029 bootCalTime=1791279755 (delta=2726) bootUpTime=27 nowUp=1791279755).
+ACMRM-A: _logAnalytics: caller=_loadAnalytics ver=5 rmLckDur=0 curPerTm=1791277008 rmLckTm=0 actRMLckTm=0 rmPubTm=0 rmPubDur=0 blFPCnt=0/0 uSdn=0.
+ACMRM-C: onDaemonStarted: acc-cache not found.
+ACMRM: _publish: _resumeState UNLOCKED(0) reason=0 (on=YES pub=YES(255) pasThr=NO(0) poRsn=0 smExp=NO gpBlk=NO cMs=NO suTm=1791279755 tm=1791279755(0) | 3D=256474/1791536229 GP=0/0/(0)).
+ACMRM: _publishIOResource: AppleUSBRestrictedModeWithReason = 0.
+ACMRM: _publishIOResource: AppleUSBGracePeriodWithReason = 0.
+ACMRM: _mapAndPublishTRM: set TRM_PolicyReason = Unrestricted(0).
+ACMRM: _mapAndPublishTRM: set TRM_CacheMiss = False.
+ACMRM: _mapAndPublishTRM: sending kIOMessageServicePropertyChange(n=2) while UNLOCKED, TRM: 259200 U/0 3600 -/ff miss=0 (CUR: 259200 U/0 3600 X/0).
+ACMRM: _logPolicy: SAVING: ver=8 smTm=1791277029 poRsn=0 gpTm=1791279755 smExp=NO gpBlk=NO suTm=1791279755 svTm=1791279755 gpRsn=0 cMs=NO.
+ACMRM-S: setData: saving policy (len=41) in 3 seconds.
+ACMRM: _registerBioNotifier: Biometric driver not detected.
+tx_flush:1075: disk0s1 xid 16550 tx stats: # 140 finish 140 enter 14 wait 0 0us close 2us flush 36427us
+AppleSEPKeyStore:10649:97: operation failed (sel: 26 ret: e00002bc)
+ACMRM-S: _saveAll: pushing policy -> daemon (gen=1 len=41).
+tx_flush:1075: disk0s1 xid 16570 tx stats: # 160 finish 160 enter 15 wait 0 0us close 2us flush 32306us
+virtual bool CoreAnalyticsUserClient::initWithTask(task_t, void *, UInt32, OSDictionary *)::165:success
+IOReturn CoreAnalyticsHub::setClientGated(CoreAnalyticsUserClient *)::287:adding userClient
+IOReturn CoreAnalyticsHub::__newUserClientGated(task_t, void *, UInt32, OSDictionary *, IOUserClient **)::257:Successfully opened
+virtual IOReturn CoreAnalyticsUserClient::clientMemoryForType(UInt32, IOOptionBits *, IOMemoryDescriptor **)::269: got memory descriptor with 16432
+tx_flush:1075: disk0s1 xid 16590 tx stats: # 180 finish 180 enter 16 wait 0 0us close 2us flush 29111us
+AppleSEPKeyStore:10649:133: operation failed (sel: 17 ret: e00002c2)
+tx_flush:1075: disk0s1 xid 16610 tx stats: # 200 finish 200 enter 16 wait 0 0us close 2us flush 26552us
+tx_flush:1075: disk0s1 xid 16630 tx stats: # 220 finish 220 enter 15 wait 0 0us close 2us flush 24448us
+tx_flush:1075: disk0s1 xid 16650 tx stats: # 240 finish 240 enter 15 wait 0 0us close 2us flush 22691us
+tx_flush:1075: disk0s1 xid 16670 tx stats: # 260 finish 260 enter 14 wait 0 0us close 2us flush 21207us
+tx_flush:1075: disk0s1 xid 16690 tx stats: # 280 finish 280 enter 13 wait 0 0us close 2us flush 19939us
+tx_flush:1075: disk0s1 xid 16710 tx stats: # 300 finish 300 enter 13 wait 0 0us close 1us flush 18834us
+tx_flush:1075: disk0s1 xid 16730 tx stats: # 320 finish 320 enter 13 wait 0 0us close 1us flush 17873us
+000042.314609 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: PTP
+000042.314972 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000042.315433 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: iPod USB Interface
+000042.315638 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: USBAudioControl
+000042.315838 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: USBAudioStreaming
+000042.316032 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: IapOverUsbHid
+000042.316220 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: PTP + Apple Mobile Device
+000042.316412 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000042.316569 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000042.316749 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: PTP + Apple Mobile Device + Apple USB Ethernet
+000042.317056 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000042.317241 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000042.317444 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBEthernet
+000042.317656 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: PTP + Apple Mobile Device + Valeria
+000042.317903 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000042.318071 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000042.318250 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: Valeria
+000042.318515 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: Apple Mobile Device + Interdevice Audio
+000042.318723 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000042.318925 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: USBAudio2Control
+000042.319106 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: USBAudio2StreamIN
+000042.319288 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: USBAudio2StreamOUT
+000042.319470 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: IDAMInterface
+000042.319892 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: interface association: Interdevice Audio Interfaces (First: 1, Count: 4)
+000042.321122 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: PTP + Apple Mobile Device + NCM
+000042.321387 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000042.321505 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000042.321643 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBNCMControl
+000042.321821 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBNCMData
+000042.329487 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function USBAudioControl
+IOAccessoryPortUSB::start
+000042.336145 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function IapOverUsbHid
+000042.340944 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function USBAudio2StreamOUT
+000042.341453 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function USBAudio2Control
+000042.347135 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function IDAMInterface
+000042.352383 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function USBAudioStreaming
+000042.359041 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function USBAudio2StreamIN
+000042.360884 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function AppleUSBNCMControl
+000042.361406 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function AppleUSBEthernet
+AppleUSBDeviceMux build: Aug 12 2020 22:50:42
+000042.367174 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function AppleUSBMux
+000042.369615 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function AppleUSBNCMData
+000042.390256 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function Valeria
+IOAccessoryPortUSB::setUSBRoleSwitchMask Index 0 Value 1
+000042.409023 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function PTP
+000042.409318 AppleT8027USBXDCI@: IOUSBDeviceController::startUSBStack: starting usb stack
+000042.410594 AppleT8027USBXDCI@0: IOUSBDeviceController::startUSBStack: not connected
+000042.410930 AppleT8027USBXDCI@0: AppleUSBXDCI::goOnBus: not on bus
+000042.411499 AppleT8027USBXDCI@0: AppleUSBXDCIARM::cableChangeOccurred: cable detect disabled: transport type 2 connect type 2 restricted mode _lastRestrictedMode 0
+000042.411829 AppleT8027USBXDCI@0: AppleUSBXDCIARM::cableChangeOccurred: powering on for transport type 2 connect type 2 restricted mode 0
+tx_flush:1075: disk0s1 xid 16750 tx stats: # 340 finish 340 enter 12 wait 0 0us close 2us flush 17026us
+tx_flush:1075: disk0s1 xid 16770 tx stats: # 360 finish 360 enter 13 wait 1 2119us close 2us flush 16281us
+tx_flush:1075: disk0s1 xid 16790 tx stats: # 380 finish 380 enter 14 wait 1 2119us close 4us flush 15638us
+IOAccessoryManager::configureAccessoryPowerGated: dock-0pin: Configuring Accessory Power to (3)
+Port-Inductive::configureAccessoryPowerInternal: _powerState=3, _powerStateInternal=1, _sleeping=0, _accessoryPowerModeExtOffRequested 0
+Port-Inductive::configureAccessoryPowerInternal: !getAccessoryPowerReady(); set PowerModeOff?
+Port-Inductive::configureAccessoryPowerInternal: handleAccessoryPowerWillChange, confirm PowerModeOff
+AppleAuthCPRelay::copyProperty: obj == NULL key = AuthFullPass
+AppleAuthCPRelay::copyProperty: obj == NULL key = Signature
+tx_flush:1075: disk0s1 xid 16810 tx stats: # 400 finish 400 enter 14 wait 1 2119us close 5us flush 15040us
+tx_flush:1075: disk0s1 xid 16830 tx stats: # 420 finish 420 enter 15 wait 2 1392us close 5us flush 14508us
+tx_flush:1075: disk0s1 xid 16850 tx stats: # 440 finish 440 enter 16 wait 3 1250us close 6us flush 14023us
+tx_flush:1075: disk0s1 xid 16870 tx stats: # 460 finish 460 enter 18 wait 3 1250us close 9us flush 13583us
+tx_flush:1075: disk0s1 xid 16890 tx stats: # 480 finish 480 enter 18 wait 3 1250us close 9us flush 13189us
+tx_flush:1075: disk0s1 xid 16910 tx stats: # 500 finish 500 enter 19 wait 3 1250us close 10us flush 12821us
+tx_flush:1075: disk0s1 xid 16930 tx stats: # 520 finish 520 enter 19 wait 5 1232us close 10us flush 12486us
+tx_flush:1075: disk0s1 xid 16950 tx stats: # 540 finish 540 enter 19 wait 5 1232us close 12us flush 12161us
+tx_flush:1075: disk0s1 xid 16970 tx stats: # 560 finish 560 enter 20 wait 5 1232us close 12us flush 11864us
+tx_flush:1075: disk0s1 xid 16990 tx stats: # 580 finish 580 enter 20 wait 5 1232us close 12us flush 11589us
+tx_flush:1075: disk0s1 xid 17010 tx stats: # 600 finish 600 enter 20 wait 6 1167us close 12us flush 11341us
+tx_flush:1075: disk0s1 xid 17030 tx stats: # 620 finish 621 enter 21 wait 9 2016us close 13us flush 11113us
+tx_flush:1075: disk0s1 xid 17050 tx stats: # 640 finish 641 enter 21 wait 10 1882us close 14us flush 10881us
+tx_flush:1075: disk0s1 xid 17070 tx stats: # 660 finish 661 enter 21 wait 10 1882us close 13us flush 10677us
+tx_flush:1075: disk0s1 xid 17090 tx stats: # 680 finish 681 enter 21 wait 10 1882us close 14us flush 10475us
+tx_flush:1075: disk0s1 xid 17110 tx stats: # 700 finish 701 enter 21 wait 10 1882us close 14us flush 10289us
+tx_flush:1075: disk0s1 xid 17130 tx stats: # 720 finish 721 enter 21 wait 10 1882us close 14us flush 10115us
+tx_flush:1075: disk0s1 xid 17150 tx stats: # 740 finish 741 enter 21 wait 10 1882us close 14us flush 9943us
+tx_flush:1075: disk0s1 xid 17170 tx stats: # 760 finish 761 enter 22 wait 10 1882us close 21us flush 9790us
+tx_flush:1075: disk0s1 xid 17190 tx stats: # 780 finish 781 enter 21 wait 10 1882us close 21us flush 9634us
+tx_flush:1075: disk0s1 xid 17210 tx stats: # 800 finish 801 enter 21 wait 10 1882us close 20us flush 9492us
+tx_flush:1075: disk0s1 xid 17230 tx stats: # 820 finish 821 enter 21 wait 10 1882us close 21us flush 9359us
+tx_flush:1075: disk0s1 xid 17250 tx stats: # 840 finish 841 enter 22 wait 12 1716us close 21us flush 9237us
+tx_flush:1075: disk0s1 xid 17270 tx stats: # 860 finish 861 enter 22 wait 12 1716us close 21us flush 9105us
+tx_flush:1075: disk0s1 xid 17290 tx stats: # 880 finish 881 enter 22 wait 13 1725us close 23us flush 8985us
+tx_flush:1075: disk0s1 xid 17310 tx stats: # 900 finish 901 enter 23 wait 14 1642us close 23us flush 8874us
+tx_flush:1075: disk0s1 xid 17330 tx stats: # 920 finish 921 enter 23 wait 15 1584us close 24us flush 8763us
+tx_flush:1075: disk0s1 xid 17350 tx stats: # 940 finish 941 enter 23 wait 17 1623us close 25us flush 8657us
+tx_flush:1075: disk0s1 xid 17370 tx stats: # 960 finish 961 enter 24 wait 19 1513us close 26us flush 8565us
+tx_flush:1075: disk0s1 xid 17390 tx stats: # 980 finish 981 enter 24 wait 22 1411us close 51us flush 8480us
+tx_flush:1075: disk0s1 xid 17410 tx stats: # 1000 finish 1001 enter 24 wait 23 1379us close 51us flush 8388us
+tx_flush:1075: disk0s1 xid 17430 tx stats: # 1020 finish 1021 enter 24 wait 23 1379us close 50us flush 8300us
+tx_flush:1075: disk0s1 xid 17450 tx stats: # 1040 finish 1041 enter 24 wait 23 1379us close 90us flush 8218us
+tx_flush:1075: disk0s1 xid 17470 tx stats: # 1060 finish 1061 enter 24 wait 26 1302us close 88us flush 8138us
+tx_flush:1075: disk0s1 xid 17490 tx stats: # 1080 finish 1081 enter 25 wait 27 1276us close 87us flush 8059us
+tx_flush:1075: disk0s1 xid 17510 tx stats: # 1100 finish 1101 enter 25 wait 28 1250us close 86us flush 7990us
+tx_flush:1075: disk0s1 xid 17530 tx stats: # 1120 finish 1121 enter 25 wait 29 1233us close 85us flush 7926us
+tx_flush:1075: disk0s1 xid 17550 tx stats: # 1140 finish 1141 enter 25 wait 31 1369us close 87us flush 7921us
+tx_flush:1075: disk0s1 xid 17570 tx stats: # 1160 finish 1161 enter 25 wait 31 1369us close 86us flush 7919us
+tx_flush:1075: disk0s1 xid 17590 tx stats: # 1180 finish 1181 enter 25 wait 32 1516us close 86us flush 7896us
+tx_flush:1075: disk0s1 xid 17610 tx stats: # 1200 finish 1201 enter 25 wait 33 1500us close 85us flush 7848us
+tx_flush:1075: disk0s1 xid 17630 tx stats: # 1220 finish 1221 enter 25 wait 34 1474us close 85us flush 7793us
+tx_flush:1075: disk0s1 xid 17650 tx stats: # 1240 finish 1241 enter 25 wait 35 1454us close 85us flush 7731us
+tx_flush:1075: disk0s1 xid 17670 tx stats: # 1260 finish 1261 enter 25 wait 36 1431us close 84us flush 7673us
+tx_flush:1075: disk0s1 xid 17690 tx stats: # 1280 finish 1281 enter 26 wait 36 1431us close 83us flush 7614us
+tx_flush:1075: disk0s1 xid 17710 tx stats: # 1300 finish 1301 enter 26 wait 36 1431us close 82us flush 7559us
+tx_flush:1075: disk0s1 xid 17730 tx stats: # 1320 finish 1321 enter 26 wait 37 1411us close 81us flush 7509us
+tx_flush:1075: disk0s1 xid 17750 tx stats: # 1340 finish 1341 enter 26 wait 38 1387us close 80us flush 7454us
+tx_flush:1075: disk0s1 xid 17770 tx stats: # 1360 finish 1362 enter 26 wait 39 1366us close 80us flush 7401us
+tx_flush:1075: disk0s1 xid 17790 tx stats: # 1380 finish 1382 enter 26 wait 39 1366us close 79us flush 7351us
+tx_flush:1075: disk0s1 xid 17810 tx stats: # 1400 finish 1402 enter 26 wait 39 1366us close 78us flush 7301us
+tx_flush:1075: disk0s1 xid 17830 tx stats: # 1420 finish 1422 enter 26 wait 40 1345us close 77us flush 7293us
+tx_flush:1075: disk0s1 xid 17850 tx stats: # 1440 finish 1442 enter 26 wait 40 1345us close 76us flush 7252us
+tx_flush:1075: disk0s1 xid 17870 tx stats: # 1460 finish 1462 enter 26 wait 44 1306us close 75us flush 7292us
+INFERNO_EXEC_WRAPPER_BEGIN case=system-mobile-register path=/usr/bin/inferno-launcher watchdog=150 uid=0 gid=0
+tx_flush:1075: disk0s1 xid 17890 tx stats: # 1480 finish 1482 enter 26 wait 45 1293us close 75us flush 7351us
+tx_flush:1075: disk0s1 xid 17910 tx stats: # 1500 finish 1502 enter 26 wait 45 1293us close 75us flush 7299us
+tx_flush:1075: disk0s1 xid 17930 tx stats: # 1520 finish 1522 enter 26 wait 47 1266us close 75us flush 7252us
+tx_flush:1075: disk0s1 xid 17950 tx stats: # 1540 finish 1542 enter 26 wait 47 1266us close 74us flush 7215us
+tx_flush:1075: disk0s1 xid 17970 tx stats: # 1560 finish 1562 enter 26 wait 47 1266us close 73us flush 7171us
+tx_flush:1075: disk0s1 xid 17990 tx stats: # 1580 finish 1582 enter 26 wait 48 1270us close 73us flush 7123us
+INFERNO_EXEC_WRAPPER_CHILD uid=501 gid=501
+INFERNO_EXEC_WRAPPER_CONSOLE_OPEN fd=3 errno=0 uid=501 gid=501
+INFERNO_EXEC_WRAPPER_ACCESS x=0 xerrno=0 r=0 rerrno=0 fd=3 open_errno=0 read_bytes=16384 read_errno=0
+tx_flush:1075: disk0s1 xid 18010 tx stats: # 1600 finish 1602 enter 26 wait 49 1260us close 72us flush 7081us
+tx_flush:1075: disk0s1 xid 18030 tx stats: # 1620 finish 1622 enter 26 wait 49 1260us close 72us flush 7044us
+tx_flush:1075: disk0s1 xid 18050 tx stats: # 1640 finish 1642 enter 26 wait 49 1260us close 71us flush 7004us
+tx_flush:1075: disk0s1 xid 18070 tx stats: # 1660 finish 1662 enter 26 wait 51 1252us close 71us flush 6962us
+tx_flush:1075: disk0s1 xid 18090 tx stats: # 1680 finish 1682 enter 26 wait 51 1252us close 71us flush 6920us
+tx_flush:1075: disk0s1 xid 18110 tx stats: # 1700 finish 1702 enter 26 wait 53 1230us close 71us flush 6882us
+tx_flush:1075: disk0s1 xid 18130 tx stats: # 1720 finish 1722 enter 26 wait 53 1230us close 71us flush 6851us
+tx_flush:1075: disk0s1 xid 18150 tx stats: # 1740 finish 1742 enter 26 wait 54 1219us close 71us flush 6816us
+tx_flush:1075: disk0s1 xid 18170 tx stats: # 1760 finish 1762 enter 27 wait 55 1206us close 70us flush 6784us
+tx_flush:1075: disk0s1 xid 18190 tx stats: # 1780 finish 1782 enter 27 wait 55 1206us close 70us flush 6750us
+tx_flush:1075: disk0s1 xid 18210 tx stats: # 1800 finish 1802 enter 27 wait 55 1206us close 69us flush 6721us
+tx_flush:1075: disk0s1 xid 18230 tx stats: # 1820 finish 1822 enter 26 wait 57 1221us close 69us flush 6693us
+tx_flush:1075: disk0s1 xid 18250 tx stats: # 1840 finish 1842 enter 26 wait 57 1221us close 68us flush 6667us
+tx_flush:1075: disk0s1 xid 18270 tx stats: # 1860 finish 1862 enter 26 wait 57 1221us close 68us flush 6667us
+tx_flush:1075: disk0s1 xid 18290 tx stats: # 1880 finish 1882 enter 26 wait 58 1211us close 67us flush 6651us
+tx_flush:1075: disk0s1 xid 18310 tx stats: # 1900 finish 1902 enter 26 wait 58 1211us close 67us flush 6622us
+tx_flush:1075: disk0s1 xid 18330 tx stats: # 1920 finish 1922 enter 26 wait 60 1198us close 66us flush 6604us
+tx_flush:1075: disk0s1 xid 18350 tx stats: # 1940 finish 1942 enter 26 wait 60 1198us close 66us flush 6574us
+tx_flush:1075: disk0s1 xid 18370 tx stats: # 1960 finish 1962 enter 26 wait 61 1189us close 66us flush 6554us
+tx_flush:1075: disk0s1 xid 18390 tx stats: # 1980 finish 1982 enter 26 wait 64 1165us close 65us flush 6528us
+tx_flush:1075: disk0s1 xid 18410 tx stats: # 2000 finish 2002 enter 26 wait 65 1158us close 66us flush 6502us
+tx_flush:1075: disk0s1 xid 18430 tx stats: # 2020 finish 2022 enter 26 wait 66 1149us close 65us flush 6480us
+tx_flush:1075: disk0s1 xid 18450 tx stats: # 2040 finish 2042 enter 26 wait 67 1152us close 65us flush 6466us
+tx_flush:1075: disk0s1 xid 18470 tx stats: # 2060 finish 2062 enter 26 wait 67 1152us close 64us flush 6447us
+tx_flush:1075: disk0s1 xid 18490 tx stats: # 2080 finish 2082 enter 26 wait 69 1164us close 63us flush 6435us
+tx_flush:1075: disk0s1 xid 18510 tx stats: # 2100 finish 2102 enter 26 wait 73 1153us close 63us flush 6414us
+tx_flush:1075: disk0s1 xid 18530 tx stats: # 2120 finish 2122 enter 26 wait 74 1148us close 62us flush 6395us
+tx_flush:1075: disk0s1 xid 18550 tx stats: # 2140 finish 2142 enter 26 wait 76 1281us close 62us flush 6371us
+tx_flush:1075: disk0s1 xid 18570 tx stats: # 2160 finish 2162 enter 26 wait 77 1275us close 61us flush 6358us
+tx_flush:1075: disk0s1 xid 18590 tx stats: # 2180 finish 2182 enter 26 wait 80 1295us close 61us flush 6343us
+INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+tx_flush:1075: disk0s1 xid 18610 tx stats: # 2200 finish 2202 enter 26 wait 81 1292us close 61us flush 6346us
+tx_flush:1075: disk0s1 xid 18630 tx stats: # 2220 finish 2222 enter 26 wait 83 1288us close 60us flush 6331us
+tx_flush:1075: disk0s1 xid 18650 tx stats: # 2240 finish 2242 enter 26 wait 83 1288us close 60us flush 6313us
+tx_flush:1075: disk0s1 xid 18670 tx stats: # 2260 finish 2262 enter 26 wait 84 1371us close 59us flush 6302us
+tx_flush:1075: disk0s1 xid 18690 tx stats: # 2280 finish 2282 enter 26 wait 84 1371us close 59us flush 6287us
+tx_flush:1075: disk0s1 xid 18710 tx stats: # 2300 finish 2302 enter 26 wait 86 1358us close 58us flush 6269us
+tx_flush:1075: disk0s1 xid 18730 tx stats: # 2320 finish 2322 enter 26 wait 86 1358us close 58us flush 6248us
+2026-10-06 02:43:28.345 inferno-launcher[148:1794] INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+tx_flush:1075: disk0s1 xid 18750 tx stats: # 2340 finish 2342 enter 26 wait 88 1346us close 58us flush 6225us
+tx_flush:1075: disk0s1 xid 18770 tx stats: # 2360 finish 2362 enter 26 wait 91 1326us close 57us flush 6203us
+dyld: missing lazy symbol called
+tx_flush:1075: disk0s1 xid 18790 tx stats: # 2380 finish 2382 enter 26 wait 92 1320us close 57us flush 6180us
+tx_flush:1075: disk0s1 xid 18810 tx stats: # 2400 finish 2402 enter 26 wait 92 1320us close 57us flush 6159us
+INFERNO_READINESS_BEGIN seconds=15
+tx_flush:1075: disk0s1 xid 18830 tx stats: # 2420 finish 2422 enter 26 wait 95 1311us close 56us flush 6138us
+tx_flush:1075: disk0s1 xid 18850 tx stats: # 2440 finish 2442 enter 26 wait 95 1311us close 56us flush 6116us
+tx_flush:1075: disk0s1 xid 18870 tx stats: # 2460 finish 2462 enter 26 wait 96 1303us close 55us flush 6096us
+tx_flush:1075: disk0s1 xid 18890 tx stats: # 2480 finish 2482 enter 26 wait 99 1300us close 55us flush 6075us
+tx_flush:1075: disk0s1 xid 18910 tx stats: # 2500 finish 2502 enter 26 wait 100 1313us close 54us flush 6057us
+tx_flush:1075: disk0s1 xid 18930 tx stats: # 2520 finish 2522 enter 26 wait 100 1313us close 54us flush 6037us
+tx_flush:1075: disk0s1 xid 18950 tx stats: # 2540 finish 2542 enter 26 wait 100 1313us close 54us flush 6019us
+tx_flush:1075: disk0s1 xid 18970 tx stats: # 2560 finish 2562 enter 26 wait 101 1312us close 53us flush 6007us
+INFERNO_EXEC_WRAPPER_WAIT case=system-mobile-register raw=6 timed_out=0 expected=0
+tx_flush:1075: disk0s1 xid 18990 tx stats: # 2580 finish 2582 enter 26 wait 101 1312us close 53us flush 5998us
+tx_flush:1075: disk0s1 xid 19010 tx stats: # 2600 finish 2602 enter 26 wait 101 1312us close 53us flush 5990us
+tx_flush:1075: disk0s1 xid 19030 tx stats: # 2620 finish 2622 enter 26 wait 101 1312us close 52us flush 6005us
+tx_flush:1075: disk0s1 xid 19050 tx stats: # 2640 finish 2642 enter 26 wait 101 1312us close 52us flush 5995us
+AppleSEPKeyStore:10661:0: AppleKeyStoreUserClient: Assertion timer fired
+tx_flush:1075: disk0s1 xid 19070 tx stats: # 2660 finish 2662 enter 26 wait 102 1310us close 52us flush 5984us
+tx_flush:1075: disk0s1 xid 19090 tx stats: # 2680 finish 2682 enter 26 wait 102 1310us close 51us flush 5973us
+tx_flush:1075: disk0s1 xid 19110 tx stats: # 2700 finish 2702 enter 26 wait 104 1312us close 51us flush 5960us
+tx_flush:1075: disk0s1 xid 19130 tx stats: # 2720 finish 2722 enter 26 wait 106 1302us close 51us flush 5952us
+tx_flush:1075: disk0s1 xid 19150 tx stats: # 2740 finish 2742 enter 26 wait 107 1297us close 50us flush 5943us
+tx_flush:1075: disk0s1 xid 19170 tx stats: # 2760 finish 2762 enter 26 wait 108 1306us close 50us flush 5952us
+tx_flush:1075: disk0s1 xid 19190 tx stats: # 2780 finish 2782 enter 26 wait 108 1306us close 50us flush 5938us
+tx_flush:1075: disk0s1 xid 19210 tx stats: # 2800 finish 2802 enter 26 wait 109 1299us close 49us flush 5923us
+tx_flush:1075: disk0s1 xid 19230 tx stats: # 2820 finish 2824 enter 26 wait 111 1310us close 49us flush 5909us
+tx_flush:1075: disk0s1 xid 19250 tx stats: # 2840 finish 2843 enter 26 wait 111 1310us close 49us flush 5901us
+tx_flush:1075: disk0s1 xid 19270 tx stats: # 2860 finish 2863 enter 26 wait 111 1310us close 48us flush 5894us
+tx_flush:1075: disk0s1 xid 19290 tx stats: # 2880 finish 2883 enter 26 wait 114 1306us close 48us flush 5883us
+tx_flush:1075: disk0s1 xid 19310 tx stats: # 2900 finish 2903 enter 26 wait 116 1297us close 48us flush 5873us
+tx_flush:1075: disk0s1 xid 19330 tx stats: # 2920 finish 2923 enter 26 wait 116 1297us close 48us flush 5859us
+tx_flush:1075: disk0s1 xid 19350 tx stats: # 2940 finish 2943 enter 26 wait 117 1293us close 47us flush 5846us
+tx_flush:1075: disk0s1 xid 19370 tx stats: # 2960 finish 2963 enter 26 wait 120 1280us close 47us flush 5843us
+INFERNO_EXEC_WRAPPER_BEGIN case=system-mobile-register path=/usr/bin/inferno-launcher watchdog=150 uid=0 gid=0
+tx_flush:1075: disk0s1 xid 19390 tx stats: # 2980 finish 2983 enter 26 wait 120 1280us close 47us flush 5834us
+tx_flush:1075: disk0s1 xid 19410 tx stats: # 3000 finish 3003 enter 26 wait 122 1278us close 46us flush 5836us
+INFERNO_EXEC_WRAPPER_CHILD uid=501 gid=501
+INFERNO_EXEC_WRAPPER_CONSOLE_OPEN fd=3 errno=0 uid=501 gid=501
+tx_flush:1075: disk0s1 xid 19430 tx stats: # 3020 finish 3023 enter 26 wait 123 1275us close 46us flush 5826us
+INFERNO_EXEC_WRAPPER_ACCESS x=0 xerrno=0 r=0 rerrno=0 fd=3 open_errno=0 read_bytes=16384 read_errno=0
+tx_flush:1075: disk0s1 xid 19450 tx stats: # 3040 finish 3043 enter 26 wait 124 1272us close 46us flush 5818us
+tx_flush:1075: disk0s1 xid 19470 tx stats: # 3060 finish 3063 enter 26 wait 124 1272us close 46us flush 5808us
+tx_flush:1075: disk0s1 xid 19490 tx stats: # 3080 finish 3083 enter 26 wait 127 1262us close 45us flush 5799us
+tx_flush:1075: disk0s1 xid 19510 tx stats: # 3100 finish 3103 enter 26 wait 127 1262us close 45us flush 5793us
+tx_flush:1075: disk0s1 xid 19530 tx stats: # 3120 finish 3123 enter 26 wait 129 1251us close 45us flush 5784us
+tx_flush:1075: disk0s1 xid 19550 tx stats: # 3140 finish 3143 enter 26 wait 129 1251us close 45us flush 5778us
+tx_flush:1075: disk0s1 xid 19570 tx stats: # 3160 finish 3163 enter 26 wait 130 1249us close 44us flush 5771us
+tx_flush:1075: disk0s1 xid 19590 tx stats: # 3180 finish 3183 enter 26 wait 132 1265us close 44us flush 5785us
+tx_flush:1075: disk0s1 xid 19610 tx stats: # 3200 finish 3203 enter 26 wait 133 1261us close 44us flush 5774us
+tx_flush:1075: disk0s1 xid 19630 tx stats: # 3220 finish 3223 enter 26 wait 136 1257us close 44us flush 5767us
+tx_flush:1075: disk0s1 xid 19650 tx stats: # 3240 finish 3243 enter 26 wait 136 1257us close 43us flush 5760us
+INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+tx_flush:1075: disk0s1 xid 19670 tx stats: # 3260 finish 3263 enter 26 wait 138 1256us close 43us flush 5752us
+tx_flush:1075: disk0s1 xid 19690 tx stats: # 3280 finish 3283 enter 26 wait 139 1252us close 43us flush 5739us
+tx_flush:1075: disk0s1 xid 19710 tx stats: # 3300 finish 3303 enter 26 wait 139 1252us close 43us flush 5735us
+tx_flush:1075: disk0s1 xid 19730 tx stats: # 3320 finish 3323 enter 26 wait 141 1249us close 42us flush 5732us
+tx_flush:1075: disk0s1 xid 19750 tx stats: # 3340 finish 3343 enter 26 wait 142 1247us close 42us flush 5727us
+2026-10-06 02:43:50.371 inferno-launcher[164:1978] INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+dyld: missing lazy symbol called
+tx_flush:1075: disk0s1 xid 19770 tx stats: # 3360 finish 3363 enter 26 wait 142 1247us close 42us flush 5718us
+tx_flush:1075: disk0s1 xid 19790 tx stats: # 3380 finish 3383 enter 26 wait 144 1248us close 42us flush 5709us
+INFERNO_EXEC_WRAPPER_WAIT case=system-mobile-register raw=6 timed_out=0 expected=0
+tx_flush:1075: disk0s1 xid 19810 tx stats: # 3400 finish 3403 enter 26 wait 146 1245us close 42us flush 5698us
+tx_flush:1075: disk0s1 xid 19830 tx stats: # 3420 finish 3423 enter 26 wait 147 1241us close 41us flush 5687us
+tx_flush:1075: disk0s1 xid 19850 tx stats: # 3440 finish 3443 enter 26 wait 149 1245us close 41us flush 5677us
+tx_flush:1075: disk0s1 xid 19870 tx stats: # 3460 finish 3463 enter 26 wait 152 1236us close 41us flush 5667us
+tx_flush:1075: disk0s1 xid 19890 tx stats: # 3480 finish 3483 enter 26 wait 152 1236us close 41us flush 5658us
+tx_flush:1075: disk0s1 xid 19910 tx stats: # 3500 finish 3503 enter 26 wait 152 1236us close 41us flush 5646us
+tx_flush:1075: disk0s1 xid 19930 tx stats: # 3520 finish 3523 enter 26 wait 154 1230us close 40us flush 5635us
+tx_flush:1075: disk0s1 xid 19950 tx stats: # 3540 finish 3543 enter 26 wait 154 1230us close 40us flush 5627us
+tx_flush:1075: disk0s1 xid 19970 tx stats: # 3560 finish 3563 enter 26 wait 156 1227us close 40us flush 5617us
+tx_flush:1075: disk0s1 xid 19990 tx stats: # 3580 finish 3583 enter 26 wait 157 1224us close 40us flush 5608us
+tx_flush:1075: disk0s1 xid 20010 tx stats: # 3600 finish 3603 enter 26 wait 157 1224us close 40us flush 5599us
+tx_flush:1075: disk0s1 xid 20030 tx stats: # 3620 finish 3623 enter 26 wait 158 1222us close 39us flush 5590us
+tx_flush:1075: disk0s1 xid 20050 tx stats: # 3640 finish 3643 enter 26 wait 159 1218us close 39us flush 5582us
+tx_flush:1075: disk0s1 xid 20070 tx stats: # 3660 finish 3663 enter 26 wait 160 1217us close 39us flush 5574us
+tx_flush:1075: disk0s1 xid 20090 tx stats: # 3680 finish 3683 enter 26 wait 161 1214us close 39us flush 5566us
+tx_flush:1075: disk0s1 xid 20110 tx stats: # 3700 finish 3703 enter 26 wait 161 1214us close 39us flush 5557us
+tx_flush:1075: disk0s1 xid 20130 tx stats: # 3720 finish 3723 enter 26 wait 161 1214us close 38us flush 5546us
+tx_flush:1075: disk0s1 xid 20150 tx stats: # 3740 finish 3743 enter 26 wait 162 1211us close 38us flush 5539us
+tx_flush:1075: disk0s1 xid 20170 tx stats: # 3760 finish 3763 enter 26 wait 163 1209us close 38us flush 5530us
+tx_flush:1075: disk0s1 xid 20190 tx stats: # 3780 finish 3783 enter 26 wait 167 1198us close 38us flush 5521us
+tx_flush:1075: disk0s1 xid 20210 tx stats: # 3800 finish 3803 enter 26 wait 168 1196us close 38us flush 5511us
+  PID  PPID STAT COMM
+    1     0 Ss   /sbin/launchd
+   27     1 Ss   /usr/libexec/UserEventAgent
+   28     1 Ss   /usr/libexec/logd
+tx_flush:1075: disk0s1 xid 20230 tx stats: # 3820 finish 3823 enter 26 wait 170 1191us close 38us flush 5502us
+   29     1 Ss   /System/Library/PrivateFrameworks/AssistantServices.framework/assistantd
+   30     1 Ss   /usr/libexec/runningboardd
+   31     1 Rs   /usr/libexec/fseventsd
+   32     1 Ss   /usr/sbin/mediaserverd
+   33     1 Ss   /System/Library/PrivateFrameworks/MediaRemote.framework/Support/mediaremoted
+   34     1 Ss   /usr/libexec/routined
+   35     1 Ss   /usr/libexec/misd
+   36     1 Ss   /usr/libexec/configd
+   37     1 Rs   /System/Library/Frameworks/HealthKit.framework/healthd
+tx_flush:1075: disk0s1 xid 20250 tx stats: # 3840 finish 3843 enter 26 wait 170 1191us close 37us flush 5494us
+tx_flush:1075: disk0s1 xid 20270 tx stats: # 3860 finish 3863 enter 26 wait 170 1191us close 37us flush 5484us
+   39     1 Ss   /System/Library/CoreServices/powerd.bundle/powerd
+   40     1 Ss   /usr/libexec/atc
+   41     1 Ss   /usr/sbin/WirelessRadioManagerd
+   43     1 Us   /usr/libexec/keybagd
+   44     1 Ss   /usr/libexec/remoted
+tx_flush:1075: disk0s1 xid 20290 tx stats: # 3880 finish 3883 enter 26 wait 172 1187us close 37us flush 5478us
+   46     1 Ss   /System/Library/PrivateFrameworks/FamilyNotification.framework/familynotificationd
+   47     1 Ss   /usr/sbin/wifid
+   48     1 Rs   /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/Support/fud
+   49     1 Ss   /System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/Support/softwareupdated
+   50     1 Ss   /System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd
+   51     1 Ss   /usr/libexec/seld
+tx_flush:1075: disk0s1 xid 20310 tx stats: # 3900 finish 3903 enter 26 wait 172 1187us close 37us flush 5470us
+   52     1 Ss   /System/Library/PrivateFrameworks/IDS.framework/identityservicesd.app/identityservicesd
+   55     1 Ss   /usr/libexec/wcd
+   56     1 Ss   /System/Library/PrivateFrameworks/CoreDuetContext.framework/Resources/contextstored
+   57     1 Ss   /System/Library/CoreServices/SpringBoard.app/SpringBoard
+   58     1 Ss   /usr/libexec/thermalmonitord
+   59     1 Ss   /System/Library/PrivateFrameworks/AskPermission.framework/Support/askpermissiond
+tx_flush:1075: disk0s1 xid 20330 tx stats: # 3920 finish 3923 enter 26 wait 172 1187us close 37us flush 5462us
+   60     1 Ss   /usr/libexec/backboardd
+   61     1 Ss   /usr/libexec/sharingd
+   62     1 Ss   /usr/libexec/timed
+   63     1 Ss   /usr/bin/inferno-readiness
+   64     1 Rs   /usr/libexec/cloudpaird
+tx_flush:1075: disk0s1 xid 20350 tx stats: # 3940 finish 3943 enter 26 wait 176 1190us close 36us flush 5454us
+   65     1 Rs   /usr/libexec/containermanagerd
+   66     1 Ss   /System/Library/PrivateFrameworks/IMCore.framework/imagent.app/imagent
+   67     1 Rs   /System/Library/PrivateFrameworks/NanoPreferencesSync.framework/nanoprefsyncd
+   68     1 Ss   /usr/libexec/lockdownd
+   69     1 Ss   /System/Library/PrivateFrameworks/SleepDaemon.framework/sleepd
+   70     1 Rs   /System/Library/PrivateFrameworks/AggregateDictionary.framework/Support/aggregated
+   71     1 Ss   OTACrashCopier
+   72     1 Ss   /usr/sbin/distnoted
+   74     1 Ss   /System/Library/PrivateFrameworks/AppleCredentialManager.framework/AppleCredentialManagerDaemon
+   75     1 Rs   /System/Library/PrivateFrameworks/MapsSupport.framework/navd
+   76     1 Ss   /usr/libexec/peakpowermanagerd
+   77     1 Rs   /usr/libexec/remindd
+   78     1 Ss   /usr/sbin/notifyd
+   79     1 Ss   /usr/libexec/rapportd
+   82     1 Rs   /System/Library/PrivateFrameworks/AppleMediaServices.framework/amsaccountsd
+   83     1 Ss   /usr/sbin/fairplayd.H2
+   84     1 Rs   /usr/sbin/cfprefsd
+   85     1 Ss   /System/Library/PrivateFrameworks/CoreAccessories.framework/XPCServices/ACCHWComponentAuthService.xpc/ACCHWComponentAuthService
+tx_flush:1075: disk0s1 xid 20370 tx stats: # 3960 finish 3963 enter 26 wait 177 1187us close 36us flush 5446us
+   86     1 Rs   /usr/libexec/lsd
+   87     1 Ss   /usr/libexec/dasd
+   88     1 Ss   /usr/libexec/PowerUIAgent
+   89     1 Ss   /System/Library/PrivateFrameworks/WirelessDiagnostics.framework/Support/awdd
+   90     1 Rs   /usr/libexec/MobileGestaltHelper
+   91     1 Ss   /usr/libexec/mobileassetd
+   92     1 Ss   /System/Library/CoreServices/osanalyticshelper
+   93     1 Rs   /usr/libexec/nanoregistryd
+   94     1 Ss   /usr/libexec/coreduetd
+   95     1 Ss   /System/Library/PrivateFrameworks/ApplePushService.framework/apsd
+   96     1 Ss   /usr/libexec/nsurlsessiond
+   97     1 Ss   /usr/libexec/securityd
+   98     1 Ss   /System/Library/PrivateFrameworks/WiFiPolicy.framework/XPCServices/WiFiCloudAssetsXPCService.xpc/WiFiCloudAssetsXPCService
+   99     1 Ss   /System/Library/Frameworks/Accounts.framework/accountsd
+  100     1 Ss   /System/Library/PrivateFrameworks/IMDPersistence.framework/XPCServices/IMDPersistenceAgent.xpc/IMDPersistenceAgent
+tx_flush:1075: disk0s1 xid 20390 tx stats: # 3980 finish 3983 enter 26 wait 177 1187us close 36us flush 5436us
+  101     1 Ss   /System/Library/PrivateFrameworks/TCC.framework/tccd
+  102     1 Ss   /usr/libexec/pfd
+  103     1 Ss   /System/Library/PrivateFrameworks/CarKit.framework/Support/carkitd
+  104     1 Ss   /System/Library/PrivateFrameworks/GeoServices.framework/geod
+  105     1 Ss   /usr/libexec/symptomsd
+  107     1 Ss   /usr/sbin/mDNSResponder
+  108     1 Ss   /usr/libexec/triald
+  109     1 Ss   /System/Library/PrivateFrameworks/DataMigration.framework/XPCServices/com.apple.datamigrator.xpc/com.apple.datamigrator
+  110     1 Ss   /usr/libexec/nehelper
+  111     1 Ss   /usr/libexec/findmydeviced
+  112     1 Ss   /usr/libexec/fmflocatord
+  113     1 Ss   /System/Library/PrivateFrameworks/CoreAnalytics.framework/Support/analyticsd
+  114     1 Ss   /usr/libexec/searchpartyd
+  115     1 Ss   /System/Library/PrivateFrameworks/DataMigration.framework/XPCServices/com.apple.migrationpluginwrapper.xpc/com.apple.migrationpluginwrapper
+  116     1 Ss   /System/Library/PrivateFrameworks/CallHistory.framework/Support/CallHistorySyncHelper
+  117     1 Ss   /usr/libexec/wifianalyticsd
+  118     1 Ss   /usr/libexec/rtcreportingd
+tx_flush:1075: disk0s1 xid 20410 tx stats: # 4000 finish 4003 enter 26 wait 177 1187us close 36us flush 5425us
+  119     1 Ss   /System/Library/PrivateFrameworks/PassKitCore.framework/passd
+  120     1 Ss   /System/Library/PrivateFrameworks/CacheDelete.framework/deleted
+  121     1 Ss   /System/Library/PrivateFrameworks/AssistantServices.framework/XPCServices/com.apple.siri.embeddedspeech.xpc/com.apple.siri.embeddedspeech
+  122     1 Ss   /System/Library/Frameworks/Security.framework/CloudKeychainProxy.bundle/CloudKeychainProxy
+  123     1 Ss   /usr/sbin/mDNSResponderHelper
+  124     1 Ss   /usr/libexec/seserviced
+  125     1 Ss   /System/Library/PrivateFrameworks/CloudKitDaemon.framework/Support/cloudd
+  126     1 Ss   /usr/libexec/installd
+  127     1 Ss   /usr/libexec/fmfd
+  128     1 Ss   /System/Library/PrivateFrameworks/MobileInstallation.framework/XPCServices/com.apple.MobileInstallationHelperService.xpc/com.apple.MobileInstallationHelperService
+  129     1 Ss   /System/Library/PrivateFrameworks/MusicLibrary.framework/Support/medialibraryd
+  131     1 Ss   /System/Library/PrivateFrameworks/CalendarDaemon.framework/Support/calaccessd
+  132     1 Ss   /System/Library/PrivateFrameworks/AppStoreDaemon.framework/Support/appstored
+  133     1 Ss   /System/Library/PrivateFrameworks/CoreSpeech.framework/corespeechd
+  134     1 Ss   /usr/libexec/pkd
+  135     1 Rs   /System/Library/PrivateFrameworks/InstallCoordination.framework/Support/installcoordinationd
+  136     1 Ss   /System/Library/PrivateFrameworks/TelephonyUtilities.framework/callservicesd
+  137     1 Rs   /usr/libexec/networkserviceproxy
+  138     1 Ss   /System/Library/PrivateFrameworks/CoreAccessories.framework/Support/accessoryd
+  140     1 Ss   /System/Library/PrivateFrameworks/HomeKitDaemon.framework/Support/homed
+  143     1 Rs   /System/Library/PrivateFrameworks/SyncedDefaults.framework/Support/syncdefaultsd
+  145     1 Rs   /System/Library/PrivateFrameworks/MobileBackup.framework/backupd
+  147     1 Ss   /System/Library/PrivateFrameworks/VoiceServices.framework/Support/voiced
+  150     1 Ss   /usr/libexec/nanoregistrylaunchd
+  151     1 Ss   /System/Library/CoreServices/iconservicesagent
+  152     1 Ss   /usr/libexec/logd_helper
+  153     1 Rs   /System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/XPCServices/com.apple.MobileSoftwareUpdate.CleanupPreparePathService.xpc/com.apple.MobileSoftwareUpdate.CleanupPreparePathService
+  155     1 Ss   /System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd
+  157    63 R    /bin/ps
+  158     1 Rs   (inferno-exec-lau)
+  159     1 Ss   /System/Library/PrivateFrameworks/UserActivity.framework/Agents/useractivityd
+  160     1 Rs   /System/Library/PrivateFrameworks/ScreenTimeCore.framework/ScreenTimeAgent
+tx_flush:1075: disk0s1 xid 20430 tx stats: # 4020 finish 4023 enter 25 wait 177 1187us close 36us flush 5415us
+  161     1 Ss   /usr/libexec/dmd
+  162     1 Rs   /usr/libexec/profiled
+INFERNO_READINESS_END seconds=15 status=0
+INFERNO_LOG_DIRECTORY /private/var/mobile/Library/Logs/CrashReporter opened=1 errno=60
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/. type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/.. type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/inferno-launcher-2026-10-06-024351.ips type=8
+INFERNO_CRASH_PREFIX_BEGIN /private/var/mobile/Library/Logs/CrashReporter/inferno-launcher-2026-10-06-024351.ips size=12397 limit=32768
+{"app_name":"inferno-launcher","timestamp":"2026-10-06 02:43:51.00 -0700","app_version":"","slice_uuid":"00000000-0000-0000-0000-000000000000","build_version":"","platform":2,"share_with_app_devs":0,"is_first_party":1,"bug_type":"109","os_version":"iPhone OS 14.0 (18A5351d)","incident_id":"9E166788-B716-4E38-9250-E4A9B161261D","name":"inferno-launcher"}
+Incident Identifier: 9E166788-B716-4E38-9250-E4A9B161261D
+CrashReporter Key:   8e4e079a6b35dd6a1667d657305681939b80a241
+Hardware Model:      iPhone12,1
+Process:             inferno-launcher [164]
+Path:                /usr/bin/inferno-launcher
+Identifier:          inferno-launcher
+Version:             ???
+Code Type:           ARM-64 (Native)
+Role:                Unspecified
+Parent Process:      inferno-exec-launcher [158]
+Coalition:           org.inferno.app-probe [35]
+
+
+Date/Time:           2026-10-06 02:43:51.2415 -0700
+Launch Time:         2026-10-06 02:43:43.6555 -0700
+OS Version:          iPhone OS 14.0 (18A5351d)
+Release Type:        Beta
+Baseband Version:    n/a
+Report Version:      104
+
+Exception Type:  EXC_CRASH (SIGABRT)
+Exception Codes: 0x0000000000000000, 0x0000000000000000
+Exception Note:  EXC_CORPSE_NOTIFY
+Termination Description: DYLD, missing lazy symbol called
+Triggered by Thread:  0
+
+Thread 0 name:  Dispatch queue: com.apple.main-thread
+Thread 0 Crashed:
+0   dyld                          	0x0000000102662b68 0x10260c000 + 355176
+1   dyld                          	0x000000010266a32c 0x10260c000 + 385836
+2   dyld                          	0x000000010266a360 0x10260c000 + 385888
+3   dyld                          	0x0000000102611044 0x10260c000 + 20548
+4   libdyld.dylib                 	0x00000001934cf84c 0x1934bb000 + 84044
+5   libdyld.dylib                 	0x00000001934cf418 0x1934bb000 + 82968
+6   inferno-launcher              	0x000000010233c17c 0x102338000 + 16764
+7   libdyld.dylib                 	0x00000001934bbe60 0x1934bb000 + 3680
+
+Thread 0 crashed with ARM Thread State (64-bit):
+    x0: 0x0000000000000006   x1: 0x0000000000000004   x2: 0x000000016dac6a50   x3: 0x0000000000000032
+    x4: 0x000000016dac6650   x5: 0x0000000000000000   x6: 0x0000000000000000   x7: 0x0000000000000000
+    x8: 0x0000000000000020   x9: 0x0000000000000009  x10: 0x0000000000000001  x11: 0x000000010280a038
+   x12: 0x0000000000000001  x13: 0x0000000000000000  x14: 0x000000009a13967b  x15: 0x00000000000001d9
+   x16: 0x0000000000000209  x17: 0x000000010265d030  x18: 0x0000000000000000  x19: 0x0000000000000000
+   x20: 0x000000016dac6650  x21: 0x0000000000000032  x22: 0x000000016dac6a50  x23: 0x0000000000000004
+   x24: 0x0000000000000006  x25: 0x0000000102340048  x26: 0x0000000000000000  x27: 0x00000001dd378d4c
+   x28: 0x0000000000000001   fp: 0x000000016dac6620   lr: 0x000000010266a32c
+    sp: 0x000000016dac65e0   pc: 0x0000000102662b68 cpsr: 0x00000000
+   esr: 0x56000080  Address size fault
+
+Binary Images:
+0x10260c000 - 0x10267bfff dyld arm64e  <8d9c1f86d39b3b13bb6d7d0b1c48cac7> /usr/lib/dyld
+0x193281000 - 0x193297fff libsystem_trace.dylib arm64e  <00b91db909da33da9f3050fc28094e73> /usr/lib/system/libsystem_trace.dylib
+0x193298000 - 0x1932ccfff libxpc.dylib arm64e  <6d9dcf6a63fd3fb2865b782d147ab878> /usr/lib/system/libxpc.dylib
+0x1932cd000 - 0x1932cefff libsystem_blocks.dylib arm64e  <fb386416549a3ee4b62bbdf718ad5a23> /usr/lib/system/libsystem_blocks.dylib
+0x1932cf000 - 0x19334dfff libsystem_c.dylib arm64e  <a91cdcd8c69f3204b740b860188831cc> /usr/lib/system/libsystem_c.dylib
+0x19334e000 - 0x19338ffff libdispatch.dylib arm64e  <636c9b4e09d739cfb9a7732f26e4d3dc> /usr/lib/system/libdispatch.dylib
+0x193390000 - 0x1933b3fff libsystem_malloc.dylib arm64e  <196ad8da0072371d8744a9e27eaa2c9f> /usr/lib/system/libsystem_malloc.dylib
+0x1933b4000 - 0x1933bafff libsystem_platform.dylib arm64e  <55ece0094190339a9ba8ce790857e9e4> /usr/lib/system/libsystem_platform.dylib
+0x1933bb000 - 0x1933c6fff libsystem_pthread.dylib arm64e  <2582eeca422f39099579d8177d42492b> /usr/lib/system/libsystem_pthread.dylib
+0x1933c7000 - 0x193400fff libobjc.A.dylib arm64e  <1bcb72b1ea993d7d872b3486d9dfd232> /usr/lib/libobjc.A.dylib
+0x193401000 - 0x193473fff libcorecrypto.dylib arm64e  <1e7db13510c13249be9420358e6e4a36> /usr/lib/system/libcorecrypto.dylib
+0x193474000 - 0x193489fff libc++abi.dylib arm64e  <ca1934081eef33b4a9f2fee2a59690ca> /usr/lib/libc++abi.dylib
+0x19348a000 - 0x1934bafff libsystem_kernel.dylib arm64e  <7a525942131a332bb9e6575c0f7b50b6> /usr/lib/system/libsystem_kernel.dylib
+0x1934bb000 - 0x1934f4fff libdyld.dylib arm64e  <20d5095f60cd3c1a96ac9a0583dc73bf> /usr/lib/system/libdyld.dylib
+0x1934f5000 - 0x1934fefff libsystem_darwin.dylib arm64e  <60c9f0a9949735ea9136c454206997d9> /usr/lib/system/libsystem_darwin.dylib
+0x1934ff000 - 0x19355cfff libc++.1.dylib arm64e  <da0363b92e8f34fb8d5ebb5277113399> /usr/lib/libc++.1.dylib
+0x19355d000 - 0x19359bfff libsystem_info.dylib arm64e  <5c176906324f33e7a684e93f962e709a> /usr/lib/system/libsystem_info.dylib
+0x19359c000 - 0x19394ffff CoreFoundation arm64e  <548058ac65eb31fda60daa27af827c0a> /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+0x193950000 - 0x1939c9fff SystemConfiguration arm64e  <09a9fb2317f438efbe23203c82397516> /System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration
+0x1939ca000 - 0x193c78fff Foundation arm64e  <14c5869470a83655a854b634dbc9f68b> /System/Library/Frameworks/Foundation.framework/Foundation
+0x193c79000 - 0x193cacfff libCRFSuite.dylib arm64e  <87dba74de1933aa3affaf00df7052977> /usr/lib/libCRFSuite.dylib
+0x193cad000 - 0x193e4ffff CoreServices arm64e  <be67df57fa0b3c9280bedf07d0421f0a> /System/Library/Frameworks/CoreServices.framework/CoreServices
+0x1943c7000 - 0x19450efff Security arm64e  <7d6cfe4fd084336d9ccf514419d65040> /System/Library/Frameworks/Security.framework/Security
+0x19450f000 - 0x1945b8fff IOKit arm64e  <fdf91101eeea37499c91f90fa4482422> /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit
+0x1945b9000 - 0x194616fff libMobileGestalt.dylib arm64e  <5723163f914c3b6fb7a4a66a102a15db> /usr/lib/libMobileGestalt.dylib
+0x19468c000 - 0x1948f3fff libicucore.A.dylib arm64e  <18985e38940c39548a196c8b03f0be46> /usr/lib/libicucore.A.dylib
+0x195369000 - 0x1954f1fff libsqlite3.dylib arm64e  <b3b40285d30f33eaa6eae0669760ad51> /usr/lib/libsqlite3.dylib
+0x195528000 - 0x195532fff libsystem_notify.dylib arm64e  <20b6e3c2dcd237139457f0e47afdcab7> /usr/lib/system/libsystem_notify.dylib
+0x195a1e000 - 0x196114fff libnetwork.dylib arm64e  <780a04a7e4cc38379516187f4f212a2c> /usr/lib/libnetwork.dylib
+0x196239000 - 0x196270fff CoreServicesStore arm64e  <a483b9ba16143fcbb06413e04be60ce3> /System/Library/PrivateFrameworks/CoreServicesStore.framework/CoreServicesStore
+0x196681000 - 0x196681fff libenergytrace.dylib arm64e  <2aa006c8c66339e7b61bf16385a83c53> /usr/lib/libenergytrace.dylib
+0x196e2b000 - 0x1972b8fff CFNetwork arm64e  <c054cbe1d50737fb9a448d85f6b9e405> /System/Library/Frameworks/CFNetwork.framework/CFNetwork
+0x1988fa000 - 0x198910fff libsystem_asl.dylib arm64e  <fc8926cef81037e6ad3dd1c130c813ea> /usr/lib/system/libsystem_asl.dylib
+0x1990be000 - 0x1990cdfff libsystem_networkextension.dylib arm64e  <d798871ad3ae3eafae7208d5c3df1847> /usr/lib/system/libsystem_networkextension.dylib
+0x199543000 - 0x19954afff libsystem_symptoms.dylib arm64e  <c13e874dde2c3563b36ed04e7dd5587b> /usr/lib/system/libsystem_symptoms.dylib
+0x19ad7e000 - 0x19ad8ffff libsystem_containermanager.dylib arm64e  <8c664ed3d8ab3b07bded9d299931623e> /usr/lib/system/libsystem_containermanager.dylib
+0x19eb6a000 - 0x19eb7cfff IOSurface arm64e  <8af079a68f753d3d81b51fcc0ec451a8> /System/Library/Frameworks/IOSurface.framework/IOSurface
+0x1a47fa000 - 0x1a47fefff libsystem_configuration.dylib arm64e  <0447f73a9346383fb180ec1ed8b4c319> /usr/lib/system/libsystem_configuration.dylib
+0x1a4a81000 - 0x1a4a82fff liblangid.dylib arm64e  <a586059cb97d37b38115187dfe2f9fbc> /usr/lib/liblangid.dylib
+0x1a5da5000 - 0x1a5daffff IOMobileFramebuffer arm64e  <5418a289f4833bb683bb8bc978b1261e> /System/Library/PrivateFrameworks/IOMobileFramebuffer.framework/IOMobileFramebuffer
+0x1a61c4000 - 0x1a62adfff libxml2.2.dylib arm64e  <d8a8b93501ce3c35ad443fb3b9f33367> /usr/lib/libxml2.2.dylib
+0x1a9f8d000 - 0x1a9f90fff libsystem_sandbox.dylib arm64e  <4cc279a3f933300586297cf1b71b0dc4> /usr/lib/system/libsystem_sandbox.dylib
+0x1aa1fe000 - 0x1aa232fff MobileInstallation arm64e  <75fdd74a3acb3b2eafccdb7f55c5ccb8> /System/Library/PrivateFrameworks/MobileInstallation.framework/MobileInstallation
+0x1aa343000 - 0x1aa34bfff libsystem_dnssd.dylib arm64e  <6303d2b8a49a3da899315bcb75cf3707> /usr/lib/system/libsystem_dnssd.dylib
+0x1aad3f000 - 0x1aad55fff libcoretls.dylib arm64e  <14afb3bc12e330a498557a2d9bcc830e> /usr/lib/libcoretls.dylib
+0x1b8a5f000 - 0x1b8acffff libarchive.2.dylib arm64e  <37b2d4c1a75339ff8bd28fe7607d9fb4> /usr/lib/libarchive.2.dylib
+0x1b8be1000 - 0x1b8be2fff libsystem_coreservices.dylib arm64e  <9c4a7694a6c934c0b1083b8c25d7f730> /usr/lib/system/libsystem_coreservices.dylib
+0x1b8e37000 - 0x1b8e3ffff libcopyfile.dylib arm64e  <5029684e6fbc39959720f3c8783061ee> /usr/lib/system/libcopyfile.dylib
+0x1bd645000 - 0x1bd64bfff MobileSystemServices arm64e  <42ad3acf0dc13fd8813240191b657b4c> /System/Library/PrivateFrameworks/MobileSystemServices.framework/MobileSystemServices
+0x1c2337000 - 0x1c2371fff libpcap.A.dylib arm64e  <2dcda2a4ba3337f1b4c448ad7084a089> /usr/lib/libpcap.A.dylib
+0x1cff12000 - 0x1cff13fff libSystem.B.dylib arm64e  <aafe72ee07a23052ad86e171768f51b0> /usr/lib/libSystem.B.dylib
+0x1d003f000 - 0x1d0055fff libapple_nghttp2.dylib arm64e  <b6fe39d73cc23ec1aa018bebd64dcb18> /usr/lib/libapple_nghttp2.dylib
+0x1d00e5000 - 0x1d00f5fff libbsm.0.dylib arm64e  <179defce88903bb0948eaa544fb874b0> /usr/lib/libbsm.0.dylib
+0x1d00f6000 - 0x1d0102fff libbz2.1.0.dylib arm64e  <f2be4c60f3a534d19f518a2d238c7c61> /usr/lib/libbz2.1.0.dylib
+0x1d0103000 - 0x1d0103fff libcharset.1.dylib arm64e  <6a8bcadc4e4837b880759b3c2b093542> /usr/lib/libcharset.1.dylib
+0x1d0116000 - 0x1d012dfff libcompression.dylib arm64e  <f84fc8f30af036bcb51da2f1408a8c9b> /usr/lib/libcompression.dylib
+0x1d012e000 - 0x1d012ffff libcoretls_cfhelpers.dylib arm64e  <8b682d0a36bf3bd29ae1a82ef64d74ec> /usr/lib/libcoretls_cfhelpers.dylib
+0x1d0138000 - 0x1d013efff libdns_services.dylib arm64e  <fceb299fa9213720b2ca73cf0d6566ef> /usr/lib/libdns_services.dylib
+0x1d0199000 - 0x1d028efff libiconv.2.dylib arm64e  <d703f1a24e9a3df08ff57fe051b9837d> /usr/lib/libiconv.2.dylib
+0x1d02b9000 - 0x1d02d1fff liblzma.5.dylib arm64e  <8ac4cda574e13ad5b79f14b0cf570bda> /usr/lib/liblzma.5.dylib
+0x1d098e000 - 0x1d099ffff libz.1.dylib arm64e  <0e4a3945c82d3a7fad620e189541b392> /usr/lib/libz.1.dylib
+0x1d0d89000 - 0x1d0d8efff libcache.dylib arm64e  <ab890d91f58f33919e511d4780382e97> /usr/lib/system/libcache.dylib
+0x1d0d8f000 - 0x1d0d9bfff libcommonCrypto.dylib arm64e  <6513855214083bf885ce35c283348f79> /usr/lib/system/libcommonCrypto.dylib
+0x1d0d9c000 - 0x1d0d9ffff libcompiler_rt.dylib arm64e  <d1a1aa81b237340fbcd60c966de2bfe9> /usr/lib/system/libcompiler_rt.dylib
+0x1d0e82000 - 0x1d0e82fff liblaunch.dylib arm64e  <878b4659911d3dc18dbcc544ad104942> /usr/lib/system/liblaunch.dylib
+0x1d0e83000 - 0x1d0e88fff libmacho.dylib arm64e  <faee59d51fc331bf958f958ea5173cf2> /usr/lib/system/libmacho.dylib
+0x1d0e89000 - 0x1d0e8bfff libremovefile.dylib arm64e  <a8941a4044643f8b86f2c6c02861c3af> /usr/lib/system/libremovefile.dylib
+0x1d0e8c000 - 0x1d0e8efff libsystem_featureflags.dylib arm64e  <8fba484d7a0530d4957172d951018f14> /usr/lib/system/libsystem_featureflags.dylib
+0x1d0e8f000 - 0x1d0ebcfff libsystem_m.dylib arm64e  <1c56491e8b903e71a2850c932d20264b> /usr/lib/system/libsystem_m.dylib
+0x1d0ebd000 - 0x1d0ec7fff libunwind.dylib arm64e  <3c63f6fa0c1e341cb7a611de118f2297> /usr/lib/system/libunwind.dylib
+0x1d61dd000 - 0x1d621ffff CoreAutoLayout arm64e  <daf191599f21382f970477fe10260ded> /System/Library/PrivateFrameworks/CoreAutoLayout.framework/CoreAutoLayout
+0x1d8851000 - 0x1d8851fff SoftLinking arm64e  <8ebd6c2cef0f3d5e8dfa1ca18dd5ef81> /System/Library/PrivateFrameworks/SoftLinking.framework/SoftLinking
+0x1dd00d000 - 0x1dd00ffff libsystem_collections.dylib arm64e  <1f1d98c6b96339f6b28e9de25db8f0cc> /usr/lib/system/libsystem_collections.dylib
+0x1dd010000 - 0x1dd010fff libsystem_product_info_filter.dylib arm64e  <b437888b4b9534e5bd1bcbb440433632> /usr/lib/system/libsystem_product_info_filter.dylib
+
+EOF
+
+
+INFERNO_CRASH_PREFIX_END bytes=12397
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/inferno-launcher-2026-10-06-024331.ips type=8
+INFERNO_CRASH_PREFIX_BEGIN /private/var/mobile/Library/Logs/CrashReporter/inferno-launcher-2026-10-06-024331.ips size=12396 limit=32768
+{"app_name":"inferno-launcher","timestamp":"2026-10-06 02:43:31.00 -0700","app_version":"","slice_uuid":"00000000-0000-0000-0000-000000000000","build_version":"","platform":2,"share_with_app_devs":0,"is_first_party":1,"bug_type":"109","os_version":"iPhone OS 14.0 (18A5351d)","incident_id":"86456643-78C0-4C6F-BECE-44D41EF7B95D","name":"inferno-launcher"}
+Incident Identifier: 86456643-78C0-4C6F-BECE-44D41EF7B95D
+CrashReporter Key:   8e4e079a6b35dd6a1667d657305681939b80a241
+Hardware Model:      iPhone12,1
+Process:             inferno-launcher [148]
+Path:                /usr/bin/inferno-launcher
+Identifier:          inferno-launcher
+Version:             ???
+Code Type:           ARM-64 (Native)
+Role:                Unspecified
+Parent Process:      inferno-exec-launcher [42]
+Coalition:           org.inferno.app-probe [35]
+
+
+Date/Time:           2026-10-06 02:43:30.3612 -0700
+Launch Time:         2026-10-06 02:43:13.2972 -0700
+OS Version:          iPhone OS 14.0 (18A5351d)
+Release Type:        Beta
+Baseband Version:    n/a
+Report Version:      104
+
+Exception Type:  EXC_CRASH (SIGABRT)
+Exception Codes: 0x0000000000000000, 0x0000000000000000
+Exception Note:  EXC_CORPSE_NOTIFY
+Termination Description: DYLD, missing lazy symbol called
+Triggered by Thread:  0
+
+Thread 0 name:  Dispatch queue: com.apple.main-thread
+Thread 0 Crashed:
+0   dyld                          	0x0000000104dceb68 0x104d78000 + 355176
+1   dyld                          	0x0000000104dd632c 0x104d78000 + 385836
+2   dyld                          	0x0000000104dd6360 0x104d78000 + 385888
+3   dyld                          	0x0000000104d7d044 0x104d78000 + 20548
+4   libdyld.dylib                 	0x00000001934cf84c 0x1934bb000 + 84044
+5   libdyld.dylib                 	0x00000001934cf418 0x1934bb000 + 82968
+6   inferno-launcher              	0x0000000104ae017c 0x104adc000 + 16764
+7   libdyld.dylib                 	0x00000001934bbe60 0x1934bb000 + 3680
+
+Thread 0 crashed with ARM Thread State (64-bit):
+    x0: 0x0000000000000006   x1: 0x0000000000000004   x2: 0x000000016b322a50   x3: 0x0000000000000032
+    x4: 0x000000016b322650   x5: 0x0000000000000000   x6: 0x0000000000000000   x7: 0x0000000000000000
+    x8: 0x0000000000000020   x9: 0x0000000000000009  x10: 0x0000000000000001  x11: 0x000000015880b038
+   x12: 0x0000000000000001  x13: 0x0000000000000000  x14: 0x00000000000000e9  x15: 0x00000001933f3211
+   x16: 0x0000000000000209  x17: 0x0000000104dc9030  x18: 0x0000000000000000  x19: 0x0000000000000000
+   x20: 0x000000016b322650  x21: 0x0000000000000032  x22: 0x000000016b322a50  x23: 0x0000000000000004
+   x24: 0x0000000000000006  x25: 0x0000000104ae4048  x26: 0x0000000000000000  x27: 0x00000001dd378d4c
+   x28: 0x0000000000000001   fp: 0x000000016b322620   lr: 0x0000000104dd632c
+    sp: 0x000000016b3225e0   pc: 0x0000000104dceb68 cpsr: 0x00000000
+   esr: 0x56000080  Address size fault
+
+Binary Images:
+0x104d78000 - 0x104de7fff dyld arm64e  <8d9c1f86d39b3b13bb6d7d0b1c48cac7> /usr/lib/dyld
+0x193281000 - 0x193297fff libsystem_trace.dylib arm64e  <00b91db909da33da9f3050fc28094e73> /usr/lib/system/libsystem_trace.dylib
+0x193298000 - 0x1932ccfff libxpc.dylib arm64e  <6d9dcf6a63fd3fb2865b782d147ab878> /usr/lib/system/libxpc.dylib
+0x1932cd000 - 0x1932cefff libsystem_blocks.dylib arm64e  <fb386416549a3ee4b62bbdf718ad5a23> /usr/lib/system/libsystem_blocks.dylib
+0x1932cf000 - 0x19334dfff libsystem_c.dylib arm64e  <a91cdcd8c69f3204b740b860188831cc> /usr/lib/system/libsystem_c.dylib
+0x19334e000 - 0x19338ffff libdispatch.dylib arm64e  <636c9b4e09d739cfb9a7732f26e4d3dc> /usr/lib/system/libdispatch.dylib
+0x193390000 - 0x1933b3fff libsystem_malloc.dylib arm64e  <196ad8da0072371d8744a9e27eaa2c9f> /usr/lib/system/libsystem_malloc.dylib
+0x1933b4000 - 0x1933bafff libsystem_platform.dylib arm64e  <55ece0094190339a9ba8ce790857e9e4> /usr/lib/system/libsystem_platform.dylib
+0x1933bb000 - 0x1933c6fff libsystem_pthread.dylib arm64e  <2582eeca422f39099579d8177d42492b> /usr/lib/system/libsystem_pthread.dylib
+0x1933c7000 - 0x193400fff libobjc.A.dylib arm64e  <1bcb72b1ea993d7d872b3486d9dfd232> /usr/lib/libobjc.A.dylib
+0x193401000 - 0x193473fff libcorecrypto.dylib arm64e  <1e7db13510c13249be9420358e6e4a36> /usr/lib/system/libcorecrypto.dylib
+0x193474000 - 0x193489fff libc++abi.dylib arm64e  <ca1934081eef33b4a9f2fee2a59690ca> /usr/lib/libc++abi.dylib
+0x19348a000 - 0x1934bafff libsystem_kernel.dylib arm64e  <7a525942131a332bb9e6575c0f7b50b6> /usr/lib/system/libsystem_kernel.dylib
+0x1934bb000 - 0x1934f4fff libdyld.dylib arm64e  <20d5095f60cd3c1a96ac9a0583dc73bf> /usr/lib/system/libdyld.dylib
+0x1934f5000 - 0x1934fefff libsystem_darwin.dylib arm64e  <60c9f0a9949735ea9136c454206997d9> /usr/lib/system/libsystem_darwin.dylib
+0x1934ff000 - 0x19355cfff libc++.1.dylib arm64e  <da0363b92e8f34fb8d5ebb5277113399> /usr/lib/libc++.1.dylib
+0x19355d000 - 0x19359bfff libsystem_info.dylib arm64e  <5c176906324f33e7a684e93f962e709a> /usr/lib/system/libsystem_info.dylib
+0x19359c000 - 0x19394ffff CoreFoundation arm64e  <548058ac65eb31fda60daa27af827c0a> /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+0x193950000 - 0x1939c9fff SystemConfiguration arm64e  <09a9fb2317f438efbe23203c82397516> /System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration
+0x1939ca000 - 0x193c78fff Foundation arm64e  <14c5869470a83655a854b634dbc9f68b> /System/Library/Frameworks/Foundation.framework/Foundation
+0x193c79000 - 0x193cacfff libCRFSuite.dylib arm64e  <87dba74de1933aa3affaf00df7052977> /usr/lib/libCRFSuite.dylib
+0x193cad000 - 0x193e4ffff CoreServices arm64e  <be67df57fa0b3c9280bedf07d0421f0a> /System/Library/Frameworks/CoreServices.framework/CoreServices
+0x1943c7000 - 0x19450efff Security arm64e  <7d6cfe4fd084336d9ccf514419d65040> /System/Library/Frameworks/Security.framework/Security
+0x19450f000 - 0x1945b8fff IOKit arm64e  <fdf91101eeea37499c91f90fa4482422> /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit
+0x1945b9000 - 0x194616fff libMobileGestalt.dylib arm64e  <5723163f914c3b6fb7a4a66a102a15db> /usr/lib/libMobileGestalt.dylib
+0x19468c000 - 0x1948f3fff libicucore.A.dylib arm64e  <18985e38940c39548a196c8b03f0be46> /usr/lib/libicucore.A.dylib
+0x195369000 - 0x1954f1fff libsqlite3.dylib arm64e  <b3b40285d30f33eaa6eae0669760ad51> /usr/lib/libsqlite3.dylib
+0x195528000 - 0x195532fff libsystem_notify.dylib arm64e  <20b6e3c2dcd237139457f0e47afdcab7> /usr/lib/system/libsystem_notify.dylib
+0x195a1e000 - 0x196114fff libnetwork.dylib arm64e  <780a04a7e4cc38379516187f4f212a2c> /usr/lib/libnetwork.dylib
+0x196239000 - 0x196270fff CoreServicesStore arm64e  <a483b9ba16143fcbb06413e04be60ce3> /System/Library/PrivateFrameworks/CoreServicesStore.framework/CoreServicesStore
+0x196681000 - 0x196681fff libenergytrace.dylib arm64e  <2aa006c8c66339e7b61bf16385a83c53> /usr/lib/libenergytrace.dylib
+0x196e2b000 - 0x1972b8fff CFNetwork arm64e  <c054cbe1d50737fb9a448d85f6b9e405> /System/Library/Frameworks/CFNetwork.framework/CFNetwork
+0x1988fa000 - 0x198910fff libsystem_asl.dylib arm64e  <fc8926cef81037e6ad3dd1c130c813ea> /usr/lib/system/libsystem_asl.dylib
+0x1990be000 - 0x1990cdfff libsystem_networkextension.dylib arm64e  <d798871ad3ae3eafae7208d5c3df1847> /usr/lib/system/libsystem_networkextension.dylib
+0x199543000 - 0x19954afff libsystem_symptoms.dylib arm64e  <c13e874dde2c3563b36ed04e7dd5587b> /usr/lib/system/libsystem_symptoms.dylib
+0x19ad7e000 - 0x19ad8ffff libsystem_containermanager.dylib arm64e  <8c664ed3d8ab3b07bded9d299931623e> /usr/lib/system/libsystem_containermanager.dylib
+0x19eb6a000 - 0x19eb7cfff IOSurface arm64e  <8af079a68f753d3d81b51fcc0ec451a8> /System/Library/Frameworks/IOSurface.framework/IOSurface
+0x1a47fa000 - 0x1a47fefff libsystem_configuration.dylib arm64e  <0447f73a9346383fb180ec1ed8b4c319> /usr/lib/system/libsystem_configuration.dylib
+0x1a4a81000 - 0x1a4a82fff liblangid.dylib arm64e  <a586059cb97d37b38115187dfe2f9fbc> /usr/lib/liblangid.dylib
+0x1a5da5000 - 0x1a5daffff IOMobileFramebuffer arm64e  <5418a289f4833bb683bb8bc978b1261e> /System/Library/PrivateFrameworks/IOMobileFramebuffer.framework/IOMobileFramebuffer
+0x1a61c4000 - 0x1a62adfff libxml2.2.dylib arm64e  <d8a8b93501ce3c35ad443fb3b9f33367> /usr/lib/libxml2.2.dylib
+0x1a9f8d000 - 0x1a9f90fff libsystem_sandbox.dylib arm64e  <4cc279a3f933300586297cf1b71b0dc4> /usr/lib/system/libsystem_sandbox.dylib
+0x1aa1fe000 - 0x1aa232fff MobileInstallation arm64e  <75fdd74a3acb3b2eafccdb7f55c5ccb8> /System/Library/PrivateFrameworks/MobileInstallation.framework/MobileInstallation
+0x1aa343000 - 0x1aa34bfff libsystem_dnssd.dylib arm64e  <6303d2b8a49a3da899315bcb75cf3707> /usr/lib/system/libsystem_dnssd.dylib
+0x1aad3f000 - 0x1aad55fff libcoretls.dylib arm64e  <14afb3bc12e330a498557a2d9bcc830e> /usr/lib/libcoretls.dylib
+0x1b8a5f000 - 0x1b8acffff libarchive.2.dylib arm64e  <37b2d4c1a75339ff8bd28fe7607d9fb4> /usr/lib/libarchive.2.dylib
+0x1b8be1000 - 0x1b8be2fff libsystem_coreservices.dylib arm64e  <9c4a7694a6c934c0b1083b8c25d7f730> /usr/lib/system/libsystem_coreservices.dylib
+0x1b8e37000 - 0x1b8e3ffff libcopyfile.dylib arm64e  <5029684e6fbc39959720f3c8783061ee> /usr/lib/system/libcopyfile.dylib
+0x1bd645000 - 0x1bd64bfff MobileSystemServices arm64e  <42ad3acf0dc13fd8813240191b657b4c> /System/Library/PrivateFrameworks/MobileSystemServices.framework/MobileSystemServices
+0x1c2337000 - 0x1c2371fff libpcap.A.dylib arm64e  <2dcda2a4ba3337f1b4c448ad7084a089> /usr/lib/libpcap.A.dylib
+0x1cff12000 - 0x1cff13fff libSystem.B.dylib arm64e  <aafe72ee07a23052ad86e171768f51b0> /usr/lib/libSystem.B.dylib
+0x1d003f000 - 0x1d0055fff libapple_nghttp2.dylib arm64e  <b6fe39d73cc23ec1aa018bebd64dcb18> /usr/lib/libapple_nghttp2.dylib
+0x1d00e5000 - 0x1d00f5fff libbsm.0.dylib arm64e  <179defce88903bb0948eaa544fb874b0> /usr/lib/libbsm.0.dylib
+0x1d00f6000 - 0x1d0102fff libbz2.1.0.dylib arm64e  <f2be4c60f3a534d19f518a2d238c7c61> /usr/lib/libbz2.1.0.dylib
+0x1d0103000 - 0x1d0103fff libcharset.1.dylib arm64e  <6a8bcadc4e4837b880759b3c2b093542> /usr/lib/libcharset.1.dylib
+0x1d0116000 - 0x1d012dfff libcompression.dylib arm64e  <f84fc8f30af036bcb51da2f1408a8c9b> /usr/lib/libcompression.dylib
+0x1d012e000 - 0x1d012ffff libcoretls_cfhelpers.dylib arm64e  <8b682d0a36bf3bd29ae1a82ef64d74ec> /usr/lib/libcoretls_cfhelpers.dylib
+0x1d0138000 - 0x1d013efff libdns_services.dylib arm64e  <fceb299fa9213720b2ca73cf0d6566ef> /usr/lib/libdns_services.dylib
+0x1d0199000 - 0x1d028efff libiconv.2.dylib arm64e  <d703f1a24e9a3df08ff57fe051b9837d> /usr/lib/libiconv.2.dylib
+0x1d02b9000 - 0x1d02d1fff liblzma.5.dylib arm64e  <8ac4cda574e13ad5b79f14b0cf570bda> /usr/lib/liblzma.5.dylib
+0x1d098e000 - 0x1d099ffff libz.1.dylib arm64e  <0e4a3945c82d3a7fad620e189541b392> /usr/lib/libz.1.dylib
+0x1d0d89000 - 0x1d0d8efff libcache.dylib arm64e  <ab890d91f58f33919e511d4780382e97> /usr/lib/system/libcache.dylib
+0x1d0d8f000 - 0x1d0d9bfff libcommonCrypto.dylib arm64e  <6513855214083bf885ce35c283348f79> /usr/lib/system/libcommonCrypto.dylib
+0x1d0d9c000 - 0x1d0d9ffff libcompiler_rt.dylib arm64e  <d1a1aa81b237340fbcd60c966de2bfe9> /usr/lib/system/libcompiler_rt.dylib
+0x1d0e82000 - 0x1d0e82fff liblaunch.dylib arm64e  <878b4659911d3dc18dbcc544ad104942> /usr/lib/system/liblaunch.dylib
+0x1d0e83000 - 0x1d0e88fff libmacho.dylib arm64e  <faee59d51fc331bf958f958ea5173cf2> /usr/lib/system/libmacho.dylib
+0x1d0e89000 - 0x1d0e8bfff libremovefile.dylib arm64e  <a8941a4044643f8b86f2c6c02861c3af> /usr/lib/system/libremovefile.dylib
+0x1d0e8c000 - 0x1d0e8efff libsystem_featureflags.dylib arm64e  <8fba484d7a0530d4957172d951018f14> /usr/lib/system/libsystem_featureflags.dylib
+0x1d0e8f000 - 0x1d0ebcfff libsystem_m.dylib arm64e  <1c56491e8b903e71a2850c932d20264b> /usr/lib/system/libsystem_m.dylib
+0x1d0ebd000 - 0x1d0ec7fff libunwind.dylib arm64e  <3c63f6fa0c1e341cb7a611de118f2297> /usr/lib/system/libunwind.dylib
+0x1d61dd000 - 0x1d621ffff CoreAutoLayout arm64e  <daf191599f21382f970477fe10260ded> /System/Library/PrivateFrameworks/CoreAutoLayout.framework/CoreAutoLayout
+0x1d8851000 - 0x1d8851fff SoftLinking arm64e  <8ebd6c2cef0f3d5e8dfa1ca18dd5ef81> /System/Library/PrivateFrameworks/SoftLinking.framework/SoftLinking
+0x1dd00d000 - 0x1dd00ffff libsystem_collections.dylib arm64e  <1f1d98c6b96339f6b28e9de25db8f0cc> /usr/lib/system/libsystem_collections.dylib
+0x1dd010000 - 0x1dd010fff libsystem_product_info_filter.dylib arm64e  <b437888b4b9534e5bd1bcbb440433632> /usr/lib/system/libsystem_product_info_filter.dylib
+
+EOF
+
+
+INFERNO_CRASH_PREFIX_END bytes=12396
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/DiagnosticLogs type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/stacks+com.apple.datamigrator-2026-10-06-015846.ips type=8
+INFERNO_CRASH_PREFIX_BEGIN /private/var/mobile/Library/Logs/CrashReporter/stacks+com.apple.datamigrator-2026-10-06-015846.ips size=353242 limit=32768
+tx_flush:1075: disk0s1 xid 20450 tx stats: # 4040 finish 4043 enter 25 wait 177 1187us close 36us flush 5407us
+{"bug_type":"288","timestamp":"2026-10-06 01:58:46.63 -0700","os_version":"iPhone OS 14.0 (18A5351d)","incident_id":"1785D23D-2A68-4BBF-B1DF-BCE1CDC09009"}
+{
+  "build" : "iPhone OS 14.0 (18A5351d)",
+  "product" : "iPhone12,1",
+  "kernel" : "Darwin Kernel Version 20.0.0: Wed Aug 12 22:56:55 PDT 2020; root:xnu-7195.0.33~64\/RELEASE_ARM64_T8030",
+  "tuning" : {
+
+  },
+  "incident" : "1785D23D-2A68-4BBF-B1DF-BCE1CDC09009",
+  "crashReporterKey" : "8e4e079a6b35dd6a1667d657305681939b80a241",
+  "date" : "2026-10-06 01:58:46.60 -0700",
+  "reason" : "PRECAUTIONARY stackshot - migration might be hung or deadlocked. Plugin: com.apple.-0LaunchServicesMigrator (00LaunchServicesMigrator.migrator, user-agnostic) (2 minutes) (overall migration start 812969806) (erase)",
+  "frontmostPids" : [
+    57
+  ],
+  "exception" : "0xbadedbad",
+  "absoluteTime" : 3551107208,
+  "memoryStatus" : {"compressorSize":0,"compressions":0,"decompressions":0,"busyBufferCount":0,"pageSize":16384,"memoryPressure":false,"memoryPages":{"active":20921,"throttled":0,"fileBacked":39165,"wired":30445,"purgeable":356,"inactive":3543,"free":131628,"speculative":31553}},
+  "processByPid" : {
+    "0" : {"pid":0,"residentMemoryBytes":49152,"timesDidThrottle":0,"systemTimeTask":0,"pageIns":0,"pageFaults":458,"userTimeTask":49.607524916000003,"procname":"kernel_task","copyOnWriteFaults":0,"threadById":{"259":{"continuation":[0,17073432],"userTime":1.075e-05,"systemTime":0,"id":259,"basePriority":81,"name":"AppleVTempDispatcher","user_usec":10,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108038661]},"534":{"continuation":[0,17073432],"userTime":0.00053850000000000002,"systemTime":0,"id":534,"basePriority":81,"name":"InterruptEventSourceBridge","user_usec":538,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108815269]},"437":{"continuation":[0,17073432],"userTime":7.3374999999999995e-05,"systemTime":0,"id":437,"basePriority":81,"name":"RTBuddyV2","user_usec":73,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108746613]},"526":{"continuation":[0,17073432],"userTime":0.0036644999999999998,"systemTime":0,"id":526,"basePriority":81,"name":"InterruptEventSourceBridge","user_usec":3664,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108812149]},"623":{"continuation":[0,17073432],"userTime":2.6125000000000001e-05,"systemTime":0,"id":623,"basePriority":81,"name":"AppleSEPManager","user_usec":26,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108861541]},"429":{"continuation":[0,17073432],"userTime":7.5000000000000002e-06,"systemTime":0,"id":429,"basePriority":81,"name":"AppleSEPARTService","user_usec":7,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108045781]},"276":{"continuation":[0,10831028],"userTime":8.3468754999999994,"name":"idle #1","id":276,"basePriority":0,"user_usec":8346875,"system_usec":0,"schedPriority":0,"state":["TH_RUN","TH_IDLE"],"systemTime":0},"357":{"continuation":[0,17073432],"userTime":7.1659999999999997e-06,"systemTime":0,"id":357,"basePriority":81,"name":"RTBuddyService","user_usec":7,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108746453]},"284":{"continuation":[0,17073432],"userTime":1.3125000000000001e-05,"systemTime":0,"id":284,"basePriority":81,"name":"AppleT8020MTRTempSensor","user_usec":13,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108037541]},"535":{"continuation":[0,17073432],"userTime":0.00020416600000000001,"systemTime":0,"id":535,"basePriority":81,"name":"InterruptEventSourceBridge","user_usec":204,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108812229]},"624":{"continuation":[0,17073432],"userTime":8.5830000000000007e-06,"systemTime":0,"id":624,"basePriority":81,"name":"AppleSEPManager","user_usec":8,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108863461]},"463":{"continuation":[0,15216236],"userTime":7.7707999999999995e-05,"systemTime":0,"id":463,"basePriority":81,"user_usec":77,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,13433012]},"527":{"continuation":[0,17073432],"userTime":8.3329999999999997e-06,"systemTime":0,"id":527,"basePriority":81,"name":"PCCMailboxHandler","user_usec":8,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108814629]},"551":{"continuation":[0,17073432],"userTime":2.5457999999999999e-05,"systemTime":0,"id":551,"basePriority":81,"name":"AppleSmartBatteryManager","user_usec":25,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108811349]},"480":{"continuation":[0,13672344],"userTime":0.00021891599999999999,"systemTime":0,"id":480,"basePriority":81,"name":"CFIL_UPD_GC","user_usec":218,"schedPriority":81,"system_usec":0,"state":["TH_WAIT"],"waitEvent":[0,43822208]},"552":{"continuation":[0,17073432],"userTime":5.541e-06,"systemTime":0,"id":552,"basePriority":81,"name":"AppleSMCPMU","user_usec":5,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108816069]},"640":{"userTime":15.981000291000001,"systemTime":0,"system_usec":0,"id":640,"basePriority":81,"user_usec":15981000,"kernelFrames":[[0,10811944],[0,10806204],[0,10735932],[0,15215380],[0,34312980],[0,17959260]],"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427115909773]},"472":{"continuation":[0,15216236],"userTime":3.7874999999999999e-05,"systemTime":0,"id":472,"basePriority":81,"user_usec":37,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44279752]},"641":{"continuation":[0,33821296],"userTime":0.00028033300000000001,"systemTime":0,"id":641,"basePriority":31,"user_usec":280,"system_usec":0,"schedPriority":31,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427115982589]},"625":{"continuation":[0,17073432],"userTime":0.00012716600000000001,"systemTime":0,"id":625,"basePriority":81,"name":"AppleSEPManager","user_usec":127,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108864261]},"464":{"continuation":[0,15216236],"userTime":1.6375000000000002e-05,"systemTime":0,"id":464,"basePriority":81,"user_usec":16,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44244704]},"528":{"continuation":[0,17073432],"userTime":8.3329999999999997e-06,"systemTime":0,"id":528,"basePriority":81,"name":"InterruptEventSourceBridge","user_usec":8,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108814789]},"553":{"continuation":[0,17073432],"userTime":6.8750000000000002e-06,"systemTime":0,"id":553,"basePriority":81,"name":"AppleSMCWirelessCharger","user_usec":6,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108051701]},"481":{"continuation":[0,13669664],"userTime":0.000231041,"systemTime":0,"id":481,"basePriority":81,"name":"CFIL_STATS_REPORT","user_usec":231,"schedPriority":81,"system_usec":0,"state":["TH_WAIT"],"waitEvent":[0,43822212]},"650":{"continuation":[0,10963132],"systemTime":0,"name":"thread call user #1","id":650,"basePriority":31,"schedFlags":["TH_SFLAG_EAGERPREEMPT"],"user_usec":25778,"schedPriority":31,"system_usec":0,"state":["TH_WAIT"],"userTime":0.025777999999999999},"1635":{"continuation":[0,17073432],"userTime":3.5333000000000002e-05,"systemTime":0,"id":1635,"basePriority":81,"name":"IOAccessoryPortUSB","user_usec":35,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109016117]},"473":{"continuation":[0,15216236],"userTime":1.5166e-05,"systemTime":0,"id":473,"basePriority":81,"user_usec":15,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44279768]},"626":{"continuation":[0,17073432],"userTime":1.5458e-05,"systemTime":0,"id":626,"basePriority":81,"name":"AppleSEPManager","user_usec":15,"stx_flush:1075: disk0s1 xid 20470 tx stats: # 4060 finish 4063 enter 25 wait 177 1187us close 35us flush 5397us
+tx_flush:1075: disk0s1 xid 20490 tx stats: # 4080 finish 4083 enter 25 wait 177 1187us close 35us flush 5388us
+chedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108865381]},"465":{"continuation":[0,12891576],"userTime":0.01462225,"systemTime":0,"id":465,"basePriority":81,"user_usec":14622,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44238512]},"279":{"continuation":[0,17073432],"userTime":7.8329999999999994e-06,"systemTime":0,"id":279,"basePriority":81,"name":"AppleSMCSensorDispatcher","user_usec":7,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109864245]},"554":{"continuation":[0,17073432],"userTime":7.0829999999999998e-06,"systemTime":0,"id":554,"basePriority":81,"user_usec":7,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108811029]},"457":{"continuation":[0,17073432],"userTime":1.0291e-05,"systemTime":0,"id":457,"basePriority":81,"name":"AppleSmartIODMAController","user_usec":10,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108743573]},"474":{"continuation":[0,15277144],"userTime":6.8040999999999994e-05,"systemTime":0,"id":474,"basePriority":81,"name":"VM_freezer","user_usec":68,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43875272]},"449":{"continuation":[0,12453512],"userTime":9.0958000000000006e-05,"systemTime":0,"id":449,"basePriority":81,"user_usec":90,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43790176]},"466":{"continuation":[0,12875252],"userTime":0.000133666,"systemTime":0,"id":466,"basePriority":81,"user_usec":133,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44238960]},"644":{"continuation":[0,33821296],"userTime":0.00028745799999999998,"systemTime":0,"id":644,"basePriority":31,"user_usec":287,"system_usec":0,"schedPriority":31,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427115425533]},"458":{"continuation":[0,15484288],"userTime":0.001057791,"systemTime":0,"id":458,"basePriority":81,"user_usec":1057,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44276756]},"289":{"continuation":[0,17073432],"userTime":1.15e-05,"systemTime":0,"id":289,"basePriority":81,"name":"AppleT8015TempSensor","user_usec":11,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108748693]},"492":{"continuation":[0,17073432],"userTime":3.7957999999999998e-05,"systemTime":0,"id":492,"basePriority":81,"name":"InterruptEventSourceBridge","user_usec":37,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108814469]},"395":{"continuation":[0,17073432],"userTime":9.9580000000000002e-06,"systemTime":0,"id":395,"basePriority":81,"name":"AppleT8020DART","user_usec":9,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108048581]},"459":{"continuation":[0,14897252],"userTime":0.00014458299999999999,"systemTime":0,"id":459,"basePriority":81,"user_usec":144,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,42111360]},"637":{"continuation":[0,33821296],"userTime":0.024366374999999999,"systemTime":0,"id":637,"basePriority":31,"user_usec":24366,"system_usec":0,"schedPriority":31,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427115753213]},"476":{"continuation":[0,15243924],"userTime":0.00039399999999999998,"systemTime":0,"id":476,"basePriority":95,"name":"VM_memorystatus_1","user_usec":394,"schedPriority":95,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000420208631025]},"590":{"continuation":[0,11512208],"userTime":4.3708000000000002e-05,"systemTime":0,"id":590,"basePriority":31,"name":"VM_pressure","user_usec":43,"schedPriority":31,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,11512208]},"379":{"continuation":[0,17073432],"userTime":7.7079999999999997e-06,"systemTime":0,"id":379,"basePriority":81,"name":"AppleT8020DART","user_usec":7,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108047621]},"493":{"continuation":[0,17073432],"userTime":1.8291000000000002e-05,"systemTime":0,"id":493,"basePriority":81,"name":"InterruptEventSourceBridge","user_usec":18,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108814549]},"582":{"continuation":[0,17073432],"userTime":2.6665999999999998e-05,"systemTime":0,"id":582,"basePriority":81,"name":"AppleImage4","user_usec":26,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108045621]},"485":{"continuation":[0,17073432],"userTime":7.1250000000000004e-06,"systemTime":0,"id":485,"basePriority":81,"user_usec":7,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108754853]},"299":{"continuation":[0,17073432],"userTime":1.0499999999999999e-05,"systemTime":0,"id":299,"basePriority":81,"name":"AppleT8015TempSensor","user_usec":10,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108749253]},"591":{"continuation":[0,11450680],"userTime":3.0833000000000001e-05,"systemTime":0,"id":591,"basePriority":91,"name":"VM_object_reaper_thread","user_usec":30,"schedPriority":91,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44226864]},"494":{"userTime":4.7207999999999999e-05,"systemTime":0,"system_usec":0,"id":494,"basePriority":81,"user_usec":47,"kernelFrames":[[0,10811944],[0,10806204],[0,10735256],[0,15215796],[0,31002560],[0,17959260]],"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43996780]},"389":{"continuation":[0,17073432],"userTime":8.3329999999999997e-06,"systemTime":0,"id":389,"basePriority":81,"name":"AppleT8020DART","user_usec":8,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108038341]},"592":{"continuation":[0,11224064],"userTime":0.00019279099999999999,"systemTime":0,"id":592,"basePriority":91,"user_usec":192,"system_usec":0,"schedPriority":91,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43720540]},"495":{"userTime":0.015343125000000001,"systemTime":0,"system_usec":0,"id":495,"basePriority":81,"user_usec":15343,"kernelFrames":[[0,10811944],[0,10806204],[0,10735932],[0,15215380],[0,31019516],[0,17959260]],"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44300080]},"584":{"continuation":[0,11730564],"userTime":0.47533399999999998,"systemTime":0,"id":584,"basePriority":95,"user_usec":475334,"system_usec":0,"schedPriority":95,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,11730564]},"479":{"continuation":[0,17073432],"userTime":5.0832999999999999e-05,"systemTime":0,"id":479,"basePriority":81,"name":"AppleHIDTransportDeviceSPI","user_usec":50,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108742853]},"593":{"id":593,"schedPriority":91,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"schedFlags":["TH_SFLAG_PENDING_THROTTLE_PROMOTION"],"user_usec":296,"basePriority":91,"userTime":0.00029645799999999999,"waitEvent":[0,43746944],"continuation":[0,11508852],"systemTime":0,"name":"VM_compressor"},"649":{"continuation":[0,10963132],"userTime":0.051122582999999999,"name":"thread call kernel-high #2","id":649,"basePriority":92,"user_usec":51122,"system_usec":0,"schedPriority":92,"state":["TH_WAIT","TH_UNINT"],"systemTime":0},"594":{"continuation":[0,11254360],"userTime":8.1082999999999996e-05,"systemTime":0,"id":594,"basePriority":91,"name":"VM_swapout","user_usec":81,"schedPriority":91,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43720760]},"586":{"continuation":[0,17073432],"userTime":9.3749999999999992e-06,"systemTime":0,"id":586,"basePriority":81,"name":"AppleMobileApNonce","user_usec":9,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108818869]},"489":{"continuation":[0,17073432],"userTime":0.00043425000000000001,"systemTime":0,"id":489,"basePriority":81,"name":"IOSurfaceRoot","user_usec":434,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108820869]},"595":{"tx_flush:1075: disk0s1 xid 20510 tx stats: # 4100 finish 4103 enter 25 wait 177 1187us close 35us flush 5378us
+continuation":[0,11256972],"userTime":0.000147291,"systemTime":0,"id":595,"basePriority":91,"name":"VM_swapfile_create","user_usec":147,"schedPriority":91,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43738900]},"579":{"continuation":[0,17073432],"userTime":6.4160000000000001e-06,"systemTime":0,"id":579,"basePriority":81,"name":"AppleEffaceableBlockDevice","user_usec":6,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108817989]},"596":{"continuation":[0,11257808],"userTime":0.00010754100000000001,"systemTime":0,"id":596,"basePriority":91,"name":"VM_swapfile_gc","user_usec":107,"schedPriority":91,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43738904]},"499":{"continuation":[0,17073432],"userTime":0.0063709999999999999,"systemTime":0,"id":499,"basePriority":81,"name":"InterruptEventSourceBridge","user_usec":6371,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108812869]},"588":{"continuation":[0,11515792],"userTime":0.000143375,"systemTime":0,"id":588,"basePriority":91,"name":"VM_pageout_external_iothread","user_usec":143,"schedPriority":91,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43747008]},"1534":{"continuation":[0,12888096],"userTime":0.000118083,"systemTime":0,"id":1534,"basePriority":81,"name":"dlil_input_utun0","user_usec":118,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427114484509]},"589":{"continuation":[0,11508036],"userTime":3.0916e-05,"systemTime":0,"id":589,"basePriority":31,"name":"VM_pageout_garbage_collect","user_usec":30,"schedPriority":31,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,11508036]},"598":{"continuation":[0,10963132],"systemTime":0,"name":"thread call kernel #1","id":598,"basePriority":81,"schedFlags":["TH_SFLAG_EAGERPREEMPT"],"user_usec":120385,"schedPriority":81,"system_usec":0,"state":["TH_WAIT"],"userTime":0.12038550000000001},"1535":{"continuation":[0,12921096],"userTime":0.00053562499999999997,"systemTime":0,"id":1535,"basePriority":82,"name":"ifnet_start_utun0","user_usec":535,"schedPriority":82,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427114482165]},"101":{"id":101,"schedPriority":4,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"schedFlags":["TH_SFLAG_EAGERPREEMPT"],"user_usec":460234,"basePriority":4,"userTime":0.46023437499999997,"waitEvent":[0,43760748],"continuation":[0,11508596],"systemTime":0,"name":"VM_pageout_scan"},"2038":{"continuation":[0,33821296],"userTime":0.00015408300000000001,"systemTime":0,"id":2038,"basePriority":31,"user_usec":154,"system_usec":0,"schedPriority":31,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427115523837]},"110":{"id":110,"schedPriority":81,"system_usec":0,"kernelFrames":[[0,10811944],[0,10806204],[0,10735256],[0,16885320],[0,17959260]],"schedFlags":["TH_SFLAG_RW_PROMOTED"],"user_usec":2726457,"state":["TH_WAIT","TH_UNINT"],"basePriority":81,"userTime":2.726457291,"waitEvent":[0,44281600],"systemTime":0,"name":"IOServiceTerminateThread"},"102":{"continuation":[0,10831028],"userTime":6.8808496659999996,"name":"idle #0","id":102,"basePriority":0,"user_usec":6880849,"system_usec":0,"schedPriority":0,"state":["TH_RUN","TH_IDLE"],"systemTime":0},"111":{"continuation":[0,17073432],"userTime":0.0087982080000000001,"systemTime":0,"id":111,"basePriority":81,"name":"AppleT803xIO","user_usec":8798,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109860485]},"103":{"continuation":[0,10815964],"userTime":0.17808154100000001,"systemTime":0,"id":103,"basePriority":95,"name":"sched_maintenance_thread","user_usec":178081,"schedPriority":95,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,10815964]},"104":{"continuation":[0,10760392],"userTime":0.62492562500000004,"systemTime":0,"id":104,"basePriority":80,"name":"daemon.deferred-deallocation","user_usec":624925,"schedPriority":80,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44122128]},"105":{"id":105,"schedPriority":93,"system_usec":0,"kernelFrames":[[0,10823088]],"state":["TH_WAIT","TH_UNINT"],"user_usec":0,"basePriority":93,"userTime":0,"waitEvent":[0,44126960],"continuation":[0,10760392],"systemTime":0,"name":"daemon.thread-stack"},"114":{"continuation":[0,17073432],"userTime":0.041293583000000002,"systemTime":0,"id":114,"basePriority":81,"name":"IOPMrootDomain","user_usec":41293,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109822117]},"106":{"id":106,"schedPriority":80,"system_usec":0,"kernelFrames":[[0,10823088]],"state":["TH_WAIT","TH_UNINT"],"user_usec":0,"basePriority":80,"userTime":0,"waitEvent":[0,44126832],"continuation":[0,10760392],"systemTime":0,"name":"daemon.thread-exception"},"140":{"continuation":[0,10963132],"userTime":0.99422587500000004,"name":"thread call kernel-high #1","id":140,"basePriority":92,"user_usec":994225,"system_usec":0,"schedPriority":92,"state":["TH_WAIT","TH_UNINT"],"systemTime":0},"115":{"continuation":[0,10963132],"userTime":0.079787790999999997,"name":"thread call high #1","id":115,"basePriority":93,"user_usec":79787,"system_usec":0,"schedPriority":93,"state":["TH_WAIT","TH_UNINT"],"systemTime":0},"107":{"userTime":0.00021479100000000001,"systemTime":0,"system_usec":0,"id":107,"basePriority":95,"user_usec":214,"kernelFrames":[[0,10811944],[0,10806204],[0,11068420],[0,17959260]],"schedPriority":95,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43667430]},"221":{"continuation":[0,17073432],"userTime":9.0829999999999993e-06,"systemTime":0,"id":221,"basePriority":81,"name":"AppleSamsungSerial","user_usec":9,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108039941]},"141":{"continuation":[0,17073432],"userTime":6.9160000000000004e-06,"systemTime":0,"id":141,"basePriority":81,"name":"AppleARMBacklight","user_usec":6,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109865045]},"230":{"continuation":[0,17073432],"userTime":6.5409999999999997e-06,"systemTime":0,"id":230,"basePriority":81,"name":"AppleS5L8940XI2CController","user_usec":6,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108039861]},"116":{"continuation":[0,17073432],"userTime":0.00020945800000000001,"systemTime":0,"id":116,"basePriority":81,"name":"AppleT8030PCIe","user_usec":209,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109863445]},"108":{"userTime":7.7291000000000002e-05,"systemTime":0,"system_usec":0,"id":108,"basePriority":95,"user_usec":77,"kernelFrames":[[0,10811944],[0,10806204],[0,11068420],[0,17959260]],"schedPriority":95,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43667566]},"222":{"continuation":[0,17073432],"userTime":5.2079999999999999e-06,"systemTime":0,"id":222,"basePriority":81,"name":"AppleSamsungSerial","user_usec":5,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108046341]},"142":{"continuation":[0,17073432],"userTime":4.4159999999999997e-06,"systemTime":0,"id":142,"basePriority":81,"name":"AppleARMSlowAdaptiveClockingManager","user_usec":4,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109860725]},"231":{"continuation":[0,17073432],"userTime":0.0047230409999999999,"systemTime":0,"id":231,"basePriority":81,"name":"AppleT8015SPMIController","user_usec":4723,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108047781]},"109":{"continuation":[0,10962140],"userTime":0.0010127910000000001,"name":"thread_call_daemon","id":109,"basePriority":94,"user_usec":1012,"system_usec":0,"schedPriority":94,"state":["TH_WAIT","TH_UNINT"],"systemTime":0},"223":{"continuation":[0,17073432],"userTime":5.4580000000000001e-06,"systemTime":0,"id":223,"basePriority":81,"name":"AppleSamsungSPIController","user_usec":5,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108047061]},"401":{"continuation":[0,10963132],"userTime":1.144385625,"name":"thread call high #2","id":401,"basePriority":93,"user_usec":1144385,"system_usec":0,"schedPriority":93,"state":["TH_WAIT","TH_UNINT"],"systemTime":0},"240":{"continuation":[0,17073432],"userTime":5.9159999999999998e-06,"systemTime":0,"id":240,"basePriority":81,"name":"AUC","user_usec":5,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108036901]},"304":{"continuation":[0,17073432],"userTime":2.1625e-05,"systemTime":0,"id":304,"basePriority":81,"name":"AppleT8015TempSensor","user_usec":21,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108748533]},"232":{"continuation":[0,17073432],"userTime":5.2079999999999999e-06,"systemTime":0,"id":232,"basePriority":81,"name":"AppleT8015SPMIController","user_usec":5,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108047941]},"135":{"continuation":[0,11450072],"userTime":0.0055355409999999997,"systemTime":0,"id":135,"basePriority":95,"name":"VM_io_reprioritize_thread","user_usec":5535,"schedPriority":95,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,43746744]},"224":{"continuation":[0,17073432],"userTime":5.0830000000000003e-06,"systemTime":0,"id":224,"basePriority":81,"name":"AppleSamsungSPIController","user_usec":5,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108039621]},"241":{"continuation":[0,17073432],"userTime":2.8458000000000001e-05,"systemTime":0,"id":241,"basePriority":81,"name":"IOAsynchronousScheduler","user_usec":28,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108049621]},"330":{"continuation":[0,17073432],"userTime":2.9791e-05,"systemTime":0,"id":330,"basePriority":81,"name":"AppleT8020DART","user_usec":29,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108045141]},"144":{"continuation":[0,17073432],"userTime":0.00103775,"systemTime":0,"id":144,"basePriority":81,"name":"AppleCredentialManager","user_usec":1037,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108042501]},"233":{"continuation":[0,17073432],"userTime":4.9579999999999998e-06,"systemTime":0,"id":233,"basePriority":81,"name":"AppleT8015SPMIController","user_usec":4,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108038821]},"322":{"continuation":[0,17073432],"userTime":9.6660000000000003e-06,"systemTime":0,"id":322,"basePriority":81,"name":"AppleT8015TempSensor","user_usec":9,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108745573]},"136":{"continuation":[0,15216236],"userTime":0.00015541599999999999,"systemTime":0,"id":136,"basePriority":81,"user_usec":155,"system_usec":0,"schedPriority":81,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[0,44232952]},"225":{"continuation":[0,17073432],"userTime":0.00045962500000000002,"systemTime":0,"id":225,"basePriority":81,"name":"AppleS5L8940XI2CController","user_usec":459,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108047221]},"314":{"continuation":[0,17073432],"userTime":9.7079999999999992e-06,"systemTime":0,"id":314,"basePriority":81,"name":"AppleT8015TempSensor","user_usec":9,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108749173]},"403":{"continuation":[0,17073432],"userTime":0.0004685,"systemTime":0,"id":403,"basePriority":81,"name":"AppleT8030USBXHCI@00000000","user_usec":468,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108048021]},"411":{"continuation":[0,17073432],"userTime":0.00086783300000000004,"systemTime":0,"id":411,"basePriority":81,"name":"AppleICA60","user_usec":867,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108751733]},"153":{"continuation":[0,17073432],"userTime":5.8329999999999999e-06,"systemTime":0,"id":153,"basePriority":81,"name":"AppleUSBHostResources","user_usec":5,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108042661]},"145":{"continuation":[0,17073432],"userTime":6.6660000000000002e-06,"systemTime":0,"id":145,"basePriority":81,"name":"AppleIPDormancyHandler","user_usec":6,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109862965]},"331":{"continuation":[0,17073432],"userTime":8.5830000000000007e-06,"systemTime":0,"id":331,"basePriority":81,"name":"IOSlowAdaptiveClockingDomain","user_usec":8,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108749653]},"420":{"id":420,"schedPriority":80,"system_usec":0,"kernelFrames":[[0,10811944],[0,10806204],[0,10735256],[0,16843928],[0,20510744],[0,20510228],[0,16836404],[0,16835024],[0,16827552],[0,16851348],[0,17959260]],"schedFlags":["TH_SFLAG_RW_PROMOTED"],"user_usec":1789,"state":["TH_WAIT","TH_UNINT"],"basePriority":80,"userTime":0.0017893749999999999,"waitEvent":[1,15838000454697592933],"systemTime":0,"name":"IOConfigThread_'RTBuddyService'"},"137":{"continuation":[0,17073432],"userTime":2.5165999999999999e-05,"systemTime":0,"id":137,"basePriority":81,"name":"AppleM68Buttons","user_usec":25,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109864645]},"226":{"continuation":[0,17073432],"userTime":0.0066937910000000002,"systemTime":0,"id":226,"basePriority":81,"name":"AppleS5L8940XI2CController","user_usec":6693,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108040181]},"250":{"continuation":[0,17073432],"userTime":3.4499999999999998e-05,"systemTime":0,"id":250,"basePriority":81,"name":"AppleSynopsysMIPIDSIController","user_usec":34,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108041221]},"332":{"userTime":0.000128708,"systemTime":0,"system_usec":0,"id":332,"basePriority":81,"schedFlags":["TH_SFLAG_RW_PROMOTED"],"user_usec":128,"schedPriority":81,"kernelFrames":[[0,10811944],[0,10806204],[0,10735256],[0,17071620],[0,30919416],[0,17090816],[0,30920360],[0,17959260]],"state":["TH_WAIT"],"waitEvent":[1,15838000427112534711]},"421":{"continuation":[0,17073432],"userTime":0.0022141249999999999,"systemTime":0,"id":421,"basePriority":81,"name":"AppleSEPManager","user_usec":2214,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108048661]},"235":{"continuation":[0,17073432],"userTime":3.2375000000000001e-05,"systemTime":0,"id":235,"basePriority":81,"name":"AppleSSE","user_usec":32,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108037381]},"138":{"continuation":[0,17073432],"userTime":8.4999999999999999e-06,"systemTime":0,"id":138,"basePriority":81,"name":"IOAccessoryDock0PinBuiltin","user_usec":8,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427109860565]},"227":{"continuation":[0,17073432],"userTime":0.000235333,"systemTime":0,"id":227,"basePriority":81,"name":"AppleS5L8940XI2CController","user_usec":235,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108039461]},"341":{"continuation":[0,17073432],"userTime":1.4749999999999999e-05,"systemTime":0,"id":341,"basePriority":81,"name":"AppleT8020DART","user_usec":14,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108041301]},"405":{"continuation":[0,17073432],"userTime":7.6666000000000001e-05,"systemTime":0,"id":405,"basePriority":81,"name":"AppleSEPManager","user_usec":76,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108046741]},"219":{"continuation":[0,17073432],"userTime":7.3749999999999997e-06,"systemTime":0,"id":219,"basePriority":81,"name":"AppleT8030PMGR","user_usec":7,"schedPriority":81,"system_usec":0,"state":["TH_WAIT","TH_UNINT"],"waitEvent":[1,15838000427108040981]},"413":{"userTime":0.0042548330000000004,"systemTime":0,"name":"AppleS8000AESAccelerator",
+INFERNO_CRASH_PREFIX_END bytes=32768
+tx_flush:1075: disk0s1 xid 20530 tx stats: # 4120 finish 4123 enter 25 wait 177 1187us close 35us flush 5369us
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/Panics type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/Assistant type=4
+INFERNO_LOG_DIRECTORY /private/var/logs/CrashReporter opened=1 errno=60
+INFERNO_LOG_ENTRY /private/var/logs/CrashReporter/. type=4
+INFERNO_LOG_ENTRY /private/var/logs/CrashReporter/.. type=4
+INFERNO_LOG_ENTRY /private/var/logs/CrashReporter/Panics type=4
+INFERNO_LOG_ENTRY /private/var/logs/CrashReporter/Baseband type=4
+INFERNO_LOG_DIRECTORY /private/var/log opened=1 errno=60
+INFERNO_LOG_ENTRY /private/var/log/. type=4
+INFERNO_LOG_ENTRY /private/var/log/.. type=4
+INFERNO_LOG_ENTRY /private/var/log/mDNSResponder type=4
+INFERNO_LOG_ENTRY /private/var/log/asl type=4
+INFERNO_LOG_ENTRY /private/var/log/ppp type=4
+INFERNO_LOG_ENTRY /private/var/log/com.apple.xpc.launchd type=4
+tx_flush:1075: disk0s1 xid 20550 tx stats: # 4140 finish 4143 enter 25 wait 177 1187us close 35us flush 5359us
+AppleSEPKeyStore:10649:162: operation failed (sel: 31 ret: e00002bc)
+AppleSEPKeyStore:10649:162: operation failed (sel: 31 ret: e00002bc)
+tx_flush:1075: disk0s1 xid 20570 tx stats: # 4160 finish 4163 enter 25 wait 177 1187us close 35us flush 5350us
+INFERNO_EXEC_WRAPPER_BEGIN case=system-mobile-register path=/usr/bin/inferno-launcher watchdog=150 uid=0 gid=0
+INFERNO_EXEC_WRAPPER_CHILD uid=501 gid=501
+INFERNO_EXEC_WRAPPER_CONSOLE_OPEN fd=3 errno=0 uid=501 gid=501
+INFERNO_EXEC_WRAPPER_ACCESS x=0 xerrno=0 r=0 rerrno=0 fd=3 open_errno=0 read_bytes=16384 read_errno=0
+INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+2026-10-06 02:44:05.263 inferno-launcher[172:2078] INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+dyld: missing lazy symbol called
+tx_flush:1075: disk0s1 xid 20590 tx stats: # 4180 finish 4183 enter 25 wait 177 1187us close 34us flush 5340us
+tx_flush:1075: disk0s1 xid 20610 tx stats: # 4200 finish 4203 enter 25 wait 177 1187us close 34us flush 5334us
+tx_flush:1075: disk0s1 xid 20630 tx stats: # 4220 finish 4223 enter 25 wait 177 1187us close 34us flush 5327us
+INFERNO_EXEC_WRAPPER_WAIT case=system-mobile-register raw=6 timed_out=0 expected=0
+tx_flush:1075: disk0s1 xid 20650 tx stats: # 4240 finish 4243 enter 24 wait 177 1187us close 34us flush 5319us
+tx_flush:1075: disk0s1 xid 20670 tx stats: # 4260 finish 4263 enter 24 wait 177 1187us close 34us flush 5310us
+tx_flush:1075: disk0s1 xid 20690 tx stats: # 4280 finish 4283 enter 24 wait 177 1187us close 34us flush 5300us
+tx_flush:1075: disk0s1 xid 20710 tx stats: # 4300 finish 4303 enter 24 wait 177 1187us close 33us flush 5292us
+tx_flush:1075: disk0s1 xid 20730 tx stats: # 4320 finish 4323 enter 24 wait 177 1187us close 33us flush 5283us
+tx_flush:1075: disk0s1 xid 20750 tx stats: # 4340 finish 4343 enter 24 wait 177 1187us close 33us flush 5274us
+tx_flush:1075: disk0s1 xid 20770 tx stats: # 4360 finish 4363 enter 24 wait 177 1187us close 33us flush 5266us
+tx_flush:1075: disk0s1 xid 20790 tx stats: # 4380 finish 4383 enter 24 wait 177 1187us close 33us flush 5257us
+tx_flush:1075: disk0s1 xid 20810 tx stats: # 4400 finish 4403 enter 24 wait 177 1187us close 33us flush 5251us
+tx_flush:1075: disk0s1 xid 20830 tx stats: # 4420 finish 4423 enter 24 wait 177 1187us close 33us flush 5244us
+tx_flush:1075: disk0s1 xid 20850 tx stats: # 4440 finish 4443 enter 24 wait 177 1187us close 32us flush 5236us
+tx_flush:1075: disk0s1 xid 20870 tx stats: # 4460 finish 4463 enter 23 wait 177 1187us close 32us flush 5229us
+tx_flush:1075: disk0s1 xid 20890 tx stats: # 4480 finish 4483 enter 23 wait 177 1187us close 32us flush 5223us
+tx_flush:1075: disk0s1 xid 20910 tx stats: # 4500 finish 4504 enter 23 wait 177 1187us close 32us flush 5216us
+tx_flush:1075: disk0s1 xid 20930 tx stats: # 4520 finish 4523 enter 23 wait 178 1191us close 32us flush 5211us
+tx_flush:1075: disk0s1 xid 20950 tx stats: # 4540 finish 4543 enter 23 wait 178 1191us close 32us flush 5204us
+tx_flush:1075: disk0s1 xid 20970 tx stats: # 4560 finish 4563 enter 23 wait 178 1191us close 32us flush 5197us
+tx_flush:1075: disk0s1 xid 20990 tx stats: # 4580 finish 4583 enter 23 wait 178 1191us close 31us flush 5191us
+tx_flush:1075: disk0s1 xid 21010 tx stats: # 4600 finish 4603 enter 23 wait 178 1191us close 31us flush 5185us
+tx_flush:1075: disk0s1 xid 21030 tx stats: # 4620 finish 4623 enter 23 wait 178 1191us close 31us flush 5178us
+tx_flush:1075: disk0s1 xid 21050 tx stats: # 4640 finish 4643 enter 23 wait 178 1191us close 31us flush 5170us
+tx_flush:1075: disk0s1 xid 21070 tx stats: # 4660 finish 4663 enter 23 wait 178 1191us close 31us flush 5163us
+tx_flush:1075: disk0s1 xid 21090 tx stats: # 4680 finish 4683 enter 23 wait 178 1191us close 31us flush 5158us
+tx_flush:1075: disk0s1 xid 21110 tx stats: # 4700 finish 4703 enter 23 wait 178 1191us close 31us flush 5153us
+tx_flush:1075: disk0s1 xid 21130 tx stats: # 4720 finish 4723 enter 23 wait 178 1191us close 31us flush 5152us
+tx_flush:1075: disk0s1 xid 21150 tx stats: # 4740 finish 4743 enter 22 wait 178 1191us close 30us flush 5148us
+tx_flush:1075: disk0s1 xid 21170 tx stats: # 4760 finish 4763 enter 22 wait 178 1191us close 30us flush 5142us
+tx_flush:1075: disk0s1 xid 21190 tx stats: # 4780 finish 4783 enter 22 wait 178 1191us close 30us flush 5137us
+tx_flush:1075: disk0s1 xid 21210 tx stats: # 4800 finish 4803 enter 22 wait 178 1191us close 30us flush 5131us
+tx_flush:1075: disk0s1 xid 21230 tx stats: # 4820 finish 4823 enter 22 wait 178 1191us close 30us flush 5126us
+tx_flush:1075: disk0s1 xid 21250 tx stats: # 4840 finish 4843 enter 22 wait 178 1191us close 30us flush 5119us
+tx_flush:1075: disk0s1 xid 21270 tx stats: # 4860 finish 4863 enter 22 wait 178 1191us close 30us flush 5112us
+tx_flush:1075: disk0s1 xid 21290 tx stats: # 4880 finish 4883 enter 22 wait 178 1191us close 30us flush 5106us
+tx_flush:1075: disk0s1 xid 21310 tx stats: # 4900 finish 4903 enter 22 wait 178 1191us close 29us flush 5100us
+tx_flush:1075: disk0s1 xid 21330 tx stats: # 4920 finish 4923 enter 22 wait 178 1191us close 29us flush 5093us
+tx_flush:1075: disk0s1 xid 21350 tx stats: # 4940 finish 4943 enter 22 wait 178 1191us close 29us flush 5088us
+tx_flush:1075: disk0s1 xid 21370 tx stats: # 4960 finish 4963 enter 22 wait 178 1191us close 29us flush 5082us
+tx_flush:1075: disk0s1 xid 21390 tx stats: # 4980 finish 4983 enter 22 wait 178 1191us close 29us flush 5076us
+tx_flush:1075: disk0s1 xid 21410 tx stats: # 5000 finish 5003 enter 22 wait 178 1191us close 29us flush 5070us
+tx_flush:1075: disk0s1 xid 21430 tx stats: # 5020 finish 5023 enter 22 wait 178 1191us close 29us flush 5065us
+tx_flush:1075: disk0s1 xid 21450 tx stats: # 5040 finish 5043 enter 21 wait 178 1191us close 29us flush 5060us
+tx_flush:1075: disk0s1 xid 21470 tx stats: # 5060 finish 5063 enter 21 wait 178 1191us close 29us flush 5055us
+tx_flush:1075: disk0s1 xid 21490 tx stats: # 5080 finish 5083 enter 21 wait 178 1191us close 28us flush 5051us
+tx_flush:1075: disk0s1 xid 21510 tx stats: # 5100 finish 5103 enter 21 wait 178 1191us close 28us flush 5046us
+tx_flush:1075: disk0s1 xid 21530 tx stats: # 5120 finish 5123 enter 21 wait 178 1191us close 28us flush 5042us
+tx_flush:1075: disk0s1 xid 21550 tx stats: # 5140 finish 5143 enter 21 wait 178 1191us close 28us flush 5038us
+tx_flush:1075: disk0s1 xid 21570 tx stats: # 5160 finish 5163 enter 21 wait 178 1191us close 28us flush 5033us
+tx_flush:1075: disk0s1 xid 21590 tx stats: # 5180 finish 5183 enter 21 wait 178 1191us close 28us flush 5028us
+tx_flush:1075: disk0s1 xid 21610 tx stats: # 5200 finish 5203 enter 21 wait 178 1191us close 28us flush 5024us
+tx_flush:1075: disk0s1 xid 21630 tx stats: # 5220 finish 5223 enter 21 wait 178 1191us close 28us flush 5023us
+tx_flush:1075: disk0s1 xid 21650 tx stats: # 5240 finish 5243 enter 21 wait 178 1191us close 28us flush 5027us
+tx_flush:1075: disk0s1 xid 21670 tx stats: # 5260 finish 5263 enter 21 wait 178 1191us close 28us flush 5023us
+tx_flush:1075: disk0s1 xid 21690 tx stats: # 5280 finish 5283 enter 21 wait 178 1191us close 27us flush 5020us
+tx_flush:1075: disk0s1 xid 21710 tx stats: # 5300 finish 5303 enter 21 wait 178 1191us close 27us flush 5020us
+tx_flush:1075: disk0s1 xid 21730 tx stats: # 5320 finish 5323 enter 21 wait 178 1191us close 27us flush 5015us
+tx_flush:1075: disk0s1 xid 21750 tx stats: # 5340 finish 5343 enter 21 wait 178 1191us close 27us flush 5010us
+tx_flush:1075: disk0s1 xid 21770 tx stats: # 5360 finish 5363 enter 21 wait 178 1191us close 27us flush 5005us
+tx_flush:1075: disk0s1 xid 21790 tx stats: # 5380 finish 5383 enter 20 wait 178 1191us close 27us flush 5000us
+tx_flush:1075: disk0s1 xid 21810 tx stats: # 5400 finish 5403 enter 20 wait 178 1191us close 27us flush 4998us
+tx_flush:1075: disk0s1 xid 21830 tx stats: # 5420 finish 5423 enter 20 wait 178 1191us close 27us flush 4993us
+tx_flush:1075: disk0s1 xid 21850 tx stats: # 5440 finish 5443 enter 20 wait 178 1191us close 27us flush 4988us
+tx_flush:1075: disk0s1 xid 21870 tx stats: # 5460 finish 5463 enter 20 wait 178 1191us close 27us flush 4983us
+tx_flush:1075: disk0s1 xid 21890 tx stats: # 5480 finish 5483 enter 20 wait 178 1191us close 27us flush 4980us
+tx_flush:1075: disk0s1 xid 21910 tx stats: # 5500 finish 5503 enter 20 wait 178 1191us close 27us flush 4976us
+tx_flush:1075: disk0s1 xid 21930 tx stats: # 5520 finish 5523 enter 20 wait 178 1191us close 26us flush 4973us
+tx_flush:1075: disk0s1 xid 21950 tx stats: # 5540 finish 5543 enter 20 wait 178 1191us close 26us flush 4969us
+tx_flush:1075: disk0s1 xid 21970 tx stats: # 5560 finish 5563 enter 20 wait 178 1191us close 26us flush 4966us
+tx_flush:1075: disk0s1 xid 21990 tx stats: # 5580 finish 5583 enter 20 wait 178 1191us close 26us flush 4964us
+tx_flush:1075: disk0s1 xid 22010 tx stats: # 5600 finish 5603 enter 20 wait 178 1191us close 26us flush 4960us
+tx_flush:1075: disk0s1 xid 22030 tx stats: # 5620 finish 5623 enter 20 wait 178 1191us close 26us flush 4955us
+tx_flush:1075: disk0s1 xid 22050 tx stats: # 5640 finish 5643 enter 20 wait 178 1191us close 26us flush 4952us
+tx_flush:1075: disk0s1 xid 22070 tx stats: # 5660 finish 5663 enter 20 wait 178 1191us close 26us flush 4947us
+tx_flush:1075: disk0s1 xid 22090 tx stats: # 5680 finish 5683 enter 20 wait 178 1191us close 26us flush 4945us
+tx_flush:1075: disk0s1 xid 22110 tx stats: # 5700 finish 5703 enter 20 wait 178 1191us close 26us flush 4943us
+tx_flush:1075: disk0s1 xid 22130 tx stats: # 5720 finish 5723 enter 20 wait 178 1191us close 26us flush 4939us
+tx_flush:1075: disk0s1 xid 22150 tx stats: # 5740 finish 5743 enter 20 wait 178 1191us close 25us flush 4935us
+tx_flush:1075: disk0s1 xid 22170 tx stats: # 5760 finish 5763 enter 19 wait 178 1191us close 25us flush 4930us
+tx_flush:1075: disk0s1 xid 22190 tx stats: # 5780 finish 5783 enter 19 wait 178 1191us close 25us flush 4928us
+tx_flush:1075: disk0s1 xid 22210 tx stats: # 5800 finish 5803 enter 19 wait 178 1191us close 25us flush 4927us
+tx_flush:1075: disk0s1 xid 22230 tx stats: # 5820 finish 5823 enter 19 wait 178 1191us close 25us flush 4923us
+INFERNO_READINESS_BEGIN seconds=45
+  PID  PPID STAT COMM
+    1     0 Ss   /sbin/launchd
+   27     1 Ss   /usr/libexec/UserEventAgent
+   28     1 Ss   /usr/libexec/logd
+   29     1 Ss   /System/Library/PrivateFrameworks/AssistantServices.framework/assistantd
+   30     1 Ss   /usr/libexec/runningboardd
+   31     1 Ss   /usr/libexec/fseventsd
+   32     1 Ss   /usr/sbin/mediaserverd
+   33     1 Ss   /System/Library/PrivateFrameworks/MediaRemote.framework/Support/mediaremoted
+   34     1 Ss   /usr/libexec/routined
+   35     1 Ss   /usr/libexec/misd
+   36     1 Ss   /usr/libexec/configd
+   37     1 Ss   /System/Library/Frameworks/HealthKit.framework/healthd
+   39     1 Ss   /System/Library/CoreServices/powerd.bundle/powerd
+   40     1 Ss   /usr/libexec/atc
+   41     1 Ss   /usr/sbin/WirelessRadioManagerd
+   43     1 Rs   /usr/libexec/keybagd
+   44     1 Ss   /usr/libexec/remoted
+   46     1 Ss   /System/Library/PrivateFrameworks/FamilyNotification.framework/familynotificationd
+   47     1 Ss   /usr/sbin/wifid
+   48     1 Ss   /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/Support/fud
+   49     1 Ss   /System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/Support/softwareupdated
+   50     1 Ss   /System/Library/PrivateFrameworks/MobileTimer.framework/Executables/mobiletimerd
+   51     1 Ss   /usr/libexec/seld
+   52     1 Ss   /System/Library/PrivateFrameworks/IDS.framework/identityservicesd.app/identityservicesd
+   55     1 Ss   /usr/libexec/wcd
+   56     1 Ss   /System/Library/PrivateFrameworks/CoreDuetContext.framework/Resources/contextstored
+   57     1 Ss   /System/Library/CoreServices/SpringBoard.app/SpringBoard
+   58     1 Ss   /usr/libexec/thermalmonitord
+   59     1 Ss   /System/Library/PrivateFrameworks/AskPermission.framework/Support/askpermissiond
+   60     1 Ss   /usr/libexec/backboardd
+   61     1 Ss   /usr/libexec/sharingd
+   62     1 Ss   /usr/libexec/timed
+   63     1 Ss   /usr/bin/inferno-readiness
+   64     1 Ss   /usr/libexec/cloudpaird
+   65     1 Ss   /usr/libexec/containermanagerd
+   66     1 Ss   /System/Library/PrivateFrameworks/IMCore.framework/imagent.app/imagent
+   67     1 Ss   /System/Library/PrivateFrameworks/NanoPreferencesSync.framework/nanoprefsyncd
+   68     1 Ss   /usr/libexec/lockdownd
+   69     1 Ss   /System/Library/PrivateFrameworks/SleepDaemon.framework/sleepd
+   70     1 Ss   /System/Library/PrivateFrameworks/AggregateDictionary.framework/Support/aggregated
+   71     1 Ss   OTACrashCopier
+   72     1 Ss   /usr/sbin/distnoted
+   74     1 Ss   /System/Library/PrivateFrameworks/AppleCredentialManager.framework/AppleCredentialManagerDaemon
+   75     1 Ss   /System/Library/PrivateFrameworks/MapsSupport.framework/navd
+   76     1 Ss   /usr/libexec/peakpowermanagerd
+   77     1 Ss   /usr/libexec/remindd
+   78     1 Ss   /usr/sbin/notifyd
+   79     1 Ss   /usr/libexec/rapportd
+   82     1 Ss   /System/Library/PrivateFrameworks/AppleMediaServices.framework/amsaccountsd
+   83     1 Ss   /usr/sbin/fairplayd.H2
+   84     1 Ss   /usr/sbin/cfprefsd
+   85     1 Ss   /System/Library/PrivateFrameworks/CoreAccessories.framework/XPCServices/ACCHWComponentAuthService.xpc/ACCHWComponentAuthService
+   86     1 Ss   /usr/libexec/lsd
+   87     1 Ss   /usr/libexec/dasd
+   88     1 Ss   /usr/libexec/PowerUIAgent
+   89     1 Ss   /System/Library/PrivateFrameworks/WirelessDiagnostics.framework/Support/awdd
+   90     1 Ss   /usr/libexec/MobileGestaltHelper
+   91     1 Ss   /usr/libexec/mobileassetd
+   92     1 Ss   /System/Library/CoreServices/osanalyticshelper
+   93     1 Ss   /usr/libexec/nanoregistryd
+   94     1 Ss   /usr/libexec/coreduetd
+   95     1 Ss   /System/Library/PrivateFrameworks/ApplePushService.framework/apsd
+   96     1 Ss   /usr/libexec/nsurlsessiond
+   97     1 Ss   /usr/libexec/securityd
+   98     1 Ss   /System/Library/PrivateFrameworks/WiFiPolicy.framework/XPCServices/WiFiCloudAssetsXPCService.xpc/WiFiCloudAssetsXPCService
+   99     1 Ss   /System/Library/Frameworks/Accounts.framework/accountsd
+  100     1 Ss   /System/Library/PrivateFrameworks/IMDPersistence.framework/XPCServices/IMDPersistenceAgent.xpc/IMDPersistenceAgent
+  101     1 Ss   /System/Library/PrivateFrameworks/TCC.framework/tccd
+  102     1 Ss   /usr/libexec/pfd
+  103     1 Ss   /System/Library/PrivateFrameworks/CarKit.framework/Support/carkitd
+  104     1 Ss   /System/Library/PrivateFrameworks/GeoServices.framework/geod
+  105     1 Ss   /usr/libexec/symptomsd
+  107     1 Ss   /usr/sbin/mDNSResponder
+  109     1 Ss   /System/Library/PrivateFrameworks/DataMigration.framework/XPCServices/com.apple.datamigrator.xpc/com.apple.datamigrator
+  110     1 Ss   /usr/libexec/nehelper
+  111     1 Ss   /usr/libexec/findmydeviced
+  112     1 Ss   /usr/libexec/fmflocatord
+  113     1 Ss   /System/Library/PrivateFrameworks/CoreAnalytics.framework/Support/analyticsd
+  114     1 Ss   /usr/libexec/searchpartyd
+  115     1 Ss   /System/Library/PrivateFrameworks/DataMigration.framework/XPCServices/com.apple.migrationpluginwrapper.xpc/com.apple.migrationpluginwrapper
+  116     1 Ss   /System/Library/PrivateFrameworks/CallHistory.framework/Support/CallHistorySyncHelper
+  117     1 Ss   /usr/libexec/wifianalyticsd
+  118     1 Ss   /usr/libexec/rtcreportingd
+  119     1 Ss   /System/Library/PrivateFrameworks/PassKitCore.framework/passd
+  120     1 Ss   /System/Library/PrivateFrameworks/CacheDelete.framework/deleted
+  121     1 Ss   /System/Library/PrivateFrameworks/AssistantServices.framework/XPCServices/com.apple.siri.embeddedspeech.xpc/com.apple.siri.embeddedspeech
+  122     1 Ss   /System/Library/Frameworks/Security.framework/CloudKeychainProxy.bundle/CloudKeychainProxy
+  123     1 Ss   /usr/sbin/mDNSResponderHelper
+  124     1 Ss   /usr/libexec/seserviced
+  125     1 Ss   /System/Library/PrivateFrameworks/CloudKitDaemon.framework/Support/cloudd
+  126     1 Ss   /usr/libexec/installd
+  127     1 Ss   /usr/libexec/fmfd
+  128     1 Ss   /System/Library/PrivateFrameworks/MobileInstallation.framework/XPCServices/com.apple.MobileInstallationHelperService.xpc/com.apple.MobileInstallationHelperService
+  129     1 Ss   /System/Library/PrivateFrameworks/MusicLibrary.framework/Support/medialibraryd
+  131     1 Ss   /System/Library/PrivateFrameworks/CalendarDaemon.framework/Support/calaccessd
+  132     1 Ss   /System/Library/PrivateFrameworks/AppStoreDaemon.framework/Support/appstored
+  133     1 Ss   /System/Library/PrivateFrameworks/CoreSpeech.framework/corespeechd
+  134     1 Ss   /usr/libexec/pkd
+  135     1 Ss   /System/Library/PrivateFrameworks/InstallCoordination.framework/Support/installcoordinationd
+  136     1 Ss   /System/Library/PrivateFrameworks/TelephonyUtilities.framework/callservicesd
+  137     1 Ss   /usr/libexec/networkserviceproxy
+  138     1 Ss   /System/Library/PrivateFrameworks/CoreAccessories.framework/Support/accessoryd
+tx_flush:1075: disk0s1 xid 22250 tx stats: # 5840 finish 5843 enter 19 wait 178 1191us close 25us flush 4919us
+  140     1 Ss   /System/Library/PrivateFrameworks/HomeKitDaemon.framework/Support/homed
+  143     1 Ss   /System/Library/PrivateFrameworks/SyncedDefaults.framework/Support/syncdefaultsd
+  147     1 Ss   /System/Library/PrivateFrameworks/VoiceServices.framework/Support/voiced
+  150     1 Ss   /usr/libexec/nanoregistrylaunchd
+  151     1 Ss   /System/Library/CoreServices/iconservicesagent
+  152     1 Ss   /usr/libexec/logd_helper
+  153     1 Ss   /System/Library/PrivateFrameworks/MobileSoftwareUpdate.framework/XPCServices/com.apple.MobileSoftwareUpdate.CleanupPreparePathService.xpc/com.apple.MobileSoftwareUpdate.CleanupPreparePathService
+  155     1 Ss   /System/Library/PrivateFrameworks/CoreSymbolication.framework/coresymbolicationd
+  159     1 Ss   /System/Library/PrivateFrameworks/UserActivity.framework/Agents/useractivityd
+  160     1 Ss   /System/Library/PrivateFrameworks/ScreenTimeCore.framework/ScreenTimeAgent
+  161     1 Ss   /usr/libexec/dmd
+  162     1 Ss   /usr/libexec/profiled
+  165     1 Ss   /usr/libexec/nfcd
+  169     1 Ss   /usr/libexec/misagent
+  174     1 Ss   /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/XPCServices/UARPUpdaterServiceHID.xpc/UARPUpdaterServiceHID
+  175     1 Ss   /System/Library/PrivateFrameworks/CoreFollowUp.framework/followupd
+  176     1 Ss   /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/XPCServices/GenericKextUpdaterService.xpc/GenericKextUpdaterService
+  177     1 Ss   /usr/libexec/OTATaskingAgent
+  180     1 Ss   /System/Library/PrivateFrameworks/MapsSupport.framework/mapspushd
+  182    63 R    /bin/ps
+INFERNO_READINESS_END seconds=45 status=0
+INFERNO_LOG_DIRECTORY /private/var/mobile/Library/Logs/CrashReporter opened=1 errno=60
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/. type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/.. type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/inferno-launcher-2026-10-06-024351.ips type=8
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/inferno-launcher-2026-10-06-024331.ips type=8
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/DiagnosticLogs type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/stacks+com.apple.datamigrator-2026-10-06-015846.ips type=8
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/Panics type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/Assistant type=4
+INFERNO_LOG_ENTRY /private/var/mobile/Library/Logs/CrashReporter/inferno-launcher-2026-10-06-024405.ips type=8
+INFERNO_CRASH_PREFIX_BEGIN /private/var/mobile/Library/Logs/CrashReporter/inferno-launcher-2026-10-06-024405.ips size=12397 limit=32768
+{"app_name":"inferno-launcher","timestamp":"2026-10-06 02:44:05.00 -0700","app_version":"","slice_uuid":"00000000-0000-0000-0000-000000000000","build_version":"","platform":2,"share_with_app_devs":0,"is_first_party":1,"bug_type":"109","os_version":"iPhone OS 14.0 (18A5351d)","incident_id":"BC8BFDA9-BC37-40E7-9552-CDAEBEC2E09B","name":"inferno-launcher"}
+Incident Identifier: BC8BFDA9-BC37-40E7-9552-CDAEBEC2E09B
+CrashReporter Key:   8e4e079a6b35dd6a1667d657305681939b80a241
+Hardware Model:      iPhone12,1
+Process:             inferno-launcher [172]
+Path:                /usr/bin/inferno-launcher
+Identifier:          inferno-launcher
+Version:             ???
+Code Type:           ARM-64 (Native)
+Role:                Unspecified
+Parent Process:      inferno-exec-launcher [171]
+Coalition:           org.inferno.app-probe [35]
+
+
+Date/Time:           2026-10-06 02:44:05.3528 -0700
+Launch Time:         2026-10-06 02:44:05.2070 -0700
+OS Version:          iPhone OS 14.0 (18A5351d)
+Release Type:        Beta
+Baseband Version:    n/a
+Report Version:      104
+
+Exception Type:  EXC_CRASH (SIGABRT)
+Exception Codes: 0x0000000000000000, 0x0000000000000000
+Exception Note:  EXC_CORPSE_NOTIFY
+Termination Description: DYLD, missing lazy symbol called
+Triggered by Thread:  0
+
+Thread 0 name:  Dispatch queue: com.apple.main-thread
+Thread 0 Crashed:
+0   dyld                          	0x0000000101316b68 0x1012c0000 + 355176
+1   dyld                          	0x000000010131e32c 0x1012c0000 + 385836
+2   dyld                          	0x000000010131e360 0x1012c0000 + 385888
+3   dyld                          	0x00000001012c5044 0x1012c0000 + 20548
+4   libdyld.dylib                 	0x00000001934cf84c 0x1934bb000 + 84044
+5   libdyld.dylib                 	0x00000001934cf418 0x1934bb000 + 82968
+6   inferno-launcher              	0x0000000100efc17c 0x100ef8000 + 16764
+7   libdyld.dylib                 	0x00000001934bbe60 0x1934bb000 + 3680
+
+Thread 0 crashed with ARM Thread State (64-bit):
+    x0: 0x0000000000000006   x1: 0x0000000000000004   x2: 0x000000016ef06a50   x3: 0x0000000000000032
+    x4: 0x000000016ef06650   x5: 0x0000000000000000   x6: 0x0000000000000000   x7: 0x0000000000000000
+    x8: 0x0000000000000020   x9: 0x0000000000000009  x10: 0x0000000000000001  x11: 0x000000010180d038
+   x12: 0x0000000000000001  x13: 0x0000000000000000  x14: 0x00000000ada7829b  x15: 0x000000000000090f
+   x16: 0x0000000000000209  x17: 0x0000000101311030  x18: 0x0000000000000000  x19: 0x0000000000000000
+   x20: 0x000000016ef06650  x21: 0x0000000000000032  x22: 0x000000016ef06a50  x23: 0x0000000000000004
+   x24: 0x0000000000000006  x25: 0x0000000100f00048  x26: 0x0000000000000000  x27: 0x00000001dd378d4c
+   x28: 0x0000000000000001   fp: 0x000000016ef06620   lr: 0x000000010131e32c
+    sp: 0x000000016ef065e0   pc: 0x0000000101316b68 cpsr: 0x00000000
+   esr: 0x56000080  Address size fault
+
+Binary Images:
+0x1012c0000 - 0x10132ffff dyld arm64e  <8d9c1f86d39b3b13bb6d7d0b1c48cac7> /usr/lib/dyld
+0x193281000 - 0x193297fff libsystem_trace.dylib arm64e  <00b91db909da33da9f3050fc28094e73> /usr/lib/system/libsystem_trace.dylib
+0x193298000 - 0x1932ccfff libxpc.dylib arm64e  <6d9dcf6a63fd3fb2865b782d147ab878> /usr/lib/system/libxpc.dylib
+0x1932cd000 - 0x1932cefff libsystem_blocks.dylib arm64e  <fb386416549a3ee4b62bbdf718ad5a23> /usr/lib/system/libsystem_blocks.dylib
+0x1932cf000 - 0x19334dfff libsystem_c.dylib arm64e  <a91cdcd8c69f3204b740b860188831cc> /usr/lib/system/libsystem_c.dylib
+0x19334e000 - 0x19338ffff libdispatch.dylib arm64e  <636c9b4e09d739cfb9a7732f26e4d3dc> /usr/lib/system/libdispatch.dylib
+0x193390000 - 0x1933b3fff libsystem_malloc.dylib arm64e  <196ad8da0072371d8744a9e27eaa2c9f> /usr/lib/system/libsystem_malloc.dylib
+0x1933b4000 - 0x1933bafff libsystem_platform.dylib arm64e  <55ece0094190339a9ba8ce790857e9e4> /usr/lib/system/libsystem_platform.dylib
+0x1933bb000 - 0x1933c6fff libsystem_pthread.dylib arm64e  <2582eeca422f39099579d8177d42492b> /usr/lib/system/libsystem_pthread.dylib
+0x1933c7000 - 0x193400fff libobjc.A.dylib arm64e  <1bcb72b1ea993d7d872b3486d9dfd232> /usr/lib/libobjc.A.dylib
+0x193401000 - 0x193473fff libcorecrypto.dylib arm64e  <1e7db13510c13249be9420358e6e4a36> /usr/lib/system/libcorecrypto.dylib
+0x193474000 - 0x193489fff libc++abi.dylib arm64e  <ca1934081eef33b4a9f2fee2a59690ca> /usr/lib/libc++abi.dylib
+0x19348a000 - 0x1934bafff libsystem_kernel.dylib arm64e  <7a525942131a332bb9e6575c0f7b50b6> /usr/lib/system/libsystem_kernel.dylib
+0x1934bb000 - 0x1934f4fff libdyld.dylib arm64e  <20d5095f60cd3c1a96ac9a0583dc73bf> /usr/lib/system/libdyld.dylib
+0x1934f5000 - 0x1934fefff libsystem_darwin.dylib arm64e  <60c9f0a9949735ea9136c454206997d9> /usr/lib/system/libsystem_darwin.dylib
+0x1934ff000 - 0x19355cfff libc++.1.dylib arm64e  <da0363b92e8f34fb8d5ebb5277113399> /usr/lib/libc++.1.dylib
+0x19355d000 - 0x19359bfff libsystem_info.dylib arm64e  <5c176906324f33e7a684e93f962e709a> /usr/lib/system/libsystem_info.dylib
+0x19359c000 - 0x19394ffff CoreFoundation arm64e  <548058ac65eb31fda60daa27af827c0a> /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+0x193950000 - 0x1939c9fff SystemConfiguration arm64e  <09a9fb2317f438efbe23203c82397516> /System/Library/Frameworks/SystemConfiguration.framework/SystemConfiguration
+0x1939ca000 - 0x193c78fff Foundation arm64e  <14c5869470a83655a854b634dbc9f68b> /System/Library/Frameworks/Foundation.framework/Foundation
+0x193c79000 - 0x193cacfff libCRFSuite.dylib arm64e  <87dba74de1933aa3affaf00df7052977> /usr/lib/libCRFSuite.dylib
+0x193cad000 - 0x193e4ffff CoreServices arm64e  <be67df57fa0b3c9280bedf07d0421f0a> /System/Library/Frameworks/CoreServices.framework/CoreServices
+0x1943c7000 - 0x19450efff Security arm64e  <7d6cfe4fd084336d9ccf514419d65040> /System/Library/Frameworks/Security.framework/Security
+0x19450f000 - 0x1945b8fff IOKit arm64e  <fdf91101eeea37499c91f90fa4482422> /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit
+0x1945b9000 - 0x194616fff libMobileGestalt.dylib arm64e  <5723163f914c3b6fb7a4a66a102a15db> /usr/lib/libMobileGestalt.dylib
+0x19468c000 - 0x1948f3fff libicucore.A.dylib arm64e  <18985e38940c39548a196c8b03f0be46> /usr/lib/libicucore.A.dylib
+0x195369000 - 0x1954f1fff libsqlite3.dylib arm64e  <b3b40285d30f33eaa6eae0669760ad51> /usr/lib/libsqlite3.dylib
+0x195528000 - 0x195532fff libsystem_notify.dylib arm64e  <20b6e3c2dcd237139457f0e47afdcab7> /usr/lib/system/libsystem_notify.dylib
+0x195a1e000 - 0x196114fff libnetwork.dylib arm64e  <780a04a7e4cc38379516187f4f212a2c> /usr/lib/libnetwork.dylib
+0x196239000 - 0x196270fff CoreServicesStore arm64e  <a483b9ba16143fcbb06413e04be60ce3> /System/Library/PrivateFrameworks/CoreServicesStore.framework/CoreServicesStore
+0x196681000 - 0x196681fff libenergytrace.dylib arm64e  <2aa006c8c66339e7b61bf16385a83c53> /usr/lib/libenergytrace.dylib
+0x196e2b000 - 0x1972b8fff CFNetwork arm64e  <c054cbe1d50737fb9a448d85f6b9e405> /System/Library/Frameworks/CFNetwork.framework/CFNetwork
+0x1988fa000 - 0x198910fff libsystem_asl.dylib arm64e  <fc8926cef81037e6ad3dd1c130c813ea> /usr/lib/system/libsystem_asl.dylib
+0x1990be000 - 0x1990cdfff libsystem_networkextension.dylib arm64e  <d798871ad3ae3eafae7208d5c3df1847> /usr/lib/system/libsystem_networkextension.dylib
+0x199543000 - 0x19954afff libsystem_symptoms.dylib arm64e  <c13e874dde2c3563b36ed04e7dd5587b> /usr/lib/system/libsystem_symptoms.dylib
+0x19ad7e000 - 0x19ad8ffff libsystem_containermanager.dylib arm64e  <8c664ed3d8ab3b07bded9d299931623e> /usr/lib/system/libsystem_containermanager.dylib
+0x19eb6a000 - 0x19eb7cfff IOSurface arm64e  <8af079a68f753d3d81b51fcc0ec451a8> /System/Library/Frameworks/IOSurface.framework/IOSurface
+0x1a47fa000 - 0x1a47fefff libsystem_configuration.dylib arm64e  <0447f73a9346383fb180ec1ed8b4c319> /usr/lib/system/libsystem_configuration.dylib
+0x1a4a81000 - 0x1a4a82fff liblangid.dylib arm64e  <a586059cb97d37b38115187dfe2f9fbc> /usr/lib/liblangid.dylib
+0x1a5da5000 - 0x1a5daffff IOMobileFramebuffer arm64e  <5418a289f4833bb683bb8bc978b1261e> /System/Library/PrivateFrameworks/IOMobileFramebuffer.framework/IOMobileFramebuffer
+0x1a61c4000 - 0x1a62adfff libxml2.2.dylib arm64e  <d8a8b93501ce3c35ad443fb3b9f33367> /usr/lib/libxml2.2.dylib
+0x1a9f8d000 - 0x1a9f90fff libsystem_sandbox.dylib arm64e  <4cc279a3f933300586297cf1b71b0dc4> /usr/lib/system/libsystem_sandbox.dylib
+0x1aa1fe000 - 0x1aa232fff MobileInstallation arm64e  <75fdd74a3acb3b2eafccdb7f55c5ccb8> /System/Library/PrivateFrameworks/MobileInstallation.framework/MobileInstallation
+0x1aa343000 - 0x1aa34bfff libsystem_dnssd.dylib arm64e  <6303d2b8a49a3da899315bcb75cf3707> /usr/lib/system/libsystem_dnssd.dylib
+0x1aad3f000 - 0x1aad55fff libcoretls.dylib arm64e  <14afb3bc12e330a498557a2d9bcc830e> /usr/lib/libcoretls.dylib
+0x1b8a5f000 - 0x1b8acffff libarchive.2.dylib arm64e  <37b2d4c1a75339ff8bd28fe7607d9fb4> /usr/lib/libarchive.2.dylib
+0x1b8be1000 - 0x1b8be2fff libsystem_coreservices.dylib arm64e  <9c4a7694a6c934c0b1083b8c25d7f730> /usr/lib/system/libsystem_coreservices.dylib
+0x1b8e37000 - 0x1b8e3ffff libcopyfile.dylib arm64e  <5029684e6fbc39959720f3c8783061ee> /usr/lib/system/libcopyfile.dylib
+0x1bd645000 - 0x1bd64bfff MobileSystemServices arm64e  <42ad3acf0dc13fd8813240191b657b4c> /System/Library/PrivateFrameworks/MobileSystemServices.framework/MobileSystemServices
+0x1c2337000 - 0x1c2371fff libpcap.A.dylib arm64e  <2dcda2a4ba3337f1b4c448ad7084a089> /usr/lib/libpcap.A.dylib
+0x1cff12000 - 0x1cff13fff libSystem.B.dylib arm64e  <aafe72ee07a23052ad86e171768f51b0> /usr/lib/libSystem.B.dylib
+0x1d003f000 - 0x1d0055fff libapple_nghttp2.dylib arm64e  <b6fe39d73cc23ec1aa018bebd64dcb18> /usr/lib/libapple_nghttp2.dylib
+0x1d00e5000 - 0x1d00f5fff libbsm.0.dylib arm64e  <179defce88903bb0948eaa544fb874b0> /usr/lib/libbsm.0.dylib
+0x1d00f6000 - 0x1d0102fff libbz2.1.0.dylib arm64e  <f2be4c60f3a534d19f518a2d238c7c61> /usr/lib/libbz2.1.0.dylib
+0x1d0103000 - 0x1d0103fff libcharset.1.dylib arm64e  <6a8bcadc4e4837b880759b3c2b093542> /usr/lib/libcharset.1.dylib
+0x1d0116000 - 0x1d012dfff libcompression.dylib arm64e  <f84fc8f30af036bcb51da2f1408a8c9b> /usr/lib/libcompression.dylib
+0x1d012e000 - 0x1d012ffff libcoretls_cfhelpers.dylib arm64e  <8b682d0a36bf3bd29ae1a82ef64d74ec> /usr/lib/libcoretls_cfhelpers.dylib
+0x1d0138000 - 0x1d013efff libdns_services.dylib arm64e  <fceb299fa9213720b2ca73cf0d6566ef> /usr/lib/libdns_services.dylib
+0x1d0199000 - 0x1d028efff libiconv.2.dylib arm64e  <d703f1a24e9a3df08ff57fe051b9837d> /usr/lib/libiconv.2.dylib
+0x1d02b9000 - 0x1d02d1fff liblzma.5.dylib arm64e  <8ac4cda574e13ad5b79f14b0cf570bda> /usr/lib/liblzma.5.dylib
+0x1d098e000 - 0x1d099ffff libz.1.dylib arm64e  <0e4a3945c82d3a7fad620e189541b392> /usr/lib/libz.1.dylib
+0x1d0d89000 - 0x1d0d8efff libcache.dylib arm64e  <ab890d91f58f33919e511d4780382e97> /usr/lib/system/libcache.dylib
+0x1d0d8f000 - 0x1d0d9bfff libcommonCrypto.dylib arm64e  <6513855214083bf885ce35c283348f79> /usr/lib/system/libcommonCrypto.dylib
+0x1d0d9c000 - 0x1d0d9ffff libcompiler_rt.dylib arm64e  <d1a1aa81b237340fbcd60c966de2bfe9> /usr/lib/system/libcompiler_rt.dylib
+0x1d0e82000 - 0x1d0e82fff liblaunch.dylib arm64e  <878b4659911d3dc18dbcc544ad104942> /usr/lib/system/liblaunch.dylib
+0x1d0e83000 - 0x1d0e88fff libmacho.dylib arm64e  <faee59d51fc331bf958f958ea5173cf2> /usr/lib/system/libmacho.dylib
+0x1d0e89000 - 0x1d0e8bfff libremovefile.dylib arm64e  <a8941a4044643f8b86f2c6c02861c3af> /usr/lib/system/libremovefile.dylib
+0x1d0e8c000 - 0x1d0e8efff libsystem_featureflags.dylib arm64e  <8fba484d7a0530d4957172d951018f14> /usr/lib/system/libsystem_featureflags.dylib
+0x1d0e8f000 - 0x1d0ebcfff libsystem_m.dylib arm64e  <1c56491e8b903e71a2850c932d20264b> /usr/lib/system/libsystem_m.dylib
+0x1d0ebd000 - 0x1d0ec7fff libunwind.dylib arm64e  <3c63f6fa0c1e341cb7a611de118f2297> /usr/lib/system/libunwind.dylib
+0x1d61dd000 - 0x1d621ffff CoreAutoLayout arm64e  <daf191599f21382f970477fe10260ded> /System/Library/PrivateFrameworks/CoreAutoLayout.framework/CoreAutoLayout
+0x1d8851000 - 0x1d8851fff SoftLinking arm64e  <8ebd6c2cef0f3d5e8dfa1ca18dd5ef81> /System/Library/PrivateFrameworks/SoftLinking.framework/SoftLinking
+0x1dd00d000 - 0x1dd00ffff libsystem_collections.dylib arm64e  <1f1d98c6b96339f6b28e9de25db8f0cc> /usr/lib/system/libsystem_collections.dylib
+0x1dd010000 - 0x1dd010fff libsystem_product_info_filter.dylib arm64e  <b437888b4b9534e5bd1bcbb440433632> /usr/lib/system/libsystem_product_info_filter.dylib
+
+EOF
+
+
+INFERNO_CRASH_PREFIX_END bytes=12397
+INFERNO_LOG_DIRECTORY /private/var/logs/CrashReporter opened=1 errno=60
+INFERNO_LOG_ENTRY /private/var/logs/CrashReporter/. type=4
+INFERNO_LOG_ENTRY /private/var/logs/CrashReporter/.. type=4
+INFERNO_LOG_ENTRY /private/var/logs/CrashReporter/Panics type=4
+INFERNO_LOG_ENTRY /private/var/logs/CrashReporter/Baseband type=4
+INFERNO_LOG_DIRECTORY /private/var/log opened=1 errno=60
+INFERNO_LOG_ENTRY /private/var/log/. type=4
+INFERNO_LOG_ENTRY /private/var/log/.. type=4
+INFERNO_LOG_ENTRY /private/var/log/mDNSResponder type=4
+INFERNO_LOG_ENTRY /private/var/log/asl type=4
+INFERNO_LOG_ENTRY /private/var/log/ppp type=4
+INFERNO_LOG_ENTRY /private/var/log/com.apple.xpc.launchd type=4
+tx_flush:1075: disk0s1 xid 22270 tx stats: # 5860 finish 5863 enter 19 wait 178 1191us close 25us flush 4916us
+INFERNO_EXEC_WRAPPER_BEGIN case=system-mobile-register path=/usr/bin/inferno-launcher watchdog=150 uid=0 gid=0
+INFERNO_EXEC_WRAPPER_CHILD uid=501 gid=501
+INFERNO_EXEC_WRAPPER_CONSOLE_OPEN fd=3 errno=0 uid=501 gid=501
+INFERNO_EXEC_WRAPPER_ACCESS x=0 xerrno=0 r=0 rerrno=0 fd=3 open_errno=0 read_bytes=16384 read_errno=0
+INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+2026-10-06 02:44:35.382 inferno-launcher[184:2162] INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+dyld: missing lazy symbol called
+tx_flush:1075: disk0s1 xid 22290 tx stats: # 5880 finish 5883 enter 19 wait 178 1191us close 25us flush 4913us
+tx_flush:1075: disk0s1 xid 22310 tx stats: # 5900 finish 5903 enter 19 wait 178 1191us close 25us flush 4911us
+INFERNO_EXEC_WRAPPER_WAIT case=system-mobile-register raw=6 timed_out=0 expected=0
+tx_flush:1075: disk0s1 xid 22330 tx stats: # 5920 finish 5923 enter 19 wait 178 1191us close 25us flush 4914us
+tx_flush:1075: disk0s1 xid 22350 tx stats: # 5940 finish 5943 enter 19 wait 178 1191us close 25us flush 4913us
+tx_flush:1075: disk0s1 xid 22370 tx stats: # 5960 finish 5963 enter 19 wait 178 1191us close 25us flush 4910us
+tx_flush:1075: disk0s1 xid 22390 tx stats: # 5980 finish 5983 enter 19 wait 178 1191us close 24us flush 4913us
+tx_flush:1075: disk0s1 xid 22410 tx stats: # 6000 finish 6003 enter 19 wait 178 1191us close 24us flush 4910us
+tx_flush:1075: disk0s1 xid 22430 tx stats: # 6020 finish 6023 enter 19 wait 178 1191us close 24us flush 4907us
+tx_flush:1075: disk0s1 xid 22450 tx stats: # 6040 finish 6043 enter 19 wait 178 1191us close 24us flush 4904us
+tx_flush:1075: disk0s1 xid 22470 tx stats: # 6060 finish 6063 enter 19 wait 178 1191us close 24us flush 4901us
+tx_flush:1075: disk0s1 xid 22490 tx stats: # 6080 finish 6083 enter 19 wait 178 1191us close 24us flush 4901us
+tx_flush:1075: disk0s1 xid 22510 tx stats: # 6100 finish 6103 enter 19 wait 178 1191us close 24us flush 4902us
+tx_flush:1075: disk0s1 xid 22530 tx stats: # 6120 finish 6123 enter 19 wait 178 1191us close 24us flush 4901us
+tx_flush:1075: disk0s1 xid 22550 tx stats: # 6140 finish 6143 enter 19 wait 178 1191us close 24us flush 4897us
+tx_flush:1075: disk0s1 xid 22570 tx stats: # 6160 finish 6164 enter 19 wait 178 1191us close 24us flush 4895us
+tx_flush:1075: disk0s1 xid 22590 tx stats: # 6180 finish 6184 enter 19 wait 178 1191us close 24us flush 4892us
+tx_flush:1075: disk0s1 xid 22610 tx stats: # 6200 finish 6204 enter 19 wait 178 1191us close 24us flush 4890us
+tx_flush:1075: disk0s1 xid 22630 tx stats: # 6220 finish 6224 enter 19 wait 178 1191us close 24us flush 4889us
+tx_flush:1075: disk0s1 xid 22650 tx stats: # 6240 finish 6244 enter 18 wait 178 1191us close 24us flush 4889us
+tx_flush:1075: disk0s1 xid 22670 tx stats: # 6260 finish 6264 enter 18 wait 178 1191us close 23us flush 4888us
+tx_flush:1075: disk0s1 xid 22690 tx stats: # 6280 finish 6284 enter 18 wait 178 1191us close 23us flush 4886us
+tx_flush:1075: disk0s1 xid 22710 tx stats: # 6300 finish 6304 enter 18 wait 178 1191us close 23us flush 4884us
+tx_flush:1075: disk0s1 xid 22730 tx stats: # 6320 finish 6324 enter 18 wait 178 1191us close 23us flush 4881us
+tx_flush:1075: disk0s1 xid 22750 tx stats: # 6340 finish 6344 enter 18 wait 178 1191us close 23us flush 4879us
+tx_flush:1075: disk0s1 xid 22770 tx stats: # 6360 finish 6364 enter 18 wait 178 1191us close 23us flush 4876us
+tx_flush:1075: disk0s1 xid 22790 tx stats: # 6380 finish 6384 enter 18 wait 178 1191us close 23us flush 4874us
+tx_flush:1075: disk0s1 xid 22810 tx stats: # 6400 finish 6404 enter 18 wait 178 1191us close 23us flush 4870us
+tx_flush:1075: disk0s1 xid 22830 tx stats: # 6420 finish 6424 enter 18 wait 178 1191us close 23us flush 4865us
+tx_flush:1075: disk0s1 xid 22850 tx stats: # 6440 finish 6444 enter 18 wait 178 1191us close 23us flush 4862us
+tx_flush:1075: disk0s1 xid 22870 tx stats: # 6460 finish 6464 enter 18 wait 178 1191us close 23us flush 4859us
+tx_flush:1075: disk0s1 xid 22890 tx stats: # 6480 finish 6484 enter 18 wait 178 1191us close 23us flush 4855us
+tx_flush:1075: disk0s1 xid 22910 tx stats: # 6500 finish 6504 enter 18 wait 178 1191us close 23us flush 4852us
+tx_flush:1075: disk0s1 xid 22930 tx stats: # 6520 finish 6524 enter 18 wait 178 1191us close 23us flush 4849us
+tx_flush:1075: disk0s1 xid 22950 tx stats: # 6540 finish 6544 enter 18 wait 178 1191us close 23us flush 4846us
+tx_flush:1075: disk0s1 xid 22970 tx stats: # 6560 finish 6564 enter 18 wait 178 1191us close 22us flush 4843us
+tx_flush:1075: disk0s1 xid 22990 tx stats: # 6580 finish 6584 enter 18 wait 178 1191us close 22us flush 4839us
+tx_flush:1075: disk0s1 xid 23010 tx stats: # 6600 finish 6604 enter 18 wait 178 1191us close 22us flush 4835us
+tx_flush:1075: disk0s1 xid 23030 tx stats: # 6620 finish 6624 enter 18 wait 178 1191us close 22us flush 4832us
+tx_flush:1075: disk0s1 xid 23050 tx stats: # 6640 finish 6644 enter 18 wait 178 1191us close 22us flush 4829us
+tx_flush:1075: disk0s1 xid 23070 tx stats: # 6660 finish 6664 enter 18 wait 178 1191us close 22us flush 4826us
+tx_flush:1075: disk0s1 xid 23090 tx stats: # 6680 finish 6684 enter 18 wait 178 1191us close 22us flush 4824us
+tx_flush:1075: disk0s1 xid 23110 tx stats: # 6700 finish 6704 enter 18 wait 178 1191us close 22us flush 4822us
+tx_flush:1075: disk0s1 xid 23130 tx stats: # 6720 finish 6724 enter 18 wait 178 1191us close 22us flush 4819us
+tx_flush:1075: disk0s1 xid 23150 tx stats: # 6740 finish 6744 enter 18 wait 178 1191us close 22us flush 4815us
+tx_flush:1075: disk0s1 xid 23170 tx stats: # 6760 finish 6764 enter 17 wait 178 1191us close 22us flush 4812us
+tx_flush:1075: disk0s1 xid 23190 tx stats: # 6780 finish 6784 enter 17 wait 178 1191us close 22us flush 4809us
+tx_flush:1075: disk0s1 xid 23210 tx stats: # 6800 finish 6804 enter 17 wait 178 1191us close 22us flush 4805us
+tx_flush:1075: disk0s1 xid 23230 tx stats: # 6820 finish 6824 enter 17 wait 178 1191us close 22us flush 4803us
+tx_flush:1075: disk0s1 xid 23250 tx stats: # 6840 finish 6844 enter 17 wait 178 1191us close 22us flush 4800us
+tx_flush:1075: disk0s1 xid 23270 tx stats: # 6860 finish 6864 enter 17 wait 178 1191us close 22us flush 4796us
+tx_flush:1075: disk0s1 xid 23290 tx stats: # 6880 finish 6884 enter 17 wait 178 1191us close 21us flush 4792us
+tx_flush:1075: disk0s1 xid 23310 tx stats: # 6900 finish 6904 enter 17 wait 178 1191us close 21us flush 4790us
+tx_flush:1075: disk0s1 xid 23330 tx stats: # 6920 finish 6924 enter 17 wait 178 1191us close 21us flush 4787us
+tx_flush:1075: disk0s1 xid 23350 tx stats: # 6940 finish 6944 enter 17 wait 178 1191us close 21us flush 4784us
+tx_flush:1075: disk0s1 xid 23370 tx stats: # 6960 finish 6964 enter 17 wait 178 1191us close 21us flush 4782us
+tx_flush:1075: disk0s1 xid 23390 tx stats: # 6980 finish 6984 enter 17 wait 178 1191us close 21us flush 4779us
+tx_flush:1075: disk0s1 xid 23410 tx stats: # 7000 finish 7004 enter 17 wait 178 1191us close 21us flush 4777us
+tx_flush:1075: disk0s1 xid 23430 tx stats: # 7020 finish 7024 enter 17 wait 178 1191us close 21us flush 4774us
+tx_flush:1075: disk0s1 xid 23450 tx stats: # 7040 finish 7044 enter 17 wait 178 1191us close 21us flush 4772us
+tx_flush:1075: disk0s1 xid 23470 tx stats: # 7060 finish 7064 enter 17 wait 178 1191us close 21us flush 4770us
+tx_flush:1075: disk0s1 xid 23490 tx stats: # 7080 finish 7084 enter 17 wait 178 1191us close 21us flush 4771us
+tx_flush:1075: disk0s1 xid 23510 tx stats: # 7100 finish 7104 enter 17 wait 178 1191us close 21us flush 4771us
+tx_flush:1075: disk0s1 xid 23530 tx stats: # 7120 finish 7124 enter 17 wait 178 1191us close 21us flush 4773us
+tx_flush:1075: disk0s1 xid 23550 tx stats: # 7140 finish 7144 enter 17 wait 178 1191us close 21us flush 4773us
+tx_flush:1075: disk0s1 xid 23570 tx stats: # 7160 finish 7164 enter 17 wait 178 1191us close 21us flush 4771us
+tx_flush:1075: disk0s1 xid 23590 tx stats: # 7180 finish 7184 enter 17 wait 178 1191us close 21us flush 4770us
+tx_flush:1075: disk0s1 xid 23610 tx stats: # 7200 finish 7204 enter 17 wait 178 1191us close 21us flush 4768us
+tx_flush:1075: disk0s1 xid 23630 tx stats: # 7220 finish 7224 enter 17 wait 178 1191us close 20us flush 4767us
+tx_flush:1075: disk0s1 xid 23650 tx stats: # 7240 finish 7244 enter 17 wait 178 1191us close 20us flush 4773us
+tx_flush:1075: disk0s1 xid 23670 tx stats: # 7260 finish 7264 enter 17 wait 178 1191us close 20us flush 4771us
+tx_flush:1075: disk0s1 xid 23690 tx stats: # 7280 finish 7284 enter 17 wait 178 1191us close 20us flush 4769us
+tx_flush:1075: disk0s1 xid 23710 tx stats: # 7300 finish 7304 enter 17 wait 178 1191us close 20us flush 4768us
+tx_flush:1075: disk0s1 xid 23730 tx stats: # 7320 finish 7324 enter 17 wait 178 1191us close 20us flush 4765us
+tx_flush:1075: disk0s1 xid 23750 tx stats: # 7340 finish 7344 enter 17 wait 178 1191us close 20us flush 4764us
+tx_flush:1075: disk0s1 xid 23770 tx stats: # 7360 finish 7364 enter 16 wait 178 1191us close 20us flush 4763us
+tx_flush:1075: disk0s1 xid 23790 tx stats: # 7380 finish 7384 enter 16 wait 178 1191us close 20us flush 4764us
+tx_flush:1075: disk0s1 xid 23810 tx stats: # 7400 finish 7404 enter 16 wait 178 1191us close 20us flush 4766us
+tx_flush:1075: disk0s1 xid 23830 tx stats: # 7420 finish 7424 enter 16 wait 178 1191us close 20us flush 4765us
+tx_flush:1075: disk0s1 xid 23850 tx stats: # 7440 finish 7444 enter 16 wait 178 1191us close 20us flush 4763us
+INFERNO_EXEC_WRAPPER_BEGIN case=system-mobile-register path=/usr/bin/inferno-launcher watchdog=150 uid=0 gid=0
+INFERNO_EXEC_WRAPPER_CHILD uid=501 gid=501
+INFERNO_EXEC_WRAPPER_CONSOLE_OPEN fd=3 errno=0 uid=501 gid=501
+INFERNO_EXEC_WRAPPER_ACCESS x=0 xerrno=0 r=0 rerrno=0 fd=3 open_errno=0 read_bytes=16384 read_errno=0
+INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+2026-10-06 02:45:05.550 inferno-launcher[192:2231] INFERNO_LAUNCHER_V1 event=start-watchdog-120s attempt=0 result=0
+dyld: missing lazy symbol called
+tx_flush:1075: disk0s1 xid 23870 tx stats: # 7460 finish 7464 enter 16 wait 178 1191us close 20us flush 4761us
+tx_flush:1075: disk0s1 xid 23890 tx stats: # 7480 finish 7484 enter 16 wait 178 1191us close 20us flush 4759us
+tx_flush:1075: disk0s1 xid 23910 tx stats: # 7500 finish 7504 enter 16 wait 178 1191us close 20us flush 4758us
+INFERNO_EXEC_WRAPPER_WAIT case=system-mobile-register raw=6 timed_out=0 expected=0
+tx_flush:1075: disk0s1 xid 23930 tx stats: # 7520 finish 7524 enter 16 wait 178 1191us close 20us flush 4757us
+tx_flush:1075: disk0s1 xid 23950 tx stats: # 7540 finish 7544 enter 16 wait 178 1191us close 20us flush 4757us
+tx_flush:1075: disk0s1 xid 23970 tx stats: # 7560 finish 7564 enter 16 wait 178 1191us close 20us flush 4755us
+tx_flush:1075: disk0s1 xid 23990 tx stats: # 7580 finish 7584 enter 16 wait 178 1191us close 20us flush 4752us
+tx_flush:1075: disk0s1 xid 24010 tx stats: # 7600 finish 7604 enter 16 wait 178 1191us close 19us flush 4750us
+tx_flush:1075: disk0s1 xid 24030 tx stats: # 7620 finish 7624 enter 16 wait 178 1191us close 19us flush 4748us
+tx_flush:1075: disk0s1 xid 24050 tx stats: # 7640 finish 7644 enter 16 wait 178 1191us close 19us flush 4744us
+tx_flush:1075: disk0s1 xid 24070 tx stats: # 7660 finish 7664 enter 16 wait 178 1191us close 19us flush 4742us
+tx_flush:1075: disk0s1 xid 24090 tx stats: # 7680 finish 7684 enter 16 wait 178 1191us close 19us flush 4740us
+tx_flush:1075: disk0s1 xid 24110 tx stats: # 7700 finish 7704 enter 16 wait 178 1191us close 19us flush 4739us
+tx_flush:1075: disk0s1 xid 24130 tx stats: # 7720 finish 7724 enter 16 wait 178 1191us close 19us flush 4737us
+tx_flush:1075: disk0s1 xid 24150 tx stats: # 7740 finish 7744 enter 16 wait 178 1191us close 19us flush 4734us
+tx_flush:1075: disk0s1 xid 24170 tx stats: # 7760 finish 7765 enter 16 wait 178 1191us close 19us flush 4732us
+tx_flush:1075: disk0s1 xid 24190 tx stats: # 7780 finish 7785 enter 16 wait 178 1191us close 19us flush 4729us
+tx_flush:1075: disk0s1 xid 24210 tx stats: # 7800 finish 7805 enter 16 wait 178 1191us close 19us flush 4725us
+tx_flush:1075: disk0s1 xid 24230 tx stats: # 7820 finish 7825 enter 16 wait 178 1191us close 19us flush 4723us
+tx_flush:1075: disk0s1 xid 24250 tx stats: # 7840 finish 7845 enter 16 wait 178 1191us close 19us flush 4721us
+tx_flush:1075: disk0s1 xid 24270 tx stats: # 7860 finish 7865 enter 16 wait 178 1191us close 19us flush 4719us
+tx_flush:1075: disk0s1 xid 24290 tx stats: # 7880 finish 7885 enter 16 wait 178 1191us close 19us flush 4717us
