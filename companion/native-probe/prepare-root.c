@@ -9,6 +9,36 @@ extern int waitpid(int, int *, int), mkdir(const char *, uint16_t), unmount(cons
 extern int *__error(void);
 extern void _exit(int), sync(void);
 extern unsigned int sleep(unsigned int);
+/* Darwin 64-bit dirent ABI (xnu-7195.141.2/bsd/sys/dirent.h). */
+struct directory_entry { unsigned long long inode, seekoff; uint16_t reclen, namelen; unsigned char type; char name[1024]; };
+extern void *opendir(const char *);
+extern struct directory_entry *readdir(void *);
+extern int closedir(void *), open(const char *, int, ...), close(int);
+extern long read(int, void *, size_t);
+extern long long lseek(int, long long, int);
+static void devices(void) {
+    void *directory = opendir("/dev");
+    if (!directory) return;
+    struct directory_entry *entry;
+    while ((entry = readdir(directory))) {
+        const char *n = entry->name;
+        if ((n[0]=='d' && n[1]=='i' && n[2]=='s' && n[3]=='k') ||
+            (n[0]=='r' && n[1]=='d' && n[2]=='i' && n[3]=='s' && n[4]=='k'))
+            printf("INFERNO_PREP_DEVICE %s type=%u\n", n, entry->type);
+    }
+    closedir(directory);
+    int fd = open("/dev/rdisk0", 0);
+    if (fd >= 0) {
+        unsigned char data[32];
+        if (lseek(fd, 4096, 0) == 4096 && read(fd, data, sizeof(data)) == sizeof(data)) {
+            printf("INFERNO_PREP_DISK0_OFFSET4096 ");
+            for (int i=0;i<32;i++) printf("%02x", data[i]);
+            printf("\n");
+        }
+        close(fd);
+    }
+    fflush(0);
+}
 extern int copyfile(const char *, const char *, void *, uint32_t);
 /* Darwin attr.h: fixed ABI, bitmapcount=5; ATTR_VOL_INFO|ATTR_VOL_NAME. */
 struct attrs { uint16_t count, reserved; uint32_t common, volume, directory, file, fork; };
@@ -52,7 +82,8 @@ int main(int argc, char **argv) {
     }
     printf("INFERNO_PREP_BEGIN: add volumes on disposable /dev/disk0s1 only\n"); fflush(0);
     for (int i = 0; access("/dev/disk0s1", 0) && i < 30; ++i) sleep(1);
-    if (access("/dev/disk0s1", 0)) return 3;
+    if (access("/dev/disk0s1", 0)) { devices(); return 3; }
+    devices();
     char *preboot[] = {"/sbin/newfs_apfs", "-A", "-o", "role=b", "-v", "Preboot", "/dev/disk0s1", 0};
     char *xart[] = {"/sbin/newfs_apfs", "-s10485760", "-A", "-o", "role=x", "-v", "xART", "/dev/disk0s1", 0};
     char *hardware[] = {"/sbin/newfs_apfs", "-s25165824", "-A", "-o", "role=h", "-v", "Hardware", "/dev/disk0s1", 0};
