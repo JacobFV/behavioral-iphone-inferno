@@ -394,3 +394,17 @@ The next controlled matrix uses the exact same launcher bytes on System and Data
 checks access and a 16KiB header read, and attempts no-argument execution as root
 and mobile. `--system-launcher` stages only that explicitly supplied owned copy,
 checks ramdisk and guest readback bytes, and leaves the existing Data assets alone.
+
+The actual `app-exec-matrix-1` then isolated the location-dependent failure:
+Data/root and Data/mobile both returned EPERM for X_OK and execve, while R_OK,
+open, and the complete 16KiB header read succeeded. The byte-identical System
+launcher under mobile passed X_OK, executed, printed its usage, and exited64 as
+expected with no arguments. This establishes a Data execution restriction in
+this full-system state, not a missing file or unreadable header; it does not
+identify its implementation. All three cases used the same launcher SHA256.
+
+`merge-launchd-cache.py --disable-unsupported-services` prepares the separate
+upstream-documented configuration experiment: only voicemail.vmd, CommCenter,
+CommCenterMobileHelper, CommCenterRootHelper, and locationd receive Disabled=true.
+Every other field and job is checked unchanged. This configuration was prepared
+without creating or modifying another disk, and is not part of the matrix run.
