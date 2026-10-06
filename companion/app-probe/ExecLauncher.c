@@ -24,8 +24,8 @@ static int attempt(char *path,int mobile,int noargs,const char *label){
   char *env[]={"PATH=/usr/bin:/bin:/usr/sbin:/sbin","HOME=/var/mobile","CFFIXED_USER_HOME=/var/mobile","TMPDIR=/var/tmp",0};
   *__error()=0;int xr=access(argv[0],1),xe=*__error();
   *__error()=0;int rr=access(argv[0],4),re=*__error();
-  *__error()=0;int fd=open(argv[0],0),oe=*__error();long bytes=-1;int be=0;char byte;
-  if(fd>=0){*__error()=0;bytes=read(fd,&byte,1);be=*__error();close(fd);}
+  *__error()=0;int fd=open(argv[0],0),oe=*__error();long bytes=-1;int be=0;char header[16384];
+  if(fd>=0){bytes=0;while(bytes<16384){*__error()=0;long n=read(fd,header+bytes,16384-(unsigned long)bytes);be=*__error();if(n<=0)break;bytes+=n;}close(fd);}
   printf("INFERNO_EXEC_WRAPPER_ACCESS x=%d xerrno=%d r=%d rerrno=%d fd=%d open_errno=%d read_bytes=%ld read_errno=%d\n",xr,xe,rr,re,fd,oe,bytes,be);fflush(0);
   execve(argv[0],argv,env);
   printf("INFERNO_EXEC_WRAPPER_EXEC_FAILED errno=%d uid=%u gid=%u\n",*__error(),getuid(),getgid());fflush(0);_exit(127);
