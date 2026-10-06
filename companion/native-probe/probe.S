@@ -1,4 +1,4 @@
-// Owned SDK-free Darwin arm64 recovery probe. No Apple SDK or libraries.
+// Owned SDK-free Darwin arm64 recovery probe. No Apple SDK; guest libSystem provides loader bootstrap.
 .section __TEXT,__text,regular,pure_instructions
 .globl _start
 .p2align 2
