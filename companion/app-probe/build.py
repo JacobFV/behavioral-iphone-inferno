@@ -73,11 +73,11 @@ def main():
             log.flush()
             subprocess.run(argv, check=True, stdout=log, stderr=subprocess.STDOUT)
 
-    def build(name, executable, libraries, extension="m"):
+    def build(name, executable, libraries, extension="m", flags=()):
         obj = output / (name + '.o')
         run([clang, '--target=arm64-apple-ios14', '-fobjc-runtime=ios-14.0',
              '-fno-objc-arc', '-fno-stack-protector', '-ffreestanding', '-O2',
-             '-Wall', '-Wextra', '-c', str(source / (name + '.' + extension)), '-o', str(obj)])
+             '-Wall', '-Wextra', *flags, '-c', str(source / (name + '.' + extension)), '-o', str(obj)])
         command = [linker, '-arch', 'arm64', '-platform_version', 'ios', '14.0', '14.0',
                    '-e', '_main', '-no_uuid', '-adhoc_codesign']
         for library in libraries:
@@ -87,6 +87,7 @@ def main():
     build('Main', bundle / 'InfernoProbe', ('libSystem', 'libobjc', 'Foundation', 'UIKit'))
     build('Launcher', output / 'inferno-launcher', ('libSystem', 'libobjc', 'Foundation', 'CoreServices'))
     build('DictionaryLauncher', output / 'inferno-launcher-dictionary', ('libSystem', 'libobjc', 'Foundation', 'CoreServices'))
+    build('DiagnosticLauncher', output / 'inferno-launcher-open-error', ('libSystem', 'libobjc', 'Foundation', 'CoreServices'), flags=('-fblocks',))
     build('ExecLauncher', output / 'inferno-exec-launcher', ('libSystem',), 'c')
     build('Stage', output / 'inferno-stage-app', ('libSystem',), 'c')
     shutil.copyfile(source / 'org.inferno.app-probe-exec.plist', output / 'org.inferno.app-probe-exec.plist')
@@ -104,12 +105,14 @@ def main():
         'bundle': {path.name: sha(path) for path in sorted(bundle.iterdir())},
         'launcher_sha256': sha(output / 'inferno-launcher'),
         'dictionary_launcher_sha256': sha(output / 'inferno-launcher-dictionary'),
+        'open_error_launcher_sha256': sha(output / 'inferno-launcher-open-error'),
         'stager_sha256': sha(output / 'inferno-stage-app'),
         'exec_wrapper_sha256': sha(output / 'inferno-exec-launcher'),
         'signing': {'method': 'LLVM ad-hoc; no certificate or Apple identity',
                     'app': signature(bundle / 'InfernoProbe'),
                     'launcher': signature(output / 'inferno-launcher'),
                     'dictionary_launcher': signature(output / 'inferno-launcher-dictionary'),
+                    'open_error_launcher': signature(output / 'inferno-launcher-open-error'),
                     'stager': signature(output / 'inferno-stage-app'),
                     'exec_wrapper': signature(output / 'inferno-exec-launcher')},
     }
