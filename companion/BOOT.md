@@ -150,3 +150,47 @@ QMP quit when the normal completion path did not capture one, including an
 interrupted or incomplete strict journey. Capture failures are recorded separately
 and do not replace the original attempt error or prevent shutdown. A saved frame
 is evidence of its pixels only; it does not establish an app milestone.
+
+## Opt-in raw-backed root overlays
+
+The default remains a private raw root copy. `--root-overlay` instead creates
+`disks/root.qcow2` over the hash-verified `--root-image` raw base; all six auxiliary
+namespaces remain independent raw copies. Bootstrap the pinned Ubuntu24.04 arm64
+`qemu-img` tools outside Git with:
+
+```sh
+python3 companion/disk_overlay.py bootstrap
+```
+
+An alternate external directory can be selected with `--tools-root` for bootstrap
+and `--overlay-tools-root` for boot. Package URLs, SHA256 hashes and extracted-file
+hashes are recorded and checked. The existing emulator executable is unchanged.
+
+The source must be a stopped, retained raw image with every write mode bit cleared.
+The runner refuses writable bases and qcow2 backing chains; it never changes file
+permissions itself. After verifying and freezing a selected base, place an explicit
+`KEEP-OVERLAY-BACKING.json` marker in its `disks/` directory before launching a
+dependent boot. Record the raw base path/hash and intended dependent attempt in
+that marker, then update it with the actual attempt's overlay/report path. The
+previous retirement procedure requires exactly seven raw files, so this extra
+marker deliberately makes that guard reject the protected directory. Do not remove
+the marker or retire the backing file while any dependent overlay is retained.
+
+`root-overlay.json` and the normal report record the immutable backing path,
+full hash, file identity, qcow2 format, tool provenance and dependency warning.
+An overlay is **not standalone**: retain its base at that exact absolute path.
+Do not use `root.qcow2` as the next `--root-image`; flattening/export and chains
+are not implemented. Permission bits and hashes provide an operational contract,
+not protection against a privileged process replacing the file. The base is
+verified before creation and again after the emulator stops; changes fail the
+attempt. Reported `elapsed_seconds` includes postflight backing verification and
+therefore is not a pure guest-runtime or boot-latency measurement.
+
+The actual [synthetic block run](evidence/disk-overlay-block-1/provenance.json)
+used the existing QEMU binary with `-machine none`, wrote/read an overlay pattern,
+read unchanged bytes through from its backing file, independently verified the
+persisted bytes, passed `qemu-img check`, and preserved the full backing SHA256.
+Only 331,776 bytes were allocated for that 16 MiB synthetic case. This proves block
+behavior, not an iOS boot or performance improvement. For planned boot27, the
+stopped stage43 raw root must remain protected together with the boot27 overlay;
+that actual iOS run and its measured disk growth are separate evidence.

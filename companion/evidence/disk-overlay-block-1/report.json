@@ -1,0 +1,156 @@
+{
+  "schema": "inferno.raw-backed-overlay.v1",
+  "path": "/home/brandonin/.local/share/inferno/disk-overlay-validation/run-1/root.qcow2",
+  "format": "qcow2",
+  "backing": {
+    "path": "/home/brandonin/.local/share/inferno/disk-overlay-validation/run-1/synthetic-base.raw",
+    "format": "raw",
+    "sha256": "70cb54f397016c6a7d9a63fbfa11be3838e153a9496bfc701cb0eb8dfe643da8",
+    "bytes": 16777216,
+    "device": 66306,
+    "inode": 53638251,
+    "mtime_ns": 1791302242025007700,
+    "ctime_ns": 1791302242032181736,
+    "mode": "0o444"
+  },
+  "tool": {
+    "root": "/home/brandonin/.local/share/inferno/disk-overlay-tools",
+    "binary": "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-img",
+    "sha256": "f26da24f8a7fd880ab13f6fcabf42d099fb68ea86df5de0c55e6faadfe2d9a6e",
+    "provenance": "/home/brandonin/.local/share/inferno/disk-overlay-tools/tool-provenance.json",
+    "provenance_sha256": "bc5893936a16a2b2dd5cf7e6408da5742a3e1909d7c8d3606ff100ec7236c9f2"
+  },
+  "image_info": {
+    "children": [
+      {
+        "name": "file",
+        "info": {
+          "children": [],
+          "virtual-size": 197120,
+          "filename": "/home/brandonin/.local/share/inferno/disk-overlay-validation/run-1/root.qcow2",
+          "format": "file",
+          "actual-size": 200704,
+          "format-specific": {
+            "type": "file",
+            "data": {}
+          },
+          "dirty-flag": false
+        }
+      }
+    ],
+    "backing-filename-format": "raw",
+    "virtual-size": 16777216,
+    "filename": "/home/brandonin/.local/share/inferno/disk-overlay-validation/run-1/root.qcow2",
+    "cluster-size": 65536,
+    "format": "qcow2",
+    "actual-size": 200704,
+    "format-specific": {
+      "type": "qcow2",
+      "data": {
+        "compat": "1.1",
+        "compression-type": "zlib",
+        "lazy-refcounts": false,
+        "refcount-bits": 16,
+        "corrupt": false,
+        "extended-l2": false
+      }
+    },
+    "full-backing-filename": "/home/brandonin/.local/share/inferno/disk-overlay-validation/run-1/synthetic-base.raw",
+    "backing-filename": "/home/brandonin/.local/share/inferno/disk-overlay-validation/run-1/synthetic-base.raw",
+    "dirty-flag": false
+  },
+  "dependency_warning": "Retain this immutable raw base at the exact recorded path; overlay is not standalone.",
+  "source_sha256": "18a7b28aef7e63e82a3b37753103291e086ef1d9a347ab06385cfd2108ec9522",
+  "backing_after_stop": {
+    "unchanged": true,
+    "sha256": "70cb54f397016c6a7d9a63fbfa11be3838e153a9496bfc701cb0eb8dfe643da8"
+  },
+  "kind": "firmware_free_qemu_overlay_block_execution",
+  "ios_booted": false,
+  "app_executed": false,
+  "binary": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+  "binary_sha256": "e3da84b179ce328e06a0f917aabb8e4d80c8a4cf64701212464831a270e1741e",
+  "qmp_results": [
+    {
+      "command": "read -P 0x11 131072 4096",
+      "response": {
+        "return": "",
+        "id": 2
+      }
+    },
+    {
+      "command": "write -P 0xa5 65536 4096",
+      "response": {
+        "return": "",
+        "id": 3
+      }
+    },
+    {
+      "command": "flush",
+      "response": {
+        "return": "",
+        "id": 4
+      }
+    },
+    {
+      "command": "read -P 0xa5 65536 4096",
+      "response": {
+        "return": "",
+        "id": 5
+      }
+    },
+    {
+      "command": "read -P 0x11 131072 4096",
+      "response": {
+        "return": "",
+        "id": 6
+      }
+    }
+  ],
+  "persisted_read_checks": [
+    {
+      "command": [
+        "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-io",
+        "-r",
+        "-f",
+        "qcow2",
+        "-c",
+        "read -P 0xa5 65536 4096",
+        "-c",
+        "read -P 0x11 131072 4096",
+        "/home/brandonin/.local/share/inferno/disk-overlay-validation/run-1/root.qcow2"
+      ],
+      "exit_code": 0,
+      "stdout": "read 4096/4096 bytes at offset 65536\n4 KiB, 1 ops; 00.00 sec (44.862 MiB/sec and 11484.7483 ops/sec)\nread 4096/4096 bytes at offset 131072\n4 KiB, 1 ops; 00.00 sec (175.137 MiB/sec and 44835.0072 ops/sec)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-io",
+        "-r",
+        "-f",
+        "raw",
+        "-c",
+        "read -P 0 65536 4096",
+        "-c",
+        "read -P 0x11 131072 4096",
+        "/home/brandonin/.local/share/inferno/disk-overlay-validation/run-1/synthetic-base.raw"
+      ],
+      "exit_code": 0,
+      "stdout": "read 4096/4096 bytes at offset 65536\n4 KiB, 1 ops; 00.00 sec (18.431 MiB/sec and 4718.3833 ops/sec)\nread 4096/4096 bytes at offset 131072\n4 KiB, 1 ops; 00.00 sec (169.190 MiB/sec and 43312.5433 ops/sec)\n",
+      "stderr": ""
+    }
+  ],
+  "qemu_exit_code": 0,
+  "base_sha256_before": "70cb54f397016c6a7d9a63fbfa11be3838e153a9496bfc701cb0eb8dfe643da8",
+  "base_sha256_after": "70cb54f397016c6a7d9a63fbfa11be3838e153a9496bfc701cb0eb8dfe643da8",
+  "overlay_allocated_bytes": 331776,
+  "overlay_check": {
+    "image-end-offset": 393216,
+    "total-clusters": 256,
+    "check-errors": 0,
+    "allocated-clusters": 1,
+    "filename": "/home/brandonin/.local/share/inferno/disk-overlay-validation/run-1/root.qcow2",
+    "format": "qcow2"
+  }
+}
