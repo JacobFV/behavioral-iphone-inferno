@@ -10,7 +10,35 @@ Suggested opening instruction:
 > Prefer integrated execution over adding routine unit tests. Never use my main
 > display. Do not resume the archived framework reimplementation.
 
-## CURRENT, 2026-10-06 09:40 local: normal container lookup staging45
+## CURRENT, 2026-10-06 09:50 local: writer succeeds, reader needs existing container
+
+Boot29 stopped normally: QMPquit30/emulator0 after377.9459seconds; bootworker
+preserves all seven hashes and ancestry. Actual app footer `ready errno=0`,
+uid501/boot0/37 proves normal Foundation cache writer setup succeeded. Root
+reviewed unobstructed counter0 at1791305305.5091422, SHA
+f1aa22086f85df840bd18c029e7c9118d35700d0741a1d625acf38989d7097d2.
+Three gestures only (two lock-screen swipes and beta Close), no counter tap.
+Reader wrapper result3 means exact owned LS bundle matched but dataContainerURL
+was nil; it does NOT prove absent physical container. Evidence fac962229e.
+
+Reviewed reader50 now queries original MCMAppDataContainer existing container,
+createIfNecessary=NO, only for exact owned ID after LS bundle verification.
+No creation, registration, launcher or grant change. Source1b0890db8c/2c4e370384,
+build28663d8e51, original API/flag proof476547692b. Readiness50 70752bytes SHA
+f3c659dd1887ec5cd922a74e5503e5e342714918e68b9210d7bd0d355eff75de independently matched.
+App17 remains unchanged and proven writer-ready. Original helper authorization
+and root/mobile namespace must be checked by actual lookup; do not assume success.
+Diskworker traces original namespace normalization in parallel.
+
+Bootworker authorized recovery46 from frozen44 (sibling staging) with app17 and
+readiness50 plus unchanged535-byte job, same probe42/preparer46. After actual
+readbacks/clean unmount/normal quit/unchanged ancestors/all7 manifest, root runs
+`/tmp/inferno-freeze-stage46.py`, then30 from46 (layer4). Gestureutility30 ready.
+Keep ALL protected backing layers at exactpaths. No strict event journey yet.
+Continue active execution without a handoff.
+
+## PREVIOUS, 2026-10-06 09:40 local: normal container lookup staging45
+
 
 Boot28 is stopped (details below). Container-aware app17/readiness49 sources are
 reviewed and integrated0179a2a005/7c880b811a; build/import evidence151b470365.
