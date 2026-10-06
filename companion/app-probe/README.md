@@ -81,7 +81,8 @@ Proposed staging on a NEW disposable disk only:
   but not `/Library/LaunchDaemons`; no shipped launchctl was found in the inspected
   System inventory. A plist placed only on Data has no established bootstrap route.
 
-The launcher calls `LSRegisterURL(bundleURL, false)` and logs its numeric OSStatus,
+The launcher calls original `LSApplicationWorkspace.registerApplication:` and logs
+its Boolean return value,
 then queries `LSApplicationProxy` for validity, bundle URL, container and type.
 Only after successful registration and valid proxy does it call
 `LSApplicationWorkspace.openApplicationWithBundleID:`. It retries at most30 times,
@@ -95,9 +96,11 @@ The original same-build recovery CoreServices1114.5 binary was inspected:
 `registerApplication:` at0x41f4c calls LSRegisterURL at0xd1838; `openApplicationWithBundleID:`
 at0x3c700 returns a Boolean callback result. Its registration method explicitly
 logs that it does not send the applicationsDidInstall notification, so an icon
-appearing is not guaranteed. The helper calls LSRegisterURL directly to preserve
-its numeric failure status. The System shared-cache variant and the whole route
-remain unexecuted. The source symbol declarations are not a promise of acceptance.
+appearing is not guaranteed. LSRegisterURL is a local function, not an exported
+interface in this guest. An earlier direct import caused an actual missing-lazy-
+symbol SIGABRT in app-boot-5 at launcher offset0x417c (return from the call at0x4178).
+The corrected helper invokes the original Objective-C method and reports BOOL,
+not a fabricated OSStatus. The corrected registration route awaits execution.
 
 If permission, container or signing policy rejects this honest owned bundle,
 retain the actual error and inspect that rejection before changing the fixture.
@@ -234,3 +237,12 @@ timed out. The run was deliberately ended after those results with runner SIGTER
 QMP quit acknowledged and emulator0; this is not a360-second observation. The
 independent long migration run remained active. Evidence establishes a working
 System/mobile launcher location, not app registration or Data app execution.
+
+
+`audit-imports.py` checks fixture and launcher bind/lazy-bind entries against the
+original monolithic shared cache's Mach-O export tries and explicit reexport
+chains. It deliberately does not accept local/debug symbols as exported APIs.
+The corrected build8 audit resolves53 imports, while the old launcher's
+LSRegisterURL import is absent. The audit requires an explicit original cache,
+LLVM objdump and output path; all binary inputs remain outside Git. Runtime method
+behavior and registration policy still require actual guest execution.

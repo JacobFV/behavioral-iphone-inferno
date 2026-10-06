@@ -31,13 +31,14 @@ int main(int argc, char **argv) {
             NSString *path = [NSString stringWithUTF8String:argv[1]];
             NSString *identifier = [NSString stringWithUTF8String:argv[2]];
             NSURL *url = [NSURL fileURLWithPath:path];
-            int registration = LSRegisterURL((const void *)url, 0);
-            status("register-osstatus", attempt, registration);
             Class workspaceClass = NSClassFromString(@"LSApplicationWorkspace");
             Class proxyClass = NSClassFromString(@"LSApplicationProxy");
             if (!workspaceClass || !proxyClass) {
                 status("missing-class", attempt, 1);
             } else {
+                LSApplicationWorkspace *workspace = [workspaceClass defaultWorkspace];
+                BOOL registration = [workspace registerApplication:url];
+                status("register-boolean", attempt, registration);
                 LSApplicationProxy *proxy = [proxyClass applicationProxyForIdentifier:identifier];
                 id appState = [proxy respondsToSelector:@selector(appState)] ? [proxy appState] : nil;
                 BOOL valid = [appState respondsToSelector:@selector(isValid)] && [appState isValid];
@@ -47,8 +48,7 @@ int main(int argc, char **argv) {
                          attempt, valid, utf8([[proxy bundleURL] path]),
                          utf8([[proxy containerURL] path]), utf8([proxy applicationType]));
                 emit(detail);
-                if (registration == 0 && valid) {
-                    LSApplicationWorkspace *workspace = [workspaceClass defaultWorkspace];
+                if (registration && valid) {
                     BOOL opened = [workspace openApplicationWithBundleID:identifier];
                     status("open-request", attempt, opened);
                     if (opened) {
