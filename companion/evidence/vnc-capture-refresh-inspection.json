@@ -1,0 +1,60 @@
+{
+  "scope": "Read-only source diagnosis; no guest input or source behavior change.",
+  "source_revision": "09b920c7fd4cd00f9836a7f6d61c0b080fabeb66",
+  "files": {
+    "companion/vnc-control.py": "ee4de4d58ee7c3783c1ad7bec7661118de76d3b605adc60eb228682398d24ddc",
+    "ui/vnc.c": "7eecaf75839eae57d5b426c066d9d8e0cfa95f9ce8c50a09f18b3e6022be9db2",
+    "ui/console.c": "fea1100dd5d376b762451c6c639b2dffdd666cab7b4e9a6903769560ab0cbe9a",
+    "include/ui/console.h": "cd5cba3de893ec04a3e46163332bbddb4d4afd54c813bac9a7e118017473af6f",
+    "hw/display/apple_displaypipe_v4.c": "efc1c384b3d9aa0a6c75ac5dd0daef074da87426205b0a96b647cfe0d735376a"
+  },
+  "findings": [
+    {
+      "source": "companion/vnc-control.py",
+      "fact": "Capture-only opens a new client and saves first nonincremental full framebuffer; settle is only used after input. Full pixel coverage proves completeness, not new guest rendering."
+    },
+    {
+      "source": "ui/vnc.c:2069",
+      "fact": "Nonincremental request sets FORCE and client dirty area; it does not wait for a new rendered frame."
+    },
+    {
+      "source": "ui/vnc.c:3254",
+      "fact": "With no clients, refresh returns before graphic_hw_update. With clients it updates hardware, copies dirty guest surface and sends updates."
+    },
+    {
+      "source": "ui/vnc.c:3379",
+      "fact": "First client recreates server surface and invokes graphic_hw_update before protocol; old VNC server-cache retention is not established as the cause."
+    },
+    {
+      "source": "include/ui/console.h:47",
+      "fact": "Default refresh interval30ms, idle maximum3000ms. Refresh intervals are not guest presentation guarantees."
+    },
+    {
+      "source": "hw/display/apple_displaypipe_v4.c:646",
+      "fact": "gfx_update notifies dirty framebuffer rows then raises OUTPUT_READY interrupt; it does not synchronously wait for a new guest-composited frame."
+    },
+    {
+      "source": "hw/display/apple_displaypipe_v4.c:568",
+      "fact": "Guest register write0x4602C with bit12 schedules draw bottom half."
+    },
+    {
+      "source": "hw/display/apple_displaypipe_v4.c:928",
+      "fact": "Draw bottom half draws both genpipes to console surface and raises FRAME_PROCESSED."
+    }
+  ],
+  "interpretation": "A reconnect can observe the current guest surface before the guest reacts to renewed output-ready refresh. This is a source-supported possible mechanism, not attribution of the observed21-second visual discrepancy. App active/callback are lifecycle boundaries, not presentation boundaries.",
+  "minimal_host_only_recommendation": [
+    "Keep same connection alive; retain immediate initial frame, wait bounded configurable settle and issue another nonincremental full request.",
+    "Record wall and monotonic request, complete-receive and save times separately; retain both hashes and do not infer freshness from stability alone.",
+    "For launch observation, keeping a VNC client connected throughout OPEN avoids re-enabling refresh only at the capture boundary. This still does not synchronize presentation with lifecycle."
+  ],
+  "runtime_observation_from_parent": {
+    "run": "app-boot-38",
+    "open1_timing_received_host": 1791312138.668,
+    "first_capture_host": 1791312160.129,
+    "first_capture_content": "Home",
+    "later_capture_host": 1791312198.605,
+    "later_capture_content": "owned counter1",
+    "qualification": "Parent supplied observations; this inspection does not replace their raw capture evidence."
+  }
+}
