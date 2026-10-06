@@ -340,3 +340,14 @@ at 15, 45, 90 and 150 seconds and inventories the guest's crash/log directories.
 Output goes to the serial console. It neither restarts nor patches any daemon.
 This diagnoses whether splash-only system boots actually start SpringBoard and
 backboardd before considering changes to graphics or service behavior.
+
+The original full-system launchd cache contains 432 jobs, and newly placed job
+files alone did not produce observer/app markers. `merge-launchd-cache.py`
+preserves every original job and adds explicit owned org.inferno jobs to its
+LaunchDaemons mapping, with input/output hashes. `--launchd-cache` stages that
+configuration only; the original .sig is unchanged. The original cache loader
+supports `launchd_unsecure_cache=1`, observed in its own kern.bootargs parser;
+the next merged-cache experiment uses this explicit runner option instead of
+generating a signature. The readiness observer also exports at most eight regular
+.ips/.crash text prefixes of 32KiB from the two known crash directories, never
+arbitrary Data contents. Full process snapshots remain the primary observation.

@@ -212,7 +212,7 @@ static int ensure(const char *path) {
 }
 int main(int argc, char **argv) {
     if (argc < 2 || strcmp(argv[1], "--disposable-root-copy")) return 2;
-    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0, readiness = 0;
+    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0, readiness = 0, install_cache = 0;
     for (int i=2; i<argc; ++i) {
         if (!strcmp(argv[i], "--role-volumes")) roles = 1;
         else if (!strcmp(argv[i], "--existing-volumes")) existing = 1;
@@ -222,6 +222,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[i], "--verify-data")) verify_data = 1;
         else if (!strcmp(argv[i], "--create-keybag")) keybag = 1;
         else if (!strcmp(argv[i], "--install-readiness")) readiness = 1;
+        else if (!strcmp(argv[i], "--install-cache")) install_cache = 1;
         else return 2;
     }
     printf("INFERNO_PREP_BEGIN: disposable /dev/disk0s1 existing=%d roles=%d gigalocker=%d\n", existing, roles, gigalocker); fflush(0);
@@ -322,6 +323,12 @@ int main(int argc, char **argv) {
            copyfile("/usr/share/org.inferno.readiness.plist","/mnt1/System/Library/LaunchDaemons/org.inferno.readiness.plist",0,15))return 38;
         sync();if(unmount("/mnt1",0))return 39;
         printf("INFERNO_READINESS_INSTALLED\n");fflush(0);
+    }
+    if(install_cache) {
+        if(mount_at(system_device,"/mnt1",0))return 40;
+        if(copyfile("/usr/share/inferno-launchd-cache.plist","/mnt1/System/Library/xpc/launchd.plist",0,15))return 41;
+        sync();if(unmount("/mnt1",0))return 42;
+        printf("INFERNO_LAUNCHD_CACHE_INSTALLED: explicit configuration only; signature unchanged\n");fflush(0);
     }
     if (keybag) {
         if (!xart_device[0] || !data_device[0] || ensure("/mnt7") ||
