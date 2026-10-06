@@ -351,3 +351,11 @@ the next merged-cache experiment uses this explicit runner option instead of
 generating a signature. The readiness observer also exports at most eight regular
 .ips/.crash text prefixes of 32KiB from the two known crash directories, never
 arbitrary Data contents. Full process snapshots remain the primary observation.
+
+Disk-preparation-23 combined the owned observer and cache entries with the
+separately staged app and renderer experiment. Actual guest readback compared
+596,523 cache bytes with zero mismatches, followed by normal System unmount and
+completion. The earlier readiness-only boot ran 240 seconds without an observer
+marker, consistent with its job being absent from the original cached mapping;
+that run supplies no process-list evidence. Combined runtime observations remain
+required to identify live services or crash causes.
