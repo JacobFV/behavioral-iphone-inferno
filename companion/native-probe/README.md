@@ -420,7 +420,7 @@ flags. Disk-preparation-26 uses a copy of stopped25 and stages only this cache;
 no app or Data content is recopied. Runtime registration and app opening still
 require independent execution evidence.
 
-`unlock-empty.c` is restricted to the newly created VM keybag whose original
+The initial stage28 build of `unlock-empty.c` is restricted to the newly created VM keybag whose original
 creation call used a NULL secret. It emits a raw begin marker, arms alarm120,
 waits30 seconds for normal startup, and loads original MobileKeyBag. The original
 framework's MKBGetDeviceLockState(NULL), MKBDeviceUnlockedSinceBoot(), and
@@ -438,3 +438,12 @@ LaunchServices method import), root wrapper, the one-shot unlock diagnostic,
 and readiness snapshots through3600 seconds. The Data app remains unchanged.
 All five documented service settings remain; unlock success and UIKit execution
 must still be established by the subsequent actual boot.
+
+The next diagnostic source adds raw phase markers and extends the single-attempt
+unlock watchdog to600 seconds for the observed cold-start latency. Both initial
+queries precede the one unlock call; both subsequent queries and numeric results
+precede optional Data X_OK. An optional access check can no longer obstruct the
+core unlock sequence. The next readiness observer bounds only its own ps child
+to600 seconds before killing/reaping that child and continuing other observation;
+the earlier live observer remains unchanged. Slow partial ps output is not
+evidence that an unprinted process is absent.

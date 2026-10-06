@@ -1,5 +1,5 @@
 /* Owned observation-only helper; original guest ps supplies process listing. */
-extern int printf(const char *, ...), fflush(void *), fork(void), waitpid(int,int *,int);
+extern int printf(const char *, ...), fflush(void *), fork(void), waitpid(int,int *,int),kill(int,int);
 extern int execve(const char *,char *const[],char *const[]), *__error(void);
 extern void _exit(int);
 extern unsigned sleep(unsigned);
@@ -67,9 +67,21 @@ int main(void) {
             char *env[]={"PATH=/usr/bin:/bin:/usr/sbin:/sbin",0};
             execve(args[0],args,env);_exit(127);
         }
-        int status=-1;
-        if(pid>0)while(waitpid(pid,&status,0)<0)if(*__error()!=4)break;
-        printf("INFERNO_READINESS_END seconds=%u status=%d\n",elapsed,status);fflush(0);
+        int status=-1,timed_out=0;
+        if(pid>0) {
+            unsigned waited=0;
+            for(;;) {
+                int result=waitpid(pid,&status,1);
+                if(result==pid || (result<0 && *__error()!=4))break;
+                if(waited++>=600) {
+                    timed_out=1;kill(pid,9);
+                    while(waitpid(pid,&status,0)<0)if(*__error()!=4)break;
+                    break;
+                }
+                unsigned remaining=1;while(remaining)remaining=sleep(remaining);
+            }
+        }
+        printf("INFERNO_READINESS_END seconds=%u status=%d ps_watchdog=600 timed_out=%d\n",elapsed,status,timed_out);fflush(0);
         fixture_inventory();
         crash_inventory();
     }
