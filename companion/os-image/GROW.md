@@ -47,3 +47,12 @@ Build and preparation records reside outside Git at
 `~/.local/share/inferno/native-probe/grow-build-1/build.json` and
 `~/.local/share/inferno/native-probe/grow-attempt-1/preparation.json`.
 The bounded headless guest run uses `.local-build/reports/container-growth-1/`.
+
+## Executed result
+
+The 100-second `container-growth-1` run completed with QMP quit acknowledged.
+Actual serial lines 426–535 show readonly mount, clean unmount, kernel
+`nx_resize` growth from 1,878,803 to 8,388,347 blocks, API return 0, readonly
+remount, identical fingerprints, and a second clean unmount. Available blocks
+increased from 110,070 to 6,606,346. The System volume was unmounted before QMP quit.
+This proves container growth, not installed iOS boot or app execution.
