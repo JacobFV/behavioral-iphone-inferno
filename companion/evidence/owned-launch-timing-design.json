@@ -1,0 +1,83 @@
+{
+  "schema": "inferno-owned-launch-timing-design-v1",
+  "status": "read-only design; no source behavior, build, guest, or input change",
+  "source_revision": "b9973a0ff6",
+  "current_fixture": "app19; launcher13; readiness52",
+  "sources": {
+    "mach_time_header": {
+      "local_path": "/tmp/inferno-mach-time.h",
+      "sha256": "707178ae40a1273c9fa7813f89008d0a34c19a7cc7ef11fc9b5fde7a57b3385d"
+    },
+    "arm64_clock_wrapper": {
+      "local_path": "/tmp/inferno-timing-mach_absolute_time.s",
+      "sha256": "e1fff7817501f52a4c7c485799231d5c82f3472c229687473a4e38300c94fd0e"
+    },
+    "signal_policy": {
+      "local_path": "/tmp/inferno-timing-kern_sig.c",
+      "sha256": "64c3bb44479218803490fd43e538fa4f9c4a3baa56db2cbf2c893bfc140ef4db"
+    }
+  },
+  "primary_source_base": "https://github.com/apple-oss-distributions/xnu/tree/xnu-7195.81.3",
+  "abi": {
+    "mach_absolute_time": "uint64_t mach_absolute_time(void)",
+    "mach_timebase_info": "kern_return_t mach_timebase_info(struct { uint32_t numer; uint32_t denom; } *info)",
+    "kill": "int kill(pid_t positive_exact_pid, int signal); SIGTERM candidate only"
+  },
+  "clock_evidence": {
+    "header": "osfmk/mach/mach_time.h lines36-55",
+    "implementation": "libsyscall/wrappers/mach_absolute_time.s ARM64 lines240-260: shared CNTVCT_EL0 plus commpage offset, retry if offset changes",
+    "conversion": "elapsed_ns = delta_ticks * numer / denom, using overflow-safe wide arithmetic and nonzero denominator",
+    "comparability": "Same running guest boot UUID and timebase; this is a common guest clock, not per-process CPU usage. Reject mixed boot UUIDs. Retain raw ticks and both process identities.",
+    "limitations": [
+      "Guest ticks are not host monotonic timestamps; retain host monotonic request/receipt/capture separately.",
+      "TCG scheduling, host load, suspension and timekeeping configuration affect interpretation. Do not label these physical-device performance measurements.",
+      "mach_absolute_time differs from continuous time across sleep; do not include guest sleep/suspend in a launch trial."
+    ]
+  },
+  "capture_plan": [
+    {
+      "boundary": "launcher_open_request",
+      "point": "Immediately before existing original LS open call, after registration/proxy preparation; no NSLog/TCP between stamp and call."
+    },
+    {
+      "boundary": "launcher_callback",
+      "point": "First callback instruction; record accepted/error separately. This is service acknowledgement, not visibility."
+    },
+    {
+      "boundary": "app_main",
+      "point": "First C main statement before autoreleasepool, Foundation lookup, journal setup or marker sends."
+    },
+    {
+      "boundary": "app_delegate_launch",
+      "point": "Entry to didFinishLaunching callback."
+    },
+    {
+      "boundary": "window_visible_requested",
+      "point": "Immediately after makeKeyAndVisible; request only."
+    },
+    {
+      "boundary": "view_appeared",
+      "point": "Lifecycle callback entry; not display presentation."
+    },
+    {
+      "boundary": "app_active",
+      "point": "Lifecycle callback entry; no assumed ordering relative to appeared."
+    }
+  ],
+  "instrumentation": "Fixed-size in-memory raw timestamp records only in measured hooks. Defer existing marker/network/file/NSLog work until both relevant appeared and active hooks have been captured for initial launch; bounded failure handling later. Current synchronous marker sends before UIApplicationMain and in hooks would contaminate timings if retained there. A main-to-active measurement excludes pre-main dyld/runtime work; launcher-request-to-main includes those plus IPC/scheduling.",
+  "trial_identity": "Current boot UUID, exact app executable/UID, PID plus independently observed process incarnation where available, per-trial identifier, event sequence and raw ticks. One outstanding request at a time. Preserve transport claim-PID verification caveat: not peer authentication.",
+  "definitions": {
+    "process_cold": "Verify prior owned process exits/absent, then normal original open request yields fresh main and process incarnation. Does not clear dyld/filesystem caches.",
+    "warm_foreground": "Use ordinary Home/background UI, verify same process survives, then existing original open request. Measure next active hook; no main required and viewDidAppear may not repeat.",
+    "boot_cold": "Separate whole-VM restart experiment; report boot/setup state and cannot equate with cleared storage caches.",
+    "visual": "Host before/after captures and actual counter interaction remain proof of visible functionality, not precise frame-presentation latency."
+  },
+  "termination": {
+    "candidate": "Normal SIGTERM to exact positive owned PID after path, UID and process-incarnation revalidation; never process-group/broadcast signals.",
+    "original_policy": "bsd/kern/kern_sig.c cansignal lines376-384 checks mac_proc_check_signal before cansignal_nomac root rule lines305-320; kill positive-PID path lines1535-1570 returns EPERM on denial and can return success for a zombie.",
+    "required_execution_evidence": "Record return/errno, then bounded process-state observation proving original incarnation exited before opening again. Signal acceptance alone is insufficient. PID revalidation has a residual race; do not describe it as atomic authorization. No automatic SIGKILL or entitlement escalation.",
+    "relaunch": "Existing actual-executed LSApplicationWorkspace openApplicationWithBundleIdentifier:configuration:completionHandler: with nil configuration, exact owned bundle.",
+    "alternative_not_selected": "Original FBSSystemService terminateApplication:forReason:andReport:withDescription:completion: exists at0x1860ebd8c; server _handleTerminateApplication:forClient: at0x18de32dac. Complete authorization contract not established, so do not introduce it based on method existence."
+  },
+  "implementation_gate": "Parent review and successful unchanged strict repeat runs before any candidate implementation/build/stage."
+}
