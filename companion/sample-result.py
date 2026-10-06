@@ -6,6 +6,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+import subprocess
 
 ID = r'[0-9a-f]{32}'
 UUID = r'[0-9A-Fa-f]{8}(?:-[0-9A-Fa-f]{4}){3}-[0-9A-Fa-f]{12}'
@@ -55,35 +56,48 @@ def reconstruct(data, request):
             if 'INFERNO_SAMPLE_' not in text or ('request_id=' + request['request_id']) not in text:
                 continue
             records.append({'reference': ref})
-            require(terminated, 'selected record lacks physical LF terminator')
+            if not terminated:
+                records[-1]['invalid'] = 'selected record lacks physical LF terminator'
             matches = [(kind, pattern.fullmatch(text)) for kind, pattern in PATTERNS.items()]
             matches = [(kind, match) for kind, match in matches if match]
-            require(len(matches) == 1, 'selected record malformed, prefixed or failure/stop record')
+            if len(matches) != 1:
+                records[-1]['invalid'] = 'selected record malformed, prefixed or failure/stop record'
+                continue
             kind, match = matches[0]
             fields = match.groupdict()
             require(fields['request_id'] == request['request_id'], 'request identity differs')
             records[-1].update(kind=kind, fields=fields)
-        require(len(records) >= 3, 'missing REQUEST, BEGIN or END')
-        kinds = [r['kind'] for r in records]
-        require(kinds[:2] == ['REQUEST','BEGIN'] and kinds[-1] == 'END' and
-                all(k == 'DATA' for k in kinds[2:-1]), 'duplicate, missing or out-of-order record')
-        req, begin, end = [records[i]['fields'] for i in (0, 1, -1)]
-        for fields in (req, begin, end):
+        require(len(records) >= 2, 'missing REQUEST or BEGIN')
+        require([r.get('kind') for r in records[:2]] == ['REQUEST','BEGIN'] and
+                not any(r.get('invalid') for r in records[:2]), 'missing, malformed or duplicate initial REQUEST/BEGIN')
+        req, begin = [records[i]['fields'] for i in (0, 1)]
+        for fields in (req, begin):
             require(fields['target'] == request['target'], 'mixed target')
-        for fields in (req, end):
-            require(fields['boot'] == request['boot_uuid'], 'mixed boot UUID')
-        require(int(req['pid']) > 0 and req['pid'] == begin['pid'] == end['pid'], 'invalid or mixed target PID')
-        require(int(begin['unique']) > 0 and begin['unique'] == end['unique'] and
-                begin['idversion'] == end['idversion'], 'target incarnation differs')
-        require(int(end['guest_ticks']) >= int(req['guest_ticks']), 'guest ticks reversed')
-        for record in records[2:-1]:
-            fields = record['fields']
+        require(req['boot'] == request['boot_uuid'], 'mixed boot UUID')
+        require(int(req['pid']) > 0 and req['pid'] == begin['pid'], 'invalid or mixed target PID')
+        require(int(begin['unique']) > 0, 'invalid target incarnation')
+        end = None
+        chunk_count = 0
+        for index, record in enumerate(records[2:], 2):
+            require(not record.get('invalid'), record.get('invalid', 'invalid record'))
+            kind, fields = record['kind'], record['fields']
+            if kind == 'END':
+                require(index == len(records)-1, 'duplicate or additional selected record after END')
+                end = fields
+                break
+            require(kind == 'DATA', 'duplicate, missing or out-of-order record')
             chunk = bytes.fromhex(fields['hex'])
             require(1 <= int(fields['bytes']) <= 256 and len(chunk) == int(fields['bytes']), 'DATA decoded length invalid')
             require(int(fields['offset']) == len(decoded), 'DATA offsets are not contiguous')
             require(len(decoded) + len(chunk) <= 262144, 'output exceeds 256KiB cap')
             decoded.extend(chunk)
-        require(int(end['bytes']) == len(decoded) and int(end['chunks']) == len(records)-3, 'END byte/chunk totals differ')
+            chunk_count += 1
+        require(end is not None, 'missing END; retaining validated contiguous DATA prefix')
+        require(end['target'] == request['target'] and end['boot'] == request['boot_uuid'], 'mixed END boot/target')
+        require(end['pid'] == begin['pid'] and begin['unique'] == end['unique'] and
+                begin['idversion'] == end['idversion'], 'END target incarnation differs')
+        require(int(end['guest_ticks']) >= int(req['guest_ticks']), 'guest ticks reversed')
+        require(int(end['bytes']) == len(decoded) and int(end['chunks']) == chunk_count, 'END byte/chunk totals differ')
         expected = {'eof':'1', 'truncated':'0', 'read_errno':'0', 'output_error':'0',
                     'reaped':'1', 'raw_status':'0', 'wait_errno':'0', 'killed':'0',
                     'target_post_match':'1', 'complete':'1'}
@@ -97,6 +111,25 @@ def reconstruct(data, request):
     return result, bytes(decoded)
 
 
+def check_destination(path):
+    """Require an external directory or a destination ignored by its worktree."""
+    path = path.resolve()
+    parent = path.parent
+    require(parent.is_dir(), 'Output parent directory must already exist')
+    probe = subprocess.run(['git', '-C', str(parent), 'rev-parse', '--show-toplevel'],
+                           capture_output=True, text=True)
+    if probe.returncode:
+        require(probe.returncode == 128 and 'not a git repository' in probe.stderr,
+                'Could not establish output Git status')
+        return 'outside-worktree'
+    root = Path(probe.stdout.strip()).resolve()
+    for candidate in (path, path/'output.bin', path/'result.json'):
+        result = subprocess.run(['git', '-C', str(root), 'check-ignore', '--quiet', '--', str(candidate)],
+                                capture_output=True)
+        require(result.returncode == 0, 'Output destination must be outside Git or actually ignored')
+    return 'ignored-by-worktree'
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--serial', type=Path, required=True)
@@ -105,6 +138,7 @@ def main():
     args = parser.parse_args()
     try:
         require(not args.output.exists(), 'Output directory must be new')
+        destination_scope = check_destination(args.output)
         request_bytes = args.request.read_bytes()
         request = json.loads(request_bytes)
         require(isinstance(request, dict) and set(request) == {'request_id','boot_uuid','target'}, 'Request requires exact request_id, boot_uuid and target')
@@ -114,7 +148,7 @@ def main():
             data = stream.read(64*1024*1024+1)
         require(len(data) <= 64*1024*1024, 'serial exceeds 64MiB bound')
         result, decoded = reconstruct(data, request)
-        result.update(schema='inferno.sample-result.v1', request=request,
+        result.update(schema='inferno.sample-result.v1', request=request, output_destination=destination_scope,
                       serial={'path':str(args.serial.resolve()), 'bytes':len(data), 'sha256':sha(data),
                               'scope':'bytes read; a live serial log may grow later'},
                       request_source={'path':str(args.request.resolve()), 'sha256':sha(request_bytes)},
