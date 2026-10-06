@@ -56,3 +56,12 @@ Actual serial lines 426–535 show readonly mount, clean unmount, kernel
 remount, identical fingerprints, and a second clean unmount. Available blocks
 increased from 110,070 to 6,606,346. The System volume was unmounted before QMP quit.
 This proves container growth, not installed iOS boot or app execution.
+
+Host 7-Zip extraction from the stopped grown container independently matched
+SHA256 for SystemVersion.plist (620 bytes,
+`2ca623c3d0866ae86a58f6836d9184245295a1517bc0f6456de94ef3a1d55f5b`)
+and sbin/launchd (400400 bytes,
+`50307ff547f84a8c5e03b51fcc6b9be31cea876b39bb829d0dd6e42aa5dd4598`).
+The final grown disk SHA256 is
+`298fe787029085dbbdaf30d066a115f5575aed05dc5a97a73fd5f5b6b0364d00`;
+local verification details are in the run's `growth-verification.json`.
