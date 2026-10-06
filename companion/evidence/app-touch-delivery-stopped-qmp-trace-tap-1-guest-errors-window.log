@@ -1,0 +1,11 @@
+input_event_abs con -1, axis x, value 0x724d
+input_event_abs con -1, axis y, value 0x7a11
+input_event_btn con -1, button left, down 1
+input_event_sync 
+apple_mt_spi_host_event abs=(29261,31249) sensor=(5767,523) buttons=0x0->0x1
+apple_mt_spi_enqueue stage=3 frame=21 sensor=(5767,523) bytes=58 virtual_ns=305424839864
+input_event_btn con -1, button left, down 0
+input_event_sync 
+apple_mt_spi_host_event abs=(29261,31249) sensor=(5767,523) buttons=0x1->0x0
+apple_mt_spi_enqueue stage=5 frame=22 sensor=(5767,523) bytes=58 virtual_ns=306631106224
+apple_mt_spi_enqueue stage=7 frame=23 sensor=(5767,523) bytes=58 virtual_ns=306731390832
