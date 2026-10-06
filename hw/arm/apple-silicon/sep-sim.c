@@ -748,7 +748,7 @@ static bool inferno_sep_system_bag_message(AppleSEPSimState *s,
             goto done;
         }
         /* __blob counts the declared DER length rounded up to four bytes. */
-        size = KEYSTORE_IPC_HEADER_SIZE + 8 + 16;
+        size = KEYSTORE_IPC_HEADER_SIZE + 8 + 24;
     }
     if (s->ool_state[EP_KEYSTORE].out_size < size) {
         error = -11;
@@ -762,11 +762,16 @@ static bool inferno_sep_system_bag_message(AppleSEPSimState *s,
         stl_le_p(out + 4, state);
         /* Action flags stay zero: a state query has no requested side effects. */
     } else if (code == 0x19) {
-        /* DER SET { SEQUENCE { UTF8String "ss", INTEGER state } }.
-         * Unknown extended-state fields are absent, never invented enum values.
+        /* This guarded simulator models only the empty-secret system bag.
+         * Original SBF and ManagedConfiguration interpret sls=3 as no passcode;
+         * omitted sls defaults to 0 and incorrectly reports a passcode present.
+         * Preserve the independently tracked first-unlock bits in ss. The SET
+         * entries are in DER byte order; no other extended state is invented.
          */
         const uint8_t der[] = {
-            0x31, 0x0b, 0x30, 0x09, 0x0c, 0x02, 's', 's',
+            0x31, 0x15,
+            0x30, 0x08, 0x0c, 0x03, 's', 'l', 's', 0x02, 0x01, 0x03,
+            0x30, 0x09, 0x0c, 0x02, 's', 's',
             0x02, 0x03, 0x40, 0x00, 0x00
         };
         stl_le_p(out + 4, sizeof(der));
