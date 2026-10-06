@@ -1,0 +1,3760 @@
+{
+  "kind": "t8030_direct_root_experiment",
+  "attempt_completed": true,
+  "ios_booted": null,
+  "app_executed": true,
+  "milestones": {
+    "kernel_serial": {
+      "state": "observed",
+      "evidence": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+          "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+          "byte_start": 33,
+          "byte_end": 63,
+          "line": 2,
+          "text": "corecrypto_kext_start called"
+        }
+      ],
+      "scope": "Original kernel/kext diagnostic text; not boot completion."
+    },
+    "launchd_userland": {
+      "state": "observed",
+      "evidence": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+          "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+          "byte_start": 46091,
+          "byte_end": 46206,
+          "line": 763,
+          "text": "Tue Oct  6 12:42:11 2026 localhost com.apple.xpc.launchd[1] <Notice>: Early boot complete. Continuing system boot."
+        }
+      ],
+      "scope": "t8030_direct_root_experiment"
+    },
+    "owned_app_lifecycle": {
+      "state": "observed",
+      "scope": "Owned fixture main and appeared through validated loopback records only.",
+      "boot_uuid": "DA68CFEE-439B-4994-8BBB-491D1F3F9792",
+      "pid": 245,
+      "peer_pid_authenticated": false,
+      "evidence": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+          "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+          "byte_start": 59952,
+          "byte_end": 60097,
+          "line": 910,
+          "text": "INFERNO_EVENT_RELAY_READY boot=DA68CFEE-439B-4994-8BBB-491D1F3F9792 lifetime=7200 transport=tcp address=127.0.0.1 port=37373 connections_max=128"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+          "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+          "byte_start": 211922,
+          "byte_end": 212042,
+          "line": 3431,
+          "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DA68CFEE-439B-4994-8BBB-491D1F3F9792 245 1 main 0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+          "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+          "byte_start": 212044,
+          "byte_end": 212202,
+          "line": 3433,
+          "text": "INFERNO_EVENT_RELAY_RECORD boot=DA68CFEE-439B-4994-8BBB-491D1F3F9792 pid=245 sequence=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+          "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+          "byte_start": 212204,
+          "byte_end": 212246,
+          "line": 3435,
+          "text": "INFERNO_UIKIT_PROBE_V1 event=main count=0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+          "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+          "byte_start": 213284,
+          "byte_end": 213408,
+          "line": 3455,
+          "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DA68CFEE-439B-4994-8BBB-491D1F3F9792 245 5 appeared 0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+          "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+          "byte_start": 213410,
+          "byte_end": 213568,
+          "line": 3457,
+          "text": "INFERNO_EVENT_RELAY_RECORD boot=DA68CFEE-439B-4994-8BBB-491D1F3F9792 pid=245 sequence=5 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+          "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+          "byte_start": 213570,
+          "byte_end": 213616,
+          "line": 3459,
+          "text": "INFERNO_UIKIT_PROBE_V1 event=appeared count=0"
+        }
+      ]
+    },
+    "strict_owned_journey": {
+      "state": "observed",
+      "evidence": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+          "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+          "byte_start": 213284,
+          "byte_end": 213408,
+          "line": 3455,
+          "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DA68CFEE-439B-4994-8BBB-491D1F3F9792 245 5 appeared 0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+          "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+          "byte_start": 213410,
+          "byte_end": 213568,
+          "line": 3457,
+          "text": "INFERNO_EVENT_RELAY_RECORD boot=DA68CFEE-439B-4994-8BBB-491D1F3F9792 pid=245 sequence=5 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+          "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+          "byte_start": 213570,
+          "byte_end": 213616,
+          "line": 3459,
+          "text": "INFERNO_UIKIT_PROBE_V1 event=appeared count=0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+          "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+          "byte_start": 306072,
+          "byte_end": 306191,
+          "line": 5395,
+          "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DA68CFEE-439B-4994-8BBB-491D1F3F9792 245 8 tap 1"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+          "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+          "byte_start": 306193,
+          "byte_end": 306351,
+          "line": 5397,
+          "text": "INFERNO_EVENT_RELAY_RECORD boot=DA68CFEE-439B-4994-8BBB-491D1F3F9792 pid=245 sequence=8 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+          "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+          "byte_start": 306353,
+          "byte_end": 306394,
+          "line": 5399,
+          "text": "INFERNO_UIKIT_PROBE_V1 event=tap count=1"
+        }
+      ],
+      "automated_visual_verification": false,
+      "visual_review": "Operator review remains required; frame hashes do not interpret pixels.",
+      "input_mode": "operator-observation",
+      "frames": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/probe-before.ppm",
+          "sha256": "cdc80e684e34d2f397b2719062f3a3c10c6e1693f9ce8cc43ba22092ddc58b74",
+          "role": "probe-before"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/probe-after.ppm",
+          "sha256": "b9a217258c67075eedd3d3932a9bc26c30f2ba1474e6c6e33da6e75ff5c9b3ce",
+          "role": "probe-after"
+        }
+      ],
+      "operator_capture_requests_recorded": true
+    }
+  },
+  "milestone_source_sha256": "4aefd213f1587f2b93969378f34183053375d5d2a088e013d4626ebab0a5571a",
+  "milestone_note": "QMP running and framebuffer captures alone do not establish iOS boot.",
+  "profile_path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/profile.json",
+  "profile_sha256": "7939d609b99b8223863dba0b0af9d181526b420c0023cc9520563fd7e0979ed8",
+  "inputs": {
+    "kernel": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/kernel-kernelcache.research.iphone12b",
+      "sha256": "cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3",
+      "bytes": 17429507
+    },
+    "dtb": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+      "sha256": "dbd9be96c4b18f48a1842879237ae8f27043b894a2ed6139e396dbedca232411",
+      "bytes": 42553
+    },
+    "trustcache": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache",
+      "sha256": "af33b3466bd828bf1ccaa1ab35d060bfcce62ade26ee74acf176501b00ea0d7f",
+      "bytes": 4931
+    },
+    "ramdisk": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/ramdisk-038-44135-124.dmg",
+      "sha256": "4013d9b3bb6c7fa0ff82397effc032b6afdb6f3c5e1672782698119dd9b3f704",
+      "bytes": 104685595
+    }
+  },
+  "binary": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+  "binary_sha256": "e3da84b179ce328e06a0f917aabb8e4d80c8a4cf64701212464831a270e1741e",
+  "build_manifest_path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build-manifest.json",
+  "build_manifest_sha256": "29819be4c18c5a43cf8bafce6b9b7dbb871ed44d81488209bb31195e959f820d",
+  "build_manifest": {
+    "schema": "inferno.local-linux-build.v1",
+    "purpose": "build provenance only; no guest boot or firmware execution claim",
+    "sep_mode": "simulated-unencrypted",
+    "kvm_enabled": true,
+    "upstream_base": "cc4302a99167abec69b714cfd00c38caece7e7de",
+    "source_revision": "1cebf0c00be038e7156d82578214c2cafa109873",
+    "source_diff": "",
+    "mlib_revision": "d0fd65a8695218ffabf2aa543ce51ca3af69536f",
+    "host_machine": "aarch64",
+    "host_platform": "Linux-6.17.0-1026-nvidia-aarch64-with-glibc2.39",
+    "python": "3.12.3",
+    "compiler": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "meson": "1.7.2",
+    "ninja": "1.11.1.git.kitware.jobserver-1",
+    "inputs": {
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/build-linux.sh": "eca6961c7c82b6a14a15ba184f944aa2e1e1660dbf6546e40e3508cf17337267",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/bootstrap-linux.py": "8e1982776284e01d33e993c8400dc55c3af7532143f9c744dea2a7fc595a227d",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/linux-dependencies-arm64.json": "754a310b006a6b504a214390a3c59b7d5811da7f0600a7b4ef35f7fa48bff40d",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/build-tools-arm64.txt": "310ef416baa0a946c58bb88e7b7e007bdef03a0fae7e099846f6d3a1a926c372",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/downloads/nettle-3.10.2.tar.gz": "fe9ff51cb1f2abb5e65a6b8c10a92da0ab5ab6eaf26e7fc2b675c45f1fb519b5",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/config-host.mak": "0419523d1df6e73d6aacebdd361ba4ce5204b5b68e864990b0c5ac6f18e28f79",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/config.status": "e7f1a539641d37b6cf47e81d15385189e6961c8a58acdb17008f36735319b242",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/meson-info/intro-buildoptions.json": "14ce66bcd20612203c921bbaf0fd4520bd97bc1f9c26aed368dd4d72a80777a9"
+    },
+    "binary": {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+      "sha256": "e3da84b179ce328e06a0f917aabb8e4d80c8a4cf64701212464831a270e1741e",
+      "bytes": 114739744
+    },
+    "system_dependencies": {
+      "glib-2.0": "2.80.0",
+      "pixman-1": "0.42.2",
+      "zlib": "1.3",
+      "libpng": "1.6.43"
+    },
+    "keycodemapdb_revision": "f5772a62ec52591ff6870b7e8ef32482371f22c6"
+  },
+  "runner_sha256": "c29dd5da194e2f58b9edcd7b6d4aeb8ea9fcb5f7a6856fe234802f47b3f2ce07",
+  "companion_revision": "0ffa45811ed2d093aa6b74bd50cfe10f6b7990eb",
+  "duration_limit_seconds": 7200.0,
+  "disks": [
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/root.qcow2",
+      "initial_state": "private qcow2 overlay over retained hash-verified read-only backing",
+      "bytes": 34359738368,
+      "format": "qcow2",
+      "nsid": 1,
+      "nstype": 1
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/firmware.raw",
+      "initial_state": "private copy of recorded auxiliary namespace",
+      "bytes": 8388608,
+      "format": "raw",
+      "nsid": 2,
+      "nstype": 2
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/syscfg.raw",
+      "initial_state": "private copy of recorded auxiliary namespace",
+      "bytes": 131072,
+      "format": "raw",
+      "nsid": 3,
+      "nstype": 3
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/ctrl_bits.raw",
+      "initial_state": "private copy of recorded auxiliary namespace",
+      "bytes": 8192,
+      "format": "raw",
+      "nsid": 4,
+      "nstype": 4
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/nvram.raw",
+      "initial_state": "private copy of recorded auxiliary namespace",
+      "bytes": 8192,
+      "format": "raw",
+      "nsid": 5,
+      "nstype": 5
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/effaceable.raw",
+      "initial_state": "private copy of recorded auxiliary namespace",
+      "bytes": 4096,
+      "format": "raw",
+      "nsid": 6,
+      "nstype": 6
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/panic_log.raw",
+      "initial_state": "private copy of recorded auxiliary namespace",
+      "bytes": 1048576,
+      "format": "raw",
+      "nsid": 7,
+      "nstype": 8
+    }
+  ],
+  "observations": [
+    {
+      "return": {
+        "status": "running",
+        "running": true
+      },
+      "id": 194
+    },
+    {
+      "return": [
+        {
+          "thread-id": 2749184,
+          "qom-type": "apple-a13-cpu",
+          "qom-path": "/machine/cluster0/cpu0",
+          "cpu-index": 0,
+          "target": "aarch64"
+        },
+        {
+          "thread-id": 2749185,
+          "qom-type": "apple-a13-cpu",
+          "qom-path": "/machine/cluster0/cpu1",
+          "cpu-index": 1,
+          "target": "aarch64"
+        }
+      ],
+      "id": 195
+    }
+  ],
+  "overlay_base_report": {
+    "report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/report.json",
+    "report_sha256": "93b03e3d7ba4e4416f9835ac0033ca722e29d7e461cc2c1722ae0c5bba467d19",
+    "stopped_manifest": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/stopped-disk-hashes.json",
+    "stopped_manifest_sha256": "a16d16ea0fa419292b90c34d4ac499875f26e054b99c124ad527b53a5572fd43"
+  },
+  "auxiliary_base": {
+    "report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/report.json",
+    "report_sha256": "93b03e3d7ba4e4416f9835ac0033ca722e29d7e461cc2c1722ae0c5bba467d19",
+    "namespaces": {
+      "firmware": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/disks/firmware.raw",
+        "bytes": 8388608,
+        "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74",
+        "format": "raw"
+      },
+      "syscfg": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/disks/syscfg.raw",
+        "bytes": 131072,
+        "sha256": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+        "format": "raw"
+      },
+      "ctrl_bits": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/disks/ctrl_bits.raw",
+        "bytes": 8192,
+        "sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+        "format": "raw"
+      },
+      "nvram": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/disks/nvram.raw",
+        "bytes": 8192,
+        "sha256": "9f3f65936172f5f46deb72ee5cd4bacd4f75736f5737e2110e5a304a5c720c36",
+        "format": "raw"
+      },
+      "effaceable": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/disks/effaceable.raw",
+        "bytes": 4096,
+        "sha256": "0f559fb9b151252796f2122984cd498c790673cde9888b8a6e2d106653dcc902",
+        "format": "raw"
+      },
+      "panic_log": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/disks/panic_log.raw",
+        "bytes": 1048576,
+        "sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+        "format": "raw"
+      }
+    },
+    "copied_before_use": true
+  },
+  "probe_journey": {
+    "state": "completed",
+    "completed": true,
+    "input_mode": "operator-observation",
+    "automatic_input": false,
+    "visual_review_required": true,
+    "captures": {
+      "probe-before": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/probe-before.ppm",
+        "width": 828,
+        "height": 1792,
+        "sha256": "cdc80e684e34d2f397b2719062f3a3c10c6e1693f9ce8cc43ba22092ddc58b74"
+      },
+      "probe-after": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/probe-after.ppm",
+        "width": 828,
+        "height": 1792,
+        "sha256": "b9a217258c67075eedd3d3932a9bc26c30f2ba1474e6c6e33da6e75ff5c9b3ce"
+      }
+    },
+    "appearance_marker_observed": true,
+    "input_devices": {
+      "return": [
+        {
+          "index": 1,
+          "name": "Apple Multitouch HID SPI",
+          "current": true,
+          "absolute": true
+        }
+      ],
+      "id": 94
+    },
+    "before_capture_operator_requested": true,
+    "tap_marker_observed": true,
+    "after_capture_operator_requested": true
+  },
+  "probe_journey_source_sha256": "1c4cbb542a79b85560433d62726123b99555ad0a47522d5ecd659faf3a04f308",
+  "control_mailbox": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/control",
+  "probe_run_control": {
+    "keep_running": true,
+    "finish_requested": true
+  },
+  "control_source_sha256": "e8a892917bd56906728264b916f829c91e44ab493288b771e4598f57fce1fc9c",
+  "touch_startup_trace": {
+    "limit_seconds": 900,
+    "events": [
+      "apple_mt_spi_host_event",
+      "apple_mt_spi_enqueue",
+      "apple_mt_spi_dequeue",
+      "apple_mt_spi_tx_drained",
+      "apple_mt_spi_boot_command",
+      "apple_mt_spi_control"
+    ],
+    "enable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 5
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 6
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 7
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 8
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 9
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 10
+        }
+      }
+    ],
+    "disable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 197
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 198
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 199
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 200
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 201
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 202
+        }
+      }
+    ],
+    "start_time": 1791315727.4451432,
+    "deadline_time": 1791316627.4451432,
+    "stop_time": 1791316266.547173,
+    "stop_reason": "runner cleanup",
+    "all_disabled": true
+  },
+  "serial_transport": {
+    "endpoint": "/tmp/inferno-boot-5wz_08e3/gesture-serial.sock",
+    "connected": true,
+    "drained_bytes": 330444,
+    "transmissions": [
+      {
+        "request_id": "728635f40bab464b8262ecbcde31180b",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 82
+      },
+      {
+        "request_id": "84a29e26f98d46868b6e48ab32d1bf3a",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 82
+      },
+      {
+        "request_id": "017561ace4fe44ab876701fa6a7b26b3",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 68
+      },
+      {
+        "request_id": "019e7e2d01674a8080380d2bf823949f",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 68
+      },
+      {
+        "request_id": "d8a8d90ec57649059edb116d83a07384",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 86
+      }
+    ],
+    "automatic_replay": false,
+    "connected_time": 1791315727.4449244,
+    "peer_closed": true,
+    "drain_thread_stopped": true,
+    "closed_time": 1791316266.76221
+  },
+  "launchd_unsecure_cache": true,
+  "root_overlay": {
+    "schema": "inferno.recorded-overlay-chain.v1",
+    "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/root.qcow2",
+    "format": "qcow2",
+    "backing_report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/report.json",
+    "backing_report_sha256": "93b03e3d7ba4e4416f9835ac0033ca722e29d7e461cc2c1722ae0c5bba467d19",
+    "stopped_manifest": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/stopped-disk-hashes.json",
+    "stopped_manifest_sha256": "a16d16ea0fa419292b90c34d4ac499875f26e054b99c124ad527b53a5572fd43",
+    "dependencies": [
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/disks/root.qcow2",
+        "format": "qcow2",
+        "sha256": "3745a6abe402cd6b645a29a7fd5a9853b7ac06e9c8e3ca6bfa9099f21db5a693",
+        "bytes": 3604480,
+        "device": 66306,
+        "inode": 36191069,
+        "mtime_ns": 1791310556663203374,
+        "ctime_ns": 1791310640209494699,
+        "mode": "0o444"
+      },
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-44/disks/root.qcow2",
+        "format": "qcow2",
+        "sha256": "a26c50b4f51e5bb8a7c67889e2078649324851849f826f0eb754680f91f66f5d",
+        "bytes": 3145728,
+        "device": 66306,
+        "inode": 54023150,
+        "mtime_ns": 1791303958934848321,
+        "ctime_ns": 1791304092478945340,
+        "mode": "0o444"
+      },
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-27/disks/root.qcow2",
+        "format": "qcow2",
+        "sha256": "6898ad82af6bfb96168d2b7dd8febcfa977ef703679739197a40a08d735b6d4c",
+        "bytes": 140443648,
+        "device": 66306,
+        "inode": 54022764,
+        "mtime_ns": 1791303468549104874,
+        "ctime_ns": 1791303552337965412,
+        "mode": "0o444"
+      },
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-43/disks/root.raw",
+        "format": "raw",
+        "sha256": "69e8378c71d1f29840baa7ae16811d3f6285bf27042501a79e8139f8a5ad61d5",
+        "bytes": 34359738368,
+        "device": 66306,
+        "inode": 54022559,
+        "mtime_ns": 1791302373066551086,
+        "ctime_ns": 1791302496834897121,
+        "mode": "0o444"
+      }
+    ],
+    "retention_markers": [
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/disks/KEEP-OVERLAY-BACKING.json",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-44/disks/KEEP-OVERLAY-BACKING.json",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-27/disks/KEEP-OVERLAY-BACKING.json",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-43/disks/KEEP-OVERLAY-BACKING.json"
+    ],
+    "tool": {
+      "root": "/home/brandonin/.local/share/inferno/disk-overlay-tools",
+      "binary": "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-img",
+      "sha256": "f26da24f8a7fd880ab13f6fcabf42d099fb68ea86df5de0c55e6faadfe2d9a6e",
+      "provenance": "/home/brandonin/.local/share/inferno/disk-overlay-tools/tool-provenance.json",
+      "provenance_sha256": "bc5893936a16a2b2dd5cf7e6408da5742a3e1909d7c8d3606ff100ec7236c9f2"
+    },
+    "image_info": {
+      "children": [
+        {
+          "name": "file",
+          "info": {
+            "children": [],
+            "virtual-size": 197120,
+            "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/root.qcow2",
+            "format": "file",
+            "actual-size": 200704,
+            "format-specific": {
+              "type": "file",
+              "data": {}
+            },
+            "dirty-flag": false
+          }
+        }
+      ],
+      "backing-filename-format": "qcow2",
+      "virtual-size": 34359738368,
+      "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/root.qcow2",
+      "cluster-size": 65536,
+      "format": "qcow2",
+      "actual-size": 200704,
+      "format-specific": {
+        "type": "qcow2",
+        "data": {
+          "compat": "1.1",
+          "compression-type": "zlib",
+          "lazy-refcounts": false,
+          "refcount-bits": 16,
+          "corrupt": false,
+          "extended-l2": false
+        }
+      },
+      "full-backing-filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/disks/root.qcow2",
+      "backing-filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/disks/root.qcow2",
+      "dirty-flag": false
+    },
+    "source_sha256": "283335352e0764008be89edae84875a774c679afeb8fc92c581b660e5c9195d8",
+    "dependency_warning": "Retain every immutable layer and recorded report at its exact absolute path.",
+    "backing_after_stop": {
+      "unchanged": true,
+      "layers": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/disks/root.qcow2",
+          "format": "qcow2",
+          "sha256": "3745a6abe402cd6b645a29a7fd5a9853b7ac06e9c8e3ca6bfa9099f21db5a693",
+          "bytes": 3604480,
+          "device": 66306,
+          "inode": 36191069,
+          "mtime_ns": 1791310556663203374,
+          "ctime_ns": 1791310640209494699,
+          "mode": "0o444"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-44/disks/root.qcow2",
+          "format": "qcow2",
+          "sha256": "a26c50b4f51e5bb8a7c67889e2078649324851849f826f0eb754680f91f66f5d",
+          "bytes": 3145728,
+          "device": 66306,
+          "inode": 54023150,
+          "mtime_ns": 1791303958934848321,
+          "ctime_ns": 1791304092478945340,
+          "mode": "0o444"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-27/disks/root.qcow2",
+          "format": "qcow2",
+          "sha256": "6898ad82af6bfb96168d2b7dd8febcfa977ef703679739197a40a08d735b6d4c",
+          "bytes": 140443648,
+          "device": 66306,
+          "inode": 54022764,
+          "mtime_ns": 1791303468549104874,
+          "ctime_ns": 1791303552337965412,
+          "mode": "0o444"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-43/disks/root.raw",
+          "format": "raw",
+          "sha256": "69e8378c71d1f29840baa7ae16811d3f6285bf27042501a79e8139f8a5ad61d5",
+          "bytes": 34359738368,
+          "device": 66306,
+          "inode": 54022559,
+          "mtime_ns": 1791302373066551086,
+          "ctime_ns": 1791302496834897121,
+          "mode": "0o444"
+        }
+      ]
+    }
+  },
+  "invocation": [
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "-machine",
+    "t8030,kaslr-off=true,usb-conn-type=unix,usb-conn-addr=/tmp/inferno-boot-5wz_08e3/absent-usb.sock,trustcache=/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache,boot-mode=exit_recovery",
+    "-accel",
+    "tcg",
+    "-smp",
+    "2",
+    "-m",
+    "4G",
+    "-S",
+    "-kernel",
+    "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/kernel-kernelcache.research.iphone12b",
+    "-dtb",
+    "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+    "-append",
+    "debug=0x14e serial=3 wdt=-1 tlto_us=-1 mtxspin=-1 agm-genuine=1 agm-authentic=1 agm-trusted=1 -vm_compressor_wk_sw launchd_unsecure_cache=1",
+    "-display",
+    "none",
+    "-vnc",
+    "unix:/tmp/inferno-boot-5wz_08e3/vnc.sock",
+    "-monitor",
+    "none",
+    "-chardev",
+    "socket,id=gesture-serial,path=/tmp/inferno-boot-5wz_08e3/gesture-serial.sock,server=on,wait=off,logfile=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log,logappend=off,logtimestamp=off",
+    "-serial",
+    "chardev:gesture-serial",
+    "-qmp",
+    "unix:/tmp/inferno-boot-5wz_08e3/qmp.sock,server=on,wait=off",
+    "-no-reboot",
+    "-d",
+    "guest_errors",
+    "-D",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/guest-errors.log",
+    "-drive",
+    "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/root.qcow2,format=qcow2,if=none,id=root",
+    "-device",
+    "nvme-ns,drive=root,bus=nvme-bus.0,nsid=1,nstype=1,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/firmware.raw,format=raw,if=none,id=firmware",
+    "-device",
+    "nvme-ns,drive=firmware,bus=nvme-bus.0,nsid=2,nstype=2,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/syscfg.raw,format=raw,if=none,id=syscfg",
+    "-device",
+    "nvme-ns,drive=syscfg,bus=nvme-bus.0,nsid=3,nstype=3,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/ctrl_bits.raw,format=raw,if=none,id=ctrl_bits",
+    "-device",
+    "nvme-ns,drive=ctrl_bits,bus=nvme-bus.0,nsid=4,nstype=4,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/nvram.raw,format=raw,if=none,id=nvram",
+    "-device",
+    "apple-nvram,drive=nvram,bus=nvme-bus.0,nsid=5,nstype=5,id=nvram,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/effaceable.raw,format=raw,if=none,id=effaceable",
+    "-device",
+    "nvme-ns,drive=effaceable,bus=nvme-bus.0,nsid=6,nstype=6,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/disks/panic_log.raw,format=raw,if=none,id=panic_log",
+    "-device",
+    "nvme-ns,drive=panic_log,bus=nvme-bus.0,nsid=7,nstype=8,logical_block_size=4096,physical_block_size=4096"
+  ],
+  "pid": 2749179,
+  "greeting": {
+    "QMP": {
+      "version": {
+        "qemu": {
+          "micro": 2,
+          "minor": 2,
+          "major": 10
+        },
+        "package": ""
+      },
+      "capabilities": [
+        "oob"
+      ]
+    }
+  },
+  "periodic_captures": [
+    {
+      "elapsed_seconds": 30.585,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0000.ppm",
+      "sha256": "3967c0c39b87d262bb4e5d0b87dc740d6344616342ffc8e72d3a5088881e22b6"
+    },
+    {
+      "elapsed_seconds": 60.65,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0001.ppm",
+      "sha256": "94be566211bc420a7f1a43fe60c7944482a9daccc38825d30b3f7ee8b2a2673c"
+    },
+    {
+      "elapsed_seconds": 90.712,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0002.ppm",
+      "sha256": "8c58a41ecf19cd67e6d478d5e01b5785890558ee0ec556cdcf46f6d96302eeca"
+    },
+    {
+      "elapsed_seconds": 120.79,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0003.ppm",
+      "sha256": "6eb7e1c2245d3f92c110d9419aefc6f677c53db15cb7a7f16a13951635ec29f4"
+    },
+    {
+      "elapsed_seconds": 150.853,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0004.ppm",
+      "sha256": "3971d3096755560e9b109366065cb0036fa305e24aa75a326238f3a8af56610b"
+    },
+    {
+      "elapsed_seconds": 180.921,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0005.ppm",
+      "sha256": "4411c20a902b0de30d27822f3f11190d69a562c9fb8322bca90a1e4d13b449d7"
+    },
+    {
+      "elapsed_seconds": 210.989,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0006.ppm",
+      "sha256": "ea68d86e115c5cf333e747e81a1c7b178988e2098f9ea15b1b55753b9b2e2be2"
+    },
+    {
+      "elapsed_seconds": 241.065,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0007.ppm",
+      "sha256": "15a63070199f0f088d1e6ce0c813ae3fda0d42baf82490b5e4b7ea11ef15cfed"
+    },
+    {
+      "elapsed_seconds": 271.132,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0008.ppm",
+      "sha256": "15a63070199f0f088d1e6ce0c813ae3fda0d42baf82490b5e4b7ea11ef15cfed"
+    },
+    {
+      "elapsed_seconds": 301.206,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0009.ppm",
+      "sha256": "cdc80e684e34d2f397b2719062f3a3c10c6e1693f9ce8cc43ba22092ddc58b74"
+    },
+    {
+      "elapsed_seconds": 331.298,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0010.ppm",
+      "sha256": "947889b5e32c8b35dbc185b9393dbaa3a75e823625041574db4691b98c6f7778"
+    },
+    {
+      "elapsed_seconds": 361.379,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0011.ppm",
+      "sha256": "b9a217258c67075eedd3d3932a9bc26c30f2ba1474e6c6e33da6e75ff5c9b3ce"
+    },
+    {
+      "elapsed_seconds": 391.466,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0012.ppm",
+      "sha256": "73c886c1ed673f303803784b2c98046f08950042527b09ec4d920cf0f16d0074"
+    },
+    {
+      "elapsed_seconds": 421.527,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0013.ppm",
+      "sha256": "7afa8859306cb25ae46693364d48211ae189508bf6aaa266e9f4afed53d49260"
+    },
+    {
+      "elapsed_seconds": 451.599,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0014.ppm",
+      "sha256": "9df63ded005090e73bc30dec8fb693a10c93f337c9ce94513f67921cf10efab7"
+    },
+    {
+      "elapsed_seconds": 481.668,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0015.ppm",
+      "sha256": "38c24cf91feb13c7df8b5b71ad5a88583b463612401906e20d62db6dccc92450"
+    },
+    {
+      "elapsed_seconds": 511.743,
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0016.ppm",
+      "sha256": "38c24cf91feb13c7df8b5b71ad5a88583b463612401906e20d62db6dccc92450"
+    }
+  ],
+  "screendump": {
+    "return": {},
+    "id": 196
+  },
+  "framebuffer_captured": true,
+  "framebuffer_sha256": "c0f9ac018ee8ec524b64c6ad2f4f1a6ab5c03c515c7bb62c87d314c56a9f1909",
+  "quit_response": {
+    "return": {},
+    "id": 203
+  },
+  "qmp_commands": [
+    {
+      "request": {
+        "execute": "qmp_capabilities",
+        "id": 1
+      },
+      "response": {
+        "return": {},
+        "id": 1
+      }
+    },
+    {
+      "request": {
+        "execute": "query-status",
+        "id": 2
+      },
+      "response": {
+        "return": {
+          "status": "prelaunch",
+          "running": false
+        },
+        "id": 2
+      }
+    },
+    {
+      "request": {
+        "execute": "query-cpus-fast",
+        "id": 3
+      },
+      "response": {
+        "return": [
+          {
+            "thread-id": 2749184,
+            "qom-type": "apple-a13-cpu",
+            "qom-path": "/machine/cluster0/cpu0",
+            "cpu-index": 0,
+            "target": "aarch64"
+          },
+          {
+            "thread-id": 2749185,
+            "qom-type": "apple-a13-cpu",
+            "qom-path": "/machine/cluster0/cpu1",
+            "cpu-index": 1,
+            "target": "aarch64"
+          }
+        ],
+        "id": 3
+      }
+    },
+    {
+      "request": {
+        "execute": "query-mice",
+        "id": 4
+      },
+      "response": {
+        "return": [
+          {
+            "index": 1,
+            "name": "Apple Multitouch HID SPI",
+            "current": true,
+            "absolute": true
+          }
+        ],
+        "id": 4
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 5,
+        "arguments": {
+          "name": "apple_mt_spi_host_event",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 5
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 6,
+        "arguments": {
+          "name": "apple_mt_spi_enqueue",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 6
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 7,
+        "arguments": {
+          "name": "apple_mt_spi_dequeue",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 7
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 8,
+        "arguments": {
+          "name": "apple_mt_spi_tx_drained",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 8
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 9,
+        "arguments": {
+          "name": "apple_mt_spi_boot_command",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 9
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 10,
+        "arguments": {
+          "name": "apple_mt_spi_control",
+          "enable": true
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 10
+      }
+    },
+    {
+      "request": {
+        "execute": "cont",
+        "id": 11
+      },
+      "response": {
+        "return": {},
+        "id": 11
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 12,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0000.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 12
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 13,
+        "arguments": {
+          "command-line": "xp /1wx 0x230045818"
+        }
+      },
+      "response": {
+        "return": "0000000230045818: 0x00000000\r\n",
+        "id": 13
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 14,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004581c"
+        }
+      },
+      "response": {
+        "return": "000000023004581c: 0xc0180c08\r\n",
+        "id": 14
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 15,
+        "arguments": {
+          "command-line": "xp /1wx 0x230046020"
+        }
+      },
+      "response": {
+        "return": "0000000230046020: 0x00070045\r\n",
+        "id": 15
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 16,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004603c"
+        }
+      },
+      "response": {
+        "return": "000000023004603c: 0x033c0700\r\n",
+        "id": 16
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 17,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050004"
+        }
+      },
+      "response": {
+        "return": "0000000230050004: 0x80070001\r\n",
+        "id": 17
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 18,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005001c"
+        }
+      },
+      "response": {
+        "return": "000000023005001c: 0x057c8000\r\n",
+        "id": 18
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 19,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050030"
+        }
+      },
+      "response": {
+        "return": "0000000230050030: 0x016c0000\r\n",
+        "id": 19
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 20,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050040"
+        }
+      },
+      "response": {
+        "return": "0000000230050040: 0x01c70000\r\n",
+        "id": 20
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 21,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050060"
+        }
+      },
+      "response": {
+        "return": "0000000230050060: 0x00000d00\r\n",
+        "id": 21
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 22,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050070"
+        }
+      },
+      "response": {
+        "return": "0000000230050070: 0x033c0700\r\n",
+        "id": 22
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 23,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050080"
+        }
+      },
+      "response": {
+        "return": "0000000230050080: 0x033c0700\r\n",
+        "id": 23
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 24,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058004"
+        }
+      },
+      "response": {
+        "return": "0000000230058004: 0x00040000\r\n",
+        "id": 24
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 25,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005801c"
+        }
+      },
+      "response": {
+        "return": "000000023005801c: 0x00000000\r\n",
+        "id": 25
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 26,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058030"
+        }
+      },
+      "response": {
+        "return": "0000000230058030: 0x00000000\r\n",
+        "id": 26
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 27,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058040"
+        }
+      },
+      "response": {
+        "return": "0000000230058040: 0x00000000\r\n",
+        "id": 27
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 28,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058060"
+        }
+      },
+      "response": {
+        "return": "0000000230058060: 0x00000000\r\n",
+        "id": 28
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 29,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058070"
+        }
+      },
+      "response": {
+        "return": "0000000230058070: 0x00000000\r\n",
+        "id": 29
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 30,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058080"
+        }
+      },
+      "response": {
+        "return": "0000000230058080: 0x00000000\r\n",
+        "id": 30
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 31,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0001.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 31
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 32,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0002.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 32
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 33,
+        "arguments": {
+          "command-line": "xp /1wx 0x230045818"
+        }
+      },
+      "response": {
+        "return": "0000000230045818: 0x00000000\r\n",
+        "id": 33
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 34,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004581c"
+        }
+      },
+      "response": {
+        "return": "000000023004581c: 0xc0180c08\r\n",
+        "id": 34
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 35,
+        "arguments": {
+          "command-line": "xp /1wx 0x230046020"
+        }
+      },
+      "response": {
+        "return": "0000000230046020: 0x00070045\r\n",
+        "id": 35
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 36,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004603c"
+        }
+      },
+      "response": {
+        "return": "000000023004603c: 0x033c0700\r\n",
+        "id": 36
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 37,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050004"
+        }
+      },
+      "response": {
+        "return": "0000000230050004: 0x80070001\r\n",
+        "id": 37
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 38,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005001c"
+        }
+      },
+      "response": {
+        "return": "000000023005001c: 0x057c8000\r\n",
+        "id": 38
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 39,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050030"
+        }
+      },
+      "response": {
+        "return": "0000000230050030: 0x016c0000\r\n",
+        "id": 39
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 40,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050040"
+        }
+      },
+      "response": {
+        "return": "0000000230050040: 0x01c70000\r\n",
+        "id": 40
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 41,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050060"
+        }
+      },
+      "response": {
+        "return": "0000000230050060: 0x00000d00\r\n",
+        "id": 41
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 42,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050070"
+        }
+      },
+      "response": {
+        "return": "0000000230050070: 0x033c0700\r\n",
+        "id": 42
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 43,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050080"
+        }
+      },
+      "response": {
+        "return": "0000000230050080: 0x033c0700\r\n",
+        "id": 43
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 44,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058004"
+        }
+      },
+      "response": {
+        "return": "0000000230058004: 0x00040000\r\n",
+        "id": 44
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 45,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005801c"
+        }
+      },
+      "response": {
+        "return": "000000023005801c: 0x00000000\r\n",
+        "id": 45
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 46,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058030"
+        }
+      },
+      "response": {
+        "return": "0000000230058030: 0x00000000\r\n",
+        "id": 46
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 47,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058040"
+        }
+      },
+      "response": {
+        "return": "0000000230058040: 0x00000000\r\n",
+        "id": 47
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 48,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058060"
+        }
+      },
+      "response": {
+        "return": "0000000230058060: 0x00000000\r\n",
+        "id": 48
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 49,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058070"
+        }
+      },
+      "response": {
+        "return": "0000000230058070: 0x00000000\r\n",
+        "id": 49
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 50,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058080"
+        }
+      },
+      "response": {
+        "return": "0000000230058080: 0x00000000\r\n",
+        "id": 50
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 51,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0003.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 51
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 52,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0004.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 52
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 53,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0005.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 53
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 54,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0006.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 54
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 55,
+        "arguments": {
+          "command-line": "xp /1wx 0x230045818"
+        }
+      },
+      "response": {
+        "return": "0000000230045818: 0x00000000\r\n",
+        "id": 55
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 56,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004581c"
+        }
+      },
+      "response": {
+        "return": "000000023004581c: 0xc0180c08\r\n",
+        "id": 56
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 57,
+        "arguments": {
+          "command-line": "xp /1wx 0x230046020"
+        }
+      },
+      "response": {
+        "return": "0000000230046020: 0x00070045\r\n",
+        "id": 57
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 58,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004603c"
+        }
+      },
+      "response": {
+        "return": "000000023004603c: 0x033c0700\r\n",
+        "id": 58
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 59,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050004"
+        }
+      },
+      "response": {
+        "return": "0000000230050004: 0x80070001\r\n",
+        "id": 59
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 60,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005001c"
+        }
+      },
+      "response": {
+        "return": "000000023005001c: 0x057c8000\r\n",
+        "id": 60
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 61,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050030"
+        }
+      },
+      "response": {
+        "return": "0000000230050030: 0x016c0000\r\n",
+        "id": 61
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 62,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050040"
+        }
+      },
+      "response": {
+        "return": "0000000230050040: 0x01c70000\r\n",
+        "id": 62
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 63,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050060"
+        }
+      },
+      "response": {
+        "return": "0000000230050060: 0x00000d00\r\n",
+        "id": 63
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 64,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050070"
+        }
+      },
+      "response": {
+        "return": "0000000230050070: 0x033c0700\r\n",
+        "id": 64
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 65,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050080"
+        }
+      },
+      "response": {
+        "return": "0000000230050080: 0x033c0700\r\n",
+        "id": 65
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 66,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058004"
+        }
+      },
+      "response": {
+        "return": "0000000230058004: 0x00040000\r\n",
+        "id": 66
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 67,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005801c"
+        }
+      },
+      "response": {
+        "return": "000000023005801c: 0x00000000\r\n",
+        "id": 67
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 68,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058030"
+        }
+      },
+      "response": {
+        "return": "0000000230058030: 0x00000000\r\n",
+        "id": 68
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 69,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058040"
+        }
+      },
+      "response": {
+        "return": "0000000230058040: 0x00000000\r\n",
+        "id": 69
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 70,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058060"
+        }
+      },
+      "response": {
+        "return": "0000000230058060: 0x00000000\r\n",
+        "id": 70
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 71,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058070"
+        }
+      },
+      "response": {
+        "return": "0000000230058070: 0x00000000\r\n",
+        "id": 71
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 72,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058080"
+        }
+      },
+      "response": {
+        "return": "0000000230058080: 0x00000000\r\n",
+        "id": 72
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 73,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0007.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 73
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 74,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0008.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 74
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 75,
+        "arguments": {
+          "command-line": "xp /1wx 0x230045818"
+        }
+      },
+      "response": {
+        "return": "0000000230045818: 0x00000000\r\n",
+        "id": 75
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 76,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004581c"
+        }
+      },
+      "response": {
+        "return": "000000023004581c: 0xc0180c08\r\n",
+        "id": 76
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 77,
+        "arguments": {
+          "command-line": "xp /1wx 0x230046020"
+        }
+      },
+      "response": {
+        "return": "0000000230046020: 0x00070045\r\n",
+        "id": 77
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 78,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004603c"
+        }
+      },
+      "response": {
+        "return": "000000023004603c: 0x033c0700\r\n",
+        "id": 78
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 79,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050004"
+        }
+      },
+      "response": {
+        "return": "0000000230050004: 0x80070001\r\n",
+        "id": 79
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 80,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005001c"
+        }
+      },
+      "response": {
+        "return": "000000023005001c: 0x057c8000\r\n",
+        "id": 80
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 81,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050030"
+        }
+      },
+      "response": {
+        "return": "0000000230050030: 0x02230000\r\n",
+        "id": 81
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 82,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050040"
+        }
+      },
+      "response": {
+        "return": "0000000230050040: 0x027e0000\r\n",
+        "id": 82
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 83,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050060"
+        }
+      },
+      "response": {
+        "return": "0000000230050060: 0x00000d00\r\n",
+        "id": 83
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 84,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050070"
+        }
+      },
+      "response": {
+        "return": "0000000230050070: 0x033c0700\r\n",
+        "id": 84
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 85,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050080"
+        }
+      },
+      "response": {
+        "return": "0000000230050080: 0x033c0700\r\n",
+        "id": 85
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 86,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058004"
+        }
+      },
+      "response": {
+        "return": "0000000230058004: 0x00040000\r\n",
+        "id": 86
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 87,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005801c"
+        }
+      },
+      "response": {
+        "return": "000000023005801c: 0x00000000\r\n",
+        "id": 87
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 88,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058030"
+        }
+      },
+      "response": {
+        "return": "0000000230058030: 0x00000000\r\n",
+        "id": 88
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 89,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058040"
+        }
+      },
+      "response": {
+        "return": "0000000230058040: 0x00000000\r\n",
+        "id": 89
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 90,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058060"
+        }
+      },
+      "response": {
+        "return": "0000000230058060: 0x00000000\r\n",
+        "id": 90
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 91,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058070"
+        }
+      },
+      "response": {
+        "return": "0000000230058070: 0x00000000\r\n",
+        "id": 91
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 92,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058080"
+        }
+      },
+      "response": {
+        "return": "0000000230058080: 0x00000000\r\n",
+        "id": 92
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 93,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0009.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 93
+      }
+    },
+    {
+      "request": {
+        "execute": "query-mice",
+        "id": 94
+      },
+      "response": {
+        "return": [
+          {
+            "index": 1,
+            "name": "Apple Multitouch HID SPI",
+            "current": true,
+            "absolute": true
+          }
+        ],
+        "id": 94
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 95,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/probe-before.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 95
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 96,
+        "arguments": {
+          "command-line": "xp /1wx 0x230045818"
+        }
+      },
+      "response": {
+        "return": "0000000230045818: 0x00000000\r\n",
+        "id": 96
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 97,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004581c"
+        }
+      },
+      "response": {
+        "return": "000000023004581c: 0xc0180c08\r\n",
+        "id": 97
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 98,
+        "arguments": {
+          "command-line": "xp /1wx 0x230046020"
+        }
+      },
+      "response": {
+        "return": "0000000230046020: 0x00070045\r\n",
+        "id": 98
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 99,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004603c"
+        }
+      },
+      "response": {
+        "return": "000000023004603c: 0x033c0700\r\n",
+        "id": 99
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 100,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050004"
+        }
+      },
+      "response": {
+        "return": "0000000230050004: 0x80070001\r\n",
+        "id": 100
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 101,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005001c"
+        }
+      },
+      "response": {
+        "return": "000000023005001c: 0x057c8000\r\n",
+        "id": 101
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 102,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050030"
+        }
+      },
+      "response": {
+        "return": "0000000230050030: 0x016c0000\r\n",
+        "id": 102
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 103,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050040"
+        }
+      },
+      "response": {
+        "return": "0000000230050040: 0x01c70000\r\n",
+        "id": 103
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 104,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050060"
+        }
+      },
+      "response": {
+        "return": "0000000230050060: 0x00000d00\r\n",
+        "id": 104
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 105,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050070"
+        }
+      },
+      "response": {
+        "return": "0000000230050070: 0x033c0700\r\n",
+        "id": 105
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 106,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050080"
+        }
+      },
+      "response": {
+        "return": "0000000230050080: 0x033c0700\r\n",
+        "id": 106
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 107,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058004"
+        }
+      },
+      "response": {
+        "return": "0000000230058004: 0x00040000\r\n",
+        "id": 107
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 108,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005801c"
+        }
+      },
+      "response": {
+        "return": "000000023005801c: 0x00000000\r\n",
+        "id": 108
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 109,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058030"
+        }
+      },
+      "response": {
+        "return": "0000000230058030: 0x00000000\r\n",
+        "id": 109
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 110,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058040"
+        }
+      },
+      "response": {
+        "return": "0000000230058040: 0x00000000\r\n",
+        "id": 110
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 111,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058060"
+        }
+      },
+      "response": {
+        "return": "0000000230058060: 0x00000000\r\n",
+        "id": 111
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 112,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058070"
+        }
+      },
+      "response": {
+        "return": "0000000230058070: 0x00000000\r\n",
+        "id": 112
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 113,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058080"
+        }
+      },
+      "response": {
+        "return": "0000000230058080: 0x00000000\r\n",
+        "id": 113
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 114,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0010.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 114
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 115,
+        "arguments": {
+          "command-line": "xp /1wx 0x230045818"
+        }
+      },
+      "response": {
+        "return": "0000000230045818: 0x00000000\r\n",
+        "id": 115
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 116,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004581c"
+        }
+      },
+      "response": {
+        "return": "000000023004581c: 0xc0180c08\r\n",
+        "id": 116
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 117,
+        "arguments": {
+          "command-line": "xp /1wx 0x230046020"
+        }
+      },
+      "response": {
+        "return": "0000000230046020: 0x00070045\r\n",
+        "id": 117
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 118,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004603c"
+        }
+      },
+      "response": {
+        "return": "000000023004603c: 0x033c0700\r\n",
+        "id": 118
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 119,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050004"
+        }
+      },
+      "response": {
+        "return": "0000000230050004: 0x80070001\r\n",
+        "id": 119
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 120,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005001c"
+        }
+      },
+      "response": {
+        "return": "000000023005001c: 0x057c8000\r\n",
+        "id": 120
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 121,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050030"
+        }
+      },
+      "response": {
+        "return": "0000000230050030: 0x02230000\r\n",
+        "id": 121
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 122,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050040"
+        }
+      },
+      "response": {
+        "return": "0000000230050040: 0x027e0000\r\n",
+        "id": 122
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 123,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050060"
+        }
+      },
+      "response": {
+        "return": "0000000230050060: 0x00000d00\r\n",
+        "id": 123
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 124,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050070"
+        }
+      },
+      "response": {
+        "return": "0000000230050070: 0x033c0700\r\n",
+        "id": 124
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 125,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050080"
+        }
+      },
+      "response": {
+        "return": "0000000230050080: 0x033c0700\r\n",
+        "id": 125
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 126,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058004"
+        }
+      },
+      "response": {
+        "return": "0000000230058004: 0x00040000\r\n",
+        "id": 126
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 127,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005801c"
+        }
+      },
+      "response": {
+        "return": "000000023005801c: 0x00000000\r\n",
+        "id": 127
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 128,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058030"
+        }
+      },
+      "response": {
+        "return": "0000000230058030: 0x00000000\r\n",
+        "id": 128
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 129,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058040"
+        }
+      },
+      "response": {
+        "return": "0000000230058040: 0x00000000\r\n",
+        "id": 129
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 130,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058060"
+        }
+      },
+      "response": {
+        "return": "0000000230058060: 0x00000000\r\n",
+        "id": 130
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 131,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058070"
+        }
+      },
+      "response": {
+        "return": "0000000230058070: 0x00000000\r\n",
+        "id": 131
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 132,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058080"
+        }
+      },
+      "response": {
+        "return": "0000000230058080: 0x00000000\r\n",
+        "id": 132
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 133,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0011.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 133
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 134,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/probe-after.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 134
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 135,
+        "arguments": {
+          "command-line": "xp /1wx 0x230045818"
+        }
+      },
+      "response": {
+        "return": "0000000230045818: 0x00000000\r\n",
+        "id": 135
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 136,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004581c"
+        }
+      },
+      "response": {
+        "return": "000000023004581c: 0xc0180c08\r\n",
+        "id": 136
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 137,
+        "arguments": {
+          "command-line": "xp /1wx 0x230046020"
+        }
+      },
+      "response": {
+        "return": "0000000230046020: 0x00070045\r\n",
+        "id": 137
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 138,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004603c"
+        }
+      },
+      "response": {
+        "return": "000000023004603c: 0x033c0700\r\n",
+        "id": 138
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 139,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050004"
+        }
+      },
+      "response": {
+        "return": "0000000230050004: 0x80070001\r\n",
+        "id": 139
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 140,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005001c"
+        }
+      },
+      "response": {
+        "return": "000000023005001c: 0x057c8000\r\n",
+        "id": 140
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 141,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050030"
+        }
+      },
+      "response": {
+        "return": "0000000230050030: 0x016c0000\r\n",
+        "id": 141
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 142,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050040"
+        }
+      },
+      "response": {
+        "return": "0000000230050040: 0x01c70000\r\n",
+        "id": 142
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 143,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050060"
+        }
+      },
+      "response": {
+        "return": "0000000230050060: 0x00000d00\r\n",
+        "id": 143
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 144,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050070"
+        }
+      },
+      "response": {
+        "return": "0000000230050070: 0x033c0700\r\n",
+        "id": 144
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 145,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050080"
+        }
+      },
+      "response": {
+        "return": "0000000230050080: 0x033c0700\r\n",
+        "id": 145
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 146,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058004"
+        }
+      },
+      "response": {
+        "return": "0000000230058004: 0x00040000\r\n",
+        "id": 146
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 147,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005801c"
+        }
+      },
+      "response": {
+        "return": "000000023005801c: 0x00000000\r\n",
+        "id": 147
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 148,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058030"
+        }
+      },
+      "response": {
+        "return": "0000000230058030: 0x00000000\r\n",
+        "id": 148
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 149,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058040"
+        }
+      },
+      "response": {
+        "return": "0000000230058040: 0x00000000\r\n",
+        "id": 149
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 150,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058060"
+        }
+      },
+      "response": {
+        "return": "0000000230058060: 0x00000000\r\n",
+        "id": 150
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 151,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058070"
+        }
+      },
+      "response": {
+        "return": "0000000230058070: 0x00000000\r\n",
+        "id": 151
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 152,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058080"
+        }
+      },
+      "response": {
+        "return": "0000000230058080: 0x00000000\r\n",
+        "id": 152
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 153,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0012.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 153
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 154,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0013.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 154
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 155,
+        "arguments": {
+          "command-line": "xp /1wx 0x230045818"
+        }
+      },
+      "response": {
+        "return": "0000000230045818: 0x00000000\r\n",
+        "id": 155
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 156,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004581c"
+        }
+      },
+      "response": {
+        "return": "000000023004581c: 0xc0180c08\r\n",
+        "id": 156
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 157,
+        "arguments": {
+          "command-line": "xp /1wx 0x230046020"
+        }
+      },
+      "response": {
+        "return": "0000000230046020: 0x00070045\r\n",
+        "id": 157
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 158,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004603c"
+        }
+      },
+      "response": {
+        "return": "000000023004603c: 0x033c0700\r\n",
+        "id": 158
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 159,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050004"
+        }
+      },
+      "response": {
+        "return": "0000000230050004: 0x80070001\r\n",
+        "id": 159
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 160,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005001c"
+        }
+      },
+      "response": {
+        "return": "000000023005001c: 0x057c8000\r\n",
+        "id": 160
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 161,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050030"
+        }
+      },
+      "response": {
+        "return": "0000000230050030: 0x02230000\r\n",
+        "id": 161
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 162,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050040"
+        }
+      },
+      "response": {
+        "return": "0000000230050040: 0x027e0000\r\n",
+        "id": 162
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 163,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050060"
+        }
+      },
+      "response": {
+        "return": "0000000230050060: 0x00000d00\r\n",
+        "id": 163
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 164,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050070"
+        }
+      },
+      "response": {
+        "return": "0000000230050070: 0x033c0700\r\n",
+        "id": 164
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 165,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050080"
+        }
+      },
+      "response": {
+        "return": "0000000230050080: 0x033c0700\r\n",
+        "id": 165
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 166,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058004"
+        }
+      },
+      "response": {
+        "return": "0000000230058004: 0x00040000\r\n",
+        "id": 166
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 167,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005801c"
+        }
+      },
+      "response": {
+        "return": "000000023005801c: 0x00000000\r\n",
+        "id": 167
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 168,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058030"
+        }
+      },
+      "response": {
+        "return": "0000000230058030: 0x00000000\r\n",
+        "id": 168
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 169,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058040"
+        }
+      },
+      "response": {
+        "return": "0000000230058040: 0x00000000\r\n",
+        "id": 169
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 170,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058060"
+        }
+      },
+      "response": {
+        "return": "0000000230058060: 0x00000000\r\n",
+        "id": 170
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 171,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058070"
+        }
+      },
+      "response": {
+        "return": "0000000230058070: 0x00000000\r\n",
+        "id": 171
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 172,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058080"
+        }
+      },
+      "response": {
+        "return": "0000000230058080: 0x00000000\r\n",
+        "id": 172
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 173,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0014.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 173
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 174,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0015.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 174
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 175,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/frames/0016.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 175
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 176,
+        "arguments": {
+          "command-line": "xp /1wx 0x230045818"
+        }
+      },
+      "response": {
+        "return": "0000000230045818: 0x00000000\r\n",
+        "id": 176
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 177,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004581c"
+        }
+      },
+      "response": {
+        "return": "000000023004581c: 0xc0180c08\r\n",
+        "id": 177
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 178,
+        "arguments": {
+          "command-line": "xp /1wx 0x230046020"
+        }
+      },
+      "response": {
+        "return": "0000000230046020: 0x00070045\r\n",
+        "id": 178
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 179,
+        "arguments": {
+          "command-line": "xp /1wx 0x23004603c"
+        }
+      },
+      "response": {
+        "return": "000000023004603c: 0x033c0700\r\n",
+        "id": 179
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 180,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050004"
+        }
+      },
+      "response": {
+        "return": "0000000230050004: 0x80070001\r\n",
+        "id": 180
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 181,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005001c"
+        }
+      },
+      "response": {
+        "return": "000000023005001c: 0x057c8000\r\n",
+        "id": 181
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 182,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050030"
+        }
+      },
+      "response": {
+        "return": "0000000230050030: 0x016c0000\r\n",
+        "id": 182
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 183,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050040"
+        }
+      },
+      "response": {
+        "return": "0000000230050040: 0x01c70000\r\n",
+        "id": 183
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 184,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050060"
+        }
+      },
+      "response": {
+        "return": "0000000230050060: 0x00000d00\r\n",
+        "id": 184
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 185,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050070"
+        }
+      },
+      "response": {
+        "return": "0000000230050070: 0x033c0700\r\n",
+        "id": 185
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 186,
+        "arguments": {
+          "command-line": "xp /1wx 0x230050080"
+        }
+      },
+      "response": {
+        "return": "0000000230050080: 0x033c0700\r\n",
+        "id": 186
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 187,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058004"
+        }
+      },
+      "response": {
+        "return": "0000000230058004: 0x00040000\r\n",
+        "id": 187
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 188,
+        "arguments": {
+          "command-line": "xp /1wx 0x23005801c"
+        }
+      },
+      "response": {
+        "return": "000000023005801c: 0x00000000\r\n",
+        "id": 188
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 189,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058030"
+        }
+      },
+      "response": {
+        "return": "0000000230058030: 0x00000000\r\n",
+        "id": 189
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 190,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058040"
+        }
+      },
+      "response": {
+        "return": "0000000230058040: 0x00000000\r\n",
+        "id": 190
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 191,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058060"
+        }
+      },
+      "response": {
+        "return": "0000000230058060: 0x00000000\r\n",
+        "id": 191
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 192,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058070"
+        }
+      },
+      "response": {
+        "return": "0000000230058070: 0x00000000\r\n",
+        "id": 192
+      }
+    },
+    {
+      "request": {
+        "execute": "human-monitor-command",
+        "id": 193,
+        "arguments": {
+          "command-line": "xp /1wx 0x230058080"
+        }
+      },
+      "response": {
+        "return": "0000000230058080: 0x00000000\r\n",
+        "id": 193
+      }
+    },
+    {
+      "request": {
+        "execute": "query-status",
+        "id": 194
+      },
+      "response": {
+        "return": {
+          "status": "running",
+          "running": true
+        },
+        "id": 194
+      }
+    },
+    {
+      "request": {
+        "execute": "query-cpus-fast",
+        "id": 195
+      },
+      "response": {
+        "return": [
+          {
+            "thread-id": 2749184,
+            "qom-type": "apple-a13-cpu",
+            "qom-path": "/machine/cluster0/cpu0",
+            "cpu-index": 0,
+            "target": "aarch64"
+          },
+          {
+            "thread-id": 2749185,
+            "qom-type": "apple-a13-cpu",
+            "qom-path": "/machine/cluster0/cpu1",
+            "cpu-index": 1,
+            "target": "aarch64"
+          }
+        ],
+        "id": 195
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 196,
+        "arguments": {
+          "filename": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/framebuffer.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 196
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 197,
+        "arguments": {
+          "name": "apple_mt_spi_host_event",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 197
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 198,
+        "arguments": {
+          "name": "apple_mt_spi_enqueue",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 198
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 199,
+        "arguments": {
+          "name": "apple_mt_spi_dequeue",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 199
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 200,
+        "arguments": {
+          "name": "apple_mt_spi_tx_drained",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 200
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 201,
+        "arguments": {
+          "name": "apple_mt_spi_boot_command",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 201
+      }
+    },
+    {
+      "request": {
+        "execute": "trace-event-set-state",
+        "id": 202,
+        "arguments": {
+          "name": "apple_mt_spi_control",
+          "enable": false
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 202
+      }
+    },
+    {
+      "request": {
+        "execute": "quit",
+        "id": 203
+      },
+      "response": {
+        "return": {},
+        "id": 203
+      }
+    }
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 556.79296,
+  "serial_bytes": 330444,
+  "observed_milestones": {
+    "schema": "inferno.boot-observations.v1",
+    "scope": "Retained serial/control observations, not automated visual verification or arbitrary-app compatibility.",
+    "ios_booted": null,
+    "app_executed": true,
+    "ios_booted_note": "Deprecated ambiguous alias; consult granular milestones. Recovery userland is not installed-system readiness.",
+    "milestones": {
+      "kernel_serial": {
+        "state": "observed",
+        "evidence": [
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+            "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+            "byte_start": 33,
+            "byte_end": 63,
+            "line": 2,
+            "text": "corecrypto_kext_start called"
+          }
+        ],
+        "scope": "Original kernel/kext diagnostic text; not boot completion."
+      },
+      "launchd_userland": {
+        "state": "observed",
+        "evidence": [
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+            "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+            "byte_start": 46091,
+            "byte_end": 46206,
+            "line": 763,
+            "text": "Tue Oct  6 12:42:11 2026 localhost com.apple.xpc.launchd[1] <Notice>: Early boot complete. Continuing system boot."
+          }
+        ],
+        "scope": "t8030_direct_root_experiment"
+      },
+      "owned_app_lifecycle": {
+        "state": "observed",
+        "scope": "Owned fixture main and appeared through validated loopback records only.",
+        "boot_uuid": "DA68CFEE-439B-4994-8BBB-491D1F3F9792",
+        "pid": 245,
+        "peer_pid_authenticated": false,
+        "evidence": [
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+            "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+            "byte_start": 59952,
+            "byte_end": 60097,
+            "line": 910,
+            "text": "INFERNO_EVENT_RELAY_READY boot=DA68CFEE-439B-4994-8BBB-491D1F3F9792 lifetime=7200 transport=tcp address=127.0.0.1 port=37373 connections_max=128"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+            "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+            "byte_start": 211922,
+            "byte_end": 212042,
+            "line": 3431,
+            "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DA68CFEE-439B-4994-8BBB-491D1F3F9792 245 1 main 0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+            "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+            "byte_start": 212044,
+            "byte_end": 212202,
+            "line": 3433,
+            "text": "INFERNO_EVENT_RELAY_RECORD boot=DA68CFEE-439B-4994-8BBB-491D1F3F9792 pid=245 sequence=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+            "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+            "byte_start": 212204,
+            "byte_end": 212246,
+            "line": 3435,
+            "text": "INFERNO_UIKIT_PROBE_V1 event=main count=0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+            "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+            "byte_start": 213284,
+            "byte_end": 213408,
+            "line": 3455,
+            "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DA68CFEE-439B-4994-8BBB-491D1F3F9792 245 5 appeared 0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+            "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+            "byte_start": 213410,
+            "byte_end": 213568,
+            "line": 3457,
+            "text": "INFERNO_EVENT_RELAY_RECORD boot=DA68CFEE-439B-4994-8BBB-491D1F3F9792 pid=245 sequence=5 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+            "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+            "byte_start": 213570,
+            "byte_end": 213616,
+            "line": 3459,
+            "text": "INFERNO_UIKIT_PROBE_V1 event=appeared count=0"
+          }
+        ]
+      },
+      "strict_owned_journey": {
+        "state": "observed",
+        "evidence": [
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+            "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+            "byte_start": 213284,
+            "byte_end": 213408,
+            "line": 3455,
+            "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DA68CFEE-439B-4994-8BBB-491D1F3F9792 245 5 appeared 0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+            "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+            "byte_start": 213410,
+            "byte_end": 213568,
+            "line": 3457,
+            "text": "INFERNO_EVENT_RELAY_RECORD boot=DA68CFEE-439B-4994-8BBB-491D1F3F9792 pid=245 sequence=5 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+            "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+            "byte_start": 213570,
+            "byte_end": 213616,
+            "line": 3459,
+            "text": "INFERNO_UIKIT_PROBE_V1 event=appeared count=0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+            "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+            "byte_start": 306072,
+            "byte_end": 306191,
+            "line": 5395,
+            "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DA68CFEE-439B-4994-8BBB-491D1F3F9792 245 8 tap 1"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+            "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+            "byte_start": 306193,
+            "byte_end": 306351,
+            "line": 5397,
+            "text": "INFERNO_EVENT_RELAY_RECORD boot=DA68CFEE-439B-4994-8BBB-491D1F3F9792 pid=245 sequence=8 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+            "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+            "byte_start": 306353,
+            "byte_end": 306394,
+            "line": 5399,
+            "text": "INFERNO_UIKIT_PROBE_V1 event=tap count=1"
+          }
+        ],
+        "automated_visual_verification": false,
+        "visual_review": "Operator review remains required; frame hashes do not interpret pixels.",
+        "input_mode": "operator-observation",
+        "frames": [
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/probe-before.ppm",
+            "sha256": "cdc80e684e34d2f397b2719062f3a3c10c6e1693f9ce8cc43ba22092ddc58b74",
+            "role": "probe-before"
+          },
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/probe-after.ppm",
+            "sha256": "b9a217258c67075eedd3d3932a9bc26c30f2ba1474e6c6e33da6e75ff5c9b3ce",
+            "role": "probe-after"
+          }
+        ],
+        "operator_capture_requests_recorded": true
+      }
+    },
+    "serial": {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-42/serial.log",
+      "sha256": "dac506089f68e587f73c36f6cf4fc5e8daa26fc8c2d68234b47f4ba60e4f45b9",
+      "bytes": 330444
+    }
+  }
+}
