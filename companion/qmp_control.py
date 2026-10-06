@@ -50,6 +50,18 @@ def gesture_line(args):
     return line
 
 
+def open_line(args):
+    if set(args) != {'request_id', 'boot_uuid'}:
+        raise ValueError('Owned OPEN requires exact request_id and boot_uuid fields')
+    identifier, boot = args['request_id'], args['boot_uuid']
+    if not isinstance(identifier, str) or not re.fullmatch('[0-9a-f]{32}', identifier):
+        raise ValueError('OPEN request_id must be 32 lowercase hexadecimal characters')
+    if not isinstance(boot, str) or not re.fullmatch(
+            '[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}', boot):
+        raise ValueError('OPEN boot_uuid must be the exact current 36-character boot UUID')
+    return f'INFERNO_OPEN_V1 {identifier} {boot}\n'.encode('ascii')
+
+
 def validate(request):
     if not isinstance(request, dict) or set(request) != {'execute', 'arguments', 'created'}:
         raise ValueError('Expected execute, arguments and created only')
@@ -60,6 +72,9 @@ def validate(request):
     if not isinstance(args, dict):
         raise ValueError('Arguments must be an object')
     if name in ('query-mice', 'query-touch-registers', 'probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after') and args == {}:
+        return name, args
+    if name == 'guest-open-app':
+        open_line(args)
         return name, args
     if name == 'guest-hid-gesture':
         gesture_line(args)
@@ -159,6 +174,10 @@ class ControlMailbox:
                     capture = (self.journey.operator_capture_before if name == 'probe-capture-before'
                                else self.journey.operator_capture_after)
                     response = {'return': capture(qmp)}
+                elif name == 'guest-open-app':
+                    if self.serial_transport is None:
+                        raise ValueError('This boot did not enable --guest-hid-serial')
+                    response = self.serial_transport.transmit_open(args)
                 elif name == 'guest-hid-gesture':
                     if self.serial_transport is None:
                         raise ValueError('This boot did not enable --guest-hid-serial')
@@ -188,6 +207,7 @@ class SerialGestureTransport:
         self.thread = None
         self.stopping = threading.Event()
         self.seen = set()
+        self.open_attempts = 0
         self.report = {'endpoint': str(path), 'connected': False, 'drained_bytes': 0,
                        'transmissions': [], 'automatic_replay': False}
         self.journal = output / 'serial-input-transcript.jsonl'
@@ -228,14 +248,22 @@ class SerialGestureTransport:
             journal.write(json.dumps(record) + '\n')
 
     def transmit(self, args):
-        line = gesture_line(args)
-        identifier = args['request_id']
+        return self._transmit(gesture_line(args), args['request_id'], 'HID')
+
+    def transmit_open(self, args):
+        return self._transmit(open_line(args), args['request_id'], 'OPEN')
+
+    def _transmit(self, line, identifier, operation):
         if identifier in self.seen:
-            raise ValueError('Duplicate gesture ID; never replay a possibly transmitted request')
+            raise ValueError('Duplicate serial request ID; never replay a possibly transmitted request')
         if not self.report['connected'] or self.stopping.is_set() or not self.thread.is_alive():
             raise ValueError('Serial transport is not connected and draining')
+        if operation == 'OPEN':
+            if self.open_attempts >= 8:
+                raise ValueError('At most eight explicit OPEN attempts are allowed per run')
+            self.open_attempts += 1
         self.seen.add(identifier)
-        attempt = {'time': time.time(), 'stage': 'before-send', 'request_id': identifier,
+        attempt = {'time': time.time(), 'stage': 'before-send', 'request_id': identifier, 'operation': operation,
                    'raw': line.decode('ascii'), 'sha256': hashlib.sha256(line).hexdigest()}
         self._record(attempt)
         result = {'request_id': identifier, 'guest_acknowledgment': 'not checked',
@@ -303,7 +331,7 @@ class StartupTouchTrace:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report', type=Path, required=True, help='Active boot output directory with --control-mailbox')
-    parser.add_argument('command', choices=['probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after', 'query-mice', 'query-touch-registers', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture'])
+    parser.add_argument('command', choices=['probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after', 'query-mice', 'query-touch-registers', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture', 'guest-open-app'])
     parser.add_argument('--arguments', default='{}', help='Allowlisted QMP arguments as JSON')
     args = parser.parse_args()
     directory = args.report.resolve(strict=True) / 'control'

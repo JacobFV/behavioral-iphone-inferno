@@ -165,3 +165,28 @@ an orderly loop exit and normal QMP cleanup; it sends no input or process signal
 `probe-status` includes `keep_running` and `finish_requested`. Status is read-only;
 the original duration limit is never extended. These options affect new runners
 only. Completion still requires genuine guest markers and operator captures.
+
+### Explicit request to reopen the owned app
+
+With `--guest-hid-serial --control-mailbox`, `guest-open-app` accepts exactly
+`request_id` (32 lowercase hexadecimal characters) and `boot_uuid` (the exact
+current36-character UUID spelling from `INFERNO_OPEN_READY` or the relay):
+
+```sh
+python3 companion/qmp_control.py --report REPORT guest-open-app --arguments '{"request_id":"0123456789abcdef0123456789abcdef","boot_uuid":"11111111-2222-3333-4444-555555555555"}'
+```
+
+Replace both example identifiers with a fresh request ID and the actual current
+boot UUID. No UUID normalization occurs. The sole existing serial connection
+sends `INFERNO_OPEN_V1 <request_id> <boot_uuid>\n`. The helper checks the boot
+identity and invokes only its fixed owned launcher; no path, arguments, bundle
+identifier, process kill, registration or arbitrary command can be supplied.
+
+OPEN and HID share the host replay-rejection set. Eight OPEN attempts per host
+run are allowed, including uncertain transmissions. The original guest helper
+also bounds attempts and rejects busy, duplicate or foreign-boot requests.
+A busy helper does not queue input; neither host nor helper retries automatically.
+A host reply proves only serial transmission. `INFERNO_OPEN_DISPATCHED` proves
+fork only; original launch callback/timing and visual observation determine
+acceptance. `INFERNO_OPEN_CHILD_END` reports child status. Inspect raw logs before
+any new explicit request, especially after an uncertain send.

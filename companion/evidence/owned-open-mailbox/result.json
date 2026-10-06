@@ -1,0 +1,264 @@
+{
+  "kind": "actual_firmware_free_owned_open_mailbox_plumbing",
+  "ios_boot": false,
+  "guest_open_executed": false,
+  "host_fixture_uuid_only": true,
+  "command": [
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "-machine",
+    "none",
+    "-display",
+    "none",
+    "-nodefaults",
+    "-S",
+    "-qmp",
+    "unix:/tmp/inferno-owned-open-nphaq0db/qmp.sock,server=on,wait=off",
+    "-chardev",
+    "socket,id=probe,path=/tmp/inferno-owned-open-nphaq0db/serial.sock,server=on,wait=off,logfile=/tmp/inferno-owned-open-actual-1/serial.log",
+    "-mon",
+    "chardev=probe,mode=readline"
+  ],
+  "binary_sha256": "e3da84b179ce328e06a0f917aabb8e4d80c8a4cf64701212464831a270e1741e",
+  "module_sha256": "1debb79431fd241e67253dfe2556870b7fdd31c13c20022f177c930923768869",
+  "checks": [
+    {
+      "command": "guest-open-app",
+      "arguments": {
+        "request_id": "11111111111111111111111111111111",
+        "boot_uuid": "12345678-1234-1234-ABCD-123456789ABC"
+      },
+      "exit_code": 0,
+      "stdout": "{\"request_id\": \"11111111111111111111111111111111\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 86}\n",
+      "stderr": "",
+      "qmp_commands_added": 0
+    },
+    {
+      "command": "guest-hid-gesture",
+      "arguments": {
+        "request_id": "11111111111111111111111111111111",
+        "kind": "tap",
+        "x": 1,
+        "y": 1,
+        "duration_ms": 1
+      },
+      "exit_code": 1,
+      "stdout": "{\"rejected\": \"Duplicate serial request ID; never replay a possibly transmitted request\"}\n",
+      "stderr": "",
+      "qmp_commands_added": 0
+    },
+    {
+      "command": "guest-hid-gesture",
+      "arguments": {
+        "request_id": "22222222222222222222222222222222",
+        "kind": "tap",
+        "x": 1,
+        "y": 1,
+        "duration_ms": 1
+      },
+      "exit_code": 0,
+      "stdout": "{\"request_id\": \"22222222222222222222222222222222\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 58}\n",
+      "stderr": "",
+      "qmp_commands_added": 0
+    },
+    {
+      "command": "guest-open-app",
+      "arguments": {
+        "request_id": "22222222222222222222222222222222",
+        "boot_uuid": "12345678-1234-1234-ABCD-123456789ABC"
+      },
+      "exit_code": 1,
+      "stdout": "{\"rejected\": \"Duplicate serial request ID; never replay a possibly transmitted request\"}\n",
+      "stderr": "",
+      "qmp_commands_added": 0
+    },
+    {
+      "command": "guest-open-app",
+      "arguments": {
+        "request_id": "33333333333333333333333333333333",
+        "boot_uuid": "12345678-1234-1234-ABCD-123456789ABC",
+        "path": "/bin/anything"
+      },
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/tmp/inferno-disk-overlay-chain/companion/qmp_control.py\", line 356, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"/tmp/inferno-disk-overlay-chain/companion/qmp_control.py\", line 340, in main\n    validate(request)\n  File \"/tmp/inferno-disk-overlay-chain/companion/qmp_control.py\", line 77, in validate\n    open_line(args)\n  File \"/tmp/inferno-disk-overlay-chain/companion/qmp_control.py\", line 55, in open_line\n    raise ValueError('Owned OPEN requires exact request_id and boot_uuid fields')\nValueError: Owned OPEN requires exact request_id and boot_uuid fields\n",
+      "qmp_commands_added": 0
+    },
+    {
+      "command": "guest-open-app",
+      "arguments": {
+        "request_id": "33333333333333333333333333333333",
+        "boot_uuid": "12345678-1234-1234-ABCD-123456789ABC\n"
+      },
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/tmp/inferno-disk-overlay-chain/companion/qmp_control.py\", line 356, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"/tmp/inferno-disk-overlay-chain/companion/qmp_control.py\", line 340, in main\n    validate(request)\n  File \"/tmp/inferno-disk-overlay-chain/companion/qmp_control.py\", line 77, in validate\n    open_line(args)\n  File \"/tmp/inferno-disk-overlay-chain/companion/qmp_control.py\", line 61, in open_line\n    raise ValueError('OPEN boot_uuid must be the exact current 36-character boot UUID')\nValueError: OPEN boot_uuid must be the exact current 36-character boot UUID\n",
+      "qmp_commands_added": 0
+    },
+    {
+      "command": "guest-open-app",
+      "arguments": {
+        "request_id": "00000000000000000000000000000003",
+        "boot_uuid": "12345678-1234-1234-ABCD-123456789ABC"
+      },
+      "exit_code": 0,
+      "stdout": "{\"request_id\": \"00000000000000000000000000000003\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 86}\n",
+      "stderr": "",
+      "qmp_commands_added": 0
+    },
+    {
+      "command": "guest-open-app",
+      "arguments": {
+        "request_id": "00000000000000000000000000000004",
+        "boot_uuid": "12345678-1234-1234-ABCD-123456789ABC"
+      },
+      "exit_code": 0,
+      "stdout": "{\"request_id\": \"00000000000000000000000000000004\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 86}\n",
+      "stderr": "",
+      "qmp_commands_added": 0
+    },
+    {
+      "command": "guest-open-app",
+      "arguments": {
+        "request_id": "00000000000000000000000000000005",
+        "boot_uuid": "12345678-1234-1234-ABCD-123456789ABC"
+      },
+      "exit_code": 0,
+      "stdout": "{\"request_id\": \"00000000000000000000000000000005\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 86}\n",
+      "stderr": "",
+      "qmp_commands_added": 0
+    },
+    {
+      "command": "guest-open-app",
+      "arguments": {
+        "request_id": "00000000000000000000000000000006",
+        "boot_uuid": "12345678-1234-1234-ABCD-123456789ABC"
+      },
+      "exit_code": 0,
+      "stdout": "{\"request_id\": \"00000000000000000000000000000006\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 86}\n",
+      "stderr": "",
+      "qmp_commands_added": 0
+    },
+    {
+      "command": "guest-open-app",
+      "arguments": {
+        "request_id": "00000000000000000000000000000007",
+        "boot_uuid": "12345678-1234-1234-ABCD-123456789ABC"
+      },
+      "exit_code": 0,
+      "stdout": "{\"request_id\": \"00000000000000000000000000000007\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 86}\n",
+      "stderr": "",
+      "qmp_commands_added": 0
+    },
+    {
+      "command": "guest-open-app",
+      "arguments": {
+        "request_id": "00000000000000000000000000000008",
+        "boot_uuid": "12345678-1234-1234-ABCD-123456789ABC"
+      },
+      "exit_code": 0,
+      "stdout": "{\"request_id\": \"00000000000000000000000000000008\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 86}\n",
+      "stderr": "",
+      "qmp_commands_added": 0
+    },
+    {
+      "command": "guest-open-app",
+      "arguments": {
+        "request_id": "00000000000000000000000000000009",
+        "boot_uuid": "12345678-1234-1234-ABCD-123456789ABC"
+      },
+      "exit_code": 0,
+      "stdout": "{\"request_id\": \"00000000000000000000000000000009\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 86}\n",
+      "stderr": "",
+      "qmp_commands_added": 0
+    },
+    {
+      "command": "guest-open-app",
+      "arguments": {
+        "request_id": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "boot_uuid": "12345678-1234-1234-ABCD-123456789ABC"
+      },
+      "exit_code": 1,
+      "stdout": "{\"rejected\": \"At most eight explicit OPEN attempts are allowed per run\"}\n",
+      "stderr": "",
+      "qmp_commands_added": 0
+    }
+  ],
+  "actual_monitor_unknown_open_commands": 8,
+  "actual_serial_attempts": 9,
+  "normal_quit": {
+    "return": {},
+    "id": 2
+  },
+  "exit_code": 0,
+  "drain_thread_stopped": true,
+  "files": {
+    "stderr.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "control-transcript.jsonl": {
+      "sha256": "847e73282a05e3f25b6beb60f5bff1c60784d343df906b05e8d97d389b053f97",
+      "bytes": 6741
+    },
+    "serial-input-transcript.jsonl": {
+      "sha256": "cfab1b59f231eaa430fcfeb230b84ca57152c5d4f530968d1df9c64e3500f531",
+      "bytes": 5030
+    },
+    "qmp-transcript.jsonl": {
+      "sha256": "8e02b46609d64ddc4026195cefd5d0d770d2fc7d3975ed6339b9d9427e71c5e0",
+      "bytes": 811
+    },
+    "serial.log": {
+      "sha256": "a690732b213ac9635d83ca5dd770c84e745adfcf101340419c51162f3f343613",
+      "bytes": 124083
+    },
+    "control/reply-8f9d3b5b8daa490fa66916c1104adfa1.json": {
+      "sha256": "89a15e8fa41fb099a3c04028f89a777834d0a31cdda1786f85dc430ebbd681c5",
+      "bytes": 198
+    },
+    "control/reply-1f66b38c8a7346d1b5ce60638be3255f.json": {
+      "sha256": "f017fadb6756d6f64059854170cdfb094e9f2b95ae6061479a2cf472a6686bf1",
+      "bytes": 198
+    },
+    "control/reply-69d58dab149a4f20b0a10d5368552832.json": {
+      "sha256": "368898089def0e7f92fb0cc14eb5749d67bd6ced303aad5ca8c19c7ef6d548bf",
+      "bytes": 198
+    },
+    "control/reply-0c3dfb1ac24f4e74804927d76f8e4fa9.json": {
+      "sha256": "c8968df083fa5f85b3f798cc97d80830a8b08e32ccf080464996c5188d5b53cb",
+      "bytes": 73
+    },
+    "control/reply-90763ca62a164ced9a87499997dc0df9.json": {
+      "sha256": "fb14ffe59a1ad58e4d78fce1c4225cb6a757b247fb4a0462bb071a2eb4a565aa",
+      "bytes": 198
+    },
+    "control/reply-3a74dd9c4e9e41eca7e95fabb61c0ea2.json": {
+      "sha256": "daaf119508473df7e182236965439cc92ca8628a104e3ddbe666a39b413ae180",
+      "bytes": 198
+    },
+    "control/reply-d0610071098f4b9a937bf326c0cfa253.json": {
+      "sha256": "a0be9800a2aaa767343e02bf4f1f84930dc4b54b3c67db5f73c7b81e5b93f4f8",
+      "bytes": 198
+    },
+    "control/reply-99cab97819694f56b6ba737fc265fd08.json": {
+      "sha256": "ef27a052121ff06c25aeddb34054b065555a7ee6581197522629051310d952a5",
+      "bytes": 198
+    },
+    "control/reply-5c6716408b60442f9ed0a42f9d15b56c.json": {
+      "sha256": "a933597a13e0de33681257ed07c5eaf7eb69554d6ba53af0a732b4c56546168c",
+      "bytes": 198
+    },
+    "control/reply-ab9702f661cd42e5b97564225cebc08c.json": {
+      "sha256": "fa327b88cf78d25f8a6ca1b6808474767ce0a0b9579303c5c3f617b6641a1c98",
+      "bytes": 198
+    },
+    "control/reply-4c0f85aaf0d4476db315d77aca3ebcef.json": {
+      "sha256": "4b803cf33378cabc3b219749ec74ef9c7d8a1551454f584d3579f578909ad173",
+      "bytes": 89
+    },
+    "control/reply-6c39aa465133439cbf1e06cd53afa2f0.json": {
+      "sha256": "4b803cf33378cabc3b219749ec74ef9c7d8a1551454f584d3579f578909ad173",
+      "bytes": 89
+    }
+  }
+}
