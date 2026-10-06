@@ -28,7 +28,10 @@ counter58985af15a484360a9c1442be4386a66. QMPbefore
  a6d6e3770ab9468bc05f7d08a66edc241db8b62804356c3e3f2a5a1a9640aead,
 afterd7dbd86ff62a04a18448e026d30f37fea81de150740a3c005f07f93231ece4c9.
 No SAMPLE/Home/OPEN52. Root52SHAbc57c2296671a99304913ad9b34ddac76402cbe6203a58e4e5909a61bb4ef0f7.
-ONE53 starting after clean52 retention, same55/670.
+ONE53 LIVE runner2930546/QEMU2931057, VNC /tmp/inferno-boot-z8xj9z87/vnc.sock,
+serial connected1791323387.5888894, host5355e76644, same55/670.
+If53 strict succeeds, extend with ordinary Home/reopen display transitions, leaving
+both samples unused unless a persistent visual stall occurs. Preserve strict captures.
 Six-run serial audit428a2c9f2f found startup IOMFB warnings shared by failed44/47
 and healthy45/46/49/50; no failure-specific warning near/after counter marker.
 Root owns all input; on stall collect both original samples BEFORE Home.
