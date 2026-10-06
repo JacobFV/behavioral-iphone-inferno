@@ -1,0 +1,38 @@
+{
+  "schema": "inferno.local-linux-build.v1",
+  "purpose": "build provenance only; no guest boot or firmware execution claim",
+  "sep_mode": "simulated-unencrypted",
+  "kvm_enabled": true,
+  "upstream_base": "cc4302a99167abec69b714cfd00c38caece7e7de",
+  "source_revision": "7a32314605c24d94edbfec1b7c6c5baf5b747824",
+  "source_diff": "",
+  "mlib_revision": "d0fd65a8695218ffabf2aa543ce51ca3af69536f",
+  "host_machine": "aarch64",
+  "host_platform": "Linux-6.17.0-1026-nvidia-aarch64-with-glibc2.39",
+  "python": "3.12.3",
+  "compiler": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "meson": "1.7.2",
+  "ninja": "1.11.1.git.kitware.jobserver-1",
+  "inputs": {
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/build-linux.sh": "eca6961c7c82b6a14a15ba184f944aa2e1e1660dbf6546e40e3508cf17337267",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/bootstrap-linux.py": "8e1982776284e01d33e993c8400dc55c3af7532143f9c744dea2a7fc595a227d",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/linux-dependencies-arm64.json": "754a310b006a6b504a214390a3c59b7d5811da7f0600a7b4ef35f7fa48bff40d",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/build-tools-arm64.txt": "310ef416baa0a946c58bb88e7b7e007bdef03a0fae7e099846f6d3a1a926c372",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/downloads/nettle-3.10.2.tar.gz": "fe9ff51cb1f2abb5e65a6b8c10a92da0ab5ab6eaf26e7fc2b675c45f1fb519b5",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/config-host.mak": "0419523d1df6e73d6aacebdd361ba4ce5204b5b68e864990b0c5ac6f18e28f79",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/config.status": "e7f1a539641d37b6cf47e81d15385189e6961c8a58acdb17008f36735319b242",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/meson-info/intro-buildoptions.json": "14ce66bcd20612203c921bbaf0fd4520bd97bc1f9c26aed368dd4d72a80777a9"
+  },
+  "binary": {
+    "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "sha256": "6375a52ec963ab43b69ade01ea9e2c3b2bd3c5aaff237d8a3d48cd83c5533fde",
+    "bytes": 114730504
+  },
+  "system_dependencies": {
+    "glib-2.0": "2.80.0",
+    "pixman-1": "0.42.2",
+    "zlib": "1.3",
+    "libpng": "1.6.43"
+  },
+  "keycodemapdb_revision": "f5772a62ec52591ff6870b7e8ef32482371f22c6"
+}
