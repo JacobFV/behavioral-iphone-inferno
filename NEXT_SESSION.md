@@ -22,8 +22,18 @@ afterb6ec1347408a659a54443f7a03043fecbd968953d08f21aa62580c4bd960a5b8.
 NoSAMPLE/Home/OPEN57. Final strict/default all7+ancestor+attestation preservation
 PASS e629bf388a, normal0/noerror506.045061s. Root110952448bytes SHA
  e928b462fb5539aa3683233786efb754c6366f1f8cd0b0528474242ce52a08d5.
-Bootworker is launching authorized ONE58 unchanged frozen55/emulator670,
-observer defaultOFF.
+ONE58 LIVE runner3036310/QEMU3036868, sourcee629bf388a, frozen55/emulator670,
+observer defaultOFF. VNC/tmp/inferno-boot-9mgjrkd_/vnc.sock.
+Boot2C5B5B48-7021-49E1-A7BB-2B014BEE2774/PID220/main1916654210.
+Root reviewed lock, unlock1bf7fb18eb38543be945480fe03c282dd ACK0 then stilllock;
+unlock2 8769e7e55c0a4e319cc4892183b8c37e sent, observation pending.
+No58counter/trace/SAMPLE/Home/OPEN yet.
+Minimal status-read diagnostic917abb9dc4 independentlyreviewed/approved, NOT
+merged or built while58 is running. After58 stop, merge/rebuild+actualbounded
+8-event control check before next iOS59. Root source auditdcf3aeb9ab shows all
+traced44/47/49/53/57 submits completed and FRAME_PROCESSED was W1C-cleared;
+no capturedlostBH. New diagnostic exact known INT_STATUS returnedvalue, defaultoff,
+no statewrites; host HMP query reads sharepath. No behaviorfix.
 Root owns all guest input. Native worker auditing source/trace state-machine gaps;
 disk worker completed57 observer audit. No rendering fix or freeze reproduction57.
 
