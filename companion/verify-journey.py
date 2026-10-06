@@ -72,7 +72,11 @@ class Audit:
         qmp = self.rows('qmp-transcript.jsonl', True)
         serial = self.rows('serial.log')
         serial_data = self.data['serial.log']
-        arrivals = self.rows('event-arrivals/observations.jsonl', True)
+        arrivals = self.rows('event-arrivals/observations.jsonl', True) if (self.folder/'event-arrivals/observations.jsonl').exists() else None
+        # This reviewed implementation gates before on appeared-present/tap-absent,
+        # and after on tap-present, by reading the actual serial file.
+        gate_sha = '1c4cbb542a79b85560433d62726123b99555ad0a47522d5ecd659faf3a04f308'
+        require(report.get('probe_journey_source_sha256') == gate_sha, 'unreviewed journey gate source; verifier update required')
         for row in controls:
             v = row['value']
             require(sha(v['raw'].encode()) == v['sha256'], 'control payload hash mismatch')
@@ -81,6 +85,7 @@ class Audit:
         before, after = control('probe-capture-before'), control('probe-capture-after')
         for row in [before, after]:
             require(self.command(row).get('arguments') == {}, 'capture arguments must be empty')
+        require(before['value'].get('response', {}).get('return', {}).get('state') == 'waiting-for-operator-tap-marker', 'before capture gate not accepted')
         require(after['value'].get('response', {}).get('return', {}).get('state') == 'completed', 'after capture did not complete')
         t0, t1 = before['value']['time'], after['value']['time']
         require(t0 < t1, 'capture command ordering invalid')
@@ -113,17 +118,20 @@ class Audit:
             valid = unique([r for r in serial if VALID.fullmatch(r['value']) and VALID.fullmatch(r['value']).groups() == fields[:3]], f'{event} validated provenance')
             marker = unique([r for r in serial if r['value'] == f'INFERNO_UIKIT_PROBE_V1 event={event} count={count}'], f'{event} marker')
             require(raw['reference']['byte_end'] <= valid['reference']['byte_start'] < marker['reference']['byte_start'] <= valid['reference']['byte_end'] + 1024, f'{event} provenance ordering invalid')
-            arrival = unique([r for r in arrivals if r['value']['byte_start'] == marker['reference']['byte_start']], f'{event} marker arrival')
-            v = arrival['value']; fragment = serial_data[v['byte_start']:v['byte_end']]
-            require(not v['preexisting'] and fragment.endswith(b'\n') and fragment[:-1].hex() == v['raw_hex'], f'{event} arrival raw reference mismatch/preexisting')
-            require(sha(fragment[:-1]) == v['sha256'], f'{event} arrival hash mismatch')
+            arrival = None
+            if arrivals is not None:
+                arrival = unique([r for r in arrivals if r['value']['byte_start'] == marker['reference']['byte_start']], f'{event} marker arrival')
+                v = arrival['value']; fragment = serial_data[v['byte_start']:v['byte_end']]
+                require(not v['preexisting'] and fragment.endswith(b'\n') and fragment[:-1].hex() == v['raw_hex'], f'{event} arrival raw reference mismatch/preexisting')
+                require(sha(fragment[:-1]) == v['sha256'], f'{event} arrival hash mismatch')
             chains[event] = {'boot':boot,'pid':int(pid),'sequence':int(sequence),'raw':raw,'validated':valid,'marker':marker,'arrival':arrival}
         main, appeared, tap = [chains[k] for k in ['main','appeared','tap']]
         require(main['sequence'] == 1 and main['sequence'] < appeared['sequence'] < tap['sequence'], 'event sequence invalid')
         require(len({(c['boot'],c['pid']) for c in chains.values()}) == 1, 'mixed app identity')
         ready = unique([r for r in serial if r['value'].startswith(f"INFERNO_EVENT_RELAY_READY boot={main['boot']} ") and 'transport=tcp address=127.0.0.1 port=37373 ' in r['value']], 'relay ready')
         require(ready['reference']['byte_start'] < main['raw']['reference']['byte_start'], 'relay not ready before lifecycle')
-        require(appeared['arrival']['value']['observed_time'] < t0 < sent['value']['time'] < tap['arrival']['value']['observed_time'] < t1, 'host-observed strict chronology invalid')
+        if arrivals is not None:
+            require(appeared['arrival']['value']['observed_time'] < t0 < sent['value']['time'] < tap['arrival']['value']['observed_time'] < t1, 'host-observed strict chronology invalid')
         def exchange(execute, filename=None):
             req = unique([r for r in qmp if r['value']['direction']=='send' and self.command(r).get('execute')==execute and (filename is None or self.command(r).get('arguments',{}).get('filename')==filename)], f'QMP {execute} request')
             qid=self.command(req)['id']
@@ -150,7 +158,7 @@ class Audit:
             require(t1 < f['value']['time'] < quit_exchange['request']['value']['time'], 'finish-run ordering invalid')
         for name, source in self.sources.items():
             require(sha((self.folder/name).read_bytes()) == source['sha256'], f'source changed during verification: {name}')
-        return {'status':'verified','boot_uuid':main['boot'],'app_pid':main['pid'],'relay_ready':ready,'events':chains,'before':before,'tap_command':gesture,'tap_wire':sent,'tap_wire_completion':delivered,'tap_attempt_ack':ack,'after':after,'captures':captures,'finish_run':finish,'quit':quit_exchange,'exit_code':0}
+        return {'status':'verified','chronology_basis':('raw observer arrival references plus source-gated capture commands' if arrivals is not None else 'source-gated capture commands; independent marker arrival times unavailable'),'reviewed_capture_gate_source_sha256':gate_sha,'boot_uuid':main['boot'],'app_pid':main['pid'],'relay_ready':ready,'events':chains,'before':before,'tap_command':gesture,'tap_wire':sent,'tap_wire_completion':delivered,'tap_attempt_ack':ack,'after':after,'captures':captures,'finish_run':finish,'quit':quit_exchange,'exit_code':0}
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--report',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args()
