@@ -1,0 +1,2827 @@
+{
+  "runs": [
+    {
+      "run": 41,
+      "observed_group": "stalled",
+      "sources": {
+        "control": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/control-transcript.jsonl",
+          "bytes": 5146,
+          "sha256": "75bccb61582c1b7b0a1e2d9481a831c0ebe190d230b808ec870b80b19fd426ec"
+        },
+        "wire": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/serial-input-transcript.jsonl",
+          "bytes": 2764,
+          "sha256": "6b58bd8540742e4ae4ac0540ed33c88225471bc76f421a638fb27f553d0dc72d"
+        },
+        "qmp": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/qmp-transcript.jsonl",
+          "bytes": 31023,
+          "sha256": "ca74986fa7d7f688fd4e96d880ea6efcc707097163559a3ef6af3be1396feaf0"
+        },
+        "serial": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/serial.log",
+          "bytes": 357960,
+          "sha256": "6174379ebb292c24f98a6085f77f8525499607e9c47fc883461f1011be70493f"
+        }
+      },
+      "missing": [],
+      "records": {
+        "close_control": {
+          "value": {
+            "time": 1791315010.607628,
+            "request_file": "request-d4eacf0bbdc94c01abe909a8463224d3.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"fc68a5b8f81b4523afe55b3f3684dcfd\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 18560}, \"created\": 1791315010.5433576}\n",
+            "sha256": "f332bc5ae2ecf93108e6119f7e1b1a8fd49b34e94e17393f0ec29bffab01cfce",
+            "response": {
+              "request_id": "fc68a5b8f81b4523afe55b3f3684dcfd",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/control-transcript.jsonl",
+            "line": 4,
+            "byte_start": 1779,
+            "byte_end": 2383,
+            "sha256": "4f7027ba2605eb9e954579c1d0541de9adf89ef852da89ef4805dc3170c421cb",
+            "raw": "{\"time\": 1791315010.607628, \"request_file\": \"request-d4eacf0bbdc94c01abe909a8463224d3.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"fc68a5b8f81b4523afe55b3f3684dcfd\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 18560}, \\\"created\\\": 1791315010.5433576}\\n\", \"sha256\": \"f332bc5ae2ecf93108e6119f7e1b1a8fd49b34e94e17393f0ec29bffab01cfce\", \"response\": {\"request_id\": \"fc68a5b8f81b4523afe55b3f3684dcfd\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "fc68a5b8f81b4523afe55b3f3684dcfd",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 18560
+            },
+            "created": 1791315010.5433576
+          }
+        },
+        "before_control": {
+          "value": {
+            "time": 1791315026.4464605,
+            "request_file": "request-65ae0fd473c8484ea04f789c87eb5a6e.json",
+            "raw": "{\"execute\": \"probe-capture-before\", \"arguments\": {}, \"created\": 1791315026.264256}\n",
+            "sha256": "ff78e2f9a5a46b9300fef2e1ee3f2ecb3d8f66ff46c6c3c303a6c0890f64bc2a",
+            "response": {
+              "return": {
+                "state": "waiting-for-operator-tap-marker",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/probe-before.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "1330d2cfefb010993f4bed3d4be731d416dbc91237833891fc57be050772e41c"
+                }
+              }
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/control-transcript.jsonl",
+            "line": 5,
+            "byte_start": 2383,
+            "byte_end": 2962,
+            "sha256": "d0e4cbbaa7d55bdc18c4bf56db8ae67590086864deba0d4272c1c111f36053e6",
+            "raw": "{\"time\": 1791315026.4464605, \"request_file\": \"request-65ae0fd473c8484ea04f789c87eb5a6e.json\", \"raw\": \"{\\\"execute\\\": \\\"probe-capture-before\\\", \\\"arguments\\\": {}, \\\"created\\\": 1791315026.264256}\\n\", \"sha256\": \"ff78e2f9a5a46b9300fef2e1ee3f2ecb3d8f66ff46c6c3c303a6c0890f64bc2a\", \"response\": {\"return\": {\"state\": \"waiting-for-operator-tap-marker\", \"capture\": {\"path\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/probe-before.ppm\", \"width\": 828, \"height\": 1792, \"sha256\": \"1330d2cfefb010993f4bed3d4be731d416dbc91237833891fc57be050772e41c\"}}}}\n"
+          },
+          "command": {
+            "execute": "probe-capture-before",
+            "arguments": {},
+            "created": 1791315026.264256
+          }
+        },
+        "counter_control": {
+          "value": {
+            "time": 1791315026.659234,
+            "request_file": "request-a5e6b755862a4454913f83f0d6d1beba.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"1d07d32c05e943898d1981622edb831b\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 20316}, \"created\": 1791315026.521936}\n",
+            "sha256": "99abb65b2907bf1cc2d21a83c88249800879b3a7ebd078dcd75a606fb801dcc2",
+            "response": {
+              "request_id": "1d07d32c05e943898d1981622edb831b",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/control-transcript.jsonl",
+            "line": 6,
+            "byte_start": 2962,
+            "byte_end": 3565,
+            "sha256": "0e33e3d2bab02f49ef65eb0aa98fa9f1405637d3d812a22dc2711b414104d2e3",
+            "raw": "{\"time\": 1791315026.659234, \"request_file\": \"request-a5e6b755862a4454913f83f0d6d1beba.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"1d07d32c05e943898d1981622edb831b\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 20316}, \\\"created\\\": 1791315026.521936}\\n\", \"sha256\": \"99abb65b2907bf1cc2d21a83c88249800879b3a7ebd078dcd75a606fb801dcc2\", \"response\": {\"request_id\": \"1d07d32c05e943898d1981622edb831b\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "1d07d32c05e943898d1981622edb831b",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 20316
+            },
+            "created": 1791315026.521936
+          }
+        },
+        "close_wire": {
+          "value": {
+            "time": 1791315010.6077404,
+            "stage": "before-send",
+            "request_id": "fc68a5b8f81b4523afe55b3f3684dcfd",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 fc68a5b8f81b4523afe55b3f3684dcfd TAP 16384 18560 150\n",
+            "sha256": "47bc45e9ceefad66d165f1b91fd512470fcaf90091715340792ed50e837131cd"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/serial-input-transcript.jsonl",
+            "line": 5,
+            "byte_start": 1115,
+            "byte_end": 1396,
+            "sha256": "fe3e6f3fccf1948f5b5711bc93c9435218c16ef6b6ff47848b73bcfe0761dccd",
+            "raw": "{\"time\": 1791315010.6077404, \"stage\": \"before-send\", \"request_id\": \"fc68a5b8f81b4523afe55b3f3684dcfd\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 fc68a5b8f81b4523afe55b3f3684dcfd TAP 16384 18560 150\\n\", \"sha256\": \"47bc45e9ceefad66d165f1b91fd512470fcaf90091715340792ed50e837131cd\"}\n"
+          }
+        },
+        "counter_wire": {
+          "value": {
+            "time": 1791315026.6593244,
+            "stage": "before-send",
+            "request_id": "1d07d32c05e943898d1981622edb831b",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 1d07d32c05e943898d1981622edb831b TAP 16384 20316 150\n",
+            "sha256": "f28ebfdb724c816c075dd48785c3f74a816da68febdeb8cfadcf14259bc17f8c"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/serial-input-transcript.jsonl",
+            "line": 7,
+            "byte_start": 1659,
+            "byte_end": 1940,
+            "sha256": "58e857294d4e2414528778d027bb6b39c3a8ac8f586cceed5e34a2343078d38c",
+            "raw": "{\"time\": 1791315026.6593244, \"stage\": \"before-send\", \"request_id\": \"1d07d32c05e943898d1981622edb831b\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 1d07d32c05e943898d1981622edb831b TAP 16384 20316 150\\n\", \"sha256\": \"f28ebfdb724c816c075dd48785c3f74a816da68febdeb8cfadcf14259bc17f8c\"}\n"
+          }
+        },
+        "before_qmp_request": {
+          "value": {
+            "direction": "send",
+            "time": 1791315026.4475183,
+            "raw": "{\"execute\": \"screendump\", \"id\": 20, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/probe-before.ppm\"}}\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/qmp-transcript.jsonl",
+            "line": 62,
+            "byte_start": 14944,
+            "byte_end": 15186,
+            "sha256": "fc7db6664f46c57aee86128fc47ac525a4bf37ceb0887bc45fc6adff0f0eb857",
+            "raw": "{\"direction\": \"send\", \"time\": 1791315026.4475183, \"raw\": \"{\\\"execute\\\": \\\"screendump\\\", \\\"id\\\": 20, \\\"arguments\\\": {\\\"filename\\\": \\\"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/probe-before.ppm\\\"}}\\n\"}\n"
+          }
+        },
+        "before_qmp_reply": {
+          "value": {
+            "direction": "receive",
+            "time": 1791315026.4540815,
+            "raw": "{\"return\": {}, \"id\": 20}\r\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-41/qmp-transcript.jsonl",
+            "line": 63,
+            "byte_start": 15186,
+            "byte_end": 15282,
+            "sha256": "9468d1426fcce3a0ef33cfc4fd433f63a3ba138a9bfa9534b15540c9cfeacbf6",
+            "raw": "{\"direction\": \"receive\", \"time\": 1791315026.4540815, \"raw\": \"{\\\"return\\\": {}, \\\"id\\\": 20}\\r\\n\"}\n"
+          }
+        }
+      },
+      "seconds": {
+        "close_wire_to_counter_wire": 16.051584005355835,
+        "close_wire_to_before_control": 15.838720083236694,
+        "before_control_to_counter_wire": 0.21286392211914062,
+        "before_qmp_request_to_reply": 0.0065631866455078125,
+        "before_qmp_reply_to_counter_wire": 0.20524287223815918
+      },
+      "geometry": {
+        "close": {
+          "request_id": "fc68a5b8f81b4523afe55b3f3684dcfd",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 18560
+        },
+        "counter": {
+          "request_id": "1d07d32c05e943898d1981622edb831b",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 20316
+        }
+      },
+      "guest_acknowledgments": [
+        {
+          "byte_start": 289198,
+          "byte_end": 289314,
+          "sha256": "3ec6c02cc0b084f012a3db26ac1b87bee2382c39000b0b9d79e9b47f30cbed00",
+          "text": "INFERNO_HID_ACK request_id=fc68a5b8f81b4523afe55b3f3684dcfd attempt_status=0 delivery=unproven timestamp=5008827529"
+        },
+        {
+          "byte_start": 294055,
+          "byte_end": 294171,
+          "sha256": "833203b7d856f3a0c62c0dc8caa815fc296723bd1dbc2ee2c0fc707c6a90610b",
+          "text": "INFERNO_HID_ACK request_id=1d07d32c05e943898d1981622edb831b attempt_status=0 delivery=unproven timestamp=5399877332"
+        }
+      ]
+    },
+    {
+      "run": 44,
+      "observed_group": "stalled",
+      "sources": {
+        "control": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-44/control-transcript.jsonl",
+          "bytes": 9550,
+          "sha256": "207ac6423c3d0b50e0ac2ab6e3753b9ac1f44843f4751a8034b44ac8b6677961"
+        },
+        "wire": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-44/serial-input-transcript.jsonl",
+          "bytes": 2202,
+          "sha256": "c8e570313c12829aafc9dfa1417a385beb189f23019af0b799bb2d98b472ef9f"
+        },
+        "qmp": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-44/qmp-transcript.jsonl",
+          "bytes": 42751,
+          "sha256": "371dce3326bc1d3e76ff48915a001a09235461ef739b98e5611a7639cab7258a"
+        },
+        "serial": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-44/serial.log",
+          "bytes": 323248,
+          "sha256": "0840a0bbb3f078759b7d63146119d163b9bff3e325e51347dd0532b3e3e10191"
+        }
+      },
+      "missing": [],
+      "records": {
+        "close_control": {
+          "value": {
+            "time": 1791317883.1110008,
+            "request_file": "request-f2c8239de0dd43ac9d04a0e407ea5121.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"8ff2415168dd4b0caf0daa374b6d4f8d\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 18560}, \"created\": 1791317883.0143557}\n",
+            "sha256": "150e89fe858ea98628dabc0c8e03cd45d358e0181a01e654e23fa5f33408e1a4",
+            "response": {
+              "request_id": "8ff2415168dd4b0caf0daa374b6d4f8d",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-44/control-transcript.jsonl",
+            "line": 4,
+            "byte_start": 1828,
+            "byte_end": 2433,
+            "sha256": "463e0d97d0527192da7301c16df87090d9abd5ae2ec43c511ff9d4da8ed67fd2",
+            "raw": "{\"time\": 1791317883.1110008, \"request_file\": \"request-f2c8239de0dd43ac9d04a0e407ea5121.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"8ff2415168dd4b0caf0daa374b6d4f8d\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 18560}, \\\"created\\\": 1791317883.0143557}\\n\", \"sha256\": \"150e89fe858ea98628dabc0c8e03cd45d358e0181a01e654e23fa5f33408e1a4\", \"response\": {\"request_id\": \"8ff2415168dd4b0caf0daa374b6d4f8d\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "8ff2415168dd4b0caf0daa374b6d4f8d",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 18560
+            },
+            "created": 1791317883.0143557
+          }
+        },
+        "before_control": {
+          "value": {
+            "time": 1791317902.9538145,
+            "request_file": "request-f79479d0111e4cd88d46d8c7405994c9.json",
+            "raw": "{\"execute\": \"probe-capture-before\", \"arguments\": {}, \"created\": 1791317902.759352}\n",
+            "sha256": "27aa0d063379184ea0f7fea49856b757631877e8c256f65daa9526ab951905e6",
+            "response": {
+              "return": {
+                "state": "waiting-for-operator-tap-marker",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-44/probe-before.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "ee1b21d56a3c3be58dc27c0b3bb290661985925b35da9974889df81bc253ed70"
+                }
+              }
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-44/control-transcript.jsonl",
+            "line": 5,
+            "byte_start": 2433,
+            "byte_end": 3012,
+            "sha256": "47150e3646398a32f1da121b5a81d4de1db6349ab7836a289bb9f8e5dd4fd06a",
+            "raw": "{\"time\": 1791317902.9538145, \"request_file\": \"request-f79479d0111e4cd88d46d8c7405994c9.json\", \"raw\": \"{\\\"execute\\\": \\\"probe-capture-before\\\", \\\"arguments\\\": {}, \\\"created\\\": 1791317902.759352}\\n\", \"sha256\": \"27aa0d063379184ea0f7fea49856b757631877e8c256f65daa9526ab951905e6\", \"response\": {\"return\": {\"state\": \"waiting-for-operator-tap-marker\", \"capture\": {\"path\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-44/probe-before.ppm\", \"width\": 828, \"height\": 1792, \"sha256\": \"ee1b21d56a3c3be58dc27c0b3bb290661985925b35da9974889df81bc253ed70\"}}}}\n"
+          },
+          "command": {
+            "execute": "probe-capture-before",
+            "arguments": {},
+            "created": 1791317902.759352
+          }
+        },
+        "counter_control": {
+          "value": {
+            "time": 1791317903.1645193,
+            "request_file": "request-f1b0c26fe6ea4b2494352eb244a1cb57.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"e6c9ca3795044d559048f14c967f707f\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 20316}, \"created\": 1791317903.1244824}\n",
+            "sha256": "6a384a2bbbf1a1b5b5c170e2e502eda0d2268ab740633c14271fcc11b835306c",
+            "response": {
+              "request_id": "e6c9ca3795044d559048f14c967f707f",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-44/control-transcript.jsonl",
+            "line": 6,
+            "byte_start": 3012,
+            "byte_end": 3617,
+            "sha256": "2895e984ce975a96143303c9e66202cd28bf704f86b6128c50bbf9997e9c2cdc",
+            "raw": "{\"time\": 1791317903.1645193, \"request_file\": \"request-f1b0c26fe6ea4b2494352eb244a1cb57.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"e6c9ca3795044d559048f14c967f707f\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 20316}, \\\"created\\\": 1791317903.1244824}\\n\", \"sha256\": \"6a384a2bbbf1a1b5b5c170e2e502eda0d2268ab740633c14271fcc11b835306c\", \"response\": {\"request_id\": \"e6c9ca3795044d559048f14c967f707f\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "e6c9ca3795044d559048f14c967f707f",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 20316
+            },
+            "created": 1791317903.1244824
+          }
+        },
+        "close_wire": {
+          "value": {
+            "time": 1791317883.111088,
+            "stage": "before-send",
+            "request_id": "8ff2415168dd4b0caf0daa374b6d4f8d",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 8ff2415168dd4b0caf0daa374b6d4f8d TAP 16384 18560 150\n",
+            "sha256": "7d10493d467b22b22ecca19d3ae68ce2e44dfdfa4f31b09aa05153938606a075"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-44/serial-input-transcript.jsonl",
+            "line": 5,
+            "byte_start": 1115,
+            "byte_end": 1395,
+            "sha256": "0ab7485a4801dfc8da19bd9195627ad421b672738526fa0630856dea6b02ff23",
+            "raw": "{\"time\": 1791317883.111088, \"stage\": \"before-send\", \"request_id\": \"8ff2415168dd4b0caf0daa374b6d4f8d\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 8ff2415168dd4b0caf0daa374b6d4f8d TAP 16384 18560 150\\n\", \"sha256\": \"7d10493d467b22b22ecca19d3ae68ce2e44dfdfa4f31b09aa05153938606a075\"}\n"
+          }
+        },
+        "counter_wire": {
+          "value": {
+            "time": 1791317903.1646042,
+            "stage": "before-send",
+            "request_id": "e6c9ca3795044d559048f14c967f707f",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 e6c9ca3795044d559048f14c967f707f TAP 16384 20316 150\n",
+            "sha256": "f8d00213ef9bff63b0ef1c1fe4fbb0a5045c5aa5dc8e54ad6436394dd92341b1"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-44/serial-input-transcript.jsonl",
+            "line": 7,
+            "byte_start": 1658,
+            "byte_end": 1939,
+            "sha256": "7c11bdf8e42cc76e67945100bfe8d85dd9fe0569eec172b8666310bb83917310",
+            "raw": "{\"time\": 1791317903.1646042, \"stage\": \"before-send\", \"request_id\": \"e6c9ca3795044d559048f14c967f707f\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 e6c9ca3795044d559048f14c967f707f TAP 16384 20316 150\\n\", \"sha256\": \"f8d00213ef9bff63b0ef1c1fe4fbb0a5045c5aa5dc8e54ad6436394dd92341b1\"}\n"
+          }
+        },
+        "before_qmp_request": {
+          "value": {
+            "direction": "send",
+            "time": 1791317902.9546583,
+            "raw": "{\"execute\": \"screendump\", \"id\": 25, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-44/probe-before.ppm\"}}\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-44/qmp-transcript.jsonl",
+            "line": 72,
+            "byte_start": 16327,
+            "byte_end": 16569,
+            "sha256": "1b1cc9752b67b1421f9af565884be03e6d6afc51e8db397afc75296481151248",
+            "raw": "{\"direction\": \"send\", \"time\": 1791317902.9546583, \"raw\": \"{\\\"execute\\\": \\\"screendump\\\", \\\"id\\\": 25, \\\"arguments\\\": {\\\"filename\\\": \\\"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-44/probe-before.ppm\\\"}}\\n\"}\n"
+          }
+        },
+        "before_qmp_reply": {
+          "value": {
+            "direction": "receive",
+            "time": 1791317902.9596322,
+            "raw": "{\"return\": {}, \"id\": 25}\r\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-44/qmp-transcript.jsonl",
+            "line": 73,
+            "byte_start": 16569,
+            "byte_end": 16665,
+            "sha256": "96dff30e9d49b9b1218a0cdf854409bdee4387927a8611d196cc185e14b910a2",
+            "raw": "{\"direction\": \"receive\", \"time\": 1791317902.9596322, \"raw\": \"{\\\"return\\\": {}, \\\"id\\\": 25}\\r\\n\"}\n"
+          }
+        }
+      },
+      "seconds": {
+        "close_wire_to_counter_wire": 20.053516149520874,
+        "close_wire_to_before_control": 19.842726469039917,
+        "before_control_to_counter_wire": 0.21078968048095703,
+        "before_qmp_request_to_reply": 0.004973888397216797,
+        "before_qmp_reply_to_counter_wire": 0.2049720287322998
+      },
+      "geometry": {
+        "close": {
+          "request_id": "8ff2415168dd4b0caf0daa374b6d4f8d",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 18560
+        },
+        "counter": {
+          "request_id": "e6c9ca3795044d559048f14c967f707f",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 20316
+        }
+      },
+      "guest_acknowledgments": [
+        {
+          "byte_start": 278572,
+          "byte_end": 278688,
+          "sha256": "a0d953b324c216d96c4f8b13960604a04e5dcde326910f14e1db8c39a46bf900",
+          "text": "INFERNO_HID_ACK request_id=8ff2415168dd4b0caf0daa374b6d4f8d attempt_status=0 delivery=unproven timestamp=4992579038"
+        },
+        {
+          "byte_start": 281045,
+          "byte_end": 281161,
+          "sha256": "228676178cd2aad5d80fd7564eac352dde749d9e607851bababb1db1d6162302",
+          "text": "INFERNO_HID_ACK request_id=e6c9ca3795044d559048f14c967f707f attempt_status=0 delivery=unproven timestamp=5481546308"
+        }
+      ]
+    },
+    {
+      "run": 47,
+      "observed_group": "stalled",
+      "sources": {
+        "control": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-47/control-transcript.jsonl",
+          "bytes": 7962,
+          "sha256": "0c211d7fb8e222facb15c591f38a9cf62c5d7aae5f1f9682c5f5326f592c206a"
+        },
+        "wire": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-47/serial-input-transcript.jsonl",
+          "bytes": 2204,
+          "sha256": "e57be131f99259ea8d54faf5f13e09a6d343be29fb32cc29ddab01d633daea0a"
+        },
+        "qmp": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-47/qmp-transcript.jsonl",
+          "bytes": 37008,
+          "sha256": "b60f807ade5e1e5de6241d4a5fbe22ffea39d8de8946249b52ee3a9e19e99772"
+        },
+        "serial": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-47/serial.log",
+          "bytes": 488228,
+          "sha256": "f3e34bb903a2513d82fb1090c9ffc6efa5d5419506d5226e1a2f42d0dba5b822"
+        }
+      },
+      "missing": [],
+      "records": {
+        "close_control": {
+          "value": {
+            "time": 1791320159.1679893,
+            "request_file": "request-d46d746d852943dba256437859252107.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"59d8762d026c446eb1eacc477f6e7ba7\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 18560}, \"created\": 1791320159.1131258}\n",
+            "sha256": "969b5518c17d8e0f91139b68e40921fce31acf3e269735b5461264b5a39bcb3f",
+            "response": {
+              "request_id": "59d8762d026c446eb1eacc477f6e7ba7",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-47/control-transcript.jsonl",
+            "line": 4,
+            "byte_start": 1883,
+            "byte_end": 2488,
+            "sha256": "710c66afcbd0ea9486d3638bbe3266f245c176a45c6fd9ae2600cf799c1c670b",
+            "raw": "{\"time\": 1791320159.1679893, \"request_file\": \"request-d46d746d852943dba256437859252107.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"59d8762d026c446eb1eacc477f6e7ba7\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 18560}, \\\"created\\\": 1791320159.1131258}\\n\", \"sha256\": \"969b5518c17d8e0f91139b68e40921fce31acf3e269735b5461264b5a39bcb3f\", \"response\": {\"request_id\": \"59d8762d026c446eb1eacc477f6e7ba7\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "59d8762d026c446eb1eacc477f6e7ba7",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 18560
+            },
+            "created": 1791320159.1131258
+          }
+        },
+        "before_control": {
+          "value": {
+            "time": 1791320176.0017104,
+            "request_file": "request-b6a8aaf0ae654252b814eca347763944.json",
+            "raw": "{\"execute\": \"probe-capture-before\", \"arguments\": {}, \"created\": 1791320175.9206877}\n",
+            "sha256": "e75474fdf35e3c082136be434e5ce4c4bb0d0d0c7e89a9b0bf8f6f1b9824a368",
+            "response": {
+              "return": {
+                "state": "waiting-for-operator-tap-marker",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-47/probe-before.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "277a9d366c5fc152f600332530df9dcd33b493457bac55061e63824228e7f241"
+                }
+              }
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-47/control-transcript.jsonl",
+            "line": 5,
+            "byte_start": 2488,
+            "byte_end": 3068,
+            "sha256": "b74fbb4cd00b6f55d5592100e202d1821cb5e764ced02c41e154dca4adcd8259",
+            "raw": "{\"time\": 1791320176.0017104, \"request_file\": \"request-b6a8aaf0ae654252b814eca347763944.json\", \"raw\": \"{\\\"execute\\\": \\\"probe-capture-before\\\", \\\"arguments\\\": {}, \\\"created\\\": 1791320175.9206877}\\n\", \"sha256\": \"e75474fdf35e3c082136be434e5ce4c4bb0d0d0c7e89a9b0bf8f6f1b9824a368\", \"response\": {\"return\": {\"state\": \"waiting-for-operator-tap-marker\", \"capture\": {\"path\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-47/probe-before.ppm\", \"width\": 828, \"height\": 1792, \"sha256\": \"277a9d366c5fc152f600332530df9dcd33b493457bac55061e63824228e7f241\"}}}}\n"
+          },
+          "command": {
+            "execute": "probe-capture-before",
+            "arguments": {},
+            "created": 1791320175.9206877
+          }
+        },
+        "counter_control": {
+          "value": {
+            "time": 1791320176.2166545,
+            "request_file": "request-0c4ef3704d1d4b8194088b8f5d9eb042.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"99afb731b5bc4d9cb00536b6b3bd749a\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 20316}, \"created\": 1791320176.1085696}\n",
+            "sha256": "1ea3d77261609b873be91428f08ede93f89d01785cd2d07914c668cbaa1b4f36",
+            "response": {
+              "request_id": "99afb731b5bc4d9cb00536b6b3bd749a",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-47/control-transcript.jsonl",
+            "line": 6,
+            "byte_start": 3068,
+            "byte_end": 3673,
+            "sha256": "dc6eba9b1591fd532e6981704f94f002971c6fde5aab05a7bdefdfa327588358",
+            "raw": "{\"time\": 1791320176.2166545, \"request_file\": \"request-0c4ef3704d1d4b8194088b8f5d9eb042.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"99afb731b5bc4d9cb00536b6b3bd749a\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 20316}, \\\"created\\\": 1791320176.1085696}\\n\", \"sha256\": \"1ea3d77261609b873be91428f08ede93f89d01785cd2d07914c668cbaa1b4f36\", \"response\": {\"request_id\": \"99afb731b5bc4d9cb00536b6b3bd749a\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "99afb731b5bc4d9cb00536b6b3bd749a",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 20316
+            },
+            "created": 1791320176.1085696
+          }
+        },
+        "close_wire": {
+          "value": {
+            "time": 1791320159.1680768,
+            "stage": "before-send",
+            "request_id": "59d8762d026c446eb1eacc477f6e7ba7",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 59d8762d026c446eb1eacc477f6e7ba7 TAP 16384 18560 150\n",
+            "sha256": "bdd2dd5cc00878d3ea46bc3750484e0d94d2e1c821e465f05e4eebb9801b8a0e"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-47/serial-input-transcript.jsonl",
+            "line": 5,
+            "byte_start": 1116,
+            "byte_end": 1397,
+            "sha256": "7f4a641886b0eb0410ed4517c90f7d66140ff5bb94343257e4450a9bd9625530",
+            "raw": "{\"time\": 1791320159.1680768, \"stage\": \"before-send\", \"request_id\": \"59d8762d026c446eb1eacc477f6e7ba7\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 59d8762d026c446eb1eacc477f6e7ba7 TAP 16384 18560 150\\n\", \"sha256\": \"bdd2dd5cc00878d3ea46bc3750484e0d94d2e1c821e465f05e4eebb9801b8a0e\"}\n"
+          }
+        },
+        "counter_wire": {
+          "value": {
+            "time": 1791320176.2167795,
+            "stage": "before-send",
+            "request_id": "99afb731b5bc4d9cb00536b6b3bd749a",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 99afb731b5bc4d9cb00536b6b3bd749a TAP 16384 20316 150\n",
+            "sha256": "aa6fcefb64df66801487ca246badc2350376ac0e24b664379df90848c6946f83"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-47/serial-input-transcript.jsonl",
+            "line": 7,
+            "byte_start": 1660,
+            "byte_end": 1941,
+            "sha256": "1373cd52031aefc92f4f1f9077cac790d906b312da1ed028f549900c370548d4",
+            "raw": "{\"time\": 1791320176.2167795, \"stage\": \"before-send\", \"request_id\": \"99afb731b5bc4d9cb00536b6b3bd749a\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 99afb731b5bc4d9cb00536b6b3bd749a TAP 16384 20316 150\\n\", \"sha256\": \"aa6fcefb64df66801487ca246badc2350376ac0e24b664379df90848c6946f83\"}\n"
+          }
+        },
+        "before_qmp_request": {
+          "value": {
+            "direction": "send",
+            "time": 1791320176.003159,
+            "raw": "{\"execute\": \"screendump\", \"id\": 31, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-47/probe-before.ppm\"}}\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-47/qmp-transcript.jsonl",
+            "line": 78,
+            "byte_start": 15727,
+            "byte_end": 15968,
+            "sha256": "6a73e69b6cb9983724944bce5026481a312bbe054e6cf09914649f6aae4d42b4",
+            "raw": "{\"direction\": \"send\", \"time\": 1791320176.003159, \"raw\": \"{\\\"execute\\\": \\\"screendump\\\", \\\"id\\\": 31, \\\"arguments\\\": {\\\"filename\\\": \\\"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-47/probe-before.ppm\\\"}}\\n\"}\n"
+          }
+        },
+        "before_qmp_reply": {
+          "value": {
+            "direction": "receive",
+            "time": 1791320176.0104775,
+            "raw": "{\"return\": {}, \"id\": 31}\r\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-47/qmp-transcript.jsonl",
+            "line": 79,
+            "byte_start": 15968,
+            "byte_end": 16064,
+            "sha256": "737dbd8418fd7b181f33b369ab860e875b77c1f26c3fe320931c9f581e4d4c69",
+            "raw": "{\"direction\": \"receive\", \"time\": 1791320176.0104775, \"raw\": \"{\\\"return\\\": {}, \\\"id\\\": 31}\\r\\n\"}\n"
+          }
+        }
+      },
+      "seconds": {
+        "close_wire_to_counter_wire": 17.048702716827393,
+        "close_wire_to_before_control": 16.83363366127014,
+        "before_control_to_counter_wire": 0.21506905555725098,
+        "before_qmp_request_to_reply": 0.0073184967041015625,
+        "before_qmp_reply_to_counter_wire": 0.20630192756652832
+      },
+      "geometry": {
+        "close": {
+          "request_id": "59d8762d026c446eb1eacc477f6e7ba7",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 18560
+        },
+        "counter": {
+          "request_id": "99afb731b5bc4d9cb00536b6b3bd749a",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 20316
+        }
+      },
+      "guest_acknowledgments": [
+        {
+          "byte_start": 463740,
+          "byte_end": 463856,
+          "sha256": "a3abf965ff1619c477404e0e93e096a4a3fe2bca0c4877d5b847fcea9952a589",
+          "text": "INFERNO_HID_ACK request_id=59d8762d026c446eb1eacc477f6e7ba7 attempt_status=0 delivery=unproven timestamp=8367499659"
+        },
+        {
+          "byte_start": 466213,
+          "byte_end": 466329,
+          "sha256": "32da9b3410302062218cb4562f3a36a25be7c76693167095e2c995a4001243cf",
+          "text": "INFERNO_HID_ACK request_id=99afb731b5bc4d9cb00536b6b3bd749a attempt_status=0 delivery=unproven timestamp=8784842152"
+        }
+      ]
+    },
+    {
+      "run": 45,
+      "observed_group": "healthy",
+      "sources": {
+        "control": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-45/control-transcript.jsonl",
+          "bytes": 7865,
+          "sha256": "811dcde831e5ad3899f62e2e7a23029405234333dbe95c109dc50b7efa80f8c4"
+        },
+        "wire": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-45/serial-input-transcript.jsonl",
+          "bytes": 2203,
+          "sha256": "3f051614904aca05726d2e16f71bc105143ba8eb12ac570a36c603de87a7f4b1"
+        },
+        "qmp": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-45/qmp-transcript.jsonl",
+          "bytes": 34786,
+          "sha256": "eb1f5635986d6473111765a286c87b9af97b3ea3fc7b92929704a06fea316461"
+        },
+        "serial": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-45/serial.log",
+          "bytes": 317826,
+          "sha256": "d24138b4a30183c664496b3cb74aa2809c396abe28f0bd6913c266a43cd5b68d"
+        }
+      },
+      "missing": [],
+      "records": {
+        "close_control": {
+          "value": {
+            "time": 1791318721.8406017,
+            "request_file": "request-e9542fdcc72a4431896199d0a21d2503.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"897e01e14691458a9b0baddacbe4e4e5\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 18560}, \"created\": 1791318721.8098922}\n",
+            "sha256": "41cd6e438fd7d92e05c765977d05ee591b6b50411d0ee330c0209762a1a91a92",
+            "response": {
+              "request_id": "897e01e14691458a9b0baddacbe4e4e5",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-45/control-transcript.jsonl",
+            "line": 5,
+            "byte_start": 2489,
+            "byte_end": 3094,
+            "sha256": "9946f53a6a3d42dc81a8cb86d349ff63b7b3a4c3b9862fd3c3a2fe7362cc0a0b",
+            "raw": "{\"time\": 1791318721.8406017, \"request_file\": \"request-e9542fdcc72a4431896199d0a21d2503.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"897e01e14691458a9b0baddacbe4e4e5\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 18560}, \\\"created\\\": 1791318721.8098922}\\n\", \"sha256\": \"41cd6e438fd7d92e05c765977d05ee591b6b50411d0ee330c0209762a1a91a92\", \"response\": {\"request_id\": \"897e01e14691458a9b0baddacbe4e4e5\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "897e01e14691458a9b0baddacbe4e4e5",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 18560
+            },
+            "created": 1791318721.8098922
+          }
+        },
+        "before_control": {
+          "value": {
+            "time": 1791318744.8950667,
+            "request_file": "request-0b8523b2b92a4908b81d3c32a924fd1b.json",
+            "raw": "{\"execute\": \"probe-capture-before\", \"arguments\": {}, \"created\": 1791318744.8689594}\n",
+            "sha256": "b4b7fc01161b235f9d1d6a44e4fd0fc4f1c011f7abe4b60ce3134f5c68fd39cb",
+            "response": {
+              "return": {
+                "state": "waiting-for-operator-tap-marker",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-45/probe-before.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "31459033647a584013a4e7570fa8684fed1e9a11c727064e00a94412ac2dbe51"
+                }
+              }
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-45/control-transcript.jsonl",
+            "line": 6,
+            "byte_start": 3094,
+            "byte_end": 3674,
+            "sha256": "6f3d1a7467bef6c99de366d58f6d38c1c836723c831d4cd4cdb8ad6502a8ca16",
+            "raw": "{\"time\": 1791318744.8950667, \"request_file\": \"request-0b8523b2b92a4908b81d3c32a924fd1b.json\", \"raw\": \"{\\\"execute\\\": \\\"probe-capture-before\\\", \\\"arguments\\\": {}, \\\"created\\\": 1791318744.8689594}\\n\", \"sha256\": \"b4b7fc01161b235f9d1d6a44e4fd0fc4f1c011f7abe4b60ce3134f5c68fd39cb\", \"response\": {\"return\": {\"state\": \"waiting-for-operator-tap-marker\", \"capture\": {\"path\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-45/probe-before.ppm\", \"width\": 828, \"height\": 1792, \"sha256\": \"31459033647a584013a4e7570fa8684fed1e9a11c727064e00a94412ac2dbe51\"}}}}\n"
+          },
+          "command": {
+            "execute": "probe-capture-before",
+            "arguments": {},
+            "created": 1791318744.8689594
+          }
+        },
+        "counter_control": {
+          "value": {
+            "time": 1791318745.1070428,
+            "request_file": "request-f9e644a2dad34e96ae421088b5fbd73c.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"90438a0d9b3d48f4af36125a02cf08ca\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 20316}, \"created\": 1791318745.0702665}\n",
+            "sha256": "766ff0c6279dcfc6fe47a90295bce11e04dd71f46c0a4dd0c725d9592c457d77",
+            "response": {
+              "request_id": "90438a0d9b3d48f4af36125a02cf08ca",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-45/control-transcript.jsonl",
+            "line": 7,
+            "byte_start": 3674,
+            "byte_end": 4279,
+            "sha256": "4cdc91bf0a0e742a3fa2e9cd9c46407960d0683ee325f94ec669d36871feedff",
+            "raw": "{\"time\": 1791318745.1070428, \"request_file\": \"request-f9e644a2dad34e96ae421088b5fbd73c.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"90438a0d9b3d48f4af36125a02cf08ca\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 20316}, \\\"created\\\": 1791318745.0702665}\\n\", \"sha256\": \"766ff0c6279dcfc6fe47a90295bce11e04dd71f46c0a4dd0c725d9592c457d77\", \"response\": {\"request_id\": \"90438a0d9b3d48f4af36125a02cf08ca\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "90438a0d9b3d48f4af36125a02cf08ca",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 20316
+            },
+            "created": 1791318745.0702665
+          }
+        },
+        "close_wire": {
+          "value": {
+            "time": 1791318721.8407102,
+            "stage": "before-send",
+            "request_id": "897e01e14691458a9b0baddacbe4e4e5",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 897e01e14691458a9b0baddacbe4e4e5 TAP 16384 18560 150\n",
+            "sha256": "31e63a49e6c4b6da201f531ab28627a0b58b462a39eb0b724e41d5798b363573"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-45/serial-input-transcript.jsonl",
+            "line": 5,
+            "byte_start": 1115,
+            "byte_end": 1396,
+            "sha256": "83e038e4d6abff77d70ecb4372a40c9e27a06e124e0b7cf025ac783f78680d6e",
+            "raw": "{\"time\": 1791318721.8407102, \"stage\": \"before-send\", \"request_id\": \"897e01e14691458a9b0baddacbe4e4e5\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 897e01e14691458a9b0baddacbe4e4e5 TAP 16384 18560 150\\n\", \"sha256\": \"31e63a49e6c4b6da201f531ab28627a0b58b462a39eb0b724e41d5798b363573\"}\n"
+          }
+        },
+        "counter_wire": {
+          "value": {
+            "time": 1791318745.1071534,
+            "stage": "before-send",
+            "request_id": "90438a0d9b3d48f4af36125a02cf08ca",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 90438a0d9b3d48f4af36125a02cf08ca TAP 16384 20316 150\n",
+            "sha256": "41f6bdae55808b4fd1da094e5db86ff9d416a09ec7d053fa16eb3cc0a9aff13e"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-45/serial-input-transcript.jsonl",
+            "line": 7,
+            "byte_start": 1659,
+            "byte_end": 1940,
+            "sha256": "edc89592f5bfa7717cf59d9db80b44f570d631e4c26f84a862c7db29613e1f59",
+            "raw": "{\"time\": 1791318745.1071534, \"stage\": \"before-send\", \"request_id\": \"90438a0d9b3d48f4af36125a02cf08ca\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 90438a0d9b3d48f4af36125a02cf08ca TAP 16384 20316 150\\n\", \"sha256\": \"41f6bdae55808b4fd1da094e5db86ff9d416a09ec7d053fa16eb3cc0a9aff13e\"}\n"
+          }
+        },
+        "before_qmp_request": {
+          "value": {
+            "direction": "send",
+            "time": 1791318744.896309,
+            "raw": "{\"execute\": \"screendump\", \"id\": 42, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-45/probe-before.ppm\"}}\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-45/qmp-transcript.jsonl",
+            "line": 106,
+            "byte_start": 21157,
+            "byte_end": 21398,
+            "sha256": "4d533f0eafee8efbc7b1cf22aab08d72a73ce93d464acce7096751eaa99a29c6",
+            "raw": "{\"direction\": \"send\", \"time\": 1791318744.896309, \"raw\": \"{\\\"execute\\\": \\\"screendump\\\", \\\"id\\\": 42, \\\"arguments\\\": {\\\"filename\\\": \\\"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-45/probe-before.ppm\\\"}}\\n\"}\n"
+          }
+        },
+        "before_qmp_reply": {
+          "value": {
+            "direction": "receive",
+            "time": 1791318744.901425,
+            "raw": "{\"return\": {}, \"id\": 42}\r\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-45/qmp-transcript.jsonl",
+            "line": 107,
+            "byte_start": 21398,
+            "byte_end": 21493,
+            "sha256": "801342cc31e7e703d3d1cb2e4fb62d94880fe52f901a2930990e89d4e54729d5",
+            "raw": "{\"direction\": \"receive\", \"time\": 1791318744.901425, \"raw\": \"{\\\"return\\\": {}, \\\"id\\\": 42}\\r\\n\"}\n"
+          }
+        }
+      },
+      "seconds": {
+        "close_wire_to_counter_wire": 23.266443252563477,
+        "close_wire_to_before_control": 23.054356575012207,
+        "before_control_to_counter_wire": 0.21208667755126953,
+        "before_qmp_request_to_reply": 0.005115985870361328,
+        "before_qmp_reply_to_counter_wire": 0.20572853088378906
+      },
+      "geometry": {
+        "close": {
+          "request_id": "897e01e14691458a9b0baddacbe4e4e5",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 18560
+        },
+        "counter": {
+          "request_id": "90438a0d9b3d48f4af36125a02cf08ca",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 20316
+        }
+      },
+      "guest_acknowledgments": [
+        {
+          "byte_start": 314911,
+          "byte_end": 315027,
+          "sha256": "1e6221366801f0c0f4bce959f5253a71f6465a6f725e9c14d8ee6a95c2ae1579",
+          "text": "INFERNO_HID_ACK request_id=897e01e14691458a9b0baddacbe4e4e5 attempt_status=0 delivery=unproven timestamp=5773660672"
+        },
+        {
+          "byte_start": 317384,
+          "byte_end": 317500,
+          "sha256": "dc1adff9997d59a2e072568516009d50e5dd935153ef91edceb94c0cf725f56e",
+          "text": "INFERNO_HID_ACK request_id=90438a0d9b3d48f4af36125a02cf08ca attempt_status=0 delivery=unproven timestamp=6345762868"
+        }
+      ]
+    },
+    {
+      "run": 46,
+      "observed_group": "healthy",
+      "sources": {
+        "control": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-46/control-transcript.jsonl",
+          "bytes": 5122,
+          "sha256": "ccea89b4dfe219e55a6be364debfba1006fc3ca8b52d0bd435022e6aa2beb68c"
+        },
+        "wire": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-46/serial-input-transcript.jsonl",
+          "bytes": 2207,
+          "sha256": "cbc4c1de186e701bc844b3095f49f4d465b9103cd1f72991fcaf731862f5a852"
+        },
+        "qmp": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-46/qmp-transcript.jsonl",
+          "bytes": 30620,
+          "sha256": "17db2baa092cf41308f8e872b348d6b186a72c5d9bad5e5ed8b910be189332f3"
+        },
+        "serial": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-46/serial.log",
+          "bytes": 316749,
+          "sha256": "3c7ff1a17583762ba79937a8dd18b3a5b0deff24e2d83b7342f3c3b95ab6a883"
+        }
+      },
+      "missing": [],
+      "records": {
+        "close_control": {
+          "value": {
+            "time": 1791319153.4665325,
+            "request_file": "request-f841049ff6e4404c90aae8f8380257cc.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"7d3b37c9393a40ef8f4e999cd0ebb839\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 18560}, \"created\": 1791319153.379355}\n",
+            "sha256": "e710461f7f53ddc6e94c16a49559b57c4fa0bae46610f0457c1c7afb62f28446",
+            "response": {
+              "request_id": "7d3b37c9393a40ef8f4e999cd0ebb839",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-46/control-transcript.jsonl",
+            "line": 3,
+            "byte_start": 1244,
+            "byte_end": 1848,
+            "sha256": "4a06f63feb43bd29351d5d3d3960548236b19c58bf67220d8aec92c0e34767c9",
+            "raw": "{\"time\": 1791319153.4665325, \"request_file\": \"request-f841049ff6e4404c90aae8f8380257cc.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"7d3b37c9393a40ef8f4e999cd0ebb839\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 18560}, \\\"created\\\": 1791319153.379355}\\n\", \"sha256\": \"e710461f7f53ddc6e94c16a49559b57c4fa0bae46610f0457c1c7afb62f28446\", \"response\": {\"request_id\": \"7d3b37c9393a40ef8f4e999cd0ebb839\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "7d3b37c9393a40ef8f4e999cd0ebb839",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 18560
+            },
+            "created": 1791319153.379355
+          }
+        },
+        "before_control": {
+          "value": {
+            "time": 1791319181.5261898,
+            "request_file": "request-bc649b12f83240218c514558810439ea.json",
+            "raw": "{\"execute\": \"probe-capture-before\", \"arguments\": {}, \"created\": 1791319181.5188346}\n",
+            "sha256": "f9fe2ab1c6b3141341cc49434fafd226bb40f85334d6b0447fd1b4514992b353",
+            "response": {
+              "return": {
+                "state": "waiting-for-operator-tap-marker",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-46/probe-before.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "a35a840ca43efe999fffa733f77b09fd08d19d7f36b4b9f165cb13f3c60bba66"
+                }
+              }
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-46/control-transcript.jsonl",
+            "line": 4,
+            "byte_start": 1848,
+            "byte_end": 2428,
+            "sha256": "662ef7224d20be2cfbed1851f84b9ac8b252f3a32dcbf5d0429cc7e01ae4d125",
+            "raw": "{\"time\": 1791319181.5261898, \"request_file\": \"request-bc649b12f83240218c514558810439ea.json\", \"raw\": \"{\\\"execute\\\": \\\"probe-capture-before\\\", \\\"arguments\\\": {}, \\\"created\\\": 1791319181.5188346}\\n\", \"sha256\": \"f9fe2ab1c6b3141341cc49434fafd226bb40f85334d6b0447fd1b4514992b353\", \"response\": {\"return\": {\"state\": \"waiting-for-operator-tap-marker\", \"capture\": {\"path\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-46/probe-before.ppm\", \"width\": 828, \"height\": 1792, \"sha256\": \"a35a840ca43efe999fffa733f77b09fd08d19d7f36b4b9f165cb13f3c60bba66\"}}}}\n"
+          },
+          "command": {
+            "execute": "probe-capture-before",
+            "arguments": {},
+            "created": 1791319181.5188346
+          }
+        },
+        "counter_control": {
+          "value": {
+            "time": 1791319181.739478,
+            "request_file": "request-5da3e9dbb26f4d40883f7a3cab762ca4.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"963cff179b2f4ecf9d9ef4c80ef5ca30\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 20316}, \"created\": 1791319181.7147794}\n",
+            "sha256": "1f44b10ebf6660a9f0dee66d688213d45cef01c01fb0d7d6f1068e810a386e3e",
+            "response": {
+              "request_id": "963cff179b2f4ecf9d9ef4c80ef5ca30",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-46/control-transcript.jsonl",
+            "line": 5,
+            "byte_start": 2428,
+            "byte_end": 3032,
+            "sha256": "2206e1c5c8bf68f063d1f563fd59fa9cd3b6414a9164fa20bb1438ea736080f9",
+            "raw": "{\"time\": 1791319181.739478, \"request_file\": \"request-5da3e9dbb26f4d40883f7a3cab762ca4.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"963cff179b2f4ecf9d9ef4c80ef5ca30\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 20316}, \\\"created\\\": 1791319181.7147794}\\n\", \"sha256\": \"1f44b10ebf6660a9f0dee66d688213d45cef01c01fb0d7d6f1068e810a386e3e\", \"response\": {\"request_id\": \"963cff179b2f4ecf9d9ef4c80ef5ca30\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "963cff179b2f4ecf9d9ef4c80ef5ca30",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 20316
+            },
+            "created": 1791319181.7147794
+          }
+        },
+        "close_wire": {
+          "value": {
+            "time": 1791319153.4666178,
+            "stage": "before-send",
+            "request_id": "7d3b37c9393a40ef8f4e999cd0ebb839",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 7d3b37c9393a40ef8f4e999cd0ebb839 TAP 16384 18560 150\n",
+            "sha256": "bec5869153611850008ff2b14256473f3f69ce563b13aca88c78e5935a6e4fd0"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-46/serial-input-transcript.jsonl",
+            "line": 3,
+            "byte_start": 558,
+            "byte_end": 839,
+            "sha256": "7fea47bf39ce3dbc375bdbebb3ff8acea331d4b6a85ba5e1791f90e467823256",
+            "raw": "{\"time\": 1791319153.4666178, \"stage\": \"before-send\", \"request_id\": \"7d3b37c9393a40ef8f4e999cd0ebb839\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 7d3b37c9393a40ef8f4e999cd0ebb839 TAP 16384 18560 150\\n\", \"sha256\": \"bec5869153611850008ff2b14256473f3f69ce563b13aca88c78e5935a6e4fd0\"}\n"
+          }
+        },
+        "counter_wire": {
+          "value": {
+            "time": 1791319181.739619,
+            "stage": "before-send",
+            "request_id": "963cff179b2f4ecf9d9ef4c80ef5ca30",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 963cff179b2f4ecf9d9ef4c80ef5ca30 TAP 16384 20316 150\n",
+            "sha256": "50902f135716b19c68b0ade6652ff5d8262b93eb16a46e534143380a76f7c2cc"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-46/serial-input-transcript.jsonl",
+            "line": 5,
+            "byte_start": 1101,
+            "byte_end": 1381,
+            "sha256": "b738f49670eed6f96366640245ff465681fbdebb2a284caba435f790208b37d3",
+            "raw": "{\"time\": 1791319181.739619, \"stage\": \"before-send\", \"request_id\": \"963cff179b2f4ecf9d9ef4c80ef5ca30\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 963cff179b2f4ecf9d9ef4c80ef5ca30 TAP 16384 20316 150\\n\", \"sha256\": \"50902f135716b19c68b0ade6652ff5d8262b93eb16a46e534143380a76f7c2cc\"}\n"
+          }
+        },
+        "before_qmp_request": {
+          "value": {
+            "direction": "send",
+            "time": 1791319181.5270953,
+            "raw": "{\"execute\": \"screendump\", \"id\": 26, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-46/probe-before.ppm\"}}\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-46/qmp-transcript.jsonl",
+            "line": 68,
+            "byte_start": 14046,
+            "byte_end": 14288,
+            "sha256": "f1cc933a678e875b1e7cb058d6b6e7efdb88690fb0cdbda37ccc445a8eb5c6e5",
+            "raw": "{\"direction\": \"send\", \"time\": 1791319181.5270953, \"raw\": \"{\\\"execute\\\": \\\"screendump\\\", \\\"id\\\": 26, \\\"arguments\\\": {\\\"filename\\\": \\\"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-46/probe-before.ppm\\\"}}\\n\"}\n"
+          }
+        },
+        "before_qmp_reply": {
+          "value": {
+            "direction": "receive",
+            "time": 1791319181.5337956,
+            "raw": "{\"return\": {}, \"id\": 26}\r\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-46/qmp-transcript.jsonl",
+            "line": 69,
+            "byte_start": 14288,
+            "byte_end": 14384,
+            "sha256": "19b0dc7d74fbb32ea6091c844588d4257c2421a4895cc2172d7146b802efa4c8",
+            "raw": "{\"direction\": \"receive\", \"time\": 1791319181.5337956, \"raw\": \"{\\\"return\\\": {}, \\\"id\\\": 26}\\r\\n\"}\n"
+          }
+        }
+      },
+      "seconds": {
+        "close_wire_to_counter_wire": 28.273001194000244,
+        "close_wire_to_before_control": 28.059571981430054,
+        "before_control_to_counter_wire": 0.21342921257019043,
+        "before_qmp_request_to_reply": 0.006700277328491211,
+        "before_qmp_reply_to_counter_wire": 0.20582342147827148
+      },
+      "geometry": {
+        "close": {
+          "request_id": "7d3b37c9393a40ef8f4e999cd0ebb839",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 18560
+        },
+        "counter": {
+          "request_id": "963cff179b2f4ecf9d9ef4c80ef5ca30",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 20316
+        }
+      },
+      "guest_acknowledgments": [
+        {
+          "byte_start": 248531,
+          "byte_end": 248647,
+          "sha256": "9e9af25efda3bba6d4287d4685cc3de910cdb3231e03dacda3f57dcbce19dc4e",
+          "text": "INFERNO_HID_ACK request_id=7d3b37c9393a40ef8f4e999cd0ebb839 attempt_status=0 delivery=unproven timestamp=3812442320"
+        },
+        {
+          "byte_start": 271672,
+          "byte_end": 271788,
+          "sha256": "eb8ec5ef320cf9e2e27c4c65fc4e763ae6f006d55b0685d14d178afe4e0ed451",
+          "text": "INFERNO_HID_ACK request_id=963cff179b2f4ecf9d9ef4c80ef5ca30 attempt_status=0 delivery=unproven timestamp=4499741096"
+        }
+      ]
+    },
+    {
+      "run": 49,
+      "observed_group": "healthy",
+      "sources": {
+        "control": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/control-transcript.jsonl",
+          "bytes": 7196,
+          "sha256": "e188297bd55e0823f30b8c862584ab633e2c11df7f1bc2e337b3b2edd433c9c4"
+        },
+        "wire": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/serial-input-transcript.jsonl",
+          "bytes": 3922,
+          "sha256": "e2c9c8a01bcfe78afe0e6716cead8bc124efec4dd172de6545e6f1a6e0ae2954"
+        },
+        "qmp": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/qmp-transcript.jsonl",
+          "bytes": 27273,
+          "sha256": "9464882af5e9169b632637d77c9fe542b56e6f044e2690a4b735a3f7e9d737cb"
+        },
+        "serial": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/serial.log",
+          "bytes": 404890,
+          "sha256": "f8378b25d9b5279435284c95475f31dcb3878b8771e299facc9f2bafa9a824db"
+        }
+      },
+      "missing": [],
+      "records": {
+        "close_control": {
+          "value": {
+            "time": 1791321437.2423415,
+            "request_file": "request-d8fa7f75fa4a4576b90800e9f62db4bf.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"ba9c04e03926402db7df447500085892\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 18560}, \"created\": 1791321437.1567984}\n",
+            "sha256": "06c0b1fe79cc823108003a7bc7f20dcf816f8602cbb7c1b78ce0602be42bbdfc",
+            "response": {
+              "request_id": "ba9c04e03926402db7df447500085892",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/control-transcript.jsonl",
+            "line": 4,
+            "byte_start": 1882,
+            "byte_end": 2487,
+            "sha256": "68a314a7af2e821e0916d077d84436fcf6fa7094fbd706f0499f9381aa4daaac",
+            "raw": "{\"time\": 1791321437.2423415, \"request_file\": \"request-d8fa7f75fa4a4576b90800e9f62db4bf.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"ba9c04e03926402db7df447500085892\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 18560}, \\\"created\\\": 1791321437.1567984}\\n\", \"sha256\": \"06c0b1fe79cc823108003a7bc7f20dcf816f8602cbb7c1b78ce0602be42bbdfc\", \"response\": {\"request_id\": \"ba9c04e03926402db7df447500085892\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "ba9c04e03926402db7df447500085892",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 18560
+            },
+            "created": 1791321437.1567984
+          }
+        },
+        "before_control": {
+          "value": {
+            "time": 1791321461.8997884,
+            "request_file": "request-c31ef9b2d929435aba888fe3f2ca82d4.json",
+            "raw": "{\"execute\": \"probe-capture-before\", \"arguments\": {}, \"created\": 1791321461.7191267}\n",
+            "sha256": "2713b71be0eec5c5358c97f74afd7dc8c41e72dd70f191436fba4e1881b0a985",
+            "response": {
+              "return": {
+                "state": "waiting-for-operator-tap-marker",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/probe-before.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "a46a85e164f1f4329f6dcb1f2024e9c1656a64a914edc5bf27078b6e1d61169e"
+                }
+              }
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/control-transcript.jsonl",
+            "line": 5,
+            "byte_start": 2487,
+            "byte_end": 3067,
+            "sha256": "0fa8ed175dc79a65bf9a022fe4f8955af31a1e956917c4474c20b428a21b6faa",
+            "raw": "{\"time\": 1791321461.8997884, \"request_file\": \"request-c31ef9b2d929435aba888fe3f2ca82d4.json\", \"raw\": \"{\\\"execute\\\": \\\"probe-capture-before\\\", \\\"arguments\\\": {}, \\\"created\\\": 1791321461.7191267}\\n\", \"sha256\": \"2713b71be0eec5c5358c97f74afd7dc8c41e72dd70f191436fba4e1881b0a985\", \"response\": {\"return\": {\"state\": \"waiting-for-operator-tap-marker\", \"capture\": {\"path\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/probe-before.ppm\", \"width\": 828, \"height\": 1792, \"sha256\": \"a46a85e164f1f4329f6dcb1f2024e9c1656a64a914edc5bf27078b6e1d61169e\"}}}}\n"
+          },
+          "command": {
+            "execute": "probe-capture-before",
+            "arguments": {},
+            "created": 1791321461.7191267
+          }
+        },
+        "counter_control": {
+          "value": {
+            "time": 1791321462.1116498,
+            "request_file": "request-241b0e4be4ad45878a7f61d7c99f46ef.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"878d8f31544848fe80f77d51cf9a996c\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 20316}, \"created\": 1791321461.9813776}\n",
+            "sha256": "f02815ff723739541de2b0b48dc53d2000e81349dff2b29b24558b6acae9ba8c",
+            "response": {
+              "request_id": "878d8f31544848fe80f77d51cf9a996c",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/control-transcript.jsonl",
+            "line": 6,
+            "byte_start": 3067,
+            "byte_end": 3672,
+            "sha256": "8dc277e299e0b913e45626a88fb28370dc7eba89f82d20a624deaefa660ff1d5",
+            "raw": "{\"time\": 1791321462.1116498, \"request_file\": \"request-241b0e4be4ad45878a7f61d7c99f46ef.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"878d8f31544848fe80f77d51cf9a996c\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 20316}, \\\"created\\\": 1791321461.9813776}\\n\", \"sha256\": \"f02815ff723739541de2b0b48dc53d2000e81349dff2b29b24558b6acae9ba8c\", \"response\": {\"request_id\": \"878d8f31544848fe80f77d51cf9a996c\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "878d8f31544848fe80f77d51cf9a996c",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 20316
+            },
+            "created": 1791321461.9813776
+          }
+        },
+        "close_wire": {
+          "value": {
+            "time": 1791321437.242428,
+            "stage": "before-send",
+            "request_id": "ba9c04e03926402db7df447500085892",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 ba9c04e03926402db7df447500085892 TAP 16384 18560 150\n",
+            "sha256": "c72cd9d46a0116ac4e09316b96920ad45e7c83cb5fb90bfc4d3c491c364b109c"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/serial-input-transcript.jsonl",
+            "line": 5,
+            "byte_start": 1115,
+            "byte_end": 1395,
+            "sha256": "af8f098a3d356e178efe06e0b105fb13c9b102118bd3194747f197cef9fb1c71",
+            "raw": "{\"time\": 1791321437.242428, \"stage\": \"before-send\", \"request_id\": \"ba9c04e03926402db7df447500085892\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 ba9c04e03926402db7df447500085892 TAP 16384 18560 150\\n\", \"sha256\": \"c72cd9d46a0116ac4e09316b96920ad45e7c83cb5fb90bfc4d3c491c364b109c\"}\n"
+          }
+        },
+        "counter_wire": {
+          "value": {
+            "time": 1791321462.1117682,
+            "stage": "before-send",
+            "request_id": "878d8f31544848fe80f77d51cf9a996c",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 878d8f31544848fe80f77d51cf9a996c TAP 16384 20316 150\n",
+            "sha256": "f51ab04ee6bbab6cb89a437a8af6317008fb680ebd284df80cd8d89dfaf20a64"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/serial-input-transcript.jsonl",
+            "line": 7,
+            "byte_start": 1658,
+            "byte_end": 1939,
+            "sha256": "421210f69e4206d40c985e9d8788ccdbb5ac187b8df5e7875127fca99216dc0c",
+            "raw": "{\"time\": 1791321462.1117682, \"stage\": \"before-send\", \"request_id\": \"878d8f31544848fe80f77d51cf9a996c\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 878d8f31544848fe80f77d51cf9a996c TAP 16384 20316 150\\n\", \"sha256\": \"f51ab04ee6bbab6cb89a437a8af6317008fb680ebd284df80cd8d89dfaf20a64\"}\n"
+          }
+        },
+        "before_qmp_request": {
+          "value": {
+            "direction": "send",
+            "time": 1791321461.9008567,
+            "raw": "{\"execute\": \"screendump\", \"id\": 27, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/probe-before.ppm\"}}\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/qmp-transcript.jsonl",
+            "line": 73,
+            "byte_start": 15641,
+            "byte_end": 15883,
+            "sha256": "c2a21d410621fe4b44f8cb4ecc377bbfb7997240b316757ca7cabde8ebfeee62",
+            "raw": "{\"direction\": \"send\", \"time\": 1791321461.9008567, \"raw\": \"{\\\"execute\\\": \\\"screendump\\\", \\\"id\\\": 27, \\\"arguments\\\": {\\\"filename\\\": \\\"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/probe-before.ppm\\\"}}\\n\"}\n"
+          }
+        },
+        "before_qmp_reply": {
+          "value": {
+            "direction": "receive",
+            "time": 1791321461.9061208,
+            "raw": "{\"return\": {}, \"id\": 27}\r\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-49/qmp-transcript.jsonl",
+            "line": 74,
+            "byte_start": 15883,
+            "byte_end": 15979,
+            "sha256": "2393a3dddf6cd1fb32ac6829ec8fd6207c5736f050ae547f890ef47d1fe91a2f",
+            "raw": "{\"direction\": \"receive\", \"time\": 1791321461.9061208, \"raw\": \"{\\\"return\\\": {}, \\\"id\\\": 27}\\r\\n\"}\n"
+          }
+        }
+      },
+      "seconds": {
+        "close_wire_to_counter_wire": 24.869340181350708,
+        "close_wire_to_before_control": 24.657360315322876,
+        "before_control_to_counter_wire": 0.21197986602783203,
+        "before_qmp_request_to_reply": 0.0052640438079833984,
+        "before_qmp_reply_to_counter_wire": 0.20564746856689453
+      },
+      "geometry": {
+        "close": {
+          "request_id": "ba9c04e03926402db7df447500085892",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 18560
+        },
+        "counter": {
+          "request_id": "878d8f31544848fe80f77d51cf9a996c",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 20316
+        }
+      },
+      "guest_acknowledgments": [
+        {
+          "byte_start": 283665,
+          "byte_end": 283781,
+          "sha256": "7ccafd5c6c42a9a70d4abd95a63c7f934ac65abb3c63b5e57954e88926c83347",
+          "text": "INFERNO_HID_ACK request_id=ba9c04e03926402db7df447500085892 attempt_status=0 delivery=unproven timestamp=4853327633"
+        },
+        {
+          "byte_start": 306853,
+          "byte_end": 306969,
+          "sha256": "bab2c7bc371667f500c4dbaa82a198bfca84ea47cacebd1dc28573cdbf8f2ad2",
+          "text": "INFERNO_HID_ACK request_id=878d8f31544848fe80f77d51cf9a996c attempt_status=0 delivery=unproven timestamp=5456608693"
+        }
+      ]
+    },
+    {
+      "run": 50,
+      "observed_group": "healthy",
+      "sources": {
+        "control": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-50/control-transcript.jsonl",
+          "bytes": 4566,
+          "sha256": "2d3a279a6655dd726e5f8c3521991fd63d19938621a4fa884eb249d1342c9ec5"
+        },
+        "wire": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-50/serial-input-transcript.jsonl",
+          "bytes": 2202,
+          "sha256": "6fa2c2dc3834c1128eb3643a5d1b9b19f23dd77e5df4acd6320eed6e683574ba"
+        },
+        "qmp": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-50/qmp-transcript.jsonl",
+          "bytes": 22141,
+          "sha256": "865aea4b0f4f3c118b253f577465153aa272824c6943383fe9a470b574963001"
+        },
+        "serial": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-50/serial.log",
+          "bytes": 320561,
+          "sha256": "95e2d8c5511a37146044ed4d9245ddf8d143a0613ff2623da24d312f4864d565"
+        }
+      },
+      "missing": [],
+      "records": {
+        "close_control": {
+          "value": {
+            "time": 1791322203.5627904,
+            "request_file": "request-948a96f93f1d49609706f9ee667937a3.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"4c5f5d738c7549d7b136de1a72c48562\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 18560}, \"created\": 1791322203.5027502}\n",
+            "sha256": "f3b87dda4bc3b1510762d86ad5bcb2cd511e3613006aed04d4433692f05472e7",
+            "response": {
+              "request_id": "4c5f5d738c7549d7b136de1a72c48562",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-50/control-transcript.jsonl",
+            "line": 4,
+            "byte_start": 1881,
+            "byte_end": 2486,
+            "sha256": "2c2ec05f2d7edf9dbcc93d517e83c941278296e6681b214225476ae69a41bd01",
+            "raw": "{\"time\": 1791322203.5627904, \"request_file\": \"request-948a96f93f1d49609706f9ee667937a3.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"4c5f5d738c7549d7b136de1a72c48562\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 18560}, \\\"created\\\": 1791322203.5027502}\\n\", \"sha256\": \"f3b87dda4bc3b1510762d86ad5bcb2cd511e3613006aed04d4433692f05472e7\", \"response\": {\"request_id\": \"4c5f5d738c7549d7b136de1a72c48562\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "4c5f5d738c7549d7b136de1a72c48562",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 18560
+            },
+            "created": 1791322203.5027502
+          }
+        },
+        "before_control": {
+          "value": {
+            "time": 1791322226.8210444,
+            "request_file": "request-10a7577362fe447ba389d30e522a575f.json",
+            "raw": "{\"execute\": \"probe-capture-before\", \"arguments\": {}, \"created\": 1791322226.6794162}\n",
+            "sha256": "91bb8e484c99c59b3cf8b11cc1fd8db54a309cabca4f20764ff2028b3198244c",
+            "response": {
+              "return": {
+                "state": "waiting-for-operator-tap-marker",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-50/probe-before.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "8fbc7a66489b12767bea128de6c4201e2bfbb0e0d15fa4cb500e45aa30d112a5"
+                }
+              }
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-50/control-transcript.jsonl",
+            "line": 5,
+            "byte_start": 2486,
+            "byte_end": 3066,
+            "sha256": "56d77d1389c1de88ce291bffe399897b22901bc84870bb9a7cd6a29a0fea3c64",
+            "raw": "{\"time\": 1791322226.8210444, \"request_file\": \"request-10a7577362fe447ba389d30e522a575f.json\", \"raw\": \"{\\\"execute\\\": \\\"probe-capture-before\\\", \\\"arguments\\\": {}, \\\"created\\\": 1791322226.6794162}\\n\", \"sha256\": \"91bb8e484c99c59b3cf8b11cc1fd8db54a309cabca4f20764ff2028b3198244c\", \"response\": {\"return\": {\"state\": \"waiting-for-operator-tap-marker\", \"capture\": {\"path\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-50/probe-before.ppm\", \"width\": 828, \"height\": 1792, \"sha256\": \"8fbc7a66489b12767bea128de6c4201e2bfbb0e0d15fa4cb500e45aa30d112a5\"}}}}\n"
+          },
+          "command": {
+            "execute": "probe-capture-before",
+            "arguments": {},
+            "created": 1791322226.6794162
+          }
+        },
+        "counter_control": {
+          "value": {
+            "time": 1791322227.0354064,
+            "request_file": "request-6679ae8987b44ff9bdddc8f68983964c.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"eab89cac47a841f3b5807bc1614af5b9\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 20316}, \"created\": 1791322226.962182}\n",
+            "sha256": "0483021acd734d04c3a58a6471ebe3f13ccf87a93614028f67933930d3326499",
+            "response": {
+              "request_id": "eab89cac47a841f3b5807bc1614af5b9",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-50/control-transcript.jsonl",
+            "line": 6,
+            "byte_start": 3066,
+            "byte_end": 3670,
+            "sha256": "4b69efdca53ab647a313cadcbc060b299762ba9fd9185787ee57b5953d0934e5",
+            "raw": "{\"time\": 1791322227.0354064, \"request_file\": \"request-6679ae8987b44ff9bdddc8f68983964c.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"eab89cac47a841f3b5807bc1614af5b9\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 20316}, \\\"created\\\": 1791322226.962182}\\n\", \"sha256\": \"0483021acd734d04c3a58a6471ebe3f13ccf87a93614028f67933930d3326499\", \"response\": {\"request_id\": \"eab89cac47a841f3b5807bc1614af5b9\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "eab89cac47a841f3b5807bc1614af5b9",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 20316
+            },
+            "created": 1791322226.962182
+          }
+        },
+        "close_wire": {
+          "value": {
+            "time": 1791322203.5629022,
+            "stage": "before-send",
+            "request_id": "4c5f5d738c7549d7b136de1a72c48562",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 4c5f5d738c7549d7b136de1a72c48562 TAP 16384 18560 150\n",
+            "sha256": "c3f1e3459bac232aabed3faf725365cbe80a59c31b5f2f0fb8de8abe9ae88eec"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-50/serial-input-transcript.jsonl",
+            "line": 5,
+            "byte_start": 1114,
+            "byte_end": 1395,
+            "sha256": "a07d61f27a277a6b12a4cdc7b6dd41e61be106b9f4e725be01a1ec7ce757add5",
+            "raw": "{\"time\": 1791322203.5629022, \"stage\": \"before-send\", \"request_id\": \"4c5f5d738c7549d7b136de1a72c48562\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 4c5f5d738c7549d7b136de1a72c48562 TAP 16384 18560 150\\n\", \"sha256\": \"c3f1e3459bac232aabed3faf725365cbe80a59c31b5f2f0fb8de8abe9ae88eec\"}\n"
+          }
+        },
+        "counter_wire": {
+          "value": {
+            "time": 1791322227.0355408,
+            "stage": "before-send",
+            "request_id": "eab89cac47a841f3b5807bc1614af5b9",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 eab89cac47a841f3b5807bc1614af5b9 TAP 16384 20316 150\n",
+            "sha256": "8657f62cd548b8f9f6e85ec35ae2feda1a59b48c22f554d68bb7a9b21fdc8268"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-50/serial-input-transcript.jsonl",
+            "line": 7,
+            "byte_start": 1658,
+            "byte_end": 1939,
+            "sha256": "209cefb995a2768b28dbd6dd797548c1b5754acfb951c739d5166a0873f55074",
+            "raw": "{\"time\": 1791322227.0355408, \"stage\": \"before-send\", \"request_id\": \"eab89cac47a841f3b5807bc1614af5b9\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 eab89cac47a841f3b5807bc1614af5b9 TAP 16384 20316 150\\n\", \"sha256\": \"8657f62cd548b8f9f6e85ec35ae2feda1a59b48c22f554d68bb7a9b21fdc8268\"}\n"
+          }
+        },
+        "before_qmp_request": {
+          "value": {
+            "direction": "send",
+            "time": 1791322226.822279,
+            "raw": "{\"execute\": \"screendump\", \"id\": 27, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-50/probe-before.ppm\"}}\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-50/qmp-transcript.jsonl",
+            "line": 70,
+            "byte_start": 14377,
+            "byte_end": 14618,
+            "sha256": "fdeaa8a266bc11d015a81a7c5a3cdf8fd2bd1ca8a9eda38742405d48ddd80abf",
+            "raw": "{\"direction\": \"send\", \"time\": 1791322226.822279, \"raw\": \"{\\\"execute\\\": \\\"screendump\\\", \\\"id\\\": 27, \\\"arguments\\\": {\\\"filename\\\": \\\"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-50/probe-before.ppm\\\"}}\\n\"}\n"
+          }
+        },
+        "before_qmp_reply": {
+          "value": {
+            "direction": "receive",
+            "time": 1791322226.8293743,
+            "raw": "{\"return\": {}, \"id\": 27}\r\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-50/qmp-transcript.jsonl",
+            "line": 71,
+            "byte_start": 14618,
+            "byte_end": 14714,
+            "sha256": "89c3c82bb4c53f35cb48476773f53b5f6a142fb0ab443889c5692933b1c3f648",
+            "raw": "{\"direction\": \"receive\", \"time\": 1791322226.8293743, \"raw\": \"{\\\"return\\\": {}, \\\"id\\\": 27}\\r\\n\"}\n"
+          }
+        }
+      },
+      "seconds": {
+        "close_wire_to_counter_wire": 23.472638607025146,
+        "close_wire_to_before_control": 23.258142232894897,
+        "before_control_to_counter_wire": 0.21449637413024902,
+        "before_qmp_request_to_reply": 0.0070953369140625,
+        "before_qmp_reply_to_counter_wire": 0.20616650581359863
+      },
+      "geometry": {
+        "close": {
+          "request_id": "4c5f5d738c7549d7b136de1a72c48562",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 18560
+        },
+        "counter": {
+          "request_id": "eab89cac47a841f3b5807bc1614af5b9",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 20316
+        }
+      },
+      "guest_acknowledgments": [
+        {
+          "byte_start": 296931,
+          "byte_end": 297047,
+          "sha256": "bf635f1322a605251c26f00974923c8f7df04f97fd113948e77505b91fbd6a1d",
+          "text": "INFERNO_HID_ACK request_id=4c5f5d738c7549d7b136de1a72c48562 attempt_status=0 delivery=unproven timestamp=5076197233"
+        },
+        {
+          "byte_start": 320119,
+          "byte_end": 320235,
+          "sha256": "10ba433beff4c21fcc58035a4f015b80ef760ce28dba9d5b29c267aef1ab93df",
+          "text": "INFERNO_HID_ACK request_id=eab89cac47a841f3b5807bc1614af5b9 attempt_status=0 delivery=unproven timestamp=5644798952"
+        }
+      ]
+    },
+    {
+      "run": 54,
+      "observed_group": "healthy",
+      "sources": {
+        "control": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-54/control-transcript.jsonl",
+          "bytes": 3925,
+          "sha256": "e4ca4278356ae77602387ea8aa090a27dc264bf4371927674a35d767782bfc0e"
+        },
+        "wire": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-54/serial-input-transcript.jsonl",
+          "bytes": 1643,
+          "sha256": "0561fc59141e6beb0fcbe76d48d8ef06c742089502b9821ccb3ba109dbea5e22"
+        },
+        "qmp": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-54/qmp-transcript.jsonl",
+          "bytes": 21459,
+          "sha256": "22ff570b261abcb57b5d22e55e460aa4d8e27d19696e576692a3c7483670ccab"
+        },
+        "serial": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-54/serial.log",
+          "bytes": 320541,
+          "sha256": "47f4211b841588611135141caf79a28e2694390fd27047b112aa88a2b0e6ff87"
+        }
+      },
+      "missing": [],
+      "records": {
+        "close_control": {
+          "value": {
+            "time": 1791325678.9115615,
+            "request_file": "request-5c95643fc27d4af69d5047390f0b5afd.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"7370a372f1554aa985961b2b27c7bfe8\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 18560}, \"created\": 1791325678.775154}\n",
+            "sha256": "5e9942a53552e0b517931550171c49e311d560496d27b9971671aea94401d592",
+            "response": {
+              "request_id": "7370a372f1554aa985961b2b27c7bfe8",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-54/control-transcript.jsonl",
+            "line": 3,
+            "byte_start": 1244,
+            "byte_end": 1848,
+            "sha256": "e04cd9bdb92b27c1d413c933c3095950c1a87cea7fa65e96591061f172cfc042",
+            "raw": "{\"time\": 1791325678.9115615, \"request_file\": \"request-5c95643fc27d4af69d5047390f0b5afd.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"7370a372f1554aa985961b2b27c7bfe8\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 18560}, \\\"created\\\": 1791325678.775154}\\n\", \"sha256\": \"5e9942a53552e0b517931550171c49e311d560496d27b9971671aea94401d592\", \"response\": {\"request_id\": \"7370a372f1554aa985961b2b27c7bfe8\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "7370a372f1554aa985961b2b27c7bfe8",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 18560
+            },
+            "created": 1791325678.775154
+          }
+        },
+        "before_control": {
+          "value": {
+            "time": 1791325712.1889555,
+            "request_file": "request-93cb3a7a6bd64e55849683be6af3bde9.json",
+            "raw": "{\"execute\": \"probe-capture-before\", \"arguments\": {}, \"created\": 1791325712.176418}\n",
+            "sha256": "352c7c0566c1a451041404162aa8d156b1c05d3e72dd83ce17116f6b333fd5cf",
+            "response": {
+              "return": {
+                "state": "waiting-for-operator-tap-marker",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-54/probe-before.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "719c87e6df42022f0e6a2e573ca7aafa64a86979054efa00194e23884352b977"
+                }
+              }
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-54/control-transcript.jsonl",
+            "line": 4,
+            "byte_start": 1848,
+            "byte_end": 2427,
+            "sha256": "2808b8746e418e4ea0c517d26cac79f33f76659de6e4567525915e392f5faac5",
+            "raw": "{\"time\": 1791325712.1889555, \"request_file\": \"request-93cb3a7a6bd64e55849683be6af3bde9.json\", \"raw\": \"{\\\"execute\\\": \\\"probe-capture-before\\\", \\\"arguments\\\": {}, \\\"created\\\": 1791325712.176418}\\n\", \"sha256\": \"352c7c0566c1a451041404162aa8d156b1c05d3e72dd83ce17116f6b333fd5cf\", \"response\": {\"return\": {\"state\": \"waiting-for-operator-tap-marker\", \"capture\": {\"path\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-54/probe-before.ppm\", \"width\": 828, \"height\": 1792, \"sha256\": \"719c87e6df42022f0e6a2e573ca7aafa64a86979054efa00194e23884352b977\"}}}}\n"
+          },
+          "command": {
+            "execute": "probe-capture-before",
+            "arguments": {},
+            "created": 1791325712.176418
+          }
+        },
+        "counter_control": {
+          "value": {
+            "time": 1791325712.400102,
+            "request_file": "request-536d147311704287bee0cf47aba78f14.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"b9c1c599fbc34131951b6c8152cd1822\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 20316}, \"created\": 1791325712.366464}\n",
+            "sha256": "50c0c0f3456477cb39e4f932d836dd7fd8833ebfc0dba1ca5faa6c9e6577afd8",
+            "response": {
+              "request_id": "b9c1c599fbc34131951b6c8152cd1822",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-54/control-transcript.jsonl",
+            "line": 5,
+            "byte_start": 2427,
+            "byte_end": 3030,
+            "sha256": "ce06ab6d70931416de04d73bed0e9261d4cf36d8d048a7eb3b9bed4d8b12977d",
+            "raw": "{\"time\": 1791325712.400102, \"request_file\": \"request-536d147311704287bee0cf47aba78f14.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"b9c1c599fbc34131951b6c8152cd1822\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 20316}, \\\"created\\\": 1791325712.366464}\\n\", \"sha256\": \"50c0c0f3456477cb39e4f932d836dd7fd8833ebfc0dba1ca5faa6c9e6577afd8\", \"response\": {\"request_id\": \"b9c1c599fbc34131951b6c8152cd1822\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "b9c1c599fbc34131951b6c8152cd1822",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 20316
+            },
+            "created": 1791325712.366464
+          }
+        },
+        "close_wire": {
+          "value": {
+            "time": 1791325678.911694,
+            "stage": "before-send",
+            "request_id": "7370a372f1554aa985961b2b27c7bfe8",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 7370a372f1554aa985961b2b27c7bfe8 TAP 16384 18560 150\n",
+            "sha256": "727a5a24939c64ecdf2347842eb1b92a0d23fdba5953994c509ab82a1619fa87"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-54/serial-input-transcript.jsonl",
+            "line": 3,
+            "byte_start": 557,
+            "byte_end": 837,
+            "sha256": "b75d1e6d38f4e8faa30fc8b39a9111ecdc14fb02ab555da66bcf1f3f143c7caa",
+            "raw": "{\"time\": 1791325678.911694, \"stage\": \"before-send\", \"request_id\": \"7370a372f1554aa985961b2b27c7bfe8\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 7370a372f1554aa985961b2b27c7bfe8 TAP 16384 18560 150\\n\", \"sha256\": \"727a5a24939c64ecdf2347842eb1b92a0d23fdba5953994c509ab82a1619fa87\"}\n"
+          }
+        },
+        "counter_wire": {
+          "value": {
+            "time": 1791325712.400203,
+            "stage": "before-send",
+            "request_id": "b9c1c599fbc34131951b6c8152cd1822",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 b9c1c599fbc34131951b6c8152cd1822 TAP 16384 20316 150\n",
+            "sha256": "369146e955984d2fbb97e039ca219ece0206239279345182ec96f36c0e44e534"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-54/serial-input-transcript.jsonl",
+            "line": 5,
+            "byte_start": 1100,
+            "byte_end": 1380,
+            "sha256": "a4325c9665f5ffa02e536e606776a1a2e8da4be7aea8014200a65db24536a030",
+            "raw": "{\"time\": 1791325712.400203, \"stage\": \"before-send\", \"request_id\": \"b9c1c599fbc34131951b6c8152cd1822\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 b9c1c599fbc34131951b6c8152cd1822 TAP 16384 20316 150\\n\", \"sha256\": \"369146e955984d2fbb97e039ca219ece0206239279345182ec96f36c0e44e534\"}\n"
+          }
+        },
+        "before_qmp_request": {
+          "value": {
+            "direction": "send",
+            "time": 1791325712.1898742,
+            "raw": "{\"execute\": \"screendump\", \"id\": 33, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-54/probe-before.ppm\"}}\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-54/qmp-transcript.jsonl",
+            "line": 82,
+            "byte_start": 16002,
+            "byte_end": 16244,
+            "sha256": "8893e9958327adff6a18176e3350b5384d5d740ec349ef525c8548d15cf7b63e",
+            "raw": "{\"direction\": \"send\", \"time\": 1791325712.1898742, \"raw\": \"{\\\"execute\\\": \\\"screendump\\\", \\\"id\\\": 33, \\\"arguments\\\": {\\\"filename\\\": \\\"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-54/probe-before.ppm\\\"}}\\n\"}\n"
+          }
+        },
+        "before_qmp_reply": {
+          "value": {
+            "direction": "receive",
+            "time": 1791325712.194805,
+            "raw": "{\"return\": {}, \"id\": 33}\r\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-54/qmp-transcript.jsonl",
+            "line": 83,
+            "byte_start": 16244,
+            "byte_end": 16339,
+            "sha256": "e1770fa5c8820463a4204afa02ae2763097fa8495972eeed295eb4ff47875b10",
+            "raw": "{\"direction\": \"receive\", \"time\": 1791325712.194805, \"raw\": \"{\\\"return\\\": {}, \\\"id\\\": 33}\\r\\n\"}\n"
+          }
+        }
+      },
+      "seconds": {
+        "close_wire_to_counter_wire": 33.48850893974304,
+        "close_wire_to_before_control": 33.27726149559021,
+        "before_control_to_counter_wire": 0.21124744415283203,
+        "before_qmp_request_to_reply": 0.004930734634399414,
+        "before_qmp_reply_to_counter_wire": 0.2053980827331543
+      },
+      "geometry": {
+        "close": {
+          "request_id": "7370a372f1554aa985961b2b27c7bfe8",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 18560
+        },
+        "counter": {
+          "request_id": "b9c1c599fbc34131951b6c8152cd1822",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 20316
+        }
+      },
+      "guest_acknowledgments": [
+        {
+          "byte_start": 278328,
+          "byte_end": 278444,
+          "sha256": "f7a53eda096fd517cf1190291c7dd87ec500ddf6780e83e5cccd51f652a85950",
+          "text": "INFERNO_HID_ACK request_id=7370a372f1554aa985961b2b27c7bfe8 attempt_status=0 delivery=unproven timestamp=3913315735"
+        },
+        {
+          "byte_start": 299166,
+          "byte_end": 299282,
+          "sha256": "af19f580475f58b8267e6d6913eab1a8aff58a9267e3fc0f24a57ad3220eb703",
+          "text": "INFERNO_HID_ACK request_id=b9c1c599fbc34131951b6c8152cd1822 attempt_status=0 delivery=unproven timestamp=4731436798"
+        }
+      ]
+    },
+    {
+      "run": 58,
+      "observed_group": "healthy",
+      "sources": {
+        "control": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-58/control-transcript.jsonl",
+          "bytes": 4569,
+          "sha256": "d5045ea946d2cf3a7c6c58d15a94df013832ee4bfce0bbff3a07b8bf8a8bd715"
+        },
+        "wire": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-58/serial-input-transcript.jsonl",
+          "bytes": 2202,
+          "sha256": "014bd7392c17ec6d14b18f07e2929518bcf20157c67a75e25ac9319ac8498a9b"
+        },
+        "qmp": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-58/qmp-transcript.jsonl",
+          "bytes": 24505,
+          "sha256": "b7758e6adbe921f45e9af90cc1132743731b977bc869be7b9c2a9fed6164e4d0"
+        },
+        "serial": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-58/serial.log",
+          "bytes": 347566,
+          "sha256": "53a3715337dde32435016c7cb241776b4c63c95bb6049687721f6194d5d13929"
+        }
+      },
+      "missing": [],
+      "records": {
+        "close_control": {
+          "value": {
+            "time": 1791328744.9793127,
+            "request_file": "request-2d301f187345408384ff0fe0e21d523c.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"59419a88ca2d4191b4e6fecf43754377\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 18560}, \"created\": 1791328744.8503401}\n",
+            "sha256": "e87684bb95dcdae59ed125d585906fb42ca64bf813e9f954a2336699e48566db",
+            "response": {
+              "request_id": "59419a88ca2d4191b4e6fecf43754377",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-58/control-transcript.jsonl",
+            "line": 4,
+            "byte_start": 1884,
+            "byte_end": 2489,
+            "sha256": "f2777a58633ab0fdbd1652c0e143c0469469b6892203c53e6d592128f556a6bc",
+            "raw": "{\"time\": 1791328744.9793127, \"request_file\": \"request-2d301f187345408384ff0fe0e21d523c.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"59419a88ca2d4191b4e6fecf43754377\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 18560}, \\\"created\\\": 1791328744.8503401}\\n\", \"sha256\": \"e87684bb95dcdae59ed125d585906fb42ca64bf813e9f954a2336699e48566db\", \"response\": {\"request_id\": \"59419a88ca2d4191b4e6fecf43754377\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "59419a88ca2d4191b4e6fecf43754377",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 18560
+            },
+            "created": 1791328744.8503401
+          }
+        },
+        "before_control": {
+          "value": {
+            "time": 1791328762.0231218,
+            "request_file": "request-2c97f0ea6e2a4890a134a4b53017ef10.json",
+            "raw": "{\"execute\": \"probe-capture-before\", \"arguments\": {}, \"created\": 1791328761.958716}\n",
+            "sha256": "db9eed8c0bea00b84d2f5ad5fbfef1463a072a0764887aebc86d5ddb4bfa773f",
+            "response": {
+              "return": {
+                "state": "waiting-for-operator-tap-marker",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-58/probe-before.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "3bcbcef160426e1acb6cf8faea3d14432b5009d3ae342b27d06548780002198c"
+                }
+              }
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-58/control-transcript.jsonl",
+            "line": 5,
+            "byte_start": 2489,
+            "byte_end": 3068,
+            "sha256": "240d3435dac7cfc936b8ff3b90c4f2be82710808e3d0e2b95e4f52972e4e1733",
+            "raw": "{\"time\": 1791328762.0231218, \"request_file\": \"request-2c97f0ea6e2a4890a134a4b53017ef10.json\", \"raw\": \"{\\\"execute\\\": \\\"probe-capture-before\\\", \\\"arguments\\\": {}, \\\"created\\\": 1791328761.958716}\\n\", \"sha256\": \"db9eed8c0bea00b84d2f5ad5fbfef1463a072a0764887aebc86d5ddb4bfa773f\", \"response\": {\"return\": {\"state\": \"waiting-for-operator-tap-marker\", \"capture\": {\"path\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-58/probe-before.ppm\", \"width\": 828, \"height\": 1792, \"sha256\": \"3bcbcef160426e1acb6cf8faea3d14432b5009d3ae342b27d06548780002198c\"}}}}\n"
+          },
+          "command": {
+            "execute": "probe-capture-before",
+            "arguments": {},
+            "created": 1791328761.958716
+          }
+        },
+        "counter_control": {
+          "value": {
+            "time": 1791328762.2367508,
+            "request_file": "request-ae821bf88f58451fb8e2d03e5da9b57f.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"546b14a894ac4168ac072d9daf298573\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 20316}, \"created\": 1791328762.1204517}\n",
+            "sha256": "43f674ad7b49e43746cb516c45fdb6160934b3ce0eb01bd77b786abf276b4832",
+            "response": {
+              "request_id": "546b14a894ac4168ac072d9daf298573",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-58/control-transcript.jsonl",
+            "line": 6,
+            "byte_start": 3068,
+            "byte_end": 3673,
+            "sha256": "39eeb6c61b585e8a1edf213ab0847a9676c8b749f2e72c7ad43f7bc950beb2ec",
+            "raw": "{\"time\": 1791328762.2367508, \"request_file\": \"request-ae821bf88f58451fb8e2d03e5da9b57f.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"546b14a894ac4168ac072d9daf298573\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 20316}, \\\"created\\\": 1791328762.1204517}\\n\", \"sha256\": \"43f674ad7b49e43746cb516c45fdb6160934b3ce0eb01bd77b786abf276b4832\", \"response\": {\"request_id\": \"546b14a894ac4168ac072d9daf298573\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "546b14a894ac4168ac072d9daf298573",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 20316
+            },
+            "created": 1791328762.1204517
+          }
+        },
+        "close_wire": {
+          "value": {
+            "time": 1791328744.9793978,
+            "stage": "before-send",
+            "request_id": "59419a88ca2d4191b4e6fecf43754377",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 59419a88ca2d4191b4e6fecf43754377 TAP 16384 18560 150\n",
+            "sha256": "0884685840af5385c661a6907546cca05c95b5ca57fca71ecce4676f4926d722"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-58/serial-input-transcript.jsonl",
+            "line": 5,
+            "byte_start": 1114,
+            "byte_end": 1395,
+            "sha256": "c40ef5e1651798c280dbcb42fcffee7d42c7f973e2df9e402ce2f0ad819b2db7",
+            "raw": "{\"time\": 1791328744.9793978, \"stage\": \"before-send\", \"request_id\": \"59419a88ca2d4191b4e6fecf43754377\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 59419a88ca2d4191b4e6fecf43754377 TAP 16384 18560 150\\n\", \"sha256\": \"0884685840af5385c661a6907546cca05c95b5ca57fca71ecce4676f4926d722\"}\n"
+          }
+        },
+        "counter_wire": {
+          "value": {
+            "time": 1791328762.2368617,
+            "stage": "before-send",
+            "request_id": "546b14a894ac4168ac072d9daf298573",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 546b14a894ac4168ac072d9daf298573 TAP 16384 20316 150\n",
+            "sha256": "057c28adab0eb5dede3e9837d8930548cbb19a57fa7a447965c4e80f6f80c18b"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-58/serial-input-transcript.jsonl",
+            "line": 7,
+            "byte_start": 1658,
+            "byte_end": 1939,
+            "sha256": "04f0aaead2479ad9151374a1f8f348f39c5c06467b6637751980c521d0ad27a2",
+            "raw": "{\"time\": 1791328762.2368617, \"stage\": \"before-send\", \"request_id\": \"546b14a894ac4168ac072d9daf298573\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 546b14a894ac4168ac072d9daf298573 TAP 16384 20316 150\\n\", \"sha256\": \"057c28adab0eb5dede3e9837d8930548cbb19a57fa7a447965c4e80f6f80c18b\"}\n"
+          }
+        },
+        "before_qmp_request": {
+          "value": {
+            "direction": "send",
+            "time": 1791328762.024039,
+            "raw": "{\"execute\": \"screendump\", \"id\": 34, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-58/probe-before.ppm\"}}\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-58/qmp-transcript.jsonl",
+            "line": 84,
+            "byte_start": 16739,
+            "byte_end": 16980,
+            "sha256": "df1cb50b7062c1f5a9cc11a4c782956c5646bcb5150f96c2f4596526870db2b0",
+            "raw": "{\"direction\": \"send\", \"time\": 1791328762.024039, \"raw\": \"{\\\"execute\\\": \\\"screendump\\\", \\\"id\\\": 34, \\\"arguments\\\": {\\\"filename\\\": \\\"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-58/probe-before.ppm\\\"}}\\n\"}\n"
+          }
+        },
+        "before_qmp_reply": {
+          "value": {
+            "direction": "receive",
+            "time": 1791328762.0310824,
+            "raw": "{\"return\": {}, \"id\": 34}\r\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-58/qmp-transcript.jsonl",
+            "line": 85,
+            "byte_start": 16980,
+            "byte_end": 17076,
+            "sha256": "68b1179a114bd782266e3732b1e3b32cd6fe97be38bc552361ad2a35b040cc94",
+            "raw": "{\"direction\": \"receive\", \"time\": 1791328762.0310824, \"raw\": \"{\\\"return\\\": {}, \\\"id\\\": 34}\\r\\n\"}\n"
+          }
+        }
+      },
+      "seconds": {
+        "close_wire_to_counter_wire": 17.257463932037354,
+        "close_wire_to_before_control": 17.043724060058594,
+        "before_control_to_counter_wire": 0.21373987197875977,
+        "before_qmp_request_to_reply": 0.007043361663818359,
+        "before_qmp_reply_to_counter_wire": 0.2057793140411377
+      },
+      "geometry": {
+        "close": {
+          "request_id": "59419a88ca2d4191b4e6fecf43754377",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 18560
+        },
+        "counter": {
+          "request_id": "546b14a894ac4168ac072d9daf298573",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 20316
+        }
+      },
+      "guest_acknowledgments": [
+        {
+          "byte_start": 344539,
+          "byte_end": 344656,
+          "sha256": "3273619a8d823e646c928d0a59f3a9027dfc0fa88245d303aeae5ba0df46c6a5",
+          "text": "INFERNO_HID_ACK request_id=59419a88ca2d4191b4e6fecf43754377 attempt_status=0 delivery=unproven timestamp=10057468446"
+        },
+        {
+          "byte_start": 347123,
+          "byte_end": 347240,
+          "sha256": "65bde45f7bad3cde6fc0fd042f299086ee6dc036b9074bd20579c54ef5879fb0",
+          "text": "INFERNO_HID_ACK request_id=546b14a894ac4168ac072d9daf298573 attempt_status=0 delivery=unproven timestamp=10478879207"
+        }
+      ]
+    },
+    {
+      "run": 59,
+      "observed_group": "healthy",
+      "sources": {
+        "control": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/control-transcript.jsonl",
+          "bytes": 7070,
+          "sha256": "ca437f15fbf3ecb6cc6a6dc9aec3fd551a1f8377d7efc96dc492d579c378247a"
+        },
+        "wire": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/serial-input-transcript.jsonl",
+          "bytes": 2767,
+          "sha256": "951d96d3742a1136476d82c945415069e27d1d0e28c30e83500cb42853807603"
+        },
+        "qmp": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/qmp-transcript.jsonl",
+          "bytes": 40073,
+          "sha256": "8710e82bca6d17e4c1820ad544988405126e01e347acdba63b5d138a729aa1c0"
+        },
+        "serial": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/serial.log",
+          "bytes": 336702,
+          "sha256": "4d109af1cd11e87a6a4b2c42887965965ad7588c2e2bcbfab7a42978e91020f7"
+        }
+      },
+      "missing": [],
+      "records": {
+        "close_control": {
+          "value": {
+            "time": 1791329283.637818,
+            "request_file": "request-eb2b067471494e7984b674e2520f839a.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"cf959b1458334f43b49c22aba45f90b4\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 18560}, \"created\": 1791329283.510967}\n",
+            "sha256": "e135dd66d14fbb55b72ff3055ac60ecd569c291e12ecaa31218b9fe11039128f",
+            "response": {
+              "request_id": "cf959b1458334f43b49c22aba45f90b4",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/control-transcript.jsonl",
+            "line": 4,
+            "byte_start": 1907,
+            "byte_end": 2510,
+            "sha256": "e6bed6869e6d1ae0d071791b1df845d3a47e5b5a510b32a295f9b4c1b3f122cb",
+            "raw": "{\"time\": 1791329283.637818, \"request_file\": \"request-eb2b067471494e7984b674e2520f839a.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"cf959b1458334f43b49c22aba45f90b4\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 18560}, \\\"created\\\": 1791329283.510967}\\n\", \"sha256\": \"e135dd66d14fbb55b72ff3055ac60ecd569c291e12ecaa31218b9fe11039128f\", \"response\": {\"request_id\": \"cf959b1458334f43b49c22aba45f90b4\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "cf959b1458334f43b49c22aba45f90b4",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 18560
+            },
+            "created": 1791329283.510967
+          }
+        },
+        "before_control": {
+          "value": {
+            "time": 1791329314.7067406,
+            "request_file": "request-9da0a5c6170f4948bdcf07de17d5e300.json",
+            "raw": "{\"execute\": \"probe-capture-before\", \"arguments\": {}, \"created\": 1791329314.5796423}\n",
+            "sha256": "66817e87aa11ca0c93b3f6660b60dc65f549927bf4bd3ebdfe5b2a3377f791df",
+            "response": {
+              "return": {
+                "state": "waiting-for-operator-tap-marker",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/probe-before.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "19351839e27f8a4545a6089a5433f55a8a02a4407a3a60821df89dc7157671fd"
+                }
+              }
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/control-transcript.jsonl",
+            "line": 5,
+            "byte_start": 2510,
+            "byte_end": 3090,
+            "sha256": "90f12e38aba734b513e7b532805f37dede87bdbe946cc89848f3d1b9295173bb",
+            "raw": "{\"time\": 1791329314.7067406, \"request_file\": \"request-9da0a5c6170f4948bdcf07de17d5e300.json\", \"raw\": \"{\\\"execute\\\": \\\"probe-capture-before\\\", \\\"arguments\\\": {}, \\\"created\\\": 1791329314.5796423}\\n\", \"sha256\": \"66817e87aa11ca0c93b3f6660b60dc65f549927bf4bd3ebdfe5b2a3377f791df\", \"response\": {\"return\": {\"state\": \"waiting-for-operator-tap-marker\", \"capture\": {\"path\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/probe-before.ppm\", \"width\": 828, \"height\": 1792, \"sha256\": \"19351839e27f8a4545a6089a5433f55a8a02a4407a3a60821df89dc7157671fd\"}}}}\n"
+          },
+          "command": {
+            "execute": "probe-capture-before",
+            "arguments": {},
+            "created": 1791329314.5796423
+          }
+        },
+        "counter_control": {
+          "value": {
+            "time": 1791329315.1269958,
+            "request_file": "request-005f82ed1ad541c5b3960dbcb7e23288.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"68f83f282a8047b88f90970369be8976\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 20316}, \"created\": 1791329315.0665061}\n",
+            "sha256": "52107ac800d59a7bdd2a3f755cd6ebb73b1c60f27dfe55653685c244d3ea712c",
+            "response": {
+              "request_id": "68f83f282a8047b88f90970369be8976",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/control-transcript.jsonl",
+            "line": 7,
+            "byte_start": 3721,
+            "byte_end": 4326,
+            "sha256": "f0c12fc135ea24aab7f9a4831ff0bbf044f090410bd29e5be50cdafdfe052647",
+            "raw": "{\"time\": 1791329315.1269958, \"request_file\": \"request-005f82ed1ad541c5b3960dbcb7e23288.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"68f83f282a8047b88f90970369be8976\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 20316}, \\\"created\\\": 1791329315.0665061}\\n\", \"sha256\": \"52107ac800d59a7bdd2a3f755cd6ebb73b1c60f27dfe55653685c244d3ea712c\", \"response\": {\"request_id\": \"68f83f282a8047b88f90970369be8976\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "68f83f282a8047b88f90970369be8976",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 20316
+            },
+            "created": 1791329315.0665061
+          }
+        },
+        "close_wire": {
+          "value": {
+            "time": 1791329283.6379292,
+            "stage": "before-send",
+            "request_id": "cf959b1458334f43b49c22aba45f90b4",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 cf959b1458334f43b49c22aba45f90b4 TAP 16384 18560 150\n",
+            "sha256": "34ec04bd98f70ab20ef4989e383c71bd1e7ca7e2df08587b92b620c6c4b5dfb2"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/serial-input-transcript.jsonl",
+            "line": 5,
+            "byte_start": 1116,
+            "byte_end": 1397,
+            "sha256": "d0b6d508df0b8a2390e748ac6edd1a90b4cdae2a587bcd099e20a76da9136634",
+            "raw": "{\"time\": 1791329283.6379292, \"stage\": \"before-send\", \"request_id\": \"cf959b1458334f43b49c22aba45f90b4\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 cf959b1458334f43b49c22aba45f90b4 TAP 16384 18560 150\\n\", \"sha256\": \"34ec04bd98f70ab20ef4989e383c71bd1e7ca7e2df08587b92b620c6c4b5dfb2\"}\n"
+          }
+        },
+        "counter_wire": {
+          "value": {
+            "time": 1791329315.1271162,
+            "stage": "before-send",
+            "request_id": "68f83f282a8047b88f90970369be8976",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 68f83f282a8047b88f90970369be8976 TAP 16384 20316 150\n",
+            "sha256": "86bb7011bbae23295fc6190f4a6ff9d8ba27e89f356f0d2410ce57e130efab51"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/serial-input-transcript.jsonl",
+            "line": 7,
+            "byte_start": 1660,
+            "byte_end": 1941,
+            "sha256": "35e5d47c902f08ccd874a6c593a56a901a590dc9f233346b5e902037b6656e3a",
+            "raw": "{\"time\": 1791329315.1271162, \"stage\": \"before-send\", \"request_id\": \"68f83f282a8047b88f90970369be8976\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 68f83f282a8047b88f90970369be8976 TAP 16384 20316 150\\n\", \"sha256\": \"86bb7011bbae23295fc6190f4a6ff9d8ba27e89f356f0d2410ce57e130efab51\"}\n"
+          }
+        },
+        "before_qmp_request": {
+          "value": {
+            "direction": "send",
+            "time": 1791329314.707388,
+            "raw": "{\"execute\": \"screendump\", \"id\": 36, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/probe-before.ppm\"}}\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/qmp-transcript.jsonl",
+            "line": 88,
+            "byte_start": 16917,
+            "byte_end": 17158,
+            "sha256": "a2d38ef9b8a3479e3e1a8de7a6355a2c1933724fa056d9d4f5fdfab1a6316c03",
+            "raw": "{\"direction\": \"send\", \"time\": 1791329314.707388, \"raw\": \"{\\\"execute\\\": \\\"screendump\\\", \\\"id\\\": 36, \\\"arguments\\\": {\\\"filename\\\": \\\"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/probe-before.ppm\\\"}}\\n\"}\n"
+          }
+        },
+        "before_qmp_reply": {
+          "value": {
+            "direction": "receive",
+            "time": 1791329314.7126255,
+            "raw": "{\"return\": {}, \"id\": 36}\r\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/qmp-transcript.jsonl",
+            "line": 89,
+            "byte_start": 17158,
+            "byte_end": 17254,
+            "sha256": "4037944e0aeb540f9532f9d0b1d9d2ce823c4ac3ff22b68f97e35fe3373822c3",
+            "raw": "{\"direction\": \"receive\", \"time\": 1791329314.7126255, \"raw\": \"{\\\"return\\\": {}, \\\"id\\\": 36}\\r\\n\"}\n"
+          }
+        }
+      },
+      "seconds": {
+        "close_wire_to_counter_wire": 31.489187002182007,
+        "close_wire_to_before_control": 31.068811416625977,
+        "before_control_to_counter_wire": 0.4203755855560303,
+        "before_qmp_request_to_reply": 0.005237579345703125,
+        "before_qmp_reply_to_counter_wire": 0.4144906997680664
+      },
+      "geometry": {
+        "close": {
+          "request_id": "cf959b1458334f43b49c22aba45f90b4",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 18560
+        },
+        "counter": {
+          "request_id": "68f83f282a8047b88f90970369be8976",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 20316
+        }
+      },
+      "guest_acknowledgments": [
+        {
+          "byte_start": 289217,
+          "byte_end": 289333,
+          "sha256": "bd3579054fa123e7647a0bb99bbeb3864c56e267475545dd3201ea99fcfe6d68",
+          "text": "INFERNO_HID_ACK request_id=cf959b1458334f43b49c22aba45f90b4 attempt_status=0 delivery=unproven timestamp=4868848463"
+        },
+        {
+          "byte_start": 312126,
+          "byte_end": 312242,
+          "sha256": "e481919d56a519922e6d35070d46d71263745767c7061defc15b1123363a41c3",
+          "text": "INFERNO_HID_ACK request_id=68f83f282a8047b88f90970369be8976 attempt_status=0 delivery=unproven timestamp=5635547913"
+        }
+      ]
+    },
+    {
+      "run": 60,
+      "observed_group": "healthy",
+      "sources": {
+        "control": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-60/control-transcript.jsonl",
+          "bytes": 3962,
+          "sha256": "6c5c844336507dfc1ce6c245606925b684810ff9337efa277543daf7fbcc9daa"
+        },
+        "wire": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-60/serial-input-transcript.jsonl",
+          "bytes": 2204,
+          "sha256": "6dfdf778bd95bd0f03432d9cb17d559f6093efd0ab3901c2342567b409f6b0e0"
+        },
+        "qmp": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-60/qmp-transcript.jsonl",
+          "bytes": 17627,
+          "sha256": "e14b520c7277b094f23db1005c3a3313d5fd5209394199b2914a72064c9357e3"
+        },
+        "serial": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-60/serial.log",
+          "bytes": 326918,
+          "sha256": "c471474ad3033fa95921fa3f0297109d795a3763aa11b4b2ed890e2ffedb8e52"
+        }
+      },
+      "missing": [],
+      "records": {
+        "close_control": {
+          "value": {
+            "time": 1791329839.8921084,
+            "request_file": "request-cb0198137b1e4d1081536131b7ab5a06.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"7132af0de2cd40c9b99ab13de9635236\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 18560}, \"created\": 1791329839.8551745}\n",
+            "sha256": "14a03dfde8e45a493bc6a817b2939a17d52a8fae53b04060b5f46259e1f10eb4",
+            "response": {
+              "request_id": "7132af0de2cd40c9b99ab13de9635236",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-60/control-transcript.jsonl",
+            "line": 3,
+            "byte_start": 1277,
+            "byte_end": 1882,
+            "sha256": "8e01fc0027ec16a33387a83d14b27f73ab2e006d10e49ed2deb6a257212a0beb",
+            "raw": "{\"time\": 1791329839.8921084, \"request_file\": \"request-cb0198137b1e4d1081536131b7ab5a06.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"7132af0de2cd40c9b99ab13de9635236\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 18560}, \\\"created\\\": 1791329839.8551745}\\n\", \"sha256\": \"14a03dfde8e45a493bc6a817b2939a17d52a8fae53b04060b5f46259e1f10eb4\", \"response\": {\"request_id\": \"7132af0de2cd40c9b99ab13de9635236\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "7132af0de2cd40c9b99ab13de9635236",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 18560
+            },
+            "created": 1791329839.8551745
+          }
+        },
+        "before_control": {
+          "value": {
+            "time": 1791329881.9897888,
+            "request_file": "request-527a5901e0ca4cbbba398aa863293a4b.json",
+            "raw": "{\"execute\": \"probe-capture-before\", \"arguments\": {}, \"created\": 1791329881.8221054}\n",
+            "sha256": "66fcaee17f786f7f7e4471d3e827bb14d77899c9dda89737edc46d34e8b26abd",
+            "response": {
+              "return": {
+                "state": "waiting-for-operator-tap-marker",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-60/probe-before.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "d95aa1a05fc6e7e316e6eb7650c130eb510629c8246e8cbd92866eefc6456620"
+                }
+              }
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-60/control-transcript.jsonl",
+            "line": 4,
+            "byte_start": 1882,
+            "byte_end": 2462,
+            "sha256": "f4294b347b28462049ef6ed3826cbb6d47e7b47dfdd22c04cd5d2e9db756b397",
+            "raw": "{\"time\": 1791329881.9897888, \"request_file\": \"request-527a5901e0ca4cbbba398aa863293a4b.json\", \"raw\": \"{\\\"execute\\\": \\\"probe-capture-before\\\", \\\"arguments\\\": {}, \\\"created\\\": 1791329881.8221054}\\n\", \"sha256\": \"66fcaee17f786f7f7e4471d3e827bb14d77899c9dda89737edc46d34e8b26abd\", \"response\": {\"return\": {\"state\": \"waiting-for-operator-tap-marker\", \"capture\": {\"path\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-60/probe-before.ppm\", \"width\": 828, \"height\": 1792, \"sha256\": \"d95aa1a05fc6e7e316e6eb7650c130eb510629c8246e8cbd92866eefc6456620\"}}}}\n"
+          },
+          "command": {
+            "execute": "probe-capture-before",
+            "arguments": {},
+            "created": 1791329881.8221054
+          }
+        },
+        "counter_control": {
+          "value": {
+            "time": 1791329882.2037306,
+            "request_file": "request-358f6c99414f48e994b51206a8420347.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"f741a80b874042d38ca91b95d47ea1fe\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 20316}, \"created\": 1791329882.1019778}\n",
+            "sha256": "fa638eeabc8283a6ec619a71080119b2acb7f33eca31c2f8bc5c8f5bc1d41323",
+            "response": {
+              "request_id": "f741a80b874042d38ca91b95d47ea1fe",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-60/control-transcript.jsonl",
+            "line": 5,
+            "byte_start": 2462,
+            "byte_end": 3067,
+            "sha256": "25516fbe48b271b198fd90e9c5ebce15672ea3e3b43eb62d1d515f4c6ba55755",
+            "raw": "{\"time\": 1791329882.2037306, \"request_file\": \"request-358f6c99414f48e994b51206a8420347.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"f741a80b874042d38ca91b95d47ea1fe\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 20316}, \\\"created\\\": 1791329882.1019778}\\n\", \"sha256\": \"fa638eeabc8283a6ec619a71080119b2acb7f33eca31c2f8bc5c8f5bc1d41323\", \"response\": {\"request_id\": \"f741a80b874042d38ca91b95d47ea1fe\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "f741a80b874042d38ca91b95d47ea1fe",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 20316
+            },
+            "created": 1791329882.1019778
+          }
+        },
+        "close_wire": {
+          "value": {
+            "time": 1791329839.8922071,
+            "stage": "before-send",
+            "request_id": "7132af0de2cd40c9b99ab13de9635236",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 7132af0de2cd40c9b99ab13de9635236 TAP 16384 18560 150\n",
+            "sha256": "8de65487e2a6ef06683f410358381c61a72cd100d17c167b1f1232c52a2e792b"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-60/serial-input-transcript.jsonl",
+            "line": 5,
+            "byte_start": 1116,
+            "byte_end": 1397,
+            "sha256": "07a3e6dcf34500f11135812c1a7bd999ff8579deb772163437ab1b3b4eeae750",
+            "raw": "{\"time\": 1791329839.8922071, \"stage\": \"before-send\", \"request_id\": \"7132af0de2cd40c9b99ab13de9635236\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 7132af0de2cd40c9b99ab13de9635236 TAP 16384 18560 150\\n\", \"sha256\": \"8de65487e2a6ef06683f410358381c61a72cd100d17c167b1f1232c52a2e792b\"}\n"
+          }
+        },
+        "counter_wire": {
+          "value": {
+            "time": 1791329882.2038443,
+            "stage": "before-send",
+            "request_id": "f741a80b874042d38ca91b95d47ea1fe",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 f741a80b874042d38ca91b95d47ea1fe TAP 16384 20316 150\n",
+            "sha256": "476b1e552e0b86d13396a3ae8bd5e80abd3ce6181b60f8042364b37af07a1176"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-60/serial-input-transcript.jsonl",
+            "line": 7,
+            "byte_start": 1660,
+            "byte_end": 1941,
+            "sha256": "e7d6c014406f7685a69f750b1ea56abb2a0bbfba206a3ec6b8e24cce0b35e721",
+            "raw": "{\"time\": 1791329882.2038443, \"stage\": \"before-send\", \"request_id\": \"f741a80b874042d38ca91b95d47ea1fe\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 f741a80b874042d38ca91b95d47ea1fe TAP 16384 20316 150\\n\", \"sha256\": \"476b1e552e0b86d13396a3ae8bd5e80abd3ce6181b60f8042364b37af07a1176\"}\n"
+          }
+        },
+        "before_qmp_request": {
+          "value": {
+            "direction": "send",
+            "time": 1791329881.990829,
+            "raw": "{\"execute\": \"screendump\", \"id\": 22, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-60/probe-before.ppm\"}}\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-60/qmp-transcript.jsonl",
+            "line": 57,
+            "byte_start": 11826,
+            "byte_end": 12067,
+            "sha256": "81758d2c0701a1b1725a0ddbc9d753fe4d053dfcb1633f0a3498431572219895",
+            "raw": "{\"direction\": \"send\", \"time\": 1791329881.990829, \"raw\": \"{\\\"execute\\\": \\\"screendump\\\", \\\"id\\\": 22, \\\"arguments\\\": {\\\"filename\\\": \\\"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-60/probe-before.ppm\\\"}}\\n\"}\n"
+          }
+        },
+        "before_qmp_reply": {
+          "value": {
+            "direction": "receive",
+            "time": 1791329881.9978724,
+            "raw": "{\"return\": {}, \"id\": 22}\r\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-60/qmp-transcript.jsonl",
+            "line": 58,
+            "byte_start": 12067,
+            "byte_end": 12163,
+            "sha256": "f1d7e6b941d6d1a516e69f90c5118f12f0be67eeeb35b5069c634013405fc4fb",
+            "raw": "{\"direction\": \"receive\", \"time\": 1791329881.9978724, \"raw\": \"{\\\"return\\\": {}, \\\"id\\\": 22}\\r\\n\"}\n"
+          }
+        }
+      },
+      "seconds": {
+        "close_wire_to_counter_wire": 42.31163716316223,
+        "close_wire_to_before_control": 42.09758162498474,
+        "before_control_to_counter_wire": 0.21405553817749023,
+        "before_qmp_request_to_reply": 0.007043361663818359,
+        "before_qmp_reply_to_counter_wire": 0.20597195625305176
+      },
+      "geometry": {
+        "close": {
+          "request_id": "7132af0de2cd40c9b99ab13de9635236",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 18560
+        },
+        "counter": {
+          "request_id": "f741a80b874042d38ca91b95d47ea1fe",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 20316
+        }
+      },
+      "guest_acknowledgments": [
+        {
+          "byte_start": 303709,
+          "byte_end": 303825,
+          "sha256": "a84d6ed680238567e4e4209a6fc3146c713ddcb11bab02ba9be32a11c68112a8",
+          "text": "INFERNO_HID_ACK request_id=7132af0de2cd40c9b99ab13de9635236 attempt_status=0 delivery=unproven timestamp=5796811999"
+        },
+        {
+          "byte_start": 326371,
+          "byte_end": 326487,
+          "sha256": "614ace9245dc34602e6ee6867db1953fa5e024cf78605d1c607246319ff9fe0a",
+          "text": "INFERNO_HID_ACK request_id=f741a80b874042d38ca91b95d47ea1fe attempt_status=0 delivery=unproven timestamp=6825960067"
+        }
+      ]
+    },
+    {
+      "run": 61,
+      "observed_group": "healthy",
+      "sources": {
+        "control": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-61/control-transcript.jsonl",
+          "bytes": 3961,
+          "sha256": "6758e5365f29a4b793f417b0624fc80c9b5cc0d5cca321e92e95ed6af485d344"
+        },
+        "wire": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-61/serial-input-transcript.jsonl",
+          "bytes": 2203,
+          "sha256": "66799a551c0bd1e7988ff965063cdbbcdcf33db4e90920fbfb4927f6467a3c23"
+        },
+        "qmp": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-61/qmp-transcript.jsonl",
+          "bytes": 19226,
+          "sha256": "86762c6597e32e5cbaff0ba766446553710a614449c30b93a20c63a1c8de0dc7"
+        },
+        "serial": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-61/serial.log",
+          "bytes": 307473,
+          "sha256": "c1cb7840e3be50e44244d9603b091a5b192d2b00b95ab757030cf89c3a192f72"
+        }
+      },
+      "missing": [],
+      "records": {
+        "close_control": {
+          "value": {
+            "time": 1791330314.5594525,
+            "request_file": "request-b274d153c863442587d1a46e099c6402.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"bc732fea1b1048dba3287ae48bdc18ee\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 18560}, \"created\": 1791330314.3802516}\n",
+            "sha256": "348927538949903dbf99636de8c71fc236b9ef23093939fc05fa2c5a486d326d",
+            "response": {
+              "request_id": "bc732fea1b1048dba3287ae48bdc18ee",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-61/control-transcript.jsonl",
+            "line": 3,
+            "byte_start": 1276,
+            "byte_end": 1881,
+            "sha256": "f4a7191ff85ea49329e11cc129448782bf972c2172c4bca7a13b163932d0b5fa",
+            "raw": "{\"time\": 1791330314.5594525, \"request_file\": \"request-b274d153c863442587d1a46e099c6402.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"bc732fea1b1048dba3287ae48bdc18ee\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 18560}, \\\"created\\\": 1791330314.3802516}\\n\", \"sha256\": \"348927538949903dbf99636de8c71fc236b9ef23093939fc05fa2c5a486d326d\", \"response\": {\"request_id\": \"bc732fea1b1048dba3287ae48bdc18ee\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "bc732fea1b1048dba3287ae48bdc18ee",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 18560
+            },
+            "created": 1791330314.3802516
+          }
+        },
+        "before_control": {
+          "value": {
+            "time": 1791330349.6294837,
+            "request_file": "request-d6e42594c19a4a9abcfe5484116c2dc5.json",
+            "raw": "{\"execute\": \"probe-capture-before\", \"arguments\": {}, \"created\": 1791330349.5794153}\n",
+            "sha256": "6fe99ef029de013adea7dfaf51578a018c3577c4f86fb2f21111a8aa8974b848",
+            "response": {
+              "return": {
+                "state": "waiting-for-operator-tap-marker",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-61/probe-before.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "d018a7437140db4d3e19a83ef3d718c766c6f591ae87df8c692c2a378c33ef65"
+                }
+              }
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-61/control-transcript.jsonl",
+            "line": 4,
+            "byte_start": 1881,
+            "byte_end": 2461,
+            "sha256": "d88a7c08c27dd7364ffc3175c4a977925c93533206492e177363a697e6388195",
+            "raw": "{\"time\": 1791330349.6294837, \"request_file\": \"request-d6e42594c19a4a9abcfe5484116c2dc5.json\", \"raw\": \"{\\\"execute\\\": \\\"probe-capture-before\\\", \\\"arguments\\\": {}, \\\"created\\\": 1791330349.5794153}\\n\", \"sha256\": \"6fe99ef029de013adea7dfaf51578a018c3577c4f86fb2f21111a8aa8974b848\", \"response\": {\"return\": {\"state\": \"waiting-for-operator-tap-marker\", \"capture\": {\"path\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-61/probe-before.ppm\", \"width\": 828, \"height\": 1792, \"sha256\": \"d018a7437140db4d3e19a83ef3d718c766c6f591ae87df8c692c2a378c33ef65\"}}}}\n"
+          },
+          "command": {
+            "execute": "probe-capture-before",
+            "arguments": {},
+            "created": 1791330349.5794153
+          }
+        },
+        "counter_control": {
+          "value": {
+            "time": 1791330349.8407395,
+            "request_file": "request-4a77abac52e34d408a3b29deedd04e7b.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"2a1edcfe860348c586d72edfb4c8ef4c\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 20316}, \"created\": 1791330349.7273924}\n",
+            "sha256": "1183d99d9647971a2301b6addd1a412e44d6d59a75db3b42a27f4c58b2c8d557",
+            "response": {
+              "request_id": "2a1edcfe860348c586d72edfb4c8ef4c",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-61/control-transcript.jsonl",
+            "line": 5,
+            "byte_start": 2461,
+            "byte_end": 3066,
+            "sha256": "b8585fec6a7afa8c0de52796b8e1b12caa1b7e2247adfc6128df21d89523b4f4",
+            "raw": "{\"time\": 1791330349.8407395, \"request_file\": \"request-4a77abac52e34d408a3b29deedd04e7b.json\", \"raw\": \"{\\\"execute\\\": \\\"guest-hid-gesture\\\", \\\"arguments\\\": {\\\"request_id\\\": \\\"2a1edcfe860348c586d72edfb4c8ef4c\\\", \\\"kind\\\": \\\"tap\\\", \\\"duration_ms\\\": 150, \\\"x\\\": 16384, \\\"y\\\": 20316}, \\\"created\\\": 1791330349.7273924}\\n\", \"sha256\": \"1183d99d9647971a2301b6addd1a412e44d6d59a75db3b42a27f4c58b2c8d557\", \"response\": {\"request_id\": \"2a1edcfe860348c586d72edfb4c8ef4c\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68}}\n"
+          },
+          "command": {
+            "execute": "guest-hid-gesture",
+            "arguments": {
+              "request_id": "2a1edcfe860348c586d72edfb4c8ef4c",
+              "kind": "tap",
+              "duration_ms": 150,
+              "x": 16384,
+              "y": 20316
+            },
+            "created": 1791330349.7273924
+          }
+        },
+        "close_wire": {
+          "value": {
+            "time": 1791330314.559544,
+            "stage": "before-send",
+            "request_id": "bc732fea1b1048dba3287ae48bdc18ee",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 bc732fea1b1048dba3287ae48bdc18ee TAP 16384 18560 150\n",
+            "sha256": "33eac30e60a8401561eaf8fdbb03ac7f9ec8dc2e26355908e2790b1067070cb0"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-61/serial-input-transcript.jsonl",
+            "line": 5,
+            "byte_start": 1116,
+            "byte_end": 1396,
+            "sha256": "dd98a554c94c936400a28cc5a30b57119b4c0886b046183c7614ddc962231c4d",
+            "raw": "{\"time\": 1791330314.559544, \"stage\": \"before-send\", \"request_id\": \"bc732fea1b1048dba3287ae48bdc18ee\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 bc732fea1b1048dba3287ae48bdc18ee TAP 16384 18560 150\\n\", \"sha256\": \"33eac30e60a8401561eaf8fdbb03ac7f9ec8dc2e26355908e2790b1067070cb0\"}\n"
+          }
+        },
+        "counter_wire": {
+          "value": {
+            "time": 1791330349.8408215,
+            "stage": "before-send",
+            "request_id": "2a1edcfe860348c586d72edfb4c8ef4c",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 2a1edcfe860348c586d72edfb4c8ef4c TAP 16384 20316 150\n",
+            "sha256": "9c87bdfacb8260d29f68bb8cc51b6c6330e17afa96d9c9681a229c05ddc11169"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-61/serial-input-transcript.jsonl",
+            "line": 7,
+            "byte_start": 1659,
+            "byte_end": 1940,
+            "sha256": "e4fc9db36f85fc51213718d1b0f35a4598962a48e0691e4aa661d97a8a90832a",
+            "raw": "{\"time\": 1791330349.8408215, \"stage\": \"before-send\", \"request_id\": \"2a1edcfe860348c586d72edfb4c8ef4c\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 2a1edcfe860348c586d72edfb4c8ef4c TAP 16384 20316 150\\n\", \"sha256\": \"9c87bdfacb8260d29f68bb8cc51b6c6330e17afa96d9c9681a229c05ddc11169\"}\n"
+          }
+        },
+        "before_qmp_request": {
+          "value": {
+            "direction": "send",
+            "time": 1791330349.6303935,
+            "raw": "{\"execute\": \"screendump\", \"id\": 22, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-61/probe-before.ppm\"}}\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-61/qmp-transcript.jsonl",
+            "line": 60,
+            "byte_start": 13092,
+            "byte_end": 13334,
+            "sha256": "137a5777266e1db7a67f78e5b784e5d5dd9d2bb960538e1cec0553a42078f660",
+            "raw": "{\"direction\": \"send\", \"time\": 1791330349.6303935, \"raw\": \"{\\\"execute\\\": \\\"screendump\\\", \\\"id\\\": 22, \\\"arguments\\\": {\\\"filename\\\": \\\"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-61/probe-before.ppm\\\"}}\\n\"}\n"
+          }
+        },
+        "before_qmp_reply": {
+          "value": {
+            "direction": "receive",
+            "time": 1791330349.6358092,
+            "raw": "{\"return\": {}, \"id\": 22}\r\n"
+          },
+          "reference": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-61/qmp-transcript.jsonl",
+            "line": 61,
+            "byte_start": 13334,
+            "byte_end": 13430,
+            "sha256": "989ec15d6a508e04aa8ec634fcafc96b6b617af93f29ef00893b509b8e732ad9",
+            "raw": "{\"direction\": \"receive\", \"time\": 1791330349.6358092, \"raw\": \"{\\\"return\\\": {}, \\\"id\\\": 22}\\r\\n\"}\n"
+          }
+        }
+      },
+      "seconds": {
+        "close_wire_to_counter_wire": 35.2812774181366,
+        "close_wire_to_before_control": 35.069939613342285,
+        "before_control_to_counter_wire": 0.21133780479431152,
+        "before_qmp_request_to_reply": 0.005415678024291992,
+        "before_qmp_reply_to_counter_wire": 0.20501232147216797
+      },
+      "geometry": {
+        "close": {
+          "request_id": "bc732fea1b1048dba3287ae48bdc18ee",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 18560
+        },
+        "counter": {
+          "request_id": "2a1edcfe860348c586d72edfb4c8ef4c",
+          "kind": "tap",
+          "duration_ms": 150,
+          "x": 16384,
+          "y": 20316
+        }
+      },
+      "guest_acknowledgments": [
+        {
+          "byte_start": 304558,
+          "byte_end": 304674,
+          "sha256": "5d20924dd0ffe53e6ae6e9a085d5b60073d868ed19ddad46f5f1478e6e577fe1",
+          "text": "INFERNO_HID_ACK request_id=bc732fea1b1048dba3287ae48bdc18ee attempt_status=0 delivery=unproven timestamp=6118681590"
+        },
+        {
+          "byte_start": 307031,
+          "byte_end": 307147,
+          "sha256": "df4f496ec1b184ecd9828913cbe3bd675bee5300296e58082ae364da9084c053",
+          "text": "INFERNO_HID_ACK request_id=2a1edcfe860348c586d72edfb4c8ef4c attempt_status=0 delivery=unproven timestamp=6982683378"
+        }
+      ]
+    }
+  ],
+  "ranges_seconds": {
+    "close_wire_to_counter_wire": {
+      "stalled": {
+        "min": 16.051584005355835,
+        "max": 20.053516149520874
+      },
+      "healthy": {
+        "min": 17.257463932037354,
+        "max": 42.31163716316223
+      }
+    },
+    "before_control_to_counter_wire": {
+      "stalled": {
+        "min": 0.21078968048095703,
+        "max": 0.21506905555725098
+      },
+      "healthy": {
+        "min": 0.21124744415283203,
+        "max": 0.4203755855560303
+      }
+    },
+    "before_qmp_reply_to_counter_wire": {
+      "stalled": {
+        "min": 0.2049720287322998,
+        "max": 0.20630192756652832
+      },
+      "healthy": {
+        "min": 0.20501232147216797,
+        "max": 0.4144906997680664
+      }
+    }
+  },
+  "limits": [
+    "Close label comes from prior operator-reviewed action context; coordinates alone do not prove what pixels were present.",
+    "Host control/send/QMP timestamps are not guest delivery or animation completion timestamps.",
+    "Recorded ACK is attempt completion, not pixel acceptance.",
+    "Selected runs differ in observer cadence/helper/emulator/host scheduling, not randomized controlled groups.",
+    "No filesystem modification times are used."
+  ]
+}
