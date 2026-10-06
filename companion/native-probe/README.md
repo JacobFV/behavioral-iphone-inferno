@@ -243,3 +243,20 @@ Data, preserved root metadata, prepared Hardware's factory-data path, synced and
 cleanly unmounted all volumes. Actual serial records `INFERNO_DATA_COMPLETE` and
 `INFERNO_PREP_COMPLETE`. Guest statfs available bytes changed from 412,479,488 to
 260,640,768. These are preparation observations, not app-runner capacity claims.
+
+## Original SEP payload experiment
+
+Direct-root4 found and initialized the gigalocker, then failed because the loader
+could not open `Preboot/<96 zeros>/usr/standalone/firmware/sep-firmware.img4`.
+`prepare.py --sep-payload FILE --sep-sha256 HASH` explicitly adds a hash-checked
+payload to the cloned ramdisk and asks the owned helper to copy it byte-for-byte
+to that loader path on a disposable Preboot volume. This is only file staging;
+a completed copy does not prove loader format acceptance or SEP startup.
+
+The first payload is the untouched `Firmware/all_flash/sep-firmware.n104.RELEASE.im4p`
+from the official 18A5351d IPSW, 7,783,790 bytes, SHA256
+`76587673e56bbb89e178a015ebbe20fee29f841d07fa6f6cce0e9dad6800dfbe`.
+Its SHA384 matches the n104ap Research Developer Erase Install SEP BuildManifest
+entry. Extraction provenance is in external `native-probe/sep-original.json`.
+No decryption, ticket, Apple signature, payload edit or format wrapper is involved
+in this first test; it retains IM4P bytes despite the loader-required filename.
