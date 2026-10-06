@@ -2,6 +2,28 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 13:24 continuation: traced reproduction44 narrows the failure boundary
+
+44 reproduced persistent counter0 after one genuine tap1. VNC and periodic QMP
+pixels remained identical through20seconds of continuous capture. A second trace
+window around ordinary Home recorded actual same-process background callbacks,
+but another20second capture remained0. Strictafter was withheld and no secondtap
+or OPEN was sent. Both bounded windows disabled normally.
+
+The last submitted draw completed before the pre-tap file checkpoint. After it,
+first-window traces show46 display-ready assertions and43 guest acknowledgments,
+but zero submissions, draw callbacks or pipe outcomes. The Home window likewise
+shows43 assertions/41 acknowledgments and zero submissions. Corrected pipe labels
+were validated by five earlier complete draw cycles. This narrows the boundary
+upstream of modeled submission, without identifying the guest compositor cause.
+Evidence `display-stall-44-actual` and `display-stall-44-visual` retains raw traces,
+byte checkpoints, lifecycle records, registers and actual reviewed images.
+
+Root requested runner SIGINT2 for ordinary QMPcleanup; emulator exited0, the
+attempt remains failed/incomplete and tracked verification rejects it. Forensic
+disk retention is underway. Next instrumentation observes currently unimplemented
+display-register accesses and configuration writes, with no behavior change.
+
 ### 13:13 continuation: real traced journey43 and diagnostic correction
 
 The diagnostic build completed an actual reviewed strict counter0→1 journey in43,

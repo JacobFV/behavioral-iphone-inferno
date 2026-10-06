@@ -7,9 +7,9 @@ The user explicitly wants continuous work across status questions and intermedia
 milestones. No pause or handoff requested. Parallel workers are authorized for
 independent work in isolated worktrees; commit progressively.
 
-## Current execution, 2026-10-06 13:14 local
+## Current execution, 2026-10-06 13:24 local
 
-All through43 stopped. ONE44 now starting; root owns input. Active task: investigate the intermittent
+All through44 stopped.44 is another failed visual attempt. Active task: investigate the intermittent
 real display freeze in41 while finishing a reproducible installed-iOS runner.
 Do not treat a healthy comparison as a fix.
 
@@ -48,11 +48,30 @@ solely to tracecalls, with no migratedstate or emulationbehavior change. Actual
 rebuild/control smoke26df7a776c passed: binarySHA
 1545a84357982b7f9c19a134ff63c070c538022b10bec5e0cd1d6a78da953884,
 sourceab7892d1acec279cb48a7a02553b4655eec87f44. No guestlabelclaim yet.
-Root authorized ONE44 samefrozen50/TCG/keepalive; bootworker launching now.
-Use owned-control --trace-checkpoints for betaClose/counter, plus
-`companion/run display-trace-checkpoint --report REPORT --output NEW.json` after
-review. Hostfile-visible byteboundaries only; bufferedlogging prevents exacttime.
-Bothbaselinee3da and43diagnostic1e369 archivedread-only before rebuild.
+44 REPRODUCED the realfailure with diagnostictrace. Boot
+4CCF1DC1-5592-4838-A1C8-BC377B6EF73E/PID239/main2500669858. Genuine single tap
+ e6c9ca3795044d559048f14c967f707f and realtap1, but VNCcounter0.16framescontinuous20s
+allSHA24566763bdc8ceb183927ddf29ec3ddb414f710d3d2b8ddf1bbd3ec3bb9d868d.
+StrictbeforeandperiodicQMPalsoidenticalee1b21d56a3c3be58dc27c0b3bb290661985925b35da9974889df81bc253ed70.
+No strictafter, no secondtap. Bytecheckpointbeforetap11096 alreadyafterlastdraw.
+Firstwindowafterthatboundary:ZEROsubmit/BH/pipe,46OUTPUT_READY43W1C acknowledgments.
+Correctedpipe0/1labelsactualconfirmed in5earliercompleted drawcycles.
+ONEordinaryF6Home yieldedrealresign/backgroundsamePID/main, butanother16frames20s
+allstill0. Secondtracewindow43OUTPUT_READY41W1C, ZEROsubmit/BH/pipe. Bothwindows
+actuallydisabled. No diagnosticOPENneeded. Deviceinterruptservicecontinues butguest
+stopsissuingmodeledsubmissions; no queuedBH failure or causalcompositorclaim.
+Rootrecordedoperator-stop/SIGINT2torunner2778291 at1791318208.773. NormalQMPcleanup
+emulator0, reportKeyboardInterruptSignal2/attempt_completedfalse; verifierrejects
+strictincomplete. Bootworkerownsforensicpreserve-stopped--failed-attempt/finalraw,
+plusarchive44binary1545a843. Evidence5f0f05ad1c/c49724d64a display-stall-44-actual
+and a6902fb090 display-stall-44-visual. Keep allfailedmilestonesdistinct.
+Nativeworkerownsnextdiagnostic-only optinunknownADPmain/GP/blendread/write metadata
+and GPconfigurationwrites (actualunsupportedpaths currentlyreturn0/ignorewrites).
+NoextraDMA/state/semanticsfix; fixedboundedwindow. Need source review/build/control
+validation thenONE45sameguestbits. No45authorizedyet. Startshortwindow ifnewtrace
+volumehigh. Current runtimecannotgainnewinstrumentation withoutrebuild.
+Use owned-control --trace-checkpoints plusread-onlydisplay-trace-checkpoint command.
+Hostfile-visible boundariesonly; bufferingprecludesexacteventtime/causality.
 
 ## Trace and control workflow
 
