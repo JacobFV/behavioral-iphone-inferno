@@ -1,0 +1,81 @@
+{
+  "source_revision": "608191fbfebdab21e452a3316594be071d5caaaa",
+  "facts": [
+    {
+      "path": "companion/vnc-control.py",
+      "sha256": "23cc8bebfc691e829b2063a14d650b8050a98629abe173dc05b88db919142fe7",
+      "lines": [
+        [
+          19,
+          47
+        ],
+        [
+          55,
+          97
+        ],
+        [
+          118,
+          171
+        ],
+        [
+          199,
+          219
+        ]
+      ],
+      "excerpt": "companion-vnc-control.py.txt"
+    },
+    {
+      "path": "companion/boot.py",
+      "sha256": "3f300239d6c624457a541295806a8f780f84456814d38f16fb20b9e5a114fdd4",
+      "lines": [
+        [
+          309,
+          322
+        ],
+        [
+          430,
+          449
+        ],
+        [
+          467,
+          495
+        ]
+      ],
+      "excerpt": "companion-boot.py.txt"
+    },
+    {
+      "path": "ui/vnc.c",
+      "sha256": "7eecaf75839eae57d5b426c066d9d8e0cfa95f9ce8c50a09f18b3e6022be9db2",
+      "lines": [
+        [
+          3254,
+          3292
+        ]
+      ],
+      "excerpt": "ui-vnc.c.txt"
+    }
+  ],
+  "recommendation": [
+    "First validation: opt-in runner-owned existing vnc-control.py observe child for a declared finite phase up to300s, fixed runner private Unix socket and no input flags. Default behavior unchanged.",
+    "Separate child/worker, never blocking Client.capture in sole QMP/control loop:15s socket waits and image encoding can delay control/deadline polling.",
+    "Record connection/first-frame and stop/error times. Claim coverage only where actual connection overlaps journey; premature exit or expiry is incomplete coverage, no automatic restart.",
+    "Observe300 is sufficient only for a\u2264300s planned phase, not7200s session. Repeated restarts introduce gaps and should not masquerade as continuous coverage.",
+    "If longer coverage is later required, use one bounded runner-owned drain worker, fixed endpoint, no input methods, bounded message/frame buffers, and occasional evidence PNGs rather than encoding every frame. No external persistent service."
+  ],
+  "lifecycle": [
+    "Use only runner TemporaryDirectory AF_UNIX socket. Shared RFB client preserves root operator connections; None authentication stays inside private directory, no TCP listener.",
+    "Runner owns exact observer PID/start identity, polls status without blocking QMP, no autorestart.",
+    "Finish final journey capture while observer connected, then graceful stop/reap before temporary directory/QEMU cleanup. Existing finally closes socket and writes report on normal completion/exception; default SIGTERM does not guarantee finally, so future integration needs graceful stop or records interrupted evidence.",
+    "Bound join then terminate/kill only retained child if needed; observer cleanup errors must not prevent QMP quit."
+  ],
+  "resource_attribution": [
+    "Current observation performs full-frame request/decode/coverage allocation/PNG encode/hash roughly once per second; not passive or zero-cost.",
+    "Record observer CPU/RSS separately from emulator PID metrics and label whole workload continuous-refresh. Guest/emulator display work changes; do not compare unlabeled no-viewer versus viewer samples.",
+    "Capture timestamps measure host request/receipt, not guest presentation."
+  ],
+  "limits": [
+    "Read-only source design, no implementation/build/runtime action.",
+    "53 demonstrates refresh-dependent cadence; failed44/47 remained stale with continuous VNC. This proposal does not fix missing submissions.",
+    "Socket and capture deadlines are cooperative per-operation bounds, not a strict hard host deadline."
+  ]
+}
