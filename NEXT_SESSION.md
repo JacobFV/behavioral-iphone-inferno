@@ -22,12 +22,13 @@ counterd2847363d7794abc935cadedc18d990b. QMPbefore
 after80a879d44c98c6d63fbe9a7afb3ab55e25ee66813643e5af780090d3def2595b.
 Root visual review3856d1678f, no SAMPLE/Home/OPEN. Trace disabled duringcleanup.
 51 rootSHA1f2740b53665988eb18bae8fef1e12c6b450b042f47a5ab9c3b9fb12b5e6c21e.
-52 STOPPED healthy strict0→1, finish accepted, postflight underway. Root visuals6711b7a643.
+52 STOPPED healthy strict0→1, normal0/noerror, default retention verifiedcb2f83e0da. Root visuals6711b7a643.
 Boot4D57DC44-A8B4-469E-9547-81D79A036FF0/PID255/main2828698034;
 counter58985af15a484360a9c1442be4386a66. QMPbefore
  a6d6e3770ab9468bc05f7d08a66edc241db8b62804356c3e3f2a5a1a9640aead,
 afterd7dbd86ff62a04a18448e026d30f37fea81de150740a3c005f07f93231ece4c9.
-No SAMPLE/Home/OPEN52. Worker authorized ONE53 after clean52 retention, same55/670.
+No SAMPLE/Home/OPEN52. Root52SHAbc57c2296671a99304913ad9b34ddac76402cbe6203a58e4e5909a61bb4ef0f7.
+ONE53 starting after clean52 retention, same55/670.
 Six-run serial audit428a2c9f2f found startup IOMFB warnings shared by failed44/47
 and healthy45/46/49/50; no failure-specific warning near/after counter marker.
 Root owns all input; on stall collect both original samples BEFORE Home.

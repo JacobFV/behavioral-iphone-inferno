@@ -2,6 +2,21 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 14:50 continuation: healthy52 preserved; original serial warnings compared
+
+52 completed reviewed strict counter0→1 with the same frozen55 guest and670
+emulator. No samples/Home/OPEN were issued. All trace events disabled at their
+deadline; normal shutdown exited0, and tracked journey and default disk retention
+checks passed. Root disk SHA256 is
+bc57c2296671a99304913ad9b34ddac76402cbe6203a58e4e5909a61bb4ef0f7.
+53 is starting with unchanged components to continue stalled-state capture.
+
+A separate six-run serial comparison retained exact byte references. The concrete
+IOMFB startup warnings occur in failed44/47 and healthy45/46/49/50; the searched
+serial output contains no failure-specific graphics warning near or after the
+counter transition. This negative result does not establish healthy threads.
+Evidence: `stall-serial-comparison`, `owned-sample-52-visual` and stopped52 records.
+
 ### 14:42 continuation: healthy51, fourth sampling-capable repeat52 beginning
 
 51 completed another independently reviewed strict counter0→1 journey with seven
