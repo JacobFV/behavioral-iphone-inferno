@@ -4,6 +4,7 @@ typedef unsigned int uint32_t;
 typedef unsigned short uint16_t;
 extern int printf(const char *, ...), snprintf(char *, size_t, const char *, ...);
 extern int fflush(void *), strcmp(const char *, const char *), access(const char *, int);
+extern int setuid(unsigned), setgid(unsigned), setgroups(int,const unsigned *);
 extern int fork(void), execve(const char *, char *const[], char *const[]);
 extern int waitpid(int, int *, int), mkdir(const char *, uint16_t), unmount(const char *, int);
 extern int *__error(void);
@@ -205,6 +206,19 @@ static int initialize_effaceable(void) {
     if(connection)serviceclose(connection);
     release(service);return status;
 }
+static void check_fixture_access(const char *context) {
+    const char *paths[]={"/mnt2","/mnt2/inferno","/mnt2/inferno/inferno-launcher",0};
+    for(unsigned i=0;paths[i];i++){*__error()=0;int status=access(paths[i],1);printf("INFERNO_FIXTURE_ACCESS context=%s path=%s status=%d errno=%d\n",context,paths[i],status,*__error());}
+    fflush(0);
+}
+static void export_owned(const char *path) {
+    struct file_stat st;if(lstat(path,&st) || (st.mode&0xf000)!=0x8000)return;
+    int fd=open(path,0);if(fd<0)return;
+    printf("INFERNO_OWNED_HEX_BEGIN path=%s size=%lld\n",path,st.size);fflush(0);
+    unsigned total=0;unsigned char bytes[4096];char hex[8193];const char *digits="0123456789abcdef";
+    while(total<131072){long n=read(fd,bytes,sizeof(bytes));if(n<=0)break;for(long i=0;i<n;i++){hex[2*i]=digits[bytes[i]>>4];hex[2*i+1]=digits[bytes[i]&15];}hex[2*n]='\n';write(1,hex,2*n+1);total+=n;}
+    close(fd);printf("INFERNO_OWNED_HEX_END bytes=%u complete=%d\n",total,total==(unsigned long long)st.size);fflush(0);
+}
 static int export_crashes(void) {
     const char *fixture[]={"/mnt2/inferno","/mnt2/inferno/inferno-launcher","/mnt2/inferno/InfernoProbe.app","/mnt2/inferno/InfernoProbe.app/InfernoProbe","/mnt2/inferno/InfernoProbe.app/Info.plist",0};
     for(unsigned i=0;fixture[i];i++) {
@@ -212,6 +226,13 @@ static int export_crashes(void) {
         printf("INFERNO_POSTBOOT_FIXTURE %s status=%d errno=%d mode=%o uid=%u gid=%u size=%lld\n",fixture[i],status,*__error(),status?0:st.mode,status?0:st.uid,status?0:st.gid,status?-1:st.size);
     }
     fflush(0);
+    check_fixture_access("root");
+    int child=fork();
+    if(child==0){int groups=setgroups(0,0),gid=setgid(501),uid=setuid(501);printf("INFERNO_FIXTURE_IDENTITY groups=%d gid=%d uid=%d\n",groups,gid,uid);check_fixture_access("uid501-gid501");_exit(0);}
+    if(child>0){int status;while(waitpid(child,&status,0)<0)if(*__error()!=4)break;}
+    struct filesystem_space fs;if(!statfs("/mnt2",&fs))printf("INFERNO_FIXTURE_STATFS flags=%x mounted_from=%s mounted_on=%s\n",fs.flags,fs.mounted_from,fs.mounted_on);
+    export_owned("/mnt2/inferno/inferno-launcher");
+    export_owned("/mnt2/inferno/InfernoProbe.app/Info.plist");
     const char *directory_path="/mnt2/mobile/Library/Logs/CrashReporter";
     void *directory=opendir(directory_path);if(!directory)return -1;
     struct directory_entry *entry;unsigned long long total=0;unsigned files=0;
