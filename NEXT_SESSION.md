@@ -19,8 +19,11 @@ BootB566821E-4F77-42A9-9C45-CCD72EDE1F80/PID257/main2920406004;
 counter6c20fa1828bb405d9fe3af8a8e0911f8, actualtap1 and reviewed pixels1.
 QMPbeforea0cb9cd7a90bd52b0c12e19f0d93bc1db4cc2f4ad89f69cb5b6a7db5bd52d8dd,
 afterb6ec1347408a659a54443f7a03043fecbd968953d08f21aa62580c4bd960a5b8.
-NoSAMPLE/Home/OPEN57. Bootworker owns final strict verification and disk retention,
-then is authorized ONE58 unchanged frozen55/emulator670, observer defaultOFF.
+NoSAMPLE/Home/OPEN57. Final strict/default all7+ancestor+attestation preservation
+PASS e629bf388a, normal0/noerror506.045061s. Root110952448bytes SHA
+ e928b462fb5539aa3683233786efb754c6366f1f8cd0b0528474242ce52a08d5.
+Bootworker is launching authorized ONE58 unchanged frozen55/emulator670,
+observer defaultOFF.
 Root owns all guest input. Native worker auditing source/trace state-machine gaps;
 disk worker completed57 observer audit. No rendering fix or freeze reproduction57.
 

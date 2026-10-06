@@ -16,8 +16,10 @@ and sampled peakRSS47,022,080bytes for the observer alone. Its requested phase
 completed; it did not restart or receive a termination signal. This establishes
 finite observer cleanup and continued app operation, not a freeze fix or
 whole-boot observation. Evidence: `owned-expiry-57-visual` and the independent
-observer audit. Final strict/disk postflight remains with the boot worker, then
-one default-off58 is authorized while source diagnosis continues independently.
+observer audit. Final strict verification and default all7/ancestor/exact
+attestation retention passed (e629bf388a), normal0/noerror506.045061s. Root disk
+SHAe928b462fb5539aa3683233786efb754c6366f1f8cd0b0528474242ce52a08d5.
+One default-off58 is starting while source diagnosis continues independently.
 
 ### 16:02 continuation: actual56 fresh process and strict-prefix verification complete
 

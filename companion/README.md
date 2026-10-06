@@ -52,7 +52,13 @@ and their tracing/observer limits are retained in
 `evidence/stopwatch-resources-53-actual/`. Run55 then validated the optional
 `--headless-refresh-seconds 1..300` runner-owned observer through strict counter
 0→1 and graceful early shutdown. Its actual coverage and separate resource use
-are recorded; the option remains disabled by default.
+are recorded; the option remains disabled by default. Run56 verified that default
+creates no observer, then completed a fresh app process launch after a reviewed
+App Switcher dismissal and an original process listing proving absence. Run57
+verified natural observer expiry after60s, followed by a separately observed
+strict counter0→1 journey and normal shutdown. Both final strict verification
+and disk preservation passed. These observer checks do not resolve the earlier
+persistent freeze.
 Broader reliability and active-workload measurements remain ongoing. See [BOOT.md](BOOT.md) for the image profile and headless runner,
 [USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.
 
