@@ -27,5 +27,18 @@
   "wrapper_other_failures": "Original IOKit CreateWithOptions also returnsNULL for absent IOHIDResource, failed IOServiceOpen, failed serialized create method, state-queue allocation, or analytics allocation after successful kernel create. Recovery addresses47ed4,47ef4,47f44,48008,480c0,480ec; System mapping adds1812d3000.",
   "next_diagnostic": "Record matched IOHIDResource ID, original IOServiceOpen status, IOCFSerialize length, and selector0 status using same owned properties and existing entitlement. Close diagnostic connection cleanly; no contact report. Native worker owns implementation.",
   "primary_source": "https://github.com/apple-oss-distributions/IOHIDFamily/blob/IOHIDFamily-1446.140.2/IOHIDFamily/IOHIDResourceUserClient.cpp",
-  "limitations": "Usermode wrapper NULL cannot establish which stage failed, or establish that original descriptor parser rejected it. No additional entitlement, identity, property or OS policy change recommended."
+  "limitations": "Usermode wrapper NULL cannot establish which stage failed, or establish that original descriptor parser rejected it. No additional entitlement, identity, property or OS policy change recommended.",
+  "type0_open_path": {
+    "actual_wrapper": "Original System IOKit0x18131aee8 sets w2=0 before IOServiceOpen0x18131aef0; diagnostic same current-task/type0 tuple.",
+    "resource_personality": "Original decoded kernel prelink XML at fileoffset0x29d8036 has IOHIDResource personality IOUserClientClass=IOHIDResourceDeviceUserClient; no custom Resource newUserClient override.",
+    "vtable": "Original __ZTV13IOHIDResource0xfffffff00779d220 vptrslot0x460 resolves IOService::newUserClient(task,security,type,properties,out)0xfffffff0080042f0; legacy slot0x468 resolves unsupported stub0xfffffff0080042e4.",
+    "generic_mapping": "Generic overload fetches IOUserClientClass, allocates by class name0xfffffff0080044fc, calls initWithTask0xfffffff008004624, then attach/start. Type is passed through; original Resource personality selects class independently of type0.",
+    "return_meanings": {
+      "0xe00002c2": "Generic initWithTask false at0xfffffff008004628\u21920xfffffff0080046d4, including but not uniquely entitlement rejection. Outer invalid arguments can also yield this code.",
+      "0xe00002bd": "Class allocation failure0xfffffff008004530\u21920xfffffff0080045e0.",
+      "0xe00002c7": "Unsupported class/property or attach/start failure in generic newUserClient; not a unique authorization diagnosis.",
+      "0xe00002e2": "Outer is_io_service_open_extended calls mac_iokit_check_open0xfffffff008098f38 after successful newUserClient; nonzero policy result maps e00002e2 at0xfffffff008098f3c\u20130xfffffff008098f48. Other paths may also use permission return; do not equate with specific entitlement."
+    },
+    "limits": "No actual boot18 diagnostic result yet. Generic code inspection does not prove active MAC policy behavior. No broader entitlement or policy change authorized/recommended."
+  }
 }
