@@ -36,9 +36,9 @@ extern void *opendir(const char *);
 extern struct entry *readdir(void *);
 extern int closedir(void *);
 static void fixture_inventory(void) {
-    const char *paths[]={"/var","/private/var","/private/var/inferno","/private/var/inferno/inferno-launcher","/private/var/inferno/InfernoProbe.app","/private/var/inferno/InfernoProbe.app/InfernoProbe","/var/inferno/inferno-launcher",0};
+    const char *paths[]={"/dev/console","/usr/bin/inferno-launcher","/usr/bin/inferno-exec-launcher","/var","/private/var","/private/var/inferno","/private/var/inferno/inferno-launcher","/private/var/inferno/InfernoProbe.app","/private/var/inferno/InfernoProbe.app/InfernoProbe","/var/inferno/inferno-launcher",0};
     for(unsigned i=0;paths[i];i++) {
-        struct file_stat st;int status=lstat(paths[i],&st);
+        struct file_stat st;*__error()=0;int status=lstat(paths[i],&st);
         printf("INFERNO_FIXTURE_STAT %s result=%d errno=%d mode=%o uid=%u gid=%u size=%lld\n",paths[i],status,*__error(),status?0:st.mode,status?0:st.uid,status?0:st.gid,status?-1:st.size);
     }
     fflush(0);
@@ -56,10 +56,10 @@ static void crash_inventory(void) {
     fflush(0);
 }
 int main(void) {
-    const unsigned delay[]={15,30,45,60};
+    const unsigned targets[]={15,45,90,150,300,600,1200,1800,3600};
     unsigned elapsed=0;
-    for(unsigned i=0;i<4;i++) {
-        sleep(delay[i]);elapsed+=delay[i];
+    for(unsigned i=0;i<sizeof(targets)/sizeof(targets[0]);i++) {
+        unsigned remaining=targets[i]-elapsed;while(remaining)remaining=sleep(remaining);elapsed=targets[i];
         printf("INFERNO_READINESS_BEGIN seconds=%u\n",elapsed);fflush(0);
         int pid=fork();
         if(pid==0){
