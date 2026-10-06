@@ -18,15 +18,19 @@ counterf741a80b874042d38ca91b95d47ea1fe at1791329882.0656703.
 QMPbefored95aa1a05fc6e7e316e6eb7650c130eb510629c8246e8cbd92866eefc6456620,
 aftere3f5a0a26ba159cbe8d5adc2ca32d9706f186b027d173faf97404344e5092ed3.
 
-ONE61 LIVE controlledpredecessorcomparison: runner3098207/QEMU3098661,
-hostf967103b8d; VNC/tmp/inferno-boot-andi_y6p/vnc.sock.
-Base disk-preparation-50/report.json (NOT55), samef088/defaultobserverOFF.
-Rootreviewboot-view/observed0014lock; HID_READYconfirmed(noSAMPLEbanner).
-Unlock1 547755100c2345dd8b9122fec1d3f8b2 at1791330151.75501 sent,
-after-unlock00120sobservationpending. Noother61inputs/traceyet.
-**HID54 does NOT support SAMPLE. NeverissueSAMPLE61.** Rootallinputs/control.
-InitialdisplaytracingOFF as60; ifstaleaftergenuinetap, continuous20sconfirmthen
-bounded10sstatusreadwindow; preservefailure, no falseaftercapture/secondtap.
+61 normalfinish requested after reviewed strict0→1. Runner3098207/QEMU3098661
+werefromhostf967103b8d, frozen50/HID54/f088/defaultobserverOFF; bootworkerowns
+stoppedverification/preservation now. Rootvisualcd888a8244.
+Boot63FF86C9-DA4D-45FB-B2DE-B5595052C8C7/PID248/main2673630442;
+counter2a1edcfe860348c586d72edfb4c8ef4c at1791330349.706598, actualtap1+ACK0.
+QMPbefored018a7437140db4d3e19a83ef3d718c766c6f591ae87df8c692c2a378c33ef65,
+after20e74bea0fcc471c9644704638e3718d7137648cde0c4c2fbafc0d263d2331d3.
+No displaytrace/SAMPLE/Home/OPEN. Firstunlock slowchanginganimationreturnedlock;
+rootwaitedadditional20s beforesecondreviewedgesture, thenbeta/Close/counter.
+**HID54 does NOT support SAMPLE. NeverissueSAMPLEonthispredecessor.**
+No62authorizedyet. Bootworkerpreparingconcrete62old670archivedbinary/manifest
+with isolatedhoste629bf388a (loaded7-eventcontrollercompatible670), samefrozen50;
+rootwillreviewbeforelaunch. Do notmodifycurrentmain/build/retainedarchives.
 This is predecessorstatecomparison, notHID-onlycause: root ANDnvram differ.
 Currentreadonlyloadereligibility+fourcomponentaudit a2e0eb2230:
 actualstage50input helper-attempt51/ramdisk.raw, NOThelper-attempt50 historical

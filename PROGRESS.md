@@ -2,6 +2,20 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 16:47 continuation: predecessor61 also completed visible counter transition
+
+The original stage50/HID54 state on f088 completed a genuine single tap and
+reviewed VNC/QMP counter0→1. Its first unlock had a slow changing animation;
+root continued observing until it returned to lock before a second gesture.
+No display trace, Home, OPEN or SAMPLE was sent. The older helper has no sample
+support. Root visual evidencecd888a8244 retains each reviewed state and exact
+inputs. Normal finish was requested; final postflight is underway.
+
+This predecessor success does not prove a fix or attribute earlier failures to
+HID55. A concrete comparison using archived670 and an isolated compatible
+seven-event host runner is being prepared, with no main checkout or current
+binary replacement. No further emulator behavior change is proposed.
+
 ### 16:40 continuation: untraced-display60 passed; predecessor comparison begins
 
 Run60 completed the reviewed single counter0→1 with display tracing disabled
