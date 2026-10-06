@@ -16,6 +16,13 @@ TRACE_EVENTS = {
     'apple_mt_spi_host_event', 'apple_mt_spi_enqueue', 'apple_mt_spi_dequeue',
     'apple_mt_spi_tx_drained', 'apple_mt_spi_boot_command', 'apple_mt_spi_control',
 }
+TOUCH_TRACE_EVENTS = ('apple_mt_spi_host_event', 'apple_mt_spi_enqueue',
+                      'apple_mt_spi_dequeue', 'apple_mt_spi_tx_drained',
+                      'apple_mt_spi_boot_command', 'apple_mt_spi_control')
+# Explicit read-only registers reviewed against the original device models. Never
+# include SPI RXDATA (+0x20), which consumes data, or permit arbitrary addresses.
+TOUCH_REGISTERS = (0x24a820088, 0x235104000, 0x235104004, 0x235104008,
+                   0x23510400c, 0x235104034, 0x23510404c)
 LIMIT = 4096
 
 
@@ -28,7 +35,7 @@ def validate(request):
     name, args = request['execute'], request['arguments']
     if not isinstance(args, dict):
         raise ValueError('Arguments must be an object')
-    if name == 'query-mice' and args == {}:
+    if name in ('query-mice', 'query-touch-registers') and args == {}:
         return name, args
     if name in ('trace-event-get-state', 'trace-event-set-state'):
         keys = {'name'} if name.endswith('get-state') else {'name', 'enable'}
@@ -101,7 +108,13 @@ class ControlMailbox:
                 record.update(raw=raw.decode('utf-8', errors='replace'), sha256=hashlib.sha256(raw).hexdigest())
                 request = json.loads(raw)
                 name, args = validate(request)
-                response = qmp.execute(name, args)
+                if name == 'query-touch-registers':
+                    response = {'registers': [
+                        {'address': hex(address), 'response': qmp.execute(
+                            'human-monitor-command', {'command-line': f'xp /1wx 0x{address:x}'})}
+                        for address in TOUCH_REGISTERS]}
+                else:
+                    response = qmp.execute(name, args)
                 record['response'] = response
             except (OSError, ValueError, TypeError, KeyError) as exc:
                 response = {'rejected': str(exc)}
@@ -112,10 +125,44 @@ class ControlMailbox:
             path.unlink()
 
 
+class StartupTouchTrace:
+    """Six explicit touch tracepoints, automatically disabled after 180 seconds."""
+    def __init__(self):
+        self.report = {'limit_seconds': 180, 'events': list(TOUCH_TRACE_EVENTS),
+                       'enable_results': [], 'disable_results': []}
+        self.active = []
+        self.deadline = None
+
+    def start(self, qmp):
+        self.deadline = time.monotonic() + 180
+        self.report.update(start_time=time.time(), deadline_time=time.time() + 180)
+        for name in TOUCH_TRACE_EVENTS:
+            result = qmp.execute('trace-event-set-state', {'name': name, 'enable': True})
+            self.report['enable_results'].append({'name': name, 'response': result})
+            if 'error' in result:
+                raise RuntimeError(f'Touch startup trace unavailable: {name}: {result}')
+            self.active.append(name)
+
+    def poll(self, qmp):
+        if self.active and time.monotonic() >= self.deadline:
+            self.stop(qmp, '180-second deadline')
+
+    def stop(self, qmp, reason):
+        if not self.active:
+            return
+        for name in list(self.active):
+            result = qmp.execute('trace-event-set-state', {'name': name, 'enable': False})
+            self.report['disable_results'].append({'name': name, 'response': result})
+            if 'error' not in result:
+                self.active.remove(name)
+        self.report.update(stop_time=time.time(), stop_reason=reason,
+                           all_disabled=not self.active)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report', type=Path, required=True, help='Active boot output directory with --control-mailbox')
-    parser.add_argument('command', choices=['query-mice', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event'])
+    parser.add_argument('command', choices=['query-mice', 'query-touch-registers', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event'])
     parser.add_argument('--arguments', default='{}', help='Allowlisted QMP arguments as JSON')
     args = parser.parse_args()
     directory = args.report.resolve(strict=True) / 'control'
@@ -130,7 +177,8 @@ def main():
         if reply.exists():
             response = json.loads(read_private(reply))
             print(json.dumps(response))
-            return 1 if 'error' in response or 'rejected' in response else 0
+            return 1 if ('error' in response or 'rejected' in response or
+                         any('error' in x['response'] for x in response.get('registers', []))) else 0
         time.sleep(.1)
     raise SystemExit('No reply within 35 seconds; retained request may expire without execution')
 
