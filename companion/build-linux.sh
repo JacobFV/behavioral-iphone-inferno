@@ -48,9 +48,18 @@ fi
 source_tree="$build_root/source"
 if [[ ! -d "$source_tree/.git" ]]; then
     git clone --no-hardlinks "$source_repo" "$source_tree"
-    git -C "$source_tree" checkout --detach cc4302a99167abec69b714cfd00c38caece7e7de
 fi
-[[ $(git -C "$source_tree" rev-parse HEAD) = cc4302a99167abec69b714cfd00c38caece7e7de ]] || { echo 'Unexpected source revision' >&2; exit 1; }
+upstream_base=cc4302a99167abec69b714cfd00c38caece7e7de
+source_commit=$(git -C "$source_repo" rev-parse HEAD)
+git -C "$source_repo" merge-base --is-ancestor "$upstream_base" "$source_commit" || {
+    echo 'Fork revision is not descended from the reviewed upstream base' >&2; exit 1;
+}
+git -C "$source_tree" diff --quiet && git -C "$source_tree" diff --cached --quiet || {
+    echo 'Durable source has tracked changes; preserve/review them before rebuilding' >&2; exit 1;
+}
+git -C "$source_tree" fetch "$source_repo" "$source_commit"
+git -C "$source_tree" checkout --detach "$source_commit"
+printf 'Building upstream %s plus committed fork %s\n' "$upstream_base" "$source_commit"
 git -C "$source_tree" submodule update --init util/mlib
 mkdir -p "$build_root/build"
 (cd "$build_root/build"

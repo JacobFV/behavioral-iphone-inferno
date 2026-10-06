@@ -1,4 +1,4 @@
-arm_common_ss.add(when: 'CONFIG_APPLE_SOC', if_true: tasn1)
+arm_common_ss.add(when: 'CONFIG_APPLE_SOC', if_true: [tasn1, liblzfse])
 arm_common_ss.add(when: 'CONFIG_APPLE_DART', if_true: files('dart.c'),
                                              if_false: files('dart-stub.c'))
 arm_common_ss.add(when: 'CONFIG_APPLE_SART', if_true: files('sart.c'))

@@ -24,6 +24,7 @@ files += [root / 'downloads/nettle-3.10.2.tar.gz']
 record = {
     'schema': 'inferno.local-linux-build.v1',
     'purpose': 'build provenance only; no guest boot or firmware execution claim',
+    'upstream_base': 'cc4302a99167abec69b714cfd00c38caece7e7de',
     'source_revision': output(['git', '-C', str(source), 'rev-parse', 'HEAD']),
     'source_diff': output(['git', '-C', str(source), 'diff', '--stat']),
     'mlib_revision': output(['git', '-C', str(source / 'util/mlib'), 'rev-parse', 'HEAD']),
