@@ -2,6 +2,30 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 09:20 continuation: overlay visual repeat; event writer diagnosis
+
+Boot27 ran through the verified raw-backed qcow2 path, accepted the owned app,
+and again displayed counter0 then1 after exactly one counter tap. Its140443648byte
+qcow2 file and six auxiliary namespaces are retained with mandatory immutable
+stage43 raw backing. Normal QMPquit42/emulator0 and postflight backing hash
+unchanged prove the base was preserved. This is actual iOS/app evidence beyond
+the earlier synthetic block check. It is not a density/cost benchmark.
+
+The event reader queried a valid current boot UUID but received no owned markers;
+the strict runner correctly refused the operator before-capture request. App and
+reader processes stayed alive. The cause is not established. Diagnostic app16
+will show its actual UID, sysctl result and first file error; readiness48 will
+report only fixed-path metadata/UID, with no new grants or policy changes.
+Next44/28 uses reviewed retained overlay ancestry to avoid another full copy.
+All actual attempts remain; protected27/43 must not be retired.
+
+Host sampling27 captured121 points during120seconds of unlock/launch:95.15CPU
+seconds and5671759872byte peakRSS. It is a different workload from26's60second
+idle sample and cannot establish a storage performance comparison. Event-arrival
+raw lines/times and executed collector are retained, with preexisting lines
+explicitly excluded from arrival timing. No lifecycle markers means no measured
+app-launch duration yet.
+
 ### 08:49 continuation: actual owned UIKit counter journey
 
 Boot26 with app14 reaches original accepted callback, stays alive asPID256,

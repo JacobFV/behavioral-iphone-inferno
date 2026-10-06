@@ -10,7 +10,43 @@ Suggested opening instruction:
 > Prefer integrated execution over adding routine unit tests. Never use my main
 > display. Do not resume the archived framework reimplementation.
 
-## ACTIVE BOOT27, 2026-10-06 09:08 local
+## CURRENT, 2026-10-06 09:20 local:27 stopped, next diagnostic staging
+
+Boot27 is STOPPED normally: cleanupcapture41, QMPquit42/emulator0,
+all7stoppedhashes atstandard stopped-disk-hashes.json. Original raw43 backing
+postflightunchanged=true. RootQCOWSHA
+6898ad82af6bfb96168d2b7dd8febcfa977ef703679739197a40a08d735b6d4c,
+140443648filebytes/140386304allocated. Actualvisualcounter0->1again proven,
+4gestures; strictbeforecapture rejected correctly because0appmarkers.
+Countertap e2a55069074a46f79dfc859e1d81f821 ACK0; before1791303314.6041467
+SHAd1ca15c02dc1a1bcbb6e5275a54fed3eec84b0ee3dc56363def8d5cab74258f4;
+after1791303393.962716 SHA7eea3e2a70aa5bbea9029835eecb806bed42f03bb220df8730d210a93abab053.
+Fullrawworker0b8253bead integrated. ActualeventreaderREADY but no file records
+or errors; cause unknown. AppPID261 andreaderPID198alive, notloggingproof.
+
+Root froze27 root.qcow2 mode0444 AFTER normalstop/all7hash/noFD check, plus
+KEEP-OVERLAY-BACKING.json in27/disks (a5bfa97c37). Both27overlay AND43rawmust
+remain at exactpaths for planned descendants. Diskworker implementing explicit
+--overlay-base-report for validated stoppedownedreports only, recursiveimmutable
+hashes/identities+same-source6auxcopy, max4qcowlevels. Two-levelsyntheticactual
+blockchecks passed; awaitingcommitreview before recovery44 (level2) then28(level3).
+No conversion/deletion. Existingrawdefaultunchanged. Currentfree~4.7GiB enoughCOW.
+
+Diagnostic source0730259baf (worker8df53455dc), evidence014ea341e7 reviewed.
+App16 72624bytes SHA2372660d25572de813839386ff07d0022054128e4d51bdb3fecf29af6beb9d6f;
+readiness48 69024bytes SHAcdd8b81c299d946df258c92c4e07af2109cbd3de03ff7ed7fce2c2e56b56e02b.
+Rootindependenthashmatch. FooterdisplaysexactUID/rawbootqueryret,length,errno/
+firstfilefailure. Readerboundedfixedpath+parent lstat, psUID. No newgrant, path
+change, guardchange or fabricatedevent. Stage44authorizedonlythese2binaries+
+unchanged535job afterchainreview; probe42/preparer46 preserved.
+
+Resource27 window120s duringlaunch(unlike26idle):95.15CPUseconds=79.2915%onecore,
+peakRSS5671759872bytes,121samples. Hosteventarrivalcollector stopped normally;
+noappmarkerstimingclaim. Bothrawobservations/script preserved a5bfa97c37.
+NoVMcurrentlyrunning. Continue44/28diagnoseactualwriterfailure, strictgenuine
+journey and repeatmeasurements; do notstop at the alreadyprovenvisualmilestone.
+
+## HISTORICAL BOOT27, 2026-10-06 09:08 local
 
 Boot27 LIVE session72095, reportapp-boot-27, privateVNC
 /tmp/inferno-boot-alvyoubx/vnc.sock. Rootonlyinput; rootutility
