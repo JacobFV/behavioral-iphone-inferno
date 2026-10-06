@@ -20,8 +20,10 @@ For the next coding session, start with [NEXT_SESSION.md](../NEXT_SESSION.md).
 
 The 2026-10-06 execution reached real iOS 14 recovery userland and captured its
 828x1792 Apple-logo/progress framebuffer. Full-system SpringBoard/backboardd processes now execute and the framebuffer
-shows the original Hello setup UI. Owned application registration and the normal
-first-unlock API transition are proven; touch navigation, owned UIKit execution
+shows the original Hello setup UI. Owned application registration, the normal
+first-unlock API transition and visible virtual-HID touch navigation are proven.
+The latest run reached the original information panel and restart passcode screen;
+its fresh simulated-SEP lock state is under investigation. Owned UIKit execution
 and an app journey remain unproven. See [BOOT.md](BOOT.md) for the hash-checked image profile,
 simulated-SEP build and bounded headless runner; [USB.md](USB.md) describes the
 isolated Linux USB companion. Raw milestone evidence is under `evidence/`.
@@ -32,8 +34,9 @@ isolated Linux USB companion. Raw milestone evidence is under `evidence/`.
 2. Execute the firmware-free QMP smoke and retain the binary/source identity.
 3. Prepare an explicitly documented iOS image profile outside Git, then establish
    a real boot, display and input path. Recovery-userland boot and a framebuffer
-   capture now work; installed iOS reaches Hello, while touch consumption remains
-   under investigation.
+   capture now work; installed iOS reaches Hello and accepts ordinary gestures
+   through an owned virtual touchscreen. Fresh-VM lock state remains under
+   investigation before the app journey.
 4. Install one owned, unencrypted application and execute an end-to-end journey.
 5. Measure cold/warm launch, memory, CPU, reliability and parallel density before
    claiming cheap runner economics. Add the existing visualization dashboard only
