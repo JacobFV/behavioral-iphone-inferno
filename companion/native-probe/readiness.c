@@ -1,8 +1,9 @@
-/* Owned observation-only helper; original guest ps supplies process listing. */
+/* Owned observer; optional separate operator-only HID process, no automatic gestures. */
 extern int printf(const char *, ...), fflush(void *), fork(void), waitpid(int,int *,int),kill(int,int);
 extern int execve(const char *,char *const[],char *const[]), *__error(void);
 extern void _exit(int);
 extern unsigned sleep(unsigned);
+extern int access(const char *,int);
 extern int snprintf(char *,unsigned long,const char *,...),open(const char *,int,...),close(int),strcmp(const char *,const char *);
 extern long read(int,void *,unsigned long),write(int,const void *,unsigned long);
 struct file_stat { int dev;unsigned short mode,nlink;unsigned long long ino;unsigned uid,gid;int rdev;long long times[8],size,blocks;int blksize;unsigned flags,gen;int spare;long long qspare[2]; };
@@ -81,11 +82,24 @@ static void registry_inventory(unsigned requested_seconds) {
 int main(int argc,char **argv) {
     if(argc==2 && !strcmp(argv[1],"--touch-registry-once"))return inferno_ioreg_touch_snapshot();
     if(argc!=1)return 64;
+    int hid_pid=0;
+    if(!access("/usr/bin/inferno-hid-input",1)) {
+        hid_pid=fork();
+        if(hid_pid==0) {
+            char *args[]={"/usr/bin/inferno-hid-input","--console-operator-input",0};
+            char *env[]={"PATH=/usr/bin:/bin:/usr/sbin:/sbin",0};
+            execve(args[0],args,env);_exit(127);
+        }
+        printf("INFERNO_READINESS_HID_CHILD pid=%d automatic_gestures=0\n",hid_pid);fflush(0);
+    }
     const unsigned targets[]={15,45,90,150,300,600,1200,1800,3600};
     unsigned elapsed=0;
     for(unsigned i=0;i<sizeof(targets)/sizeof(targets[0]);i++) {
         unsigned remaining=targets[i]-elapsed;while(remaining)remaining=sleep(remaining);elapsed=targets[i];
         printf("INFERNO_READINESS_BEGIN seconds=%u\n",elapsed);fflush(0);
+        if(hid_pid>0) {int status=0;if(waitpid(hid_pid,&status,1)==hid_pid) {
+            printf("INFERNO_READINESS_HID_EXIT pid=%d status=%d\n",hid_pid,status);fflush(0);hid_pid=0;
+        }}
         registry_inventory(elapsed);
         int pid=fork();
         if(pid==0){

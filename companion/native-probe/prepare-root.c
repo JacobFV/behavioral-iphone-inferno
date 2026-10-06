@@ -264,7 +264,7 @@ static int ensure(const char *path) {
 }
 int main(int argc, char **argv) {
     if (argc < 2 || strcmp(argv[1], "--disposable-root-copy")) return 2;
-    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0, readiness = 0, install_cache = 0, export_reports = 0, exec_wrapper = 0, system_launcher = 0, unlock_helper = 0, system_app = 0, multitouch = 0;
+    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0, readiness = 0, install_cache = 0, export_reports = 0, exec_wrapper = 0, system_launcher = 0, unlock_helper = 0, system_app = 0, multitouch = 0, hid_input = 0;
     for (int i=2; i<argc; ++i) {
         if (!strcmp(argv[i], "--role-volumes")) roles = 1;
         else if (!strcmp(argv[i], "--existing-volumes")) existing = 1;
@@ -274,6 +274,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[i], "--verify-data")) verify_data = 1;
         else if (!strcmp(argv[i], "--create-keybag")) keybag = 1;
         else if (!strcmp(argv[i], "--install-readiness")) readiness = 1;
+        else if (!strcmp(argv[i], "--install-hid-input")) hid_input = 1;
         else if (!strcmp(argv[i], "--install-multitouch")) multitouch = 1;
         else if (!strcmp(argv[i], "--install-cache")) install_cache = 1;
         else if (!strcmp(argv[i], "--export-reports")) export_reports = 1;
@@ -374,6 +375,15 @@ int main(int argc, char **argv) {
         sync();
         if (unmount("/mnt7", 0)) return 14;
         printf("INFERNO_GIGALOCKER_COMPLETE: original seputil initialization and clean unmount succeeded\n"); fflush(0);
+    }
+    if(hid_input) {
+        if(mount_at(system_device,"/mnt1",0))return 70;
+        if(copyfile("/usr/share/inferno-hid-input","/mnt1/usr/bin/inferno-hid-input",0,15))return 71;
+        unsigned long long prior_bytes=verified_bytes;
+        compare_tree("/usr/share/inferno-hid-input","/mnt1/usr/bin/inferno-hid-input");
+        printf("INFERNO_HID_INPUT_READBACK bytes=%llu mismatches=%llu\n",verified_bytes-prior_bytes,mismatches);fflush(0);
+        sync();if(unmount("/mnt1",0))return 72;if(mismatches)return 73;
+        printf("INFERNO_HID_INPUT_INSTALLED: operator-only virtual device; no automatic gestures\n");fflush(0);
     }
     if(readiness) {
         if(mount_at(system_device,"/mnt1",0))return 37;
