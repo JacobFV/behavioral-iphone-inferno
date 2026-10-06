@@ -1,0 +1,239 @@
+{
+  "kind": "stopped_original_home_stock_app_and_owned_security_boundary",
+  "source_report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-23",
+  "binary_sha256": "e3da84b179ce328e06a0f917aabb8e4d80c8a4cf64701212464831a270e1741e",
+  "elapsed_seconds": 841.272737,
+  "emulator_exit": 0,
+  "quit_response": {
+    "return": {},
+    "id": 45
+  },
+  "stop_reason": "Authorized launcher-only original classification comparison on a private copy.",
+  "serial_transport": {
+    "endpoint": "/tmp/inferno-boot-1oak9a0c/gesture-serial.sock",
+    "connected": true,
+    "drained_bytes": 717696,
+    "transmissions": [
+      {
+        "request_id": "0a0489b8653f4ce187a773a0cc36d53a",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 82
+      },
+      {
+        "request_id": "d263f8ae636b47f18aee60774563ee2c",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 68
+      },
+      {
+        "request_id": "aa2cfacd24924ece92c91fc5af5dcc52",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 68
+      },
+      {
+        "request_id": "28130a3fbf45422dad5a725c5db086dc",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 66
+      },
+      {
+        "request_id": "5392d73d65e74b7ca9d8eadb7a52beb1",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 82
+      },
+      {
+        "request_id": "4683d13f8c884b99a2480d1437716b92",
+        "guest_acknowledgment": "not checked",
+        "ui_acceptance": "not observed by transport",
+        "transmission": "written-to-serial-socket",
+        "bytes_sent": 82
+      }
+    ],
+    "automatic_replay": false,
+    "connected_time": 1791298666.9108264,
+    "peer_closed": true,
+    "drain_thread_stopped": true,
+    "closed_time": 1791299507.6478834
+  },
+  "startup_trace": {
+    "limit_seconds": 900,
+    "events": [
+      "apple_mt_spi_host_event",
+      "apple_mt_spi_enqueue",
+      "apple_mt_spi_dequeue",
+      "apple_mt_spi_tx_drained",
+      "apple_mt_spi_boot_command",
+      "apple_mt_spi_control"
+    ],
+    "enable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 5
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 6
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 7
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 8
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 9
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 10
+        }
+      }
+    ],
+    "disable_results": [
+      {
+        "name": "apple_mt_spi_host_event",
+        "response": {
+          "return": {},
+          "id": 39
+        }
+      },
+      {
+        "name": "apple_mt_spi_enqueue",
+        "response": {
+          "return": {},
+          "id": 40
+        }
+      },
+      {
+        "name": "apple_mt_spi_dequeue",
+        "response": {
+          "return": {},
+          "id": 41
+        }
+      },
+      {
+        "name": "apple_mt_spi_tx_drained",
+        "response": {
+          "return": {},
+          "id": 42
+        }
+      },
+      {
+        "name": "apple_mt_spi_boot_command",
+        "response": {
+          "return": {},
+          "id": 43
+        }
+      },
+      {
+        "name": "apple_mt_spi_control",
+        "response": {
+          "return": {},
+          "id": 44
+        }
+      }
+    ],
+    "start_time": 1791298666.911217,
+    "deadline_time": 1791299566.9112172,
+    "stop_time": 1791299506.8814712,
+    "stop_reason": "runner cleanup",
+    "all_disabled": true
+  },
+  "probe_journey": {
+    "state": "waiting-for-app",
+    "completed": false,
+    "input_mode": "operator-observation",
+    "automatic_input": false,
+    "visual_review_required": true,
+    "captures": {}
+  },
+  "observations": [
+    "Original lockscreen/Home and stock Clock execution visible.",
+    "Six explicit input requests, all ACK0; requests5/6 did not leave Clock in settled captures, so systemHomegesture remainsunproven.",
+    "Detailed owned app rejection SBMainWorkspaceSecurity/underlyingFBSOpenApplicationErrorDomain3.",
+    "Original notify watcher initial register/clear succeeded; initialcheck not treated as event.",
+    "Actual original eventservice Built-In/DisplayIntegrated true with Virtual transport.",
+    "No ownedUIKit marker or automatic QMP input; tracing disabled oncleanup before900s."
+  ],
+  "request_count": 6,
+  "ack_count": 6,
+  "owned_marker_count": 0,
+  "files": {
+    "app-home-stock-security-stopped-serial.log": {
+      "bytes": 717696,
+      "sha256": "f07ca75f159f4eac92b94b73fb5a274f7c86867e1c26bad774da86f6593f4142"
+    },
+    "app-home-stock-security-stopped-report.json": {
+      "bytes": 37246,
+      "sha256": "2fd93581091ce8fd9d3db91c0325680b0566ca17cc0a61f952efe8dfd2fb0b2f"
+    },
+    "app-home-stock-security-stopped-qmp-transcript.jsonl": {
+      "bytes": 23485,
+      "sha256": "9f4a53b2367d33bdd2c23bc8d799c6fabf0bdb7d3c0a80481c65797879071db7"
+    },
+    "app-home-stock-security-stopped-control-transcript.jsonl": {
+      "bytes": 3725,
+      "sha256": "eb40a68f4f65c779d5ff404c7cb8dea385b2c786b34a6599764ee736d8266393"
+    },
+    "app-home-stock-security-stopped-serial-input-transcript.jsonl": {
+      "bytes": 3180,
+      "sha256": "4c5ea2b1bf55621105cefaf4582e30b9b953ebae2930459539613d19683ffec8"
+    },
+    "app-home-stock-security-stopped-guest-errors.log": {
+      "bytes": 5917,
+      "sha256": "41bc20b34ca462837cf58fdcb295fb2ba78343034b011351454c94cb42c4ee3a"
+    },
+    "app-home-stock-security-stopped-stderr.log": {
+      "bytes": 2827,
+      "sha256": "90d324fa1e1c26c49589cda1ea8076ea1c3f9073a1f1fccf44bdc91ae15d91eb"
+    },
+    "app-home-stock-security-stopped-stopped-disk-hashes.json": {
+      "bytes": 1716,
+      "sha256": "78ad26a65168748ede4a26d64c6f20c334abb73ca92172c9fb9c59a14436d4f0"
+    },
+    "app-home-stock-security-stopped-home-swipe-before.png": {
+      "bytes": 72202,
+      "sha256": "0e1e7b11ae0e9755395ffc8194b16a57e469f2d388751d10278e31dd74d304c3"
+    },
+    "app-home-stock-security-stopped-home-swipe-report.json": {
+      "bytes": 665,
+      "sha256": "ae2a35ab3426d3a0c2d62f82182b96f89cfab31b2ce7c3008715e58c3cb05bcf"
+    },
+    "app-home-stock-security-stopped-above-indicator-before.png": {
+      "bytes": 66664,
+      "sha256": "85161f69e322553106d663c01d81fecaa06afc44fe6349250c0988642b30c331"
+    },
+    "app-home-stock-security-stopped-above-indicator-report.json": {
+      "bytes": 671,
+      "sha256": "ffd67084afad5f26cde7a4daa245d50266356d09e78990cd0f39741719578c1c"
+    }
+  }
+}
