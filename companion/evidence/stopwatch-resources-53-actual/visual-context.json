@@ -1,0 +1,54 @@
+{
+  "scope": "Separate parent-operator timer readings. This script verifies image identity/lossless conversion, not OCR or visual interpretation.",
+  "periodic_qmp_images": [
+    {
+      "ppm": ".local-build/reports/app-boot-53/frames/0024.ppm",
+      "png": ".local-build/reports/app-boot-53/stopwatch-qmp-0024.png",
+      "ppm_sha256": "446fb3e447af86b2d94fd1c66f0487bcc292b016b8be2de73883eb206956a761",
+      "png_sha256": "f2f6f0a3524d7e1111f72499453d3c1525bb3a300e083b2669ba5a94cf286bdb",
+      "rgb_equal": true,
+      "rgb_equality_independently_verified": true,
+      "timer_label_reported_by_parent_operator": "00:20.63"
+    },
+    {
+      "ppm": ".local-build/reports/app-boot-53/frames/0025.ppm",
+      "png": ".local-build/reports/app-boot-53/stopwatch-qmp-0025.png",
+      "ppm_sha256": "0f4d611b2485ce766c1f31dedb92e9a1aaa59c29b468388f10d59d579a6a813c",
+      "png_sha256": "cda2cebf07b825322c9e02bb350e1c47d1029341fdd2ea41ac99cbd030d054da",
+      "rgb_equal": true,
+      "rgb_equality_independently_verified": true,
+      "timer_label_reported_by_parent_operator": "00:32.80"
+    }
+  ],
+  "post_active_vnc_images": [
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-53/stopwatch-after-measure/observed-0001.png",
+      "sha256": "fd9406dab65258f2905be0df03fdc956348c561ddd50c367ac4ed0a6122e7d5f",
+      "timer_label_reported_by_parent_operator": "02:11.04"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-53/stopwatch-after-measure/observed-0008.png",
+      "sha256": "33957dbeb3c6d442bfe7988081c86a659a8a9b0bf1a4b68caf9b2f5acd09eeb7",
+      "timer_label_reported_by_parent_operator": "02:18.78"
+    }
+  ],
+  "start_host_submission_time": 1791324076.522315,
+  "start_request_id": "18146d88fb6d4185b9d4e31b56cf1431",
+  "serial_clock_identity": {
+    "snapshot_bytes": 368956,
+    "snapshot_sha256": "488fb76ba368b26104d525fd6b056d3cbbd3daefa5200aef7309e00afc5a7248",
+    "records": [
+      {
+        "text": "  349     1   501 Ss   /Applications/MobileTimer.app/MobileTimer",
+        "byte_start": 360533,
+        "byte_end": 360600,
+        "sha256": "3a4c8c44d21ada2af82bb627fc984f5a8fb2804f3b36d147582c9fc01cfc3901"
+      }
+    ]
+  },
+  "limits": [
+    "Periodic QMP timer labels advance but lag host time since Start submission. No continuous or real-time rendering claim during the no-observed-VNC interval.",
+    "Post-measurement VNC frames advance; connecting/capturing can stimulate display updates and does not establish prior presentation cadence.",
+    "Guest timer displays and host submission timestamps are different observables; no clock calibration performed."
+  ]
+}
