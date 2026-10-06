@@ -31,7 +31,6 @@ int main(void) {
     printf("INFERNO_UNLOCK_BEFORE state=%d unlocked_since_boot=%d\n",before,first);fflush(0);
     if(first<0){printf("INFERNO_UNLOCK_SKIPPED reason=query-error\n");fflush(0);return 4;}
     if(first){printf("INFERNO_UNLOCK_SKIPPED reason=already-unlocked\n");fflush(0);return 0;}
-    mark("INFERNO_UNLOCK_STAGE access-before\n");data_access("before");
     mark("INFERNO_UNLOCK_STAGE single-empty-attempt\n");
     int result=unlock(0,0);
     printf("INFERNO_UNLOCK_SINGLE_EMPTY_ATTEMPT result=%d\n",result);fflush(0);
@@ -39,8 +38,7 @@ int main(void) {
     int after=state(0);
     mark("INFERNO_UNLOCK_STAGE query-first-after\n");
     int unlocked=ever();
-    mark("INFERNO_UNLOCK_STAGE access-after\n");
-    data_access("after");
     printf("INFERNO_UNLOCK_AFTER state=%d unlocked_since_boot=%d\n",after,unlocked);fflush(0);
+    mark("INFERNO_UNLOCK_STAGE access-after\n");data_access("after");
     return result || unlocked<=0 ? 5 : 0;
 }
