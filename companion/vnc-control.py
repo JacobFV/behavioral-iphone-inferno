@@ -11,14 +11,26 @@ import hashlib
 import json
 from pathlib import Path
 import socket
+import signal
 import struct
 import time
 from PIL import Image
 
 
+class ObserverStop(Exception):
+    pass
+
+
+def write_report(path, report):
+    temporary = path.with_suffix(".tmp")
+    temporary.write_text(json.dumps(report, indent=2)+"\n")
+    temporary.replace(path)
+
+
 class Client:
-    def __init__(self, endpoint, report):
+    def __init__(self, endpoint, report, status_path=None):
         self.report = report
+        self.status_path = status_path
         self.sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
         self.sock.settimeout(15)
         self.sock.connect(str(endpoint))
@@ -44,6 +56,10 @@ class Client:
         pf = struct.pack('>BBBBHHHBBBxxx', 32, 24, 0, 1, 255, 255, 255, 16, 8, 0)
         self.sock.sendall(b'\x00\x00\x00\x00' + pf)
         self.sock.sendall(struct.pack('>BBHi', 2, 0, 1, 0))
+        report['connection_established_time'] = time.time()
+        report['connection_established_monotonic'] = time.monotonic()
+        if self.status_path:
+            write_report(self.status_path, report)
 
     def read(self, size):
         data = bytearray()
@@ -93,6 +109,10 @@ class Client:
                     'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'time': time.time(),
                     'requested_time': requested, 'received_time': received,
                     'request_to_receive_seconds': received_mono-requested_mono})
+                if len(self.report['captures']) == 1:
+                    self.report['first_frame_received_time'] = received
+                    if self.status_path:
+                        write_report(self.status_path, self.report)
                 return
         raise TimeoutError('Incomplete VNC framebuffer')
 
@@ -134,12 +154,16 @@ def main():
                         help='wait before a second capture, including observation-only (0..10 seconds)')
     parser.add_argument('--observe-seconds', type=float, default=0,
                         help='keep observation-only connection active, capture at 1Hz (0..300 seconds)')
+    parser.add_argument("--runner-observer", action="store_true",
+                        help="owned finite no-input child with graceful SIGTERM and status reporting")
     args=parser.parse_args()
     if (args.home_button or args.app_switcher) and args.hold_seconds is not None:
         parser.error('Home button actions use fixed 150ms presses')
     has_input = bool(args.tap or args.swipe or args.home_button or args.app_switcher)
     if not 0 <= args.observe_seconds <= 300 or (args.observe_seconds and has_input):
         parser.error('--observe-seconds must be finite within 0..300 and cannot accompany input')
+    if args.runner_observer and (has_input or not args.observe_seconds):
+        parser.error("--runner-observer requires positive observation duration and no input")
     hold=args.hold_seconds if args.hold_seconds is not None else (0 if args.swipe else .15)
     if not (0 <= hold <= 10 and .1 <= args.swipe_seconds <= 10 and 0 <= args.settle_seconds <= 10):
         parser.error('timings must be finite and within their documented bounds')
@@ -153,8 +177,14 @@ def main():
             'capture_limit':'Frame receipt is not guest presentation time; display refresh can stimulate guest rendering.',
             'script_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
     client=None
+    previous_handlers={}
+    if args.runner_observer:
+        def stop_observer(signum, frame):
+            raise ObserverStop(f"signal {signum}")
+        for sig in (signal.SIGTERM, signal.SIGINT):
+            previous_handlers[sig]=signal.signal(sig, stop_observer)
     try:
-        client=Client(args.socket,report)
+        client=Client(args.socket,report,args.output/"report.json" if args.runner_observer else None)
         client.capture(args.output/'before.png')
         if not has_input:
             deadline = time.monotonic()+args.observe_seconds
@@ -194,9 +224,14 @@ def main():
             time.sleep(args.settle_seconds)
             client.capture(args.output/'after.png')
         report['completed']=True
+    except ObserverStop as error:
+        report["stop_requested"] = True
+        report["stop_reason"] = str(error)
     except Exception as error:
         report['error']={'type':type(error).__name__,'message':str(error)}
     finally:
+        for sig, handler in previous_handlers.items():
+            signal.signal(sig, handler)
         if client:
             if report['home_button_events'] and report['home_button_events'][-1]['down']:
                 try:
@@ -210,9 +245,11 @@ def main():
                 except OSError:
                     pass
             client.sock.close()
-        (args.output/'report.json').write_text(json.dumps(report,indent=2)+'\n')
+            report["connection_closed_time"] = time.time()
+            report["connection_closed_monotonic"] = time.monotonic()
+        write_report(args.output/"report.json", report)
     print(json.dumps(report))
-    return 0 if report['completed'] else 1
+    return 0 if report['completed'] or report.get('stop_requested') else 1
 
 
 if __name__ == '__main__':

@@ -2,6 +2,7 @@
 """Bounded, headless t8030 recovery-ramdisk experiment; not an iOS acceptance test."""
 # SPDX-License-Identifier: AGPL-3.0-or-later
 import argparse
+from contextlib import nullcontext
 import datetime
 import hashlib
 import json
@@ -15,6 +16,7 @@ import tempfile
 import time
 from disk_overlay import DEFAULT_TOOLS, validate_tools, validate_base, create_overlay, verify_backing, load_stopped_overlay, create_recorded_overlay
 from probe_journey import ProbeJourney
+from headless_refresh import HeadlessRefresh
 from boot_milestones import observe as observe_milestones
 from qmp_control import ControlMailbox, StartupTouchTrace, SerialGestureTransport
 
@@ -147,6 +149,8 @@ def main():
                         help='keep completed observation alive until duration or finish-run; requires journey and mailbox')
     parser.add_argument('--probe-hardware-tap', action='store_true',
                         help='explicitly allow legacy QMP hardware tap; requires --probe-journey, not guest-HID serial')
+    parser.add_argument('--headless-refresh-seconds', type=int, default=0,
+                        help='opt-in runner-owned no-input VNC observer for1..300 seconds after cont;0 disables')
     parser.add_argument('--capture-interval', type=float, default=0,
                         help='save periodic headless framebuffers; zero disables, otherwise at least 5 seconds')
     parser.add_argument('--usb-socket', type=Path,
@@ -195,6 +199,8 @@ def main():
         parser.error('--auxiliary-state requires an explicit --root-image and hash')
     if not 1 <= args.seconds <= 86400:
         parser.error('--seconds must be between 1 and 86400')
+    if not 0 <= args.headless_refresh_seconds <= 300:
+        parser.error("--headless-refresh-seconds must be 0..300")
     if args.capture_interval != 0 and not 5 <= args.capture_interval <= 86400:
         parser.error('--capture-interval must be zero or between 5 and 86400 seconds')
     # Complete validation before allocating disks or launching the emulator.
@@ -297,6 +303,9 @@ def main():
     if touch_trace:
         report['touch_startup_trace'] = touch_trace.report
         report['control_source_sha256'] = digest(Path(__file__).with_name('qmp_control.py'))
+    refresh = HeadlessRefresh(output, args.headless_refresh_seconds) if args.headless_refresh_seconds else None
+    if refresh:
+        report["headless_refresh"] = refresh.report
     process = qmp = connection = None
     serial_transport = None
     started = time.monotonic()
@@ -308,7 +317,8 @@ def main():
             previous_handlers[sig] = signal.signal(sig, interrupted)
         with tempfile.TemporaryDirectory(prefix='inferno-boot-') as tmp, \
                 (output / 'stderr.log').open('wb') as stderr, \
-                (output / 'stdout.log').open('wb') as stdout:
+                (output / 'stdout.log').open('wb') as stdout, \
+                (refresh if refresh else nullcontext()):
             endpoint = str(Path(tmp) / 'qmp.sock')
             usb_address = str(usb_socket or Path(tmp) / 'absent-usb.sock').replace(',', ',,')
             command = [str(binary), '-machine', 't8030,kaslr-off=true,usb-conn-type=unix,usb-conn-addr=' + usb_address + ',trustcache=' + inputs['trustcache']['path'].replace(',', ',,'),
@@ -427,11 +437,17 @@ def main():
             continued = qmp.execute('cont')
             if 'error' in continued:
                 raise RuntimeError(f'QMP cont failed: {continued}')
+            if refresh:
+                refresh.start(Path(tmp) / 'vnc.sock')
             next_capture = time.monotonic() + args.capture_interval
             if args.capture_interval:
                 (output / 'frames').mkdir()
                 report['periodic_captures'] = []
             while time.monotonic() < deadline and process.poll() is None:
+                if refresh:
+                    refresh.poll()
+                    if refresh.report.get("error"):
+                        raise RuntimeError("Headless refresh failed: " + refresh.report["error"])
                 if touch_trace:
                     touch_trace.poll(qmp)
                 if control:
