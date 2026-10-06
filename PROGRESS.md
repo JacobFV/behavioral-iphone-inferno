@@ -13,6 +13,9 @@
   idevice_id and the read-only service query over loopback SSH. Raw evidence and
   exact binary/source identities: `companion/evidence/usb-recovery*`. This is a
   recovery service connection, not a restore transaction or installed iOS boot.
+  Reconnected recovery later hit its120-second idle restore timeout and panicked
+  during shutdown; the300-second observation did not complete. Linux shut down
+  cleanly. This later failure does not replace the independently observed queries.
 
 - **Owned native code:** an SDK-free ARM64 Mach-O, linked against a self-authored
   libSystem declaration and ad-hoc signed only as our own code, executed from a
