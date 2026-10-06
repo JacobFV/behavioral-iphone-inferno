@@ -1,0 +1,85 @@
+{
+  "kind": "actual-eight-event-build-and-control-plane-check",
+  "build_command": [
+    "bash",
+    "companion/run",
+    "build",
+    "--build-root",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build",
+    "--jobs",
+    "8",
+    "--simulated-sep",
+    "--enable-kvm"
+  ],
+  "build_exit_code": 0,
+  "source_revision": "2f29037290a97299957193006ec44b82e1efa291",
+  "binary_sha256": "f088a8c99437afaa9da220ee2f2e2a09f4dbf5b8638e897ec01c670c5273a7b7",
+  "manifest_sha256": "81027eba78a8636b2b1538ce0f8ea79c14e73baa4c5ee12caa7111b1ece5fdca",
+  "events": [
+    "apple_adp_submit",
+    "apple_adp_bh",
+    "apple_adp_pipe",
+    "apple_adp_output_ready",
+    "apple_adp_irq_write",
+    "apple_adp_unknown_mmio",
+    "apple_adp_gp_config_write",
+    "apple_adp_status_read"
+  ],
+  "trace_stops": [
+    {
+      "time": 1791328956.4972913,
+      "monotonic_ns": 748140373769374,
+      "stage": "stop-result",
+      "reason": "deadline",
+      "all_disabled": true,
+      "pending": []
+    },
+    {
+      "time": 1791328956.5295744,
+      "monotonic_ns": 748140406052484,
+      "stage": "stop-result",
+      "reason": "runner cleanup",
+      "all_disabled": true,
+      "pending": []
+    }
+  ],
+  "scope": [
+    "Actual build completed and firmware-free machine none QMP check confirms all8 events available/defaultoff, explicit10s window deadline alloff, second10s window early close alloff, normal QMPquit/emulator0.",
+    "Control-plane only: machine none has no ADP status MMIO device, so new event emission/value correctness and iOS execution are untested here. No guest/device-read or display result claim.",
+    "Prior670 binary+matchingmanifest retained read-only with KEEP outside Git. No ancestors touched; no new guest launched."
+  ],
+  "files": {
+    "display-trace-control.jsonl": {
+      "bytes": 10352,
+      "sha256": "0fc47b1d607880fc69e9d80765acb8f229552b9bcbae7c9c0a035ef16242a1a5"
+    },
+    "report.json": {
+      "bytes": 10393,
+      "sha256": "35b50aa138ddcd1999cbc7aefc59253ddb891e1e167367838c12d75f47787990"
+    },
+    "stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "control-transcript.jsonl": {
+      "bytes": 1262,
+      "sha256": "b04c236bc8935468f8a6adbd2ccb44e9129a1c83f6515280bdb4fed94ef593a5"
+    },
+    "build.log": {
+      "bytes": 27965,
+      "sha256": "20590c242f2692eb557ccfcd0a2284356b7c41a7c0bd411ec545c01955c7f924"
+    },
+    "prior-binary-retention.json": {
+      "bytes": 399,
+      "sha256": "7ab371effdc532e12e7322b98260df0d84d0d7f12d4663eba8c7afda13edce53"
+    },
+    "qmp-transcript.jsonl": {
+      "bytes": 22656,
+      "sha256": "c36426f8e431201eb524c2e21058acf17308bc096191d65d63b6d1841517304f"
+    },
+    "build-manifest.json": {
+      "bytes": 2401,
+      "sha256": "81027eba78a8636b2b1538ce0f8ea79c14e73baa4c5ee12caa7111b1ece5fdca"
+    }
+  }
+}
