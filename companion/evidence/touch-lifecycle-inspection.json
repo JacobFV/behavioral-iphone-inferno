@@ -38,5 +38,14 @@
     "Zero immediate children would implicate earlier config/creation/attachment or later teardown; it does not identify a specific missing firmware file.",
     "Original DT selects HBPP and lacks static protocol metadata; continue normal bootloader configuration/image path rather than inventing DT properties.",
     "Boot14 early panic prevented observer; subsequent registry execution must supply actual class/client evidence."
-  ]
+  ],
+  "firmware_delivery_trigger": {
+    "bootloader_registration": "Bootloader::start registers downloadAction with AIDImageDownloader::setAction at 0xfffffff0084f5e78. The following test of downloader+0x140 at 0xfffffff0084f5e80-84 selects immediate image processing only when an image is already pending.",
+    "original_delivery_endpoint": "AppleFirmwareUpdateUserClient::externalMethod at 0xfffffff00838df20 requires entitlement com.apple.afu.userclientaccess to equal kOSBooleanTrue (0xfffffff00838df5c-7c). Selector 0 reads scalar address, size, FWSignatureType, flags and invokes loadFW at 0xfffffff00838dfa0. loadFW makes IOMemoryDescriptor and calls AppleFirmwareUpdateKext::loadFirmware at 0xfffffff00838e0a4.",
+    "downloader": "AIDImageDownloader::beginFirmwareDownload(FWValidationStatus,unsigned,OSData*) at 0xfffffff008417408 calls extractFromFtab at 0xfffffff00841755c, OSUnserializeXML at 0xfffffff00841768c and stores parsed object at downloader+0x140. If nonnull, it stores flags then invokes the registered action at 0xfffffff0084176e0.",
+    "validation_observation": "Original beginFirmwareDownload accepts status 0; status 1 logs Skipping validation on image loading then proceeds; status 2 rejects e00002e2, other values reject. This only describes original code and is not an instruction to change validation status.",
+    "config_consumption": "Bootloader::loadImage at 0xfffffff0084f68b4 reads downloader+0x140 at 0xfffffff0084f6910, retains and clears pending object, and eventually calls loadPersonality at 0xfffffff0084f71ec. Bootloader::cacheConfig forwards the dictionary to Device::cacheConfig at 0xfffffff0084f9bb0.",
+    "inference": "Firmware delivery is an original path that supplies runtime personality/protocol configuration absent from the DT. A registered HBPP bootloader with no protocol child and only initial configuration reset traffic is consistent with awaiting this delivery; it does not prove a particular missing file or failed validation.",
+    "next_evidence": "Correlate actual registry child classes with original FUD consumer file path and its real failure/result before staging unchanged official firmware material. Do not invent static DT protocol properties."
+  }
 }
