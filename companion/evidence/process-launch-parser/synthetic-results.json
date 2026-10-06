@@ -1,0 +1,24 @@
+{
+  "synthetic_only": true,
+  "guest_execution": false,
+  "parser_sha256": "2756e9be59b0dcbd1565e19b2e956fc6337eb7624be10ad894bbd492261bebfc",
+  "exact_request_to_main_ns": "3/2",
+  "checks": [
+    {
+      "case": "identity_query_denied",
+      "rejected": "Strong classification requires original successful nonzero kernel incarnation"
+    },
+    {
+      "case": "same_kernel_id",
+      "rejected": "Kernel incarnation is not distinct"
+    },
+    {
+      "case": "newmain_before_request",
+      "rejected": "New hook precedes request or decreases"
+    },
+    {
+      "case": "corrupt_absence_prefix",
+      "rejected": "Absence snapshot is not a prefix of this report"
+    }
+  ]
+}
