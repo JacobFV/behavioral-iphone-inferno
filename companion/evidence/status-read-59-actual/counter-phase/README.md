@@ -1,0 +1,9 @@
+# Separate counter phase
+
+This extends, without replacing, the earlier startup prefix. The immutable full prefix ends at 345699 bytes; the analyzed range [301807,345699) is 43,892 bytes. It begins at the counter submission's file-visible pre-checkpoint, not necessarily the first event after trace enable. A 939-byte gap after the first retained prefix is deliberately outside both analyzed ranges.
+
+The second eight-event window enabled at 1791329314.918815–9314.9259052 and disabled at 9324.9492617–9324.957477. Explicit counter TAP request 68f83f282a8047b88f90970369be8976 was submitted at 9315.045344 and its exact serial wire was sent at 9315.1271162. Earlier unlock/dismiss gestures are preserved in the raw prefix; this is explicitly an input-containing phase. No HMP or query-display-registers appears anywhere in retained QMP/control provenance.
+
+There are 30 status reads, each immediately followed among traced ADP events by an identical W1C: 24×0x400 and 6×0x100000. Every W1C before value equals that write, and post value is zero. No zero or mixed-bit status reads occur. The bracket has six submits, twelve BH records, twelve pipe records and thirty unknown main reads at 0x45004 returning zero. These are correlations in trace order, not proof of undocumented register function.
+
+Parent reviewed the later VNC observed-0007 as counter1. All referenced VNC capture hashes were independently checked. Buffered emission, continuous refresh, and absence of event timestamps prevent attributing each draw to the tap or deriving guest presentation latency. This healthy six-submit bracket is comparable only descriptively to earlier healthy counter brackets (49/50/51 had seven submits each), and differs from stalled47's zero-submit bracket; no timing or causal performance inference follows.
