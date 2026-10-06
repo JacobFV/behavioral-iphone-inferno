@@ -57,3 +57,19 @@ intact; do not use this option while it is running. Initial 1 GiB execution
 reached Ubuntu userland and downloaded apt indices, then became very slow;
 run3 retries the same instance with `--memory 4G` and `--ssh-port 22322` for
 inspection. This observation does not by itself prove the cause was memory.
+
+Actual run3 reached Linux userland and SSH. Inspection found that cloud-init had
+marked the interrupted package module once-per-instance, so it reported `done`
+while usbmuxd was absent. Resuming the seed alone does not guarantee retry of
+interrupted provisioning. Diagnose with `cloud-init status --long` and
+`dpkg-query -W usbmuxd libimobiledevice-utils usbutils`. For this recorded run,
+explicitly installing those packages through the private SSH connection, then
+running `sudo systemd-run --unit=inferno-enumerate
+/usr/local/bin/inferno-enumerate`, completed preparation.
+
+Run3 serial evidence at 2026-10-06 07:36:50 UTC records usbmuxd 1.1.1/libusb
+1.0.27 initialization and hotplug registration; the readiness marker and Linux
+USB2 root hub enumeration follow at 07:36:52. No Apple device was attached at
+that checkpoint. Local raw logs are under
+`$HOME/.local/share/inferno/usb/run3/`, including `guest-diagnosis.log`,
+`guest-install.log` and `serial.log`. This proves Linux service readiness only.
