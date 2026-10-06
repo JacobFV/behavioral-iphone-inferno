@@ -2,6 +2,24 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 08:06 continuation: actual Home and original Clock; owned app trust denial
+
+Diagnostic boot23 from verified stage40 resumes at the ordinary lock screen,
+showing setup completion persisted from22. Original empty unlock succeeds; one
+operator swipe reaches actual SpringBoard Home. Normal prompt dismissal then
+Clock icon tap opens original World Clock (Cupertino/New York). Raw captures,
+requests and acknowledgments are preserved. This is stock app execution, not
+owned UIKit fixture execution or a benchmark.
+
+New launcher detail identifies SBMainWorkspace Security, underlying
+FBSOpenApplicationErrorDomain3. Original predicate uses unauthoritativeTrustState
+!=8; defaultUser classification invokes signature validation. Our dictionary has
+owned Info.plist+Path only, no explicit ApplicationType; original LS falls back to
+User. Native/disk workers trace normal classification and trust derivation before
+any change. Do not fabricate signer/profile/trust metadata. HID45 actualeventservice
+Built-In=true,usage13/4,DisplayIntegrated=true,ownVirtualidentity, so no speculative
+input property change. Current23 live, root owns input; owned fixture stillzeroUI.
+
 ### 07:45 continuation: Screen Time fixed; final Home gesture under investigation
 
 Live22 ordinary setup passed Screen Time SetUpLater and displayed iPhone

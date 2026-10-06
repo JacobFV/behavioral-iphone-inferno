@@ -18,16 +18,14 @@ From this repository, run `./companion/run status` to inspect readiness,
 `./companion/run build` when committed source changes require rebuilding.
 For the next coding session, start with [NEXT_SESSION.md](../NEXT_SESSION.md).
 
-The 2026-10-06 execution reached real iOS 14 recovery userland and captured its
-828x1792 Apple-logo/progress framebuffer. Full-system SpringBoard/backboardd processes now execute and the framebuffer
-shows the original Hello setup UI. Owned application registration, the normal
-first-unlock API transition and visible virtual-HID touch navigation are proven.
-Normal setup reached Screen Time after correcting the simulated no-passcode state.
-The next correction now delivers first-unlock completion to the original kernel;
-Screen Time completion is being checked. Owned UIKit execution
-and an app journey remain unproven. See [BOOT.md](BOOT.md) for the hash-checked image profile,
-simulated-SEP build and bounded headless runner; [USB.md](USB.md) describes the
-isolated Linux USB companion. Raw milestone evidence is under `evidence/`.
+The 2026-10-06 execution reached installed iOS14 beta5, completed the ordinary
+setup choices, and resumed to the original lock screen and SpringBoard Home.
+Owned virtual-HID input opened the original Clock app and captured World Clock.
+The owned fixture registers, but its launch is rejected by the original app-trust
+check; actual UIKit execution/counter journey for that fixture remains unproven.
+The detailed error and original registration/type/signature path are under active
+investigation. See [BOOT.md](BOOT.md) for the image profile and headless runner,
+[USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.
 
 ## Initial milestones
 
@@ -36,7 +34,7 @@ isolated Linux USB companion. Raw milestone evidence is under `evidence/`.
 3. Prepare an explicitly documented iOS image profile outside Git, then establish
    a real boot, display and input path. Recovery-userland boot and a framebuffer
    capture now work; installed iOS reaches Hello and accepts ordinary gestures
-   through an owned virtual touchscreen. Normal setup and first-unlock completion are being verified before the app journey.
+   through an owned virtual touchscreen. Normal setup, first-unlock, Home and stock Clock execution are proven; the owned app journey remains blocked by its launch trust check.
 4. Install one owned, unencrypted application and execute an end-to-end journey.
 5. Measure cold/warm launch, memory, CPU, reliability and parallel density before
    claiming cheap runner economics. Add the existing visualization dashboard only
