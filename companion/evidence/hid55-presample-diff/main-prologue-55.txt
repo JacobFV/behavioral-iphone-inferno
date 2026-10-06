@@ -1,0 +1,25 @@
+/home/brandonin/.local/share/inferno/native-probe/helper-build-55/hid-input.o:
+(__TEXT,__text) section
+_inferno_hid_stopping:
+       0:	08 00 00 90	adrp	x8, _stopping@PAGE
+       4:	00 01 40 b9	ldr	w0, [x8, _stopping@PAGEOFF]
+       8:	c0 03 5f d6	ret
+_main:
+       c:	1f 08 00 71	cmp	w0, #0x2
+      10:	e1 02 00 54	b.ne	0x6c
+      14:	fc 6f ba a9	stp	x28, x27, [sp, #-0x60]!
+      18:	fa 67 01 a9	stp	x26, x25, [sp, #0x10]
+      1c:	f8 5f 02 a9	stp	x24, x23, [sp, #0x20]
+      20:	f6 57 03 a9	stp	x22, x21, [sp, #0x30]
+      24:	f4 4f 04 a9	stp	x20, x19, [sp, #0x40]
+      28:	fd 7b 05 a9	stp	x29, x30, [sp, #0x50]
+      2c:	fd 43 01 91	add	x29, sp, #0x50
+      30:	ff 03 08 d1	sub	sp, sp, #0x200
+      34:	20 04 40 f9	ldr	x0, [x1, #0x8]
+      38:	01 00 00 90	adrp	x1, l_.str@PAGE
+      3c:	21 00 00 91	add	x1, x1, l_.str@PAGEOFF
+      40:	00 00 00 94	bl	_strcmp
+      44:	80 01 00 34	cbz	w0, 0x74
+      48:	00 08 80 52	mov	w0, #0x40
+      4c:	ff 03 08 91	add	sp, sp, #0x200
+      50:	fd 7b 45 a9	ldp	x29, x30, [sp, #0x50]
