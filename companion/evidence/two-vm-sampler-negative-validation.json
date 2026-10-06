@@ -1,0 +1,28 @@
+{
+  "kind": "negative_cli_validation_only",
+  "source_sha256": "fc2748e0911a9a7d55dd0095818a2261a7bd0c8a3e206c471ddb40a5ded36106",
+  "reader_sha256": "bf66403380b33d9493ca0e07f4b3ff646a2757e7888af9bd675e83f9e00011dc",
+  "checks": {
+    "no_reports": {
+      "exit": 2,
+      "stderr": "usage: measure-density.py [-h] --report REPORT --base-report BASE_REPORT\n                          --output OUTPUT\nmeasure-density.py: error: the following arguments are required: --report\n",
+      "pass": true
+    },
+    "one_actual_report": {
+      "exit": 2,
+      "stderr": "usage: measure-density.py [-h] --report REPORT --base-report BASE_REPORT\n                          --output OUTPUT\nmeasure-density.py: error: exactly two distinct live reports are required\n",
+      "pass": true
+    },
+    "duplicate_reports": {
+      "exit": 2,
+      "stderr": "usage: measure-density.py [-h] --report REPORT --base-report BASE_REPORT\n                          --output OUTPUT\nmeasure-density.py: error: exactly two distinct live reports are required\n",
+      "pass": true
+    },
+    "unknown_duration": {
+      "exit": 2,
+      "stderr": "usage: measure-density.py [-h] --report REPORT --base-report BASE_REPORT\n                          --output OUTPUT\nmeasure-density.py: error: unrecognized arguments: --seconds -1\n",
+      "pass": true
+    }
+  },
+  "limitations": "No two-VM sampling performed; no launch, input, stop or live process modification. One-report rejection occurs before reading selected live report."
+}
