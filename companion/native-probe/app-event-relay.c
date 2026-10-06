@@ -31,35 +31,38 @@ static void path_diagnostics(const char *path) {
         }
     }
 }
-extern int inferno_app_event_path(char *,unsigned long);
+extern int inferno_proc_event_path(char *,unsigned long,unsigned *,unsigned long long *);
 int inferno_app_event_watch(void) {
     char boot[37];
     alarm(7200);
-    if(inferno_boot_uuid(boot)) {printf("INFERNO_EVENT_RELAY_ERROR stage=boot-identity errno=%d\n",*__error());fflush(0);return 1;}
+    if(inferno_boot_uuid(boot)) {printf("INFERNO_EVENT_RELAY_ERROR stage=boot-identity errno=%d\n",inferno_boot_query_errno);fflush(0);return 1;}
     printf("INFERNO_EVENT_RELAY_READY boot=%s lifetime=7200 path=original-owned-data-container\n",boot);fflush(0);
     struct {unsigned pid,last;} seen[32]={0};unsigned used=0,relayed=0,errors=0;
-    char event_path[INFERNO_EVENT_PATH_LIMIT]={0};int last_path_result=-1;
+    char event_path[INFERNO_EVENT_PATH_LIMIT]={0};int last_path_result=-1;unsigned expected_device=0;unsigned long long expected_inode=0;
     for(unsigned seconds=0;seconds<7200 && relayed<512;seconds++) {
         if(!event_path[0] && seconds%30==0) {
-            int result=inferno_app_event_path(event_path,sizeof(event_path));
-            if(result!=last_path_result) {printf("INFERNO_EVENT_CONTAINER result=%d path=%s\n",result,result?"(unavailable)":event_path);fflush(0);last_path_result=result;}
+            int result=inferno_proc_event_path(event_path,sizeof(event_path),&expected_device,&expected_inode);
+            if(result!=last_path_result) {printf("INFERNO_EVENT_DISCOVERY result=%d path=%s\n",result,result?"(unavailable)":event_path);fflush(0);last_path_result=result;}
             if(result)event_path[0]=0;
         }
         if(!event_path[0]) {unsigned remaining=1;while(remaining)remaining=sleep(remaining);continue;}
         path_diagnostics(event_path);
         int fd=open(event_path,0x100); // RDONLY|NOFOLLOW
         if(fd<0) {
+            if(*__error()==2)event_path[0]=0;
             if(*__error()!=2 && errors++<8) {printf("INFERNO_EVENT_RELAY_ERROR stage=open errno=%d\n",*__error());fflush(0);}
         } else {
-            struct inferno_event_stat st;char data[INFERNO_EVENT_LIMIT+1];unsigned got=0;int good=1;
-            if(fstat(fd,&st) || (st.mode&0170000)!=0100000 || st.uid!=501 || st.nlink!=1 || st.size<0 || st.size>INFERNO_EVENT_LIMIT)good=0;
+            struct inferno_event_stat st;char data[INFERNO_EVENT_LIMIT+1];unsigned got=0;int good=1,failure_errno=0;
+            if(fstat(fd,&st)) {good=0;failure_errno=*__error();}
+            else if((unsigned)st.dev!=expected_device || st.ino!=expected_inode || (st.mode&0170000)!=0100000 || st.uid!=501 || st.nlink!=1 || st.size<0 || st.size>INFERNO_EVENT_LIMIT)good=0;
             while(good && got<INFERNO_EVENT_LIMIT) {
                 long n=read(fd,data+got,INFERNO_EVENT_LIMIT-got);
                 if(n<0 && *__error()==4)continue;
-                if(n<0) {good=0;break;}if(!n)break;got+=(unsigned)n;
+                if(n<0) {good=0;failure_errno=*__error();break;}if(!n)break;got+=(unsigned)n;
             }
             close(fd);data[got]=0;
-            if(!good && errors++<8) {printf("INFERNO_EVENT_RELAY_ERROR stage=read-or-file-identity errno=%d\n",*__error());fflush(0);}
+            if(!good)event_path[0]=0;
+            if(!good && errors++<8) {printf("INFERNO_EVENT_RELAY_ERROR stage=read-or-file-identity errno=%d\n",failure_errno);fflush(0);}
             if(good) {
                 unsigned start=0;
                 for(unsigned i=0;i<got && relayed<512;i++)if(data[i]=='\n') {
