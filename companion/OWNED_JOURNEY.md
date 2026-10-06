@@ -14,9 +14,11 @@ Its retained evidence remains separate from current diagnostic runs.
 
 The historical baseline above records the original journey. Current diagnostic
 runs49 onward use frozen `disk-preparation-55/report.json`, app22/launcher22/
-readiness54/HID55, and emulator SHA256
+readiness54/HID55. Runs49–58 used emulator SHA256
 `670caae5e8b86dbd07968b053ce0667328cce648935cefb8649357400f9c8e59`
-from source09811d4d1d. Use that base for the ongoing freeze investigation. Its
+from source09811d4d1d. Run59 adds the reviewed status-read diagnostic with binary
+`f088a8c99437afaa9da220ee2f2e2a09f4dbf5b8638e897ec01c670c5273a7b7`
+from build source2f29037290. The guest base remains unchanged. Its
 three immutable backing ancestors and exact ctime-revalidation sidecars must
 remain at their recorded paths. Never chmod an already-read-only ancestor;
 ctime is part of the verified identity. See NEXT_SESSION.md for those identities.

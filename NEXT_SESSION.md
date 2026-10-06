@@ -18,7 +18,12 @@ none-machine lacksADP, so noeventemission/iOSclaimfromsmoke.
 Archived670outsideGit .local-build/binaries/display-mmio-670caae5e8b8/ readonly.
 Root reviewed59Applelogo; first10s tracewindow plus12s continuousVNC nowrunning
 status-read-volume-view. Beforecheckpoint4594bytes at1791329143.7008324.
-No59inputs, noHMP/query-display-registers. Root exclusivelyallUI/control.
+Firstwindowcompleted8offdeadline1791329153.9569144, aftercheckpoint300868bytes
+at9167.7502546. Preliminary71knownstatusreads/71W1C/32submits; diskworker
+independentprefixaudit underway. Rootreviewstatus-read-volume-view/observed0008
+lockscreen. NoHMP/query-display-registers anywhere. Unlock1
+996ee178c6074ee684160a3366237000 at9189.82519 sent;20sobservationpending.
+No59counter/SAMPLE/Home/OPEN. Root exclusivelyallUI/control.
 Nativeworker checking staticoriginaldriver mapping versusupstreampatchoverlap;
 no behaviorfix. Independent59read/W1C auditafterwindow willbediskworker.
 
