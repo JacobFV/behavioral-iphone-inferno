@@ -86,3 +86,55 @@ trailing/malformed inputs and100,000 bounded malformed lines under GCC AddressSa
 and UndefinedBehaviorSanitizer, with no findings. Clang's host ASan runtime was
 unavailable; GCC's installed runtime supplied this bounded parser check. These
 checks establish parser behavior only, not serial connectivity or OS input.
+
+## Reviewed normal virtual-device candidate
+
+The candidate backend now uses original `IOHIDUserDeviceCreate` and
+`IOHIDUserDeviceHandleReportWithTimeStamp`, not direct event dispatch. Apple's
+IOKitUser-1726.140.1 `hid.subproj/IOHIDUserDevice.h/.c` supplies both declarations
+and lifecycle semantics. Original recovery IOKit Create0x47df0 passes options0;
+HandleReportWithTimeStamp0x49614 passes timestamp scalar and report bytes to
+selector2. Normal options0 creates/starts the device immediately. Scheduling is
+needed for Get/SetReport callbacks or StartWhenScheduled, neither used by this
+input-only descriptor. No CFRunLoop scheduling is therefore requested.
+
+Disk-agent original-kernel evidence establishes the singleton Boolean entitlement
+`com.apple.developer.hid.virtual.device`. It leaves Privileged=false and marks the
+device HIDVirtualDevice=true. Reserved IOClass/IOProviderClass/IOUserClientClass/
+IOKitDebug properties are not supplied. IOHIDEventService propagates ordinary
+provider `Built-In` Boolean without a privilege branch. This candidate's honestly
+named `Inferno Operator Touchscreen` is explicitly Transport=Virtual and describes
+its integration with this VM's display using Built-In=true, no external UUID.
+There is no Apple vendor/product ID, original service identity, senderID or
+contextID override, and no manager/admin/directdispatch entitlement.
+
+The self-authored standard descriptor is a TouchScreen Application with one
+Finger logical collection: tip/in-range/confidence bits, padding, contactID,
+X/Y logical0..32767 and contactCount. It defines seven input bytes, no output or
+feature reports. The original generic driver normalizes the coordinates. Original
+IOKit service initialization recognizes TouchScreen usage and its event callback
+sets display-integrated field0xb0019 if absent, so no guessed extra field property
+is needed. Descriptor host structure/hash is recorded separately; actual guest
+parsing and UI delivery are not yet established.
+
+The server creates the virtual service at startup without sending a contact
+report. It logs actual returned registry ID, class and bounded immediate children.
+Per explicit operator command it checks at most64 descendants for a real
+IOHIDEventService (at most5seconds of polling), never queues/replays a failed
+request. It reports down, bounded interpolated moves for swipes, then always
+attempts a zero-contact release, including controlled stop/error paths. SIGINT,
+SIGTERM and the7200-second alarm request clean stopping. Report logs contain
+actual mach timestamps and original return codes; ACK still means attempt only.
+CFRelease closes the owned virtual device on normal exit.
+
+Existing readiness spawns this separate helper only if its exact owned path
+exists, using fresh exec; observation intervals and registry/ps/crash snapshots
+continue. The child cannot execute arbitrary commands. The existing launchd job
+and cache need no changes. Staging adds the owned helper and updates readiness,
+with normal byte+metadata comparisons and unmount checks. No staging or guest
+input execution is claimed by this candidate commit.
+
+Latest audit resolves15 actual bind/lazy imports and18 dynamic symbols through
+original cache export tries/reexports. SDK-free iOS compilation and signed
+entitlement extraction passed. Parser ASan/UBSan checks passed again. Exact audit
+outputs accompany this file; helper/build/artifacts remain external.

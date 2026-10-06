@@ -1,8 +1,9 @@
-/* Owned console command reader. No shell, replay, automatic gesture, or HID backend. */
+/* Owned console command reader. No shell, replay, or automatic gesture. */
 #include "hid-input.h"
 extern int printf(const char *,...),fflush(void *),open(const char *,int,...),close(int),*__error(void),strcmp(const char *,const char *);
 extern long read(int,void *,unsigned long);
 extern int usleep(unsigned);
+extern unsigned alarm(unsigned);
 extern unsigned long long mach_absolute_time(void);
 struct timebase {unsigned numer,denom;};
 extern int mach_timebase_info(struct timebase *);
@@ -61,14 +62,19 @@ static int handle(const char *line,char seen[32][33],unsigned *count) {
 }
 #ifdef INFERNO_HID_TRANSPORT_ONLY
 int inferno_hid_dispatch(const struct inferno_gesture *g) {(void)g;return -100;}
+void inferno_hid_close(void) {}
+int inferno_hid_prepare(void) {return -100;}
 #endif
 int main(int argc,char **argv) {
     if(argc!=2 || strcmp(argv[1],"--console-operator-input"))return 64;
     struct timebase tb;
     if(mach_timebase_info(&tb) || !tb.numer || !tb.denom)return 65;
-    signal(2,stop);signal(15,stop);signal(14,stop);
+    signal(2,stop);signal(15,stop);signal(14,stop);alarm(7200);
     int fd=open("/dev/console",4); /* Darwin O_RDONLY | O_NONBLOCK; leave termios unchanged. */
     if(fd<0){printf("INFERNO_HID_OPEN_FAILED errno=%d\n",*__error());fflush(0);return 66;}
+    printf("INFERNO_HID_BEGIN automatic_gestures=0\n");fflush(0);
+    int backend=inferno_hid_prepare();
+    printf("INFERNO_HID_BACKEND_INITIALIZE status=%d delivery=unproven\n",backend);fflush(0);
     printf("INFERNO_HID_READY protocol=1 console=/dev/console max_requests=32 lifetime_seconds=7200 automatic_gestures=0\n");fflush(0);
     char line[160],seen[32][33];unsigned used=0,count=0,rejected=0;int discard=0;
     unsigned long long began=mach_absolute_time();
@@ -88,5 +94,5 @@ int main(int argc,char **argv) {
             else if(!discard)line[used++]=(char)c;
         }
     }
-    close(fd);printf("INFERNO_HID_EXIT requests=%u rejected=%u stop=%d\n",count,rejected,stopping);fflush(0);return 0;
+    inferno_hid_close();close(fd);printf("INFERNO_HID_EXIT requests=%u rejected=%u stop=%d\n",count,rejected,stopping);fflush(0);return 0;
 }

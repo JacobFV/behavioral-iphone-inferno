@@ -7,3 +7,6 @@ struct inferno_gesture {
 int inferno_hid_stopping(void);
 /* Backend must return only an attempt status; never assert OS/UI delivery. */
 int inferno_hid_dispatch(const struct inferno_gesture *);
+
+void inferno_hid_close(void);
+int inferno_hid_prepare(void);
