@@ -15,6 +15,9 @@ p.add_argument('--probe', required=True, type=Path)
 p.add_argument('--hfsplus', required=True, type=Path)
 p.add_argument('--output', required=True, type=Path)
 a = p.parse_args()
+for required in (a.profile, a.raw_ramdisk, a.probe, a.hfsplus):
+    if not required.is_file():
+        p.error(f'missing input: {required}')
 a.output.mkdir(parents=True, exist_ok=False)
 sha = lambda f: hashlib.sha256(f.read_bytes()).hexdigest()
 profile = json.loads(a.profile.read_text())
