@@ -48,29 +48,38 @@ that directory together: the binary references local libraries/resources.
 
 ## Current execution boundary
 
-Keep working; no handoff or missing user input. **Boot22 is live**, session14442,
-report `.local-build/reports/app-boot-22`, private VNC
-`/tmp/inferno-boot-pinsov4t/vnc.sock`. Its normally stopped21 paired source root is
-`7df2996c9d33233e92556a5a9d13882f50beac47e9b2edd43b2072ac7114b402`.
-Same e3da emulator/helper44. Runner4d3230563e observes app appearance/tap markers
-without automatic input. Do not pass --probe-hardware-tap. Root owns all gestures;
-`/tmp/inferno-explicit-gesture-22.py` targets22. Current UI Welcome to iPhone after normal setup. ScreenTimeLater now advanced
-to Analytics (6f122251c4), then appearance/display choices. Request26 slow swipe
-and27 fast swipe each ACK0 but Welcome remains. Five helper slots remain; root
-holds further gestures while native_probe traces original finish readiness and
-disk_path traces original systemgesture routing.
-Original kernel received first-unlock, API state3/first0->1. Screen Time completion is proven; Home and owned app execution remain unproven. Exact raw journals in22 report.
-Next diagnostic candidate45 is being built by native_probe: original readytoexit
-Darwin notification observation (register/check/cancel only), matched HID event
-service readonly properties, and bounded launcher NSError detail. Bootworker is
-preparing stage40 but must wait for reviewed source/binary and normal22stop hashes.
-Root freed obsolete generated cache1/appstage1/prep22/prep17, preserving reports,
-original sources, baseline21 and all actual app boots. Actualfree24GiB at07:51.
-No Home/setup-state bypass or fabricated notification. Current22 remains live.
-Source-only launcher diagnostic e7eee456ad is committed but NOT staged;
-original RequestDenied generic1 hides failureReason/underlying error. Consider
-staging only if denial persists after Setup. Old21 is stopped, all7 hashes/raw
-preserved7a6ae49d0b. Obsolete cache-patching-1 generated disks retiredf7810818f9.
+Keep working; no handoff or missing user input. **Boot22 stopped normally**:
+QMPquit77/emulator0,1788.762seconds,27operatorrequests/ACK0,zeroQMP pointercommands.
+All seven namespace hashes/full journals retained. Stopped22 root
+`f1b7d57c6fbc33611c50761115cbe17f969890283314346f66075ba42a8edbb2`.
+Actual normal setup now passed ScreenTimeLater (6f122251c4) into Analytics,
+Appearance, DisplayZoom, Welcome. Home remained unproven after two distinct
+final swipes; owned UIKit markers remain zero. Preserve these distinctions.
+
+**Stage40 is running**, bootworker session6503, from paired stopped22, using
+original stable recovery binary with explicit archived manifest, profile helper-
+attempt41. Only targets: HID45 observer and launcher12 detailed-error output.
+Exact build42 readiness/probe/preparer and535byte job unchanged. Require actual
+readback/unmount/normalexit/all7hashes, then boot23 is already authorized with
+same e3da emulator, observation-default --probe-journey, noUSB/privateVNC/serial.
+Root exclusively owns input. Do not use --probe-hardware-tap.
+HID45 SHA0c0a5d9990cb5b0101f6491b7d2df0d6959cb0db5bde1cdfa9f40e6eabe69932,
+69664bytes, same exact twoentitlements; source d260f045ef/auditf21b118f5f.
+It reads eventservice properties and observes original Darwin notification
+`com.apple.purplebuddy.readytoexit` via register/check/cancel only, initialclear
+not counted as event. No posting/state mutation. Launcher12 SHA
+4d0add516f2af0b98b5bdbf6f246229b6f2284a409e3832ad6cd8a8ad77082fa,
+68576bytes, originalimports audited44e2b450dd.
+Native and disk workers continue readonly original event/gesture route analysis.
+Generic kernel leaves eventintegrationbit0, but original IOKit downstream sets
+field0xb0019 for serviceusage13/4; do not infer missingflag from kernelonly.
+Actual readinessnotification/serviceproperties nextboot are discriminating evidence.
+
+Capacity cleared24GiB beforestage40: verified obsolete generated cache1/appstage1/
+prep22/prep17 retired, original inputs/recipes/evidence, baseline21 and ALL actual
+appboot tuples retained. Prep17 had freshly inventoried retirement hashes with
+secondfullread; others verified historicalconsumer-source hashes. Do not reference
+retired generated disks as available. Checkcapacitybeforeadditionalcopies.
 
 Previous21 launch provenance (endpoint below is now stale):
 from normally stopped20 root
