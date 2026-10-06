@@ -48,6 +48,19 @@ that directory together: the binary references local libraries/resources.
 
 ## Current execution boundary
 
+**03:54 local update:** Boot9 demonstrated the original one-shot unlock return0
+and original first-unlock query0->1. General state query still returned-1 because
+the partial simulator rejected valid extended-query option0. Original kernel
+inspection proved option0 and1 share the same DER shape; sourceac586deb8f corrects
+that read-only predicate. Build and control-plane checks passed. New binary SHA
+1828d58b49978a8e154c77c61e885b17b7529abb424493f695694e7ae5ccea78.
+Boot9 stopped normally; app-boot-10 is now active from verified stage33 paired
+state, combining this query correction with the separately validated dictionary
+launcher. Observe actual registration BOOL/proxy/open/app markers and reviewed
+frames. No app execution or migration success is claimed yet. Earlier paragraphs
+below explain the preceding controlled experiments; boot10 supersedes active9.
+
+
 Keep working; no handoff or missing user input. Real full-system SpringBoard and
 backboardd processes execute, and reviewed frames show Apple migration progress.
 Visible setup/home UI, owned UIKit execution and an actual tap/count journey are
