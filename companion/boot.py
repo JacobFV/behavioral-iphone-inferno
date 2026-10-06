@@ -105,6 +105,8 @@ def main():
                         help='record QEMU guest-error diagnostics in guest-errors.log')
     parser.add_argument('--probe-journey', action='store_true',
                         help='require owned UIKit probe appearance, one QMP tap and before/after captures')
+    parser.add_argument('--capture-interval', type=float, default=0,
+                        help='save periodic headless framebuffers; zero disables, otherwise at least 5 seconds')
     parser.add_argument('--usb-socket', type=Path,
                         help='existing local Unix socket of a running isolated USB companion')
     parser.add_argument('--root-image', type=Path,
@@ -126,6 +128,8 @@ def main():
         parser.error('--auxiliary-state requires an explicit --root-image and hash')
     if not 1 <= args.seconds <= 86400:
         parser.error('--seconds must be between 1 and 86400')
+    if args.capture_interval != 0 and not 5 <= args.capture_interval <= 86400:
+        parser.error('--capture-interval must be zero or between 5 and 86400 seconds')
     # Complete validation before allocating disks or launching the emulator.
     auxiliary = {}
     try:
@@ -280,7 +284,20 @@ def main():
                 response = qmp.execute(name, timeout=max(.1, min(30, deadline - time.monotonic())))
                 if 'error' in response:
                     raise RuntimeError(f'QMP {name} failed: {response["error"]}')
+            next_capture = time.monotonic() + args.capture_interval
+            if args.capture_interval:
+                (output / 'frames').mkdir()
+                report['periodic_captures'] = []
             while time.monotonic() < deadline and process.poll() is None:
+                if args.capture_interval and time.monotonic() >= next_capture:
+                    captures = report['periodic_captures']
+                    frame = output / 'frames' / f'{len(captures):04d}.ppm'
+                    captured = qmp.execute('screendump', {'filename': str(frame)})
+                    if 'error' in captured or not frame.is_file():
+                        raise RuntimeError(f'Periodic framebuffer capture failed: {captured}')
+                    captures.append({'elapsed_seconds': round(time.monotonic() - started, 3),
+                                     'path': str(frame), 'sha256': digest(frame)})
+                    next_capture = time.monotonic() + args.capture_interval
                 if journey:
                     journey.poll(qmp, time.monotonic())
                 time.sleep(min(.2, max(0, deadline - time.monotonic())))
