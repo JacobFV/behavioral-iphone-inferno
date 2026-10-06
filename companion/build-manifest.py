@@ -37,7 +37,7 @@ record = {
     'binary': {'path': str(binary), 'sha256': sha(binary), 'bytes': binary.stat().st_size},
     'system_dependencies': {},
 }
-for name in ('glib-2.0', 'pixman-1', 'zlib'):
+for name in ('glib-2.0', 'pixman-1', 'zlib', 'libpng'):
     record['system_dependencies'][name] = output(['pkg-config', '--modversion', name])
 for name in ('config-host.mak', 'config.status', 'meson-info/intro-buildoptions.json'):
     path = root / 'build' / name

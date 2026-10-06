@@ -55,7 +55,7 @@ git -C "$source_tree" submodule update --init util/mlib
 mkdir -p "$build_root/build"
 (cd "$build_root/build"
  "$source_tree/configure" --target-list=aarch64-softmmu --without-default-features \
-   --enable-tcg --enable-pixman --enable-fdt=system --enable-slirp \
+   --enable-tcg --enable-pixman --enable-png --enable-fdt=system --enable-slirp \
    --enable-lzfse --enable-nettle --enable-gnutls --enable-vnc \
    --disable-gtk --disable-sdl --disable-opengl --disable-guest-agent \
    --disable-tools --disable-install-blobs --disable-werror \
