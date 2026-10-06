@@ -747,7 +747,8 @@ static bool inferno_sep_system_bag_message(AppleSEPSimState *s,
         if (handle != 0 || options > 1) {
             goto done;
         }
-        size = KEYSTORE_IPC_HEADER_SIZE + 8 + 13;
+        /* __blob counts the declared DER length rounded up to four bytes. */
+        size = KEYSTORE_IPC_HEADER_SIZE + 8 + 16;
     }
     if (s->ool_state[EP_KEYSTORE].out_size < size) {
         error = -11;
