@@ -1,0 +1,60 @@
+{
+  "snapshots": [
+    {
+      "file": "display-boot.json",
+      "sha256": "5bf9f7978448e9ed2b3a8f71975d0a7b315019a464d6de04ed628a3292d43034",
+      "read_span_ms": 6.719783,
+      "raw_values": {
+        "int_status": 0,
+        "int_enable": 3222801416,
+        "version": 458821,
+        "frame_size": 54265600,
+        "gp0_control": 2147942401,
+        "gp0_pixel_format": 92045312,
+        "gp0_data_start": 23855104,
+        "gp0_data_end": 29818880,
+        "gp0_stride": 3328,
+        "gp0_src_dimensions": 54265600,
+        "gp0_dest_dimensions": 54265600,
+        "gp1_control": 262144,
+        "gp1_pixel_format": 0,
+        "gp1_data_start": 0,
+        "gp1_data_end": 0,
+        "gp1_stride": 0,
+        "gp1_src_dimensions": 0,
+        "gp1_dest_dimensions": 0
+      },
+      "status_and_enable": 0,
+      "pipes": [
+        {
+          "pipe": 0,
+          "run": true,
+          "enabled": true,
+          "compressed": false,
+          "width": 828,
+          "height": 1792,
+          "stride": 3328,
+          "read_bytes": 5963776,
+          "data_range_bytes": 5963776
+        },
+        {
+          "pipe": 1,
+          "run": false,
+          "enabled": false,
+          "compressed": false,
+          "width": 0,
+          "height": 0,
+          "stride": 0,
+          "read_bytes": 0,
+          "data_range_bytes": 0
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Sequential nonconsuming register snapshots, not frame counters or atomic hardware state.",
+    "Status0 does not imply no interrupts or frames occurred. Enabled GP0 does not establish a draw callback ran or DMA pixels changed.",
+    "Buffer addresses are stored register values; no DMA/framebuffer memory read by this query.",
+    "Source mapping/read provenance retained in display-register-query/inspection.json and original-dt-fields.json."
+  ]
+}
