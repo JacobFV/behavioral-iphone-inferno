@@ -6,25 +6,36 @@ extern int open(const char *,int,...),close(int),ftruncate(int,long long),fchmod
 static int event_fd=-1;
 static unsigned event_sequence,event_bytes;
 static char event_boot[37];
-static void event_error(const char *stage) {
-    NSLog(@"INFERNO_UIKIT_EVENT_FILE_ERROR stage=%s errno=%d",stage,*__error());
+static const char *event_stage="not-started";
+static int event_errno,event_uid,event_failed;
+static void event_error(const char *stage,int error) {
+    if(!event_failed) {event_stage=stage;event_errno=error;event_failed=1;}
+    NSLog(@"INFERNO_UIKIT_EVENT_FILE_ERROR stage=%s errno=%d",stage,error);
 }
 static void event_start(void) {
-    if(getuid()!=501 || inferno_boot_uuid(event_boot)) {event_error("boot-identity-or-uid");return;}
-    event_fd=open(INFERNO_EVENT_PATH,1|0x200|0x100,0600); // WRONLY|CREAT|NOFOLLOW
-    if(event_fd<0) {event_error("open");return;}
+    event_uid=getuid();
+    int boot_result=inferno_boot_uuid(event_boot);
+    if(event_uid!=501) {event_error("uid",0);return;}
+    if(boot_result) {event_error("boot",inferno_boot_query_errno);return;}
+    event_fd=open(INFERNO_EVENT_PATH,1|0x200|0x100,0600);
+    if(event_fd<0) {event_error("open",*__error());return;}
     struct inferno_event_stat st;
-    if(fstat(event_fd,&st) || (st.mode&0170000)!=0100000 || st.uid!=501 || st.nlink!=1 || fchmod(event_fd,0600) || ftruncate(event_fd,0)) {
-        event_error("file-identity");close(event_fd);event_fd=-1;
-    }
+    const char *failure=0;int error=0;
+    if(fstat(event_fd,&st)) {failure="fstat";error=*__error();}
+    else if((st.mode&0170000)!=0100000 || st.uid!=501 || st.nlink!=1)failure="identity";
+    else if(fchmod(event_fd,0600)) {failure="chmod";error=*__error();}
+    else if(ftruncate(event_fd,0)) {failure="truncate";error=*__error();}
+    if(failure) {event_error(failure,error);close(event_fd);event_fd=-1;}
+    else event_stage="ready";
 }
+
 static void event_store(const char *event,NSUInteger count) {
     if(event_fd<0 || event_sequence>=64 || !inferno_event_name(event) || count>1000000)return;
     char line[192];
     int n=snprintf(line,sizeof(line),"INFERNO_EVENT_V1 %s %d %u %s %lu\n",event_boot,getpid(),++event_sequence,event,count);
     if(n<=0 || n>=(int)sizeof(line) || event_bytes+(unsigned)n>INFERNO_EVENT_LIMIT)return;
     unsigned done=0;
-    while(done<(unsigned)n) {long k=write(event_fd,line+done,(unsigned)n-done);if(k<0 && *__error()==4)continue;if(k<=0) {event_error("write");close(event_fd);event_fd=-1;return;}done+=(unsigned)k;}
+    while(done<(unsigned)n) {long k=write(event_fd,line+done,(unsigned)n-done);if(k<0 && *__error()==4)continue;if(k<=0) {event_error("write",k<0?*__error():0);close(event_fd);event_fd=-1;return;}done+=(unsigned)k;}
     event_bytes+=(unsigned)n;
 }
 
@@ -85,16 +96,18 @@ static void marker(const char *event, NSUInteger count) {
     [_button addTarget:self action:@selector(increment:) forControlEvents:(1UL << 6)];
     [view addSubview:_button]; // UIControlEventTouchUpInside
     _footer = [[UILabel alloc] initWithFrame:Rect(0, 0, 0, 0)];
-    [_footer setText:@"One tap changes the counter.\nNo network. No account."];
+    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno]];
     [_footer setNumberOfLines:2];
     [_footer setFont:[UIFont systemFontOfSize:16]];
     [_footer setTextColor:cyan];
     [_footer setTextAlignment:1];
     [view addSubview:_footer];
     marker("view-loaded", _count);
+    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno]];
 }
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
+    [_footer setText:[NSString stringWithFormat:@"EVENT uid=%d boot=%d/%lu e=%d\n%s errno=%d",event_uid,inferno_boot_query_result,inferno_boot_query_length,inferno_boot_query_errno,event_stage,event_errno]];
     CGRect bounds = [[self view] bounds];
     CGFloat width = bounds.size.width;
     CGFloat height = bounds.size.height;
