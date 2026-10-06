@@ -70,6 +70,7 @@ def main():
         commands.append(argv)
         with (output / 'build.log').open('ab') as log:
             log.write((json.dumps(argv) + '\n').encode())
+            log.flush()
             subprocess.run(argv, check=True, stdout=log, stderr=subprocess.STDOUT)
 
     obj = output / 'Main.o'
