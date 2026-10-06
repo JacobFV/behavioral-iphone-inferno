@@ -1,0 +1,90 @@
+{
+  "kind": "read_only_capacity_retirement_proposal",
+  "status": "PROPOSED_ONLY_NO_FILES_REMOVED",
+  "audit_utc": "2026-10-06T15:39:23.124689+00:00",
+  "candidate": "obsolete generated disk-preparation-8 namespace copies only",
+  "files": [
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-8/disks/ctrl_bits.raw",
+      "bytes": 8192,
+      "allocated_bytes": 0,
+      "nlink": 1,
+      "sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-8/disks/effaceable.raw",
+      "bytes": 4096,
+      "allocated_bytes": 0,
+      "nlink": 1,
+      "sha256": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-8/disks/firmware.raw",
+      "bytes": 8388608,
+      "allocated_bytes": 0,
+      "nlink": 1,
+      "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-8/disks/nvram.raw",
+      "bytes": 8192,
+      "allocated_bytes": 8192,
+      "nlink": 1,
+      "sha256": "6719cee151e2140686bf6bfa97588387ae4707e99ea914a389af707f26ae2eaf"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-8/disks/panic_log.raw",
+      "bytes": 1048576,
+      "allocated_bytes": 0,
+      "nlink": 1,
+      "sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-8/disks/root.raw",
+      "bytes": 8589934592,
+      "allocated_bytes": 7165296640,
+      "nlink": 1,
+      "sha256": "8103442bd0bf6f4e1aca44c203ee4c0793c87b740dd9395a399e08b604679afc"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-8/disks/syscfg.raw",
+      "bytes": 131072,
+      "allocated_bytes": 0,
+      "nlink": 1,
+      "sha256": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471"
+    }
+  ],
+  "allocated_bytes_total": 7165304832,
+  "reclaim_limit": "Allocated-block sum is an estimate; sparse logical size is not reclaimable size.",
+  "execution_evidence": {
+    "serial": "disk-preparation-8/serial.log:922 PREP_COMPLETE: Preboot added, original firmware copied; final normal unmount numMountedAPFSVolumes0 at921.",
+    "qmp": "Raw transcript contains successful quit id5 and SHUTDOWN reason host-qmp-quit; report exit0 elapsed47.583798.",
+    "report_caveat": "Controller Signal15 KeyboardInterrupt after guest completion followed normal QMP quit; attempt_completed=false is retained without rewriting."
+  },
+  "retained_reproduction": {
+    "input_root": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/os-inspection/official-os-4k.raw",
+      "sha256": "93f97dae602a8fc844f0f88819d3fe358b1cf14ee5e193b0beb7009376032594",
+      "bytes": 8589934592,
+      "copied_before_use": true
+    },
+    "helper_source_revision": "99bd636c95ab1fc1b0fe2479342d4ee3243559d4",
+    "recipe": "helper-attempt-6 preparation.json/profile/ramdisk and helper-build-6 binaries/objects/build.json retained; ramdisk SHA614e3cc34c5ec93778014d617cfdd77d6833ab154e64934cc913ee898801c30f.",
+    "chain_update": "12 and13 raw copies already retired under reviewed manifests. Retiring8 would move shortest reconstruction chain to retained official-os-4k.raw -> preparation8 helper-attempt6 -> preparation12 helper-attempt10 -> preparation13 helper-attempt11. Logs/commands/recipes/source revisions remain; a rerun is not promised byte-identical because APFS runtime metadata can vary.",
+    "present_files_bytes": {
+      "/home/brandonin/.local/share/inferno/images/ios14b5/os-inspection/official-os-4k.raw": 8589934592,
+      "/home/brandonin/.local/share/inferno/images/ios14b5/os-inspection/official-os.raw": 7695611392,
+      "/home/brandonin/.local/share/inferno/native-probe/helper-attempt-6/preparation.json": 4286,
+      "/home/brandonin/.local/share/inferno/native-probe/helper-attempt-6/ramdisk.raw": 104685568,
+      "/home/brandonin/.local/share/inferno/native-probe/helper-build-6/build.json": 2121,
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-21/disks/root.raw": 34359738368,
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-25/disks/root.raw": 34359738368
+    }
+  },
+  "live_reference_review": {
+    "open_fds_and_commands": [],
+    "current_lineage": "Upcoming stage42 derives from stopped app-boot25, whose root_base is app-boot24. Neither uses8. Historical preparation12 references8; retained records remain truthful historical inputs.",
+    "must_recheck": "Second full hash, unchanged stat/inode, no FD or active command, and retained source checks required immediately before authorized removal."
+  },
+  "excluded": "All actual app-boot tuples, baseline21, all logs/recipes, original firmware and official OS inputs remain. No deletion performed by this audit."
+}
