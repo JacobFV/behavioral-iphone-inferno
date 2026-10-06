@@ -10,7 +10,18 @@ Suggested opening instruction:
 > Prefer integrated execution over adding routine unit tests. Never use my main
 > display. Do not resume the archived framework reimplementation.
 
-## CURRENT, 2026-10-06 10:24 local: boot32 tests bounded guest-loopback relay
+## CURRENT, 2026-10-06 10:36 local: repeat strict journey after32 interruption
+
+Boot32 proves real guest-loopback lifecycle/tap transport, visual counter0→1,
+and strict before-capture. It received Signal15 before operator-after; preserve
+that distinction. Normal cleanup captured counter1, emulator0, all7 hashes and
+all4 backing ancestors unchanged. Signal origin remains unknown; read-only
+resource/arrival observers do not send signals. Boot worker is preserving32 and
+starting33 from the SAME frozen48; root owns all reviewed input/capture commands.
+Do not wait for a resource sample before finishing33 strict captures;32 already
+has a complete60s sample. Continue after completion to repeatability/runner work.
+
+## PREVIOUS, 2026-10-06 10:24 local: boot32 tests bounded guest-loopback relay
 
 Boot32 starting session2582 from frozen48, same e3da/launcher13/HID45, newapp19/
 readiness52. Root owns input, utility `/tmp/inferno-explicit-gesture-32.py` ready.

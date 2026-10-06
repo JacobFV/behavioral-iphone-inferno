@@ -2,6 +2,23 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 10:36 continuation: real loopback events and strict before-capture
+
+Boot32 app19/readiness52 delivered actual main, view-loaded, window-visible,
+appeared and active records through guest-only TCP127.0.0.1:37373. The receiver
+validated boot UUID, claimed owned executable/uid501 and sequence; TCP peer PID
+is explicitly unauthenticated. No new entitlements or policy changes were used.
+Root reviewed unobstructed counter0 and accepted strict QMP before-capture, then
+one explicit HID tap produced both visible counter1 and actual tapcount1 record.
+The runner received Signal15 before the operator-after command, so this attempt
+is incomplete despite preserved cleanup screenshot1 and normal QMP/emulator exit.
+Signal origin is unknown. Next33 repeats from the same immutable48 disk state.
+
+A read-only60-second host process observation after counter1 recorded61samples,
+16.93CPU seconds (28.2166% of one logical CPU), peakRSS5737791488bytes and8threads.
+These are whole-emulator observations, not guest app RSS or launch/density claims.
+Raw resource and arrival observations: `companion/evidence/app-loopback-32-observations`.
+
 ### 09:50 continuation: writer recovered through original Foundation paths
 
 Boot29 app17 displays `ready errno=0` with uid501 and successful boot UUID
