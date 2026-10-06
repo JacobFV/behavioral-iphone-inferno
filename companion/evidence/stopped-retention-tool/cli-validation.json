@@ -1,0 +1,46 @@
+{
+  "tool_sha256": "215d93ffaf5184972d1d43471275ff30dbce8e9a78ba7bca9eac82876d18a6bb",
+  "actual_cases": [
+    {
+      "report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-39/report.json",
+      "output": "/home/brandonin/.local/share/inferno/retention-verification/run39-manifest.json",
+      "exit_code": 0,
+      "manifest_exact_json_equality": true,
+      "source_report_still_matches": true,
+      "verification_sha256": "18a16eac47270dad3122395e69bd20ece5feaced266a8b638dab18539bc39be3"
+    },
+    {
+      "report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-40/report.json",
+      "output": "/home/brandonin/.local/share/inferno/retention-verification/run40-manifest.json",
+      "exit_code": 0,
+      "manifest_exact_json_equality": true,
+      "source_report_still_matches": true,
+      "verification_sha256": "5b2ad4460d7d33ae6514bedc1034776fb545ff38f9308ce44877984e0ca1367a"
+    }
+  ],
+  "existing_output_rejection": {
+    "command": [
+      "/usr/bin/python3",
+      "/tmp/inferno-preserve-stopped-work/companion/preserve-stopped.py",
+      "--report",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-39/report.json",
+      "--output",
+      "/home/brandonin/.local/share/inferno/retention-verification/run39-manifest.json"
+    ],
+    "exit_code": 1,
+    "stderr": "preserve-stopped: Output manifest and verification sidecar must be new files; existing evidence is never overwritten\n"
+  },
+  "actual_open_fd_rejection": {
+    "command": [
+      "/usr/bin/python3",
+      "/tmp/inferno-preserve-stopped-work/companion/preserve-stopped.py",
+      "--report",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-39/report.json",
+      "--output",
+      "/home/brandonin/.local/share/inferno/retention-verification/open-fd-must-not-exist.json"
+    ],
+    "exit_code": 1,
+    "stderr": "preserve-stopped: Stopped namespace has an open descriptor: /proc/2699188/fd/3 -> /home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-39/disks/root.qcow2\n",
+    "output_not_created": true
+  }
+}
