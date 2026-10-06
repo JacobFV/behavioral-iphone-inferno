@@ -1,0 +1,47 @@
+{
+  "status": "Design only; no sampler edits, VM launches, workload input or host configuration changes.",
+  "existing_sampler_sha256": "bf66403380b33d9493ca0e07f4b3ff646a2757e7888af9bd675e83f9e00011dc",
+  "existing_reuse": [
+    "Runner report PID/executable/binary hash validation",
+    "PID start_ticks identity checks",
+    "Raw stat/status/io and host CPU/meminfo capture",
+    "CPU clock tick and page size provenance"
+  ],
+  "minimum_extension": {
+    "selection": "Opt-in two-report mode; reject duplicate PID/report/output; preserve existing single-report behavior.",
+    "identity": "Validate each executable/hash/start_ticks before observation; check identity before and after each multi-file sample. Missing process, changed identity or inaccessible required memory accounting fails the complete two-VM result explicitly; retain partial raw evidence.",
+    "schedule": "Single monotonic target schedule over60s; tick/stat/status/io1s, smaps_rollup at shared0,5,...,60s targets to reduce page-table scanning overhead. Retain actual per-file read start/end and each round span; skip missed targets rather than catch up in bursts.",
+    "memory": "Raw smaps_rollup plus parsed Rss/Pss/SwapPss and available Pss_Anon/Pss_File/Pss_Shmem, Private_Clean/Dirty. Convert reported kB to1024bytes; unavailable optional fields remain null. Never silently substitute RSS for missing PSS.",
+    "host": "Once per round raw /proc/stat CPU line, meminfo, loadavg, /proc/pressure/{cpu,memory,io}; record missing PSI as unavailable, not zero. Record sampler own process CPU at endpoints to expose observer overhead.",
+    "scope": "Two whole emulator processes only; runners/control clients are not included in process sums. No proc environment, credentials or unrelated process contents."
+  },
+  "derived_metrics": [
+    "Per-PID CPU tick deltas and actual elapsed spans; summed CPU seconds divided by shared wall span,100percent=one host logical core. Preserve endpoint skew rather than claim simultaneous reads.",
+    "Time series of contemporaneous RSS sum and PSS sum; peak of sampled sums, not sum of independent peaks. Per-PID values retained.",
+    "PSI total-counter deltas divided by interval microseconds; some/full separately. Host aggregate CPU and MemAvailable/swap accompany rather than attribute all host activity to VMs."
+  ],
+  "production_sequence": [
+    "Root explicitly authorizes two runs after debug. Same frozen50 backing chain and exact binary/app/helper hashes; two unique writable leaves, copied auxiliary namespaces, private Unix control/display/serial endpoints, no writable disk sharing.",
+    "Retain base/ancestor hashes and confirm two actual iOS/app journeys separately, including original markers and reviewed counter0\u21921. A process existing alone is not a working VM.",
+    "Hold both at reviewed foreground counter1 for one aligned60s idle observation; identical display client/capture cadence and runner options. No builds or disk hashing during window; record unrelated host load instead of claiming perfect isolation.",
+    "If useful, separately measure one bounded identical counter workload per VM with each exact request/ack/actual tap record and endpoint timestamps. Do not mix idle and active windows.",
+    "Normal stop each VM, retain all raw observations, outcomes, unique leaves and paired-state provenance."
+  ],
+  "interpretation_limits": [
+    "N=2 concurrency feasibility under this configuration only, not maximum density, sustained reliability or cost per runner.",
+    "RSS counts shared resident pages per mapping; PSS divides shared pages among their sharers. PSS sum is not total host memory cost and does not include every page-cache/kernel/control-process allocation.",
+    "Sequential /proc reads are not an atomic snapshot. Per-file timestamps/skew and sampler overhead remain visible.",
+    "Same guest image does not imply all guest RAM is shared. Do not divide available host RAM by one RSS/PSS measurement to assert capacity.",
+    "Lifecycle timing and screenshot receipt/presentation remain separate outcomes."
+  ],
+  "primary_references": [
+    {
+      "url": "https://www.kernel.org/doc/html/latest/filesystems/proc.html",
+      "supports": "smaps_rollup aggregates mappings; RSS asynchronous approximation versus mapping accounting; PSS sharing semantics."
+    },
+    {
+      "url": "https://www.kernel.org/doc/html/latest/accounting/psi.html",
+      "supports": "PSI some/full and total stall microseconds; host pressure is a contention observation, not per-VM attribution."
+    }
+  ]
+}
