@@ -10,6 +10,27 @@ Suggested opening instruction:
 > Prefer integrated execution over adding routine unit tests. Never use my main
 > display. Do not resume the archived framework reimplementation.
 
+## Current actual result, 2026-10-06 08:49 local
+
+Boot26 LIVE session61122, privateVNC /tmp/inferno-boot-bvfnhswi/vnc.sock;
+reportapp-boot-26. OWNED VISUAL JOURNEY PROVEN b374a2a9ad: beforecounter0,
+exactonecountertapbdeb6ea2ab474ee584afca1bbe21cb5b ACK0, aftercounter1.
+Fourtotalgestures (twolockscreenswipes,betapopupclose,countertap); no moreinput
+pending. App14fixworked. Rootresource60secondsample session94192 at
+app-boot-26/resources-after-counter; keepVMaliveuntilsamplecompletes.
+
+Native /tmp/inferno-native-event-relay owns app+observer changes for genuine
+app events via fixedownedfile, boundedrecords and originalkern.bootsessionuuid
+stale-record rejection; no staging yet. Strictserialjourney stillwaiting despite
+actualvisualsuccess. Rootmustreviewcandidate/build/imports before nextstage.
+Originaldebugoutputroute requiresnewdebuggrant, notused. Bootworker future-only
+cleanupcapturefix integratedcc9ed313a0;26runningolderrunnerunchanged.
+
+After sample, normalstop26+all7hashes, then next eventrelaystage whenready.
+Capacitycurrent~5GiB; generated42 canretire after26stop/sourcepreservation using
+usualfullhash/noFD/commandguards. Allactualboottuples/baseline21staypreserved.
+Continueevent-backedjourney andmeasurements; do notstopatvisualmilestone.
+
 ## Current boot26 transition, 2026-10-06 08:41 local
 
 Stage42 completed: original guest71776byte app-only readback0, normalunmount,

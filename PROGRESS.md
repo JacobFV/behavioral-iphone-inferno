@@ -2,6 +2,26 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 08:49 continuation: actual owned UIKit counter journey
+
+Boot26 with app14 reaches original accepted callback, stays alive asPID256,
+and displays the owned navy UIKit fixture. After two reviewed lock-screen
+swipes and dismissal of the ordinary beta notice, capture1791301641.8852959
+shows unobstructed Tap count0 (SHA79c18a5b0c8df58823e447e510567813c3533347f092a666884efe0e7f1c2fad).
+Exactly one explicit counter tap, requestbdeb6ea2ab474ee584afca1bbe21cb5b,
+x16384/y20316/150ms, received original HID reports0/ACK0. Capture1791301687.453673
+shows Tap count1 (SHA5f5b7a1521c042682736ac27907fbcdff3cc054451e45c0222638825f6382d6f).
+Root and bootworker independently reviewed actual frames; raw evidenceb374a2a9ad.
+This proves the owned visual app/input journey, not merely registration or a
+live process. Four total requests; no synthetic image or automatic replay.
+
+Strict marker-based journey still waits: FrontBoard app stderr is not connected
+to console. Original debug-output options require a debug entitlement, so native
+worker instead implements a bounded owned event file plus observer relay using
+original boot-session UUID to reject stale records. No new grant/policy change.
+Boot26 remains live while root collects a60second host-emulator resource sample;
+this is not cold/warm launch, reliability, parallel density or guest app memory.
+
 ### 08:37 continuation: original launch accepted; owned delegate ABI fixed
 
 Normal restart25 cleared the launch denial: original proxySystem/valid1 and
