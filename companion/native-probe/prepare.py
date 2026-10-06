@@ -28,6 +28,7 @@ p.add_argument('--launchd-cache', type=Path, help='explicit merged launchd confi
 p.add_argument('--launchd-cache-sha256', help='required merged configuration SHA256')
 p.add_argument('--export-reports', action='store_true', help='read-only bounded crash report export from copied Data')
 p.add_argument('--system-launcher',type=Path,help='owned launcher copy for System versus Data execution comparison')
+p.add_argument('--system-app-executable',type=Path,help='replace only existing owned /Applications/InfernoProbe.app/InfernoProbe; preserve Info.plist')
 p.add_argument('--system-app-dir',type=Path,help='owned two-file InfernoProbe.app bundle to stage under Applications')
 p.add_argument('--unlock-helper',type=Path,help='owned single empty-passcode unlock diagnostic for freshly created VM keybag')
 p.add_argument('--exec-wrapper',type=Path,help='owned System wrapper to diagnose mobile exec')
@@ -49,7 +50,7 @@ if bool(a.sep_payload) != bool(a.sep_sha256):
     p.error('--sep-payload and --sep-sha256 must be supplied together')
 if a.sep_payload and (not a.disk_helper or not a.sep_payload.is_file() or hashlib.sha256(a.sep_payload.read_bytes()).hexdigest() != a.sep_sha256):
     p.error('SEP payload requires disk helper and matching file hash')
-if (a.disk_helper_roles or a.disk_helper_existing or a.disk_helper_gigalocker or a.disk_helper_data or a.disk_helper_verify_data or a.disk_helper_keybag or a.readiness_probe or a.export_reports or a.exec_wrapper or a.system_launcher or a.unlock_helper or a.system_app_dir) and not a.disk_helper:
+if (a.disk_helper_roles or a.disk_helper_existing or a.disk_helper_gigalocker or a.disk_helper_data or a.disk_helper_verify_data or a.disk_helper_keybag or a.readiness_probe or a.export_reports or a.exec_wrapper or a.system_launcher or a.unlock_helper or a.system_app_dir or a.system_app_executable) and not a.disk_helper:
     p.error('--disk-helper-roles requires --disk-helper')
 for required in (a.profile, a.raw_ramdisk, a.probe, a.hfsplus):
     if not required.is_file():
@@ -58,6 +59,8 @@ if a.disk_helper and not a.disk_helper.is_file():
     p.error(f'missing helper: {a.disk_helper}')
 if a.system_app_dir and (not a.system_app_dir.is_dir() or {p.name for p in a.system_app_dir.iterdir()} != {'InfernoProbe','Info.plist'} or any(not p.is_file() or p.is_symlink() for p in a.system_app_dir.iterdir())):
     p.error('--system-app-dir requires exactly two owned regular files: InfernoProbe and Info.plist')
+if a.system_app_executable and (a.system_app_dir or not a.disk_helper_existing or not a.system_app_executable.is_file() or a.system_app_executable.is_symlink()):
+    p.error('--system-app-executable requires existing volumes and a regular file; mutually exclusive with --system-app-dir')
 a.output.mkdir(parents=True, exist_ok=False)
 sha = lambda f: hashlib.sha256(f.read_bytes()).hexdigest()
 profile = json.loads(a.profile.read_text())
@@ -90,6 +93,11 @@ if a.disk_helper:
         hfs('chmod', '755', '/usr/share/inferno-system-launcher')
         hfs('extract', '/usr/share/inferno-system-launcher', a.output / 'readback-system-launcher')
         assert sha(a.output / 'readback-system-launcher') == sha(a.system_launcher)
+    if a.system_app_executable:
+        hfs('add', a.system_app_executable, '/usr/share/inferno-app-executable')
+        hfs('chmod', '755', '/usr/share/inferno-app-executable')
+        hfs('extract', '/usr/share/inferno-app-executable', a.output / 'readback-app-executable')
+        assert sha(a.output / 'readback-app-executable') == sha(a.system_app_executable)
     if a.system_app_dir:
         hfs('mkdir', '/usr/share/InfernoProbe.app')
         hfs('chmod', '755', '/usr/share/InfernoProbe.app')
@@ -125,7 +133,7 @@ if a.disk_helper:
         readiness_job.write_bytes(plistlib.dumps({'Label': 'org.inferno.readiness', 'ProgramArguments': ['/usr/bin/inferno-readiness'], 'RunAtLoad': True, 'StandardOutPath': '/dev/console', 'StandardErrorPath': '/dev/console', 'UserName': 'root'}))
         hfs('add', readiness_job, '/usr/share/org.inferno.readiness.plist')
         hfs('chmod', '644', '/usr/share/org.inferno.readiness.plist')
-    jobs.append(('prepare-root', ['/usr/bin/inferno-prepare-root', '--disposable-root-copy'] + (['--role-volumes'] if a.disk_helper_roles else []) + (['--existing-volumes'] if a.disk_helper_existing else []) + (['--init-gigalocker'] if a.disk_helper_gigalocker else []) + (['--seed-data'] if a.disk_helper_data else []) + (['--copy-sep'] if a.sep_payload else []) + (['--verify-data'] if a.disk_helper_verify_data else []) + (['--create-keybag'] if a.disk_helper_keybag else []) + (['--install-readiness'] if a.readiness_probe else []) + (['--install-cache'] if a.launchd_cache else []) + (['--export-reports'] if a.export_reports else []) + (['--install-exec-wrapper'] if a.exec_wrapper else []) + (['--install-system-launcher'] if a.system_launcher else []) + (['--install-unlock-helper'] if a.unlock_helper else []) + (['--install-system-app'] if a.system_app_dir else []) + (['--install-multitouch'] if a.multitouch_img4 else []) + (['--install-hid-input'] if a.hid_input_helper else [])))
+    jobs.append(('prepare-root', ['/usr/bin/inferno-prepare-root', '--disposable-root-copy'] + (['--role-volumes'] if a.disk_helper_roles else []) + (['--existing-volumes'] if a.disk_helper_existing else []) + (['--init-gigalocker'] if a.disk_helper_gigalocker else []) + (['--seed-data'] if a.disk_helper_data else []) + (['--copy-sep'] if a.sep_payload else []) + (['--verify-data'] if a.disk_helper_verify_data else []) + (['--create-keybag'] if a.disk_helper_keybag else []) + (['--install-readiness'] if a.readiness_probe else []) + (['--install-cache'] if a.launchd_cache else []) + (['--export-reports'] if a.export_reports else []) + (['--install-exec-wrapper'] if a.exec_wrapper else []) + (['--install-system-launcher'] if a.system_launcher else []) + (['--install-unlock-helper'] if a.unlock_helper else []) + (['--install-system-app'] if a.system_app_dir else []) + (['--replace-system-app-executable'] if a.system_app_executable else []) + (['--install-multitouch'] if a.multitouch_img4 else []) + (['--install-hid-input'] if a.hid_input_helper else [])))
 for name, args in jobs:
     label = 'org.inferno.probe.' + name
     local = a.output / (label + '.plist')
@@ -147,6 +155,7 @@ profile['provenance']['helper_flags'] = {key: getattr(a, key) for key in ('disk_
 profile['provenance']['multitouch_img4_sha256'] = a.multitouch_sha256
 profile['provenance']['multitouch_scope'] = 'Explicit unsigned container to existing Preboot zero-hash firmware/FUD; no manifest or signature added' if a.multitouch_img4 else None
 profile['provenance']['sep_payload_sha256'] = a.sep_sha256
+profile['provenance']['system_app_executable'] = {'path': str(a.system_app_executable), 'sha256': sha(a.system_app_executable), 'target': '/Applications/InfernoProbe.app/InfernoProbe', 'scope': 'existing owned executable only; no Info.plist or registration changes'} if a.system_app_executable else None
 profile['provenance']['system_app_files'] = {p.name:sha(p) for p in a.system_app_dir.iterdir()} if a.system_app_dir else None
 profile['provenance']['unlock_helper_sha256'] = sha(a.unlock_helper) if a.unlock_helper else None
 profile['provenance']['system_launcher_sha256'] = sha(a.system_launcher) if a.system_launcher else None
