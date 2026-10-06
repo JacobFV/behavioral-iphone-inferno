@@ -1,0 +1,37 @@
+ui/console.c:129: void graphic_hw_update_done(QemuConsole *con)
+ui/console.c:130: {
+ui/console.c:131:     if (con) {
+ui/console.c:132:         qemu_co_enter_all(&con->dump_queue, NULL);
+ui/console.c:133:     }
+ui/console.c:134: }
+ui/console.c:135: 
+ui/console.c:136: void graphic_hw_update(QemuConsole *con)
+ui/console.c:137: {
+ui/console.c:138:     bool async = false;
+ui/console.c:139:     if (!con) {
+ui/console.c:140:         return;
+ui/console.c:141:     }
+ui/console.c:142:     if (con->hw_ops->gfx_update) {
+ui/console.c:143:         con->hw_ops->gfx_update(con->hw);
+ui/console.c:144:         async = con->hw_ops->gfx_update_async;
+ui/console.c:145:     }
+ui/console.c:146:     if (!async) {
+ui/console.c:147:         graphic_hw_update_done(con);
+ui/console.c:148:     }
+ui/console.c:149: }
+ui/console.c:150: 
+ui/console.c:151: static void graphic_hw_update_bh(void *con)
+ui/console.c:152: {
+ui/console.c:153:     graphic_hw_update(con);
+ui/console.c:154: }
+ui/console.c:155: 
+ui/console.c:156: void qemu_console_co_wait_update(QemuConsole *con)
+ui/console.c:157: {
+ui/console.c:158:     if (qemu_co_queue_empty(&con->dump_queue)) {
+ui/console.c:159:         /* Defer the update, it will restart the pending coroutines */
+ui/console.c:160:         aio_bh_schedule_oneshot(qemu_get_aio_context(),
+ui/console.c:161:                                 graphic_hw_update_bh, con);
+ui/console.c:162:     }
+ui/console.c:163:     qemu_co_queue_wait(&con->dump_queue, NULL);
+ui/console.c:164: 
+ui/console.c:165: }

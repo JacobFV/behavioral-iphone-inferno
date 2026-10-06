@@ -1,0 +1,113 @@
+hw/display/apple_displaypipe_v4.c:594:         break;
+hw/display/apple_displaypipe_v4.c:595:     }
+hw/display/apple_displaypipe_v4.c:596:     case (0x4602C >> 2): {
+hw/display/apple_displaypipe_v4.c:597:         ADP_INFO("disp: REG_0x4602C <- 0x%X", (uint32_t)data);
+hw/display/apple_displaypipe_v4.c:598:         trace_apple_adp_submit(data, (data & BIT32(12)) != 0,
+hw/display/apple_displaypipe_v4.c:599:                                qatomic_read(&adp->int_status),
+hw/display/apple_displaypipe_v4.c:600:                                qatomic_read(&adp->int_enable));
+hw/display/apple_displaypipe_v4.c:601:         if (data & BIT32(12)) {
+hw/display/apple_displaypipe_v4.c:602:             qemu_bh_schedule(adp->update_disp_image_bh);
+hw/display/apple_displaypipe_v4.c:603:         }
+hw/display/apple_displaypipe_v4.c:604:         break;
+hw/display/apple_displaypipe_v4.c:605:     }
+hw/display/apple_displaypipe_v4.c:606:     default: {
+hw/display/apple_displaypipe_v4.c:679: static void adp_v4_gfx_update(void *opaque)
+hw/display/apple_displaypipe_v4.c:680: {
+hw/display/apple_displaypipe_v4.c:681:     AppleDisplayPipeV4State *adp = opaque;
+hw/display/apple_displaypipe_v4.c:682:     DirtyBitmapSnapshot *snap;
+hw/display/apple_displaypipe_v4.c:683:     bool dirty;
+hw/display/apple_displaypipe_v4.c:684:     uint32_t y, ys, before;
+hw/display/apple_displaypipe_v4.c:685: 
+hw/display/apple_displaypipe_v4.c:686:     snap = memory_region_snapshot_and_clear_dirty(
+hw/display/apple_displaypipe_v4.c:687:         adp->vram_mr, adp->vram_off + adp->fb_off,
+hw/display/apple_displaypipe_v4.c:688:         adp->height * adp->width * sizeof(uint32_t), DIRTY_MEMORY_VGA);
+hw/display/apple_displaypipe_v4.c:689:     ys = -1U;
+hw/display/apple_displaypipe_v4.c:690:     for (y = 0; y < adp->height; ++y) {
+hw/display/apple_displaypipe_v4.c:691:         dirty = memory_region_snapshot_get_dirty(
+hw/display/apple_displaypipe_v4.c:692:             adp->vram_mr, snap,
+hw/display/apple_displaypipe_v4.c:693:             adp->vram_off + adp->fb_off + adp->width * sizeof(uint32_t) * y,
+hw/display/apple_displaypipe_v4.c:694:             adp->width * sizeof(uint32_t));
+hw/display/apple_displaypipe_v4.c:695:         if (dirty && ys == -1U) {
+hw/display/apple_displaypipe_v4.c:696:             ys = y;
+hw/display/apple_displaypipe_v4.c:697:         }
+hw/display/apple_displaypipe_v4.c:698:         if (!dirty && ys != -1U) {
+hw/display/apple_displaypipe_v4.c:699:             dpy_gfx_update(adp->console, 0, ys, adp->width, y - ys);
+hw/display/apple_displaypipe_v4.c:700:             ys = -1U;
+hw/display/apple_displaypipe_v4.c:701:         }
+hw/display/apple_displaypipe_v4.c:702:     }
+hw/display/apple_displaypipe_v4.c:703:     if (ys != -1U) {
+hw/display/apple_displaypipe_v4.c:704:         dpy_gfx_update(adp->console, 0, ys, adp->width, y - ys);
+hw/display/apple_displaypipe_v4.c:705:     }
+hw/display/apple_displaypipe_v4.c:706:     g_free(snap);
+hw/display/apple_displaypipe_v4.c:707: 
+hw/display/apple_displaypipe_v4.c:708:     before = qatomic_read(&adp->int_status);
+hw/display/apple_displaypipe_v4.c:709:     qatomic_or(&adp->int_status, R_CONTROL_INT_OUTPUT_READY_MASK);
+hw/display/apple_displaypipe_v4.c:710:     adp_v4_update_irqs(adp);
+hw/display/apple_displaypipe_v4.c:711:     trace_apple_adp_output_ready(before, qatomic_read(&adp->int_status),
+hw/display/apple_displaypipe_v4.c:712:                                 qatomic_read(&adp->int_enable));
+hw/display/apple_displaypipe_v4.c:713: }
+hw/display/apple_displaypipe_v4.c:714: 
+hw/display/apple_displaypipe_v4.c:715: static const GraphicHwOps adp_v4_ops = {
+hw/display/apple_displaypipe_v4.c:716:     .invalidate = adp_v4_invalidate,
+hw/display/apple_displaypipe_v4.c:717:     .gfx_update = adp_v4_gfx_update,
+hw/display/apple_displaypipe_v4.c:718: };
+hw/display/apple_displaypipe_v4.c:719: 
+hw/display/apple_displaypipe_v4.c:936:     if (REG_FIELD_EX32(genpipe->state.config_control, GP_CONFIG_CONTROL, RUN) ==
+hw/display/apple_displaypipe_v4.c:937:             0 ||
+hw/display/apple_displaypipe_v4.c:938:         REG_FIELD_EX32(genpipe->state.config_control, GP_CONFIG_CONTROL,
+hw/display/apple_displaypipe_v4.c:939:                        ENABLED) == 0) {
+hw/display/apple_displaypipe_v4.c:940:         trace_apple_adp_pipe(trace_pipe, "disabled", genpipe->state.config_control,
+hw/display/apple_displaypipe_v4.c:941:                              genpipe->state.data_start, genpipe->state.stride,
+hw/display/apple_displaypipe_v4.c:942:                              genpipe->state.src_width, genpipe->state.src_height, 0);
+hw/display/apple_displaypipe_v4.c:943:         return;
+hw/display/apple_displaypipe_v4.c:944:     }
+hw/display/apple_displaypipe_v4.c:945: 
+hw/display/apple_displaypipe_v4.c:946:     qemu_mutex_lock(&genpipe->lock);
+hw/display/apple_displaypipe_v4.c:947:     adp_v4_gp_read(genpipe, dma_as, trace_pipe);
+hw/display/apple_displaypipe_v4.c:948:     qemu_mutex_unlock(&genpipe->lock);
+hw/display/apple_displaypipe_v4.c:949: 
+hw/display/apple_displaypipe_v4.c:950:     if (genpipe->state.buf_len != 0) {
+hw/display/apple_displaypipe_v4.c:951:         image = genpipe->state.image;
+hw/display/apple_displaypipe_v4.c:952:         if (image == NULL) {
+hw/display/apple_displaypipe_v4.c:953:             fmt = adp_v4_gp_fmt_to_pixman(genpipe);
+hw/display/apple_displaypipe_v4.c:954:             genpipe->state.image = image = pixman_image_create_bits(
+hw/display/apple_displaypipe_v4.c:955:                 fmt, genpipe->state.src_width, genpipe->state.src_height,
+hw/display/apple_displaypipe_v4.c:956:                 (uint32_t *)genpipe->state.buf, genpipe->state.stride);
+hw/display/apple_displaypipe_v4.c:957:         }
+hw/display/apple_displaypipe_v4.c:958: 
+hw/display/apple_displaypipe_v4.c:959:         pixman_image_composite(PIXMAN_OP_SRC, image, NULL, disp_image, 0, 0, 0,
+hw/display/apple_displaypipe_v4.c:960:                                0, 0, 0, genpipe->state.dest_width,
+hw/display/apple_displaypipe_v4.c:961:                                genpipe->state.dest_height);
+hw/display/apple_displaypipe_v4.c:962: 
+hw/display/apple_displaypipe_v4.c:963:         dpy_gfx_update(console, 0, 0, genpipe->state.dest_width,
+hw/display/apple_displaypipe_v4.c:964:                        genpipe->state.dest_height);
+hw/display/apple_displaypipe_v4.c:965:         trace_apple_adp_pipe(trace_pipe, "drawn", genpipe->state.config_control,
+hw/display/apple_displaypipe_v4.c:966:                              genpipe->state.data_start, genpipe->state.stride,
+hw/display/apple_displaypipe_v4.c:967:                              genpipe->state.src_width, genpipe->state.src_height,
+hw/display/apple_displaypipe_v4.c:968:                              genpipe->state.buf_len);
+hw/display/apple_displaypipe_v4.c:969:     } else {
+hw/display/apple_displaypipe_v4.c:970:         trace_apple_adp_pipe(trace_pipe, "no-buffer", genpipe->state.config_control,
+hw/display/apple_displaypipe_v4.c:971:                              genpipe->state.data_start, genpipe->state.stride,
+hw/display/apple_displaypipe_v4.c:972:                              genpipe->state.src_width, genpipe->state.src_height, 0);
+hw/display/apple_displaypipe_v4.c:973:     }
+hw/display/apple_displaypipe_v4.c:974: }
+hw/display/apple_displaypipe_v4.c:975: 
+hw/display/apple_displaypipe_v4.c:976: static void adp_v4_update_disp_bh(void *opaque)
+hw/display/apple_displaypipe_v4.c:977: {
+hw/display/apple_displaypipe_v4.c:978:     AppleDisplayPipeV4State *adp = opaque;
+hw/display/apple_displaypipe_v4.c:979:     pixman_image_t *disp_image;
+hw/display/apple_displaypipe_v4.c:980: 
+hw/display/apple_displaypipe_v4.c:981:     trace_apple_adp_bh("enter", adp->genpipe[0].state.config_control,
+hw/display/apple_displaypipe_v4.c:982:                        adp->genpipe[1].state.config_control,
+hw/display/apple_displaypipe_v4.c:983:                        qatomic_read(&adp->int_status), qatomic_read(&adp->int_enable));
+hw/display/apple_displaypipe_v4.c:984:     disp_image = qemu_console_surface(adp->console)->image;
+hw/display/apple_displaypipe_v4.c:985: 
+hw/display/apple_displaypipe_v4.c:986:     adp_v4_gp_draw(&adp->genpipe[0], &adp->dma_as, disp_image, adp->console, 0);
+hw/display/apple_displaypipe_v4.c:987:     adp_v4_gp_draw(&adp->genpipe[1], &adp->dma_as, disp_image, adp->console, 1);
+hw/display/apple_displaypipe_v4.c:988: 
+hw/display/apple_displaypipe_v4.c:989:     qatomic_or(&adp->int_status, R_CONTROL_INT_FRAME_PROCESSED_MASK);
+hw/display/apple_displaypipe_v4.c:990:     adp_v4_update_irqs(adp);
+hw/display/apple_displaypipe_v4.c:991:     trace_apple_adp_bh("exit", adp->genpipe[0].state.config_control,
+hw/display/apple_displaypipe_v4.c:992:                        adp->genpipe[1].state.config_control,
+hw/display/apple_displaypipe_v4.c:993:                        qatomic_read(&adp->int_status), qatomic_read(&adp->int_enable));
+hw/display/apple_displaypipe_v4.c:994: }

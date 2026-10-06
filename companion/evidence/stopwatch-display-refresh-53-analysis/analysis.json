@@ -1,0 +1,114 @@
+{
+  "analysis_source_revision": "17ac9dc8c2daa4dc293ff9d7f3920bd9b7eda2ec",
+  "sources": [
+    {
+      "path": "ui/ui-qmp-cmds.c",
+      "sha256": "50830d0c49f69adb688138a4ac119873adf1328cf6d9274106b02efb4afd4fdb",
+      "spans": [
+        [
+          331,
+          403
+        ]
+      ],
+      "excerpt": "ui-ui-qmp-cmds.c.excerpt.txt"
+    },
+    {
+      "path": "ui/console.c",
+      "sha256": "fea1100dd5d376b762451c6c639b2dffdd666cab7b4e9a6903769560ab0cbe9a",
+      "spans": [
+        [
+          129,
+          165
+        ]
+      ],
+      "excerpt": "ui-console.c.excerpt.txt"
+    },
+    {
+      "path": "ui/vnc.c",
+      "sha256": "7eecaf75839eae57d5b426c066d9d8e0cfa95f9ce8c50a09f18b3e6022be9db2",
+      "spans": [
+        [
+          3254,
+          3292
+        ]
+      ],
+      "excerpt": "ui-vnc.c.excerpt.txt"
+    },
+    {
+      "path": "hw/display/apple_displaypipe_v4.c",
+      "sha256": "46e4e7b44ffaa80db4b1a4e6e81c0209bc4f27a5f4c7ca621ae085922ee35282",
+      "spans": [
+        [
+          594,
+          606
+        ],
+        [
+          679,
+          719
+        ],
+        [
+          936,
+          994
+        ]
+      ],
+      "excerpt": "hw-display-apple_displaypipe_v4.c.excerpt.txt"
+    },
+    {
+      "path": "companion/boot.py",
+      "sha256": "3f300239d6c624457a541295806a8f780f84456814d38f16fb20b9e5a114fdd4",
+      "spans": [
+        [
+          430,
+          449
+        ]
+      ],
+      "excerpt": "companion-boot.py.excerpt.txt"
+    }
+  ],
+  "source_report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-53",
+  "frame_hashes": {
+    "frames/0023.ppm": {
+      "bytes": 4451344,
+      "sha256": "9e46d7049452e6da71429d30ce40d2e9efc9eed0170d7e28e479bf32da87974f"
+    },
+    "frames/0024.ppm": {
+      "bytes": 4451344,
+      "sha256": "446fb3e447af86b2d94fd1c66f0487bcc292b016b8be2de73883eb206956a761"
+    },
+    "frames/0025.ppm": {
+      "bytes": 4451344,
+      "sha256": "0f4d611b2485ce766c1f31dedb92e9a1aaa59c29b468388f10d59d579a6a813c"
+    },
+    "frames/0026.ppm": {
+      "bytes": 4451344,
+      "sha256": "3ca367fa6af0aebad66c1581513b9739841a5be1d76b495a97d50dbddd031e99"
+    }
+  },
+  "root_reviewed_pixels_not_independent_OCR": {
+    "frames/0024.ppm": "00:20.63",
+    "frames/0025.ppm": "00:32.80",
+    "stopwatch-after-measure/observed-0001.png": "02:11.04",
+    "stopwatch-after-measure/observed-0008.png": "02:18.78"
+  },
+  "facts": [
+    "VNC no-clients branch returns before graphic_hw_update; a live client requests regular hardware updates through the adaptive refresh loop.",
+    "QMP screendump schedules and waits one graphic_hw_update. ADP declares no async update flag; that callback ends after dirty scan and OUTPUT_READY IRQ, not after guest submission.",
+    "Guest write0x4602c bit12 later schedules draw BH, which reads/composites GP buffers, signals dpy update and FRAME_PROCESSED. This is a separate guest-response path.",
+    "QMP takes the current surface image reference while BQL held. Its source explicitly allows updates during later save yields, so neither a fixed stale frame nor atomic presentation is guaranteed."
+  ],
+  "inference": [
+    "Sparse captures with no VNC may observe an earlier composed surface, then stimulate subsequent guest rendering. Reconnected VNC can restore regular refresh and reveal current Clock elapsed values.",
+    "This is consistent with53 observations but exact pipeline lag is unmeasured; do not label it one-frame latency or a guest monotonic-clock defect.",
+    "CPU observations during no-VNC interval therefore describe that refresh cadence, not continuous fully presented stopwatch animation."
+  ],
+  "next_diagnostic": [
+    "No behavior patch yet. With existing seven-event trace bounded to10seconds, explicitly record host byte checkpoints before a QMP screendump and after its reply, then after a short no-input wait and a second/third capture. Use only sole runner QMP owner.",
+    "Compare actual OUTPUT_READY, guest W1C, submit and draw order against changed image hashes/readable elapsed value. Existing trace lines have no individual timestamps, so file-visible boundaries constrain rather than precisely time the pipeline.",
+    "A continuous VNC interval is a distinct active-refresh condition; retain it separately from no-viewer resource measurements.",
+    "Do not use screenshot stopwatch text as guest clock-rate benchmark. Original app monotonic timestamps or clock queries would be separate evidence."
+  ],
+  "limits": [
+    "Original Clock pixels were reviewed by root; retained capture reports establish host receipt/request times, not guest presentation times.",
+    "No runtime command, VNC connection, guest input or source mutation performed by this analysis."
+  ]
+}

@@ -1,0 +1,66 @@
+ui/ui-qmp-cmds.c:331: qmp_screendump(const char *filename, const char *device,
+ui/ui-qmp-cmds.c:332:                bool has_head, int64_t head,
+ui/ui-qmp-cmds.c:333:                bool has_format, ImageFormat format, Error **errp)
+ui/ui-qmp-cmds.c:334: {
+ui/ui-qmp-cmds.c:335:     g_autoptr(pixman_image_t) image = NULL;
+ui/ui-qmp-cmds.c:336:     QemuConsole *con;
+ui/ui-qmp-cmds.c:337:     DisplaySurface *surface;
+ui/ui-qmp-cmds.c:338:     int fd;
+ui/ui-qmp-cmds.c:339: 
+ui/ui-qmp-cmds.c:340:     if (device) {
+ui/ui-qmp-cmds.c:341:         con = qemu_console_lookup_by_device_name(device, has_head ? head : 0,
+ui/ui-qmp-cmds.c:342:                                                  errp);
+ui/ui-qmp-cmds.c:343:         if (!con) {
+ui/ui-qmp-cmds.c:344:             return;
+ui/ui-qmp-cmds.c:345:         }
+ui/ui-qmp-cmds.c:346:     } else {
+ui/ui-qmp-cmds.c:347:         if (has_head) {
+ui/ui-qmp-cmds.c:348:             error_setg(errp, "'head' must be specified together with 'device'");
+ui/ui-qmp-cmds.c:349:             return;
+ui/ui-qmp-cmds.c:350:         }
+ui/ui-qmp-cmds.c:351:         con = qemu_console_lookup_by_index(0);
+ui/ui-qmp-cmds.c:352:         if (!con) {
+ui/ui-qmp-cmds.c:353:             error_setg(errp, "There is no console to take a screendump from");
+ui/ui-qmp-cmds.c:354:             return;
+ui/ui-qmp-cmds.c:355:         }
+ui/ui-qmp-cmds.c:356:     }
+ui/ui-qmp-cmds.c:357: 
+ui/ui-qmp-cmds.c:358:     qemu_console_co_wait_update(con);
+ui/ui-qmp-cmds.c:359: 
+ui/ui-qmp-cmds.c:360:     /*
+ui/ui-qmp-cmds.c:361:      * All pending coroutines are woken up, while the BQL is held.  No
+ui/ui-qmp-cmds.c:362:      * further graphic update are possible until it is released.  Take
+ui/ui-qmp-cmds.c:363:      * an image ref before that.
+ui/ui-qmp-cmds.c:364:      */
+ui/ui-qmp-cmds.c:365:     surface = qemu_console_surface(con);
+ui/ui-qmp-cmds.c:366:     if (!surface) {
+ui/ui-qmp-cmds.c:367:         error_setg(errp, "no surface");
+ui/ui-qmp-cmds.c:368:         return;
+ui/ui-qmp-cmds.c:369:     }
+ui/ui-qmp-cmds.c:370:     image = pixman_image_ref(surface->image);
+ui/ui-qmp-cmds.c:371: 
+ui/ui-qmp-cmds.c:372:     fd = qemu_open_old(filename, O_WRONLY | O_CREAT | O_TRUNC | O_BINARY, 0666);
+ui/ui-qmp-cmds.c:373:     if (fd == -1) {
+ui/ui-qmp-cmds.c:374:         error_setg(errp, "failed to open file '%s': %s", filename,
+ui/ui-qmp-cmds.c:375:                    strerror(errno));
+ui/ui-qmp-cmds.c:376:         return;
+ui/ui-qmp-cmds.c:377:     }
+ui/ui-qmp-cmds.c:378: 
+ui/ui-qmp-cmds.c:379:     /*
+ui/ui-qmp-cmds.c:380:      * The image content could potentially be updated as the coroutine
+ui/ui-qmp-cmds.c:381:      * yields and releases the BQL. It could produce corrupted dump, but
+ui/ui-qmp-cmds.c:382:      * it should be otherwise safe.
+ui/ui-qmp-cmds.c:383:      */
+ui/ui-qmp-cmds.c:384:     if (has_format && format == IMAGE_FORMAT_PNG) {
+ui/ui-qmp-cmds.c:385:         /* PNG format specified for screendump */
+ui/ui-qmp-cmds.c:386:         if (!png_save(fd, image, errp)) {
+ui/ui-qmp-cmds.c:387:             qemu_unlink(filename);
+ui/ui-qmp-cmds.c:388:         }
+ui/ui-qmp-cmds.c:389:     } else {
+ui/ui-qmp-cmds.c:390:         /* PPM format specified/default for screendump */
+ui/ui-qmp-cmds.c:391:         if (!ppm_save(fd, image, errp)) {
+ui/ui-qmp-cmds.c:392:             qemu_unlink(filename);
+ui/ui-qmp-cmds.c:393:         }
+ui/ui-qmp-cmds.c:394:     }
+ui/ui-qmp-cmds.c:395: }
+ui/ui-qmp-cmds.c:396: #endif /* CONFIG_PIXMAN */
