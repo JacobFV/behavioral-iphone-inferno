@@ -133,11 +133,10 @@ int main(int argc, char **argv) {
     if (gigalocker) {
         if (!xart_device[0] || ensure("/mnt7") || mount_at(xart_device, "/mnt7", 0)) return 12;
         char *init[] = {"/usr/libexec/seputil", "--gigalocker-init", 0};
-        char *shutdown[] = {"/usr/libexec/seputil", "--gigalocker-shutdown", 0};
-        if (run(init) || run(shutdown)) return 13;
+        if (run(init)) return 13;
         sync();
         if (unmount("/mnt7", 0)) return 14;
-        printf("INFERNO_GIGALOCKER_COMPLETE: original seputil initialization and shutdown succeeded\n"); fflush(0);
+        printf("INFERNO_GIGALOCKER_COMPLETE: original seputil initialization and clean unmount succeeded\n"); fflush(0);
     }
     printf("INFERNO_PREP_COMPLETE: Preboot added, original firmware copied\n"); fflush(0);
     return 0;
