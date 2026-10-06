@@ -143,3 +143,9 @@ records before/after PNGs, hashes and exact pointer packets. It accepts only an
 existing Unix socket. Capture was actually verified against app-boot-3; pointer
 input remains unverified until a visible guest response is observed. QEMU VNC
 reported832x1792 while QMP reports828x1792; retain that surface-width distinction.
+
+Shutdown cleanup makes a bounded, best-effort final framebuffer capture before
+QMP quit when the normal completion path did not capture one, including an
+interrupted or incomplete strict journey. Capture failures are recorded separately
+and do not replace the original attempt error or prevent shutdown. A saved frame
+is evidence of its pixels only; it does not establish an app milestone.

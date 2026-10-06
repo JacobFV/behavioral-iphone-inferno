@@ -1,0 +1,67 @@
+{
+  "kind": "actual firmware-free QMP cleanup capture; no iOS or app execution claim",
+  "binary_sha256": "e3da84b179ce328e06a0f917aabb8e4d80c8a4cf64701212464831a270e1741e",
+  "boot_source_sha256": "f4eb7f9db5eae8699d3c88b944f101489c810fa8c5db883dee84a328ec59555e",
+  "results": [
+    {
+      "case": "incomplete-journey",
+      "error": {
+        "type": "RuntimeError",
+        "detail": "Owned app journey incomplete: waiting-for-app"
+      },
+      "final_capture_attempted_at": 1791301339.336177,
+      "screendump": {
+        "return": {},
+        "id": 2
+      },
+      "framebuffer_captured": true,
+      "framebuffer_sha256": "15e7d086f38e02fb3b8af538b68d76619b0ecf56927333e1ba7510e79346fb03",
+      "quit_response": {
+        "return": {},
+        "id": 3
+      },
+      "exit_code": 0
+    },
+    {
+      "case": "sigterm",
+      "error": {
+        "type": "KeyboardInterrupt",
+        "detail": "actual SIGTERM"
+      },
+      "final_capture_attempted_at": 1791301339.3989778,
+      "screendump": {
+        "return": {},
+        "id": 2
+      },
+      "framebuffer_captured": true,
+      "framebuffer_sha256": "15e7d086f38e02fb3b8af538b68d76619b0ecf56927333e1ba7510e79346fb03",
+      "quit_response": {
+        "return": {},
+        "id": 3
+      },
+      "exit_code": 0
+    },
+    {
+      "case": "no-display-capture-error",
+      "error": {
+        "type": "RuntimeError",
+        "detail": "Owned app journey incomplete: waiting-for-app"
+      },
+      "final_capture_attempted_at": 1791301339.462608,
+      "screendump": {
+        "id": 2,
+        "error": {
+          "class": "GenericError",
+          "desc": "There is no console to take a screendump from"
+        }
+      },
+      "framebuffer_captured": false,
+      "final_capture_error": "QMP screendump failed or produced no file",
+      "quit_response": {
+        "return": {},
+        "id": 3
+      },
+      "exit_code": 0
+    }
+  ]
+}

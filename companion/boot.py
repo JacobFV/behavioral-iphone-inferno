@@ -30,6 +30,24 @@ def digest(path):
         return hashlib.file_digest(handle, 'sha256').hexdigest()
 
 
+def capture_final_frame(qmp, output, report):
+    """Best effort on shutdown; never replace the original attempt error."""
+    if report.get('framebuffer_captured'):
+        return
+    frame = output / 'framebuffer.ppm'
+    report['final_capture_attempted_at'] = time.time()
+    try:
+        response = qmp.execute('screendump', {'filename': str(frame)}, timeout=5)
+        report['screendump'] = response
+        report['framebuffer_captured'] = 'return' in response and frame.is_file()
+        if report['framebuffer_captured']:
+            report['framebuffer_sha256'] = digest(frame)
+        else:
+            report['final_capture_error'] = 'QMP screendump failed or produced no file'
+    except (Exception, KeyboardInterrupt) as exc:
+        report['final_capture_error'] = {'type': type(exc).__name__, 'detail': str(exc)}
+
+
 def load_profile(path):
     profile = json.loads(path.read_text())
     if profile.get('schema') != 'inferno.early-boot.v1':
@@ -389,6 +407,7 @@ def main():
                             touch_trace.stop(qmp, 'runner cleanup')
                         except Exception as exc:
                             report['touch_trace_cleanup_error'] = str(exc)
+                    capture_final_frame(qmp, output, report)
                     report['quit_response'] = qmp.execute('quit')
                 process.wait(timeout=5)
             except (Exception, KeyboardInterrupt):
