@@ -69,9 +69,12 @@ pass, failed41/44/47reject,6corruptionsreject; independentreviewclear.
 strict-completed-prefix.json + strict-completed.serial-prefix.log,365187bytes,
 SHAbc22bcc013d20d21ae5d263c8c721bbe21be7139260903a8527db081490f5ca9,
 readstart1791327080.2869885/captured7080.2903452. Keeporiginalignoredpaths.
-AFTERprefixrootnowissued observe--app-switcher atapp-switcher-001 (session93095),
-awaitpixels, thenphysicalownedcarddismissal, nextcompleteps600absenceold261,
-thenexplicitOPENcurrentboot/newPIDhooks/reviewcounter0. NoOPENyet/noSAMPLE56.
+AFTERprefixrootreviewed app-switcher-001/after.png ownedcardonright.
+Dismissswipe6ab3edcde9cc490589b1a9d29b09c112 at1791327144.7780752:
+26000,22000→26000,3000 duration600ms; ACK0. Reviewed
+after-dismiss-001/observed-0010.png shows onlyClockcard. Waitingcomplete
+originalps600 afterdismissal to prove old261/exactexe absent beforeOPEN.
+NoOPENyet/noSAMPLE56. Keepstrictprefixoriginalpathsandcontentsimmutable.
 DoNOTfinishuntilnewprocessjourneyresolved. Rootallinputs. Finalverifierneeds
 --strict-prefix .local-build/reports/app-boot-56/strict-completed-prefix.json.
 ProcessabsenceCLI requires--after-request-id DISMISS_ID andvalidcompleteps.

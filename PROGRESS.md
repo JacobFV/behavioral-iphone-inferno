@@ -2,6 +2,28 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 15:53 continuation: actual56 strict journey and fresh-process verification
+
+56 confirmed the integrated observer default-off path: no report entry,
+observer directory or child. The same guest/emulator completed reviewed strict
+counter0→1. No persistent freeze occurred. Root retained the exact365187-byte
+serial prefix immediately after the completed after-capture response and before
+any App Switcher or relaunch action (SHA256
+bc22bcc013d20d21ae5d263c8c721bbe21be7139260903a8527db081490f5ca9).
+
+The old verifier rejected actual38 because its later new process added another
+main marker. A reviewed extension now pairs exact raw/validated/marker records
+and scopes them to strict capture chronology. Genuine arrivals remain authority
+where available. Without them, an explicit independently retained strict prefix
+must exactly match the full log, follow completed capture, and precede later
+OPEN creation. Actual38/55 pass; failures41/44/47 and six deliberately corrupted
+provenance cases reject. No historical timestamps were added. Actual56 prefix
+verification remains pending its completed fresh-process journey and shutdown.
+
+56's owned app card has been physically dismissed and visually reviewed. Root
+is waiting for the next complete original process listing to prove absence of
+oldPID261 before requesting a new launch. No OPEN or SAMPLE has yet been issued.
+
 ### 15:44 continuation: optional continuous observer proven in actual55
 
 The runner now accepts `--headless-refresh-seconds 1..300`, default disabled.
