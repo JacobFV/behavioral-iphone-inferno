@@ -1,0 +1,138 @@
+{
+  "kind": "read_only_original_touch_readiness_inspection",
+  "scope": "iOS 14.0 beta 5 18A5351d original research kernel and n104ap device tree; no Apple implementation bytes retained here",
+  "artifacts": {
+    "decoded_kernel": {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/kernel-original-decoded",
+      "sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+      "origin": "Unencrypted original research kernel IM4P payload, LZFSE decoded for read-only inspection",
+      "input_im4p_sha256": "cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3"
+    },
+    "device_tree": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+      "sha256": "dbd9be96c4b18f48a1842879237ae8f27043b894a2ed6139e396dbedca232411",
+      "inspection": "Unencrypted bvx2 payload decoded in memory with previously verified local liblzfse; 218980 decoded bytes; little-endian Apple device tree properties parsed read-only"
+    }
+  },
+  "wiring": {
+    "node": "/device-tree/arm-io/spi1/multi-touch",
+    "interrupt_parent_phandle": "0x47",
+    "interrupt_cells": [
+      "0x22",
+      "0x06000001"
+    ],
+    "controller": "/device-tree/arm-io/aop-gpio",
+    "controller_phandle": "0x47",
+    "pin": 34,
+    "controller_interrupts": [
+      196,
+      197,
+      198,
+      199,
+      200,
+      201,
+      202
+    ],
+    "source": [
+      "hw/arm/apple-silicon/t8030.c:t8030_create_mt_spi",
+      "hw/arm/apple-silicon/t8030.c:t8030_create_gpio",
+      "hw/arm/apple-silicon/mt-spi.c:apple_mt_spi_send_path_update",
+      "hw/gpio/apple_gpio.c:apple_gpio_set"
+    ],
+    "interpretation": "Source connects MT IRQ to original AOP GPIO pin34. MT queue insertion asserts active-low IRQ. GPIO implements low-level and falling-edge modes. Original function-set_int_config targets the same controller/pin; no source evidence justifies reversing polarity.",
+    "gpio_cfg_decode": {
+      "reset": "0x7000e (disabled, group7 masked)",
+      "group_mask": "0x70000; all bits set means masked",
+      "mode_mask": "0xe",
+      "low_level": 6,
+      "falling_edge": 10,
+      "input_level": "For GPIO function, read bit0 reflects input pin; queued MT IRQ is low."
+    }
+  },
+  "reviewed_read_only_registers": [
+    {
+      "name": "AOP GPIO pin34 config",
+      "address": "0x24a820088",
+      "bytes": 4
+    },
+    {
+      "name": "SPI1 CTRL",
+      "address": "0x235104000",
+      "bytes": 4
+    },
+    {
+      "name": "SPI1 CFG",
+      "address": "0x235104004",
+      "bytes": 4
+    },
+    {
+      "name": "SPI1 STATUS",
+      "address": "0x235104008",
+      "bytes": 4
+    },
+    {
+      "name": "SPI1 PIN",
+      "address": "0x23510400c",
+      "bytes": 4
+    },
+    {
+      "name": "SPI1 RXCNT",
+      "address": "0x235104034",
+      "bytes": 4
+    },
+    {
+      "name": "SPI1 TXCNT",
+      "address": "0x23510404c",
+      "bytes": 4
+    }
+  ],
+  "register_read_limits": {
+    "source": "hw/ssi/apple_spi.c:apple_spi_reg_read; hw/gpio/apple_gpio.c:apple_gpio_cfg_read",
+    "avoid": "Do not bulk-read through SPI1 RXDATA at 0x235104020: reading it pops RX FIFO and may run transfer logic. Only individually reviewed addresses above are observational.",
+    "execution": "Addresses derived and source reviewed; this inspection did not connect to the live guest or perform register reads."
+  },
+  "original_driver": {
+    "class": "AppleHIDTransportDeviceSPI",
+    "handleStart": {
+      "entry": "0xfffffff00855bcd8",
+      "interrupt_source_creation": "0xfffffff00855bfc0",
+      "get_interrupt_type": "0xfffffff00855c044: provider getInterruptType(0, this+0x198)",
+      "initial_power_off": "0xfffffff00855c304: virtual powerOff(true), error checked at 0xfffffff00855c308",
+      "meaning": "Creation of the named driver/workloop is insufficient evidence that a HID client opened or powered the chip."
+    },
+    "handleOpen": {
+      "entry": "0xfffffff00855ce0c",
+      "checks": "0xfffffff00855ceec/cef0: client and callback nonnull; cef4/cef8: no existing callback; cf24: superclass open succeeded",
+      "callback_storage": "0xfffffff00855cf4c: callback/client saved at this+0x138/+0x140",
+      "enable_interrupt": "0xfffffff00855cf54"
+    },
+    "enableInterrupt": {
+      "entry": "0xfffffff00855d194",
+      "branch": "Saved interrupt type at this+0x198 compared with 1 at 0xfffffff00855d248",
+      "type_1": "Sets this+0x196=1 at 0xfffffff00855d26c and calls IOInterruptEventSource::interruptOccurred through slot0xf8; original diagnostic states delayed enabling.",
+      "other_types": "Calls IOInterruptEventSource::enable through slot0xb0 at 0xfffffff00855d308/328",
+      "delayed_completion": "interruptAction clears this+0x196 at 0xfffffff008561598 and calls event-source enable at 0xfffffff0085615cc; this is not a permanent disable."
+    },
+    "bootChip": {
+      "entry": "0xfffffff00855ffb0",
+      "power": "setChipPower(true) at 0xfffffff00856003c when this+0x118 is false; failure checked at 0xfffffff008560040",
+      "spi": "configureSPI(3) at 0xfffffff008560074; failure checked at 0xfffffff008560078",
+      "enable_interrupt": "0xfffffff008560080",
+      "release_reset": "setResetAsserted(false) at 0xfffffff0085600b4; failure checked at 0xfffffff0085600b8",
+      "bootloader": "Subsequently marks boot flags and queries original getBootloader before bootloader work."
+    },
+    "resolution_method": "llvm-objdump-18 original symbolized code; virtual targets resolved from original vtable chained-pointer low32 offsets relative to 0xfffffff007004000. No instructions modified."
+  },
+  "actual_execution_context": {
+    "report": "app-boot-12/vnc-trace-tap-1/guest-errors-window.log",
+    "finding": "Parent-controlled VNC tap produced host callback and make/touch/break/out-of-range enqueues, with no dequeue/control/tx-drained event in the observed window. Parent reported same boundary for QMP tap.",
+    "limits": [
+      "No completed packet-level delivery observed does not prove zero SPI bytes: a partial transaction can avoid trace boundaries.",
+      "A TX drain proves guest bus clocking, not OS or UIKit acceptance.",
+      "Missing touch response alone does not identify polarity, firmware, client matching, or power as the failure.",
+      "MT emulator has no explicit firmware-ready Boolean or existing QOM property exposing private RX/TX/queue state.",
+      "Next boot startup traces plus individually reviewed register reads should separate never-started initialization from an incomplete boot/firmware handshake."
+    ]
+  },
+  "mutations": "None to guest, firmware, or emulator behavior; evidence document only."
+}
