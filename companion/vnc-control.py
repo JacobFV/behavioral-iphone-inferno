@@ -118,6 +118,8 @@ def main():
     actions.add_argument('--swipe', nargs=4, type=int, metavar=('X0','Y0','X1','Y1'))
     actions.add_argument('--home-button', action='store_true',
                          help='one fixed 150ms F6 press/release through emulator SMC Menu')
+    actions.add_argument('--app-switcher', action='store_true',
+                         help='two fixed 150ms F6 presses with a 100ms gap')
     parser.add_argument('--hold-seconds', type=float, default=None,
                         help='stationary press before release or swipe (0..10 seconds)')
     parser.add_argument('--swipe-seconds', type=float, default=.5,
@@ -125,8 +127,8 @@ def main():
     parser.add_argument('--settle-seconds', type=float, default=1,
                         help='wait after release before capture (0..10 seconds)')
     args=parser.parse_args()
-    if args.home_button and args.hold_seconds is not None:
-        parser.error('--home-button uses a fixed 150ms press')
+    if (args.home_button or args.app_switcher) and args.hold_seconds is not None:
+        parser.error('Home button actions use fixed 150ms presses')
     hold=args.hold_seconds if args.hold_seconds is not None else (0 if args.swipe else .15)
     if not (0 <= hold <= 10 and .1 <= args.swipe_seconds <= 10 and 0 <= args.settle_seconds <= 10):
         parser.error('timings must be finite and within their documented bounds')
@@ -141,10 +143,15 @@ def main():
     try:
         client=Client(args.socket,report)
         client.capture(args.output/'before.png')
-        if args.home_button:
+        if args.home_button or args.app_switcher:
             client.home_button(True)
             time.sleep(.15)
             client.home_button(False)
+            if args.app_switcher:
+                time.sleep(.1)
+                client.home_button(True)
+                time.sleep(.15)
+                client.home_button(False)
             time.sleep(args.settle_seconds)
             client.capture(args.output/'after.png')
         if args.tap or args.swipe:
