@@ -2,45 +2,28 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
-### Current execution boundary (03:50 local)
+### Current execution boundary (04:04 local)
 
-**03:54 local update:** Boot9 demonstrated the original one-shot unlock return0
-and original first-unlock query0->1. General state query still returned-1 because
-the partial simulator rejected valid extended-query option0. Original kernel
-inspection proved option0 and1 share the same DER shape; sourceac586deb8f corrects
-that read-only predicate. Build and control-plane checks passed. New binary SHA
-1828d58b49978a8e154c77c61e885b17b7529abb424493f695694e7ae5ccea78.
-Boot9 stopped normally; app-boot-10 is now active from verified stage33 paired
-state, combining this query correction with the separately validated dictionary
-launcher. Observe actual registration BOOL/proxy/open/app markers and reviewed
-frames. No app execution or migration success is claimed yet. Earlier paragraphs
-below explain the preceding controlled experiments; boot10 supersedes active9.
+Original app registration is proven: boot10 dictionary registrationYES and valid
+proxy at /Applications/InfernoProbe.app. Original one-shot unlock return0 and
+first-unlock0->1 are proven in boots9/10. Visible setup/home UI, owned UIKit
+execution and tap/count journey remain unproven. Keep working without a handoff.
 
+Boot11 is active from verified stage34 paired state with original open-error
+callback diagnostics and emulator3eacda5c06578e64653313b8ed6774729846d57808e4dec88457a0b58e41b9bd,
+source6fce1464b8. Boot10 open requests returnedNO repeatedly; its state queries
+returned-1 due an exact transport padding defect. Original __blob decoder needs
+DER13 padded to16bytes; current binary corrects that while preserving declared
+length13 and state behavior. Builds/control-plane checks passed, but real query
+success and launch NSError must be observed in boot11. No app success claimed.
 
-Full-system SpringBoard/backboardd execute and reviewed frames show Apple migration
-progress. Visible setup/home UI, owned UIKit execution and tap/count are unproven.
-Continue execution without a handoff.
-
-Boot7's original selector9 permission rejection e00002e2/public-2 was traced to
-one missing entitlement on our helper. Stage32 adds only that proven declaration.
-Boot8 then reached the simulator's unsupported opcode0x18: actual unknown-op log,
-e00002bc/public-1 and first-unlock0. Original kernel decoding proved request echo
-has the wrong response shape. Raw evidence is under migration-first-unlock/.
-
-The guarded partial simulator fix at source7a32314605 implements only structurally
-valid system0/operation0/options0/emptysecret transitions and consistent normal
-first-unlock queries. Unknown requests return errors; no notification is injected
-and no unproven lock-state enum is guessed. Real build and control-plane smoke
-passed. Binary6375a52ec963ab43b69ade01ea9e2c3b2bd3c5aaff237d8a3d48cd83c5533fde
-is now in app-boot-9 with unchanged stage32 disk/aux/launcher, preserving attribution.
-Observe actual original API/state/migration behavior before claiming success.
-
-Separately, original LaunchServices inspection found URL registration skips the
-new-app registration path without a dictionary. The candidate uses original
-registerApplicationDictionary: with owned Info.plist plus actual Path only.
-Its imports and guest68016-byte readback passed in stopped stage33. It has not yet
-been executed; first simulator comparison retains the existing URL launcher.
-Full source, raw logs, hashes and limits are committed in companion/evidence/.
+The limited simulated SEP model is guarded by INFERNO_SIMULATED_SEP, accepts only
+validated empty-secret system-bag unlock, tracks volatile first-unlock, and emits
+consistent proven ss bits. No guessed sls enum, fabricated notification or policy
+bypass. Current launch diagnostics use the original synchronous callback with
+nilconfiguration, bounded error text and no new entitlements. All inputs, exact
+original inspection and actual execution logs are in companion/evidence/.
+NEXT_SESSION.md names live sessions, hashes and next concrete checks.
 Historical checkpoints below retain their original scope and chronology.
 
 ### Further executed checkpoints

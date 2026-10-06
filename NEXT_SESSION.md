@@ -48,78 +48,59 @@ that directory together: the binary references local libraries/resources.
 
 ## Current execution boundary
 
-**03:54 local update:** Boot9 demonstrated the original one-shot unlock return0
-and original first-unlock query0->1. General state query still returned-1 because
-the partial simulator rejected valid extended-query option0. Original kernel
-inspection proved option0 and1 share the same DER shape; sourceac586deb8f corrects
-that read-only predicate. Build and control-plane checks passed. New binary SHA
-1828d58b49978a8e154c77c61e885b17b7529abb424493f695694e7ae5ccea78.
-Boot9 stopped normally; app-boot-10 is now active from verified stage33 paired
-state, combining this query correction with the separately validated dictionary
-launcher. Observe actual registration BOOL/proxy/open/app markers and reviewed
-frames. No app execution or migration success is claimed yet. Earlier paragraphs
-below explain the preceding controlled experiments; boot10 supersedes active9.
+Keep working; no handoff or missing user input. SpringBoard and backboardd execute.
+Original owned app registration and normal first-unlock are now proven. Visible
+setup/home UI, owned UIKit execution and an actual tap/count journey remain
+unproven. Firmware, System/Data preparation, keybag creation and renderer patches
+are established; do not return to the archived framework implementation.
 
+At04:04 local, **app-boot-11 is active** from verified stopped stage34:
+root SHA663e93ee73882086d2077b8562fe5e82aa5a920bb74d1300e9f3426063805c75,
+paired with .local-build/reports/disk-preparation-34. It uses the diagnostic
+launcher at the existing System path, exact unchanged owned app and unlock helper,
+and emulator SHA3eacda5c06578e64653313b8ed6774729846d57808e4dec88457a0b58e41b9bd
+from source6fce1464b8. 7200-second maximum,30-second frames,strictjourney,guest-errors,
+no USB, private Unix VNC. Bootworker owns session41036 and evidence.
 
-Keep working; no handoff or missing user input. Real full-system SpringBoard and
-backboardd processes execute, and reviewed frames show Apple migration progress.
-Visible setup/home UI, owned UIKit execution and an actual tap/count journey are
-still unproven. Do not return to firmware acquisition or the archived framework
-implementation: firmware, original System/Data preparation, keybag creation,
-software-renderer cache patching and full-system launchd execution are established.
+Completed causal sequence:
+- Boot7: original unlock selector9 e00002e2/public-2. Original kernel proved
+  missing com.apple.keystore.device entitlement on owned helper before SEP.
+- Stage32 adds only that singleton entitlement. Boot8 reached unsupported SEP
+  opcode18; request echo had wrong response shape, e00002bc/public-1.
+- Guarded INFERNO_SIMULATED_SEP partial model supports only validated system0,
+  operation0,options0,empty-secret transition. Normal queries report proven
+  first-unlock bit2 and xART bit22; other transitions return errors. Boot9 proved
+  original unlock return0 and original first-unlock0->1. No notification injected.
+- Query options0 and1 share original DER shape. After accepting both, boot10
+  still showed selector17 e00002bc. Original __blob decoder proved DER13 requires
+  transport padding to16bytes. Current binary fixes only that padding; original
+  state-query success still needs boot11 verification. No sls enum is guessed.
+- URL app registration skipped the unknown-app path because dictionary was NULL.
+  Stage33 dictionary launcher uses exact owned Info.plist plus actual Path.
+  Boot10 proved registrationYES/proxyvalid/correct bundle path. Open requests
+  returnedNO repeatedly, with roughly10-second delay. No app marker or UI.
+- Stage34 adds only original openApplicationWithBundleIdentifier:configuration:
+  completionHandler: callback diagnostics, configurationnil, exact BOOL/NSError
+  ABI. Log bounded error domain/code/description; no fabricated metadata or
+  entitlement. Guest68480-byte readback0mismatch/unmount/QMPstop passed; import
+  audit90symbols passed. Prior launcher variants remain unchanged and archived.
 
-App-boot-7 proved one original unlock permission rejection: selector9 e00002e2,
-public-2, first-unlock0. Exact original kernel inspection identified the missing
-com.apple.keystore.device gate before SEP. Stage32 adds only that singleton
-entitlement to our helper. Its compiled object is unchanged and guest readback
-passed. Root SHA34240b9546eaea73e1ddae0997a194f1ba9c23e5302d3fb76abf69a35675e276,
-paired with .local-build/reports/disk-preparation-32.
+Actual raw logs/build manifests/source inspection/stopped hashes are committed
+under companion/evidence/. Stage32/33/34 remain immutable paired comparisons.
+Obsolete generated prep24/25/26/28/30 disk copies were retired only after complete
+hash/evidence checks; logs/reports/sources and every actualboot tuple remain.
+Host CPU contention prevents benchmark claims; do not alter unrelated processes.
 
-App-boot-8 with that helper got past the permission gate but returned e00002bc,
-public-1, with first-unlock still0. Actual guest-errors reported Unknown(0x18).
-Original kernel protocol inspection established the simulator echoed a32-byte
-request where a20-byte response was required. This is a concrete unsupported
-protocol failure. Boot8 was stopped normally before the controlled next boot.
-
-Source7a32314605 adds a bounded partial model under INFERNO_SIMULATED_SEP only.
-A valid systemhandle0/operation0/options0/emptysecret transition changes volatile
-first-unlock state; normal scalar and DER ss queries report it consistently.
-Other transitions return errors, no notification is injected, and no sls labels
-are guessed. Build and firmware-free control-plane check passed; these are not
-unlock or iOS success. New binary SHA256:
-6375a52ec963ab43b69ade01ea9e2c3b2bd3c5aaff237d8a3d48cd83c5533fde.
-App-boot-9 is active with unchanged32 disk/aux and launcher, new binary only,
-7200-second maximum,30-second frames,guest-errors and strictjourney.
-
-The independent dictionary launcher is prepared in stopped33, not yet booted.
-Original URL registration skips registration for an unknown bundle without a
-dictionary; the candidate uses the owned Info.plist plus actual Path through
-original registerApplicationDictionary:. Imports and68016-byte guest readback
-passed. Stage33 root SHA31f1f5c21b49f7d5f892a21361e2d646829f3eca9d3949e12fbd18af5c6a0941,
-paired with disk-preparation-33. Keep this launcher change separate from the first
-simulator comparison. Actual app registration/launch remain unproven.
-
-The launcher fix uses the original LSApplicationWorkspace registerApplication:
-method and logs its BOOL result honestly. The earlier LSRegisterURL was a local,
-non-exported symbol; actual dyld abort and negative export audit agree. Corrected
-launcher/app53 imports resolve through actual original-cache export tries and
-reexports. Root mobile System execution is proven, while the earlier Data launcher
-returned EPERM despite successful reads. Console open succeeded as mobile; the
-console-permission hypothesis was rejected. Exact inputs and commits are in the
-app-probe/native-probe READMEs and committed raw evidence.
-
-Full migration reports show SystemAppMigrator returned NO after a wait for app
-demotion, then MobileSlideShow's assetsd waited for first unlock. Advancing plugins
-is not proof of successful migration. UUID-matched symbolization and full raw
-exports are in `companion/evidence/migration-first-unlock/`. Original MKB supports
-a normal NULL-secret unlock for the own NULL-secret keybag. Query first-unlock
-returns0/1 or negative errors; do not label raw MKB lock-state enum values without
-proof. No fabricated notification, policy bypass, real-device key extraction,
-Apple signature forging or activation impersonation is authorized.
+Migration reports previously showed SystemAppMigrator returnedNO and assetsd
+waited in PLFirstUnlockProtection. First-unlock query success does not itself
+prove all migration or notifications complete. Current full guest observation is
+required. Latest reviewed boot10 frame was black; never label black as ready.
+No fake notification, guard suppression, Apple signature forging, real-device
+key extraction or activation impersonation is authorized.
 
 ## Next concrete work
 
-1. Inspect actual app-boot-10 unlock phase/state/return markers and registration
+1. Inspect actual app-boot-11 unlock phase/state/return markers and registration
    BOOL/proxy results. Keep source revisions, hashes, raw logs and stopped root
    plus all six auxiliary namespaces paired. Do not treat helper JSON as proof.
 2. Resolve the concrete next failure using original APIs and narrow owned code.
