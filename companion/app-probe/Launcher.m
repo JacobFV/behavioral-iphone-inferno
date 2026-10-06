@@ -30,15 +30,32 @@ int main(int argc, char **argv) {
         @autoreleasepool {
             NSString *path = [NSString stringWithUTF8String:argv[1]];
             NSString *identifier = [NSString stringWithUTF8String:argv[2]];
+#if !INFERNO_REGISTER_DICTIONARY
             NSURL *url = [NSURL fileURLWithPath:path];
+#endif
             Class workspaceClass = NSClassFromString(@"LSApplicationWorkspace");
             Class proxyClass = NSClassFromString(@"LSApplicationProxy");
             if (!workspaceClass || !proxyClass) {
                 status("missing-class", attempt, 1);
             } else {
                 LSApplicationWorkspace *workspace = [workspaceClass defaultWorkspace];
+#if INFERNO_REGISTER_DICTIONARY
+                // Exact owned Info.plist fields, plus the actual installed path.
+                // Original ABI/control flow is recorded in registration-path-inspection.json.
+                Class dictionaryClass = NSClassFromString(@"NSMutableDictionary");
+                NSMutableDictionary *record = [dictionaryClass dictionaryWithContentsOfFile:
+                    [path stringByAppendingPathComponent:@"Info.plist"]];
+                if (!record || ![[record objectForKey:@"CFBundleIdentifier"] isEqualToString:identifier]) {
+                    status("dictionary-input-invalid", attempt, 1);
+                    return 65;
+                }
+                [record setObject:path forKey:@"Path"];
+                BOOL registration = [workspace registerApplicationDictionary:record];
+                status("register-dictionary-boolean", attempt, registration);
+#else
                 BOOL registration = [workspace registerApplication:url];
                 status("register-boolean", attempt, registration);
+#endif
                 LSApplicationProxy *proxy = [proxyClass applicationProxyForIdentifier:identifier];
                 id appState = [proxy respondsToSelector:@selector(appState)] ? [proxy appState] : nil;
                 BOOL valid = [appState respondsToSelector:@selector(isValid)] && [appState isValid];
