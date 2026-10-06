@@ -158,8 +158,9 @@ def main():
                 report['disks'].append({'path': str(disk), 'initial_state': 'fresh sparse zero-filled raw',
                                         'bytes': size, 'nsid': nsid, 'nstype': nstype})
                 device = 'apple-nvram' if name == 'nvram' else 'nvme-ns'
+                device_id = ',id=nvram' if name == 'nvram' else ''
                 command += ['-drive', f'file={str(disk).replace(",", ",,")},format=raw,if=none,id={name}',
-                            '-device', f'{device},drive={name},bus=nvme-bus.0,nsid={nsid},nstype={nstype},logical_block_size=4096,physical_block_size=4096']
+                            '-device', f'{device},drive={name},bus=nvme-bus.0,nsid={nsid},nstype={nstype}{device_id},logical_block_size=4096,physical_block_size=4096']
             report['invocation'] = command
             (output / 'command.json').write_text(json.dumps(command, indent=2) + '\n')
             # Persist identity even if the host interrupts this experiment.
