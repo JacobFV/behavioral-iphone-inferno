@@ -41,9 +41,14 @@ QMPbefore719c87e6df42022f0e6a2e573ca7aafa64a86979054efa00194e23884352b977,
 after22cb0e692d514fd8c4007a55196cde636203199103acf4ba2384e3b99046f7cd.
 All7traceoff1791325711.7881105 BEFOREcounter5712.3461127; no tap tracecoverage.
 No SAMPLE/Home/OPEN54. No55launchyet; wait observer implementation/review.
-Native_probe implementing opt-in finite≤300s runner-owned no-input observer,
-defaultoff, privateUnixVNC, childcleanup/coverage/resources separate. Isolated
-worktree; rootmustreview/merge andvalidate actualheadlessjourney. Noemulatorfix.
+Opt-in finite≤300s runner-owned no-input observer IMPLEMENTED606d2fbf0b,
+--headless-refresh-seconds300, defaultoff/privateUnix/noautorestart. Nativeworker
+sourcechecks and root actualfakeRFB child checks pass; independentdisk_path final
+review pending. Fixed final-report race and report-I/O-failure cleanup. ActualiOS
+notyettested; next55 samefrozen55/670 plus flag300 afterfinalreview. Root ownsinputs.
+Observer paths headless-refresh/lifecycle.json and headless-refresh/observer/*.png.
+Rootshouldreview livechildframes and finishstrictjourney whilechildstillactive,
+thenverify actualcoverage/resources/gracefulstop andnormalall7preservation.
 Boot1C81A853-1B79-4FBC-8EBD-E365B46D4827/PID252/main2739827127.
 No SAMPLE53; both slots unused. Selected actual reviewed pixels/action records
 are in owned-extended-53-visual. Same frozen55/670, no rendering fix.

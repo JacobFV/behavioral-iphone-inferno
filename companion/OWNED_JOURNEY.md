@@ -60,6 +60,17 @@ companion/run boot --profile "$profile" --output "$attempt" --seconds 7200 \
   --guest-hid-serial --probe-keep-running
 ```
 
+For a bounded journey requiring continuous display refresh, explicitly add
+`--headless-refresh-seconds 300`. It starts one no-input observer after `cont`,
+using only the runner's private Unix VNC socket. The default remains disabled.
+It does not restart after expiry. Review actual connection/frame/closure times
+in `headless-refresh/lifecycle.json`; a 300-second phase is not coverage of a
+7200-second boot. The runner records observer CPU/RSS separately, and stops its
+own child during cleanup. Early normal runner shutdown leaves the requested
+observer phase incomplete but preserves its actual coverage interval. Lifecycle
+failure is reported as an attempt error. This is an active display workload,
+not a passive screenshot option or a fix for missing rendering submissions.
+
 This process stays attached until normal completion. Use a separate shell for
 the following operations. The runner creates private Unix endpoints and owns the
 only QMP connection. Use its mailbox, never a second QMP client. Read the VNC

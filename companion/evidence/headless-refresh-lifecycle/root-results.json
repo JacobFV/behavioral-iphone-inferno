@@ -1,0 +1,57 @@
+{
+  "scope": "local fake RFB server and real observer subprocess only; no QEMU or iOS",
+  "results": [
+    {
+      "check": "invalid duration rejection",
+      "passed": true
+    },
+    {
+      "check": "finite expiry",
+      "passed": true,
+      "frame_requests": 3,
+      "exit_code": 0,
+      "coverage_seconds": 1.004565715789795,
+      "requested_phase_completed": true,
+      "raw_child_resource_sample": {
+        "time": 1791326174.250644,
+        "monotonic": 745358.12712194,
+        "proc_stat": "3006147 (python3) R 3006145 3006113 3006113 0 -1 4194304 3 0 0 0 0 0 0 0 20 0 1 0 74535812 8261632 0 18446744073709551615 0 0 281474938828153 0 0 0 0 0 0 0 0 0 17 0 0 0 0 0 0 0 0 0 281474938828153 0 0 0 0\n",
+        "start_ticks": 74535812,
+        "cpu_ticks": 0,
+        "rss_bytes": 0
+      }
+    },
+    {
+      "check": "graceful early stop",
+      "passed": true,
+      "frame_requests": 2,
+      "exit_code": 0,
+      "coverage_seconds": 0.024330854415893555,
+      "requested_phase_completed": false,
+      "raw_child_resource_sample": {
+        "time": 1791326175.3633273,
+        "monotonic": 745359.2398054,
+        "proc_stat": "3006173 (python3) R 3006145 3006113 3006113 0 -1 4194304 18 0 0 0 0 0 0 0 20 0 1 0 74535923 8200192 52 18446744073709551615 4194304 10541936 281474650659504 0 0 0 0 0 0 0 0 0 17 15 0 0 0 0 0 10616216 12102000 481218560 281474650662264 281474650662503 281474650662503 281474650669031 0\n",
+        "start_ticks": 74535923,
+        "cpu_ticks": 0,
+        "rss_bytes": 212992
+      }
+    },
+    {
+      "check": "cleanup despite report persistence failure",
+      "passed": true,
+      "frame_requests": 2,
+      "exit_code": 0,
+      "coverage_seconds": 0.010051965713500977,
+      "requested_phase_completed": false,
+      "raw_child_resource_sample": {
+        "time": 1791326175.4243956,
+        "monotonic": 745359.30087361,
+        "proc_stat": "3006176 (python3) R 3006145 3006113 3006113 0 -1 4194304 13 0 0 0 0 0 0 0 20 0 1 0 74535930 8192000 55 18446744073709551615 4194304 10541936 281474827438384 0 0 0 0 0 0 0 0 0 17 2 0 0 0 0 0 10616216 12102000 255705088 281474827441528 281474827441767 281474827441767 281474827448295 0\n",
+        "start_ticks": 74535930,
+        "cpu_ticks": 0,
+        "rss_bytes": 225280
+      }
+    }
+  ]
+}
