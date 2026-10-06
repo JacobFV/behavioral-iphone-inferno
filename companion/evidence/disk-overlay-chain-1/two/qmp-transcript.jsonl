@@ -1,0 +1,18 @@
+{"direction": "receive", "time": 1791303643.7085645, "raw": "{\"QMP\": {\"version\": {\"qemu\": {\"micro\": 2, \"minor\": 2, \"major\": 10}, \"package\": \"\"}, \"capabilities\": [\"oob\"]}}\r\n"}
+{"direction": "send", "time": 1791303643.7086172, "raw": "{\"execute\": \"qmp_capabilities\", \"id\": 1}\n"}
+{"direction": "receive", "time": 1791303643.7088149, "raw": "{\"return\": {}, \"id\": 1}\r\n"}
+{"direction": "send", "time": 1791303643.7088246, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 2, \"arguments\": {\"command-line\": \"qemu-io root \\\"read -P 0xa5 65536 4096\\\"\"}}\n"}
+{"direction": "receive", "time": 1791303643.7092912, "raw": "{\"return\": \"\", \"id\": 2}\r\n"}
+{"direction": "send", "time": 1791303643.7092984, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 3, \"arguments\": {\"command-line\": \"qemu-io root \\\"write -P 0xb6 65536 4096\\\"\"}}\n"}
+{"direction": "receive", "time": 1791303643.7136197, "raw": "{\"return\": \"\", \"id\": 3}\r\n"}
+{"direction": "send", "time": 1791303643.713668, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 4, \"arguments\": {\"command-line\": \"qemu-io root \\\"flush\\\"\"}}\n"}
+{"direction": "receive", "time": 1791303643.715303, "raw": "{\"return\": \"\", \"id\": 4}\r\n"}
+{"direction": "send", "time": 1791303643.7153592, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 5, \"arguments\": {\"command-line\": \"qemu-io root \\\"read -P 0xb6 65536 4096\\\"\"}}\n"}
+{"direction": "receive", "time": 1791303643.715915, "raw": "{\"return\": \"\", \"id\": 5}\r\n"}
+{"direction": "send", "time": 1791303643.7159657, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 6, \"arguments\": {\"command-line\": \"qemu-io root \\\"read -P 0xa5 131072 4096\\\"\"}}\n"}
+{"direction": "receive", "time": 1791303643.7164512, "raw": "{\"return\": \"\", \"id\": 6}\r\n"}
+{"direction": "send", "time": 1791303643.7165005, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 7, \"arguments\": {\"command-line\": \"qemu-io root \\\"read -P 0x11 196608 4096\\\"\"}}\n"}
+{"direction": "receive", "time": 1791303643.716987, "raw": "{\"return\": \"\", \"id\": 7}\r\n"}
+{"direction": "send", "time": 1791303643.7170377, "raw": "{\"execute\": \"quit\", \"id\": 8}\n"}
+{"direction": "receive", "time": 1791303643.7173955, "raw": "{\"timestamp\": {\"seconds\": 1791303643, \"microseconds\": 717127}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"}
+{"direction": "receive", "time": 1791303643.717469, "raw": "{\"return\": {}, \"id\": 8}\r\n"}
