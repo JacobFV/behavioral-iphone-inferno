@@ -290,3 +290,10 @@ restored_external and framework, which creates its own keybags directory and
 atomic keybag file. The owned code neither constructs nor edits keybag bytes.
 It logs the API result and output size, then syncs and unmounts. A returned
 existing-bag status (-4) is accepted only when a nonempty keybag is present.
+
+The first keybag invocation (run18) loaded SEP successfully, created a 223-byte
+file, but returned -1 after a kernel denial for AppleEffaceableStorageUserClient.
+That failed run is not treated as completed initialization. The next owned
+ad-hoc signature adds only that observed IOKit user-client class entitlement.
+After SEP activation the original gigalocker shutdown command is needed before
+unmount; this differs from the pre-bootstrap hang in the earlier init-only run.
