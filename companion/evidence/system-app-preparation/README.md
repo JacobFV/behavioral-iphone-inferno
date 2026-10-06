@@ -37,3 +37,13 @@ set was retired (about7.66GB allocated). Its exact hashes, report, raw serial an
 reproducible source remain preserved; successful stage31 and its source were not
 removed. The retirement record distinguishes retained evidence from discarded
 reproducible disk products.
+
+After stage33 was verified and stopped, obsolete generated preparation disk sets
+24, 25, 26 and 28 were retired with explicit authorization, reclaiming
+30,643,793,920 allocated bytes. Every namespace was rehashed against its stopped
+manifest; reports showed emulator exit0 and acknowledged QMP quit. Open file
+descriptors were checked before hashing and immediately before removal. All logs,
+reports, profiles, stopped hashes and source artifacts remain available; per-set
+retirement manifests record their hashes. Preparations21, 27, 29, 31, 32, 33 and
+all actual boot tuples were left intact. Only these four generated disks
+directories were removed.
