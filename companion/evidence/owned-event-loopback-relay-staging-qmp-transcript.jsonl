@@ -1,0 +1,17 @@
+{"direction": "receive", "time": 1791307360.9006422, "raw": "{\"QMP\": {\"version\": {\"qemu\": {\"micro\": 2, \"minor\": 2, \"major\": 10}, \"package\": \"\"}, \"capabilities\": [\"oob\"]}}\r\n"}
+{"direction": "send", "time": 1791307360.9007072, "raw": "{\"execute\": \"qmp_capabilities\", \"id\": 1}\n"}
+{"direction": "receive", "time": 1791307361.41749, "raw": "{\"return\": {}, \"id\": 1}\r\n"}
+{"direction": "send", "time": 1791307361.4175816, "raw": "{\"execute\": \"query-status\", \"id\": 2}\n"}
+{"direction": "receive", "time": 1791307361.431877, "raw": "{\"return\": {\"status\": \"prelaunch\", \"running\": false}, \"id\": 2}\r\n"}
+{"direction": "send", "time": 1791307361.431956, "raw": "{\"execute\": \"query-cpus-fast\", \"id\": 3}\n"}
+{"direction": "receive", "time": 1791307361.4326122, "raw": "{\"return\": [{\"thread-id\": 2523550, \"qom-type\": \"apple-a13-cpu\", \"qom-path\": \"/machine/cluster0/cpu0\", \"cpu-index\": 0, \"target\": \"aarch64\"}, {\"thread-id\": 2523551, \"qom-type\": \"apple-a13-cpu\", \"qom-path\": \"/machine/cluster0/cpu1\", \"cpu-index\": 1, \"target\": \"aarch64\"}], \"id\": 3}\r\n"}
+{"direction": "send", "time": 1791307361.4326816, "raw": "{\"execute\": \"query-mice\", \"id\": 4}\n"}
+{"direction": "receive", "time": 1791307361.433137, "raw": "{\"return\": [{\"index\": 1, \"name\": \"Apple Multitouch HID SPI\", \"current\": true, \"absolute\": true}], \"id\": 4}\r\n"}
+{"direction": "send", "time": 1791307361.4331963, "raw": "{\"execute\": \"cont\", \"id\": 5}\n"}
+{"direction": "receive", "time": 1791307361.4333591, "raw": "{\"timestamp\": {\"seconds\": 1791307361, \"microseconds\": 433270}, \"event\": \"RESUME\"}\r\n"}
+{"direction": "receive", "time": 1791307361.4333906, "raw": "{\"return\": {}, \"id\": 5}\r\n"}
+{"direction": "send", "time": 1791307373.343681, "raw": "{\"execute\": \"screendump\", \"id\": 6, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-48/framebuffer.ppm\"}}\n"}
+{"direction": "receive", "time": 1791307373.3491433, "raw": "{\"return\": {}, \"id\": 6}\r\n"}
+{"direction": "send", "time": 1791307373.3524094, "raw": "{\"execute\": \"quit\", \"id\": 7}\n"}
+{"direction": "receive", "time": 1791307373.3529165, "raw": "{\"timestamp\": {\"seconds\": 1791307373, \"microseconds\": 352642}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"}
+{"direction": "receive", "time": 1791307373.3571417, "raw": "{\"return\": {}, \"id\": 7}\r\n"}
