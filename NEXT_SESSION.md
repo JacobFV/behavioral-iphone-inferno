@@ -7,26 +7,26 @@ continuous work across status questions and intermediate milestones. Parallel
 workers are authorized for independent work; use isolated worktrees and commit.
 No handoff or pause has been requested.
 
-## Current execution, 2026-10-06 11:29 local
+## Current execution, 2026-10-06 11:35 local
 
-**Boot37 LIVE; strict counter0→1 complete, warm pending.** Report `.local-build/reports/app-boot-37`,
-runnerPID2607728 dedicated7200 session, frozen50. PrivateVNC `/tmp/inferno-boot-l2zy1ddh/vnc.sock`.
-IMPORTANT37 has --probe-keep-running: strictafter DID NOT stop VM. Root reviewed0/1,
-bothQMPcaptures complete. BootUUID7F2B1017-7FE9-4E9C-AF95-AE72CA29523A, appPID263.
-Originalproc identity succeeded56/errno0/uniqueid263/idversion743; main_ticks3549314015.
-Root input `/tmp/inferno-explicit-gesture-37.py`; OPEN `/tmp/inferno-explicit-open-37.py`.
-Observer session18552. Resource-before-warm60s session48941 collecting idle while noinput.
-Two initialunlockswipes, betaCloseaef0d7a0630b48cba73c5cb40dacb7fe,
-counter6384d179e9be4b16b4c8e54023ac0dde. Reviewed unobstructed0/1.
-Home1 32600→15000/400ms ID5db08aec46804c97bc7e9133a4306677 and
-Home2 32270→9145/800ms ID1a08aed865864c68a94c6d23019ad052 bothACK0,
-NO visiblechange/noresign. SettledframeSHA b7b126fdd034c9256d6d54fdeb02a40db78cc6204da0da59e2f57a0e2c56bca6.
-NoOPEN yet. Nativeworker investigating systemgesture; diskworker checkingparser.
-Lastlifecycle seq7 gen1active(afterbetaClose), priorseq6resign fromalert isexpected.
-Root retainsallinput. Do notclaimwarmuntil actualHome/background and namedOPEN
-with originalforeground/active+sameidentity+reviewedcountercontinuity.
-Finish only after remaininglivework via explicitfinish-run, normalcleanup.
-No automatic input. Continuouswork; no handoffrequested.
+**37 finish-run accepted; cleanup/postflight in progress. Next unchanged38 repeat.**
+Root completed strict0→1 and three real Home/reopen cycles with retainedcounter1.
+F6 via fixed privateVNC --home-button succeeds (source2f3a7320da); two prior edge
+swipes failed and remain documented. Original SMCbutton6 logs and resign/background,
+then explicitOPEN/foreground/active. UUID7F2B1017-7FE9-4E9C-AF95-AE72CA29523A,
+PID263/main3549314015, originalproc query56/errno0/unique263/idversion743.
+OPEN IDs84c675a5758b4affbac318cf5021fd38,3fae7dfd909d441fb31eb521880637d5,
+c88b8b2f79ea489a84169be185fd97ab. Gen2/3/4, finalseq19active.
+OPEN→active747.806458/709.094792/735.643458ms, guestlifecycleonly.
+Evidence33341fb2f8 and visual9bafc4690d. Parser9297c814e2 handles exact original
+SMCprefix before lifecycleRAW without missing/duplicate relaxation.
+Prewarm60s28.68325%onecore, postwarm60s34.06656%, bothRSS5848629248/8threads.
+Postresource21931 complete. Eventobserver18552 should finishwithVM; preserve.
+Bootworker owns37postflight/commit then38launch after37stopped usingunchanged50,
+same4artifacts/7200dedicatedsession/keepalive. Root allinput, noautomatic actions.
+38 endpoint/UUID notyetknown. Create freshrootgesture/OPEN utilities and observer.
+Nativeworker designing futurefresh-processmeasurement only, noimplementationyet.
+No handoffrequested; keepworkingthroughrepeat and nextmeasurements.
 
 37 uses FOUR new reviewed artifacts:
 - App22 `~/.local/share/inferno/app-probe/exec-build-22/InfernoProbe.app/InfernoProbe`,

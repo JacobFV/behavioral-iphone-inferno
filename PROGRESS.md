@@ -2,6 +2,25 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 11:35 continuation: three real warm resumes in the same owned process
+
+Existing emulator F6→SMCMenu input succeeded where two touch Home swipes did not.
+Fixed headless VNC --home-button2f3a7320da produced original AppleSMCPMU button6
+press/release, visible SpringBoard Home, and actual app resign/background.
+Three explicit fixed-owned OPEN requests returned to reviewed counter1 with
+PID263/main3549314015 and original-libproc unique263/idversion743 preserved.
+Guest OPEN→active intervals747.806458ms,709.094792ms,735.643458ms;
+OPEN→foreground126.838333ms,116.338458ms,133.007917ms. No native-device,
+frame-presentation, cleared-cache, fresh-process or statistical claim.
+Actual rawclock/control evidence `warm-timing-37-actual`; reviewed images and
+wire events `warm-timing-37-visual`. Parser9297c814e2 narrowly recognizes the
+original SMC button message lacking newline before a complete raw lifecycle
+record; original full-line offsets/hashes remain retained, unknown prefixes fail.
+
+Postwarm60s idle sample61records:20.44CPUseconds/34.06656%onehostcore,
+5848629248bytesRSS unchanged/8threads. Explicit finish-run accepted after sample;
+normal cleanup/postflight pending. Next unchanged50 repeat38 after37 stopped.
+
 ### 11:31 continuation: strict37 retained live, first timing and resources
 
 New warm-control candidate app22/launcher22/reader54/HID54 from frozen50 completed
