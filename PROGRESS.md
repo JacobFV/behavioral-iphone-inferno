@@ -4,13 +4,16 @@
 
 ### Further executed checkpoints
 
-- **Current full-system boundary:** original SEP IM4P bytes, manifest-verified and
-  copied unchanged into Preboot, are accepted by the existing simulated SEP
-  protocol. Direct-root-5 passes data-protection, both mount stages and FIPS,
-  then stops at missing system keybag initialization. This is not execution of
-  real SEP firmware or completed SpringBoard boot. Original recovery APIs are
-  being used to initialize the disposable VM's effaceable storage and keybag.
-  Raw evidence: `companion/evidence/direct-root-keybag-boundary*`.
+- **Current full-system boundary:** original guest IOKit initialized the disposable
+  VM effaceable namespace; original MKBCreateSystem returned0 and wrote the system
+  keybag. Direct-root-6 retained all auxiliary namespaces, passed keybag/mount/FIPS,
+  and reached launchd “Early boot complete. Continuing system boot.” It stayed
+  alive for180seconds with no observed panic, but the actual framebuffer remained
+  Inferno branding. SpringBoard and owned UIKit execution remain unestablished.
+  Raw evidence: `companion/evidence/keybag-initialization*` and
+  `companion/evidence/direct-root-early-boot*`. App staging independently verified
+  all four owned files and clean unmounts in app-staging-1; app and process-observer
+  boots are now running. Continue diagnosing UI readiness, not a checkpoint pause.
 - **Data is guest-verified:** full recursive read-only comparison passed all
   13,025 files (269,210,433 bytes), modes/owners and symlink; 16,665 total entries
   including root, zero mismatches. Both volumes unmounted cleanly. The host

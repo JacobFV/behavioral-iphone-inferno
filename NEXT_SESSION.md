@@ -53,12 +53,14 @@ volumes have executed. Full Data byte/metadata comparison passed in guest run17;
 the host 7-Zip zero-stream observation was misleading. Prepared32GiB base is
 `.local-build/reports/container-growth-2/disks/root.raw`, SHA256
 `ad7f097b696dd3f12a0409fcd4da659a2e18ab1449c66bef9c11f733c1549ae5`.
-Direct-root-5 accepts original unchanged SEP IM4P through simulated SEP, passes
-mount/data-protection/FIPS and stops at missing system keybag. Original recovery
-MKB creation executes; effaceable-storage initialization is being completed.
-Carry all auxiliary namespaces with the root via `--auxiliary-state` after this
-step, not just the root image. Root and helper code/evidence are committed as work
-proceeds. No installed SpringBoard or UIKit journey is established.
+Direct-root-6 passes keybag and reaches launchd early-boot completion, but the
+reviewed framebuffer is still Inferno branding. Prepared21 has initialized
+keybag and effaceable state; use its complete stopped disk set. Carry all six
+auxiliary namespaces using `--auxiliary-state` along with the explicit hash-checked
+root image. App-staging-1 added and guest-verified our four owned app/launcher/job
+files; actual app and readiness-observer boots are in progress. Diagnose the UI
+blocker using actual logs and upstream software-rendering requirements. No installed
+SpringBoard or UIKit journey is established. Continue work; no user input is missing.
 
 Owned counter app and launcher are being prepared under companion/app-probe.
 Headless `--probe-journey` is implemented but awaits actual app launch and image

@@ -1,0 +1,1044 @@
+iBoot version: ChefKiss Inferno
+corecrypto_kext_start called
+FIPSPOST_KEXT [6446287] fipspost_post:158: PASSED: (1 ms) - fipspost_post_integrity
+FIPSPOST_KEXT [6481473] fipspost_post:164: PASSED: (1 ms) - fipspost_post_hmac
+FIPSPOST_KEXT [6492085] fipspost_post:165: PASSED: (0 ms) - fipspost_post_aes_ecb
+FIPSPOST_KEXT [6507563] fipspost_post:166: PASSED: (0 ms) - fipspost_post_aes_cbc
+FIPSPOST_KEXT [6875608] fipspost_post:167: PASSED: (15 ms) - fipspost_post_rsa_sig
+FIPSPOST_KEXT [7055254] fipspost_post:168: PASSED: (7 ms) - fipspost_post_ecdsa
+FIPSPOST_KEXT [7090263] fipspost_post:169: PASSED: (1 ms) - fipspost_post_ecdh
+FIPSPOST_KEXT [7099741] fipspost_post:170: PASSED: (0 ms) - fipspost_post_drbg_ctr
+FIPSPOST_KEXT [7123240] fipspost_post:171: PASSED: (0 ms) - fipspost_post_aes_ccm
+FIPSPOST_KEXT [7569672] fipspost_post:173: PASSED: (18 ms) - fipspost_post_pbkdf
+FIPSPOST_KEXT [7579218] fipspost_post:174: PASSED: (0 ms) - fipspost_post_kdf_ctr
+FIPSPOST_KEXT [7598765] fipspost_post:175: PASSED: (0 ms) - fipspost_post_aes_gcm
+FIPSPOST_KEXT [7614913] fipspost_post:176: PASSED: (0 ms) - fipspost_post_aes_xts
+FIPSPOST_KEXT [7637530] fipspost_post:177: PASSED: (0 ms) - fipspost_post_tdes_cbc
+FIPSPOST_KEXT [7915302] fipspost_post:178: PASSED: (11 ms) - fipspost_post_drbg_hmac
+FIPSPOST_KEXT [7920011] fipspost_post:201: all tests PASSED (63 ms)
+Darwin Image4 Validator Version 3.0.0: Wed Aug 12 22:19:21 PDT 2020; root:AppleImage4-106.0.4.0.1~129/AppleImage4/RELEASE_ARM64E
+AMFI is running in RESEARCH mode!
+AUC:[0xffffffe19b8ab980]::init(0xffffffe19b8d64b8)
+
+AUC:[0xffffffe19b8ab980]::probe(0xffffffe19b66a300, 0xffffffe807dc3dac)
+
+AppleCredentialManager: init: called, instance = <ptr>.
+ACMFirstResponderKernelService: init: called, .
+ACMRM-S: init: called, starting PersistentStore service.
+ACMRM-C: init: called, starting AccessoryCache service.
+ACMKernelService: initValueFromBootArgAlAppleT803xIO::start: chip-revision: C0
+AppleT803xIO::start: this: <ptr>, ACCE virt addr: <ptr>, phys addr: 0x210f00000
+AppleT803xIO::start: this: <ptr>, ACCP virt addr: <ptr>, phys addr: 0x211f00000
+iasesUInt32: acc-cache size = 16 (default).
+IOAccessoryManager::configureAccessoryPowerGated: dock-0pin: Configuring Accessory Power to (1)
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerGated: PowerModeOff
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: _powerState=1, _powerStateInternal=0, _sleeping=0, _accessoryPowerModeExtOffRequested 0
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: !getAccessoryPowerReady(); set PowerModeOff?
+IOAccessoryDock0PinBuiltin::configureAccessoryPowerInternal: handleAccessoryPowerWillChange, confirm PowerModeOff
+[ERROR] IOPort::_setSupportedTransportsForRegistryEntry(): Could not find transports-supported property! (entry: dock-0pin)
+[ERROR] IOPort::_setSupportedTransportsForRegistryEntry(): Error setting supported transports for Port-Inductive@101!
+[ERROR] IOPort::_setSupportedFeaturesForRegistryEntry(): Could not find features-supported property! (entry: dock-0pin)
+[ERROR] IOPort::_setSupportedFeaturesForRegistryEntry(): Error setting supported features for Port-Inductive@101!
+IOPort::start(): Registering service... (portType: 14, portNumber: 101, providerPath: IOService:/AppleARMPE/dock-0pin)
+Port-Inductive handleAccessoryDetect, detect change = 0 (override 100), ID change = 0 (override 0), result 0 
+AppleARMBacklight::start: Using new Backlight Architecture 1
+AppleARMBacklight::start: no DBV offset data
+AppleARMBacklight::start: no DBV max data
+AppleARMBacklight::start: _calibratedMaxCurrent=15000
+AppleARMBacklight::start: _calibratedMidCurrent=3750
+AppleARMBacklight::start: mA2Nits2ndOrderCoef=-1
+AppleARMBacklight::start: mA2Nits1stOrderCoef=63
+AppleARMBacklight::start: mA2Nits0thOrderCoef=-3
+AppleARMBacklight::start: nits2mAmps2ndOrderCoef=1357
+AppleARMBacklight::start: nits2mAmps1stOrderCoef=15551
+AppleARMBacklight::start: nits2mAmps0thOrderCoef=45
+AppleARMBacklight::start: _lMaxProduct=42598400
+AppleARMBacklight::start: _lMidProduct=10158080
+AppleARMBacklight::start: _lMinProduct=183500
+AppleARMBacklight::start: Backlight calibration data 0
+AppleARMBacklight::start: No valid backlight cal data in syscfg.. Use defaults
+IOAccessoryTRM::start(): inRestoreMode: NO, dockSupportsTRM: NO (m_mgrPrimaryPortID: 512)
+ACMKernelService: initValueFromBootArgAliasesUInt32: acc-cache expiration = 2592000 (default).
+ACMRM: init: called, starting TRM service.
+ACMRM-A: init: called, starting TRM Analytics service.
+ACMKernelService: initValueFromBootArgAliasesUInt32: analytics collection period = 86400 (default).
+ACMKernelService: initValueFromBootArgAliasesUInt32: policy mode timeout = 259200 (default).
+ACMRM-A: notifyStandardModeTimeoutChanged: called, value = 259200 (modified = YES).
+ACMKernelService: initValueFromBootArgAliasesUInt32: (bounded) grace period timeout = 3600 (default).
+ACMRM-A: notifyGracePeriodTimeoutChanged: called, value = 3600 (modified = YES).
+ACMKernelService: initValueFromBootArgAliasesUInt32: enabled = 1 (default).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO* BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO* LegHW=NO OSEnv=NO | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _loadDisabledByOSEnvironment: disabled by OSEnvironment: NO.
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO* | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO).
+ACMRM: _mapAndPublishTRM: set TRM_PolicyTimeout = 259200.
+ACMRM: _mapAndPublishTRM: sending kIOMessageServicePropertyChange(n=1) while DISABLED, TRM: 259200 -/ff 4294967295 -/ff miss=ff (CUR: 259200 -/ff 4294967295 -/ff).
+AppleCredentialManager: init: returning, result = true, instance = <ptr>.
+AppleARMBootPerf: Error: profile region not found (2)
+AppleARMBootPerf: Error: failed to publish profile data (2)
+virtual bool CoreAnalyticsHub::start(IOService *)::105:CoreAnalyticsHub start
+AppleInterruptController::start: _aicVersion = 2 _aicBaseAddress = 0x<ptr> _aicNumExtInts = 0x00000240 _aicNumIPIs = 0x00000004
+AppleInterruptController::start: Num Shared Timestamps == 0
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleS8000AES::start: registers at phys:0x0x235008000/0x0x23d2d0000 virt:0x<ptr>/0x0x4000 / 0x<ptr>/0x0x4000
+AppleS8000AES::start: aes-version: 3
+AppleS8000AES::start: using-acg: no
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleGPIOICController::start: this: <ptr>, _gpioicBaseAddress: <ptr>
+AppleSamsungSPIController::start: spi1: _spiBaseAddress = 0x235104000:<ptr>, _spiVersion = 1 _spiInternalCS = 0
+AppleSamsungSPIController::start: spi3: _spiBaseAddress = 0x23510c000:<ptr>, _spiVersion = 1 _spiInternalCS = 0
+AppleS5L8940XI2CController::start: i2c0 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: i2c1 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: i2c2 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: i2c3 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: smc-i2c0 this: <ptr> _i2cBaseAddress: <ptr>
+AppleS5L8940XI2CController::start: smc-i2c1 this: <ptr> _i2cBaseAddress: <ptr>
+AppleARMBacklight::start: _calibratedMinCurrent=74 uA
+AppleARMBacklight::start: _lMaxProduct=42598400, _lMidProduct=10158080, _lMinProduct=183500, _lMaxPanel=42598399, _lMidPanel=11169963, _lMinPanel=99640, _milliAmps2NitsScaleFactor=732648
+AppleARMBacklight::start: dim-ramp-max-step=100
+AppleARMBacklight::start: _minDACLevel=143 _maxDACLevel=1879
+IOAccessoryTRM::start(): Registering service IOAccessoryTRM... (m_mgrPrimaryPortID: 512)
+AppleSSE::start called
+AppleSSE::start returning, result = 1
+AUC:[0xffffffe19b8ab980]::start(0xffffffe19b66a300)
+
+000000.944567 AppleT8030TypeCPhy@0: AppleT8027TypeCPhy::start: usb3-phy-parent not specified
+AppleSEPKeyStore:321:0: starting (BUILT: Aug 12 2020 22:51:30)
+AppleSEPKeyStore:545:0: _sep_enabled = 1
+AppleCredentialManager: start: called, instance = <ptr>.
+ACMRM: _publishIOResource: AppleUSBRestrictedModeTimeout = 259200.
+AppleCredentialManager: start: initializing power management, instance = <ptr>.
+AppleCredentialManager: start: started, instance = <ptr>.
+AppleCredentialManager: start: returning, result = true, instance = <ptr>.
+AppleSynopsysMIPIDSIController::start: this: <ptr>, _dsimBaseAddress = <ptr> physical = 0x230400000 length 786432
+virtual bool AppleSynopsysMIPIDSIController::start(IOService *) panicOnError NOT Supported
+virtual bool AppleARMLightEmUp::start(IOService *): starting...
+AppleDieTempController::start: 
+AppleDieTempController::initLoopConfig: Loop 0 kp: 0xc0000
+AppleDieTempController::initLoopConfig: Loop 0 ki: 0x70e8000
+AppleDieTempController::initLoopConfig: Loop 0 control type: 2
+AppleDieTempController::initLoopConfig: Loop 1 kp: 0xc0000
+AppleDieTempController::initLoopConfig: Loop 1 ki: 0x70e8000
+AppleDieTempController::initLoopConfig: Loop 1 control type: 4
+AppleDieTempController::initLoopConfig: Loop 2 kp: 0x2f9999
+AppleDieTempController::initLoopConfig: Loop 2 ki: 0x1180000
+AppleDieTempController::initLoopConfig: Loop 2 control type: 16
+AppleDieTempController::initLoopConfig: Successfully configured 3 loops
+AppleDieTempController::handleBootArgs: In handleBootArgs routine
+AppleDieTempController::cpuPerfControllerArrivalHandler: boot_dvd_factor 0x00010000
+AppleEmbeddedPCIE::start this = <ptr>, gAPCIEdebugFlags = 0x80000001
+M3 Normal mode not enabled on Fastsim
+virtual bool IOMobileFramebufferLegacy::start(IOService *)
+IOMFB: driver commit: 
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleT8015TempSensor::start: Got temperatureOffsetValue of 4 for locationID 0x54613069
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleT8015TempSensor::start: Got temperatureOffsetValue of 13 for locationID 0x54703169
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL2)
+AppleT8015TempSensor::start: missing device tree value (sensor-offset-CTL1)
+AppleS5L8960XWatchDogTimer::start: _wdtBaseAddress: <ptr> _wdtResetCount=0xe4e1c00 _useSMCEnforcedWatchdog=0
+watchdog disabled by boot-argAppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+RTBuddy(ANS2): start(<ptr>) - (Aug 12 2020@22:50:37)
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+RTBuddy(ANS2): Boot args override: wdt = -1
+RTBuddy(SMC): start(<ptr>) - (Aug 12 2020@22:50:37)
+RTBuddy(SMC): Boot args override: wdt = -1
+RTBuddy(ANS2): Resuming...
+
+RTBuddy(SMC): Resuming...
+
+Starting AppleSMC kext(<ptr>) - (Aug 12 2020@22:51:44)
+AppleSMCEmbedded::setPowerState(): ENTER powerStateOrdinal=1, _activeKeyCommand=0 newState=1
+Identified Serial Port uart0 at 0x235200000(<ptr>)
+Identified Serial Port uart7 at 0x23521c000(<ptr>)
+AppleDialogSPMIPMU::start: spmi-pmu _pmuNub: <ptr> built 22:52:54 Aug 12 2020
+AppleDisplayPMU::start: display-pmu _pmuIICNub: <ptr> built 22:19:31 Aug 12 2020
+AppleSynopsysMIPIDSIController::start Failed to get phy settings count
+virtual bool AppleSynopsysMIPIDSIController::start(IOService *)  Slow Adaptive Clocking enabled with 9 frequencies
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+RTBuddy(AOP): start(<ptr>) - (Aug 12 2020@22:50:37)
+RTBuddy(AOP): Boot args override: wdt = -1
+RTBuddy(AOP): Resuming...
+
+AppleICA60:probe vendorID 0x0 prodID 0x1 fabID 0xa0 revision 0x0 sensor 0x1 mic-bias-index 1
+AppleS8000AES::start: using DART Mapper: <ptr>
+virtual bool AppleSEPManager::start(IOService *): 
+virtual bool AppleSEPManager::start(IOService *): SEP memory IS coherent
+virtual bool AppleSEPManager::start(IOService *): control endpoints created
+virtual bool AppleSEPManager::start(IOService *): PM init done
+virtual bool AppleSEPManager::start(IOService *): registered
+IOReturn AppleSEPManager::_setPowerState(unsigned long *): power state 0 -> 2
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 1
+AppleA7IOPNub: withRegistryEntry, 47: allocated nub <ptr>
+
+AppleCredentialManager: handleEventGated: called, event(5).
+AppleCredentialManager: handleEventGated: AppleSEPManager has been matched.
+virtual IOService *AppleANS2NVMeController::probe(IOService *, SInt32 *)::194:Found (ANS2) provider, returning score 100000
+virtual IOService *AppleANS2NVMeController::probe(IOService *, SInt32 *)::194:Found (ANS2) provider, returning score 100000
+pci (build 22:19:24 Aug 12 2020), flags 0x20c3008
+pci (build 22:19:24 Aug 12 2020), flags 0x20c3008
+[ PCI configuration begin ]
+RTBuddy(SIO): start(<ptr>) - (Aug 12 2020@22:50:37)
+AppleSPUFirmwareService: found node AOP
+AppleAuthCPRelay:_sendCommandGated CMD=0x1 _receivedStatus ERROR ( status = 0xe00002e9 )
+RTBuddy(SIO): Boot args override: wdt = -1
+AppleAuthCPRelay:_getCert failed to send command kAuthCommandIDGetCert
+AppleAuthCPRelay:start _getCert() failed (status = 0xe00002e9)
+RTBuddy(SIO): Resuming...
+virtuavirtul boolal boo Apl AppleANS2pleNVMeContArolNS2ler::sNVMtareCot(IntrollOSerer::stvicarte *(IO)::Ser394vic:e *)Fou::3nd 94:the ANFouS2End ndpointthe A1
+NS2
+Endpoint1
+bool AppleEmbeddedNVMeController::SetNamespacesStruct()::186:Obtained 7 namespaces from DT
+bool AppleEmbeddedNVMeController::SetNamespacesStruct()::186:Obtained 7 namespaces from DT
+Failed to enable notifications (0x84)!
+
+ERROR: Unable to enable notification interface (kSMCKeyNotFound).
+
+virtual IOFilterInterruptEventSource *AppleANS2NVMeController::CreateDeviceInterrupt(IOInterruptEventSource::Action, IOFilterInterruptEventSource::Filter, IOService *)::2719:ANS2 NVMe interrupt index - 0x4
+virtual IOFilterInterruptEventSource *AppleANS2NVMeController::CreateDeviceInterrupt(IOInterruptEventSource::Action, IOFilterInterruptEventSource::Filter, IOService *)::2719:ANS2 NVMe interrupt index - 0x4
+AppleSmartIO (RTBuddy-based)::start (<ptr>) - (Aug 12 2020@22:19:30)
+[ PCI configuration end, bridges 3, devices 0 ]
+LPM: Log data is NOT valid. 0x0 0x0
+apcie[3:pci-bridge3]::_mapRIDToSID no mapper defined and device <ptr> (0:AppleDialogSPMIPMU::start: Primary PMU detected
+3:0) does not support hot-plug
+AppleARMRTC started!#####
+AppleDialogSPMIPMURTC started!******
+Failed to read info-leg_scrpadAppleDialogSPMIPMURTC::handleStart: ro=0 nvram=0 helper=0 AppleDialogSPMIPMU _pmuNub: <ptr> 0x1102:0x9f04-0x9f15 built 22:52:53 Aug 12 2020
+apcie[2:pci-bridge2]::_mapRIDToSID no mapper defined and device <ptr> (0:2:0) does not support hot-plug
+AppleDialogSPMIPMURTC tick read!&&&&&&&
+AppleDialogSPMIPMURTC ending!%%%
+AppleARMRTC registering service!@@@@@@
+AppleARMRTC service registered!$$$$$
+AppleARMRTC publishing service!^^^^^^
+Identified Serial Port uart4 at 0x235210000(<ptr>)
+apfs_module_start:2411: load: com.apple.filesystems.apfs, v1677.0.5, apfs-1677.0.5, 2020/08/12
+com.apple.AppleFSCompressionTypeZlib kmod start
+IOSurfaceRoot::installMemoryRegions()
+IOSurface disallowing global lookups
+apfs_sysctl_register:1253: done registering sysctls.
+com.apple.AppleFSCompressionTypeZlib load succeeded
+bool IOMFB::UPPipe_H11P::setup_tunables_base_target(): Tunables Target 9
+L2TP domain init
+L2TP domain init complete
+Load request for com.apple.nke.pptp failed: -603946998
+IOMFB setup_table: Could not find table 'display-temp-compensation' in registry. Using default table.
+IOMFB setup_table: Could not find table 'display-temp-compensation' in registry. Using default table.
+Waiting on <dict ID="0"><key>IOProviderClass</key><string ID="1">IOMedia</string><key>IOPropertyMatch</key><dict ID="2"><key>Partition ID</key><integer size="64" ID="3">0x1</integer></dict></dict>
+IOMFB setup_table: Could not find table 'display-backlight-compensation' in registry. Using default table.
+virtual IOMFBStatus IOMFB::UPPipe_H11P::apt_fixed_rr_changed(IOMFB::AppleRegisterStream *): error: fixed refresh rate only supported on APT devices
+virtual IOMFBStatus IOMFB::UPPipe_H11P::apt_fixed_rr_changed(IOMFB::AppleRegisterStream *): forcing refresh rate: disabled
+IOMFB set_ffr_index: Disabling overdrive (missing EDT data)
+IOMFB set_panel_id: missing EDT data raw-panel-serial-number
+IOMFBStatus IOMFB::UPPipe_H11P::set_run_mode_safe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H11P::RunMode): Int no need to defer: 0 -> 1
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=0 entrysize=64
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=0 entrysize=64
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=1 entrysize=128
+virtual IOReturn IONVMeController::CreateSubmissionQueue(uint16_t, uint8_t)::2886:SQ index=1 entrysize=128
+virtual void AppleANS2NVMeController::SetModeselRegister(uint32_t)::1186:Setting modesel to 0
+virtual void AppleANS2NVMeController::SetModeselRegister(uint32_t)::1186:Setting modesel to 0
+000001.590970 AppleT8027USBXDCI@: AppleUSBXDCIARM::start: _dock is NULL, defaulting to device mode
+IOMFB: dynamic enabling of PCC is not supported on this platform, you need to power cycle display to see this change take effect
+000001.625397 usb-drd-port-hs@00100000: AppleUSB30XHCITypeCPort::start: _dock is NULL, defaulting to device mode
+000001.627803 AppleT8027USBXDCI@: IOUSBDeviceController::prepareDefaults: model iPhone version 12.1
+000001.627968 usb-drd-port-hs@00100000: AppleUSBHostPort::initBusCurrent: insufficient power to enable this port
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1964:nvme: Vendor ID     : 0x1b36
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1964:nvme: Vendor ID     : 0x1b36
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1965:nvme: Model Number  : QEMU NVMe Ctrl                          
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1965:nvme: Model Number  : QEMU NVMe Ctrl                          
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1966:nvme: Serial Number : ChefKiss-ANS        
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1966:nvme: Serial Number : ChefKiss-ANS        
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1967:nvme: Firmware Rev  : ChefKiss
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::1967:nvme: Firmware Rev  : ChefKiss
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2000:nvme: S3E B0 Sandisk 3d-g3 tlc 3D 4 plane 32GB bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2000:nvme: S3E B0 Sandisk 3d-g3 tlc 3D 4 plane 32GB NAND
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2009:ECCVersion   : 1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2009:ECCVersion   : 1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2010:FTL Rev      : 23.1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2010:FTL Rev      : 23.1
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2011:DM_Version   : 101
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2011:DM_Version   : 101
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2012:=======================
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2012:=======================
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2019:Found 16 namespaces in current NAND
+bool AppleEmbeddedNVMeController::IdentifyNamespaces()::2019:Found 16 namespaces in current NAND
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[1] as nstype[1]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[1] as nstype[1]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[2] as nstype[2]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[2] as nstype[2]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[3] as nstype[3]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[3] as nstype[3]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[4] as nstype[4]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[4] as nstype[4]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[5] as nstype[5]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[5] as nstype[5]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[6] as nstype[6]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[6] as nstype[6]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[7] as nstype[8]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[7] as nstype[8]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[8] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[8] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[9] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[9] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[10] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[10] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[11] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[11] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[12] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[12] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[13] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[13] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[14] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[14] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[15] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[15] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[16] as nstype[0]
+bool AppleEmbeddedNVMeController::DetermineNamespaces()::2435:Identified nsid[16] as nstype[0]
+bool AppleEmbeddedNVMeController::SetSwapWriteLimit(uint32_t)::2192: Swap limit set to 1073741824bytes, 1GB
+bool AppleEmbeddedNVMeController::SetSwapWriteLimit(uint32_t)::2192: Swap limit set to 1073741824bytes, 1GB
+000001.681420 usb-drd-port-hs@00100000: AppleUSB30XHCITypeCPort::cableChangeOccurred: cable detect disabled: transport type 2 connect type 2 restricted mode 0
+000001.681931 usb-drd-port-hs@00100000: AppleUSB30XHCITypeCPort::cableChangeOccurred: no action for transport type 2 connect type 2 restricted mode 0
+uint32_t AppleEmbeddedNVMeNVRAM::GetNVRAMSize()::745:NVRAM size is 8192 bytes
+uint32_t AppleEmbeddedNVMeNVRAM::GetNVRAMSize()::745:NVRAM size is 8192 bytes
+IOMFB read_bic - disable BIC (config init failed)
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1578:allocateAll 1
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1578:allocateAll 1
+/Library/Caches/com.apple.xbs/Sources/AppleSMC/AppleSMC-589.0.5/AppleSMCEmbeddedCharger/AppleSMCCharger.cpp:408 _setPowerStateGated() ENTER powerStateOrdinal=1, _powerState=1
+AppleSMCSensorDispatcher::start: Found 8 sensors from the device tree
+AppleSMCSensorDispatcher::start: Start success
+
+Video Mode Cebu/Sicily/Ellis
+AppleARMBacklight::start: Pre-strobe iDAC=1879 overriden in EDT 
+AppleARMBacklight::armFunctionCallback: Using 1 Backlight Controllers
+IOMFB updateFrequencies: minimum-frequency property not found, using getClockFrequency(0) instead.
+virtual bool IOMFB::UPBlock_Config_H11P::did_power_on(IOMFB::AppleRegisterStream *): tunables_managed
+IOMFB did_power_on: timings not set; reading 'display-timing-info' from origin 2
+IOMFBStatus IOMFB::UPPipe_H11P::set_run_mode_safe(IOMFB::AppleRegisterStream *, IOMFB::UPPipe_H11P::RunMode): Int no need to defer: 1 -> 2
+AppleARMBacklight::armFunctionCallback: Dual backlight controller system
+dev_init:297: disk0 device accelerated crypto: 0 (compiled @ Aug 12 2020 22:19:57)
+dev_init:300: disk0 device_handle block size 4096 block count 8388347 features 0 internal 
+nx_kernel_mount:1134: disk0 initializing cache w/hash_size 4096 and cache size 10064
+nx_kernel_mount:1234: disk0 container cleanly-unmounted flag set.
+static bool IOMobileFramebufferLegacy::readDataInEDT(IOService *, bool, const char *, const uint32_t, uint32_t *): property KSF_version not found in EDT, assumed false.
+IOMFB updateFrequencies: minimum-frequency property not found, using getClockFrequency(0) instead.
+IOMFB init_power_lut: failed to read color accuracy index
+function-brightness_update not found 
+function-mcc_dataset not found 
+IOMFB arm_fn_search: Couldn't allocate AppleARMFunction for function-temperature_update
+IOMFB arm_fn_search: failed with 0xe00002bc (function-temperature_update)
+IOMFB arm_fn_search: Couldn't allocate AppleARMFunction for function-link_enable
+IOMFB arm_fn_search: failed with 0xe00002bc (function-link_enable)
+IOMFB setup_table: Could not find table 'display-backlight-compensation' in registry. Using default table.
+IOMFB: function-pcc_update found
+ApplePinotLCD: _lcdPanelID: 0xa1c432d1 _lcdPanelClass: 2
+nx_kernel_mount:1402: disk0 checkpoint search: largest xid 84, best xid 84 @ 11
+import_iboot_forwarded_roothash:2577: importing root hash ...
+apfs_extract_root_hash_arm:10001: could not retrieve system-volume-auth-blob from device tree
+import_iboot_forwarded_roothash:2580: apfs_extract_root_hash_and_manifest failed with error: No such file or directory (2)
+Got boot device = IOService:/AppleARMPE/arm-io@10F00000/AppleT803xIO/ans@77400000/AppleASCWrapV2/iop-ans-nub/RTBuddyV2/RTBuddyService/AppleANS2NVMeController/NS_01@1/IOBlockStorageDriver/QEMU NVMe Ctrl Media/IOGUIDPartitionScheme/Untitled 1@1
+BSD root: disk0s1, major 1, minor 1
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 2, NSTYPE - 2
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 2, NSTYPE - 2
+apfs_vfsop_mountroot:2188: apfs: mountroot called!
+dev_init:297: disk0s1 device accelerated crypto: 3 (compiled @ Aug 12 2020 22:19:57)
+dev_init:300: disk0s1 device_handle block size 4096 block count 8388347 features 22 internal solidstate
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 3, NSTYPE - 3
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 3, NSTYPE - 3
+nx_kernel_mount:1134: disk0s1 initializing cache w/hash_size 4096 and cache size 10064
+nx_kernel_mount:1234: disk0s1 container cleanly-unmounted flag set.
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 6, NSTYPE - 6
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 6, NSTYPE - 6
+nx_kernel_mount:1402: disk0s1 checkpoint search: largest xid 84, best xid 84 @ 11
+[effaceable:INIT] found current generation, 2, in group 0
+apfs_vfsop_mount:1848: Promoter has been locked for disk0s1
+[effaceable:INIT] started
+failed to find root-snapshot-name snapshot
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 7, NSTYPE - 8
+virtual bool AppleEmbeddedNVMeController::AllocateNodes(bool)::1605:Creating blockdevice with NSID - 7, NSTYPE - 8
+handle_mount:627: vol-uuid: 5133F48D-5D9E-499B-A8BA-45E692E36FD9 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.12)
+virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::269: Logical Blocks Size = 4096 
+ virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::269: Logical Blocks Size = 4096 
+ virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::272: Block Count = 256 
+ virtual IOReturn AppleNVMeNamespaceDevice::GetDeviceProperties()::272: Block Count = 256 
+ virtual bool AppleNVMeNamespaceDevice::start(IOService *)::111:NVMe Namespace Device registration done for NSID: 7, NSTYPE: 8
+virtual bool AppleNVMeNamespaceDevice::start(IOService *)::111:NVMe Namespace Device registration done for NSID: 7, NSTYPE: 8
+virtual bool AppleEmbeddedNVMeController::StartController()::1547:Setting NAND status to Ready
+virtual bool AppleEmbeddedNVMeController::StartController()::1547:Setting NAND status to Ready
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6634: Volume AzulSeed18A5351d.N104N841DeveloperOS is not in a volume group
+apfs_vfsop_mount:2171: disk0s1s1:0 mounted volume: AzulSeed18A5351d.N104N841DeveloperOS
+AppleAstrisGpioProbe::platformInit():[WARNING] Bailing out.. Set swd_updates_arg boot-arg to allow swd updates!
+AppleAstrisGpioProbe::start():[ERROR] could not do platform initialization
+dyld: setting comm page to 0x0
+Tue Oct  6 08:38:17 2026 localhost com.apple.xpc.launchd[1] <Notice>: hello
+Darwin Bootstrapper Version 7.0.0: Mon Aug 10 04:09:14 PDT 2020; root:libxpc_executables-2038.0.13~13/launchd/RELEASE_ARM64E
+boot-args = debug=0x14e serial=3 wdt=-1 tlto_us=-1 mtxspin=-1 agm-genuine=1 agm-authentic=1 agm-trusted=1 -vm_compressor_wk_sw
+Tue Oct  6 08:38:17 2026 localhost com.apple.xpc.launchd[1] (com.apple.xpc.launchd.domain.system) <Notice>: entering ondemand mode
+Tue Oct  6 08:38:17 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: fsck
+** Checking the container superblock.
+** Checking the object map.
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume AzulSeed18A5351d.N104N841DeveloperOS was formatted by newfs_apfs (945.200.129.100.10) and last modified by apfs_kext (945.200.129.100.10).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume Data was formatted by newfs_apfs (1677.0.5) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume Preboot was formatted by newfs_apfs (1677.0.5) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume xART was formatted by newfs_apfs (1677.0.5) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume Hardware was formatted by newfs_apfs (1677.0.5) and last modified by apfs_kext (1677.0.5).
+** Checking volume.
+** Checking the APFS volume superblock.
+** The volume Update was formatted by newfs_apfs (1677.0.5) and last modified by .
+** QUICKCHECK ONLY; FILESYSTEM CLEAN
+Tue Oct  6 08:38:19 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: mount-phase-1
+mount: found boot container: /dev/disk0s1, data volume: /dev/disk0s1s2 env: 1
+spaceman_metazone_init:189: disk0s1 metazone for device 0 of size 262135 blocks (encrypted: 8126212-8257279 unencrypted: 8257279-8388347)
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 1 blocks starting at paddr 4096000
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 2 blocks starting at paddr 2195456
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 3 blocks starting at paddr 2228224
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 4 blocks starting at paddr 2260992
+dev_dump:256: Aggregate constructed: dev=<ptr> di=0 dv_num_slice=15 dv_num_slice_blk=589824 dv_num_lslice_blk=130811
+handle_mount:627: vol-uuid: A2188D3C-6964-48A9-9ABC-C88CFE626487 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume xART role 100 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s4:0 mounted volume: xART
+/dev/disk0s1s4 on /private/xarts (apfs, local, nodev, nosuid, journaled, noatime, nobrowse)
+spaceman_trim_free_blocks:3361: disk0s1 scan took 0.051036 s, trims took 0.029619 s
+spaceman_trim_free_blocks:3369: disk0s1 6565061 blocks free in 3835 extents
+spaceman_trim_free_blocks:3377: disk0s1 6565061 blocks trimmed in 3835 extents (7 us/trim, 129477 trims/s)
+spaceman_trim_free_blocks:3380: disk0s1 trim distribution 1:878 2+:1330 4+:1282 16+:304 64+:20 256+:21
+handle_mount:627: vol-uuid: 9D1C4D39-62ED-41B6-870D-071F5C4B7934 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume Preboot role 10 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s3:0 mounted volume: Preboot
+/dev/disk0s1s3 on /private/preboot (apfs, local, nodev, nosuid, read-only, journaled, noatime, nobrowse)
+Tue Oct  6 08:38:19 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: data-protection
+init_data_protection: Gigalocker file (/private/xarts/81879F33-B0F2-573A-AE12-6B517C322E33.gl) exists
+init_data_protection: Gigalocker initialization completed
+void AppleSEPFirmware::_copyInFirmware(IOMemoryDescriptor *): sepos_va:<ptr> sepos_avail_size: 0x1000000
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 1
+void AppleSEPBooter::_bootAction(void *, void *): SEP accepted Tz0
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 2
+IOReturn AppleSEPBooter::bootSEP(AppleSEPFirmware *, bool, AppleSEPSharedMemoryBuffer *, bool): SEP booting
+IOReturn AppleSEPBooter::bootSEP(AppleSEPFirmware *, bool, AppleSEPSharedMemoryBuffer *, bool): Shmbuf for SEP: { slave addr = 0x100c000, size = 0x20000 }
+void AppleSEPManager::_notifyOSActiveGated(): SEP/OS is alive
+void AppleSEPBooter::_bootAction(void *, void *): SEP accepted IMG4
+IOReturn AppleSEPARTRequests::handle_first_connected(): Configuring in buffer
+void AppleSEPARTService::_ensure_nvram_readable(): Waiting for IODTNVRAM
+void AppleSEPARTService::_ensure_nvram_readable(): Got IODTNVRAM OK
+SEP EP 16 enabled
+void AppleSEPManager::_updateDeviceTree(): updateDeviceTreeThread started
+static void AppleSEPManager::_updateDeviceTreeThread(void *): updateDeviceTree Success
+IOReturn AppleSEPARTRequests::handle_first_connected(): Configuring out buffer
+apfs_rawdev_create:637: Enable bypass mode on inode 16 on xART@disk0s1 as 2.0
+Tue Oct  6 08:38:19 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: finish-obliteration
+Obliterator: In INIT check
+IORegistryEntryGetProperty failed, may be does not exist
+Obliterator: No obliteration needed, continue booting, returning 0
+Tue Oct  6 08:38:20 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: commit-boot-mode
+Tue Oct  6 08:38:20 2026 localhost com.apple.xpc.launchd[1] <Notice>: boot-mode committed: (null)
+Tue Oct  6 08:38:20 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: restore-datapartition
+Tue Oct  6 08:38:20 2026 localhost com.apple.xpc.launchd[1] <Notice>: restore-datapartition: optional boot task not present
+Tue Oct  6 08:38:20 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: mount-phase-2
+mount: found boot container: /dev/disk0s1, data volume: /dev/disk0s1s2 env: 1
+migrate_media_keys_if_needed:1206: no media keys to migrate for container = disk0s1
+mount: failed to migrate Media Keys, error = c002
+handle_mount:627: vol-uuid: 360579AF-F2BC-4412-834F-712D92E40B3D block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6634: Volume Data is not in a volume group
+apfs_vfsop_mount:2171: disk0s1s2:0 mounted volume: Data
+/dev/disk0s1s2 on /private/var (apfs, local, nodev, nosuid, journaled, noatime)
+set_cloneinfo_id_epoch:23137: set cloneinfo_id_epoch to 16
+handle_mount:627: vol-uuid: 1A7424FA-B491-48D7-8C27-D48C13F7F907 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume Update role c0 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s6:0 mounted volume: Update
+/dev/disk0s1s6 on /private/var/MobileSoftwareUpdate (apfs, local, nodev, nosuid, journaled, noatime, nobrowse)
+handle_mount:627: vol-uuid: 5C915B1E-CAF5-4B64-AEF1-5691D0A2E801 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume Hardware role 140 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s5:0 mounted volume: Hardware
+/dev/disk0s1s5 on /private/var/hardware (apfs, local, nodev, nosuid, journaled, noatime, nobrowse)
+Tue Oct  6 08:38:20 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: init-with-data-volume
+Tue Oct  6 08:38:20 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: MSUEarlyBootTask
+main: MSUEarlyBootTask running
+main: Content from the ramdisk will be present at /private/var/MobileSoftwareUpdate/000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000-MSUData if it exists
+MSUEarlyBootTask: I have nothing to do. Goodbye!!
+Tue Oct  6 08:38:20 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: fips
+Tracing: disabled
+FIPSPOST_USER [155740539] fipspost_post:158: PASSED: (4 ms) - fipspost_post_integrity
+FIPSPOST_USER [155781086] fipspost_post:164: PASSED: (1 ms) - fipspost_post_hmac
+FIPSPOST_USER [155805233] fipspost_post:165: PASSED: (0 ms) - fipspost_post_aes_ecb
+FIPSPOST_USER [155817459] fipspost_post:166: PASSED: (0 ms) - fipspost_post_aes_cbc
+FIPSPOST_USER [156179832] fipspost_post:167: PASSED: (14 ms) - fipspost_post_rsa_sig
+FIPSPOST_USER [156373932] fipspost_post:168: PASSED: (7 ms) - fipspost_post_ecdsa
+FIPSPOST_USER [156409908] fipspost_post:169: PASSED: (1 ms) - fipspost_post_ecdh
+FIPSPOST_USER [156425333] fipspost_post:170: PASSED: (0 ms) - fipspost_post_drbg_ctr
+FIPSPOST_USER [156461540] fipspost_post:171: PASSED: (1 ms) - fipspost_post_aes_ccm
+FIPSPOST_USER [157309560] fipspost_post:173: PASSED: (34 ms) - fipspost_post_pbkdf
+FIPSPOST_USER [158595840] fipspost_post:174: PASSED: (0 ms) - fipspost_post_kdf_ctr
+FIPSPOST_USER [159059106] fipspost_post:175: PASSED: (19 ms) - fipspost_post_aes_gcm
+FIPSPOST_USER [159572378] fipspost_post:176: PASSED: (0 ms) - fipspost_post_aes_xts
+FIPSPOST_USER [159620581] fipspost_post:177: PASSED: (1 ms) - fipspost_post_tdes_cbc
+FIPSPOST_USER [159658203] fipspost_post:178: PASSED: (1 ms) - fipspost_post_drbg_hmac
+FIPSPOST_USER [160036189] fipspost_post:180: PASSED: (15 ms) - fipspost_post_ffdh
+FIPSPOST_USER [160310063] fipspost_post:181: PASSED: (11 ms) - fipspost_post_rsa_enc_dec
+FIPSPOST_USER [160315265] fipspost_post:201: all tests PASSED (194 ms)
+Tue Oct  6 08:38:21 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: keybag
+****** IN MKB_INIT ****
+AppleSEPKeyStore:2878:16: SEP timeout multiplier = 10
+SEP EP 18 enabled
+AppleSEPKeyStore:5995:16: negotiated to ipc header theirs:v1, ours:v2 -> negotiated:v1
+AppleSEPKeyStore:5926:16: failed to create refkey -536870212
+MKB_INIT: mount is with NO CPROTECT:0x14809018 on  (/private/var)
+MKB_INIT: mount point (/private/var) does not support Data Protection
+MKB_INIT: System Keybag loaded
+mount point (/private/var) does not support Data Protection/private/var//wireless set 4
+/private/var//wireless/Library set 4
+/private/var//wireless/baseband_data set 4
+/private/var//mobile/Library/Logs/CrashReporter set 4
+/private/var//mobile/Library/Logs/CrashReporter/DiagnosticLogs set 4
+****** STARTING EARLYBOOT SETUP ****
+MKB_INIT: STARTING EARLYBOOT SETUP
+MKB_INIT: Could not open /private/var//keybags/usersession.kb: No such file or directory
+MKB_INIT: LoadAllUserSessions: diskLoadUserSessions failed
+MKB_INIT: Could not open /private/var//keybags/persona.kb: No such file or directory
+mMKB_INIT: Creating Default Persona
+TnMKB_INIT: Creating Persona Manifest Profile
+eating Default Persona
+TnMKB_INIT: Creating new persona with ID:1000
+*+MKB_INIT: Calling kpersona_alloc for PersonaID:0
+MKB_INIT: PersonaID:1000 registered with Kernel, returned 1000
+MKB_INIT: Not an Enerprise Persona so skipping creating APFS volume
+mMKB_INIT: Created Persona Session:@
+o skipping creating APFS volume
+mMKB_INIT: persona added to the session table
+g creating APFS volume
+mMKB_INIT: PRINTING ALL 1 Entries of PERSONASESSIONa
+MKB_INIT: 0 PersonaSession is @
+ of PERSONASESSIONa
+MKB_INIT: Created Personal Persona Successfully
+MKB_INIT: Created Personal Persona Successfully
+ng Default Persona
+TnMKB_INIT: Creating System Persona
+I.+MKB_INIT: Creating new persona with ID:99
+t(mMKB_INIT: Setup Default Bundles for System
+XnMKB_INIT: Calling kpersona_alloc for System/Default PersonaID:99
+MKB_INIT: PersonaID:99 registered with Kernel, returned 99
+ID:99
+MKB_INIT: Created Persona Session:@
+th Kernel, returned 99
+ID:99
+MKB_INIT: persona added to the session table
+, returned 99
+ID:99
+MKB_INIT: PRINTING ALL 2 Entries of PERSONASESSIONa
+MKB_INIT: 0 PersonaSession is @
+ of PERSONASESSIONa
+MKB_INIT: 1 PersonaSession is @
+ of PERSONASESSIONa
+MKB_INIT: Created System Persona Successfully
+y
+MKB_INIT: Created System Persona Successfully
+y
+ng Default Persona
+TnMKB_INIT: Creating Default Persona
+.+MKB_INIT: Creating new persona with ID:199
+(mMKB_INIT: Calling kpersona_alloc for System/Default PersonaID:199
+[)mMKB_INIT: PersonaID:199 registered with Kernel, returned 199
+:199
+[)mMKB_INIT: Created Persona Session:@
+ith Kernel, returned 199
+:199
+[)mMKB_INIT: persona added to the session table
+l, returned 199
+:199
+[)mMKB_INIT: PRINTING ALL 3 Entries of PERSONASESSIONa
+MKB_INIT: 0 PersonaSession is @
+ of PERSONASESSIONa
+MKB_INIT: 1 PersonaSession is @
+ of PERSONASESSIONa
+MKB_INIT: 2 PersonaSession is @
+ of PERSONASESSIONa
+MKB_INIT: Created Default Persona Successfully
+
+MKB_INIT: Created Default Persona Successfully
+
+ng Default Persona
+TnMKB_INIT: Creating Universal Persona
++MKB_INIT: Setup Default Bundles for Universal
+MKB_INIT: Created Persona Session:@
+Universal
+MKB_INIT: persona added to the session table
+
+MKB_INIT: PRINTING ALL 4 Entries of PERSONASESSIONa
+MKB_INIT: 0 PersonaSession is @
+ of PERSONASESSIONa
+MKB_INIT: 1 PersonaSession is @
+ of PERSONASESSIONa
+MKB_INIT: 2 PersonaSession is @
+ of PERSONASESSIONa
+MKB_INIT: 3 PersonaSession is @
+ of PERSONASESSIONa
+MKB_INIT: Created Universal Persona Successfully
+MKB_INIT: Created Universal Persona Successfully
+g Default Persona
+tx_flush:1033: disk0s1 tx xid 85 took 4145569 us to sync and write superblock
+TnMKB_INIT: FAILED TO LOAD PERSONA to KERNEL 1000 with error File exists
+MKB_INIT: FAILED TO LOAD PERSONA to KERNEL 99 with error File exists
+s
+MKB_INIT: FAILED TO LOAD PERSONA to KERNEL 199 with error File exists
+
+MKB_INIT: Failed to Upload and setup persona to Kernel
+MKB_INIT: DONE EARLYBOOT SETUP
+TUP
+****** DONE EARLYBOOT SETUP ****
+****** DONE MKB_INIT ****
+Tue Oct  6 08:38:25 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: usermanagerd
+Tue Oct  6 08:38:25 2026 localhost com.apple.xpc.launchd[1] <Notice>: usermanagerd: optional boot task not present
+Tue Oct  6 08:38:25 2026 localhost com.apple.xpc.launchd[1] <Notice>: launchd logging initialized
+Tue Oct  6 08:38:25 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: xpcroleaccountd
+Tue Oct  6 08:38:26 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: init_featureflags
+init_featureflags: skipping directory: /System/Library/FeatureFlags/Domain
+init_featureflags: skipping directory: /Library/Preferences/FeatureFlags/Domain
+Tue Oct  6 08:38:26 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: fud
+objc[20]: Class UARPManifestProperties is implemented in both /System/Library/PrivateFrameworks/CoreUARP.framework/CoreUARP and /System/Library/PrivateFrameworks/MobileAccessoryUpdater.framework/Support/fud. One of the two will be used. Which one is undefined.
+fud: -[FudEarlyBoot doFUDEarlyBoot:](): Starting Early Boot
+fud: -[FudEarlyBoot updateFWForDeviceClass:dict:](): 
+deviceClass=com.apple.mau.plugin.generickext 
+dict={
+    IOMatchLaunchServiceID = 4294968031;
+}
+fud: -[FudEarlyBoot doFUDEarlyBoot:](): End Early Boot
+Tue Oct  6 08:38:26 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: tzinit
+tzinit: Bad zoneinfo link : No such file or directory
+tzinit: Invalid current symlinks; resetting to system partition: No such file or directory
+Tue Oct  6 01:38:26 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: finish-restore
+Tue Oct  6 01:38:26 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: finish-demo-restore
+Tue Oct  6 01:38:26 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: sysstatuscheck
+Tue Oct  6 01:38:26 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: prng_seedctl
+PRNG diagnostics:
+0 user reseeds, 1 scheduled reseeds, 83 max samples in a scheduled reseed, 450 max samples in an entropy input
+generator 0: 2 rekeys, 461 requests, 5484 total bytes requested, 64 max bytes requested in a request, 3108 bytes requested since rekey, 3108 max bytes requested between rekeys
+generator 1: 2 rekeys, 109 requests, 1756 total bytes requested, 64 max bytes requested in a request, 1652 bytes requested since rekey, 1652 max bytes requested between rekeys
+pool 0: 0 samples, 1 drains, 83 max samples
+pool 1: 403 samples, 0 drains, 403 max samples
+pool 2: 38 samples, 0 drains, 38 max samples
+pool 3: 68 samples, 0 drains, 68 max samples
+pool 4: 90 samples, 0 drains, 90 max samples
+pool 5: 115 samples, 0 drains, 115 max samples
+pool 6: 36 samples, 0 drains, 36 max samples
+pool 7: 48 samples, 0 drains, 48 max samples
+pool 8: 96 samples, 0 drains, 96 max samples
+pool 9: 450 samples, 0 drains, 450 max samples
+pool 10: 146 samples, 0 drains, 146 max samples
+pool 11: 98 samples, 0 drains, 98 max samples
+pool 12: 123 samples, 0 drains, 123 max samples
+pool 13: 72 samples, 0 drains, 72 max samples
+pool 14: 133 samples, 0 drains, 133 max samples
+pool 15: 169 samples, 0 drains, 169 max samples
+pool 16: 68 samples, 0 drains, 68 max samples
+pool 17: 143 samples, 0 drains, 143 max samples
+pool 18: 89 samples, 0 drains, 89 max samples
+pool 19: 86 samples, 0 drains, 86 max samples
+pool 20: 41 samples, 0 drains, 41 max samples
+pool 21: 50 samples, 0 drains, 50 max samples
+pool 22: 73 samples, 0 drains, 73 max samples
+pool 23: 115 samples, 0 drains, 115 max samples
+pool 24: 68 samples, 0 drains, 68 max samples
+pool 25: 0 samples, 0 drains, 0 max samples
+pool 26: 0 samples, 0 drains, 0 max samples
+pool 27: 0 samples, 0 drains, 0 max samples
+pool 28: 0 samples, 0 drains, 0 max samples
+pool 29: 0 samples, 0 drains, 0 max samples
+pool 30: 0 samples, 0 drains, 0 max samples
+pool 31: 0 samples, 0 drains, 0 max samples
+failed to load kernel prng seed: (-76) (2) No such file or directory
+failed to load virtual random: (-147) (-536870212)
+Tue Oct  6 01:38:26 2026 localhost com.apple.xpc.launchd[1] <Notice>: Doing boot task: launchd_cache_loader
+0 Found valid port: 2307 Valid: 1
+1 Found valid port: 0 Valid: 0
+2 Found valid port: 0 Valid: 0
+Using default cache paths
+Code: /System/Library/xpc/launchd.plist Sig: /System/Library/xpc/launchd.plist.sig
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 26 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 26
+cdhash: {length = 20, bytes = 0x1f926e82fb7151558f895e958a422ee5c570b6bc} is trusted
+Attached signature to file, checking ...
+Trying to send bytes to launchd: 2307 16384
+Sending validated cache to launchd
+Cache sent to launchd successfully
+Tue Oct  6 01:38:26 2026 localhost com.apple.xpc.launchd[1] <Notice>: launchd UUID: 4C2464F5-9F87-31DE-B252-584E3391D4FA
+Tue Oct  6 01:38:26 2026 localhost com.apple.xpc.launchd[1] <Notice>: Early boot complete. Continuing system boot.
+tx_flush:1075: disk0s1 xid 104 tx stats: # 20 finish 20 enter 13 wait 0 0us close 6us flush 212701us
+tx_flush:1075: disk0s1 xid 124 tx stats: # 40 finish 40 enter 12 wait 0 0us close 3us flush 109553us
+AppleAuthCPRelay:_sendCommandGated CMD=0x1 _receivedStatus ERROR ( status = 0xe00002e9 )
+AppleAuthCPRelay:_getCert failed to send command kAuthCommandIDGetCert
+AppleAuthCPRelay:_fetchPropertyGated _getCert() failed (status = 0xe00002e9)
+AppleAuthCPRelay::copyProperty: obj == NULL key = AccessoryCertificate
+AppleAuthCPRelay:_sendCommandGated CMD=0x1 _receivedStatus ERROR ( status = 0xe00002e9 )
+AppleAuthCPRelay:_getCert failed to send command kAuthCommandIDGetCert
+AppleAuthCPRelay:_fetchPropertyGated _getCert() failed (status = 0xe00002e9)
+AppleAuthCPRelay::copyProperty: obj == NULL key = AccessoryCertificate
+AppleAuthCPRelay:_sendCommandGated CMD=0x1 _receivedStatus ERROR ( status = 0xe00002e9 )
+AppleAuthCPRelay:_getCert failed to send command kAuthCommandIDGetCert
+AppleAuthCPRelay:_fetchPropertyGated _getCert() failed (status = 0xe00002e9)
+AppleAuthCPRelay::copyProperty: obj == NULL key = AccessoryCertificate
+AppleAuthCPRelay:setAuthStatus set auth status = 0
+AppleAuthCPRelay:_sendCommandGated CMD=0x4 authSendData() failed (ret = 0xe00002c7)
+AppleAuthCPRelay:setTrustStatus failed to send command kAuthCommandIDSetTrustStatus
+AppleAuthCPRelay:setTrustStatus set trust status = 0
+AppleAuthCPUserClient::extSetAuthError
+AppleAuthCPRelay:setAuthError 3
+AppleAuthCPRelay:setAuthErrorDescription NullCertificateDataError
+tx_flush:1075: disk0s1 xid 144 tx stats: # 60 finish 60 enter 14 wait 0 0us close 2us flush 75399us
+AppleARMBacklight::setBacklightEnableGated: Set backlight on
+IOMFB: load PCC M3 IMem : size 0x483c
+IOMFB: load PCC M3 DMem : size 0x4794
+AppleCredentialManagerUserClient: start: edu_mode = No, persona = Yes, user_id = c7 -> session_uid = ffffffff.
+ACMRM: _onDaemonStarted: called, allowedByMC=YES, alreadyStarted=NO.
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+AppleCredentialManager: getSEPEndpoint: Initializing SEP endpoint.
+SEP EP 10 enabled
+AppleCredentialManager: getSEPEndpoint: SEPEndpoint enabled.
+Invalid denylist
+tx_flush:1075: disk0s1 xid 164 tx stats: # 80 finish 80 enter 32 wait 0 0us close 2us flush 60255us
+tx_flush:1075: disk0s1 xid 184 tx stats: # 100 finish 100 enter 36 wait 0 0us close 2us flush 49615us
+AppleCredentialManager: sendSEPCommand: SEP cmd(10) took 5002 ms -> ioErr=0x1 acmErr=0.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManager.cpp:1839
+AppleCredentialManager: sendSEPCommand: returning, err = -536870186, req=1 info=0 inLen=8 outLen=0 lock=YES/5009ms resBuf=16384).
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManager.cpp:1248
+AppleSEPKeyStore:10649:122: operation failed (sel: 101 ret: e00002e2)
+AppleSEPKeyStore:10649:122: operation failed (sel: 93 ret: e00002bc)
+AppleSEPKeyStore:6122:122: D-key effaceable locker does not exist, attempt to init it implicitly.
+AppleSEPKeyStore:6137:122: Initialize effacable d_key.
+AppleSEPKeyStore:10649:122: operation failed (sel: 34 ret: e00002bc)
+AppleSEPKeyStore:10649:103: operation failed (sel: 26 ret: e00002bc)
+tx_flush:1075: disk0s1 xid 204 tx stats: # 120 finish 120 enter 35 wait 0 0us close 2us flush 44204us
+AppleCredentialManager: sendSEPCommand: SEP cmd(25) took 5001 ms -> ioErr=0x1 acmErr=0.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManager.cpp:1839
+AppleCredentialManager: sendSEPCommand: returning, err = -536870186, req=4 info=0 inLen=12 outLen=1 lock=YES/5002ms resBuf=16384).
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManager.cpp:1263
+AppleCredentialManager: _performCommand: returning, err = -536870186, cmd=25 inLen=12 outLen=1.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/AppleCredentialManager.cpp:1196
+AppleCredentialManager: performCommandGated: returning, err = -536870186.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/ACMKernelLibPriv/../../ACMKernelLib/ACMKernelLib.cpp:48
+ACMKernelLib: performCommand: returning, err = -536870186.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager/AppleCredentialManager-417.0.6.0.1/AppleCredentialManager/ACMKernelLibPriv/../../ACMKernelLib/ACMKernelLib.cpp:110
+ACMKernelLib: kernelTransport: returning, err = -536870186.
+AssertMacros: err == 0  (value: 0xffffffffe00002d6), ---, file: /Library/Caches/com.apple.xbs/Sources/AppleCredentialManager_KernelLibs/AppleCredentialManager-417.0.6.0.1/common/LibCall.c:1119
+ACM: LibCall_ACMGetEnvironmentVariable: returning, err = -536870186.
+ACMKernelLib: ACMKernPrivGetEnvironmentVariable: returning, err = -536870186.
+ACMRM-S: _loadAll: called, isLockerAvailable=NO.
+ACMRM: _logPolicy: LOADED: ver=0 smTm=0 poRsn=0 gpTm=0 smExp=NO gpBlk=NO suTm=0 svTm=0 gpRsn=0 cMs=NO.
+ACMRM: _logConfig: caller=_loadConfig ver=1 gSw=1 GP=2 Ask=3.
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO DwnOS=NO ChkBd=NO coGSw=NO*).
+ACMRM: _mapAndPublishTRM: set TRM_GracePeriodTimeout = 3600.
+ACMRM: _mapAndPublishTRM: sending kIOMessageServicePropertyChange(n=1) while DISABLED, TRM: 259200 -/ff 3600 -/ff miss=ff (CUR: 259200 -/ff 3600 -/ff).
+ACMRM: _onDaemonStarted: timePolicyViolated=NO (saveTime=0 bootCalTime=1791275936 (delta=1791275936) bootUpTime=41 nowUp=1791275936).
+ACMRM-A: _logAnalytics: caller=_loadAnalytics ver=5 rmLckDur=0 curPerTm=0 rmLckTm=0 actRMLckTm=0 rmPubTm=0 rmPubDur=0 blFPCnt=0/0 uSdn=0.
+ACMRM-A: _restartAnalytics: called, curPerTm=1791275936 rmLckTm=0 rmLckDur=0 rmPubTm=0 rmPubDur=0.
+ACMRM-S: setData: saving analytics (len=50) in 3 seconds.
+ACMRM-C: onDaemonStarted: acc-cache not found.
+ACMRM: _publish: _resumeState UNLOCKED(0) reason=0 (on=YES pub=YES(255) pasThr=NO(0) poRsn=0 smExp=NO gpBlk=NO cMs=NO suTm=1791275936 tm=1791275936(0) | 3D=259200/1791535136 GP=0/0/(0)).
+ACMRM: _publishIOResource: AppleUSBRestrictedModeWithReason = 0.
+ACMRM: _publishIOResource: AppleUSBGracePeriodWithReason = 0.
+ACMRM: _mapAndPublishTRM: set TRM_PolicyReason = Unrestricted(0).
+ACMRM: _mapAndPublishTRM: set TRM_CacheMiss = False.
+ACMRM: _mapAndPublishTRM: sending kIOMessageServicePropertyChange(n=2) while UNLOCKED, TRM: 259200 U/0 3600 -/ff miss=0 (CUR: 259200 U/0 3600 X/0).
+ACMRM: _logPolicy: SAVING: ver=8 smTm=1791275936 poRsn=0 gpTm=1791275936 smExp=NO gpBlk=NO suTm=1791275936 svTm=1791275936 gpRsn=0 cMs=NO.
+ACMRM-S: setData: saving policy (len=41) in 3 seconds.
+ACMRM: _registerBioNotifier: Biometric driver not detected.
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+tx_flush:1075: disk0s1 xid 224 tx stats: # 140 finish 140 enter 34 wait 0 0us close 2us flush 38951us
+ACMRM-S: _saveAll: pushing policy -> daemon (gen=1 len=41).
+ACMRM-S: _saveAll: pushing analytics -> daemon (gen=1 len=50).
+tx_flush:1075: disk0s1 xid 244 tx stats: # 160 finish 160 enter 33 wait 0 0us close 2us flush 34991us
+tx_flush:1075: disk0s1 xid 264 tx stats: # 180 finish 180 enter 33 wait 1 16504us close 4us flush 31949us
+tx_flush:1075: disk0s1 xid 284 tx stats: # 200 finish 200 enter 33 wait 1 16504us close 3us flush 29544us
+AppleSEPKeyStore:10649:134: operation failed (sel: 17 ret: e00002c2)
+tx_flush:1075: disk0s1 xid 304 tx stats: # 220 finish 220 enter 34 wait 1 16504us close 3us flush 27761us
+tx_flush:1075: disk0s1 xid 324 tx stats: # 240 finish 240 enter 34 wait 1 16504us close 3us flush 26523us
+tx_flush:1075: disk0s1 xid 344 tx stats: # 260 finish 260 enter 36 wait 2 10590us close 3us flush 25381us
+000060.913893 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: PTP
+IOAccessoryManager::configureAccessoryPowerGated: dock-0pin: Configuring Accessory Power to (3)
+Port-Inductive::configureAccessoryPowerInternal: _powerState=3, _powerStateInternal=1, _sleeping=0, _accessoryPowerModeExtOffRequested 0
+Port-Inductive::configureAccessoryPowerInternal: !getAccessoryPowerReady(); set PowerModeOff?
+Port-Inductive::configureAccessoryPowerInternal: handleAccessoryPowerWillChange, confirm PowerModeOff
+AppleAuthCPRelay::copyProperty: obj == NULL key = AuthFullPass
+AppleAuthCPRelay::copyProperty: obj == NULL key = Signature
+tx_flush:1033: disk0s1 tx xid 355 took 1137205 us to sync and write superblock
+000062.676984 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000062.677590 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: iPod USB Interface
+000062.677897 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: USBAudioControl
+000062.678197 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: USBAudioStreaming
+000062.678463 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: IapOverUsbHid
+000062.678722 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: PTP + Apple Mobile Device
+000062.679031 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000062.679253 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000062.679491 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: PTP + Apple Mobile Device + Apple USB Ethernet
+000062.679814 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000062.680023 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000062.680246 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBEthernet
+000062.680584 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: PTP + Apple Mobile Device + Valeria
+000062.680966 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000062.681161 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000062.681349 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: Valeria
+000062.681560 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: Apple Mobile Device + Interdevice Audio
+000062.681821 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000062.682063 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: USBAudio2Control
+000062.682367 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: USBAudio2StreamIN
+000062.682627 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: USBAudio2StreamOUT
+000062.682860 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: IDAMInterface
+000062.683191 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: interface association: Interdevice Audio Interfaces (First: 1, Count: 4)
+000062.683855 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice: configuration: PTP + Apple Mobile Device + NCM
+000062.684057 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: PTP
+000062.684259 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBMux
+000062.684414 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBNCMControl
+000062.684585 AppleT8027USBXDCI@: IOUSBDeviceController::createUSBDevice:    interface: AppleUSBNCMData
+000062.715357 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function USBAudioControl
+000063.596181 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function USBAudio2StreamIN
+IOAccessoryPortUSB::start
+000063.736585 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function AppleUSBEthernet
+000063.738664 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function AppleUSBNCMControl
+000063.741411 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function IapOverUsbHid
+000063.742430 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function USBAudioStreaming
+000063.743111 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function USBAudio2Control
+000063.750994 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function IDAMInterface
+000063.756637 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function USBAudio2StreamOUT
+AppleUSBDeviceMux build: Aug 12 2020 22:50:42
+000063.762811 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function AppleUSBMux
+000063.765875 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function AppleUSBNCMData
+000063.781778 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function Valeria
+000063.818716 AppleT8027USBXDCI@: IOUSBDeviceController::gated_registerFunction: register function PTP
+000064.179727 AppleT8027USBXDCI@: IOUSBDeviceController::startUSBStack: starting usb stack
+000064.181979 AppleT8027USBXDCI@0: IOUSBDeviceController::startUSBStack: not connected
+000064.374345 AppleT8027USBXDCI@0: AppleUSBXDCI::goOnBus: not on bus
+000064.375363 AppleT8027USBXDCI@0: AppleUSBXDCIARM::cableChangeOccurred: cable detect disabled: transport type 2 connect type 2 restricted mode _lastRestrictedMode 0
+000064.375767 AppleT8027USBXDCI@0: AppleUSBXDCIARM::cableChangeOccurred: powering on for transport type 2 connect type 2 restricted mode 0
+tx_flush:1075: disk0s1 xid 364 tx stats: # 280 finish 282 enter 40 wait 3 7502us close 3us flush 33669us
+apfs_is_valid_class:2253: rejecting class open (class 2) because we're not content protected
+tx_flush:1075: disk0s1 xid 384 tx stats: # 300 finish 302 enter 55 wait 7 152510us close 3us flush 37896us
+tx_flush:1075: disk0s1 xid 404 tx stats: # 320 finish 324 enter 77 wait 16 74769us close 2us flush 36618us
+tx_flush:1075: disk0s1 xid 424 tx stats: # 340 finish 344 enter 97 wait 20 59963us close 2us flush 35207us
+tx_flush:1075: disk0s1 xid 444 tx stats: # 360 finish 364 enter 116 wait 23 52421us close 2us flush 34272us
+tx_flush:1075: disk0s1 xid 464 tx stats: # 380 finish 384 enter 126 wait 26 46481us close 2us flush 33396us
+tx_flush:1075: disk0s1 xid 484 tx stats: # 400 finish 405 enter 154 wait 31 39792us close 2us flush 32595us
+virtual bool CoreAnalyticsUserClient::initWithTask(task_t, void *, UInt32, OSDictionary *)::165:success
+IOReturn CoreAnalyticsHub::setClientGated(CoreAnalyticsUserClient *)::287:adding userClient
+IOReturn CoreAnalyticsHub::__newUserClientGated(task_t, void *, UInt32, OSDictionary *, IOUserClient **)::257:Successfully opened
+virtual IOReturn CoreAnalyticsUserClient::clientMemoryForType(UInt32, IOOptionBits *, IOMemoryDescriptor **)::269: got memory descriptor with 16432
+tx_flush:1075: disk0s1 xid 504 tx stats: # 420 finish 426 enter 190 wait 41 50834us close 3us flush 33442us
+ACMRM: _disableBy: [TRM ENABLED=YES] (mask=0, DISABLED BY: Def=NO BtArg=NO LegHW=NO OSEnv=NO | MngCo=NO* DwnOS=NO ChkBd=NO coGSw=NO).
+tx_flush:1075: disk0s1 xid 524 tx stats: # 440 finish 447 enter 214 wait 44 49723us close 3us flush 33036us
+tx_flush:1075: disk0s1 xid 544 tx stats: # 460 finish 468 enter 205 wait 44 49723us close 3us flush 31956us
+tx_flush:1075: disk0s1 xid 564 tx stats: # 480 finish 488 enter 197 wait 44 49723us close 3us flush 30804us
+tx_flush:1075: disk0s1 xid 584 tx stats: # 500 finish 508 enter 191 wait 44 49723us close 3us flush 29709us
+tx_flush:1075: disk0s1 xid 604 tx stats: # 520 finish 528 enter 184 wait 44 49723us close 3us flush 28679us
+tx_flush:1075: disk0s1 xid 624 tx stats: # 540 finish 548 enter 178 wait 46 47807us close 3us flush 27736us
+tx_flush:1075: disk0s1 xid 644 tx stats: # 560 finish 568 enter 173 wait 49 44940us close 3us flush 26881us
+tx_flush:1075: disk0s1 xid 664 tx stats: # 580 finish 588 enter 172 wait 50 44052us close 3us flush 26038us
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Process 159 is checking if a cdhash is in the trust cache
+static IOReturn AppleMobileFileIntegrityUserClient::isCdhashInTrustCache(OSObject *, void *, IOExternalMethodArguments *): Returning IOReturn 0x0 to process 159
+tx_flush:1075: disk0s1 xid 684 tx stats: # 600 finish 608 enter 174 wait 53 41612us close 3us flush 25280us
+tx_flush:1075: disk0s1 xid 704 tx stats: # 620 finish 628 enter 177 wait 54 40855us close 3us flush 24552us
+tx_flush:1075: disk0s1 xid 724 tx stats: # 640 finish 648 enter 179 wait 57 38734us close 3us flush 23956us
+tx_flush:1075: disk0s1 xid 744 tx stats: # 660 finish 668 enter 180 wait 60 36878us close 3us flush 23390us
+tx_flush:1075: disk0s1 xid 764 tx stats: # 680 finish 688 enter 180 wait 64 34617us close 3us flush 22761us
+tx_flush:1075: disk0s1 xid 784 tx stats: # 700 finish 709 enter 175 wait 64 34617us close 3us flush 22170us
+tx_flush:1075: disk0s1 xid 804 tx stats: # 720 finish 729 enter 171 wait 65 34222us close 5us flush 21661us
+tx_flush:1075: disk0s1 xid 824 tx stats: # 740 finish 749 enter 171 wait 67 33489us close 5us flush 21393us
+tx_flush:1075: disk0s1 xid 844 tx stats: # 760 finish 769 enter 171 wait 67 33489us close 5us flush 21131us
+tx_flush:1075: disk0s1 xid 864 tx stats: # 780 finish 789 enter 171 wait 70 32541us close 5us flush 21006us
+tx_flush:1075: disk0s1 xid 884 tx stats: # 800 finish 809 enter 172 wait 73 31319us close 5us flush 20814us
+AppleSEPKeyStore:10661:0: AppleKeyStoreUserClient: Assertion timer fired
+tx_flush:1075: disk0s1 xid 904 tx stats: # 820 finish 829 enter 173 wait 74 30905us close 5us flush 20457us
+tx_flush:1075: disk0s1 xid 924 tx stats: # 840 finish 849 enter 175 wait 77 29724us close 5us flush 20024us
+tx_flush:1075: disk0s1 xid 944 tx stats: # 860 finish 869 enter 172 wait 78 29350us close 5us flush 19671us
+tx_flush:1075: disk0s1 xid 964 tx stats: # 880 finish 889 enter 169 wait 78 29350us close 4us flush 19389us
+tx_flush:1075: disk0s1 xid 984 tx stats: # 900 finish 909 enter 165 wait 78 29350us close 4us flush 19070us
+tx_flush:1075: disk0s1 xid 1004 tx stats: # 920 finish 929 enter 162 wait 78 29350us close 4us flush 18770us
+tx_flush:1075: disk0s1 xid 1024 tx stats: # 940 finish 949 enter 159 wait 80 28678us close 4us flush 18478us
+tx_flush:1075: disk0s1 xid 1044 tx stats: # 960 finish 969 enter 156 wait 80 28678us close 4us flush 18161us
+tx_flush:1075: disk0s1 xid 1064 tx stats: # 980 finish 989 enter 153 wait 80 28678us close 4us flush 17863us
+tx_flush:1075: disk0s1 xid 1084 tx stats: # 1000 finish 1009 enter 150 wait 80 28678us close 4us flush 17556us
+tx_flush:1075: disk0s1 xid 1104 tx stats: # 1020 finish 1029 enter 147 wait 80 28678us close 4us flush 17261us
+tx_flush:1075: disk0s1 xid 1124 tx stats: # 1040 finish 1049 enter 144 wait 80 28678us close 4us flush 16964us
+tx_flush:1075: disk0s1 xid 1144 tx stats: # 1060 finish 1069 enter 142 wait 80 28678us close 4us flush 16680us
+tx_flush:1075: disk0s1 xid 1164 tx stats: # 1080 finish 1090 enter 139 wait 80 28678us close 4us flush 16407us
+tx_flush:1075: disk0s1 xid 1184 tx stats: # 1100 finish 1110 enter 137 wait 81 28342us close 4us flush 16143us
+tx_flush:1075: disk0s1 xid 1204 tx stats: # 1120 finish 1130 enter 135 wait 81 28342us close 4us flush 15895us
+tx_flush:1075: disk0s1 xid 1224 tx stats: # 1140 finish 1150 enter 132 wait 81 28342us close 4us flush 15717us
+tx_flush:1075: disk0s1 xid 1244 tx stats: # 1160 finish 1170 enter 130 wait 81 28342us close 4us flush 15572us
+AppleSEPKeyStore:10649:94: operation failed (sel: 31 ret: e00002bc)
+tx_flush:1075: disk0s1 xid 1264 tx stats: # 1180 finish 1190 enter 129 wait 82 28007us close 4us flush 15458us
+tx_flush:1075: disk0s1 xid 1284 tx stats: # 1200 finish 1210 enter 127 wait 83 27678us close 4us flush 15321us
+tx_flush:1075: disk0s1 xid 1304 tx stats: # 1220 finish 1230 enter 125 wait 84 27356us close 4us flush 15157us
+AppleSEPKeyStore:10649:94: operation failed (sel: 31 ret: e00002bc)
+tx_flush:1075: disk0s1 xid 1324 tx stats: # 1240 finish 1251 enter 123 wait 86 26764us close 4us flush 14977us
+tx_flush:1075: disk0s1 xid 1344 tx stats: # 1260 finish 1270 enter 121 wait 88 26199us close 4us flush 14819us
+tx_flush:1075: disk0s1 xid 1364 tx stats: # 1280 finish 1290 enter 119 wait 90 25643us close 4us flush 14691us
+tx_flush:1075: disk0s1 xid 1384 tx stats: # 1300 finish 1310 enter 118 wait 90 25643us close 4us flush 14520us
+tx_flush:1075: disk0s1 xid 1404 tx stats: # 1320 finish 1330 enter 116 wait 91 25367us close 4us flush 14335us
+tx_flush:1075: disk0s1 xid 1424 tx stats: # 1340 finish 1350 enter 115 wait 91 25367us close 4us flush 14162us
+tx_flush:1075: disk0s1 xid 1444 tx stats: # 1360 finish 1370 enter 113 wait 93 24868us close 4us flush 13989us
+tx_flush:1075: disk0s1 xid 1464 tx stats: # 1380 finish 1390 enter 112 wait 94 24617us close 4us flush 13820us
+tx_flush:1075: disk0s1 xid 1484 tx stats: # 1400 finish 1410 enter 110 wait 94 24617us close 4us flush 13658us
+tx_flush:1075: disk0s1 xid 1504 tx stats: # 1420 finish 1430 enter 109 wait 95 24374us close 4us flush 13498us
+tx_flush:1075: disk0s1 xid 1524 tx stats: # 1440 finish 1450 enter 107 wait 95 24374us close 4us flush 13341us
+tx_flush:1075: disk0s1 xid 1544 tx stats: # 1460 finish 1470 enter 106 wait 95 24374us close 4us flush 13187us
+tx_flush:1075: disk0s1 xid 1564 tx stats: # 1480 finish 1490 enter 105 wait 97 23895us close 4us flush 13041us
+tx_flush:1075: disk0s1 xid 1584 tx stats: # 1500 finish 1510 enter 104 wait 99 23425us close 4us flush 12894us
+tx_flush:1075: disk0s1 xid 1604 tx stats: # 1520 finish 1530 enter 102 wait 99 23425us close 4us flush 12756us
+tx_flush:1075: disk0s1 xid 1624 tx stats: # 1540 finish 1550 enter 101 wait 100 23196us close 4us flush 12633us
+tx_flush:1075: disk0s1 xid 1644 tx stats: # 1560 finish 1570 enter 100 wait 100 23196us close 4us flush 12503us
+tx_flush:1075: disk0s1 xid 1664 tx stats: # 1580 finish 1590 enter 99 wait 101 22986us close 4us flush 12376us
+tx_flush:1075: disk0s1 xid 1684 tx stats: # 1600 finish 1610 enter 98 wait 101 22986us close 4us flush 12264us
+tx_flush:1075: disk0s1 xid 1704 tx stats: # 1620 finish 1630 enter 97 wait 102 22803us close 4us flush 12184us
+tx_flush:1075: disk0s1 xid 1724 tx stats: # 1640 finish 1650 enter 96 wait 102 22803us close 4us flush 12116us
+tx_flush:1075: disk0s1 xid 1744 tx stats: # 1660 finish 1670 enter 95 wait 102 22803us close 4us flush 12041us
+tx_flush:1075: disk0s1 xid 1764 tx stats: # 1680 finish 1690 enter 94 wait 102 22803us close 4us flush 11998us
+tx_flush:1075: disk0s1 xid 1784 tx stats: # 1700 finish 1710 enter 93 wait 102 22803us close 4us flush 11972us
+tx_flush:1075: disk0s1 xid 1804 tx stats: # 1720 finish 1730 enter 92 wait 102 22803us close 4us flush 11966us
+tx_flush:1075: disk0s1 xid 1824 tx stats: # 1740 finish 1750 enter 91 wait 102 22803us close 4us flush 11943us
+tx_flush:1075: disk0s1 xid 1844 tx stats: # 1760 finish 1770 enter 90 wait 102 22803us close 4us flush 11943us
+tx_flush:1075: disk0s1 xid 1864 tx stats: # 1780 finish 1790 enter 89 wait 102 22803us close 4us flush 12050us
+tx_flush:1075: disk0s1 xid 1884 tx stats: # 1800 finish 1810 enter 88 wait 103 22727us close 4us flush 12077us
+tx_flush:1075: disk0s1 xid 1904 tx stats: # 1820 finish 1830 enter 88 wait 103 22727us close 4us flush 12054us
+tx_flush:1075: disk0s1 xid 1924 tx stats: # 1840 finish 1850 enter 87 wait 103 22727us close 3us flush 12153us
+tx_flush:1075: disk0s1 xid 1944 tx stats: # 1860 finish 1870 enter 86 wait 103 22727us close 3us flush 12106us
+tx_flush:1075: disk0s1 xid 1964 tx stats: # 1880 finish 1890 enter 85 wait 103 22727us close 3us flush 12068us
+tx_flush:1075: disk0s1 xid 1984 tx stats: # 1900 finish 1910 enter 85 wait 103 22727us close 3us flush 12037us
+tx_flush:1075: disk0s1 xid 2004 tx stats: # 1920 finish 1930 enter 84 wait 104 22528us close 3us flush 12015us
+tx_flush:1075: disk0s1 xid 2024 tx stats: # 1940 finish 1950 enter 83 wait 104 22528us close 3us flush 11959us
+tx_flush:1075: disk0s1 xid 2044 tx stats: # 1960 finish 1970 enter 82 wait 104 22528us close 3us flush 11904us
+tx_flush:1075: disk0s1 xid 2064 tx stats: # 1980 finish 1990 enter 82 wait 104 22528us close 3us flush 11847us
+tx_flush:1075: disk0s1 xid 2084 tx stats: # 2000 finish 2010 enter 81 wait 104 22528us close 3us flush 11785us
+tx_flush:1075: disk0s1 xid 2104 tx stats: # 2020 finish 2030 enter 80 wait 104 22528us close 3us flush 11731us
+tx_flush:1075: disk0s1 xid 2124 tx stats: # 2040 finish 2050 enter 80 wait 104 22528us close 3us flush 11748us
+tx_flush:1075: disk0s1 xid 2144 tx stats: # 2060 finish 2070 enter 79 wait 104 22528us close 3us flush 12130us
+tx_flush:1075: disk0s1 xid 2164 tx stats: # 2080 finish 2090 enter 79 wait 105 22345us close 3us flush 12192us
+tx_flush:1075: disk0s1 xid 2184 tx stats: # 2100 finish 2110 enter 78 wait 105 22345us close 3us flush 12177us
+tx_flush:1075: disk0s1 xid 2204 tx stats: # 2120 finish 2130 enter 77 wait 106 22139us close 3us flush 12095us
+AppleSEPKeyStore:10649:94: operation failed (sel: 31 ret: e00002bc)
+tx_flush:1075: disk0s1 xid 2224 tx stats: # 2140 finish 2150 enter 77 wait 106 22139us close 3us flush 12011us
+AppleSEPKeyStore:10649:94: operation failed (sel: 31 ret: e00002bc)
+tx_flush:1075: disk0s1 xid 2244 tx stats: # 2160 finish 2170 enter 76 wait 107 21939us close 3us flush 11957us
+tx_flush:1075: disk0s1 xid 2264 tx stats: # 2180 finish 2190 enter 76 wait 108 21746us close 3us flush 11909us
+tx_flush:1075: disk0s1 xid 2284 tx stats: # 2200 finish 2210 enter 75 wait 109 21553us close 3us flush 11823us
+tx_flush:1075: disk0s1 xid 2304 tx stats: # 2220 finish 2230 enter 74 wait 110 21362us close 3us flush 11769us
+tx_flush:1075: disk0s1 xid 2324 tx stats: # 2240 finish 2250 enter 74 wait 110 21362us close 3us flush 11709us
+tx_flush:1075: disk0s1 xid 2344 tx stats: # 2260 finish 2270 enter 73 wait 110 21362us close 3us flush 11648us
+tx_flush:1075: disk0s1 xid 2364 tx stats: # 2280 finish 2290 enter 73 wait 110 21362us close 3us flush 11589us
+tx_flush:1075: disk0s1 xid 2384 tx stats: # 2300 finish 2310 enter 72 wait 110 21362us close 3us flush 11509us
+tx_flush:1075: disk0s1 xid 2404 tx stats: # 2320 finish 2330 enter 72 wait 110 21362us close 3us flush 11434us
+tx_flush:1075: disk0s1 xid 2424 tx stats: # 2340 finish 2350 enter 71 wait 110 21362us close 3us flush 11357us
+tx_flush:1075: disk0s1 xid 2444 tx stats: # 2360 finish 2370 enter 71 wait 110 21362us close 3us flush 11285us
+tx_flush:1075: disk0s1 xid 2464 tx stats: # 2380 finish 2390 enter 70 wait 110 21362us close 3us flush 11211us
+tx_flush:1075: disk0s1 xid 2484 tx stats: # 2400 finish 2410 enter 70 wait 111 21179us close 3us flush 11143us
+tx_flush:1075: disk0s1 xid 2504 tx stats: # 2420 finish 2430 enter 69 wait 111 21179us close 3us flush 11126us
+tx_flush:1075: disk0s1 xid 2524 tx stats: # 2440 finish 2450 enter 69 wait 112 21001us close 3us flush 11123us
+tx_flush:1075: disk0s1 xid 2544 tx stats: # 2460 finish 2470 enter 68 wait 113 20842us close 3us flush 11107us
+tx_flush:1075: disk0s1 xid 2564 tx stats: # 2480 finish 2490 enter 68 wait 114 20665us close 3us flush 11046us
+tx_flush:1075: disk0s1 xid 2584 tx stats: # 2500 finish 2510 enter 67 wait 115 20491us close 3us flush 10981us
+tx_flush:1075: disk0s1 xid 2604 tx stats: # 2520 finish 2530 enter 67 wait 115 20491us close 3us flush 10931us
+tx_flush:1075: disk0s1 xid 2624 tx stats: # 2540 finish 2550 enter 67 wait 115 20491us close 3us flush 10876us
+tx_flush:1075: disk0s1 xid 2644 tx stats: # 2560 finish 2570 enter 66 wait 115 20491us close 3us flush 10825us
+tx_flush:1075: disk0s1 xid 2664 tx stats: # 2580 finish 2590 enter 66 wait 115 20491us close 3us flush 10766us
+tx_flush:1075: disk0s1 xid 2684 tx stats: # 2600 finish 2610 enter 65 wait 115 20491us close 3us flush 10701us
+tx_flush:1075: disk0s1 xid 2704 tx stats: # 2620 finish 2631 enter 65 wait 115 20491us close 3us flush 10639us
+tx_flush:1075: disk0s1 xid 2724 tx stats: # 2640 finish 2651 enter 64 wait 115 20491us close 3us flush 10577us
+tx_flush:1075: disk0s1 xid 2744 tx stats: # 2660 finish 2671 enter 64 wait 115 20491us close 3us flush 10514us
+tx_flush:1075: disk0s1 xid 2764 tx stats: # 2680 finish 2691 enter 63 wait 115 20491us close 3us flush 10450us
+tx_flush:1075: disk0s1 xid 2784 tx stats: # 2700 finish 2711 enter 63 wait 115 20491us close 3us flush 10386us
+tx_flush:1075: disk0s1 xid 2804 tx stats: # 2720 finish 2731 enter 63 wait 115 20491us close 3us flush 10331us
+tx_flush:1075: disk0s1 xid 2824 tx stats: # 2740 finish 2751 enter 62 wait 115 20491us close 3us flush 10275us
+tx_flush:1075: disk0s1 xid 2844 tx stats: # 2760 finish 2771 enter 62 wait 115 20491us close 3us flush 10244us
+tx_flush:1075: disk0s1 xid 2864 tx stats: # 2780 finish 2791 enter 62 wait 116 20333us close 3us flush 10188us
+tx_flush:1075: disk0s1 xid 2884 tx stats: # 2800 finish 2811 enter 61 wait 116 20333us close 3us flush 10131us
+tx_flush:1075: disk0s1 xid 2904 tx stats: # 2820 finish 2831 enter 61 wait 116 20333us close 3us flush 10073us
+tx_flush:1075: disk0s1 xid 2924 tx stats: # 2840 finish 2851 enter 60 wait 116 20333us close 3us flush 10015us
+tx_flush:1075: disk0s1 xid 2944 tx stats: # 2860 finish 2871 enter 60 wait 116 20333us close 3us flush 9959us
+tx_flush:1075: disk0s1 xid 2964 tx stats: # 2880 finish 2891 enter 60 wait 116 20333us close 3us flush 9905us
+tx_flush:1075: disk0s1 xid 2984 tx stats: # 2900 finish 2911 enter 59 wait 116 20333us close 3us flush 9850us
+tx_flush:1075: disk0s1 xid 3004 tx stats: # 2920 finish 2931 enter 59 wait 116 20333us close 3us flush 9799us
+tx_flush:1075: disk0s1 xid 3024 tx stats: # 2940 finish 2951 enter 59 wait 117 20164us close 3us flush 9744us
+tx_flush:1075: disk0s1 xid 3044 tx stats: # 2960 finish 2971 enter 58 wait 117 20164us close 3us flush 9690us
+tx_flush:1075: disk0s1 xid 3064 tx stats: # 2980 finish 2991 enter 58 wait 117 20164us close 3us flush 9641us
+tx_flush:1075: disk0s1 xid 3084 tx stats: # 3000 finish 3011 enter 58 wait 117 20164us close 3us flush 9590us
+tx_flush:1075: disk0s1 xid 3104 tx stats: # 3020 finish 3031 enter 57 wait 117 20164us close 3us flush 9540us
+tx_flush:1075: disk0s1 xid 3124 tx stats: # 3040 finish 3051 enter 57 wait 117 20164us close 3us flush 9491us
+tx_flush:1075: disk0s1 xid 3144 tx stats: # 3060 finish 3071 enter 57 wait 117 20164us close 3us flush 9441us
+tx_flush:1075: disk0s1 xid 3164 tx stats: # 3080 finish 3091 enter 56 wait 117 20164us close 3us flush 9414us
+tx_flush:1075: disk0s1 xid 3184 tx stats: # 3100 finish 3111 enter 56 wait 117 20164us close 3us flush 9365us
+tx_flush:1075: disk0s1 xid 3204 tx stats: # 3120 finish 3131 enter 56 wait 117 20164us close 3us flush 9321us
+tx_flush:1075: disk0s1 xid 3224 tx stats: # 3140 finish 3151 enter 56 wait 117 20164us close 3us flush 9275us
+tx_flush:1075: disk0s1 xid 3244 tx stats: # 3160 finish 3171 enter 55 wait 118 19998us close 3us flush 9231us
+tx_flush:1075: disk0s1 xid 3264 tx stats: # 3180 finish 3191 enter 55 wait 118 19998us close 3us flush 9200us
+tx_flush:1075: disk0s1 xid 3284 tx stats: # 3200 finish 3211 enter 55 wait 118 19998us close 3us flush 9173us
+tx_flush:1075: disk0s1 xid 3304 tx stats: # 3220 finish 3231 enter 54 wait 119 19844us close 3us flush 9131us
+tx_flush:1075: disk0s1 xid 3324 tx stats: # 3240 finish 3251 enter 54 wait 119 19844us close 3us flush 9086us
+tx_flush:1075: disk0s1 xid 3344 tx stats: # 3260 finish 3271 enter 54 wait 119 19844us close 3us flush 9044us
+tx_flush:1075: disk0s1 xid 3364 tx stats: # 3280 finish 3291 enter 54 wait 119 19844us close 3us flush 8999us
+tx_flush:1075: disk0s1 xid 3384 tx stats: # 3300 finish 3311 enter 53 wait 120 19688us close 3us flush 8959us
+tx_flush:1075: disk0s1 xid 3404 tx stats: # 3320 finish 3331 enter 53 wait 120 19688us close 3us flush 8917us
+tx_flush:1075: disk0s1 xid 3424 tx stats: # 3340 finish 3351 enter 53 wait 120 19688us close 3us flush 8875us
+tx_flush:1075: disk0s1 xid 3444 tx stats: # 3360 finish 3371 enter 53 wait 120 19688us close 3us flush 8834us
+tx_flush:1075: disk0s1 xid 3464 tx stats: # 3380 finish 3391 enter 52 wait 120 19688us close 3us flush 8794us
+tx_flush:1075: disk0s1 xid 3484 tx stats: # 3400 finish 3411 enter 52 wait 120 19688us close 3us flush 8761us
+tx_flush:1075: disk0s1 xid 3504 tx stats: # 3420 finish 3431 enter 52 wait 120 19688us close 3us flush 8724us
+tx_flush:1075: disk0s1 xid 3524 tx stats: # 3440 finish 3451 enter 51 wait 120 19688us close 3us flush 8685us
+tx_flush:1075: disk0s1 xid 3544 tx stats: # 3460 finish 3471 enter 51 wait 120 19688us close 3us flush 8646us
+tx_flush:1075: disk0s1 xid 3564 tx stats: # 3480 finish 3491 enter 51 wait 121 19530us close 3us flush 8608us
+tx_flush:1075: disk0s1 xid 3584 tx stats: # 3500 finish 3511 enter 51 wait 122 19382us close 3us flush 8573us
+tx_flush:1075: disk0s1 xid 3604 tx stats: # 3520 finish 3531 enter 51 wait 122 19382us close 3us flush 8535us
+tx_flush:1075: disk0s1 xid 3624 tx stats: # 3540 finish 3551 enter 50 wait 122 19382us close 3us flush 8512us
+tx_flush:1075: disk0s1 xid 3644 tx stats: # 3560 finish 3571 enter 50 wait 122 19382us close 3us flush 8499us
+tx_flush:1075: disk0s1 xid 3664 tx stats: # 3580 finish 3591 enter 50 wait 122 19382us close 3us flush 8471us
+tx_flush:1075: disk0s1 xid 3684 tx stats: # 3600 finish 3611 enter 50 wait 122 19382us close 3us flush 8435us
+tx_flush:1075: disk0s1 xid 3704 tx stats: # 3620 finish 3631 enter 49 wait 122 19382us close 3us flush 8400us
+tx_flush:1075: disk0s1 xid 3724 tx stats: # 3640 finish 3651 enter 49 wait 122 19382us close 3us flush 8364us
+tx_flush:1075: disk0s1 xid 3744 tx stats: # 3660 finish 3671 enter 49 wait 122 19382us close 3us flush 8329us
+tx_flush:1075: disk0s1 xid 3764 tx stats: # 3680 finish 3691 enter 49 wait 122 19382us close 3us flush 8307us
+tx_flush:1075: disk0s1 xid 3784 tx stats: # 3700 finish 3711 enter 48 wait 122 19382us close 3us flush 8284us
+tx_flush:1075: disk0s1 xid 3804 tx stats: # 3720 finish 3731 enter 48 wait 122 19382us close 3us flush 8259us
+tx_flush:1075: disk0s1 xid 3824 tx stats: # 3740 finish 3751 enter 48 wait 122 19382us close 3us flush 8235us
+tx_flush:1075: disk0s1 xid 3844 tx stats: # 3760 finish 3771 enter 48 wait 122 19382us close 3us flush 8211us
+tx_flush:1075: disk0s1 xid 3864 tx stats: # 3780 finish 3791 enter 48 wait 122 19382us close 3us flush 8186us
+tx_flush:1075: disk0s1 xid 3884 tx stats: # 3800 finish 3811 enter 47 wait 122 19382us close 3us flush 8161us
+tx_flush:1075: disk0s1 xid 3904 tx stats: # 3820 finish 3831 enter 47 wait 122 19382us close 3us flush 8137us
+tx_flush:1075: disk0s1 xid 3924 tx stats: # 3840 finish 3851 enter 47 wait 122 19382us close 3us flush 8113us
+tx_flush:1075: disk0s1 xid 3944 tx stats: # 3860 finish 3871 enter 47 wait 122 19382us close 3us flush 8087us
+tx_flush:1075: disk0s1 xid 3964 tx stats: # 3880 finish 3891 enter 46 wait 122 19382us close 3us flush 8065us
+tx_flush:1075: disk0s1 xid 3984 tx stats: # 3900 finish 3911 enter 46 wait 122 19382us close 3us flush 8043us
+tx_flush:1075: disk0s1 xid 4004 tx stats: # 3920 finish 3931 enter 46 wait 122 19382us close 3us flush 8025us
+tx_flush:1075: disk0s1 xid 4024 tx stats: # 3940 finish 3951 enter 46 wait 122 19382us close 3us flush 8003us
+tx_flush:1075: disk0s1 xid 4044 tx stats: # 3960 finish 3971 enter 46 wait 122 19382us close 3us flush 7981us
+tx_flush:1075: disk0s1 xid 4064 tx stats: # 3980 finish 3991 enter 46 wait 122 19382us close 3us flush 7959us
+tx_flush:1075: disk0s1 xid 4084 tx stats: # 4000 finish 4011 enter 45 wait 122 19382us close 3us flush 7943us
+tx_flush:1075: disk0s1 xid 4104 tx stats: # 4020 finish 4031 enter 45 wait 122 19382us close 3us flush 7935us
+tx_flush:1075: disk0s1 xid 4124 tx stats: # 4040 finish 4051 enter 45 wait 123 19242us close 3us flush 7930us
+tx_flush:1075: disk0s1 xid 4144 tx stats: # 4060 finish 4071 enter 45 wait 124 19093us close 3us flush 7917us
+tx_flush:1075: disk0s1 xid 4164 tx stats: # 4080 finish 4091 enter 45 wait 124 19093us close 3us flush 7903us
+tx_flush:1075: disk0s1 xid 4184 tx stats: # 4100 finish 4111 enter 44 wait 124 19093us close 3us flush 7882us
+tx_flush:1075: disk0s1 xid 4204 tx stats: # 4120 finish 4131 enter 44 wait 126 18803us close 3us flush 7880us
+tx_flush:1075: disk0s1 xid 4224 tx stats: # 4140 finish 4151 enter 44 wait 126 18803us close 3us flush 7857us
+tx_flush:1075: disk0s1 xid 4244 tx stats: # 4160 finish 4171 enter 44 wait 126 18803us close 3us flush 7836us
+tx_flush:1075: disk0s1 xid 4264 tx stats: # 4180 finish 4191 enter 44 wait 126 18803us close 3us flush 7814us
+tx_flush:1075: disk0s1 xid 4284 tx stats: # 4200 finish 4211 enter 44 wait 126 18803us close 3us flush 7794us
