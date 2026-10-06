@@ -268,3 +268,15 @@ read-only guest size and streaming byte comparison of the identified Measure
 localization sample, distinguishing a host-reader issue from a guest-visible
 copy problem before choosing a repair. Generated profile provenance now records
 the actual helper flags, moved restore job and optional unchanged SEP payload.
+
+The guest sample read in disk-preparation-15 returned 3,286 bytes on each side
+and exact equality. The verifier now traverses the entire original var tree and
+Data, checks regular-file bytes, modes and ownership, symlink targets and extra
+destination paths. Both volumes are mounted read-only. Its Darwin stat ABI is
+declared from xnu-7195.141.2/bsd/sys/stat.h, with a 144-byte compile-time check.
+A nonzero mismatch count fails preparation after clean volume unmounts.
+
+Direct-root-5 accepted the staged original IM4P and activated the simulated SEP
+endpoints. It passed phase-two mounts and FIPS checks, then stopped at the missing
+Data keybag. This does not demonstrate execution of real SEP firmware or a UIKit
+app. The next preparation step uses the original MobileKeyBag implementation.
