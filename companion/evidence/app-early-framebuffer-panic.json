@@ -1,0 +1,134 @@
+{
+  "kind": "actual_early_framebuffer_panic",
+  "binary_sha256": "fda9447b41d7bd170a0abf6b56f4b0db822ff9ca84add3e648299d2aa7f59505",
+  "binary_source": "9f92661b1b3154fb19de51ef9c9a1a6ed6e97d4f",
+  "emulator_exit": 0,
+  "runner_error": {
+    "type": "RuntimeError",
+    "detail": "Emulator exited during boot attempt; see serial.log and stderr.log"
+  },
+  "elapsed_seconds": 9.127014,
+  "quit_response": null,
+  "observation": "Emulator exited on early panic before observer or owned launcher could run; exit0 is not successful boot.",
+  "against_boot13": {
+    "equal_fields": [
+      "profile_path",
+      "profile_sha256",
+      "inputs",
+      "runner_sha256",
+      "control_source_sha256"
+    ],
+    "command_diff": [
+      "--- 13\n",
+      "+++ 14\n",
+      "@@ -1,6 +1,6 @@\n",
+      " /home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+      " -machine",
+      "-t8030,kaslr-off=true,usb-conn-type=unix,usb-conn-addr=/tmp/inferno-boot-wo9mwtce/absent-usb.sock,trustcache=/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache,boot-mode=exit_recovery",
+      "+t8030,kaslr-off=true,usb-conn-type=unix,usb-conn-addr=/tmp/inferno-boot-jxivsv7x/absent-usb.sock,trustcache=/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache,boot-mode=exit_recovery",
+      " -accel",
+      " tcg",
+      " -smp",
+      "@@ -17,43 +17,43 @@\n",
+      " -display",
+      " none",
+      " -vnc",
+      "-unix:/tmp/inferno-boot-wo9mwtce/vnc.sock",
+      "+unix:/tmp/inferno-boot-jxivsv7x/vnc.sock",
+      " -monitor",
+      " none",
+      " -serial",
+      "-file:/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/serial.log",
+      "+file:/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-14/serial.log",
+      " -qmp",
+      "-unix:/tmp/inferno-boot-wo9mwtce/qmp.sock,server=on,wait=off",
+      "+unix:/tmp/inferno-boot-jxivsv7x/qmp.sock,server=on,wait=off",
+      " -no-reboot",
+      " -d",
+      " guest_errors",
+      " -D",
+      "-/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/guest-errors.log",
+      "+/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-14/guest-errors.log",
+      " -drive",
+      "-file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/disks/root.raw,format=raw,if=none,id=root",
+      "+file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-14/disks/root.raw,format=raw,if=none,id=root",
+      " -device",
+      " nvme-ns,drive=root,bus=nvme-bus.0,nsid=1,nstype=1,logical_block_size=4096,physical_block_size=4096",
+      " -drive",
+      "-file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/disks/firmware.raw,format=raw,if=none,id=firmware",
+      "+file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-14/disks/firmware.raw,format=raw,if=none,id=firmware",
+      " -device",
+      " nvme-ns,drive=firmware,bus=nvme-bus.0,nsid=2,nstype=2,logical_block_size=4096,physical_block_size=4096",
+      " -drive",
+      "-file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/disks/syscfg.raw,format=raw,if=none,id=syscfg",
+      "+file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-14/disks/syscfg.raw,format=raw,if=none,id=syscfg",
+      " -device",
+      " nvme-ns,drive=syscfg,bus=nvme-bus.0,nsid=3,nstype=3,logical_block_size=4096,physical_block_size=4096",
+      " -drive",
+      "-file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/disks/ctrl_bits.raw,format=raw,if=none,id=ctrl_bits",
+      "+file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-14/disks/ctrl_bits.raw,format=raw,if=none,id=ctrl_bits",
+      " -device",
+      " nvme-ns,drive=ctrl_bits,bus=nvme-bus.0,nsid=4,nstype=4,logical_block_size=4096,physical_block_size=4096",
+      " -drive",
+      "-file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/disks/nvram.raw,format=raw,if=none,id=nvram",
+      "+file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-14/disks/nvram.raw,format=raw,if=none,id=nvram",
+      " -device",
+      " apple-nvram,drive=nvram,bus=nvme-bus.0,nsid=5,nstype=5,id=nvram,logical_block_size=4096,physical_block_size=4096",
+      " -drive",
+      "-file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/disks/effaceable.raw,format=raw,if=none,id=effaceable",
+      "+file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-14/disks/effaceable.raw,format=raw,if=none,id=effaceable",
+      " -device",
+      " nvme-ns,drive=effaceable,bus=nvme-bus.0,nsid=6,nstype=6,logical_block_size=4096,physical_block_size=4096",
+      " -drive",
+      "-file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-13/disks/panic_log.raw,format=raw,if=none,id=panic_log",
+      "+file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-14/disks/panic_log.raw,format=raw,if=none,id=panic_log",
+      " -device",
+      " nvme-ns,drive=panic_log,bus=nvme-bus.0,nsid=7,nstype=8,logical_block_size=4096,physical_block_size=4096"
+    ]
+  },
+  "prior_same_failure_and_retry": [
+    {
+      "report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-16/report.json",
+      "report_sha256": "5d6e88572f9f6f2cc6a39f9084f92c6ea8967ad101bff82eeed83f85e2e0da64",
+      "serial_sha256": "801661e3ba84bacb21b4562d47b75033e702c7aa4b8af6e926c4e3d9909a66e3",
+      "binary_sha256": "075b221cb771cd26ddde2d6218058c9ba1e15a236e5d1d161be936129084cf87",
+      "profile_sha256": "337a3576e1a0991314a7c25eb8b62c4de7c9d6bc3103ffd32c7eb1d315367dc7",
+      "elapsed_seconds": 7.344318,
+      "excerpt": "virtual IOMFBStatus IOMFB::UPPipe_H11P::rt_bandwidth_setup(): bandwidth values not found\nvirtual bool IOMFB::UPPipe_H11P::late_init(): Realtime Bandwidth setup failed\nbool UnifiedPipeline::start_hardware_boot(): late_init failed\nbool UnifiedPipeline::start_hardware_gated(): start_hardware_boot failed.\n/Library/Caches/com.apple.xbs/Sources/IOMobileFramebuffer/IOMobileFramebuffer-221.0.2.3/Kernel/UnifiedPipeline/UnifiedPipeline.cpp ERROR: DRIVER DIDN'T LOAD (start_hardware() failed.)\nIOPlatformPanicAction -> AppleS5L8960XWatchDogTimer\nnot enabling long period watchdog (cleared SoC watchdog if enabled prior), panic SoC watchdog disabled\nIOPlatformPanicAction -> AppleSynopsysMIPIDSIController\nIOPlatformPanicAction -> RTBuddyV2\nIOPlatformPanicAction -> RTBuddyV2\nIOPlatformPanicAction -> RTBuddyV2\nIOPlatformPanicAction -> RTBuddyV2\nIOPlatformPanicAction -> AppleT8030PMGR\npanic(cpu 1 caller 0xfffffff008128350): Kernel data abort. at pc 0xfffffff00979a36c, lr 0xfffffff00979a5ac (saved state: 0xffffffe81533b780)"
+    },
+    {
+      "report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-17/report.json",
+      "report_sha256": "7866ec92b0cd7af0fedaf3fceb7b24771a31bd639b66d013bfe82eaecebe993e",
+      "serial_sha256": "6d0ab75fdca23b0ab1cdab6de90c008b2f00899095003a31f922b64671fed2ae",
+      "binary_sha256": "075b221cb771cd26ddde2d6218058c9ba1e15a236e5d1d161be936129084cf87",
+      "profile_sha256": "337a3576e1a0991314a7c25eb8b62c4de7c9d6bc3103ffd32c7eb1d315367dc7",
+      "elapsed_seconds": 325.408722,
+      "excerpt": "Tue Oct  6 08:28:36 2026 localhost com.apple.xpc.launchd[1] <Notice>: Early boot complete. Continuing system boot.\nINFERNO_OWNED_NATIVE_PROBE_V1: executed arm64 Darwin syscalls"
+    }
+  ],
+  "interpretation": "Prior16 and17 share binary/profile, with same panic16 followed by actual userspace17. This supports a controlled identical retry; it does not prove the mechanism or guarantee retry success.",
+  "files": {
+    "app-early-framebuffer-panic-serial.log": {
+      "sha256": "b6c6433e8d20505d6008019b92fcbb92a20225a9319fedc1a23ef9b47b12a630",
+      "bytes": 24146
+    },
+    "app-early-framebuffer-panic-qmp-transcript.jsonl": {
+      "sha256": "53e2697e52e55e0d2521d46024f03edb02bcc6648914ec4834686bb4f7cf36d1",
+      "bytes": 3464
+    },
+    "app-early-framebuffer-panic-report.json": {
+      "sha256": "4825077d0e3c3b5e023fb362bc4894563592b986d96baad788712ffe8d54464c",
+      "bytes": 17182
+    },
+    "app-early-framebuffer-panic-guest-errors.log": {
+      "sha256": "1a3f1c9068513ecb6c506b7bd610c304be9c8635ebd03e68fb0f85c57d4379ed",
+      "bytes": 1307
+    },
+    "app-early-framebuffer-panic-stderr.log": {
+      "sha256": "34e4a36f74c764a2e8328ea54714faaa6ef7fdf136d17ab25cd15cc6a55f12f0",
+      "bytes": 2775
+    }
+  },
+  "stopped_root_equals_verified_stage35": true,
+  "stopped_root_sha256": "dd1062ad10cf09dc3b18f1c84d8bc2eb6d2d6ed2ff54bdc2c546284d44d403de"
+}
