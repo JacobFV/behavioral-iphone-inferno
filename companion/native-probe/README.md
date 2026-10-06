@@ -233,3 +233,13 @@ message, status0, APFS unmount completion, and `INFERNO_GIGALOCKER_COMPLETE`.
 The relocated restore plist profile also passed an independent 7-Zip archive test
 of all 775 files. This establishes initialization and normal unmount; it does not
 retroactively establish success for the hanging shutdown calls in attempts9/10.
+
+## Executed Data and Update seed
+
+Preparation13 used source `8a075ed69f` and a disposable copy of the clean
+gigalocker-initialized preparation12 disk. Original newfs returned0 for Data
+(disk0s1s2) and Update (disk0s1s6). The helper copied the original var children into
+Data, preserved root metadata, prepared Hardware's factory-data path, synced and
+cleanly unmounted all volumes. Actual serial records `INFERNO_DATA_COMPLETE` and
+`INFERNO_PREP_COMPLETE`. Guest statfs available bytes changed from 412,479,488 to
+260,640,768. These are preparation observations, not app-runner capacity claims.
