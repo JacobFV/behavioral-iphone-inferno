@@ -2,6 +2,21 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 16:20: first imported-fixture recovery rejected parent metadata
+
+Actual disk-preparation-imported-fixture-1 (runner2297346, source585cfc5005,
+helper56) parsed the pinned two-file/75930-byte plan, mounted original System,
+then returned INFERNO_IMPORTED_APP_FINISH result82/unmount0. No collision,
+readback or PREP_COMPLETE marker: do NOT claim installation success. All mounted
+APFS volumes were unmounted; bootworker requested owned runner SIGTERM15 and is
+retaining failed disks/ancestors as forensic-only. Never use this attempt as base.
+Guard82 combines Applications lstat/type/uid/gid/path checks without observed
+metadata; diskworker owns a narrow diagnostic correction, not speculative guard
+relaxation. No installed boot or retry until reviewed correction and retention.
+Nativeworker is preparing a separate owned resource-using IPA demo with distinct
+identity and no probe telemetry, for fresh-target/generic-launch execution after
+the first imported fixture succeeds. No demo guest execution yet.
+
 ### 2026-10-07 16:18: diagnostic comparison complete; imported IPA recovery next
 
 73 completed strict0→1 with no startup CPU diagnostic filter, no CPU logging,
