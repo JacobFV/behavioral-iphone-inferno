@@ -1,0 +1,26 @@
+{
+  "scope": "Bounded static follow-up of one actual74 diagnostic frame; no guest action or semantic patch.",
+  "runtime": {
+    "pc": "0x19285c630",
+    "validated_slide": "0xa554000",
+    "unslid": "0x188308630",
+    "function_start": "0x188308150",
+    "offset": "0x4e0",
+    "samples": 1,
+    "original_shape": "Same PC appears as two nested frames in original report; preserved, not proof of recursion."
+  },
+  "static": {
+    "0x1883085f4-0x1883085f8": "Compare w20 with zero, set w22 to nonzero Boolean.",
+    "0x188308610-0x188308624": "Conditional object+0x720 flag update precedes cleanup; sampled text supplies no actual flag value.",
+    "0x188308628-0x18830862c": "Pass x23 and BL authenticated stub1883391c0. x23 originated object+0x2b0 at1883081c8 and is restored from stack at1883084fc after loop use.",
+    "stub": "Loads pointer from1da58f398, raw80090000001865f0; authenticated cache target1801865f0 maps exact pthread_mutex_unlock+0. Corresponding lock stub1c0 predecessor1883081d0 loads1da58f388 raw80090000001867dc mapping pthread_mutex_lock+0.",
+    "0x188308630-0x188308654": "Move x22 into return x0, restore registers/stack, retab."
+  },
+  "interpretation": "Adds a cleanup/return-boundary observation beyond the retry samples. Does not reveal return Boolean or numeric SwapWait code, prove blocking inside unlock, establish recursion, or explain persistent freeze. No new diagnostic or patch justified by this frame alone.",
+  "provenance": {
+    "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/QuartzCore": "4de2f38bc7800f59064d9387550a60d0db2d549930af101e879d0f91e017d50a",
+    "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/QuartzCore-can-update-full.txt": "91eae0562b27d1c1b983107193e146699cf8925d1efd547608e8cd914da2604f",
+    "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/QuartzCore-can-update-return-stubs.txt": "71a6c5e35efe9507e5ab4422c4b1a41f43c57608e37dde1228cf4f917591888c"
+  },
+  "source_constraints": "Original disassembly and implementation image remain outside Git. Existing whole-function sparsepatch audit applies; this note does not repeat or expand it."
+}
