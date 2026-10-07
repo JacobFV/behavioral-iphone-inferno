@@ -9,6 +9,31 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-06 17:03 local
 
+### 2026-10-07 15:48: actual guarded71 verified; clean repeat72 authorized
+
+71 normalpostflight463c3a0266 exit0/errornull609.186443s, all7/ancestorspassed,
+initialtimingcomplete. Rootvisual7691197593 reviewed guardedzero-pre-counter0,
+after028counter1 andRGB-preservingQMP0/1. Boot29E1DD9B-9BA5-45E4-B514-5F20483B18C2,
+PID255/main3358402584. NoCPU/SAMPLE/Home/OPEN. Independent0d92dc9e22 verifies
+actualhostwritebegininterval10.250515287s, bothwritebeginsbeforecutoffs/bothACKs,
+exactimage/source/identityprefixes, postcounter4submits/38pairs(34ready/4processed)
+throughobserverend; finalflush5submits/40pairs. All9disableACKsverified.
+
+Firsthelper001 abortedbeforeinput/trace atunsupportedADPget-statequery; preserved
+61f4ccedf2. Fix879245b0d7 independently5a3db11ace bindsall9disabled tosole-runner
+journal andrawQMPACKs, completeboundedprefixes/nopendingmailbox; nosecondconnection.
+Freshhelper002 ranactualsuccess; minutesidlewhilefixingoverlay preventsfull65
+cadencematch. Itvalidatesguardedexecution, notfreezerootcause.
+Originalstrictverifier rejectednewdeadlinefield; originalrejectionretained.
+Narrowbf0f8b55da+independentreview44c2957a0e nowverifyactual71 with matchedfinite
+receiverdeadline/writebegin/end/fullbytes/controlresponse/overrunflag. Default69/70
+unchanged; sevenboundednegativecasesreject. Hostsendstartnotguestdeliverydeadline.
+
+ONE72 authorizedfromsame0889/base/exact71flags/currentcode, after71retention.
+Rootmanualstartup10s/unlock/Close; reviewedFinishSetuponowned0 theninvoke fixedguard
+withnewoutput,10s delay. Nofixpauseintended. RootallUI/CPU/SAMPLE/finish. CPU1s only
+confirmedpersistentfreeze+all9off. Keepfirstfailures/rejections, no newbacking.
+
 ### 2026-10-07 15:34: guarded sequence reviewed; actual71 launching
 
 Guarded helper ed1283d849+33164d2bd2+f021c916e4+37edc68fe9+df00efca88; independent
