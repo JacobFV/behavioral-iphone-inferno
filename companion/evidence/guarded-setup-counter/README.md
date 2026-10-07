@@ -1,6 +1,6 @@
 # Guarded Finish Setup → counter sequence
 
-This is an explicitly invoked experiment, not an automatic boot path. Root must first review the actual current Finish Setting Up iPhone overlay over the owned counter at zero. No worker has executed this sequence on a guest.
+This is an explicitly invoked experiment, not an automatic boot path. Root must first review the actual current Finish Setting Up iPhone overlay over the owned counter at zero. Root executed the corrected sequence on guest71; workers performed read-only audits.
 
 The reference manifest pins full original VNC images from root-reviewed runs69/70. RGB comparison uses all1,081,600 pixels of `(0,100,832,1400)`, with zero tolerance. Only the clock/status strip and bottom owned diagnostic region are excluded. Dimensions remain832×1792. QMP828×1792 captures are separately retained and never resized or used as interchangeable reference images. Root must review a new reference before any future unknown state can be accepted; animation/alpha-blended states classify unknown and never authorize input. During only the bounded no-input settling poll, they may be observed until an exact zero match arrives; initial/pre-NotNow/final-pre-counter gates remain strict. Unknown frames/counts are retained, and timeout aborts without counter input.
 
@@ -35,3 +35,16 @@ Do not run other input/control sequences concurrently. Identity is evidence from
 Validation: frame-replay.json retains actual69/70 overlay/zero acceptance and beta/counter/boot/Clock rejection, plus actual828-wide QMP rejection. Synthetic alpha-blend and clock-only pixel edits are clearly labeled. deadline-fixture.json uses a real private Unix socket and existing transport: timely/default sends, expired queued validation, and an injected50ms journal delay causing rejection before write with no peer bytes. This is neither a QEMU run nor a guest/UI journey.
 
 Run71 preflight fix: ADP trace-event-get-state is not exposed by the existing mailbox allowlist. The helper therefore verifies the last completed nine-event display trace lifecycle has all_disabled=true/pending=[], and binds every final disable response to the exact latest QMP send/ACK IDs from retained journals. Missing/partial/uncertain or pending state fails closed. No pending mailbox requests are permitted. This is conservative retained-state evidence under the sole-runner/no-concurrent-operator requirement; the subsequent existing trace-start also rejects pending state. No new QMP connection or receiver change is needed.
+
+Actual guest71 validation is retained in `../ownedguard71actual/`,
+`../owned-guarded-71-visual/` and `../owned-guarded-journey-71/`. The first
+invocation failed before any input because ADP state queries were outside the
+mailbox allowlist; that failure is preserved in `../guarded-71-first-preflight-failure/`.
+The corrected invocation sent the counter10.250515287 seconds after Not Now,
+with both write starts before their cutoffs and both guest ACKs. Root reviewed
+zero before the tap and one afterward; drawing submissions continued. Normal
+shutdown and seven-disk preservation passed. The verifier now validates the
+optional deadline against the raw receiver evidence; its original schema
+rejection remains retained. The long overlay idle during the preflight repair
+means this run does not reproduce failed65's full startup cadence. It proves
+actual guarded execution, not a freeze fix or a guest presentation deadline.
