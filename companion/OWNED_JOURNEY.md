@@ -200,6 +200,24 @@ or preserve their provenance and do not attribute every read to the guest.
 The original seven-event records remain valid evidence of their own binary.
 The new diagnostic's build and actual execution status are in NEXT_SESSION.md.
 
+The later source change `ec40c73c79` adds a ninth default-off event,
+`apple_adp_read_caller`, only for existing reads at normalized offsets0x45004,
+0x50184 and0x58184. It records CPU presence and exposed AArch64 PC/x30 without
+synchronization, guest-memory reads or register writes. PC may reflect a
+translation-block entry; neither address alone proves the exact executed call
+site. Correlate with the same attempt's kernel slide and audited original code,
+retaining unknown callers. The evidence parser under
+`evidence/original-adp-fifo-error-path/correlate-callers.py` requires explicit
+trace, stderr, original-kernel and new output paths. Never use another boot's
+slide. Actual build/control and guest emission status are in NEXT_SESSION.md.
+
+The archived670 and f088 binaries expose seven and eight events respectively.
+Use their matching isolated host controller for full windows; a new controller
+must reject unsupported events and clean up any events it already enabled.
+A firmware-free control check has no display device and does not prove actual
+caller attribution. Run62's seven-event failure remains valid independently of
+this later diagnostic.
+
 ## Warm resume and timing
 
 Use `observe --home-button` with a new output directory. It sends the emulator's

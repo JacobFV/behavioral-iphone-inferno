@@ -59,6 +59,14 @@ verified natural observer expiry after60s, followed by a separately observed
 strict counter0→1 journey and normal shutdown. Both final strict verification
 and disk preservation passed. These observer checks do not resolve the earlier
 persistent freeze.
+Run62 reproduced the persistent freeze on the archived emulator and original
+stage50 guest state: a genuine counter1 event left both VNC and QMP at0, even
+through continuous observation and an ordinary Home transition. Drawing
+submissions stopped while interrupt acknowledgments continued. The incomplete
+journey and all seven disks are retained as a forensic failure. Diagnostic
+caller tracing is being validated to distinguish original driver read paths;
+no rendering fix is claimed.
+
 Broader reliability and active-workload measurements remain ongoing. See [BOOT.md](BOOT.md) for the image profile and headless runner,
 [USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.
 
