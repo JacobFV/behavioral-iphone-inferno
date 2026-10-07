@@ -1,0 +1,19 @@
+{
+  "purpose": "Actual build graph audit, not guest execution",
+  "compile_entries": [
+    {
+      "directory": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build",
+      "command": "cc -Ilibqemu-aarch64-softmmu.a.p -I. -I../source -Itarget/arm -I../source/target/arm -Iqapi -Itrace -Iui -Iui/shader -I/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/packages/usr/include -I/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/deps/include -I/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/packages/usr/include/p11-kit-1 -I/usr/include/pixman-1 -I/usr/include/libpng16 -I/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/packages/usr/include/slirp -I/usr/include/glib-2.0 -I/usr/lib/aarch64-linux-gnu/glib-2.0/include -I/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/packages/usr/include/aarch64-linux-gnu -fdiagnostics-color=auto -Wall -Winvalid-pch -std=gnu11 -O2 -g -Wempty-body -Wendif-labels -Wexpansion-to-defined -Wformat-security -Wformat-y2k -Wignored-qualifiers -Wimplicit-fallthrough=2 -Winit-self -Wmissing-format-attribute -Wmissing-prototypes -Wnested-externs -Wold-style-declaration -Wold-style-definition -Wredundant-decls -Wshadow=local -Wstrict-prototypes -Wtype-limits -Wundef -Wno-vla -Wwrite-strings -Wno-missing-include-dirs -Wno-psabi -Wno-shift-negative-value -isystem /home/brandonin/Documents/behavioral-iphone-inferno/.local-build/source/linux-headers -isystem linux-headers -iquote . -iquote /home/brandonin/Documents/behavioral-iphone-inferno/.local-build/source -iquote /home/brandonin/Documents/behavioral-iphone-inferno/.local-build/source/include -iquote /home/brandonin/Documents/behavioral-iphone-inferno/.local-build/source/host/include/aarch64 -iquote /home/brandonin/Documents/behavioral-iphone-inferno/.local-build/source/host/include/generic -iquote /home/brandonin/Documents/behavioral-iphone-inferno/.local-build/source/tcg/aarch64 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -fno-strict-aliasing -fno-common -fwrapv -DDEBUG -fno-omit-frame-pointer -ftrivial-auto-var-init=zero -fzero-call-used-regs=used-gpr -DINFERNO_SIMULATED_SEP -fPIE -isystem../source/linux-headers -isystemlinux-headers -DCOMPILING_PER_TARGET '-DCONFIG_TARGET=\"aarch64-softmmu-config-target.h\"' '-DCONFIG_DEVICES=\"aarch64-softmmu-config-devices.h\"' -MD -MQ libqemu-aarch64-softmmu.a.p/hw_display_apple_displaypipe_v4.c.o -MF libqemu-aarch64-softmmu.a.p/hw_display_apple_displaypipe_v4.c.o.d -o libqemu-aarch64-softmmu.a.p/hw_display_apple_displaypipe_v4.c.o -c ../source/hw/display/apple_displaypipe_v4.c",
+      "file": "../source/hw/display/apple_displaypipe_v4.c",
+      "output": "libqemu-aarch64-softmmu.a.p/hw_display_apple_displaypipe_v4.c.o"
+    }
+  ],
+  "linked_adpv4_objects": [
+    "libqemu-aarch64-softmmu.a.p/hw_display_apple_displaypipe_v4.c.o"
+  ],
+  "common_object_in_active_build_graph": false,
+  "stale_common_object_exists_on_disk": false,
+  "compile_commands_sha256": "1f1d67bc608ce3540c7b052f6104a73435e27a99ad839815bd91179158ff7519",
+  "build_ninja_sha256": "38d09832ded761ee51f7a750becee807fa86519344e7451e7548ce0ef49b5025",
+  "passed": true
+}
