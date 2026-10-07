@@ -81,14 +81,17 @@ setup-to-counter sequence with actual receiver write intervals of10.25/10.24s.
 Their source pins, raw logs, reviewed frames and normal disk preservation are
 retained. They do not resolve the intermittent display freeze.
 
-The first developer release still needs reliable runtime journeys, a general
-compatible IPA import/staging/launch path, and a defined Xcode build workflow.
-Manifest-driven import and staging are now being implemented, with the existing
-owned fixture packaged as an IPA as the first execution gate. No general IPA
-compatibility or Xcode-project support is claimed yet. The intended initial
-subset is unencrypted developer device apps compatible with this pinned iOS14
-runtime; building Xcode projects requires a separate macOS/Xcode toolchain.
-Firmware provisioning, packaging and sustained workload validation also remain.
+The first developer release targets already-built, unencrypted developer IPAs,
+as selected by the user. Xcode-project building is deferred until a Mac is
+available. The [release roadmap](RELEASE.md) separates execution proof from
+remaining compatibility, setup and reliability work.
+
+Manifest import, bounded recovery staging and app-bound launch helpers now exist.
+The first imported fixture installed and launched in74, but its actual tap left
+the display frozen at0. That failed interactive journey and original guest
+samples are retained; the intermittent freeze remains unresolved. A separately
+named resource-loading demo is being exercised through fresh installation and
+the general launcher. General IPA compatibility is not yet claimed.
 
 Broader reliability and active-workload measurements remain ongoing. See [BOOT.md](BOOT.md) for the image profile and headless runner,
 [USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.

@@ -2,6 +2,19 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 16:46: fresh demo recovery passed after directory metadata fix
+
+Generic demo1 failed only new-owned root metadata (415239d44d forensic retention).
+Correction599ae5ad95 independentlybec92d93b5 copies validated directory metadata
+only after fresh mkdir, never Applicationsparent/existingcollision. Actualdemo2
+logs show newtargetgid80 then metadata copy0/aftergid0, rootmode0755 unchanged.
+READBACK71939bytes/3entries/0mismatches; wrapper67392/launcher69136/cache596664
+allzero mismatches; FINISH0unmount0/PREP_COMPLETE. Root directly reviewed rawlogs.
+Bootworker preserves successfulstage beforeinstalled75 depth4, same0889/current
+host, controlmailbox/HID/capture10/1200s, WITHOUTprobejourney/keep-running/CPU.
+Root verifies originalPS+resource text+counter0→1 and uses finish-observation for
+normalstop; no invented probe telemetry. User gets Maclater; firstscopebuiltIPAs.
+
 ### 2026-10-07: user chose already-built developer IPAs first
 
 User answered no Mac/Xcode builder; explicitly start with already-built developer
