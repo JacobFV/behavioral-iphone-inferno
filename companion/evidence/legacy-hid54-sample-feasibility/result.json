@@ -1,0 +1,78 @@
+{
+  "result": "No already-implemented route to invoke original spindump/sample on live legacy HID54 without changing guest code/configuration.",
+  "source_revision": "09ef9189bebe0be4e5b711cf347940cf80a80e28",
+  "build_manifest_sha256": "0b3d4d07830a4900c83bdb4452394e2c938fc7f547ca1c1fe21de3d28c2ef186",
+  "source_proof": {
+    "companion/native-probe/hid-input.c": {
+      "revision": "09ef9189bebe0be4e5b711cf347940cf80a80e28",
+      "sha256": "1c810aa773845572e2bdd59b5a570a553dc4940c56b9111e2b52bbbcaea58443",
+      "matches_original_build_manifest": true
+    },
+    "companion/native-probe/open-control.c": {
+      "revision": "09ef9189bebe0be4e5b711cf347940cf80a80e28",
+      "sha256": "3928b1728f9556c293c06e58c6134f84a9151b19fcc5fb70b7254b3c111a6bab",
+      "matches_original_build_manifest": true
+    },
+    "companion/native-probe/readiness.c": {
+      "revision": "09ef9189bebe0be4e5b711cf347940cf80a80e28",
+      "sha256": "2fa6c51d29c913a681d02f8bb30c9b901680b99d291962543c39de0a8831ed5a",
+      "matches_original_build_manifest": true
+    }
+  },
+  "available_routes": {
+    "console": "HID_V1 TAP/SWIPE; OPEN_V1 fixed original LS launch of owned app. No shell/general exec/SAMPLE parser.",
+    "OPEN_child": "Fixed /usr/bin/inferno-launcher --open-only <validated32hexID>; drops groups/gid/uid501; caller cannot select executable or arguments.",
+    "readiness_ps": {
+      "argv": [
+        "/bin/ps",
+        "-A",
+        "-ww",
+        "-o",
+        "pid,ppid,uid,state,comm"
+      ],
+      "nominal_seconds": [
+        15,
+        45,
+        90,
+        150,
+        300,
+        600,
+        1200,
+        1800,
+        3600
+      ],
+      "columns_available": [
+        "pid",
+        "ppid",
+        "uid",
+        "state",
+        "comm"
+      ],
+      "absent": [
+        "wchan",
+        "threads",
+        "stack traces"
+      ],
+      "completion": "Require matching READINESS_END status0 timed_out0 to call a snapshot complete; nominal schedule drifts with preceding work."
+    },
+    "passive_crash_reports": {
+      "directories": [
+        "/private/var/mobile/Library/Logs/CrashReporter",
+        "/private/var/logs/CrashReporter"
+      ],
+      "suffixes": [
+        ".ips",
+        ".crash"
+      ],
+      "maximum_reports": 8,
+      "prefix_limit_bytes": 32768,
+      "sampling_invoked": false
+    },
+    "host": "Current guest-stack-sample preflight requires exact enabled SAMPLE_READY, absent from HID54 source; QMP display registers are device diagnostics, not original OS stacks."
+  },
+  "limits": [
+    "No guest input, control request, process signal, file staging or permission change was performed.",
+    "An already-generated original crash report may contain useful stacks, but passive collection neither causes nor guarantees a sample of the current stall.",
+    "Process state alone cannot identify a blocking call, thread wait channel, lock owner or display-stall cause."
+  ]
+}
