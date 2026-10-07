@@ -63,9 +63,11 @@ Run62 reproduced the persistent freeze on the archived emulator and original
 stage50 guest state: a genuine counter1 event left both VNC and QMP at0, even
 through continuous observation and an ordinary Home transition. Drawing
 submissions stopped while interrupt acknowledgments continued. The incomplete
-journey and all seven disks are retained as a forensic failure. Diagnostic
-caller tracing is being validated to distinguish original driver read paths;
-no rendering fix is claimed.
+journey and all seven disks are retained as a forensic failure. Runs63/64 reproduced the freeze on the same original state with diagnostic
+caller tracing. Run64 observed the original interrupt handler with its ready bit
+set, but subsequent drawing submissions stopped. A separate sampling-enabled
+branch is being prepared from the original disk state to inspect compositor
+stacks during failure; no rendering fix is claimed.
 
 Broader reliability and active-workload measurements remain ongoing. See [BOOT.md](BOOT.md) for the image profile and headless runner,
 [USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.

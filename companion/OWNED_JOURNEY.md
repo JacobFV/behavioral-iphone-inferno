@@ -23,6 +23,16 @@ three immutable backing ancestors and exact ctime-revalidation sidecars must
 remain at their recorded paths. Never chmod an already-read-only ancestor;
 ctime is part of the verified identity. See NEXT_SESSION.md for those identities.
 
+Runs61–64 returned to the preserved original stage50/HID54 state. Run61 passed;
+62–64 reproduced the persistent freeze. Those guests do not support SAMPLE.
+The latest diagnostic build0889 adds exposed x21 to the existing ninth event;
+interpret its ready bit only at the independently mapped interrupt-handler
+caller. Run64 had that bit set while drawing submissions stopped. A new branch
+from a logically verified flattening of original50 is being prepared with HID55;
+use it only after actual recovery readbacks and disk verification are recorded.
+Recovery also changes filesystem/NVRAM state, so this is not an isolated HID
+comparison. Never use a failed forensic attempt as a backing source.
+
 HID55 supports two explicit original-tool samples per boot. On a genuine tap
 with a persistently stale counter0, preserve continuous observation and let the
 bounded display trace disable. Before Home or reopen, sample BACKBOARDD then
