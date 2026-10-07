@@ -435,7 +435,7 @@ class SerialGestureTransport:
             begin = time.monotonic()
             result.update(write_begin_monotonic=begin, send_deadline_monotonic=send_deadline)
             if send_deadline is not None and begin >= send_deadline:
-                result.update(transmission='rejected-deadline-before-write', bytes_sent=0, replay_allowed=False)
+                result.update(transmission='rejected-deadline-before-write', bytes_sent=0, replay_allowed=False, error='HID host send deadline expired before write')
             else:
                 self.connection.sendall(line)
                 result.update(transmission='written-to-serial-socket', bytes_sent=len(line))
