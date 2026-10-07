@@ -1,0 +1,82 @@
+{
+  "scope": "Read-only source audit for run66 slow progression while CPU logging reportedly off; no runtime/QMP/VM actions or host-pressure diagnosis",
+  "pinned_revision": "f37ad49dbb68dc9c0097960381ebc14270fc3da8",
+  "source_checks": [
+    {
+      "path": "util/log.c",
+      "pinned_sha256": "ff4b9b68860bb6d2a78ace324b164fbf19fc7d8f4e2058c06c169fc5d81a8cd9",
+      "current_identical": true
+    },
+    {
+      "path": "include/qemu/log.h",
+      "pinned_sha256": "d5d6020d74cdc45e67e454d8b646f1fcb552e178456e96cc75caa7d99b73f049",
+      "current_identical": true
+    },
+    {
+      "path": "accel/tcg/cpu-exec.c",
+      "pinned_sha256": "4f03249bbdb9c10f70d32373efd8dd25e31094ce4baffc082c00f6c3f24cbd71",
+      "current_identical": true
+    },
+    {
+      "path": "accel/tcg/cpu-exec-common.c",
+      "pinned_sha256": "9e5e2e3586f321e2c8b961e3b6790d5c9d7e88d94ecc7e46b1371d5fbdc7d180",
+      "current_identical": true
+    },
+    {
+      "path": "accel/tcg/translator.c",
+      "pinned_sha256": "181d5eae4455c037fa8664c9ef8858289d5a5321f64aadbff752db8131d58b6a",
+      "current_identical": true
+    },
+    {
+      "path": "accel/tcg/translate-all.c",
+      "pinned_sha256": "dd3e0207c2e0ec943f99451d7f8d3ed5d170ff5d9ffdd6559bf6e864a8419daa",
+      "current_identical": true
+    },
+    {
+      "path": "tcg/tcg.c",
+      "pinned_sha256": "95dda892ea04b85302a158cdcfee3bd3e3782f9c72b44038d88e665e1abda8c6",
+      "current_identical": true
+    },
+    {
+      "path": "system/vl.c",
+      "pinned_sha256": "fd64262e234023a128108bdd302081006482062281e37b4b7e291153109fda24",
+      "current_identical": true
+    }
+  ],
+  "finding": "No source path found whereby startup dfilter alone modifies TB translation, chaining, instruction limits or CPU logging mask. This does not establish actual runtime mask or explain observed slowdown.",
+  "source_points": [
+    {
+      "source": "system/vl.c:3096; util/log.c:404..475",
+      "fact": "Option invokes qemu_set_dfilter_ranges: parse ranges and store debug_regions only. No log-mask or TCG cflag changes."
+    },
+    {
+      "source": "accel/tcg/cpu-exec-common.c:36..57",
+      "fact": "CF_NO_GOTO_TB added for explicit CPU_LOG_TB_NOCHAIN (or separately existing singlestep/oneinsn settings), not debug_regions."
+    },
+    {
+      "source": "accel/tcg/cpu-exec.c:252..278,383..385,417..419,454..460",
+      "fact": "CPU/exec logs call range predicate only after enabledCPU/EXEC check. Stop-chain message gatedEXEC."
+    },
+    {
+      "source": "accel/tcg/translator.c:204..205; translate-all.c:399..400,595..597",
+      "fact": "Range checks only under IN_ASM/OUT_ASM/EXEC masks; no generated-code change from range membership."
+    },
+    {
+      "source": "tcg/tcg.c:6821..6822,6859..6860,6877..6878",
+      "fact": "OP dump range checks under OP/OP_IND/OP_OPT log masks. Optimization passes execute independently of filter."
+    },
+    {
+      "source": "include/qemu/log.h:66..70",
+      "fact": "qemu_log_mask_and_addr short-circuits mask before addressfilter. No uses found in target/arm, Apple SoC board or ADPv4 source."
+    },
+    {
+      "source": "util/log.c:292..294",
+      "fact": "CONFIG_TRACE_LOG adds LOG_TRACE to selected mask; it does not imply CPU/EXEC/NOCHAIN bits."
+    }
+  ],
+  "limitations": [
+    "A filter can affect output of enabled address-filtered logging categories; conclusion is specific to baselineguest_errors/LOG_TRACE and reviewedARMpath.",
+    "Static review does not substitute actual command/mask journal evidence; accidental enable or other host/guest scheduling causes must be separately observed.",
+    "No CPU-window activation, runtime query, build, or corrective change performed."
+  ]
+}
