@@ -9,6 +9,27 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-06 17:03 local
 
+### 2026-10-07 15:24: run70 preserved; fixing cadence execution before next boot
+
+Run70 postflightb89fe03fc4 normalexit0/errornull417.652322s, strict and initial
+launch timing complete, all7/backing passed. Rootvisual6e98e12cfd reviewed0->1,
+boot8F02ACA8-4597-4153-A965-4D27829C7DBA PID259/main3778059501. NoCPU/SAMPLE.
+Planned earliercadence NOT achieved: setup1791411652.211453 ->counter1682.197589
+(29.986136s); traceoff1679.279603 BEFOREtap. Countercheckpointsboth133052 prove
+no tracecoverage, notnoMMIOprogress. Startupactionsalsolater. Do not call this a
+negative test of10s hypothesis. No VM currentlylive; no nextlaunchyet.
+
+Nativeworker owns newguarded-setup-counter.py+doc/replay inisolatedtree; diskworker
+independent review. Root approved narrow explicit sequence to remove conversational
+latency: starting atalready-reviewedFinishSetup-on-owned0, exactpinnedVNC832RGB
+crop excludingclock/debug (noresize/noQMPmix), oneNotNow, exactunobstructed0/source
+gates,10s targetmonotonicdeadline abortlate, strictbefore+bytecheckpoint+ONEtap,
+30s fullobservations+endcheckpoint. Dedicated60s traceonlywhenall9off. No retry,
+Home/OPEN/CPU/strictafter/finish automatically. Root owns invocation/visualreview.
+References70 after-alert/settled.png andafter-setup-not-now/settled.png reviewed,
+fullhashpins required; validateactual69/70 corpusincludingtransient/otherstates.
+This is a focused operator tool for the missed experiment, not a freeze fix.
+
 ### 2026-10-07 15:15: run69 retained; one earlier-cadence reproduction planned
 
 Run69 normal postflight069774b583 exit0/errornull582.587718s, strict and initial
