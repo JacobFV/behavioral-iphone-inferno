@@ -1,0 +1,61 @@
+{
+  "candidate": "bfe8bc32f82e5424d02cb266449b4bbcb2751592",
+  "design_commit": "757a568a26",
+  "verdict": "Actual replay passes; two narrow hardening changes requested before final approval.",
+  "replay": {
+    "path": "/tmp/inferno-recovery-review-replay.json",
+    "sha256": "547c22499460eb90029e9bf2fd2d4afe5d73065b269acf158c2d95c48a4dd9ec",
+    "actual_cases": [
+      {
+        "run": 67,
+        "scope": "f657a4fdfee94393a5dd721690eadf30",
+        "status": "verified-recovered-journey"
+      },
+      {
+        "run": 67,
+        "scope": null,
+        "status": "rejected"
+      },
+      {
+        "run": 66,
+        "scope": null,
+        "status": "verified"
+      },
+      {
+        "run": 64,
+        "scope": null,
+        "status": "rejected"
+      },
+      {
+        "run": 65,
+        "scope": "f657a4fdfee94393a5dd721690eadf30",
+        "status": "rejected"
+      },
+      {
+        "run": 59,
+        "scope": null,
+        "status": "verified"
+      }
+    ],
+    "synthetic_rejections": [
+      "wrong-wire",
+      "wrong-launcher",
+      "missing-identity",
+      "duplicate-open",
+      "prior-appeared",
+      "missing-validation",
+      "main-before-open"
+    ]
+  },
+  "confirmed": [
+    "Default paths unchanged: actual67 remains rejected without explicit request;66/59 verified;64/65 rejected.",
+    "Explicit67 recovery binds exact host command/wire/guest request/launcher callback and newPID360 timing/incarnation; retains prior269 and rejection history.",
+    "Successful output is verified-recovered-journey with whole_boot_verified=false.",
+    "All raw lifecycle records are paired with validated provenance and markers before selection; malformed association replays reject."
+  ],
+  "requested_changes": [
+    "Prior main-only records currently need only precede selectedmain, allowing another incomplete process between OPEN and selectedmain to be mislabeled prior. Require prior raw/validation/marker and prior timing tail before named guest OPEN_REQUEST.",
+    "Five timing hooks currently permit arbitrary permutation aftermain. Narrow source-derived hardening should require delegate2/window3 with active/appeared4/5; actual67 satisfies. Existing launch-timing.py also lacks this fixed ordering, so this is not a parity claim."
+  ],
+  "scope": "Read-only code review plus rerun of six existing actual-report replays and seven existing in-memory negatives; no new guest, runtime, report or source mutations."
+}
