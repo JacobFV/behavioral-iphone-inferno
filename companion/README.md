@@ -68,8 +68,26 @@ caller tracing. Run64 observed the original interrupt handler with its ready bit
 set, but subsequent drawing submissions stopped. Run65 then reproduced it on a verified sampling-enabled branch from the original
 disk state and captured complete original-tool samples of backboardd and
 SpringBoard during the freeze. The failed journey, frozen images, samples and
-all disks are preserved. Original-image stack comparison is now underway;
-no rendering fix is claimed.
+all disks are preserved. Original-image stack analysis places some failed-state
+backboardd samples in SwapWait and its retry path. Run68 then established actual
+coverage of two kernel addresses in a separate healthy Clock calibration:
+pending and successful returns coexist with advancing frames. These snapshots
+have no process/thread identity and cannot be paired as calls. We still need the
+same bounded observation during a reproduced freeze; no rendering fix is claimed.
+
+Runs69/70 completed the strict visual journey, and69 also passed three
+Home/reopen/tap cycles ending at counter4. Their normal shutdown, source pins,
+raw logs and disk preservation are retained. A proposed shorter setup-to-tap
+experiment was not achieved in70 because operator review delayed the tap until
+after the trace window expired. A narrowly guarded operator sequence is being
+built to make that experiment executable; its implementation is not evidence of
+a guest run.
+
+The current roadmap gate is reliability. Real boot, input, owned-app execution,
+visible output, warm/fresh-process launch and a two-guest resource observation
+have been demonstrated. Remaining work is to diagnose the intermittent freeze,
+establish repeatable journeys, expand app coverage, and measure sustained active
+concurrency before claiming dependable runner economics.
 
 Broader reliability and active-workload measurements remain ongoing. See [BOOT.md](BOOT.md) for the image profile and headless runner,
 [USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.
