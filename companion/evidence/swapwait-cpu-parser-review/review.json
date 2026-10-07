@@ -1,0 +1,29 @@
+{
+  "reviewed_commit": "3f714bb5b79a1e146b26fcbc8e4ca9871ce2c94e",
+  "emulator_source": "f37ad49dbb68dc9c0097960381ebc14270fc3da8",
+  "source_hashes": {
+    "companion/evidence/swapwait-cpu-parser/parse.py": "c2d01c7a7f906b90fa2f9f1ea0bdf70ad3dc069304c7d84e0061a03fbb8df310",
+    "target/arm/cpu.c": "9d969ee42b7d05b337feb151c21dd51ba6cc4387274f379bbf5599d3db6fcdd5",
+    "accel/tcg/cpu-exec.c": "4f03249bbdb9c10f70d32373efd8dd25e31094ce4baffc082c00f6c3f24cbd71",
+    "util/log.c": "ff4b9b68860bb6d2a78ace324b164fbf19fc7d8f4e2058c06c169fc5d81a8cd9"
+  },
+  "verdict": "No blocking issue for actual normal LF-delimited QEMU CPU dumps; two strictness limitations below.",
+  "checks": [
+    "aarch64_cpu_dump_state emits11 register lines: PC/X00/X01, nine tripletsX02..X28, X29/X30/SP, then PSTATE footer. Parser requires12 lines and all31 GPRs, PC, SP exactly once.",
+    "log_cpu_exec holds qemu_log_trylock through cpu_dump_state and unlock; no inter-dump pairing is inferred. This does not establish guest thread/process identity.",
+    "Offsets accumulate original byte lengths and raw block SHA preserves retained bytes. Unexpected interleaving line is retained and invalidates block.",
+    "Only complete exact entryPC96df690 and finalPC96e219c receive low32 ABI interpretation. UnknownPC retains fields without ABI; incomplete blocks excluded from distributions.",
+    "No unchanged token/flags at return or entry/return pairing is asserted. Kernel slide/build/filter/control provenance remains independently required."
+  ],
+  "limitations": [
+    {
+      "location": "parse.py footer fullmatch",
+      "detail": "PSTATE eight hexadecimal digits followed by arbitrary non-newline suffix is accepted; flags/EL suffix is not validated against actual formatter. Hence exact original-layout claim applies more strongly to registers than footer."
+    },
+    {
+      "location": "parse.py data.splitlines(keepends=True)",
+      "detail": "Bare CR is treated as a line separator; offsets remain byte-correct, but this is not physical-LF-only framing. Actual dump formatter emits LF."
+    }
+  ],
+  "validation_scope": "Read-only source review against f37-identical cpu.c/cpu-exec.c; reused existing owned-attempt6 evidence, no new test execution or VM action."
+}
