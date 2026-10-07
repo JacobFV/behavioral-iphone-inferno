@@ -2,6 +2,8 @@
 """Clone a verified raw recovery ramdisk and add owned/nonmutating launch probes."""
 import argparse
 import hashlib
+import importlib.util
+from imported_app import validate as validate_imported_app
 import json
 import plistlib
 import shutil
@@ -29,6 +31,9 @@ p.add_argument('--launchd-cache-sha256', help='required merged configuration SHA
 p.add_argument('--export-reports', action='store_true', help='read-only bounded crash report export from copied Data')
 p.add_argument('--system-launcher',type=Path,help='owned launcher copy for System versus Data execution comparison')
 p.add_argument('--system-app-executable',type=Path,help='replace only existing owned /Applications/InfernoProbe.app/InfernoProbe; preserve Info.plist')
+p.add_argument('--imported-app-manifest', type=Path, help='validated owned IPA manifest; stage its unchanged bounded tree')
+p.add_argument('--imported-app-manifest-sha256', help='required exact importer manifest SHA256')
+p.add_argument('--allow-identical-fixture-tree-sha256', help='explicit pin permitting only byte-identical existing InfernoProbe fixture')
 p.add_argument('--system-app-dir',type=Path,help='owned two-file InfernoProbe.app bundle to stage under Applications')
 p.add_argument('--unlock-helper',type=Path,help='owned single empty-passcode unlock diagnostic for freshly created VM keybag')
 p.add_argument('--exec-wrapper',type=Path,help='owned System wrapper to diagnose mobile exec')
@@ -36,6 +41,23 @@ p.add_argument('--multitouch-img4', type=Path, help='explicit unsigned format-wr
 p.add_argument('--multitouch-sha256', help='required SHA256 of supplied IMG4 container')
 p.add_argument('--output', required=True, type=Path)
 a = p.parse_args()
+imported_data = None
+if bool(a.imported_app_manifest) != bool(a.imported_app_manifest_sha256):
+    p.error('Imported app manifest and SHA256 are required together')
+if a.allow_identical_fixture_tree_sha256 and not a.imported_app_manifest:
+    p.error('Identical fixture exception requires imported manifest')
+if a.imported_app_manifest:
+    if not a.disk_helper or not a.disk_helper_existing or a.system_app_dir or a.system_app_executable:
+        p.error('Imported app requires existing volumes/helper and excludes fixture staging flags')
+    try:
+        # Reuse importer compatibility/IPA parser rather than trust a handmade JSON.
+        spec = importlib.util.spec_from_file_location('inferno_app_import', Path(__file__).resolve().parents[1]/'app-import.py')
+        importer = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(importer)
+        importer.validate_import_manifest(a.imported_app_manifest)
+        imported_data = validate_imported_app(a.imported_app_manifest, a.imported_app_manifest_sha256, a.allow_identical_fixture_tree_sha256)
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        p.error('Imported app validation failed: '+str(exc))
 if a.hid_input_helper and (not a.disk_helper or not a.readiness_probe or not a.hid_input_helper.is_file()):
     p.error('--hid-input-helper requires a regular helper file, disk helper and readiness probe')
 if bool(a.multitouch_img4) != bool(a.multitouch_sha256):
@@ -93,6 +115,35 @@ if a.disk_helper:
         hfs('chmod', '755', '/usr/share/inferno-system-launcher')
         hfs('extract', '/usr/share/inferno-system-launcher', a.output / 'readback-system-launcher')
         assert sha(a.output / 'readback-system-launcher') == sha(a.system_launcher)
+    if imported_data:
+        manifest, bundle_root, records, plan = imported_data
+        plan_path = a.output/'imported-app.plan'
+        plan_path.write_bytes(plan)
+        hfs('add', plan_path, '/usr/share/inferno-imported-app.plan')
+        hfs('chmod', '644', '/usr/share/inferno-imported-app.plan')
+        hfs('extract', '/usr/share/inferno-imported-app.plan', a.output/'readback-imported-app.plan')
+        if sha(a.output/'readback-imported-app.plan') != sha(plan_path):
+            raise ValueError('Imported copy plan readback differs')
+        hfs('mkdir', '/usr/share/inferno-imported-app')
+        hfs('chmod', '755', '/usr/share/inferno-imported-app')
+        for index, item in enumerate(records):
+            target = '/usr/share/inferno-imported-app/'+item['path']
+            if item['type']==1:
+                hfs('mkdir', target)
+                hfs('chmod', '755', target)
+            else:
+                source = bundle_root/item['path']
+                if sha(source)!=item['sha256']:
+                    raise ValueError('Imported source changed before ramdisk copy')
+                hfs('add', source, target)
+                hfs('chmod', format(item['mode'],'o'), target)
+                readback = a.output/('readback-imported-%04d'%index)
+                hfs('extract', target, readback)
+                if readback.stat().st_size!=item['bytes'] or sha(readback)!=item['sha256']:
+                    raise ValueError('Imported ramdisk file readback differs')
+        if sha(a.imported_app_manifest)!=a.imported_app_manifest_sha256:
+            raise ValueError('Imported manifest changed during preparation')
+        (a.output/'imported-app-manifest.json').write_bytes(a.imported_app_manifest.read_bytes())
     if a.system_app_executable:
         hfs('add', a.system_app_executable, '/usr/share/inferno-app-executable')
         hfs('chmod', '755', '/usr/share/inferno-app-executable')
@@ -133,7 +184,7 @@ if a.disk_helper:
         readiness_job.write_bytes(plistlib.dumps({'Label': 'org.inferno.readiness', 'ProgramArguments': ['/usr/bin/inferno-readiness'], 'RunAtLoad': True, 'StandardOutPath': '/dev/console', 'StandardErrorPath': '/dev/console', 'UserName': 'root'}))
         hfs('add', readiness_job, '/usr/share/org.inferno.readiness.plist')
         hfs('chmod', '644', '/usr/share/org.inferno.readiness.plist')
-    jobs.append(('prepare-root', ['/usr/bin/inferno-prepare-root', '--disposable-root-copy'] + (['--role-volumes'] if a.disk_helper_roles else []) + (['--existing-volumes'] if a.disk_helper_existing else []) + (['--init-gigalocker'] if a.disk_helper_gigalocker else []) + (['--seed-data'] if a.disk_helper_data else []) + (['--copy-sep'] if a.sep_payload else []) + (['--verify-data'] if a.disk_helper_verify_data else []) + (['--create-keybag'] if a.disk_helper_keybag else []) + (['--install-readiness'] if a.readiness_probe else []) + (['--install-cache'] if a.launchd_cache else []) + (['--export-reports'] if a.export_reports else []) + (['--install-exec-wrapper'] if a.exec_wrapper else []) + (['--install-system-launcher'] if a.system_launcher else []) + (['--install-unlock-helper'] if a.unlock_helper else []) + (['--install-system-app'] if a.system_app_dir else []) + (['--replace-system-app-executable'] if a.system_app_executable else []) + (['--install-multitouch'] if a.multitouch_img4 else []) + (['--install-hid-input'] if a.hid_input_helper else [])))
+    jobs.append(('prepare-root', ['/usr/bin/inferno-prepare-root', '--disposable-root-copy'] + (['--role-volumes'] if a.disk_helper_roles else []) + (['--existing-volumes'] if a.disk_helper_existing else []) + (['--init-gigalocker'] if a.disk_helper_gigalocker else []) + (['--seed-data'] if a.disk_helper_data else []) + (['--copy-sep'] if a.sep_payload else []) + (['--verify-data'] if a.disk_helper_verify_data else []) + (['--create-keybag'] if a.disk_helper_keybag else []) + (['--install-readiness'] if a.readiness_probe else []) + (['--install-cache'] if a.launchd_cache else []) + (['--export-reports'] if a.export_reports else []) + (['--install-exec-wrapper'] if a.exec_wrapper else []) + (['--install-system-launcher'] if a.system_launcher else []) + (['--install-unlock-helper'] if a.unlock_helper else []) + (['--install-system-app'] if a.system_app_dir else []) + (['--install-imported-app'] if imported_data else []) + (['--replace-system-app-executable'] if a.system_app_executable else []) + (['--install-multitouch'] if a.multitouch_img4 else []) + (['--install-hid-input'] if a.hid_input_helper else [])))
 for name, args in jobs:
     label = 'org.inferno.probe.' + name
     local = a.output / (label + '.plist')
@@ -155,6 +206,7 @@ profile['provenance']['helper_flags'] = {key: getattr(a, key) for key in ('disk_
 profile['provenance']['multitouch_img4_sha256'] = a.multitouch_sha256
 profile['provenance']['multitouch_scope'] = 'Explicit unsigned container to existing Preboot zero-hash firmware/FUD; no manifest or signature added' if a.multitouch_img4 else None
 profile['provenance']['sep_payload_sha256'] = a.sep_sha256
+profile['provenance']['imported_app'] = {'manifest_sha256': a.imported_app_manifest_sha256, 'tree_sha256': imported_data[0]['tree_sha256'], 'guest_path': imported_data[0]['bundle']['guest_path'], 'allow_identical_fixture_tree_sha256': a.allow_identical_fixture_tree_sha256, 'scope': 'unchanged imported bytes; installation/readback requires actual guest preparation, no launch claim'} if imported_data else None
 profile['provenance']['system_app_executable'] = {'path': str(a.system_app_executable), 'sha256': sha(a.system_app_executable), 'target': '/Applications/InfernoProbe.app/InfernoProbe', 'scope': 'existing owned executable only; no Info.plist or registration changes'} if a.system_app_executable else None
 profile['provenance']['system_app_files'] = {p.name:sha(p) for p in a.system_app_dir.iterdir()} if a.system_app_dir else None
 profile['provenance']['unlock_helper_sha256'] = sha(a.unlock_helper) if a.unlock_helper else None

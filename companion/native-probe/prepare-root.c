@@ -262,9 +262,10 @@ static int ensure(const char *path) {
     printf("INFERNO_PREP_MKDIR_FAILED %s errno=%d\n", path, *__error());
     return -1;
 }
+#include "imported-app.c"
 int main(int argc, char **argv) {
     if (argc < 2 || strcmp(argv[1], "--disposable-root-copy")) return 2;
-    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0, readiness = 0, install_cache = 0, export_reports = 0, exec_wrapper = 0, system_launcher = 0, unlock_helper = 0, system_app = 0, app_executable = 0, multitouch = 0, hid_input = 0;
+    int roles = 0, existing = 0, gigalocker = 0, seed_data = 0, copy_sep = 0, verify_data = 0, keybag = 0, readiness = 0, install_cache = 0, export_reports = 0, exec_wrapper = 0, system_launcher = 0, unlock_helper = 0, system_app = 0, imported_app = 0, app_executable = 0, multitouch = 0, hid_input = 0;
     for (int i=2; i<argc; ++i) {
         if (!strcmp(argv[i], "--role-volumes")) roles = 1;
         else if (!strcmp(argv[i], "--existing-volumes")) existing = 1;
@@ -279,6 +280,7 @@ int main(int argc, char **argv) {
         else if (!strcmp(argv[i], "--install-cache")) install_cache = 1;
         else if (!strcmp(argv[i], "--export-reports")) export_reports = 1;
         else if (!strcmp(argv[i], "--install-system-app")) system_app = 1;
+        else if (!strcmp(argv[i], "--install-imported-app")) imported_app = 1;
         else if (!strcmp(argv[i], "--replace-system-app-executable")) app_executable = 1;
         else if (!strcmp(argv[i], "--install-unlock-helper")) unlock_helper = 1;
         else if (!strcmp(argv[i], "--install-system-launcher")) system_launcher = 1;
@@ -420,6 +422,10 @@ int main(int argc, char **argv) {
         compare_tree("/usr/share/inferno-unlock-empty","/mnt1/usr/bin/inferno-unlock-empty");
         printf("INFERNO_UNLOCK_HELPER_READBACK bytes=%llu mismatches=%llu\n",verified_bytes-prior_bytes,mismatches);fflush(0);
         sync();if(unmount("/mnt1",0))return 57;if(mismatches)return 58;
+    }
+    if(imported_app) {
+        if(!existing || system_app || app_executable)return 91;
+        int result=install_imported_app(system_device);if(result)return result;
     }
     if(system_app) {
         if(mount_at(system_device,"/mnt1",0))return 59;
