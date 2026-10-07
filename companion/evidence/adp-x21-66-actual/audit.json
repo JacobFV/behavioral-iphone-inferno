@@ -1,0 +1,1021 @@
+{
+  "source_report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-66",
+  "manifest": {
+    "guest-errors.log": {
+      "bytes": 346907,
+      "sha256": "fdfdb47fa1d5e686ae8440829fa1a1c6483899a020af8c3fccbad8f2e195e9aa"
+    },
+    "stderr.log": {
+      "bytes": 2827,
+      "sha256": "90d324fa1e1c26c49589cda1ea8076ea1c3f9073a1f1fccf44bdc91ae15d91eb"
+    },
+    "serial.log": {
+      "bytes": 425856,
+      "sha256": "f1aaba0e2803eadd39c90b41d507173575669e731885e009e76bee81d424186f"
+    },
+    "display-trace-control.jsonl": {
+      "bytes": 17355,
+      "sha256": "543f5b586a837c7fc89b869f6bc6068e6ecdd50f6451bffc09b0d18edaea0215"
+    },
+    "qmp-transcript.jsonl": {
+      "bytes": 53079,
+      "sha256": "e86e291f81e67a39f079f7809d5bb8ba1fe6d676ec1a54d90750f826bf6bb723"
+    },
+    "control-transcript.jsonl": {
+      "bytes": 6984,
+      "sha256": "1a5a725d2347d079f670e9ffac6238d0c9b2e48782031f17348232014ec47678"
+    },
+    "serial-input-transcript.jsonl": {
+      "bytes": 2751,
+      "sha256": "28fe284577c8d261cd0cf0cd4c187492cca258c20f143a6bfd18425f707d7aca"
+    },
+    "report.json": {
+      "bytes": 80467,
+      "sha256": "a4850be2ddca7915330055b3a86d6e418e3d034d642fc7fe89eab95ffac9bdae"
+    },
+    "command.json": {
+      "bytes": 3451,
+      "sha256": "ac6b713b7fc33545a2d5e7379ce328a04c9f1859ddf1717ab181f1a5a4a7a3c4"
+    },
+    "build-manifest.json": {
+      "bytes": 2401,
+      "sha256": "1c0ca353df0b88956f071503654a9a0a3f1e22346270e89accdfaa911391f096"
+    },
+    "x21-startup-before.json": {
+      "bytes": 1051,
+      "sha256": "4f8261efeef7681b5e8a71910b08a0e4a8874c72254b9738c136e84eb0ec19f6"
+    },
+    "x21-startup-after.json": {
+      "bytes": 1052,
+      "sha256": "4aa76511adeaa3c2d93aad02d92a8af3ef74f33cc592eb7c7608558cc49b5c7c"
+    },
+    "close-beta-alert/submission.json": {
+      "bytes": 1826,
+      "sha256": "6a16de1cc6d68ae9a7346e605ee68db9ce8de31797d2f6c57b2c6c0292cdf4e6"
+    },
+    "setup-not-now/submission.json": {
+      "bytes": 1828,
+      "sha256": "f1dbe7f57da2a2bf83c11a6f46a10ffb25e4d3400cdf371150214c79852de7c1"
+    },
+    "open-from-home-001/submission.json": {
+      "bytes": 1089,
+      "sha256": "b6cdf98bbd2c6ea4bbfc9f5ebf3deb80fed19320c63d81812144d7caef8f9fac"
+    },
+    "counter-001/submission.json": {
+      "bytes": 1829,
+      "sha256": "29fc4a07b89ab1be332f6ceca33aef74c87a7be7f4eac03ca0e7f380a4ff5267"
+    }
+  },
+  "parser_sha256": "bf3f2ae80582d9f00f422652b8829a3a65ea290e5cbf6eb173e4516694d88c85",
+  "kernel_slide": "0x0",
+  "phases": [
+    {
+      "name": "startup",
+      "byte_range": [
+        1629,
+        19394
+      ],
+      "slice_sha256": "7f29086c8256ed89aa3e99ecd85efde202c59bec6e5ffb73dd8835e0ee3d36b3",
+      "event_counts": {
+        "apple_adp_output_ready": 21,
+        "apple_adp_status_read": 20,
+        "apple_adp_irq_write": 20,
+        "apple_adp_unknown_mmio": 60,
+        "apple_adp_read_caller": 60
+      },
+      "status_values": {
+        "0x400": 20
+      },
+      "immediate_equal_w1c_pairs": 20,
+      "status_reads": 20,
+      "caller_counts": {
+        "decompression_failure": 40,
+        "interrupt_handler_ready_gate": 20
+      },
+      "handler_pending_bit10": {
+        "True": 20
+      },
+      "exposed_pc_counts": {
+        "0xfffffff00977b660": 60
+      }
+    },
+    {
+      "name": "between-startup-checkpoint-and-counter",
+      "byte_range": [
+        19394,
+        285387
+      ],
+      "slice_sha256": "14db7b9cec83ba8a65ee743108150d88861b7148aee8deb61b8e9603974191ad",
+      "event_counts": {
+        "apple_adp_output_ready": 41,
+        "apple_adp_status_read": 76,
+        "apple_adp_irq_write": 76,
+        "apple_adp_unknown_mmio": 2470,
+        "apple_adp_read_caller": 228,
+        "apple_adp_gp_config_write": 304,
+        "apple_adp_submit": 38,
+        "apple_adp_bh": 76,
+        "apple_adp_pipe": 76
+      },
+      "status_values": {
+        "0x400": 38,
+        "0x100400": 1,
+        "0x100000": 37
+      },
+      "immediate_equal_w1c_pairs": 76,
+      "status_reads": 76,
+      "caller_counts": {
+        "decompression_failure": 152,
+        "interrupt_handler_ready_gate": 76
+      },
+      "handler_pending_bit10": {
+        "True": 39,
+        "False": 37
+      },
+      "exposed_pc_counts": {
+        "0xfffffff00977b660": 228
+      }
+    },
+    {
+      "name": "counter-to-final-flush",
+      "byte_range": [
+        285387,
+        346907
+      ],
+      "slice_sha256": "ee122972d7459206e90c1e4f5459db229eb5268468080703dcc6d7beb1a8b3a6",
+      "event_counts": {
+        "apple_adp_output_ready": 38,
+        "apple_adp_status_read": 42,
+        "apple_adp_irq_write": 42,
+        "apple_adp_unknown_mmio": 421,
+        "apple_adp_read_caller": 126,
+        "apple_adp_gp_config_write": 40,
+        "apple_adp_submit": 5,
+        "apple_adp_bh": 10,
+        "apple_adp_pipe": 10
+      },
+      "status_values": {
+        "0x400": 37,
+        "0x100000": 5
+      },
+      "immediate_equal_w1c_pairs": 42,
+      "status_reads": 42,
+      "caller_counts": {
+        "decompression_failure": 84,
+        "interrupt_handler_ready_gate": 42
+      },
+      "handler_pending_bit10": {
+        "True": 37,
+        "False": 5
+      },
+      "exposed_pc_counts": {
+        "0xfffffff00977b660": 126
+      }
+    }
+  ],
+  "windows": [
+    {
+      "start": {
+        "time": 1791405812.4075828,
+        "monotonic_ns": 824996284061117,
+        "stage": "start",
+        "seconds": 10,
+        "events": [
+          "apple_adp_submit",
+          "apple_adp_bh",
+          "apple_adp_pipe",
+          "apple_adp_output_ready",
+          "apple_adp_irq_write",
+          "apple_adp_unknown_mmio",
+          "apple_adp_gp_config_write",
+          "apple_adp_status_read",
+          "apple_adp_read_caller"
+        ]
+      },
+      "enables": [
+        {
+          "time": 1791405812.4084175,
+          "monotonic_ns": 824996284895713,
+          "stage": "after-enable",
+          "event": "apple_adp_submit",
+          "response": {
+            "return": {},
+            "id": 12
+          }
+        },
+        {
+          "time": 1791405812.4090657,
+          "monotonic_ns": 824996285543925,
+          "stage": "after-enable",
+          "event": "apple_adp_bh",
+          "response": {
+            "return": {},
+            "id": 13
+          }
+        },
+        {
+          "time": 1791405812.4097402,
+          "monotonic_ns": 824996286218408,
+          "stage": "after-enable",
+          "event": "apple_adp_pipe",
+          "response": {
+            "return": {},
+            "id": 14
+          }
+        },
+        {
+          "time": 1791405812.4105353,
+          "monotonic_ns": 824996287013452,
+          "stage": "after-enable",
+          "event": "apple_adp_output_ready",
+          "response": {
+            "return": {},
+            "id": 15
+          }
+        },
+        {
+          "time": 1791405812.4112732,
+          "monotonic_ns": 824996287751328,
+          "stage": "after-enable",
+          "event": "apple_adp_irq_write",
+          "response": {
+            "return": {},
+            "id": 16
+          }
+        },
+        {
+          "time": 1791405812.412087,
+          "monotonic_ns": 824996288565044,
+          "stage": "after-enable",
+          "event": "apple_adp_unknown_mmio",
+          "response": {
+            "return": {},
+            "id": 17
+          }
+        },
+        {
+          "time": 1791405812.413716,
+          "monotonic_ns": 824996290193916,
+          "stage": "after-enable",
+          "event": "apple_adp_gp_config_write",
+          "response": {
+            "return": {},
+            "id": 18
+          }
+        },
+        {
+          "time": 1791405812.420759,
+          "monotonic_ns": 824996297237456,
+          "stage": "after-enable",
+          "event": "apple_adp_status_read",
+          "response": {
+            "return": {},
+            "id": 19
+          }
+        },
+        {
+          "time": 1791405812.421949,
+          "monotonic_ns": 824996298427382,
+          "stage": "after-enable",
+          "event": "apple_adp_read_caller",
+          "response": {
+            "return": {},
+            "id": 20
+          }
+        }
+      ],
+      "disables": [
+        {
+          "time": 1791405822.5214312,
+          "monotonic_ns": 825006397909256,
+          "stage": "after-disable",
+          "event": "apple_adp_submit",
+          "response": {
+            "return": {},
+            "id": 22
+          }
+        },
+        {
+          "time": 1791405822.5219297,
+          "monotonic_ns": 825006398407770,
+          "stage": "after-disable",
+          "event": "apple_adp_bh",
+          "response": {
+            "return": {},
+            "id": 23
+          }
+        },
+        {
+          "time": 1791405822.5227897,
+          "monotonic_ns": 825006399267743,
+          "stage": "after-disable",
+          "event": "apple_adp_pipe",
+          "response": {
+            "return": {},
+            "id": 24
+          }
+        },
+        {
+          "time": 1791405822.5239677,
+          "monotonic_ns": 825006400445781,
+          "stage": "after-disable",
+          "event": "apple_adp_output_ready",
+          "response": {
+            "return": {},
+            "id": 25
+          }
+        },
+        {
+          "time": 1791405822.5251374,
+          "monotonic_ns": 825006401615562,
+          "stage": "after-disable",
+          "event": "apple_adp_irq_write",
+          "response": {
+            "return": {},
+            "id": 26
+          }
+        },
+        {
+          "time": 1791405822.5259845,
+          "monotonic_ns": 825006402462751,
+          "stage": "after-disable",
+          "event": "apple_adp_unknown_mmio",
+          "response": {
+            "return": {},
+            "id": 27
+          }
+        },
+        {
+          "time": 1791405822.5267925,
+          "monotonic_ns": 825006403270643,
+          "stage": "after-disable",
+          "event": "apple_adp_gp_config_write",
+          "response": {
+            "return": {},
+            "id": 28
+          }
+        },
+        {
+          "time": 1791405822.5275688,
+          "monotonic_ns": 825006404047031,
+          "stage": "after-disable",
+          "event": "apple_adp_status_read",
+          "response": {
+            "return": {},
+            "id": 29
+          }
+        },
+        {
+          "time": 1791405822.536906,
+          "monotonic_ns": 825006413385014,
+          "stage": "after-disable",
+          "event": "apple_adp_read_caller",
+          "response": {
+            "return": {},
+            "id": 30
+          }
+        }
+      ],
+      "stop": {
+        "time": 1791405822.5369327,
+        "monotonic_ns": 825006413410614,
+        "stage": "stop-result",
+        "reason": "deadline",
+        "all_disabled": true,
+        "pending": []
+      }
+    },
+    {
+      "start": {
+        "time": 1791406583.290576,
+        "monotonic_ns": 825767167054429,
+        "stage": "start",
+        "seconds": 60,
+        "events": [
+          "apple_adp_submit",
+          "apple_adp_bh",
+          "apple_adp_pipe",
+          "apple_adp_output_ready",
+          "apple_adp_irq_write",
+          "apple_adp_unknown_mmio",
+          "apple_adp_gp_config_write",
+          "apple_adp_status_read",
+          "apple_adp_read_caller"
+        ]
+      },
+      "enables": [
+        {
+          "time": 1791406583.2932458,
+          "monotonic_ns": 825767169723939,
+          "stage": "after-enable",
+          "event": "apple_adp_submit",
+          "response": {
+            "return": {},
+            "id": 56
+          }
+        },
+        {
+          "time": 1791406583.2942219,
+          "monotonic_ns": 825767170700166,
+          "stage": "after-enable",
+          "event": "apple_adp_bh",
+          "response": {
+            "return": {},
+            "id": 57
+          }
+        },
+        {
+          "time": 1791406583.296313,
+          "monotonic_ns": 825767172791531,
+          "stage": "after-enable",
+          "event": "apple_adp_pipe",
+          "response": {
+            "return": {},
+            "id": 58
+          }
+        },
+        {
+          "time": 1791406583.2976496,
+          "monotonic_ns": 825767174128207,
+          "stage": "after-enable",
+          "event": "apple_adp_output_ready",
+          "response": {
+            "return": {},
+            "id": 59
+          }
+        },
+        {
+          "time": 1791406583.2994394,
+          "monotonic_ns": 825767175917859,
+          "stage": "after-enable",
+          "event": "apple_adp_irq_write",
+          "response": {
+            "return": {},
+            "id": 60
+          }
+        },
+        {
+          "time": 1791406583.300611,
+          "monotonic_ns": 825767177089398,
+          "stage": "after-enable",
+          "event": "apple_adp_unknown_mmio",
+          "response": {
+            "return": {},
+            "id": 61
+          }
+        },
+        {
+          "time": 1791406583.302204,
+          "monotonic_ns": 825767178682282,
+          "stage": "after-enable",
+          "event": "apple_adp_gp_config_write",
+          "response": {
+            "return": {},
+            "id": 62
+          }
+        },
+        {
+          "time": 1791406583.3032928,
+          "monotonic_ns": 825767179771101,
+          "stage": "after-enable",
+          "event": "apple_adp_status_read",
+          "response": {
+            "return": {},
+            "id": 63
+          }
+        },
+        {
+          "time": 1791406583.3062594,
+          "monotonic_ns": 825767182738164,
+          "stage": "after-enable",
+          "event": "apple_adp_read_caller",
+          "response": {
+            "return": {},
+            "id": 64
+          }
+        }
+      ],
+      "disables": [
+        {
+          "time": 1791406643.3367505,
+          "monotonic_ns": 825827213228733,
+          "stage": "after-disable",
+          "event": "apple_adp_submit",
+          "response": {
+            "return": {},
+            "id": 67
+          }
+        },
+        {
+          "time": 1791406643.3378909,
+          "monotonic_ns": 825827214369248,
+          "stage": "after-disable",
+          "event": "apple_adp_bh",
+          "response": {
+            "return": {},
+            "id": 68
+          }
+        },
+        {
+          "time": 1791406643.341886,
+          "monotonic_ns": 825827218364282,
+          "stage": "after-disable",
+          "event": "apple_adp_pipe",
+          "response": {
+            "return": {},
+            "id": 69
+          }
+        },
+        {
+          "time": 1791406643.3435926,
+          "monotonic_ns": 825827220071134,
+          "stage": "after-disable",
+          "event": "apple_adp_output_ready",
+          "response": {
+            "return": {},
+            "id": 70
+          }
+        },
+        {
+          "time": 1791406643.3448405,
+          "monotonic_ns": 825827221318657,
+          "stage": "after-disable",
+          "event": "apple_adp_irq_write",
+          "response": {
+            "return": {},
+            "id": 71
+          }
+        },
+        {
+          "time": 1791406643.346065,
+          "monotonic_ns": 825827222543428,
+          "stage": "after-disable",
+          "event": "apple_adp_unknown_mmio",
+          "response": {
+            "return": {},
+            "id": 72
+          }
+        },
+        {
+          "time": 1791406643.350499,
+          "monotonic_ns": 825827226977246,
+          "stage": "after-disable",
+          "event": "apple_adp_gp_config_write",
+          "response": {
+            "return": {},
+            "id": 73
+          }
+        },
+        {
+          "time": 1791406643.3515728,
+          "monotonic_ns": 825827228051057,
+          "stage": "after-disable",
+          "event": "apple_adp_status_read",
+          "response": {
+            "return": {},
+            "id": 74
+          }
+        },
+        {
+          "time": 1791406643.3552978,
+          "monotonic_ns": 825827231775930,
+          "stage": "after-disable",
+          "event": "apple_adp_read_caller",
+          "response": {
+            "return": {},
+            "id": 75
+          }
+        }
+      ],
+      "stop": {
+        "time": 1791406643.3553212,
+        "monotonic_ns": 825827231799098,
+        "stage": "stop-result",
+        "reason": "deadline",
+        "all_disabled": true,
+        "pending": []
+      }
+    },
+    {
+      "start": {
+        "time": 1791406678.292833,
+        "monotonic_ns": 825862169311467,
+        "stage": "start",
+        "seconds": 60,
+        "events": [
+          "apple_adp_submit",
+          "apple_adp_bh",
+          "apple_adp_pipe",
+          "apple_adp_output_ready",
+          "apple_adp_irq_write",
+          "apple_adp_unknown_mmio",
+          "apple_adp_gp_config_write",
+          "apple_adp_status_read",
+          "apple_adp_read_caller"
+        ]
+      },
+      "enables": [
+        {
+          "time": 1791406678.2935393,
+          "monotonic_ns": 825862170017612,
+          "stage": "after-enable",
+          "event": "apple_adp_submit",
+          "response": {
+            "return": {},
+            "id": 79
+          }
+        },
+        {
+          "time": 1791406678.2941418,
+          "monotonic_ns": 825862170619726,
+          "stage": "after-enable",
+          "event": "apple_adp_bh",
+          "response": {
+            "return": {},
+            "id": 80
+          }
+        },
+        {
+          "time": 1791406678.2947702,
+          "monotonic_ns": 825862171248239,
+          "stage": "after-enable",
+          "event": "apple_adp_pipe",
+          "response": {
+            "return": {},
+            "id": 81
+          }
+        },
+        {
+          "time": 1791406678.2955198,
+          "monotonic_ns": 825862171997985,
+          "stage": "after-enable",
+          "event": "apple_adp_output_ready",
+          "response": {
+            "return": {},
+            "id": 82
+          }
+        },
+        {
+          "time": 1791406678.296243,
+          "monotonic_ns": 825862172720979,
+          "stage": "after-enable",
+          "event": "apple_adp_irq_write",
+          "response": {
+            "return": {},
+            "id": 83
+          }
+        },
+        {
+          "time": 1791406678.2969458,
+          "monotonic_ns": 825862173424036,
+          "stage": "after-enable",
+          "event": "apple_adp_unknown_mmio",
+          "response": {
+            "return": {},
+            "id": 84
+          }
+        },
+        {
+          "time": 1791406678.2979314,
+          "monotonic_ns": 825862174409639,
+          "stage": "after-enable",
+          "event": "apple_adp_gp_config_write",
+          "response": {
+            "return": {},
+            "id": 85
+          }
+        },
+        {
+          "time": 1791406678.2988284,
+          "monotonic_ns": 825862175306345,
+          "stage": "after-enable",
+          "event": "apple_adp_status_read",
+          "response": {
+            "return": {},
+            "id": 86
+          }
+        },
+        {
+          "time": 1791406678.2997258,
+          "monotonic_ns": 825862176203819,
+          "stage": "after-enable",
+          "event": "apple_adp_read_caller",
+          "response": {
+            "return": {},
+            "id": 87
+          }
+        }
+      ],
+      "disables": [
+        {
+          "time": 1791406708.9524121,
+          "monotonic_ns": 825892828890305,
+          "stage": "after-disable",
+          "event": "apple_adp_submit",
+          "response": {
+            "return": {},
+            "id": 99
+          }
+        },
+        {
+          "time": 1791406708.9535549,
+          "monotonic_ns": 825892830033283,
+          "stage": "after-disable",
+          "event": "apple_adp_bh",
+          "response": {
+            "return": {},
+            "id": 100
+          }
+        },
+        {
+          "time": 1791406708.9546375,
+          "monotonic_ns": 825892831115926,
+          "stage": "after-disable",
+          "event": "apple_adp_pipe",
+          "response": {
+            "return": {},
+            "id": 101
+          }
+        },
+        {
+          "time": 1791406708.9553223,
+          "monotonic_ns": 825892831800359,
+          "stage": "after-disable",
+          "event": "apple_adp_output_ready",
+          "response": {
+            "return": {},
+            "id": 102
+          }
+        },
+        {
+          "time": 1791406708.9587324,
+          "monotonic_ns": 825892835210879,
+          "stage": "after-disable",
+          "event": "apple_adp_irq_write",
+          "response": {
+            "return": {},
+            "id": 103
+          }
+        },
+        {
+          "time": 1791406708.9628406,
+          "monotonic_ns": 825892839319209,
+          "stage": "after-disable",
+          "event": "apple_adp_unknown_mmio",
+          "response": {
+            "return": {},
+            "id": 104
+          }
+        },
+        {
+          "time": 1791406708.963598,
+          "monotonic_ns": 825892840076347,
+          "stage": "after-disable",
+          "event": "apple_adp_gp_config_write",
+          "response": {
+            "return": {},
+            "id": 105
+          }
+        },
+        {
+          "time": 1791406708.9642034,
+          "monotonic_ns": 825892840681292,
+          "stage": "after-disable",
+          "event": "apple_adp_status_read",
+          "response": {
+            "return": {},
+            "id": 106
+          }
+        },
+        {
+          "time": 1791406708.9648492,
+          "monotonic_ns": 825892841327277,
+          "stage": "after-disable",
+          "event": "apple_adp_read_caller",
+          "response": {
+            "return": {},
+            "id": 107
+          }
+        }
+      ],
+      "stop": {
+        "time": 1791406708.9648705,
+        "monotonic_ns": 825892841348318,
+        "stage": "stop-result",
+        "reason": "runner cleanup",
+        "all_disabled": true,
+        "pending": []
+      }
+    }
+  ],
+  "serial_refs": [
+    {
+      "offset": 285363,
+      "text": "INFERNO_LAUNCH_TIMING_V1 boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=302 attempt=6 request_ticks=12936740785 callback_ticks=12937708419 numer=125 denom=3 accepted=0"
+    },
+    {
+      "offset": 377335,
+      "text": "INFERNO_EVENT_PROCESS_IDENTITY pid=367 query_result=56 errno=0 uniqueid=367 idversion=1045 source=original-libproc fallback=main-tick-and-pid"
+    },
+    {
+      "offset": 377479,
+      "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 DE03772B-D957-44AD-8E34-5D96482742F2 367 1 main 17660848202 125 3"
+    },
+    {
+      "offset": 377619,
+      "text": "INFERNO_TIMING_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=367 sequence=1 hook=main ticks=17660848202 numer=125 denom=3 complete=0 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+    },
+    {
+      "offset": 377837,
+      "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 DE03772B-D957-44AD-8E34-5D96482742F2 367 2 launch-delegate 17723955546 125 3"
+    },
+    {
+      "offset": 377988,
+      "text": "INFERNO_TIMING_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=367 sequence=2 hook=launch-delegate ticks=17723955546 numer=125 denom=3 complete=0 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+    },
+    {
+      "offset": 378217,
+      "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 DE03772B-D957-44AD-8E34-5D96482742F2 367 3 window-request 17741245233 125 3"
+    },
+    {
+      "offset": 378367,
+      "text": "INFERNO_TIMING_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=367 sequence=3 hook=window-request ticks=17741245233 numer=125 denom=3 complete=0 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+    },
+    {
+      "offset": 379258,
+      "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 DE03772B-D957-44AD-8E34-5D96482742F2 367 4 active 17744857071 125 3"
+    },
+    {
+      "offset": 379749,
+      "text": "INFERNO_TIMING_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=367 sequence=4 hook=active ticks=17744857071 numer=125 denom=3 complete=0 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+    },
+    {
+      "offset": 389133,
+      "text": "INFERNO_HID_REPORT request_id=b9a99f176513477d81ebab0025de31ba phase=move x=16384 y=14367 touching=1 timestamp=18523254974 result=0x0"
+    },
+    {
+      "offset": 418144,
+      "text": "INFERNO_HID_REPORT request_id=b9e5213723b242efae3993379ccec261 phase=up x=11028 y=18432 touching=0 timestamp=19971723958 result=0x0"
+    },
+    {
+      "offset": 418397,
+      "text": "INFERNO_OPEN_V1 5438cdab75fb469085caa67701088c72 DE03772B-D957-44AD-8E34-5D96482742F2"
+    },
+    {
+      "offset": 418485,
+      "text": "INFERNO_OPEN_REQUEST request_id=5438cdab75fb469085caa67701088c72 boot=DE03772B-D957-44AD-8E34-5D96482742F2 timestamp=20908500174"
+    },
+    {
+      "offset": 418616,
+      "text": "INFERNO_OPEN_DISPATCHED request_id=5438cdab75fb469085caa67701088c72 child=393 accepted_by_os=unqueried"
+    },
+    {
+      "offset": 418721,
+      "text": "INFERNO_EVENT_PROCESS_IDENTITY pid=395 query_result=56 errno=0 uniqueid=395 idversion=1124 source=original-libproc fallback=main-tick-and-pid"
+    },
+    {
+      "offset": 418865,
+      "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 DE03772B-D957-44AD-8E34-5D96482742F2 395 1 main 20962215310 125 3"
+    },
+    {
+      "offset": 419005,
+      "text": "INFERNO_TIMING_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=395 sequence=1 hook=main ticks=20962215310 numer=125 denom=3 complete=0 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+    },
+    {
+      "offset": 419223,
+      "text": "INFERNO_OPEN_CALLBACK request_id=5438cdab75fb469085caa67701088c72 accepted=1 domain=(nil) code=0 description=(nil)"
+    },
+    {
+      "offset": 419340,
+      "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 DE03772B-D957-44AD-8E34-5D96482742F2 395 2 launch-delegate 20990878468 125 3"
+    },
+    {
+      "offset": 419491,
+      "text": "INFERNO_TIMING_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=395 sequence=2 hook=launch-delegate ticks=20990878468 numer=125 denom=3 complete=0 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+    },
+    {
+      "offset": 419720,
+      "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 DE03772B-D957-44AD-8E34-5D96482742F2 395 3 window-request 20996228553 125 3"
+    },
+    {
+      "offset": 419870,
+      "text": "INFERNO_TIMING_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=395 sequence=3 hook=window-request ticks=20996228553 numer=125 denom=3 complete=0 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+    },
+    {
+      "offset": 420266,
+      "text": "INFERNO_OPEN_TIMING_V1 request_id=5438cdab75fb469085caa67701088c72 boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=393 request_ticks=20939323206 callback_ticks=21007262811 numer=125 denom=3 accepted=1"
+    },
+    {
+      "offset": 420719,
+      "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 DE03772B-D957-44AD-8E34-5D96482742F2 395 4 active 20999715524 125 3"
+    },
+    {
+      "offset": 420861,
+      "text": "INFERNO_TIMING_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=395 sequence=4 hook=active ticks=20999715524 numer=125 denom=3 complete=0 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+    },
+    {
+      "offset": 421081,
+      "text": "INFERNO_OPEN_CHILD_END request_id=5438cdab75fb469085caa67701088c72 pid=393 raw_status=0 timed_out=0 completion_is_not_visual=1"
+    },
+    {
+      "offset": 421210,
+      "text": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 DE03772B-D957-44AD-8E34-5D96482742F2 395 5 appeared 21000147453 125 3"
+    },
+    {
+      "offset": 421354,
+      "text": "INFERNO_TIMING_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=395 sequence=5 hook=appeared ticks=21000147453 numer=125 denom=3 complete=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+    },
+    {
+      "offset": 421576,
+      "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DE03772B-D957-44AD-8E34-5D96482742F2 395 1 main 0"
+    },
+    {
+      "offset": 421698,
+      "text": "INFERNO_EVENT_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=395 sequence=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+    },
+    {
+      "offset": 421902,
+      "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DE03772B-D957-44AD-8E34-5D96482742F2 395 2 view-loaded 0"
+    },
+    {
+      "offset": 422031,
+      "text": "INFERNO_EVENT_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=395 sequence=2 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+    },
+    {
+      "offset": 422242,
+      "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DE03772B-D957-44AD-8E34-5D96482742F2 395 3 window-visible-requested 0"
+    },
+    {
+      "offset": 422384,
+      "text": "INFERNO_EVENT_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=395 sequence=3 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+    },
+    {
+      "offset": 422608,
+      "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DE03772B-D957-44AD-8E34-5D96482742F2 395 4 active 0"
+    },
+    {
+      "offset": 422732,
+      "text": "INFERNO_EVENT_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=395 sequence=4 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+    },
+    {
+      "offset": 422938,
+      "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DE03772B-D957-44AD-8E34-5D96482742F2 395 5 appeared 0"
+    },
+    {
+      "offset": 423064,
+      "text": "INFERNO_EVENT_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=395 sequence=5 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+    },
+    {
+      "offset": 423272,
+      "text": "INFERNO_LIFECYCLE_RELAY_RAW source=guest-loopback record=INFERNO_LIFECYCLE_V1 DE03772B-D957-44AD-8E34-5D96482742F2 395 1 0 active 20962215310 20999715524 125 3"
+    },
+    {
+      "offset": 423434,
+      "text": "INFERNO_LIFECYCLE_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=395 sequence=1 generation=0 hook=active main_ticks=20962215310 ticks=20999715524 numer=125 denom=3 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+    },
+    {
+      "offset": 423791,
+      "text": "INFERNO_HID_V1 41653cc6c599409f83817331bafbc29b TAP 16384 20316 150"
+    },
+    {
+      "offset": 423861,
+      "text": "INFERNO_HID_REQUEST request_id=41653cc6c599409f83817331bafbc29b kind=TAP x0=16384 y0=20316 x1=16384 y1=20316 duration_ms=150 timestamp=21709391597"
+    },
+    {
+      "offset": 425143,
+      "text": "INFERNO_HID_REPORT request_id=41653cc6c599409f83817331bafbc29b phase=down x=16384 y=20316 touching=1 timestamp=21710003164 result=0x0"
+    },
+    {
+      "offset": 425279,
+      "text": "INFERNO_HID_REPORT request_id=41653cc6c599409f83817331bafbc29b phase=up x=16384 y=20316 touching=0 timestamp=21717198123 result=0x0"
+    },
+    {
+      "offset": 425413,
+      "text": "INFERNO_HID_ACK request_id=41653cc6c599409f83817331bafbc29b attempt_status=0 delivery=unproven timestamp=21718255628"
+    },
+    {
+      "offset": 425532,
+      "text": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DE03772B-D957-44AD-8E34-5D96482742F2 395 6 tap 1"
+    },
+    {
+      "offset": 425653,
+      "text": "INFERNO_EVENT_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=395 sequence=6 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0"
+    }
+  ],
+  "normal_quit": {
+    "return": {},
+    "id": 108
+  },
+  "cpu_diagnostic": {
+    "filter": "0xfffffff0096df690+4,0xfffffff0096e219c+4",
+    "initial_mask": "guest_errors",
+    "automatic_enable": false
+  },
+  "limitations": [
+    "Byte slices are file-visible boundaries; buffered logs lack event timestamps. The middle slice includes untraced intervals and explicit alert/setup/OPEN activity, not a pure per-action window.",
+    "Counter window was requested60s but cleanup stopped it early.",
+    "Visible0\u21921 is parent visual review, not inferred from trace or classified here.",
+    "Initial PID367 identity failure, later explicitOPEN toPID395, slow unlocking and different observation timing confound comparisons to65.",
+    "Read/W1C and x21 bits do not establish completed callbacks or presentation latency."
+  ]
+}

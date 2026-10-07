@@ -1,0 +1,32 @@
+{
+  "source65": "companion/evidence/adp-x21-65-alert-counter-actual/audit.json",
+  "sha256": "d0619e35b8a4c0ccf955665ddc93cf3285d8be142a240de30eedef4de10a2093",
+  "failed65_combined_alert_counter": {
+    "boundaries": {
+      "start_byte": 1609909,
+      "end_byte": 1736062,
+      "checkpoint_start": 1791404213.9158485,
+      "checkpoint_end": 1791404287.8735158,
+      "trace_start": 1791404213.989369,
+      "trace_deadline_disabled": 1791404274.1851084
+    },
+    "event_counts": {
+      "apple_adp_output_ready": 69,
+      "apple_adp_status_read": 75,
+      "apple_adp_irq_write": 75,
+      "apple_adp_unknown_mmio": 933,
+      "apple_adp_read_caller": 225,
+      "apple_adp_gp_config_write": 96,
+      "apple_adp_submit": 12,
+      "apple_adp_bh": 24,
+      "apple_adp_pipe": 24
+    },
+    "status_values": {
+      "0x400": 63,
+      "0x100000": 12
+    },
+    "status_followed_immediately_by_equal_w1c": 75
+  },
+  "interpretation": "Both the failed65 combined window and healthy66 counter window contain submits and equal read/W1C pairs. Their presence alone does not distinguish a healthy final presentation. Run66 additionally has slow unlocking, initial PID367 identity failure and explicit OPEN to395; windows have different durations and action coverage. No causal attribution to tracing, OPEN, scheduling or emulator changes.",
+  "cpu_logging": "No HMP command in entire66 QMP transcript; report CPU diagnostic retained in audit.json. Startup address filter is not evidence logging was enabled."
+}
