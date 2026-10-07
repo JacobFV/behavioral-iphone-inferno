@@ -1,0 +1,23 @@
+{
+  "reviewed_commit": "24399003974ebf4f93de056fa51fe42a058df765",
+  "conclusion": "No blocking finding; exact observed parent tuple allowance is justified. No guest execution by reviewer.",
+  "source_sha256": "5754749010a2367b9c4fd36986fc785a9e70dce2ecff3bec54486f42567019f5",
+  "actual_evidence": {
+    "serial_path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-fixture-2/serial.log",
+    "sha256": "fb7fb07a40c6f3f0f82a315ee7754b4bdafadfe14113b9c23b6eab885f895b4f",
+    "parent_byte_offset": 47844,
+    "parent_record": "INFERNO_IMPORTED_APP_PARENT stat=0 errno=0 mode=40775 uid=0 gid=80 nlink=105 path_result=0",
+    "finish_record": "INFERNO_IMPORTED_APP_FINISH result=82 unmount=0 errno=0"
+  },
+  "checks": [
+    "lstat result must succeed, owner remains root, exact full directory mode/gid pair must be root:admin0775 or root:wheel0755.",
+    "Symlinks, special mode bits, world writable and other groups remain rejected.",
+    "No chmod/chown or parent filesystem mutation added.",
+    "Link count remains diagnostic, correctly not frozen across app installation.",
+    "Plan validation, source file metadata, explicit identical-fixture collision check, copy/readback and unmount logic unchanged.",
+    "Previously broader root:wheel directory modes are narrowed to0755; this does not weaken unrelated parent policy."
+  ],
+  "limitations": [
+    "Read-only source review and original failed-attempt metadata; corrected guest execution remains pending."
+  ]
+}
