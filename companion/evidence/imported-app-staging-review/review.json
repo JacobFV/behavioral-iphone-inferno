@@ -1,0 +1,30 @@
+{
+  "reviewed_commit": "2d38fffe7e3c61d57466c44d339d0b57d4dd43eb",
+  "source_sha256": {
+    "companion/native-probe/imported-app.c": "d99991ee2773c068a4e8dfb8f5704a32e0ecb85df80559100fbd5bdda6a255f0",
+    "companion/native-probe/imported_app.py": "b84b6c9fd9959411b45b8f326ab56d518b1158be47b1e7d8182b073be864b580",
+    "companion/native-probe/prepare.py": "1dbdaccd542643397c30ee3ff0f43c3b3fe639752e586da4806cd0ebf402d85a",
+    "companion/native-probe/prepare-root.c": "20a4eaf4b7a900573b172f4f59f04e5268f0e930534d7794d3b1bcdb4ee7d539",
+    "companion/native-probe/build.sh": "38eb7d05001227892be6d62066b51a9ce58a356becf2b0e48fcd41372c71ad75"
+  },
+  "verdict": "No blocking finding for pinned byte-identical owned fixture staging; actual guest validation pending",
+  "findings": [
+    "Host prepare calls shared IPA compatibility validator before pinned manifest/tree/Info revalidation and binary plan creation. File staging hashes before HFS copy and hashes extracted HFS readback against manifest.",
+    "Plan header408/entry528 are statically asserted. Guest accepts <=4096 entries, <=128MiB total, <=64MiB file, terminated ASCII relative paths <=511 bytes/depth16; dot/dotdot/empty components rejected. Complete source walk rejects symlinks, specialfiles, hardlinks, wrong ownership, extras and inconsistent totals.",
+    "Target is fixed /mnt1/Applications plus a validated one-component .app name. Existing targets reject by default. Exception requires exact fixture name+identifier, two files, host tree hash pin, target root0755/root ownership, recursive counts/bytes and compare_tree bytes/mode/uid/gid/extras before copying.",
+    "New-target nested directories are ordered by depth before file copies. Normalized source metadata is checked; final compare_tree checks bytes and metadata plus destination extras.",
+    "After successful mount, all imported installer error branches reach sync/unmount and FINISH status. Pre-plan or mount failures return nonzero before that finish marker. Failed new installs may leave a partial directory on the disposable clone; they are not successful stages and must not be reused as eligible baselines.",
+    "Main only emits PREP_COMPLETE after imported installer succeeds and subsequent requested operations succeed. Build provenance now includes imported-app.c, but a real newly built helper is still required; syntax/host checks do not prove runtime installation."
+  ],
+  "runtime_requirements": [
+    "Record exact importer manifest hash/tree hash, helper/source/build identity and prepared ramdisk readbacks.",
+    "For identical fixture expect PLAN then IDENTICAL_COLLISION_ACCEPTED, READBACK bytes75930 entries2 mismatches0, FINISH result0 unmount0, and PREP_COMPLETE.",
+    "Preserve actual serial and normal stopped disk/QMP/backing evidence separately; launch and visual gates remain subsequent."
+  ],
+  "limits": [
+    "Review and host replay only; no recovery execution, disk changes, guest input or VM actions.",
+    "C source plan relies on host-verified ramdisk provenance for file hashes; guest compares source and destination bytes rather than carrying SHA256 in each entry.",
+    "No transactional rollback on copy failure; isolated disposable disk plus nonzero status is the failure boundary.",
+    "Existing compare_tree/read traversal is synchronous and does not provide adversarial concurrent filesystem race protection; intended recovery staging runs on isolated owned clone."
+  ]
+}
