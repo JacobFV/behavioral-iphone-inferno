@@ -16,10 +16,13 @@ python3 companion/qmp_control.py --report /absolute/report swapwait-cpu-window -
 Only integer seconds 1–3 are accepted. No address or mask arguments exist.
 The sole runner QMP owner enables literal `log cpu,nochain,guest_errors` and
 restores `log guest_errors` at the monotonic deadline, an 8 MiB log-growth
-poll cutoff, uncertain enable, or runner cleanup. Display trace windows cannot
+poll cutoff (all mixed log bytes, not just CPU records), uncertain enable, or runner cleanup. Display trace windows cannot
 overlap. The existing log inode/path is retained. The journal records actual
 commands, responses, times and offsets. Polling/QMP delays and in-flight CPU
-work can overshoot limits; this is not a hard real-time or byte-exact cap.
+work can overshoot limits; this is not a hard real-time or byte-exact cap. The restore-ack offset is not the
+hard last CPU sample. Per-diagnostic state/errors remain incomplete after
+uncertain delivery or journal/restore errors even if the app journey independently
+completed; successful restoration does not erase a prior diagnostic error.
 
 Each dump is one coherent GPR block, with no CPU/thread identity. Do not pair
 entry and return snapshots. A matching entry PC supports token/flags inspection;
