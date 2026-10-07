@@ -2,6 +2,30 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 16:26: IPA recovery readback passed; installed journey74 next
+
+Recovery attempt2 recorded original /Applications mode040775 uid0 gid80; failed
+only the new parent gid assumption and cleanly unmounted. Both failed attempts
+are retained forensic-only (8edc4a765a/6b93b21267), never backing sources.
+Correctionccdb19f855 independently4949c2010b accepts that exact observed tuple or
+ordinary root:wheel0755, without metadata mutation or unrelated guard changes.
+
+Actual attempt3 (helper58/sourcee33ee4e427) now logged PLAN, original parent tuple,
+IDENTICAL_COLLISION_ACCEPTED, READBACK75930bytes/2entries/0mismatches,
+FINISHresult0/unmount0 and PREP_COMPLETE. Root reviewed raw serial580–613;
+bootworker stops/preserves then boots74 from this successful stage's paired disks
+(depth4). Same0889/noCPUdiagnostic, fixture strict journey, root allUI.
+This establishes actual import/staging/readback, not yet imported app execution.
+
+Independent demo fb6ef72876 built externally as org.inferno.companion.ipademo,
+ImportedDemo.app with Message.txt read through original Foundation and UIKit
+counter. All86app/helper imports resolve original cache; no probe telemetry or
+grants. Nativeworker prepares separate generic staging inputs from goodfrom50
+(depth2), not from attempt3. Actual fresh-target launch remains pending.
+Generic observation normal-shutdown commanddfc0893cbd independently19eb1cf728
+cannot bypass probe gates and makes no execution assertion. Existing strict
+journeys remain unchanged. Launcher003reviewc81d7f09a3 matches hardenedbuilder.
+
 ### 2026-10-07 16:20: first imported-fixture recovery rejected parent metadata
 
 Actual disk-preparation-imported-fixture-1 (runner2297346, source585cfc5005,
