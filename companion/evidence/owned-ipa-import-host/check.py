@@ -36,6 +36,11 @@ encrypted=bytearray(original);cmd,pos,size=next(x for x in positions if x[2]>=24
 rejected('encrypted-mach-o',archive('encrypted-mach-o',{'InfernoProbe':encrypted}))
 minos=bytearray(original);cmd,pos,size=next(x for x in positions if x[0]==0x32);struct.pack_into('<I',minos,pos+12,15<<16)
 rejected('minimum-ios15',archive('minimum-ios15',{'InfernoProbe':minos}))
+for label,command in [('lazy-dependency',0x20),('alternate-loader',0xe)]:
+    mutated=bytearray(original);cmd,pos,size=next(x for x in positions if x[0]==0xe)
+    struct.pack_into('<I',mutated,pos,command)
+    if command==0xe:mutated[pos+12:pos+25]=b'/usr/lib/evil'
+    rejected(label,archive(label,{'InfernoProbe':mutated}))
 # Revalidate the successful tree after corrupting a copy, not the retained positive.
 corrupt=a.output/'corrupt';m.import_ipa(source,corrupt);exe=corrupt/'bundle/InfernoProbe.app/InfernoProbe';data=bytearray(exe.read_bytes());data[-1]^=1;exe.write_bytes(data)
 try:m.validate_manifest(corrupt/'manifest.json')

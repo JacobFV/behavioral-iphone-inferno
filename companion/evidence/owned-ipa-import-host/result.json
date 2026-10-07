@@ -2,7 +2,7 @@
   "scope": "Host-only import and synthetic malformed-input checks; no guest execution/signature trust claim",
   "importer": {
     "path": "/tmp/inferno-status59-audit/companion/app-import.py",
-    "sha256": "f569781d290a9bbd3012559f755282f0fbc52aa7788c14386518f42992dd180f"
+    "sha256": "e2ae5081168b99f4989cc759e797ae1381b595e263adea825705993685c1ce56"
   },
   "fixture": {
     "path": "/home/brandonin/.local/share/inferno/app-probe/exec-build-22/InfernoProbe.app",
@@ -19,28 +19,28 @@
       }
     ]
   },
-  "manifest_path": "/home/brandonin/.local/share/inferno/app-import/owned-fixture-final-1/imported/manifest.json",
-  "manifest_sha256": "b95dea897b2f93f234f361583ae699f6d293b9defc1790e7c3ea9157fbfff45a",
+  "manifest_path": "/home/brandonin/.local/share/inferno/app-import/owned-fixture-final-2/imported/manifest.json",
+  "manifest_sha256": "692d72334b63d8573bd4cb28868fa2b4af798fcc964ba25a7ae6ad5324703338",
   "input": {
-    "path": "/home/brandonin/.local/share/inferno/app-import/owned-fixture-final-1/owned-original.ipa",
+    "path": "/home/brandonin/.local/share/inferno/app-import/owned-fixture-final-2/owned-original.ipa",
     "bytes": 76248,
     "sha256": "011840b0c36273873f72c0b326aaa680111557bb7365e714fde1a8013157f282"
   },
   "tree_sha256": "697b73b118021ae7f225a9ed65009e6ca0aa91c62a2b430e60e7d2b648370125",
   "preserved_original_bytes": true,
-  "validator_resolved_bundle_path": "/home/brandonin/.local/share/inferno/app-import/owned-fixture-final-1/imported/bundle/InfernoProbe.app",
+  "validator_resolved_bundle_path": "/home/brandonin/.local/share/inferno/app-import/owned-fixture-final-2/imported/bundle/InfernoProbe.app",
   "negative_checks": [
     {
       "case": "traversal",
       "rejected": true,
       "reason": "Unsupported or escaping archive path: '../escape'",
-      "sha256": "e8eba2766c6ce27bd21bad53e9716430d1641272b05d81bc6ce894db9657bef7"
+      "sha256": "4c688845b65647997eb4ae630daff07895507ae928a7a23fba6d59ddfd7554d8"
     },
     {
       "case": "case-collision",
       "rejected": true,
       "reason": "Duplicate/case-colliding archive entry",
-      "sha256": "d13613784150ea4a1d03f92c7345d1460f561348119b4a3d9e14c1618e881596"
+      "sha256": "d27ed438c870af904a89accc1b0ca01f0236834b919461ff897756cf52108737"
     },
     {
       "case": "symlink",
@@ -52,7 +52,7 @@
       "case": "nested-code",
       "rejected": true,
       "reason": "Nested Mach-O unsupported in first subset",
-      "sha256": "57d9b0d6027f500d65061a97dbc8450e3e53a849e30dbdc5c6d777cf5bbb27fd"
+      "sha256": "08f882d0b912937f80f9cbe09ff3019c845bd090ed8f85a59ce89fab88a2cc4d"
     },
     {
       "case": "simulator-platform",
@@ -71,6 +71,18 @@
       "rejected": true,
       "reason": "Minimum iOS version exceeds supported14.0 guest",
       "sha256": "9bf863247ef2a352325b78af94bd7e7a23bb79c7624976dd76392eb60a4bbac3"
+    },
+    {
+      "case": "lazy-dependency",
+      "rejected": true,
+      "reason": "Lazy dylib dependencies unsupported in first subset",
+      "sha256": "c3d118de33ae39a235202c7a67053b67bbec562e2f9f75fd7fab5444ad1a4ff1"
+    },
+    {
+      "case": "alternate-loader",
+      "rejected": true,
+      "reason": "Only original system /usr/lib/dyld loader supported",
+      "sha256": "6e5a3b4f25654e5d2a9f6d69901e0d78468e31209e314d1a37f7d2d76c696225"
     },
     {
       "case": "modified-extracted-file",
