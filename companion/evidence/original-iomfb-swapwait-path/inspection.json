@@ -1,0 +1,83 @@
+{
+  "schema": "inferno.original-iomfb-swapwait-inspection.v1",
+  "scope": "Read-only original-kernel static inspection; no runtime arguments, return values, guest-memory observations, or implementation changes.",
+  "kernel": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/kernel-original-decoded",
+    "sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910"
+  },
+  "address_basis": "Original unslid virtual addresses. Runtime slide and actual translation-block boundaries require independent validation.",
+  "dispatch": {
+    "table": "0xfffffff0079d4d30",
+    "selector": 6,
+    "entry": "0xfffffff0079d4dc0",
+    "scalar_input_count": 3,
+    "other_counts": [
+      0,
+      0,
+      0
+    ],
+    "target": "0xfffffff0096e2148",
+    "wrapper_call": "0xfffffff0096e2198",
+    "callee": "0xfffffff0096df690",
+    "arguments": "client, uint32 token, uint32 flags, uint32 third; wrapper reads three scalar inputs and returns final w0."
+  },
+  "wait": {
+    "gated_entry": "0xfffffff0096f1968",
+    "arguments": "x0 pipeline, x1 client, w2 token, w3 flags, w4 third",
+    "flag_split": "0xfffffff0096f19c0..19ec separates bit31 from low31 mode.",
+    "mode0": "0xfffffff0096f1bc0..1d8c checks token against pipeline+0xbf4, active request at pipeline+0xad0 (token+0x22c), and queued requests starting pipeline+0xad8 (next+0x5e8). Mode0 returns zero when neither token comparison nor active/queued match holds.",
+    "nonblocking_pending": "0xfffffff0096f1e98..1ea4 returns 0xe00002d5 when pending checks continue and flags bit31 is set; no commandSleep on that branch.",
+    "sleep": "0xfffffff0096f1f14..1f58 calls command gate at pipeline+0xb78, event=&pipeline+0xad8, interruptibility argument2. Vtable IOCommandGate 0xfffffff007704918 addresspoint+16 slot0x100 resolves 0xfffffff0080505bc commandSleep(void*,unsigned int).",
+    "other_errors": "Power-state gate 0xfffffff0096f19fc..1a10 and request+0x359 bit0 gate 0xfffffff0096f1eb0..1ecc can return 0xe00002eb. UserClient+0xfc bit0 overrides provider result with 0xe00002d6 at 0xfffffff0096df724..73c. This is not an exhaustive classification of every mode/error."
+  },
+  "completion": {
+    "prior_inspection": "companion/evidence/original-adp-post-ready-gates/inspection.json",
+    "chain": "Unequal-ID branch of UnifiedPipeline::swap_request_complete calls virtual slot0x898 at0xfffffff0097b8d28. UnifiedPipeline vtable0xfffffff0079e0c58 +16+0x898 resolves0xfffffff0097bba88. That method calls Legacy zero-argument wrapper0xfffffff0096fbaa8 via base-vtable slot at0xfffffff0097bbbb8; wrapper calls bool implementation0xfffffff0096f0894 with true at0xfffffff0096fbac8.",
+    "state_updates": "0xfffffff0096f0d1c..0d28 conditionally copies active request+0x22c into pipeline+0xbf4. 0xfffffff0096f0e58..0e60 clears pipeline+0xad0.",
+    "wake": "0xfffffff0096f0e64..0ea8 calls commandWakeup on gate pipeline+0xb78, event=&pipeline+0xad8, oneThread=false. IOCommandGate vtable slot0x108 resolves0xfffffff008050588 commandWakeup(void*,bool). This is the same event address used by selector6 sleep.",
+    "limit": "Static correspondence does not prove actual65 reached completion or a sleep branch; existing sampled user stacks include a nonzero-return retry and can also reflect rapid polling."
+  },
+  "minimal_observation_candidates": [
+    {
+      "range_half_open": [
+        "0xfffffff0096df690",
+        "0xfffffff0096df6b0"
+      ],
+      "meaning": "x0 client, low32 x1 token, low32 x2 flags, low32 x3 third before argument stores finish; exact entry PC preferred."
+    },
+    {
+      "range_half_open": [
+        "0xfffffff0096e219c",
+        "0xfffffff0096e21a8"
+      ],
+      "meaning": "low32 x0 final scalar-method return after BL; only FP/LR/SP epilogue follows."
+    },
+    {
+      "range_half_open": [
+        "0xfffffff0096df71c",
+        "0xfffffff0096df720"
+      ],
+      "optional": true,
+      "meaning": "low32 x0 provider result before client cancellation override."
+    }
+  ],
+  "observation_limits": [
+    "No guaranteed token/flags preservation at return.",
+    "No CPU/thread or entry-return pairing implied by independent dumps.",
+    "Existing MMIO/x21 trace cannot expose this internal request-state/result distinction.",
+    "Static ranges are not a claim that existing QEMU logging produces a TB at every listed instruction.",
+    "No new IOKit request, MMIO read, guest-memory access, register write or code patch was performed."
+  ],
+  "external_bounded_disassembly_hashes": {
+    "complete-gated.txt": "1ac8db47f1d5c756a02804515d7c78c13300d78a8b6ae216261f69e6e149620c",
+    "external.txt": "55628f468c959a18ad5995a8316d2b1fe23194ba3a492567a8457019627a1a91",
+    "legacy-complete-wrapper.txt": "21766d3df9234524e2291df463a20c146792687a2aeabc5ad1aa8c8cf3bc40d4",
+    "legacy-wait.txt": "e0c6bc8f17be8abcaef37cd493af4969a127d0fda51197dd75ba1e7037ff4c6b",
+    "notify-gated.txt": "8877ef12a6183d4b692ad4254d288e809de4e1efd8372af4e82acd78f3bf5674",
+    "scalar-wait.txt": "af6a8ff33b974d882200c0b559ffc69a3aff564f292d8ed1fbe500a24741d286",
+    "unified-complete.txt": "7091c30c2b5b81dfbeccb0f7dca96256ce80b422d607f484b7deeedf5cc6caac",
+    "update-completed.txt": "09dc5d2224312b74acc516fdf3c8280793ab540e0d8e412710d77ba2c987d8e1",
+    "user-wait.txt": "2dba4c8efa9e904d598639704cac42bda207f86e572a6fe497022901df8d8457",
+    "wait-gated.txt": "06f87075abec9f3fe46c1b83d32d3fcd5ecc6fb4e5fef9e2c1369c9b135e0932"
+  }
+}
