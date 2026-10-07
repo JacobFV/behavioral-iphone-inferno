@@ -4,6 +4,21 @@
 
 ### 17:03 continuation: archived comparison62 reproduced the persistent freeze
 
+Postflight5f7cddd6af preserved the failure: emulator0 after normal QMP cleanup,
+reported Signal2, elapsed668.194207s, strict verification correctly rejected.
+All seven disks and their immutable ancestors/attestations verified; root
+347537408bytes SHAa40acb40df6b774cd596bc10aedf28ea8e4bfeb2ea72d1726028b038329a9eb4
+is explicitly forensic-only. The separate Home trace also had zero submissions,
+20 ready events,19 acknowledgments and57 unknown reads (c303018c10/fe1177d906).
+
+Reviewed changeec40c73c79 adds a ninth default-off event for exposed CPU PC/LR
+on only three existing status reads. It performs no synchronization, additional
+MMIO, guest RAM read or state write. Exposed addresses require same-boot kernel
+slide correlation; PC can be stale/TB-entry. Independent reviewbd6adfa7b2 passed.
+Only ADPv4 moves to the target-specific build set under unchanged Apple SoC
+configuration. Old f088 and its manifest are archived read-only. A real rebuild
+and nine-event control checks are in progress; no new guest launched yet.
+
 Run62 used archived emulator670, isolated hoste629bf388a/seven-event controller,
 and original frozen stage50/HID54. The single counter request
 15010ea026d14556aedbeaa0a79215b8 produced actual tap1 and ACK0, but reviewed

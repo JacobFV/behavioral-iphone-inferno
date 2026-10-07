@@ -9,9 +9,12 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-06 17:03 local
 
-62 REPRODUCED the persistent failure. Root sent recorded SIGINT2 to runner
-3107141 at1791331348.637034; bootworker owns forensic postflight, strict verifier
-must reject and preserve-stopped requires --failed-attempt. No new VM yet.
+62 REPRODUCED the persistent failure and is STOPPED/preserved5f7cddd6af.
+Root sent recorded SIGINT2 to runner3107141 at1791331348.637034. Normal QMPquit/
+emulator0, errorSignal2,668.194207s. Strict verifier correctly REJECTED incomplete.
+All7/headers/ancestors/attestations passed --failed-attempt; forensic_only root
+347537408bytes SHAa40acb40df6b774cd596bc10aedf28ea8e4bfeb2ea72d1726028b038329a9eb4.
+No new VM yet; failed62 must never be an overlay base.
 Archived670/isolatede629 host7events/frozen50/HID54, observerOFF, initial traceOFF.
 Boot984718F4-62F9-454E-BD9B-FB6F62EA548E/PID312/main7547374627.
 Counter15010ea026d14556aedbeaa0a79215b8 at1791331124.8066583: actualtap1/ACK0,
@@ -26,15 +29,18 @@ QMP before and periodic frames0016/0019 identical SHA
 No strictafter/secondcounter/OPEN/SAMPLE. HID54 has no supported sample route,
 confirmed804ac79b69. Root visuale299d7a98b, first trace823c6c5bb8.
 
-Nativeworker owns new default-off ninth caller-attribution event candidate:
+Mergedec40c73c79 after root/independentreviewbd6adfa7b2: default-off ninth caller event:
 PC+ARM LR for existing main45004/GP184 reads, traceenabled guard, explicit
 nonCPU context, no extraMMIO/guestmemory/state writes. Small sameCONFIG_APPLE_SOC
 meson relocation to specific_ss needed for ARM register access. Root and disk
-must review before merge/build. Original-driver static mappingbd2864b53a:
+reviewed source; actual compile/control checks now underway. Static mappingbd2864b53a:
 GP184 is decompression-failure; FIFO-empty predicate45004 mode-dependent.
 Actual caller currently unknown; no behavioral fix justified.
-Bootworker must archive currentf088 binary+manifest before any approved rebuild.
-HOLD63 launch until62 fully preserved and diagnostic/build decisions reviewed.
+Bootworker archivedf088 binary+manifest read-only at
+.local-build/binaries/display-status-f088a8c99437/ before authorized main build
+--jobs8 --simulated-sep --enable-kvm. Actual9-event defaultoff/deadline/cleanup
+firmware-free checks required before63. HOLD63 launch until root reviews results.
+Nativeworker preparing same-boot kernel-slide/LR correlation parser; no VM input.
 Use immutable50 or55; failed62 is never an overlay base. No ancestor mutations.
 Timing audit407b593161 shows failed/healthy Close delays overlap; post-QMP tap
 ~205ms in both. No simple delay threshold or causal claim.
