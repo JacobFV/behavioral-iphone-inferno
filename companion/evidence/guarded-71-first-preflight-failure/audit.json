@@ -1,0 +1,65 @@
+{
+  "scope": "Actual71 helper001 failed preflight; preserved as failure, not successful sequence.",
+  "interval": [
+    1791412745.6300142,
+    1791412746.1578102
+  ],
+  "result": "Only read-only probe-status reached mailbox. First ADP trace-state query rejected by client allowlist before request creation; no NotNow/counter, trace-start or QMP action in interval. VNC initial frame was captured and may stimulate refresh.",
+  "sources": {
+    "control-transcript.jsonl": {
+      "prefix_bytes": 3551,
+      "prefix_sha256": "6c41289e27f090b478200182cce42e8155635cc22181db1e53ba2c42a9f6c8eb"
+    },
+    "serial-input-transcript.jsonl": {
+      "prefix_bytes": 2299,
+      "prefix_sha256": "77c7e7c770c86d9dc4c6148b77df072a80a9ae5473e235f9d75d090e8cbfb837"
+    },
+    "display-trace-control.jsonl": {
+      "prefix_bytes": 5779,
+      "prefix_sha256": "f38c0ff560f75d4b4c7cb56f6ca2f16f223b58b3878e4960aa96227d26fb2049"
+    },
+    "qmp-transcript.jsonl": {
+      "prefix_bytes": 17519,
+      "prefix_sha256": "abd87b9fb1134ecf31718584fa87f3d11e91a4b3718a53240556fc37a27f6a82"
+    },
+    "sequence.json": {
+      "sha256": "957e90274f5da62be97a68d9a861f92a463702bc91a5858e6d3a5edee9595dc0"
+    },
+    "control-01-probe-status.stdout": {
+      "sha256": "d9c048efebe3524369b4d3f5c418dfd8dab13498e699ab24f0203ed8c379b722"
+    },
+    "control-02-trace-event-get-state.stderr": {
+      "sha256": "786e47802aa6ec2548fd7a4b1ac774198a1139aec33d2f42e3babfe8e55fc065"
+    },
+    "control-02-trace-event-get-state.stdout": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "interval_rows": {
+    "control-transcript.jsonl": [
+      {
+        "time": 1791412745.9115345,
+        "request_file": "request-f7954aba879f48f2adeed8665e83f540.json",
+        "raw": "{\"execute\": \"probe-status\", \"arguments\": {}, \"created\": 1791412745.7156434}\n",
+        "sha256": "ab23ee1c51246cfeaa0c533af95cdbaa8e4ed1c23662e3f22f604366e07405a8",
+        "response": {
+          "return": {
+            "state": "waiting-for-operator-before-capture",
+            "completed": false,
+            "input_mode": "operator-observation",
+            "automatic_input": false,
+            "visual_review_required": true,
+            "captures": {},
+            "appearance_marker_observed": true,
+            "keep_running": true,
+            "finish_requested": false
+          }
+        }
+      }
+    ],
+    "serial-input-transcript.jsonl": [],
+    "display-trace-control.jsonl": [],
+    "qmp-transcript.jsonl": []
+  },
+  "reinvocation_condition": "Fresh root invocation is a new attempt, not replay of a submitted tap. Require reviewed fix plus fresh actual overlay/identity/source gates; this audit authorizes no input."
+}
