@@ -1,0 +1,64 @@
+{
+  "status": "built-owned-preparation-helper-only; no guest execution yet",
+  "source_revision": "ae34cfa8d1df34286286094c00fa91662014c961",
+  "commands": [
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-ffreestanding",
+      "-fno-stack-protector",
+      "-fno-builtin",
+      "-O2",
+      "-c",
+      "/tmp/inferno-ipa-recovery/companion/native-probe/prepare-root.c",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/helper-build-60/prepare-root.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "ios",
+      "14.0",
+      "14.0",
+      "-e",
+      "_main",
+      "-needed_library",
+      "/tmp/inferno-ipa-recovery/companion/native-probe/libSystem.tbd",
+      "-no_uuid",
+      "-adhoc_codesign",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/helper-build-60/inferno-prepare-root",
+      "/home/brandonin/.local/share/inferno/native-probe/helper-build-60/prepare-root.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "-Cadhoc",
+      "-S/tmp/inferno-ipa-recovery/companion/native-probe/entitlements.plist",
+      "/home/brandonin/.local/share/inferno/native-probe/helper-build-60/inferno-prepare-root"
+    ]
+  ],
+  "sources": {
+    "/tmp/inferno-ipa-recovery/companion/native-probe/prepare-root.c": "20a4eaf4b7a900573b172f4f59f04e5268f0e930534d7794d3b1bcdb4ee7d539",
+    "/tmp/inferno-ipa-recovery/companion/native-probe/imported-app.c": "eaf6ef4668ef196823d378d3b7b50a1ef3bac9f3d527679b1e88551d0ccc2224",
+    "/tmp/inferno-ipa-recovery/companion/native-probe/entitlements.plist": "ce51e5bb5be0cb72780a6e6b1c09bb2711643ba170dd875815fc4528a64a281d",
+    "/tmp/inferno-ipa-recovery/companion/native-probe/libSystem.tbd": "4f9508344cc02089adb89f2d069dee0b255d681a3feecda3194f51ec8b90bb52"
+  },
+  "tools": {
+    "/usr/bin/clang": "6d99f6207153b8b2063ace5d2a6177debaf6a6b6f31649e03afac07b98ba0b4d",
+    "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld": "f8835e48488195c65fb3dcb946053284ddf6b1369922893785209a9073c4e57b",
+    "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid": "d536519229ae8bd35a02a702e1ee07565de841869858fd36ea73dc9fd4162e7f"
+  },
+  "outputs": {
+    "inferno-prepare-root": {
+      "bytes": 86144,
+      "sha256": "66492292ea073d5710af269585058129d92db71509c16c3cd74453421e61a3e3"
+    },
+    "helper-entitlements.plist": {
+      "bytes": 363,
+      "sha256": "b2225e59cc96f956425acdad7795d9dc8c44b322ef0cd05417cf0ec72f7e19dc"
+    }
+  },
+  "signing": "Only owned preparation helper, identical existing entitlement dictionary; no imported or Apple executable signed"
+}
