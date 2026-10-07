@@ -1,7 +1,7 @@
 # Repeat the installed iOS owned-app journey
 
 This procedure uses the existing verified iOS14 beta5 profile and the current
-frozen stage55 disk tuple described below. It requires those external artifacts;
+frozen from50-sample-1 disk tuple described below. It requires those external artifacts;
 the repository does not contain Apple binaries or a distributable iOS image.
 This is TCG with simulated SEP and the upstream direct-kernel patches.
 
@@ -27,9 +27,9 @@ Runs61–64 returned to the preserved original stage50/HID54 state. Run61 passed
 62–64 reproduced the persistent freeze. Those guests do not support SAMPLE.
 The latest diagnostic build0889 adds exposed x21 to the existing ninth event;
 interpret its ready bit only at the independently mapped interrupt-handler
-caller. Run64 had that bit set while drawing submissions stopped. A new branch
-from a logically verified flattening of original50 is being prepared with HID55;
-use it only after actual recovery readbacks and disk verification are recorded.
+caller. Run64 had that bit set while drawing submissions stopped. Runs65 onward use `disk-preparation-from50-sample-1/report.json`, a new branch
+from a logically verified flattening of original50 with HID55. Actual recovery
+readbacks and disk verification are retained in commits4dd630dc85 and67adbad5a7.
 Recovery also changes filesystem/NVRAM state, so this is not an isolated HID
 comparison. Never use a failed forensic attempt as a backing source.
 
@@ -54,6 +54,42 @@ Sampling perturbs timing and does not itself explain or fix the freeze.
 See [SAMPLE_CONTROL.md](native-probe/SAMPLE_CONTROL.md) for fixed targets,
 identity checks, output bounds and the original tool's limitations.
 
+## Bounded kernel diagnostic for a confirmed freeze
+
+Run68 established actual production coverage of the two pinned SwapWait PCs
+in a separate healthy Clock calibration. Its evidence is in
+`evidence/swapwait-cpu-68-healthy-actual/`; interpretation limits and the next
+failure protocol are in `evidence/swapwait-next-failure-plan/plan.json`.
+The intermittent display freeze remains unresolved.
+
+For the current diagnostic attempt, add `--swapwait-cpu-diagnostic` to the boot
+command below. This sets the fixed address filter but leaves CPU logging off.
+After a genuine tap and persistent unchanged reviewed frames, wait for all nine
+ADP trace events to disable. Preserve continuous no-input VNC observation across
+one window and restoration:
+
+```sh
+companion/run control --report "$attempt" swapwait-cpu-window --arguments '{"seconds":1}'
+```
+
+The runner checks the pinned binary/kernel, same-boot zero kernel slide and
+nonoverlap with display traces. Inspect actual enable/restore acknowledgements
+and byte offsets in `swapwait-cpu-control.jsonl`, then parse the retained log:
+
+```sh
+python3 companion/evidence/swapwait-cpu-parser/parse.py \
+  --input "$attempt/guest-errors.log" --mode kernel-zero-slide \
+  --output "$attempt/cpu-failure-parsed-001.json"
+```
+
+Review frames after restoration before interpreting a failed state. If rendering
+resumes, record it as recovery during an intervention. Do not send a second tap,
+Home or OPEN before preserving the failure evidence. Snapshots have no thread or
+process identity and cannot be paired as calls. Healthy68 contained both pending
+and successful return snapshots, with nonmonotonic token observations even for
+the same client value. Global `nochain` changes scheduling; this is not a
+performance measurement. Missing snapshots are inconclusive, not proof of no wait.
+
 ## Start one disposable guest
 
 Run from the repository root. Choose a **new** output directory for every attempt.
@@ -64,7 +100,7 @@ leaf or add another staging layer above stage55.
 ```sh
 attempt="$PWD/.local-build/reports/app-boot-NEW"
 profile="$HOME/.local/share/inferno/images/ios14b5/verified-profile/profile.json"
-base="$PWD/.local-build/reports/disk-preparation-55/report.json"
+base="$PWD/.local-build/reports/disk-preparation-from50-sample-1/report.json"
 companion/run boot --profile "$profile" --output "$attempt" --seconds 7200 \
   --overlay-base-report "$base" --disk-boot --launchd-unsecure-cache \
   --guest-errors --capture-interval 30 --probe-journey --control-mailbox \
