@@ -1,0 +1,65 @@
+{
+  "scope": "Independent exact variant and failed001 audit; root supplies visual semantic review, no worker input.",
+  "original_manifest_sha256": "209aa6cebf165fbdf4297fd91a0c82635d1c3af276bf575a310506a623385e6b",
+  "new_manifest_sha256": "2172d7ca658dac436d7741fe5d790d4c2b531fd0e2d2da74c964879b9fc47541",
+  "change": "One exact overlay reference appended; all old references including zero unchanged. No classifier tolerance or crop/dimension change.",
+  "crop_diff_vs70": {
+    "bbox_half_open_full_image_coordinates": [
+      144,
+      770,
+      684,
+      1051
+    ],
+    "changed_pixels": 141748,
+    "max_channel_difference": 10
+  },
+  "failure_interval": [
+    1791413631.163496,
+    1791413631.6295896
+  ],
+  "failure_error": "ValueError: Initial frame differs from reviewed Finish Setup overlay",
+  "interval_records": {
+    "control-transcript.jsonl": [
+      {
+        "time": 1791413631.4218285,
+        "request_file": "request-fdc40a1e2cdd45bb89e745070227f2ed.json",
+        "raw": "{\"execute\": \"probe-status\", \"arguments\": {}, \"created\": 1791413631.269798}\n",
+        "sha256": "709ad3c582ae33203d7c5ce0e71988a6a652233e59225c09534add5bea82d89f",
+        "response": {
+          "return": {
+            "state": "waiting-for-operator-before-capture",
+            "completed": false,
+            "input_mode": "operator-observation",
+            "automatic_input": false,
+            "visual_review_required": true,
+            "captures": {},
+            "appearance_marker_observed": true,
+            "keep_running": true,
+            "finish_requested": false
+          }
+        }
+      }
+    ],
+    "serial-input-transcript.jsonl": [],
+    "display-trace-control.jsonl": [],
+    "qmp-transcript.jsonl": [
+      {
+        "direction": "send",
+        "time": 1791413631.2119336,
+        "raw": "{\"execute\": \"screendump\", \"id\": 38, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-72/frames/0008.ppm\"}}\n"
+      },
+      {
+        "direction": "receive",
+        "time": 1791413631.2189646,
+        "raw": "{\"return\": {}, \"id\": 38}\r\n"
+      }
+    ]
+  },
+  "prefix_hashes": {
+    "control-transcript.jsonl": "06c1ab949ec67e2ca41f3dacb7b91f64dc5bdac3b4f0fcb196609aab29141f0d",
+    "serial-input-transcript.jsonl": "3d9bc1fdcb6b94a4223aee30faa98180d30a45bca53d0bb90aa9b37398783677",
+    "display-trace-control.jsonl": "a810552f0036fa7e8751519b28722efd800167614230c621361fb2f144d25419",
+    "qmp-transcript.jsonl": "5c48bc856efa6fa10dd25bea53b426efd76db8ee0eac7a2731f27363ceb60c85"
+  },
+  "limit": "Periodic QMP screendump38 overlapped interval; no input or trace-start occurred. Only clock/debug-excluded crop difference reported; full-image clock differences exist. No cause of dialog difference inferred."
+}
