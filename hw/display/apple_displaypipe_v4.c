@@ -28,6 +28,7 @@
 #include "qemu/cutils.h"
 #include "qemu/log.h"
 #include "system/dma.h"
+#include "target/arm/cpu.h"
 #include "ui/console.h"
 #include "trace.h"
 
@@ -50,6 +51,25 @@
     do {                   \
     } while (0);
 #endif
+
+/* Diagnostic metadata only: do not synchronize/restore CPU state or read RAM.
+ * PC is the currently exposed CPU-state value, not a guaranteed instruction PC.
+ * Non-vCPU (including ordinary HMP) reads have no caller attribution.
+ */
+static void adp_v4_trace_read_caller(uint64_t offset)
+{
+    if (!trace_event_get_state_backends(TRACE_APPLE_ADP_READ_CALLER)) {
+        return;
+    }
+
+    CPUState *cpu = current_cpu;
+    bool valid = cpu && ARM_CPU(cpu)->env.aarch64;
+    uint64_t pc = valid ? ARM_CPU(cpu)->env.pc : 0;
+    uint64_t lr = valid ? ARM_CPU(cpu)->env.xregs[30] : 0;
+
+    trace_apple_adp_read_caller(offset, cpu != NULL,
+                              cpu ? cpu->cpu_index : -1, valid, pc, lr);
+}
 
 /**
  * Block Bases (DisplayTarget5)
@@ -487,6 +507,9 @@ static uint32_t adp_v4_gp_reg_read(ADPV4GenPipe *genpipe, hwaddr addr,
         ADP_INFO("gp%d: unknown @ 0x" HWADDR_FMT_plx " -> 0x" HWADDR_FMT_plx,
                  genpipe->index, addr, (hwaddr)0);
         trace_apple_adp_unknown_mmio("gp", trace_pipe, false, addr, 0);
+        if (addr == 0x184) {
+            adp_v4_trace_read_caller(0x50000 + trace_pipe * 0x8000 + addr);
+        }
         return 0;
     }
     }
@@ -659,6 +682,9 @@ static uint64_t adp_v4_reg_read(void *const opaque, hwaddr addr, unsigned size)
         ADP_INFO("disp: unknown @ 0x" HWADDR_FMT_plx " -> 0x" HWADDR_FMT_plx,
                  addr, (hwaddr)0);
         trace_apple_adp_unknown_mmio("main", -1, false, addr, 0);
+        if (addr == 0x45004) {
+            adp_v4_trace_read_caller(addr);
+        }
         return 0;
     }
     }

@@ -1,0 +1,28 @@
+{
+  "scope": "Default-off ninth diagnostic event; no model semantic fix",
+  "registers": [
+    "CPU env.pc",
+    "AArch64 x30"
+  ],
+  "offsets": [
+    "0x45004",
+    "0x50184",
+    "0x58184"
+  ],
+  "guard": "Trace enable checked before inspecting thread-local current_cpu. Null CPU records cpu_present=0/index=-1/valid=0/PC=LR=0. Non-AArch64 records invalid addresses.",
+  "no_actions": [
+    "No CPU synchronization/restore",
+    "No guest memory access",
+    "No extra MMIO",
+    "No register writes",
+    "No changed read return values"
+  ],
+  "pc_limit": "Unsynchronized exposed CPU PC can be TB-entry/stale; do not claim exact faulting instruction PC. LR is captured as exposed architectural x30; original leaf read preserves it, subject actual execution and runtime address normalization.",
+  "build": "Only apple_displaypipe_v4.c moves system_ss to specific_ss under unchanged CONFIG_APPLE_SOC, because direct ARM CPU state requires target-specific headers. Intended Apple ARM/AArch64 system builds; not a portable non-ARM display device. Actual compile still required.",
+  "window": "Existing sole-runner fixed event tuple and bounded1..60s enable/disable/cleanup apply; old binaries lacking ninth event must fail explicitly and clean already-enabled events.",
+  "checks": [
+    "git diff --check",
+    "Python AST parses qmp_control.py; fixed tuple has nine distinct events"
+  ],
+  "runtime_validation": "Not built or executed by this worker; root/independent review and actual build precede use."
+}
