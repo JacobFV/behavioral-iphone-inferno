@@ -269,6 +269,7 @@ class SwapWaitCPUWindow:
         self.deadline = None
         self.start_offset = None
         self.file_identity = None
+        self.report = {'state': 'not-requested', 'restore_pending': False, 'errors': []}
 
     def record(self, **fields):
         fd = os.open(self.journal, os.O_WRONLY | os.O_APPEND | os.O_CREAT | os.O_NOFOLLOW, 0o600)
@@ -298,6 +299,7 @@ class SwapWaitCPUWindow:
         self.file_identity, self.start_offset = self.offset()
         self.deadline = time.monotonic() + seconds
         self.pending = True  # uncertain command delivery always requires restoration
+        self.report.update(state='active', restore_pending=True)
         try:
             self.record(stage='before-enable', seconds=seconds, offset=self.start_offset,
                         inode=list(self.file_identity), slide_evidence_sha256=hashlib.sha256(raw).hexdigest())
@@ -305,7 +307,9 @@ class SwapWaitCPUWindow:
             self.record(stage='after-enable', response=response)
             if response.get('return') != '':
                 raise RuntimeError('CPU logging command did not return empty HMP success')
-        except BaseException:
+        except BaseException as exc:
+            self.report['errors'].append(str(exc))
+            self.report['state'] = 'incomplete'
             self.stop(qmp, 'enable failed or uncertain')
             raise
         return {'seconds': seconds, 'filter': SWAPWAIT_FILTER, 'scope': 'GPR snapshots only; global nochain scheduling perturbation; no CPU attribution or entry/return pairing.'}
@@ -323,12 +327,15 @@ class SwapWaitCPUWindow:
             if response.get('return') != '':
                 raise RuntimeError('CPU logging restoration not acknowledged')
             self.pending = False
+            self.report.update(restore_pending=False, state='incomplete' if self.report['errors'] else 'restored')
             self.record(stage='after-restore', response=response)
             if journal_error:
                 raise RuntimeError('Restored logging but journal failed: ' + str(journal_error))
             _, size = self.offset()
             self.record(stage='restored', reason=reason, offset=size, bytes_since_enable=size-self.start_offset)
         except BaseException as exc:
+            self.report['errors'].append(str(exc))
+            self.report.update(state='incomplete', restore_pending=self.pending)
             self.record(stage='restore-error', reason=reason, error=str(exc))
             raise
 

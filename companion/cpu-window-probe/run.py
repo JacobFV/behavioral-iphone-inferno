@@ -46,6 +46,7 @@ try:
    else:raise AssertionError('uncertain enable did not raise')
    assert not box.swapwait_cpu.pending
    time.sleep(.1);start=len(log());time.sleep(.15);tail=log()[start:];assert ' PC=' not in tail and 'pl011_read: Bad offset 0x50' in tail;r['checks']['uncertain_actual_enable_restored']=True
+   assert box.swapwait_cpu.report['state']=='incomplete' and not box.swapwait_cpu.report['restore_pending'];r['diagnostic_report']=box.swapwait_cpu.report
    r['quit']=q.execute('quit');p.wait(timeout=5);r['exit_code']=p.returncode;assert p.returncode==0;r['passed']=True
 except BaseException as exc:r['error']={'type':type(exc).__name__,'detail':str(exc)};raise
 finally:

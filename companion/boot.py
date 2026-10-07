@@ -301,6 +301,8 @@ def main():
         report['probe_journey_source_sha256'] = digest(Path(__file__).with_name('probe_journey.py'))
     control = ControlMailbox(output, journey=journey, keep_running=args.probe_keep_running, swapwait_cpu=args.swapwait_cpu_diagnostic) if args.control_mailbox else None
     if control:
+        if control.swapwait_cpu:
+            report['swapwait_cpu_observation'] = control.swapwait_cpu.report
         report['control_mailbox'] = str(control.path)
         if journey:
             report['probe_run_control'] = control.run_control
