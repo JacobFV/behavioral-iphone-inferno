@@ -1,0 +1,127 @@
+{
+  "comparison65_66_source": {
+    "path": "/tmp/inferno-status59-audit/companion/evidence/adp-x21-66-actual/comparison.json",
+    "sha256": "d5d2f0f45f3304c06fd002f606a0fa8a216f2cd063a9ea13e64eeb332a10ec19"
+  },
+  "prior_matched_slices": [
+    {
+      "run": 65,
+      "byte_range": [
+        1709725,
+        1736062
+      ],
+      "slice_sha256": "32694110697459e0a50115dba370adfab8352981c22f3cb0f668f23c8c1779af",
+      "source_log_sha256": "d9a3bc20291d2469620529f6f32f9a9b40549ebdbf55f389f398f837b574af99",
+      "counter_submission_sha256": "c5019abdb5a0bbe912b2c5bac4ad08087a6715d88adcbb71fc35d03589f205b2",
+      "start_checkpoint": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-65/guest-errors.log",
+        "device": 66306,
+        "inode": 41288499,
+        "size": 1709725,
+        "wall_time": 1791404240.983878,
+        "monotonic_time": 823424.860356071
+      },
+      "event_counts": {
+        "apple_adp_output_ready": 33,
+        "apple_adp_status_read": 31,
+        "apple_adp_irq_write": 31,
+        "apple_adp_unknown_mmio": 93,
+        "apple_adp_read_caller": 93
+      },
+      "status_values": {
+        "0x400": 31
+      },
+      "caller_counts": {
+        "decompression_failure": 62,
+        "interrupt_handler_ready_gate": 31
+      },
+      "handler_pending_bit10": {
+        "True": 31
+      }
+    },
+    {
+      "run": 66,
+      "byte_range": [
+        285387,
+        346907
+      ],
+      "slice_sha256": "ee122972d7459206e90c1e4f5459db229eb5268468080703dcc6d7beb1a8b3a6",
+      "source_log_sha256": "fdfdb47fa1d5e686ae8440829fa1a1c6483899a020af8c3fccbad8f2e195e9aa",
+      "counter_submission_sha256": "29fc4a07b89ab1be332f6ceca33aef74c87a7be7f4eac03ca0e7f380a4ff5267",
+      "start_checkpoint": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-66/guest-errors.log",
+        "device": 66306,
+        "inode": 31089639,
+        "size": 285387,
+        "wall_time": 1791406678.4425166,
+        "monotonic_time": 825862.318994669
+      },
+      "event_counts": {
+        "apple_adp_output_ready": 38,
+        "apple_adp_status_read": 42,
+        "apple_adp_irq_write": 42,
+        "apple_adp_unknown_mmio": 421,
+        "apple_adp_read_caller": 126,
+        "apple_adp_gp_config_write": 40,
+        "apple_adp_submit": 5,
+        "apple_adp_bh": 10,
+        "apple_adp_pipe": 10
+      },
+      "status_values": {
+        "0x400": 37,
+        "0x100000": 5
+      },
+      "caller_counts": {
+        "decompression_failure": 84,
+        "interrupt_handler_ready_gate": 42
+      },
+      "handler_pending_bit10": {
+        "True": 37,
+        "False": 5
+      }
+    }
+  ],
+  "run68_post_counter": {
+    "name": "counter-to-before-later-CPU-window",
+    "byte_range": [
+      405720,
+      478486
+    ],
+    "slice_sha256": "eda7c01757da5baba478eac56b15ae047db356f0b31cbef06e6393b4993f5c47",
+    "event_counts": {
+      "apple_adp_output_ready": 37,
+      "apple_adp_status_read": 43,
+      "apple_adp_irq_write": 43,
+      "apple_adp_unknown_mmio": 542,
+      "apple_adp_read_caller": 129,
+      "apple_adp_gp_config_write": 56,
+      "apple_adp_submit": 7,
+      "apple_adp_bh": 14,
+      "apple_adp_pipe": 14
+    },
+    "status_values": {
+      "0x400": 36,
+      "0x100000": 7
+    },
+    "immediate_equal_w1c_pairs": 43,
+    "status_reads": 43,
+    "caller_counts": {
+      "decompression_failure": 86,
+      "interrupt_handler_ready_gate": 43
+    },
+    "handler_pending_bit10": {
+      "True": 36,
+      "False": 7
+    },
+    "exposed_pc_counts": {
+      "0xfffffff00977b660": 129
+    }
+  },
+  "interpretation": "Failed65 post-counter:0submits/0BH,31handler-ready400 observations. Healthy66:5submits/10BH with37ready400+5swap100000. Healthy68:7submits/14BH with36ready400+7swap100000. This is an observed post-counter progress distinction, not a causal fix or matched-duration experiment.",
+  "limits": [
+    "68 counter60s window reaches deadline;66 ends early atcleanup;65 ends atlivecheckpoint.",
+    "68 prefix ends before later CPU calibration but includes untraced later activity; ADP events themselves were disabled bydeadline.",
+    "Different startup, unlocking, app process history and OPEN conditions remain confounds.",
+    "No disk hashing, guest actions, pixel classification or CPU snapshot interpretation in this audit."
+  ]
+}
