@@ -306,6 +306,8 @@ def main():
         report['control_mailbox'] = str(control.path)
         if journey:
             report['probe_run_control'] = control.run_control
+        else:
+            report['observation_run_control'] = control.run_control
         report['control_source_sha256'] = digest(Path(__file__).with_name('qmp_control.py'))
     touch_trace = StartupTouchTrace(args.touch_trace_seconds if args.touch_trace_seconds is not None else 180) if args.touch_trace_startup else None
     if touch_trace:
@@ -463,6 +465,8 @@ def main():
                     touch_trace.poll(qmp)
                 if control:
                     control.poll(qmp)
+                    if journey is None and control.run_control['finish_requested']:
+                        break
                 if args.capture_interval and time.monotonic() >= next_capture:
                     captures = report['periodic_captures']
                     frame = output / 'frames' / f'{len(captures):04d}.ppm'

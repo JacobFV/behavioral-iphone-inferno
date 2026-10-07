@@ -129,7 +129,7 @@ def validate(request):
     name, args = request['execute'], request['arguments']
     if not isinstance(args, dict):
         raise ValueError('Arguments must be an object')
-    if name in ('query-mice', 'query-touch-registers', 'query-display-registers', 'probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after') and args == {}:
+    if name in ('query-mice', 'query-touch-registers', 'query-display-registers', 'probe-status', 'finish-run', 'finish-observation', 'probe-capture-before', 'probe-capture-after') and args == {}:
         return name, args
     if name == 'swapwait-cpu-window':
         if set(args) == {'seconds'} and type(args['seconds']) is int and 1 <= args['seconds'] <= 3:
@@ -422,6 +422,12 @@ class ControlMailbox:
                         raise ValueError('finish-run requires a completed probe journey')
                     self.run_control['finish_requested'] = True
                     response = {'return': dict(self.run_control)}
+                elif name == 'finish-observation':
+                    if self.journey is not None:
+                        raise ValueError('finish-observation excludes probe journeys; use their existing completion gate')
+                    self.run_control['finish_requested'] = True
+                    response = {'return': {**self.run_control,
+                                'scope': 'Operator ends observation; no app execution or journey success asserted'}}
                 elif name in ('probe-capture-before', 'probe-capture-after'):
                     if self.journey is None:
                         raise ValueError('This boot did not enable --probe-journey')
@@ -625,7 +631,7 @@ class StartupTouchTrace:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report', type=Path, required=True, help='Active boot output directory with --control-mailbox')
-    parser.add_argument('command', choices=['swapwait-cpu-window', 'probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after', 'query-mice', 'query-touch-registers', 'query-display-registers', 'trace-display-window', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture', 'guest-open-app', 'guest-stack-sample'])
+    parser.add_argument('command', choices=['swapwait-cpu-window', 'probe-status', 'finish-run', 'finish-observation', 'probe-capture-before', 'probe-capture-after', 'query-mice', 'query-touch-registers', 'query-display-registers', 'trace-display-window', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture', 'guest-open-app', 'guest-stack-sample'])
     parser.add_argument('--arguments', default='{}', help='Allowlisted QMP arguments as JSON')
     args = parser.parse_args()
     directory = args.report.resolve(strict=True) / 'control'
