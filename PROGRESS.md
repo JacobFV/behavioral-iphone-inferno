@@ -2,6 +2,32 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 13:40: diagnostic validated; run66 authorized
+
+Hostimplementationfc912539fe+b88618cf71 and independentreviewa86cc1019d PASS.
+Whollyownedfirmwarefreevirtloop actualattempt6 verified922complete31GPRsnapshots:
+895deadlinewindow+27earlycleanup, exactsyntheticPCs/knownargs/return, defaultoff,
+normalguesterrors afterrestore, deadline/earlycleanup andlostactualenable-response
+restoration. Uncertainenable remainsdiagnosticincomplete afterrestoration. Initial
+NICROM/DTBoverlap failures preserved andresolved withnicnone/ownedcode40200000.
+Rawreply's filterdescriptor isproductionconstant; actualsyntheticfilter is inargv,
+not claimedasiOScoverage. No upstreamchange/rebuild; same0889binary.
+
+Narrowkernelpatchauditdc5c414c8c excludesdirectpatchoverlap in wholeoriginal
+UserClient::swap_wait96df690..96df760 ands_swap_wait96e2148..96e21a8 underexact
+f37ad49buildsources. No liveguestRAMequality or TBcoverageclaim. ActualcapturedPCs
+mustmatch twofixed addresses before ABIinterpretation; noCPU/processattribution,
+entry-returnpairingorinvocationcountclaim.
+
+ONE66 authorized now using immutable disk-preparation-from50-sample-1 andsame
+standardguestflags plus --swapwait-cpu-diagnostic. Explicitflagadds onlyfixed
+startup-dfilter; CPUlogginginitiallyOFF. RootallUI/trace/sampling/finish. After
+confirmedpersistentfreeze anddisplaytracefullyoff, rootONE1s swapwait-cpu-window,
+then20sframecomparison. NoautomaticCPUwindow or semanticrenderingfix.
+Currentproduction qmp_controlSHA7ca4771651d9b1735d237f6c0f156edf7d0556bc27b5cfacf16a1e0c8b393c6e;
+bootSHA51833ed5452e6a66ffac8371e1266d55edb8585a97b3dcceaa83d0f7b6acccb0.
+No66actualoutcome yet. Continueuntil evidence-driven fix/reliability milestones.
+
 ### 2026-10-07 13:30: bounded return-value diagnostic implementation underway
 
 Originaluserspace9da2b63ad0 establishes sampledcan_update_ sleepfollowsnonzero
