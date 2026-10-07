@@ -1,0 +1,2369 @@
+{
+  "verifier_sha256": "b49310c7af518721356ef0791e008540e91674137d1dc8599849a34c0fe0e00b",
+  "replay_source_sha256": "78e7fe1575748555f2d4c55edd0a8bea2a07b9fa22c9bf0f4e43e2babb5a994e",
+  "results": [
+    {
+      "kind": "actual unchanged report",
+      "run": 67,
+      "recovery_open_request": "f657a4fdfee94393a5dd721690eadf30",
+      "result": {
+        "status": "verified-recovered-journey",
+        "recovery_scope": {
+          "request_id": "f657a4fdfee94393a5dd721690eadf30",
+          "boot": "71B7D4EA-E386-402C-9267-FA4A3C458130",
+          "pid": 360,
+          "main_ticks": 19166710716,
+          "host_control": {
+            "value": {
+              "time": 1791407661.4966564,
+              "request_file": "request-6407421541d24903928f6822864da69e.json",
+              "raw": "{\"execute\": \"guest-open-app\", \"arguments\": {\"request_id\": \"f657a4fdfee94393a5dd721690eadf30\", \"boot_uuid\": \"71B7D4EA-E386-402C-9267-FA4A3C458130\"}, \"created\": 1791407661.3600984}\n",
+              "sha256": "622b81e562e8d8c8ec00c092e298d070ff10e6d39851260bbc721b8209469dd1",
+              "response": {
+                "request_id": "f657a4fdfee94393a5dd721690eadf30",
+                "guest_acknowledgment": "not checked",
+                "ui_acceptance": "not observed by transport",
+                "transmission": "written-to-serial-socket",
+                "bytes_sent": 86
+              }
+            },
+            "reference": {
+              "source": "control-transcript.jsonl",
+              "line": 7,
+              "byte_start": 3796,
+              "byte_end": 4386,
+              "sha256": "d1f095cbbf96323d483c95d48385e8bee5f84fd596deec7147dfa593b7ed4a2b"
+            }
+          },
+          "wire": {
+            "value": {
+              "time": 1791407661.5271192,
+              "stage": "before-send",
+              "request_id": "f657a4fdfee94393a5dd721690eadf30",
+              "operation": "OPEN",
+              "raw": "INFERNO_OPEN_V1 f657a4fdfee94393a5dd721690eadf30 71B7D4EA-E386-402C-9267-FA4A3C458130\n",
+              "sha256": "a9ed417eb84a88d4a0709fcd5287180b7c6cfd64113cfb71b025d66f5514b361"
+            },
+            "reference": {
+              "source": "serial-input-transcript.jsonl",
+              "line": 9,
+              "byte_start": 2203,
+              "byte_end": 2503,
+              "sha256": "7c71695bb80952d7a8910b9624a4680d30437f361b14b0237657097c9e61c89a"
+            }
+          },
+          "wire_completion": {
+            "value": {
+              "time": 1791407661.5302637,
+              "stage": "after-send",
+              "response": {
+                "request_id": "f657a4fdfee94393a5dd721690eadf30",
+                "guest_acknowledgment": "not checked",
+                "ui_acceptance": "not observed by transport",
+                "transmission": "written-to-serial-socket",
+                "bytes_sent": 86
+              }
+            },
+            "reference": {
+              "source": "serial-input-transcript.jsonl",
+              "line": 10,
+              "byte_start": 2503,
+              "byte_end": 2766,
+              "sha256": "a9d6d57880039abf0ce4b562a04f37c9b2edbe330b39cde392f179c1cc05fb15"
+            }
+          },
+          "guest_request": {
+            "value": "INFERNO_OPEN_REQUEST request_id=f657a4fdfee94393a5dd721690eadf30 boot=71B7D4EA-E386-402C-9267-FA4A3C458130 timestamp=19110790436",
+            "reference": {
+              "source": "serial.log",
+              "line": 2896,
+              "byte_start": 309431,
+              "byte_end": 309562,
+              "sha256": "b2b8195ddc9be112c829ecac51f8ae75d1cbf7248e6e55129da8e97fc72bf7e8"
+            }
+          },
+          "dispatch": {
+            "value": "INFERNO_OPEN_DISPATCHED request_id=f657a4fdfee94393a5dd721690eadf30 child=358 accepted_by_os=unqueried",
+            "reference": {
+              "source": "serial.log",
+              "line": 2904,
+              "byte_start": 310272,
+              "byte_end": 310377,
+              "sha256": "30c24e0f08503a1f92702584dc67b4d8bf0f5e14ddb80a321c02f093e8ef0657"
+            }
+          },
+          "callback": {
+            "value": "INFERNO_OPEN_CALLBACK request_id=f657a4fdfee94393a5dd721690eadf30 accepted=1 domain=(nil) code=0 description=(nil)",
+            "reference": {
+              "source": "serial.log",
+              "line": 2950,
+              "byte_start": 315095,
+              "byte_end": 315212,
+              "sha256": "a045fbf92e9bfff82ee83a7540dc12d4b77bd7ef83375396c6a0db8b391bb90b"
+            }
+          },
+          "open_timing": {
+            "value": "INFERNO_OPEN_TIMING_V1 request_id=f657a4fdfee94393a5dd721690eadf30 boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=358 request_ticks=19138500624 callback_ticks=19260040688 numer=125 denom=3 accepted=1",
+            "reference": {
+              "source": "serial.log",
+              "line": 2958,
+              "byte_start": 316500,
+              "byte_end": 316701,
+              "sha256": "f63cad4a294bed2e8e9db1971a379006178a0be17dc31a248e82176b5c217ecb"
+            }
+          },
+          "normal_child_end": {
+            "value": "INFERNO_OPEN_CHILD_END request_id=f657a4fdfee94393a5dd721690eadf30 pid=358 raw_status=0 timed_out=0 completion_is_not_visual=1",
+            "reference": {
+              "source": "serial.log",
+              "line": 2960,
+              "byte_start": 316953,
+              "byte_end": 317082,
+              "sha256": "4bc8879c4831431ac28ed1870a07358b0f0dee25274c718754c3c6988b27473e"
+            }
+          },
+          "five_hooks": [
+            {
+              "value": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 1 main 19166710716 125 3",
+              "reference": {
+                "source": "serial.log",
+                "line": 2948,
+                "byte_start": 314737,
+                "byte_end": 314877,
+                "sha256": "1e622b23a683923c63741c15ea85d3da15881de566f95438e9d6ef0e53f895c8"
+              }
+            },
+            {
+              "value": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 2 launch-delegate 19225703668 125 3",
+              "reference": {
+                "source": "serial.log",
+                "line": 2951,
+                "byte_start": 315212,
+                "byte_end": 315363,
+                "sha256": "b7112d2f39e58f30923806983a0314904787fd66ed67be603d1354129ef02f96"
+              }
+            },
+            {
+              "value": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 3 window-request 19242150142 125 3",
+              "reference": {
+                "source": "serial.log",
+                "line": 2953,
+                "byte_start": 315592,
+                "byte_end": 315742,
+                "sha256": "4f370f1bfa633dae22528f14cbfe7ace5921b6e56b5b2e79d7f7533719eb35dc"
+              }
+            },
+            {
+              "value": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 4 active 19253976780 125 3",
+              "reference": {
+                "source": "serial.log",
+                "line": 2955,
+                "byte_start": 315970,
+                "byte_end": 316112,
+                "sha256": "3aacb17bda782119b1c413c783975fa6a2089e74e8d1135d8baf3b8669dee5dd"
+              }
+            },
+            {
+              "value": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 5 appeared 19255269834 125 3",
+              "reference": {
+                "source": "serial.log",
+                "line": 2961,
+                "byte_start": 317082,
+                "byte_end": 317226,
+                "sha256": "f7a05f15d32d17a5fe4a9b61295d95e3648a00755e2b26af9fc45b8c9258812e"
+              }
+            }
+          ],
+          "process_identity": {
+            "value": "INFERNO_EVENT_PROCESS_IDENTITY pid=360 query_result=56 errno=0 uniqueid=360 idversion=1022 source=original-libproc fallback=main-tick-and-pid",
+            "reference": {
+              "source": "serial.log",
+              "line": 2947,
+              "byte_start": 314593,
+              "byte_end": 314737,
+              "sha256": "f11c29397ffcac1c026e324424e347306e5ac17e1bf4e48a35409072449ce59a"
+            }
+          },
+          "prior_main_only_records": [
+            {
+              "event": "main",
+              "boot": "71B7D4EA-E386-402C-9267-FA4A3C458130",
+              "pid": 269,
+              "sequence": 1,
+              "raw": {
+                "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 269 1 main 0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 904,
+                  "byte_start": 79281,
+                  "byte_end": 79403,
+                  "sha256": "e8b01de188c4ef69af6673de490f079f44842e1a4789a07bd0a34e19376c43c2"
+                }
+              },
+              "validated": {
+                "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=269 sequence=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 907,
+                  "byte_start": 79626,
+                  "byte_end": 79786,
+                  "sha256": "bbe0749864705635099fd49d24dd32b61a00faa78c536188b581a538322ad104"
+                }
+              },
+              "marker": {
+                "value": "INFERNO_UIKIT_PROBE_V1 event=main count=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 908,
+                  "byte_start": 79786,
+                  "byte_end": 79830,
+                  "sha256": "1793ebcb6f63f875251e57a2c414104c023f43011688925acd4b5f7eed2a9e0f"
+                }
+              },
+              "arrival": null
+            }
+          ],
+          "all_rejection_records": [
+            {
+              "value": "INFERNO_EVENT_RELAY_REJECT result=6 errno=0 connection=7",
+              "reference": {
+                "source": "serial.log",
+                "line": 914,
+                "byte_start": 80478,
+                "byte_end": 80537,
+                "sha256": "576f9cebf1d7dd7442582badb4872129dc40ccc6b135bd35dbee623006dcf6b5"
+              }
+            },
+            {
+              "value": "INFERNO_EVENT_RELAY_REJECT result=6 errno=0 connection=8",
+              "reference": {
+                "source": "serial.log",
+                "line": 916,
+                "byte_start": 80673,
+                "byte_end": 80732,
+                "sha256": "a0b243e63fb14a54509a3d579289dcff4c267da4dcdf17e33614bfddeb866266"
+              }
+            },
+            {
+              "value": "INFERNO_EVENT_RELAY_REJECT result=6 errno=0 connection=9",
+              "reference": {
+                "source": "serial.log",
+                "line": 917,
+                "byte_start": 80732,
+                "byte_end": 80791,
+                "sha256": "cc9e741b66b58c584472c9a70144870383171fa6d869cf16f3d47e46e04fea03"
+              }
+            },
+            {
+              "value": "INFERNO_EVENT_RELAY_REJECT result=6 errno=0 connection=10",
+              "reference": {
+                "source": "serial.log",
+                "line": 919,
+                "byte_start": 80927,
+                "byte_end": 80987,
+                "sha256": "2896428c53f0ba184a74978ae83af915b414a85564311a0b93793df6f0a029d0"
+              }
+            },
+            {
+              "value": "INFERNO_EVENT_RELAY_REJECT result=60 errno=0 connection=11",
+              "reference": {
+                "source": "serial.log",
+                "line": 920,
+                "byte_start": 80987,
+                "byte_end": 81048,
+                "sha256": "d371fbda9b2b5aea95d7a8e06789e5ba7fe9f06060824ca476ba2f82761a82da"
+              }
+            }
+          ],
+          "all_validated_event_records": [
+            {
+              "fields": [
+                "71B7D4EA-E386-402C-9267-FA4A3C458130",
+                "269",
+                "1",
+                "main",
+                "0"
+              ],
+              "raw": {
+                "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 269 1 main 0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 904,
+                  "byte_start": 79281,
+                  "byte_end": 79403,
+                  "sha256": "e8b01de188c4ef69af6673de490f079f44842e1a4789a07bd0a34e19376c43c2"
+                }
+              },
+              "validated": {
+                "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=269 sequence=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 907,
+                  "byte_start": 79626,
+                  "byte_end": 79786,
+                  "sha256": "bbe0749864705635099fd49d24dd32b61a00faa78c536188b581a538322ad104"
+                }
+              },
+              "marker": {
+                "value": "INFERNO_UIKIT_PROBE_V1 event=main count=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 908,
+                  "byte_start": 79786,
+                  "byte_end": 79830,
+                  "sha256": "1793ebcb6f63f875251e57a2c414104c023f43011688925acd4b5f7eed2a9e0f"
+                }
+              }
+            },
+            {
+              "fields": [
+                "71B7D4EA-E386-402C-9267-FA4A3C458130",
+                "360",
+                "1",
+                "main",
+                "0"
+              ],
+              "raw": {
+                "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 1 main 0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2963,
+                  "byte_start": 317448,
+                  "byte_end": 317570,
+                  "sha256": "737ee8a766b629d5a6ae74dd843644a51b7803cd44bad79db5655d5e014d639b"
+                }
+              },
+              "validated": {
+                "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=360 sequence=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2964,
+                  "byte_start": 317570,
+                  "byte_end": 317730,
+                  "sha256": "07b61ead1ca018364d76cbeba20c42354f7aa85d6aa3351c4655a4b0800cd126"
+                }
+              },
+              "marker": {
+                "value": "INFERNO_UIKIT_PROBE_V1 event=main count=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2965,
+                  "byte_start": 317730,
+                  "byte_end": 317774,
+                  "sha256": "1793ebcb6f63f875251e57a2c414104c023f43011688925acd4b5f7eed2a9e0f"
+                }
+              }
+            },
+            {
+              "fields": [
+                "71B7D4EA-E386-402C-9267-FA4A3C458130",
+                "360",
+                "2",
+                "view-loaded",
+                "0"
+              ],
+              "raw": {
+                "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 2 view-loaded 0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2966,
+                  "byte_start": 317774,
+                  "byte_end": 317903,
+                  "sha256": "e4458255e8537386862e336d772568e97462127779073fbb7585e83d5ad83531"
+                }
+              },
+              "validated": {
+                "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=360 sequence=2 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2967,
+                  "byte_start": 317903,
+                  "byte_end": 318063,
+                  "sha256": "12027b34add066665a68fb91f4957e4bc9852ca2c881166d0cb26316559ab8e5"
+                }
+              },
+              "marker": {
+                "value": "INFERNO_UIKIT_PROBE_V1 event=view-loaded count=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2968,
+                  "byte_start": 318063,
+                  "byte_end": 318114,
+                  "sha256": "0830edd86f75eee1adbdcea2a0112ea91d9d41b088456253fa07a01eb9b2e613"
+                }
+              }
+            },
+            {
+              "fields": [
+                "71B7D4EA-E386-402C-9267-FA4A3C458130",
+                "360",
+                "3",
+                "window-visible-requested",
+                "0"
+              ],
+              "raw": {
+                "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 3 window-visible-requested 0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2969,
+                  "byte_start": 318114,
+                  "byte_end": 318256,
+                  "sha256": "2f5d1dbf70cd771e67f8861ade7ab5dc20d4e48d221019cdd3c589dfa975861f"
+                }
+              },
+              "validated": {
+                "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=360 sequence=3 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2970,
+                  "byte_start": 318256,
+                  "byte_end": 318416,
+                  "sha256": "dc0c0aff48fd64f267963bce9d432f0f2ef9d593210174808181c02e40012570"
+                }
+              },
+              "marker": {
+                "value": "INFERNO_UIKIT_PROBE_V1 event=window-visible-requested count=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2971,
+                  "byte_start": 318416,
+                  "byte_end": 318480,
+                  "sha256": "f468878611954b4bec9c0b72422587849206c4b1a0761bee80147cf1ade2a572"
+                }
+              }
+            },
+            {
+              "fields": [
+                "71B7D4EA-E386-402C-9267-FA4A3C458130",
+                "360",
+                "4",
+                "active",
+                "0"
+              ],
+              "raw": {
+                "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 4 active 0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2972,
+                  "byte_start": 318480,
+                  "byte_end": 318604,
+                  "sha256": "a83d3a1b9e3ff64a5d6784c56efae9866f1a373563f9dcb1e7dd82fe1b18e06e"
+                }
+              },
+              "validated": {
+                "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=360 sequence=4 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2973,
+                  "byte_start": 318604,
+                  "byte_end": 318764,
+                  "sha256": "98cc471e5b71d29c58599b281c9d03071a6786c0362fbaa7e1da2d0e0058fe28"
+                }
+              },
+              "marker": {
+                "value": "INFERNO_UIKIT_PROBE_V1 event=active count=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2974,
+                  "byte_start": 318764,
+                  "byte_end": 318810,
+                  "sha256": "b82a3d0f8cba24f1232c8761569c3fb679825e80b6c87619a4eaee6e8a968bd2"
+                }
+              }
+            },
+            {
+              "fields": [
+                "71B7D4EA-E386-402C-9267-FA4A3C458130",
+                "360",
+                "5",
+                "appeared",
+                "0"
+              ],
+              "raw": {
+                "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 5 appeared 0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2975,
+                  "byte_start": 318810,
+                  "byte_end": 318936,
+                  "sha256": "4ceea6aacf55a173d68c39e26ed0d3df116227e62331e4fb0355d6d358c63db0"
+                }
+              },
+              "validated": {
+                "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=360 sequence=5 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2976,
+                  "byte_start": 318936,
+                  "byte_end": 319096,
+                  "sha256": "2afdf941d5cd046503e75d4ec270e366547f268944a5ee4a60d9019677ff6197"
+                }
+              },
+              "marker": {
+                "value": "INFERNO_UIKIT_PROBE_V1 event=appeared count=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2977,
+                  "byte_start": 319096,
+                  "byte_end": 319144,
+                  "sha256": "6a9eb571fc87c10724281d3d599f02e477b35e566d0763c29c819c959fb33d9f"
+                }
+              }
+            },
+            {
+              "fields": [
+                "71B7D4EA-E386-402C-9267-FA4A3C458130",
+                "360",
+                "6",
+                "tap",
+                "1"
+              ],
+              "raw": {
+                "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 6 tap 1",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2997,
+                  "byte_start": 321402,
+                  "byte_end": 321523,
+                  "sha256": "a221385125a9039a85b7c197a9518a8e99e81563baa6dffca4b1bc70c91bd554"
+                }
+              },
+              "validated": {
+                "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=360 sequence=6 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2998,
+                  "byte_start": 321523,
+                  "byte_end": 321683,
+                  "sha256": "be45d03d3d407fbe01edb73679d0aae5e96f74476f9fcbea56a8c7c6a4b27c3d"
+                }
+              },
+              "marker": {
+                "value": "INFERNO_UIKIT_PROBE_V1 event=tap count=1",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 2999,
+                  "byte_start": 321683,
+                  "byte_end": 321726,
+                  "sha256": "45eb0ad652c2cd4780e708b8847bae9310474dc673409820cd1848f68c52edd4"
+                }
+              }
+            },
+            {
+              "fields": [
+                "71B7D4EA-E386-402C-9267-FA4A3C458130",
+                "360",
+                "7",
+                "active",
+                "0"
+              ],
+              "raw": {
+                "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 7 active 0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3012,
+                  "byte_start": 323770,
+                  "byte_end": 323894,
+                  "sha256": "f4cd0ea618b437acc9a8e4fb795692cd3e17c585f560256071956850515df7d2"
+                }
+              },
+              "validated": {
+                "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=360 sequence=7 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3014,
+                  "byte_start": 324062,
+                  "byte_end": 324222,
+                  "sha256": "fd9706ca4b6dc0b41def81ab56cf747228dc0221064b1094af424421961387e1"
+                }
+              },
+              "marker": {
+                "value": "INFERNO_UIKIT_PROBE_V1 event=active count=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3015,
+                  "byte_start": 324222,
+                  "byte_end": 324268,
+                  "sha256": "b82a3d0f8cba24f1232c8761569c3fb679825e80b6c87619a4eaee6e8a968bd2"
+                }
+              }
+            },
+            {
+              "fields": [
+                "71B7D4EA-E386-402C-9267-FA4A3C458130",
+                "360",
+                "8",
+                "tap",
+                "2"
+              ],
+              "raw": {
+                "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 8 tap 2",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3037,
+                  "byte_start": 327001,
+                  "byte_end": 327122,
+                  "sha256": "998037ec9a723e463344082af38ed2a401e4fae1815195cb3a07689db9003324"
+                }
+              },
+              "validated": {
+                "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=360 sequence=8 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3038,
+                  "byte_start": 327122,
+                  "byte_end": 327282,
+                  "sha256": "5b9c88ff79ae266ac78388c968d83a3eeaa3043fbb696752124b30788ff15138"
+                }
+              },
+              "marker": {
+                "value": "INFERNO_UIKIT_PROBE_V1 event=tap count=2",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3039,
+                  "byte_start": 327282,
+                  "byte_end": 327325,
+                  "sha256": "bf5268e964cbb7a9df2529fcf35ef1f646e6867c895083308f799522f4a10c0e"
+                }
+              }
+            },
+            {
+              "fields": [
+                "71B7D4EA-E386-402C-9267-FA4A3C458130",
+                "360",
+                "9",
+                "active",
+                "0"
+              ],
+              "raw": {
+                "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 9 active 0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3321,
+                  "byte_start": 352932,
+                  "byte_end": 353056,
+                  "sha256": "112563206f50483faa274500a415e3c17ec4f64d04759c0b97428afd954966d0"
+                }
+              },
+              "validated": {
+                "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=360 sequence=9 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3322,
+                  "byte_start": 353056,
+                  "byte_end": 353216,
+                  "sha256": "82627c08db5605029451ed44d953344f6e08982aab70e0104d9155d7f94e8089"
+                }
+              },
+              "marker": {
+                "value": "INFERNO_UIKIT_PROBE_V1 event=active count=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3323,
+                  "byte_start": 353216,
+                  "byte_end": 353262,
+                  "sha256": "b82a3d0f8cba24f1232c8761569c3fb679825e80b6c87619a4eaee6e8a968bd2"
+                }
+              }
+            },
+            {
+              "fields": [
+                "71B7D4EA-E386-402C-9267-FA4A3C458130",
+                "360",
+                "10",
+                "tap",
+                "3"
+              ],
+              "raw": {
+                "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 10 tap 3",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3342,
+                  "byte_start": 355413,
+                  "byte_end": 355535,
+                  "sha256": "60bb59e917c7bea58d9b903de803a656b78f2b3ee36b2f209c1cbfd9dc5e1ea8"
+                }
+              },
+              "validated": {
+                "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=360 sequence=10 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3343,
+                  "byte_start": 355535,
+                  "byte_end": 355696,
+                  "sha256": "330063da502d2b59c0eaa80ff0cf453e1fc0cddbc944a7ca9e314842513da7ab"
+                }
+              },
+              "marker": {
+                "value": "INFERNO_UIKIT_PROBE_V1 event=tap count=3",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3344,
+                  "byte_start": 355696,
+                  "byte_end": 355739,
+                  "sha256": "e93d0de9ef02e4722cf379fd086a06635bdef07bb99fa6063c356b93e9df9b12"
+                }
+              }
+            },
+            {
+              "fields": [
+                "71B7D4EA-E386-402C-9267-FA4A3C458130",
+                "360",
+                "11",
+                "active",
+                "0"
+              ],
+              "raw": {
+                "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 11 active 0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3356,
+                  "byte_start": 357698,
+                  "byte_end": 357823,
+                  "sha256": "e3379216f13f2267b640fde170e12b4c6d96043ec963dff7e973dedd22083f34"
+                }
+              },
+              "validated": {
+                "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=360 sequence=11 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3359,
+                  "byte_start": 358192,
+                  "byte_end": 358353,
+                  "sha256": "f37a966db31450515964b1470ee38802a1501d42823726cedd489f4672787cd5"
+                }
+              },
+              "marker": {
+                "value": "INFERNO_UIKIT_PROBE_V1 event=active count=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3361,
+                  "byte_start": 358605,
+                  "byte_end": 358651,
+                  "sha256": "b82a3d0f8cba24f1232c8761569c3fb679825e80b6c87619a4eaee6e8a968bd2"
+                }
+              }
+            },
+            {
+              "fields": [
+                "71B7D4EA-E386-402C-9267-FA4A3C458130",
+                "360",
+                "12",
+                "tap",
+                "4"
+              ],
+              "raw": {
+                "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 12 tap 4",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3381,
+                  "byte_start": 360933,
+                  "byte_end": 361055,
+                  "sha256": "61b413e07fc9448bbbd2b0f57372e8730a2df4d77447f7ecc8cf7ac98efd6831"
+                }
+              },
+              "validated": {
+                "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=360 sequence=12 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3382,
+                  "byte_start": 361055,
+                  "byte_end": 361216,
+                  "sha256": "3346fd3532a3fc2ee845a218be688d83dc97c8a26d871f3d43e6c615d7e98978"
+                }
+              },
+              "marker": {
+                "value": "INFERNO_UIKIT_PROBE_V1 event=tap count=4",
+                "reference": {
+                  "source": "serial.log",
+                  "line": 3383,
+                  "byte_start": 361216,
+                  "byte_end": 361259,
+                  "sha256": "382c3e4e461f6dd0844ff1068fad1709ad9654411a170bcf48ee1dcdb32d1c2c"
+                }
+              }
+            }
+          ],
+          "all_timing_incarnations": [
+            {
+              "boot": "71B7D4EA-E386-402C-9267-FA4A3C458130",
+              "pid": 269,
+              "records": [
+                {
+                  "value": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 269 1 main 10520421295 125 3",
+                  "reference": {
+                    "source": "serial.log",
+                    "line": 881,
+                    "byte_start": 75712,
+                    "byte_end": 75852,
+                    "sha256": "e1429db62f2424538cd9b7297e0cdb767e0507eb0dbdfe6bfe5be81d24119fc0"
+                  }
+                },
+                {
+                  "value": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 269 2 launch-delegate 10536951173 125 3",
+                  "reference": {
+                    "source": "serial.log",
+                    "line": 893,
+                    "byte_start": 77387,
+                    "byte_end": 77538,
+                    "sha256": "62bf56c988e0c9cceb9b559d0343ed0a542e163cf14244dfe1cc49fcc913146f"
+                  }
+                },
+                {
+                  "value": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 269 3 window-request 10557253855 125 3",
+                  "reference": {
+                    "source": "serial.log",
+                    "line": 895,
+                    "byte_start": 77767,
+                    "byte_end": 77917,
+                    "sha256": "45b5cd28c36aa7963574ff504b292097756567644a5022fdbc9ad2bf84d0565e"
+                  }
+                },
+                {
+                  "value": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 269 4 active 10569045610 125 3",
+                  "reference": {
+                    "source": "serial.log",
+                    "line": 899,
+                    "byte_start": 78417,
+                    "byte_end": 78559,
+                    "sha256": "2211478e72e046aa262c6d99348aea6b4de88a8ca0568a3880f010e684df236d"
+                  }
+                },
+                {
+                  "value": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 269 5 appeared 10574237738 125 3",
+                  "reference": {
+                    "source": "serial.log",
+                    "line": 901,
+                    "byte_start": 78779,
+                    "byte_end": 78923,
+                    "sha256": "129de71e23b24a6805914c040cd73a8c1b4e436f2d2cb665b801851d6dee4a15"
+                  }
+                }
+              ]
+            },
+            {
+              "boot": "71B7D4EA-E386-402C-9267-FA4A3C458130",
+              "pid": 360,
+              "records": [
+                {
+                  "value": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 1 main 19166710716 125 3",
+                  "reference": {
+                    "source": "serial.log",
+                    "line": 2948,
+                    "byte_start": 314737,
+                    "byte_end": 314877,
+                    "sha256": "1e622b23a683923c63741c15ea85d3da15881de566f95438e9d6ef0e53f895c8"
+                  }
+                },
+                {
+                  "value": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 2 launch-delegate 19225703668 125 3",
+                  "reference": {
+                    "source": "serial.log",
+                    "line": 2951,
+                    "byte_start": 315212,
+                    "byte_end": 315363,
+                    "sha256": "b7112d2f39e58f30923806983a0314904787fd66ed67be603d1354129ef02f96"
+                  }
+                },
+                {
+                  "value": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 3 window-request 19242150142 125 3",
+                  "reference": {
+                    "source": "serial.log",
+                    "line": 2953,
+                    "byte_start": 315592,
+                    "byte_end": 315742,
+                    "sha256": "4f370f1bfa633dae22528f14cbfe7ace5921b6e56b5b2e79d7f7533719eb35dc"
+                  }
+                },
+                {
+                  "value": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 4 active 19253976780 125 3",
+                  "reference": {
+                    "source": "serial.log",
+                    "line": 2955,
+                    "byte_start": 315970,
+                    "byte_end": 316112,
+                    "sha256": "3aacb17bda782119b1c413c783975fa6a2089e74e8d1135d8baf3b8669dee5dd"
+                  }
+                },
+                {
+                  "value": "INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 5 appeared 19255269834 125 3",
+                  "reference": {
+                    "source": "serial.log",
+                    "line": 2961,
+                    "byte_start": 317082,
+                    "byte_end": 317226,
+                    "sha256": "f7a05f15d32d17a5fe4a9b61295d95e3648a00755e2b26af9fc45b8c9258812e"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "whole_boot_verified": false,
+        "chronology_basis": "source-gated capture commands; independent marker arrival times unavailable",
+        "reviewed_capture_gate_source_sha256": "1c4cbb542a79b85560433d62726123b99555ad0a47522d5ecd659faf3a04f308",
+        "boot_uuid": "71B7D4EA-E386-402C-9267-FA4A3C458130",
+        "app_pid": 360,
+        "relay_ready": {
+          "value": "INFERNO_EVENT_RELAY_READY boot=71B7D4EA-E386-402C-9267-FA4A3C458130 lifetime=7200 transport=tcp address=127.0.0.1 port=37373 connections_max=128",
+          "reference": {
+            "source": "serial.log",
+            "line": 757,
+            "byte_start": 62037,
+            "byte_end": 62184,
+            "sha256": "7028fb570ddb0a832c9f460745b3ff4bf186772f97da1044bf0f051dbd699a5b"
+          }
+        },
+        "events": {
+          "main": {
+            "event": "main",
+            "boot": "71B7D4EA-E386-402C-9267-FA4A3C458130",
+            "pid": 360,
+            "sequence": 1,
+            "raw": {
+              "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 1 main 0",
+              "reference": {
+                "source": "serial.log",
+                "line": 2963,
+                "byte_start": 317448,
+                "byte_end": 317570,
+                "sha256": "737ee8a766b629d5a6ae74dd843644a51b7803cd44bad79db5655d5e014d639b"
+              }
+            },
+            "validated": {
+              "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=360 sequence=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 2964,
+                "byte_start": 317570,
+                "byte_end": 317730,
+                "sha256": "07b61ead1ca018364d76cbeba20c42354f7aa85d6aa3351c4655a4b0800cd126"
+              }
+            },
+            "marker": {
+              "value": "INFERNO_UIKIT_PROBE_V1 event=main count=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 2965,
+                "byte_start": 317730,
+                "byte_end": 317774,
+                "sha256": "1793ebcb6f63f875251e57a2c414104c023f43011688925acd4b5f7eed2a9e0f"
+              }
+            },
+            "arrival": null
+          },
+          "appeared": {
+            "event": "appeared",
+            "boot": "71B7D4EA-E386-402C-9267-FA4A3C458130",
+            "pid": 360,
+            "sequence": 5,
+            "raw": {
+              "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 5 appeared 0",
+              "reference": {
+                "source": "serial.log",
+                "line": 2975,
+                "byte_start": 318810,
+                "byte_end": 318936,
+                "sha256": "4ceea6aacf55a173d68c39e26ed0d3df116227e62331e4fb0355d6d358c63db0"
+              }
+            },
+            "validated": {
+              "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=360 sequence=5 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 2976,
+                "byte_start": 318936,
+                "byte_end": 319096,
+                "sha256": "2afdf941d5cd046503e75d4ec270e366547f268944a5ee4a60d9019677ff6197"
+              }
+            },
+            "marker": {
+              "value": "INFERNO_UIKIT_PROBE_V1 event=appeared count=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 2977,
+                "byte_start": 319096,
+                "byte_end": 319144,
+                "sha256": "6a9eb571fc87c10724281d3d599f02e477b35e566d0763c29c819c959fb33d9f"
+              }
+            },
+            "arrival": null
+          },
+          "tap": {
+            "event": "tap",
+            "boot": "71B7D4EA-E386-402C-9267-FA4A3C458130",
+            "pid": 360,
+            "sequence": 6,
+            "raw": {
+              "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 360 6 tap 1",
+              "reference": {
+                "source": "serial.log",
+                "line": 2997,
+                "byte_start": 321402,
+                "byte_end": 321523,
+                "sha256": "a221385125a9039a85b7c197a9518a8e99e81563baa6dffca4b1bc70c91bd554"
+              }
+            },
+            "validated": {
+              "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=360 sequence=6 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 2998,
+                "byte_start": 321523,
+                "byte_end": 321683,
+                "sha256": "be45d03d3d407fbe01edb73679d0aae5e96f74476f9fcbea56a8c7c6a4b27c3d"
+              }
+            },
+            "marker": {
+              "value": "INFERNO_UIKIT_PROBE_V1 event=tap count=1",
+              "reference": {
+                "source": "serial.log",
+                "line": 2999,
+                "byte_start": 321683,
+                "byte_end": 321726,
+                "sha256": "45eb0ad652c2cd4780e708b8847bae9310474dc673409820cd1848f68c52edd4"
+              }
+            },
+            "arrival": null
+          }
+        },
+        "strict_prefix_manifest": null,
+        "post_strict_other_process_records": [
+          {
+            "event": "main",
+            "boot": "71B7D4EA-E386-402C-9267-FA4A3C458130",
+            "pid": 269,
+            "sequence": 1,
+            "raw": {
+              "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 71B7D4EA-E386-402C-9267-FA4A3C458130 269 1 main 0",
+              "reference": {
+                "source": "serial.log",
+                "line": 904,
+                "byte_start": 79281,
+                "byte_end": 79403,
+                "sha256": "e8b01de188c4ef69af6673de490f079f44842e1a4789a07bd0a34e19376c43c2"
+              }
+            },
+            "validated": {
+              "value": "INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=269 sequence=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 907,
+                "byte_start": 79626,
+                "byte_end": 79786,
+                "sha256": "bbe0749864705635099fd49d24dd32b61a00faa78c536188b581a538322ad104"
+              }
+            },
+            "marker": {
+              "value": "INFERNO_UIKIT_PROBE_V1 event=main count=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 908,
+                "byte_start": 79786,
+                "byte_end": 79830,
+                "sha256": "1793ebcb6f63f875251e57a2c414104c023f43011688925acd4b5f7eed2a9e0f"
+              }
+            },
+            "arrival": null
+          }
+        ],
+        "before": {
+          "value": {
+            "time": 1791407730.6402512,
+            "request_file": "request-cf7f664fab444bba879952580ff1bbb6.json",
+            "raw": "{\"execute\": \"probe-capture-before\", \"arguments\": {}, \"created\": 1791407730.5591197}\n",
+            "sha256": "7e8b559d1ba332e975a73219d93aa596b80d7c948a211890d1f0d9b8d6e66a7e",
+            "response": {
+              "return": {
+                "state": "waiting-for-operator-tap-marker",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/probe-before.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "bfb9f2f4820580525e1c98ddf170979bf48e22b8729b3d71d643f5a455fa339a"
+                }
+              }
+            }
+          },
+          "reference": {
+            "source": "control-transcript.jsonl",
+            "line": 8,
+            "byte_start": 4386,
+            "byte_end": 4966,
+            "sha256": "e4d0a49591e821d8f222515f3662d7e2b7db749de5891cdfb22af2e736259dff"
+          }
+        },
+        "tap_command": {
+          "value": {
+            "time": 1791407731.0792181,
+            "request_file": "request-cabb8cbc84a74e6781b7eef1b881f3a5.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"f502af3898b349fab78075d430c3ce8f\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 20316}, \"created\": 1791407731.059676}\n",
+            "sha256": "c1085cc7cc4ec47b23c39630fa1d0cf4f9d6f9ea8d7aba6668c80e9eb5e8c3ec",
+            "response": {
+              "request_id": "f502af3898b349fab78075d430c3ce8f",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "source": "control-transcript.jsonl",
+            "line": 10,
+            "byte_start": 5622,
+            "byte_end": 6226,
+            "sha256": "6ba6e6830f4daed290ca19e8d082d5b8e7c6dee4340c8e6f12d9d6116c4511bc"
+          }
+        },
+        "tap_wire": {
+          "value": {
+            "time": 1791407731.0794814,
+            "stage": "before-send",
+            "request_id": "f502af3898b349fab78075d430c3ce8f",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 f502af3898b349fab78075d430c3ce8f TAP 16384 20316 150\n",
+            "sha256": "902c8de76bd3461e8ad52a63f64dd52e26926ed3bdd10626d1269b645c342489"
+          },
+          "reference": {
+            "source": "serial-input-transcript.jsonl",
+            "line": 11,
+            "byte_start": 2766,
+            "byte_end": 3047,
+            "sha256": "b517c939e37f81298e23b9bf02502552f4981585b21e3c9cef0ccaa9dbc4e8a3"
+          }
+        },
+        "tap_wire_completion": {
+          "value": {
+            "time": 1791407731.0796385,
+            "stage": "after-send",
+            "response": {
+              "request_id": "f502af3898b349fab78075d430c3ce8f",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "source": "serial-input-transcript.jsonl",
+            "line": 12,
+            "byte_start": 3047,
+            "byte_end": 3310,
+            "sha256": "4b3b38366243100138ff36c7eaad0bc4c9f99ce29798b6c2ba8704c19d773e29"
+          }
+        },
+        "tap_attempt_ack": {
+          "value": "INFERNO_HID_ACK request_id=f502af3898b349fab78075d430c3ce8f attempt_status=0 delivery=unproven timestamp=20812126997",
+          "reference": {
+            "source": "serial.log",
+            "line": 2996,
+            "byte_start": 321283,
+            "byte_end": 321402,
+            "sha256": "b0ba678980bcf856b1cf7e7b2712124cdcf3618f059b22a80e0ec4c5be1a614b"
+          }
+        },
+        "after": {
+          "value": {
+            "time": 1791407814.8772128,
+            "request_file": "request-8cb3107d56ff46b1a8d04832778b75e1.json",
+            "raw": "{\"execute\": \"probe-capture-after\", \"arguments\": {}, \"created\": 1791407814.7920473}\n",
+            "sha256": "5b8fa219369778c9396a7cf82e3f82d972deecfc6ff534e007c26518e751c391",
+            "response": {
+              "return": {
+                "state": "completed",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/probe-after.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "68f264119f2bf7106b655b99003be82edacd2532b2fd010a5d302b565be84b77"
+                }
+              }
+            }
+          },
+          "reference": {
+            "source": "control-transcript.jsonl",
+            "line": 11,
+            "byte_start": 6226,
+            "byte_end": 6782,
+            "sha256": "acaeaeb0b92afdf558c4f4c37ee2e491d3f16f51d3720e63a2ac257f4d7534f4"
+          }
+        },
+        "captures": [
+          {
+            "role": "probe-before",
+            "width": 828,
+            "height": 1792,
+            "sha256": "bfb9f2f4820580525e1c98ddf170979bf48e22b8729b3d71d643f5a455fa339a",
+            "qmp": {
+              "request": {
+                "value": {
+                  "direction": "send",
+                  "time": 1791407730.6426282,
+                  "raw": "{\"execute\": \"screendump\", \"id\": 77, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/probe-before.ppm\"}}\n"
+                },
+                "reference": {
+                  "source": "qmp-transcript.jsonl",
+                  "line": 209,
+                  "byte_start": 45989,
+                  "byte_end": 46231,
+                  "sha256": "3524a41c17b8b14f1d123c063ed53e8b4f142d992a73dcc87fc68963e19b23c1"
+                }
+              },
+              "reply": {
+                "value": {
+                  "direction": "receive",
+                  "time": 1791407730.652734,
+                  "raw": "{\"return\": {}, \"id\": 77}\r\n"
+                },
+                "reference": {
+                  "source": "qmp-transcript.jsonl",
+                  "line": 210,
+                  "byte_start": 46231,
+                  "byte_end": 46326,
+                  "sha256": "6b1c286e02f68c5491a05d99f5167a4651514de266e6c747ae8a191f954f625e"
+                }
+              }
+            }
+          },
+          {
+            "role": "probe-after",
+            "width": 828,
+            "height": 1792,
+            "sha256": "68f264119f2bf7106b655b99003be82edacd2532b2fd010a5d302b565be84b77",
+            "qmp": {
+              "request": {
+                "value": {
+                  "direction": "send",
+                  "time": 1791407814.87781,
+                  "raw": "{\"execute\": \"screendump\", \"id\": 105, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/probe-after.ppm\"}}\n"
+                },
+                "reference": {
+                  "source": "qmp-transcript.jsonl",
+                  "line": 268,
+                  "byte_start": 55378,
+                  "byte_end": 55618,
+                  "sha256": "2e5f7400647fd7ac5c806be913f546178d809d00daa7f9d53dd562e3163c355d"
+                }
+              },
+              "reply": {
+                "value": {
+                  "direction": "receive",
+                  "time": 1791407814.882896,
+                  "raw": "{\"return\": {}, \"id\": 105}\r\n"
+                },
+                "reference": {
+                  "source": "qmp-transcript.jsonl",
+                  "line": 269,
+                  "byte_start": 55618,
+                  "byte_end": 55714,
+                  "sha256": "1935ce9df6c5797da10d09389d3f93c2d6ef413b33c7bb3514286b671cd4ffc6"
+                }
+              }
+            }
+          }
+        ],
+        "finish_run": [
+          {
+            "value": {
+              "time": 1791408365.7086847,
+              "request_file": "request-d903cf723082411085727300eb7e151b.json",
+              "raw": "{\"execute\": \"finish-run\", \"arguments\": {}, \"created\": 1791408365.6622791}\n",
+              "sha256": "a9d302282bfacdca6d532527ce4ff1bbf35621e5f7ee0267eb74b68058f4ea50",
+              "response": {
+                "return": {
+                  "keep_running": true,
+                  "finish_requested": true
+                }
+              }
+            },
+            "reference": {
+              "source": "control-transcript.jsonl",
+              "line": 18,
+              "byte_start": 10364,
+              "byte_end": 10704,
+              "sha256": "b578184fc68dc9b15e7e80ed73bbd71c1d7f440bd1da44819bba524acf8e30ed"
+            }
+          }
+        ],
+        "quit": {
+          "request": {
+            "value": {
+              "direction": "send",
+              "time": 1791408365.7457778,
+              "raw": "{\"execute\": \"quit\", \"id\": 127}\n"
+            },
+            "reference": {
+              "source": "qmp-transcript.jsonl",
+              "line": 339,
+              "byte_start": 74233,
+              "byte_end": 74332,
+              "sha256": "f46e8854707328b1a2f3641b6217b2bdba8b67c7b981f12f9f6bd5039b3a5367"
+            }
+          },
+          "reply": {
+            "value": {
+              "direction": "receive",
+              "time": 1791408365.7594762,
+              "raw": "{\"return\": {}, \"id\": 127}\r\n"
+            },
+            "reference": {
+              "source": "qmp-transcript.jsonl",
+              "line": 341,
+              "byte_start": 74554,
+              "byte_end": 74651,
+              "sha256": "046eabbb83a612545dd616800d27bf1980286d361faa838bb7dae79f7db24c71"
+            }
+          }
+        },
+        "shutdown": {
+          "value": {
+            "direction": "receive",
+            "time": 1791408365.7466848,
+            "raw": "{\"timestamp\": {\"seconds\": 1791408365, \"microseconds\": 746354}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"
+          },
+          "reference": {
+            "source": "qmp-transcript.jsonl",
+            "line": 340,
+            "byte_start": 74332,
+            "byte_end": 74554,
+            "sha256": "0488fca61033ad29bae35eac182c3ae1f914807839954505b1b15aeb9f0e360e"
+          }
+        },
+        "exit_code": 0
+      },
+      "sources": {
+        "report.json": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/report.json",
+          "bytes": 79492,
+          "sha256": "ca844a8137d3a9d52e9a4825695fa5367c4f58d3128e2637c2b22e8a2fdaa41d"
+        },
+        "control-transcript.jsonl": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/control-transcript.jsonl",
+          "bytes": 10704,
+          "sha256": "52c3cfc210cba4fb58340e17b3599c49f6a3e45fe6a0a6e712bb574eb7a288fc"
+        },
+        "serial-input-transcript.jsonl": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/serial-input-transcript.jsonl",
+          "bytes": 6629,
+          "sha256": "08ac6446b39bbfa0a67083e05ae9fad6e52e20f6bfcbbb14384380baeae74515"
+        },
+        "qmp-transcript.jsonl": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/qmp-transcript.jsonl",
+          "bytes": 74651,
+          "sha256": "5bfaff2cca1868dff06c8046f924f929e097bb8ab5857f1f600b6a284ff7aeb3"
+        },
+        "serial.log": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/serial.log",
+          "bytes": 361369,
+          "sha256": "8b0cfba0cc1a2b278ba696474d851a09f98b464352cdaf6079387216826a98b3"
+        },
+        "probe-before.ppm": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/probe-before.ppm",
+          "bytes": 4451344,
+          "sha256": "bfb9f2f4820580525e1c98ddf170979bf48e22b8729b3d71d643f5a455fa339a"
+        },
+        "probe-after.ppm": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/probe-after.ppm",
+          "bytes": 4451344,
+          "sha256": "68f264119f2bf7106b655b99003be82edacd2532b2fd010a5d302b565be84b77"
+        }
+      }
+    },
+    {
+      "kind": "actual unchanged report",
+      "run": 67,
+      "recovery_open_request": null,
+      "result": {
+        "status": "rejected",
+        "reason": "main strict chronology record: expected one, got 2"
+      },
+      "sources": {
+        "report.json": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/report.json",
+          "bytes": 79492,
+          "sha256": "ca844a8137d3a9d52e9a4825695fa5367c4f58d3128e2637c2b22e8a2fdaa41d"
+        },
+        "control-transcript.jsonl": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/control-transcript.jsonl",
+          "bytes": 10704,
+          "sha256": "52c3cfc210cba4fb58340e17b3599c49f6a3e45fe6a0a6e712bb574eb7a288fc"
+        },
+        "serial-input-transcript.jsonl": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/serial-input-transcript.jsonl",
+          "bytes": 6629,
+          "sha256": "08ac6446b39bbfa0a67083e05ae9fad6e52e20f6bfcbbb14384380baeae74515"
+        },
+        "qmp-transcript.jsonl": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/qmp-transcript.jsonl",
+          "bytes": 74651,
+          "sha256": "5bfaff2cca1868dff06c8046f924f929e097bb8ab5857f1f600b6a284ff7aeb3"
+        },
+        "serial.log": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/serial.log",
+          "bytes": 361369,
+          "sha256": "8b0cfba0cc1a2b278ba696474d851a09f98b464352cdaf6079387216826a98b3"
+        }
+      }
+    },
+    {
+      "kind": "actual unchanged report",
+      "run": 66,
+      "recovery_open_request": null,
+      "result": {
+        "status": "verified",
+        "chronology_basis": "source-gated capture commands; independent marker arrival times unavailable",
+        "reviewed_capture_gate_source_sha256": "1c4cbb542a79b85560433d62726123b99555ad0a47522d5ecd659faf3a04f308",
+        "boot_uuid": "DE03772B-D957-44AD-8E34-5D96482742F2",
+        "app_pid": 395,
+        "relay_ready": {
+          "value": "INFERNO_EVENT_RELAY_READY boot=DE03772B-D957-44AD-8E34-5D96482742F2 lifetime=7200 transport=tcp address=127.0.0.1 port=37373 connections_max=128",
+          "reference": {
+            "source": "serial.log",
+            "line": 758,
+            "byte_start": 62086,
+            "byte_end": 62233,
+            "sha256": "25ff2db6b67664e695ec443a0d1722fe0cbcb4e21aeab044edef6dcfee7672b0"
+          }
+        },
+        "events": {
+          "main": {
+            "event": "main",
+            "boot": "DE03772B-D957-44AD-8E34-5D96482742F2",
+            "pid": 395,
+            "sequence": 1,
+            "raw": {
+              "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DE03772B-D957-44AD-8E34-5D96482742F2 395 1 main 0",
+              "reference": {
+                "source": "serial.log",
+                "line": 3776,
+                "byte_start": 421576,
+                "byte_end": 421698,
+                "sha256": "cde8258a938b0a508484f99203f2a5418b16caddf302cbfd8cb62eff449ba40d"
+              }
+            },
+            "validated": {
+              "value": "INFERNO_EVENT_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=395 sequence=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 3777,
+                "byte_start": 421698,
+                "byte_end": 421858,
+                "sha256": "af1b7e5b01c2e79b117fbbc7b664960095243a35ba58ec1e7f061b6852426daa"
+              }
+            },
+            "marker": {
+              "value": "INFERNO_UIKIT_PROBE_V1 event=main count=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 3778,
+                "byte_start": 421858,
+                "byte_end": 421902,
+                "sha256": "1793ebcb6f63f875251e57a2c414104c023f43011688925acd4b5f7eed2a9e0f"
+              }
+            },
+            "arrival": null
+          },
+          "appeared": {
+            "event": "appeared",
+            "boot": "DE03772B-D957-44AD-8E34-5D96482742F2",
+            "pid": 395,
+            "sequence": 5,
+            "raw": {
+              "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DE03772B-D957-44AD-8E34-5D96482742F2 395 5 appeared 0",
+              "reference": {
+                "source": "serial.log",
+                "line": 3788,
+                "byte_start": 422938,
+                "byte_end": 423064,
+                "sha256": "00ddd50916f7811216cab757df4de2adb13edc62583a5df5427ad3a1dd7a630d"
+              }
+            },
+            "validated": {
+              "value": "INFERNO_EVENT_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=395 sequence=5 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 3789,
+                "byte_start": 423064,
+                "byte_end": 423224,
+                "sha256": "0704b3a56d071845fcf8619d95ba383100ae2a81fa076a88509f47f75bca69e8"
+              }
+            },
+            "marker": {
+              "value": "INFERNO_UIKIT_PROBE_V1 event=appeared count=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 3790,
+                "byte_start": 423224,
+                "byte_end": 423272,
+                "sha256": "6a9eb571fc87c10724281d3d599f02e477b35e566d0763c29c819c959fb33d9f"
+              }
+            },
+            "arrival": null
+          },
+          "tap": {
+            "event": "tap",
+            "boot": "DE03772B-D957-44AD-8E34-5D96482742F2",
+            "pid": 395,
+            "sequence": 6,
+            "raw": {
+              "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 DE03772B-D957-44AD-8E34-5D96482742F2 395 6 tap 1",
+              "reference": {
+                "source": "serial.log",
+                "line": 3810,
+                "byte_start": 425532,
+                "byte_end": 425653,
+                "sha256": "f878c25e7cb09f332f1b43284d5022f70cf1c14e66aa84aeeff29231f9558b7e"
+              }
+            },
+            "validated": {
+              "value": "INFERNO_EVENT_RELAY_RECORD boot=DE03772B-D957-44AD-8E34-5D96482742F2 pid=395 sequence=6 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 3811,
+                "byte_start": 425653,
+                "byte_end": 425813,
+                "sha256": "313eb6eb44f4b35ddbcdfe494123fd4d5176133e5f9337cb3a59b1c04d32d22b"
+              }
+            },
+            "marker": {
+              "value": "INFERNO_UIKIT_PROBE_V1 event=tap count=1",
+              "reference": {
+                "source": "serial.log",
+                "line": 3812,
+                "byte_start": 425813,
+                "byte_end": 425856,
+                "sha256": "45eb0ad652c2cd4780e708b8847bae9310474dc673409820cd1848f68c52edd4"
+              }
+            },
+            "arrival": null
+          }
+        },
+        "strict_prefix_manifest": null,
+        "post_strict_other_process_records": [],
+        "before": {
+          "value": {
+            "time": 1791406678.075288,
+            "request_file": "request-d6e2699535034055a0d7e96431280242.json",
+            "raw": "{\"execute\": \"probe-capture-before\", \"arguments\": {}, \"created\": 1791406677.9132051}\n",
+            "sha256": "a1d57ef5c669ebdf4c05daa72850ac7ee0e9dcf4ab80edd39948fe62064756d5",
+            "response": {
+              "return": {
+                "state": "waiting-for-operator-tap-marker",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-66/probe-before.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "aa5f0c1a467524bf9accd71ee5ecad94716e5ade1410f287f2626e08bc5be2ec"
+                }
+              }
+            }
+          },
+          "reference": {
+            "source": "control-transcript.jsonl",
+            "line": 8,
+            "byte_start": 4249,
+            "byte_end": 4828,
+            "sha256": "96fe0a63de1640904a3b663bcc122787e209bdeb9cda08efaabe040fae2fc425"
+          }
+        },
+        "tap_command": {
+          "value": {
+            "time": 1791406678.5005312,
+            "request_file": "request-dd64656a6cf447218bcda78ec32aed54.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"41653cc6c599409f83817331bafbc29b\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 20316}, \"created\": 1791406678.4652312}\n",
+            "sha256": "3534dcc25c21be8553a0da54ea5f91dfb4c6091339c23780b294817c1e11f1da",
+            "response": {
+              "request_id": "41653cc6c599409f83817331bafbc29b",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "source": "control-transcript.jsonl",
+            "line": 10,
+            "byte_start": 5484,
+            "byte_end": 6089,
+            "sha256": "02660e5495cc4ee7a05a96b2ae7592d0ac1cad5eaacde6127f02379d1191f4f2"
+          }
+        },
+        "tap_wire": {
+          "value": {
+            "time": 1791406678.500622,
+            "stage": "before-send",
+            "request_id": "41653cc6c599409f83817331bafbc29b",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 41653cc6c599409f83817331bafbc29b TAP 16384 20316 150\n",
+            "sha256": "b35358eaf44dff9238b78f88f881b591472a207b82452264453f71f981ab1dae"
+          },
+          "reference": {
+            "source": "serial-input-transcript.jsonl",
+            "line": 9,
+            "byte_start": 2208,
+            "byte_end": 2488,
+            "sha256": "beb4bbe95f23efd701d85d6d554b299a61085c5a347e9f23293714e3fb7e7260"
+          }
+        },
+        "tap_wire_completion": {
+          "value": {
+            "time": 1791406678.5006819,
+            "stage": "after-send",
+            "response": {
+              "request_id": "41653cc6c599409f83817331bafbc29b",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "source": "serial-input-transcript.jsonl",
+            "line": 10,
+            "byte_start": 2488,
+            "byte_end": 2751,
+            "sha256": "8772d9f78b74574e30be806663105e9456947adaab5ca9eb31e3bddb1ee8535d"
+          }
+        },
+        "tap_attempt_ack": {
+          "value": "INFERNO_HID_ACK request_id=41653cc6c599409f83817331bafbc29b attempt_status=0 delivery=unproven timestamp=21718255628",
+          "reference": {
+            "source": "serial.log",
+            "line": 3809,
+            "byte_start": 425413,
+            "byte_end": 425532,
+            "sha256": "e1796dd14d2805fe3c3f2a92d5f4cfd684c41d87935d572e0d11328b148fe3ba"
+          }
+        },
+        "after": {
+          "value": {
+            "time": 1791406708.7076228,
+            "request_file": "request-3dceba3100ba4610b76c79aa54c413f1.json",
+            "raw": "{\"execute\": \"probe-capture-after\", \"arguments\": {}, \"created\": 1791406708.6509285}\n",
+            "sha256": "bd67178d412ee0381ee285d7f9923c6c2f12dbd4ad32b6156f5ea45ef7038272",
+            "response": {
+              "return": {
+                "state": "completed",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-66/probe-after.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "9938b8745bf216721456e8c5bdf521b6df7d9b2d2d5da6e9ea0a145c0b5a25f2"
+                }
+              }
+            }
+          },
+          "reference": {
+            "source": "control-transcript.jsonl",
+            "line": 11,
+            "byte_start": 6089,
+            "byte_end": 6645,
+            "sha256": "172cf391d8ddb8dcff14cc32e05101c1a2a19630a7f0cf7cb226b60f095f01fa"
+          }
+        },
+        "captures": [
+          {
+            "role": "probe-before",
+            "width": 828,
+            "height": 1792,
+            "sha256": "aa5f0c1a467524bf9accd71ee5ecad94716e5ade1410f287f2626e08bc5be2ec",
+            "qmp": {
+              "request": {
+                "value": {
+                  "direction": "send",
+                  "time": 1791406678.0766454,
+                  "raw": "{\"execute\": \"screendump\", \"id\": 78, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-66/probe-before.ppm\"}}\n"
+                },
+                "reference": {
+                  "source": "qmp-transcript.jsonl",
+                  "line": 202,
+                  "byte_start": 42538,
+                  "byte_end": 42780,
+                  "sha256": "92a65b26786bfa283a79cc18451200a5920702cbe27a4a9c1ae949829d1a9970"
+                }
+              },
+              "reply": {
+                "value": {
+                  "direction": "receive",
+                  "time": 1791406678.083477,
+                  "raw": "{\"return\": {}, \"id\": 78}\r\n"
+                },
+                "reference": {
+                  "source": "qmp-transcript.jsonl",
+                  "line": 203,
+                  "byte_start": 42780,
+                  "byte_end": 42875,
+                  "sha256": "173922d12ffa81809ad20490d07abb818543a85087248b16659ad69b626842f3"
+                }
+              }
+            }
+          },
+          {
+            "role": "probe-after",
+            "width": 828,
+            "height": 1792,
+            "sha256": "9938b8745bf216721456e8c5bdf521b6df7d9b2d2d5da6e9ea0a145c0b5a25f2",
+            "qmp": {
+              "request": {
+                "value": {
+                  "direction": "send",
+                  "time": 1791406708.7079344,
+                  "raw": "{\"execute\": \"screendump\", \"id\": 95, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-66/probe-after.ppm\"}}\n"
+                },
+                "reference": {
+                  "source": "qmp-transcript.jsonl",
+                  "line": 238,
+                  "byte_start": 48283,
+                  "byte_end": 48524,
+                  "sha256": "a8022c6b3cc1edb4e89438ae0521ce1792995a2ad0c57e84c14229d05419dfd3"
+                }
+              },
+              "reply": {
+                "value": {
+                  "direction": "receive",
+                  "time": 1791406708.7195213,
+                  "raw": "{\"return\": {}, \"id\": 95}\r\n"
+                },
+                "reference": {
+                  "source": "qmp-transcript.jsonl",
+                  "line": 240,
+                  "byte_start": 48945,
+                  "byte_end": 49041,
+                  "sha256": "32c1e5c332a229e48039838bf7512ad593e58d3c5053ad062fdd0d2ffcd3dd48"
+                }
+              }
+            }
+          }
+        ],
+        "finish_run": [
+          {
+            "value": {
+              "time": 1791406708.934919,
+              "request_file": "request-04a88a0f45f34bfba3de8ec2a3c9c13a.json",
+              "raw": "{\"execute\": \"finish-run\", \"arguments\": {}, \"created\": 1791406708.9010162}\n",
+              "sha256": "73aeeeda166d67531138bf55a9a3f1c9c3a1d433e0f220bc0da428fba7a0528a",
+              "response": {
+                "return": {
+                  "keep_running": true,
+                  "finish_requested": true
+                }
+              }
+            },
+            "reference": {
+              "source": "control-transcript.jsonl",
+              "line": 12,
+              "byte_start": 6645,
+              "byte_end": 6984,
+              "sha256": "a62b663364fcdd3118af8fa7520de28c7fcbed7ffcb7d608abe2ccb8b16534d9"
+            }
+          }
+        ],
+        "quit": {
+          "request": {
+            "value": {
+              "direction": "send",
+              "time": 1791406708.9648845,
+              "raw": "{\"execute\": \"quit\", \"id\": 108}\n"
+            },
+            "reference": {
+              "source": "qmp-transcript.jsonl",
+              "line": 265,
+              "byte_start": 52661,
+              "byte_end": 52760,
+              "sha256": "e1f3f3abd14ec5f01f9de80323990edead3954805b3118b10dbd04e150162f3a"
+            }
+          },
+          "reply": {
+            "value": {
+              "direction": "receive",
+              "time": 1791406708.9655163,
+              "raw": "{\"return\": {}, \"id\": 108}\r\n"
+            },
+            "reference": {
+              "source": "qmp-transcript.jsonl",
+              "line": 267,
+              "byte_start": 52982,
+              "byte_end": 53079,
+              "sha256": "d0c65a28dfcf9a66d8e645a525b40a09cc571838f52a6a3dafc0c9f006c2f6b6"
+            }
+          }
+        },
+        "shutdown": {
+          "value": {
+            "direction": "receive",
+            "time": 1791406708.9651308,
+            "raw": "{\"timestamp\": {\"seconds\": 1791406708, \"microseconds\": 964950}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"
+          },
+          "reference": {
+            "source": "qmp-transcript.jsonl",
+            "line": 266,
+            "byte_start": 52760,
+            "byte_end": 52982,
+            "sha256": "4254efdbdedc04f523235324b8127d7d54624bb703870061cbad183c2d0fe93a"
+          }
+        },
+        "exit_code": 0
+      },
+      "sources": {
+        "report.json": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-66/report.json",
+          "bytes": 80467,
+          "sha256": "a4850be2ddca7915330055b3a86d6e418e3d034d642fc7fe89eab95ffac9bdae"
+        },
+        "control-transcript.jsonl": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-66/control-transcript.jsonl",
+          "bytes": 6984,
+          "sha256": "1a5a725d2347d079f670e9ffac6238d0c9b2e48782031f17348232014ec47678"
+        },
+        "serial-input-transcript.jsonl": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-66/serial-input-transcript.jsonl",
+          "bytes": 2751,
+          "sha256": "28fe284577c8d261cd0cf0cd4c187492cca258c20f143a6bfd18425f707d7aca"
+        },
+        "qmp-transcript.jsonl": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-66/qmp-transcript.jsonl",
+          "bytes": 53079,
+          "sha256": "e86e291f81e67a39f079f7809d5bb8ba1fe6d676ec1a54d90750f826bf6bb723"
+        },
+        "serial.log": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-66/serial.log",
+          "bytes": 425856,
+          "sha256": "f1aaba0e2803eadd39c90b41d507173575669e731885e009e76bee81d424186f"
+        },
+        "probe-before.ppm": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-66/probe-before.ppm",
+          "bytes": 4451344,
+          "sha256": "aa5f0c1a467524bf9accd71ee5ecad94716e5ade1410f287f2626e08bc5be2ec"
+        },
+        "probe-after.ppm": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-66/probe-after.ppm",
+          "bytes": 4451344,
+          "sha256": "9938b8745bf216721456e8c5bdf521b6df7d9b2d2d5da6e9ea0a145c0b5a25f2"
+        }
+      }
+    },
+    {
+      "kind": "actual unchanged report",
+      "run": 64,
+      "recovery_open_request": null,
+      "result": {
+        "status": "rejected",
+        "reason": "strict journey incomplete"
+      },
+      "sources": {
+        "report.json": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-64/report.json",
+          "bytes": 73961,
+          "sha256": "5c2e0a522d08ba259bff356b403a35965decea9777194f9ddc553f337618ef8a"
+        }
+      }
+    },
+    {
+      "kind": "actual unchanged report",
+      "run": 65,
+      "recovery_open_request": "f657a4fdfee94393a5dd721690eadf30",
+      "result": {
+        "status": "rejected",
+        "reason": "strict journey incomplete"
+      },
+      "sources": {
+        "report.json": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-65/report.json",
+          "bytes": 57399,
+          "sha256": "967811c854747168fc19663e15f0ae12ec2f840656c74a9187378ec6faa9ea16"
+        }
+      }
+    },
+    {
+      "kind": "actual unchanged report",
+      "run": 59,
+      "recovery_open_request": null,
+      "result": {
+        "status": "verified",
+        "chronology_basis": "source-gated capture commands; independent marker arrival times unavailable",
+        "reviewed_capture_gate_source_sha256": "1c4cbb542a79b85560433d62726123b99555ad0a47522d5ecd659faf3a04f308",
+        "boot_uuid": "40E05455-4D23-43DE-BBE7-E84A01D99157",
+        "app_pid": 254,
+        "relay_ready": {
+          "value": "INFERNO_EVENT_RELAY_READY boot=40E05455-4D23-43DE-BBE7-E84A01D99157 lifetime=7200 transport=tcp address=127.0.0.1 port=37373 connections_max=128",
+          "reference": {
+            "source": "serial.log",
+            "line": 753,
+            "byte_start": 61668,
+            "byte_end": 61815,
+            "sha256": "5ba4080bf06d30bc393f69f1925b6f79f9113f80b2abb2feef56a4ad774dde26"
+          }
+        },
+        "events": {
+          "main": {
+            "event": "main",
+            "boot": "40E05455-4D23-43DE-BBE7-E84A01D99157",
+            "pid": 254,
+            "sequence": 1,
+            "raw": {
+              "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 40E05455-4D23-43DE-BBE7-E84A01D99157 254 1 main 0",
+              "reference": {
+                "source": "serial.log",
+                "line": 2065,
+                "byte_start": 217981,
+                "byte_end": 218103,
+                "sha256": "3df770799e8b9513587fb78d828272d2fa10b5631d1d79fa248e4f5e62ed5395"
+              }
+            },
+            "validated": {
+              "value": "INFERNO_EVENT_RELAY_RECORD boot=40E05455-4D23-43DE-BBE7-E84A01D99157 pid=254 sequence=1 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 2066,
+                "byte_start": 218103,
+                "byte_end": 218263,
+                "sha256": "473c57908c0801c3d7a25f87623489d67434c73cdfc62b8c487e9812f9817efa"
+              }
+            },
+            "marker": {
+              "value": "INFERNO_UIKIT_PROBE_V1 event=main count=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 2067,
+                "byte_start": 218263,
+                "byte_end": 218307,
+                "sha256": "1793ebcb6f63f875251e57a2c414104c023f43011688925acd4b5f7eed2a9e0f"
+              }
+            },
+            "arrival": null
+          },
+          "appeared": {
+            "event": "appeared",
+            "boot": "40E05455-4D23-43DE-BBE7-E84A01D99157",
+            "pid": 254,
+            "sequence": 5,
+            "raw": {
+              "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 40E05455-4D23-43DE-BBE7-E84A01D99157 254 5 appeared 0",
+              "reference": {
+                "source": "serial.log",
+                "line": 2107,
+                "byte_start": 222918,
+                "byte_end": 223044,
+                "sha256": "39e6d380502938b3ceaad46c4d184e960368dbdeccced61eab25fd667bf9d691"
+              }
+            },
+            "validated": {
+              "value": "INFERNO_EVENT_RELAY_RECORD boot=40E05455-4D23-43DE-BBE7-E84A01D99157 pid=254 sequence=5 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 2108,
+                "byte_start": 223044,
+                "byte_end": 223204,
+                "sha256": "116b91a6a09f05275bb0a553e3385fea6511715e5d2ddb8226d3fa7bd1e32728"
+              }
+            },
+            "marker": {
+              "value": "INFERNO_UIKIT_PROBE_V1 event=appeared count=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 2109,
+                "byte_start": 223204,
+                "byte_end": 223252,
+                "sha256": "6a9eb571fc87c10724281d3d599f02e477b35e566d0763c29c819c959fb33d9f"
+              }
+            },
+            "arrival": null
+          },
+          "tap": {
+            "event": "tap",
+            "boot": "40E05455-4D23-43DE-BBE7-E84A01D99157",
+            "pid": 254,
+            "sequence": 8,
+            "raw": {
+              "value": "INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 40E05455-4D23-43DE-BBE7-E84A01D99157 254 8 tap 1",
+              "reference": {
+                "source": "serial.log",
+                "line": 3041,
+                "byte_start": 312244,
+                "byte_end": 312365,
+                "sha256": "37b34ecd80fc7a7f46123340b1fda0aae7e32a2891faeee9bad48cecdac16bba"
+              }
+            },
+            "validated": {
+              "value": "INFERNO_EVENT_RELAY_RECORD boot=40E05455-4D23-43DE-BBE7-E84A01D99157 pid=254 sequence=8 source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0",
+              "reference": {
+                "source": "serial.log",
+                "line": 3042,
+                "byte_start": 312365,
+                "byte_end": 312525,
+                "sha256": "4705757286ca33f669ce34f34d7452c76f8f161bab2b50dfe8efbdb38cb6439e"
+              }
+            },
+            "marker": {
+              "value": "INFERNO_UIKIT_PROBE_V1 event=tap count=1",
+              "reference": {
+                "source": "serial.log",
+                "line": 3043,
+                "byte_start": 312525,
+                "byte_end": 312568,
+                "sha256": "45eb0ad652c2cd4780e708b8847bae9310474dc673409820cd1848f68c52edd4"
+              }
+            },
+            "arrival": null
+          }
+        },
+        "strict_prefix_manifest": null,
+        "post_strict_other_process_records": [],
+        "before": {
+          "value": {
+            "time": 1791329314.7067406,
+            "request_file": "request-9da0a5c6170f4948bdcf07de17d5e300.json",
+            "raw": "{\"execute\": \"probe-capture-before\", \"arguments\": {}, \"created\": 1791329314.5796423}\n",
+            "sha256": "66817e87aa11ca0c93b3f6660b60dc65f549927bf4bd3ebdfe5b2a3377f791df",
+            "response": {
+              "return": {
+                "state": "waiting-for-operator-tap-marker",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/probe-before.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "19351839e27f8a4545a6089a5433f55a8a02a4407a3a60821df89dc7157671fd"
+                }
+              }
+            }
+          },
+          "reference": {
+            "source": "control-transcript.jsonl",
+            "line": 5,
+            "byte_start": 2510,
+            "byte_end": 3090,
+            "sha256": "90f12e38aba734b513e7b532805f37dede87bdbe946cc89848f3d1b9295173bb"
+          }
+        },
+        "tap_command": {
+          "value": {
+            "time": 1791329315.1269958,
+            "request_file": "request-005f82ed1ad541c5b3960dbcb7e23288.json",
+            "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"68f83f282a8047b88f90970369be8976\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 20316}, \"created\": 1791329315.0665061}\n",
+            "sha256": "52107ac800d59a7bdd2a3f755cd6ebb73b1c60f27dfe55653685c244d3ea712c",
+            "response": {
+              "request_id": "68f83f282a8047b88f90970369be8976",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "source": "control-transcript.jsonl",
+            "line": 7,
+            "byte_start": 3721,
+            "byte_end": 4326,
+            "sha256": "f0c12fc135ea24aab7f9a4831ff0bbf044f090410bd29e5be50cdafdfe052647"
+          }
+        },
+        "tap_wire": {
+          "value": {
+            "time": 1791329315.1271162,
+            "stage": "before-send",
+            "request_id": "68f83f282a8047b88f90970369be8976",
+            "operation": "HID",
+            "raw": "INFERNO_HID_V1 68f83f282a8047b88f90970369be8976 TAP 16384 20316 150\n",
+            "sha256": "86bb7011bbae23295fc6190f4a6ff9d8ba27e89f356f0d2410ce57e130efab51"
+          },
+          "reference": {
+            "source": "serial-input-transcript.jsonl",
+            "line": 7,
+            "byte_start": 1660,
+            "byte_end": 1941,
+            "sha256": "35e5d47c902f08ccd874a6c593a56a901a590dc9f233346b5e902037b6656e3a"
+          }
+        },
+        "tap_wire_completion": {
+          "value": {
+            "time": 1791329315.1272135,
+            "stage": "after-send",
+            "response": {
+              "request_id": "68f83f282a8047b88f90970369be8976",
+              "guest_acknowledgment": "not checked",
+              "ui_acceptance": "not observed by transport",
+              "transmission": "written-to-serial-socket",
+              "bytes_sent": 68
+            }
+          },
+          "reference": {
+            "source": "serial-input-transcript.jsonl",
+            "line": 8,
+            "byte_start": 1941,
+            "byte_end": 2204,
+            "sha256": "757d4b867f31928a9a6a7bddbe402cb3a3c0b2ba368e31d5e994a09ddf3f0b3e"
+          }
+        },
+        "tap_attempt_ack": {
+          "value": "INFERNO_HID_ACK request_id=68f83f282a8047b88f90970369be8976 attempt_status=0 delivery=unproven timestamp=5635547913",
+          "reference": {
+            "source": "serial.log",
+            "line": 3040,
+            "byte_start": 312126,
+            "byte_end": 312244,
+            "sha256": "b2afaddd6bf66be50da28ea102f3514c130400c3f3864dd85778fc4cd706eb08"
+          }
+        },
+        "after": {
+          "value": {
+            "time": 1791329361.249193,
+            "request_file": "request-1269aceeb151485c989dd9b1f6d62a04.json",
+            "raw": "{\"execute\": \"probe-capture-after\", \"arguments\": {}, \"created\": 1791329361.1229136}\n",
+            "sha256": "e4ff8ba8bbad1acaa5003749d563ad6522e7ed45ee091b48eca0377f003396d4",
+            "response": {
+              "return": {
+                "state": "completed",
+                "capture": {
+                  "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/probe-after.ppm",
+                  "width": 828,
+                  "height": 1792,
+                  "sha256": "5176299227cd9a8d68776e9166c2284994e384e2eea5f1763e326ba746bccbf5"
+                }
+              }
+            }
+          },
+          "reference": {
+            "source": "control-transcript.jsonl",
+            "line": 8,
+            "byte_start": 4326,
+            "byte_end": 4881,
+            "sha256": "eda6a161429f05b0b636a63570d7357e7363cd661f5522b5b30c6799f1ca7087"
+          }
+        },
+        "captures": [
+          {
+            "role": "probe-before",
+            "width": 828,
+            "height": 1792,
+            "sha256": "19351839e27f8a4545a6089a5433f55a8a02a4407a3a60821df89dc7157671fd",
+            "qmp": {
+              "request": {
+                "value": {
+                  "direction": "send",
+                  "time": 1791329314.707388,
+                  "raw": "{\"execute\": \"screendump\", \"id\": 36, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/probe-before.ppm\"}}\n"
+                },
+                "reference": {
+                  "source": "qmp-transcript.jsonl",
+                  "line": 88,
+                  "byte_start": 16917,
+                  "byte_end": 17158,
+                  "sha256": "a2d38ef9b8a3479e3e1a8de7a6355a2c1933724fa056d9d4f5fdfab1a6316c03"
+                }
+              },
+              "reply": {
+                "value": {
+                  "direction": "receive",
+                  "time": 1791329314.7126255,
+                  "raw": "{\"return\": {}, \"id\": 36}\r\n"
+                },
+                "reference": {
+                  "source": "qmp-transcript.jsonl",
+                  "line": 89,
+                  "byte_start": 17158,
+                  "byte_end": 17254,
+                  "sha256": "4037944e0aeb540f9532f9d0b1d9d2ce823c4ac3ff22b68f97e35fe3373822c3"
+                }
+              }
+            }
+          },
+          {
+            "role": "probe-after",
+            "width": 828,
+            "height": 1792,
+            "sha256": "5176299227cd9a8d68776e9166c2284994e384e2eea5f1763e326ba746bccbf5",
+            "qmp": {
+              "request": {
+                "value": {
+                  "direction": "send",
+                  "time": 1791329361.2494254,
+                  "raw": "{\"execute\": \"screendump\", \"id\": 55, \"arguments\": {\"filename\": \"/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/probe-after.ppm\"}}\n"
+                },
+                "reference": {
+                  "source": "qmp-transcript.jsonl",
+                  "line": 129,
+                  "byte_start": 23682,
+                  "byte_end": 23923,
+                  "sha256": "dfd760110e7731b4f50354a4dd3fa62b703d0249ec0d87eeee8b579e6a98c878"
+                }
+              },
+              "reply": {
+                "value": {
+                  "direction": "receive",
+                  "time": 1791329361.2546155,
+                  "raw": "{\"return\": {}, \"id\": 55}\r\n"
+                },
+                "reference": {
+                  "source": "qmp-transcript.jsonl",
+                  "line": 130,
+                  "byte_start": 23923,
+                  "byte_end": 24019,
+                  "sha256": "94a3a95ed587db1f375f41781cc2482c6f37f00daad23749e3545d1c550b3b6c"
+                }
+              }
+            }
+          }
+        ],
+        "finish_run": [
+          {
+            "value": {
+              "time": 1791329477.15272,
+              "request_file": "request-f6d78de670b544beb22cc52de7cb339d.json",
+              "raw": "{\"execute\": \"finish-run\", \"arguments\": {}, \"created\": 1791329477.1407769}\n",
+              "sha256": "13f0419a1ff8dedcd4d7fe2f385d4c619d98cc7bc049ae16eee29b5322b1c1bf",
+              "response": {
+                "return": {
+                  "keep_running": true,
+                  "finish_requested": true
+                }
+              }
+            },
+            "reference": {
+              "source": "control-transcript.jsonl",
+              "line": 12,
+              "byte_start": 6732,
+              "byte_end": 7070,
+              "sha256": "312c875536b4c1ad1addae72b4f93b122e52badf571c859f74862640f0dbbc70"
+            }
+          }
+        ],
+        "quit": {
+          "request": {
+            "value": {
+              "direction": "send",
+              "time": 1791329477.1668546,
+              "raw": "{\"execute\": \"quit\", \"id\": 101}\n"
+            },
+            "reference": {
+              "source": "qmp-transcript.jsonl",
+              "line": 227,
+              "byte_start": 39655,
+              "byte_end": 39754,
+              "sha256": "7a634ac337ca8a94ecd6870f1de621b127e08a4582057938c16ac97e55740033"
+            }
+          },
+          "reply": {
+            "value": {
+              "direction": "receive",
+              "time": 1791329477.1703947,
+              "raw": "{\"return\": {}, \"id\": 101}\r\n"
+            },
+            "reference": {
+              "source": "qmp-transcript.jsonl",
+              "line": 229,
+              "byte_start": 39976,
+              "byte_end": 40073,
+              "sha256": "b179ee768bfafa8f7045bdb99188c9fecfe2ef424d86d900330d6a9bf07324de"
+            }
+          }
+        },
+        "shutdown": {
+          "value": {
+            "direction": "receive",
+            "time": 1791329477.1670938,
+            "raw": "{\"timestamp\": {\"seconds\": 1791329477, \"microseconds\": 166939}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"
+          },
+          "reference": {
+            "source": "qmp-transcript.jsonl",
+            "line": 228,
+            "byte_start": 39754,
+            "byte_end": 39976,
+            "sha256": "c534370297368e25c1a806fd917d84b02563c023676d293b6d6d1e707a26cab0"
+          }
+        },
+        "exit_code": 0
+      },
+      "sources": {
+        "report.json": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/report.json",
+          "bytes": 85231,
+          "sha256": "a189e2436a6f647e26bb8ad5663fd471141ac1c10b9c9364dd066f2735d0e08a"
+        },
+        "control-transcript.jsonl": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/control-transcript.jsonl",
+          "bytes": 7070,
+          "sha256": "ca437f15fbf3ecb6cc6a6dc9aec3fd551a1f8377d7efc96dc492d579c378247a"
+        },
+        "serial-input-transcript.jsonl": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/serial-input-transcript.jsonl",
+          "bytes": 2767,
+          "sha256": "951d96d3742a1136476d82c945415069e27d1d0e28c30e83500cb42853807603"
+        },
+        "qmp-transcript.jsonl": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/qmp-transcript.jsonl",
+          "bytes": 40073,
+          "sha256": "8710e82bca6d17e4c1820ad544988405126e01e347acdba63b5d138a729aa1c0"
+        },
+        "serial.log": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/serial.log",
+          "bytes": 336702,
+          "sha256": "4d109af1cd11e87a6a4b2c42887965965ad7588c2e2bcbfab7a42978e91020f7"
+        },
+        "probe-before.ppm": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/probe-before.ppm",
+          "bytes": 4451344,
+          "sha256": "19351839e27f8a4545a6089a5433f55a8a02a4407a3a60821df89dc7157671fd"
+        },
+        "probe-after.ppm": {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-59/probe-after.ppm",
+          "bytes": 4451344,
+          "sha256": "5176299227cd9a8d68776e9166c2284994e384e2eea5f1763e326ba746bccbf5"
+        }
+      }
+    },
+    {
+      "kind": "synthetic in-memory association mutation",
+      "case": "wrong-wire",
+      "status": "rejected",
+      "reason": "recovery OPEN wire mismatch"
+    },
+    {
+      "kind": "synthetic in-memory association mutation",
+      "case": "wrong-launcher",
+      "status": "rejected",
+      "reason": "recovery boot/launcher mismatch"
+    },
+    {
+      "kind": "synthetic in-memory association mutation",
+      "case": "missing-identity",
+      "status": "rejected",
+      "reason": "original recovery process identity: expected one, got 0"
+    },
+    {
+      "kind": "synthetic in-memory association mutation",
+      "case": "duplicate-open",
+      "status": "rejected",
+      "reason": "duplicate or malformed named OPEN record"
+    },
+    {
+      "kind": "synthetic in-memory association mutation",
+      "case": "prior-appeared",
+      "status": "rejected",
+      "reason": "complete lifecycle marker: expected one, got 0"
+    },
+    {
+      "kind": "synthetic in-memory association mutation",
+      "case": "missing-validation",
+      "status": "rejected",
+      "reason": "complete lifecycle validation: expected one, got 0"
+    },
+    {
+      "kind": "synthetic in-memory association mutation",
+      "case": "main-before-open",
+      "status": "rejected",
+      "reason": "new recovery five-hook incarnation: expected one, got 0"
+    },
+    {
+      "kind": "synthetic in-memory association mutation",
+      "case": "prior-main-after-open",
+      "status": "rejected",
+      "reason": "prior process is not a validated main-only prefix before named OPEN; genuine arrival proof required"
+    },
+    {
+      "kind": "synthetic in-memory association mutation",
+      "case": "permuted-hooks",
+      "status": "rejected",
+      "reason": "timing hook is out of required order"
+    }
+  ]
+}

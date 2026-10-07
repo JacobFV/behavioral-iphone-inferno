@@ -116,7 +116,8 @@ class Audit:
             previous=0;hooks=set()
             for sequence,(f,row) in enumerate(entries,1):
                 require(int(f[2])==sequence and f[3] in {'main','launch-delegate','window-request','active','appeared'} and f[3] not in hooks,'invalid timing sequence/hook')
-                require(sequence!=1 or f[3]=='main','timing must start at main')
+                allowed = ({'main'}, {'launch-delegate'}, {'window-request'}, {'active','appeared'}, {'active','appeared'})
+                require(f[3] in allowed[sequence-1], 'timing hook is out of required order')
                 require(previous<=int(f[4])<2**64 and int(f[5])==num and int(f[6])==den,'timing tick/timebase mismatch');previous=int(f[4]);hooks.add(f[3])
                 vf,vr=unique([(x,r) for x,r in valids if x[:7]==f],'paired timing validation')
                 require(int(vf[7])==int(sequence==5) and row['reference']['byte_end']<=vr['reference']['byte_start'],'timing provenance invalid');used.append(vr['reference']['byte_start'])
@@ -150,9 +151,8 @@ class Audit:
         require(paired_markers=={r['reference']['byte_start'] for r in serial if r['value'].startswith('INFERNO_UIKIT_PROBE_V1 ')},'unpaired lifecycle marker')
         chosen=[c for c in candidates if (c['boot'],c['pid'])==identity];prior=[c for c in candidates if c not in chosen]
         require(sorted((c['event'],c['sequence']) for c in chosen)==[('appeared',5),('main',1),('tap',6)],'recovery lifecycle must be main1/appeared5/tap6')
-        first=min(c['raw']['reference']['byte_start'] for c in chosen)
         for c in prior:
-            require(c['boot']==boot and c['event']=='main' and c['sequence']==1 and c['raw']['reference']['byte_start']<first,'prior process is not validated main-only prefix; genuine arrival proof required')
+            require(c['boot']==boot and c['event']=='main' and c['sequence']==1 and c['marker']['reference']['byte_end']<=request_ref['reference']['byte_start'],'prior process is not a validated main-only prefix before named OPEN; genuine arrival proof required')
         return {'request_id':rid,'boot':boot,'pid':pid,'main_ticks':main_tick,'host_control':opened,'wire':sent,'wire_completion':done,'guest_request':request_ref,'dispatch':dispatch_ref,'callback':callback_ref,'open_timing':timing_ref,'normal_child_end':end_ref,'five_hooks':[r for f,r in events],'process_identity':identity_ref,'prior_main_only_records':prior,'all_rejection_records':rejects,'all_validated_event_records':all_events,'all_timing_incarnations':[{'boot':k[0],'pid':k[1],'records':[r for f,r in e]} for k,e in groups.items()]}
 
     def verify(self):
