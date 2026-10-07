@@ -1,0 +1,230 @@
+{
+  "scope": "Read-only live66 snapshot; no guest/control action or restart",
+  "records": {
+    "65": {
+      "snapshot_time": 1791406122.237634,
+      "bytes": 365910,
+      "sha256": "40b6226369472a2f7a6725abbb19309caf84ea58cae001609119390f720efb42",
+      "selected_lines": [
+        {
+          "line": 761,
+          "text": "Wed Oct  7 13:14:05 2026 localhost com.apple.xpc.launchd[1] <Notice>: Early boot complete. Continuing system boot."
+        },
+        {
+          "line": 907,
+          "text": "INFERNO_EXEC_WRAPPER_BEGIN case=system-mobile-system-app path=/usr/bin/inferno-launcher watchdog=150 uid=0 gid=0"
+        },
+        {
+          "line": 909,
+          "text": "INFERNO_UNLOCK_BEGIN watchdog=600 maximum_attempts=1"
+        },
+        {
+          "line": 918,
+          "text": "INFERNO_READINESS_EVENT_CHILD pid=204 automatic_restarts=0"
+        },
+        {
+          "line": 920,
+          "text": "INFERNO_READINESS_HID_CHILD pid=205 automatic_gestures=0"
+        },
+        {
+          "line": 928,
+          "text": "INFERNO_HID_BEGIN automatic_gestures=0"
+        },
+        {
+          "line": 932,
+          "text": "INFERNO_SAMPLE_READY enabled=1 boot=618E1D32-2DAE-4C11-9C5D-8863D2FE71F9 max_requests=2 targets=SPRINGBOARD,BACKBOARDD automatic_sample=0"
+        },
+        {
+          "line": 959,
+          "text": "INFERNO_HID_READY protocol=1 console=/dev/console max_requests=32 lifetime_seconds=7200 automatic_gestures=0"
+        },
+        {
+          "line": 3292,
+          "text": "INFERNO_UNLOCK_STAGE dlopen"
+        },
+        {
+          "line": 3294,
+          "text": "INFERNO_UNLOCK_STAGE resolve-symbols"
+        },
+        {
+          "line": 3296,
+          "text": "INFERNO_UNLOCK_STAGE query-state-before"
+        },
+        {
+          "line": 3298,
+          "text": "INFERNO_UNLOCK_STAGE query-first-before"
+        },
+        {
+          "line": 3302,
+          "text": "INFERNO_UNLOCK_STAGE single-empty-attempt"
+        },
+        {
+          "line": 3312,
+          "text": "INFERNO_UNLOCK_STAGE query-state-after"
+        },
+        {
+          "line": 3318,
+          "text": "INFERNO_UNLOCK_STAGE query-first-after"
+        },
+        {
+          "line": 3322,
+          "text": "INFERNO_UNLOCK_STAGE access-after"
+        }
+      ],
+      "normalized_command": [
+        "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+        "-machine",
+        "t8030,kaslr-off=true,usb-conn-type=unix,usb-conn-addr=/tmp/RUNTIME/absent-usb.sock,trustcache=/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache,boot-mode=exit_recovery",
+        "-accel",
+        "tcg",
+        "-smp",
+        "2",
+        "-m",
+        "4G",
+        "-S",
+        "-kernel",
+        "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/kernel-kernelcache.research.iphone12b",
+        "-dtb",
+        "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+        "-append",
+        "debug=0x14e serial=3 wdt=-1 tlto_us=-1 mtxspin=-1 agm-genuine=1 agm-authentic=1 agm-trusted=1 -vm_compressor_wk_sw launchd_unsecure_cache=1",
+        "-display",
+        "none",
+        "-vnc",
+        "unix:/tmp/RUNTIME/vnc.sock",
+        "-monitor",
+        "none",
+        "-chardev",
+        "socket,id=gesture-serial,path=/tmp/RUNTIME/gesture-serial.sock,server=on,wait=off,logfile=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/serial.log,logappend=off,logtimestamp=off",
+        "-serial",
+        "chardev:gesture-serial",
+        "-qmp",
+        "unix:/tmp/RUNTIME/qmp.sock,server=on,wait=off",
+        "-no-reboot",
+        "-d",
+        "guest_errors",
+        "-D",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/guest-errors.log",
+        "-drive",
+        "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/disks/root.qcow2,format=qcow2,if=none,id=root",
+        "-device",
+        "nvme-ns,drive=root,bus=nvme-bus.0,nsid=1,nstype=1,logical_block_size=4096,physical_block_size=4096",
+        "-drive",
+        "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/disks/firmware.raw,format=raw,if=none,id=firmware",
+        "-device",
+        "nvme-ns,drive=firmware,bus=nvme-bus.0,nsid=2,nstype=2,logical_block_size=4096,physical_block_size=4096",
+        "-drive",
+        "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/disks/syscfg.raw,format=raw,if=none,id=syscfg",
+        "-device",
+        "nvme-ns,drive=syscfg,bus=nvme-bus.0,nsid=3,nstype=3,logical_block_size=4096,physical_block_size=4096",
+        "-drive",
+        "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/disks/ctrl_bits.raw,format=raw,if=none,id=ctrl_bits",
+        "-device",
+        "nvme-ns,drive=ctrl_bits,bus=nvme-bus.0,nsid=4,nstype=4,logical_block_size=4096,physical_block_size=4096",
+        "-drive",
+        "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/disks/nvram.raw,format=raw,if=none,id=nvram",
+        "-device",
+        "apple-nvram,drive=nvram,bus=nvme-bus.0,nsid=5,nstype=5,id=nvram,logical_block_size=4096,physical_block_size=4096",
+        "-drive",
+        "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/disks/effaceable.raw,format=raw,if=none,id=effaceable",
+        "-device",
+        "nvme-ns,drive=effaceable,bus=nvme-bus.0,nsid=6,nstype=6,logical_block_size=4096,physical_block_size=4096",
+        "-drive",
+        "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/disks/panic_log.raw,format=raw,if=none,id=panic_log",
+        "-device",
+        "nvme-ns,drive=panic_log,bus=nvme-bus.0,nsid=7,nstype=8,logical_block_size=4096,physical_block_size=4096"
+      ]
+    },
+    "66": {
+      "snapshot_time": 1791406122.2417235,
+      "bytes": 61519,
+      "sha256": "86ad46c8d539bd2dd581c72755ee989d74c02ff8c29dbd84fe9269d92c649d31",
+      "selected_lines": [
+        {
+          "line": 759,
+          "text": "Wed Oct  7 13:44:00 2026 localhost com.apple.xpc.launchd[1] <Notice>: Early boot complete. Continuing system boot."
+        },
+        {
+          "line": 907,
+          "text": "INFERNO_EXEC_WRAPPER_BEGIN case=system-mobile-system-app path=/usr/bin/inferno-launcher watchdog=150 uid=0 gid=0"
+        },
+        {
+          "line": 909,
+          "text": "INFERNO_UNLOCK_BEGIN watchdog=600 maximum_attempts=1"
+        }
+      ],
+      "normalized_command": [
+        "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+        "-machine",
+        "t8030,kaslr-off=true,usb-conn-type=unix,usb-conn-addr=/tmp/RUNTIME/absent-usb.sock,trustcache=/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache,boot-mode=exit_recovery",
+        "-accel",
+        "tcg",
+        "-smp",
+        "2",
+        "-m",
+        "4G",
+        "-S",
+        "-kernel",
+        "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/kernel-kernelcache.research.iphone12b",
+        "-dtb",
+        "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+        "-append",
+        "debug=0x14e serial=3 wdt=-1 tlto_us=-1 mtxspin=-1 agm-genuine=1 agm-authentic=1 agm-trusted=1 -vm_compressor_wk_sw launchd_unsecure_cache=1",
+        "-display",
+        "none",
+        "-vnc",
+        "unix:/tmp/RUNTIME/vnc.sock",
+        "-monitor",
+        "none",
+        "-chardev",
+        "socket,id=gesture-serial,path=/tmp/RUNTIME/gesture-serial.sock,server=on,wait=off,logfile=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/serial.log,logappend=off,logtimestamp=off",
+        "-serial",
+        "chardev:gesture-serial",
+        "-qmp",
+        "unix:/tmp/RUNTIME/qmp.sock,server=on,wait=off",
+        "-no-reboot",
+        "-dfilter",
+        "0xfffffff0096df690+4,0xfffffff0096e219c+4",
+        "-d",
+        "guest_errors",
+        "-D",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/guest-errors.log",
+        "-drive",
+        "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/disks/root.qcow2,format=qcow2,if=none,id=root",
+        "-device",
+        "nvme-ns,drive=root,bus=nvme-bus.0,nsid=1,nstype=1,logical_block_size=4096,physical_block_size=4096",
+        "-drive",
+        "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/disks/firmware.raw,format=raw,if=none,id=firmware",
+        "-device",
+        "nvme-ns,drive=firmware,bus=nvme-bus.0,nsid=2,nstype=2,logical_block_size=4096,physical_block_size=4096",
+        "-drive",
+        "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/disks/syscfg.raw,format=raw,if=none,id=syscfg",
+        "-device",
+        "nvme-ns,drive=syscfg,bus=nvme-bus.0,nsid=3,nstype=3,logical_block_size=4096,physical_block_size=4096",
+        "-drive",
+        "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/disks/ctrl_bits.raw,format=raw,if=none,id=ctrl_bits",
+        "-device",
+        "nvme-ns,drive=ctrl_bits,bus=nvme-bus.0,nsid=4,nstype=4,logical_block_size=4096,physical_block_size=4096",
+        "-drive",
+        "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/disks/nvram.raw,format=raw,if=none,id=nvram",
+        "-device",
+        "apple-nvram,drive=nvram,bus=nvme-bus.0,nsid=5,nstype=5,id=nvram,logical_block_size=4096,physical_block_size=4096",
+        "-drive",
+        "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/disks/effaceable.raw,format=raw,if=none,id=effaceable",
+        "-device",
+        "nvme-ns,drive=effaceable,bus=nvme-bus.0,nsid=6,nstype=6,logical_block_size=4096,physical_block_size=4096",
+        "-drive",
+        "file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-N/disks/panic_log.raw,format=raw,if=none,id=panic_log",
+        "-device",
+        "nvme-ns,drive=panic_log,bus=nvme-bus.0,nsid=7,nstype=8,logical_block_size=4096,physical_block_size=4096"
+      ]
+    }
+  },
+  "normalized_only_command_addition": [
+    "-dfilter",
+    "0xfffffff0096df690+4,0xfffffff0096e219c+4"
+  ],
+  "readiness_source": "companion/native-probe/readiness.c main forks event child then HID child before the first15s observer sleep; no unlock wait in own startup path. Runtime may wait for original launchd/dyld prerequisites.",
+  "finding": "Both wrapper and unlock BEGIN became visible during comparison; source does not require first unlock before readiness fork. Delay alone does not establish startup regression.65 READY precedes unlock-stage API work.",
+  "limits": "No wall-time arrival estimate invented for untimestamped serial markers. Host CPU contention observed separately; no causal proof."
+}
