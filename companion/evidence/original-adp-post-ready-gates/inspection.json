@@ -1,0 +1,87 @@
+{
+  "scope": "Bounded static follow-on using retained original disassembly; no new disassembly, guest read, instrumentation, state change or execution proof.",
+  "original_kernel_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+  "prior_evidence": [
+    "../original-adp-interrupt-path/inspection.json",
+    "../original-adp-fifo-error-path/inspection.json"
+  ],
+  "provenance": {
+    "/home/brandonin/.local/share/inferno/native-probe/original-adp-interrupt-audit/inferno-adp-int-disasm.txt": {
+      "bytes": 57480,
+      "sha256": "0bb4db7edaa1e56ea399822fb759d84c40cdc5339aa6c97d5a75510f8e775667"
+    },
+    "/home/brandonin/.local/share/inferno/native-probe/original-adp-interrupt-audit/inferno-adp-swap-complete-disasm.txt": {
+      "bytes": 16382,
+      "sha256": "9ee00cc46a6da264a457fa485e16a5b8dbcf9c7dcd056372d9e82511d011b0df"
+    },
+    "/home/brandonin/.local/share/inferno/native-probe/original-adp-interrupt-audit/register-stream-read.txt": {
+      "bytes": 852,
+      "sha256": "39770e8fe832572c49e85f860cd8cb6436443bf3953d315afc2601063e154385"
+    }
+  },
+  "steps": [
+    {
+      "address": "0xfffffff0097453fc",
+      "predicate": "w21 bit10 must be1 after MMIO returns.",
+      "classification": "Internal accumulated pending word, derived earlier from modeled status but not identical by assumption to any individual W1C.",
+      "evidence": "Handler atomically consumes self+1b88 at9744d54..d60; MMIO leaf977b650..664 touches x0/x8/x9 and preserves x21."
+    },
+    {
+      "address": "0xfffffff009745400..0xfffffff009745404",
+      "predicate": "(returned w0 &0x70)==0.",
+      "classification": "Direct model register-dependent; currently returned zero satisfies this mask. No rationale to change bit0 follows."
+    },
+    {
+      "address": "0xfffffff009745408..0xfffffff009745410",
+      "predicate": "pipeline=[self(x20)+0x50]; request=[pipeline+0xad0] nonnull.",
+      "classification": "Guest object state, not an additional MMIO read. Null jumps97455e8, calls virtualslot6c0 and debug records, then skips swap_request_complete."
+    },
+    {
+      "address": "0xfffffff009745418..0xfffffff009745444",
+      "predicate": "Authenticated virtual dispatch through self slot0x6b8 completes.",
+      "classification": "Guest virtual call; target and effects not resolved by this bounded inspection. Authentication failure traps; return value does not gate subsequent swap_request_complete directly."
+    },
+    {
+      "address": "0xfffffff009745448..0xfffffff009745490",
+      "predicate": "request+244 nonzero or request+264!=3 skips debug logging only.",
+      "classification": "Important correction to broad internal-gate wording: both branches join9745494; these field comparisons do not suppress completion."
+    },
+    {
+      "address": "0xfffffff009745494..0xfffffff0097454a4",
+      "predicate": "Load pipeline+122c as ID and self+1bf8 as timestamp; call swap_request_complete.",
+      "classification": "Guest memory arguments; no explicit MMIO read in this straight-line sequence."
+    },
+    {
+      "address": "0xfffffff0097b8bac..0xfffffff0097b8c20",
+      "predicate": "Read previous ID pipeline+1244 and runtime bool property0x4e; compare previous ID with incoming ID. Equal increments1208; equal plus false bool returns at8e50.",
+      "classification": "Internal request/property state; not decoded hardware-status fields. Prop0x3b==2 controls logging only; timestamp/reporter controls tally only."
+    },
+    {
+      "address": "0xfffffff0097b8c24..0xfffffff0097b8cdc",
+      "predicate": "Equal-ID plus propertytrue constructs previous ring entry from indexe10, invokes callback on object11e8 via slotb8, then calls swap_info_notify_dispatch.",
+      "classification": "Guest object/callback path. No explicit AppleRegisterStream read in bounded body; successful arrival at MMIO read does not prove entry here or callback completion."
+    },
+    {
+      "address": "0xfffffff0097b8ce4..0xfffffff0097b8d88",
+      "predicate": "Unequal ID resets1208, stores incoming1244, invokes virtualslot898 and conditionally888/power-state action using c0c,ad0,c08.",
+      "classification": "Distinct internal branch; no direct swap_info_notify_dispatch at8cdc along this branch. Virtual methods may have further effects not established here."
+    },
+    {
+      "address": "0xfffffff0097b8d88..0xfffffff0097b8e50",
+      "predicate": "Additional bool/repeat-state, virtual808, allocation and property-update path before returning.",
+      "classification": "Internal state; no direct proof of compositor notification or subsequent submission."
+    }
+  ],
+  "minimal_observation": {
+    "existing_metadata_limit": "Current nine-event output provides LR/PC plus exact modeled unknown-read value, but no x21 or later guest-object state. Correlate actual caller first; no further completion inference available solely from these existing fields.",
+    "proposal_only": "If actual stalled LR is97453fc, add only exposed x21 to the same already bounded existing-MMIO trace. Interpret low32bit10 only for that identified caller. No guest RAM, extra MMIO, pointer traversal, CPU synchronization or behavior change.",
+    "reason": "x21 is the exact immediately subsequent branch operand and is preserved by the original leaf MMIO read. This separates absence of accumulated readybit from a later guest-state branch.",
+    "remaining_limit": "Even readybit1 would not prove nonnull request, virtual method completion, swap_request_complete or userland callback. Unsynchronized CPU-state exposure retains existing caveat; actual validation needed.",
+    "status": "Not implemented or authorized by this evidence."
+  },
+  "not_proven": [
+    "No missing emulated hardware transition is established.",
+    "No proposal to bypass a guard or fabricate completion/notification.",
+    "No semantic meaning assigned to unnamed property0x4e or guest structure fields beyond observed branches."
+  ]
+}
