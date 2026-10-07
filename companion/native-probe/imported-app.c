@@ -86,7 +86,13 @@ static int install_imported_app(const char *system_device) {
         else printf("INFERNO_IMPORTED_APP_PARENT_LINK bytes=%ld errno=%d truncated_or_failed=1\n",length,length<0?*__error():0);
         fflush(0);
     }
-    if(parent_stat || (st.mode&0170000)!=0040000 || st.uid || st.gid || target_path)result=82;
+    /* Actual original System parent is root:admin 0775 (diagnostic stage 2).
+     * Keep the prior ordinary root:wheel 0755 case; do not rewrite the parent.
+     * Exact full modes reject links, special bits and world-write permission.
+     * Link count is diagnostic: it changes normally as applications are added. */
+    int parent_allowed=!parent_stat && !st.uid &&
+        ((st.mode==0040775 && st.gid==80) || (st.mode==0040755 && st.gid==0));
+    if(!parent_allowed || target_path)result=82;
     if(!result) {
         if(!lstat(target,&st)) {
             if(!imported.allow_identical_fixture || st.mode!=0040755 || st.uid || st.gid)result=83;
