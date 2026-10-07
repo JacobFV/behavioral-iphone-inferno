@@ -1,0 +1,111 @@
+{
+  "reviewed_commits": [
+    "270a2708c1",
+    "36cde49c83"
+  ],
+  "conclusion": "No blocking finding for parent-reviewed controlled iOS use. Actual harness is firmware-free owned loop only.",
+  "raw_evidence": {
+    "path": "/tmp/inferno-swapwait-cpu/companion/evidence/swapwait-owned-cpu-validation/attempt-6",
+    "guest_errors_sha256": "c59e8bb456d78d05f4b6c07a2cd25f61d87d14b5b21e9089d6255a578a4ca9bf",
+    "report_sha256": "b308d134d076d2bcc3e60b44ac3bbc37b048df4ad692049468f90e466970de41",
+    "source_hash_checks": {
+      "/tmp/inferno-swapwait-cpu/companion/cpu-window-probe/loop.S": true,
+      "/tmp/inferno-swapwait-cpu/companion/cpu-window-probe/run.py": true,
+      "/tmp/inferno-swapwait-cpu/companion/qmp_control.py": true,
+      "/tmp/inferno-swapwait-cpu/companion/boot.py": true
+    },
+    "complete_dump_count": 922,
+    "exact_pc_counts": {
+      "0x4020000c": 462,
+      "0x40200024": 460
+    },
+    "all31GPRs_exactPC_known_args_or_return": true,
+    "default_prefix_no_CPU": true,
+    "windows": [
+      {
+        "reason": "deadline",
+        "range": [
+          7812,
+          663945
+        ],
+        "start_to_restore_seconds": 1.005509376525879,
+        "complete_blocks": 895,
+        "byte_growth": 656133
+      },
+      {
+        "reason": "runner cleanup",
+        "range": [
+          678757,
+          698590
+        ],
+        "start_to_restore_seconds": 0.05329585075378418,
+        "complete_blocks": 27,
+        "byte_growth": 19833
+      },
+      {
+        "reason": "enable failed or uncertain",
+        "range": [
+          708054,
+          708278
+        ],
+        "start_to_restore_seconds": 0.0064258575439453125,
+        "complete_blocks": 0,
+        "byte_growth": 224
+      }
+    ],
+    "qmp_masks_in_order": [
+      "log cpu,nochain,guest_errors",
+      "log guest_errors",
+      "log cpu,nochain,guest_errors",
+      "log guest_errors",
+      "log cpu,nochain,guest_errors",
+      "log guest_errors"
+    ],
+    "quit_return": {
+      "return": {},
+      "id": 9
+    },
+    "process_exit": 0,
+    "between_window_restored_tails": [
+      {
+        "range": [
+          663945,
+          678757
+        ],
+        "CPU_start_count": 0,
+        "fixture_guest_error_count": 529
+      },
+      {
+        "range": [
+          698590,
+          708054
+        ],
+        "CPU_start_count": 0,
+        "fixture_guest_error_count": 338
+      },
+      {
+        "range": [
+          708278,
+          730398
+        ],
+        "CPU_start_count": 0,
+        "fixture_guest_error_count": 790
+      }
+    ]
+  },
+  "source_review": [
+    "Default-disabled flag, required diskboot/mailbox/guest_errors, exact source/binary/kernel pins and literal two-range startup-dfilter. Actualsameattemptzero-slide gate precedesenable.",
+    "Mailboxexactseconds1..3, displaytrace mutual exclusion, no calleraddresses/masks. Pendingmarked beforeenable; lostresponse stillrestores.",
+    "Deadline and8MiB rawlog growth checked cooperatively by soleQMPowner. Logidentityregular/inode/truncation checked. Rawgrowth includesinterleavedguesterrors/traces.",
+    "stop attempts restoration even if before-restore journal fails. Successfulmaskrestore clearspending; journal/othererrors markdiagnosticincomplete and propagate. close catchesCPUerror thenstillattemptsdisplaycleanup; bootfinally preservesQMPquitpath.",
+    "Finalreport retainsdiagnosticincomplete independentlyofappjourney. Lostresponse actualenable simulation leavesincomplete/errors despite successfulrestore."
+  ],
+  "metadata_caveat": "Harness rawmailboxreply.filter is production descriptor fffffff0096df690+4,..., not fixtureCLI filter. Actualreportcommand uses0x40200024+4,0x4020000c+4 and allrawdumpPCs matchfixture. Do not rewriteactualreply or mistakeitforkernelcoverage.",
+  "limitations": [
+    "Counts are coherent snapshots, not invocations. No CPUindex/process/thread attribution or adjacententry-return pairing.",
+    "Preserve full rawXvalues; interpret Wlow32 onlyperexactoriginalABI at exactobserveddumpPC. Filterconfiguration alone doesnotprovePC/registerliveness.",
+    "nochain globallychangesdispatch/translation/scheduling. ActualiOSwindow mayperturbfailure; no unperturbedtimingclaim.",
+    "Deadline/bytecutoff mayovershootblockingQMP. In-flightCPUblocks afterrestoreack possible; rawoffsets/timeboundaries areobservations nothardterminationguarantee.",
+    "Harnessassertionsrestoration tails reviewedagainstrawcommandsequence and fixture guesterrors; no iOSexecution occurred in thisreview."
+  ]
+}
