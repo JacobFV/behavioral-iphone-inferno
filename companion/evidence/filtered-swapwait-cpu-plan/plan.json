@@ -1,0 +1,42 @@
+{
+  "status": "Read-only feasibility proposal; no logging implementation, synthetic run, guest action, memory read or build performed.",
+  "conclusion": "Feasible bounded observation of GPR snapshots at verified TB-entry PCs with cpu,nochain,guest_errors and a fixed startup address filter. Does not guarantee entry/return pairing or every invocation, and changes scheduling.",
+  "source_revision": "9da2b63ad0b4dcc485772a170b0b8f595e0162df",
+  "source_hashes": {
+    "accel/tcg/cpu-exec.c": "4f03249bbdb9c10f70d32373efd8dd25e31094ce4baffc082c00f6c3f24cbd71",
+    "accel/tcg/cpu-exec-common.c": "9e5e2e3586f321e2c8b961e3b6790d5c9d7e88d94ecc7e46b1371d5fbdc7d180",
+    "util/log.c": "ff4b9b68860bb6d2a78ace324b164fbf19fc7d8f4e2058c06c169fc5d81a8cd9",
+    "monitor/hmp-cmds.c": "b626fcba5953e43bbd1295727e9a3cc36849949fd0b72d2eb33707059f53577b",
+    "target/arm/cpu.c": "9d969ee42b7d05b337feb151c21dd51ba6cc4387274f379bbf5599d3db6fcdd5",
+    "companion/qmp_control.py": "8de30fb85494d62e84a6f695071029efa990e3c22e5af2db13b869443d20c1e0",
+    "companion/boot.py": "9f8825f721d2b50e535b27a814849527e66e540516730ba1322ce15a49275b32"
+  },
+  "fixed_unslid_ranges_proposed": [
+    "0xfffffff0096df690+4",
+    "0xfffffff0096f1968+4",
+    "0xfffffff0096e219c+4"
+  ],
+  "address_evidence": "Diskworker original disassembly: wrapper s_swap_wait calls at0xfffffff0096e2198, continuation219c; UserClient::swap_wait entry96df690 x0client,w1token,w2flags,w3third; gated entry96f1968 x0pipeline,x1client,w2token,w3flags,w4third. Independently verified actual slide0 required; kaslr-off flag alone insufficient proof.",
+  "observation_limits": [
+    "dfilter checks TB starting virtual PC, not arbitrary instruction execution. Function-entry call targets and BL continuation are candidate TB boundaries; synthetic and actual PC output must validate.",
+    "cpu logs all GPRs/PC/SP/PSTATE as one locked block; no FPU/VPU/assembly. No CPU index or host timestamp in block. Do not pair entries/returns across threads or infer one invocation. Individual exact continuation PC w0 is independently observed return value only if original register liveness matches.",
+    "Without nochain, directly chained TBs bypass cpu_tb_exec logging and can be missed. nochain changes curr_cflags CF_NO_GOTO_TB globally, not only inside filter; changes scheduling/translation/cache behavior. No performance or unperturbed reproduction claim.",
+    "Changing HMP mask does not synchronously kick/flush executing TB chains; transition occurs on next dispatcher path. Deadline is runner poll bound with QMP delays, not hard real-time. Record actual transition commands and observed last CPU block; finite in-flight output can follow restore.",
+    "HMP log replaces whole mask; require known baseline guest_errors and existing-D logfile. Restore literal guest_errors on deadline and every cleanup path, including uncertain enable. CONFIG_TRACE_LOG preserves LOG_TRACE automatically; trace event states remain independently controlled.",
+    "Keep existing guest-errors.log inode/path; never logfile command or tid. Separate bounded journal records log offsets, timestamps, command/reply/error and restore state. Interleaved trace/guest-error lines remain raw. HMP empty return alone may not convey stderr log errors, so validate actual file behavior in owned loop and retain stderr."
+  ],
+  "minimal_future_interface": {
+    "startup": "Explicit opt-in fixed kernel filter flag; default absent. Record actual fixed -dfilter in argv and source/range/slide gate. CPU remains off initially under guest_errors baseline.",
+    "mailbox": "One exact fixed operation with only bounded integer seconds (proposed1..3), reject if not opted-in, baseline not pinned, active/cleanup pending, or unknown keys. No addresses/log masks from requests. Sole existing QMP owner issues literal HMP log cpu,nochain,guest_errors then literal log guest_errors.",
+    "cleanup": "Mandatory uncertain-enable restore in finally before QMP quit; monotonic deadline plus small log-byte safety cutoff (e.g.8MiB checked by same poll), journal limits may overshoot during blockingQMP. No replay/autorestart.",
+    "phase": "Root requests only after independently confirmed visual freeze, with post-window frame comparison. No automatic input."
+  },
+  "owned_firmware_free_validation_plan": [
+    "Actual current binary advertises virt/virt-10.1 (read-only -machine help checked). No existing tracked baremetal loop fixture found by filename search.",
+    "Author tiny standalone AArch64 assembly linked at owned RAM address for virt, two distinct branches/call targets: set x1token0x1234/x2flags0x56, callee returns w0known0x789, caller continuation branches to loop; separate nonfiltered block known sentinel. No Apple code/SDK. Load via generic loader device with explicit PC; singleCPU TCG/displaynone/privateQMP.",
+    "Before enabling verify no PC blocks while loop runs. Apply fixed synthetic functionentry/continuation ranges using startup-dfilter. Through same proposed owner helper enable1second; verify coherent exactPC+knownargs and continuationreturn, absent unrelated sentinelPC, no in_asm/FPU.",
+    "Restore guest_errors and confirm CPU blocks stop after bounded drain while guest continues; repeat early cleanup then acknowledged quit0. Verify actual guest_errors mask via a whollyowned documented unimplemented/invalid device access only if safe known behavior, otherwise report restoration command evidence separately. Do not substitute arbitrary unmapped addresses or infer active mask from empty HMP string.",
+    "Synthetic range constants separate internal harness configuration, never production mailbox address arguments. Artifact/source/binary hashes and rawQMP/logjournal mandatory. Real iOS observations remain subsequent explicitroot-run and may produce no matching snapshots."
+  ],
+  "volume": "Each matched TB produces roughly0.8KiB all-GPR text; actual frequency unknown. Use initial1second not longwindow. Filter reduces output only, not globalnochain overhead. Never discard overflow rawlogs or label truncated window complete."
+}
