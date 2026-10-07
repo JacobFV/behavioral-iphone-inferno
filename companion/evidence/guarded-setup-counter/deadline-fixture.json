@@ -1,0 +1,42 @@
+{
+  "scope": "Real private Unix socket, existing transport, no QEMU or guest. Injected50ms journal delay solely fixture case.",
+  "timely": {
+    "request_id": "00000000000000000000000000000001",
+    "guest_acknowledgment": "not checked",
+    "ui_acceptance": "not observed by transport",
+    "write_begin_monotonic": 831423.575023358,
+    "send_deadline_monotonic": 831425.574932302,
+    "transmission": "written-to-serial-socket",
+    "bytes_sent": 68,
+    "write_end_monotonic": 831423.575031326,
+    "write_end_after_deadline": false
+  },
+  "expired_queued_validation": "HID send deadline must be finite, unexpired and within15 host monotonic seconds",
+  "expired_after_journal": {
+    "request_id": "00000000000000000000000000000003",
+    "guest_acknowledgment": "not checked",
+    "ui_acceptance": "not observed by transport",
+    "write_begin_monotonic": 831423.625239485,
+    "send_deadline_monotonic": 831423.595060462,
+    "transmission": "rejected-deadline-before-write",
+    "bytes_sent": 0,
+    "replay_allowed": false,
+    "write_end_monotonic": 831423.625246925,
+    "write_end_after_deadline": true
+  },
+  "expired_no_peer_bytes": true,
+  "replay_rejected": "Duplicate serial request ID; never replay a possibly transmitted request",
+  "default_without_deadline": {
+    "request_id": "00000000000000000000000000000004",
+    "guest_acknowledgment": "not checked",
+    "ui_acceptance": "not observed by transport",
+    "write_begin_monotonic": 831423.725685419,
+    "send_deadline_monotonic": null,
+    "transmission": "written-to-serial-socket",
+    "bytes_sent": 68,
+    "write_end_monotonic": 831423.725693212,
+    "write_end_after_deadline": false
+  },
+  "journal_path": "/tmp/guarded-deadline-fixture-7sd0rqii/serial-input-transcript.jsonl",
+  "journal_sha256": "02c8896ead3db4ccae462509f5244824b2767093669a832ea5b7cab7e685fe22"
+}

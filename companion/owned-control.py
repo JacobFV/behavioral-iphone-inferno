@@ -36,6 +36,7 @@ def main():
     parser.add_argument('--output', type=Path, required=True, help='New action evidence directory')
     parser.add_argument('--trace-checkpoints', action='store_true',
                         help='Record file-visible trace log boundaries around this one submission')
+    parser.add_argument('--send-deadline-monotonic', type=float, help='Optional HID host send-start cutoff, same-host monotonic, at most15 seconds ahead')
     actions = parser.add_subparsers(dest='action', required=True)
     for name, fields in [('tap', ('x', 'y')), ('swipe', ('x0', 'y0', 'x1', 'y1'))]:
         action = actions.add_parser(name)
@@ -62,6 +63,10 @@ def main():
         request.update(kind=args.action, duration_ms=args.duration_ms,
                        **{field: getattr(args, field) for field in fields})
         validator = qmp_control.gesture_line
+    if args.send_deadline_monotonic is not None:
+        if args.action not in ('tap','swipe'):
+            parser.error('Send deadline is restricted to HID gestures')
+        request['send_deadline_monotonic'] = args.send_deadline_monotonic
     try:
         wire = validator(request)
         report = args.report.resolve(strict=True)

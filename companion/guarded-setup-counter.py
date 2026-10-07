@@ -9,6 +9,7 @@ import os
 import stat
 from pathlib import Path
 import re
+import signal
 import subprocess
 import sys
 import time
@@ -83,21 +84,51 @@ def identity(report, expected_boot):
     for i, line in enumerate(lines):
         m = re.fullmatch(rb'INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 ([A-Fa-f0-9-]{36}) ([0-9]+) ([0-9]+) ([a-z-]+) ([0-9]+)', line)
         if not m:
+            if line.startswith(b'INFERNO_EVENT_RELAY_RAW'):
+                raise ValueError('Malformed owned raw event')
             continue
         boot, pid, seq, hook, count = [x.decode() for x in m.groups()]
         pids.add(pid)
+        if hook == 'tap':
+            raise ValueError('A raw tap already exists')
         if boot != expected_boot:
             raise ValueError('Foreign-boot raw record')
         if hook == 'appeared' and count == '0':
             validation = f'INFERNO_EVENT_RELAY_RECORD boot={boot} pid={pid} sequence={seq} source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0'.encode()
             tail = lines[i+1:i+12]
-            if validation not in tail or b'INFERNO_UIKIT_PROBE_V1 event=appeared count=0' not in tail:
-                raise ValueError('Appearance lacks matching validated record/marker')
+            marker = b'INFERNO_UIKIT_PROBE_V1 event=appeared count=0'
+            if tail.count(validation)!=1 or tail.count(marker)!=1 or tail.index(validation)>=tail.index(marker):
+                raise ValueError('Appearance lacks ordered matching validation then marker')
+            if any(x.startswith(b'INFERNO_EVENT_RELAY_RAW') for x in tail[:tail.index(marker)]):
+                raise ValueError('Another raw event interrupts appearance provenance')
             appeared.append({'boot': boot, 'pid': int(pid), 'sequence': int(seq)})
     if len(appeared) != 1 or len(pids) != 1:
         raise ValueError('Require one unambiguous initial owned incarnation')
     return {**appeared[0], 'serial_bytes': len(b), 'serial_sha256': sha(b),
             'scope': 'Original relay identity evidence, not a fresh host query of guest process liveness'}
+
+
+def bounded_subprocess(argv, stdout, stderr, timeout):
+    # Own a new process group: owned-control may itself spawn the mailbox CLI.
+    child = subprocess.Popen(argv, stdout=stdout, stderr=stderr, start_new_session=True)
+    try:
+        return child.wait(timeout=timeout)
+    except BaseException:
+        try:
+            os.killpg(child.pid, signal.SIGTERM)
+        except ProcessLookupError:
+            pass
+        try:
+            child.wait(timeout=1)
+        except subprocess.TimeoutExpired:
+            pass
+        # Even if the group leader exited, a mailbox grandchild may remain.
+        try:
+            os.killpg(child.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+        child.wait(timeout=2)
+        raise
 
 
 class Sequence:
@@ -127,8 +158,8 @@ class Sequence:
         self.log['actions'].append({'command': argv, 'started_monotonic': time.monotonic()})
         self.save()
         with prefix.with_suffix('.stdout').open('wb') as stdout, prefix.with_suffix('.stderr').open('wb') as stderr:
-            result = subprocess.run(argv, stdout=stdout, stderr=stderr, timeout=timeout)
-        if result.returncode:
+            result = bounded_subprocess(argv, stdout, stderr, timeout)
+        if result:
             raise ValueError('Control rejected; sequence aborted')
         answer = json.loads(prefix.with_suffix('.stdout').read_text())
         if 'error' in answer or 'rejected' in answer:
@@ -141,15 +172,15 @@ class Sequence:
         self.save()
         return p
 
-    def tap(self, name, x, y):
+    def tap(self, name, x, y, deadline):
         argv = [sys.executable, str(HERE/'owned-control.py'), '--report', str(self.report),
-                '--output', str(self.out/name), '--trace-checkpoints', 'tap', str(x), str(y), '--duration-ms', '150']
+                '--output', str(self.out/name), '--trace-checkpoints', '--send-deadline-monotonic', str(deadline), 'tap', str(x), str(y), '--duration-ms', '150']
         start = {'wall': time.time(), 'monotonic': time.monotonic()}
         self.log['actions'].append({'command': argv, 'anchor': start})
         self.save()
         with (self.out/(name+'.stdout')).open('wb') as stdout, (self.out/(name+'.stderr')).open('wb') as stderr:
-            result = subprocess.run(argv, stdout=stdout, stderr=stderr, timeout=4)
-        if result.returncode:
+            result = bounded_subprocess(argv, stdout, stderr, 4)
+        if result:
             raise ValueError('Tap uncertain/rejected; do not retry')
         req = json.loads((self.out/name/'request.json').read_text())
         reply = json.loads((self.out/name/'stdout.txt').read_text())
@@ -162,11 +193,15 @@ class Sequence:
         now_mono, now_wall = time.monotonic(), time.time()
         if abs((now_wall-start['wall'])-(now_mono-start['monotonic'])) > .05:
             raise ValueError('Host clock changed; timing untrustworthy')
-        estimate = start['monotonic'] + sent[0]['time'] - start['wall']
+        estimate = reply['write_begin_monotonic']
+        if reply.get('send_deadline_monotonic') != deadline or estimate >= deadline:
+            raise ValueError('Receiver did not confirm timely write start')
         if not start['monotonic'] <= estimate <= now_mono:
             raise ValueError('Transmission time outside local command bracket')
         return {'request_id': req['request_id'], 'send_wall': sent[0]['time'],
-                'estimated_send_monotonic': estimate, 'clock_crosscheck_tolerance_seconds': .05}
+                'send_begin_monotonic': estimate, 'send_end_monotonic': reply['write_end_monotonic'],
+                'send_deadline_monotonic': deadline, 'write_end_after_deadline': reply['write_end_after_deadline'],
+                'clock_crosscheck_tolerance_seconds': .05}
 
     def ack(self, request_id):
         b = (self.report/'serial.log').read_bytes()
@@ -231,9 +266,9 @@ class Sequence:
             raise ValueError('Owned process changed before Not Now')
         if trace_deadline-time.monotonic()<50:
             raise TimeoutError('Trace coverage consumed before Not Now')
-        notnow = self.tap('not-now',11028,18432)
+        notnow = self.tap('not-now',11028,18432,time.monotonic()+3)
         self.log['not_now'] = notnow
-        target = notnow['estimated_send_monotonic'] + self.args.delay_seconds
+        target = notnow['send_begin_monotonic'] + self.args.delay_seconds
         self.log['counter_target_monotonic'] = target
         self.save()
         for i in range(100):
@@ -266,9 +301,9 @@ class Sequence:
             raise ValueError('Owned identity changed immediately before counter')
         if time.monotonic()>target+.5 or trace_deadline-time.monotonic()<35:
             raise TimeoutError('Final deadline check failed; no counter tap')
-        self.log['counter'] = self.tap('counter',16384,20316)
+        self.log['counter'] = self.tap('counter',16384,20316,target+.5)
         self.save()
-        self.log['actual_send_interval_seconds'] = self.log['counter']['send_wall']-notnow['send_wall']
+        self.log['actual_send_interval_seconds'] = self.log['counter']['send_begin_monotonic']-notnow['send_begin_monotonic']
         self.log['target_met_at_transmission'] = abs(self.log['actual_send_interval_seconds']-self.args.delay_seconds)<=.5
         end=time.monotonic()+30
         for i in range(100):
