@@ -9,6 +9,34 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-06 17:03 local
 
+### 2026-10-07 13:30: bounded return-value diagnostic implementation underway
+
+Originaluserspace9da2b63ad0 establishes sampledcan_update_ sleepfollowsnonzero
+SwapWait and retries same token/flags withusleep100 whilelocalelapsed<=1ms;
+finalcan_updateBOOL depends onadditionalstate andwasnotcaptured. Wholethree
+mappedfunctions have no sparsepatchoverlap. Kernel32dcf4c9c9 maps selector6,
+scalarinputs[token,flags,0], and trackedtoken comparisons to pipeline+bf4 and
+active/queuedrequests+22c. Pending withflagsbit31set returnsraw0xe00002d5;
+blockingwait andcompletionwakeup use same &pipeline+ad8 event. Actual65numeric
+status/token/flags remainunknown. Do not infercausaldeadlock or fabricatecompletion.
+
+Plan3d4cc37295 and independentregisterreview978f038f9b support existingQEMU
+filteredCPUlogging. Rootapprovedimplementation with ONLYTWOexact4byte PCs:
+0xfffffff0096df690 entry(x0client,w1token,w2flags,w3third),
+0xfffffff0096e219c finalreturn(w0status). Historicalplan's thirdgatedPC omitted.
+NoCPUindex orentry/returnpairingclaim; eachcoherentdump interpretedindependently.
+No guestRAMreads, originalinstructionlogging orguestcodepatch. Nochain globally
+changes scheduling; filter onlylimitsoutput. This is post-freeze diagnostic,
+notperformance orunperturbedreproduction evidence.
+
+Bootworker owns companionboot/controller explicitstartupoptin/fixedkernel+binary/
+actualslide0guards/defaultCPUoff andsolemailbox1..3s window (initialuse1s),8MiB
+cooperativecutoff/nooverlapdisplaytrace/mandatoryliteralguest_errorsrestore after
+uncertainenable,deadlineandcleanup. Same logfileinode/provenance retained.
+WhollyownedfirmwarefreeAArch64loop willverify exactarguments/returnPCs/defaultoff/
+filter/deadline/earlycleanup before anyrealguest. Nativeownsindependentreview.
+No66launch yet; rootreviewactualimplementation+evidence before authorization.
+
 ### 2026-10-07 13:23: validated failure stack localizes update-eligibility path
 
 Actualstackmapping7275ced75c and independentreplay72aa07a8f8 validate both65
