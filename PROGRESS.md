@@ -2,6 +2,18 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 16:51: generic imported demo75 live
+
+Successful demo stage2 retained0e22f73606: root62062fe1faf8a053061cd07c5062935a7e941bba805a70d3f78bf7dfe7c00b1e,
+manifest a61e7a945aff29963da27c28e7300d3df14dc4e15ed122b97f446b656ae80bbf,
+all seven files/ancestors/loader verified, metadata copy/readbacks complete.
+75 runner3482743/QEMU3491130 private /tmp/inferno-boot-lbx7eti4/vnc.sock,
+cont1791417061.1339052. Generic app, no probejourney/keep-running/CPU/observer;
+controlmailbox/HID/capture10/1200s. Root boot-view45sobserver active; no inputyet.
+Root owns unlock/alerts/review actual resource text and counter0→1 plus original
+PS presence. Use finish-observation, never invent probe markers. Launchd94e07a91c
+and report9b6f04b44c differ by evidence commits only; five actualhostmodulesmatch.
+
 ### 2026-10-07 16:46: fresh demo recovery passed after directory metadata fix
 
 Generic demo1 failed only new-owned root metadata (415239d44d forensic retention).
