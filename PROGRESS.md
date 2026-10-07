@@ -2,6 +2,30 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 17:20 continuation: failure63 traced into the original interrupt handler
+
+Run63 reproduced the genuine tap1/display0 mismatch on the new28556 binary
+and original stage50/HID54. BootC9E86568-D530-4FD8-B231-D37893D85D74/PID245,
+main2600439612; counter28ce8ddd6938440995ab7152eb90ba71. Continuous observation
+and a subsequent real Home/background transition retained counter0. Actual
+before and periodic QMP frames were identical5702cb5c581963f7f180ab31847a6e82b74372f0a3ac624e90bed34ffa6a5fe3.
+Root visual9d38a080b0. No after capture, second counter tap, OPEN or SAMPLE.
+Recorded SIGINT2 at1791332377.6662447 begins failed-attempt preservation.
+
+The initial10s window captured four completed submissions and69 caller records.
+The failed counter window captured zero submissions,63 caller records and21
+matching0x400 status-read/W1C pairs. Every main45004 caller in both windows was
+the interrupt handler's ready gate; GP callers were decompression-error checks.
+No FIFO-predicate or unknown callers occurred. Same-boot kernel slide0 and exact
+original code references are retained92b57d643a/6c5f498095. This shows the failed
+path reaches the handler read, without proving the later completion branches.
+
+Original static analysis a17db4ccf1 identifies x21 bit10 as the immediately
+following condition. A minimal optional extension to the existing trace is under
+review to observe that register without synchronization or extra memory/MMIO.
+The subsequent pending-request pointer and callback branches remain unknown.
+No behavioral fix or completed frame notification is claimed.
+
 ### 17:10 continuation: caller diagnostic built; installed-iOS validation begins
 
 Build sourceec40c73c79 produced emulator28556c311abfaf976f377b9c58ef7e7045bec9b985c81c1e17ce28c4dbecfdbd.

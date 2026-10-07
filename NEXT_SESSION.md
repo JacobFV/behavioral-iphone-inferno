@@ -9,6 +9,32 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-06 17:03 local
 
+### Latest17:20:63 reproduced; stopped for forensic preservation
+
+63 also FAILED: new28556/base50, bootC9E86568-D530-4FD8-B231-D37893D85D74,
+PID245/main2600439612. Counter28ce8ddd6938440995ab7152eb90ba71 at2138.5475528
+actualtap1/ACK0 but9initial+16confirmation frames allcounter0 SHA
+714e9ee5eb75fe3c4042776c20a1bd8a5e3dcfbf6b6f56d87e8c59e48d79f7b7.
+RootHomeF6at2287.000713 producedrealresign/background,16moreframesstill0.
+QMPbefore/frames0010/0014 identicalSHA
+5702cb5c581963f7f180ab31847a6e82b74372f0a3ac624e90bed34ffa6a5fe3.
+Noafter/secondtap/OPEN/SAMPLE. RootSIGINT2runner3125313at1791332377.6662447;
+bootworker owns failedpostflight and archive28556beforefuturebuild. NoVM64yet.
+Visual9d38a080b0; callerstartup92b57d643a, failedcounter6c5f498095.
+Startup69callers(46GPdecompression/23handler),23statusW1Cpairs,4submits.
+Failedcounter45795→62410:63callers(42GP/21handler),21status0x400matchingW1C,
+22ready,0submit/BH/config. AllCPU0valid; actualPC977b660/LRmain97453fc,
+GP975c19c, sameattemptslide0. NoFIFOcaller/HMP. All9deadlineoff.
+Home62449→76767/10sdeadlineoff2296.79344, diskauditunderway.
+
+Newstaticpost-readgatea17db4ccf1: nextinstructiontestsx21bit10, thenstatus&0x70;
+nextpipeline/requestptr andcallbackbranches remaingueststate. Nohardwarefix.
+Nativecandidateb200ac1f4c appendsguardedexposedx21 toexistingcaller event,
+still9events/unchangedcontrols; oldparserrecordsx21unknown, bit10interpreted
+ONLYexacthandlerLR+45004. Rootreviewedminimaldiff, independentdiskreviewpending.
+HOLDmerge/build64untilreviewand63preservation. No extraMMIO/RAM/state/sync.
+
+
 63 AUTHORIZED/bootworker launching from immutable50/HID54 with new nine-event
 binary28556c311abfaf976f377b9c58ef7e7045bec9b985c81c1e17ce28c4dbecfdbd,
 sourceec40c73c791b8878eb25c1b601c0fd42cb5103da, manifestSHA
