@@ -4,6 +4,15 @@
 
 ### 17:20 continuation: failure63 traced into the original interrupt handler
 
+Final forensic retention632dba6818 passed with normal emulator0/QMP cleanup,
+reported Signal2 and correctly rejected strict journey. Root105840640bytes
+SHAac9ff8b265364b064b93fec855cffb32e8cda78d75abcb5d4927b25e780984fe is forensic-only;
+all seven disks, ancestors and exact metadata attestations verified. The Home
+window independently retained18 matching status/W1C pairs and54 caller records
+with zero drawing submissions (3697db6bfe). The old28556 binary is archived.
+Reviewed extensionf37ad49dbb adds only exposed x21 to the existing caller event;
+the nine-event control set is unchanged. Actual rebuild/control checks are next.
+
 Run63 reproduced the genuine tap1/display0 mismatch on the new28556 binary
 and original stage50/HID54. BootC9E86568-D530-4FD8-B231-D37893D85D74/PID245,
 main2600439612; counter28ce8ddd6938440995ab7152eb90ba71. Continuous observation

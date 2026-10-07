@@ -11,6 +11,19 @@ independent work in isolated worktrees; commit progressively.
 
 ### Latest17:20:63 reproduced; stopped for forensic preservation
 
+63 final preservation632dba6818 PASS: emulator0/normalQMPcleanup after Signal2,
+540.606925s; strict correctlyREJECTED; all7/ancestors/exactattestations verified.
+Root105840640bytes SHAac9ff8b265364b064b93fec855cffb32e8cda78d75abcb5d4927b25e780984fe,
+forensic_only.28556 archived readonly .local-build/binaries/display-caller-28556c311abf/.
+Home audit3697db6bfe:18status/W1C0x400,54callers(36GP/18handler),0submit/BH/config.
+
+x21 diagnostic mergedf37ad49dbb after independentreviewa52f5b0c95 androotdiffreview.
+Bootworker authorized mainbuild8jobs/simulatedSEP/KVM+actual9eventcontrolchecks.
+Same9events/controllerunchanged; newfieldrequiresnewbinary; no64bootuntilPASSreview.
+Diskworker READ-ONLY feasibility for futureoriginal50 flatten+recoverystageHID55
+sample-capablebranch; no conversion/staging/changeauthorizedbythatproposal.
+
+
 63 also FAILED: new28556/base50, bootC9E86568-D530-4FD8-B231-D37893D85D74,
 PID245/main2600439612. Counter28ce8ddd6938440995ab7152eb90ba71 at2138.5475528
 actualtap1/ACK0 but9initial+16confirmation frames allcounter0 SHA
