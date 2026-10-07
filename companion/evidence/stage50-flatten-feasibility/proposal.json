@@ -1,0 +1,91 @@
+{
+  "status": "Feasible proposal only; no conversion, staging, build, VM, chmod, marker or attestation mutation performed.",
+  "observed_time": 1791332638.4574606,
+  "source": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/report.json",
+  "source_report_sha256": "93b03e3d7ba4e4416f9835ac0033ca722e29d7e461cc2c1722ae0c5bba467d19",
+  "source_stopped_manifest_sha256": "a16d16ea0fa419292b90c34d4ac499875f26e054b99c124ad527b53a5572fd43",
+  "existing_tool": {
+    "root": "/home/brandonin/.local/share/inferno/disk-overlay-tools",
+    "binary": "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-img",
+    "sha256": "f26da24f8a7fd880ab13f6fcabf42d099fb68ea86df5de0c55e6faadfe2d9a6e",
+    "provenance": "/home/brandonin/.local/share/inferno/disk-overlay-tools/tool-provenance.json",
+    "provenance_sha256": "bc5893936a16a2b2dd5cf7e6408da5742a3e1909d7c8d3606ff100ec7236c9f2"
+  },
+  "source_contracts": {
+    "companion/boot.py": "9f8825f721d2b50e535b27a814849527e66e540516730ba1322ce15a49275b32",
+    "companion/disk_overlay.py": "16180ed475f586b60031c129bf2a11169597dca10fc77a804d9fcdf0f20e3978",
+    "companion/native-probe/prepare.py": "94155d35d7faabf5ddbf04b08739868a5f203b66f349de2721d21c4493ac4367",
+    "companion/native-probe/prepare-root.c": "40811a8d4707720389d8c0ecd34f10149c5c9b6d28b1fbb5421624b6a8def397"
+  },
+  "space": {
+    "available_bytes": 47868862464,
+    "available_GiB": 44.58135223388672,
+    "source_virtual_bytes": 34359738368,
+    "raw43_allocated_bytes": 10800865280,
+    "maximum_non_sparse_output_bytes": 34359738368,
+    "remaining_after_32GiB_raw_bytes": 13509124096,
+    "caveat": "Sparse conversion allocation unknown until measured; root43 allocation is an estimate, not proof. Later writable overlays can grow to virtual-size; no guarantee this capacity supports unlimited attempts."
+  },
+  "ordered_proposal": [
+    {
+      "step": 1,
+      "action": "Use current validated qemu-img/tool manifest and rerun load_stopped_overlay(stage50) before conversion. Preserve returned identities/attestation journal and all original source reports, seven files and ancestors. Reject writableFD, identity/hash or stopped-QMP mismatch.",
+      "reason": "Source must remain exact immutable stage50; never use forensic62/63."
+    },
+    {
+      "step": 2,
+      "action": "Reserve a NEW exclusive outside-Git output directory. Record exact argv, environment, tool hash/version, source chain/preflight and timestamps. Ensure proposed raw path does not already exist.",
+      "mutation_scope_if_authorized": "Only new output path; no old file metadata changes."
+    },
+    {
+      "step": 3,
+      "action": "qemu-img convert -f qcow2 -O raw -S 4k SOURCE_STAGE50_ROOT NEW_RAW using disk_overlay.tool_run recorded environment.",
+      "command_argv_template": [
+        "qemu-img",
+        "convert",
+        "-f",
+        "qcow2",
+        "-O",
+        "raw",
+        "-S",
+        "4k",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/disks/root.qcow2",
+        "NEW_RAW"
+      ],
+      "limit": "Do not use -B/rebase or convert in place. No --salvage or guest filesystem repair."
+    },
+    {
+      "step": 4,
+      "action": "Require convert exit0; qemu-img info raw virtual-size34359738368; inspect GPT EFI PART at byte4096 and validate existing primary/backup GPT CRCs read-only; SHA256 entire new raw; run qemu-img compare -f qcow2 -F raw SOURCE_STAGE50_ROOT NEW_RAW and require exit0.",
+      "compare_limit": "Do not use compare -s: allocation layouts intentionally differ. Exact virtual-size check plus non-strict compare establishes logical block-byte equality, not identical sparse allocation."
+    },
+    {
+      "step": 5,
+      "action": "Rerun source load_stopped_overlay and compare all pre/post identities, hashes and reports. Fresh hash new raw before/after metadata recording. Freeze ONLY NEW_RAW once to0444, then record its final identity with no writableFD. Preserve a separate flatten-provenance JSON linking source chain, compare result, raw hash and virtual geometry.",
+      "no_invention": "Do not manufacture a boot report, successful iOS milestone, normal QMP exit, or ctime attestation for this host conversion."
+    },
+    {
+      "step": 6,
+      "action": "Place explicit KEEP-OVERLAY-BACKING.json for the new raw in its new directory before using it; retain original50 and ancestors as historical source even though new raw is logically standalone.",
+      "source_detail": "create_overlay(raw) records dependency warning but does not call protect_dependencies; operator must intentionally retain new backing."
+    },
+    {
+      "step": 7,
+      "action": "Use existing verified helper-attempt55/profile.json (actual original recovery ramdisk with owned bounded staging helper), no rebuild needed if hashes still match. Run existing boot.py with --root-image NEW_RAW --root-sha256 HASH --root-overlay --auxiliary-state STAGE50 --ramdisk-boot, plus ordinary isolated output/duration/headless flags.",
+      "tuple": "app22 d05f1b32523684a5c89d41cb2c35fbf0207b62adf864c27fab4d5973bf8e6176; launcher22 0f6626102deedabe4f5c93dafbd3c757387836c463d6b59bf3204932e550bf17; readiness54 2440b210892898f43bd2f2afe3907ee5b682262d1d71c47e8c940757aa46c0b2; HID55 853bed149abbed99b3157150dbcd1d25292f9a873e643d0e424e66e7fc1a8538",
+      "actual_profile": "/home/brandonin/.local/share/inferno/native-probe/helper-attempt-55/profile.json",
+      "scope": "Existing-volumes mode replaces owned files only; no role/keybag/SEP/firmware recreation or launchd-cache replacement. Original ramdisk mount/unmount/file APIs; no signature forgery or grant change."
+    },
+    {
+      "step": 8,
+      "action": "Require actual four zero-mismatch readbacks, PREP_COMPLETE, clean guest unmount and normal QMPquit/exit; preserve stopped seven hashes and backing unchanged. Then freeze only new stagedroot and use its owned report for future child boot with copied paired staged auxiliaries.",
+      "depth": "Stage is one qcow2 over newraw; subsequent boot is two qcow2 layers, within max4. Existing raw43 ancestry retained but no longer backing this new chain."
+    }
+  ],
+  "gate_limits": [
+    "boot.py raw-root path checks GPT4096 plus hash and read-only backing; it does not validate old logical ancestry automatically. Flatten sidecar is essential explicit provenance, not a fake loader exemption.",
+    "--auxiliary-state runtime gate accepts any integer stopped exit; this proposed workflow independently requires exact successfully validated stage50 and all six manifest hashes, never failed62/63.",
+    "Recovery creates ordinary APFS/checkpoint/boot/NVRAM changes. Same logical starting50 plus HID55 staging is useful diagnostic capability addition, not a clean HID-only causal experiment.",
+    "SAMPLE_READY and successful guest sampling remain future actual milestones; no claim the proposal already captures stacks."
+  ]
+}
