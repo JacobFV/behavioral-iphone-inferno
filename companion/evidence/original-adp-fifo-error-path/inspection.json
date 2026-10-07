@@ -1,0 +1,86 @@
+{
+  "scope": "Original static driver mappings only; no guest execution, memory query, model change or implementation bytes retained in Git.",
+  "provenance": [
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/kernel-original-decoded",
+      "bytes": 54613232,
+      "sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/llvm-objdump-18",
+      "bytes": 923960,
+      "sha256": "32b78ffb3f9f14a19716cb7d3d6a5baa59ea98bc502fb183d3ff429df0f20a21"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/original-adp-interrupt-audit/h11p-bounded-disasm.txt",
+      "bytes": 1355868,
+      "sha256": "81c55306da8214ce781803ca12ee7c877370837114de045c9b7090691abb1001"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/original-adp-interrupt-audit/gp-decompression-failure.txt",
+      "bytes": 2177,
+      "sha256": "797d77603c0c319771c12022b4843a34138d33e4b570e76d52d461d544b5fec6"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/original-adp-interrupt-audit/register-stream-read.txt",
+      "bytes": 852,
+      "sha256": "39770e8fe832572c49e85f860cd8cb6436443bf3953d315afc2601063e154385"
+    }
+  ],
+  "gp_status": {
+    "function": "IOMFB::UPBlock_GenPipe_v2::decompression_failure(AppleRegisterStream*, bool)",
+    "range": [
+      "0xfffffff00975c160",
+      "0xfffffff00975c1d4"
+    ],
+    "read": "0xfffffff00975c198",
+    "offset": "0x50184 + (pipe_index << 15)",
+    "behavior": "Return status bit0; if bit0 is set and bool argument true, writeDirect the same status back at 0xfffffff00975c1b8.",
+    "zero_meaning": "No reported decompression failure, not idle/frame-completion.",
+    "handler_calls": [
+      "0xfffffff009744db8",
+      "0xfffffff009744df8"
+    ],
+    "vtable": {
+      "address": "0xfffffff0079d9e08",
+      "address_point_delta": 16,
+      "slot": "0xe8",
+      "raw_authenticated_pointer": "0x8011a0dc02758160",
+      "resolved_target": "0xfffffff00975c160",
+      "resolution": "Original chained authenticated target offset low32 + kernel base 0xfffffff007004000; corroborated by original symbol."
+    }
+  },
+  "main_fifo": {
+    "function": "IOMFB::UPPipe_H11P::shadow_FIFO_empty(AppleRegisterStream*) const",
+    "range": [
+      "0xfffffff009746fc4",
+      "0xfffffff009747010"
+    ],
+    "read": "0xfffffff009746fe4",
+    "offset": "0x45004",
+    "mode_field": "self+0x1c0c",
+    "mode_accessor": "IOMFB::UPPipe_H11P::command_mode() const at 0xfffffff0097522c4",
+    "predicate": "command_mode ? ((status & 0x70) == 0) : (status & 1)",
+    "zero_meaning": "Empty in command mode; not empty outside command mode. Actual guest mode has not been established.",
+    "separate_handler_gate": "0xfffffff0097453ec..0xfffffff009745404: pending bit10 and (status&0x70)==0 permit continuation, independent of the FIFO accessor branch. Further internal gates remain.",
+    "other_caller_scope": "The original bounded H11P inspection is not an exhaustive whole-kernel caller inventory."
+  },
+  "attribution_proposal": {
+    "status": "Proposal only; no code changes",
+    "minimal": "For just existing main0x45004 and GP0/1+0x184 reads, capture CPU-present and PC/LR metadata in a default-off bounded trace, without additional guest memory or MMIO reads. HMP/non-CPU reads must be marked unavailable.",
+    "leaf_read": "AppleRegisterStream::read at 0xfffffff00977b650..664 performs MMIO load at 0xfffffff00977b660 without changing LR.",
+    "expected_unslid_lr": {
+      "decompression": "0xfffffff00975c19c",
+      "shadow_FIFO_empty": "0xfffffff009746fe8",
+      "interrupt_handler": "0xfffffff0097453fc"
+    },
+    "limitations": [
+      "Actual CPU state exposure and address normalization need implementation review; no claim current trace already contains caller addresses.",
+      "PC/LR identifies a caller only; FIFO command_mode is loaded after the MMIO read and is not established by this metadata.",
+      "If the observed call is the handler, zero already satisfies its mask gate; no justification for changing register bit0 follows.",
+      "No required hardware transition has been proven absent.",
+      "No broad CPU tracing, state mutation or arbitrary guest RAM reading proposed."
+    ]
+  },
+  "patch_scope": "Prior original-adp-interrupt-path direct-patch audit covered handler, not all newly mapped functions. New range audit is supplied separately; neither is a runtime RAM byte comparison."
+}
