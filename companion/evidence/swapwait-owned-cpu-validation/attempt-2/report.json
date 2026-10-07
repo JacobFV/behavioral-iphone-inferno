@@ -1,0 +1,91 @@
+{
+  "scope": "Wholly owned baremetal loop, synthetic filter and explicitly labeled slide fixture; no iOS/kernel capture claim.",
+  "binary_sha256": "0889bfe40c6bbb3e6eb9d493ada2bb86637e1d7acb61e36699e16da2568563f2",
+  "sources": {
+    "/tmp/inferno-swapwait-cpu/companion/cpu-window-probe/loop.S": "c600f16ace6280e0a7df776516788e6fdc18b65872c43bcf95f21aa8266ee550",
+    "/tmp/inferno-swapwait-cpu/companion/cpu-window-probe/run.py": "4e68828fa2c1c453c767247dcf5cce3069d003599d58825b45ca0b58fe6806f9",
+    "/tmp/inferno-swapwait-cpu/companion/qmp_control.py": "ca2186dae6fe0a9f5e60a8071d7b228dde5b76bccfcd339e9090646fe39996a4",
+    "/tmp/inferno-swapwait-cpu/companion/boot.py": "fade4d6f06b055058beb9ae2b5908488d3f10d320f8b466ca3cb8807e806cde3"
+  },
+  "build_commands": [
+    [
+      "as",
+      "-o",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/swapwait-owned-cpu-smoke-2/loop.o",
+      "/tmp/inferno-swapwait-cpu/companion/cpu-window-probe/loop.S"
+    ],
+    [
+      "ld",
+      "-Ttext=0x40080000",
+      "-e",
+      "_start",
+      "-o",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/swapwait-owned-cpu-smoke-2/loop.elf",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/swapwait-owned-cpu-smoke-2/loop.o"
+    ]
+  ],
+  "symbols": {
+    "__bss_end__": 1074331692,
+    "__bss_start": 1074331692,
+    "__bss_start__": 1074331692,
+    "__end__": 1074331696,
+    "_bss_end__": 1074331692,
+    "_edata": 1074331692,
+    "_end": 1074331696,
+    "_start": 1074266112,
+    "probe_entry": 1074266148,
+    "probe_return": 1074266124
+  },
+  "filter": "0x40080024+4,0x4008000c+4",
+  "checks": {},
+  "command": [
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "-machine",
+    "virt",
+    "-cpu",
+    "cortex-a57",
+    "-accel",
+    "tcg",
+    "-smp",
+    "1",
+    "-m",
+    "128M",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "none",
+    "-S",
+    "-device",
+    "loader,file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/swapwait-owned-cpu-smoke-2/loop.elf,cpu-num=0",
+    "-d",
+    "guest_errors",
+    "-D",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/swapwait-owned-cpu-smoke-2/guest-errors.log",
+    "-dfilter",
+    "0x40080024+4,0x4008000c+4",
+    "-qmp",
+    "unix:/tmp/inferno-owned-cpu-wc7xgybo/qmp.sock,server=on,wait=off"
+  ],
+  "greeting": {
+    "QMP": {
+      "version": {
+        "qemu": {
+          "micro": 2,
+          "minor": 2,
+          "major": 10
+        },
+        "package": ""
+      },
+      "capabilities": [
+        "oob"
+      ]
+    }
+  },
+  "error": {
+    "type": "ConnectionResetError",
+    "detail": "[Errno 104] Connection reset by peer"
+  },
+  "final_exit_code": 1
+}

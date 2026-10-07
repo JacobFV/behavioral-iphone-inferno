@@ -1,0 +1,117 @@
+{
+  "scope": "Wholly owned baremetal loop, synthetic filter and explicitly labeled slide fixture; no iOS/kernel capture claim.",
+  "binary_sha256": "0889bfe40c6bbb3e6eb9d493ada2bb86637e1d7acb61e36699e16da2568563f2",
+  "sources": {
+    "/tmp/inferno-swapwait-cpu/companion/cpu-window-probe/loop.S": "c600f16ace6280e0a7df776516788e6fdc18b65872c43bcf95f21aa8266ee550",
+    "/tmp/inferno-swapwait-cpu/companion/cpu-window-probe/run.py": "69e5388ee5c2e999830ccb662e4a2f99a5bc3211961e49a922a5e63144515e45",
+    "/tmp/inferno-swapwait-cpu/companion/qmp_control.py": "21fe6606679ecb4b5842d206ed4ec4e2984bb0a6c328d4db497eecad73d12d5e",
+    "/tmp/inferno-swapwait-cpu/companion/boot.py": "fade4d6f06b055058beb9ae2b5908488d3f10d320f8b466ca3cb8807e806cde3"
+  },
+  "build_commands": [
+    [
+      "as",
+      "-o",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/swapwait-owned-cpu-smoke-5/loop.o",
+      "/tmp/inferno-swapwait-cpu/companion/cpu-window-probe/loop.S"
+    ],
+    [
+      "ld",
+      "-Ttext=0x40200000",
+      "-e",
+      "_start",
+      "-o",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/swapwait-owned-cpu-smoke-5/loop.elf",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/swapwait-owned-cpu-smoke-5/loop.o"
+    ]
+  ],
+  "symbols": {
+    "__bss_end__": 1075904556,
+    "__bss_start": 1075904556,
+    "__bss_start__": 1075904556,
+    "__end__": 1075904560,
+    "_bss_end__": 1075904556,
+    "_edata": 1075904556,
+    "_end": 1075904560,
+    "_start": 1075838976,
+    "probe_entry": 1075839012,
+    "probe_return": 1075838988
+  },
+  "filter": "0x40200024+4,0x4020000c+4",
+  "checks": {
+    "default_cpu_off_guest_errors_on": true,
+    "known_entry_and_return_exact_PCs": true,
+    "only_filtered_PCs": true,
+    "deadline_restore_cpu_off_guest_errors_on": true,
+    "early_cleanup_restore": true,
+    "uncertain_actual_enable_restored": true
+  },
+  "command": [
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "-machine",
+    "virt",
+    "-cpu",
+    "cortex-a57",
+    "-accel",
+    "tcg",
+    "-smp",
+    "1",
+    "-m",
+    "128M",
+    "-display",
+    "none",
+    "-monitor",
+    "none",
+    "-serial",
+    "none",
+    "-nic",
+    "none",
+    "-S",
+    "-device",
+    "loader,file=/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/swapwait-owned-cpu-smoke-5/loop.elf,cpu-num=0",
+    "-d",
+    "guest_errors",
+    "-D",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/swapwait-owned-cpu-smoke-5/guest-errors.log",
+    "-dfilter",
+    "0x40200024+4,0x4020000c+4",
+    "-qmp",
+    "unix:/tmp/inferno-owned-cpu-9b58l46_/qmp.sock,server=on,wait=off"
+  ],
+  "greeting": {
+    "QMP": {
+      "version": {
+        "qemu": {
+          "micro": 2,
+          "minor": 2,
+          "major": 10
+        },
+        "package": ""
+      },
+      "capabilities": [
+        "oob"
+      ]
+    }
+  },
+  "request": {
+    "return": {
+      "seconds": 1,
+      "filter": "0xfffffff0096df690+4,0xfffffff0096e219c+4",
+      "scope": "GPR snapshots only; global nochain scheduling perturbation; no CPU attribution or entry/return pairing."
+    }
+  },
+  "block_count": 1435,
+  "early_request": {
+    "return": {
+      "seconds": 3,
+      "filter": "0xfffffff0096df690+4,0xfffffff0096e219c+4",
+      "scope": "GPR snapshots only; global nochain scheduling perturbation; no CPU attribution or entry/return pairing."
+    }
+  },
+  "quit": {
+    "return": {},
+    "id": 9
+  },
+  "exit_code": 0,
+  "passed": true,
+  "final_exit_code": 0
+}

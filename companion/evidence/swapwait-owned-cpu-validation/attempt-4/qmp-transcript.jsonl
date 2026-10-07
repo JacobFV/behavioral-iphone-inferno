@@ -1,0 +1,17 @@
+{"direction": "receive", "time": 1791405142.7095728, "raw": "{\"QMP\": {\"version\": {\"qemu\": {\"micro\": 2, \"minor\": 2, \"major\": 10}, \"package\": \"\"}, \"capabilities\": [\"oob\"]}}\r\n"}
+{"direction": "send", "time": 1791405142.7096632, "raw": "{\"execute\": \"qmp_capabilities\", \"id\": 1}\n"}
+{"direction": "receive", "time": 1791405142.7304406, "raw": "{\"return\": {}, \"id\": 1}\r\n"}
+{"direction": "send", "time": 1791405142.7307208, "raw": "{\"execute\": \"cont\", \"id\": 2}\n"}
+{"direction": "receive", "time": 1791405142.7309444, "raw": "{\"timestamp\": {\"seconds\": 1791405142, \"microseconds\": 730850}, \"event\": \"RESUME\"}\r\n"}
+{"direction": "receive", "time": 1791405142.730982, "raw": "{\"return\": {}, \"id\": 2}\r\n"}
+{"direction": "send", "time": 1791405142.8818028, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 3, \"arguments\": {\"command-line\": \"log cpu,nochain,guest_errors\"}}\n"}
+{"direction": "receive", "time": 1791405142.8848681, "raw": "{\"return\": \"\", \"id\": 3}\r\n"}
+{"direction": "send", "time": 1791405143.882576, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 4, \"arguments\": {\"command-line\": \"log guest_errors\"}}\n"}
+{"direction": "receive", "time": 1791405143.8832815, "raw": "{\"return\": \"\", \"id\": 4}\r\n"}
+{"direction": "send", "time": 1791405144.1789846, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 5, \"arguments\": {\"command-line\": \"log cpu,nochain,guest_errors\"}}\n"}
+{"direction": "receive", "time": 1791405144.1829486, "raw": "{\"return\": \"\", \"id\": 5}\r\n"}
+{"direction": "send", "time": 1791405144.2359734, "raw": "{\"execute\": \"human-monitor-command\", \"id\": 6, \"arguments\": {\"command-line\": \"log guest_errors\"}}\n"}
+{"direction": "receive", "time": 1791405144.236278, "raw": "{\"return\": \"\", \"id\": 6}\r\n"}
+{"direction": "send", "time": 1791405144.4896724, "raw": "{\"execute\": \"quit\", \"id\": 7}\n"}
+{"direction": "receive", "time": 1791405144.4937158, "raw": "{\"timestamp\": {\"seconds\": 1791405144, \"microseconds\": 489830}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"}
+{"direction": "receive", "time": 1791405144.4946327, "raw": "{\"return\": {}, \"id\": 7}\r\n"}

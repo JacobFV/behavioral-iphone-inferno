@@ -18,7 +18,7 @@ from disk_overlay import DEFAULT_TOOLS, validate_tools, validate_base, create_ov
 from probe_journey import ProbeJourney
 from headless_refresh import HeadlessRefresh
 from boot_milestones import observe as observe_milestones
-from qmp_control import ControlMailbox, StartupTouchTrace, SerialGestureTransport
+from qmp_control import ControlMailbox, StartupTouchTrace, SerialGestureTransport, SWAPWAIT_FILTER, SWAPWAIT_KERNEL, SWAPWAIT_BINARY, SWAPWAIT_SOURCE
 
 
 DISKS = [('root', 32 << 30, 1), ('firmware', 8 << 20, 2),
@@ -139,6 +139,7 @@ def main():
     parser.add_argument('--manifest', type=Path)
     parser.add_argument('--seconds', type=float, default=120)
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--swapwait-cpu-diagnostic', action='store_true', help='opt in to fixed kernel SwapWait GPR windows; requires pinned inputs, mailbox and guest-errors')
     parser.add_argument('--guest-errors', action='store_true',
                         help='record QEMU guest-error diagnostics in guest-errors.log')
     parser.add_argument('--launchd-unsecure-cache', action='store_true',
@@ -218,6 +219,11 @@ def main():
         manifest = json.loads(manifest_path.read_text())
         if manifest['binary']['sha256'] != binary_hash:
             raise ValueError('Binary SHA256 does not match build manifest')
+        if args.swapwait_cpu_diagnostic:
+            if not (args.control_mailbox and args.guest_errors and args.disk_boot):
+                raise ValueError('SwapWait diagnostic requires mailbox, guest-errors and disk boot')
+            if inputs['kernel']['sha256'] != SWAPWAIT_KERNEL or binary_hash != SWAPWAIT_BINARY or manifest['source_revision'] != SWAPWAIT_SOURCE:
+                raise ValueError('SwapWait diagnostic requires exact reviewed kernel and binary/source pins')
         usb_socket = args.usb_socket.resolve(strict=True) if args.usb_socket else None
         if usb_socket and not stat.S_ISSOCK(usb_socket.stat().st_mode):
             raise ValueError('--usb-socket must name an existing Unix socket')
@@ -293,7 +299,7 @@ def main():
     if journey:
         report['probe_journey'] = journey.report
         report['probe_journey_source_sha256'] = digest(Path(__file__).with_name('probe_journey.py'))
-    control = ControlMailbox(output, journey=journey, keep_running=args.probe_keep_running) if args.control_mailbox else None
+    control = ControlMailbox(output, journey=journey, keep_running=args.probe_keep_running, swapwait_cpu=args.swapwait_cpu_diagnostic) if args.control_mailbox else None
     if control:
         report['control_mailbox'] = str(control.path)
         if journey:
@@ -338,6 +344,9 @@ def main():
                     '-chardev', 'socket,id=gesture-serial,path=' + str(serial_path).replace(',', ',,') +
                     ',server=on,wait=off,logfile=' + str(output / 'serial.log').replace(',', ',,') +
                     ',logappend=off,logtimestamp=off', '-serial', 'chardev:gesture-serial']
+            if args.swapwait_cpu_diagnostic:
+                command += ['-dfilter', SWAPWAIT_FILTER]
+                report['swapwait_cpu_diagnostic'] = {'filter': SWAPWAIT_FILTER, 'initial_mask': 'guest_errors', 'automatic_enable': False}
             if args.guest_errors:
                 command += ['-d', 'guest_errors', '-D', str(output / 'guest-errors.log')]
             if args.touch_trace_startup and not args.guest_errors:
@@ -492,7 +501,10 @@ def main():
                         try:
                             control.close(qmp)
                         except Exception as exc:
-                            report['display_trace_cleanup_error'] = str(exc)
+                            report['display_trace_cleanup_error'] = str(exc)  # legacy aggregate key
+                            report['control_cleanup_error'] = str(exc)
+                            if control.swapwait_cpu and control.swapwait_cpu.pending:
+                                report['swapwait_cpu_cleanup_error'] = str(exc)
                     if touch_trace:
                         try:
                             touch_trace.stop(qmp, 'runner cleanup')

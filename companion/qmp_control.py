@@ -126,6 +126,10 @@ def validate(request):
         raise ValueError('Arguments must be an object')
     if name in ('query-mice', 'query-touch-registers', 'query-display-registers', 'probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after') and args == {}:
         return name, args
+    if name == 'swapwait-cpu-window':
+        if set(args) == {'seconds'} and type(args['seconds']) is int and 1 <= args['seconds'] <= 3:
+            return name, args
+        raise ValueError('CPU window requires only integer seconds1..3')
     if name == 'trace-display-window':
         if set(args) == {'seconds'} and type(args['seconds']) is int and 1 <= args['seconds'] <= 60:
             return name, args
@@ -249,8 +253,101 @@ class DisplayTraceWindow:
             self.stop(qmp, 'deadline')
 
 
+SWAPWAIT_FILTER = '0xfffffff0096df690+4,0xfffffff0096e219c+4'
+SWAPWAIT_KERNEL = 'cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3'
+SWAPWAIT_BINARY = '0889bfe40c6bbb3e6eb9d493ada2bb86637e1d7acb61e36699e16da2568563f2'
+SWAPWAIT_SOURCE = 'f37ad49dbb68dc9c0097960381ebc14270fc3da8'
+
+
+class SwapWaitCPUWindow:
+    """Fixed GPR-only observation; no CPU identity or invocation pairing."""
+    def __init__(self, output):
+        self.output = output
+        self.log = output / 'guest-errors.log'
+        self.journal = output / 'swapwait-cpu-control.jsonl'
+        self.pending = False
+        self.deadline = None
+        self.start_offset = None
+        self.file_identity = None
+
+    def record(self, **fields):
+        fd = os.open(self.journal, os.O_WRONLY | os.O_APPEND | os.O_CREAT | os.O_NOFOLLOW, 0o600)
+        with os.fdopen(fd, 'a') as stream:
+            stream.write(json.dumps({'time': time.time(), 'monotonic_ns': time.monotonic_ns(), **fields}) + '\n')
+
+    def offset(self):
+        st = self.log.lstat()
+        if not stat.S_ISREG(st.st_mode):
+            raise ValueError('CPU log must be regular, not a symlink')
+        identity = (st.st_dev, st.st_ino)
+        if self.file_identity is not None and identity != self.file_identity:
+            raise ValueError('CPU log inode changed')
+        if self.start_offset is not None and st.st_size < self.start_offset:
+            raise ValueError('CPU log was truncated')
+        return identity, st.st_size
+
+    def start(self, qmp, seconds):
+        if self.pending:
+            raise ValueError('CPU window active or cleanup pending')
+        if type(seconds) is not int or not 1 <= seconds <= 3:
+            raise ValueError('CPU window requires integer seconds1..3')
+        raw = (self.output / 'stderr.log').read_bytes()
+        slides = re.findall(rb'^info: Kernel Virtual Slide: (0x[0-9a-fA-F]+)\r?$', raw, re.M)
+        if slides != [b'0x0000000000000000']:
+            raise ValueError('Exactly one actual zero kernel virtual slide required')
+        self.file_identity, self.start_offset = self.offset()
+        self.deadline = time.monotonic() + seconds
+        self.pending = True  # uncertain command delivery always requires restoration
+        try:
+            self.record(stage='before-enable', seconds=seconds, offset=self.start_offset,
+                        inode=list(self.file_identity), slide_evidence_sha256=hashlib.sha256(raw).hexdigest())
+            response = qmp.execute('human-monitor-command', {'command-line': 'log cpu,nochain,guest_errors'})
+            self.record(stage='after-enable', response=response)
+            if response.get('return') != '':
+                raise RuntimeError('CPU logging command did not return empty HMP success')
+        except BaseException:
+            self.stop(qmp, 'enable failed or uncertain')
+            raise
+        return {'seconds': seconds, 'filter': SWAPWAIT_FILTER, 'scope': 'GPR snapshots only; global nochain scheduling perturbation; no CPU attribution or entry/return pairing.'}
+
+    def stop(self, qmp, reason):
+        if not self.pending:
+            return
+        journal_error = None
+        try:
+            self.record(stage='before-restore', reason=reason)
+        except Exception as exc:
+            journal_error = exc
+        try:
+            response = qmp.execute('human-monitor-command', {'command-line': 'log guest_errors'})
+            if response.get('return') != '':
+                raise RuntimeError('CPU logging restoration not acknowledged')
+            self.pending = False
+            self.record(stage='after-restore', response=response)
+            if journal_error:
+                raise RuntimeError('Restored logging but journal failed: ' + str(journal_error))
+            _, size = self.offset()
+            self.record(stage='restored', reason=reason, offset=size, bytes_since_enable=size-self.start_offset)
+        except BaseException as exc:
+            self.record(stage='restore-error', reason=reason, error=str(exc))
+            raise
+
+    def poll(self, qmp):
+        if not self.pending:
+            return
+        try:
+            _, size = self.offset()
+        except BaseException:
+            self.stop(qmp, 'log identity error')
+            raise
+        if size-self.start_offset >= 8*1024*1024:
+            self.stop(qmp, '8MiB poll cutoff')
+        elif time.monotonic() >= self.deadline:
+            self.stop(qmp, 'deadline')
+
+
 class ControlMailbox:
-    def __init__(self, output, journey=None, keep_running=False):
+    def __init__(self, output, journey=None, keep_running=False, swapwait_cpu=False):
         self.path = output / 'control'
         self.path.mkdir(mode=0o700)
         self.journal = output / 'control-transcript.jsonl'
@@ -259,12 +356,26 @@ class ControlMailbox:
         self.journey = journey
         self.run_control = {'keep_running': keep_running, 'finish_requested': False}
         self.display_trace = DisplayTraceWindow(output)
+        self.swapwait_cpu = SwapWaitCPUWindow(output) if swapwait_cpu else None
 
     def close(self, qmp):
         # Runner calls before quit; propagate cleanup error for its report, not a retry loop.
-        self.display_trace.stop(qmp, 'runner cleanup')
+        errors = []
+        if self.swapwait_cpu:
+            try:
+                self.swapwait_cpu.stop(qmp, 'runner cleanup')
+            except Exception as exc:
+                errors.append('swapwait CPU: ' + str(exc))
+        try:
+            self.display_trace.stop(qmp, 'runner cleanup')
+        except Exception as exc:
+            errors.append('display trace: ' + str(exc))
+        if errors:
+            raise RuntimeError('; '.join(errors))
 
     def poll(self, qmp):
+        if self.swapwait_cpu:
+            self.swapwait_cpu.poll(qmp)
         self.display_trace.poll(qmp)
         private_dir(self.path)
         for path in sorted(self.path.glob('request-*.json'))[:4]:
@@ -276,7 +387,13 @@ class ControlMailbox:
                 record.update(raw=raw.decode('utf-8', errors='replace'), sha256=hashlib.sha256(raw).hexdigest())
                 request = json.loads(raw)
                 name, args = validate(request)
-                if name == 'trace-display-window':
+                if name == 'swapwait-cpu-window':
+                    if self.swapwait_cpu is None or self.display_trace.pending:
+                        raise ValueError('CPU window requires startup opt-in and no display trace')
+                    response = {'return': self.swapwait_cpu.start(qmp, args['seconds'])}
+                elif name == 'trace-display-window':
+                    if self.swapwait_cpu and self.swapwait_cpu.pending:
+                        raise ValueError('Display trace cannot overlap CPU window')
                     response = {'return': self.display_trace.start(qmp, args['seconds'])}
                 elif name == 'probe-status':
                     if self.journey is None:
@@ -489,7 +606,7 @@ class StartupTouchTrace:
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report', type=Path, required=True, help='Active boot output directory with --control-mailbox')
-    parser.add_argument('command', choices=['probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after', 'query-mice', 'query-touch-registers', 'query-display-registers', 'trace-display-window', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture', 'guest-open-app', 'guest-stack-sample'])
+    parser.add_argument('command', choices=['swapwait-cpu-window', 'probe-status', 'finish-run', 'probe-capture-before', 'probe-capture-after', 'query-mice', 'query-touch-registers', 'query-display-registers', 'trace-display-window', 'trace-event-get-state', 'trace-event-set-state', 'input-send-event', 'guest-hid-gesture', 'guest-open-app', 'guest-stack-sample'])
     parser.add_argument('--arguments', default='{}', help='Allowlisted QMP arguments as JSON')
     args = parser.parse_args()
     directory = args.report.resolve(strict=True) / 'control'
