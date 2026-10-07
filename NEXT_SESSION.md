@@ -9,6 +9,27 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-06 17:03 local
 
+### 17:40 continuation: verified original-state copy; recovery staging begins
+
+Actual conversionb0de474cad and independent review6234db17c9 passed. New external
+stage50-flatten-source-1/root.raw has SHA
+40ea0d8119b4d0477a0f1c045b253179b84fc4311f1e5b34a8edf36e7351f210,
+34359738368 logical bytes and10799316992 allocated bytes. Actual qemu-img
+compare exited0 with Images are identical. Both GPT CRCs and full source-chain
+identities/hashes passed; only the new raw was frozen0444. Its new KEEP marker
+was corrected to the established backing schema before use; correction retained.
+No original disk or ctime attestation changed. This is host conversion evidence,
+not guest boot or staging success.
+
+Exact recovery plan9ee6583891 is now authorized on that new raw plus original50
+paired auxiliaries, using existing helper55/profile and archived recovery binary.
+Bootworker owns launch, actual four readbacks/unmount/PREP_COMPLETE, intentional
+SIGTERM15/QMP cleanup and stage-specific disk verification. No installed-iOS
+child launch until actual staging evidence and new immutable tuple are reviewed.
+Root retains all subsequent guest UI and sampling actions. Healthy49 original
+symbolication replaybd09206dee reproduced exactly; new samples must validate
+their own UUID, slide and image ranges and retain unresolved frames.
+
 ### 17:35 continuation: third persistent freeze and sampling branch preparation
 
 Run64 reproduced genuine counter1 events with persistent VNC/QMP counter0 on
