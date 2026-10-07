@@ -1,0 +1,50 @@
+{
+  "conclusion": "No blocking source or artifact finding. No new build/guest execution by reviewer.",
+  "source_state": "Parent build-import-launcher.py and Launcher.m OPEN rejection reviewed by exact hashes, not HEAD alone.",
+  "source_hashes": {
+    "companion/app-probe/build-import-launcher.py": "b6bb1582efce65a99f2506ef634dbc77f77077d824070ddb9f854667f44ff017",
+    "companion/app-probe/Launcher.m": "c1b15e94d22e75ce105271b5856c9fd6eb9a845af447bcb192c136544290af6c",
+    "companion/app-probe/AppTarget.h": "238c9ef1a7982a1ab148a5ddca8442cde1578811c0078392034e551c4b97fcfb",
+    "companion/app-probe/ExecLauncher.c": "b5b1520679340968a9765cfe9b6055ac567b103f69a7f5134a3ca5d0589d4483",
+    "companion/app-import.py": "e2ae5081168b99f4989cc759e797ae1381b595e263adea825705993685c1ce56"
+  },
+  "artifact_directory": "/home/brandonin/.local/share/inferno/app-probe/manifest-target-build-002",
+  "checks": {
+    "recorded_sources_match_except_builder_external_output_hardening": true,
+    "all_output_hashes_match": true,
+    "tool_hashes_match": true,
+    "manifest_hash_matches": true,
+    "imported_app_file_hashes_still_match": {
+      "InfernoProbe": "d05f1b32523684a5c89d41cb2c35fbf0207b62adf864c27fab4d5973bf8e6176",
+      "Info.plist": "ad9946fd7093f8f438f70200f5e096667e47989da70be2187a7324c6ed20a153"
+    },
+    "job_semantically_identical_to_existing_owned_job": true,
+    "default_artifacts_independently_byte_equal": {
+      "inferno-launcher-open-error": true,
+      "inferno-exec-launcher": true,
+      "InfernoProbe.app/InfernoProbe": true
+    }
+  },
+  "importer_provenance": {
+    "build_used_sha256": "e2ae5081168b99f4989cc759e797ae1381b595e263adea825705993685c1ce56",
+    "matches_current_importer": true,
+    "current_sha256": "e2ae5081168b99f4989cc759e797ae1381b595e263adea825705993685c1ce56",
+    "current_commit": "1120e9187a",
+    "current_stricter_validator_actual_manifest_passed": true,
+    "scope": "Build002 matches current importer; builder alone subsequently delegates output to importer.external_output, rejecting every Git worktree. Recorded build source hash retained."
+  },
+  "review": [
+    "Pinned manifest SHA checked before and after build; importer validates retained IPA and complete extracted tree both times.",
+    "Importer-restricted ASCII identifiers and canonical /Applications target strings are emitted as JSON C literals. argv-list tool execution avoids shell interpolation.",
+    "Manifest launcher rejects mismatched path/ID and rejects --open-only; fixed fixture HID OPEN is not generalized.",
+    "Manifest wrapper accepts only --system-app, uses fixed /usr/bin/inferno-launcher with compiled path/identifier and original setgroups/setgid/setuid501 child drop. Fixed root job is semantically unchanged.",
+    "Only owned DiagnosticLauncher/ExecLauncher are compiled/LLVM ad-hoc signed; imported app is read-only and not rebuilt/signed. Registration adds actual Path/System classification without manufactured trust fields.",
+    "Existing default app, wrapper and diagnostic launcher artifacts independently remain byte-identical."
+  ],
+  "limits": [
+    "Build candidate uses fixture target; no arbitrary app execution proof.",
+    "Generic cached launch job merge and staging remain separate required operations.",
+    "Validation is not arbitrary dependency/entitlement/container compatibility or display reliability.",
+    "Current builder external-output hardening was not part of build002; it does not alter helper compilation."
+  ]
+}
