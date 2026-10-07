@@ -4,6 +4,7 @@
 import argparse
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import re
@@ -48,8 +49,12 @@ LIMIT = 4096
 def gesture_line(args):
     kind = args.get('kind')
     coordinates = ('x', 'y') if kind == 'tap' else ('x0', 'y0', 'x1', 'y1')
-    if kind not in ('tap', 'swipe') or set(args) != {'kind', 'request_id', 'duration_ms', *coordinates}:
+    if kind not in ('tap', 'swipe') or set(args) - {'send_deadline_monotonic'} != {'kind', 'request_id', 'duration_ms', *coordinates}:
         raise ValueError('Gesture requires exact tap or swipe fields')
+    if 'send_deadline_monotonic' in args:
+        deadline = args['send_deadline_monotonic']
+        if type(deadline) not in (int, float) or not math.isfinite(deadline) or not 0 < deadline-time.monotonic() <= 15:
+            raise ValueError('HID send deadline must be finite, unexpired and within15 host monotonic seconds')
     identifier = args['request_id']
     if not isinstance(identifier, str) or not re.fullmatch('[0-9a-f]{32}', identifier):
         raise ValueError('Gesture request_id must be 32 lowercase hexadecimal characters')
@@ -514,7 +519,7 @@ class SerialGestureTransport:
             journal.write(json.dumps(record) + '\n')
 
     def transmit(self, args):
-        return self._transmit(gesture_line(args), args['request_id'], 'HID')
+        return self._transmit(gesture_line(args), args['request_id'], 'HID', args.get('send_deadline_monotonic'))
 
     def transmit_open(self, args):
         return self._transmit(open_line(args), args['request_id'], 'OPEN')
@@ -525,7 +530,7 @@ class SerialGestureTransport:
         result['sample_capability'] = capability
         return result
 
-    def _transmit(self, line, identifier, operation):
+    def _transmit(self, line, identifier, operation, send_deadline=None):
         if identifier in self.seen:
             raise ValueError('Duplicate serial request ID; never replay a possibly transmitted request')
         if not self.report['connected'] or self.stopping.is_set() or not self.thread.is_alive():
@@ -545,16 +550,23 @@ class SerialGestureTransport:
                 raise ValueError('At most two explicit SAMPLE attempts are allowed per run')
             self.sample_attempts += 1
         self.seen.add(identifier)
-        attempt = {'time': time.time(), 'stage': 'before-send', 'request_id': identifier, 'operation': operation,
+        attempt = {'time': time.time(), 'monotonic': time.monotonic(), 'send_deadline_monotonic': send_deadline, 'stage': 'before-send', 'request_id': identifier, 'operation': operation,
                    'raw': line.decode('ascii'), 'sha256': hashlib.sha256(line).hexdigest()}
         self._record(attempt)
         result = {'request_id': identifier, 'guest_acknowledgment': 'not checked',
                   'ui_acceptance': 'not observed by transport'}
         try:
-            self.connection.sendall(line)
-            result.update(transmission='written-to-serial-socket', bytes_sent=len(line))
+            begin = time.monotonic()
+            result.update(write_begin_monotonic=begin, send_deadline_monotonic=send_deadline)
+            if send_deadline is not None and begin >= send_deadline:
+                result.update(transmission='rejected-deadline-before-write', bytes_sent=0, replay_allowed=False)
+            else:
+                self.connection.sendall(line)
+                result.update(transmission='written-to-serial-socket', bytes_sent=len(line))
         except OSError as exc:
             result.update(transmission='unknown-or-partial', error=str(exc), replay_allowed=False)
+        result['write_end_monotonic'] = time.monotonic()
+        result['write_end_after_deadline'] = send_deadline is not None and result['write_end_monotonic'] > send_deadline
         self._record({'time': time.time(), 'stage': 'after-send', 'response': result})
         self.report['transmissions'].append(result)
         return result
