@@ -5,6 +5,8 @@ root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 command=${1:-help}
 if (($#)); then shift; fi
 case "$command" in
+    app-import) exec python3 "$root/companion/app-import.py" "$@" ;;
+    build-import-launcher) exec python3 "$root/companion/app-probe/build-import-launcher.py" "$@" ;;
     status) exec python3 "$root/companion/status.py" "$@" ;;
     check) exec python3 "$root/companion/smoke.py" --binary "$root/.local-build/build/qemu-system-aarch64" "$@" ;;
     prepare) exec python3 "$root/companion/prepare-profile.py" "$@" ;;
@@ -24,6 +26,8 @@ case "$command" in
     version) exec "$root/.local-build/build/qemu-system-aarch64" --version "$@" ;;
     help|-h|--help)
         printf '%s\n' 'Usage: companion/run COMMAND [arguments]; COMMAND --help for options' \
+          '  app-import  validate and unpack an unencrypted developer IPA outside Git' \
+          '  build-import-launcher  build owned helpers bound to an imported app' \
           '  status   inspect the durable build and saved execution evidence' \
           '  check    run a fresh headless, firmware-free QMP check' \
           '  prepare  prepare a pinned recovery input profile outside Git' \

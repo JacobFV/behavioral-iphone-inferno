@@ -47,3 +47,26 @@ cases. Its results are under `evidence/owned-ipa-import-host/`; all IPA/app byte
 remain external. Actual staging, launch and reviewed output are separate gates.
 Xcode projects still require a real macOS/Xcode build producing a device app/IPA;
 this importer is not a Linux Xcode implementation.
+
+## Bound launch helpers to the imported app
+
+`companion/run build-import-launcher` accepts `--manifest`, its required
+`--manifest-sha256`, an installed `--linker` (ld64.lld), and a fresh external
+`--output` directory. It revalidates the import and builds only our launcher and
+credential-dropping wrapper. The target path and identifier are compiled into
+these helpers; the imported executable and its signature are never modified.
+The generated owned launchd job uses the existing cache-merge workflow. A loose
+plist alone does not configure the installed guest's cached jobs.
+
+The compiled launcher requests original LaunchServices registration and launch
+for that exact target. It classifies the actual `/Applications` target as System
+without adding signer or provisioning claims. The probe-specific `--open-only`
+route is rejected for manifest launchers: the current HID OPEN protocol still
+validates the fixture's identity. Generic relaunch and process verification need
+a separately integrated path. A successful helper build or service callback is
+not app execution evidence.
+
+The first imported-fixture guest test deliberately reuses the existing launcher
+and cached job because its path, identifier and executable bytes are unchanged.
+The manifest-configured helper is a separate build milestone until exercised
+with a different imported app and reviewed guest output.

@@ -29,7 +29,7 @@ static int openCallbackAttempt;
 static unsigned long long openRequestTicks,openCallbackTicks;
 extern int getpid(void);
 #endif
-#if INFERNO_OPEN_DIAGNOSTIC
+#if INFERNO_OPEN_DIAGNOSTIC && !defined(INFERNO_MANIFEST_TARGET)
 static char controlledRequest[33];
 extern int getuid(void);
 static int controlled_open(const char *request) {
@@ -60,7 +60,16 @@ static int controlled_open(const char *request) {
 #endif
 int main(int argc, char **argv) {
 #if INFERNO_OPEN_DIAGNOSTIC
-    if(argc==3 && !strcmp(argv[1],"--open-only"))return controlled_open(argv[2]);
+    if(argc==3 && !strcmp(argv[1],"--open-only")) {
+#ifdef INFERNO_MANIFEST_TARGET
+        // The existing HID OPEN protocol authenticates the fixture's identity.
+        // A different target needs its own protocol and execution evidence.
+        emit("probe OPEN is unavailable for manifest launchers\n");
+        return 64;
+#else
+        return controlled_open(argv[2]);
+#endif
+    }
 #endif
     if (argc != 3) {
         emit("usage: inferno-launcher /absolute/InfernoProbe.app org.inferno.companion.probe\n");
