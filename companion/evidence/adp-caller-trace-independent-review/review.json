@@ -1,0 +1,69 @@
+{
+  "candidate": "daac89c832d6f42349224b58fa730bdb11501aa0",
+  "verdict": "No blocking source finding; approved for parent-owned compile and bounded execution validation, not a runtime result.",
+  "files_sha256": {
+    "hw/display/apple_displaypipe_v4.c": "b478f3629862511b0274d5286c6f11fe2fe41955708ffdd9513aace13d5e31fa",
+    "hw/display/meson.build": "a8bd874974c809c6e8ae3905c42239ce483d9a0962efe3158bc3e71237de7d25",
+    "hw/display/trace-events": "9f77c5c1e635c205318f1df29b3fd2fe7bf7bb8d3d2b5704da18fbbb04a8b1a3",
+    "companion/qmp_control.py": "8de30fb85494d62e84a6f695071029efa990e3c22e5af2db13b869443d20c1e0"
+  },
+  "fixed_events": [
+    "apple_adp_submit",
+    "apple_adp_bh",
+    "apple_adp_pipe",
+    "apple_adp_output_ready",
+    "apple_adp_irq_write",
+    "apple_adp_unknown_mmio",
+    "apple_adp_gp_config_write",
+    "apple_adp_status_read",
+    "apple_adp_read_caller"
+  ],
+  "checks": [
+    {
+      "area": "Read behavior",
+      "finding": "Only already-unknown reads45004,GP0184,GP1184 call helper. Existing unknown-MMIO trace and zero return unchanged; no extra register/device/RAM read."
+    },
+    {
+      "area": "Trace guard",
+      "finding": "trace_event_get_state_backends precedes current_cpu/env loads. Default-disabled diagnostic does not inspect CPU registers."
+    },
+    {
+      "area": "CPU type/lifetime",
+      "finding": "current_cpu is thread-local CPUState pointer. Null short-circuit prevents ARM_CPU on missing CPU. CONFIG_APPLE_SOC requires TCG && ARM && AARCH64 in hw/arm/Kconfig704\u2013707; ARM_CPU cast is appropriate for this target. No generic non-ARM support is claimed."
+    },
+    {
+      "area": "LR/PC safety",
+      "finding": "Only env.aarch64,env.pc,env.xregs[30] direct host structure loads on executing CPU; no synchronization, restore, exception, guest read, or write. Non-AArch64 exports zero PC/LR with invalid flag. Exposed CPU values may be stale/unsynchronized; neither is automatically the exact faulting instruction/caller address."
+    },
+    {
+      "area": "Offsets",
+      "finding": "GP dispatcher passes literal pipe0/1 and local0x184 reconstructs50184/58184. Main mirrored range is normalized before45004 match."
+    },
+    {
+      "area": "Build integration",
+      "finding": "Only ADPv4 moves system_ss\u2192specific_ss under unchanged CONFIG_APPLE_SOC to obtain target/arm headers. Other source units unchanged. Actual target compilation/linking still required; none performed by reviewer."
+    },
+    {
+      "area": "Host window",
+      "finding": "Ninth event only added to fixed tuple; existing1..60second validator, dynamic pending list, sole-runner deadline and finally cleanup remain. Explicit missing-event rejection removes rejected name then disables all prior successful events. Uncertain sends retained for cleanup; no fallback to misleading partial success."
+    },
+    {
+      "area": "Scope",
+      "finding": "No semantic display fix, guest input, additional status polling, CPU stop or synchronization. Caller attribution is metadata requiring runtime/original-code correlation."
+    }
+  ],
+  "executed_checks": [
+    "git diff --check:passed",
+    "Python AST parses and nine distinct fixed names:passed"
+  ],
+  "not_executed": [
+    "Build",
+    "QMP",
+    "VM",
+    "guest input"
+  ],
+  "source_context": {
+    "hw/arm/Kconfig": "CONFIG_APPLE_SOC depends on TCG && ARM && AARCH64",
+    "include/hw/core/cpu.h": "extern __thread CPUState *current_cpu;"
+  }
+}
