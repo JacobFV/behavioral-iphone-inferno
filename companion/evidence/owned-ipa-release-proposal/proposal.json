@@ -1,0 +1,75 @@
+{
+  "scope": "Read-only codebase proposal. No importer, staging, VM, or general IPA execution is claimed.",
+  "source_hashes": {
+    "companion/app-probe/build.py": "854ac4e3302f865c0cb0b868e9fad9f91b97f91d057312b0779e8bed8803506c",
+    "companion/app-probe/Launcher.m": "036b0fa8708287acdfacfdc1ee7f90ad42c0e8de9a429342ae35a76a1e912c38",
+    "companion/native-probe/prepare.py": "94155d35d7faabf5ddbf04b08739868a5f203b66f349de2721d21c4493ac4367",
+    "companion/native-probe/prepare-root.c": "40811a8d4707720389d8c0ecd34f10149c5c9b6d28b1fbb5421624b6a8def397",
+    "companion/native-probe/merge-launchd-cache.py": "2bce3330224dd6edd927658a9a6fb7eef7753acce2290a572fb6fc3cfe998fc1",
+    "companion/app-probe/audit-imports.py": "b753bec4702eadccfc28667d01fe1f704ae3a83080a27e050edc18efc76ec31c",
+    "companion/native-probe/app-event-proc.c": "e61c530d64e89b52f5487ea4ec2e2ac26a2bfb0361a4446080023328ba045df8",
+    "companion/boot.py": "51833ed5452e6a66ffac8371e1266d55edb8585a97b3dcceaa83d0f7b6acccb0"
+  },
+  "existing_path": [
+    {
+      "file": "companion/app-probe/build.py",
+      "entry": "main/build nestedfunction, lines44/76",
+      "behavior": "Open-source clang targetarm64-apple-ios14 plus ld64.lld platformios14; own narrow declarations/stubs and ad-hoc fixture signing. Not a general Xcode-project compiler."
+    },
+    {
+      "file": "companion/native-probe/prepare.py",
+      "entry": "--system-app-dir validation60 and HFS staging102..107",
+      "behavior": "Currently exactly InfernoProbe and Info.plist; cannot import arbitraryresources/frameworks."
+    },
+    {
+      "file": "companion/native-probe/prepare-root.c",
+      "entry": "copy_contents93,compare_tree130,system_app branch424",
+      "behavior": "Existing recursive copy/readback plus sync/unmount, but source/destination hardcoded to InfernoProbe.app."
+    },
+    {
+      "file": "companion/app-probe/Launcher.m",
+      "entry": "main61+,registration95..105,controlled_open44",
+      "behavior": "Initial main accepts path+identifier and verifies Info.plist ID; System classification only for exactownedfixture. ControlledOPEN remains fixedfixture. Registration and accepted callback are separate from visibleexecution."
+    },
+    {
+      "file": "companion/native-probe/merge-launchd-cache.py",
+      "entry": "owned cached-job construction",
+      "behavior": "Actual original launchd uses merged cached jobs; changing looseplist alone is not integrated launch configuration."
+    },
+    {
+      "file": "companion/native-probe/app-event-proc.c",
+      "entry": "exact executable validation15",
+      "behavior": "Fixture relay identity is hardcoded. GenericIPA without instrumentation cannot satisfy fixture-specific lifecycle/tap protocol; do not fabricate markers or silently call import success execution."
+    }
+  ],
+  "bounded_deliverable": {
+    "name": "One manifest-driven owned IPA vertical slice, tested with packaged existing fixture",
+    "input": "User-owned unencrypted deviceIPA; first validation artifact can be ZIP Payload/InfernoProbe.app from current owned build with byte-identical executable.",
+    "host_import": "New companion/app-import.py produces external exclusive staging directory and immutable manifest: inputZIPhash, canonicalbundle/executable/ID, every filehash/mode/size, parsed MachO facts and compatibility limitations. No VM writes during import.",
+    "staging": "Add opt-in validated manifest route to prepare.py and owned prepare-root helper: bounded recursive regular-file tree/resources/frameworks, manifest-fixed fresh /Applications/<validated>.app target, byte/metadata readback, normal unmount. Preserve current fixture flags/defaults. Never overwrite an unrelated existing Systemapp; reject collisions, especially Apple paths/IDs.",
+    "launch": "Use validated same manifest to generate exact owned launch job path/ID and truthful System-path classification in launcher; no fabricated signer/profile/trust fields. Controlled genericOPEN should be separately bounded to this one configured app, not arbitrary callerargv.",
+    "actual_validation": "Package ownedfixture asIPA outsideGit; verify archive import yields originalfilehashes, stage new disposable validated overlay+pairedaux using existing recovery route, verify guestreadback/cleanstop, then bootinstallediOS and originalLSlaunch. Existingfixture telemetry plus root-reviewed0\u21921/QMPcaptures provides actual first end-to-end IPA-input proof. Do not claim arbitraryapp compatibility from this onefixture.",
+    "release_progress": "This is broader than merely extracting IPA: same manifest drives realstaging and launch. Keep current testedfixture default intact until first actual importedfixture completes."
+  },
+  "required_import_checks": [
+    "ZIP canonical paths: exactlyone Payload/*.app; rejectabsolute/dotdot/backslash ambiguity/NUL/duplicates/casefold collisions/symlinks/hardlinks/specialfiles and extraction outside destination. Bound filecount, totalexpandedbytes and individualentrysize/compressionratio before writing; extraction outsideGit only.",
+    "Info.plist dictionary: CFBundlePackageType APPL, valid non-Apple bundleID, safe basename CFBundleExecutable, executable existsregular withinbundle, supported iPhone family; no path-derived identity substitution. Preserve plist and app bytes.",
+    "Parse thin/fat MachO bounds and loadcommands safely. Require supported ARM64 device slice; reject arm64e-only and x86/simulator-only. Preserve original fatfile rather than modifying signature-bearing contents.",
+    "Check LC_BUILD_VERSION platformiOS (notiOSSimulator/MacCatalyst) or original LC_VERSION_MIN_IPHONEOS; minimumOS<=14.0 and plistMinimumOSVersion consistent. SDKversion alone is not minimumOS. Missing/contradictory metadata rejects or explicitlyunsupported, neverassumedcompatible.",
+    "Reject nonzero cryptid in LC_ENCRYPTION_INFO/64 for every executable/dylib/framework slice that couldload. No FairPlay decryption. Record code-signature presence/entitlements but do not manufacture Appleidentity/provisioning or addgrants.",
+    "Inventory every nested MachO; framework/dylib devicearch/minOS/encryption checks, in-bundle @rpath/@loader_path resolution and dependencies against actual guestcache where supported. Missing strong imports are a clear incompatibility; dynamic lookup/Swift/Metal/runtimecapabilities remain execution-dependent.",
+    "Firstrelease subset excludes app extensions, Watch payloads, appgroups/sharedcontainer provisioning and install-time services not yet implemented; reject explicitly. Resource trees and ordinaryembeddedframeworks may be staged only after full treechecks; unsupported formats failclearly.",
+    "Do not bundle Apple SDK/runtime/implementation files intoGit or redistribute firmware with importer. Keep importedbinaries/buildproducts/extractedresources external; trackedtest fixtures are ownedsource/scripts/manifests only."
+  ],
+  "xcode_bridge": {
+    "distinction": "A .xcodeproj/.xcworkspace is source/build configuration, not a runtime payload. Emulator runs a compatible built device.app/IPA. Linux narrowfixture compiler does not establish LinuxXcode or simulatorbinary compatibility.",
+    "first_contract": "Separate macOS/Xcode build bridge accepts explicitproject/workspace,scheme,configuration and iOSdevice destination; records toolchain/SDK/buildsettings/logs, then hands resulting app/IPA to the same importer. Existing externally builtIPA remains usable without that bridge.",
+    "not_yet_available": "No general Xcode SDK/toolchain or macOS build endpoint is established in current repository. Implementing importer/ownedfixture proof can proceed now without inventing a remote builder or requiring missing credentials."
+  },
+  "limits": [
+    "Existing intermittent display freeze remains known; one importedfixture pass is not release-wide reliability.",
+    "System-path developer staging is a researchVM workflow, not normal AppStore installation/provisioning compatibility.",
+    "General app launch acceptance requires originalprocess identity and reviewedpixels; fixture-specific markers cannot be required or fabricated for uninstrumented apps.",
+    "Dependency audits are preflight compatibility evidence, not proof of behavior or full API support."
+  ]
+}
