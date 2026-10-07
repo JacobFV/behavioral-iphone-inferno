@@ -108,6 +108,56 @@ def identity(report, expected_boot):
             'scope': 'Original relay identity evidence, not a fresh host query of guest process liveness'}
 
 
+
+def trace_disabled_evidence(report):
+    """Conservative sole-runner journal proof; never opens another QMP socket."""
+    evidence = {}
+    rows = {}
+    for name in ('display-trace-control.jsonl', 'qmp-transcript.jsonl'):
+        path = report/name
+        with path.open('rb') as stream:
+            info = os.fstat(stream.fileno())
+            if not stat.S_ISREG(info.st_mode) or info.st_size > 32*1024*1024:
+                raise ValueError('Trace evidence must be bounded regular files')
+            raw = stream.read(info.st_size)
+        if not raw or not raw.endswith(b'\n'):
+            raise ValueError('Incomplete trace journal prefix')
+        rows[name] = [json.loads(x) for x in raw.split(b'\n') if x]
+        evidence[name] = {'bytes':len(raw),'sha256':sha(raw),'inode':info.st_ino,'device':info.st_dev}
+    journal = rows['display-trace-control.jsonl']
+    if journal[-1].get('stage')!='stop-result' or journal[-1].get('all_disabled') is not True or journal[-1].get('pending')!=[]:
+        raise ValueError('Runner trace journal does not confirm empty pending state')
+    starts = [i for i,x in enumerate(journal) if x.get('stage')=='start']
+    if not starts or journal[starts[-1]].get('events')!=list(qmp_control.DISPLAY_TRACE_EVENTS):
+        raise ValueError('Missing exact nine-event runner trace lifecycle')
+    disables = {}
+    for row in journal[starts[-1]+1:]:
+        if row.get('stage')=='after-disable':
+            disables[row['event']] = row['response']
+    if set(disables)!=set(qmp_control.DISPLAY_TRACE_EVENTS) or any('return' not in x or 'error' in x for x in disables.values()):
+        raise ValueError('Missing successful runner disable responses')
+    states, replies = {}, {}
+    for row in rows['qmp-transcript.jsonl']:
+        message = json.loads(row['raw'])
+        if row['direction']=='send' and message.get('execute')=='trace-event-set-state':
+            args = message['arguments']
+            if args['name'] in qmp_control.DISPLAY_TRACE_EVENTS:
+                states[args['name']] = {'id':message['id'],'enable':args['enable'],'time':row['time']}
+        elif row['direction']=='receive' and 'id' in message:
+            replies[message['id']] = message
+    if set(states)!=set(qmp_control.DISPLAY_TRACE_EVENTS):
+        raise ValueError('QMP transcript lacks all nine states')
+    for name, state in states.items():
+        reply = replies.get(state['id'],{})
+        if state['enable'] is not False or reply != disables[name] or 'return' not in reply or 'error' in reply:
+            raise ValueError('Latest QMP state not acknowledged disabled and bound to runner journal')
+    if list((report/'control').glob('request-*.json')):
+        raise ValueError('Concurrent/pending mailbox request; do not start guarded sequence')
+    evidence.update(states=states, pending_state=journal[-1], observed_monotonic=time.monotonic(),
+                    scope='Retained last-state proof under sole-runner/no concurrent operator controls; upcoming trace-start also rejects pending state')
+    return evidence
+
+
 def bounded_subprocess(argv, stdout, stderr, timeout):
     # Own a new process group: owned-control may itself spawn the mailbox CLI.
     child = subprocess.Popen(argv, stdout=stdout, stderr=stderr, start_new_session=True)
@@ -246,13 +296,10 @@ class Sequence:
         self.client = vnc.Client(Path(endpoint[5:]), self.log)
         if classify(self.capture('overlay-initial'), refs)!='overlay':
             raise ValueError('Initial frame differs from reviewed Finish Setup overlay')
-        for event in qmp_control.DISPLAY_TRACE_EVENTS:
-            reply = self.command('trace-event-get-state', {'name':event})
-            values = reply.get('return')
-            if not isinstance(values,list) or len(values)!=1 or values[0].get('name')!=event or values[0].get('state')!='disabled':
-                raise ValueError('All nine display traces must already be disabled')
         if len(qmp_control.DISPLAY_TRACE_EVENTS)!=9:
             raise ValueError('Unsupported trace tuple')
+        self.log['all_traces_disabled_evidence'] = trace_disabled_evidence(self.report)
+        self.save()
         self.log['trace_start_command_monotonic'] = time.monotonic()
         trace_reply = self.command('trace-display-window', {'seconds':60})
         if trace_reply.get('return',{}).get('seconds') != 60 or trace_reply['return'].get('events') != list(qmp_control.DISPLAY_TRACE_EVENTS):
