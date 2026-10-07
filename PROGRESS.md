@@ -2,6 +2,41 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 17:03 continuation: archived comparison62 reproduced the persistent freeze
+
+Run62 used archived emulator670, isolated hoste629bf388a/seven-event controller,
+and original frozen stage50/HID54. The single counter request
+15010ea026d14556aedbeaa0a79215b8 produced actual tap1 and ACK0, but reviewed
+VNC and periodic QMP retained counter0. Boot984718F4-62F9-454E-BD9B-FB6F62EA548E,
+PID312/main7547374627. All16 continuous confirmation frames and nine frames
+around the first10s trace were identical. The trace recorded21 output-ready,
+19 clearing acknowledgments and57 zero-valued unknown reads, with no submit,
+BH, pipe or configuration events. This window began after the failure; initial
+drawing was not traced. Actual seven-event deadline disable was confirmed.
+
+One ordinary Home produced original resign/background callbacks in that same
+process, but another20s of observation retained the app's counter0. Periodic
+QMP frames after tap and Home exactly match the strict before hash
+9cd89626e431e10ae9dbb6f230889000ef82a1d8cbb78fb239f669161f15ed16.
+No strict after capture, second counter tap, OPEN or SAMPLE was issued. The
+older HID54 has no supported sampling route; its periodic process listing does
+not provide stacks. Root recorded SIGINT2 to runner at1791331348.637034 to
+preserve this as a failed forensic attempt. Postflight is underway. Root visual
+evidencee299d7a98b; first independent trace audit823c6c5bb8.
+
+This recurrence disproves any claim that the earlier intermittent failure has
+been resolved. It does not isolate a causal difference between binaries or
+staged guests. A12-run host timing audit407b593161 found overlapping failed and
+healthy alert-close delays and nearly identical post-QMP tap delays.
+
+Original-driver mappingbd2864b53a identifies GP+0x184 as a decompression-error
+predicate, not a completion indication. Main+0x45004 has different FIFO-empty
+interpretations depending on a guest mode; its zero value alone is ambiguous.
+A small default-off caller-attribution diagnostic is being prepared for review
+to identify actual read callers without changing returned values or guest state.
+No new VM or rendering behavior change is authorized before source review and
+preservation of62; investigation continues.
+
 ### 16:47 continuation: predecessor61 also completed visible counter transition
 
 The original stage50/HID54 state on f088 completed a genuine single tap and

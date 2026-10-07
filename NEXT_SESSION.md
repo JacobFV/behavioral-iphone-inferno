@@ -7,7 +7,40 @@ The user explicitly wants continuous work across status questions and intermedia
 milestones. No pause or handoff requested. Parallel workers are authorized for
 independent work in isolated worktrees; commit progressively.
 
-## Current execution, 2026-10-06 16:40 local
+## Current execution, 2026-10-06 17:03 local
+
+62 REPRODUCED the persistent failure. Root sent recorded SIGINT2 to runner
+3107141 at1791331348.637034; bootworker owns forensic postflight, strict verifier
+must reject and preserve-stopped requires --failed-attempt. No new VM yet.
+Archived670/isolatede629 host7events/frozen50/HID54, observerOFF, initial traceOFF.
+Boot984718F4-62F9-454E-BD9B-FB6F62EA548E/PID312/main7547374627.
+Counter15010ea026d14556aedbeaa0a79215b8 at1791331124.8066583: actualtap1/ACK0,
+but continuous16frames and subsequent9 tracedframes all counter0 SHA
+ d4735b38cd6a0679deaaa3ff4709a9a6b0372df255ab9e127754fb8b4179a5d2.
+First trace5800→12964 bytes:21ready/19W1C/57unknownzero, no submit/BH/config;
+all7 deadlineoff1791331193.865935. Root HomeF6 at1791331245.83591 produced
+actual same-process resign/background but16 more frames still0. Home trace
+12964→20061, deadlineoff1791331255.625127; diskworker auditing separately.
+QMP before and periodic frames0016/0019 identical SHA
+9cd89626e431e10ae9dbb6f230889000ef82a1d8cbb78fb239f669161f15ed16.
+No strictafter/secondcounter/OPEN/SAMPLE. HID54 has no supported sample route,
+confirmed804ac79b69. Root visuale299d7a98b, first trace823c6c5bb8.
+
+Nativeworker owns new default-off ninth caller-attribution event candidate:
+PC+ARM LR for existing main45004/GP184 reads, traceenabled guard, explicit
+nonCPU context, no extraMMIO/guestmemory/state writes. Small sameCONFIG_APPLE_SOC
+meson relocation to specific_ss needed for ARM register access. Root and disk
+must review before merge/build. Original-driver static mappingbd2864b53a:
+GP184 is decompression-failure; FIFO-empty predicate45004 mode-dependent.
+Actual caller currently unknown; no behavioral fix justified.
+Bootworker must archive currentf088 binary+manifest before any approved rebuild.
+HOLD63 launch until62 fully preserved and diagnostic/build decisions reviewed.
+Use immutable50 or55; failed62 is never an overlay base. No ancestor mutations.
+Timing audit407b593161 shows failed/healthy Close delays overlap; post-QMP tap
+~205ms in both. No simple delay threshold or causal claim.
+
+### Prior completed comparisons60/61 and62 launch provenance
+
 
 60 STOPPED/verified5a9daf31d5. Normal0/noerror353.847018s, strict/initialtiming/
 defaultall7+ancestors+attestationsPASS. Root76873728bytes SHA
