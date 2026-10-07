@@ -1,0 +1,19 @@
+{
+  "scope": "Synthetic parser checks only; no guest observations or expected future outcome",
+  "counts": {
+    "interrupt_handler_ready_gate": 1,
+    "shadow_FIFO_empty": 1,
+    "decompression_failure": 1,
+    "unknown": 1,
+    "non_cpu": 1,
+    "non_aarch64": 1,
+    "known_lr_unexpected_register": 1
+  },
+  "byte_offsets_checked": true,
+  "rejected": [
+    "no caller events; no execution correlation can be claimed",
+    "malformed caller event at byte 0",
+    "inconsistent CPU validity at byte 0",
+    "out-of-scope offset at byte 0"
+  ]
+}
