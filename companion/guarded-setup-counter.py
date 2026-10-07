@@ -5,6 +5,8 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import os
+import stat
 from pathlib import Path
 import re
 import subprocess
@@ -182,9 +184,25 @@ class Sequence:
         if 'exit_code' in current or Path(current['control_mailbox']).resolve()!=self.report/'control':
             raise ValueError('Require active matching report/mailbox')
         cmd = json.loads((self.report/'command.json').read_text())
+        proc = Path('/proc') / str(current['pid'])
+        actual_cmd = [x.decode() for x in (proc/'cmdline').read_bytes().split(b'\0') if x]
+        if actual_cmd != cmd or (proc/'exe').resolve() != Path(cmd[0]).resolve():
+            raise ValueError('Active report PID does not own exact recorded emulator command')
+        self.log['host_process_stat'] = (proc/'stat').read_text()
         endpoint = cmd[cmd.index('-vnc')+1]
         if not endpoint.startswith('unix:'):
             raise ValueError('Require private Unix VNC')
+        socket_path = Path(endpoint[5:])
+        qmp_endpoint = cmd[cmd.index('-qmp')+1].split(',')[0]
+        if not qmp_endpoint.startswith('unix:') or Path(qmp_endpoint[5:]).parent != socket_path.parent or socket_path.name != 'vnc.sock':
+            raise ValueError('VNC/QMP endpoints do not share recorded private namespace')
+        parent = socket_path.parent
+        if parent.resolve()!=parent or socket_path.resolve()!=socket_path:
+            raise ValueError('Socket namespace aliases not permitted')
+        parent_stat, socket_stat = parent.lstat(), socket_path.lstat()
+        if not stat.S_ISDIR(parent_stat.st_mode) or stat.S_IMODE(parent_stat.st_mode)!=0o700 or parent_stat.st_uid!=os.getuid() or not stat.S_ISSOCK(socket_stat.st_mode) or socket_stat.st_uid!=os.getuid():
+            raise ValueError('Socket/parent is not private and owned')
+        self.log['endpoint'] = {'path':str(socket_path),'device':socket_stat.st_dev,'inode':socket_stat.st_ino,'host_pid':current['pid']}
         self.log['identity_before'] = identity(self.report, self.args.boot_uuid)
         status = self.command('probe-status')['return']
         if status['state']!='waiting-for-operator-before-capture' or status.get('automatic_input'):
