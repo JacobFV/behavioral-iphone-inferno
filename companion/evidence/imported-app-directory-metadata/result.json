@@ -1,0 +1,50 @@
+{
+  "source_serial": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-demo-1/serial.log",
+  "sha256": "aed73b58b09ebb04130764abf658790e5cc007ab549615dc44a281ac09ff3d8d",
+  "records": [
+    {
+      "offset": 48061,
+      "bytes": 57,
+      "text": "INFERNO_EXEC_WRAPPER_READBACK bytes=67392 mismatches=0"
+    },
+    {
+      "offset": 50746,
+      "bytes": 60,
+      "text": "INFERNO_SYSTEM_LAUNCHER_READBACK bytes=69136 mismatches=0"
+    },
+    {
+      "offset": 51411,
+      "bytes": 135,
+      "text": "INFERNO_IMPORTED_APP_PLAN bundle=ImportedDemo.app identifier=org.inferno.companion.ipademo entries=3 bytes=71939 identical_fixture=0"
+    },
+    {
+      "offset": 53192,
+      "bytes": 93,
+      "text": "INFERNO_IMPORTED_APP_PARENT stat=0 errno=0 mode=40775 uid=0 gid=80 nlink=105 path_result=0"
+    },
+    {
+      "offset": 53662,
+      "bytes": 84,
+      "text": "INFERNO_TREE_MISMATCH /usr/share/inferno-imported-app reason=mode/uid/gid errno=0"
+    },
+    {
+      "offset": 53746,
+      "bytes": 91,
+      "text": "INFERNO_IMPORTED_APP_READBACK bundle=ImportedDemo.app bytes=71939 entries=3 mismatches=1"
+    },
+    {
+      "offset": 54442,
+      "bytes": 58,
+      "text": "INFERNO_IMPORTED_APP_FINISH result=89 unmount=0 errno=0"
+    }
+  ],
+  "diagnosis": "Single compare_tree mismatch is source bundle ROOT mode/uid/gid, with all71939 filebytes traversed and FINISH89/unmount0. The failed log does not print which individual metadata field differs; inherited parent gid80 is plausible, not proven.",
+  "correction": "After mkdir only, copy validated source directory ACL/stat/xattr metadata with existing prepare-root copy_contents flags7|NOFOLLOW source/destination. Log exact source/destination before and destination after; reject mismatch/non-directory/errors. Apply to newly created bundle root and nested directories.",
+  "unchanged": [
+    "Applications parent unchanged",
+    "Existing collision target policy unchanged; metadata helper never runs for that root",
+    "File copying/byte readback and final recursive comparison unchanged",
+    "All errors after mount still converge on clean-unmount attempt and nonzero finish"
+  ],
+  "validation": "ARM64 freestanding syntax passed; original guest metadata-copy API operation remains to be tested on fresh disposable clone. Failedstage1 not eligible."
+}
