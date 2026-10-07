@@ -27,6 +27,90 @@
     },
     "status_followed_immediately_by_equal_w1c": 75
   },
-  "interpretation": "Both the failed65 combined window and healthy66 counter window contain submits and equal read/W1C pairs. Their presence alone does not distinguish a healthy final presentation. Run66 additionally has slow unlocking, initial PID367 identity failure and explicit OPEN to395; windows have different durations and action coverage. No causal attribution to tracing, OPEN, scheduling or emulator changes.",
-  "cpu_logging": "No HMP command in entire66 QMP transcript; report CPU diagnostic retained in audit.json. Startup address filter is not evidence logging was enabled."
+  "interpretation": "Matched post-counter file-visible slices show a concrete distinction: failed65 has no submit/BH/pipe/config activity, whereas healthy66 has five submits and ten BH/pipe events. Both continue handler-ready status reads with pending bit10 set. Earlier65 combined alert+counter submits belong before its counter boundary; they must not be presented as post-counter progress. These are differently sized/duration file-visible intervals, not timestamped per-action device events, and do not establish cause.",
+  "cpu_logging": "No HMP command in entire66 QMP transcript; report CPU diagnostic retained in audit.json. Startup address filter is not evidence logging was enabled.",
+  "matched_post_counter_file_boundaries": [
+    {
+      "run": 65,
+      "byte_range": [
+        1709725,
+        1736062
+      ],
+      "slice_sha256": "32694110697459e0a50115dba370adfab8352981c22f3cb0f668f23c8c1779af",
+      "source_log_sha256": "d9a3bc20291d2469620529f6f32f9a9b40549ebdbf55f389f398f837b574af99",
+      "counter_submission_sha256": "c5019abdb5a0bbe912b2c5bac4ad08087a6715d88adcbb71fc35d03589f205b2",
+      "start_checkpoint": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-65/guest-errors.log",
+        "device": 66306,
+        "inode": 41288499,
+        "size": 1709725,
+        "wall_time": 1791404240.983878,
+        "monotonic_time": 823424.860356071
+      },
+      "event_counts": {
+        "apple_adp_output_ready": 33,
+        "apple_adp_status_read": 31,
+        "apple_adp_irq_write": 31,
+        "apple_adp_unknown_mmio": 93,
+        "apple_adp_read_caller": 93
+      },
+      "status_values": {
+        "0x400": 31
+      },
+      "caller_counts": {
+        "decompression_failure": 62,
+        "interrupt_handler_ready_gate": 31
+      },
+      "handler_pending_bit10": {
+        "True": 31
+      }
+    },
+    {
+      "run": 66,
+      "byte_range": [
+        285387,
+        346907
+      ],
+      "slice_sha256": "ee122972d7459206e90c1e4f5459db229eb5268468080703dcc6d7beb1a8b3a6",
+      "source_log_sha256": "fdfdb47fa1d5e686ae8440829fa1a1c6483899a020af8c3fccbad8f2e195e9aa",
+      "counter_submission_sha256": "29fc4a07b89ab1be332f6ceca33aef74c87a7be7f4eac03ca0e7f380a4ff5267",
+      "start_checkpoint": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-66/guest-errors.log",
+        "device": 66306,
+        "inode": 31089639,
+        "size": 285387,
+        "wall_time": 1791406678.4425166,
+        "monotonic_time": 825862.318994669
+      },
+      "event_counts": {
+        "apple_adp_output_ready": 38,
+        "apple_adp_status_read": 42,
+        "apple_adp_irq_write": 42,
+        "apple_adp_unknown_mmio": 421,
+        "apple_adp_read_caller": 126,
+        "apple_adp_gp_config_write": 40,
+        "apple_adp_submit": 5,
+        "apple_adp_bh": 10,
+        "apple_adp_pipe": 10
+      },
+      "status_values": {
+        "0x400": 37,
+        "0x100000": 5
+      },
+      "caller_counts": {
+        "decompression_failure": 84,
+        "interrupt_handler_ready_gate": 42
+      },
+      "handler_pending_bit10": {
+        "True": 37,
+        "False": 5
+      }
+    }
+  ],
+  "retained_confounds": [
+    "Run65 post-counter ends at live checkpoint1736062; run66 ends at normal final flush346907.",
+    "Trace duration and observation/settle duration differ; no rate or matched-duration claim.",
+    "Run66 slow unlocking, initial PID367 identity failure and explicit OPEN to395 remain different from65.",
+    "Buffered output and separate host submission checkpoints do not prove exact event times or per-tap causation."
+  ]
 }
