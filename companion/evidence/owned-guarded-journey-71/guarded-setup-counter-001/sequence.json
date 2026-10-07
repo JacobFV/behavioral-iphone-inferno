@@ -1,0 +1,77 @@
+{
+  "started_wall": 1791412745.6300142,
+  "started_monotonic": 831929.506492573,
+  "actions": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/qmp_control.py",
+        "--report",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-71",
+        "probe-status",
+        "--arguments",
+        "{}"
+      ],
+      "started_monotonic": 831929.5710208
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/qmp_control.py",
+        "--report",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-71",
+        "trace-event-get-state",
+        "--arguments",
+        "{\"name\": \"apple_adp_submit\"}"
+      ],
+      "started_monotonic": 831929.969490633
+    }
+  ],
+  "captures": [
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-71/guarded-setup-counter-001/overlay-initial.png",
+      "sha256": "620bda2b99981b14234e17d6eee3cf5b299a58a81781087370ae8f325c4f913d",
+      "time": 1791412746.0793548,
+      "requested_time": 1791412745.962815,
+      "received_time": 1791412746.0546598,
+      "request_to_receive_seconds": 0.09184616897255182
+    }
+  ],
+  "complete": false,
+  "scope": "Two explicit taps at most; no replay, CPU, Home, OPEN, strict-after or finish.",
+  "source_hashes": {
+    "guarded-setup-counter.py": "9339cfdd65fefc65d6e281b2f5e179b997cfd26654a2c8ea1102774b748b3dc4",
+    "owned-control.py": "3ca9c6f31839fc8dbee4fbfbaa9c3565d3086b22c6fcaf2238ead072a31d085d",
+    "qmp_control.py": "db966c6457662807fb17aa44974c9645c0485b79ec8d971c53c5b780c4edb37b",
+    "vnc-control.py": "99016edaf5f58ef7a6e2433a03d5a465d46c440053bdcfc2ec06a93124d5d29f",
+    "probe_journey.py": "1c4cbb542a79b85560433d62726123b99555ad0a47522d5ecd659faf3a04f308"
+  },
+  "references_sha256": "209aa6cebf165fbdf4297fd91a0c82635d1c3af276bf575a310506a623385e6b",
+  "host_process_stat": "2039869 (qemu-system-aar) S 2017180 2017180 2017180 0 -1 138412160 789291 0 4 0 32231 2747 0 0 20 0 7 0 83166343 9149829120 1410343 18446744073709551615 212899179921408 212899197688956 281474586164368 0 0 0 268444224 4096 16451 0 0 0 17 14 0 0 0 0 0 212899197751360 212899214136700 212900024918016 281474586168684 281474586171817 281474586171817 281474586177437 0\n",
+  "endpoint": {
+    "path": "/tmp/inferno-boot-girrmj78/vnc.sock",
+    "device": 66306,
+    "inode": 47991822,
+    "host_pid": 2039869
+  },
+  "identity_before": {
+    "boot": "29E1DD9B-9BA5-45E4-B514-5F20483B18C2",
+    "pid": 255,
+    "sequence": 5,
+    "serial_bytes": 340889,
+    "serial_sha256": "c897ff3c47249ed8cafd8f47a43bf30c20f77fffa465abfff90e3665338d0a31",
+    "scope": "Original relay identity evidence, not a fresh host query of guest process liveness"
+  },
+  "server": {
+    "banner": "RFB 003.008",
+    "name": "ChefKiss Inferno",
+    "width": 832,
+    "height": 1792
+  },
+  "connection_established_time": 1791412745.9628012,
+  "connection_established_monotonic": 831929.839279776,
+  "first_frame_received_time": 1791412746.0546598,
+  "error": "ValueError: Control rejected; sequence aborted",
+  "finished_wall": 1791412746.1578102,
+  "finished_monotonic": 831930.034289421
+}
