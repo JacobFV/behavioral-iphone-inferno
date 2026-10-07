@@ -1,0 +1,116 @@
+{
+  "scope": "Bounded static original usermode path associated with actual65 sampled frames. No guest memory/register inspection, new execution, policy or behavior change. Apple binaries/disassembly remain outsideGit.",
+  "provenance": [
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/QuartzCore.json",
+      "bytes": 1779,
+      "sha256": "115c81dc2dfbd6675ba7a718ae92d4bf24b97ac30e531af545abe395a194b99d"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/IOMobileFramebuffer.json",
+      "bytes": 1452,
+      "sha256": "6022420fc5e528903ca816593f5ce86fcd3846f1eede934c962e27d8d3fe8547"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/QuartzCore-can-update-full.txt",
+      "bytes": 16564,
+      "sha256": "91eae0562b27d1c1b983107193e146699cf8925d1efd547608e8cd914da2604f"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/IOMobileFramebuffer-wait-disasm.txt",
+      "bytes": 2696,
+      "sha256": "6cab862c87341ae5cb95344aaf44dc9319e178e437bc2b321807e62a566b2688"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/IOMobileFramebuffer-SwapWait-wrapper.txt",
+      "bytes": 3730,
+      "sha256": "c6ba08e651408d6d567597a0bb342542d2e6571de4ee47deb9efe1bf1acf83b9"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/QuartzCore-wait-stubs-time.txt",
+      "bytes": 4310,
+      "sha256": "25ceba67c791966050ffcc14c00ec45a9cd91d179177f1cca40085a05cf9cfe2"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/QuartzCore-timebase-stub.txt",
+      "bytes": 381,
+      "sha256": "32c93487155019449fdf346e0595d26228d3c69a68c889a7857608521078f331"
+    },
+    {
+      "path": "/tmp/inferno-extract-cache-image.py",
+      "bytes": 1649,
+      "sha256": "159faa42f7f272fffd992df4d5e412be80a5e1473cc7de28fb1477530f003a1c"
+    }
+  ],
+  "original_cache_identity": "Use original-stack-samples-65/backboardd/symbolication-audit.json source cache SHA and imageUUID/base proofs; QuartzCore UUIDA0D546D8-BA79-340E-BFC6-B5E8001A5250; IOMobileFramebuffer5418A289-F483-3BB6-83BB-8BC978B1261E.",
+  "sample_to_original": {
+    "actual_slide": "0x1b4a8000",
+    "SwapWait_caller_return": [
+      "0x1a37b0364",
+      "0x188308364"
+    ],
+    "sleep_return": [
+      "0x1a37b038c",
+      "0x18830838c"
+    ],
+    "kern_SwapWait_return": [
+      "0x1ae0154b4",
+      "0x192b6d4b4"
+    ]
+  },
+  "functions": {
+    "can_update_": [
+      "0x188308150",
+      "0x18830867c"
+    ],
+    "IOMobileFramebufferSwapWait": [
+      "0x192b6a638",
+      "0x192b6a654"
+    ],
+    "kern_SwapWait": [
+      "0x192b6d468",
+      "0x192b6d4dc"
+    ]
+  },
+  "path": [
+    {
+      "address": "0x1883082a8..2bc",
+      "fact": "Record state word at self+index*0x30+0x2f0 and token word+0x308 must be nonzero to enter the sampled wait path. No runtime token value captured."
+    },
+    {
+      "address": "0x1883082c4..2dc",
+      "fact": "Flags x24 selected as0 or0x80000000 based on original globalbyte and incoming flagsbit1; semantics not inferred here. Other call sites use0x80000001."
+    },
+    {
+      "address": "0x188308344..364",
+      "fact": "Load token into w25 from record+0x308, obtain mach_absolute_time and CATimeWithHostTime, call SwapWait with framebufferobject[self+0x278], token, flags. Save returned w0 at364."
+    },
+    {
+      "address": "0x188337c20..c28;0x192b6a638..650",
+      "fact": "Directstub branches IOMobileFramebufferSwapWait, wrapper checks object and functionpointer+0x500 then tailcalls. Null guard returns0xe00002c2. Actual sampled kern_SwapWait proves that lower path was entered for those samples."
+    },
+    {
+      "address": "0x192b6d488..4b0",
+      "fact": "kern_SwapWait forms scalarinputs[zeroextendedw1,zeroextendedw2,0], usesconnection atobject+0x14, selector6,inputcount3, no scalaroutputs; IOConnectCallScalarMethod status is returned."
+    },
+    {
+      "address": "0x188308368..38c",
+      "fact": "On return obtain second mach_absolute_time/CATimeWithHostTime. Zero result exits retry handling toward successful record cleanup. Nonzero result with elapsed<=0.001 calls usleep(100), then branches back354 to same token/flags. Elapsed>0.001 leaves local retry through318. This is guest monotonic time, not a host scheduling deadline."
+    },
+    {
+      "address": "0x1882d3e08..ee0; constant0x188341c98",
+      "fact": "CATimeWithHostTime multiplies mach ticks by cached timebase numerator/denominator *1e-9 (literal at341c98), establishing seconds. Comparison literal0.001 at188341410 means1ms; usleep argument100 means100microseconds."
+    },
+    {
+      "address": "0x188308390..43c",
+      "fact": "Successful wait clears record token+0x308, follows record cleanup, increments accumulatorw26. Other slots and branches affect accumulated result."
+    },
+    {
+      "address": "0x188308504..630",
+      "fact": "Final boolean is (w20!=0), with w20 formed by w26 plus signed singlebit extraction of self+0x720 bit30 (0 or-1). Additional state/flag updates occur before returningx22. A single failed wait does not by itself prove finalfalse; full dynamic accumulator/state not captured."
+    }
+  ],
+  "runtime_deduction": "The two samples at returnfromusleep18830838c, together with this unique local predecessor, support a prior nonzero SwapWait result and elapsed<=1ms in those sampled iterations. Numeric error, token, flags, total iteration count and finalcan_update_ return are unknown. Three samples in IPC likewise do not supply returnedstatus.",
+  "next_boundary": "Kernel selector6 dispatch/token completion interpretation owned by disk_path. Combine that original mapping with these observations; do not manufacture completion, change pendingstatus or replace errors.",
+  "patch_comparison": "Whole can_update_, publicSwapWait, kernSwapWait mapped ranges have zero overlap with45-record renderer sparse plan; seepatch-overlap.json. This does not establish runtime RAM equality or exclude modified callers/dependencies."
+}
