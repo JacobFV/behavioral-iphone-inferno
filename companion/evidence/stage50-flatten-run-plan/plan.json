@@ -1,0 +1,118 @@
+{
+  "status": "Read-only execution plan; no conversion or staging performed. Await explicit root authorization after stopped64 retention.",
+  "profile_sha256": "b9bb6aca311ff96603e781f0baa96e3f464a91da8a44bbb17876a34a34b69c71",
+  "fresh_inputs": {
+    "kernel": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/kernel-kernelcache.research.iphone12b",
+      "bytes": 17429507,
+      "sha256": "cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3"
+    },
+    "dtb": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+      "bytes": 42553,
+      "sha256": "dbd9be96c4b18f48a1842879237ae8f27043b894a2ed6139e396dbedca232411"
+    },
+    "trustcache": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache",
+      "bytes": 4931,
+      "sha256": "af33b3466bd828bf1ccaa1ab35d060bfcce62ade26ee74acf176501b00ea0d7f"
+    },
+    "ramdisk": {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/helper-attempt-55/ramdisk.raw",
+      "bytes": 104685568,
+      "sha256": "a7ae1cd766e423570b23cbb1b8b8e2198c13d8dfce8645f96ec346a0c5877021"
+    }
+  },
+  "helper_flags": {
+    "disk_helper_roles": false,
+    "disk_helper_existing": true,
+    "disk_helper_gigalocker": false,
+    "disk_helper_data": false,
+    "disk_helper_verify_data": false,
+    "disk_helper_keybag": false,
+    "export_reports": false
+  },
+  "owned_target_hashes": {
+    "system_app_executable": {
+      "path": "/home/brandonin/.local/share/inferno/app-probe/exec-build-22/InfernoProbe.app/InfernoProbe",
+      "sha256": "d05f1b32523684a5c89d41cb2c35fbf0207b62adf864c27fab4d5973bf8e6176",
+      "target": "/Applications/InfernoProbe.app/InfernoProbe",
+      "scope": "existing owned executable only; no Info.plist or registration changes"
+    },
+    "unlock_helper_sha256": null,
+    "system_launcher_sha256": "0f6626102deedabe4f5c93dafbd3c757387836c463d6b59bf3204932e550bf17",
+    "launchd_cache_sha256": null,
+    "hid_input_helper_sha256": "853bed149abbed99b3157150dbcd1d25292f9a873e643d0e424e66e7fc1a8538",
+    "readiness_sha256": "2440b210892898f43bd2f2afe3907ee5b682262d1d71c47e8c940757aa46c0b2"
+  },
+  "space_available_bytes": 47237722112,
+  "new_paths_absent": [
+    "/home/brandonin/.local/share/inferno/images/ios14b5/stage50-flatten-source-1",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-from50-sample-1"
+  ],
+  "conversion_argv": [
+    "qemu-img",
+    "convert",
+    "-f",
+    "qcow2",
+    "-O",
+    "raw",
+    "-S",
+    "4k",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/disks/root.qcow2",
+    "/home/brandonin/.local/share/inferno/images/ios14b5/stage50-flatten-source-1/root.raw"
+  ],
+  "compare_argv": [
+    "qemu-img",
+    "compare",
+    "-f",
+    "qcow2",
+    "-F",
+    "raw",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/disks/root.qcow2",
+    "/home/brandonin/.local/share/inferno/images/ios14b5/stage50-flatten-source-1/root.raw"
+  ],
+  "tool_execution": "Use disk_overlay.validate_tools then tool_run, retaining exact LD_LIBRARY_PATH and stdout/stderr/exit for each operation. No -U, no salvage, no in-place conversion.",
+  "staging_argv": [
+    "bash",
+    "companion/run",
+    "boot",
+    "--profile",
+    "/home/brandonin/.local/share/inferno/native-probe/helper-attempt-55/profile.json",
+    "--seconds",
+    "1200",
+    "--output",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-from50-sample-1",
+    "--root-image",
+    "/home/brandonin/.local/share/inferno/images/ios14b5/stage50-flatten-source-1/root.raw",
+    "--root-sha256",
+    "<ACTUAL_VERIFIED_FLATTENED_RAW_SHA256>",
+    "--root-overlay",
+    "--auxiliary-state",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50",
+    "--overlay-tools-root",
+    "/home/brandonin/.local/share/inferno/disk-overlay-tools",
+    "--ramdisk-boot",
+    "--guest-errors",
+    "--binary",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/binaries/simulated-sep-7e7033796707/qemu-system-aarch64",
+    "--manifest",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/binaries/simulated-sep-7e7033796707/build-manifest.json"
+  ],
+  "ordered_checks": [
+    "Wait actual64 stopped; retain forensic or normal outcome honestly. Confirm no active VM before recovery.",
+    "Revalidate pinned tools and immutable50 using load_stopped_overlay. Capture exact report/manifest and all7 hashes plus each ancestor identity and original/fresh attestation journals. Only verified_time may differ when comparing fresh journals.",
+    "Reserve NEW output directory exclusively. Convert source50 to new sparse raw. Require zero exit, raw virtual-size34359738368, primary/backup4096-sector GPT signature/header/entry CRC verification, complete SHA256.",
+    "Require logical qemu-img compare exit0 (do not use allocation-strict -s). Rehash/revalidate complete immutable source chain and all paired50 auxiliaries; compare bytes and identities to preflight.",
+    "Freeze ONLY newly created raw once0444 after close; record final identity/hash/no-readable-writer observation. KEEP guard plus flatten-provenance links real host conversion to original50; no fabricated VM report or QMP success.",
+    "Launch exact recovery argv with actual raw SHA, detach bounded1200. Fresh aux copies0600; no ancestry or source metadata writes.",
+    "Require real HID88944/readiness86983 aggregate/app74976/launcher69264 zero-mismatch readbacks, Info_written0, clean unmount and PREP_COMPLETE. Signal only owned runner after this, retain actual Signal15 outcome/QMPquit0, stage-specific all7 and backing checks.",
+    "Root independently reviews/freeze new staged overlay only before future guest authorization."
+  ],
+  "limits": [
+    "No new host code gate or ctime attestation; existing loader contracts remain.",
+    "Recovery changes APFS/checkpoint/NVRAM; not a pure HID-only controlled comparison.",
+    "HID55 grants SAMPLE capability but actual READY/tool completion remain future observations.",
+    "/proc permission gaps mean no-readable-writer evidence is not an exclusive host lock."
+  ]
+}
