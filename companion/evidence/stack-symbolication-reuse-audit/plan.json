@@ -1,0 +1,38 @@
+{
+  "scope": "Read-only host replay and bounded next-sample adaptation plan; no guest commands or new generic framework",
+  "actual_replay": "Both retained49 outputs reproduced byte-identical symbolizer-raw.txt, symbolized.txt and symbolication-audit.json: backboardd41 unique cache PCs/13 image checks; SpringBoard89 PCs/19 checks. See replay.json.",
+  "hardcoded_vs_dynamic": {
+    "hardcoded": [
+      "External local cache/symbolizer/patch-plan locations",
+      "Two boot49 target directories",
+      "Numeric runtime PC admission range0x180000000..0x200000000",
+      "Standalone backboardd original path"
+    ],
+    "dynamic": [
+      "Shared Cache UUID from each output, checked against original cache header",
+      "Actual slide parsed separately from each output",
+      "Each listed cache image UUID and runtime_base-slide compared against original image metadata",
+      "Standalone backboardd UUID checked; standalone frames retained as image+offset"
+    ]
+  },
+  "risks": [
+    "Fixed address admission range could omit future slid cache frames. Select PCs through validated cache mappings or validated runtime Binary Images intervals instead.",
+    "symbolize-cache.cpp uses nearest image and symbol, not verified symbol sizes. Do not interpret nearest-symbol result as exact function ownership past boundaries; validate image range and retain offset.",
+    "Old script checks standalone backboardd UUID but does not check standalone SpringBoard UUID. A future adaptation should require explicit original executable for the requested target and LC_UUID match, or leave standalone frames unknown.",
+    "Sparse patch check covers sampled4-byte instructions only, not whole functions, dependencies or runtime memory.",
+    "Original output warns missing matching kernel/kext symbol owners; kernel frames remain unresolved.",
+    "Do not reuse49 slide0x14514000 or a prior targetPID/boot UUID."
+  ],
+  "reconstruction_invocation": [
+    "python3 companion/sample-result.py --serial <retained-serial-prefix> --request <exact-request.json> --output <NEW-OUTSIDE-GIT-DIR>",
+    "Require transport_complete and original tool duration/steps/target identity; inspect tool errors before symbolication. Preserve incomplete output as incomplete."
+  ],
+  "next_adaptation_contract": [
+    "Take explicit sample output, original cache, original target executable, original sparse patch plan, symbolizer binary and new output directory.",
+    "Use sample-result provenance/request for boot and target; parse exactly one Shared Cache header from this sample. Validate cache UUID and slid base against cache mappings plus sample slide.",
+    "Validate Binary Images UUID/runtime base for every mapped image. Use these actual ranges to choose frame addresses; preserve unmapped and standalone/unknown frames verbatim.",
+    "Retain raw symbolizer stdout/stderr, derived text, per-frame mappings/unknown reason, hashes and source identities. Never overwrite raw sample or earlier49 evidence.",
+    "Compare healthy49 and future stalled sample by named thread and mapped call path, allowing different addresses/slides/PIDs. A waiting stack alone is not causal proof."
+  ],
+  "decision": "No new generalized helper committed yet: exact old replay verified; bounded adaptation can be made when an actual next sample provides format/target evidence, avoiding silently broadening old range assumptions."
+}
