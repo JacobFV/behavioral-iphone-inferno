@@ -2,6 +2,16 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07: user chose already-built developer IPAs first
+
+User answered no Mac/Xcode builder; explicitly start with already-built developer
+IPAs. First release excludes Xcode-project building. Continue import/staging/
+launch/reliability autonomously; no builder input is blocking this scope.
+Generic demo recovery1 reached complete file bytes but failed root directory
+metadata readback (one mode/uid/gid mismatch), FINISH89/unmount0, noPREP_COMPLETE.
+Bootworker retains forensic-only; diskworker fixes missing metadata copy for
+new-owned directories, preserving existing parent/collision/readback policies.
+
 ### 2026-10-07 16:40: imported fixture74 launched but reproduced persistent freeze
 
 74 actualboot from successful importedfixture stage3 launched owned appPID256,

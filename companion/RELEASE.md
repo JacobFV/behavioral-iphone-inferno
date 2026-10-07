@@ -3,6 +3,8 @@
 The target is a Linux runner for real iOS developer apps, with headless display,
 input and captured execution evidence. It is currently a working prototype.
 There is no release date supported by the remaining execution evidence.
+The user selected already-built developer IPAs for the first release; a Mac/Xcode
+builder is unavailable, so Xcode-project building is deferred.
 
 ## Initial compatibility scope
 
@@ -26,7 +28,7 @@ a built application; an Xcode project also needs a separate build toolchain.
 | IPA import | Original fixture packaged as IPA; bytes preserved; archive, platform and encryption checks exercised | Broader compatible inputs and clear unsupported-input errors |
 | IPA installation | Actual recovery copied and read back 75,930 bytes with zero mismatches and clean unmount | Imported app launched, but counter presentation froze in74; interactive gate failed |
 | Separate app and resources | Different bundle ID, resource-loading demo and manifest-bound launcher built; imports audited against original cache | Fresh target installation, original process evidence, reviewed resource text and counter response |
-| Xcode projects | Build/runtime boundary defined | Available macOS/Xcode builder, recorded project build, resulting IPA passed through the same execution path |
+| Xcode projects | Deferred by user; first release accepts already-built IPAs | A future build bridge needs macOS/Xcode and an actual recorded project build/run |
 | Setup and operation | Source-pinned runner, private headless control and disk retention exist | Reproducible documented setup, fewer manual integration steps and actionable failures |
 | Reliability and resource use | Two simultaneous idle guests measured; individual active journeys retained | Repeatable release journeys and sustained active workload measurements |
 
@@ -37,8 +39,8 @@ resource loading and input response are distinct milestones.
 
 The first byte-identical fixture IPA installed and launched, but its interactive
 journey reproduced the persistent display freeze. Next is the distinct
-resource-using IPA with no fixture telemetry. Xcode support needs
-an actual project build and guest run before it can be advertised. Release
+resource-using IPA with no fixture telemetry. Xcode support is outside the first-release milestone and needs an actual
+project build and guest run before it can be advertised. Release
 packaging follows those execution gates and the runtime reliability work.
 
 The chronological record and current assignments remain in
