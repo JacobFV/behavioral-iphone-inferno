@@ -1,0 +1,70 @@
+{
+  "status": "Host conversion verified; no recovery staging or VM execution",
+  "raw": {
+    "path": "/home/brandonin/.local/share/inferno/images/ios14b5/stage50-flatten-source-1/root.raw",
+    "format": "raw",
+    "sha256": "40ea0d8119b4d0477a0f1c045b253179b84fc4311f1e5b34a8edf36e7351f210",
+    "bytes": 34359738368,
+    "device": 66306,
+    "inode": 53749262,
+    "mtime_ns": 1791333445088293817,
+    "ctime_ns": 1791333501905426719,
+    "mode": "0o444"
+  },
+  "allocated_bytes": 10799316992,
+  "source_full_identities_unchanged": true,
+  "logical_compare": {
+    "argv": [
+      "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-img",
+      "compare",
+      "-f",
+      "qcow2",
+      "-F",
+      "raw",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-50/disks/root.qcow2",
+      "/home/brandonin/.local/share/inferno/images/ios14b5/stage50-flatten-source-1/root.raw"
+    ],
+    "LD_LIBRARY_PATH": "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/lib/aarch64-linux-gnu",
+    "started": 1791333462.8441675,
+    "ended": 1791333468.255348,
+    "exit_code": 0,
+    "stdout": "Images are identical.\n",
+    "stderr": ""
+  },
+  "gpt": {
+    "primary": {
+      "lba": 1,
+      "backup_lba": 8388607,
+      "header_crc32": 2234924997,
+      "entries_crc32": 1811152130,
+      "entry_count": 128,
+      "entry_size": 128
+    },
+    "backup": {
+      "lba": 8388607,
+      "backup_lba": 1,
+      "header_crc32": 6999963,
+      "entries_crc32": 1811152130,
+      "entry_count": 128,
+      "entry_size": 128
+    }
+  },
+  "files": {
+    "KEEP-OVERLAY-BACKING.json": {
+      "bytes": 1372,
+      "sha256": "eb12358cd1e47a726c12a9bbd83e4386dfbcb7335efe2eaf2fbfe1e6cf2a35a8"
+    },
+    "flatten-provenance.json": {
+      "bytes": 33976,
+      "sha256": "beda505a73fdae16e3b0294d624cd2974c6e4566ad9d3cb6d4e720cc467076c0"
+    },
+    "executed-conversion.py": {
+      "bytes": 4719,
+      "sha256": "115abab589889b023f9678f62dabde834834befc86dc8b92e6938de5ffa7ac20"
+    },
+    "conversion.log": {
+      "bytes": 459,
+      "sha256": "8be3b38f52dc863f5e3ba9d0f4013137f12948a43c3147a08ef75c85432d29fe"
+    }
+  }
+}
