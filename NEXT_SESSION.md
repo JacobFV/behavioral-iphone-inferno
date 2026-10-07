@@ -9,6 +9,32 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-06 17:03 local
 
+### 2026-10-07 14:31: run67 retained; next diagnostic includes healthy calibration branch
+
+67normalstop397f4c3c90: exit0/errornull/1516.257910s,all7+ancestorspassed.
+Rootvisual0add6a82ef: QMP/VNC0->1 andthreeHome/reopen/tapcycles ending4,
+samePID360/main19166710716. CPUneverrequested; extendedcycles displaytraceOFF.
+Existingstrictverifier REJECTS duplicateinitialmain (twoacceptedprocesshistories),
+initial/warmtiming parsers REJECT10records. Exactrejectionsretained; do not call67
+strictverifierPASS or silentlydiscard initialprocess. Visualprogress isindependent.
+InitialPID269 originalscene-updatewatchdog report explicitly10swalllimit/background,
+0x8badf00d, appCPU0.350s. Evidence1465e8c49d+59a658f8d6 retainsactual32768-byte
+prefix of370982, endsinkernel_task beforePID269stacks/UUIDs/slide. No waitpath or
+hostcausaldiagnosis possible. Run66 initialPID367departure remainsunclassified;
+its diagnosticfilename islisted butcontentsnotexported. Rendererfreeze65distinct.
+
+ONE68 authorized fromsamefrom50-sample-1base/current0889/exact67flags. Afternormal
+journey, failurebranchremainsone1sCPUwindowonlyafterconfirmedpersistentfreeze+
+all9displayeventsoff. Since66/67healthy leaveproductionTBcoverageunverified,
+add explicitlyseparate healthycalibration branch if68passes: originalClockstopwatch,
+reviewedadvancingframes+continuousVNC+alltracesoff, thenONE1sCPUwindow andframesafter
+maskrestoration. No performance/reliabilityclaimduringglobalnochain; noCPU/process
+identity/pairing/invocationcounts. ExactPCsnapshotsestablishcoverageonlyifpresent;
+zeroCPUblocksisinconclusiveevenifpixelsadvance. Nativeindependentreview concurs.
+No implementation/emulatorchange. Parserc792ee1e34 includesstrictphysicalLF/source
+PSTATEfooter andretainsmalformedblocks; ownedfixture922snapshotsunchanged.
+RootallUI/CPU/SAMPLE/finish; bootworkerlaunch/postflight only. No68runtimeyet.
+
 ### 2026-10-07 14:02: run66 retained; run67 live
 
 66postflightbca8298909 verified strictjourney/all7/unchangedstage+raw, exit0,
