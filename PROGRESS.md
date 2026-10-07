@@ -2,6 +2,24 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 15:05: run68 preserved; run69 live for failed-state capture
+
+Run68 postflight e72e4bab58: strict verified, initial timing complete, all7 and
+unchanged backing verified. Preserved root224722944bytes SHA
+ a6f8418dfe18afc7c777e165d14cf0f5dc057715b8e256e40a942ede784fc918.
+ADP audit0fe00b69ae records7 postcounter submits versus failed65 zero; same-phase
+comparisons retain different duration/process confounds. Interpretation plan
+1f50bd9321 recommends unchanged two-PC1s window for first actual frozen state.
+Current operator documentation6be6d5e927 now names the verified from50 base.
+
+Run69 runner1859787/QEMU1866892, actual launchsourcee72e4bab58, same0889/base/flags,
+private /tmp/inferno-boot-i05lrqro/{vnc.sock,qmp.sock,gesture-serial.sock}.
+Connected1791410654.4553905. CPU not requested, observeroff. Root started10s ADP
+startup trace after checkpoint3414@1791410682.419397 and20s boot-view observer.
+All UI/control remains root-owned. CPU1s only after persistent failure confirmed
+and all9 trace events off; no repeat healthy calibration planned. Do not use68
+or69 as future backing. No fix or reliability conclusion from healthy68.
+
 ### 2026-10-07 15:00: run68 healthy CPU calibration captured; reliability gate remains open
 
 Run68 actual normal exit0/errornull/1802.57045s; default strict verifier and initial
