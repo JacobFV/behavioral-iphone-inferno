@@ -271,12 +271,18 @@ class Sequence:
         target = notnow['send_begin_monotonic'] + self.args.delay_seconds
         self.log['counter_target_monotonic'] = target
         self.save()
+        self.log['settling_observations'] = []
         for i in range(100):
             if time.monotonic() >= target-1:
                 raise TimeoutError('Zero-frame/ACK gate missed target; no counter tap')
             state = classify(self.capture(f'poll-{i:03d}'),refs)
-            if state=='unknown':
-                raise ValueError('Unrecognized transitional/current frame; no counter tap')
+            self.log['settling_observations'].append({'frame':f'poll-{i:03d}.png','classification':state,'monotonic':time.monotonic()})
+            self.log['settling_unknown_count'] = sum(x['classification']=='unknown' for x in self.log['settling_observations'])
+            self.save()
+            # Waiting is input-free: unknown animation may settle, but never
+            # authorizes an action. Initial/final exact-match gates stay strict.
+            if time.monotonic() >= target-1:
+                raise TimeoutError('Settling frame arrived too late; no counter tap')
             if state=='zero' and self.ack(notnow['request_id']):
                 break
             time.sleep(.1)

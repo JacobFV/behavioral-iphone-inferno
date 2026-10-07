@@ -2,7 +2,7 @@
 
 This is an explicitly invoked experiment, not an automatic boot path. Root must first review the actual current Finish Setting Up iPhone overlay over the owned counter at zero. No worker has executed this sequence on a guest.
 
-The reference manifest pins full original VNC images from root-reviewed runs69/70. RGB comparison uses all1,081,600 pixels of `(0,100,832,1400)`, with zero tolerance. Only the clock/status strip and bottom owned diagnostic region are excluded. Dimensions remain832×1792. QMP828×1792 captures are separately retained and never resized or used as interchangeable reference images. Root must review a new reference before any future unknown state can be accepted; animation/alpha-blended intermediate states fail closed.
+The reference manifest pins full original VNC images from root-reviewed runs69/70. RGB comparison uses all1,081,600 pixels of `(0,100,832,1400)`, with zero tolerance. Only the clock/status strip and bottom owned diagnostic region are excluded. Dimensions remain832×1792. QMP828×1792 captures are separately retained and never resized or used as interchangeable reference images. Root must review a new reference before any future unknown state can be accepted; animation/alpha-blended states classify unknown and never authorize input. During only the bounded no-input settling poll, they may be observed until an exact zero match arrives; initial/pre-NotNow/final-pre-counter gates remain strict. Unknown frames/counts are retained, and timeout aborts without counter input.
 
 Read-only replay:
 
