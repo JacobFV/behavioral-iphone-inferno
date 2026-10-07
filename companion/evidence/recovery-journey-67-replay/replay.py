@@ -14,7 +14,7 @@ for run,recovery,expected in [(67,rid,'verified-recovered-journey'),(67,None,'re
     assert result['status']==expected,(run,result)
     results.append({'kind':'actual unchanged report','run':run,'recovery_open_request':recovery,'result':result,'sources':audit.sources})
 # Mutate parsed rows only; original files, hashes and historical verifier outputs remain untouched.
-for case in ['wrong-wire','wrong-launcher','missing-identity','duplicate-open','prior-appeared','missing-validation','main-before-open']:
+for case in ['wrong-wire','wrong-launcher','missing-identity','duplicate-open','prior-appeared','missing-validation','main-before-open','prior-main-after-open','permuted-hooks']:
     class Negative(v.Audit):
         def recovery_selection(self,serial,controls,inputs,candidates,*times):
             serial,controls,inputs,candidates=copy.deepcopy((serial,controls,inputs,candidates))
@@ -30,6 +30,14 @@ for case in ['wrong-wire','wrong-launcher','missing-identity','duplicate-open','
                 r=next(r for r in serial if r['value'].startswith('INFERNO_EVENT_RELAY_RAW') and ' 269 1 main 0' in r['value']);r['value']=r['value'].replace('main 0','appeared 0')
             elif case=='missing-validation':
                 serial[:]=[r for r in serial if not r['value'].startswith('INFERNO_EVENT_RELAY_RECORD boot=71B7D4EA-E386-402C-9267-FA4A3C458130 pid=360 sequence=2 ')]
+            elif case=='prior-main-after-open':
+                boundary=next(r for r in serial if r['value'].startswith(f'INFERNO_OPEN_REQUEST request_id={rid} '))['reference']['byte_end']
+                c=next(c for c in candidates if c['pid']==269)
+                c['marker']['reference']['byte_end']=boundary+1
+            elif case=='permuted-hooks':
+                for r in serial:
+                    if r['value'].startswith(('INFERNO_TIMING_RELAY_RAW','INFERNO_TIMING_RELAY_RECORD')) and (' 360 ' in r['value'] or 'pid=360 ' in r['value']):
+                        r['value']=r['value'].replace('launch-delegate','TEMP').replace('window-request','launch-delegate').replace('TEMP','window-request')
             else:
                 for r in serial:
                     if r['value'].startswith(f'INFERNO_OPEN_TIMING_V1 request_id={rid} '):r['value']=r['value'].replace('request_ticks=19138500624','request_ticks=19200000000')
@@ -39,4 +47,4 @@ for case in ['wrong-wire','wrong-launcher','missing-identity','duplicate-open','
     else: raise AssertionError(f'negative accepted: {case}')
 out={'verifier_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'replay_source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'results':results}
 with a.output.open('x') as f:json.dump(out,f,indent=2);f.write('\n')
-print(json.dumps({'actual_replays':6,'synthetic_rejections':7,'output':str(a.output)}))
+print(json.dumps({'actual_replays':6,'synthetic_rejections':9,'output':str(a.output)}))

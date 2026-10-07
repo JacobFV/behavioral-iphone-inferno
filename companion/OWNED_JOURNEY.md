@@ -385,7 +385,8 @@ When an initial process emitted only a validated main marker and a later explici
 OPEN created the process used for the strict captures, `verify-journey` supports
 `--recovery-open-request RID`. It requires the exact host/serial request, accepted
 original callback, original process identity and a new five-hook incarnation
-between the request and callback. It retains prior launches and all rejection
+between the request and callback, with main/delegate/window hooks in order.
+Any prior main-only marker must precede the named guest OPEN request. It retains prior launches and all rejection
 records, validates every lifecycle record, and still checks the actual tap and
 QMP captures. A prior appeared/tap marker is rejected without historical arrival
 proof; this mode does not invent a prefix.

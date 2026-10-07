@@ -40,3 +40,14 @@ validation of all event records; candidate4 also rejects malformed duplicate
 named OPEN records. Their retained outputs remain outside Git under run67.
 `replay.py` is the reproducible final replay, recording both its own and the
 verifier's hashes. It does not execute a VM or change any disk.
+
+## Independent review corrections
+
+`results-hardened.json` retains a fresh replay after two review findings. Every
+prior main's complete validated marker must end before the named guest OPEN
+request, not merely before the selected process main. Timing hooks must be main1,
+launch-delegate2, window-request3, followed by active/appeared in either order at
+4/5, with no duplicates. Actual67 still passes the recovered scope; all five
+other actual outcomes are unchanged. Two additional parsed-copy negatives
+(concurrent prior main and swapped delegate/window hooks) reject specifically at
+these checks. The earlier replay remains retained rather than overwritten.
