@@ -1,0 +1,145 @@
+{
+  "basis": {
+    "actual68_parsed": "companion/evidence/swapwait-cpu-68-healthy-actual/parsed.json",
+    "sha256": "088ee7aac4104045628326db3e0bffdddb8ca7ace309458c9c50332d32ed02df",
+    "actual65": "original-stack-samples-65; original-display-swapwait-path",
+    "kernel_static": "5a98ab8ebb selector6 pending/completion evidence"
+  },
+  "healthy_ordered_entry_runs": [
+    {
+      "token": 545,
+      "snapshots": 15,
+      "first_offset": 478486,
+      "last_offset": 499374
+    },
+    {
+      "token": 546,
+      "snapshots": 2,
+      "first_offset": 500866,
+      "last_offset": 502358
+    },
+    {
+      "token": 547,
+      "snapshots": 1,
+      "first_offset": 503850,
+      "last_offset": 503850
+    },
+    {
+      "token": 546,
+      "snapshots": 33,
+      "first_offset": 505342,
+      "last_offset": 553086
+    },
+    {
+      "token": 547,
+      "snapshots": 2,
+      "first_offset": 554578,
+      "last_offset": 556070
+    },
+    {
+      "token": 548,
+      "snapshots": 1,
+      "first_offset": 557562,
+      "last_offset": 557562
+    },
+    {
+      "token": 547,
+      "snapshots": 61,
+      "first_offset": 559054,
+      "last_offset": 648574
+    },
+    {
+      "token": 548,
+      "snapshots": 1,
+      "first_offset": 650066,
+      "last_offset": 650066
+    },
+    {
+      "token": 549,
+      "snapshots": 1,
+      "first_offset": 651558,
+      "last_offset": 651558
+    },
+    {
+      "token": 548,
+      "snapshots": 32,
+      "first_offset": 653050,
+      "last_offset": 699302
+    },
+    {
+      "token": 549,
+      "snapshots": 2,
+      "first_offset": 700794,
+      "last_offset": 702286
+    },
+    {
+      "token": 550,
+      "snapshots": 1,
+      "first_offset": 703778,
+      "last_offset": 703778
+    },
+    {
+      "token": 549,
+      "snapshots": 29,
+      "first_offset": 705270,
+      "last_offset": 747046
+    },
+    {
+      "token": 550,
+      "snapshots": 1,
+      "first_offset": 748538,
+      "last_offset": 748538
+    }
+  ],
+  "healthy_entry_client_value_distribution": {
+    "0xffffffe19be381d0": {
+      "545": 15,
+      "546": 35,
+      "547": 64,
+      "548": 34,
+      "549": 32,
+      "550": 2
+    }
+  },
+  "recommendation": "Use unchanged exact-two-PC one-second diagnostic on the next independently confirmed persistent freeze. Do not add more hooks before obtaining this missing failed-state observation.",
+  "facts_and_limits": [
+    "Healthy68 has token set545..550, but ordered entries regress547\u2192546,548\u2192547,549\u2192548,550\u2192549. All182 entries show the same raw client x0. Same client is not a thread identifier or proof of one serial wait stream; concurrent contexts, omitted observations or repeated checks cannot be disambiguated.",
+    "177 e00002d5 and5 zero returns are separate snapshot populations. Healthy pending status is common; a percentage threshold cannot classify freeze. Equal entry/return counts and adjacency do not authorize pairing.",
+    "Actual65 display.primary samples captured can_update_ SwapWait and usleep retry locations. Static code retries nonzero returns for about1ms guest monotonic with100us sleeps. The original kernel pending mode with bit31 can return e00002d5; this establishes a plausible wait boundary, not a lost-completion cause.",
+    "Entry raw x0 can group observed client values within an attempt, not name a process/thread or compare object identity across boots. Tokens are opaque low32 values; differences are not frame counts. Keep full raw X registers.",
+    "One-second logging with global nochain perturbs all execution. No per-block time/CPU identity exists; ordering is logfile serialization only. Snapshot counts are not invocation rates."
+  ],
+  "next_failure_protocol": [
+    "First retain genuine same-process tap/lifecycle evidence and persistent unchanged reviewed frames. Preserve existing display trace evidence separately and disable all trace events before CPU window.",
+    "Use the existing fixed filter, verified attempt zero slide/source/binary/ABI and one1s window. Keep continuous no-input VNC observation across enable/restore if root chooses, with existing control timestamps and byte offsets. No Home/OPEN/second tap during the failure observation.",
+    "Validate all dump PCs, structural completeness, exact enable/restore ACKs and prefix identity. Retain unknown/truncated records and any output after restoration. Compare independent client/token/flags/third distributions and return statuses to68; do not pair.",
+    "Review frames after restoration. If output resumes during diagnostic, record intervention/recovery and do not claim the sampled state remained frozen. If unchanged, retain failure context and bounded snapshots as concurrent observations only."
+  ],
+  "interpretation_branches": [
+    {
+      "observation": "Repeated one/few tokens plus only e00002d5 return snapshots, unchanged frames",
+      "supports": "Stable sampled wait demand and independent pending-return population, consistent with a persistent completion wait.",
+      "does_not_establish": "Which token received which status, which thread waited, whether callback/queue/pipeline completion state was lost, or hardware root cause.",
+      "next": "Only then justify one additional reviewed diagnostic at the exact kernel pending/completion decision, chosen from actual observed flags and existing static mapping; no arbitrary RAM dump or semantic patch."
+    },
+    {
+      "observation": "Several tokens and some zero return snapshots despite unchanged frames",
+      "supports": "At least some sampled scalar waits succeed while visible output remains stale.",
+      "does_not_establish": "Successful returns belong to frozen display/client requests or that all completions work.",
+      "next": "Correlate separate ADP submission evidence and existing original compositor stack sample; investigate downstream or another client rather than declaring completion healthy."
+    },
+    {
+      "observation": "No exact-PC snapshots or malformed/incomplete window",
+      "supports": "No interpretable coverage in this bounded sample.",
+      "does_not_establish": "No calls, no waiting or healthy driver.",
+      "next": "Check capture/control/TB coverage and existing stack evidence before selecting a different exact PC; no wider blind logging."
+    },
+    {
+      "observation": "Different flags/third or other final status",
+      "supports": "Observed ABI differs from healthy68 population.",
+      "does_not_establish": "Meaning of unreviewed flag combinations or causal error.",
+      "next": "Map only the exact observed branch/return in original pinned code before adding diagnostics."
+    }
+  ],
+  "no_changes": "Evidence note only. No VM actions, new binary, parser behavior change, logging-window expansion or runtime state access."
+}
