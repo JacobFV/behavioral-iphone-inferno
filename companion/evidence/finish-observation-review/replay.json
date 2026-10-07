@@ -1,0 +1,55 @@
+{
+  "scope": "Exercise actual private mailbox files; no emulator or guest is involved.",
+  "control_sha256": "0c147c8fa9fea8414f8f5a79c6a904b3c2b0f123352de142b03eaca56526afb7",
+  "cases": [
+    {
+      "probe_completed": null,
+      "command": "finish-observation",
+      "response": {
+        "return": {
+          "keep_running": false,
+          "finish_requested": true,
+          "scope": "Operator ends observation; no app execution or journey success asserted"
+        }
+      }
+    },
+    {
+      "probe_completed": false,
+      "command": "finish-observation",
+      "response": {
+        "rejected": "finish-observation excludes probe journeys; use their existing completion gate"
+      }
+    },
+    {
+      "probe_completed": true,
+      "command": "finish-observation",
+      "response": {
+        "rejected": "finish-observation excludes probe journeys; use their existing completion gate"
+      }
+    },
+    {
+      "probe_completed": null,
+      "command": "finish-run",
+      "response": {
+        "rejected": "finish-run requires --probe-keep-running"
+      }
+    },
+    {
+      "probe_completed": false,
+      "command": "finish-run",
+      "response": {
+        "rejected": "finish-run requires a completed probe journey"
+      }
+    },
+    {
+      "probe_completed": true,
+      "command": "finish-run",
+      "response": {
+        "return": {
+          "keep_running": true,
+          "finish_requested": true
+        }
+      }
+    }
+  ]
+}
