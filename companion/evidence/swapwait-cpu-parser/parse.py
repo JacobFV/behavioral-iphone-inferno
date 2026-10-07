@@ -12,16 +12,25 @@ PCS = {
     'owned-attempt-6': (0x40200024, 0x4020000c),
 }
 TOKEN = re.compile(rb'(?<!\S)(PC|X\d{2}|SP)=([0-9a-fA-F]{16})(?!\S)')
-START = re.compile(rb'^\s*PC=')
-FRAGMENT = re.compile(rb'^\s*(?:X\d{2}=|SP=|PSTATE=)')
+START = re.compile(rb'^[ \t]*PC=')
+FRAGMENT = re.compile(rb'^[ \t]*(?:X\d{2}=|SP=|PSTATE=)')
 
+# Source: target/arm/cpu.c aarch64_cpu_dump_state, non-FPU cpu log.
+PSTATE = re.compile(rb'PSTATE=[0-9a-fA-F]{8} [N-][Z-][C-][V-] '
+                    rb'(?:(?:NS|S) )?[GE]L[0-3][ht]'
+                    rb'(?:  SVCR=[0-9a-fA-F]{8,16} [Z-][S-])?'
+                    rb'(?:  BTYPE=[0-3])?(?: NV)?(?: NV1)?(?: NV2)?\n')
 
 def parse(data, mode):
     entry, final = PCS[mode]
     lines, pos = [], 0
-    for line in data.splitlines(keepends=True):
-        lines.append((pos, line))
-        pos += len(line)
+    # Only physical LF delimits a record; bare CR is retained and rejected.
+    parts = data.split(b'\n')
+    for index, part in enumerate(parts):
+        line = part + (b'\n' if index < len(parts)-1 else b'')
+        if line:
+            lines.append((pos, line))
+            pos += len(line)
     blocks, orphans, active = [], [], []
 
     def finish(reason):
@@ -34,6 +43,8 @@ def parse(data, mode):
         values = {k.decode(): int(v, 16) for k, v in pairs}
         required = ['PC'] + [f'X{i:02d}' for i in range(31)] + ['SP']
         errors = []
+        if any(not line.endswith(b'\n') for _, line in active):
+            errors.append('incomplete EOF physical record')
         if any(counts[k] != 1 for k in required) or set(counts) != set(required):
             errors.append('missing, duplicate or unexpected register')
         # Verify exact line layout emitted by aarch64_cpu_dump_state, not just tokens.
@@ -43,11 +54,11 @@ def parse(data, mode):
         for i, keys in enumerate(names):
             if i >= len(active):
                 break
-            pattern = rb'\s*' + rb'\s+'.join(k.encode()+rb'=[0-9a-fA-F]{16}' for k in keys) + rb'\s*'
+            pattern = rb'[ ]*' + rb'[ ]+'.join(k.encode()+rb'=[0-9a-fA-F]{16}' for k in keys) + rb'[ ]*\n'
             if re.fullmatch(pattern, active[i][1]) is None:
                 errors.append(f'malformed register line {i}')
-        if not re.fullmatch(rb'PSTATE=[0-9a-fA-F]{8}[^\r\n]*\r?\n', active[-1][1]):
-            errors.append('missing or unterminated PSTATE footer')
+        if not PSTATE.fullmatch(active[-1][1]):
+            errors.append('missing, malformed or unterminated PSTATE footer')
         pc = values.get('PC')
         role = 'entry' if pc == entry else 'final-return' if pc == final else 'unknown-pc'
         item = {'start': active[0][0], 'end': active[-1][0]+len(active[-1][1]),
@@ -87,6 +98,7 @@ def parse(data, mode):
             'exact_pc_counts': dict(collections.Counter(b['pc'] for b in blocks)),
             'unknown_pc_count': sum(b['role']=='unknown-pc' for b in blocks),
             'orphan_fragments': orphans,
+            'incomplete_eof_record': None if not data or data.endswith(b'\n') else {'start': lines[-1][0], 'end': len(data), 'raw_text': lines[-1][1].decode('ascii', 'backslashreplace')},
             'distributions': [{'role': k[0], 'abi_low32': json.loads(k[1]), 'snapshots': n} for k,n in sorted(distribution.items())],
             'blocks': blocks,
             'limitations': ['Counts are snapshots, not invocations; no CPU, process or thread attribution and no entry/return pairing.',
