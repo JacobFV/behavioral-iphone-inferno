@@ -2,6 +2,31 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 13:20: freeze65 reproduced; both original failure samples captured
+
+Newsamplingbranch65 reproduced the freeze: boot618E1D32-2DAE-4C11-9C5D-8863D2FE71F9,
+PID249/main2959496953, counter6693a16fde5e4cffb2964b096c71c081. Actualtap1/ACK0,
+but16initial+16confirmation+16postsampleframes allcounter0 SHA
+692b64955c806ded62933669486a377172ded3dae1b427e757a2fdb4afae22e9.
+QMPbefore andperiodic0009 identical7283942feb0c44318cb02847604452fb1c9146fbcb5fee9062779bdc5cd33bc7.
+Noaftercapture/secondcounter/Home/OPEN/HMP. AdditionalordinaryFinishSetupalert
+was reviewed and NotNow selected afterbetaClose; bothactions retained.
+
+Actualauditdabc8e7d83 found12completed drawcycles beforecounter and noneafter;
+all31postactionhandler samplesx21=0x400 withmatchingstatus/W1C. Allnine events
+disabled at1791404274.1851084, before sampling. OriginalSAMPLE_READY matchedboot.
+BACKBOARDDf70b48955bf849f391c660b99487abae PID60unique60version207 completed
+12607bytes/51chunks,21stackshots/2.07s. SPRINGBOARD5c70145037584745ab96d0de7b5057cd
+PID57unique57version118 completed10439bytes/43chunks,20stackshots/2.02s.
+Bothoriginaltool0/EOF/reaped/postidentitymatch, noerrors/truncation/kill; exact
+request reconstructionPASS. Rawreports show currentcacheUUID11AD39C9... andslide
+0x1b4a8000. Symbolication/currentimagevalidation andhealthy49comparison underway;
+transportcompletion alone is not a causaldiagnosis. Postsampleframes remain0.
+
+RootrecordedSIGINT2 at1791404373.9809406; bootworker owns failedforensicpostflight.
+No nextguest authorized until currentevidencepreserved andstackanalysis reviewed.
+Do notstopwork at this milestone: continueactualfailureanalysis toward a fix.
+
 ### 2026-10-07 13:14: sampling branch verified; run65 authorized
 
 Recovery staging evidence4dd630dc85 records all four exact zero-mismatch readbacks,
