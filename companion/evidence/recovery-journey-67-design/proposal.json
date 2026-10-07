@@ -1,0 +1,59 @@
+{
+  "scope": "Design only; no verifier changes and no assertion that whole run67 passed strict verification.",
+  "sources": {
+    "serial.log": {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/serial.log",
+      "sha256": "8b0cfba0cc1a2b278ba696474d851a09f98b464352cdaf6079387216826a98b3"
+    },
+    "control-transcript.jsonl": {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/control-transcript.jsonl",
+      "sha256": "52c3cfc210cba4fb58340e17b3599c49f6a3e45fe6a0a6e712bb574eb7a288fc"
+    },
+    "serial-input-transcript.jsonl": {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/serial-input-transcript.jsonl",
+      "sha256": "08ac6446b39bbfa0a67083e05ae9fad6e52e20f6bfcbbb14384380baeae74515"
+    },
+    "qmp-transcript.jsonl": {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/qmp-transcript.jsonl",
+      "sha256": "5bfaff2cca1868dff06c8046f924f929e097bb8ab5857f1f600b6a284ff7aeb3"
+    },
+    "report.json": {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-67/report.json",
+      "sha256": "ca844a8137d3a9d52e9a4825695fa5367c4f58d3128e2637c2b22e8a2fdaa41d"
+    }
+  },
+  "actual_candidate": {
+    "request_id": "f657a4fdfee94393a5dd721690eadf30",
+    "boot": "71B7D4EA-E386-402C-9267-FA4A3C458130",
+    "prior_pid": 269,
+    "recovery_pid": 360,
+    "recovery_uniqueid": 360,
+    "recovery_idversion": 1022,
+    "launcher_pid": 358,
+    "request_ticks": 19138500624,
+    "main_ticks": 19166710716,
+    "appeared_ticks": 19255269834,
+    "callback_ticks": 19260040688,
+    "numer": 125,
+    "denom": 3,
+    "control_open_time": 1791407661.4966564,
+    "before_control_time": 1791407730.6402512,
+    "after_control_time": 1791407814.8772128,
+    "independent_arrivals_available": false
+  },
+  "proposed_rules": [
+    "Default verifier behavior unchanged; explicit request ID opt-in returns recovered-journey scope, never whole-boot PASS.",
+    "Validate every raw prefix lifecycle record and its matching validated provenance/marker before selecting PID. Preserve priorPID269 main-only partial launch and every reject record as separate evidence. Reject malformed/duplicate/unpaired records rather than discard them.",
+    "Bind one exact host OPEN control to full serial send/completion, exact current boot and guest OPEN request/dispatched child/accepted callback/timing/normal child end. Exclude overlapping OPEN attempts before selected new process main and strict capture completion.",
+    "Select unique new-process five-hook timing sequence sameboot/timebase with main after named launcher request ticks; require accepted callback and original-libproc successful nonzero identity. Do not equate launcher PID358 with appPID360.",
+    "Require main1/appeared5/tap6 count0/0/1 for selected identity, complete event sequence provenance, fixed app identity and no selectedPID identity rejection. Preserve existing one-tap wire/ACK, capture hashes/QMP order, normal quit checks.",
+    "Without independent arrivals, accept only narrow case where prior processes have no appeared0 or tap1 marker. Then reviewed source gate could only use selectedPID appeared/tap. If prior appeared/tap exists, require genuinely retained chronological evidence; never manufacture a historical prefix.",
+    "Validate later records separately; later ordinary samePID events or OPENs must not be silently mistaken for initial strict records. Do not weaken existing default late-process checks."
+  ],
+  "limits": [
+    "Observed clock ordering associates named OPEN with new process but TCP peer identity remains unauthenticated; original-libproc verifies claimed app identity only.",
+    "No independent per-marker host arrival times exist. Retained raw ordering plus unique source-gated appeared/tap is the available chronology scope.",
+    "Prior launch remains failed/incomplete evidence; successful recovery does not retroactively validate initial launch.",
+    "Manual visual0\u21921 review remains separate from raw record/capture verification."
+  ]
+}
