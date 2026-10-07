@@ -1,0 +1,25 @@
+{
+  "candidate": "b200ac1f4cd5c73aca02b48beb010a4699447b63",
+  "verdict": "No blocking source finding. Parent-owned build/runtime still required.",
+  "source_sha256": {
+    "hw/display/apple_displaypipe_v4.c": "08d3709cd9c076c0121fe4ab600fee4aa7d618f82f3906ad7ee3126ce1b1df7a",
+    "hw/display/trace-events": "9d00da57502a482056d690d34045a511eb4e06a6d31130f2a15d1918e42bbdc5",
+    "companion/evidence/original-adp-fifo-error-path/correlate-callers.py": "bf3f2ae80582d9f00f422652b8829a3a65ea290e5cbf6eb173e4516694d88c85"
+  },
+  "reasoning": [
+    "Only one direct env.xregs[21] host-state load is appended under existing enabled+AArch64-valid guard; no guest memory, extra MMIO, register write, synchronization or restore.",
+    "Trace event name/set remains unchanged at nine; existing bounded window and cleanup semantics unchanged.",
+    "Original retained AppleRegisterStream leaf touches x0/x8/x9 and preserves x21. Exact next handler instruction97453fc tests w21bit10; association is valid only for identified handler return LR and45004.",
+    "Parser appends optional x21, preserving old records as unknown rather than false. Interpretation requires exact category derived from LR, register and validCPU; unrelated callers retain rawfield but no semantic bitclaim.",
+    "Exposed-state caveat remains; bit10true would pass one branch, not establish request pointer/callback/notification."
+  ],
+  "checks": {
+    "actual63_Home_old_records": 54,
+    "all_old_x21_unknown": true,
+    "synthetic_handler_true_false": true,
+    "synthetic_other_caller_unknown": true,
+    "synthetic_nonCPU_nonzero_rejected": true,
+    "diff_check": true
+  },
+  "scope": "Host static/parser checks only; no build, guest action or runtime input."
+}
