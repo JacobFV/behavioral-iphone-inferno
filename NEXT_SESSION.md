@@ -9,6 +9,31 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-06 17:03 local
 
+### 2026-10-07 15:00: run68 healthy CPU calibration captured; reliability gate remains open
+
+Run68 actual normal exit0/errornull/1802.57045s; default strict verifier and initial
+launch timing pass (boot worker completing all-seven/backing retention). Root
+visual c54bb9e45f preserves QMP/VNC counter0->1, boot11F8910E-5456-44F8-B0C8-38113EAA5884,
+PID293/main6384585479. Separate original Clock stopwatch advanced before/after
+one1s CPU window, then explicit Stop showed02:55.94. Continuous observer completed.
+No freeze, no original-tool SAMPLE, no performance or reliability-fix claim.
+
+Independent raw CPU audit54c7fb8173+164acf3d64: actual zero-slide/two-PC filter,
+all9 ADP events disabled before CPU enable, restore ACK after1.0121s. Bytes
+478486..750030 contain364 complete snapshots:182 entry and182 final return;
+entry tokens545..550, flags80000000/third0; return177 pending e00002d5 and5zero.
+Snapshots have no CPU/process/thread identity, no pairing or invocation counts.
+Healthy entry token order revisits older tokens even with same raw client x0;
+do not infer a single queue's monotonic progress. Pending alone is not freeze proof.
+This establishes production coverage; next priority is the same bounded window
+on an actual persistent failure. Keep emulator0889/basefrom50-sample-1 unchanged.
+
+Recovery verifier5a19dbe007+40ddb15983 independently reviewed e82e1c8d78+aa43dd4b2d,
+output correctionba9d83384a: explicit --recovery-open-request verifies run67 as
+verified-recovered-journey with whole_boot_verified:false. Original PID269 main
+and watchdog evidence retained under recovery_scope, default verifier still rejects.
+Initial/warm timing parser rejections remain; recovered scope does not erase them.
+
 ### 2026-10-07 14:31: run67 retained; next diagnostic includes healthy calibration branch
 
 67normalstop397f4c3c90: exit0/errornull/1516.257910s,all7+ancestorspassed.
