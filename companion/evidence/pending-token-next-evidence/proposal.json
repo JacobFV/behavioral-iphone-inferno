@@ -1,0 +1,25 @@
+{
+  "scope": "Read-only bounded proposal; no implementation, memory access, VM action or new disassembly.",
+  "missing_evidence": "Actual exact-PC token/flags and final status snapshots during independently confirmed persistent freeze. Existing68 production CPU window is healthy;65/74 stack reports contain no live registers/numeric return.",
+  "snapshot_feasibility": {
+    "pointer": "df690 x0 is UserClient, not pipeline; e219c x0 is status. Static gated96f1968 x0 is pipeline but neither existing fixed filter captures it. No invented client-to-pipeline offset or guessed address.",
+    "address_space": "Existing fixed display query uses xp physical addresses. Heap pipeline fields are kernel virtual; cannot apply xp directly to GPR virtual pointer. HMP x uses mon_get_cpu and cpu_memory_rw_debug, which synchronizes selected CPU then translates current page tables. Old dump has no CPU index/context association.",
+    "read_safety": "Debug memory helper uses address_space_rw and does not itself prove RAM-only/non-device backing. Three reads would not be coherent with each other or the older sample; pointer lifetime/reuse and changing active/queue state remain unproven.",
+    "sufficiency": "Even a valid fixed-fields read gives active/queue head and bf4 only; identifying pending queried token requires request+22c and possibly linked queue entries. A single transient pending snapshot also occurs normally. No bounded queue walk or extra memory permission proposed."
+  },
+  "one_recommended_step": "On one future independently confirmed frozen counter, with supported startup pins/actualzero slide and allADPtraces disabled, request existing1-second swapwait-cpu-window exactly once; retain complete raw log/control and reviewed frame before/after. No new binary or memory command.",
+  "interpretation": [
+    "Parse only complete dumps at exactdf690/e219c. Entry token/flags/third/client pointer and returnlow32 are independent distributions, not matched calls, invocation counts or process identity.",
+    "If zero coverage, report diagnostic absence, not absence of calls. If normal flags80000000 and pendinge00002d5 dominate, compare token support/range and zero-status presence with68; e00002d5 alone is nondiscriminating (177/182healthy returns were pending).",
+    "No zero statuses and restricted token set over this short window would strengthen persistent-pending hypothesis, not prove completion failure; unrelated callers/scheduling and short duration remain alternatives.",
+    "Unexpected error statuses/flags provide a different concrete original branch to investigate. Mixedzero/pending with advancing-token support resembling68 weakens a simple globally-stuck-token account without excluding one stalled pipeline.",
+    "Only after actual failed-window result warrants it should a separately reviewed coherent gated-entry/register or RAM-only snapshot design be considered; current context does not justify QMP heap reads."
+  ],
+  "source_pins": {
+    "companion/evidence/original-iomfb-swapwait-path/inspection.json": "203040bbe412475d4ecf909a80340a988b23706730c953d3135ecd50353296fb",
+    "monitor/hmp-cmds-target.c": "4c293e4c5c5f5df4addea859cc376696b119fc551cef6ef0e2f3768a58dbb583",
+    "system/physmem.c": "45905285f67740b965f9cc34a403254ef6d342e77deaf5438e0157c557096e4c",
+    "companion/qmp_control.py": "0c147c8fa9fea8414f8f5a79c6a904b3c2b0f123352de142b03eaca56526afb7"
+  },
+  "revision": "d94e07a91c747c4823df72743fafb096b60ca3c0"
+}
