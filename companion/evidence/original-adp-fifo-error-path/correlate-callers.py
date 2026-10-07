@@ -17,7 +17,7 @@ CALLERS = {
     0xfffffff009746fe8: ('shadow_FIFO_empty', {0x45004}),
     0xfffffff0097453fc: ('interrupt_handler_ready_gate', {0x45004}),
 }
-EVENT = re.compile(rb'apple_adp_read_caller\b.*?offset=0x([0-9a-fA-F]+) cpu_present=([01]) cpu_index=(-?\d+) aarch64_valid=([01]) pc=0x([0-9a-fA-F]+) lr=0x([0-9a-fA-F]+)\s*$')
+EVENT = re.compile(rb'apple_adp_read_caller\b.*?offset=0x([0-9a-fA-F]+) cpu_present=([01]) cpu_index=(-?\d+) aarch64_valid=([01]) pc=0x([0-9a-fA-F]+) lr=0x([0-9a-fA-F]+)(?: x21=0x([0-9a-fA-F]+))?\s*$')
 SLIDE = re.compile(rb'Kernel Virtual Slide:\s*(0x[0-9a-fA-F]+)')
 
 
@@ -33,12 +33,13 @@ def correlate(raw, slide):
             match = EVENT.search(line)
             if not match:
                 raise ValueError(f'malformed caller event at byte {offset}')
-            address, present, index, valid, pc, lr = match.groups()
+            address, present, index, valid, pc, lr, x21 = match.groups()
+            x21 = int(x21, 16) if x21 is not None else None
             address, pc, lr = (int(x, 16) for x in (address, pc, lr))
             present, valid, index = int(present), int(valid), int(index)
             if address not in (0x45004, 0x50184, 0x58184):
                 raise ValueError(f'out-of-scope offset at byte {offset}')
-            if (not present and (valid or index != -1 or pc or lr)) or (valid and index < 0) or (not valid and (pc or lr)):
+            if (not present and (valid or index != -1 or pc or lr)) or (valid and index < 0) or (not valid and (pc or lr or x21)):
                 raise ValueError(f'inconsistent CPU validity at byte {offset}')
             normalized = (lr - slide) & ((1 << 64) - 1) if valid else None
             caller, allowed = CALLERS.get(normalized, ('unknown', set()))
@@ -50,7 +51,8 @@ def correlate(raw, slide):
                             'offset': hex(address), 'cpu_present': bool(present), 'cpu_index': index,
                             'aarch64_valid': bool(valid), 'exposed_pc': hex(pc), 'raw_lr': hex(lr),
                             'normalized_lr': hex(normalized) if normalized is not None else None,
-                            'category': category})
+                            'category': category, 'exposed_x21': hex(x21) if x21 is not None else None,
+                            'handler_pending_bit10': bool(x21 & (1 << 10)) if category == 'interrupt_handler_ready_gate' and x21 is not None else None})
         offset += len(line)
     if not records:
         raise ValueError('no caller events; no execution correlation can be claimed')
@@ -86,7 +88,8 @@ def main():
                                    'Exposed PC is not asserted to be the exact MMIO instruction; no CPU restore/synchronization was performed.',
                                    'Only slide subtraction is applied to LR; no guessed PAC stripping or unknown-address coercion.',
                                    'Known LR plus register is static caller correlation, not proof subsequent state gates or userland notification completed.',
-                                   'shadow_FIFO_empty caller does not establish its command_mode boolean.']})
+                                   'shadow_FIFO_empty caller does not establish its command_mode boolean.',
+                                   'x21 bit10 is interpreted only for the exact mapped handler LR/register; older records have unknown x21. Passing this next branch does not prove later completion gates.']})
     args.output.write_text(json.dumps(result, indent=2) + '\n')
 
 

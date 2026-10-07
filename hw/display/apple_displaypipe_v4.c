@@ -66,9 +66,10 @@ static void adp_v4_trace_read_caller(uint64_t offset)
     bool valid = cpu && ARM_CPU(cpu)->env.aarch64;
     uint64_t pc = valid ? ARM_CPU(cpu)->env.pc : 0;
     uint64_t lr = valid ? ARM_CPU(cpu)->env.xregs[30] : 0;
+    uint64_t x21 = valid ? ARM_CPU(cpu)->env.xregs[21] : 0;
 
     trace_apple_adp_read_caller(offset, cpu != NULL,
-                              cpu ? cpu->cpu_index : -1, valid, pc, lr);
+                              cpu ? cpu->cpu_index : -1, valid, pc, lr, x21);
 }
 
 /**
