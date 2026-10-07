@@ -1,0 +1,73 @@
+{
+  "scope": "Independent read-only review of actual65 attribution; no guest action, binaries changed or implementation patch",
+  "results": [
+    {
+      "target": "backboardd",
+      "actual_replay_exit": 0,
+      "stdout": "{\"target\": \"/usr/libexec/backboardd\", \"slide\": \"0x1b4a8000\", \"cache_PCs\": 36, \"image_checks\": 11, \"unknown_PCs\": 4, \"overlaps\": []}\n",
+      "all_four_outputs_identical": {
+        "symbolized.txt": true,
+        "symbolizer-raw.txt": true,
+        "symbolizer-stderr.txt": true,
+        "symbolication-audit.json": true
+      },
+      "original_lines_preserved_after_annotation_removal": true,
+      "all_unique_PCs_partitioned_without_omission": {
+        "total": 40,
+        "mapped": 36,
+        "explicit_unknown": 4
+      },
+      "exact_serial_prefix_hash_matches_final65": true,
+      "raw_sample_hash_matches_transport": true,
+      "provenance_all_input_hashes_match": true
+    },
+    {
+      "target": "springboard",
+      "actual_replay_exit": 0,
+      "stdout": "{\"target\": \"/System/Library/CoreServices/SpringBoard.app/SpringBoard\", \"slide\": \"0x1b4a8000\", \"cache_PCs\": 28, \"image_checks\": 14, \"unknown_PCs\": 2, \"overlaps\": []}\n",
+      "all_four_outputs_identical": {
+        "symbolized.txt": true,
+        "symbolizer-raw.txt": true,
+        "symbolizer-stderr.txt": true,
+        "symbolication-audit.json": true
+      },
+      "original_lines_preserved_after_annotation_removal": true,
+      "all_unique_PCs_partitioned_without_omission": {
+        "total": 30,
+        "mapped": 28,
+        "explicit_unknown": 2
+      },
+      "exact_serial_prefix_hash_matches_final65": true,
+      "raw_sample_hash_matches_transport": true,
+      "provenance_all_input_hashes_match": true
+    }
+  ],
+  "replay_directory": "/tmp/inferno-symbol65-review-izve9caa",
+  "source_sha256": "db60b3f12034b77aa03720dfa8afc140e5fc12d27e441d466e13f1a2d28a9232",
+  "limits": [
+    "Nearest symbol is not function extent proof. Runtime image ends originate from original tool Binary Images; helper cross-checks UUID/base and chosen image, not every segment extent.",
+    "Standalone UUIDs checked separately; standalone and kernel PCs remain explicitly unmapped.",
+    "49 comparison describes sampled windows only; no claim wait branch never occurs in healthy operation.",
+    "Transport-complete diagnostic output does not by itself prove causal interpretation."
+  ],
+  "comparison_review": {
+    "checks": {
+      "healthy49": {
+        "excerpt_sha256": "dd24def72a26498a95bfc8f544cda52eef9c1a5bacfdef1376242a1871d32598",
+        "recorded_line_range": [
+          82,
+          94
+        ]
+      },
+      "stalled65": {
+        "excerpt_sha256": "174db98ba08562a8e89d4a81d171ba56db5563d8c05cd818a0c04081d08db6bf",
+        "recorded_line_range": [
+          91,
+          123
+        ]
+      }
+    },
+    "conclusion": "Recorded branch counts and named call paths agree with retained text. Waiting snapshots localize an observed path; they do not establish return values, deadlock or emulator causation."
+  },
+  "review_outcome": "PASS within documented attribution limits; no blocking mapping or omission issue found."
+}
