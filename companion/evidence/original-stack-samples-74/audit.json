@@ -1,0 +1,61 @@
+{
+  "status": "offline actual diagnostic analysis; no guest action",
+  "transport": {
+    "backboardd": {
+      "transport_replay_byte_equal": true,
+      "output_sha256": "cb6f3dea5c46930aeb32c48e30f83749aa5ca604a14588f89adec39f23f6ab06",
+      "serial_prefix_bytes": 367060,
+      "serial_prefix_sha256": "1c8b12c03d67284de4424b102561925f24f7344aa4c8105b45609f8f399de218",
+      "request": {
+        "request_id": "84a7832845644609b1596f2b80571ea5",
+        "boot_uuid": "078960EC-AB4E-443A-9A20-6B5D619A1EEE",
+        "target": "BACKBOARDD"
+      }
+    },
+    "springboard": {
+      "transport_replay_byte_equal": true,
+      "output_sha256": "101246624eea3036cfc48314f947d03b7a7986f689e7ea65eb131a30bb593267",
+      "serial_prefix_bytes": 394281,
+      "serial_prefix_sha256": "4ef3155ba1207fca994e2f5ffb2c6bbd2a7484f20ca0901d31aa4f15a4441019",
+      "request": {
+        "request_id": "9e110e9dcedd4678aebe6a5147d9a0d6",
+        "boot_uuid": "078960EC-AB4E-443A-9A20-6B5D619A1EEE",
+        "target": "SPRINGBOARD"
+      }
+    }
+  },
+  "mapper": {
+    "path": "companion/evidence/original-stack-samples-65/symbolize-sample.py",
+    "sha256": "db60b3f12034b77aa03720dfa8afc140e5fc12d27e441d466e13f1a2d28a9232"
+  },
+  "cache": {
+    "uuid": "11AD39C9-E3C9-3067-A337-7287744FDCB5",
+    "actual74_slide": "0xa554000",
+    "validation": "Both original report headers and image UUID/base/ranges independently checked against external original cache; standalone executable UUIDs checked."
+  },
+  "observations": {
+    "backboardd_display_primary": {
+      "samples": 20,
+      "runloop_port_wait": 13,
+      "can_update": 7,
+      "can_update_breakdown": {
+        "usleep_return_plus_0x23c": 3,
+        "kern_SwapWait_IOConnect_plus_0x214": 3,
+        "plus_0x4e0_same_PC_repeated_original_frame": 1
+      }
+    },
+    "comparison": {
+      "failed65": "16/21 runloop,5/21 can_update (2usleep,3SwapWait)",
+      "healthy49": "20/20 display.primary runloop in its separate sampled window"
+    },
+    "springboard": "Main21:20 runloop mach-port wait;1 beforeCACommitHandler/autorelease pool pop. No main-thread can_update/SwapWait stack in this sample."
+  },
+  "limits": [
+    "Samples occur after freeze; different windows and sampling perturbation prevent causal/duration inference.",
+    "Nearest symbols are not function extents. Original kernel and standalone frames remain unmapped.",
+    "No numeric SwapWait status, token, flags or invocation count is present in these stack samples.",
+    "Three usleep-return samples support prior nonzero retry from separately reviewed static control flow, not a numeric error or proof that it caused freeze.",
+    "One repeated can_update+0x4e0 frame is preserved exactly, not treated as proven recursive source flow.",
+    "Zero sampled-instruction patch overlap is a narrow four-byte check, not proof every dependency is unmodified."
+  ]
+}

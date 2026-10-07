@@ -1,0 +1,181 @@
+Sampling SpringBoard [57] for 2 seconds with 100 milliseconds of run time between samples
+Sampling completed, generating report...
+Failed to find matching kernels in /System/Library/Kernels, /, /, 
+Unable to create any kext symbol owners.
+Date/Time:        2026-10-07 16:37:23.158 -0700
+End time:         2026-10-07 16:37:25.164 -0700
+OS Version:       iPhone OS 14.0 (Build 18A5351d)
+Architecture:     arm64e
+Report Version:   32
+
+Data Source:      Stackshots
+Shared Cache:     11AD39C9-E3C9-3067-A337-7287744FDCB5 slid base address 0x18a554000, slide 0xa554000
+
+Command:          SpringBoard
+Path:             /System/Library/CoreServices/SpringBoard.app/SpringBoard
+Identifier:       com.apple.springboard
+Version:          1.0 (50)
+Beta Identifier:  76AE4E22-5DBD-4578-B354-4F660899C072
+Parent:           UNKNOWN [1]
+PID:              57
+Time Since Fork:  442s
+
+Duration:         2.01s
+Steps:            21 (100ms sampling interval)
+
+Hardware model:   iPhone12,1
+Active cpus:      2
+Boot args:        debug=0x14e serial=3 wdt=-1 tlto_us=-1 mtxspin=-1 agm-genuine=1 agm-authentic=1 agm-trusted=1 -vm_compressor_wk_sw launchd_unsecure_cache=1
+
+Time Awake Since Boot: 455s
+Time Since Wake:  n/a (machine hasn't slept)
+
+
+----------------------------------------
+Heavy format: stacks are sorted by count
+----------------------------------------
+
+
+
+Process:          SpringBoard [57]
+UUID:             886E2CCD-1559-3C0C-A5F1-6971FAB35E37
+Beta Identifier:  76AE4E22-5DBD-4578-B354-4F660899C072
+App Version:      1.0
+Build Version:    50
+Path:             /System/Library/CoreServices/SpringBoard.app/SpringBoard
+Architecture:     arm64
+Parent:           UNKNOWN [1]
+UID:              501
+Sudden Term:      Tracked
+Footprint:        30.78 MB
+Time Since Fork:  442s
+Num samples:      21 (1-21)
+CPU Time:         0.139s
+Note:             4 idle work queue threads omitted
+
+  Thread 0x2b9    DispatchQueue "com.apple.main-thread"(1)    21 samples (1-21)    priority 47 (base 47)    cpu time 0.124s
+  21  ??? (libdyld.dylib + 3680) [0x18a7d3e60]
+    21  ??? (SpringBoard + 914376) [0x1cfd7a3c8]
+      21  ??? (UIKitCore + 12055516) [0x18f2543dc]
+        21  ??? (UIKitCore + 12033280) [0x18f24ed00]
+          21  ??? (GraphicsServices + 14368) [0x196ac5820]
+            21  ??? (CoreFoundation + 623148) [0x18a94c22c]
+              20  ??? (CoreFoundation + 625688) [0x18a94cc18]
+                20  ??? (CoreFoundation + 649832) [0x18a952a68]
+                  20  ??? (libsystem_kernel.dylib + 12836) [0x18a7a5224]
+                    20  ??? (libsystem_kernel.dylib + 15984) [0x18a7a5e70]
+                     *20  ??? [0xfffffff007a075e4]
+              1   ??? (CoreFoundation + 625528) [0x18a94cb78]
+                1   ??? (CoreFoundation + 624072) [0x18a94c5c8]
+                  1   ??? (CoreFoundation + 647604) [0x18a9521b4]
+                    1   ??? (UIKitCore + 12237464) [0x18f280a98]
+                      1   ??? (UIKitCore + 6833128) [0x18ed593e8]
+                        1   ??? (UIKitCore + 6833488) [0x18ed59550]
+                          1   ??? (CoreFoundation + 1239108) [0x18a9e2844]
+                            1   ??? (libobjc.A.dylib + 169492) [0x18a708614] (running)
+
+  Thread 0x4c4    Thread name "com.apple.uikit.eventfetch-thread"    21 samples (1-21)    priority 47 (base 47)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x18a6dd788]
+    21  ??? (libsystem_pthread.dylib + 7336) [0x18a6d4ca8]
+      21  ??? (Foundation + 1516144) [0x18ae54270]
+        21  ??? (UIKitCore + 12754904) [0x18f2fefd8]
+          21  ??? (Foundation + 33832) [0x18acea428]
+            21  ??? (Foundation + 34128) [0x18acea550]
+              21  ??? (CoreFoundation + 623148) [0x18a94c22c]
+                21  ??? (CoreFoundation + 625688) [0x18a94cc18]
+                  21  ??? (CoreFoundation + 649832) [0x18a952a68]
+                    21  ??? (libsystem_kernel.dylib + 12836) [0x18a7a5224]
+                      21  ??? (libsystem_kernel.dylib + 15984) [0x18a7a5e70]
+                       *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x5e4    Thread name "com.apple.CoreMotion.MotionThread"    21 samples (1-21)    priority 47 (base 47)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x18a6dd788]
+    21  ??? (libsystem_pthread.dylib + 7336) [0x18a6d4ca8]
+      21  ??? (CoreMotion + 1316884) [0x1998d9814]
+        21  ??? (CoreFoundation + 627456) [0x18a94d300]
+          21  ??? (CoreFoundation + 623148) [0x18a94c22c]
+            21  ??? (CoreFoundation + 625688) [0x18a94cc18]
+              21  ??? (CoreFoundation + 649832) [0x18a952a68]
+                21  ??? (libsystem_kernel.dylib + 12836) [0x18a7a5224]
+                  21  ??? (libsystem_kernel.dylib + 15984) [0x18a7a5e70]
+                   *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x5f8    Thread name "SBWiFiManager callback thread"    21 samples (1-21)    priority 31 (base 31)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x18a6dd788]
+    21  ??? (libsystem_pthread.dylib + 7336) [0x18a6d4ca8]
+      21  ??? (Foundation + 1516144) [0x18ae54270]
+        21  ??? (SpringBoard + 1952268) [0x1cfe77a0c]
+          21  ??? (Foundation + 241340) [0x18ad1cebc]
+            21  ??? (Foundation + 34128) [0x18acea550]
+              21  ??? (CoreFoundation + 623148) [0x18a94c22c]
+                21  ??? (CoreFoundation + 625688) [0x18a94cc18]
+                  21  ??? (CoreFoundation + 649832) [0x18a952a68]
+                    21  ??? (libsystem_kernel.dylib + 12836) [0x18a7a5224]
+                      21  ??? (libsystem_kernel.dylib + 15984) [0x18a7a5e70]
+                       *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x6ee    Thread name "CommonUtilities-WiFi-Thread"    21 samples (1-21)    priority 31 (base 31)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x18a6dd788]
+    21  ??? (libsystem_pthread.dylib + 7336) [0x18a6d4ca8]
+      21  ??? (Foundation + 1516144) [0x18ae54270]
+        21  ??? (CommonUtilities + 56456) [0x18d98ac88]
+          21  ??? (CoreFoundation + 627456) [0x18a94d300]
+            21  ??? (CoreFoundation + 623148) [0x18a94c22c]
+              21  ??? (CoreFoundation + 625688) [0x18a94cc18]
+                21  ??? (CoreFoundation + 649832) [0x18a952a68]
+                  21  ??? (libsystem_kernel.dylib + 12836) [0x18a7a5224]
+                    21  ??? (libsystem_kernel.dylib + 15984) [0x18a7a5e70]
+                     *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x70a    Thread name "WFWiFiStateMonitor callback thread"    21 samples (1-21)    priority 31 (base 31)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x18a6dd788]
+    21  ??? (libsystem_pthread.dylib + 7336) [0x18a6d4ca8]
+      21  ??? (Foundation + 1516144) [0x18ae54270]
+        21  ??? (WiFiKit + 353580) [0x1b371052c]
+          21  ??? (Foundation + 241340) [0x18ad1cebc]
+            21  ??? (Foundation + 34128) [0x18acea550]
+              21  ??? (CoreFoundation + 623148) [0x18a94c22c]
+                21  ??? (CoreFoundation + 625688) [0x18a94cc18]
+                  21  ??? (CoreFoundation + 649832) [0x18a952a68]
+                    21  ??? (libsystem_kernel.dylib + 12836) [0x18a7a5224]
+                      21  ??? (libsystem_kernel.dylib + 15984) [0x18a7a5e70]
+                       *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x8a3    Thread name "com.apple.UIKit.inProcessAnimationManager"    21 samples (1-21)    priority 53 (base 53)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x18a6dd788]
+    21  ??? (libsystem_pthread.dylib + 7336) [0x18a6d4ca8]
+      21  ??? (Foundation + 1516144) [0x18ae54270]
+        21  ??? (UIKitCore + 16654808) [0x18f6b71d8]
+          21  ??? (libdispatch.dylib + 18096) [0x18a66a6b0]
+            21  ??? (libdispatch.dylib + 16408) [0x18a66a018]
+              21  ??? (libsystem_kernel.dylib + 16044) [0x18a7a5eac]
+               *21  ??? [0xfffffff007a5fd6c]
+
+  Thread 0xd33    Thread name "AVAudioSession Notify Thread"    21 samples (1-21)    priority 15 (base 15)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x18a6dd788]
+    21  ??? (libsystem_pthread.dylib + 7336) [0x18a6d4ca8]
+      21  ??? (AudioSession + 62456) [0x1cc80c3f8]
+        21  ??? (AudioSession + 54036) [0x1cc80a314]
+          21  ??? (CoreFoundation + 623148) [0x18a94c22c]
+            21  ??? (CoreFoundation + 625688) [0x18a94cc18]
+              21  ??? (CoreFoundation + 649832) [0x18a952a68]
+                21  ??? (libsystem_kernel.dylib + 12836) [0x18a7a5224]
+                  21  ??? (libsystem_kernel.dylib + 15984) [0x18a7a5e70]
+                   *21  ??? [0xfffffff007a075e4]
+
+  Binary Images:
+           0x102fc4000 -                ???  com.apple.springboard 1.0 (50) <886E2CCD-1559-3C0C-A5F1-6971FAB35E37>  /System/Library/CoreServices/SpringBoard.app/SpringBoard
+           0x18a666000 -        0x18a6a7fff  libdispatch.dylib              <636C9B4E-09D7-39CF-B9A7-732F26E4D3DC>  /usr/lib/system/libdispatch.dylib
+           0x18a6d3000 -        0x18a6defff  libsystem_pthread.dylib        <2582EECA-422F-3909-9579-D8177D42492B>  /usr/lib/system/libsystem_pthread.dylib
+           0x18a6df000 -        0x18a718fff  libobjc.A.dylib                <1BCB72B1-EA99-3D7D-872B-3486D9DFD232>  /usr/lib/libobjc.A.dylib
+           0x18a7a2000 -        0x18a7d2fff  libsystem_kernel.dylib         <7A525942-131A-332B-B9E6-575C0F7B50B6>  /usr/lib/system/libsystem_kernel.dylib
+           0x18a7d3000 -        0x18a80cfff  libdyld.dylib                  <20D5095F-60CD-3C1A-96AC-9A0583DC73BF>  /usr/lib/system/libdyld.dylib
+           0x18a8b4000 -        0x18ac67fff  CoreFoundation                 <548058AC-65EB-31FD-A60D-AA27AF827C0A>  /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+           0x18ace2000 -        0x18af90fff  Foundation                     <14C58694-70A8-3655-A854-B634DBC9F68B>  /System/Library/Frameworks/Foundation.framework/Foundation
+           0x18d97d000 -        0x18d998fff  CommonUtilities                <F88A160B-DDF1-37E1-80D3-E122B5CC09E6>  /System/Library/PrivateFrameworks/CommonUtilities.framework/CommonUtilities
+           0x18e6d5000 -        0x18fb08fff  UIKitCore                      <EFF94CE9-EE86-34C6-A228-4F9B8DE18016>  /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
+           0x196ac2000 -        0x196acafff  GraphicsServices               <2BCA3F88-680C-375E-B88E-308912D6A996>  /System/Library/PrivateFrameworks/GraphicsServices.framework/GraphicsServices
+           0x199798000 -        0x1999f5fff  CoreMotion                     <0B2D6B21-2219-35C4-A427-A6F14A0BC678>  /System/Library/Frameworks/CoreMotion.framework/CoreMotion
+           0x1b36ba000 -        0x1b3768fff  WiFiKit                        <89D7A893-028E-3355-8FB0-2FAC56DA37EA>  /System/Library/PrivateFrameworks/WiFiKit.framework/WiFiKit
+           0x1cc7fd000 -        0x1cc815fff  AudioSession                   <621EF68E-C8CA-38B9-B78A-F72A201697B9>  /System/Library/PrivateFrameworks/AudioSession.framework/AudioSession
+           0x1cfc9b000 -        0x1d03f5fff  SpringBoard                    <B6217766-5D0A-3779-A364-D8AAA580B3CC>  /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
