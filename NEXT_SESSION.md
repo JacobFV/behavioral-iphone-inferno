@@ -17,7 +17,11 @@ PID264/main3689988377; single counter14085661c57f48b7aeca9eca34141fd6.
 Both20s observation sets remained0; before and periodic QMP share SHA
 b98bd63c2d0298ad8a421020d2d2dce274970e53778b6d04a0c74453f5780ca3.
 No after capture, second tap, Home, OPEN, SAMPLE or HMP. Root recorded SIGINT2
-at1791333348.6982012; forensic postflight is underway.
+at1791333348.6982012. Final preservation51f803bd3d passed: normal QMP/emulator0,
+reported Signal2, elapsed689.158749s; strict verification correctly rejected.
+All seven disks/ancestors/exact attestations verified. Forensic-only root
+166526976bytes SHAdf85b3ab22a796a290149b2435270e08eacc52421f862b35bcbbfb79f69daec3.
+Conversion-only work is running; no recovery guest has launched.
 
 Independent actual audit53022f2778 records five completed draw cycles before
 the counter interval. After action byte80750, all32 handler samples had x21
