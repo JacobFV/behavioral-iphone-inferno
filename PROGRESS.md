@@ -2,6 +2,28 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 15:15: run69 retained; one earlier-cadence reproduction planned
+
+Run69 normal postflight069774b583 exit0/errornull582.587718s, strict and initial
+launch timing complete; three warm trials complete, samePID253/main3293009510,
+boot07958678-3250-403F-85E0-55460CD68B74. Rootvisualc6c7d4d339 reviewed0->1 then
+threeHome/reopen/tapcycles ending4. All7/backing passed, CPU neverrequested,
+noSAMPLE. OPEN->active763.433625/751.482083/747.167625ms are guest lifecycle
+intervals, not presentation/native performance. Extendedcycles traceoff.
+
+Comparisonb12e7f4417: failed65 actionsrelativecont102.62/146.09/175.06/192.08/
+201.97s forunlock1/unlock2/Close/NotNow/counter versus69 115.49/208.67/260.69/
+277.73/304.50s. Setup->counter9.89s versus26.77s; hypothesis only. Healthy58
+previously overlapped failed timing, so no universal timing separator.69combined
+secondtracewindow19submits cannot be assigned postcounter without exactcheckpoint.
+
+ONE70 launching runner1919346 fromactual069774b583, same0889/base/flags. Root will
+attempt earlier UI-conditional cadence, including setup->counter about10s if
+unobstructed0 andsourcegatesready. Never act on unreadyUI or force times. Preserve
+exact counter bytecheckpoints before/after. Two bounded displaywindows as65/69,
+CPU1s onlyconfirmedpersistentfreeze+all9off; nohealthycalibration. No new emulator
+behavior. RootallUI/control. No70backingadoption; no pause requested.
+
 ### 2026-10-07 15:05: run68 preserved; run69 live for failed-state capture
 
 Run68 postflight e72e4bab58: strict verified, initial timing complete, all7 and
