@@ -1,0 +1,58 @@
+{
+  "scope": "Read-only independent review of plan e8c99bf719, not implementation/runtime approval or guest execution",
+  "source_hashes": {
+    "accel/tcg/cpu-exec.c": "4f03249bbdb9c10f70d32373efd8dd25e31094ce4baffc082c00f6c3f24cbd71",
+    "accel/tcg/cpu-exec-common.c": "9e5e2e3586f321e2c8b961e3b6790d5c9d7e88d94ecc7e46b1371d5fbdc7d180",
+    "target/arm/cpu.c": "9d969ee42b7d05b337feb151c21dd51ba6cc4387274f379bbf5599d3db6fcdd5",
+    "target/arm/tcg/translate-a64.c": "1629b25b4346bc00eb50513f87e225ede524bb5ba4dafb7e38d00cc04efa1157",
+    "util/log.c": "ff4b9b68860bb6d2a78ace324b164fbf19fc7d8f4e2058c06c169fc5d81a8cd9",
+    "monitor/hmp-cmds.c": "b626fcba5953e43bbd1295727e9a3cc36849949fd0b72d2eb33707059f53577b"
+  },
+  "original_disassembly_provenance": [
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/iomfb-swapwait-inspection/scalar-wait.txt",
+      "sha256": "af6a8ff33b974d882200c0b559ffc69a3aff564f292d8ed1fbe500a24741d286"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/iomfb-swapwait-inspection/user-wait.txt",
+      "sha256": "2dba4c8efa9e904d598639704cac42bda207f86e572a6fe497022901df8d8457"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/iomfb-swapwait-inspection/wait-gated.txt",
+      "sha256": "06f87075abec9f3fe46c1b83d32d3fcd5ecc6fb4e5fef9e2c1369c9b135e0932"
+    }
+  ],
+  "conclusion": "No source feasibility blocker for parent-reviewed bounded implementation and firmware-free validation. Exact observedPC/register records required before interpretation.",
+  "register_liveness": [
+    {
+      "range": "0xfffffff0096df690..0xfffffff0096df6b0 exclusive",
+      "meaning": "At entry x0client,w1token,w2flags,w3third. Prologue stores these values but does not change them through6ac. ExactentryPC strongest."
+    },
+    {
+      "range": "0xfffffff0096e219c..0xfffffff0096e21a8 exclusive",
+      "meaning": "Wrapper BL continuation throughldp/add/retab preserves finalw0 from UserClient::swap_wait. Interpret independent finalstatus snapshots, not paired invocations."
+    },
+    {
+      "range": "0xfffffff0096df71c+4 optional",
+      "meaning": "Lower virtualcall returnedw0 before UserClient cancellation override. Must not combine with finalwrapperreturn: laterclient+fc canoverride to0xe00002d6."
+    },
+    {
+      "range": "0xfffffff0096f1968+4 optional",
+      "meaning": "Gated entry x0Legacyobject,x1client,w2token,w3flags,w4third. Do not call x0 an arbitrary pipeline-memory observation; pointeronly."
+    }
+  ],
+  "qemu_source_findings": [
+    "log_cpu_exec filters suppliedTBstartPC then takes qemu_log_trylock around cpu_dump_state; AArch64 dump writes exposedPC, allGPRs/SP/PSTATE as one lockedblock. NoCPUindex in cpu-only dump.",
+    "trans_BL updatesLR and ends via gen_goto_tb; functioncall target and returncontinuation are plausibleTBentrypoints. Filterrange does not force a split at everyincludedinstruction.",
+    "curr_cflags addsCF_NO_GOTO_TB undernochain globally, not merelyinsidefilter. Existingcalls throughcpu_tb_exec orlookup tracepath observeTBentries; no guarantee immediatelyafterHMPenable whilecurrentchainruns.",
+    "HMPlog replacesmask. Preserveknownbaselineguest_errors andCONFIG_TRACE_LOG behavior; uncertainenable muststillrestore. NoHMPlogfile/tid, noCPUrestore/synchronization, noCPUindexheuristic."
+  ],
+  "required_guards": [
+    "Opt-infixedranges only; no mailboxaddress/maskarguments.",
+    "Actualsameattemptstderr slide and pinnedoriginalkernelidentity; rejectunexpectedslide ratherthanassumeKASLRflag.",
+    "Coherentcompleteblocks only; unknownPC andmalformed/partialdump retainedunknown, noentryreturnpairing.",
+    "First1sboundedwindow, byteceilingpollbound explicitlynot hardrealtime; child/QMPcleanuprestore errorsvisible.",
+    "Firmware-free ownedknown-register loop proveslogging/restore mechanics only, notiOSselectorsemantics.",
+    "Actualstalledguestsample later mayyieldnorecords or perturbfailure; postwindowvisualrequired."
+  ]
+}
