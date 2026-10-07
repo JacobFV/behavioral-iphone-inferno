@@ -9,6 +9,22 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-06 17:03 local
 
+63 AUTHORIZED/bootworker launching from immutable50/HID54 with new nine-event
+binary28556c311abfaf976f377b9c58ef7e7045bec9b985c81c1e17ce28c4dbecfdbd,
+sourceec40c73c791b8878eb25c1b601c0fd42cb5103da, manifestSHA
+f18a238bf5ec3b5697ccacd104246c15102fd3f12328955c4a95de4ff25034d4.
+Actual build/control7ca9c94831 PASS: all9 defaultoff/deadline10s/earlycleanup/
+quit0; only one target-specific ADPv4 object. Oldf088 missing9th rejects and
+rolls back all enabled events. First rollback harness assertion mistake and
+corrected attempt both retained. Firmware-free test has no device emission.
+Root all actions; initial10s volume/callerwindow before inputs, no HMP query.
+Then reviewed strict journey. HID54 has NO SAMPLE. ObserverOFF, sameTCG/2CPU/
+4GiB/7200s/capture30/touch900. No behaviorfix. No futurefailed62 diskbase.
+Caller parser8240bd63a4 uses sameattemptstderr Kernel Virtual Slide and pinned
+original kernelSHA524b...; unknownLRs retained, no inventedPACnormalization.
+No63 caller values or boot success observed yet.
+
+
 62 REPRODUCED the persistent failure and is STOPPED/preserved5f7cddd6af.
 Root sent recorded SIGINT2 to runner3107141 at1791331348.637034. Normal QMPquit/
 emulator0, errorSignal2,668.194207s. Strict verifier correctly REJECTED incomplete.

@@ -2,6 +2,23 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 17:10 continuation: caller diagnostic built; installed-iOS validation begins
+
+Build sourceec40c73c79 produced emulator28556c311abfaf976f377b9c58ef7e7045bec9b985c81c1e17ce28c4dbecfdbd.
+The actual compile/link graph contains exactly one target-specific ADPv4 object.
+Firmware-free QMP checks verified all nine events default off,10s deadline,
+early cleanup and quit0. The old eight-event binary rejects the new request and
+rolls back enabled events; both an initial test-harness assertion mistake and
+its corrected successful check are preserved. Evidence7ca9c94831. This machine
+has no ADP device, so no caller emission or iOS milestone is claimed by the smoke.
+
+One63 is authorized from the same immutable stage50/HID54 predecessor state
+with the new diagnostic binary and matching current host controller. Root will
+first retain a bounded10s read-caller window, then perform the reviewed journey.
+The original kernel and this boot's recorded slide will be used for address
+correlation; no unknown addresses will be coerced to expected callers. The
+older helper cannot sample original user stacks. No rendering fix is claimed.
+
 ### 17:03 continuation: archived comparison62 reproduced the persistent freeze
 
 Postflight5f7cddd6af preserved the failure: emulator0 after normal QMP cleanup,
