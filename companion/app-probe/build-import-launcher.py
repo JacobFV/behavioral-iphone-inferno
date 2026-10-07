@@ -37,9 +37,7 @@ def main():
     spec.loader.exec_module(importer)
     manifest = importer.validate_manifest(args.manifest)
     bundle = manifest['bundle']
-    output = args.output.resolve()
-    if output.is_relative_to(repo) or output.exists():
-        parser.error('--output must be a fresh directory outside the repository')
+    output = importer.external_output(args.output)
     clang, linker = shutil.which(args.clang), shutil.which(args.linker)
     if not clang or not linker:
         parser.error('clang and ld64.lld are required')
