@@ -74,7 +74,19 @@ static int install_imported_app(const char *system_device) {
     if(imported_plan())return 80;
     if(mount_at(system_device,"/mnt1",0))return 81;
     const char *source="/usr/share/inferno-imported-app";char target[2048];struct file_stat st;int result=0;
-    if(lstat("/mnt1/Applications",&st) || (st.mode&0170000)!=0040000 || st.uid || st.gid || child_path(target,sizeof(target),"/mnt1/Applications",imported.bundle))result=82;
+    int parent_stat=lstat("/mnt1/Applications",&st);
+    int parent_errno=parent_stat?*__error():0;
+    int target_path=child_path(target,sizeof(target),"/mnt1/Applications",imported.bundle);
+    printf("INFERNO_IMPORTED_APP_PARENT stat=%d errno=%d mode=%o uid=%u gid=%u nlink=%u path_result=%d\n",
+           parent_stat,parent_errno,parent_stat?0:st.mode,parent_stat?0:st.uid,
+           parent_stat?0:st.gid,parent_stat?0:st.nlink,target_path);fflush(0);
+    if(!parent_stat && (st.mode&0170000)==0120000) {
+        char link[512];long length=readlink("/mnt1/Applications",link,sizeof(link)-1);
+        if(length>=0 && length<(long)sizeof(link)-1) {link[length]=0;printf("INFERNO_IMPORTED_APP_PARENT_LINK bytes=%ld target=%s\n",length,link);}
+        else printf("INFERNO_IMPORTED_APP_PARENT_LINK bytes=%ld errno=%d truncated_or_failed=1\n",length,length<0?*__error():0);
+        fflush(0);
+    }
+    if(parent_stat || (st.mode&0170000)!=0040000 || st.uid || st.gid || target_path)result=82;
     if(!result) {
         if(!lstat(target,&st)) {
             if(!imported.allow_identical_fixture || st.mode!=0040755 || st.uid || st.gid)result=83;

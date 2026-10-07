@@ -1,0 +1,27 @@
+{
+  "actual_serial": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-fixture-1/serial.log",
+  "sha256": "d750f583f3ee7670625b344af826f909a8847bf365a5df24f197884484c29f6e",
+  "bytes": 49083,
+  "records": [
+    {
+      "offset": 46118,
+      "bytes": 131,
+      "text": "INFERNO_IMPORTED_APP_PLAN bundle=InfernoProbe.app identifier=org.inferno.companion.probe entries=2 bytes=75930 identical_fixture=1"
+    },
+    {
+      "offset": 48879,
+      "bytes": 56,
+      "text": "INFERNO_IMPORTED_APP_FINISH result=82 unmount=0 errno=0"
+    },
+    {
+      "offset": 48937,
+      "bytes": 144,
+      "text": "Wed Oct  7 23:18:34 2026 localhost com.apple.xpc.launchd[1] (org.inferno.probe.prepare-root.7) <Warning>: Service exited with abnormal code: 82"
+    }
+  ],
+  "prep_complete_present": false,
+  "finding": "Plan validation and System mount succeeded, then combined parent guard returned82. Actual metadata is not logged, so no individual predicate failure can be identified from current evidence. Unmount0 is explicit; failed clone is not an eligible baseline.",
+  "change": "Log fixed /mnt1/Applications lstat status+errno+mode+uid+gid+nlink and bounded target path construction result. If symlink, bounded readlink metadata is diagnostic only. Existing rejection predicate is unchanged.",
+  "validation": "Original prepare-root.c including changed fragment passed clang arm64-apple-ios14 freestanding syntax check; no guest run.",
+  "limits": "No expected metadata inferred or guard relaxed. Next diagnostic requires a fresh clone of retained valid source, rebuilt helper, and actual serial evidence."
+}
