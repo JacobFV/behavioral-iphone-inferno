@@ -1,0 +1,32 @@
+{
+  "reviewed_commit": "015b8eacdb1aa915eea80f4dbc643f8452b82b34",
+  "conclusion": "No blocking source finding; actual corrected guest staging remains required.",
+  "source_sha256": "eaf6ef4668ef196823d378d3b7b50a1ef3bac9f3d527679b1e88551d0ccc2224",
+  "raw_serial_sha256": "aed73b58b09ebb04130764abf658790e5cc007ab549615dc44a281ac09ff3d8d",
+  "references": [
+    {
+      "byte_offset": 53662,
+      "record": "INFERNO_TREE_MISMATCH /usr/share/inferno-imported-app reason=mode/uid/gid errno=0"
+    },
+    {
+      "byte_offset": 53746,
+      "record": "INFERNO_IMPORTED_APP_READBACK bundle=ImportedDemo.app bytes=71939 entries=3 mismatches=1"
+    },
+    {
+      "byte_offset": 54442,
+      "record": "INFERNO_IMPORTED_APP_FINISH result=89 unmount=0 errno=0"
+    }
+  ],
+  "checks": [
+    "Metadata helper called only after successful fresh root or nested mkdir; existing fixture collision branch never enters it.",
+    "Source must be exact directory0755 uid0 gid0 and target a directory; lstat prevents symlink classification as directory.",
+    "copyfile flags exactly match established copy_contents metadata-only call:7 plus source/destination nofollow bits18/19; no recursive/data copy added.",
+    "Copies validated own source metadata, never /Applications metadata; parent exact tuple guard unchanged.",
+    "After lstat verifies exact mode/uid/gid; copy error retains immediate errno and exits92 through sync/unmount path.",
+    "Existing source inventory/collision guard/file byte comparison and final recursive readback remain intact."
+  ],
+  "limits": [
+    "Failed run reveals root metadata mismatch but not its numeric target tuple; correction logs actual before/after instead of assuming which field differed.",
+    "No build or VM actions performed by reviewer."
+  ]
+}
