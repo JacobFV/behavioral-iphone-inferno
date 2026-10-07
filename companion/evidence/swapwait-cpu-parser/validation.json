@@ -26,47 +26,84 @@
       "snapshots": 462
     }
   ],
-  "parser_sha256": "c2d01c7a7f906b90fa2f9f1ea0bdf70ad3dc069304c7d84e0061a03fbb8df310",
+  "parser_sha256": "6c22f7a54fdd1dec01d6afdeffb78ccc54a8f50a57428d0504789a5b52d1fe30",
   "scope": "Independent offline replay of previously executed owned attempt6; no new QEMU or guest execution.",
   "synthetic_parser_checks": {
     "truncated": {
-      "classification": "synthetic alteration of one retained fixture block, not execution",
+      "classification": "synthetic alteration of retained fixture block, not execution",
       "snapshot_count": 1,
       "complete_count": 0,
       "unknown_pc_count": 0,
-      "orphan_count": 0
+      "orphan_count": 0,
+      "incomplete_eof": true
     },
     "missing_register": {
-      "classification": "synthetic alteration of one retained fixture block, not execution",
+      "classification": "synthetic alteration of retained fixture block, not execution",
       "snapshot_count": 1,
       "complete_count": 0,
       "unknown_pc_count": 0,
-      "orphan_count": 7
+      "orphan_count": 7,
+      "incomplete_eof": false
     },
     "duplicate_register": {
-      "classification": "synthetic alteration of one retained fixture block, not execution",
+      "classification": "synthetic alteration of retained fixture block, not execution",
       "snapshot_count": 1,
       "complete_count": 0,
       "unknown_pc_count": 0,
-      "orphan_count": 0
+      "orphan_count": 0,
+      "incomplete_eof": false
     },
     "unknown_pc": {
-      "classification": "synthetic alteration of one retained fixture block, not execution",
+      "classification": "synthetic alteration of retained fixture block, not execution",
       "snapshot_count": 1,
       "complete_count": 1,
       "unknown_pc_count": 1,
-      "orphan_count": 0
+      "orphan_count": 0,
+      "incomplete_eof": false
     },
     "orphan": {
-      "classification": "synthetic alteration of one retained fixture block, not execution",
+      "classification": "synthetic alteration of retained fixture block, not execution",
       "snapshot_count": 1,
       "complete_count": 1,
       "unknown_pc_count": 0,
-      "orphan_count": 1
+      "orphan_count": 1,
+      "incomplete_eof": false
+    },
+    "bare_CR": {
+      "classification": "synthetic alteration of retained fixture block, not execution",
+      "snapshot_count": 1,
+      "complete_count": 0,
+      "unknown_pc_count": 0,
+      "orphan_count": 0,
+      "incomplete_eof": true
+    },
+    "footer_suffix": {
+      "classification": "synthetic alteration of retained fixture block, not execution",
+      "snapshot_count": 1,
+      "complete_count": 0,
+      "unknown_pc_count": 0,
+      "orphan_count": 0,
+      "incomplete_eof": false
+    },
+    "footer_bad_NZCV": {
+      "classification": "synthetic alteration of retained fixture block, not execution",
+      "snapshot_count": 1,
+      "complete_count": 0,
+      "unknown_pc_count": 0,
+      "orphan_count": 0,
+      "incomplete_eof": false
+    },
+    "unterminated_footer": {
+      "classification": "synthetic alteration of retained fixture block, not execution",
+      "snapshot_count": 1,
+      "complete_count": 0,
+      "unknown_pc_count": 0,
+      "orphan_count": 0,
+      "incomplete_eof": true
     }
   },
   "full_parser_output": {
-    "path": "/tmp/swapwait-parser-attempt6.json",
-    "sha256": "32706207283a31fcf2c370f7b1504c096880ecfcb61e45b18337852554617b84"
+    "path": "/tmp/swapwait-parser-attempt6-strict.json",
+    "sha256": "1b292d101086b2886a348608086cf0ff0dc00b1bceebdfb15867b562ba79d7ba"
   }
 }
