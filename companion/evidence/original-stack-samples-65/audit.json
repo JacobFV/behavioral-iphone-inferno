@@ -1,0 +1,44 @@
+{
+  "scope": "Original-tool samples taken during root-observed run65 persistent counter0 despite genuine tap1, before Home/OPEN. Host-only independent transport replay and offline original-cache attribution.",
+  "boot_uuid": "618E1D32-2DAE-4C11-9C5D-8863D2FE71F9",
+  "cache_uuid": "11AD39C9-E3C9-3067-A337-7287744FDCB5",
+  "both_sample_slides": "0x1b4a8000",
+  "backboardd": {
+    "pid": 60,
+    "unique": 60,
+    "idversion": 207,
+    "samples": 21,
+    "duration_seconds": 2.07,
+    "display_primary": {
+      "runloop_mach_msg": 16,
+      "display_timer_callback_to_vsync_to_render_for_time_to_can_update": 5,
+      "can_update_to_kern_SwapWait_IOConnectCallScalarMethod": 3,
+      "can_update_to_usleep_nanosleep": 2
+    },
+    "mapped_cache_PCs": 36,
+    "validated_images_including_standalone": 11,
+    "unknown_PCs": 4
+  },
+  "springboard": {
+    "pid": 57,
+    "unique": 57,
+    "idversion": 118,
+    "samples": 20,
+    "main_thread_runloop_mach_msg_samples": 20,
+    "mapped_cache_PCs": 28,
+    "validated_images_including_standalone": 14,
+    "unknown_PCs": 2
+  },
+  "healthy49_comparison": "display.primary20/20 samples in CFRunLoop/mach_msg. Current65 contains5samples executing original display timer/render/can_update path, split3 SwapWait IPC and2 sleep. Different sampling windows and schedules: absence of a branch in49 is not proof it never normally occurs.",
+  "interpretation": [
+    "The display thread is not wholly stuck in an unresponsive main runloop; it was sampled receiving timer work and checking update eligibility.",
+    "This localizes a concrete original usermode gate/retry path worth inspecting. The sampled stacks alone do not establish the returned SwapWait status, sleep reason, deadlock or emulator defect.",
+    "No sampled4-byte instruction overlaps original sparse patch plan; this does not exclude modified instructions elsewhere in functions or dependencies.",
+    "Original tool warns no matching kernel/kext symbol owners. Kernel PCs remain unmapped. Standalone target executable UUIDs are validated but frames remain image+offset.",
+    "Nearest-symbol mapping lacks function-size proof. Validated Binary Images ranges avoid prior hardcoded address-range assumption."
+  ],
+  "next_static_scope": [
+    "QuartzCore IOMFBDisplay::can_update_ sampled runtime1a37b0364/1a37b038c => subtract actualslide1b4a8000 before original disassembly.",
+    "Original IOMobileFramebuffer kern_SwapWait selector/arguments and returned-status branching; do not infer actual results from stackframes."
+  ]
+}
