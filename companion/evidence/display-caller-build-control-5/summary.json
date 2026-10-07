@@ -1,0 +1,121 @@
+{
+  "scope": "Actual host build and firmware-free QMP control checks only; no guest boot, display event emission, PC/LR correctness or app claim.",
+  "build_exit_code": 0,
+  "source_revision": "ec40c73c791b8878eb25c1b601c0fd42cb5103da",
+  "command": [
+    "bash",
+    "companion/run",
+    "build",
+    "--build-root",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build",
+    "--jobs",
+    "8",
+    "--simulated-sep",
+    "--enable-kvm"
+  ],
+  "new_nine_event_control": "All nine default disabled, explicit enable, ten-second deadline disables all, early cleanup disables all, QMP quit acknowledged, emulator exit zero.",
+  "old_eight_event_rollback": "Attempt 1 retained: harness incorrectly expected error rather than rejected reply key; actual rollback and quit succeeded. Attempt 2 corrected assertion passed: ninth event unavailable, all eight remain disabled, no pending window, cleanup and quit zero.",
+  "target_compile": "Exactly one ADPv4 compile entry, COMPILING_PER_TARGET enabled, exactly one aarch64 target ADPv4 object in link edge; no common ADPv4 object in active graph or on disk.",
+  "artifacts": {
+    "build-manifest.json": {
+      "bytes": 2401,
+      "sha256": "f18a238bf5ec3b5697ccacd104246c15102fd3f12328955c4a95de4ff25034d4"
+    },
+    "build.log": {
+      "bytes": 28925,
+      "sha256": "1fcfe074fb3800c8b0a42d0c855a9ca9f1fa8c16b0d07bc130eda95abea06d31"
+    },
+    "display-caller-old-eight-rollback-1/build-manifest.json": {
+      "bytes": 2401,
+      "sha256": "81027eba78a8636b2b1538ce0f8ea79c14e73baa4c5ee12caa7111b1ece5fdca"
+    },
+    "display-caller-old-eight-rollback-1/control/reply-9fe02ff2f6554bcfae57957f32015ae2.json": {
+      "bytes": 170,
+      "sha256": "ca7f02fb4ae68a8319c9df37482cf221a471b8fa9cf88f54771614abd1f4e25e"
+    },
+    "display-caller-old-eight-rollback-1/control-transcript.jsonl": {
+      "bytes": 473,
+      "sha256": "997b28cb806b828b11eb71797affd44533483444482141f14f626ecaeaa2dbb8"
+    },
+    "display-caller-old-eight-rollback-1/display-trace-control.jsonl": {
+      "bytes": 5551,
+      "sha256": "805e0a78b729b2c71a0b93566e1c989d08f58a89c5b8e70d7ba89dacd40a9dcb"
+    },
+    "display-caller-old-eight-rollback-1/qmp-transcript.jsonl": {
+      "bytes": 8591,
+      "sha256": "55c865bb77a17e6f48eea8c92eaf334f1202fa045db10043cb948eec18ef9b4f"
+    },
+    "display-caller-old-eight-rollback-1/report.json": {
+      "bytes": 3825,
+      "sha256": "10a00ba406d6ea03aa6a536277dee26a00185d5772ae457c0f210278b85e93b9"
+    },
+    "display-caller-old-eight-rollback-1/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "display-caller-old-eight-rollback-2/build-manifest.json": {
+      "bytes": 2401,
+      "sha256": "81027eba78a8636b2b1538ce0f8ea79c14e73baa4c5ee12caa7111b1ece5fdca"
+    },
+    "display-caller-old-eight-rollback-2/control/reply-fbe6f2cae2fa4ffca293aad2da92f61e.json": {
+      "bytes": 170,
+      "sha256": "ca7f02fb4ae68a8319c9df37482cf221a471b8fa9cf88f54771614abd1f4e25e"
+    },
+    "display-caller-old-eight-rollback-2/control-transcript.jsonl": {
+      "bytes": 473,
+      "sha256": "578cedb53baef7a722e9fc0094462ebe7f15f62aea24f11a1cfddca8ec56633f"
+    },
+    "display-caller-old-eight-rollback-2/display-trace-control.jsonl": {
+      "bytes": 5557,
+      "sha256": "ae040697f933733e3131d9e4322bb498ecc9e915dde73d0d08b35b40caede3d8"
+    },
+    "display-caller-old-eight-rollback-2/qmp-transcript.jsonl": {
+      "bytes": 13739,
+      "sha256": "0546ba61ee20c00415a83e8adffc77509f3c66643e83e2d4699d49f7c05cc315"
+    },
+    "display-caller-old-eight-rollback-2/report.json": {
+      "bytes": 6891,
+      "sha256": "bb9bdff9b4564ae7986e76d5ac2d7c26f9fa1563fc5994e5350c91c7ad689591"
+    },
+    "display-caller-old-eight-rollback-2/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "display-caller-trace-control-smoke-5/build-manifest.json": {
+      "bytes": 2401,
+      "sha256": "f18a238bf5ec3b5697ccacd104246c15102fd3f12328955c4a95de4ff25034d4"
+    },
+    "display-caller-trace-control-smoke-5/control/reply-983caf139a9642c79fe38ec491dfc1a3.json": {
+      "bytes": 352,
+      "sha256": "bea8a807ee648688a90beef781780334355183f96422e9cfb1d55577ae8a1a5e"
+    },
+    "display-caller-trace-control-smoke-5/control/reply-a9574ecb02494046ae9c7344ae1707f8.json": {
+      "bytes": 352,
+      "sha256": "bea8a807ee648688a90beef781780334355183f96422e9cfb1d55577ae8a1a5e"
+    },
+    "display-caller-trace-control-smoke-5/control-transcript.jsonl": {
+      "bytes": 1311,
+      "sha256": "42d07fbf0184d7683e5dc7121db0e37cbe79c0ab17848eee1a567fe94f119f88"
+    },
+    "display-caller-trace-control-smoke-5/display-trace-control.jsonl": {
+      "bytes": 11573,
+      "sha256": "14ec9cdbbe051193618008c1c645297930072f8dfb4dfe8e43db81dd4f61e077"
+    },
+    "display-caller-trace-control-smoke-5/qmp-transcript.jsonl": {
+      "bytes": 25417,
+      "sha256": "93eef0c7bcc97a463cabd4cc2cb4bbc068aeb483caa9ae3745e127e5702114c9"
+    },
+    "display-caller-trace-control-smoke-5/report.json": {
+      "bytes": 11441,
+      "sha256": "53f00c12fb53fe9ea8a96f08ed1561bec91bfa9553d45e0956e28c3580fb208c"
+    },
+    "display-caller-trace-control-smoke-5/stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "target-build-audit.json": {
+      "bytes": 3198,
+      "sha256": "ba11897accbc94986086caa01f85a17752829f976afca5a79a0735f9834f2f78"
+    }
+  }
+}
