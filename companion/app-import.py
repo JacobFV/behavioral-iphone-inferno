@@ -56,7 +56,7 @@ def macho(data):
     if not 1 <= ncmds <= 4096 or not 8*ncmds <= sizeofcmds <= len(data)-32:
         raise ValueError('Invalid Mach-O command extent')
     pos, end = 32, 32+sizeofcmds
-    minimums, dependencies, rpaths, signatures, entrypoints = [], [], [], [], []
+    minimums, dependencies, rpaths, signatures, entrypoints, loaders = [], [], [], [], [], []
     for _ in range(ncmds):
         if pos+8 > end:
             raise ValueError('Truncated Mach-O command')
@@ -103,6 +103,15 @@ def macho(data):
             if not name.startswith(('/usr/lib/', '/System/Library/Frameworks/', '/System/Library/PrivateFrameworks/')) or '..' in name.split('/') or '\\' in name:
                 raise ValueError('First subset permits system dependencies only: '+name)
             dependencies.append({'path':name, 'weak':cmd == 0x80000018})
+        elif cmd == 0x20:
+            raise ValueError('Lazy dylib dependencies unsupported in first subset')
+        elif cmd == 0xe:
+            if size < 16:
+                raise ValueError('Truncated dylinker command')
+            loader = string_at(struct.unpack_from('<I', data, pos+8)[0], 12)
+            if loader != '/usr/lib/dyld':
+                raise ValueError('Only original system /usr/lib/dyld loader supported')
+            loaders.append(loader)
         elif cmd == 0x8000001c:
             if size < 16:
                 raise ValueError('Truncated rpath command')
@@ -122,7 +131,7 @@ def macho(data):
                 raise ValueError('LC_MAIN entry outside file')
             entrypoints.append(off)
         pos += size
-    if pos != end or len(minimums) != 1 or len(entrypoints) != 1 or len(signatures) > 1:
+    if pos != end or len(minimums) != 1 or len(entrypoints) != 1 or len(signatures) > 1 or len(loaders) != 1:
         raise ValueError('Ambiguous/missing platform or entrypoint metadata')
     if not (0, 0, 0) < minimums[0] <= (14, 0, 0):
         raise ValueError('Minimum iOS version exceeds supported14.0 guest')
