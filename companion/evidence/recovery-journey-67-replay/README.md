@@ -51,3 +51,9 @@ launch-delegate2, window-request3, followed by active/appeared in either order a
 other actual outcomes are unchanged. Two additional parsed-copy negatives
 (concurrent prior main and swapped delegate/window hooks) reject specifically at
 these checks. The earlier replay remains retained rather than overwritten.
+
+`result-output-classification.json` is a fresh actual67 replay after correcting
+one output classification: the pre-OPEN PID269 main remains fully retained under
+`recovery_scope.prior_main_only_records`; it is no longer mislabeled in
+`post_strict_other_process_records` (empty for this attempt). No verification
+condition or earlier replay changed.
