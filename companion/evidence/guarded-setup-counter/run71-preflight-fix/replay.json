@@ -1,0 +1,22 @@
+{
+  "actual_replay_passed": true,
+  "negative_cases": [
+    {
+      "case": "pending-state",
+      "scope": "synthetic mutation of retained actual71 journals",
+      "rejected": "Runner trace journal does not confirm empty pending state"
+    },
+    {
+      "case": "latest-enable",
+      "scope": "synthetic mutation of retained actual71 journals",
+      "rejected": "Latest QMP state not acknowledged disabled and bound to runner journal"
+    },
+    {
+      "case": "missing-ack",
+      "scope": "synthetic mutation of retained actual71 journals",
+      "rejected": "Latest QMP state not acknowledged disabled and bound to runner journal"
+    }
+  ],
+  "scope": "Host read-only parse; no QMP or guest actions",
+  "failure": "Unsupported trace-event-get-state rejected by client validation before mailbox write. Only probe-status and no-input VNC capture occurred in helper001."
+}
