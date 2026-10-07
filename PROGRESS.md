@@ -2,6 +2,28 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 13:23: validated failure stack localizes update-eligibility path
+
+Actualstackmapping7275ced75c and independentreplay72aa07a8f8 validate both65
+serial-prefix reconstructions, currentcacheUUID/slide0x1b4a8000, listedimageUUIDs/
+bases and bothstandaloneexecutables. No frame was silentlydropped; mapped36/28
+cachePCs with4/2 explicitlyunknown (backboardd/SpringBoard). Replaying49 preserves
+its prior rawsymbolizer/symbolizedoutputs exactly. Original reports retained.
+
+During65freeze backboardd display.primary has16/21 samples inrunloop/mach_msg and
+5/21 in display_timer_callback -> vsync_callback -> render_for_time -> can_update
+-> can_update_. Three of those are in kern_SwapWait/IOConnectCallScalarMethod,
+two inusleep/nanosleep. Healthy49 had20/20 runloopwait inits shortwindow; absence
+there doesnot prove thebranchnever occursnormally. SpringBoardmain65 is20/20
+runloopwait. Sampled4byteinstructions have no sparsepatchoverlap; this isnot
+runtimeRAMorwholefunctionequality andnearestsymbolresults needextentverification.
+
+Continuebounded originalstatic analysis: nativeworker owns actualuserspace
+can_update_ and kern_SwapWait returngates/selector/arguments; diskworker owns
+matchingoriginalkernel userclientdispatch/wait/completionstate. No behavioral
+fix or actualSwapWaitreturnvalue established. No newVM needed whilethese paths
+are mapped; rootcontinuesintegration/review. All65disks remainforensic-only.
+
 ### 2026-10-07 13:20: freeze65 reproduced; both original failure samples captured
 
 Newsamplingbranch65 reproduced the freeze: boot618E1D32-2DAE-4C11-9C5D-8863D2FE71F9,
