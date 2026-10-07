@@ -70,6 +70,20 @@ static int imported_plan(void) {
     if(imported.allow_identical_fixture && (strcmp(imported.bundle,"InfernoProbe.app") || strcmp(imported.identifier,"org.inferno.companion.probe") || imported.count!=2 || files!=2))return -1;
     printf("INFERNO_IMPORTED_APP_PLAN bundle=%s identifier=%s entries=%u bytes=%llu identical_fixture=%u\n",imported.bundle,imported.identifier,imported.count,bytes,imported.allow_identical_fixture);fflush(0);return 0;
 }
+/* Only newly created owned directories: preserve source metadata like copy_contents.
+ * Never applied to /Applications or an existing collision target. */
+static int imported_directory_metadata(const char *source,const char *target) {
+    struct file_stat a,b;int sa=lstat(source,&a),sb=lstat(target,&b);
+    printf("INFERNO_IMPORTED_APP_DIR_METADATA_BEFORE target=%s source_stat=%d source_mode=%o source_uid=%u source_gid=%u target_stat=%d target_mode=%o target_uid=%u target_gid=%u\n",
+           target,sa,sa?0:a.mode,sa?0:a.uid,sa?0:a.gid,sb,sb?0:b.mode,sb?0:b.uid,sb?0:b.gid);fflush(0);
+    if(sa || sb || a.mode!=0040755 || a.uid || a.gid || (b.mode&0170000)!=0040000)return -1;
+    int copied=copyfile(source,target,0,7 | (1 << 18) | (1 << 19));
+    int copy_errno=copied?*__error():0;
+    int after=lstat(target,&b);
+    printf("INFERNO_IMPORTED_APP_DIR_METADATA_AFTER target=%s copy=%d copy_errno=%d stat=%d mode=%o uid=%u gid=%u\n",
+           target,copied,copy_errno,after,after?0:b.mode,after?0:b.uid,after?0:b.gid);fflush(0);
+    return copied || after || a.mode!=b.mode || a.uid!=b.uid || a.gid!=b.gid ? -1:0;
+}
 static int install_imported_app(const char *system_device) {
     if(imported_plan())return 80;
     if(mount_at(system_device,"/mnt1",0))return 81;
@@ -98,11 +112,12 @@ static int install_imported_app(const char *system_device) {
             if(!imported.allow_identical_fixture || st.mode!=0040755 || st.uid || st.gid)result=83;
             else {unsigned count=0;unsigned long long bytes=0;if(imported_count_tree(target,0,&count,&bytes) || count!=imported.count || bytes!=imported.bytes)result=84;else compare_tree(source,target);if(mismatches)result=84;if(!result)printf("INFERNO_IMPORTED_APP_IDENTICAL_COLLISION_ACCEPTED\n");}
         } else if(*__error()!=2 || mkdir(target,0755))result=85;
+        else if(imported_directory_metadata(source,target))result=92;
     }
     if(!result)for(unsigned i=0;i<imported.count;i++) {
         struct imported_entry *e=&imported_entries[i];char from[2048],to[2048];
         if(child_path(from,sizeof(from),source,e->path)||child_path(to,sizeof(to),target,e->path)){result=86;break;}
-        if(e->type==1) {if(mkdir(to,0755)){result=87;break;}}
+        if(e->type==1) {if(mkdir(to,0755)){result=87;break;}if(imported_directory_metadata(from,to)){result=92;break;}}
         else if(copyfile(from,to,0,15)){result=88;break;}
     }
     if(!result) {
