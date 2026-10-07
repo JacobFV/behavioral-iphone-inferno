@@ -1,0 +1,52 @@
+{
+  "scope": "Host-only replay of actual retained49 samples; no new guest sampling",
+  "external_work": "/home/brandonin/.local/share/inferno/native-probe/symbolication-replay-49-gnifgd4h",
+  "adaptation": "Only base directory replaced; copies of retained original-output.txt supplied as output.bin. Symbolizer/cache paths unchanged.",
+  "checks": [
+    {
+      "target": "backboardd",
+      "file": "symbolizer-raw.txt",
+      "identical": true,
+      "expected_sha256": "d5d982334df659cb183acaf473a5185879ad4130646d05cc7145c63d842c48a1",
+      "replayed_sha256": "d5d982334df659cb183acaf473a5185879ad4130646d05cc7145c63d842c48a1"
+    },
+    {
+      "target": "backboardd",
+      "file": "symbolized.txt",
+      "identical": true,
+      "expected_sha256": "9b40b83e5984e822877e3d7e9310424407432fb82ff68483428e60adae344991",
+      "replayed_sha256": "9b40b83e5984e822877e3d7e9310424407432fb82ff68483428e60adae344991"
+    },
+    {
+      "target": "backboardd",
+      "file": "symbolication-audit.json",
+      "identical": true,
+      "expected_sha256": "e356025798339e04cb614fd0dc6c317184af7fc57a8a8cfd0f2afc695877eeca",
+      "replayed_sha256": "e356025798339e04cb614fd0dc6c317184af7fc57a8a8cfd0f2afc695877eeca"
+    },
+    {
+      "target": "springboard",
+      "file": "symbolizer-raw.txt",
+      "identical": true,
+      "expected_sha256": "d628ebee5cbfc29aae06055c577d49d58aaf924261b3db654b2eeb9ce1f5c9ce",
+      "replayed_sha256": "d628ebee5cbfc29aae06055c577d49d58aaf924261b3db654b2eeb9ce1f5c9ce"
+    },
+    {
+      "target": "springboard",
+      "file": "symbolized.txt",
+      "identical": true,
+      "expected_sha256": "c0fd8a0bd81f87b4b6fd45ad61f90309318bde0bee50882bad0df43c309cea3e",
+      "replayed_sha256": "c0fd8a0bd81f87b4b6fd45ad61f90309318bde0bee50882bad0df43c309cea3e"
+    },
+    {
+      "target": "springboard",
+      "file": "symbolication-audit.json",
+      "identical": true,
+      "expected_sha256": "33430eeb17d2e39a6b38c8430f929201e245a5cb195d15828f6220ec230cfa74",
+      "replayed_sha256": "33430eeb17d2e39a6b38c8430f929201e245a5cb195d15828f6220ec230cfa74"
+    }
+  ],
+  "stdout": "backboardd 41 13 []\nspringboard 89 19 []\n",
+  "stderr": "",
+  "source_sha256": "e7d1937f0d02cf27c07e1618f7fe6a954ba83e4dfd1f88ee5ef7f592d278a8a1"
+}
