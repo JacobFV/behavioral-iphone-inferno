@@ -236,4 +236,4 @@ apple_adp_gp_config_write(uint32_t pipe, uint64_t offset, uint64_t value) "pipe=
 apple_adp_status_read(uint64_t offset, uint32_t value) "offset=0x%"PRIx64" value=0x%x"
 
 # Existing unknown-read caller metadata only; no CPU-state synchronization.
-apple_adp_read_caller(uint64_t offset, bool cpu_present, int32_t cpu_index, bool aarch64_valid, uint64_t pc, uint64_t lr) "offset=0x%"PRIx64" cpu_present=%d cpu_index=%d aarch64_valid=%d pc=0x%"PRIx64" lr=0x%"PRIx64
+apple_adp_read_caller(uint64_t offset, bool cpu_present, int32_t cpu_index, bool aarch64_valid, uint64_t pc, uint64_t lr, uint64_t x21) "offset=0x%"PRIx64" cpu_present=%d cpu_index=%d aarch64_valid=%d pc=0x%"PRIx64" lr=0x%"PRIx64" x21=0x%"PRIx64

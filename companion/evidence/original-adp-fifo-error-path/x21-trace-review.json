@@ -1,0 +1,23 @@
+{
+  "scope": "Diagnostic-only source candidate, no build/VM execution",
+  "original_kernel_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+  "independent_review": {
+    "leaf": "AppleRegisterStream::read 0xfffffff00977b650..664 uses x0,x1,x8,x9 only; no x21 assignment or nested call. Existing stable register-stream-read.txt provenance applies.",
+    "handler": "Call at 0xfffffff0097453f8; LR0xfffffff0097453fc is tbz w21,#10 before status0x70 mask check. Capturing exposed x21 at MMIO therefore observes the preserved register for this next branch, subject actual LR/CPU validation.",
+    "limits": "No inference of pending-word memory contents or downstream completion. Existing handler state gates and notification remain unproven."
+  },
+  "implementation": "Append x21 to existing read_caller event under same enabled/valid guards. Direct env.xregs[21] read only; no RAM/MMIO/state mutation/synchronization. Still nine events, unchanged control tuple and deadlines.",
+  "parser": "Optional trailing field for compatibility. Absent means unknown; bit10 only interpreted for exact normalized handler LR and0x45004. No meaning assigned for GP/FIFO/unknown callers.",
+  "checks": {
+    "old_actual63_full_counter_prefix": 132,
+    "old_records_x21": "all unknown; counts preserved",
+    "synthetic_only": [
+      "handler x21=0x400 => bit10 true",
+      "handler x21=0x100000 => bit10 false",
+      "old field absent => unknown",
+      "FIFO caller with0x400 => no pending-bit interpretation"
+    ],
+    "diff_check": "passed"
+  },
+  "runtime": "Not built/staged/run by worker; actual follow-up required."
+}
