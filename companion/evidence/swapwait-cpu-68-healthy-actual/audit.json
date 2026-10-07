@@ -1,0 +1,163 @@
+{
+  "scope": "Healthy Clock calibration, not a reproduced failure; no worker runtime actions.",
+  "read_start_host": 1791409953.5877955,
+  "read_end_host": 1791409953.616707,
+  "manifest": {
+    "guest-errors.log": {
+      "source": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-68/guest-errors.log",
+      "bytes": 750030,
+      "sha256": "3137dbeb3e8c08905fd8860ed9a3c3ea1f033c49396ebf2f81f4e4d4c7a2e46c",
+      "dev": 66306,
+      "inode": 47845246,
+      "retained": "guest-errors.log.prefix"
+    },
+    "swapwait-cpu-control.jsonl": {
+      "source": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-68/swapwait-cpu-control.jsonl",
+      "bytes": 758,
+      "sha256": "1e02b0d66efd668d8282cf5219950679597e07b16e29054becd62ace53a1bcf0",
+      "dev": 66306,
+      "inode": 47846761,
+      "retained": "swapwait-cpu-control.jsonl.prefix"
+    },
+    "qmp-transcript.jsonl": {
+      "source": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-68/qmp-transcript.jsonl",
+      "bytes": 50414,
+      "sha256": "534246f2a3ec80084c6dd5670fda900981376c7315648a0504856e972ab1cefc",
+      "dev": 66306,
+      "inode": 47845250,
+      "retained": "qmp-transcript.jsonl.prefix"
+    },
+    "command.json": {
+      "source": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-68/command.json",
+      "bytes": 3451,
+      "sha256": "e2facc219c768421eaf7b9fd48e7f4a1ed286c3557b23402a0b15afd82b21585",
+      "dev": 66306,
+      "inode": 47845238,
+      "retained": "command.json"
+    },
+    "stderr.log": {
+      "source": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-68/stderr.log",
+      "bytes": 2827,
+      "sha256": "90d324fa1e1c26c49589cda1ea8076ea1c3f9073a1f1fccf44bdc91ae15d91eb",
+      "dev": 66306,
+      "inode": 47845176,
+      "retained": "stderr.log.prefix"
+    },
+    "report.json": {
+      "source": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-68/report.json",
+      "bytes": 20149,
+      "sha256": "2a33d14913d117983b3378a0dec5250484cd563c6ed35ef00f942462a9c27263",
+      "dev": 66306,
+      "inode": 47845241,
+      "retained": "report.json.prefix"
+    }
+  },
+  "parser_sha256": "6c22f7a54fdd1dec01d6afdeffb78ccc54a8f50a57428d0504789a5b52d1fe30",
+  "actual_slide_lines": [
+    "info: Kernel Virtual Slide: 0x0000000000000000"
+  ],
+  "commands": [
+    {
+      "time": 1791409860.118203,
+      "id": 112,
+      "command": "log cpu,nochain,guest_errors"
+    },
+    {
+      "time": 1791409861.130383,
+      "id": 114,
+      "command": "log guest_errors"
+    }
+  ],
+  "window": {
+    "start_offset": 478486,
+    "restored_offset": 750030,
+    "bytes": 271544,
+    "enable_to_restore_ack_seconds": 1.0121002197265625,
+    "all_cpu_blocks_inside_offsets": true,
+    "cpu_blocks_before": 0,
+    "cpu_blocks_after_in_retained_prefix": 0
+  },
+  "snapshot_count": 364,
+  "exact_pc_counts": {
+    "0xfffffff0096df690": 182,
+    "0xfffffff0096e219c": 182
+  },
+  "distributions": [
+    {
+      "role": "entry",
+      "abi_low32": {
+        "flags": 2147483648,
+        "third": 0,
+        "token": 545
+      },
+      "snapshots": 15
+    },
+    {
+      "role": "entry",
+      "abi_low32": {
+        "flags": 2147483648,
+        "third": 0,
+        "token": 546
+      },
+      "snapshots": 35
+    },
+    {
+      "role": "entry",
+      "abi_low32": {
+        "flags": 2147483648,
+        "third": 0,
+        "token": 547
+      },
+      "snapshots": 64
+    },
+    {
+      "role": "entry",
+      "abi_low32": {
+        "flags": 2147483648,
+        "third": 0,
+        "token": 548
+      },
+      "snapshots": 34
+    },
+    {
+      "role": "entry",
+      "abi_low32": {
+        "flags": 2147483648,
+        "third": 0,
+        "token": 549
+      },
+      "snapshots": 32
+    },
+    {
+      "role": "entry",
+      "abi_low32": {
+        "flags": 2147483648,
+        "third": 0,
+        "token": 550
+      },
+      "snapshots": 2
+    },
+    {
+      "role": "final-return",
+      "abi_low32": {
+        "status": 0
+      },
+      "snapshots": 5
+    },
+    {
+      "role": "final-return",
+      "abi_low32": {
+        "status": 3758097109
+      },
+      "snapshots": 177
+    }
+  ],
+  "interpretation": [
+    "182 exact entry snapshots and182 exact final wrapper-return snapshots; equality of counts does NOT establish pairing or invocation count.",
+    "Entry low32 flags0x80000000, third0 and tokens545..550; full64-bit X values retained in parsed blocks. No CPU/process identity available.",
+    "177 return snapshots report low32 e00002d5 and5 report0. Original kernel static pending branch with bit31 set can return e00002d5 without sleeping. Observed healthy nonzero status cannot itself diagnose persistent freeze.",
+    "Exact production PCs and complete register blocks establish actual coverage for this window; they do not prove coverage in every future TB/context or unperturbed execution.",
+    "CPU logging/nochain globally perturbs execution; no calibration performance or reliability conclusion. Parent-owned reviewed advancing stopwatch frames supply healthy context; this audit independently verifies CPU/control bytes only.",
+    "No per-call matching, sampled return-to-specific-token association, or numerical causal inference is made."
+  ]
+}
