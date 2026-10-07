@@ -1,0 +1,164 @@
+{
+  "kext_patch_text_ranges": {
+    "com.apple.driver.AppleMobileFileIntegrity": {
+      "('__TEXT_EXEC', '__text')": [
+        "0xfffffff0082f0320",
+        "0xfffffff0082f8cb0"
+      ]
+    },
+    "com.apple.security.AppleImage4": {
+      "('__TEXT_EXEC', '__text')": [
+        "0xfffffff00837e9c8",
+        "0xfffffff00838c928"
+      ]
+    },
+    "com.apple.driver.AppleSEPManager": {
+      "('__TEXT_EXEC', '__text')": [
+        "0xfffffff008b39b78",
+        "0xfffffff008b6b818"
+      ]
+    },
+    "com.apple.filesystems.apfs": {
+      "('__TEXT_EXEC', '__text')": [
+        "0xfffffff008fdcee0",
+        "0xfffffff0090c1e70"
+      ]
+    }
+  },
+  "global_scan_range": [
+    "0xfffffff0079ec000",
+    "0xfffffff0097db9c0"
+  ],
+  "global_pattern_anchors": [
+    {
+      "function": "ck_kp_mac_mount_patch",
+      "pattern": "pattern",
+      "hits": [],
+      "within4096_of_audited_ranges": []
+    },
+    {
+      "function": "ck_kp_mac_mount_patch",
+      "pattern": "new_pattern",
+      "hits": [
+        "0xfffffff007bf3cf8",
+        "0xfffffff0095d89d8"
+      ],
+      "within4096_of_audited_ranges": []
+    },
+    {
+      "function": "ck_kp_kprintf_patch",
+      "pattern": "pattern",
+      "hits": [
+        "0xfffffff0080f62f8"
+      ],
+      "within4096_of_audited_ranges": []
+    },
+    {
+      "function": "ck_kp_kprintf_patch",
+      "pattern": "pattern_new",
+      "hits": [],
+      "within4096_of_audited_ranges": []
+    },
+    {
+      "function": "ck_kp_amx_patch",
+      "pattern": "pattern_new",
+      "hits": [],
+      "within4096_of_audited_ranges": []
+    },
+    {
+      "function": "ck_kp_amx_patch",
+      "pattern": "pattern",
+      "hits": [
+        "0xfffffff007b644a4"
+      ],
+      "within4096_of_audited_ranges": []
+    },
+    {
+      "function": "ck_kp_amx_patch",
+      "pattern": "pattern_newer",
+      "hits": [],
+      "within4096_of_audited_ranges": []
+    },
+    {
+      "function": "ck_kp_cs_patches",
+      "pattern": "pattern",
+      "hits": [
+        "0xfffffff007aca7b0",
+        "0xfffffff007b3a464",
+        "0xfffffff007b69460",
+        "0xfffffff007b6b6e4",
+        "0xfffffff007b6ca2c",
+        "0xfffffff007b6df98",
+        "0xfffffff007b6eeb4",
+        "0xfffffff007b6fd0c",
+        "0xfffffff007b6fde0",
+        "0xfffffff007b6feb8",
+        "0xfffffff007b6ff9c",
+        "0xfffffff007be42d0",
+        "0xfffffff007be50bc",
+        "0xfffffff007e11278",
+        "0xfffffff007e4e164",
+        "0xfffffff007ecee2c",
+        "0xfffffff0080b3a90",
+        "0xfffffff0081623dc",
+        "0xfffffff008b10580",
+        "0xfffffff008fff20c",
+        "0xfffffff00909f080",
+        "0xfffffff0090a3188",
+        "0xfffffff0092abd7c",
+        "0xfffffff0096821b0"
+      ],
+      "within4096_of_audited_ranges": []
+    },
+    {
+      "function": "ck_kp_cs_patches",
+      "pattern": "alt",
+      "hits": [],
+      "within4096_of_audited_ranges": []
+    }
+  ],
+  "ppl_range": [
+    "0xfffffff0097e0000",
+    "0xfffffff0097f9844"
+  ],
+  "audited_ranges": [
+    [
+      "0xfffffff0096df690",
+      "0xfffffff0096df760"
+    ],
+    [
+      "0xfffffff0096e2148",
+      "0xfffffff0096e21a8"
+    ]
+  ],
+  "schema": "inferno.original-swapwait-direct-patch-overlap.v1",
+  "source_revision": "f37ad49dbb68dc9c0097960381ebc14270fc3da8",
+  "emulator_sha256_from_build_manifest": "0889bfe40c6bbb3e6eb9d493ada2bb86637e1d7acb61e36699e16da2568563f2",
+  "build_manifest_sha256": "1c0ca353df0b88956f071503654a9a0a3f1e22346270e89accdfaa911391f096",
+  "kernel_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+  "source_files": {
+    "hw/arm/apple-silicon/kernel_patches.c": {
+      "sha256": "f0136983ea2716f719872eb7d16234e3c618f1b2de6135334cb4a30f6daacc80",
+      "matches_build_revision": true
+    },
+    "hw/arm/apple-silicon/patcher.c": {
+      "sha256": "99980ce7a60fb9fcc3534f0d087b4bf40559292d4b2f1ad32f0a68a4266d484c",
+      "matches_build_revision": true
+    },
+    "hw/arm/apple-silicon/t8030.c": {
+      "sha256": "a99faeb68b5cceba5615a80306db1f9e2fa10a9b56d4051d9cff88be922a64a5",
+      "matches_build_revision": true
+    }
+  },
+  "result": "No direct patch overlap with either whole original function or its observed PC neighborhoods.",
+  "reasoning": [
+    "t8030_patch_kernel invokes ck_patch_kernel; its kext patches target APFS, AMFI, SEPManager and AppleImage4 sections, which do not overlap the two audited functions.",
+    "Kernel-text global patterns were rescanned against the exact original kernel; no candidate anchor within4096 bytes of either audited function. This conservatively covers mount callback searches of64 instructions in either direction, AMX backward10 instructions, kprintf local24-byte replacement, and CS local4-byte replacement.",
+    "PPLTEXT exists in this kernel; trust-cache and pmap patches use that separate range, not the kernel-text fallback. Hactivation operates __TEXT.__const and APFS snapshot replacement operates cstrings, not these __TEXT_EXEC functions."
+  ],
+  "limits": [
+    "Static source-plan/original-image exclusion only, not equality of live guest code bytes.",
+    "Build manifest associates binary with revision; this audit does not rebuild or independently reproduce the binary.",
+    "Does not establish translation-block boundaries or guarantee runtime snapshot coverage."
+  ]
+}
