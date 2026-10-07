@@ -1,0 +1,42 @@
+# Fixed SwapWait GPR window
+
+`boot --swapwait-cpu-diagnostic --guest-errors --control-mailbox --disk-boot ...`
+opts in to two fixed four-byte TB-start filters: `0xfffffff0096df690+4`
+and `0xfffffff0096e219c+4`. The exact reviewed kernel, emulator binary and
+build source are pinned in `qmp_control.py`. Default CPU logging stays off.
+Each request also requires exactly one zero kernel virtual-slide startup line
+from this attempt's emulator stderr.
+
+After independently confirming a frozen display, the operator may request:
+
+```
+python3 companion/qmp_control.py --report /absolute/report swapwait-cpu-window --arguments '{"seconds":1}'
+```
+
+Only integer seconds 1–3 are accepted. No address or mask arguments exist.
+The sole runner QMP owner enables literal `log cpu,nochain,guest_errors` and
+restores `log guest_errors` at the monotonic deadline, an 8 MiB log-growth
+poll cutoff, uncertain enable, or runner cleanup. Display trace windows cannot
+overlap. The existing log inode/path is retained. The journal records actual
+commands, responses, times and offsets. Polling/QMP delays and in-flight CPU
+work can overshoot limits; this is not a hard real-time or byte-exact cap.
+
+Each dump is one coherent GPR block, with no CPU/thread identity. Do not pair
+entry and return snapshots. A matching entry PC supports token/flags inspection;
+the matching wrapper-continuation PC supports final w0 inspection. Neither
+proves every invocation was observed. `nochain` perturbs execution globally,
+even though the address filter limits output. No instruction, FPU or VPU dump
+is enabled. These observations are not performance measurements or proof of
+unperturbed freeze behavior.
+
+The owned harness runs a standalone AArch64 loop under `virt`, without network,
+Apple code, or firmware. Its two synthetic PCs and labeled synthetic slide
+fixture exercise logging plumbing, not the production kernel-address guard.
+It verifies known arguments and return registers, complete GPR blocks, absent
+unfiltered PC output, actual continuing PL011 guest-error messages after mask
+restoration, deadline/early-cleanup and uncertain-enable restoration. Build
+products and raw logs go only to a new external output directory:
+
+```
+python3 companion/cpu-window-probe/run.py --binary /absolute/qemu-system-aarch64 --output /absolute/new-output
+```

@@ -1,0 +1,8 @@
+Some ROM regions are overlapping
+These ROM regions might have been loaded by direct user request or by default.
+They could be BIOS/firmware images, a guest kernel, initrd or some other file loaded into guest memory.
+Check whether you intended to load all this guest code, and whether it has been built to load to the correct addresses.
+
+The following two regions overlap (in the cpu-memory-0 address space):
+  dtb (addresses 0x0000000040000000 - 0x0000000040100000)
+  /home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/swapwait-owned-cpu-smoke-3/loop.elf ELF program header segment 0 (addresses 0x0000000040070000 - 0x000000004008002c)
