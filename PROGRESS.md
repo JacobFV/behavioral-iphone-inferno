@@ -2,6 +2,29 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 15:34: guarded sequence reviewed; actual71 launching
+
+Guarded helper ed1283d849+33164d2bd2+f021c916e4+37edc68fe9+df00efca88; independent
+reviews cfebfbbd30/ec4dbb45f2/bec3e92433. Actual69/70 reference replay and real
+private Unix transport deadline fixture passed, including zero bytes after expired
+queued/delayed request, default/timely unchanged wire, no running orphan after owned
+process-group timeout. These are HOST checks, not guest execution.
+
+References manifest SHA209aa6cebf165fbdf4297fd91a0c82635d1c3af276bf575a310506a623385e6b,
+exact RGB832x1792 crop(0,100,832,1400), noresize/tolerance. Initial/preNotNow overlay
+and finalpreCounterzero exact; wait-only transitionalframes retainedwithoutinput.
+Currentboot/appeared0/onePID/noinitialtap identity, activeemulator/privateendpoint,
+all9traceoff preconditions. Starts60strace, oneNotNow,10s targetfromreceiverwritebegin,
+onecounter onlyexactzero+ACK/sourcegate. Optionalreceiver monotonicdeadline rejects
+late sendstart; blocked/partialwrites andguestprocessingtime notguaranteed. No
+retry/CPU/Home/OPEN/strictafter/finish. Root reviews output andowns invocation.
+
+ONE71 runner2017180 launchingfromactualbec3e92433, qmpcontrolSHA
+ db966c6457662807fb17aa44974c9645c0485b79ec8d971c53c5b780c4edb37b,
+same0889/base/flags. Rootmanualstartup10strace/unlock/Close; onceFinishSetuponowned0
+reviewed andall9off, invokeguardedhelper dedicatedwindow. CPU1s onlyconfirmedfreeze
+andtracesoff. Actualhelperexecutionnotyethappened. Keepworking acrossstatusquestions.
+
 ### 2026-10-07 15:24: run70 preserved; fixing cadence execution before next boot
 
 Run70 postflightb89fe03fc4 normalexit0/errornull417.652322s, strict and initial
