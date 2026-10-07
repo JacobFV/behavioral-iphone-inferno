@@ -1,0 +1,764 @@
+{
+  "scope": "Actual72 guard002 execution audit; helper001 exact-overlay mismatch remains separately preserved.",
+  "sources": {
+    "serial.log": {
+      "bytes": 337058,
+      "sha256": "9bac7ade2434634015676fb48e16e6836cdb96e8df5415a831867b48cb7c2fff"
+    },
+    "guest-errors.log": {
+      "bytes": 473452,
+      "sha256": "29539de1e0ee7431f4d203429fa6a09f267d85f0d7c6ee794bdb671577949a85"
+    },
+    "stderr.log": {
+      "bytes": 2827,
+      "sha256": "90d324fa1e1c26c49589cda1ea8076ea1c3f9073a1f1fccf44bdc91ae15d91eb"
+    },
+    "qmp-transcript.jsonl": {
+      "bytes": 31027,
+      "sha256": "6b5f60e7a1a3fe61b0f1e2ea1bb1e3e5bf76bfd359dfcfbb9ff44bae6ac27a33"
+    },
+    "control-transcript.jsonl": {
+      "bytes": 7873,
+      "sha256": "e6c4911f7d15792e763096905674b8d85877f251bc95373aeb8da2e20a552e6b"
+    },
+    "serial-input-transcript.jsonl": {
+      "bytes": 3874,
+      "sha256": "17e473ce5fea6a4f306226abc7015d0791fcada572a4234aa5e69c2a5bee1ddb"
+    },
+    "display-trace-control.jsonl": {
+      "bytes": 11556,
+      "sha256": "f55e0884acae6e759376258a7578911b901b64eb24025fed16fbb49f58c62c60"
+    },
+    "report.json": {
+      "bytes": 69201,
+      "sha256": "cca09400a82232b77ce9c72bd033b5fd0bae95f86c946593ebecad44d567e096"
+    },
+    "command.json": {
+      "bytes": 3451,
+      "sha256": "9c520843ea8cf4d46d5ff5f6dfb3e3994c71792ac9c6ff83fbd1e905de8a9c62"
+    },
+    "build-manifest.json": {
+      "bytes": 2401,
+      "sha256": "1c0ca353df0b88956f071503654a9a0a3f1e22346270e89accdfaa911391f096"
+    },
+    "sequence.json": {
+      "bytes": 24638,
+      "sha256": "04ee99874bb0c67af89ad6da3da41d282608d204af144f8eb8f2d011626f462a"
+    },
+    "not-now/request.json": {
+      "bytes": 169,
+      "sha256": "42ff906d96e1b8c7cccc6ea2ae76ac7e41240ec81f3b71b89ae0650a083eb7cc"
+    },
+    "not-now/submission.json": {
+      "bytes": 1875,
+      "sha256": "f6eeeec174ebf83845aba9a5b0af425579f7a23747606bdb8e9077cebae8b7ae"
+    },
+    "counter/request.json": {
+      "bytes": 169,
+      "sha256": "9abf24ef8b8554e2f6f8917c57215214cfbbd8c1dea078ed6d66938d00d59be8"
+    },
+    "counter/submission.json": {
+      "bytes": 1876,
+      "sha256": "4c5375497fa9ea43bc13fb7ca6add026e68ebac41417e287c67493cecaad36b0"
+    }
+  },
+  "source_hashes_recorded": {
+    "guarded-setup-counter.py": "85263dc31b20a15c5a38fb01c51657b9b2244d6c9bbc77845c1771568a71e436",
+    "owned-control.py": "3ca9c6f31839fc8dbee4fbfbaa9c3565d3086b22c6fcaf2238ead072a31d085d",
+    "qmp_control.py": "db966c6457662807fb17aa44974c9645c0485b79ec8d971c53c5b780c4edb37b",
+    "vnc-control.py": "99016edaf5f58ef7a6e2433a03d5a465d46c440053bdcfc2ec06a93124d5d29f",
+    "probe_journey.py": "1c4cbb542a79b85560433d62726123b99555ad0a47522d5ecd659faf3a04f308"
+  },
+  "actual_send_interval_seconds": 10.235177319962531,
+  "sends": [
+    {
+      "before": {
+        "time": 1791413758.305678,
+        "monotonic": 832942.182155791,
+        "send_deadline_monotonic": 832944.964155616,
+        "stage": "before-send",
+        "request_id": "47bd338719714465beb969b541e4f4fd",
+        "operation": "HID",
+        "raw": "INFERNO_HID_V1 47bd338719714465beb969b541e4f4fd TAP 11028 18432 150\n",
+        "sha256": "96b8607997e93e8a8ac9abf8afe5aeb5e0620b6f5e68dfa1301d63bf41498747"
+      },
+      "after": {
+        "time": 1791413758.3057415,
+        "stage": "after-send",
+        "response": {
+          "request_id": "47bd338719714465beb969b541e4f4fd",
+          "guest_acknowledgment": "not checked",
+          "ui_acceptance": "not observed by transport",
+          "write_begin_monotonic": 832942.182211727,
+          "send_deadline_monotonic": 832944.964155616,
+          "transmission": "written-to-serial-socket",
+          "bytes_sent": 68,
+          "write_end_monotonic": 832942.182219119,
+          "write_end_after_deadline": false
+        }
+      }
+    },
+    {
+      "before": {
+        "time": 1791413768.5408297,
+        "monotonic": 832952.417307783,
+        "send_deadline_monotonic": 832952.682211727,
+        "stage": "before-send",
+        "request_id": "c7f9cae09b564ee8b478bd32a5c892ed",
+        "operation": "HID",
+        "raw": "INFERNO_HID_V1 c7f9cae09b564ee8b478bd32a5c892ed TAP 16384 20316 150\n",
+        "sha256": "7628fc0fe1a300dc6501dc639a6e60d31828bcefe32fee57eed8807a11f33853"
+      },
+      "after": {
+        "time": 1791413768.5409362,
+        "stage": "after-send",
+        "response": {
+          "request_id": "c7f9cae09b564ee8b478bd32a5c892ed",
+          "guest_acknowledgment": "not checked",
+          "ui_acceptance": "not observed by transport",
+          "write_begin_monotonic": 832952.417389047,
+          "send_deadline_monotonic": 832952.682211727,
+          "transmission": "written-to-serial-socket",
+          "bytes_sent": 68,
+          "write_end_monotonic": 832952.417413303,
+          "write_end_after_deadline": false
+        }
+      }
+    }
+  ],
+  "acks": [
+    {
+      "offset": 334049,
+      "text": "INFERNO_HID_ACK request_id=47bd338719714465beb969b541e4f4fd attempt_status=0 delivery=unproven timestamp=9710283341"
+    },
+    {
+      "offset": 336846,
+      "text": "INFERNO_HID_ACK request_id=c7f9cae09b564ee8b478bd32a5c892ed attempt_status=0 delivery=unproven timestamp=9960504795"
+    }
+  ],
+  "prestate_frame_replay": [
+    {
+      "name": "overlay-initial.png",
+      "sha256": "59db7ac6201febd1a0a7c1e52b0da1c5dc333384e76553884e5a1da9d8f5234a",
+      "received_time": 1791413757.504541,
+      "state": "overlay"
+    },
+    {
+      "name": "overlay-pre-input.png",
+      "sha256": "59db7ac6201febd1a0a7c1e52b0da1c5dc333384e76553884e5a1da9d8f5234a",
+      "received_time": 1791413758.0447953,
+      "state": "overlay"
+    },
+    {
+      "name": "poll-000.png",
+      "sha256": "4add78ac1df7511ae7cc3e8f812fae1beb744ab7ff2238bbb5a82593c641885d",
+      "received_time": 1791413758.6562302,
+      "state": "unknown"
+    },
+    {
+      "name": "poll-001.png",
+      "sha256": "4add78ac1df7511ae7cc3e8f812fae1beb744ab7ff2238bbb5a82593c641885d",
+      "received_time": 1791413758.8217764,
+      "state": "unknown"
+    },
+    {
+      "name": "poll-002.png",
+      "sha256": "73bd8d805e0c902f04e745f17534c81b366a23e9a107a8635a6b0a8111576565",
+      "received_time": 1791413759.0440116,
+      "state": "overlay"
+    },
+    {
+      "name": "poll-003.png",
+      "sha256": "cf668351a491797944dbd0a501415079b1f6a81bfdc740071246a19c1af724d9",
+      "received_time": 1791413759.3025358,
+      "state": "unknown"
+    },
+    {
+      "name": "poll-004.png",
+      "sha256": "d3c7d6638e80ec0b54e1a9328fa8ec59ded851b57b423c8f4680b185cb6c5f36",
+      "received_time": 1791413759.5105844,
+      "state": "zero"
+    },
+    {
+      "name": "zero-pre-counter.png",
+      "sha256": "d3c7d6638e80ec0b54e1a9328fa8ec59ded851b57b423c8f4680b185cb6c5f36",
+      "received_time": 1791413768.3527658,
+      "state": "zero"
+    },
+    {
+      "name": "after-000.png",
+      "sha256": "1ea38cf4dc3b6de9662142a56d00db03924c8192fe21a33f12cc368a63db2aa6",
+      "received_time": 1791413769.3310475,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-001.png",
+      "sha256": "a0018d9cf79fa10c164d932e5ff3f6ca186259cfe03d1282cfc2ed4e2fa35d99",
+      "received_time": 1791413770.3597994,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-002.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413770.948934,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-003.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413771.7365189,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-004.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413772.724386,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-005.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413773.29409,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-006.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413773.9136312,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-007.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413774.5815463,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-008.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413775.301597,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-009.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413776.0747907,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-010.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413776.9015927,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-011.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413777.7578917,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-012.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413778.676959,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-013.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413779.6464477,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-014.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413780.665425,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-015.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413781.7341952,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-016.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413782.8527222,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-017.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413784.0218213,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-018.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413785.2426746,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-019.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413786.5101395,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-020.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413787.8347993,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-021.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413789.2032712,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-022.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413790.6167188,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-023.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413792.0866823,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-024.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413793.6056292,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-025.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413795.1745746,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-026.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413796.797801,
+      "state": "manual-review-required"
+    },
+    {
+      "name": "after-027.png",
+      "sha256": "6e007dfe59664b7fff218ceba44e4d8d6ef5df98da1fb76dc279bbaf483b7c2b",
+      "received_time": 1791413798.4612708,
+      "state": "manual-review-required"
+    }
+  ],
+  "trace_window": [
+    {
+      "time": 1791413757.697367,
+      "monotonic_ns": 832941573845534,
+      "stage": "start",
+      "seconds": 60,
+      "events": [
+        "apple_adp_submit",
+        "apple_adp_bh",
+        "apple_adp_pipe",
+        "apple_adp_output_ready",
+        "apple_adp_irq_write",
+        "apple_adp_unknown_mmio",
+        "apple_adp_gp_config_write",
+        "apple_adp_status_read",
+        "apple_adp_read_caller"
+      ]
+    },
+    {
+      "time": 1791413757.6974094,
+      "monotonic_ns": 832941573887374,
+      "stage": "before-enable",
+      "event": "apple_adp_submit"
+    },
+    {
+      "time": 1791413757.698249,
+      "monotonic_ns": 832941574727186,
+      "stage": "after-enable",
+      "event": "apple_adp_submit",
+      "response": {
+        "return": {},
+        "id": 43
+      }
+    },
+    {
+      "time": 1791413757.69826,
+      "monotonic_ns": 832941574737954,
+      "stage": "before-enable",
+      "event": "apple_adp_bh"
+    },
+    {
+      "time": 1791413757.6989133,
+      "monotonic_ns": 832941575391204,
+      "stage": "after-enable",
+      "event": "apple_adp_bh",
+      "response": {
+        "return": {},
+        "id": 44
+      }
+    },
+    {
+      "time": 1791413757.698923,
+      "monotonic_ns": 832941575400948,
+      "stage": "before-enable",
+      "event": "apple_adp_pipe"
+    },
+    {
+      "time": 1791413757.6996002,
+      "monotonic_ns": 832941576078103,
+      "stage": "after-enable",
+      "event": "apple_adp_pipe",
+      "response": {
+        "return": {},
+        "id": 45
+      }
+    },
+    {
+      "time": 1791413757.699609,
+      "monotonic_ns": 832941576087015,
+      "stage": "before-enable",
+      "event": "apple_adp_output_ready"
+    },
+    {
+      "time": 1791413757.700605,
+      "monotonic_ns": 832941577082890,
+      "stage": "after-enable",
+      "event": "apple_adp_output_ready",
+      "response": {
+        "return": {},
+        "id": 46
+      }
+    },
+    {
+      "time": 1791413757.7006137,
+      "monotonic_ns": 832941577091642,
+      "stage": "before-enable",
+      "event": "apple_adp_irq_write"
+    },
+    {
+      "time": 1791413757.7013152,
+      "monotonic_ns": 832941577793117,
+      "stage": "after-enable",
+      "event": "apple_adp_irq_write",
+      "response": {
+        "return": {},
+        "id": 47
+      }
+    },
+    {
+      "time": 1791413757.7013237,
+      "monotonic_ns": 832941577801917,
+      "stage": "before-enable",
+      "event": "apple_adp_unknown_mmio"
+    },
+    {
+      "time": 1791413757.7020774,
+      "monotonic_ns": 832941578555392,
+      "stage": "after-enable",
+      "event": "apple_adp_unknown_mmio",
+      "response": {
+        "return": {},
+        "id": 48
+      }
+    },
+    {
+      "time": 1791413757.7020862,
+      "monotonic_ns": 832941578564048,
+      "stage": "before-enable",
+      "event": "apple_adp_gp_config_write"
+    },
+    {
+      "time": 1791413757.702876,
+      "monotonic_ns": 832941579354051,
+      "stage": "after-enable",
+      "event": "apple_adp_gp_config_write",
+      "response": {
+        "return": {},
+        "id": 49
+      }
+    },
+    {
+      "time": 1791413757.7028844,
+      "monotonic_ns": 832941579362435,
+      "stage": "before-enable",
+      "event": "apple_adp_status_read"
+    },
+    {
+      "time": 1791413757.7036188,
+      "monotonic_ns": 832941580096854,
+      "stage": "after-enable",
+      "event": "apple_adp_status_read",
+      "response": {
+        "return": {},
+        "id": 50
+      }
+    },
+    {
+      "time": 1791413757.7036304,
+      "monotonic_ns": 832941580108422,
+      "stage": "before-enable",
+      "event": "apple_adp_read_caller"
+    },
+    {
+      "time": 1791413757.7043643,
+      "monotonic_ns": 832941580842344,
+      "stage": "after-enable",
+      "event": "apple_adp_read_caller",
+      "response": {
+        "return": {},
+        "id": 51
+      }
+    },
+    {
+      "time": 1791413817.8525996,
+      "monotonic_ns": 833001729078018,
+      "stage": "stop",
+      "reason": "deadline",
+      "pending": [
+        "apple_adp_submit",
+        "apple_adp_bh",
+        "apple_adp_pipe",
+        "apple_adp_output_ready",
+        "apple_adp_irq_write",
+        "apple_adp_unknown_mmio",
+        "apple_adp_gp_config_write",
+        "apple_adp_status_read",
+        "apple_adp_read_caller"
+      ]
+    },
+    {
+      "time": 1791413817.8526878,
+      "monotonic_ns": 833001729165906,
+      "stage": "before-disable",
+      "event": "apple_adp_submit"
+    },
+    {
+      "time": 1791413817.8535755,
+      "monotonic_ns": 833001730053910,
+      "stage": "after-disable",
+      "event": "apple_adp_submit",
+      "response": {
+        "return": {},
+        "id": 56
+      }
+    },
+    {
+      "time": 1791413817.853618,
+      "monotonic_ns": 833001730096022,
+      "stage": "before-disable",
+      "event": "apple_adp_bh"
+    },
+    {
+      "time": 1791413817.854719,
+      "monotonic_ns": 833001731197610,
+      "stage": "after-disable",
+      "event": "apple_adp_bh",
+      "response": {
+        "return": {},
+        "id": 57
+      }
+    },
+    {
+      "time": 1791413817.8547645,
+      "monotonic_ns": 833001731242698,
+      "stage": "before-disable",
+      "event": "apple_adp_pipe"
+    },
+    {
+      "time": 1791413817.8555546,
+      "monotonic_ns": 833001732032509,
+      "stage": "after-disable",
+      "event": "apple_adp_pipe",
+      "response": {
+        "return": {},
+        "id": 58
+      }
+    },
+    {
+      "time": 1791413817.8555853,
+      "monotonic_ns": 833001732063405,
+      "stage": "before-disable",
+      "event": "apple_adp_output_ready"
+    },
+    {
+      "time": 1791413817.8564193,
+      "monotonic_ns": 833001732897536,
+      "stage": "after-disable",
+      "event": "apple_adp_output_ready",
+      "response": {
+        "return": {},
+        "id": 59
+      }
+    },
+    {
+      "time": 1791413817.8564463,
+      "monotonic_ns": 833001732924320,
+      "stage": "before-disable",
+      "event": "apple_adp_irq_write"
+    },
+    {
+      "time": 1791413817.857538,
+      "monotonic_ns": 833001734016612,
+      "stage": "after-disable",
+      "event": "apple_adp_irq_write",
+      "response": {
+        "return": {},
+        "id": 60
+      }
+    },
+    {
+      "time": 1791413817.8575811,
+      "monotonic_ns": 833001734059157,
+      "stage": "before-disable",
+      "event": "apple_adp_unknown_mmio"
+    },
+    {
+      "time": 1791413817.858651,
+      "monotonic_ns": 833001735129481,
+      "stage": "after-disable",
+      "event": "apple_adp_unknown_mmio",
+      "response": {
+        "return": {},
+        "id": 61
+      }
+    },
+    {
+      "time": 1791413817.8586907,
+      "monotonic_ns": 833001735168969,
+      "stage": "before-disable",
+      "event": "apple_adp_gp_config_write"
+    },
+    {
+      "time": 1791413817.8599026,
+      "monotonic_ns": 833001736381229,
+      "stage": "after-disable",
+      "event": "apple_adp_gp_config_write",
+      "response": {
+        "return": {},
+        "id": 62
+      }
+    },
+    {
+      "time": 1791413817.8599432,
+      "monotonic_ns": 833001736421325,
+      "stage": "before-disable",
+      "event": "apple_adp_status_read"
+    },
+    {
+      "time": 1791413817.8611884,
+      "monotonic_ns": 833001737666898,
+      "stage": "after-disable",
+      "event": "apple_adp_status_read",
+      "response": {
+        "return": {},
+        "id": 63
+      }
+    },
+    {
+      "time": 1791413817.8612282,
+      "monotonic_ns": 833001737706450,
+      "stage": "before-disable",
+      "event": "apple_adp_read_caller"
+    },
+    {
+      "time": 1791413817.8623765,
+      "monotonic_ns": 833001738854743,
+      "stage": "after-disable",
+      "event": "apple_adp_read_caller",
+      "response": {
+        "return": {},
+        "id": 64
+      }
+    },
+    {
+      "time": 1791413817.8624184,
+      "monotonic_ns": 833001738896439,
+      "stage": "stop-result",
+      "reason": "deadline",
+      "all_disabled": true,
+      "pending": []
+    }
+  ],
+  "ADP_post_counter": [
+    {
+      "bytes": [
+        413798,
+        465869
+      ],
+      "sha256": "dfe554e8952874527ffa2f588430f3b84601e10397e543381a3e48fb94f291a2",
+      "counts": {
+        "apple_adp_gp_config_write": 32,
+        "apple_adp_unknown_mmio": 347,
+        "apple_adp_submit": 4,
+        "apple_adp_bh": 8,
+        "apple_adp_pipe": 8,
+        "apple_adp_status_read": 37,
+        "apple_adp_irq_write": 37,
+        "apple_adp_read_caller": 111,
+        "apple_adp_output_ready": 33
+      },
+      "status_values": {
+        "0x100000": 4,
+        "0x400": 33
+      },
+      "immediate_equal_w1c_pairs": 37,
+      "caller_counts": {
+        "decompression_failure": 74,
+        "interrupt_handler_ready_gate": 37
+      },
+      "handler_pending_bit10": {
+        "False": 4,
+        "True": 33
+      }
+    },
+    {
+      "bytes": [
+        413798,
+        473452
+      ],
+      "sha256": "6afe1d9531cfe9770ba071b1b8917522d4acfa5011e8ee528714a65e55a84096",
+      "counts": {
+        "apple_adp_gp_config_write": 40,
+        "apple_adp_unknown_mmio": 413,
+        "apple_adp_submit": 5,
+        "apple_adp_bh": 10,
+        "apple_adp_pipe": 10,
+        "apple_adp_status_read": 40,
+        "apple_adp_irq_write": 40,
+        "apple_adp_read_caller": 120,
+        "apple_adp_output_ready": 35
+      },
+      "status_values": {
+        "0x100000": 5,
+        "0x400": 35
+      },
+      "immediate_equal_w1c_pairs": 40,
+      "caller_counts": {
+        "decompression_failure": 80,
+        "interrupt_handler_ready_gate": 40
+      },
+      "handler_pending_bit10": {
+        "False": 5,
+        "True": 35
+      }
+    }
+  ],
+  "normal_quit": {
+    "return": {},
+    "id": 77
+  },
+  "limits": [
+    "Root supplies counter1 visual review; this audit does not classify post-action pixels.",
+    "Extra overlay idle during reference review means this does not reproduce full run65 cadence; it validates guarded10s send-start interval.",
+    "Send-start timestamps are host monotonic, not guest delivery or render latency.",
+    "VNC observation stimulates refresh; exact pre-state matching does not establish frame presentation time.",
+    "No CPU/SAMPLE, guest actions or disk hashing by reviewer."
+  ]
+}
