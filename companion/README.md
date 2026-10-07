@@ -65,9 +65,11 @@ through continuous observation and an ordinary Home transition. Drawing
 submissions stopped while interrupt acknowledgments continued. The incomplete
 journey and all seven disks are retained as a forensic failure. Runs63/64 reproduced the freeze on the same original state with diagnostic
 caller tracing. Run64 observed the original interrupt handler with its ready bit
-set, but subsequent drawing submissions stopped. A separate sampling-enabled
-branch is being prepared from the original disk state to inspect compositor
-stacks during failure; no rendering fix is claimed.
+set, but subsequent drawing submissions stopped. Run65 then reproduced it on a verified sampling-enabled branch from the original
+disk state and captured complete original-tool samples of backboardd and
+SpringBoard during the freeze. The failed journey, frozen images, samples and
+all disks are preserved. Original-image stack comparison is now underway;
+no rendering fix is claimed.
 
 Broader reliability and active-workload measurements remain ongoing. See [BOOT.md](BOOT.md) for the image profile and headless runner,
 [USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.

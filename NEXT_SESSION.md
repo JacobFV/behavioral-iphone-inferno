@@ -30,7 +30,11 @@ request reconstructionPASS. Rawreports show currentcacheUUID11AD39C9... andslide
 0x1b4a8000. Symbolication/currentimagevalidation andhealthy49comparison underway;
 transportcompletion alone is not a causaldiagnosis. Postsampleframes remain0.
 
-RootrecordedSIGINT2 at1791404373.9809406; bootworker owns failedforensicpostflight.
+RootrecordedSIGINT2 at1791404373.9809406. Finalforensic9274296b90 passed:
+normalQMP/emulator0, Signal2,355.568390s, strictcorrectlyrejected. RootSHA
+4e009847b8be00ea931835e7941d85c91de8a07f3126b15bfea0171861709b59 forensic_only;
+allseven/newstage/rawunchanged. Initialtiming has onlyfourrecords and correctly
+rejects; this failure cannot provide a completeinitiallaunch timing claim.
 No nextguest authorized until currentevidencepreserved andstackanalysis reviewed.
 Do notstopwork at this milestone: continueactualfailureanalysis toward a fix.
 
