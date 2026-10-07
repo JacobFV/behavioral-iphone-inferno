@@ -378,3 +378,18 @@ CPU is outside whole-QEMU resource samples. Do not infer an active visual frame
 rate from sparse QMP captures. This does not explain away persistent44/47, where
 submissions stopped despite a continuous VNC client. See the actual53 trace,
 source-analysis and resource evidence directories.
+
+### Explicit new-process recovery audit
+
+When an initial process emitted only a validated main marker and a later explicit
+OPEN created the process used for the strict captures, `verify-journey` supports
+`--recovery-open-request RID`. It requires the exact host/serial request, accepted
+original callback, original process identity and a new five-hook incarnation
+between the request and callback. It retains prior launches and all rejection
+records, validates every lifecycle record, and still checks the actual tap and
+QMP captures. A prior appeared/tap marker is rejected without historical arrival
+proof; this mode does not invent a prefix.
+
+The result is `verified-recovered-journey` with `whole_boot_verified: false`, never
+whole-boot success. Default verification and timing parsers remain unchanged.
+See [actual run67 replay and limits](evidence/recovery-journey-67-replay/README.md).
