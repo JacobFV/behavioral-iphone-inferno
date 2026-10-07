@@ -3,6 +3,7 @@
 #import "LaunchServicesNarrow.h"
 #include "EventRecord.h"
 #include "OwnedClock.h"
+#include "AppTarget.h"
 
 static const char *utf8(NSString *text) {
     const char *value = [text UTF8String];
@@ -41,7 +42,7 @@ static int controlled_open(const char *request) {
         LSApplicationWorkspace *workspace=[cls defaultWorkspace];
         openCallbackFinished=0;openCallbackAccepted=0;openCallbackTicks=0;
         openRequestTicks=mach_absolute_time();
-        [workspace openApplicationWithBundleIdentifier:@"org.inferno.companion.probe" configuration:nil completionHandler:^(BOOL accepted,id errorObject) {
+        [workspace openApplicationWithBundleIdentifier:@INFERNO_APP_IDENTIFIER configuration:nil completionHandler:^(BOOL accepted,id errorObject) {
             openCallbackTicks=mach_absolute_time();
             openCallbackAccepted=accepted;openCallbackFinished=1;
             NSError *error=errorObject;char text[1024];
@@ -65,6 +66,13 @@ int main(int argc, char **argv) {
         emit("usage: inferno-launcher /absolute/InfernoProbe.app org.inferno.companion.probe\n");
         return 64;
     }
+#ifdef INFERNO_MANIFEST_TARGET
+    if (strcmp(argv[1], INFERNO_SYSTEM_APP_PATH) ||
+        strcmp(argv[2], INFERNO_APP_IDENTIFIER)) {
+        emit("manifest launcher requires its compiled application target\n");
+        return 64;
+    }
+#endif
     // SIGALRM's default termination bounds even a blocked framework IPC call.
     alarm(120);
     status("start-watchdog-120s", 0, 0);
@@ -95,8 +103,8 @@ int main(int argc, char **argv) {
                 // Match original installd classification for this owned bundle
                 // directly on System. Do not assert signer/profile/trust fields.
                 // See evidence/owned-system-app-classification-inspection.json.
-                if ([path isEqualToString:@"/Applications/InfernoProbe.app"] &&
-                    [identifier isEqualToString:@"org.inferno.companion.probe"])
+                if ([path isEqualToString:@INFERNO_SYSTEM_APP_PATH] &&
+                    [identifier isEqualToString:@INFERNO_APP_IDENTIFIER])
                     [record setObject:@"System" forKey:@"ApplicationType"];
                 BOOL registration = [workspace registerApplicationDictionary:record];
                 status("register-dictionary-boolean", attempt, registration);

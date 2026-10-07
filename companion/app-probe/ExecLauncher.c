@@ -2,6 +2,7 @@
  * Owned diagnostic: original guest execve after dropping to mobile credentials.
  * No launch privileges, registration workaround or file writes.
  */
+#include "AppTarget.h"
 extern int printf(const char *,...),fflush(void *),fork(void),waitpid(int,int*,int);
 extern int setgroups(int,const unsigned int *),setgid(unsigned int),setuid(unsigned int);
 extern unsigned int getuid(void),getgid(void),sleep(unsigned int);
@@ -22,7 +23,7 @@ static int attempt(char *path,int mobile,int noargs,const char *label){
   printf("INFERNO_EXEC_WRAPPER_CHILD uid=%u gid=%u\n",getuid(),getgid());fflush(0);
   *__error()=0;int console_fd=open("/dev/console",1),console_errno=*__error();
   printf("INFERNO_EXEC_WRAPPER_CONSOLE_OPEN fd=%d errno=%d uid=%u gid=%u\n",console_fd,console_errno,getuid(),getgid());fflush(0);if(console_fd>=0)close(console_fd);
-  char *argv[]={path,application_path,"org.inferno.companion.probe",0};
+  char *argv[]={path,application_path,INFERNO_APP_IDENTIFIER,0};
   if(noargs)argv[1]=0;
   char *env[]={"PATH=/usr/bin:/bin:/usr/sbin:/sbin","HOME=/var/mobile","CFFIXED_USER_HOME=/var/mobile","TMPDIR=/var/tmp",0};
   *__error()=0;int xr=access(argv[0],1),xe=*__error();
@@ -49,6 +50,9 @@ static int attempt(char *path,int mobile,int noargs,const char *label){
 }
 
 int main(int argc,char **argv){
+#ifdef INFERNO_MANIFEST_TARGET
+ if(argc!=2 || strcmp(argv[1],"--system-app"))return 64;
+#endif
  if(argc==2 && !strcmp(argv[1],"--matrix")){
   int failures=0;
   failures+=attempt("/private/var/inferno/inferno-launcher",0,1,"data-root-noargs");
@@ -56,7 +60,7 @@ int main(int argc,char **argv){
   failures+=attempt("/usr/bin/inferno-launcher",1,1,"system-mobile-noargs");
   printf("INFERNO_EXEC_MATRIX_COMPLETE failures=%d\n",failures);fflush(0);return failures?1:0;
  }
- if(argc==2 && !strcmp(argv[1],"--system-app")){application_path="/Applications/InfernoProbe.app";return attempt("/usr/bin/inferno-launcher",1,0,"system-mobile-system-app");}
+ if(argc==2 && !strcmp(argv[1],"--system-app")){application_path=INFERNO_SYSTEM_APP_PATH;return attempt("/usr/bin/inferno-launcher",1,0,"system-mobile-system-app");}
  if(argc==2 && !strcmp(argv[1],"--system"))return attempt("/usr/bin/inferno-launcher",1,0,"system-mobile-register");
  return attempt("/private/var/inferno/inferno-launcher",1,0,"data-mobile-register");
 }
