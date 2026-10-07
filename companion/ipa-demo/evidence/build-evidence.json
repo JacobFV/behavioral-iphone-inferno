@@ -1,0 +1,96 @@
+{
+  "status": "built-and-import-validated-not-executed",
+  "git_revision": "cd86f465c84cd7d9eaf6baac1c848dc67ca80e38",
+  "commands": [
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-fobjc-runtime=ios-14.0",
+      "-fno-objc-arc",
+      "-fno-stack-protector",
+      "-ffreestanding",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-c",
+      "/tmp/inferno-ipa-demo/companion/ipa-demo/Main.m",
+      "-o",
+      "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/Main.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "ios",
+      "14.0",
+      "14.0",
+      "-e",
+      "_main",
+      "-no_uuid",
+      "-adhoc_codesign",
+      "-needed_library",
+      "/tmp/inferno-ipa-demo/companion/app-probe/stubs/libSystem.tbd",
+      "-needed_library",
+      "/tmp/inferno-ipa-demo/companion/app-probe/stubs/libobjc.tbd",
+      "-needed_library",
+      "/tmp/inferno-ipa-demo/companion/app-probe/stubs/Foundation.tbd",
+      "-needed_library",
+      "/tmp/inferno-ipa-demo/companion/app-probe/stubs/UIKit.tbd",
+      "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/Main.o",
+      "-o",
+      "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/Payload/ImportedDemo.app/ImportedDemo"
+    ],
+    [
+      "python3",
+      "/tmp/inferno-ipa-demo/companion/app-probe/build-import-launcher.py",
+      "--manifest",
+      "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/imported/manifest.json",
+      "--manifest-sha256",
+      "68cdc3ece31d151ad693766d2a288d8b4ea5ec12b24f1be7be3ea2cd5abbc66a",
+      "--clang",
+      "/usr/bin/clang",
+      "--linker",
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18",
+      "--output",
+      "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/launcher"
+    ]
+  ],
+  "sources": {
+    "/tmp/inferno-ipa-demo/companion/ipa-demo/Main.m": "9cb549881188a5dfcd781ff21bc3bdbae152274cc37505c843ea6de5bd23d12e",
+    "/tmp/inferno-ipa-demo/companion/ipa-demo/Info.plist": "896344cee09178da2302fd84305002996264384df6f8e3278a46140ed0076dbd",
+    "/tmp/inferno-ipa-demo/companion/ipa-demo/Message.txt": "3f4a0b1e4b9bf2bc63476535707976a2fafaaa3924d222bd7a686678c94f02d5",
+    "/tmp/inferno-ipa-demo/companion/ipa-demo/build.py": "f6daf8137c11abfd2a616518448c473b5826bcf3840615670b9da8ea652ac3a8",
+    "/tmp/inferno-ipa-demo/companion/app-probe/UIKitNarrow.h": "a78977e34024c0667f69906f6238659a0db950bae7b6fcb08115116dda6549de",
+    "/tmp/inferno-ipa-demo/companion/app-import.py": "e2ae5081168b99f4989cc759e797ae1381b595e263adea825705993685c1ce56"
+  },
+  "tools": {
+    "/usr/bin/clang": {
+      "sha256": "6d99f6207153b8b2063ace5d2a6177debaf6a6b6f31649e03afac07b98ba0b4d",
+      "version": "Ubuntu clang version 18.1.3 (1ubuntu1)\nTarget: aarch64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin"
+    },
+    "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18": {
+      "sha256": "f8835e48488195c65fb3dcb946053284ddf6b1369922893785209a9073c4e57b",
+      "version": "Ubuntu LLD 18.1.3"
+    }
+  },
+  "ipa": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/ImportedDemo.ipa",
+    "sha256": "82c7abbd168e23f23b7b7bb441bd3ea5096effaa940de825b49fc384b1c4351c"
+  },
+  "manifest": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/imported/manifest.json",
+    "sha256": "68cdc3ece31d151ad693766d2a288d8b4ea5ec12b24f1be7be3ea2cd5abbc66a",
+    "tree_sha256": "35fd846f9af725483a54d65db7065266c249fc87e568e1e63dc23873082da325"
+  },
+  "bundle_files": {
+    "ImportedDemo": "765dfcc639fdf7a3b4936196e528040fe1c566b17eb99a28d08757460d88676d",
+    "Info.plist": "896344cee09178da2302fd84305002996264384df6f8e3278a46140ed0076dbd",
+    "Message.txt": "3f4a0b1e4b9bf2bc63476535707976a2fafaaa3924d222bd7a686678c94f02d5"
+  },
+  "limits": [
+    "No guest staging, launch, resource display or counter interaction has been executed.",
+    "Own LLVM ad-hoc executable, no special entitlements or probe telemetry.",
+    "Narrow research fixture, not an Apple SDK or Xcode project build pathway."
+  ]
+}
