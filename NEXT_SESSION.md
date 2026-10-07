@@ -9,6 +9,36 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-06 17:03 local
 
+### 2026-10-07 16:40: imported fixture74 launched but reproduced persistent freeze
+
+74 actualboot from successful importedfixture stage3 launched owned appPID256,
+boot078960EC-AB4E-443A-9A20-6B5D619A1EEE/main3879996086. Root unlocked twice,
+closed beta/setup alerts, reviewed0, captured strictbefore and sent onecounter.
+Original rawtap1/ACK0, but74fullVNCframes across20/30/60-second windows were all
+SHA3e291ca50f7fb73f0fecaf510b26f3ae419dc3cf28c7a480d7855ac2fb4874b5,
+reviewed0 including finalperiodicQMP. No aftercapture/retry/Home/OPEN/CPU.
+Postfailure10sADPtrace disabledall9 at1791416160.227712 beforebothsamples.
+Both originalsamples complete/reaped/eof/currenttargetmatch: BACKBOARDD60/ver197
+request84a7832845644609b1596f2b80571ea5 13257bytes55chunks; SPRINGBOARD57/ver114
+request9e110e9dcedd4678aebe6a5147d9a0d6 11050bytes46chunks.
+ActualcacheUUID11AD39C9-E3C9-3067-A337-7287744FDCB5/slide0xa554000 independently
+validated89fdf209f6. Backboarddisplay20samples:13runloop/7can_update (3usleep,
+3SwapWait/IOConnect,1+0x4e0repeated-PC); SB21samples20runloop/1beforeCACommit.
+Same bounded retryfamily as65, no numericstatus/token/rootcause inference.
+
+RootSIGINT2 afterfinalreview, emulator0/errorSignal2/544.117957s. Strict correctly
+rejectsincomplete; initialtimingcomplete; all7/unchangedancestors preservedforensic
+270ed3a88f. Visualc4b471c7ac. Neveruse74asbase. IPAimport/staging/launch proven;
+interactiveIPAjourney has NOT passed. Freeze remains a release blocker.
+
+Next genericdemo recovery disk-preparation-imported-demo-1 runner3261518 uses
+nativepreparedprofile59 (e6688b1a7f), samegoodfrom50 depth2 sibling, newtarget
+ImportedDemo.app/org.inferno.companion.ipademo/resources and manifesthelpers.
+Require all actualreadbacks/unmount/COMPLETE thenpreservation beforeinstalled75.
+No fixture collision exception, no probe telemetry, root allinstalledUI.
+Pending async question asks whether user has a Mac/Xcode builder; no reply yet.
+Continue IPA/reliability work independently; do not infer builder availability.
+
 ### 2026-10-07 16:26: IPA recovery readback passed; installed journey74 next
 
 Recovery attempt2 recorded original /Applications mode040775 uid0 gid80; failed
