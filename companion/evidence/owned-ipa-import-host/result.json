@@ -1,0 +1,81 @@
+{
+  "scope": "Host-only import and synthetic malformed-input checks; no guest execution/signature trust claim",
+  "importer": {
+    "path": "/tmp/inferno-status59-audit/companion/app-import.py",
+    "sha256": "f569781d290a9bbd3012559f755282f0fbc52aa7788c14386518f42992dd180f"
+  },
+  "fixture": {
+    "path": "/home/brandonin/.local/share/inferno/app-probe/exec-build-22/InfernoProbe.app",
+    "files": [
+      {
+        "path": "InfernoProbe",
+        "bytes": 74976,
+        "sha256": "d05f1b32523684a5c89d41cb2c35fbf0207b62adf864c27fab4d5973bf8e6176"
+      },
+      {
+        "path": "Info.plist",
+        "bytes": 954,
+        "sha256": "ad9946fd7093f8f438f70200f5e096667e47989da70be2187a7324c6ed20a153"
+      }
+    ]
+  },
+  "manifest_path": "/home/brandonin/.local/share/inferno/app-import/owned-fixture-final-1/imported/manifest.json",
+  "manifest_sha256": "b95dea897b2f93f234f361583ae699f6d293b9defc1790e7c3ea9157fbfff45a",
+  "input": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/owned-fixture-final-1/owned-original.ipa",
+    "bytes": 76248,
+    "sha256": "011840b0c36273873f72c0b326aaa680111557bb7365e714fde1a8013157f282"
+  },
+  "tree_sha256": "697b73b118021ae7f225a9ed65009e6ca0aa91c62a2b430e60e7d2b648370125",
+  "preserved_original_bytes": true,
+  "validator_resolved_bundle_path": "/home/brandonin/.local/share/inferno/app-import/owned-fixture-final-1/imported/bundle/InfernoProbe.app",
+  "negative_checks": [
+    {
+      "case": "traversal",
+      "rejected": true,
+      "reason": "Unsupported or escaping archive path: '../escape'",
+      "sha256": "e8eba2766c6ce27bd21bad53e9716430d1641272b05d81bc6ce894db9657bef7"
+    },
+    {
+      "case": "case-collision",
+      "rejected": true,
+      "reason": "Duplicate/case-colliding archive entry",
+      "sha256": "d13613784150ea4a1d03f92c7345d1460f561348119b4a3d9e14c1618e881596"
+    },
+    {
+      "case": "symlink",
+      "rejected": true,
+      "reason": "Encrypted ZIP/symlink/specialfile unsupported",
+      "sha256": "329c888fc98acfdad859169cc8cc99f5b688a28b6a77d11a0613c23ab46408e0"
+    },
+    {
+      "case": "nested-code",
+      "rejected": true,
+      "reason": "Nested Mach-O unsupported in first subset",
+      "sha256": "57d9b0d6027f500d65061a97dbc8450e3e53a849e30dbdc5c6d777cf5bbb27fd"
+    },
+    {
+      "case": "simulator-platform",
+      "rejected": true,
+      "reason": "Require iOS device platform, not simulator/Catalyst",
+      "sha256": "5088e41ae2d14dc5321fd86d420c3c7122cba4c9ff65042d147330136941ee82"
+    },
+    {
+      "case": "encrypted-mach-o",
+      "rejected": true,
+      "reason": "Encrypted or invalid encrypted range; no decryption supported",
+      "sha256": "9aeaf7a3cbdb37395643e0cff1db5ee2361696c4bae2694e632909cdfc6ac229"
+    },
+    {
+      "case": "minimum-ios15",
+      "rejected": true,
+      "reason": "Minimum iOS version exceeds supported14.0 guest",
+      "sha256": "9bf863247ef2a352325b78af94bd7e7a23bb79c7624976dd76392eb60a4bbac3"
+    },
+    {
+      "case": "modified-extracted-file",
+      "rejected": true,
+      "reason": "Extracted file differs from original IPA"
+    }
+  ]
+}
