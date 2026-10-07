@@ -2,6 +2,27 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 13:14: sampling branch verified; run65 authorized
+
+Recovery staging evidence4dd630dc85 records all four exact zero-mismatch readbacks,
+clean unmounts/PREP_COMPLETE, intentional Signal15 and normal QMPquit7/emulator0,
+elapsed43.545331s. Newstage disk-preparation-from50-sample-1 root3670016bytes
+SHA168e5395e39aa5d0dc4e95a8c70f7c5d3306e2373fef3477687980ae0ca59cc0 over newraw40ea0d81...7351f210.
+Only the seven new stage files were frozen once. Root independently reviewed raw
+readback/unmount order and has now rerun load_stopped_overlay with full hashes,
+actual headers and all seven exact frozen identities: unchanged and PASS. The
+new stage-specific eligible manifest is distinct from retained generic forensic
+checks; this is successful recovery preparation, not an installed-iOS milestone.
+
+ONE65 authorized using this stage and current pinned0889 diagnostic binary/
+manifest1c0ca353..., standard TCG2CPU4GiB7200capture30touch900, strictkeepalive,
+mailbox/HIDserial and observerOFF. Root owns all guest input/trace/SAMPLE/finish.
+Initial10s diagnostic followed by reviewed singlecounter journey; on persistent
+freeze allow trace deadline then original BACKBOARDD and SPRINGBOARD samples,
+once each, before Home. Actual current-boot SAMPLE_READY is required. No65
+execution outcome yet. This branch includes recovery filesystem/NVRAM changes,
+so cannot isolate HID helper as the cause of different outcomes.
+
 ### 17:40 continuation: verified original-state copy; recovery staging begins
 
 Actual conversionb0de474cad and independent review6234db17c9 passed. New external
