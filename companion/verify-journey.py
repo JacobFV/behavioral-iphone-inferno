@@ -4,6 +4,7 @@
 import argparse
 import hashlib
 import json
+import math
 import re
 import sys
 from pathlib import Path
@@ -188,7 +189,8 @@ class Audit:
         gesture = unique(gestures, 'intervening explicit app input')
         require(self.command(gesture)['execute'] == 'guest-hid-gesture', 'intervening input is not one HID tap')
         args = self.command(gesture)['arguments']
-        require(set(args) == {'kind','x','y','duration_ms','request_id'} and args['kind'] == 'tap', 'requires exact bounded tap fields')
+        required_fields = {'kind','x','y','duration_ms','request_id'}
+        require(set(args) in (required_fields, required_fields | {'send_deadline_monotonic'}) and args['kind'] == 'tap', 'requires exact bounded tap fields')
         rid = args['request_id']
         require(re.fullmatch(r'[0-9a-f]{32}', rid) is not None, 'invalid tap ID')
         for key, lo, hi in [('x',0,32767),('y',0,32767),('duration_ms',1,2000)]:
@@ -199,6 +201,17 @@ class Audit:
         delivered = unique([r for r in inputs if r['value'].get('stage') == 'after-send' and r['value'].get('response',{}).get('request_id') == rid], 'tap send completion')
         response = delivered['value']['response']
         require(response.get('transmission') == 'written-to-serial-socket' and response.get('bytes_sent') == len(wire), 'incomplete tap transmission')
+        if 'send_deadline_monotonic' in args:
+            deadline = args['send_deadline_monotonic']
+            recorded = sent['value'].get('monotonic')
+            begin, end = response.get('write_begin_monotonic'), response.get('write_end_monotonic')
+            require(all(type(x) in (int, float) and math.isfinite(x) and x > 0 for x in (deadline, recorded, begin, end)), 'invalid tap deadline/write clock')
+            require(sent['value'].get('operation') == 'HID' and sent['value'].get('send_deadline_monotonic') == deadline and response.get('send_deadline_monotonic') == deadline, 'tap deadline evidence mismatch')
+            require(recorded <= begin < deadline and begin <= end and 0 < deadline-recorded <= 15, 'tap write began outside deadline')
+            require(response.get('write_end_after_deadline') is (end > deadline), 'tap write-end deadline flag mismatch')
+            require(not response.get('error') and gesture['value'].get('response') == response, 'tap receiver response/error mismatch')
+            # The deadline governs host write START, not guest delivery. Retain
+            # the actual end/overrun flag; a complete write can finish later.
         require(t0 < sent['value']['time'] <= delivered['value']['time'] < t1, 'tap transmission ordering invalid')
         ack = unique([r for r in serial if re.fullmatch(rf'INFERNO_HID_ACK request_id={rid} attempt_status=0 delivery=unproven timestamp=[0-9]+',r['value'])], 'guest tap attempt acknowledgment')
         prefix_boundary = None

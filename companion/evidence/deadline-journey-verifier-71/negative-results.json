@@ -1,0 +1,42 @@
+{
+  "scope": "Synthetic in-memory mutations only; no original evidence edits or VM execution",
+  "verifier_sha256": "7fe16cc6ca661c7902a198d789b6ff0290b35f377f1138606a6edf86d13c3298",
+  "harness_sha256": "7ae4e35f8b8629108657aa08328258bb1e95e61862f48c412c123bbb0a62dc01",
+  "results": [
+    {
+      "case": "expired-write",
+      "status": "rejected",
+      "reason": "tap write began outside deadline"
+    },
+    {
+      "case": "partial",
+      "status": "rejected",
+      "reason": "incomplete tap transmission"
+    },
+    {
+      "case": "error",
+      "status": "rejected",
+      "reason": "tap receiver response/error mismatch"
+    },
+    {
+      "case": "missing-clock",
+      "status": "rejected",
+      "reason": "invalid tap deadline/write clock"
+    },
+    {
+      "case": "mismatched-deadline",
+      "status": "rejected",
+      "reason": "tap deadline evidence mismatch"
+    },
+    {
+      "case": "wrong-id",
+      "status": "rejected",
+      "reason": "tap send completion: expected one, got 0"
+    },
+    {
+      "case": "wrong-overrun-flag",
+      "status": "rejected",
+      "reason": "tap write-end deadline flag mismatch"
+    }
+  ]
+}
