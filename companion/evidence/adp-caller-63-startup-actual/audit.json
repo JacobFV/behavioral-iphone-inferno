@@ -1,0 +1,443 @@
+{
+  "scope": "Actual run63 startup bounded trace prefix while root observed lock screen; not a stalled-render sample or final full-run report. No worker runtime actions.",
+  "source_report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-63",
+  "retained_at": 1791331981.366257,
+  "boundaries": {
+    "start_byte": 4374,
+    "end_byte": 44628,
+    "checkpoint_start": 1791331893.5409744,
+    "checkpoint_end": 1791331914.4574826,
+    "trace_start": 1791331893.6364386,
+    "trace_deadline_disabled": 1791331903.669376
+  },
+  "event_counts": {
+    "apple_adp_output_ready": 21,
+    "apple_adp_status_read": 23,
+    "apple_adp_irq_write": 23,
+    "apple_adp_unknown_mmio": 318,
+    "apple_adp_read_caller": 69,
+    "apple_adp_gp_config_write": 32,
+    "apple_adp_submit": 4,
+    "apple_adp_bh": 8,
+    "apple_adp_pipe": 8
+  },
+  "caller_counts": {
+    "decompression_failure": 46,
+    "interrupt_handler_ready_gate": 23
+  },
+  "caller_pc_counts": {
+    "0xfffffff00977b660": 69
+  },
+  "status_values": {
+    "0x400": 19,
+    "0x100000": 4
+  },
+  "w1c_count": 23,
+  "status_followed_immediately_by_equal_w1c": 23,
+  "status_pair_details": [
+    {
+      "read_byte": 4614,
+      "next_event": {
+        "byte_offset": 4663,
+        "line": 122,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 10675,
+      "next_event": {
+        "byte_offset": 10727,
+        "line": 203,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x100000 before=0x100000 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 12372,
+      "next_event": {
+        "byte_offset": 12421,
+        "line": 224,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 17449,
+      "next_event": {
+        "byte_offset": 17501,
+        "line": 292,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x100000 before=0x100000 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 19146,
+      "next_event": {
+        "byte_offset": 19195,
+        "line": 313,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 20123,
+      "next_event": {
+        "byte_offset": 20172,
+        "line": 325,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 20911,
+      "next_event": {
+        "byte_offset": 20960,
+        "line": 334,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 21699,
+      "next_event": {
+        "byte_offset": 21748,
+        "line": 343,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 22487,
+      "next_event": {
+        "byte_offset": 22536,
+        "line": 352,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 23275,
+      "next_event": {
+        "byte_offset": 23324,
+        "line": 361,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 24063,
+      "next_event": {
+        "byte_offset": 24112,
+        "line": 370,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 24851,
+      "next_event": {
+        "byte_offset": 24900,
+        "line": 379,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 25639,
+      "next_event": {
+        "byte_offset": 25688,
+        "line": 388,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 26427,
+      "next_event": {
+        "byte_offset": 26476,
+        "line": 397,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 27215,
+      "next_event": {
+        "byte_offset": 27264,
+        "line": 406,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 28003,
+      "next_event": {
+        "byte_offset": 28052,
+        "line": 415,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 28791,
+      "next_event": {
+        "byte_offset": 28840,
+        "line": 424,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 29579,
+      "next_event": {
+        "byte_offset": 29628,
+        "line": 433,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 30429,
+      "next_event": {
+        "byte_offset": 30478,
+        "line": 444,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 31217,
+      "next_event": {
+        "byte_offset": 31266,
+        "line": 453,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 36144,
+      "next_event": {
+        "byte_offset": 36196,
+        "line": 519,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x100000 before=0x100000 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 37841,
+      "next_event": {
+        "byte_offset": 37890,
+        "line": 540,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 42918,
+      "next_event": {
+        "byte_offset": 42970,
+        "line": 608,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x100000 before=0x100000 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    }
+  ],
+  "qmp_commands_during_window": [
+    {
+      "time": 1791331893.6365662,
+      "execute": "trace-event-set-state",
+      "id": 13,
+      "arguments": {
+        "name": "apple_adp_submit",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791331893.6374192,
+      "execute": "trace-event-set-state",
+      "id": 14,
+      "arguments": {
+        "name": "apple_adp_bh",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791331893.638243,
+      "execute": "trace-event-set-state",
+      "id": 15,
+      "arguments": {
+        "name": "apple_adp_pipe",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791331893.639079,
+      "execute": "trace-event-set-state",
+      "id": 16,
+      "arguments": {
+        "name": "apple_adp_output_ready",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791331893.6398165,
+      "execute": "trace-event-set-state",
+      "id": 17,
+      "arguments": {
+        "name": "apple_adp_irq_write",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791331893.6403773,
+      "execute": "trace-event-set-state",
+      "id": 18,
+      "arguments": {
+        "name": "apple_adp_unknown_mmio",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791331893.6409714,
+      "execute": "trace-event-set-state",
+      "id": 19,
+      "arguments": {
+        "name": "apple_adp_gp_config_write",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791331893.6415977,
+      "execute": "trace-event-set-state",
+      "id": 20,
+      "arguments": {
+        "name": "apple_adp_status_read",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791331893.6421616,
+      "execute": "trace-event-set-state",
+      "id": 21,
+      "arguments": {
+        "name": "apple_adp_read_caller",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791331903.6612623,
+      "execute": "trace-event-set-state",
+      "id": 22,
+      "arguments": {
+        "name": "apple_adp_submit",
+        "enable": false
+      }
+    },
+    {
+      "time": 1791331903.6625693,
+      "execute": "trace-event-set-state",
+      "id": 23,
+      "arguments": {
+        "name": "apple_adp_bh",
+        "enable": false
+      }
+    },
+    {
+      "time": 1791331903.6633606,
+      "execute": "trace-event-set-state",
+      "id": 24,
+      "arguments": {
+        "name": "apple_adp_pipe",
+        "enable": false
+      }
+    },
+    {
+      "time": 1791331903.6640594,
+      "execute": "trace-event-set-state",
+      "id": 25,
+      "arguments": {
+        "name": "apple_adp_output_ready",
+        "enable": false
+      }
+    },
+    {
+      "time": 1791331903.6648872,
+      "execute": "trace-event-set-state",
+      "id": 26,
+      "arguments": {
+        "name": "apple_adp_irq_write",
+        "enable": false
+      }
+    },
+    {
+      "time": 1791331903.6657028,
+      "execute": "trace-event-set-state",
+      "id": 27,
+      "arguments": {
+        "name": "apple_adp_unknown_mmio",
+        "enable": false
+      }
+    },
+    {
+      "time": 1791331903.6667,
+      "execute": "trace-event-set-state",
+      "id": 28,
+      "arguments": {
+        "name": "apple_adp_gp_config_write",
+        "enable": false
+      }
+    },
+    {
+      "time": 1791331903.667731,
+      "execute": "trace-event-set-state",
+      "id": 29,
+      "arguments": {
+        "name": "apple_adp_status_read",
+        "enable": false
+      }
+    },
+    {
+      "time": 1791331903.6686077,
+      "execute": "trace-event-set-state",
+      "id": 30,
+      "arguments": {
+        "name": "apple_adp_read_caller",
+        "enable": false
+      }
+    }
+  ],
+  "qmp_hmp_during_window": 0,
+  "serial_input_records_before_checkpoint": 0,
+  "findings": [
+    "All captured main0x45004 callers are the mapped interrupt-handler return site, not shadow_FIFO_empty. In this startup window the command_mode-dependent FIFO interpretation is not the observed caller.",
+    "GP0/1 callers map to decompression_failure; zero reports no such failure.",
+    "Captured exposed PC matches the original leaf MMIO load in this sample, without assuming it must do so in every future sample.",
+    "No unknown caller or nonCPU records were discarded.",
+    "Handler attribution does not prove downstream swap notification or compositor processing.",
+    "Buffered trace records have order and byte provenance, not exact per-device timestamps. No failed-run causal conclusion."
+  ]
+}
