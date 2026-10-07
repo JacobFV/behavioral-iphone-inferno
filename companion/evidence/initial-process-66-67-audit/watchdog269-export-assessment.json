@@ -1,0 +1,25 @@
+{
+  "source": "run67-serial-prefix.log",
+  "source_sha256": "db3fa3324daf8f591ee6ce6400901aa65e95a9871b48a0e6aced20ab2c2944e0",
+  "exports": [
+    {
+      "start": 168666,
+      "end": 201656,
+      "physical_LF_start_line": 1710,
+      "bytes": 32990,
+      "sha256": "3822484a6acc3bf8ed7c7f86a82d72f867d9922f67f127511f1ba038b1200131",
+      "retained": "watchdog269-export-1.log"
+    }
+  ],
+  "declared_original_report_bytes": 370982,
+  "export_payload_limit_bytes": 32768,
+  "actual_export_end_marker": "INFERNO_CRASH_PREFIX_END bytes=32768",
+  "complete_original_report_available": false,
+  "findings": [
+    "Preserved every complete exported prefix, not a full guest report. Serial CR framing means exported raw bytes differ from payload bytes.",
+    "Reason explicitly identifies initial owned PID269 scene-update watchdog, not current replacement PID360.",
+    "Available processByPid contains only the beginning of PID0 kernel_task; truncation occurs mid-field for thread138. No processByPid269 object, user thread stacks, binary image table, cache UUID or cache slide present in these prefixes.",
+    "Existing UUID/base-validated symbolicator cannot map absent app frames. No evidence here establishes whether PID269 waited in SwapWait, launch code or another library; run65 stack cannot be substituted.",
+    "Obtaining remaining diagnostic text would require a separately authorized future export; no guest action or new API attempted."
+  ]
+}
