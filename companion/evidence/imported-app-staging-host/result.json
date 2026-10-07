@@ -1,0 +1,53 @@
+{
+  "scope": "Host importer+stager validator integration; no guest copy/mount/build/launch claim",
+  "input_manifest": "/home/brandonin/.local/share/inferno/app-import/owned-fixture-1/imported/manifest.json",
+  "manifest_sha256": "38a53917b2a1afbc8646fed48963b77f20f6a1e4cb2ce77f885b623dc7edad74",
+  "importer_sha256": "f569781d290a9bbd3012559f755282f0fbc52aa7788c14386518f42992dd180f",
+  "stage_validator_sha256": "b84b6c9fd9959411b45b8f326ab56d518b1158be47b1e7d8182b073be864b580",
+  "tree_sha256": "697b73b118021ae7f225a9ed65009e6ca0aa91c62a2b430e60e7d2b648370125",
+  "plan_sha256": "8453623cb2037f56b7d95f2922d064f2572499df8fc342686677b4d6b4357e07",
+  "plan_bytes": 1464,
+  "header": {
+    "count": 2,
+    "allow_identical_fixture": 1,
+    "bytes": 75930
+  },
+  "files": [
+    {
+      "bytes": 74976,
+      "mode": 493,
+      "path": "InfernoProbe",
+      "sha256": "d05f1b32523684a5c89d41cb2c35fbf0207b62adf864c27fab4d5973bf8e6176",
+      "type": 2
+    },
+    {
+      "bytes": 954,
+      "mode": 420,
+      "path": "Info.plist",
+      "sha256": "ad9946fd7093f8f438f70200f5e096667e47989da70be2187a7324c6ed20a153",
+      "type": 2
+    }
+  ],
+  "negative_cases": [
+    {
+      "case": "bad-manifest-pin",
+      "error": "Imported manifest must be regular and explicitly hash-pinned"
+    },
+    {
+      "case": "bad-fixture-pin",
+      "error": "Only explicitly pinned identical owned fixture may collide"
+    },
+    {
+      "case": "extra-file",
+      "error": "Extra/special/hardlinked tree entry"
+    },
+    {
+      "case": "changed-bytes",
+      "error": "Imported bytes differ"
+    },
+    {
+      "case": "symlink",
+      "error": "Extra/special/hardlinked tree entry"
+    }
+  ]
+}
