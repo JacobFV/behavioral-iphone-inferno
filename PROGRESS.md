@@ -2,6 +2,38 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 16:18: diagnostic comparison complete; imported IPA recovery next
+
+73 completed strict0→1 with no startup CPU diagnostic filter, no CPU logging,
+no SAMPLE/Home/OPEN. Normal exit0/errornull399.843892s, strict/initial timing and
+all seven disk/backing checks passed. Raw886ff5fa2c, root visual319f2d6f65:
+boot196B57FE-20DC-4521-812D-EBD519AECDBC PID230/main3173752455;
+guarded NotNow→counter10.246224812s. First retained setup overlay→NotNow37.4495s;
+not a full65 cadence match. No rendering fix claimed. Repeated diagnostic boot
+comparison ends here. All disks remain retained; never use73 as staging base.
+
+IPA importer9b3395a25b+1120e9187a now preserves the packaged owned fixture bytes,
+validates thin ARM64 device iOS<=14/system dependencies/unencrypted inputs,
+rejects unsupported archive/nested-code forms, and revalidates manifests against
+retained original IPA and full tree. Independent reviewddb613572c found lazy
+library/nonstandard-loader gaps, corrected1120e9187a with actual negative evidence.
+Manifest staging1a0c5c3789+7f62600ad6 independently reviewed5e8f4cf1bb:
+bounded source plan, unrelated target collision rejection, identical fixture pin,
+recursive byte/metadata readback and normal unmount. These are host checks only.
+
+Launcher macros8c60fdcc62 and manifest builderaa71cdbf5d compiled successfully;
+default app/launcher/wrapper remain byte-identical to22. Manifest launcher rejects
+probe-specific OPEN and binds original LS registration to one compiled identity.
+Generic launcher has NOT been guest-executed. First IPA proof reuses existing
+fixture launcher/cache unchanged, isolating import/staging path.
+
+Bootworker owns actual rebuilt preparation helper56 and recovery staging from
+immutable from50-sample-1 paired state (depth2→stage3→installedboot4). New imported
+fixture final2 stays outsideGit. Require actual PLAN, IDENTICAL_COLLISION,
+READBACK75930bytes/2entries/0mismatches, FINISHresult0/unmount0 and PREP_COMPLETE,
+then stopped preservation before any installed boot. Root owns actual installed
+UI. No new diagnostic boot; next installed journey tests actual IPA input.
+
 ### 2026-10-07 16:08: run72 retained; first IPA release workflow in progress
 
 72 completed the guarded owned counter0→1 journey, normal exit0/errornull,
