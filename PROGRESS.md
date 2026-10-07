@@ -2,6 +2,28 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 14:02: run66 retained; run67 live
+
+66postflightbca8298909 verified strictjourney/all7/unchangedstage+raw, exit0,
+errornull/954.329157s. Initialtiming parser rejects9records frommultipleprocesses;
+rejection retained. Normalpreservedroot229244928 SHA
+22c99f284c8ec5447bdf57c88313f0768495b95d616ebb6925ca3d15a2972005.
+66trace43b9372d74 +matchedphase5ac2fa49f6: postcounter65[1709725,1736062)
+has31readyhandlers/0submit/BH;66[285387,346907) has37ready/5processedhandlers,
+5submits/10BH/10pipe. Same-MMIOpipeline progress differs, cause unknown.
+Do not compare65wholealertwindow against66counterwindow as matchedphases.
+
+ONE67 live runner1100491/QEMU1120759, private
+/tmp/inferno-boot-22znd5_l/{vnc.sock,qmp.sock,gesture-serial.sock}.
+Actualhost4497851c80/current0889/samefrom50-sample-1base/exact66flags.
+CPUwindow neverrequested; initial10sdisplaytrace done, startupApplelogo reviewed.
+Startupcheckpoints2747@1791406905.4284365 ->20010@1791406931.767286.
+Root allUI. Continuewait actualHID/SAMPLEready+reviewedlock beforeunlock.
+Exact-PC offlineparser3f714bb5b7 retainsallrawblocks/offsets/malformedfragments;
+ownedattempt6 replay922complete expected snapshots. Use onlyafteractualfreeze+
+all9eventsoff+ONE1sCPUwindow, verifiesproductionPCs withsamebootzero-slide/pins.
+NoCPU/processpairing/invocation inference. No iOSCPUwindowcapturedyet.
+
 ### 2026-10-07 14:00: run66 visibly passes after slow startup and explicit OPEN
 
 Root visual evidence260408e4c7 records actual bootDE03772B-D957-44AD-8E34-5D96482742F2,
