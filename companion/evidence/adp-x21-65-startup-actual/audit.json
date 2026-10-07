@@ -1,0 +1,911 @@
+{
+  "scope": "Actual run65 startup bounded trace prefix while root observed Apple logo; not a stalled-render sample or final full-run report. No worker runtime actions.",
+  "source_report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-65",
+  "retained_at": 1791404092.227321,
+  "boundaries": {
+    "start_byte": 2747,
+    "end_byte": 1607442,
+    "checkpoint_start": 1791404050.257607,
+    "checkpoint_end": 1791404068.920715,
+    "trace_start": 1791404050.4294994,
+    "trace_deadline_disabled": 1791404060.4584785
+  },
+  "event_counts": {
+    "apple_adp_output_ready": 25,
+    "apple_adp_status_read": 27,
+    "apple_adp_irq_write": 27,
+    "apple_adp_unknown_mmio": 20427,
+    "apple_adp_read_caller": 81,
+    "apple_adp_gp_config_write": 22,
+    "apple_adp_submit": 4,
+    "apple_adp_bh": 8,
+    "apple_adp_pipe": 8
+  },
+  "caller_counts": {
+    "decompression_failure": 54,
+    "interrupt_handler_ready_gate": 27
+  },
+  "caller_pc_counts": {
+    "0xfffffff00977b660": 81
+  },
+  "status_values": {
+    "0x400": 23,
+    "0x100000": 4
+  },
+  "w1c_count": 27,
+  "status_followed_immediately_by_equal_w1c": 27,
+  "status_pair_details": [
+    {
+      "read_byte": 2946,
+      "next_event": {
+        "byte_offset": 2995,
+        "line": 64,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 3790,
+      "next_event": {
+        "byte_offset": 3839,
+        "line": 73,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 4634,
+      "next_event": {
+        "byte_offset": 4683,
+        "line": 82,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 5478,
+      "next_event": {
+        "byte_offset": 5527,
+        "line": 91,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 6322,
+      "next_event": {
+        "byte_offset": 6371,
+        "line": 100,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 7166,
+      "next_event": {
+        "byte_offset": 7215,
+        "line": 109,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 8010,
+      "next_event": {
+        "byte_offset": 8059,
+        "line": 118,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 8854,
+      "next_event": {
+        "byte_offset": 8903,
+        "line": 127,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 9698,
+      "next_event": {
+        "byte_offset": 9747,
+        "line": 136,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 10542,
+      "next_event": {
+        "byte_offset": 10591,
+        "line": 145,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 11594,
+      "next_event": {
+        "byte_offset": 11643,
+        "line": 159,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 1563873,
+      "next_event": {
+        "byte_offset": 1563925,
+        "line": 20154,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x100000 before=0x100000 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 1565629,
+      "next_event": {
+        "byte_offset": 1565678,
+        "line": 20175,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 1584520,
+      "next_event": {
+        "byte_offset": 1584572,
+        "line": 20424,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x100000 before=0x100000 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 1586276,
+      "next_event": {
+        "byte_offset": 1586325,
+        "line": 20445,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 1592393,
+      "next_event": {
+        "byte_offset": 1592445,
+        "line": 20526,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x100000 before=0x100000 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 1594149,
+      "next_event": {
+        "byte_offset": 1594198,
+        "line": 20547,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 1595143,
+      "next_event": {
+        "byte_offset": 1595192,
+        "line": 20558,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 1598660,
+      "next_event": {
+        "byte_offset": 1598712,
+        "line": 20603,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x100000 before=0x100000 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 1600416,
+      "next_event": {
+        "byte_offset": 1600465,
+        "line": 20624,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 1601260,
+      "next_event": {
+        "byte_offset": 1601309,
+        "line": 20633,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 1602104,
+      "next_event": {
+        "byte_offset": 1602153,
+        "line": 20642,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 1602948,
+      "next_event": {
+        "byte_offset": 1602997,
+        "line": 20651,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 1603792,
+      "next_event": {
+        "byte_offset": 1603841,
+        "line": 20660,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 1604701,
+      "next_event": {
+        "byte_offset": 1604750,
+        "line": 20671,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 1605545,
+      "next_event": {
+        "byte_offset": 1605594,
+        "line": 20680,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    },
+    {
+      "read_byte": 1606567,
+      "next_event": {
+        "byte_offset": 1606616,
+        "line": 20690,
+        "event": "apple_adp_irq_write",
+        "raw": "apple_adp_irq_write kind=status-w1c value=0x400 before=0x400 status=0x0 enable=0xc0180c08"
+      },
+      "same_value": true
+    }
+  ],
+  "qmp_commands_during_window": [
+    {
+      "time": 1791404050.429651,
+      "execute": "trace-event-set-state",
+      "id": 12,
+      "arguments": {
+        "name": "apple_adp_submit",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791404050.4304512,
+      "execute": "trace-event-set-state",
+      "id": 13,
+      "arguments": {
+        "name": "apple_adp_bh",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791404050.4310265,
+      "execute": "trace-event-set-state",
+      "id": 14,
+      "arguments": {
+        "name": "apple_adp_pipe",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791404050.4315813,
+      "execute": "trace-event-set-state",
+      "id": 15,
+      "arguments": {
+        "name": "apple_adp_output_ready",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791404050.4322488,
+      "execute": "trace-event-set-state",
+      "id": 16,
+      "arguments": {
+        "name": "apple_adp_irq_write",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791404050.4328737,
+      "execute": "trace-event-set-state",
+      "id": 17,
+      "arguments": {
+        "name": "apple_adp_unknown_mmio",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791404050.4335535,
+      "execute": "trace-event-set-state",
+      "id": 18,
+      "arguments": {
+        "name": "apple_adp_gp_config_write",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791404050.434277,
+      "execute": "trace-event-set-state",
+      "id": 19,
+      "arguments": {
+        "name": "apple_adp_status_read",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791404050.434924,
+      "execute": "trace-event-set-state",
+      "id": 20,
+      "arguments": {
+        "name": "apple_adp_read_caller",
+        "enable": true
+      }
+    },
+    {
+      "time": 1791404060.452197,
+      "execute": "trace-event-set-state",
+      "id": 21,
+      "arguments": {
+        "name": "apple_adp_submit",
+        "enable": false
+      }
+    },
+    {
+      "time": 1791404060.4534702,
+      "execute": "trace-event-set-state",
+      "id": 22,
+      "arguments": {
+        "name": "apple_adp_bh",
+        "enable": false
+      }
+    },
+    {
+      "time": 1791404060.4542875,
+      "execute": "trace-event-set-state",
+      "id": 23,
+      "arguments": {
+        "name": "apple_adp_pipe",
+        "enable": false
+      }
+    },
+    {
+      "time": 1791404060.4549055,
+      "execute": "trace-event-set-state",
+      "id": 24,
+      "arguments": {
+        "name": "apple_adp_output_ready",
+        "enable": false
+      }
+    },
+    {
+      "time": 1791404060.4555328,
+      "execute": "trace-event-set-state",
+      "id": 25,
+      "arguments": {
+        "name": "apple_adp_irq_write",
+        "enable": false
+      }
+    },
+    {
+      "time": 1791404060.456099,
+      "execute": "trace-event-set-state",
+      "id": 26,
+      "arguments": {
+        "name": "apple_adp_unknown_mmio",
+        "enable": false
+      }
+    },
+    {
+      "time": 1791404060.4566898,
+      "execute": "trace-event-set-state",
+      "id": 27,
+      "arguments": {
+        "name": "apple_adp_gp_config_write",
+        "enable": false
+      }
+    },
+    {
+      "time": 1791404060.4573143,
+      "execute": "trace-event-set-state",
+      "id": 28,
+      "arguments": {
+        "name": "apple_adp_status_read",
+        "enable": false
+      }
+    },
+    {
+      "time": 1791404060.4579082,
+      "execute": "trace-event-set-state",
+      "id": 29,
+      "arguments": {
+        "name": "apple_adp_read_caller",
+        "enable": false
+      }
+    }
+  ],
+  "qmp_hmp_during_window": 0,
+  "serial_input_records_before_checkpoint": 0,
+  "findings": [
+    "All captured main0x45004 callers are the mapped interrupt-handler return site, not shadow_FIFO_empty. In this startup window the command_mode-dependent FIFO interpretation is not the observed caller.",
+    "GP0/1 callers map to decompression_failure; zero reports no such failure.",
+    "Captured exposed PC matches the original leaf MMIO load in this sample, without assuming it must do so in every future sample.",
+    "No unknown caller or nonCPU records were discarded.",
+    "Handler attribution does not prove downstream swap notification or compositor processing.",
+    "Buffered trace records have order and byte provenance, not exact per-device timestamps. No failed-run causal conclusion."
+  ],
+  "handler_x21_distribution": {
+    "0x400": 23,
+    "0x100000": 4
+  },
+  "handler_bit10_distribution": {
+    "True": 23,
+    "False": 4
+  },
+  "cpu_index_distribution": {
+    "0": 27,
+    "1": 54
+  },
+  "x21_scope": "Only exact handler LR at45004 is interpreted. GP x21 values are uninterpreted raw registers, potentially pointers; no pending-state meaning assigned.",
+  "visual_scope": "Root reports Apple logo throughout startup capture; not an app or healthy strict journey baseline.",
+  "startup_comparison_limit": "This window begins earlier in boot than64 and includes high-volume unknown MMIO. Counts are not equivalent workload or a regression comparison.",
+  "raw_event_retention": "Full exact guest-errors prefix retained; redundant per-line event expansion omitted for high-volume startup. Caller offsets and status/W1C offsets remain explicit.",
+  "unknown_mmio_summary_by_block_pipe_write": {
+    "gp 0 0": {
+      "count": 27,
+      "distinct_offsets": 1,
+      "minimum_offset": "0x184",
+      "maximum_offset": "0x184"
+    },
+    "gp 1 0": {
+      "count": 27,
+      "distinct_offsets": 1,
+      "minimum_offset": "0x184",
+      "maximum_offset": "0x184"
+    },
+    "main -1 0": {
+      "count": 81,
+      "distinct_offsets": 15,
+      "minimum_offset": "0x97bc",
+      "maximum_offset": "0x46180"
+    },
+    "gp 0 1": {
+      "count": 4860,
+      "distinct_offsets": 4786,
+      "minimum_offset": "0x0",
+      "maximum_offset": "0x69f4"
+    },
+    "gp 1 1": {
+      "count": 8,
+      "distinct_offsets": 2,
+      "minimum_offset": "0x170",
+      "maximum_offset": "0x1004"
+    },
+    "blend -1 1": {
+      "count": 3103,
+      "distinct_offsets": 3100,
+      "minimum_offset": "0x4",
+      "maximum_offset": "0x5424"
+    },
+    "main -1 1": {
+      "count": 12319,
+      "distinct_offsets": 12079,
+      "minimum_offset": "0x97bc",
+      "maximum_offset": "0xe0028"
+    },
+    "blend -1 0": {
+      "count": 2,
+      "distinct_offsets": 1,
+      "minimum_offset": "0x3038",
+      "maximum_offset": "0x3038"
+    }
+  },
+  "unknown_repeated_offsets": {
+    "gp 0 0 0x184": {
+      "count": 27,
+      "first_byte": 3085,
+      "last_byte": 1606706,
+      "values": {
+        "0x0": 27
+      }
+    },
+    "gp 1 0 0x184": {
+      "count": 27,
+      "first_byte": 3301,
+      "last_byte": 1606922,
+      "values": {
+        "0x0": 27
+      }
+    },
+    "main -1 0 0x45004": {
+      "count": 27,
+      "first_byte": 3517,
+      "last_byte": 1607138,
+      "values": {
+        "0x0": 27
+      }
+    },
+    "gp 0 1 0x7c": {
+      "count": 4,
+      "first_byte": 13918,
+      "last_byte": 1595922,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "gp 0 1 0x0": {
+      "count": 4,
+      "first_byte": 14048,
+      "last_byte": 1596052,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "gp 0 1 0xb8": {
+      "count": 4,
+      "first_byte": 14116,
+      "last_byte": 1596120,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "gp 0 1 0xc0": {
+      "count": 4,
+      "first_byte": 14185,
+      "last_byte": 1596189,
+      "values": {
+        "0x100000": 4
+      }
+    },
+    "gp 0 1 0xc8": {
+      "count": 4,
+      "first_byte": 14259,
+      "last_byte": 1596263,
+      "values": {
+        "0x100000": 4
+      }
+    },
+    "gp 0 1 0xd0": {
+      "count": 4,
+      "first_byte": 14333,
+      "last_byte": 1596337,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "gp 0 1 0xd8": {
+      "count": 4,
+      "first_byte": 14402,
+      "last_byte": 1596406,
+      "values": {
+        "0x100000": 4
+      }
+    },
+    "gp 0 1 0xbc": {
+      "count": 4,
+      "first_byte": 14476,
+      "last_byte": 1596480,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "gp 0 1 0xc4": {
+      "count": 4,
+      "first_byte": 14545,
+      "last_byte": 1596549,
+      "values": {
+        "0x100000": 4
+      }
+    },
+    "gp 0 1 0xcc": {
+      "count": 4,
+      "first_byte": 14619,
+      "last_byte": 1596623,
+      "values": {
+        "0x100000": 4
+      }
+    },
+    "gp 0 1 0xd4": {
+      "count": 4,
+      "first_byte": 14693,
+      "last_byte": 1596697,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "gp 0 1 0xdc": {
+      "count": 4,
+      "first_byte": 14762,
+      "last_byte": 1596766,
+      "values": {
+        "0x100000": 4
+      }
+    },
+    "gp 0 1 0xe0": {
+      "count": 4,
+      "first_byte": 372536,
+      "last_byte": 1596840,
+      "values": {
+        "0x10": 4
+      }
+    },
+    "gp 0 1 0x84": {
+      "count": 4,
+      "first_byte": 372676,
+      "last_byte": 1596910,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "gp 0 1 0x88": {
+      "count": 4,
+      "first_byte": 372745,
+      "last_byte": 1596979,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "gp 0 1 0x8c": {
+      "count": 4,
+      "first_byte": 372814,
+      "last_byte": 1597048,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "gp 0 1 0x90": {
+      "count": 4,
+      "first_byte": 372883,
+      "last_byte": 1597117,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "gp 0 1 0x170": {
+      "count": 4,
+      "first_byte": 372952,
+      "last_byte": 1597186,
+      "values": {
+        "0x4": 4
+      }
+    },
+    "gp 0 1 0x1004": {
+      "count": 4,
+      "first_byte": 373083,
+      "last_byte": 1597317,
+      "values": {
+        "0x80070001": 4
+      }
+    },
+    "gp 1 1 0x1004": {
+      "count": 4,
+      "first_byte": 373219,
+      "last_byte": 1597453,
+      "values": {
+        "0x40000": 4
+      }
+    },
+    "gp 1 1 0x170": {
+      "count": 4,
+      "first_byte": 373294,
+      "last_byte": 1597528,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "blend -1 1 0x4": {
+      "count": 4,
+      "first_byte": 617802,
+      "last_byte": 1597598,
+      "values": {
+        "0x11": 4
+      }
+    },
+    "main -1 1 0x7c004": {
+      "count": 4,
+      "first_byte": 728927,
+      "last_byte": 1597671,
+      "values": {
+        "0x8": 4
+      }
+    },
+    "main -1 1 0x46040": {
+      "count": 4,
+      "first_byte": 1538462,
+      "last_byte": 1597825,
+      "values": {
+        "0x1120010": 4
+      }
+    },
+    "main -1 1 0x90818": {
+      "count": 4,
+      "first_byte": 1539555,
+      "last_byte": 1568764,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "main -1 1 0x9082c": {
+      "count": 4,
+      "first_byte": 1539705,
+      "last_byte": 1568993,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "main -1 0 0x97bc": {
+      "count": 4,
+      "first_byte": 1563119,
+      "last_byte": 1597906,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "main -1 1 0x97bc": {
+      "count": 4,
+      "first_byte": 1563193,
+      "last_byte": 1597980,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "main -1 1 0x46264": {
+      "count": 4,
+      "first_byte": 1563267,
+      "last_byte": 1598054,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "main -1 1 0x46260": {
+      "count": 4,
+      "first_byte": 1563342,
+      "last_byte": 1598129,
+      "values": {
+        "0x1": 4
+      }
+    },
+    "main -1 0 0x46150": {
+      "count": 4,
+      "first_byte": 1564453,
+      "last_byte": 1599240,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "main -1 0 0x46154": {
+      "count": 4,
+      "first_byte": 1564528,
+      "last_byte": 1599315,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "main -1 0 0x460b4": {
+      "count": 4,
+      "first_byte": 1564603,
+      "last_byte": 1599390,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "main -1 0 0x460b8": {
+      "count": 4,
+      "first_byte": 1564678,
+      "last_byte": 1599465,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "main -1 0 0x460bc": {
+      "count": 4,
+      "first_byte": 1564753,
+      "last_byte": 1599540,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "main -1 0 0x460c0": {
+      "count": 4,
+      "first_byte": 1564828,
+      "last_byte": 1599615,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "main -1 0 0x460d0": {
+      "count": 4,
+      "first_byte": 1564903,
+      "last_byte": 1599690,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "main -1 0 0x460d4": {
+      "count": 4,
+      "first_byte": 1564978,
+      "last_byte": 1599765,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "main -1 0 0x460d8": {
+      "count": 4,
+      "first_byte": 1565053,
+      "last_byte": 1599840,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "main -1 0 0x4617c": {
+      "count": 4,
+      "first_byte": 1565128,
+      "last_byte": 1599915,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "main -1 0 0x46180": {
+      "count": 4,
+      "first_byte": 1565203,
+      "last_byte": 1599990,
+      "values": {
+        "0x0": 4
+      }
+    },
+    "main -1 0 0x46178": {
+      "count": 4,
+      "first_byte": 1565278,
+      "last_byte": 1600065,
+      "values": {
+        "0x0": 4
+      }
+    }
+  }
+}
