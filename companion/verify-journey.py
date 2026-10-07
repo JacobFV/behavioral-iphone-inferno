@@ -27,8 +27,9 @@ def unique(items, message):
     return items[0]
 
 class Audit:
-    def __init__(self, report, strict_prefix=None):
+    def __init__(self, report, strict_prefix=None, recovery_open_request=None):
         self.strict_prefix = strict_prefix
+        self.recovery_open_request = recovery_open_request
         self.folder = report.resolve()
         self.sources = {}
         self.data = {}
@@ -61,6 +62,98 @@ class Audit:
     @staticmethod
     def command(row):
         return json.loads(row['value']['raw'])
+
+    def recovery_selection(self, serial, controls, inputs, candidates, before_time, after_time):
+        """Explicit new-process recovery scope. Never rewrites the original prefix."""
+        rid = self.recovery_open_request
+        require(re.fullmatch(r'[0-9a-f]{32}', rid) is not None, 'invalid recovery OPEN ID')
+        require(self.strict_prefix is None, 'recovery OPEN and strict prefix scopes cannot be combined')
+        def full(pattern, label):
+            matches = [(re.fullmatch(pattern, r['value']), r) for r in serial]
+            found = unique([(m.groups(), r) for m,r in matches if m], label)
+            if pattern.startswith('INFERNO_OPEN_'):
+                prefix = pattern.split(' ', 1)[0] + f' request_id={rid} '
+                require(sum(r['value'].startswith(prefix) for r in serial) == 1, 'duplicate or malformed named OPEN record')
+            return found
+        opened = unique([r for r in controls if self.command(r).get('execute') == 'guest-open-app'
+                         and self.command(r).get('arguments', {}).get('request_id') == rid], 'named recovery host OPEN')
+        args = self.command(opened).get('arguments', {})
+        require(set(args) == {'request_id','boot_uuid'}, 'recovery OPEN fields invalid')
+        boot = args['boot_uuid']; require(re.fullmatch(UUID, boot) is not None, 'recovery boot invalid')
+        require(opened['value']['time'] < before_time, 'recovery OPEN must precede strict capture')
+        wire = f'INFERNO_OPEN_V1 {rid} {boot}\n'
+        sent = unique([r for r in inputs if r['value'].get('stage')=='before-send' and r['value'].get('request_id')==rid], 'recovery OPEN send')
+        done = unique([r for r in inputs if r['value'].get('stage')=='after-send' and r['value'].get('response',{}).get('request_id')==rid], 'recovery OPEN completion')
+        require(sent['value']['raw']==wire and sent['value']['sha256']==sha(wire.encode()), 'recovery OPEN wire mismatch')
+        response=done['value']['response']
+        require(response.get('bytes_sent')==len(wire) and response.get('transmission')=='written-to-serial-socket', 'recovery OPEN transmission incomplete')
+        require(opened['value']['time']<=sent['value']['time']<=done['value']['time']<before_time, 'recovery host ordering invalid')
+        require(opened['value'].get('response')==response, 'recovery control/serial reply mismatch')
+        for other in controls:
+            c=self.command(other)
+            require(not (c.get('execute')=='guest-open-app' and c.get('arguments',{}).get('request_id')!=rid and
+                         opened['value']['time']<=other['value']['time']<=after_time), 'overlapping host OPEN')
+        request, request_ref=full(rf'INFERNO_OPEN_REQUEST request_id={rid} boot=({UUID}) timestamp=([0-9]+)', 'guest recovery request')
+        dispatched, dispatch_ref=full(rf'INFERNO_OPEN_DISPATCHED request_id={rid} child=([1-9][0-9]*) accepted_by_os=unqueried', 'guest recovery dispatch')
+        callback, callback_ref=full(rf'INFERNO_OPEN_CALLBACK request_id={rid} accepted=1 domain=\(nil\) code=0 description=\(nil\)', 'accepted recovery callback')
+        timing, timing_ref=full(rf'INFERNO_OPEN_TIMING_V1 request_id={rid} boot=({UUID}) pid=([1-9][0-9]*) request_ticks=([0-9]+) callback_ticks=([0-9]+) numer=([0-9]+) denom=([0-9]+) accepted=1', 'recovery OPEN timing')
+        child_end, end_ref=full(rf'INFERNO_OPEN_CHILD_END request_id={rid} pid=([1-9][0-9]*) raw_status=0 timed_out=0 completion_is_not_visual=1', 'normal recovery child end')
+        require(request[0]==timing[0]==boot and dispatched[0]==timing[1]==child_end[0], 'recovery boot/launcher mismatch')
+        require(request_ref['reference']['byte_start']<dispatch_ref['reference']['byte_start']<callback_ref['reference']['byte_start']<timing_ref['reference']['byte_start']<end_ref['reference']['byte_start'], 'guest OPEN chronology invalid')
+        req,cb,num,den=map(int,timing[2:]);require(0<int(request[1])<=req<=cb<2**64 and 0<num<2**32 and 0<den<2**32,'recovery tick/timebase invalid')
+        tr=re.compile(rf'INFERNO_TIMING_RELAY_RAW source=guest-loopback record=INFERNO_TIMING_V1 ({UUID}) ([1-9][0-9]*) ([1-9][0-9]*) ([a-z-]+) ([0-9]+) ([0-9]+) ([0-9]+)')
+        tv=re.compile(rf'INFERNO_TIMING_RELAY_RECORD boot=({UUID}) pid=([1-9][0-9]*) sequence=([1-9][0-9]*) hook=([a-z-]+) ticks=([0-9]+) numer=([0-9]+) denom=([0-9]+) complete=([01]) source=guest-loopback claimed_pid_verified=1 peer_pid_authenticated=0')
+        groups={};valids=[]
+        for row in serial:
+            text=row['value']
+            if text.startswith('INFERNO_TIMING_RELAY_RAW'):
+                match=tr.fullmatch(text);require(match is not None,'malformed timing RAW');f=match.groups();groups.setdefault((f[0],int(f[1])),[]).append((f,row))
+            if text.startswith('INFERNO_TIMING_RELAY_RECORD'):
+                match=tv.fullmatch(text);require(match is not None,'malformed timing validation');valids.append((match.groups(),row))
+        used=[]
+        for identity,entries in groups.items():
+            require(identity[0]==boot and len(entries)<=5,'wrong boot or oversized timing incarnation')
+            previous=0;hooks=set()
+            for sequence,(f,row) in enumerate(entries,1):
+                require(int(f[2])==sequence and f[3] in {'main','launch-delegate','window-request','active','appeared'} and f[3] not in hooks,'invalid timing sequence/hook')
+                require(sequence!=1 or f[3]=='main','timing must start at main')
+                require(previous<=int(f[4])<2**64 and int(f[5])==num and int(f[6])==den,'timing tick/timebase mismatch');previous=int(f[4]);hooks.add(f[3])
+                vf,vr=unique([(x,r) for x,r in valids if x[:7]==f],'paired timing validation')
+                require(int(vf[7])==int(sequence==5) and row['reference']['byte_end']<=vr['reference']['byte_start'],'timing provenance invalid');used.append(vr['reference']['byte_start'])
+        require(len(used)==len(valids) and len(set(used))==len(used),'unpaired timing validation')
+        eligible=[(identity,e) for identity,e in groups.items() if identity[0]==boot and len(e)==5 and req<int(e[0][0][4])<=int(e[-1][0][4])<=cb]
+        (identity,events)=unique(eligible,'new recovery five-hook incarnation');pid=identity[1]
+        require(pid!=int(dispatched[0]), 'app PID cannot equal recovery launcher PID')
+        main_tick=int(events[0][0][4]);require(dispatch_ref['reference']['byte_start']<events[0][1]['reference']['byte_start']<callback_ref['reference']['byte_start'],'recovery main outside dispatched callback interval')
+        for other in serial:
+            match=re.fullmatch(rf'INFERNO_OPEN_TIMING_V1 request_id=([0-9a-f]{{32}}) boot=({UUID}) pid=([0-9]+) request_ticks=([0-9]+) callback_ticks=([0-9]+) numer=([0-9]+) denom=([0-9]+) accepted=([01])',other['value'])
+            if match and match[1]!=rid:require(not (int(match[4])<=cb and int(match[5])>=req),'overlapping guest OPEN')
+        ident,identity_ref=full(rf'INFERNO_EVENT_PROCESS_IDENTITY pid={pid} query_result=56 errno=0 uniqueid=([1-9][0-9]*) idversion=([1-9][0-9]*) source=original-libproc fallback=main-tick-and-pid', 'original recovery process identity')
+        require(identity_ref['reference']['byte_start']<=events[0][1]['reference']['byte_start'],'process identity follows main')
+        rejects=[r for r in serial if r['value'].startswith('INFERNO_') and ('REJECT' in r['value'] or 'INFERNO_EVENT_RELAY_REJECT' in r['value'])]
+        require(not any(re.search(rf'\bpid={pid}\b',r['value']) for r in rejects),'selected recovery PID identity rejected')
+        all_events=[]; seen_events=set(); paired_valid=set(); paired_markers=set(); sequences={}
+        er=re.compile(rf'INFERNO_EVENT_RELAY_RAW source=guest-loopback record=INFERNO_EVENT_V1 ({UUID}) ([1-9][0-9]*) ([1-9][0-9]*) ([a-z-]+) ([0-9]+)')
+        for row in serial:
+            if not row['value'].startswith('INFERNO_EVENT_RELAY_RAW'):
+                continue
+            match=er.fullmatch(row['value']);require(match is not None,'malformed lifecycle RAW')
+            f=match.groups();key=f[:3];require(key not in seen_events,'duplicate lifecycle provenance key');seen_events.add(key)
+            require(f[0]==boot and f[3] in {'main','view-loaded','window-visible-requested','active','appeared','tap'},'unknown lifecycle boot/event')
+            ip=(f[0],int(f[1]));seq=int(f[2]);require(seq==sequences.get(ip,0)+1,'nonconsecutive lifecycle sequence');sequences[ip]=seq
+            vr=unique([x for x in serial if VALID.fullmatch(x['value']) and VALID.fullmatch(x['value']).groups()==key],'complete lifecycle validation')
+            mr=unique([x for x in serial if x['value']==f'INFERNO_UIKIT_PROBE_V1 event={f[3]} count={f[4]}' and vr['reference']['byte_start']<x['reference']['byte_start']<=vr['reference']['byte_end']+1024],'complete lifecycle marker')
+            require(row['reference']['byte_end']<=vr['reference']['byte_start'],'complete lifecycle order invalid')
+            paired_valid.add(vr['reference']['byte_start']);paired_markers.add(mr['reference']['byte_start']);all_events.append({'fields':f,'raw':row,'validated':vr,'marker':mr})
+            if ip!=identity:require(f[3:] == ('main','0'),'prior lifecycle is not main-only')
+        require(paired_valid=={r['reference']['byte_start'] for r in serial if r['value'].startswith('INFERNO_EVENT_RELAY_RECORD')},'unpaired or malformed lifecycle validation')
+        require(paired_markers=={r['reference']['byte_start'] for r in serial if r['value'].startswith('INFERNO_UIKIT_PROBE_V1 ')},'unpaired lifecycle marker')
+        chosen=[c for c in candidates if (c['boot'],c['pid'])==identity];prior=[c for c in candidates if c not in chosen]
+        require(sorted((c['event'],c['sequence']) for c in chosen)==[('appeared',5),('main',1),('tap',6)],'recovery lifecycle must be main1/appeared5/tap6')
+        first=min(c['raw']['reference']['byte_start'] for c in chosen)
+        for c in prior:
+            require(c['boot']==boot and c['event']=='main' and c['sequence']==1 and c['raw']['reference']['byte_start']<first,'prior process is not validated main-only prefix; genuine arrival proof required')
+        return {'request_id':rid,'boot':boot,'pid':pid,'main_ticks':main_tick,'host_control':opened,'wire':sent,'wire_completion':done,'guest_request':request_ref,'dispatch':dispatch_ref,'callback':callback_ref,'open_timing':timing_ref,'normal_child_end':end_ref,'five_hooks':[r for f,r in events],'process_identity':identity_ref,'prior_main_only_records':prior,'all_rejection_records':rejects,'all_validated_event_records':all_events,'all_timing_incarnations':[{'boot':k[0],'pid':k[1],'records':[r for f,r in e]} for k,e in groups.items()]}
 
     def verify(self):
         report = json.loads(self.read('report.json'))
@@ -155,9 +248,10 @@ class Audit:
         require({r['reference']['byte_start'] for r in relevant_markers} ==
                 {c['marker']['reference']['byte_start'] for c in candidates},
                 'Unpaired lifecycle marker exists')
+        recovery = self.recovery_selection(serial, controls, inputs, candidates, t0, t1) if self.recovery_open_request else None
         chains = {}
         for event in ['main','appeared','tap']:
-            matching = [c for c in candidates if c['event'] == event]
+            matching = [c for c in candidates if c['event'] == event and (recovery is None or (c['boot'],c['pid'])==(recovery['boot'],recovery['pid']))]
             if arrivals is not None:
                 matching = [c for c in matching if
                             (t0 < c['arrival']['value']['observed_time'] < t1 if event == 'tap'
@@ -168,6 +262,8 @@ class Audit:
         strict_identity = (chains['main']['boot'], chains['main']['pid'])
         later = [c for c in candidates if all(c is not selected for selected in chains.values())]
         for c in later:
+            if recovery and c in recovery['prior_main_only_records']:
+                continue
             require((c['arrival']['value']['observed_time'] > t1 if arrivals is not None else
                      prefix_boundary is not None and c['raw']['reference']['byte_start'] >= prefix_boundary),
                     'Additional lifecycle record is not proven after strict capture')
@@ -220,12 +316,12 @@ class Audit:
             require(t1 < f['value']['time'] < quit_exchange['request']['value']['time'], 'finish-run ordering invalid')
         for name, source in self.sources.items():
             require(sha((self.folder/name).read_bytes()) == source['sha256'], f'source changed during verification: {name}')
-        return {'status':'verified','chronology_basis':('raw observer arrival references plus source-gated capture commands' if arrivals is not None else ('source-gated capture plus independently retained serial prefix; no per-marker arrival time' if prefix_manifest is not None else 'source-gated capture commands; independent marker arrival times unavailable')),'reviewed_capture_gate_source_sha256':gate_sha,'boot_uuid':main['boot'],'app_pid':main['pid'],'relay_ready':ready,'events':chains,'strict_prefix_manifest':prefix_manifest,'post_strict_other_process_records':later,'before':before,'tap_command':gesture,'tap_wire':sent,'tap_wire_completion':delivered,'tap_attempt_ack':ack,'after':after,'captures':captures,'finish_run':finish,'quit':quit_exchange,'shutdown':shutdown,'exit_code':0}
+        return {'status':('verified-recovered-journey' if recovery else 'verified'),**({'recovery_scope':recovery,'whole_boot_verified':False} if recovery else {}),'chronology_basis':('raw observer arrival references plus source-gated capture commands' if arrivals is not None else ('source-gated capture plus independently retained serial prefix; no per-marker arrival time' if prefix_manifest is not None else 'source-gated capture commands; independent marker arrival times unavailable')),'reviewed_capture_gate_source_sha256':gate_sha,'boot_uuid':main['boot'],'app_pid':main['pid'],'relay_ready':ready,'events':chains,'strict_prefix_manifest':prefix_manifest,'post_strict_other_process_records':later,'before':before,'tap_command':gesture,'tap_wire':sent,'tap_wire_completion':delivered,'tap_attempt_ack':ack,'after':after,'captures':captures,'finish_run':finish,'quit':quit_exchange,'shutdown':shutdown,'exit_code':0}
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--report',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--strict-prefix',type=Path,help='independently retained completed strict serial prefix manifest');a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--report',type=Path,required=True);p.add_argument('--output',type=Path,required=True);p.add_argument('--strict-prefix',type=Path,help='independently retained completed strict serial prefix manifest');p.add_argument('--recovery-open-request',help='explicitly scope a new-process recovered journey to one original OPEN; never whole-boot success');a=p.parse_args()
     if a.output.exists():p.error('output must be a new file')
-    audit=Audit(a.report,a.strict_prefix)
+    audit=Audit(a.report,a.strict_prefix,a.recovery_open_request)
     try:
         result=audit.verify();code=0
     except (Invalid,OSError,ValueError,KeyError,TypeError) as exc:
