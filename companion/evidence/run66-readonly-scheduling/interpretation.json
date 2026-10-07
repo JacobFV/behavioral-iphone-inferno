@@ -1,0 +1,23 @@
+{
+  "scope": "Read-only current66 scheduling/log progression; no control, mutation, restart or guest actions.",
+  "source_checks": {
+    "accel/tcg/cpu-exec.c": "log_cpu_exec filter only called under CPU_LOG_TB_CPU|CPU_LOG_EXEC at dispatcher; stop chain filter under EXEC.",
+    "accel/tcg/cpu-exec-common.c": "CF_NO_GOTO_TB added only when NOCHAIN logmask active, not by dfilter.",
+    "accel/tcg/translate-all.c": "filter sites behind OUT_ASM or EXEC masks.",
+    "accel/tcg/translator.c": "filter site behind IN_ASM mask.",
+    "util/log.c": "dfilter parses address ranges; no CPU mode/chaining setting."
+  },
+  "runtime_observation": "No PC dump blocks and no CPU-window journal in actual66 at measurement. CPU mask enable not requested. QEMU continues, host runnable scheduling delays substantial; no claim dfilter causes observed slowness.",
+  "interpretation_limits": [
+    "Scheduling interval does not establish total startup cause or exact earlier65 host comparability.",
+    "Runnable wait measures host scheduling, while other elapsed time can include blocked/I/O/guest waits.",
+    "Do not modify unrelated host processes or live guest based only on these observations."
+  ],
+  "source_sha256": {
+    "accel/tcg/cpu-exec.c": "4f03249bbdb9c10f70d32373efd8dd25e31094ce4baffc082c00f6c3f24cbd71",
+    "accel/tcg/cpu-exec-common.c": "9e5e2e3586f321e2c8b961e3b6790d5c9d7e88d94ecc7e46b1371d5fbdc7d180",
+    "accel/tcg/translate-all.c": "dd3e0207c2e0ec943f99451d7f8d3ed5d170ff5d9ffdd6559bf6e864a8419daa",
+    "accel/tcg/translator.c": "181d5eae4455c037fa8664c9ef8858289d5a5321f64aadbff752db8131d58b6a",
+    "util/log.c": "ff4b9b68860bb6d2a78ace324b164fbf19fc7d8f4e2058c06c169fc5d81a8cd9"
+  }
+}
