@@ -1,0 +1,21 @@
+{
+  "serial": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-fixture-2/serial.log",
+  "sha256": "fb7fb07a40c6f3f0f82a315ee7754b4bdafadfe14113b9c23b6eab885f895b4f",
+  "bytes": 49123,
+  "records": [
+    {
+      "offset": 47844,
+      "bytes": 93,
+      "text": "INFERNO_IMPORTED_APP_PARENT stat=0 errno=0 mode=40775 uid=0 gid=80 nlink=105 path_result=0"
+    },
+    {
+      "offset": 48919,
+      "bytes": 58,
+      "text": "INFERNO_IMPORTED_APP_FINISH result=82 unmount=0 errno=0"
+    }
+  ],
+  "diagnosis": "Successful lstat/type/path and uid0, but legitimate original parent gid80 caused old uid/gid-zero guard failure. Actual complete mode040775 is a directory with group write, not world write.",
+  "policy": "Allow exactly uid0/gid80/fullmode040775 (observed original root/admin), or uid0/gid0/fullmode040755 (prior ordinary root/wheel). Other groups/modes, symlinks, specialbits and world-write reject. nlink105 is retained diagnostic, not pinned because adding applications normally changes directory link count.",
+  "unchanged": "No parent ownership/mode mutation; existing bundle collision, source plan and recursive metadata/bytes checks unchanged.",
+  "validation": "ARM64 freestanding syntax check passed. No VM action; failed diagnostic2 remains ineligible. Fresh recovery must prove remaining copy/readback/cleanup gates."
+}
