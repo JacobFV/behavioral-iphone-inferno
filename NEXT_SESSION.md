@@ -9,6 +9,30 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-06 17:03 local
 
+### 17:35 continuation: third persistent freeze and sampling branch preparation
+
+Run64 reproduced genuine counter1 events with persistent VNC/QMP counter0 on
+original stage50/HID54 and diagnostic0889. BootD3565D9B-20CE-4027-A008-63BF07EBD833,
+PID264/main3689988377; single counter14085661c57f48b7aeca9eca34141fd6.
+Both20s observation sets remained0; before and periodic QMP share SHA
+b98bd63c2d0298ad8a421020d2d2dce274970e53778b6d04a0c74453f5780ca3.
+No after capture, second tap, Home, OPEN, SAMPLE or HMP. Root recorded SIGINT2
+at1791333348.6982012; forensic postflight is underway.
+
+Independent actual audit53022f2778 records five completed draw cycles before
+the counter interval. After action byte80750, all32 handler samples had x21
+0x400 (ready bit10 set), with32 equal status/W1C pairs and no submission/BH/config.
+This narrows the unknown path to subsequent guest state/completion branches;
+it does not prove notification or identify a rendering fix.
+
+Reviewed plans0c62005feb/bf85a73e47/9ee6583891 are now authorized for conversion
+only, after64 preservation: immutable original50 to exclusively NEW external raw,
+logical qemu-img compare, GPT CRC/fullhash, unchanged source identities and hashes,
+one-time freeze/KEEP only on the new file. Recovery staging follows concrete
+conversion review, using existing helper55 and original50 paired auxiliaries.
+This enables original process stack sampling; recovery mutations mean it is
+not a pure HID-only causal comparison. No failed app disk becomes a base.
+
 ### Latest17:23:64 authorized with reviewed x21 diagnostic
 
 Build/control5ea7675200 PASS on sourcef37ad49dbb68dc9c0097960381ebc14270fc3da8.
