@@ -75,19 +75,20 @@ pending and successful returns coexist with advancing frames. These snapshots
 have no process/thread identity and cannot be paired as calls. We still need the
 same bounded observation during a reproduced freeze; no rendering fix is claimed.
 
-Runs69/70 completed the strict visual journey, and69 also passed three
-Home/reopen/tap cycles ending at counter4. Their normal shutdown, source pins,
-raw logs and disk preservation are retained. A proposed shorter setup-to-tap
-experiment was not achieved in70 because operator review delayed the tap until
-after the trace window expired. A narrowly guarded operator sequence is being
-built to make that experiment executable; its implementation is not evidence of
-a guest run.
+Runs69–72 completed the strict visual journey, and69 also passed three
+Home/reopen/tap cycles ending at counter4. Runs71/72 executed the guarded
+setup-to-counter sequence with actual receiver write intervals of10.25/10.24s.
+Their source pins, raw logs, reviewed frames and normal disk preservation are
+retained. They do not resolve the intermittent display freeze.
 
-The current roadmap gate is reliability. Real boot, input, owned-app execution,
-visible output, warm/fresh-process launch and a two-guest resource observation
-have been demonstrated. Remaining work is to diagnose the intermittent freeze,
-establish repeatable journeys, expand app coverage, and measure sustained active
-concurrency before claiming dependable runner economics.
+The first developer release still needs reliable runtime journeys, a general
+compatible IPA import/staging/launch path, and a defined Xcode build workflow.
+Manifest-driven import and staging are now being implemented, with the existing
+owned fixture packaged as an IPA as the first execution gate. No general IPA
+compatibility or Xcode-project support is claimed yet. The intended initial
+subset is unencrypted developer device apps compatible with this pinned iOS14
+runtime; building Xcode projects requires a separate macOS/Xcode toolchain.
+Firmware provisioning, packaging and sustained workload validation also remain.
 
 Broader reliability and active-workload measurements remain ongoing. See [BOOT.md](BOOT.md) for the image profile and headless runner,
 [USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.

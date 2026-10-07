@@ -9,6 +9,36 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-06 17:03 local
 
+### 2026-10-07 16:08: run72 retained; first IPA release workflow in progress
+
+72 completed the guarded owned counter0→1 journey, normal exit0/errornull,
+strict verification and all seven disks/backing checks. Postflight281bbb6310,
+root-reviewed visual evidencec509f19870, independent audit5e1210a503.
+Boot4B157218-201E-41A0-9065-FBC58FBBFB1E, PID254/main3036512961;
+NotNow→counter receiver write interval10.235177320s. No CPU logging or SAMPLE.
+Initial exact-image rejection is preserved; root reviewed and pinned an additional
+Finish Setup overlay variant in17884bbdf8. Review idle time prevents a full65
+cadence match. This success does not fix the intermittent freeze.
+
+One final comparison73 is authorized with the same0889/base/72 flags EXCEPT
+omitting --swapwait-cpu-diagnostic, so no startup -dfilter and no CPU-window use.
+Root owns all UI and samples; if frozen, preserve original BACKBOARDD then
+SPRINGBOARD samples after trace disable before any Home/OPEN. If healthy, end this
+repeated-boot comparison line and prioritize the IPA execution deliverable.
+
+User explicitly asks about releasing an emulator for IPAs and Xcode projects.
+Proposal5a9cb63e80 defines the next actual vertical slice: package the existing
+owned fixture as an external IPA, validated manifest import, recursive recovery
+staging with readback, original LaunchServices launch, reviewed counter0→1.
+Disk worker owns importer; native worker owns opt-in manifest staging; root owns
+launch integration and actual UI; boot worker owns launches/builds/postflight.
+Existing fixture defaults remain intact. General uninstrumented app execution
+requires independent process/pixel evidence, not invented fixture telemetry.
+Xcode source builds require a separate macOS/Xcode build workflow; no builder is
+currently established. First alpha scope is compatible unencrypted developer
+apps on the pinned iOS14 runtime. General IPA/Xcode support is not yet delivered;
+intermittent freeze, compatibility, setup and packaging remain release blockers.
+
 ### 2026-10-07 15:48: actual guarded71 verified; clean repeat72 authorized
 
 71 normalpostflight463c3a0266 exit0/errornull609.186443s, all7/ancestorspassed,
