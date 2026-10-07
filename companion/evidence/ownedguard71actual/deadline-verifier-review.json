@@ -1,0 +1,29 @@
+{
+  "candidate": "b338c8458cc4dca7b992b7101fb1a6d9cd202f5a",
+  "verdict": "Approved; narrow optional-field format integration, no default weakening found.",
+  "checks": [
+    "Exact old fields or old fields plus one optional deadline only.",
+    "Requires finite positive deadline/recorded/begin/end clocks, matching deadline in command and receiver journal, recorded<=begin<deadline, begin<=end, and15s bound.",
+    "Requires complete exact wire bytes, exact control/receiver response equality, noerror, truthful write-end-overrun Boolean.",
+    "Host send-start deadline explicitly distinguished from end/delivery; original failed postflight output is not rewritten.",
+    "Actual71 source association separately verified by ownedguard71actual sourcehash/recorded-source audit; parser retains raw-source hashes."
+  ],
+  "independent_replays": [
+    {
+      "path": "/tmp/inferno-deadline-review-71.json",
+      "sha256": "9b43f7920f4ce7a8b1d389581c220099e5517a3dd064b25c3fad200032237d64",
+      "status": "verified"
+    },
+    {
+      "path": "/tmp/inferno-deadline-review-70.json",
+      "sha256": "2f5a5c22dafa214dab66e9e5573468d5644ed1afb891aaa9a43c589a3772b561",
+      "status": "verified"
+    },
+    {
+      "path": "/tmp/inferno-deadline-review-negative.json",
+      "sha256": "fc63932c4a6302fc675355e2a19d43ea631f65bf58601a3c695fea40ca364197",
+      "status": "seven synthetic mutations rejected"
+    }
+  ],
+  "scope": "Read-only actual71 positive, unchanged70 default positive and seven existing in-memory negative replays. No guest actions or original report modifications."
+}
