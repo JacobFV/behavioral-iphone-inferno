@@ -1,0 +1,184 @@
+{
+  "kind": "verified-recovery-staging-retention",
+  "scope": "Intentional Signal15 after actual imported fixture identical collision,75930-byte zero mismatch readback, clean unmount and PREP_COMPLETE. Generic forensic checks retained unchanged separately; stage-specific eligibility follows successful recovery.",
+  "freeze_note": "First local freeze script asserted600 for root; actual newly created qcow2 was644, stopped after five new auxiliaries frozen. Resumed only root644 and remaining syscfg600. No file re-chmod and no ancestor metadata mutation.",
+  "attempt_error": {
+    "type": "KeyboardInterrupt",
+    "detail": "Signal 15"
+  },
+  "attempt_completed": false,
+  "generic_checks_sha256": "bfa394d2b63aa89aec1ed71fa4857aa1b8891c1c800b6fed7d1660eb147e8039",
+  "raw_serial_sha256": "9d205c7c5e3d6943bb11c1dad9c2c4191ee9d8ad62cc816e9e264243dd75a2f8",
+  "stopped_manifest_sha256": "e196f51a4ed0f4281ae1179aeb7bfa88ed246ec551cc051f65b05c8964d968db",
+  "loaded_stage": {
+    "report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-fixture-3/report.json",
+    "report_sha256": "c54198ab00829fe496f9da3bf4931daf4d76de7ca4bc78cd4c45815887169eea",
+    "stopped_manifest": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-fixture-3/stopped-disk-hashes.json",
+    "stopped_manifest_sha256": "e196f51a4ed0f4281ae1179aeb7bfa88ed246ec551cc051f65b05c8964d968db",
+    "layers": [
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-fixture-3/disks/root.qcow2",
+        "format": "qcow2",
+        "sha256": "4151bcd6b987d531ce0ed331d25ea2d80dfb901ccef6779102c00eaa6d69eb21",
+        "bytes": 2228224,
+        "device": 66306,
+        "inode": 48374845,
+        "mtime_ns": 1791415492962406951,
+        "ctime_ns": 1791415651772451616,
+        "mode": "0o444"
+      },
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-from50-sample-1/disks/root.qcow2",
+        "format": "qcow2",
+        "sha256": "168e5395e39aa5d0dc4e95a8c70f7c5d3306e2373fef3477687980ae0ca59cc0",
+        "bytes": 3670016,
+        "device": 66306,
+        "inode": 53749281,
+        "mtime_ns": 1791333637611745955,
+        "ctime_ns": 1791333723370948803,
+        "mode": "0o444"
+      },
+      {
+        "path": "/home/brandonin/.local/share/inferno/images/ios14b5/stage50-flatten-source-1/root.raw",
+        "format": "raw",
+        "sha256": "40ea0d8119b4d0477a0f1c045b253179b84fc4311f1e5b34a8edf36e7351f210",
+        "bytes": 34359738368,
+        "device": 66306,
+        "inode": 53749262,
+        "mtime_ns": 1791333445088293817,
+        "ctime_ns": 1791333501905426719,
+        "mode": "0o444"
+      }
+    ],
+    "virtual_size": 34359738368,
+    "auxiliary": {
+      "ctrl_bits.raw": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-fixture-3/disks/ctrl_bits.raw",
+        "bytes": 8192,
+        "sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+        "format": "raw"
+      },
+      "effaceable.raw": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-fixture-3/disks/effaceable.raw",
+        "bytes": 4096,
+        "sha256": "0f559fb9b151252796f2122984cd498c790673cde9888b8a6e2d106653dcc902",
+        "format": "raw"
+      },
+      "firmware.raw": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-fixture-3/disks/firmware.raw",
+        "bytes": 8388608,
+        "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74",
+        "format": "raw"
+      },
+      "nvram.raw": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-fixture-3/disks/nvram.raw",
+        "bytes": 8192,
+        "sha256": "ad4c003b41d5882b0a727911f76a6ced346e67d4e6993058b15a7d191f4985bf",
+        "format": "raw"
+      },
+      "panic_log.raw": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-fixture-3/disks/panic_log.raw",
+        "bytes": 1048576,
+        "sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+        "format": "raw"
+      },
+      "root.qcow2": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-fixture-3/disks/root.qcow2",
+        "bytes": 2228224,
+        "sha256": "4151bcd6b987d531ce0ed331d25ea2d80dfb901ccef6779102c00eaa6d69eb21",
+        "format": "qcow2",
+        "standalone": false,
+        "backing_chain": [
+          {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-from50-sample-1/disks/root.qcow2",
+            "format": "qcow2",
+            "sha256": "168e5395e39aa5d0dc4e95a8c70f7c5d3306e2373fef3477687980ae0ca59cc0",
+            "bytes": 3670016,
+            "device": 66306,
+            "inode": 53749281,
+            "mtime_ns": 1791333637611745955,
+            "ctime_ns": 1791333723370948803,
+            "mode": "0o444"
+          },
+          {
+            "path": "/home/brandonin/.local/share/inferno/images/ios14b5/stage50-flatten-source-1/root.raw",
+            "format": "raw",
+            "sha256": "40ea0d8119b4d0477a0f1c045b253179b84fc4311f1e5b34a8edf36e7351f210",
+            "bytes": 34359738368,
+            "device": 66306,
+            "inode": 53749262,
+            "mtime_ns": 1791333445088293817,
+            "ctime_ns": 1791333501905426719,
+            "mode": "0o444"
+          }
+        ],
+        "recovery_staging_verified": true
+      },
+      "syscfg.raw": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-fixture-3/disks/syscfg.raw",
+        "bytes": 131072,
+        "sha256": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+        "format": "raw"
+      }
+    },
+    "metadata_revalidation": []
+  },
+  "freeze_identities": {
+    "ctrl_bits.raw": {
+      "st_dev": 66306,
+      "st_ino": 48374849,
+      "st_size": 8192,
+      "st_mode": 33060,
+      "st_mtime_ns": 1791415487788002923,
+      "st_ctime_ns": 1791415631044108590
+    },
+    "effaceable.raw": {
+      "st_dev": 66306,
+      "st_ino": 48374852,
+      "st_size": 4096,
+      "st_mode": 33060,
+      "st_mtime_ns": 1791415487790576764,
+      "st_ctime_ns": 1791415631044108590
+    },
+    "firmware.raw": {
+      "st_dev": 66306,
+      "st_ino": 48374847,
+      "st_size": 8388608,
+      "st_mode": 33060,
+      "st_mtime_ns": 1791415487781360634,
+      "st_ctime_ns": 1791415631044108590
+    },
+    "nvram.raw": {
+      "st_dev": 66306,
+      "st_ino": 48374851,
+      "st_size": 8192,
+      "st_mode": 33060,
+      "st_mtime_ns": 1791415490246406536,
+      "st_ctime_ns": 1791415631044108590
+    },
+    "panic_log.raw": {
+      "st_dev": 66306,
+      "st_ino": 48374853,
+      "st_size": 1048576,
+      "st_mode": 33060,
+      "st_mtime_ns": 1791415487792048412,
+      "st_ctime_ns": 1791415631044108590
+    },
+    "root.qcow2": {
+      "st_dev": 66306,
+      "st_ino": 48374845,
+      "st_size": 2228224,
+      "st_mode": 33060,
+      "st_mtime_ns": 1791415492962406951,
+      "st_ctime_ns": 1791415651772451616
+    },
+    "syscfg.raw": {
+      "st_dev": 66306,
+      "st_ino": 48374848,
+      "st_size": 131072,
+      "st_mode": 33060,
+      "st_mtime_ns": 1791415487786823707,
+      "st_ctime_ns": 1791415651772451616
+    }
+  }
+}
