@@ -1,0 +1,19 @@
+{
+  "candidate": "dfc0893cbdee1dbd13b24e52e4ac710c89e0f5f7",
+  "verdict": "No blocking finding",
+  "checks": [
+    "Validation admits finish-observation only with exact empty arguments. Receiver rejects whenever journey is not None, including incomplete and completed probe journeys.",
+    "Existing finish-run retains keep-running opt-in plus completed journey gates; no recovery bypass added.",
+    "Accepted observation request only records finish_requested. Boot loop breaks through ordinary observations, frame capture and final cleanup. Trace cleanup, final capture, QMP quit, process wait, backing validation and milestone derivation remain unchanged.",
+    "Report records observation_run_control separately. Command response explicitly disclaims execution/journey success; attempt_completed describes host attempt, while ios_booted/app_executed remain derived by existing observe_milestones.",
+    "Replayed actual private mailbox files for six cases with a QMP object that raises on execute; expected accepts/rejections passed."
+  ],
+  "limits": [
+    "Host-only mailbox replay and source review, not emulator lifecycle or guest execution proof.",
+    "No immediate interrupt/retraction semantics: mailbox poll can process its bounded batch before the loop notices finish_requested, consistent with existing finish-run. Operator must not queue additional input while finishing."
+  ],
+  "source_sha256": {
+    "companion/qmp_control.py": "0c147c8fa9fea8414f8f5a79c6a904b3c2b0f123352de142b03eaca56526afb7",
+    "companion/boot.py": "8089c0bbffd7cc964d982d6fc199147a785efa1bfe134464b60301f257631037"
+  }
+}
