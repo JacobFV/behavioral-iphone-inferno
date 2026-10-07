@@ -1,0 +1,33 @@
+{
+  "candidate": "304e78e12f",
+  "source_sha256": "068cf9205f65d69c8e697ec423f573da2ccd2eeabd6162140305471d97d6bd13",
+  "scope": "Read-only source/API review before any execution. No guest action or reviewer source mutation.",
+  "confirmed": [
+    "Pinned full-image and exactRGB crop hashes; exact dimensions/mode; no resize or fuzzy classification.",
+    "Initial overlay and immediate pre-input overlay checked; zero-state checks and source probe-before gate precede fixed counter.",
+    "Two fixed taps only, no Home/OPEN/CPU/strict-after/finish; unknown frame aborts; no retry after uncertain command.",
+    "All nine traces checked disabled before finite60s runner-owned window; conservative remaining-time check; end checkpoint and observation-overrun status retained."
+  ],
+  "findings": [
+    {
+      "id": "queued-deadline",
+      "status": "requires explicit scope decision or receiver deadline",
+      "detail": "Pre-submission checks cannot prevent already-queued mailbox request executing after target; existing validator accepts created within30s. Post-send target_met=false detects but does not prevent late transmission. README discloses narrower submission-only promise."
+    },
+    {
+      "id": "child-tree",
+      "status": "fix requested",
+      "detail": "Timeout kills owned-control subprocess but its nested qmp_control child can continue polling35s; child-tree ownership/cleanup needed. Never retry uncertain request."
+    },
+    {
+      "id": "identity-order",
+      "status": "fix requested",
+      "detail": "Appearance validation/marker tail membership does not enforce ordering; malformed relevant RAW lines skipped. Require strict relevant grammar and raw\u2192validation\u2192marker order."
+    },
+    {
+      "id": "host-binding",
+      "status": "implementer already addressing root request",
+      "detail": "Bind active report PID/cmdline/exe and exact private Unix VNC ownership; current initial candidate only binds report/mailbox plus saved command."
+    }
+  ]
+}
