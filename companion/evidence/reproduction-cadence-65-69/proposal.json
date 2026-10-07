@@ -1,0 +1,143 @@
+{
+  "scope": "Read-only live-prefix cadence comparison, no runtime changes or causal claim.",
+  "captured_host_epoch": 1791411268.8513167,
+  "runs": [
+    {
+      "run": 65,
+      "cont": 1791404039.010287,
+      "qmp_prefix_sha256": "b4dc8797e70f264f18a9d4769135f76667f546e997d6dfeb71a5c899529316a3",
+      "actions": [
+        {
+          "action": "unlock-001",
+          "time": 1791404141.6321745,
+          "after_cont_seconds": 102.62188744544983,
+          "source_sha256": "fd19a602e07ec748d53628d36af3a07b5646d30e7f562cd08abb384e34994ff8",
+          "trace_before": null
+        },
+        {
+          "action": "unlock-002",
+          "time": 1791404185.1004684,
+          "after_cont_seconds": 146.090181350708,
+          "source_sha256": "ef47aed9e6336e38b8ca25bfae087f2344c0064d772597f39ecb65475f38c07e",
+          "trace_before": null
+        },
+        {
+          "action": "alert-close-001",
+          "time": 1791404214.0749066,
+          "after_cont_seconds": 175.0646195411682,
+          "source_sha256": "1f41b02014873ded932f7828839ffed6ee6b6dc3ab620e7b6654a780f0822330",
+          "trace_before": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-65/guest-errors.log",
+            "device": 66306,
+            "inode": 41288499,
+            "size": 1609909,
+            "wall_time": 1791404214.075062,
+            "monotonic_time": 823397.951540118
+          }
+        },
+        {
+          "action": "setup-not-now-001",
+          "time": 1791404231.0946405,
+          "after_cont_seconds": 192.08435344696045,
+          "source_sha256": "2325f1bf7c5030253244edc4463c3af8d73060ba0ecd23a2674aec2dd28a3980",
+          "trace_before": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-65/guest-errors.log",
+            "device": 66306,
+            "inode": 41288499,
+            "size": 1665018,
+            "wall_time": 1791404231.0947871,
+            "monotonic_time": 823414.971265089
+          }
+        },
+        {
+          "action": "counter-001",
+          "time": 1791404240.983729,
+          "after_cont_seconds": 201.97344183921814,
+          "source_sha256": "c5019abdb5a0bbe912b2c5bac4ad08087a6715d88adcbb71fc35d03589f205b2",
+          "trace_before": {
+            "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-65/guest-errors.log",
+            "device": 66306,
+            "inode": 41288499,
+            "size": 1709725,
+            "wall_time": 1791404240.983878,
+            "monotonic_time": 823424.860356071
+          }
+        }
+      ]
+    },
+    {
+      "run": 69,
+      "cont": 1791410654.4601939,
+      "qmp_prefix_sha256": "67a5e6b723a665ec67191321c8ee8389bb78634c50361812d000392db2b387b6",
+      "actions": [
+        {
+          "action": "unlock-001",
+          "time": 1791410769.9500062,
+          "after_cont_seconds": 115.48981237411499,
+          "source_sha256": "ff946c085cc7115e0f65019ed4516a3a8ddd35d218faea4e9007a8024ae249ec",
+          "trace_before": null
+        },
+        {
+          "action": "unlock-002",
+          "time": 1791410863.1286352,
+          "after_cont_seconds": 208.66844129562378,
+          "source_sha256": "b1acad9dd207d454c535619312040e755cb22f57b1d6838b1b7c49882c1401d1",
+          "trace_before": null
+        },
+        {
+          "action": "close-beta-alert",
+          "time": 1791410915.1498613,
+          "after_cont_seconds": 260.6896674633026,
+          "source_sha256": "ae356a80640b5cc67a4482fe093578cee5b9ab2323ff50f68797dfa01c65ed5a",
+          "trace_before": null
+        },
+        {
+          "action": "setup-not-now",
+          "time": 1791410932.1882036,
+          "after_cont_seconds": 277.72800970077515,
+          "source_sha256": "3f7cdc45d7e25b375078b462d58a503ab4fcbc0569507c035d7a7182c7f02a41",
+          "trace_before": null
+        },
+        {
+          "action": "counter-001",
+          "time": 1791410958.959034,
+          "after_cont_seconds": 304.49884009361267,
+          "source_sha256": "ff54c6bf5c4e4cad6798583c04cd6177d57b8e6fcca7f88fc8ae6b98a41549b2",
+          "trace_before": null
+        }
+      ]
+    }
+  ],
+  "run69_trace": {
+    "prefix_bytes": 223738,
+    "prefix_sha256": "199e7971688a646405baf8586e5e4c9debb25d0b940fda2d922356a5e02ac8fb",
+    "after_startup_byte": 54675,
+    "combined_second_window_counts": {
+      "apple_adp_output_ready": 67,
+      "apple_adp_status_read": 81,
+      "apple_adp_irq_write": 81,
+      "apple_adp_unknown_mmio": 1366,
+      "apple_adp_read_caller": 243,
+      "apple_adp_gp_config_write": 152,
+      "apple_adp_submit": 19,
+      "apple_adp_bh": 38,
+      "apple_adp_pipe": 38
+    },
+    "post_counter_isolation": "Unavailable: counter submission has no trace_before and raw device events have no timestamps. Do not substitute combined-window counts for post-counter progress."
+  },
+  "recommended_single_experiment": {
+    "change": "Target the failed65 earlier UI-conditional operator cadence, holding current0889 binary/frozen source and two trace-window structure fixed.",
+    "conditions": [
+      "Record cont and exact action timestamps. Only act on reviewed corresponding UI; do not blindly send scheduled input if screen is not ready.",
+      "Where UI permits, compare second unlock around+146s, alert+175s, setup+192s, counter+202s aftercont. The65 setup\u2192counter gap was~9.9s versus69~26.8s.",
+      "Retain mandatory byte checkpoints immediately before counter and after fixed confirmation. Keep a fixed finite observation interval and no automatic retry.",
+      "If same failure is confirmed, use already-reviewed bounded CPU diagnostic; if healthy, preserve as another result without claiming timing fix."
+    ],
+    "rationale": "69 substantially delayed second unlock/alert/counter despite same binary; this supplies one concrete differing condition worth testing rather than repeating the later cadence indefinitely.",
+    "limits": [
+      "This varies cadence and cannot reproduce unknown host scheduling exactly.",
+      "UI timing and startup traces may perturb execution; count rates and causality are not established.",
+      "No proposal to alter device-register semantics, guest code, grants or validation."
+    ]
+  }
+}
