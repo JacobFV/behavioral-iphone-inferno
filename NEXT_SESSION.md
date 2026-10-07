@@ -9,6 +9,28 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-06 17:03 local
 
+### 2026-10-07 14:00: run66 visibly passes after slow startup and explicit OPEN
+
+Root visual evidence260408e4c7 records actual bootDE03772B-D957-44AD-8E34-5D96482742F2,
+new appPID395/main20962215310, explicitOPEN5438cdab75fb469085caa67701088c72,
+and singlecounter41653cc6c599409f83817331bafbc29b. Directly reviewed VNC and
+RGB-preserving QMP images show counter0 then1. Normal finish requested; final
+report says completed/errornull, CPUdiagnostic not-requested/pendingfalse/errors[].
+Bootworker owns actual postflight/all7/backing checks, diskworker actual traces.
+No freeze reproduced and no CPU window or original-tool sample requested.
+
+Startup was much slower than65. First appPID367 emitted main/active but later
+relay identity checks rejected its records; Home was visible after the one long
+unlock, betaClose and explicit FinishSetup NotNow. Explicit OPEN from Home
+launched PID395 with complete5hook timing and appeared0. Preserve these sequence
+confounds; this is not an isolated filter comparison or reliability fix.
+Read-only host evidence562511d6be records substantial runnable scheduling waits;
+independent pinned-source audit1e0800acc4 finds no dfilter-only TB/chaining change
+while CPU logging masks are off. Host contention contributes, solecause unknown.
+Continue another disposable run from the same verified from50-sample-1 base after
+66 preservation. Root all UI; CPU1s only after a confirmed persistent appfreeze
+and all display events OFF. Do not adopt66 as a new backing or claim fix.
+
 ### 2026-10-07 13:40: diagnostic validated; run66 authorized
 
 Hostimplementationfc912539fe+b88618cf71 and independentreviewa86cc1019d PASS.
