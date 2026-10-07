@@ -1,0 +1,212 @@
+Sampling backboardd [60] for 2 seconds with 100 milliseconds of run time between samples
+Sampling completed, generating report...
+Failed to find matching kernels in /System/Library/Kernels, /, /, 
+Unable to create any kext symbol owners.
+Date/Time:        2026-10-07 13:18:31.525 -0700
+End time:         2026-10-07 13:18:33.591 -0700
+OS Version:       iPhone OS 14.0 (Build 18A5351d)
+Architecture:     arm64e
+Report Version:   32
+
+Data Source:      Stackshots
+Shared Cache:     11AD39C9-E3C9-3067-A337-7287744FDCB5 slid base address 0x19b4a8000, slide 0x1b4a8000
+
+Command:          backboardd
+Path:             /usr/libexec/backboardd
+Version:          ??? (???)
+Parent:           UNKNOWN [1]
+PID:              60
+Time Since Fork:  266s
+
+Duration:         2.07s
+Steps:            21 (100ms sampling interval)
+
+Hardware model:   iPhone12,1
+Active cpus:      2
+Boot args:        debug=0x14e serial=3 wdt=-1 tlto_us=-1 mtxspin=-1 agm-genuine=1 agm-authentic=1 agm-trusted=1 -vm_compressor_wk_sw launchd_unsecure_cache=1
+
+Time Awake Since Boot: 273s
+Time Since Wake:  n/a (machine hasn't slept)
+
+
+----------------------------------------
+Heavy format: stacks are sorted by count
+----------------------------------------
+
+
+
+Process:          backboardd [60]
+UUID:             145ADB09-0B51-3EF4-8A1C-59CB046CBC5F
+Path:             /usr/libexec/backboardd
+Architecture:     arm64
+Parent:           UNKNOWN [1]
+UID:              501
+Sudden Term:      Tracked
+Footprint:        41.24 MB
+Time Since Fork:  266s
+Num samples:      21 (1-21)
+CPU Time:         0.181s
+Note:             4 idle work queue threads omitted
+
+  Thread 0x2ef    DispatchQueue "com.apple.main-thread"(1)    21 samples (1-21)    priority 31 (base 31)    cpu time <0.001s
+  21  ??? (libdyld.dylib + 3680) [0x19b727e60]  => /usr/lib/system/libdyld.dylib	_start +0x4
+    21  ??? (backboardd + 68276) [0x104310ab4]
+      21  ??? (CoreFoundation + 623148) [0x19b8a022c]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRunSpecific +0x258
+        21  ??? (CoreFoundation + 625688) [0x19b8a0c18]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x4c0
+          21  ??? (CoreFoundation + 649832) [0x19b8a6a68]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopServiceMachPort +0x17c
+            21  ??? (libsystem_kernel.dylib + 12836) [0x19b6f9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+              21  ??? (libsystem_kernel.dylib + 15984) [0x19b6f9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+               *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x383    Thread name "IOHIDService - RunLoopCompatibilityThread"    21 samples (1-21)    priority 63 (base 63)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x19b631788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x19b628ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (IOKit + 237944) [0x19c7b5178]  => /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit	___IOHIDServiceRunLoopCompatibilityThread +0x118
+        21  ??? (CoreFoundation + 627456) [0x19b8a1300]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRun +0x40
+          21  ??? (CoreFoundation + 623148) [0x19b8a022c]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRunSpecific +0x258
+            21  ??? (CoreFoundation + 625688) [0x19b8a0c18]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x4c0
+              21  ??? (CoreFoundation + 649832) [0x19b8a6a68]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopServiceMachPort +0x17c
+                21  ??? (libsystem_kernel.dylib + 12836) [0x19b6f9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+                  21  ??? (libsystem_kernel.dylib + 15984) [0x19b6f9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+                   *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x394    21 samples (1-21)    priority 63 (base 63)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x19b631788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x19b628ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (libdispatch.dylib + 81664) [0x19b5cdf00]  => /usr/lib/system/libdispatch.dylib	__dispatch_worker_thread +0x134
+        21  ??? (libdispatch.dylib + 18040) [0x19b5be678]  => /usr/lib/system/libdispatch.dylib	__dispatch_semaphore_wait_slow +0x4c
+          21  ??? (libdispatch.dylib + 16536) [0x19b5be098]  => /usr/lib/system/libdispatch.dylib	__dispatch_sema4_timedwait +0x44
+            21  ??? (libsystem_kernel.dylib + 16068) [0x19b6f9ec4]  => /usr/lib/system/libsystem_kernel.dylib	_semaphore_timedwait_trap +0x8
+             *21  ??? [0xfffffff007a5fd6c]
+
+  Thread 0x396    Thread name "com.apple.coreanimation.render-server"    21 samples (1-21)    priority 55 (base 55)    cpu time 0.053s
+  21  ??? (libsystem_pthread.dylib + 42888) [0x19b631788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x19b628ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (QuartzCore + 1870408) [0x1a377ca48]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZL10thread_funPv +0x20
+        21  ??? (QuartzCore + 982288) [0x1a36a3d10]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZN2CA6Render6Server13server_threadEPv +0x1e0
+          21  ??? (libsystem_kernel.dylib + 12836) [0x19b6f9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+            21  ??? (libsystem_kernel.dylib + 15984) [0x19b6f9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+             *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x39e    Thread name "com.apple.coreanimation.display.primary"    21 samples (1-21)    priority 54 (base 54)    cpu time 0.120s
+  21  ??? (libsystem_pthread.dylib + 42888) [0x19b631788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x19b628ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (QuartzCore + 1870408) [0x1a377ca48]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZL10thread_funPv +0x20
+        21  ??? (QuartzCore + 1813892) [0x1a376ed84]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZN2CA12WindowServer11IOMFBServer11thread_bodyEPv +0x130
+          21  ??? (CoreFoundation + 627456) [0x19b8a1300]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRun +0x40
+            21  ??? (CoreFoundation + 623148) [0x19b8a022c]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRunSpecific +0x258
+              16  ??? (CoreFoundation + 625688) [0x19b8a0c18]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x4c0
+                16  ??? (CoreFoundation + 649832) [0x19b8a6a68]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopServiceMachPort +0x17c
+                  16  ??? (libsystem_kernel.dylib + 12836) [0x19b6f9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+                    16  ??? (libsystem_kernel.dylib + 15984) [0x19b6f9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+                     *16  ??? [0xfffffff007a075e4]
+              5   ??? (CoreFoundation + 626832) [0x19b8a1090]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x938
+                5   ??? (CoreFoundation + 651696) [0x19b8a71b0]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopDoSource1 +0x254
+                  5   ??? (CoreFoundation + 654856) [0x19b8a7e08]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE1_PERFORM_FUNCTION__ +0x3c
+                    5   ??? (CoreFoundation + 506452) [0x19b883a54]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFMachPortPerform +0xb0
+                      5   ??? (QuartzCore + 959208) [0x1a369e2e8]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZL22display_timer_callbackP12__CFMachPortPvlS1_ +0x118
+                        5   ??? (QuartzCore + 1812992) [0x1a376ea00]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZN2CA12WindowServer11IOMFBServer14vsync_callbackEP21__IOMobileFramebufferyyyPv +0x1d8
+                          5   ??? (QuartzCore + 1752500) [0x1a375fdb4]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZN2CA12WindowServer6Server15render_for_timeEdPK11CVTimeStampj +0x4fc
+                            5   ??? (QuartzCore + 2122548) [0x1a37ba334]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZN2CA12WindowServer12IOMFBDisplay10can_updateEj +0x5c
+                              3   ??? (QuartzCore + 2081636) [0x1a37b0364]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZN2CA12WindowServer12IOMFBDisplay11can_update_Ej +0x214
+                                3   ??? (IOMobileFramebuffer + 17588) [0x1ae0154b4]  => /System/Library/PrivateFrameworks/IOMobileFramebuffer.framework/IOMobileFramebuffer	_kern_SwapWait +0x4c
+                                  3   ??? (IOKit + 32864) [0x19c783060]  => /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit	_IOConnectCallScalarMethod +0x50
+                                    3   ??? (IOKit + 524004) [0x19c7faee4]  => /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit	_io_connect_method +0x1b8
+                                      3   ??? (libsystem_kernel.dylib + 12836) [0x19b6f9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+                                        3   ??? (libsystem_kernel.dylib + 15984) [0x19b6f9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+                                         *3   ??? [0xfffffff007a58280] (running)
+                              2   ??? (QuartzCore + 2081676) [0x1a37b038c]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZN2CA12WindowServer12IOMFBDisplay11can_update_Ej +0x23c
+                                2   ??? (libsystem_c.dylib + 472716) [0x19b5ae68c]  => /usr/lib/system/libsystem_c.dylib	_usleep +0x44
+                                  2   ??? (libsystem_c.dylib + 473020) [0x19b5ae7bc]  => /usr/lib/system/libsystem_c.dylib	_nanosleep +0xd8
+                                    2   ??? (libsystem_kernel.dylib + 163120) [0x19b71dd30]  => /usr/lib/system/libsystem_kernel.dylib	___semwait_signal +0x8
+                                     *2   ??? [0xfffffff007a5fd6c] (runnable)
+
+  Thread 0x3a0    Thread name "com.apple.coreanimation.frameinfo.primary"    21 samples (1-21)    priority 54 (base 54)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x19b631788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x19b628ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (QuartzCore + 1870408) [0x1a377ca48]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZL10thread_funPv +0x20
+        21  ??? (QuartzCore + 1814260) [0x1a376eef4]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZN2CA12WindowServer11IOMFBServer22frame_info_thread_bodyEPv +0x100
+          21  ??? (CoreFoundation + 627456) [0x19b8a1300]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRun +0x40
+            21  ??? (CoreFoundation + 623148) [0x19b8a022c]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRunSpecific +0x258
+              21  ??? (CoreFoundation + 625688) [0x19b8a0c18]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x4c0
+                21  ??? (CoreFoundation + 649832) [0x19b8a6a68]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopServiceMachPort +0x17c
+                  21  ??? (libsystem_kernel.dylib + 12836) [0x19b6f9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+                    21  ??? (libsystem_kernel.dylib + 15984) [0x19b6f9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+                     *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x3a4    Thread name "com.apple.coreanimation.display.wireless0"    21 samples (1-21)    priority 54 (base 54)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x19b631788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x19b628ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (QuartzCore + 1870408) [0x1a377ca48]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZL10thread_funPv +0x20
+        21  ??? (QuartzCore + 1813892) [0x1a376ed84]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZN2CA12WindowServer11IOMFBServer11thread_bodyEPv +0x130
+          21  ??? (CoreFoundation + 627456) [0x19b8a1300]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRun +0x40
+            21  ??? (CoreFoundation + 623148) [0x19b8a022c]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRunSpecific +0x258
+              21  ??? (CoreFoundation + 625688) [0x19b8a0c18]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x4c0
+                21  ??? (CoreFoundation + 649832) [0x19b8a6a68]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopServiceMachPort +0x17c
+                  21  ??? (libsystem_kernel.dylib + 12836) [0x19b6f9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+                    21  ??? (libsystem_kernel.dylib + 15984) [0x19b6f9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+                     *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x3a9    Thread name "com.apple.coreanimation.display.wireless1"    21 samples (1-21)    priority 54 (base 54)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x19b631788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x19b628ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (QuartzCore + 1870408) [0x1a377ca48]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZL10thread_funPv +0x20
+        21  ??? (QuartzCore + 1813892) [0x1a376ed84]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZN2CA12WindowServer11IOMFBServer11thread_bodyEPv +0x130
+          21  ??? (CoreFoundation + 627456) [0x19b8a1300]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRun +0x40
+            21  ??? (CoreFoundation + 623148) [0x19b8a022c]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRunSpecific +0x258
+              21  ??? (CoreFoundation + 625688) [0x19b8a0c18]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x4c0
+                21  ??? (CoreFoundation + 649832) [0x19b8a6a68]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopServiceMachPort +0x17c
+                  21  ??? (libsystem_kernel.dylib + 12836) [0x19b6f9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+                    21  ??? (libsystem_kernel.dylib + 15984) [0x19b6f9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+                     *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x3aa    Thread name "com.apple.coreanimation.display.wireless2"    21 samples (1-21)    priority 54 (base 54)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x19b631788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x19b628ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (QuartzCore + 1870408) [0x1a377ca48]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZL10thread_funPv +0x20
+        21  ??? (QuartzCore + 1813892) [0x1a376ed84]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZN2CA12WindowServer11IOMFBServer11thread_bodyEPv +0x130
+          21  ??? (CoreFoundation + 627456) [0x19b8a1300]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRun +0x40
+            21  ??? (CoreFoundation + 623148) [0x19b8a022c]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRunSpecific +0x258
+              21  ??? (CoreFoundation + 625688) [0x19b8a0c18]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x4c0
+                21  ??? (CoreFoundation + 649832) [0x19b8a6a68]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopServiceMachPort +0x17c
+                  21  ??? (libsystem_kernel.dylib + 12836) [0x19b6f9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+                    21  ??? (libsystem_kernel.dylib + 15984) [0x19b6f9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+                     *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x3ae    Thread name "com.apple.CoreMotion.MotionThread"    21 samples (1-21)    priority 47 (base 47)    cpu time <0.001s
+  21  ??? (libsystem_pthread.dylib + 42888) [0x19b631788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x19b628ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (CoreMotion + 1316884) [0x1aa82d814]  => /System/Library/Frameworks/CoreMotion.framework/CoreMotion	_CLClientCreateIso6709Notation +0x2b650
+        21  ??? (CoreFoundation + 627456) [0x19b8a1300]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRun +0x40
+          21  ??? (CoreFoundation + 623148) [0x19b8a022c]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRunSpecific +0x258
+            21  ??? (CoreFoundation + 625688) [0x19b8a0c18]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x4c0
+              21  ??? (CoreFoundation + 649832) [0x19b8a6a68]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopServiceMachPort +0x17c
+                21  ??? (libsystem_kernel.dylib + 12836) [0x19b6f9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+                  21  ??? (libsystem_kernel.dylib + 15984) [0x19b6f9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+                   *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x734    Thread name "com.apple.coreanimation.asynchronous"    21 samples (1-21)    priority 40 (base 40)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x19b631788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x19b628ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (QuartzCore + 1870408) [0x1a377ca48]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZL10thread_funPv +0x20
+        21  ??? (QuartzCore + 228288) [0x1a35ebbc0]  => /System/Library/Frameworks/QuartzCore.framework/QuartzCore	__ZN2CA3OGL22AsynchronousDispatcher11thread_bodyEPv +0x9c
+          21  ??? (CoreFoundation + 627456) [0x19b8a1300]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRun +0x40
+            21  ??? (CoreFoundation + 623148) [0x19b8a022c]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRunSpecific +0x258
+              21  ??? (CoreFoundation + 625688) [0x19b8a0c18]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x4c0
+                21  ??? (CoreFoundation + 649832) [0x19b8a6a68]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopServiceMachPort +0x17c
+                  21  ??? (libsystem_kernel.dylib + 12836) [0x19b6f9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+                    21  ??? (libsystem_kernel.dylib + 15984) [0x19b6f9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+                     *21  ??? [0xfffffff007a075e4]
+
+  Binary Images:
+           0x104300000 -                ???  backboardd              <145ADB09-0B51-3EF4-8A1C-59CB046CBC5F>  /usr/libexec/backboardd
+           0x19b53b000 -        0x19b5b9fff  libsystem_c.dylib       <A91CDCD8-C69F-3204-B740-B860188831CC>  /usr/lib/system/libsystem_c.dylib
+           0x19b5ba000 -        0x19b5fbfff  libdispatch.dylib       <636C9B4E-09D7-39CF-B9A7-732F26E4D3DC>  /usr/lib/system/libdispatch.dylib
+           0x19b627000 -        0x19b632fff  libsystem_pthread.dylib <2582EECA-422F-3909-9579-D8177D42492B>  /usr/lib/system/libsystem_pthread.dylib
+           0x19b6f6000 -        0x19b726fff  libsystem_kernel.dylib  <7A525942-131A-332B-B9E6-575C0F7B50B6>  /usr/lib/system/libsystem_kernel.dylib
+           0x19b727000 -        0x19b760fff  libdyld.dylib           <20D5095F-60CD-3C1A-96AC-9A0583DC73BF>  /usr/lib/system/libdyld.dylib
+           0x19b808000 -        0x19bbbbfff  CoreFoundation          <548058AC-65EB-31FD-A60D-AA27AF827C0A>  /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+           0x19c77b000 -        0x19c824fff  IOKit                   <FDF91101-EEEA-3749-9C91-F90FA4482422>  /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit
+           0x1a35b4000 -        0x1a3831fff  QuartzCore              <A0D546D8-BA79-340E-BFC6-B5E8001A5250>  /System/Library/Frameworks/QuartzCore.framework/QuartzCore
+           0x1aa6ec000 -        0x1aa949fff  CoreMotion              <0B2D6B21-2219-35C4-A427-A6F14A0BC678>  /System/Library/Frameworks/CoreMotion.framework/CoreMotion
+           0x1ae011000 -        0x1ae01bfff  IOMobileFramebuffer     <5418A289-F483-3BB6-83BB-8BC978B1261E>  /System/Library/PrivateFrameworks/IOMobileFramebuffer.framework/IOMobileFramebuffer
