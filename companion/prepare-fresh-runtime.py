@@ -214,8 +214,12 @@ def prepare(config_path, expected, output):
             command += ['--job', str(output / filename)]
         with (output / 'merge.stdout').open('xb') as stdout, (output / 'merge.stderr').open('xb') as stderr:
             subprocess.run(command, check=True, stdout=stdout, stderr=stderr, timeout=30)
-        if read(output / 'launchd.plist') != merged:
+        actual_merged = read(output / 'launchd.plist')
+        # Binary plist object-table references need not serialize identically.
+        # Compare the entire decoded tree, then bind the actual merger bytes.
+        if plistlib.loads(actual_merged) != plistlib.loads(merged):
             raise ValueError('Existing merger differs from independent exact merge')
+        merged = actual_merged
         IMPORTER.validate_manifest(paths['app_manifest'])
         checked_map(dict(pins), {})
         args = ['--disk-helper-existing', '--readiness-probe', helpers['inferno-readiness'], '--hid-input-helper', helpers['inferno-hid-input'], '--unlock-helper', helpers['inferno-unlock-empty'], '--disk-helper', prep['inferno-prepare-root'], '--system-launcher', launch_outputs['inferno-launcher'], '--exec-wrapper', launch_outputs['inferno-exec-launcher'], '--imported-app-manifest', str(paths['app_manifest']), '--imported-app-manifest-sha256', config['inputs']['app_manifest']['sha256'], '--launchd-cache', str(output / 'launchd.plist'), '--launchd-cache-sha256', digest(merged)]
