@@ -154,3 +154,29 @@ overlay depth. A historical SIGTERM preparation does not pass this normal-finish
 contract. Session2 completed this route with original readbacks, normal exit0 and
 eligible stage verification; see `evidence/prepare-session-demo-2-actual/`.
 Eligibility permits the next installed boot; it does not prove app execution.
+
+## Run one recovery staging attempt
+
+`stage-import.py --session /external/session/session.json --session-sha256 SHA256
+--output /external/NEW-stage` explicitly launches **one recovery VM**. It constructs
+fixed boot arguments from validated session fields rather than executing the
+session's command string. It rejects an already-running emulator visible in
+`/proc`, uses a private child session and a 1,200-second preparation deadline,
+and never retries an uncertain finish request.
+
+Actual raw preparation records must pass the imported-stage verifier before a
+content checkpoint is written and the single `finish-observation` request is
+sent. Normal report/QMP shutdown and process disappearance precede freezing.
+Only the seven newly allocated files inside this fresh report are frozen, via
+verified descriptors, with identity/hash and readable-FD checks. Parent/backing
+files are never chmodded. Default stopped preservation and the stopped stage
+verifier must then pass before `verified-stage.json` is published.
+
+Any failure retains `INCOMPLETE.json` and `failure.json`, logs and possible partial
+freeze records. Do not consume that directory even if an intermediate report
+looks successful. Cleanup signals only the coordinator's owned runner/private
+process session. Forced cleanup is forensic, never eligible. The readable `/proc`
+checks are point-in-time and do not provide an exclusive host-wide lock.
+Successful staging is still not app execution: installed boot, launch and visual
+review remain separate explicit steps. No app gestures, Home, OPEN or sampling
+are sent by this command.
