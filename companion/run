@@ -5,6 +5,7 @@ root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 command=${1:-help}
 if (($#)); then shift; fi
 case "$command" in
+    boot-import) exec python3 "$root/companion/boot-import.py" "$@" ;;
     app-import) exec python3 "$root/companion/app-import.py" "$@" ;;
     build-import-launcher) exec python3 "$root/companion/app-probe/build-import-launcher.py" "$@" ;;
     stage-import) exec python3 "$root/companion/stage-import.py" "$@" ;;
@@ -29,6 +30,7 @@ case "$command" in
     version) exec "$root/.local-build/build/qemu-system-aarch64" --version "$@" ;;
     help|-h|--help)
         printf '%s\n' 'Usage: companion/run COMMAND [arguments]; COMMAND --help for options' \
+          '  boot-import  boot a freshly reverified imported stage without app-success claims' \
           '  app-import  validate and unpack an unencrypted developer IPA outside Git' \
           '  build-import-launcher  build owned helpers bound to an imported app' \
           '  stage-import  run and verify one prepared IPA recovery stage' \
