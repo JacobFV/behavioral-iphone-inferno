@@ -192,7 +192,7 @@ def main():
         before = OV.load_stopped_overlay(Path(stage['report']), tool); before_ids = identities(before)
         if len(before['layers']) != 4 or before['virtual_size'] != 8 << 30 or before['layers'][-1]['sha256'] != ORIGINAL_ROOT_SHA:
             raise ValueError('Expected verified original 8GiB four-layer chain')
-        CO.PRESERVE.descriptor_check(before_ids)
+        CO.PRESERVE.descriptor_check([Path(p) for p in before_ids])
         free = shutil.disk_usage(destination.parent).free
         if free < before['virtual_size'] + (2 << 30): raise ValueError('Need full logical raw size plus2GiB free; no resize supported')
         destination.mkdir(mode=0o700); output = destination
@@ -212,7 +212,7 @@ def main():
         if normalized(before) != normalized(after) or before_ids != after_ids or sha(raw) != raw_hash: raise ValueError('Source or new raw changed during logical comparison')
         unchanged({**sources, **pins})
         if OV.validate_tools(args.overlay_tools_root) != tool: raise ValueError('Pinned qemu-img tool changed')
-        CO.PRESERVE.descriptor_check([*before_ids, raw])
+        CO.PRESERVE.descriptor_check([*[Path(p) for p in before_ids], raw])
         raw_before = CO.identity(raw)
         fd = os.open(raw, os.O_RDWR | os.O_NOFOLLOW)
         try:
