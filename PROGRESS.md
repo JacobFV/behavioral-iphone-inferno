@@ -2,6 +2,20 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07: rootvisual timing93 launched;92 retained
+
+92forensicretention00c7630fb1 and nativepixel audit integrated: onlyalertpanel
+varies betweenboots; no92tap or appfreeze. One93plan df24435916 nowlaunching,
+runner1267365/startticks85982842, launched1791440644.5513973,
+output.local-build/reports/app-boot-93. Rootalone controls VM. Fixeddriver
+NOTused: each actualstate rootvisuallyreviewed, then explicit fixedtap scheduled
+with existingreceiverdeadline target+.5s. Targets149/396/43/18/13seconds.
+Noautomaticnextgesture/no latereplay. Current-source/binary pins unchanged.
+Need actualconttime,firstlockreview, firstswipe then396sgap. CPUconfiguredOFF;
+onlyone1swindow on genuinecallback+persistentlywrongpixels with all9queriedOFF.
+Source complete doesnotmean executioncomplete. Freshpipeline remainsblocked
+by34GiB spaceguard; ~7.5GiB free and userquestionpending.
+
 ### 2026-10-07: timing92 aborted before any alert tap; stopped forensic
 
 Rootvisual1de934f804 retains exact92screens/inputs/driverlogs. QMPcont
