@@ -7,6 +7,8 @@ if (($#)); then shift; fi
 case "$command" in
     app-import) exec python3 "$root/companion/app-import.py" "$@" ;;
     build-import-launcher) exec python3 "$root/companion/app-probe/build-import-launcher.py" "$@" ;;
+    prepare-import) exec python3 "$root/companion/prepare-import.py" "$@" ;;
+    verify-import-stage) exec python3 "$root/companion/verify-import-stage.py" "$@" ;;
     status) exec python3 "$root/companion/status.py" "$@" ;;
     check) exec python3 "$root/companion/smoke.py" --binary "$root/.local-build/build/qemu-system-aarch64" "$@" ;;
     prepare) exec python3 "$root/companion/prepare-profile.py" "$@" ;;
@@ -28,6 +30,8 @@ case "$command" in
         printf '%s\n' 'Usage: companion/run COMMAND [arguments]; COMMAND --help for options' \
           '  app-import  validate and unpack an unencrypted developer IPA outside Git' \
           '  build-import-launcher  build owned helpers bound to an imported app' \
+          '  prepare-import  prepare an external pinned IPA recovery session without booting' \
+          '  verify-import-stage  check raw recovery content or stopped-stage eligibility' \
           '  status   inspect the durable build and saved execution evidence' \
           '  check    run a fresh headless, firmware-free QMP check' \
           '  prepare  prepare a pinned recovery input profile outside Git' \
