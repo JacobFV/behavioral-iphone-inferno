@@ -83,7 +83,8 @@ def validate_inputs(args):
         raise ValueError('Expected verified flattened Data result')
     if any((paths['flattened_data'].parent / n).exists() for n in ('INCOMPLETE.json', 'failure.json')):
         raise ValueError('Flatten remains incomplete/failed')
-    unchanged(flat['evidence_sha256'])
+    unchanged({**flat['source_sha256'], **flat['evidence_sha256']})
+    pins.update(flat['source_sha256'])
     pins.update(flat['evidence_sha256'])
     phase = FL.validate_phase(Path(flat['data_verified']['path']), flat['data_verified']['sha256'], 2, pins)
     tools = validate_tools(args.overlay_tools_root)
