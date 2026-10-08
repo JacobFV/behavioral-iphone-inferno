@@ -62,6 +62,7 @@ def verify_content(raw, manifest, artifact_sizes, identical_fixture=False):
     expected.append('INFERNO_PREP_COMPLETE: requested preparation operations succeeded')
     relevant = (b'INFERNO_IMPORTED_APP_', b'INFERNO_EXEC_WRAPPER_', b'INFERNO_SYSTEM_LAUNCHER_',
                 b'INFERNO_HID_INPUT_', b'INFERNO_READINESS_', b'INFERNO_UNLOCK_HELPER_', b'INFERNO_CACHE_', b'INFERNO_LAUNCHD_CACHE_', b'INFERNO_PREP_BEGIN', b'INFERNO_PREP_COMPLETE')
+    if b'panic(cpu' in raw:raise ValueError('Guest panic')
     references = []; index = 0; offset = 0
     for physical in raw.split(b'\n'):
         complete = offset + len(physical) < len(raw)
