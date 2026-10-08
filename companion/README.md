@@ -72,8 +72,12 @@ all disks are preserved. Original-image stack analysis places some failed-state
 backboardd samples in SwapWait and its retry path. Run68 then established actual
 coverage of two kernel addresses in a separate healthy Clock calibration:
 pending and successful returns coexist with advancing frames. These snapshots
-have no process/thread identity and cannot be paired as calls. We still need the
-same bounded observation during a reproduced freeze; no rendering fix is claimed.
+have no process/thread identity and cannot be paired as calls. Run76 subsequently
+captured the reproduced freeze: all 228 entry snapshots requested token293 and
+all 228 final-return snapshots were pending, with unchanged reviewed counter0.
+A separate three-address diagnostic can distinguish active, queued and null
+request observations; it still needs coverage during a real failure. No rendering
+fix is claimed.
 
 Runs69–72 completed the strict visual journey, and69 also passed three
 Home/reopen/tap cycles ending at counter4. Runs71/72 executed the guarded
@@ -94,7 +98,15 @@ completed fresh installation and manifest-bound launch of a separate imported
 demo: original process presence, reviewed bundled resource text and counter0→1,
 normal shutdown and all-seven-disk/ancestor verification. Its raw and visual
 evidence is under `evidence/ipa-demo-installed-75/` and
-`evidence/ipa-demo-75-visual/`. General IPA compatibility is not yet claimed.
+`evidence/ipa-demo-75-visual/`. Run77 repeated the separate demo journey from a
+new host-prepared session; run78 passed the imported fixture’s strict journey.
+
+`companion/run prepare-import` now prepares a pinned external IPA session, and
+`companion/run stage-import` performs one recovery installation and verifies its
+normal shutdown and retained disks. The corrected coordinator passed actual
+recovery without manual intervention; see [APP_IMPORT.md](APP_IMPORT.md) for its
+inputs and separate installed-app validation requirements. General IPA
+compatibility is not yet claimed.
 
 Broader reliability and active-workload measurements remain ongoing. See [BOOT.md](BOOT.md) for the image profile and headless runner,
 [USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.
