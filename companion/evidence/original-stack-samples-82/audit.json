@@ -1,0 +1,49 @@
+{
+  "scope": "Actual82 original post-CPU samples, independently reconstructed and UUID/base validated; no worker guest actions",
+  "cache_uuid": "11AD39C9-E3C9-3067-A337-7287744FDCB5",
+  "actual_cache_slide": "0xa1c000",
+  "raw_stack_references": {
+    "backboardd": {
+      "path": "backboardd/report.txt",
+      "line_start": 93,
+      "line_end": 130,
+      "byte_start": 4113,
+      "byte_end": 6911,
+      "sha256": "e1c69fff630a3b082eab1a9d5536d7da1319c39e48635659eae3b53c02b58d90"
+    },
+    "springboard": {
+      "path": "springboard/report.txt",
+      "line_start": 56,
+      "line_end": 67,
+      "byte_start": 1867,
+      "byte_end": 2635,
+      "sha256": "9a83ae349e4ae75b097e5ce11a41debd14c7da7f2a7e1a0f9846d524e9bfdab9"
+    }
+  },
+  "mapping": {
+    "backboardd_cache_PCs": 69,
+    "backboardd_unmapped": 7,
+    "springboard_cache_PCs": 28,
+    "springboard_unmapped": 2,
+    "sampled_instruction_patch_overlap": []
+  },
+  "backboardd_display_primary": {
+    "samples": 20,
+    "runloop_wait": 11,
+    "can_update_usleep": 6,
+    "can_update_SwapWait_IOConnect": 3
+  },
+  "springboard_main": {
+    "samples": 20,
+    "runloop_mach_port_wait": 20
+  },
+  "comparison": "Failed65 5/21 retry-path samples,74 7/20,76 3/20,82 9/20; healthy49 0/20. Separate sampled windows, not normalized durations or cause ranking.",
+  "relation_to_pending_profile": "Earlier82 register window observed183 null-active snapshots with requested/completed253 equal. Later BBD samples show can_update retry/SwapWait family remains active in this same frozen attempt. No block-to-thread/call association or specific mode/finalW0 follows.",
+  "limits": [
+    "Unknown kernel/standalone frames preserved; original missing-kext-symbol warning retained.",
+    "Nearest symbol within validated image range is not proof of symbol extent.",
+    "No 4-byte sampled-PC overlap is not a complete patched-dependency exclusion.",
+    "Original sampled usleep return site plus mapped predecessor supports prior nonzero SwapWait for those iterations, no numeric error.",
+    "Sampling follows globally perturbing nochain window and itself perturbs execution; no unperturbed scheduling/performance claim."
+  ]
+}

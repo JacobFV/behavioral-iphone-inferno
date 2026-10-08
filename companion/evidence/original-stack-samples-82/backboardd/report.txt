@@ -1,0 +1,258 @@
+Sampling backboardd [60] for 2 seconds with 100 milliseconds of run time between samples
+Sampling completed, generating report...
+Failed to find matching kernels in /System/Library/Kernels, /, /, 
+Unable to create any kext symbol owners.
+Date/Time:        2026-10-07 18:28:03.139 -0700
+End time:         2026-10-07 18:28:05.142 -0700
+OS Version:       iPhone OS 14.0 (Build 18A5351d)
+Architecture:     arm64e
+Report Version:   32
+
+Data Source:      Stackshots
+Shared Cache:     11AD39C9-E3C9-3067-A337-7287744FDCB5 slid base address 0x180a1c000, slide 0xa1c000
+
+Command:          backboardd
+Path:             /usr/libexec/backboardd
+Version:          ??? (???)
+Parent:           UNKNOWN [1]
+PID:              60
+Time Since Fork:  746s
+
+Duration:         2.00s
+Steps:            20 (100ms sampling interval)
+
+Hardware model:   iPhone12,1
+Active cpus:      2
+Boot args:        debug=0x14e serial=3 wdt=-1 tlto_us=-1 mtxspin=-1 agm-genuine=1 agm-authentic=1 agm-trusted=1 -vm_compressor_wk_sw launchd_unsecure_cache=1
+
+Time Awake Since Boot: 751s
+Time Since Wake:  n/a (machine hasn't slept)
+
+
+----------------------------------------
+Heavy format: stacks are sorted by count
+----------------------------------------
+
+
+
+Process:          backboardd [60]
+UUID:             145ADB09-0B51-3EF4-8A1C-59CB046CBC5F
+Path:             /usr/libexec/backboardd
+Architecture:     arm64
+Parent:           UNKNOWN [1]
+UID:              501
+Sudden Term:      Tracked
+Footprint:        47.52 MB
+Time Since Fork:  746s
+Num samples:      20 (1-20)
+CPU Time:         0.169s
+Note:             3 idle work queue threads omitted
+
+  Thread 0x2e3    DispatchQueue "com.apple.main-thread"(1)    20 samples (1-20)    priority 31 (base 31)    cpu time <0.001s
+  20  ??? (libdyld.dylib + 3680) [0x180c9be60]
+    20  ??? (backboardd + 68276) [0x1006ecab4]
+      20  ??? (CoreFoundation + 623148) [0x180e1422c]
+        20  ??? (CoreFoundation + 625688) [0x180e14c18]
+          20  ??? (CoreFoundation + 649832) [0x180e1aa68]
+            20  ??? (libsystem_kernel.dylib + 12836) [0x180c6d224]
+              20  ??? (libsystem_kernel.dylib + 15984) [0x180c6de70]
+               *20  ??? [0xfffffff007a075e4]
+
+  Thread 0x379    Thread name "IOHIDService - RunLoopCompatibilityThread"    20 samples (1-20)    priority 63 (base 63)
+  20  ??? (libsystem_pthread.dylib + 42888) [0x180ba5788]
+    20  ??? (libsystem_pthread.dylib + 7336) [0x180b9cca8]
+      20  ??? (IOKit + 237944) [0x181d29178]
+        20  ??? (CoreFoundation + 627456) [0x180e15300]
+          20  ??? (CoreFoundation + 623148) [0x180e1422c]
+            20  ??? (CoreFoundation + 625688) [0x180e14c18]
+              20  ??? (CoreFoundation + 649832) [0x180e1aa68]
+                20  ??? (libsystem_kernel.dylib + 12836) [0x180c6d224]
+                  20  ??? (libsystem_kernel.dylib + 15984) [0x180c6de70]
+                   *20  ??? [0xfffffff007a075e4]
+
+  Thread 0x390    Thread name "com.apple.coreanimation.render-server"    20 samples (1-20)    priority 55 (base 55)    cpu time 0.045s
+  20  ??? (libsystem_pthread.dylib + 42888) [0x180ba5788]
+    20  ??? (libsystem_pthread.dylib + 7336) [0x180b9cca8]
+      20  ??? (QuartzCore + 1870408) [0x188cf0a48]
+        18  ??? (QuartzCore + 982288) [0x188c17d10]
+          18  ??? (libsystem_kernel.dylib + 12836) [0x180c6d224]
+            18  ??? (libsystem_kernel.dylib + 15984) [0x180c6de70]
+             *18  ??? [0xfffffff007a075e4]
+        2   ??? (QuartzCore + 982540) [0x188c17e0c]
+          1   ??? (libdispatch.dylib + 161480) [0x180b556c8]
+            1   ??? (libdispatch.dylib + 24576) [0x180b34000]
+              1   ??? (libsystem_pthread.dylib + 32748) [0x180ba2fec]
+                1   ??? (libsystem_kernel.dylib + 156740) [0x180c90444]
+                 *1   ??? [0xfffffff007a58280] (running)
+          1   ??? (libdispatch.dylib + 161380) [0x180b55664]
+            1   ??? (libdispatch.dylib + 158248) [0x180b54a28]
+              1   ??? (libsystem_kernel.dylib + 57320) [0x180c77fe8]
+                1   ??? (libsystem_kernel.dylib + 16308) [0x180c6dfb4]
+                 *1   ??? [0xfffffff007a565b0] (running)
+
+  Thread 0x39f    Thread name "com.apple.coreanimation.display.primary"    20 samples (1-20)    priority 54 (base 54)    cpu time 0.115s
+  20  ??? (libsystem_pthread.dylib + 42888) [0x180ba5788]
+    20  ??? (libsystem_pthread.dylib + 7336) [0x180b9cca8]
+      20  ??? (QuartzCore + 1870408) [0x188cf0a48]
+        20  ??? (QuartzCore + 1813892) [0x188ce2d84]
+          20  ??? (CoreFoundation + 627456) [0x180e15300]
+            20  ??? (CoreFoundation + 623148) [0x180e1422c]
+              11  ??? (CoreFoundation + 625688) [0x180e14c18]
+                11  ??? (CoreFoundation + 649832) [0x180e1aa68]
+                  11  ??? (libsystem_kernel.dylib + 12836) [0x180c6d224]
+                    11  ??? (libsystem_kernel.dylib + 15984) [0x180c6de70]
+                     *11  ??? [0xfffffff007a075e4]
+              9   ??? (CoreFoundation + 626832) [0x180e15090]
+                9   ??? (CoreFoundation + 651696) [0x180e1b1b0]
+                  9   ??? (CoreFoundation + 654856) [0x180e1be08]
+                    9   ??? (CoreFoundation + 506452) [0x180df7a54]
+                      9   ??? (QuartzCore + 959208) [0x188c122e8]
+                        9   ??? (QuartzCore + 1812992) [0x188ce2a00]
+                          9   ??? (QuartzCore + 1752500) [0x188cd3db4]
+                            9   ??? (QuartzCore + 2122548) [0x188d2e334]
+                              6   ??? (QuartzCore + 2081676) [0x188d2438c]
+                                6   ??? (libsystem_c.dylib + 472716) [0x180b2268c]
+                                  5   ??? (libsystem_c.dylib + 473020) [0x180b227bc]
+                                    5   ??? (libsystem_kernel.dylib + 163120) [0x180c91d30]
+                                     *2   ??? [0xfffffff007a5fd6c]
+                                     *2   ??? [0xfffffff007a5fd6c] (runnable)
+                                     *1   ??? [0xfffffff00812495c]
+                                       *1   ??? [0xfffffff007e81934]
+                                         *1   ??? [0xfffffff007a58280] (running)
+                                  1   ??? (libsystem_c.dylib + 472860) [0x180b2271c]
+                                    1   ??? (libsystem_pthread.dylib + 4596) [0x180b9c1f4] (running)
+                              3   ??? (QuartzCore + 2081636) [0x188d24364]
+                                3   ??? (IOMobileFramebuffer + 17588) [0x1935894b4]
+                                  3   ??? (IOKit + 32864) [0x181cf7060]
+                                    3   ??? (IOKit + 524004) [0x181d6eee4]
+                                      3   ??? (libsystem_kernel.dylib + 12836) [0x180c6d224]
+                                        3   ??? (libsystem_kernel.dylib + 15984) [0x180c6de70]
+                                         *3   ??? [0xfffffff007a58280] (running)
+
+  Thread 0x3a2    Thread name "com.apple.coreanimation.frameinfo.primary"    20 samples (1-20)    priority 54 (base 54)
+  20  ??? (libsystem_pthread.dylib + 42888) [0x180ba5788]
+    20  ??? (libsystem_pthread.dylib + 7336) [0x180b9cca8]
+      20  ??? (QuartzCore + 1870408) [0x188cf0a48]
+        20  ??? (QuartzCore + 1814260) [0x188ce2ef4]
+          20  ??? (CoreFoundation + 627456) [0x180e15300]
+            20  ??? (CoreFoundation + 623148) [0x180e1422c]
+              20  ??? (CoreFoundation + 625688) [0x180e14c18]
+                20  ??? (CoreFoundation + 649832) [0x180e1aa68]
+                  20  ??? (libsystem_kernel.dylib + 12836) [0x180c6d224]
+                    20  ??? (libsystem_kernel.dylib + 15984) [0x180c6de70]
+                     *20  ??? [0xfffffff007a075e4]
+
+  Thread 0x3a5    Thread name "com.apple.coreanimation.display.wireless0"    20 samples (1-20)    priority 54 (base 54)
+  20  ??? (libsystem_pthread.dylib + 42888) [0x180ba5788]
+    20  ??? (libsystem_pthread.dylib + 7336) [0x180b9cca8]
+      20  ??? (QuartzCore + 1870408) [0x188cf0a48]
+        20  ??? (QuartzCore + 1813892) [0x188ce2d84]
+          20  ??? (CoreFoundation + 627456) [0x180e15300]
+            20  ??? (CoreFoundation + 623148) [0x180e1422c]
+              20  ??? (CoreFoundation + 625688) [0x180e14c18]
+                20  ??? (CoreFoundation + 649832) [0x180e1aa68]
+                  20  ??? (libsystem_kernel.dylib + 12836) [0x180c6d224]
+                    20  ??? (libsystem_kernel.dylib + 15984) [0x180c6de70]
+                     *20  ??? [0xfffffff007a075e4]
+
+  Thread 0x3ab    Thread name "com.apple.coreanimation.display.wireless1"    20 samples (1-20)    priority 54 (base 54)
+  20  ??? (libsystem_pthread.dylib + 42888) [0x180ba5788]
+    20  ??? (libsystem_pthread.dylib + 7336) [0x180b9cca8]
+      20  ??? (QuartzCore + 1870408) [0x188cf0a48]
+        20  ??? (QuartzCore + 1813892) [0x188ce2d84]
+          20  ??? (CoreFoundation + 627456) [0x180e15300]
+            20  ??? (CoreFoundation + 623148) [0x180e1422c]
+              20  ??? (CoreFoundation + 625688) [0x180e14c18]
+                20  ??? (CoreFoundation + 649832) [0x180e1aa68]
+                  20  ??? (libsystem_kernel.dylib + 12836) [0x180c6d224]
+                    20  ??? (libsystem_kernel.dylib + 15984) [0x180c6de70]
+                     *20  ??? [0xfffffff007a075e4]
+
+  Thread 0x3ae    Thread name "com.apple.coreanimation.display.wireless2"    20 samples (1-20)    priority 54 (base 54)
+  20  ??? (libsystem_pthread.dylib + 42888) [0x180ba5788]
+    20  ??? (libsystem_pthread.dylib + 7336) [0x180b9cca8]
+      20  ??? (QuartzCore + 1870408) [0x188cf0a48]
+        20  ??? (QuartzCore + 1813892) [0x188ce2d84]
+          20  ??? (CoreFoundation + 627456) [0x180e15300]
+            20  ??? (CoreFoundation + 623148) [0x180e1422c]
+              20  ??? (CoreFoundation + 625688) [0x180e14c18]
+                20  ??? (CoreFoundation + 649832) [0x180e1aa68]
+                  20  ??? (libsystem_kernel.dylib + 12836) [0x180c6d224]
+                    20  ??? (libsystem_kernel.dylib + 15984) [0x180c6de70]
+                     *20  ??? [0xfffffff007a075e4]
+
+  Thread 0x3b4    Thread name "com.apple.CoreMotion.MotionThread"    20 samples (1-20)    priority 47 (base 47)    cpu time <0.001s
+  20  ??? (libsystem_pthread.dylib + 42888) [0x180ba5788]
+    20  ??? (libsystem_pthread.dylib + 7336) [0x180b9cca8]
+      20  ??? (CoreMotion + 1316884) [0x18fda1814]
+        20  ??? (CoreFoundation + 627456) [0x180e15300]
+          20  ??? (CoreFoundation + 623148) [0x180e1422c]
+            20  ??? (CoreFoundation + 625688) [0x180e14c18]
+              20  ??? (CoreFoundation + 649832) [0x180e1aa68]
+                20  ??? (libsystem_kernel.dylib + 12836) [0x180c6d224]
+                  20  ??? (libsystem_kernel.dylib + 15984) [0x180c6de70]
+                   *20  ??? [0xfffffff007a075e4]
+
+  Thread 0x488    20 samples (1-20)    priority 63 (base 63)
+  20  ??? (libsystem_pthread.dylib + 42888) [0x180ba5788]
+    20  ??? (libsystem_pthread.dylib + 7336) [0x180b9cca8]
+      20  ??? (libdispatch.dylib + 81664) [0x180b41f00]
+        20  ??? (libdispatch.dylib + 18040) [0x180b32678]
+          20  ??? (libdispatch.dylib + 16536) [0x180b32098]
+            20  ??? (libsystem_kernel.dylib + 16068) [0x180c6dec4]
+             *20  ??? [0xfffffff007a5fd6c]
+
+  Thread 0x77c    Thread name "com.apple.coreanimation.asynchronous"    20 samples (1-20)    priority 40 (base 40)
+  20  ??? (libsystem_pthread.dylib + 42888) [0x180ba5788]
+    20  ??? (libsystem_pthread.dylib + 7336) [0x180b9cca8]
+      20  ??? (QuartzCore + 1870408) [0x188cf0a48]
+        20  ??? (QuartzCore + 228288) [0x188b5fbc0]
+          20  ??? (CoreFoundation + 627456) [0x180e15300]
+            20  ??? (CoreFoundation + 623148) [0x180e1422c]
+              20  ??? (CoreFoundation + 625688) [0x180e14c18]
+                20  ??? (CoreFoundation + 649832) [0x180e1aa68]
+                  20  ??? (libsystem_kernel.dylib + 12836) [0x180c6d224]
+                    20  ??? (libsystem_kernel.dylib + 15984) [0x180c6de70]
+                     *20  ??? [0xfffffff007a075e4]
+
+  Thread 0x735    DispatchQueue "com.apple.NSXPCConnection.user.com.apple.AttentionAwareness.57"(618)    1 sample (19)    priority 47 (base 47)    cpu time 0.005s
+  1  ??? (libsystem_pthread.dylib + 42876) [0x180ba577c]
+    1  ??? (libsystem_pthread.dylib + 14600) [0x180b9e908]
+      1  ??? (libdispatch.dylib + 87336) [0x180b43528]
+        1  ??? (libdispatch.dylib + 46952) [0x180b39768]
+          1  ??? (libdispatch.dylib + 43732) [0x180b38ad4]
+            1  ??? (libdispatch.dylib + 122700) [0x180b4bf4c]
+              1  ??? (libdispatch.dylib + 43732) [0x180b38ad4]
+                1  ??? (libdispatch.dylib + 119428) [0x180b4b284]
+                  1  ??? (libdispatch.dylib + 15252) [0x180b31b94]
+                    1  ??? (libxpc.dylib + 57164) [0x180a85f4c]
+                      1  ??? (libxpc.dylib + 56256) [0x180a85bc0]
+                        1  ??? (Foundation + 2246424) [0x1813ce718]
+                          1  ??? (Foundation + 317568) [0x1811f7880]
+                            1  ??? (Foundation + 401736) [0x18120c148]
+                              1  ??? (Foundation + 400392) [0x18120bc08]
+                                1  ??? (Foundation + 1006712) [0x18129fc78]
+                                  1  ??? (Foundation + 1005172) [0x18129f674]
+                                    1  ??? (Foundation + 87756) [0x1811bf6cc]
+                                      1  ??? (Foundation + 2279768) [0x1813d6958]
+                                        1  ??? (AttentionAwareness + 110468) [0x1a318ef84]
+                                          1  ??? (Foundation + 90456) [0x1811c0158]
+                                            1  ??? (Foundation + 2281112) [0x1813d6e98]
+                                              1  ??? (Foundation + 2281112) [0x1813d6e98]
+                                                1  ??? (Foundation + 2279348) [0x1813d67b4] (running)
+
+  Binary Images:
+           0x1006dc000 -                ???  backboardd              <145ADB09-0B51-3EF4-8A1C-59CB046CBC5F>  /usr/libexec/backboardd
+           0x180a78000 -        0x180aacfff  libxpc.dylib            <6D9DCF6A-63FD-3FB2-865B-782D147AB878>  /usr/lib/system/libxpc.dylib
+           0x180aaf000 -        0x180b2dfff  libsystem_c.dylib       <A91CDCD8-C69F-3204-B740-B860188831CC>  /usr/lib/system/libsystem_c.dylib
+           0x180b2e000 -        0x180b6ffff  libdispatch.dylib       <636C9B4E-09D7-39CF-B9A7-732F26E4D3DC>  /usr/lib/system/libdispatch.dylib
+           0x180b9b000 -        0x180ba6fff  libsystem_pthread.dylib <2582EECA-422F-3909-9579-D8177D42492B>  /usr/lib/system/libsystem_pthread.dylib
+           0x180c6a000 -        0x180c9afff  libsystem_kernel.dylib  <7A525942-131A-332B-B9E6-575C0F7B50B6>  /usr/lib/system/libsystem_kernel.dylib
+           0x180c9b000 -        0x180cd4fff  libdyld.dylib           <20D5095F-60CD-3C1A-96AC-9A0583DC73BF>  /usr/lib/system/libdyld.dylib
+           0x180d7c000 -        0x18112ffff  CoreFoundation          <548058AC-65EB-31FD-A60D-AA27AF827C0A>  /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+           0x1811aa000 -        0x181458fff  Foundation              <14C58694-70A8-3655-A854-B634DBC9F68B>  /System/Library/Frameworks/Foundation.framework/Foundation
+           0x181cef000 -        0x181d98fff  IOKit                   <FDF91101-EEEA-3749-9C91-F90FA4482422>  /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit
+           0x188b28000 -        0x188da5fff  QuartzCore              <A0D546D8-BA79-340E-BFC6-B5E8001A5250>  /System/Library/Frameworks/QuartzCore.framework/QuartzCore
+           0x18fc60000 -        0x18febdfff  CoreMotion              <0B2D6B21-2219-35C4-A427-A6F14A0BC678>  /System/Library/Frameworks/CoreMotion.framework/CoreMotion
+           0x193585000 -        0x19358ffff  IOMobileFramebuffer     <5418A289-F483-3BB6-83BB-8BC978B1261E>  /System/Library/PrivateFrameworks/IOMobileFramebuffer.framework/IOMobileFramebuffer
+           0x1a3174000 -        0x1a319dfff  AttentionAwareness      <EB47169C-78F7-335E-ACB5-5E0DC2C0310A>  /System/Library/PrivateFrameworks/AttentionAwareness.framework/AttentionAwareness
