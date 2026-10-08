@@ -1,0 +1,48 @@
+{
+  "scope": "Read-only normal report gate and failed report rejection; no VM, chmod, disk conversion or preservation invocation",
+  "sources": {
+    "stage-import.py": "a55fd9e325662c704cc31d7c4d0f3a7673330e8b67d03f755faa943a92d96126",
+    "import_stage.py": "8a1df10b2eca704a7fadc61965251fe7f8c396ddd554835819bb0e4670619761"
+  },
+  "session_sha256": "82b7446dac935b0aab9dd5c74e1a56af311ff782d4850c784ebd94c585abf9c1",
+  "normal_report": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/prepare-session-demo-2/recovery-run/report.json",
+    "sha256": "8bd25ad087a47989a44fa1f9a780f4f8aeb4de41ea0efc7e12c3bfa84e964b14",
+    "passed": true
+  },
+  "derived_command": [
+    "/usr/bin/python3",
+    "/tmp/inferno-stage-import/companion/boot.py",
+    "--profile",
+    "/home/brandonin/.local/share/inferno/app-import/prepare-session-demo-2/recovery/profile.json",
+    "--overlay-base-report",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-from50-sample-1/report.json",
+    "--overlay-tools-root",
+    "/home/brandonin/.local/share/inferno/disk-overlay-tools",
+    "--ramdisk-boot",
+    "--control-mailbox",
+    "--guest-errors",
+    "--binary",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "--manifest",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build-manifest.json",
+    "--seconds",
+    "1200",
+    "--output",
+    "/tmp/EXAMPLE-NEW-stage/recovery-run"
+  ],
+  "failed_reports": [
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-fixture-1/report.json",
+      "sha256": "6e5dccf03428551971705b866aae0ca071f21d2b9b49f94f3c4285f32c30d0a7",
+      "rejected": true,
+      "error": "Recovery did not complete normally"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-demo-1/report.json",
+      "sha256": "d0f3b0963e1d9c6c671ed2647b23b2901c10bb79c796e7439f1f78c8846606d5",
+      "rejected": true,
+      "error": "Recovery did not complete normally"
+    }
+  ]
+}
