@@ -1,0 +1,67 @@
+{
+  "verdict": "PASS source correction and actual owned build; no new guest execution",
+  "reviewed_source": "d4ad64cccb2a9d109073828cd31b239f4b3e1f8e",
+  "review_time": 1791436973.1071482,
+  "worktree": "/tmp/inferno-runtime-inspector-framing",
+  "build": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-inspector-build-2/build.json",
+    "sha256": "086aec0e5afb3b1191eb878e13d95aed12393797dd8a88ec075745b7d02eb98d",
+    "helper": {
+      "bytes": 68272,
+      "sha256": "9841f7ce2623c0c788c5945c3123ee4433c4ad4c3cb732d0882eecf212abe9dc"
+    }
+  },
+  "actual_build_commands_zero": 4,
+  "source_tool_output_log_hashes_match": true,
+  "entitlements_unchanged": true,
+  "strict_parser_unchanged_sha256": "37695abae4b2d9e3ff3e00c15ca98e9c2fe1b0689036790ecf40dbd5cccea33e",
+  "changed_files": [
+    "companion/runtime-inspector/inspect.c"
+  ],
+  "bounds": {
+    "static_worst_case": 222,
+    "actual_max_line_bytes": 191,
+    "buffer_bytes": 256,
+    "export_chunk_bytes": 64
+  },
+  "review": [
+    "Complete header, decimal offsets/length, hex bytes and newline assembled before the only write(1,line,pos).",
+    "Decimal uint64 conversion reserves20 digits, including zero; input n is1..64 and offset<=2MiB.",
+    "EINTR retry only when write returnsnegative; any short/zero write fails without suffix retry or normalization.",
+    "File paths, readonly mount/open, fullSHA, inode/metadata checks and clean unmount behavior unchanged.",
+    "No new imported function, entitlement, parser relaxation or additional guest operation."
+  ],
+  "failure_evidence": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-1/recovery-run/serial.log",
+    "sha256": "2a87b662402e2882e5c946ee79c1ac8a0c52a5fe96132ffa5f7419218dca9d58",
+    "bytes": 2220276,
+    "malformed_data_lines": [
+      {
+        "line": 840,
+        "header_prefix": "INFERNO_INSPECT_DATA name=launchd offset=87040 bytes=512 hex=  <verb> is one of the following:"
+      },
+      {
+        "line": 846,
+        "header_prefix": "INFERNO_INSPECT_DATA name=launchd offset=87552 bytes=512 hex=    asr restore --source <source> --tar"
+      },
+      {
+        "line": 852,
+        "header_prefix": "INFERNO_INSPECT_DATA name=launchd offset=88064 bytes=512 hex=    asr server  --source <source> --con"
+      },
+      {
+        "line": 858,
+        "header_prefix": "INFERNO_INSPECT_DATA name=launchd offset=88576 bytes=512 hex=    asr info --source <source> [--plist"
+      },
+      {
+        "line": 884,
+        "header_prefix": "INFERNO_INSPECT_DATA name=launchd offset=89088 bytes=512 hex=      --erase           formats target "
+      }
+    ]
+  },
+  "limitations": [
+    "A single bounded write removes the observed explicit header/body gap; it does not guarantee console atomicity against every concurrent writer.",
+    "Hash and other metadata records still use existing printf calls; any contamination remains a strict parser rejection.",
+    "Actual retry must independently prove complete export reconstruction, both hashes, clean unmount and ordinary stopped eligibility. First failed attempt remains forensic-only.",
+    "Reviewer ran no VM, mutated no source or disk, and did not duplicate disk/cache full hashes."
+  ]
+}
