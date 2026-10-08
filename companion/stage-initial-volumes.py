@@ -225,6 +225,7 @@ def main():
         frozen = CO.freeze_new_disks(report_path, report, context, output)
         retention = report_dir / 'stopped-disk-hashes.json'
         CO.PRESERVE.preserve(report_path, retention, False)
+        stopped_pins[str(retention)] = sha(retention)
         records = bounded_record(retention)
         for name, value in frozen['files'].items():
             if records[name]['sha256'] != value['sha256'] or CO.identity(value['path']) != value['after']:
@@ -235,9 +236,9 @@ def main():
         unchanged({**source_pins, **input_pins, **stopped_pins})
         CO.write_new(output / 'initial-volumes.json', {'schema': 'inferno.initial-volumes-stage.v1',
                      'status': 'initial-volumes-prepared', 'ipa_runtime_ready': False,
-                     'report': str(report_path), 'report_sha256': sha(report_path),
-                     'retention': str(retention), 'retention_sha256': sha(retention),
-                     'content': content, 'content_checkpoint_sha256': sha(output / 'content-check.json'),
+                     'report': str(report_path), 'report_sha256': stopped_pins[str(report_path)],
+                     'retention': str(retention), 'retention_sha256': stopped_pins[str(retention)],
+                     'content': content, 'content_checkpoint_sha256': stopped_pins[str(output / 'content-check.json')],
                      'backing_depth': len(chain['layers']), 'source_sha256': source_pins, 'stopped_evidence_sha256': stopped_pins,
                      'scope': 'Only Preboot/xART/Hardware and original firmware copy; no Data/keybag/cache/setup/app readiness'})
         (output / 'INCOMPLETE.json').unlink()
