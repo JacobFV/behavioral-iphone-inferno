@@ -1,0 +1,28 @@
+{
+  "scope": "Read-only operator-gap proposal; no clone/source or runtime mutation",
+  "actual_session": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/prepare-session-demo-2/session.json",
+    "sha256": "82b7446dac935b0aab9dd5c74e1a56af311ff782d4850c784ebd94c585abf9c1",
+    "source_root_via_recovery_command": "/tmp/inferno-prepare-import/companion/boot.py",
+    "source_pin_count": 66,
+    "runner_control_pins": {
+      "boot.py": "8089c0bbffd7cc964d982d6fc199147a785efa1bfe134464b60301f257631037",
+      "qmp_control.py": "0c147c8fa9fea8414f8f5a79c6a904b3c2b0f123352de142b03eaca56526afb7"
+    }
+  },
+  "reviewed_sources": {
+    "companion/APP_IMPORT.md": "383545203a3e96d3e8cb34ed3b464683dc8550eb58175e0eaf4ca4267ce842bf",
+    "companion/import_stage.py": "8a1df10b2eca704a7fadc61965251fe7f8c396ddd554835819bb0e4670619761",
+    "companion/stage-import.py": "649dfb8fffaf9a454861fc3d5281864c77d362990db1dd8458fe80ac1451bae0",
+    "companion/boot-import.py": "2ea8839efaae5eb9f59fe63d0d12346cba51a3f1818672cb0b660ac785ad7a8d",
+    "companion/prepare-import.py": "3f428668264b479f54777a3b41b01e0e79efd7cc204b4846261ba14d883535ab",
+    "companion/app-probe/build-import-launcher.py": "b6bb1582efce65a99f2506ef634dbc77f77077d824070ddb9f854667f44ff017"
+  },
+  "source_mechanisms": [
+    "prepare-import main: source_before snapshot and recovery argv rooted at SOURCE; git revision recorded",
+    "import_stage.validate_session: source_root=Path(recovery_command[1]).parent; exact source pin validation and runtime validator loaded there",
+    "stage-import.fixed_command and boot-import.fixed_command: sibling boot/control hashes must match session.sources",
+    "app-probe/build-import-launcher.py: git_revision from repo rev-parse HEAD"
+  ],
+  "no_existing_session_relocation_proposed": true
+}
