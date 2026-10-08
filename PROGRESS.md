@@ -2,6 +2,33 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 18:32: failure82 captured null/equal wait state; next probe design
+
+82 reproduced rawtap1/ACK0 after ONE8526bf0ac8cb4665a4fce5be9ce240e9 while
+reviewed pixels stayed0. Planned warm cycles NEVER started. 119 post-tap VNC
+frames across25/25/45/25/50s windows allfullSHA
+ec2d1c56c17db45f459224e9a9fc0b5da5739157cc100f31befab389a8cd4969.
+Gaps between windows are explicit. FinalQMP0087 equals originalprobe-beforeSHA
+6027045a4cf5ed7c658d4c4f8d513e1b51f5289307ddba559ff4dfc168f1593e.
+One10s ADP window all9 disabled by2657.4286716; ONE1s CPU enable98 at
+1791422708.7833865, restore99 at2709.7858272, offsets6833..143351/136518bytes.
+Independent7a4bd0de8e:183complete exactnull-PC1c74, allX11zero, requestedW0=253
+and pipeline+bf4W1=253 equal. No active/queued snapshots; no absent-branch proof,
+mode, finalstatus, processidentity or call pairing. Lastduringframe2716.9009 and
+extra25s afterrestore remained0. Source2861f8f765 explains mode0 can remain
+pending on earlier equality latch; later observedpair does not prove that latch.
+Current82 boot66FDA903-F891-4C7C-97C5-D4F07C94BCE0, originalBBD60/ver208
+sample21130eb98cce4f7bbdf1ff86b17d03ba16156bytes66chunks; SB57/ver113
+60d31e7f9cc84dac8ba88b9e5815ff3e10375bytes43chunks. Bothcomplete/eof/reaped0errors.
+Actualcache slide0xa1c000 ONLY82. Independent43b8efdde2 BBD20:11runloop,
+6usleepcan_update+23c,3SwapWait+214; SB20/20runloop. Same retry family, no pairing.
+Rootfsyncedoperatorstop1791423017.0403395/SIGINT2. Finalemulator0/errorSignal2,
+904.184820s; forensic7/ancestors70cce45f8b; strictcorrectlyrejected. Never82base.
+Rootvisual companion/evidence/imported-fixture-82-visual. NO LIVE VM.
+Native designs smallest nextfixedregister-only mode/latch/finalstatus profile;
+diskworker independentlyreviews source/TBreachability beforeimplementation.
+No gueststack/RAMread/Applepatch/newVM authorized before this source decision.
+
 ### 2026-10-07 18:14: first boot-import wrapper journey passed
 
 Actual wrapper81 consumed the verified coordinator2 stage and session2 using
