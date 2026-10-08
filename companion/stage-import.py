@@ -173,7 +173,7 @@ def main():
     parser.add_argument('--output',type=Path,required=True)
     args=parser.parse_args();output=None;process=None;finish_started=False;logs=[]
     try:
-        source_paths=[Path(__file__).resolve(),SOURCE/'import_stage.py',SOURCE/'preserve-stopped.py',SOURCE/'disk_overlay.py',SOURCE/'boot.py',SOURCE/'qmp_control.py']
+        source_paths=[Path(__file__).resolve(),SOURCE/'import_stage.py',SOURCE/'preserve-stopped.py',SOURCE/'disk_overlay.py',SOURCE/'app-import.py',SOURCE/'profile.py',SOURCE/'boot.py',SOURCE/'qmp_control.py']
         sources={str(p):digest(p) for p in source_paths}
         context=validate_session(args.session,args.session_sha256)
         output=IMPORTER.external_output(args.output)
@@ -227,8 +227,8 @@ def main():
             if retained[name]['sha256']!=entry['sha256'] or identity(entry['path'])!=entry['after']:raise ValueError('Frozen namespace changed before retention')
         verified=verify_stopped(context,report_path,retention,output/'content-check.json')
         if {str(p):digest(p) for p in source_paths}!=sources:raise ValueError('Coordinator dependencies changed during execution')
-        (output/'INCOMPLETE.json').unlink()
         write_new(output/'verified-stage.json',verified)
+        (output/'INCOMPLETE.json').unlink()
         print(json.dumps({'stage':str(output/'verified-stage.json'),'sha256':digest(output/'verified-stage.json'),'eligible':True,'scope':'Recovery staging only; no app execution claim'}))
         return 0
     except BaseException as exc:
