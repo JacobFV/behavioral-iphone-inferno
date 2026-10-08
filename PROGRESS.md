@@ -2,6 +2,29 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07: reproducible runtime helper builds passed; inspector in final review
+
+New cache producer17c4a74c88, source review911ab72d43, actual buildf76841426b
+and independentf384fbaa6e passed unchanged cache-patch.c/TBD/entitlements.
+External native-probe/reproducible-cache-build-1/build.json SHA
+5ffed53093efe6d96a6b9e48ac1d7981e084991e0d28ce0d69b5b834951401cd.
+New selected runtime producer ee783d33b6, source review45fee69dba and actual
+546906f17a passed all18 compile/link/sign/readback commands. External
+native-probe/reproducible-runtime-build-1/build.json SHA
+aa7ba5975fe5436ebb6bfbd7f922817e3b7b4e0c4b2250756ca2824547ddcf35.
+Probe/readiness/HID/empty-secret sources and entitlement dictionaries unchanged;
+preparation helper remains the separate reviewed build-prepare-helper producer.
+No fresh guest installation or execution inferred from these host builds.
+
+Inspector helper/parser/build aae318895a/1802961b0c independently reviewed
+af9df52428; coordinator33853b03b2 is not yet launch-ready. Shared typed keybag
+validatorb9b660b044 needs the identified complete prepared-profile/binary binding
+correction after its ongoing read-only preflight. Workers own that correction,
+coordinator review and exact next argv. No live VM or conversion at this point.
+Host free space fell to about15GiB; user asked asynchronously for20GiB additional
+space or another disk path. Large flatten remains guarded by34GiB requirement;
+smaller implementation/build/inspection work continues. No deletion authorized.
+
 ### 2026-10-07: fresh initialization through SEP/keybag passed; runtime remains unfinished
 
 Original APFS growth passed (actual 5d8a8af1cf, independent bcab00f794),
