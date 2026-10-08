@@ -1,0 +1,13 @@
+{
+  "scope": "Bounded retained-disassembly field-role caution; no new extraction or code",
+  "original_kernel_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+  "source": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/iomfb-swapwait-inspection/complete-gated.txt",
+    "sha256": "1ac8db47f1d5c756a02804515d7c78c13300d78a8b6ae216261f69e6e149620c"
+  },
+  "mapped_write": "swap_complete_gated at96f0cf4..0d28 reads active request+244; if0 or15 copies request+22c token to pipeline+bf4. At0d2c..44 request+264==4 also copies bf4 into bf8. Active pointer is cleared later at0e58..60.",
+  "known_consumer": "swap_wait_gated mode0 equality against bf4 sets a local pending condition. Thus the field is not a simple predicate that matching token is released/ready for reuse.",
+  "role_limit": "Existing bounded evidence shows conditional token recording during completion and later wait comparison; it does not name exact ownership/fence semantics. A retained/current token interpretation is plausible but unproven. Other writes/callers were not exhaustively enumerated.",
+  "naming": "New profile must use pipeline_bf4_token. Preserve raw historical outputs, documenting old completed_token as offset label only.",
+  "consequence": "Null active plus equality need not mean completion handling failed; it can reflect a retained token waiting for a subsequent state transition. No hardware-ID or guest guard change follows without further evidence."
+}
