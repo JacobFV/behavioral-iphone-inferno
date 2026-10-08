@@ -263,8 +263,13 @@ def import_ipa(source, output=None):
     output.mkdir(mode=0o700)
     target = output/'bundle'/app
     target.mkdir(parents=True,mode=0o755)
+    # mkdir applies the caller umask. Normalize only this fresh app tree,
+    # matching file chmod below, without changing the process-wide umask.
+    target.chmod(0o755)
     for name in dirs:
-        (target/name).mkdir(mode=0o755,parents=True,exist_ok=True)
+        directory = target/name
+        directory.mkdir(mode=0o755,parents=True,exist_ok=True)
+        directory.chmod(0o755)
     for record in records:
         path = target/record['path']
         with path.open('xb') as f:

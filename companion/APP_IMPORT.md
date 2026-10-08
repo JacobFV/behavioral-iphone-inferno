@@ -21,7 +21,9 @@ release constraints, not a claim that other apps cannot run on the backend.
 
 File bytes, including existing signatures, are preserved. No signing or
 provisioning occurs. Executable mode is normalized to 0755, resource files to
-0644 and directories to 0755. Extraction follows full archive preflight; an I/O
+0644 and app-tree directories to 0755, explicitly after creation regardless of
+the caller umask. The caller umask is unchanged; the external import root stays
+private. Extraction follows full archive preflight; an I/O
 failure can leave an incomplete new directory, which must not be consumed.
 
 The result is `manifest.json` plus `bundle/Name.app`. Keep the original IPA:
