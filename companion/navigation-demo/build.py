@@ -85,7 +85,13 @@ def main():
                 entry.external_attr = (0o100000 | (0o755 if file == executable else 0o644)) << 16
                 entry.compress_type = zipfile.ZIP_DEFLATED
                 archive.writestr(entry, file.read_bytes())
-        importer.import_ipa(ipa, output / 'imported')
+        # The unchanged importer creates validated 0755 bundle directories via
+        # mkdir; allow those bits inside our already-private 0700 output root.
+        os.umask(0o022)
+        try:
+            importer.import_ipa(ipa, output / 'imported')
+        finally:
+            os.umask(0o077)
         manifest_path = output / 'imported/manifest.json'
         manifest = importer.validate_manifest(manifest_path)
         run([sys.executable, str(companion / 'app-probe/build-import-launcher.py'),
