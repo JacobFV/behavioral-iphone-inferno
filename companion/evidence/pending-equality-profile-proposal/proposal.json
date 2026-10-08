@@ -1,0 +1,74 @@
+{
+  "scope": "Source-first proposal only; no implementation, VM, guest RAM, code patch or runtime site-coverage claim",
+  "original_kernel_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+  "retained_disassembly": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/iomfb-swapwait-inspection/wait-gated.txt",
+    "sha256": "06f87075abec9f3fe46c1b83d32d3fcd5ecc6fb4e5fef9e2c1369c9b135e0932"
+  },
+  "motivation": "Actual82 183null-active snapshots requested253/completed253 equal, plus later same-attempt can_update retries. Current profile captures neither mode nor finalstatus. Need independent mode/equality/matching-local/status populations without pretending adjacent dumps are paired.",
+  "proposed_profile_name": "pending-equality",
+  "sites": [
+    {
+      "pc": "0xfffffff0096f1bc0",
+      "role": "accepted-mode",
+      "registers": {
+        "W8": "masked low31 mode, permitted0/1/2"
+      },
+      "predecessors": "CBZ1ba4 for0, BEQ1bb0 for1, BNE1bbc nottaken for2. Mode loaded at1ba0/1ba8/1bb4; target firstinstruction overwritesW8 only after snapshot.",
+      "validation": "Reject typedinterpretation ifW8 outside0/1/2."
+    },
+    {
+      "pc": "0xfffffff0096f1bf4",
+      "role": "token-equality-predicate-true",
+      "registers": {
+        "W8": "requested token",
+        "W9": "pipeline bf4 token from immediately precedingload"
+      },
+      "predecessors": "CMP1bec then BNE1bf0 nottaken; natural fallthrough TB. Next1bf4/1bf8 set local equalitybyte to1.",
+      "validation": "Require W8==W9; call this positive comparison, not observed stored latch or semantic completion."
+    },
+    {
+      "pc": "0xfffffff0096f1e4c",
+      "role": "matching-request-local-false",
+      "registers": {
+        "W8": "local FP-62 loaded1e44, bit0clear"
+      },
+      "predecessors": "TBNZ1e48 nottaken; fallthrough TB contains unconditionalbranch1e4c to1e58.",
+      "validation": "Local is initialized/stored0or1 in reviewedbody; requireW8==0. No stackmemoryread by observer."
+    },
+    {
+      "pc": "0xfffffff0096f1e50",
+      "role": "matching-request-local-true",
+      "registers": {
+        "W8": "local FP-62 loaded1e44, bit0set"
+      },
+      "predecessors": "TBNZ1e48 taken, target firstinstruction prepares lambdaargument aftersnapshot.",
+      "validation": "RequireW8==1. Do not equate flag exclusively with active: active OR queued match can set it."
+    },
+    {
+      "pc": "0xfffffff0096e219c",
+      "role": "final-return",
+      "registers": {
+        "W0": "final original scalar-wrapper status"
+      },
+      "predecessors": "Existing reviewed BLcontinuation after96e2198, actual healthy68/failed76 covered.",
+      "validation": "Keep fullX00, derive low32status; no association with earlier snapshots."
+    }
+  ],
+  "filter": "0xfffffff0096f1bc0+4,0xfffffff0096f1bf4+4,0xfffffff0096f1e4c+4,0xfffffff0096f1e50+4,0xfffffff0096e219c+4",
+  "rejected_alternatives": [
+    "1d84/1d8c hold freshly loaded equality/match predicates but are interior TB instructions, so dfilter alone cannot ensure snapshots.",
+    "Shared1dcc has incoming nonzero mode OR equality OR matching flag, so W8 cannot be labeled equalitytrue.",
+    "No inference from X23/unreviewed callee-saved registers; relevant locals live in stack.",
+    "No guest stack snapshot, arbitrary filter, instruction patch or forced notification."
+  ],
+  "interpretation_limits": [
+    "These are five independent populations, not invocation counts or paired calls; no count subtraction to infer hidden paths.",
+    "Predominantly mode0/equalitytrue/matchingfalse/nonzero-return populations would support equality-based pending hypothesis, not prove those facts occurred in one invocation.",
+    "Mode1/2 populations or zero returns require preserving alternative exits; matching-false site is reached only after mode-specific success gates, not all calls.",
+    "Positive equalitypredicate does not prove later equalitylatch remained set; repeated loads and calls remain temporal distinctions.",
+    "Absence of a site is not proof no branch/call occurred, especially before actual production TB coverage.",
+    "Global nochain perturbation and cooperative1s/8MiB limits remain; allADPoff prior, preserve existingbaseline/pending-branch profiles."
+  ],
+  "approval_dependency": "Independent original-source review then explicit parent approval; ifimplemented, owned relocated branchfixture must verify natural TB coverage before production. No current VM authorized."
+}
