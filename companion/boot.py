@@ -18,7 +18,7 @@ from disk_overlay import DEFAULT_TOOLS, validate_tools, validate_base, create_ov
 from probe_journey import ProbeJourney
 from headless_refresh import HeadlessRefresh
 from boot_milestones import observe as observe_milestones
-from qmp_control import ControlMailbox, StartupTouchTrace, SerialGestureTransport, SWAPWAIT_FILTER, SWAPWAIT_KERNEL, SWAPWAIT_BINARY, SWAPWAIT_SOURCE
+from qmp_control import ControlMailbox, StartupTouchTrace, SerialGestureTransport, SWAPWAIT_FILTER, SWAPWAIT_PROFILES, SWAPWAIT_KERNEL, SWAPWAIT_BINARY, SWAPWAIT_SOURCE
 
 
 DISKS = [('root', 32 << 30, 1), ('firmware', 8 << 20, 2),
@@ -139,6 +139,7 @@ def main():
     parser.add_argument('--manifest', type=Path)
     parser.add_argument('--seconds', type=float, default=120)
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--swapwait-cpu-profile', choices=tuple(SWAPWAIT_PROFILES), default='baseline', help='fixed CPU sites; pending-branch requires explicit diagnostic opt-in')
     parser.add_argument('--swapwait-cpu-diagnostic', action='store_true', help='opt in to fixed kernel SwapWait GPR windows; requires pinned inputs, mailbox and guest-errors')
     parser.add_argument('--guest-errors', action='store_true',
                         help='record QEMU guest-error diagnostics in guest-errors.log')
@@ -219,6 +220,8 @@ def main():
         manifest = json.loads(manifest_path.read_text())
         if manifest['binary']['sha256'] != binary_hash:
             raise ValueError('Binary SHA256 does not match build manifest')
+        if args.swapwait_cpu_profile != 'baseline' and not args.swapwait_cpu_diagnostic:
+            raise ValueError('CPU profile requires --swapwait-cpu-diagnostic')
         if args.swapwait_cpu_diagnostic:
             if not (args.control_mailbox and args.guest_errors and args.disk_boot):
                 raise ValueError('SwapWait diagnostic requires mailbox, guest-errors and disk boot')
@@ -299,7 +302,7 @@ def main():
     if journey:
         report['probe_journey'] = journey.report
         report['probe_journey_source_sha256'] = digest(Path(__file__).with_name('probe_journey.py'))
-    control = ControlMailbox(output, journey=journey, keep_running=args.probe_keep_running, swapwait_cpu=args.swapwait_cpu_diagnostic) if args.control_mailbox else None
+    control = ControlMailbox(output, journey=journey, keep_running=args.probe_keep_running, swapwait_cpu=args.swapwait_cpu_diagnostic, swapwait_profile=args.swapwait_cpu_profile) if args.control_mailbox else None
     if control:
         if control.swapwait_cpu:
             report['swapwait_cpu_observation'] = control.swapwait_cpu.report
@@ -349,8 +352,8 @@ def main():
                     ',server=on,wait=off,logfile=' + str(output / 'serial.log').replace(',', ',,') +
                     ',logappend=off,logtimestamp=off', '-serial', 'chardev:gesture-serial']
             if args.swapwait_cpu_diagnostic:
-                command += ['-dfilter', SWAPWAIT_FILTER]
-                report['swapwait_cpu_diagnostic'] = {'filter': SWAPWAIT_FILTER, 'initial_mask': 'guest_errors', 'automatic_enable': False}
+                command += ['-dfilter', SWAPWAIT_PROFILES[args.swapwait_cpu_profile]]
+                report['swapwait_cpu_diagnostic'] = {'profile': args.swapwait_cpu_profile, 'filter': SWAPWAIT_PROFILES[args.swapwait_cpu_profile], 'initial_mask': 'guest_errors', 'automatic_enable': False}
             if args.guest_errors:
                 command += ['-d', 'guest_errors', '-D', str(output / 'guest-errors.log')]
             if args.touch_trace_startup and not args.guest_errors:
