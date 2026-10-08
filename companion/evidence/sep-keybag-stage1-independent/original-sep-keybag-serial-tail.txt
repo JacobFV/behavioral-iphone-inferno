@@ -1,0 +1,120 @@
+INFERNO_PREP_EXEC /sbin/mount_apfs -o rw /dev/disk0s1s3 /mnt2
+dev_init:297: disk0s1 device accelerated crypto: 3 (compiled @ Aug 12 2020 22:19:57)
+dev_init:300: disk0s1 device_handle block size 4096 block count 8388347 features 22 internal solidstate
+nx_kernel_mount:1134: disk0s1 initializing cache w/hash_size 4096 and cache size 10064
+nx_kernel_mount:1234: disk0s1 container cleanly-unmounted flag set.
+nx_kernel_mount:1402: disk0s1 checkpoint search: largest xid 75, best xid 75 @ 1
+spaceman_metazone_init:189: disk0s1 metazone for device 0 of size 262135 blocks (encrypted: 8126212-8257279 unencrypted: 8257279-8388347)
+dev_dump:256: Aggregate constructed: dev=<ptr> di=0 dv_num_slice=15 dv_num_slice_blk=589824 dv_num_lslice_blk=130811
+spaceman_evaluate_chunk_for_disabled_allocation_zones:975: disk0s1 allocation zone on dev 0 for allocations of 1 blocks starting at paddr 4096000
+spaceman_evaluate_chunk_for_disabled_allocation_zones:975: disk0s1 allocation zone on dev 0 for allocations of 2 blocks starting at paddr 2195456
+spaceman_evaluate_chunk_for_disabled_allocation_zones:975: disk0s1 allocation zone on dev 0 for allocations of 3 blocks starting at paddr 2228224
+handle_mount:627: vol-uuid: CC6B0316-17CB-412F-922F-73967FB5C19E block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+spaceman_evaluate_chunk_for_disabled_allocation_zones:975: disk0s1 allocation zone on dev 0 for allocations of 4 blocks starting at paddr 2260992
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume Preboot role 10 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s3:0 mounted volume: Preboot
+INFERNO_PREP_STATUS raw=0
+spaceman_trim_free_blocks:3361: disk0s1 scan took 0.055954 s, trims took 0.021683 s
+spaceman_trim_free_blocks:3369: disk0s1 6562364 blocks free in 4504 extents
+spaceman_trim_free_blocks:3377: disk0s1 6562364 blocks trimmed in 4504 extents (4 us/trim, 207720 trims/s)
+spaceman_trim_free_blocks:3380: disk0s1 trim distribution 1:1535 2+:1391 4+:1245 16+:292 64+:18 256+:23
+apfs_stop_bg_work:1028: disk0s1s3:0 Volume Preboot is unmounting, stop any bg work
+apfs_vfsop_unmount:2375: disk0s1: unmounting volume 'Preboot'
+apfs_vfsop_unmount:2406: waiting for cleaners to finish: purgatory 
+nx_volume_group_update:6628: Volume Preboot role 10 Not a System or data volume
+dev_dump:256: Aggregate destructed: dev=<ptr> di=0 dv_num_slice=15 dv_num_slice_blk=589824 dv_num_lslice_blk=130811
+apfs: total mem allocated: 32 (0 mb);
+apfs_vfsop_unmount:2682: all done.  going home.  (numMountedAPFSVolumes 0)
+INFERNO_SEP_COPY_COMPLETE: supplied bytes copied to loader path
+INFERNO_PREP_EXEC /sbin/mount_apfs -o rw /dev/disk0s1s4 /mnt7
+dev_init:297: disk0s1 device accelerated crypto: 3 (compiled @ Aug 12 2020 22:19:57)
+dev_init:300: disk0s1 device_handle block size 4096 block count 8388347 features 22 internal solidstate
+nx_kernel_mount:1134: disk0s1 initializing cache w/hash_size 4096 and cache size 10064
+nx_kernel_mount:1234: disk0s1 container cleanly-unmounted flag set.
+nx_kernel_mount:1402: disk0s1 checkpoint search: largest xid 77, best xid 77 @ 5
+spaceman_metazone_init:189: disk0s1 metazone for device 0 of size 262135 blocks (encrypted: 8126212-8257279 unencrypted: 8257279-8388347)
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 1 blocks starting at paddr 4096000
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 2 blocks starting at paddr 2195456
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 3 blocks starting at paddr 2228224
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 4 blocks starting at paddr 2260992
+dev_dump:256: Aggregate constructed: dev=<ptr> di=0 dv_num_slice=15 dv_num_slice_blk=589824 dv_num_lslice_blk=130811
+spaceman_trim_free_blocks:3361: disk0s1 scan took 0.034034 s, trims took 0.015560 s
+spaceman_trim_free_blocks:3369: disk0s1 6560457 blocks free in 4507 extents
+spaceman_trim_free_blocks:3377: disk0s1 6560457 blocks trimmed in 4507 extents (3 us/trim, 289652 trims/s)
+spaceman_trim_free_blocks:3380: disk0s1 trim distribution 1:1537 2+:1391 4+:1245 16+:292 64+:18 256+:24
+set_cloneinfo_id_epoch:23137: set cloneinfo_id_epoch to 16
+handle_mount:627: vol-uuid: C9773803-2AA6-4174-88EB-57DACA753163 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume xART role 100 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s4:0 mounted volume: xART
+INFERNO_PREP_STATUS raw=0
+INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s3 /mnt1
+handle_mount:627: vol-uuid: CC6B0316-17CB-412F-922F-73967FB5C19E block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6628: Volume Preboot role 10 Not a System or data volume
+apfs_vfsop_mount:2171: disk0s1s3:0 mounted volume: Preboot
+INFERNO_PREP_STATUS raw=0
+INFERNO_PREP_EXEC /sbin/mount_apfs -o rw /dev/disk0s1s2 /mnt2
+handle_mount:627: vol-uuid: 3DADEB17-B115-40C9-928A-820DAA862D8E block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.2)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6634: Volume Data is not in a volume group
+apfs_vfsop_mount:2171: disk0s1s2:0 mounted volume: Data
+INFERNO_PREP_STATUS raw=0
+INFERNO_PREP_EXEC /usr/libexec/seputil --gigalocker-init
+seputil: Gigalocker file (/mnt7/81879F33-B0F2-573A-AE12-6B517C322E33.gl) doesn't exist: No such file or directory
+seputil: Gigalocker initialization completed
+INFERNO_PREP_STATUS raw=0
+INFERNO_PREP_EXEC /usr/libexec/seputil --wait --load /mnt1/000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000/usr/standalone/firmware/sep-firmware.img4
+void AppleSEPFirmware::_copyInFirmware(IOMemoryDescriptor *): sepos_va:<ptr> sepos_avail_size: 0x1000000
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 1
+void AppleSEPBooter::_bootAction(void *, void *): SEP accepted Tz0
+void AppleSEPBooter::_bootAction(void *, void *): SEP status: 2
+IOReturn AppleSEPBooter::bootSEP(AppleSEPFirmware *, bool, AppleSEPSharedMemoryBuffer *, bool): SEP booting
+IOReturn AppleSEPBooter::bootSEP(AppleSEPFirmware *, bool, AppleSEPSharedMemoryBuffer *, bool): Shmbuf for SEP: { slave addr = 0x100c000, size = 0x20000 }
+void AppleSEPBooter::_bootAction(void *, void *): SEP accepted IMG4
+void AppleSEPManager::_notifyOSActiveGated(): SEP/OS is alive
+void AppleSEPARTService::_ensure_nvram_readable(): Waiting for IODTNVRAM
+void AppleSEPARTService::_ensure_nvram_readable(): Got IODTNVRAM OK
+IOReturn AppleSEPARTRequests::handle_first_connected(): Configuring in buffer
+SEP EP 16 enabled
+void AppleSEPManager::_updateDeviceTree(): updateDeviceTreeThread started
+static void AppleSEPManager::_updateDeviceTreeThread(void *): updateDeviceTree Success
+IOReturn AppleSEPARTRequests::handle_first_connected(): Configuring out buffer
+apfs_rawdev_create:637: Enable bypass mode on inode 16 on xART@disk0s1 as 2.0
+INFERNO_PREP_STATUS raw=0
+INFERNO_EFFACEABLE_QUERY status=0 formatted=0 count=1
+[effaceable:INIT] formatting storage
+[effaceable:INIT] succeeded
+[effaceable:INIT] format succeeded
+INFERNO_EFFACEABLE_FORMAT status=0
+INFERNO_EFFACEABLE_RECHECK status=0 formatted=1
+INFERNO_KEYBAG_CREATE_BEGIN
+AppleSEPKeyStore:2878:7: SEP timeout multiplier = 10
+SEP EP 18 enabled
+AppleSEPKeyStore:5995:7: negotiated to ipc header theirs:v1, ours:v2 -> negotiated:v1
+AppleSEPKeyStore:5926:7: failed to create refkey -536870212
+AppleSEPKeyStore:7685:7: set handle 1111574321 as special bag 0
+INFERNO_KEYBAG_CREATE_RESULT status=0 stat=0 size=223 mode=100644
+INFERNO_PREP_EXEC /usr/libexec/seputil --gigalocker-shutdown
+apfs_rawdev_destroy:687: Disable bypass mode on inode 16 as 2.0
+INFERNO_PREP_STATUS raw=0
+apfs_stop_bg_work:1028: disk0s1s2:0 Volume Data is unmounting, stop any bg work
+apfs_vfsop_unmount:2375: disk0s1: unmounting volume 'Data'
+apfs_vfsop_unmount:2406: waiting for cleaners to finish: purgatory 
+nx_volume_group_update:6634: Volume Data is not in a volume group
+apfs: total mem allocated: 426623 (0 mb);
+apfs_vfsop_unmount:2682: all done.  going home.  (numMountedAPFSVolumes 2)
+apfs_vfsop_unmount:2375: disk0s1: unmounting volume 'Preboot'
+nx_volume_group_update:6628: Volume Preboot role 10 Not a System or data volume
+apfs: total mem allocated: 422975 (0 mb);
+apfs_vfsop_unmount:2682: all done.  going home.  (numMountedAPFSVolumes 1)
+apfs_stop_bg_work:1028: disk0s1s4:0 Volume xART is unmounting, stop any bg work
+apfs_vfsop_unmount:2375: disk0s1: unmounting volume 'xART'
+apfs_vfsop_unmount:2406: waiting for cleaners to finish: purgatory 
+nx_volume_group_update:6628: Volume xART role 100 Not a System or data volume
+dev_dump:256: Aggregate destructed: dev=<ptr> di=0 dv_num_slice=15 dv_num_slice_blk=589824 dv_num_lslice_blk=130811
+apfs: total mem allocated: 3616 (0 mb);
+apfs_vfsop_unmount:2682: all done.  going home.  (numMountedAPFSVolumes 0)
+INFERNO_KEYBAG_COMPLETE: original framework created or found system keybag
+INFERNO_PREP_COMPLETE: requested preparation operations succeeded
