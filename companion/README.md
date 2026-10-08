@@ -104,8 +104,10 @@ new host-prepared session; run78 passed the imported fixture’s strict journey.
 `companion/run prepare-import` now prepares a pinned external IPA session, and
 `companion/run stage-import` performs one recovery installation and verifies its
 normal shutdown and retained disks. The corrected coordinator passed actual
-recovery without manual intervention; see [APP_IMPORT.md](APP_IMPORT.md) for its
-inputs and separate installed-app validation requirements. General IPA
+recovery without manual intervention. `companion/run boot-import` then derives
+the installed boot inputs from a verified stage; its first actual run81 displayed
+the demo resource text and counter0→1 and completed normally. See
+[APP_IMPORT.md](APP_IMPORT.md) for pinned inputs and distinct execution checks. General IPA
 compatibility is not yet claimed.
 
 Broader reliability and active-workload measurements remain ongoing. See [BOOT.md](BOOT.md) for the image profile and headless runner,
