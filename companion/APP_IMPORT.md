@@ -91,9 +91,12 @@ or delete earlier frozen trees. A newer release needs a new checkout and session
 
 Use a reviewed full commit ID available in your local repository. These ordinary
 Git commands make an independent local clone without network access, submodule
-checkout or hardlinked object storage. Both destination directories must be new.
+checkout or hardlinked object storage. Both destination directories must be new;
+their parent must already exist. Run this block in a dedicated shell, stopping
+on the first failed command.
 
 ```sh
+set -eu
 inferno_repository=/absolute/path/to/behavioral-iphone-inferno
 inferno_revision=FULL_REVIEWED_COMMIT_ID
 inferno_host=/persistent/external/host-runtimes/RELEASE
