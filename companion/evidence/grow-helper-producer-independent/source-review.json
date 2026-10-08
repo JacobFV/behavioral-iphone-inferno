@@ -1,0 +1,23 @@
+{
+  "verdict": "PASS bounded source review96140ad9c2; actual build evidence pending",
+  "files": {
+    "grow-libSystem.tbd": {
+      "sha256": "5097ae10a2380d8c2e20c6ddb4b5c70512a664f5c0316cccecf30f1e02136427",
+      "historical_byte_equal": true
+    },
+    "grow-entitlements.plist": {
+      "sha256": "0cde67f69fe204502340423f1d95db7f9fc5a002d65fae583bc66b12a66f323b",
+      "historical_byte_equal": true
+    }
+  },
+  "source_sha256": {
+    "build-grow-helper.py": "c615512f58fe2f939eb2931722f16019d7b628897dd039c85484fcd387dcb6e0",
+    "grow-container.c": "79cbffe339d68b6fef816399877772311f3e45cdfd76fdf460d9419b3a19b282"
+  },
+  "findings": [
+    "Fresh external output enforced via existing importer; tools invocation/resolved hash pinned before/after; committed producer and three inputs pinned before/after.",
+    "Unchanged growth C; original historical owned entitlement/TBD files independently byte-equal. No API/guest semantic changes.",
+    "Compile/link/owned ad-hoc signing only, exact entitlement readback, finite120s commands; failed/incomplete output not consumable.",
+    "This source review does not prove import resolution, historical executable byte equality, actual growth execution or a reusable growth coordinator. No VM/build run by reviewer."
+  ]
+}
