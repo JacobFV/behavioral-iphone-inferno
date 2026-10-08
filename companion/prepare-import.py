@@ -24,7 +24,14 @@ def sha(path):
 def read_json(path):
     if Path(path).stat().st_size > 16 << 20:
         raise ValueError('JSON exceeds16MiB: '+str(path))
-    return json.loads(Path(path).read_bytes())
+    def pairs(items):
+        result={}
+        for key,value in items:
+            if key in result:raise ValueError('Duplicate JSON key: '+key)
+            result[key]=value
+        return result
+    def constant(value):raise ValueError('Nonfinite JSON constant: '+value)
+    return json.loads(Path(path).read_bytes(),object_pairs_hook=pairs,parse_constant=constant)
 
 def pin(record):
     if set(record)!={'path','sha256'}:
@@ -107,6 +114,8 @@ def main():
         runtime_path=pin({'path':str(a.runtime.absolute()),'sha256':a.runtime_sha256})
         runtime=read_json(runtime_path)
         output=IMPORTER.external_output(a.output)
+        sources=[x for x in SOURCE.glob('*.py')] + [x for x in (SOURCE/'app-probe').rglob('*') if x.is_file() and '__pycache__' not in x.parts] + [SOURCE/'native-probe'/x for x in ('prepare.py','imported_app.py','merge-launchd-cache.py','prepare-root.c','imported-app.c','libSystem.tbd','entitlements.plist')]
+        source_before={str(x.relative_to(SOURCE)):sha(x) for x in sources}
         paths,verified=validate_runtime(runtime)
         output.mkdir(mode=0o700)
         (output/'INCOMPLETE.json').write_text(json.dumps({'status':'incomplete-do-not-consume','started':time.time()})+'\n')
@@ -143,15 +152,17 @@ def main():
         for value in runtime['inputs'].values():pin(value)
         for name,invocation in runtime['tool_invocations'].items():
             if Path(invocation).resolve(strict=True)!=paths[name]:raise ValueError('Tool invocation target changed')
+        for key in ('install_profile','install_report','install_serial','cache_readback','raw_ramdisk_preparation'):pin(runtime['cache_binding'][key])
+        for evidence in runtime['cache_binding']['lineage_evidence']:pin(evidence)
         if sha(runtime_path)!=a.runtime_sha256:raise ValueError('Runtime changed during preparation')
+        if {str(x.relative_to(SOURCE)):sha(x) for x in sources}!=source_before:raise ValueError('Implementation source changed during preparation')
         # Read-only complete base verification again; no chmod, KEEP writes or overlays.
         after=load_stopped_overlay(paths['base_report'],verified['overlay_tool'])
         if after!=verified['base']:raise ValueError('Base validation changed during host preparation')
         load_profile(prep/'profile.json')
         recover=[sys.executable,str(SOURCE/'boot.py'),'--profile',str(prep/'profile.json'),'--overlay-base-report',str(paths['base_report']),'--overlay-tools-root',runtime['overlay_tools_root'],'--ramdisk-boot','--control-mailbox','--guest-errors','--binary',str(paths['emulator']),'--manifest',str(paths['emulator_build']),'--seconds','1200','--output',str(output/'recovery-run')]
         expected_markers=['INFERNO_EXEC_WRAPPER_READBACK bytes=%d mismatches=0'%(output/'launcher/inferno-exec-launcher').stat().st_size,'INFERNO_SYSTEM_LAUNCHER_READBACK bytes=%d mismatches=0'%(output/'launcher/inferno-launcher').stat().st_size,'INFERNO_IMPORTED_APP_READBACK bundle=%s bytes=%d entries=%d mismatches=0'%(m['bundle']['directory_name'],sum(x['bytes'] for x in m['files']),len(records)),'INFERNO_IMPORTED_APP_FINISH result=0 unmount=0 errno=0','INFERNO_CACHE_READBACK bytes=%d mismatches=0'%cache.stat().st_size,'INFERNO_PREP_COMPLETE: requested preparation operations succeeded']
-        sources=[SOURCE/'prepare-import.py',SOURCE/'app-import.py',SOURCE/'app-probe/build-import-launcher.py',SOURCE/'native-probe/merge-launchd-cache.py',SOURCE/'native-probe/prepare.py',SOURCE/'native-probe/imported_app.py',SOURCE/'disk_overlay.py',SOURCE/'boot.py']
-        result={'schema':'inferno.prepared-import-session.v1','status':'host-prepared-not-staged','runtime':artifact(runtime_path),'runtime_record':runtime,'verified_runtime':verified,'import_manifest':manifest_pin,'bundle':m['bundle'],'tree_sha256':m['tree_sha256'],'launcher_build':artifact(output/'launcher/build-evidence.json'),'launcher':artifact(output/'launcher/inferno-launcher'),'exec_wrapper':artifact(output/'launcher/inferno-exec-launcher'),'launchd_job':artifact(job),'cache':artifact(cache),'recovery_profile':artifact(prep/'profile.json'),'recovery_ramdisk':artifact(prep/'ramdisk.raw'),'preparation':artifact(prep/'preparation.json'),'readbacks':readbacks,'expected_guest_markers':expected_markers,'recovery_command':recover,'commands':commands,'sources':{str(x.relative_to(SOURCE)):sha(x) for x in sources},'source_revision':subprocess.check_output(['git','-C',str(SOURCE),'rev-parse','HEAD'],text=True).strip(),'limits':['No VM launched, disks modified, base mode changed, or eligibility promoted.','No app execution/launch/presentation success asserted.','Recovery command requires subsequent real raw success and normal stop/retention checks; do not use failed output.','Cache/base relation is explicit reviewed retained provenance, not fresh guest-cache export.','No existing-target overwrite exception, fixture telemetry or generic OPEN automation.']}
+        result={'schema':'inferno.prepared-import-session.v1','status':'host-prepared-not-staged','runtime':artifact(runtime_path),'runtime_record':runtime,'verified_runtime':verified,'import_manifest':manifest_pin,'bundle':m['bundle'],'tree_sha256':m['tree_sha256'],'launcher_build':artifact(output/'launcher/build-evidence.json'),'launcher':artifact(output/'launcher/inferno-launcher'),'exec_wrapper':artifact(output/'launcher/inferno-exec-launcher'),'launchd_job':artifact(job),'cache':artifact(cache),'recovery_profile':artifact(prep/'profile.json'),'recovery_ramdisk':artifact(prep/'ramdisk.raw'),'preparation':artifact(prep/'preparation.json'),'readbacks':readbacks,'expected_guest_markers':expected_markers,'recovery_command':recover,'commands':commands,'sources':source_before,'source_revision':subprocess.check_output(['git','-C',str(SOURCE),'rev-parse','HEAD'],text=True).strip(),'limits':['No VM launched, disks modified, base mode changed, or eligibility promoted.','No app execution/launch/presentation success asserted.','Recovery command requires subsequent real raw success and normal stop/retention checks; do not use failed output.','Cache/base relation is explicit reviewed retained provenance, not fresh guest-cache export.','No existing-target overwrite exception, fixture telemetry or generic OPEN automation.']}
         with (output/'session.json').open('x') as f:json.dump(result,f,indent=2);f.write('\n')
         (output/'INCOMPLETE.json').unlink()
         print(json.dumps({'status':result['status'],'session':artifact(output/'session.json')}))
