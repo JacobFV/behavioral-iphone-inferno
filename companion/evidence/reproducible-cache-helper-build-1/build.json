@@ -1,0 +1,179 @@
+{
+  "status": "built-owned-cache-helper-only; no guest execution yet",
+  "source_revision": "911ab72d4383944d391bd4823f88d98931949975",
+  "sources": {
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/fs-patches/cache-patch.c": "eb18e50ed0cf28862fa78a4173a72ca55a24f176fa8dfc9eca9314b18c0fbac7",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/fs-patches/libSystem.tbd": "632388ec8c55d119a667ec9accda60ad074a13faa07635a258cffe3dd96620d2",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/fs-patches/entitlements.plist": "53082fdea2f98764073ccc129187e93552b2b59552a518aba95bcf4b60231581"
+  },
+  "producer_sources": {
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/fs-patches/build-cache-helper.py": "53098920d0f9bcf19d3bea3ad2ff3671c6ae775b3ded0e607e482112a52b49eb",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/app-import.py": "e2ae5081168b99f4989cc759e797ae1381b595e263adea825705993685c1ce56"
+  },
+  "commands": [
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-ffreestanding",
+      "-fno-stack-protector",
+      "-fno-builtin",
+      "-O2",
+      "-c",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/fs-patches/cache-patch.c",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/cache-patch.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "ios",
+      "14.0",
+      "14.0",
+      "-e",
+      "_main",
+      "-needed_library",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/fs-patches/libSystem.tbd",
+      "-no_uuid",
+      "-adhoc_codesign",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/inferno-cache-patch",
+      "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/cache-patch.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "-Cadhoc",
+      "-S/home/brandonin/Documents/behavioral-iphone-inferno/companion/fs-patches/entitlements.plist",
+      "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/inferno-cache-patch"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "-e",
+      "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/inferno-cache-patch"
+    ]
+  ],
+  "command_records": [
+    {
+      "argv": [
+        "/usr/bin/clang",
+        "--target=arm64-apple-ios14",
+        "-ffreestanding",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-O2",
+        "-c",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/fs-patches/cache-patch.c",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/cache-patch.o"
+      ],
+      "started": 1791436003.9836326,
+      "finished": 1791436004.0475464,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/command-0.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/command-0.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18",
+        "-arch",
+        "arm64",
+        "-platform_version",
+        "ios",
+        "14.0",
+        "14.0",
+        "-e",
+        "_main",
+        "-needed_library",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/fs-patches/libSystem.tbd",
+        "-no_uuid",
+        "-adhoc_codesign",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/inferno-cache-patch",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/cache-patch.o"
+      ],
+      "started": 1791436004.0479012,
+      "finished": 1791436004.0636594,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/command-1.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/command-1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+        "-Cadhoc",
+        "-S/home/brandonin/Documents/behavioral-iphone-inferno/companion/fs-patches/entitlements.plist",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/inferno-cache-patch"
+      ],
+      "started": 1791436004.0639956,
+      "finished": 1791436004.071722,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/command-2.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/command-2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+        "-e",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/inferno-cache-patch"
+      ],
+      "started": 1791436004.0720122,
+      "finished": 1791436004.0755596,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/helper-entitlements.plist",
+        "sha256": "395a8bd074b45187f40ff0a0c644546590fc56015ba5bacc17b7e7d9e5be7f67"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-cache-build-1/command-3.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "tools": {
+    "clang": {
+      "invocation": "/usr/bin/clang",
+      "resolved": "/usr/lib/llvm-18/bin/clang",
+      "sha256": "6d99f6207153b8b2063ace5d2a6177debaf6a6b6f31649e03afac07b98ba0b4d"
+    },
+    "linker": {
+      "invocation": "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18",
+      "resolved": "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/lld",
+      "sha256": "f8835e48488195c65fb3dcb946053284ddf6b1369922893785209a9073c4e57b"
+    },
+    "ldid": {
+      "invocation": "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "resolved": "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "sha256": "d536519229ae8bd35a02a702e1ee07565de841869858fd36ea73dc9fd4162e7f"
+    }
+  },
+  "outputs": {
+    "inferno-cache-patch": {
+      "bytes": 68416,
+      "sha256": "13cd534f238d6fc47ec70351479034a6b97262e0984588c0948625478d2edb8c"
+    },
+    "helper-entitlements.plist": {
+      "bytes": 368,
+      "sha256": "395a8bd074b45187f40ff0a0c644546590fc56015ba5bacc17b7e7d9e5be7f67"
+    }
+  },
+  "signing": "Only owned cache patch helper; exact existing entitlement dictionary; no imported or Apple executable signed"
+}
