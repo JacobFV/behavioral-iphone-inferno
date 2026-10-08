@@ -1,0 +1,48 @@
+{
+  "scope": "Existing retained bounded disassemblies only; no new dump, runtime or source change.",
+  "sources": [
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/QuartzCore-can-update-full.txt",
+      "sha256": "91eae0562b27d1c1b983107193e146699cf8925d1efd547608e8cd914da2604f"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/IOMobileFramebuffer-wait-disasm.txt",
+      "sha256": "6cab862c87341ae5cb95344aaf44dc9319e178e437bc2b321807e62a566b2688"
+    }
+  ],
+  "findings": [
+    {
+      "range": "188308178;1883082c4..2dc",
+      "fact": "W25 preserves can_update_ unsigned argument. A byte at originalVA1d467d750 is compared to zero; W8 becomes0x80000000 if bytezero, otherwise0. Then argument bit1 set forces W24zero; argument bit1clear retains W8. Thus outgoing flags for this ring wait are exactly0 or0x80000000: lower mode bits locallyfixed0, highbit runtime selected, not arbitrary callerflags forwarded.",
+      "formula": "flags = (global_byte == 0 && (argument & 2) == 0) ? 0x80000000 : 0",
+      "unknown": "Meaning/name and runtime value of global byte and original caller argument are not established by this range."
+    },
+    {
+      "range": "188308304..310;188308344..360",
+      "fact": "Single-call and timed-retry paths both pass these W24flags to SwapWait. Runtime self+722 bit3, static byte+otherlocal state select path; retry site itself does not manufacture a new mode."
+    },
+    {
+      "range": "192b6d488..4b0",
+      "fact": "kern_SwapWait zeroextends callerW1token andW2flags into scalar slots0/1, sets scalar slot2zero, invokes selector6 with3inputs/0outputs. It does not rewrite the mode/highbit."
+    },
+    {
+      "range": "188308318;188308374..390",
+      "fact": "Zero return from either call routes through CBZ W26 at318 to390 clearing selected token. Timedretry zero at374 branches318; a nonzero timeout at380 also branches318 but fails the zero test, therefore timeout alone does not clear token."
+    },
+    {
+      "range": "188308394..43c;188308518..548",
+      "fact": "Success continues state/resource cleanup; later slot scan can select a zero-token slot for reuse. No assumption that zero return means pixels reached display."
+    },
+    {
+      "range": "188308194..198 and18830854c..59c",
+      "fact": "Other separate callsites explicitly pass0x80000001 (mode1); do not combine their semantics with main ring mode0 path."
+    }
+  ],
+  "kernel_relation": "Previously reviewed kernel splits bit31 nonblocking pending return from sleeping behavior and dispatches low modes. Source here explains how ring mode0 flags reach it; independent actual five-PC mode observations still cannot be paired with other snapshots or attributed to this user callsite.",
+  "limits": [
+    "No semantic name assigned to global byte/argument bit1.",
+    "No proof all SwapWait calls originate here; separatemode1 sites exist.",
+    "No completion/fence/physicalscanout inference from token clear or successfulreturn.",
+    "No proposed model correction."
+  ]
+}
