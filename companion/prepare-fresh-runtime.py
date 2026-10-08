@@ -77,8 +77,11 @@ def checked_map(values, pins):
 def build_outputs(path, build, names, pins):
     if (path.parent / 'INCOMPLETE.json').exists() or (path.parent / 'failure.json').exists():
         raise ValueError('Incomplete build')
-    checked_map(build['sources'], pins)
-    checked_map(build['producer_sources'], pins)
+    # Legacy reviewed producers recorded ../app-probe headers lexically.
+    # Resolve those source references, preserving their original spelling in the
+    # pinned build manifest; output/input artifacts still require canonical paths.
+    for path, sha in {**build['sources'], **build['producer_sources']}.items():
+        pin({'path': str(Path(path).resolve(strict=True)), 'sha256': sha}, pins)
     for row in build['command_records']:
         for channel in ('stdout', 'stderr'):
             pin(row[channel], pins)
