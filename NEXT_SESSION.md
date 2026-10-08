@@ -9,6 +9,36 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-07 21:38:Data verified and flattened; original growth coordinator in review
+
+Actual Data seed49035d86da/bc7a7c9946 independentlypassedf2a5c69fc8, result
+92a104c79da10ff002477dc1f6ff0b493e9e2ad72cd09e33a4ead7da3b4873f0.
+SeparateROverification0f8ab65941/independent32d197ed0e passed original16665entries,
+13025files,1link,269210433bytes,0mismatches andnormal7-file preservation depth4.
+Resultd3587d03988b1c5e797c59ad25c06b04c0406d44a07028e2b803d0385a65de34.
+Actualrawlogs besideevidence0c17de308b; no xattr/ACL/compression/readinessclaim.
+
+Hostflattenfirstpreflightfailedbeforeoutput because descriptor_check expectedPath,
+fixed7376eec524/independentd0e00159ef. Explicitretry succeeded d780ed9a7e and
+independenta8658b8851: convert/logicalcompare0/GPT/sourcebeforeafterpreserved,
+new8GiBraw0444KEEP andsame6pairedaux refs. Externalflattened-data-1 resultSHA
+3b0733b0033688e163f60377b87a255ab050bbee5fb1c1dca8b3b0a275f5812d,
+rawSHAfc6372fa1aaf24b5f24673e8811fc5f6485543802c29985763158d84f70e01fb.
+NoVM/growthperformedbyflatten. Allprocessesgone; noVM currently.
+
+Reproducedownedgrowthhelper69c594e1b2/actual2dc2e8de54, independent6ecc2e9326/
+c420f4eb1d. Unchangedgrow-container.c, helper68240SHA5ac28a550741f6be2459b71788e57c4ee77634ef1ac7194e9492445396150ed5
+byteidenticalhistorical; buildfdc395e17f957fed5dadbfb2c07c1dea8fd5ad56d3a0fa9782040ae0368883bc.
+
+Diskworker growthcandidate9c8132cf9d /tmp/inferno-grow-data-stage undernative
+review. Includesnewstage-grow-data.py/grow_data.py and authorizedminimalexisting
+grow-gpt4k.py fix: NEWexclusive0600descriptor copy supports0444input without
+oldchmod/extracopy. Actualtinyownedcopytestpassed; no largeGPTgrowth/VM yet.
+NewphasewillgrowGPT32GiB unchangedAPFSpayload then originalAPFSContainerResize
+34358669312, capacity/twofilefingerprints/unmount/normalall7. Limitedfingerprints
+are notwholeData re-verification. Actualreadonlyinputpreflight authorized; await
+source review andexactargv before rootGO. Bootworker reviewingnextSEP/keybagplan.
+
 ### 2026-10-07 21:10:Data seed and separate verification coordinators in progress
 
 Initial stage2 raw evidenceca3716098d and independentc796e68af8 integrated;
