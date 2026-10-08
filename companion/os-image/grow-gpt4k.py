@@ -3,6 +3,7 @@
 import argparse
 import hashlib
 import json
+import os
 import pathlib
 import struct
 import subprocess
@@ -61,8 +62,18 @@ with source.open('rb') as file:
     assert file.read(4) == b'NXSB'
 
 output.parent.mkdir(parents=True, exist_ok=True)
-# Reflink preserves a fast independent copy where supported; never a hard link.
-subprocess.run(['cp', '--reflink=auto', '--sparse=always', '--', str(source), str(output)], check=True)
+# Reserve a private writable inode, including when the immutable source is0444.
+# Copy through the inherited descriptor; cp cannot follow a replaced output path.
+output_fd = os.open(output, os.O_RDWR | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
+reserved = os.fstat(output_fd)
+try:
+    subprocess.run(['cp', '--reflink=auto', '--sparse=always', '--', str(source),
+                    f'/proc/self/fd/{output_fd}'], pass_fds=(output_fd,), check=True)
+    current = output.lstat()
+    assert (current.st_dev, current.st_ino, current.st_nlink) == (reserved.st_dev, reserved.st_ino, 1)
+except BaseException:
+    os.close(output_fd)
+    raise
 new_end = new_last - 5
 struct.pack_into('<Q', entries, 40, new_end)
 crc = zlib.crc32(entries)
@@ -76,7 +87,7 @@ def update_header(header, current, other, table_lba):
     struct.pack_into('<I', header, 16, zlib.crc32(header[:92]))
     return header
 
-with output.open('r+b') as file:
+with os.fdopen(output_fd, 'r+b') as file:
     file.truncate(new_bytes)
     file.seek(458)
     file.write(struct.pack('<I', new_last))
@@ -92,6 +103,8 @@ with output.open('r+b') as file:
     file.flush()
     import os
     os.fsync(file.fileno())
+current = output.lstat()
+assert (current.st_dev, current.st_ino, current.st_nlink) == (reserved.st_dev, reserved.st_ino, 1)
 with output.open('rb') as file:
     p, t = read_header(file, 1, new_last)
     b, u = read_header(file, new_last, 1)
