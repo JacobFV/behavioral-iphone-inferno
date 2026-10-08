@@ -83,11 +83,12 @@ establish general compatibility or resolve the intermittent display freeze.
 
 ## Prepare a complete host session
 
-`prepare-import.py --ipa /external/Owned.ipa --runtime /external/runtime.json
+`companion/run prepare-import --ipa /external/Owned.ipa --runtime /external/runtime.json
 --runtime-sha256 SHA256 --output /external/NEW` performs import, bound helper
 build, one owned cache-job replacement, and recovery ramdisk preparation. It
 never boots, modifies base disks, freezes files or declares an app successful.
-Root command integration is separate.
+The command retains each subprocess log and checks source and input hashes again
+before publishing a successful session.
 
 Runtime schema `inferno.local-ipa-runtime.v1` requires exact `inputs` pins
 (`path`, `sha256`) for profile, raw_ramdisk, probe, disk_helper, helper_build,

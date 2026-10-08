@@ -29,7 +29,7 @@ a built application; an Xcode project also needs a separate build toolchain.
 | IPA installation | Fixture and separate demo copied/read back with zero mismatches and clean unmount | Generalize preparation workflow; retain run74 as an interactive failure |
 | Separate app and resources | Run75: distinct imported IPA launched, original PID231, reviewed bundled text and counter0→1, normal shutdown | Broader app coverage and repeatability |
 | Xcode projects | Deferred by user; first release accepts already-built IPAs | A future build bridge needs macOS/Xcode and an actual recorded project build/run |
-| Setup and operation | Source-pinned runner, private headless control and disk retention exist | Reproducible documented setup, fewer manual integration steps and actionable failures |
+| Setup and operation | Source-pinned runner, private headless control and disk retention exist | Host preparation now combines import, helpers, cache and recovery image with checked readbacks; normal recovery verification is being exercised |
 | Reliability and resource use | Two simultaneous idle guests measured; individual active journeys retained | Repeatable release journeys and sustained active workload measurements |
 
 The successful repeated counter runs do not establish that the earlier freeze
