@@ -61,6 +61,13 @@ def no_running_emulator():
 
 def owned_group_members(process):
     """List only members of the private session created for our child."""
+    expected=getattr(process,'inferno_start_ticks',None)
+    if expected is None:raise ValueError('Private session start identity unavailable; refusing group cleanup')
+    try:
+        leader=Path(f'/proc/{process.pid}/stat').read_text()
+        fields=leader[leader.rfind(')')+2:].split()
+        if int(fields[19])!=expected:raise ValueError('Private session leader PID was reused')
+    except (FileNotFoundError,ProcessLookupError):pass
     members=[]
     for entry in Path('/proc').iterdir():
         if not entry.name.isdigit():continue
@@ -123,8 +130,8 @@ def freeze_new_disks(report_path,report,context,output):
     declared={Path(x['path']).name:Path(x['path']) for x in report['disks']}
     if len(report['disks'])!=7 or set(declared)!=expected or any(p!=folder/n for n,p in declared.items()):
         raise ValueError('Report namespaces are not exact new output paths')
-    inherited={(x['device'],x['inode']) for x in context['session']['verified_runtime']['base']['layers']}
-    for entry in context['session']['verified_runtime']['base']['auxiliary'].values():
+    inherited={(x['device'],x['inode']) for x in context['verified_runtime']['base']['layers']}
+    for entry in context['verified_runtime']['base']['auxiliary'].values():
         st=Path(entry['path']).stat();inherited.add((st.st_dev,st.st_ino))
     before={n:identity(p) for n,p in declared.items()}
     for n,v in before.items():
@@ -177,9 +184,12 @@ def main():
         write_new(output/'launch.json',{'command':command,'session_path':str(args.session.absolute()),'session_sha256':args.session_sha256,'proc_preflight':proc_check,'source_sha256':sources,'scope':'One explicit recovery attempt only; no app launch or automatic retry'})
         # Recheck immediately before launch; this remains a point-in-time guard.
         no_running_emulator()
+        if {str(p):digest(p) for p in source_paths}!=sources:raise ValueError('Coordinator dependencies changed before launch')
         for name in ('stdout.log','stderr.log'):logs.append((output/name).open('xb'))
         process=subprocess.Popen(command,stdout=logs[0],stderr=logs[1],start_new_session=True)
-        write_new(output/'runner-process.json',{'pid':process.pid,'command':command,'proc_stat':Path(f'/proc/{process.pid}/stat').read_text(),'started':time.time()})
+        runner_stat=Path(f'/proc/{process.pid}/stat').read_text()
+        process.inferno_start_ticks=int(runner_stat[runner_stat.rfind(')')+2:].split()[19])
+        write_new(output/'runner-process.json',{'pid':process.pid,'command':command,'proc_stat':runner_stat,'start_ticks':process.inferno_start_ticks,'started':time.time()})
         deadline=time.monotonic()+RECOVERY_SECONDS
         report_dir=output/'recovery-run';serial=report_dir/'serial.log';checkpoint=None
         while time.monotonic()<deadline:
@@ -208,6 +218,7 @@ def main():
         report_path=report_dir/'report.json';report=check_completed_report(context,report_path)
         # Raw content must still be successful after all serial output flushed.
         verify_content(serial.read_bytes(),context['manifest'],context['artifact_sizes'])
+        if {str(p):digest(p) for p in source_paths}!=sources:raise ValueError('Coordinator dependencies changed before freeze')
         frozen=freeze_new_disks(report_path,report,context,output)
         retention=report_dir/'stopped-disk-hashes.json'
         PRESERVE.preserve(report_path,retention,False)
@@ -216,8 +227,8 @@ def main():
             if retained[name]['sha256']!=entry['sha256'] or identity(entry['path'])!=entry['after']:raise ValueError('Frozen namespace changed before retention')
         verified=verify_stopped(context,report_path,retention,output/'content-check.json')
         if {str(p):digest(p) for p in source_paths}!=sources:raise ValueError('Coordinator dependencies changed during execution')
-        write_new(output/'verified-stage.json',verified)
         (output/'INCOMPLETE.json').unlink()
+        write_new(output/'verified-stage.json',verified)
         print(json.dumps({'stage':str(output/'verified-stage.json'),'sha256':digest(output/'verified-stage.json'),'eligible':True,'scope':'Recovery staging only; no app execution claim'}))
         return 0
     except BaseException as exc:
