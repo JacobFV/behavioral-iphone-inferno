@@ -81,6 +81,68 @@ still applies. Runs75 and77 completed this uninstrumented guest journey and norm
 visual evidence is in `evidence/ipa-demo-75-visual/` and `evidence/ipa-demo-77-visual/`. This single app does not
 establish general compatibility or resolve the intermittent display freeze.
 
+## Retain a durable host source tree before preparation
+
+A session pins source hashes **and their original absolute source location**.
+Create its source checkout in persistent local storage before preparing it.
+Keep that checkout for every later stage and boot validation. Do not relocate a
+prepared session's source root, rewrite its pins, update the checkout in place,
+or delete earlier frozen trees. A newer release needs a new checkout and session.
+
+Use a reviewed full commit ID available in your local repository. These ordinary
+Git commands make an independent local clone without network access, submodule
+checkout or hardlinked object storage. Both destination directories must be new.
+
+```sh
+inferno_repository=/absolute/path/to/behavioral-iphone-inferno
+inferno_revision=FULL_REVIEWED_COMMIT_ID
+inferno_host=/persistent/external/host-runtimes/RELEASE
+mkdir "$inferno_host"
+git -c protocol.allow=never -c protocol.file.allow=always \
+  -c core.hooksPath=/dev/null clone --local --no-hardlinks --no-checkout \
+  --no-recurse-submodules -- "$inferno_repository" "$inferno_host/source"
+git -C "$inferno_host/source" -c core.hooksPath=/dev/null \
+  checkout --detach "$inferno_revision"
+test "$(git -C "$inferno_host/source" rev-parse HEAD)" = "$inferno_revision"
+git -C "$inferno_host/source" diff --exit-code HEAD --
+test -z "$(git -C "$inferno_host/source" status --porcelain=v1 --untracked-files=all)"
+test ! -e "$inferno_host/source/.git/objects/info/alternates"
+```
+
+Retain the exact commit, command logs and source tree. An ordinary clone does not
+copy ignored firmware, build products or external tools; supply their pinned
+paths in the runtime descriptor. It also does not make mismatching helper source,
+profile, cache or disk lineage acceptable. The preparation validator must still
+accept those inputs. Run all three phases from this same source location, using
+fresh output directories and actual SHA-256 values from the preceding files:
+
+```sh
+"$inferno_host/source/companion/run" prepare-import \
+  --ipa /external/Owned.ipa --runtime /external/runtime.json \
+  --runtime-sha256 RUNTIME_SHA256 --output /external/NEW-PREPARED
+"$inferno_host/source/companion/run" stage-import \
+  --session /external/NEW-PREPARED/session.json --session-sha256 SESSION_SHA256 \
+  --output /external/NEW-STAGE
+"$inferno_host/source/companion/run" boot-import \
+  --stage /external/NEW-STAGE/verified-stage.json --stage-sha256 STAGE_SHA256 \
+  --session /external/NEW-PREPARED/session.json \
+  --output /external/NEW-INSTALLED --seconds 1200
+```
+
+Run each next command only after the previous phase passes its documented gates.
+The second and third commands each launch a VM; the first does not. Preparation
+records its complete source hash set, and later validators recheck those bytes
+at the retained source location. Clean Git checks are useful operator checks,
+not a substitute for those session pins. Keep logs and products outside the
+checkout, and use `PYTHONDONTWRITEBYTECODE=1` if inspecting Python entry points to
+avoid incidental `__pycache__` files in the retained tree.
+
+The host-only check in `evidence/durable-host-source-actual/` created a real local
+clone at committed revision `3f8b2d5623a2ac862eba2899771049c44b197316`, verified
+clean detached source and independent object storage, checked four existing
+helper source pins, and resolved these three CLI help commands. It did not create
+a session, stage an image, launch a VM, or move an existing source root.
+
 ## Prepare a complete host session
 
 `companion/run prepare-import --ipa /external/Owned.ipa --runtime /external/runtime.json
