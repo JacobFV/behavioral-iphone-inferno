@@ -135,7 +135,7 @@ def prepare(config_path, expected, output):
     checked_map(inspection['stopped_evidence_sha256'], pins)
     report_path, report_raw = pin({'path': inspection['report'], 'sha256': inspection['report_sha256']}, pins)
     report = json_bytes(report_raw)
-    if report.get('emulator_exit_code') != 0 or report.get('error') or report.get('attempt_completed') is not True:
+    if report.get('exit_code') != 0 or report.get('error') or report.get('attempt_completed') is not True:
         raise ValueError('Inspector did not stop normally')
     serial = read(report_path.parent / 'serial.log')
     pins[str(report_path.parent / 'serial.log')] = digest(serial)
@@ -148,7 +148,21 @@ def prepare(config_path, expected, output):
     pin({'path': inspection['retention'], 'sha256': inspection['retention_sha256']}, pins)
     pin({'path': str(paths['inspection'].parent / 'content-check.json'), 'sha256': inspection['content_checkpoint_sha256']}, pins)
     helpers = build_outputs(paths['runtime_build'], records['runtime_build'], ('inferno-probe', 'inferno-readiness', 'inferno-hid-input', 'inferno-unlock-empty'), pins)
+    for binary, entitlement in (('inferno-hid-input', 'hid-entitlements.plist'), ('inferno-unlock-empty', 'unlock-entitlements.plist')):
+        name = binary + '-entitlements.plist'
+        readback = records['runtime_build']['outputs'][name]
+        _, raw = pin({'path': str(paths['runtime_build'].parent / name), 'sha256': readback['sha256']}, pins)
+        source = SOURCE / 'native-probe' / entitlement
+        source_raw = read(source); pins[str(source)] = digest(source_raw)
+        if len(raw) != readback['bytes'] or plistlib.loads(raw) != plistlib.loads(source_raw):
+            raise ValueError('Runtime helper entitlement readback mismatch')
     prep = build_outputs(paths['prepare_build'], records['prepare_build'], ('inferno-prepare-root',), pins)
+    entitlement = records['prepare_build']['outputs']['helper-entitlements.plist']
+    _, raw = pin({'path': str(paths['prepare_build'].parent / 'helper-entitlements.plist'), 'sha256': entitlement['sha256']}, pins)
+    source = SOURCE / 'native-probe/entitlements.plist'
+    source_raw = read(source); pins[str(source)] = digest(source_raw)
+    if len(raw) != entitlement['bytes'] or plistlib.loads(raw) != plistlib.loads(source_raw):
+        raise ValueError('Preparation helper entitlement readback mismatch')
     app = IMPORTER.validate_manifest(paths['app_manifest'])
     if (app['bundle']['identifier'], app['bundle']['guest_path']) != ('org.inferno.companion.ipademo', '/Applications/ImportedDemo.app'):
         raise ValueError('First fresh journey is pinned to the owned imported demo')
