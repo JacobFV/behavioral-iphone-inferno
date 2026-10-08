@@ -1,0 +1,20 @@
+{
+  "verdict": "PASS exact requested stage command binding; unexecuted",
+  "argv": [
+    "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/run",
+    "stage-import",
+    "--session",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-prepare-2/session.json",
+    "--session-sha256",
+    "a4b188240030f60954ef0682f3257e13028df4c8f5f6ee4069f9b3c6043ca46b",
+    "--output",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-stage-2"
+  ],
+  "expected_app_readback": {
+    "bytes": 74518,
+    "entries": 3,
+    "mismatches": 0
+  },
+  "preconditions": "Root GO and worker immediate no VM/free reserve/new output/source checks remain required. Stage1 is not the base; prepared session retains original from50 sample branch.",
+  "scope": "No guest staging, launch or pixel claim."
+}
