@@ -98,7 +98,9 @@ def validate(path, expected, pins, tools_root=DEFAULT_TOOLS):
     _,prior_pins,prior=SK.validate_inputs(argparse.Namespace(**args));pins.update(prior_pins)
     if values['--disk-helper']!=str(args['helper_build'].parent/'inferno-prepare-root') or values['--raw-ramdisk']!=bounded_record(args['raw_recovery_record'])['output']['path']:raise ValueError('Actual helper/raw input differs')
     prepared_profile=path.parent/'recovery/profile.json';pin(prepared_profile,report['profile_sha256'],pins)
-    if bounded_record(prepared_profile)['ramdisk']['sha256']!=report['inputs']['ramdisk']['sha256']:raise ValueError('Prepared runtime profile differs')
+    _, prepared_inputs=SK.load_profile(prepared_profile)
+    if prepared_inputs!=report['inputs']:raise ValueError('Prepared runtime profile inputs differ')
+    if report.get('binary_sha256')!=args['binary_sha256'] or report.get('build_manifest_sha256')!=args['build_manifest_sha256']:raise ValueError('Runtime binary or manifest differs from pinned preparation inputs')
     job_path=path.parent/'readback-job';pin(job_path,launch['readbacks']['job']['sha256'],pins)
     if plistlib.loads(job_path.read_bytes())!={'Label':'org.inferno.probe.prepare-root','ProgramArguments':['/usr/bin/inferno-prepare-root','--disposable-root-copy','--existing-volumes','--copy-sep','--create-keybag'],'RunAtLoad':True,'StandardOutPath':'/dev/console','StandardErrorPath':'/dev/console','UserName':'root'}:raise ValueError('Actual keybag job differs')
     for name in ('helper','probe','sep'):
