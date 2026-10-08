@@ -61,7 +61,10 @@ def submission(report,path,expected):
  if len(matched)!=1:raise ValueError('Missing/duplicate control binding')
  c=matched[0];message=json.loads(c['raw'])
  if message['execute']!='guest-hid-gesture' or message['arguments']!=req or sha(c['raw'].encode())!=c['sha256'] or c['response']!=reply or not started<=message['created']<=c['time']<=finished:raise ValueError('Control response/timing mismatch')
- wire=s['expected_serial_wire'];wire_rows=rows(report/'serial-input-transcript.jsonl')
+ fields=('x0','y0','x1','y1') if req['kind']=='swipe' else ('x','y')
+ wire='INFERNO_HID_V1 '+req['request_id']+' '+req['kind'].upper()+' '+' '.join(str(req[k]) for k in fields)+' '+str(req['duration_ms'])+'\n'
+ if s['expected_serial_wire']!=wire:raise ValueError('Submission wire differs from fixed request')
+ wire_rows=rows(report/'serial-input-transcript.jsonl')
  before=[r for r in wire_rows if r.get('stage')=='before-send' and r.get('request_id')==req['request_id']]
  after=[r for r in wire_rows if r.get('stage')=='after-send' and r.get('response',{}).get('request_id')==req['request_id']]
  if len(before)!=1 or len(after)!=1 or before[0]['raw']!=wire or sha(wire.encode())!=before[0]['sha256'] or after[0]['response']!=reply:raise ValueError('Serial transport binding mismatch')
