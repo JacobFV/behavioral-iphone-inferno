@@ -1,13 +1,19 @@
 {
-  "status": "partial-live-run-no-final-outcome",
+  "status": "root-reviewed exactimage rejection before anytap; forensicstopped, retentionpending",
   "boot_uuid": "1B232CC6-70B7-4E6A-88E2-FE87D795B270",
   "root_visual_reviews": {
     "before-unlock/settled.png": "Original lock screen with Finish Setting Up notification",
-    "after-unlock-001/observed-0007.png": "Still locked after first acknowledged swipe"
+    "after-unlock-001/observed-0007.png": "Still locked after first acknowledged swipe",
+    "before-delayed-unlock.png": "Existing QMP0048 stilllock, no addedVNC",
+    "fixed-timing/before-beta/settled.png": "Beta alert visiblypresent overfixture0; exactcrop differs from91 only within alertpanel"
   },
   "qmp_cont": 1791439799.7290235,
   "first_unlock_submission": 1791439948.769344,
   "cont_to_first_seconds": 149.04032063484192,
   "second_unlock_target": 1791440344.769344,
-  "rules": "No VNC or input during remaining long wait; existing periodic QMP only."
+  "rules": "No VNC or input during remaining long wait; existing periodic QMP only.",
+  "second_unlock_submission": 1791440344.7941785,
+  "unlock_gap_seconds": 396.02483439445496,
+  "driver_result": "Exactstate mismatch; zero taps; no strictbefore/after/CPU/samples",
+  "limits": "Not completed timingsequence, not reproduced appfreeze, not success."
 }
