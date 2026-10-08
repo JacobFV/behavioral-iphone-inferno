@@ -2,6 +2,24 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 21:10:Data seed and separate verification coordinators in progress
+
+Initial stage2 raw evidenceca3716098d and independentc796e68af8 integrated;
+manifestaf685735...eff16 is eligible initial-volumes only. No liveVM.
+Bootworker owns new stage-seed-data.py/data_seed.py/docs implementation; diskworker
+owns new stage-verify-data.py/data_verify.py/docs, coordinating seedresult schema.
+Both reuse corrected privatecreation, exactsource/input/stoppedmetadata/prefix,
+normalstop/new7freeze/ancestor/depth invariants; neither may mutate guestC or
+claim IPAready. Native reviewer will review sources before any actual VM.
+
+Read-onlyverification pland05f7b8b50: existing+verify-data only, finalSystem/Data
+RO, raw TREE_RESULT zero mismatches thencleanunmount/COMPLETE. Verifiescontents/
+modes/owners/links/extras, notxattrs/ACLs/compressionencoding. Countsinclude raw:
+initialdepth2→seed3→verify4. Flatten the successfully verified stoppedtuple BEFORE
+keybag, otherwise nextdepth5rejected. Existinghistoricalstage50 flatten procedure
+is notyetgenericCLI; preserveexactpairedauxiliarystate andoriginaldependencies.
+No verification/flatten/keybag executionclaimed.
+
 ### 2026-10-07 21:06:fresh initial volumes passed; Data seeding implementation next
 
 Reviewed umaskfixaf40a60f3b/independent939f736f7e keptsharedfreezerguard unchanged.
