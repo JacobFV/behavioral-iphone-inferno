@@ -89,9 +89,10 @@ def validate_inputs(args):
     phase = FL.validate_phase(Path(flat['data_verified']['path']), flat['data_verified']['sha256'], 2, pins)
     tools = validate_tools(args.overlay_tools_root)
     chain = load_stopped_overlay(Path(phase['report']), tools)
-    if FL.normalized(chain) != FL.normalized(flat['source_after']) or flat['source_before'] != flat['source_after'] or FL.identities(chain) != flat['identities_after'] or flat['identities_before'] != flat['identities_after']:
+    if FL.normalized(chain) != FL.normalized(flat['source_after']) or FL.normalized(flat['source_before']) != FL.normalized(flat['source_after']) or FL.identities(chain) != flat['identities_after'] or flat['identities_before'] != flat['identities_after']:
         raise ValueError('Flatten source identities changed')
-    if flat['paired_auxiliary'] != chain['auxiliary'] or flat['auxiliary_state'] != str(Path(phase['report']).parent) or flat['auxiliary_report_sha256'] != phase['report_sha256'] or flat['auxiliary_retention_sha256'] != phase['retention_sha256']:
+    paired = {name: value for name, value in chain['auxiliary'].items() if name != 'root.qcow2'}
+    if flat['paired_auxiliary'] != paired or flat['auxiliary_state'] != str(Path(phase['report']).parent) or flat['auxiliary_report_sha256'] != phase['report_sha256'] or flat['auxiliary_retention_sha256'] != phase['retention_sha256']:
         raise ValueError('Flatten paired auxiliary provenance differs')
     paths['root'] = Path(flat['raw']['path'])
     raw = validate_base(paths['root'], flat['raw']['sha256'], allow_attestation=False)
@@ -101,7 +102,7 @@ def validate_inputs(args):
         raise ValueError('Flatten tool identity differs')
     paths['auxiliary_state'] = Path(flat['auxiliary_state'])
     pins[str(paths['root'])] = flat['raw']['sha256']
-    return paths, pins, {'profile_inputs': inputs, 'base': {'layers': [raw], 'auxiliary': chain['auxiliary']},
+    return paths, pins, {'profile_inputs': inputs, 'base': {'layers': [raw], 'auxiliary': paired},
                         'flat': flat, 'tool': tools, 'data_phase': phase,
                         'base_metadata': {q: CO.identity(q) for q in {str(paths['root']), *FL.identities(chain)}}}
 
@@ -278,7 +279,9 @@ def main():
         if report['root_base'] != {'path': str(paths['root']), 'sha256': verified['grown']['sha256'], 'bytes': 32 << 30, 'copied_before_use': False, 'retained_immutable_backing': True}:
             raise ValueError('Unexpected grown root backing')
         auxiliary = report.get('auxiliary_base', {})
-        if auxiliary.get('report') != str(paths['auxiliary_state'] / 'report.json') or auxiliary.get('report_sha256') != verified['data_phase']['report_sha256'] or auxiliary.get('namespaces') != verified['base']['auxiliary'] or auxiliary.get('copied_before_use') is not True:
+        expected_aux = {name.removesuffix('.raw'): {k: item[k] for k in ('path', 'sha256', 'bytes')}
+                        for name, item in verified['base']['auxiliary'].items()}
+        if auxiliary.get('report') != str(paths['auxiliary_state'] / 'report.json') or auxiliary.get('report_sha256') != verified['data_phase']['report_sha256'] or auxiliary.get('namespaces') != expected_aux or auxiliary.get('copied_before_use') is not True:
             raise ValueError('Original six paired auxiliary states differ')
         check_base_metadata(verified)
         final_serial = serial.read_bytes()
