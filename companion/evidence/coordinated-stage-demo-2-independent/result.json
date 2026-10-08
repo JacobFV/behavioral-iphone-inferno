@@ -1,0 +1,295 @@
+{
+  "scope": "Independent raw coordinator audit; no VM, metadata mutation or duplicate namespace/backing hash pass",
+  "artifacts": {
+    "/home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-2/launch.json": "544ba293cfa24fef9719a76384b3553977ed424eb272e94085ef5cc97cb961fa",
+    "/home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-2/runner-process.json": "bc70f95c3a2b77befb7c9aa6887751916aa6791f1de2e2a4b1f7a3dcfc6eb97b",
+    "/home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-2/content-check.json": "a1da69f7f50ae4a0795b3ede1f12377e94502f3eb5a3916d2b00b2d76def9b66",
+    "/home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-2/finish-submission.json": "56f4d4539176fb84ae8d407fdda5c8fd76dcabd520af56bac8e7e279d2338d13",
+    "/home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-2/finish.stdout": "7d5172531610d590fa178a9a86d3eca5cc5723a34d898b58384d64f00a266864",
+    "/home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-2/freeze-record.json": "03d87ccf37f82d39e410c142332e44d7e6154b8311937a768546bb7416f0ab5d",
+    "/home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-2/freeze-progress.jsonl": "d45bb6a25ab28b5e5e08deda87a38a06abefa232b706164e202e6ace78eaedb7",
+    "/home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-2/verified-stage.json": "79bbdd1c93261b347977293ab70e0756f5341dfca8bd9a17f596879b2fe1b83f",
+    "/home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-2/recovery-run/report.json": "121929eeba13449786e352cdc9823ecaac2622bb183911877cfb5ffda103f39a",
+    "/home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-2/recovery-run/serial.log": "e5e4016a9caaa2563555851c5100d4c3d19f7b9c796805e9ed4af846184b5f21",
+    "/home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-2/recovery-run/qmp-transcript.jsonl": "0f10345a807f3524d64ba13560cf476a123191787272ec9e9f8dbd436e5a5fec",
+    "/home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-2/recovery-run/control-transcript.jsonl": "dbd4b2a9075ca7d9bd43ecf35c8c715aff5534a863d15c948ea8990b5ca9cf08",
+    "/home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-2/recovery-run/stopped-disk-hashes.json": "b330f86771bd67ec2074b5b1c7d4579593bd98e8cb49da0bc1169c01a7c48a62",
+    "/home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-2/recovery-run/stopped-disk-hashes-verification.json": "bdd9750b62f1858646a6c6706ca5fa61cec3fd888b076ad1017f19ec1eb78741"
+  },
+  "source_hashes": {
+    "/tmp/inferno-stage-import/companion/stage-import.py": "649dfb8fffaf9a454861fc3d5281864c77d362990db1dd8458fe80ac1451bae0",
+    "/tmp/inferno-stage-import/companion/import_stage.py": "8a1df10b2eca704a7fadc61965251fe7f8c396ddd554835819bb0e4670619761",
+    "/tmp/inferno-stage-import/companion/preserve-stopped.py": "904655ac4653ed7f860851aa71719540bc66716c2896ccd4858fd3fcb22b61e7",
+    "/tmp/inferno-stage-import/companion/disk_overlay.py": "16180ed475f586b60031c129bf2a11169597dca10fc77a804d9fcdf0f20e3978",
+    "/tmp/inferno-stage-import/companion/app-import.py": "e2ae5081168b99f4989cc759e797ae1381b595e263adea825705993685c1ce56",
+    "/tmp/inferno-stage-import/companion/boot.py": "8089c0bbffd7cc964d982d6fc199147a785efa1bfe134464b60301f257631037",
+    "/tmp/inferno-stage-import/companion/qmp_control.py": "0c147c8fa9fea8414f8f5a79c6a904b3c2b0f123352de142b03eaca56526afb7",
+    "/tmp/inferno-stage-import/companion/probe_journey.py": "1c4cbb542a79b85560433d62726123b99555ad0a47522d5ecd659faf3a04f308",
+    "/tmp/inferno-stage-import/companion/headless_refresh.py": "a19f60baf3aa4351998ca8fe977f5989797af7bcb125c6185948981c3c9c134a",
+    "/tmp/inferno-stage-import/companion/boot_milestones.py": "4aefd213f1587f2b93969378f34183053375d5d2a088e013d4626ebab0a5571a"
+  },
+  "raw_content": {
+    "content_verified": true,
+    "serial_bytes": 57593,
+    "serial_sha256": "e5e4016a9caaa2563555851c5100d4c3d19f7b9c796805e9ed4af846184b5f21",
+    "records": [
+      {
+        "byte_start": 35713,
+        "byte_end": 35791,
+        "sha256": "33068880db4f878a62dccf283284b7e7b000e9c05f9a77760e0fc15c218cad77",
+        "text": "INFERNO_PREP_BEGIN: disposable /dev/disk0s1 existing=1 roles=0 gigalocker=0"
+      },
+      {
+        "byte_start": 48070,
+        "byte_end": 48127,
+        "sha256": "cd823e4951ecd89a383035c472a57aa0ed7e43cc40aa82a1ba6f1b796eee83ee",
+        "text": "INFERNO_EXEC_WRAPPER_READBACK bytes=67392 mismatches=0"
+      },
+      {
+        "byte_start": 50755,
+        "byte_end": 50815,
+        "sha256": "7881efa5cc4520db55da61817e7e4d3dbd8f03e967f1e82d6488c84c47aa6f77",
+        "text": "INFERNO_SYSTEM_LAUNCHER_READBACK bytes=69136 mismatches=0"
+      },
+      {
+        "byte_start": 51420,
+        "byte_end": 51555,
+        "sha256": "470a628b4946157e4dce9e63b304ef577509b2814140728806a0cac9c37b9c5e",
+        "text": "INFERNO_IMPORTED_APP_PLAN bundle=ImportedDemo.app identifier=org.inferno.companion.ipademo entries=3 bytes=71939 identical_fixture=0"
+      },
+      {
+        "byte_start": 53201,
+        "byte_end": 53294,
+        "sha256": "eee31b0746edd80e4801c99f4dc9641c4f496beaa5b018483c726fb1a66bc099",
+        "text": "INFERNO_IMPORTED_APP_PARENT stat=0 errno=0 mode=40775 uid=0 gid=80 nlink=105 path_result=0"
+      },
+      {
+        "byte_start": 53671,
+        "byte_end": 53874,
+        "sha256": "33658aceadc42015b04fb2f4222761b61d632c697467e567499619d5c5a5191c",
+        "text": "INFERNO_IMPORTED_APP_DIR_METADATA_BEFORE target=/mnt1/Applications/ImportedDemo.app source_stat=0 source_mode=40755 source_uid=0 source_gid=0 target_stat=0 target_mode=40755 target_uid=0 target_gid=80"
+      },
+      {
+        "byte_start": 53874,
+        "byte_end": 54009,
+        "sha256": "7a18ba35c085b6955131de3bb5615664d3a5b03852b5e32491d090f8cfef7c92",
+        "text": "INFERNO_IMPORTED_APP_DIR_METADATA_AFTER target=/mnt1/Applications/ImportedDemo.app copy=0 copy_errno=0 stat=0 mode=40755 uid=0 gid=0"
+      },
+      {
+        "byte_start": 54009,
+        "byte_end": 54100,
+        "sha256": "f5a1535b5d4f366d61e4391e144cbcd786bd4beb301e79c2b6949762e1f14e28",
+        "text": "INFERNO_IMPORTED_APP_READBACK bundle=ImportedDemo.app bytes=71939 entries=3 mismatches=0"
+      },
+      {
+        "byte_start": 54705,
+        "byte_end": 54762,
+        "sha256": "529ae8e7ede0d998280087801b4f8e4cb07c2c259838ed39f3333c4621be4632",
+        "text": "INFERNO_IMPORTED_APP_FINISH result=0 unmount=0 errno=0"
+      },
+      {
+        "byte_start": 56785,
+        "byte_end": 56836,
+        "sha256": "9d159773af835b6821d0ff3bb17c40e7123790252fc9e8c3c8bab2b1ad68dd60",
+        "text": "INFERNO_CACHE_READBACK bytes=596664 mismatches=0"
+      },
+      {
+        "byte_start": 57441,
+        "byte_end": 57525,
+        "sha256": "673e5cb8a0e18a0cd70df9efcfef4f842b3b601ae52e044868d485a3c5a6b8a6",
+        "text": "INFERNO_LAUNCHD_CACHE_INSTALLED: explicit configuration only; signature unchanged"
+      },
+      {
+        "byte_start": 57525,
+        "byte_end": 57593,
+        "sha256": "59b3e3fddabfa200e64abbb29150f776ddb533b10e40563fa92ebdb086a434cf",
+        "text": "INFERNO_PREP_COMPLETE: requested preparation operations succeeded"
+      }
+    ],
+    "expected_file_bytes": 71939,
+    "expected_entries": 3,
+    "scope": "Raw stage content only; not stopped eligibility or authenticated boot identity."
+  },
+  "checkpoint_captured_time": 1791420489.986581,
+  "finish_control": {
+    "time": 1791420490.1600568,
+    "request_file": "request-b1bb9d291c4545978dde2c1400cf447f.json",
+    "raw": "{\"execute\": \"finish-observation\", \"arguments\": {}, \"created\": 1791420490.0136514}\n",
+    "sha256": "e49680634ddbccde86a53a1d7264c6dab71a40d613566703e4f54ce91f05262c",
+    "response": {
+      "return": {
+        "keep_running": false,
+        "finish_requested": true,
+        "scope": "Operator ends observation; no app execution or journey success asserted"
+      }
+    }
+  },
+  "quit": {
+    "direction": "send",
+    "time": 1791420490.1721492,
+    "raw": "{\"execute\": \"quit\", \"id\": 9}\n",
+    "byte_offset": 2842,
+    "byte_length": 97,
+    "message": {
+      "execute": "quit",
+      "id": 9
+    }
+  },
+  "shutdown": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-2/recovery-run/qmp-transcript.jsonl",
+    "sha256": "0f10345a807f3524d64ba13560cf476a123191787272ec9e9f8dbd436e5a5fec",
+    "evidence": [
+      {
+        "line": 19,
+        "entry": {
+          "direction": "send",
+          "time": 1791420490.1721492,
+          "raw": "{\"execute\": \"quit\", \"id\": 9}\n"
+        }
+      },
+      {
+        "line": 20,
+        "entry": {
+          "direction": "receive",
+          "time": 1791420490.172594,
+          "raw": "{\"timestamp\": {\"seconds\": 1791420490, \"microseconds\": 172312}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"
+        }
+      },
+      {
+        "line": 21,
+        "entry": {
+          "direction": "receive",
+          "time": 1791420490.173211,
+          "raw": "{\"return\": {}, \"id\": 9}\r\n"
+        }
+      }
+    ],
+    "reported_emulator_pid_absent": 3750552
+  },
+  "disks": [
+    {
+      "name": "ctrl_bits.raw",
+      "sha256_recorded_by_coordinator_and_retention": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+      "current_identity": {
+        "st_dev": 66306,
+        "st_ino": 53780832,
+        "st_size": 8192,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791420482162990797,
+        "st_ctime_ns": 1791420509141334949
+      },
+      "freeze_time": 1791420509.1416295
+    },
+    {
+      "name": "effaceable.raw",
+      "sha256_recorded_by_coordinator_and_retention": "0f559fb9b151252796f2122984cd498c790673cde9888b8a6e2d106653dcc902",
+      "current_identity": {
+        "st_dev": 66306,
+        "st_ino": 53780834,
+        "st_size": 4096,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791420482165711436,
+        "st_ctime_ns": 1791420509199334928
+      },
+      "freeze_time": 1791420509.2004862
+    },
+    {
+      "name": "firmware.raw",
+      "sha256_recorded_by_coordinator_and_retention": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74",
+      "current_identity": {
+        "st_dev": 66306,
+        "st_ino": 53780830,
+        "st_size": 8388608,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791420482155620705,
+        "st_ctime_ns": 1791420509257334906
+      },
+      "freeze_time": 1791420509.2576327
+    },
+    {
+      "name": "nvram.raw",
+      "sha256_recorded_by_coordinator_and_retention": "a6723647f5645429f02ae19f371b03fe057b8ca25a22e6e2f1a07a4bf9863535",
+      "current_identity": {
+        "st_dev": 66306,
+        "st_ino": 53780833,
+        "st_size": 8192,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791420484312730163,
+        "st_ctime_ns": 1791420509312334885
+      },
+      "freeze_time": 1791420509.3135152
+    },
+    {
+      "name": "panic_log.raw",
+      "sha256_recorded_by_coordinator_and_retention": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+      "current_identity": {
+        "st_dev": 66306,
+        "st_ino": 53780835,
+        "st_size": 1048576,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791420482167394091,
+        "st_ctime_ns": 1791420509667334751
+      },
+      "freeze_time": 1791420509.6681225
+    },
+    {
+      "name": "root.qcow2",
+      "sha256_recorded_by_coordinator_and_retention": "7a0b461701ffc22b5b07f78a735c236b8fe92f395abfe12a077c6793a97b5f7d",
+      "current_identity": {
+        "st_dev": 66306,
+        "st_ino": 53780828,
+        "st_size": 4521984,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791420489949343306,
+        "st_ctime_ns": 1791420509725334729
+      },
+      "freeze_time": 1791420509.7257366
+    },
+    {
+      "name": "syscfg.raw",
+      "sha256_recorded_by_coordinator_and_retention": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+      "current_identity": {
+        "st_dev": 66306,
+        "st_ino": 53780831,
+        "st_size": 131072,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791420482161224686,
+        "st_ctime_ns": 1791420509780334709
+      },
+      "freeze_time": 1791420509.7815166
+    }
+  ],
+  "retained_ancestors_metadata_unchanged": [
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-from50-sample-1/disks/root.qcow2",
+      "format": "qcow2",
+      "sha256": "168e5395e39aa5d0dc4e95a8c70f7c5d3306e2373fef3477687980ae0ca59cc0",
+      "bytes": 3670016,
+      "device": 66306,
+      "inode": 53749281,
+      "mtime_ns": 1791333637611745955,
+      "ctime_ns": 1791333723370948803,
+      "mode": "0o444"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/stage50-flatten-source-1/root.raw",
+      "format": "raw",
+      "sha256": "40ea0d8119b4d0477a0f1c045b253179b84fc4311f1e5b34a8edf36e7351f210",
+      "bytes": 34359738368,
+      "device": 66306,
+      "inode": 53749262,
+      "mtime_ns": 1791333445088293817,
+      "ctime_ns": 1791333501905426719,
+      "mode": "0o444"
+    }
+  ],
+  "runner_pid_absent": 3747699,
+  "emulator_pid_absent": 3750552,
+  "eligible": true,
+  "limits": [
+    "Disk content hashes are the coordinator/preservation recorded full reads; independently checked metadata and cross-artifact equality, not rehashed here.",
+    "No installed-iOS app launch, rendering or compatibility assertion.",
+    "Readable process/FD checks are point-in-time, not exclusive global locks.",
+    "Guest markers are tied to this fresh run and pinned command/profile; they do not contain a cryptographic session nonce."
+  ]
+}
