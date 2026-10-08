@@ -1,0 +1,196 @@
+{
+  "scope": "Independent failed export framing/parser/cleanup and seven-file metadata audit; no image rehash, Apple configuration reconstruction, or successful inspection claim",
+  "inputs": {
+    "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-1/recovery-run/serial.log": {
+      "sha256": "2a87b662402e2882e5c946ee79c1ac8a0c52a5fe96132ffa5f7419218dca9d58",
+      "bytes": 2220276
+    },
+    "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-1/failure.json": {
+      "sha256": "5b872b163f01f8e32addab68a0d131b1bf81cbe831f8945a5537851fb5fb53aa",
+      "bytes": 189
+    },
+    "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-1/recovery-run/report.json": {
+      "sha256": "9533f997e43021c2c1b39a0e95875372cb562ac9b24be5581ef0dab526a0b4fc",
+      "bytes": 24955
+    },
+    "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-1/recovery-run/qmp-transcript.jsonl": {
+      "sha256": "57f99f6fb2c990d8c8b84498c7a7db3d8ca47a1c98758eb3d2184f48789e7ba2",
+      "bytes": 2521
+    },
+    "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-1/recovery-run/failed-stopped-disk-hashes.json": {
+      "sha256": "612a9fb2e9b61861d9927da3475dced1e50e6c7c61325a16fe89ab3404b00344",
+      "bytes": 3242
+    },
+    "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-1/recovery-run/failed-stopped-disk-hashes-verification.json": {
+      "sha256": "acd28d2f779466030c24bcd75754173df41bb00642c5dbd94e453331a8adcc9d",
+      "bytes": 16332
+    }
+  },
+  "parser_source": {
+    "path": "/tmp/inferno-runtime-inspector/companion/runtime-inspector/result.py",
+    "sha256": "37695abae4b2d9e3ff3e00c15ca98e9c2fe1b0689036790ecf40dbd5cccea33e"
+  },
+  "malformed_chunks": [
+    {
+      "byte_start": 222039,
+      "byte_end": 222133,
+      "line_sha256": "f035f82a777ba22d0ce6eabd052fd2c8e24a25ed7deafb84a07e51f098cbc29d",
+      "owned_header": "INFERNO_INSPECT_DATA name=launchd offset=87040 bytes=512 ",
+      "contains_asr_help_word": false
+    },
+    {
+      "byte_start": 223188,
+      "byte_end": 223312,
+      "line_sha256": "72a89bc6eed39e1d2741205702458cb4b293288a7b141fd90b7bb7bed68439bd",
+      "owned_header": "INFERNO_INSPECT_DATA name=launchd offset=87552 bytes=512 ",
+      "contains_asr_help_word": true
+    },
+    {
+      "byte_start": 224409,
+      "byte_end": 224532,
+      "line_sha256": "b526689d3596ee8e3ddf06aca9118a0cd1b47d5657da5fce83c92bf8778df5d8",
+      "owned_header": "INFERNO_INSPECT_DATA name=launchd offset=88064 bytes=512 ",
+      "contains_asr_help_word": true
+    },
+    {
+      "byte_start": 225630,
+      "byte_end": 225731,
+      "line_sha256": "536c9c9b9e30132653c5916adc7f190a51fbbd4e3095441aaee61e647cb2730e",
+      "owned_header": "INFERNO_INSPECT_DATA name=launchd offset=88576 bytes=512 ",
+      "contains_asr_help_word": true
+    },
+    {
+      "byte_start": 227254,
+      "byte_end": 227360,
+      "line_sha256": "98e8a77986c036232ecebf4780d302e5011b1fff1c5ebd51bc6c5708a587aece",
+      "owned_header": "INFERNO_INSPECT_DATA name=launchd offset=89088 bytes=512 ",
+      "contains_asr_help_word": true
+    }
+  ],
+  "nonexport_markers": [
+    {
+      "byte_start": 35636,
+      "text": "INFERNO_INSPECT_BEGIN version=1 fixed_files=2"
+    },
+    {
+      "byte_start": 36958,
+      "text": "INFERNO_INSPECT_MOUNT status=0 mode=ro"
+    },
+    {
+      "byte_start": 36999,
+      "text": "INFERNO_INSPECT_FILE name=launchd bytes=1025279 mode=33188 uid=0 gid=80"
+    },
+    {
+      "byte_start": 2219575,
+      "text": "INFERNO_INSPECT_HASH name=launchd bytes=1025279 sha256=e5847afbcf6c025ee7f15620918eb6bc79bc916a29301bba8b034cf4775f3c24"
+    },
+    {
+      "byte_start": 2219697,
+      "text": "INFERNO_INSPECT_FILE name=dyld bytes=2052489216 mode=33261 uid=0 gid=80"
+    },
+    {
+      "byte_start": 2219771,
+      "text": "INFERNO_INSPECT_HASH name=dyld bytes=2052489216 sha256=59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1"
+    },
+    {
+      "byte_start": 2220199,
+      "text": "INFERNO_INSPECT_UNMOUNT status=0 errno=0"
+    },
+    {
+      "byte_start": 2220242,
+      "text": "INFERNO_INSPECT_RESULT status=0"
+    }
+  ],
+  "actual_parser_rejection": "Malformed export chunk",
+  "quit_ack": [
+    {
+      "line": 15,
+      "direction": "send",
+      "time": 1791436665.473618,
+      "raw": "{\"execute\": \"quit\", \"id\": 7}\n"
+    },
+    {
+      "line": 17,
+      "direction": "receive",
+      "time": 1791436665.4773042,
+      "raw": "{\"return\": {}, \"id\": 7}\r\n"
+    }
+  ],
+  "report_outcome": {
+    "attempt_completed": false,
+    "error": {
+      "type": "KeyboardInterrupt",
+      "detail": "Signal 15"
+    },
+    "emulator_exit_code": 0
+  },
+  "seven_file_metadata": {
+    "ctrl_bits.raw": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-1/recovery-run/disks/ctrl_bits.raw",
+      "size": 8192,
+      "mode": "0o100600",
+      "device": 66306,
+      "inode": 53781267,
+      "recorded_sha256_not_rehashed": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47"
+    },
+    "effaceable.raw": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-1/recovery-run/disks/effaceable.raw",
+      "size": 4096,
+      "mode": "0o100600",
+      "device": 66306,
+      "inode": 53781269,
+      "recorded_sha256_not_rehashed": "3a901f979d63ad57d3d8e65def442fd17cdfc8f9fb1e82a641177082665c3c07"
+    },
+    "firmware.raw": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-1/recovery-run/disks/firmware.raw",
+      "size": 8388608,
+      "mode": "0o100600",
+      "device": 66306,
+      "inode": 53781265,
+      "recorded_sha256_not_rehashed": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74"
+    },
+    "nvram.raw": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-1/recovery-run/disks/nvram.raw",
+      "size": 8192,
+      "mode": "0o100600",
+      "device": 66306,
+      "inode": 53781268,
+      "recorded_sha256_not_rehashed": "9304f476d92756bf84a035554c6c6549331873ac24bcacbec7c73b073346aa9a"
+    },
+    "panic_log.raw": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-1/recovery-run/disks/panic_log.raw",
+      "size": 1048576,
+      "mode": "0o100600",
+      "device": 66306,
+      "inode": 53781270,
+      "recorded_sha256_not_rehashed": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58"
+    },
+    "root.qcow2": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-1/recovery-run/disks/root.qcow2",
+      "size": 197120,
+      "mode": "0o100600",
+      "device": 66306,
+      "inode": 53781263,
+      "recorded_sha256_not_rehashed": "59a905345b927a0793692fb0834a62dab4cf8e6f3674e7762036d908aa72406d"
+    },
+    "syscfg.raw": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-1/recovery-run/disks/syscfg.raw",
+      "size": 131072,
+      "mode": "0o100600",
+      "device": 66306,
+      "inode": 53781266,
+      "recorded_sha256_not_rehashed": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471"
+    }
+  },
+  "pids_absent": [
+    1032152,
+    1042481,
+    1048889
+  ],
+  "limits": [
+    "Guest hash and unmount records exist, but five malformed export records prevent reconstruction.",
+    "Coordinator signal cleanup and QMP quit0 are not a normal successful inspection finish.",
+    "Forensic retention hashes are referenced; this independent audit did not reread disk payloads.",
+    "No eligible manifest or exported launchd file exists."
+  ]
+}
