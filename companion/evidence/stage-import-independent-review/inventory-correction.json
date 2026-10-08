@@ -1,0 +1,23 @@
+{
+  "reviewed_source_commit": "3acefa0d91",
+  "reviewed_negative_evidence": "a91d7ff8bb",
+  "scope": "Read-only correction review; no new tests, VM or staging",
+  "source_sha256": "649dfb8fffaf9a454861fc3d5281864c77d362990db1dd8458fe80ac1451bae0",
+  "correction": "Prior independent review incorrectly requested profile.py, which does not exist. Actual profile loader is boot.load_profile; import_stage.py imports it explicitly. Actual first coordinator attempt rejected before output or VM, preserving safety but preventing execution.",
+  "real_inventory": [
+    "stage-import.py",
+    "import_stage.py",
+    "preserve-stopped.py",
+    "disk_overlay.py",
+    "app-import.py",
+    "boot.py",
+    "qmp_control.py",
+    "probe_journey.py",
+    "headless_refresh.py",
+    "boot_milestones.py"
+  ],
+  "all_ten_present": true,
+  "guards": "Same source hash maps still checked before launch, before freeze and before final publication. Missing source remains fatal. No recovery/control/freeze behavior changed.",
+  "retained_actual_negative": "CLI entered source inventory and then rejected intentionally nonexistent session with exit1 and absent output. This is preflight evidence, not recovery execution.",
+  "decision": "No blocker in narrow inventory correction; actual coordinator recovery still requires parent-controlled validation."
+}
