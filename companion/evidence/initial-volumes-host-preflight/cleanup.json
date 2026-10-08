@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "-u",
+    "-c",
+    "import subprocess,sys,time; p=subprocess.Popen([sys.executable,\"-c\",\"import time;time.sleep(60)\"]); print(p.pid,flush=True);time.sleep(60)"
+  ],
+  "started": 1791431362.3888862,
+  "finished": 1791431362.6205106,
+  "exit_code": -15,
+  "cleanup": {
+    "forced_private_group_kill": [
+      102948
+    ],
+    "runner_exit_code": -15,
+    "remaining_session_members": []
+  },
+  "error": "Command '['/usr/bin/python3', '-u', '-c', 'import subprocess,sys,time; p=subprocess.Popen([sys.executable,\"-c\",\"import time;time.sleep(60)\"]); print(p.pid,flush=True);time.sleep(60)']' timed out after 0.2 seconds",
+  "stdout_sha256": "4a5d1b5e004448a68c67ffe43d8354aa31ae879f4131642dc7b32dd9c6c92d80",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "child_pid": 102948,
+  "post_cleanup_child_state": "absent",
+  "scope": "Owned host subprocess only; timeout kills owned group; zombie may await host init reap; no VM"
+}
