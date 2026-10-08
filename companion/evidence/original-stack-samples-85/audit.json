@@ -1,0 +1,65 @@
+{
+  "scope": "Actual85 generic ImportedDemo unchanged visible counter after one acknowledged tap; no callback telemetry and no CPU diagnostic configured. Original post-observation samples, not proof app callback ran or proof compositor caused symptom. No worker runtime actions.",
+  "boot_uuid": "914CE962-C0BA-484C-B07B-1EE2F6BF8C81",
+  "cache_uuid": "11AD39C9-E3C9-3067-A337-7287744FDCB5",
+  "actual_cache_slide": "0x22bc4000",
+  "raw_stack_references": {
+    "backboardd": {
+      "path": "backboardd/report.txt",
+      "line_start": 101,
+      "line_end": 132,
+      "byte_start": 4556,
+      "byte_end": 6883,
+      "sha256": "aa80fd6a47b72e4a51847a4fc9609dd98c597f344bc6dadd7a23f708d5baa119"
+    },
+    "springboard": {
+      "path": "springboard/report.txt",
+      "line_start": 56,
+      "line_end": 67,
+      "byte_start": 1869,
+      "byte_end": 2637,
+      "sha256": "153945ae2b5602e4aafab45108258e287d8701b99402b7c145eb7ebc8d83a1cc"
+    }
+  },
+  "mapping": {
+    "backboardd": {
+      "mapped_unique_cache_PCs": 71,
+      "unmapped_PCs": [
+        "0x1001e0ab4",
+        "0xfffffff007a075e4",
+        "0xfffffff007a565b0",
+        "0xfffffff007a58280",
+        "0xfffffff007a5fd6c"
+      ],
+      "sampled_instruction_patch_overlaps": []
+    },
+    "springboard": {
+      "mapped_unique_cache_PCs": 28,
+      "unmapped_PCs": [
+        "0xfffffff007a075e4",
+        "0xfffffff007a5fd6c"
+      ],
+      "sampled_instruction_patch_overlaps": []
+    }
+  },
+  "backboardd_display_primary": {
+    "samples": 21,
+    "runloop_wait": 19,
+    "can_update_usleep": 1,
+    "can_update_SwapWait_IOConnect": 1
+  },
+  "springboard_main": {
+    "samples": 20,
+    "runloop_wait": 20
+  },
+  "comparison": "The same can_update retry family appeared in failed fixture65/74/76/82 (with different sample populations); healthy49 had no such sampled branch in its20-sample display thread. These short sampling windows do not establish continuous blocking or causality. Healthy84 register calibration additionally demonstrates equality/pending observations during advancing display.",
+  "limits": [
+    "No generic app callback marker; HID ACK is not application callback or display delivery proof.",
+    "Samples occur after the unchanged-counter observations and are separate windows, not paired with input or CPU records.",
+    "No token, mode, numeric SwapWait return, pipeline state or current scanout inferred from these stacks.",
+    "Nearest validated image symbol does not prove function extent; unknown/kernel PCs preserved.",
+    "Original kernel stackshot warning retained in full report; no kernel stack mapping claim.",
+    "Sparse patch check covers sampled4-byte PCs, not every dependency or whole function.",
+    "Retained serial is a labeled live prefix; no stopped-state claim."
+  ]
+}
