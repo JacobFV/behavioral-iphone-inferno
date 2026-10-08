@@ -140,7 +140,7 @@ def validate_session(path, sha256):
         if Path(relative).is_absolute() or '..' in Path(relative).parts:raise ValueError('Invalid source pin path')
         _pin({'path':str(source_root/relative),'sha256':expected_hash})
     runtime_validator=_load('prepare-import',source_root)
-    verified_runtime=runtime_validator.validate_runtime(runtime)
+    _,verified_runtime=runtime_validator.validate_runtime(runtime)
     manifest = _load('app-import').validate_manifest(pinned['import_manifest'])
     if manifest['bundle'] != s['bundle'] or manifest['tree_sha256'] != s['tree_sha256']:
         raise ValueError('Manifest target differs')
