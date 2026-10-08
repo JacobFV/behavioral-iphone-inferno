@@ -197,6 +197,8 @@ def main():
         if len(chain['layers']) != 3:
             raise ValueError('Owned runtime stage must retain exactly three layers')
         FR.F.IMPORTER.validate_manifest(paths['app_manifest'])
+        unchanged({**source_pins, **input_pins, **stopped_pins})
+        check_base_metadata(verified)
         CO.write_new(output/'fresh-runtime.json',{'schema':'inferno.fresh-runtime-stage.v1','status':'owned-runtime-staged-not-booted','ipa_runtime_ready':False,
                      'report':str(report_path),'report_sha256':stopped_pins[str(report_path)],'retention':str(retention),'retention_sha256':stopped_pins[str(retention)],
                      'content':content,'content_checkpoint_sha256':stopped_pins[str(output/'content-check.json')],'backing_depth':len(chain['layers']),
