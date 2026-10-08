@@ -80,8 +80,8 @@ def build_outputs(path, build, names, pins):
     # Legacy reviewed producers recorded ../app-probe headers lexically.
     # Resolve those source references, preserving their original spelling in the
     # pinned build manifest; output/input artifacts still require canonical paths.
-    for path, sha in {**build['sources'], **build['producer_sources']}.items():
-        pin({'path': str(Path(path).resolve(strict=True)), 'sha256': sha}, pins)
+    for source_path, sha in {**build['sources'], **build['producer_sources']}.items():
+        pin({'path': str(Path(source_path).resolve(strict=True)), 'sha256': sha}, pins)
     for row in build['command_records']:
         for channel in ('stdout', 'stderr'):
             pin(row[channel], pins)
@@ -150,6 +150,13 @@ def prepare(config_path, expected, output):
         raise ValueError('Fresh export differs from raw inspector bytes')
     pin({'path': inspection['retention'], 'sha256': inspection['retention_sha256']}, pins)
     pin({'path': str(paths['inspection'].parent / 'content-check.json'), 'sha256': inspection['content_checkpoint_sha256']}, pins)
+    approved = {
+        'runtime_build': ('aa7ba5975fe5436ebb6bfbd7f922817e3b7b4e0c4b2250756ca2824547ddcf35', 'built-owned-runtime-helpers-only; no guest execution yet'),
+        'prepare_build': ('3cb1656f3978bfdcca7e3da80d7f8091f524c1b7593bb64a42a7a2a47f34e532', 'built-owned-preparation-helper-only; no guest execution yet'),
+    }
+    for name, (approved_sha, status) in approved.items():
+        if config['inputs'][name]['sha256'] != approved_sha or records[name].get('status') != status:
+            raise ValueError('First fresh preparation requires exact independently reviewed owned build: ' + name)
     helpers = build_outputs(paths['runtime_build'], records['runtime_build'], ('inferno-probe', 'inferno-readiness', 'inferno-hid-input', 'inferno-unlock-empty'), pins)
     for binary, entitlement in (('inferno-hid-input', 'hid-entitlements.plist'), ('inferno-unlock-empty', 'unlock-entitlements.plist')):
         name = binary + '-entitlements.plist'
@@ -212,7 +219,7 @@ def prepare(config_path, expected, output):
         IMPORTER.validate_manifest(paths['app_manifest'])
         checked_map(dict(pins), {})
         args = ['--disk-helper-existing', '--readiness-probe', helpers['inferno-readiness'], '--hid-input-helper', helpers['inferno-hid-input'], '--unlock-helper', helpers['inferno-unlock-empty'], '--disk-helper', prep['inferno-prepare-root'], '--system-launcher', launch_outputs['inferno-launcher'], '--exec-wrapper', launch_outputs['inferno-exec-launcher'], '--imported-app-manifest', str(paths['app_manifest']), '--imported-app-manifest-sha256', config['inputs']['app_manifest']['sha256'], '--launchd-cache', str(output / 'launchd.plist'), '--launchd-cache-sha256', digest(merged)]
-        result = {'schema': 'inferno.fresh-runtime-artifacts.v1', 'status': 'host-prepared-not-staged', 'ipa_runtime_ready': False, 'inputs': config['inputs'], 'input_source_sha256': pins, 'merge_command': command, 'policy': {'disabled_original_labels': list(POLICY), 'original_signature_preserved': True, 'fresh_insertion': True}, 'jobs': sorted(jobs), 'outputs': {p.name: {'path': str(p), 'sha256': digest(read(p))} for p in sorted(output.iterdir()) if p.name != 'INCOMPLETE.json'}, 'prepare_arguments_fragment': args, 'scope': 'Small artifact preparation only. No disk eligibility validation, renderer success, ramdisk construction, guest staging, migration, first unlock or launch. Require separately verified renderer stage from same keybag before constructing a recovery session. No signature file is supplied or modified.'}
+        result = {'schema': 'inferno.fresh-runtime-artifacts.v1', 'status': 'host-prepared-not-staged', 'ipa_runtime_ready': False, 'inputs': config['inputs'], 'input_source_sha256': pins, 'merge_command': command, 'policy': {'disabled_original_labels': list(POLICY), 'original_signature_modified': False, 'signature_scope': 'Original signature not read or written', 'fresh_insertion': True}, 'jobs': sorted(jobs), 'outputs': {p.name: {'path': str(p), 'sha256': digest(read(p))} for p in sorted(output.iterdir()) if p.name != 'INCOMPLETE.json'}, 'prepare_arguments_fragment': args, 'scope': 'Small artifact preparation only. No disk eligibility validation, renderer success, ramdisk construction, guest staging, migration, first unlock or launch. Require separately verified renderer stage from same keybag before constructing a recovery session. No signature file is supplied or modified.'}
         (output / 'fresh-runtime-artifacts.json').write_text(json.dumps(result, indent=2) + '\n')
         (output / 'INCOMPLETE.json').unlink()
         return result
