@@ -97,9 +97,9 @@ def verify_content(raw, manifest, artifact_sizes, identical_fixture=False):
             'scope': 'Raw stage content only; not stopped eligibility or authenticated boot identity.'}
 
 
-def _load(name):
+def _load(name, directory=None):
     import importlib.util
-    path = Path(__file__).with_name(name + '.py')
+    path = (Path(directory)/ (name+'.py')) if directory else Path(__file__).with_name(name + '.py')
     spec = importlib.util.spec_from_file_location(name.replace('-', '_'), path)
     module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
     return module
@@ -109,12 +109,13 @@ def _pin(record, maximum=None):
     import stat
     path = Path(record['path'])
     before = path.lstat()
+    identity=lambda st:(st.st_dev,st.st_ino,st.st_mode,st.st_size,st.st_mtime_ns,st.st_ctime_ns)
     if not path.is_absolute() or not stat.S_ISREG(before.st_mode) or (maximum and before.st_size > maximum):
         raise ValueError('Invalid pinned regular file: ' + str(path))
     import hashlib
     with path.open('rb') as f:
         found = hashlib.file_digest(f, 'sha256').hexdigest()
-    if found != record['sha256'] or path.lstat() != before:
+    if found != record['sha256'] or identity(path.lstat()) != identity(before):
         raise ValueError('Pinned source changed: ' + str(path))
     return path
 
@@ -138,6 +139,8 @@ def validate_session(path, sha256):
     for relative, expected_hash in s['sources'].items():
         if Path(relative).is_absolute() or '..' in Path(relative).parts:raise ValueError('Invalid source pin path')
         _pin({'path':str(source_root/relative),'sha256':expected_hash})
+    runtime_validator=_load('prepare-import',source_root)
+    runtime_validator.validate_runtime(runtime)
     manifest = _load('app-import').validate_manifest(pinned['import_manifest'])
     if manifest['bundle'] != s['bundle'] or manifest['tree_sha256'] != s['tree_sha256']:
         raise ValueError('Manifest target differs')
@@ -186,6 +189,11 @@ def verify_stopped(context, report_path, retention_path, content_check_path):
         raise ValueError('Recovery did not complete normally')
     if report.get('profile_sha256')!=s['recovery_profile']['sha256'] or Path(report['profile_path'])!=Path(s['recovery_profile']['path']):
         raise ValueError('Actual recovery profile differs')
+    if report.get('runner_sha256')!=s['sources']['boot.py'] or report.get('control_source_sha256')!=s['sources']['qmp_control.py']:
+        raise ValueError('Actual runner/control source differs')
+    from boot import load_profile
+    _,profile_inputs=load_profile(Path(s['recovery_profile']['path']))
+    if report.get('inputs')!=profile_inputs:raise ValueError('Actual profile input dictionary differs')
     if report.get('probe_journey') or report.get('observation_run_control',{}).get('finish_requested') is not True:
         raise ValueError('Explicit normal finish-observation required')
     base=s['runtime_record']['inputs']['base_report']; actualbase=report.get('overlay_base_report',{})
