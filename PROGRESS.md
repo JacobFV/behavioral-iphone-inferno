@@ -2,6 +2,22 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 18:14: first boot-import wrapper journey passed
+
+Actual wrapper81 consumed the verified coordinator2 stage and session2 using
+frozen baseline /tmp/inferno-boot-import source2e165c1474. Original app PID256
+UID501 appeared; root reviewed bundled text/Count0 and, after ONE counter
+d8fd4385289a441fbf52efa8e939151e ACK0, text/Count1 in after-counter0018 and final
+periodic QMP0033. Normal finish-observation, runner0/errornull/367.767003s;
+wrapper completed-run SHA562be0da4707b9f0e438f214c56dbfef2e3f2efae4ac6117d0fcec0b94ff90fa,
+no INCOMPLETE/failure. Raw normal completion and seven-disk evidence retained;
+visual companion/evidence/boot-import-81-visual. No generic compatibility/fixclaim.
+Bootworker next launches fixture82 same80 config/base, CPU logging OFF. Root
+first performs strict0→1; if healthy, extends to THREE reviewed Home/reopen/tap
+cycles (existing69 pattern) for active coverage. At any genuine rawtap/pixel
+mismatch: cease inputs, repeated no-input observation, bounded trace/all9off,
+then ONE1s pending-branch window. Never use a failed child as backing.
+
 ### 2026-10-07 18:06: fixture80 passed; actual boot-import81 validation running
 
 80 completed strict reviewed0→1 after single189d1aede267409eacaaff07aa0b34ad,

@@ -220,3 +220,9 @@ The installed owned launchd job may attempt the app's normal launch.
 visible output and disk retention are separate checks. Failed or uncertain
 attempts retain logs and failure markers, stop only their owned child session,
 and never retry or become an eligible next base automatically.
+
+The first actual wrapper run81 passed full stage revalidation and normal wrapper
+completion. Separate root-reviewed frames showed the imported bundled text and
+counter0→1. Evidence is retained in `evidence/boot-import-81-visual/` and the
+wrapper execution record. This uses the pinned baseline host tree and does not
+establish compatibility with other runner revisions or arbitrary IPAs.
