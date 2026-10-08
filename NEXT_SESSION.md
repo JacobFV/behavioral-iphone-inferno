@@ -9,6 +9,27 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-07 19:56:86 healthy; helper build and real host preparation reproduced
+
+86 normal0/errornull/689.277972s, strict/initial andall7/ancestors PASSbf916000e1.
+Rootvisual3ead0003b4:strict0→1, threeHome/reopen/tapcycles2/3/4, samePID254/
+main3316678809. NoCPU/ADPwindow/sample; nofreeze. FinalQMP0065reviewed4.
+RootauthorizedONE87 samefixture3/0889/pending-equalitydefaultoff, launchsource
+bf916000e1, rootallUI. Need actual failedfivePCcapture remains; no proposedfix.
+
+Setup documentation48fa9b3264/d79e20ce5e maps complete runtime schema,
+retained artifact lineage, testedhost prerequisites and private genericUIflow.
+Newproducer a0da568ef5 builds ownedhelper from samefourcommittedsources with
+exacthelper60tools/commands plus entitlementreadback. Actual41d3aac247 and
+independent4cb48ed246:byteidentical86144 SHA66492292ea073d5710af269585058129d92db71509c16c3cd74453421e61a3e3.
+No guesthelpercode/consumer/history changes, only ownbinarysigned.
+Actual unchangedpersistent3f8b2d prepare-import with NEWruntime replacingONLY
+helper/buildpins passedbe5b6595f3:allfourcommands0,72sourcepins,8HFSbyteequal.
+NEW externalapp-import/rebuilt-helper-prepare-1/session.json SHA
+ aae8fd302f4a053c20e0ab6acb7de1ad0ac3be0ddfe211ffd47484b8fc825d9b.
+RuntimeSHA3a36be4381f808293b4aa328f92c01ed35fb2bac0868d913cacb3cafdd4d10d9.
+Host-prepared only, no newstage/VM. Keep olddurable/session/sourceunchanged.
+
 ### 2026-10-07 19:44: failed85 retained; instrumented86 live
 
 85 forensic postflight72b9f2b12e and independent45c635a10a passed preservation/
