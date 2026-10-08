@@ -1,0 +1,89 @@
+{
+  "status": "Independent static review; recommended fixed three-site observational profile, no implementation or runtime actions",
+  "kernel": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/kernel-original-decoded",
+    "sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910"
+  },
+  "original_disassembly": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/iomfb-swapwait-inspection/wait-gated.txt",
+    "sha256": "06f87075abec9f3fe46c1b83d32d3fcd5ecc6fb4e5fef9e2c1369c9b135e0932"
+  },
+  "source_pins": {
+    "accel/tcg/cpu-exec.c": "4f03249bbdb9c10f70d32373efd8dd25e31094ce4baffc082c00f6c3f24cbd71",
+    "target/arm/tcg/translate-a64.c": "1629b25b4346bc00eb50513f87e225ede524bb5ba4dafb7e38d00cc04efa1157",
+    "target/arm/cpu.c": "9d969ee42b7d05b337feb151c21dd51ba6cc4387274f379bbf5599d3db6fcdd5",
+    "companion/evidence/original-iomfb-swapwait-path/inspection.json": "203040bbe412475d4ecf909a80340a988b23706730c953d3135ecd50353296fb",
+    "companion/evidence/original-iomfb-swapwait-path/patch-range-audit.json": "62c684cbac949dcd265ad6ba7e72b9f608b81df855e70e356f6bdfb97e475bca"
+  },
+  "sites": [
+    {
+      "pc": "0xfffffff0096f1c74",
+      "type": "active-null-branch",
+      "liveness": {
+        "requested": "low32X00 loaded1c34/moved1c38",
+        "completed": "low32X01 loaded pipeline+bf4 at1c40/moved1c44",
+        "active_null_test": "X11 loaded pipeline+ad0 at1c4c and tested CBZ1c5c; exactsite must haveX11==0"
+      },
+      "ignore": [
+        "X10 is earlier pointer snapshot at1c48, not active token on this branch; do not interpret it.",
+        "Do not infer pipeline address from unrelated registers."
+      ],
+      "tb": "Explicit CBZ target1c74. No instruction before first snapshot at exactPC has overwritten these values. Ordinary null path then falls through1c7c without guaranteed separate TB."
+    },
+    {
+      "pc": "0xfffffff0096f1c7c",
+      "type": "active-token-join",
+      "liveness": {
+        "requested": "low32X00 preserved from1c38",
+        "completed": "low32X01 preserved from1c44",
+        "active_branch_pointer": "X11 preserved from1c4c",
+        "active_token": "low32X10 loaded1c68 via active pointer freshly loaded1c64, only interpret ifX11nonzero"
+      },
+      "tb": "Nonnull path branches unconditionally1c70\u21921c7c. Exact snapshot is before first instruction at1c7c; next instructions overwrite X0, laterX1/X11. Null path could also reach samePC under unusual TB split; ifX11zero classify null/ignoreX10, not active token.",
+      "limit": "Active pointer and token are successive guest loads; register dump is coherent but memory state was not an atomic snapshot. X11 and freshly loaded dereference pointer could differ under concurrent guest updates."
+    },
+    {
+      "pc": "0xfffffff0096f1d1c",
+      "type": "queued-token-equality-fallthrough",
+      "liveness": {
+        "queued_pointer": "X08 loaded1d08 from current queue entry; first instruction1d1c overwrites it AFTER snapshot",
+        "queued_token": "low32X09 loaded1d0c from queue+22c",
+        "requested": "low32X11 loaded1d10"
+      },
+      "condition": "CMP1d14 then B.NE1d18; reachingexactPC is equality fallthrough, so require low32X09==low32X11 and nonzeroX08. This is observed queue comparison, not proof that same call eventually returns pending.",
+      "tb": "AArch64 trans_B_cond generates TB exits for both branch target and fallthrough PC+4; candidate is explicit fallthrough start."
+    }
+  ],
+  "coverage_reasoning": [
+    "cpu_tb_exec logs state before tcg_qemu_tb_exec; qemu_log_in_addr_range gates TB PC, not each instruction.",
+    "trans_B/trans_CBZ/trans_B_cond call gen_goto_tb; branch destinations and fallthrough after conditional branch are candidate TB starts.",
+    "Existing no-chain logging keeps direct TB chaining from hiding subsequent executions; actual owned fixture must still show exactPC dumps under selected fixed filter.",
+    "Do not infer absent state from missing exactPC coverage. One second bounded sampling can miss even legitimate branch executions. Thirdnullsite closes static nullpath blindspot, not a guarantee of runtime samples."
+  ],
+  "mode_limit": "1ba0..1bbc admits low31 modes0/1/2 to this block. No mode value is independently established in proposed GPRs; do not label every dump mode0 or pair it with earlier entry flags.",
+  "patch_audit": {
+    "whole_function_half_open": [
+      "0xfffffff0096f1968",
+      "0xfffffff0096f2024"
+    ],
+    "result": "No current direct patch overlap or global pattern anchor within4096 bytes. Kext text patches and PPL separate, const/cstring edits separate.",
+    "basis": "Same source file hashes as prior f37/0889 audit; rescanned patterns against exact original kernel with expanded auditedfunction.",
+    "limit": "Source-plan exclusion only, no assertion of live guest bytes or rebuild reproducibility."
+  },
+  "recommended_minimum": {
+    "pcs": [
+      "0xfffffff0096f1c74",
+      "0xfffffff0096f1c7c",
+      "0xfffffff0096f1d1c"
+    ],
+    "profile": "Separate opt-in fixed three-PC profile; retain existing two-PC baseline unchanged. Existing one-second deadline/sizebound/allADPoff/zero-slide/pinnedkernel+binary/source gates and cleanup.",
+    "parser": "Only complete31GPR exactPC dumps; typed state and low32 tokens. No nearest-PC inference, no call counts, CPU/process/thread identity, crossdump pairing or pointer dereference.",
+    "implementation_gate": "Separate host-only actual QEMU/owned instruction fixture needed to demonstrate logging coverage, branch invariants and no arbitrary filters before production use."
+  },
+  "no_actions": [
+    "No code/filter changes",
+    "No VM launch/control/input",
+    "No guestRAM reads or patches",
+    "No original Apple implementation bytes copied into Git"
+  ]
+}
