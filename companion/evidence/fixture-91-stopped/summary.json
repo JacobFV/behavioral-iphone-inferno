@@ -1,0 +1,186 @@
+{
+  "scope": "Normal strict fixture0\u21921 after delayed unlock. Intended short cadence missed; no timing causality or fresh-runtime proof.",
+  "time": 1791438421.6477346,
+  "host_revision": "2c73d47aec31571d7e80ad8e4017969f33f0c20c",
+  "postflight_sources": {
+    "verify-journey.py": "7fe16cc6ca661c7902a198d789b6ff0290b35f377f1138606a6edf86d13c3298",
+    "preserve-stopped.py": "904655ac4653ed7f860851aa71719540bc66716c2896ccd4858fd3fcb22b61e7",
+    "launch-timing.py": "69dcaae0ed48955344dff3285eb0e94a87d0416f782ad66b507004131221f3c2",
+    "disk_overlay.py": "16180ed475f586b60031c129bf2a11169597dca10fc77a804d9fcdf0f20e3978"
+  },
+  "stop": {
+    "pid": 1196912,
+    "exit_code": 0,
+    "attempt_completed": true,
+    "error": null,
+    "quit_response": {
+      "return": {},
+      "id": 101
+    },
+    "elapsed_seconds": 808.061555
+  },
+  "processes_absent": [
+    1195600,
+    1196912
+  ],
+  "strict_status": "verified",
+  "boot_uuid": "13226926-FA0A-4D40-8D5F-FDBC0FD1C415",
+  "app_pid": 263,
+  "retention": "Default7 and unchanged ancestors/attestation journals PASS. No disk chmod/mutation or future base adoption.",
+  "actual_requests": [
+    {
+      "execute": "guest-hid-gesture",
+      "created": 1791437602.8141687,
+      "arguments": {
+        "request_id": "288796a82a534283bc4da5ff16e4cb15",
+        "kind": "swipe",
+        "duration_ms": 1500,
+        "x0": 16384,
+        "y0": 32270,
+        "x1": 16384,
+        "y1": 9145
+      },
+      "record_time": 1791437602.8259919
+    },
+    {
+      "execute": "guest-hid-gesture",
+      "created": 1791437998.8694851,
+      "arguments": {
+        "request_id": "a36d1c4233aa4e2289a704b33b96e383",
+        "kind": "swipe",
+        "duration_ms": 1500,
+        "x0": 16384,
+        "y0": 32270,
+        "x1": 16384,
+        "y1": 9145
+      },
+      "record_time": 1791437998.9245014
+    },
+    {
+      "execute": "guest-hid-gesture",
+      "created": 1791438058.1985955,
+      "arguments": {
+        "request_id": "fe68420e4d324e038867930e89225067",
+        "kind": "tap",
+        "duration_ms": 150,
+        "x": 16384,
+        "y": 18560
+      },
+      "record_time": 1791438058.2881784
+    },
+    {
+      "execute": "guest-hid-gesture",
+      "created": 1791438084.5953956,
+      "arguments": {
+        "request_id": "978c06f93957486381243d3fde9bd515",
+        "kind": "tap",
+        "duration_ms": 150,
+        "x": 11028,
+        "y": 18432
+      },
+      "record_time": 1791438084.756109
+    },
+    {
+      "execute": "probe-capture-before",
+      "created": 1791438108.2824502,
+      "arguments": {},
+      "record_time": 1791438108.4260268
+    },
+    {
+      "execute": "guest-hid-gesture",
+      "created": 1791438143.2963152,
+      "arguments": {
+        "request_id": "54ae8a70ccc24f29b57127d3d709c7fd",
+        "kind": "tap",
+        "duration_ms": 150,
+        "x": 16384,
+        "y": 20316
+      },
+      "record_time": 1791438143.3450878
+    },
+    {
+      "execute": "probe-capture-after",
+      "created": 1791438211.7855818,
+      "arguments": {},
+      "record_time": 1791438211.952564
+    },
+    {
+      "execute": "probe-status",
+      "created": 1791438212.0302076,
+      "arguments": {},
+      "record_time": 1791438212.164267
+    },
+    {
+      "execute": "finish-run",
+      "created": 1791438232.3686516,
+      "arguments": {},
+      "record_time": 1791438232.4247518
+    }
+  ],
+  "raw_request_created_intervals_seconds": {
+    "unlock_gap": 396.05531644821167,
+    "unlock2_to_beta": 59.32911038398743,
+    "beta_to_setup": 26.39680004119873,
+    "setup_to_counter": 58.70091962814331
+  },
+  "root_action_intervals_seconds": {
+    "unlock_gap": 396.03755,
+    "unlock2_to_beta": 59.331,
+    "beta_to_setup": 26.4107,
+    "setup_to_counter": 58.7023
+  },
+  "planned_intervals_seconds": {
+    "unlock_gap": 396,
+    "unlock2_to_beta": 43,
+    "beta_to_setup": 18,
+    "setup_to_counter": 13
+  },
+  "limitation": "Post-unlock UI timings missed targets due operator overhead. Raw request-created and root submission intervals are separately retained; no matched short-cadence claim.",
+  "diagnostics": {
+    "commands": [
+      "finish-run",
+      "guest-hid-gesture",
+      "probe-capture-after",
+      "probe-capture-before",
+      "probe-status"
+    ],
+    "adp_log_lines": 0,
+    "scope": "No CPUwindow/displaytrace/SAMPLE/Home/OPEN or warm cycles. Startup touch trace is separate."
+  },
+  "frames": {
+    "probe-before.ppm": "23bc5b60cd80ea880521f5b8f0f99be9a6b7fdab59df878f5a11d0d68174aa7f",
+    "probe-after.ppm": "b341395637837953ee7baa2ea93305e0857e7c3582560b6651c1d5e375f1465d",
+    "framebuffer.ppm": "413af807d8841e186b9edffd1e592cad96966df183c2be35eab32c423856e2a3"
+  },
+  "packaging_note": "First summary script used missing report.error direct lookup and stopped; raw files committed unchanged. Corrected to optional-field get; verification/preservation themselves already passed.",
+  "files": {
+    "stopped-disk-hashes-verification.json": "9c02b307574c5e92a5da3ef6cac93db3e0cf880cb31f8cba7ed69ee7b4d3bfac",
+    "report.json": "6b59486bc5bec98e36aa455ac1b5a05cb3e88c722323abe131d84d8e1d2e20e1",
+    "stopped-disk-hashes.json": "19a7452020aef2c12b470f48d7bd102fb0c3b0124dde8a00fc710ae7b023dc9f",
+    "journey-verification.json": "9461a9350c90c20db85d100248fd03d1a98411ec88af095f5603f1f859432330",
+    "profile.json": "7939d609b99b8223863dba0b0af9d181526b420c0023cc9520563fd7e0979ed8",
+    "initial-timing.json": "9422d2f6a157adb529dbe38e331eb6d421ef1dc926bb2610f61decb05b13741e",
+    "stderr.log": "90d324fa1e1c26c49589cda1ea8076ea1c3f9073a1f1fccf44bdc91ae15d91eb",
+    "control-transcript.jsonl": "911ac02d48fbd5f92eea878e31a8f4b62c2466093dc6f30b0f4e41f6c008ea70",
+    "root-overlay.json": "f3675eb69fbc76aedce32eeb7a2c2d9b3ee9322ad406e62b03b7b808ff049604",
+    "serial-input-transcript.jsonl": "16a13d8a0c981eaa701a8d2b1a4726282ae2924f36ebbd14b3d1534734f72553",
+    "guest-errors.log": "ead3e718916810e486891bf35ea993e1f318c329cc94b88fbe528d7f21955a16",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "qmp-transcript.jsonl": "fb80c5129d26fb19e8b6eb20d2bf8748ea763c5982e8d73dc47cf107c482f6db",
+    "command.json": "9e473f30e713515b32edc8088f3f27d80ee514578938b5745f6cabb598a4b06b",
+    "serial.log": "9688e0a100cea93e8f0af578c54e3078c72a7d433ae3168a3616d8478c4085a4",
+    "build-manifest.json": "1c0ca353df0b88956f071503654a9a0a3f1e22346270e89accdfaa911391f096",
+    "launch/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "launch/launch.json": "e46a550a89203f5a577d06d657b4c06152e22070059966e5372191e5ab56348b",
+    "launch/stdout.log": "c23c7659f6e30283e1e1a8b0819d1550a3e78abe9f667f05fac7baa5d6bba591",
+    "control/reply-d7979f44e381445dacd734ea47e60eca.json": "68f928ad13cbdd82cdbac05cc6aa799a84052eb39617281993b3b3945089f1fe",
+    "control/reply-172fbf9d9ff74582ba5c3313a1d15076.json": "8d3a8a5506e71009860f30ff9507f588b8ee7bc6de4b7d6f9c339efd04d94d41",
+    "control/reply-6951e44b04e0430d93d58ab01e8d92ca.json": "212cc65a36ac06d16c23e988d8a2d5f916b2e291815ae5915482bd0a59df7fe8",
+    "control/reply-8c136a7d7cbd4de3949d4f790b1c2c29.json": "d6a9993562787f8c0b3ddb02c83231d56737a0ee3a5a0e2187fb67c83c9a3327",
+    "control/reply-6d0193cd2bd34d54a26a6409b8ee72af.json": "416593a0c6112a733fbff5a4f4535ff369ea5ca812529bd5f36dfcf400f54061",
+    "control/reply-fe0e301d291840bea15be63c8efa1c09.json": "499704c0ffa55a29f42d92eca1038fddf0c7018c925941517d320ecd24370a09",
+    "control/reply-83a13e6db12649fcb493b052914fdb40.json": "d6856c380471a0084efe6d21b8a25e35daaf838e2bb4393c4f536b40ed6f5d44",
+    "control/reply-eacb807b6ff84e68ab48d0f2904abc6a.json": "b46bacb363f6b6510e01da1ed63b713740213fb93c7cb76655e42a32cd812b50",
+    "control/reply-5d54c97768a045d2a469c3ba566dd373.json": "c6eb0c160b1574371e7824cbc3bf67ec2a63d2802054d55008928568775c1def"
+  }
+}
