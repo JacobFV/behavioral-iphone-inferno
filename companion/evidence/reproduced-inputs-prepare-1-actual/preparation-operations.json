@@ -1,0 +1,351 @@
+{
+  "source_profile": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/profile.json",
+  "source_raw_sha256": "5eff57f37009c1d996d6de3d6a069029a855cdc978fd54af0977cac49b42689e",
+  "probe_sha256": "7def2d54fb9a0737666cbe175b38ad442eea5340a07fac202ffd1fda2df849c9",
+  "sep_payload_sha256": null,
+  "disk_helper_sha256": "66492292ea073d5710af269585058129d92db71509c16c3cd74453421e61a3e3",
+  "hfsplus_sha256": "2b38fd84323addc7487587738d4c4dd5b0d012d7e895e77e9e8ef1840fac7454",
+  "output_ramdisk_sha256": "b4f6e7dc083e19a80c4cfa43fbb67c2e10ae931e5ca5683dddde9d5d2491495b",
+  "operations": [
+    {
+      "args": [
+        "add",
+        "/home/brandonin/.local/share/inferno/native-probe/helper-build-42/inferno-probe",
+        "/usr/bin/inferno-probe"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "chmod",
+        "755",
+        "/usr/bin/inferno-probe"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "mv",
+        "/System/Library/LaunchDaemons/com.apple.restored_external.plist",
+        "/usr/share/com.apple.restored_external.plist.disabled"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/inferno-prepare-root",
+        "/usr/bin/inferno-prepare-root"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "chmod",
+        "755",
+        "/usr/bin/inferno-prepare-root"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/launcher/inferno-launcher",
+        "/usr/share/inferno-system-launcher"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "chmod",
+        "755",
+        "/usr/share/inferno-system-launcher"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "extract",
+        "/usr/share/inferno-system-launcher",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/recovery/readback-system-launcher"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/recovery/imported-app.plan",
+        "/usr/share/inferno-imported-app.plan"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "chmod",
+        "644",
+        "/usr/share/inferno-imported-app.plan"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "extract",
+        "/usr/share/inferno-imported-app.plan",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/recovery/readback-imported-app.plan"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "mkdir",
+        "/usr/share/inferno-imported-app"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "chmod",
+        "755",
+        "/usr/share/inferno-imported-app"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/import/bundle/ImportedDemo.app/ImportedDemo",
+        "/usr/share/inferno-imported-app/ImportedDemo"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "chmod",
+        "755",
+        "/usr/share/inferno-imported-app/ImportedDemo"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "extract",
+        "/usr/share/inferno-imported-app/ImportedDemo",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/recovery/readback-imported-0000"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/import/bundle/ImportedDemo.app/Info.plist",
+        "/usr/share/inferno-imported-app/Info.plist"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "chmod",
+        "644",
+        "/usr/share/inferno-imported-app/Info.plist"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "extract",
+        "/usr/share/inferno-imported-app/Info.plist",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/recovery/readback-imported-0001"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/import/bundle/ImportedDemo.app/Message.txt",
+        "/usr/share/inferno-imported-app/Message.txt"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "chmod",
+        "644",
+        "/usr/share/inferno-imported-app/Message.txt"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "extract",
+        "/usr/share/inferno-imported-app/Message.txt",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/recovery/readback-imported-0002"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/launcher/inferno-exec-launcher",
+        "/usr/share/inferno-exec-launcher"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "chmod",
+        "755",
+        "/usr/share/inferno-exec-launcher"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "extract",
+        "/usr/share/inferno-exec-launcher",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/recovery/readback-exec-wrapper"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/launchd-cache.plist",
+        "/usr/share/inferno-launchd-cache.plist"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "chmod",
+        "644",
+        "/usr/share/inferno-launchd-cache.plist"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "extract",
+        "/usr/share/inferno-launchd-cache.plist",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/recovery/readback-launchd-cache"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/recovery/org.inferno.probe.native.plist",
+        "/System/Library/LaunchDaemons/org.inferno.probe.native.plist"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "chmod",
+        "644",
+        "/System/Library/LaunchDaemons/org.inferno.probe.native.plist"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/recovery/org.inferno.probe.asr-help.plist",
+        "/System/Library/LaunchDaemons/org.inferno.probe.asr-help.plist"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "chmod",
+        "644",
+        "/System/Library/LaunchDaemons/org.inferno.probe.asr-help.plist"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/recovery/org.inferno.probe.apfs-help.plist",
+        "/System/Library/LaunchDaemons/org.inferno.probe.apfs-help.plist"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "chmod",
+        "644",
+        "/System/Library/LaunchDaemons/org.inferno.probe.apfs-help.plist"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/recovery/org.inferno.probe.prepare-root.plist",
+        "/System/Library/LaunchDaemons/org.inferno.probe.prepare-root.plist"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "chmod",
+        "644",
+        "/System/Library/LaunchDaemons/org.inferno.probe.prepare-root.plist"
+      ],
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "ls",
+        "/System/Library/LaunchDaemons"
+      ],
+      "stdout": "LaunchDaemons: \n100644   0   0          991  7/13/2020 03:07 com.apple.KeyMaker.plist\n100644   0   0          387  7/13/2020 03:07 com.apple.PurpleReverseProxy.ramdisk.plist\n100644   0   0          696  7/13/2020 03:07 com.apple.diskimagesiod.ram.plist\n100644   0   0          467  7/13/2020 03:07 com.apple.syslogd.plist\n100644   0   0          553  9/ 7/2026 20:18 org.inferno.probe.apfs-help.plist\n100644   0   0          553  9/ 7/2026 20:18 org.inferno.probe.asr-help.plist\n100644   0   0          534  9/ 7/2026 20:18 org.inferno.probe.native.plist\n100644   0   0          791  9/ 7/2026 20:18 org.inferno.probe.prepare-root.plist\nTotal filesystem size: 77430784, free: 27254784\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "extract",
+        "/usr/bin/inferno-probe",
+        "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/recovery/readback-probe"
+      ],
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}
