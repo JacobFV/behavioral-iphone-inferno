@@ -90,6 +90,31 @@ and successful return snapshots, with nonmonotonic token observations even for
 the same client value. Global `nochain` changes scheduling; this is not a
 performance measurement. Missing snapshots are inconclusive, not proof of no wait.
 
+### Fixed decision-site profile
+
+The opt-in `--swapwait-cpu-profile pending-equality` selects five reviewed
+instruction sites instead of the baseline pair. It still requires
+`--swapwait-cpu-diagnostic`; CPU logging remains disabled until the explicit
+bounded window above. Before enabling, the runner verifies that all nine display
+trace events are disabled. The same binary, kernel and zero-slide guards apply.
+
+Parse its retained log with:
+
+```sh
+python3 companion/pending-equality-result.py \
+  --input "$attempt/guest-errors.log" \
+  --output "$attempt/pending-equality-parsed.json"
+```
+
+The output separates accepted modes, positive token-equality comparisons,
+matching-request local values and final return statuses. They are independent
+snapshot populations: do not pair them, subtract their counts, or propagate a
+mode to another snapshot. `pipeline_bf4_token` names a field offset, not proof of
+completion or safe reuse. Missing sites do not prove absent branches. Inspect
+unknown/malformed records and semantic violations before interpreting results.
+Owned relocated fixture coverage and cleanup passed; original-kernel reachability
+must be established separately by the actual production capture.
+
 ## Start one disposable guest
 
 Run from the repository root. Choose a **new** output directory for every attempt.
