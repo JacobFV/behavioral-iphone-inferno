@@ -78,9 +78,11 @@ all 228 final-return snapshots were pending, with unchanged reviewed counter0.
 Run82 then captured 183 null-active observations during a reproduced freeze,
 with requested token253 equal to the pipeline field at offset0xbf4. The field’s
 historical label "completed_token" does not establish that a wait should succeed.
-Same-run compositor samples again included wait/retry paths. The next bounded
-diagnostic targets the uncaptured mode and decision predicates; no rendering
-fix is claimed.
+Same-run compositor samples again included wait/retry paths. Run84 then captured
+all five mode/decision/return sites during a healthy, advancing Clock stopwatch,
+after a strict counter journey and three reopen/tap cycles. Equality and pending
+returns also occur during healthy rendering; a failed-state capture with this
+profile is still needed. No rendering fix is claimed.
 
 Runs69–72 completed the strict visual journey, and69 also passed three
 Home/reopen/tap cycles ending at counter4. Runs71/72 executed the guarded
