@@ -260,7 +260,8 @@ class DisplayTraceWindow:
 
 SWAPWAIT_FILTER = '0xfffffff0096df690+4,0xfffffff0096e219c+4'
 SWAPWAIT_PROFILES = {'baseline': SWAPWAIT_FILTER,
-    'pending-branch': '0xfffffff0096f1c74+4,0xfffffff0096f1c7c+4,0xfffffff0096f1d1c+4'}
+    'pending-branch': '0xfffffff0096f1c74+4,0xfffffff0096f1c7c+4,0xfffffff0096f1d1c+4',
+    'pending-equality': '0xfffffff0096f1bc0+4,0xfffffff0096f1bf4+4,0xfffffff0096f1e4c+4,0xfffffff0096f1e50+4,0xfffffff0096e219c+4'}
 SWAPWAIT_KERNEL = 'cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3'
 SWAPWAIT_BINARY = '0889bfe40c6bbb3e6eb9d493ada2bb86637e1d7acb61e36699e16da2568563f2'
 SWAPWAIT_SOURCE = 'f37ad49dbb68dc9c0097960381ebc14270fc3da8'
@@ -307,13 +308,13 @@ class SwapWaitCPUWindow:
         slides = re.findall(rb'^info: Kernel Virtual Slide: (0x[0-9a-fA-F]+)\r?$', raw, re.M)
         if slides != [b'0x0000000000000000']:
             raise ValueError('Exactly one actual zero kernel virtual slide required')
-        if self.profile == 'pending-branch':
+        if self.profile in ('pending-branch', 'pending-equality'):
             states=[]
             for event in DISPLAY_TRACE_EVENTS:
                 response=qmp.execute('trace-event-get-state', {'name':event})
                 self.record(stage='display-off-check', event=event, response=response)
                 if response.get('return') != [{'name':event, 'state':'disabled'}]:
-                    raise ValueError('Pending-branch profile requires all fixed ADP events disabled')
+                    raise ValueError('Pending profile requires all fixed ADP events disabled')
                 states.append(event)
             self.report['verified_disabled_events']=states
         self.file_identity, self.start_offset = self.offset()
