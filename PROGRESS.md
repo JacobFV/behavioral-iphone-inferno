@@ -2,6 +2,22 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 17:50: automatic IPA staging passed actual recovery
+
+Corrected stage-import completed the entire recovery workflow without manual
+intervention. Raw app readback71939bytes/3entries had zero mismatches; owned
+helpers/cache also read back correctly. Content checkpoint57593bytes SHA
+e5e4016a9caaa2563555851c5100d4c3d19f7b9c796805e9ed4af846184b5f21
+preceded exactly one automatic finish. Recovery exited0/errornull in26.728702s;
+only new seven files were frozen. Ordinary retention and final verifier passed.
+External coordinated-stage-demo-2/verified-stage.json SHA
+79bbdd1c93261b347977293ab70e0756f5341dfca8bd9a17f596879b2fe1b83f,
+report121929eeba13449786e352cdc9823ecaac2622bb183911877cfb5ffda103f39a,
+retentionb330f86771bd67ec2074b5b1c7d4579593bd98e8cb49da0bc1169c01a7c48a62.
+No INCOMPLETE/failure remains; eligible depth3. Raw evidence44262d2234.
+Independent diskworker audit precedes installed generic79, authorized to
+bootworker after PASS. Root all UI. This is staging, not yet app execution.
+
 ### 2026-10-07 17:46: imported fixture78 passed; automated staging retry next
 
 Run78 displayed Tap count0 before and Tap count1 after one explicit counter

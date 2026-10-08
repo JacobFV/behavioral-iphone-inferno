@@ -182,3 +182,9 @@ checks are point-in-time and do not provide an exclusive host-wide lock.
 Successful staging is still not app execution: installed boot, launch and visual
 review remain separate explicit steps. No app gestures, Home, OPEN or sampling
 are sent by this command.
+
+The corrected coordinator completed its first actual automatic recovery in
+`evidence/stage-coordinator-first-success/`: raw content check before exactly one
+normal finish, new-file freezing, ordinary retention and final eligibility. The
+earlier source-inventory failure is retained separately. An installed app journey
+from this coordinator output remains a distinct validation step.

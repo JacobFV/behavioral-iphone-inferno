@@ -26,10 +26,10 @@ a built application; an Xcode project also needs a separate build toolchain.
 | --- | --- | --- |
 | Real iOS boot, input and pixels | Original apps and owned UIKit app exercised; strict and warm/fresh-process journeys retained | Intermittent persistent display freeze remains unresolved |
 | IPA import | Original fixture packaged as IPA; bytes preserved; archive, platform and encryption checks exercised | Broader compatible inputs and clear unsupported-input errors |
-| IPA installation | Fixture and separate demo copied/read back with zero mismatches and clean unmount; prepared session2 passed normal recovery verification | Validate the automated staging coordinator in an actual recovery run |
+| IPA installation | Fixture and separate demo copied/read back with zero mismatches and clean unmount; prepared session2 passed normal recovery verification | Automated coordinator passed actual normal recovery; verify an installed app journey from its new output |
 | Separate app and resources | Runs75/77: distinct imported IPA launched, original process observed, reviewed bundled text and counter0→1, normal shutdown | Broader app coverage and repeatability |
 | Xcode projects | Deferred by user; first release accepts already-built IPAs | A future build bridge needs macOS/Xcode and an actual recorded project build/run |
-| Setup and operation | Source-pinned runner, private headless control and disk retention exist | Host preparation combines import, helpers, cache and recovery image with checked readbacks; automatic staging and the remaining operator workflow need end-to-end validation |
+| Setup and operation | Source-pinned runner, private headless control and disk retention exist | Host preparation combines import, helpers, cache and recovery image with checked readbacks; automatic staging passed actual recovery; the remaining operator workflow needs end-to-end validation |
 | Reliability and resource use | Two simultaneous idle guests measured; individual active journeys retained | Repeatable release journeys and sustained active workload measurements |
 
 The successful repeated counter runs do not establish that the earlier freeze
