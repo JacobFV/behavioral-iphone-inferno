@@ -1,0 +1,65 @@
+{
+  "scope": "Actual reproduced-inputs generic demo unchanged counter after one acknowledged tap; no callback telemetry or CPU profile. Independent original sample reconstruction and same-boot mapping, no worker runtime action.",
+  "boot_uuid": "7ED91F18-FA5B-48EF-A705-625589F6D887",
+  "cache_uuid": "11AD39C9-E3C9-3067-A337-7287744FDCB5",
+  "actual_slide": "0x127c4000",
+  "raw_stack_references": {
+    "backboardd": {
+      "path": "backboardd/report.txt",
+      "line_start": 91,
+      "line_end": 125,
+      "byte_start": 3883,
+      "byte_end": 6440,
+      "sha256": "e85ca4d49f587173cae7fa4d0e0926f225cf669d9924dbac5af867df4d1404f0"
+    },
+    "springboard": {
+      "path": "springboard/report.txt",
+      "line_start": 56,
+      "line_end": 73,
+      "byte_start": 1869,
+      "byte_end": 3043,
+      "sha256": "975c5bd88034230b7f8352f6b89ff99cc168c415014b072976633498e98c50ee"
+    }
+  },
+  "mapping": {
+    "backboardd": {
+      "mapped_unique_cache_PCs": 36,
+      "unmapped_PCs": [
+        "0x100a58ab4",
+        "0xfffffff007a075e4",
+        "0xfffffff007a58280",
+        "0xfffffff007a5fd6c"
+      ],
+      "sampled_instruction_patch_overlaps": []
+    },
+    "springboard": {
+      "mapped_unique_cache_PCs": 34,
+      "unmapped_PCs": [
+        "0xfffffff007a075e4",
+        "0xfffffff007a5fd6c"
+      ],
+      "sampled_instruction_patch_overlaps": []
+    }
+  },
+  "backboardd_display_primary": {
+    "samples": 20,
+    "runloop_wait": 9,
+    "can_update_usleep": 7,
+    "can_update_SwapWait_IOConnect": 4
+  },
+  "springboard_main": {
+    "samples": 20,
+    "runloop_wait": 19,
+    "afterCACommit_cleanup_objc_msgSend": 1
+  },
+  "comparison": "Known can_update retry family occupies11/20 sampled display.primary stacks here versus2/21 in prior generic85 and0/20 in healthy49. Short windows and different contexts preclude rate or causal conclusions. Healthy84 also showed pending/equality register populations while rendering advanced.",
+  "limits": [
+    "HID ACK does not prove generic callback delivery; no app counter callback marker available.",
+    "No mode/token/numeric return/pipeline inference or pairing with input.",
+    "Sampled wait family is not proof continuous deadlock or compositor cause.",
+    "Current slide independently validated for both reports, not reused.",
+    "Nearest-symbol extent and unknown/kernel frame limitations retained; original kernel warning preserved.",
+    "No Apple implementation bytes tracked, only diagnostic reports.",
+    "Live serial prefix, not a stopped-state claim."
+  ]
+}
