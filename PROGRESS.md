@@ -2,6 +2,28 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07:93 normal complete; NavigationDemo host passed, preparation next
+
+Rootvisual5183c1f7ac and rawnormal e6ce36a086 complete strict0→1. Guestboot
+7C698077-561D-4148-BEE4-87FC3DB4F87F, runner1267365/QEMU1267987 gone.
+Elapsed862.77208/emulator0/noerror/QMPquit107/all7+ancestors passed.
+Actualsubmissionintervals149.038031/396.037634/114.091938/69.370535/28.769570s.
+Allshort43/18/13 deadline attempts rejected beforeinput; subsequent eachtap was
+separatelyexplicitmanual. Roottool/image review latency misses shortbudgets;
+do NOTrepeat another manual shortcadence attempt. NoCPU/samples/warmcycles.
+This is ordinaryhealthyjourney only, no timingcomparison or reliabilityfix.
+
+NavigationDemo new samplefolder integrated e2de6da368..917f65f511 and independent
+fe3e2e9363. External app-import/navigation-demo-004: IPA7926bytes
+SHAdfde77f844ee3f947023d1366ec2efd2dec73bc3d996317e3b4cf64e79c491c9;
+manifest0521102f19d15fe64bb22c09d086c782770232a946128a1d93f5835e4e5fb868.
+ActualLinuxbuild/import/launcher/110imports+3class exports passed; NOguest yet.
+Root read source; nav/catalog/detail/switch/save/Guide resource journey documented.
+Bootworker authorized HOSTprepare only into newnavigation-prepare-1 using
+unchanged persistentipa-release-host-1/source3f8 and reproducedruntime52a129...;
+noVMstage untilrootGOafterplan. Nativeavailable for actualprepareaudit.
+No currentVM. ~7GiB free, freshflatten34GiB stillblocked/userquestionpending.
+
 ### 2026-10-07: rootvisual timing93 launched;92 retained
 
 92forensicretention00c7630fb1 and nativepixel audit integrated: onlyalertpanel
