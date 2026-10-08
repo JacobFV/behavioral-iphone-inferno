@@ -1,0 +1,20 @@
+{
+  "verdict": "PASS actual owned cache helper build, not guest execution",
+  "build_sha256": "5ffed53093efe6d96a6b9e48ac1d7981e084991e0d28ce0d69b5b834951401cd",
+  "outputs": {
+    "inferno-cache-patch": {
+      "bytes": 68416,
+      "sha256": "13cd534f238d6fc47ec70351479034a6b97262e0984588c0948625478d2edb8c"
+    },
+    "helper-entitlements.plist": {
+      "bytes": 368,
+      "sha256": "395a8bd074b45187f40ff0a0c644546590fc56015ba5bacc17b7e7d9e5be7f67"
+    }
+  },
+  "checks": [
+    "All4actual commands0; raw stdout/stderr hashes match.",
+    "Current source/producer pins and output hashes/sizes match.",
+    "Exact original owned entitlement dictionary readback, no incomplete/failure markers."
+  ],
+  "limits": "No repeated large tool hashes, no guest/API/cache modification claim."
+}
