@@ -2,6 +2,29 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 20:40:reproduced-input installation verified; next installed demo authorized
+
+Run89 ordinary strict/initial/all7/ancestors passed b79db4ed3a. Timing audit
+19402789b2 uses raw serial before-send timestamps (401.924092s unlock gap),
+distinct from submission-start401.970647s;89 beta→setup353.063s vs85 17.640s
+is an explicit confound. No cause/fix conclusion. Candidate later fixture test
+matches the short post-unlock sequence with strict guards; not yet launched.
+
+Unchanged persistent3f8b2d stage-import consumed reproduced-inputs-prepare-1
+session7c9c7fde80f09dcc6f45c026061f35ee02c07f26ef251d15868df244ac9877bf.
+Actual recovery completed raw readbacks, clean unmount and PREP_COMPLETE before
+one finish, normal stop and coordinator eligibility. New verified-stage SHA
+0767c38eabc0bdbb9a17a09c61a82e5c69951b972c7d1c81d119e7567461a57c,
+external app-import/reproduced-inputs-stage-1; no installed app success yet.
+Bootworker independently auditing/storing raw evidence, then authorized ONE
+persistent boot-import into reproduced-inputs-boot-demo-1 (1200s). RootallUI.
+
+Fresh-runtime review07e50525aa identifies bounded original-role initialization
+as next missing phase. Diskworker implementing a separate stage-initial-volumes
+coordinator, no guestC/emulator change, explicit ipa_runtime_ready:false.
+Original System-only wrappers are0664; root authorized NEW verified sparse copy,
+freeze NEW0444 only, preserve historical source/records. No fresh-runtime VM yet.
+
 ### 2026-10-07 20:36:89 delayed-unlock journey passed; reproduced-input staging next
 
 Run89 completed the strict initial counter0→1 journey and normal shutdown
