@@ -105,7 +105,9 @@ def validate_inputs(stage_path, stage_hash, session_path):
 
 
 def normal_result(report_path, context, base_report, verified):
-    report = strict_json(report_path.read_bytes())
+    report_snapshot = snapshot(report_path)
+    qmp_snapshot = snapshot(report_path.parent / 'qmp-transcript.jsonl')
+    report = strict_json(report_snapshot['raw'])
     session = context['session']
     inputs = session['runtime_record']['inputs']
     if (report.get('attempt_completed') is not True or report.get('error') or
@@ -129,8 +131,13 @@ def normal_result(report_path, context, base_report, verified):
     if report.get('probe_journey'):
         raise ValueError('Unexpected fixture journey on generic imported app')
     shutdown = coordinator.PRESERVE.verify_shutdown(report_path.parent, report)
+    if shutdown['sha256'] != qmp_snapshot['sha256']:
+        raise ValueError('Shutdown transcript changed during verification')
+    unchanged([report_snapshot, qmp_snapshot])
     return {'status': 'normal-installed-attempt-no-app-success-assertion',
-            'report': str(report_path), 'report_sha256': coordinator.digest(report_path),
+            'report': str(report_path), 'report_sha256': report_snapshot['sha256'],
+            'inspected_report': public_snapshot(report_snapshot),
+            'inspected_qmp': public_snapshot(qmp_snapshot),
             'shutdown': shutdown, 'app_execution_asserted': False,
             'scope': 'Normal runner completion only; app launch, pixels and preservation remain separate.'}
 
