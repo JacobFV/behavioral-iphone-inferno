@@ -1,0 +1,179 @@
+{
+  "status": "built-owned-grow-helper-only; no guest execution yet",
+  "source_revision": "96140ad9c2e97b7857e1fb22bbfd4c036469e55e",
+  "sources": {
+    "/tmp/inferno-grow-helper-builder/companion/native-probe/grow-container.c": "79cbffe339d68b6fef816399877772311f3e45cdfd76fdf460d9419b3a19b282",
+    "/tmp/inferno-grow-helper-builder/companion/native-probe/grow-libSystem.tbd": "5097ae10a2380d8c2e20c6ddb4b5c70512a664f5c0316cccecf30f1e02136427",
+    "/tmp/inferno-grow-helper-builder/companion/native-probe/grow-entitlements.plist": "0cde67f69fe204502340423f1d95db7f9fc5a002d65fae583bc66b12a66f323b"
+  },
+  "producer_sources": {
+    "/tmp/inferno-grow-helper-builder/companion/native-probe/build-grow-helper.py": "c615512f58fe2f939eb2931722f16019d7b628897dd039c85484fcd387dcb6e0",
+    "/tmp/inferno-grow-helper-builder/companion/app-import.py": "e2ae5081168b99f4989cc759e797ae1381b595e263adea825705993685c1ce56"
+  },
+  "commands": [
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-ffreestanding",
+      "-fno-stack-protector",
+      "-fno-builtin",
+      "-O2",
+      "-c",
+      "/tmp/inferno-grow-helper-builder/companion/native-probe/grow-container.c",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/grow.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "ios",
+      "14.0",
+      "14.0",
+      "-e",
+      "_main",
+      "-needed_library",
+      "/tmp/inferno-grow-helper-builder/companion/native-probe/grow-libSystem.tbd",
+      "-no_uuid",
+      "-adhoc_codesign",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/inferno-grow",
+      "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/grow.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "-Cadhoc",
+      "-S/tmp/inferno-grow-helper-builder/companion/native-probe/grow-entitlements.plist",
+      "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/inferno-grow"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "-e",
+      "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/inferno-grow"
+    ]
+  ],
+  "command_records": [
+    {
+      "argv": [
+        "/usr/bin/clang",
+        "--target=arm64-apple-ios14",
+        "-ffreestanding",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-O2",
+        "-c",
+        "/tmp/inferno-grow-helper-builder/companion/native-probe/grow-container.c",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/grow.o"
+      ],
+      "started": 1791433666.8566687,
+      "finished": 1791433666.9205422,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/command-0.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/command-0.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18",
+        "-arch",
+        "arm64",
+        "-platform_version",
+        "ios",
+        "14.0",
+        "14.0",
+        "-e",
+        "_main",
+        "-needed_library",
+        "/tmp/inferno-grow-helper-builder/companion/native-probe/grow-libSystem.tbd",
+        "-no_uuid",
+        "-adhoc_codesign",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/inferno-grow",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/grow.o"
+      ],
+      "started": 1791433666.9208055,
+      "finished": 1791433666.9364903,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/command-1.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/command-1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+        "-Cadhoc",
+        "-S/tmp/inferno-grow-helper-builder/companion/native-probe/grow-entitlements.plist",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/inferno-grow"
+      ],
+      "started": 1791433666.9366715,
+      "finished": 1791433666.944219,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/command-2.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/command-2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+        "-e",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/inferno-grow"
+      ],
+      "started": 1791433666.9444158,
+      "finished": 1791433666.947799,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/helper-entitlements.plist",
+        "sha256": "395a8bd074b45187f40ff0a0c644546590fc56015ba5bacc17b7e7d9e5be7f67"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-grow-build-1/command-3.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "tools": {
+    "clang": {
+      "invocation": "/usr/bin/clang",
+      "resolved": "/usr/lib/llvm-18/bin/clang",
+      "sha256": "6d99f6207153b8b2063ace5d2a6177debaf6a6b6f31649e03afac07b98ba0b4d"
+    },
+    "linker": {
+      "invocation": "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18",
+      "resolved": "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/lld",
+      "sha256": "f8835e48488195c65fb3dcb946053284ddf6b1369922893785209a9073c4e57b"
+    },
+    "ldid": {
+      "invocation": "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "resolved": "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "sha256": "d536519229ae8bd35a02a702e1ee07565de841869858fd36ea73dc9fd4162e7f"
+    }
+  },
+  "outputs": {
+    "inferno-grow": {
+      "bytes": 68240,
+      "sha256": "5ac28a550741f6be2459b71788e57c4ee77634ef1ac7194e9492445396150ed5"
+    },
+    "helper-entitlements.plist": {
+      "bytes": 368,
+      "sha256": "395a8bd074b45187f40ff0a0c644546590fc56015ba5bacc17b7e7d9e5be7f67"
+    }
+  },
+  "signing": "Only owned growth helper; exact existing entitlement dictionary; no imported or Apple executable signed"
+}

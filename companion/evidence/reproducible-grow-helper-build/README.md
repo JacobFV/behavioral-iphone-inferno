@@ -1,0 +1,1 @@
+Actual new external build from committed96140ad9c2 completed all four commands and exact entitlement readback. The68240-byte owned helper is byte-for-byte identical to retained historical grow-build-1. Raw argv/logs/tool and source hashes retained; binary/object remain outside Git. This is a build result only, not a new growth execution.
