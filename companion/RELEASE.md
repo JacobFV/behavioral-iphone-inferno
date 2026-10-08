@@ -27,7 +27,7 @@ a built application; an Xcode project also needs a separate build toolchain.
 | Real iOS boot, input and pixels | Original apps and owned UIKit app exercised; strict and warm/fresh-process journeys retained | Intermittent persistent display freeze remains unresolved |
 | IPA import | Original fixture packaged as IPA; bytes preserved; archive, platform and encryption checks exercised | Broader compatible inputs and clear unsupported-input errors |
 | IPA installation | Fixture and separate demo copied/read back with zero mismatches and clean unmount; prepared session2 passed normal recovery verification | Automated staging and the pinned boot-import wrapper passed installed demo journeys; broader app coverage remains |
-| Separate apps and resources | Runs75/77/79/81 exercised a distinct imported app and bundled text; NavigationDemo also completed navigation, margin scrolling, switch/save and in-process state reopening | Verify revised button-start scrolling and unclipped text; broader app coverage and repeatability |
+| Separate apps and resources | Runs75/77/79/81 exercised a distinct imported app and bundled text; NavigationDemo also completed navigation, margin scrolling, switch/save and in-process state reopening | Revised button-start scrolling and full text passed; broader app coverage and repeatability remain |
 | Xcode projects | Deferred by user; first release accepts already-built IPAs | A future build bridge needs macOS/Xcode and an actual recorded project build/run |
 | Setup and operation | Source-pinned runner, private headless control and disk retention; tracked helper build and plaintext recovery extraction reproduced prior artifacts byte-for-byte and passed actual host preparation and recovery staging | Fresh initial volumes, Data seeding and byte verification, flattening, capacity growth and SEP/keybag initialization passed; fresh cache inspection and host runtime artifacts also passed; cache patching, guest runtime installation, migration/setup and distribution setup remain |
 | Reliability and resource use | Two simultaneous idle guests measured; individual active journeys retained | Repeatable release journeys and sustained active workload measurements |
@@ -77,8 +77,8 @@ to item12, switch Off→On, Save and reopening the selected option. Original fra
 and controls are retained in [the visual record](evidence/navigation-boot-1-visual/review.json),
 with [normal shutdown and disk retention](evidence/navigation-boot-1-actual/review.json).
 The initial sample did not scroll when a drag started on a button, and clipped the
-last line of its bundled text. Sample-only corrections passed host build/import
-and independent review; their guest behavior remains unverified. Saved state was
+last line of its bundled text. Sample-only corrections then passed [the second guest journey](evidence/navigation-boot-2-visual/review.json),
+including button-start scrolling and full text, followed by normal shutdown. Saved state was
 in-process only. This successful journey does not resolve the display freeze.
 
 Fresh setup execution is currently blocked by storage: the next guarded flatten

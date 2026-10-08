@@ -9,6 +9,23 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-08: corrected NavigationDemo006 journey passed and stopped normally
+
+Rootvisual b204c4be90 retains16 reviewed frames/13input submissions from boot
+C83F1748-5101-49EB-AB83-641E96EAE8D1. Full Guide visible without clipping;
+ordinary item1 tap/Back worked; button-start drag moved1–6→5–10, second reached
+8–12/endmarker; item12 opened, OptionOff→On, Save returned Saveditem12/On/Saves1,
+reopen retainedOn, finalBack unchanged. Generic app/no fixtureevents; only
+in-process state. This is actual revised006 UI validation, not freeze fix.
+Rootfinish-observation acknowledged, normal completion77fd221ee2:
+attempttrue/errornone/emulator0/elapsed394.165509; supervisor1346054,
+runner1346989/QEMU1347448 absent. Ordinaryseven+ancestors passed; no childbase
+adoption or chmod. Manifest6f253081989c10c05f14d9fbd041fcfea1eb109c96f0a0ad069e6c616c015e62.
+No currentVM. Freeze remains unresolved; freshsetup34GiBguard remains blocked
+(host~5.9GiB). No Mac needed for selected prebuiltdeveloperIPA-first release.
+Standalone importerumask077 fix749af2e026 passed actualCLI+unchangedvalidator;
+immutable currentconsumer and Navigation006 producer unchanged.
+
 ### 2026-10-08: corrected NavigationDemo installed boot2 active
 
 Recovery74fe213fb1 and independent3579f4e397 passed; stageSHA

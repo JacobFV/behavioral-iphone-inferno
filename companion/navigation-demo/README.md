@@ -7,8 +7,11 @@ Foundation. Save changes only in-process state; no persistence or permissions
 are added. The sample has no private API, entitlements, networking, nested code,
 probe event transport, or new framework implementation.
 
-**This revised sample has not executed in a guest.** Build/import success cannot
-establish any UI behavior. This is a fixed 414-point portrait research fixture, not an SDK,
+**The revised006 sample completed an actual guest journey.** Original frames and
+root review are retained in [boot2 visual evidence](../evidence/navigation-boot-2-visual/review.json),
+with [normal shutdown and disk retention](../evidence/navigation-boot-2-actual/review.json).
+Button-start scrolling, complete Guide text, navigation, switch/save and reopening
+in-process state were visibly verified. Build/import success alone cannot establish UI behavior. This is a fixed 414-point portrait research fixture, not an SDK,
 Xcode project build bridge, or general IPA compatibility claim.
 
 ## Host build
