@@ -9,6 +9,23 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-07 18:06: fixture80 passed; actual boot-import81 validation running
+
+80 completed strict reviewed0→1 after single189d1aede267409eacaaff07aa0b34ad,
+ACK0/rawtap1, normal exit0/errornull in329.726627s. CPU never enabled; no failed
+pending-branch coverage or rendering fix claimed. Ordinary retention0c9d9cc695
+and root visual companion/evidence/imported-fixture-80-visual preserved.
+boot-import source6acc03c0fe with completion-binding fixaf1bf9129b, actual CLI
+preflightf8e9520fe8, independent source review13a272d7bb integrated. Documentation
+conflict resolved preserving prior executed79 evidence and new wrapper contract.
+Actual wrapper81 supervisor3822053 runs from frozen /tmp/inferno-boot-import
+at2e165c1474 (baseline session2 boot/control pins), NEW external
+/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1.
+Full stage/session revalidation precedes launch; live report/control will be
+boot-import-demo-1/boot, not a .local-build/app-boot-81 directory. Root owns allUI
+and explicit finish-observation. Bootworker supervises; diskworker independently
+audits completed wrapper result. No source edits in frozen isolated worktrees.
+
 ### 2026-10-07 18:01: fixture80 live; boot-import implementation underway
 
 79 normal retention integrated7cced5b79a; full coordinator-installed journey
