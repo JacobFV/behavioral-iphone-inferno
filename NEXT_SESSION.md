@@ -9,6 +9,21 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-08: corrected NavigationDemo006 recovery staging authorized
+
+Normal installed1 retention1cfdb83201 complete; rootvisuala3376f9035. No finish
+was sent; configured duration ended normally. Revised006 independent25bf6b96ed,
+hostprepare82003c719a and independent2808b12c2c passed. Session
+navigation-prepare-2/session.json SHAa4b188240030f60954ef0682f3257e13028df4c8f5f6ee4069f9b3c6043ca46b;
+all eight HFSreadbacks match. RootGO d59d2585f8 exact stage2 plan, bootworker
+owns one coordinator after immediate noVM/free4GiB/sourcepin/newoutput checks.
+Original masterbase retained; installed1 never adopted. Root owns next installed
+UI after actual recovery+independent review. Source-frozen006 remains in
+/tmp/inferno-navigation-scroll-fix; do not modify its pinned files.
+Diskworker independently fixing standalone importer directory modes under
+umask077 in a separate tree; no persistentconsumer or frozenproducer mutation.
+Fresh setup34GiB requirement still blocked (host~6.3GiB); storage question pending.
+
 ### 2026-10-08: NavigationDemo first installed journey complete; revised sample next
 
 Root visual evidence a3376f9035 retains original frames and17 input submissions.
