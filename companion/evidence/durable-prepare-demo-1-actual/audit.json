@@ -1,0 +1,167 @@
+{
+  "session_path": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/session.json",
+  "session_sha256": "faaa48f9b2f7a9f8f1b6f705e09c72a59c05c1025c7af7d355ed1a4af35ed044",
+  "status": "host-prepared-not-staged",
+  "source": "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion",
+  "source_revision": "3f8b2d5623a2ac862eba2899771049c44b197316",
+  "source_pins_verified": 72,
+  "commands": [
+    {
+      "label": "import",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/app-import.py",
+        "--ipa",
+        "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/ImportedDemo.ipa",
+        "--output",
+        "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/import"
+      ],
+      "started": 1791424776.246306,
+      "finished": 1791424776.274064,
+      "exit_code": 0,
+      "log": {
+        "path": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/import.log",
+        "sha256": "ff201a1e75453bf766b25fa64e43bf72d3d78993fb81e1416e7d0ada5f8ea305"
+      }
+    },
+    {
+      "label": "launcher",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/app-probe/build-import-launcher.py",
+        "--manifest",
+        "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/import/manifest.json",
+        "--manifest-sha256",
+        "68cdc3ece31d151ad693766d2a288d8b4ea5ec12b24f1be7be3ea2cd5abbc66a",
+        "--clang",
+        "/usr/bin/clang",
+        "--linker",
+        "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+        "--output",
+        "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launcher"
+      ],
+      "started": 1791424776.2766848,
+      "finished": 1791424776.4897218,
+      "exit_code": 0,
+      "log": {
+        "path": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launcher.log",
+        "sha256": "a087f4358c726251d633563da41205c02ed932f6a80a3347f59af734a78ddc54"
+      }
+    },
+    {
+      "label": "cache",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/native-probe/merge-launchd-cache.py",
+        "--cache",
+        "/home/brandonin/.local/share/inferno/native-probe/launchd-system-app-unlock-supported.plist",
+        "--replace-owned-job",
+        "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launcher/org.inferno.app-probe.plist",
+        "--output",
+        "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launchd-cache.plist"
+      ],
+      "started": 1791424776.4900455,
+      "finished": 1791424776.5743632,
+      "exit_code": 0,
+      "log": {
+        "path": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/cache.log",
+        "sha256": "2a829df20fc62c550ec2e7c0d2105c4fef086602a7b24f3a41f3d735f1b1b407"
+      }
+    },
+    {
+      "label": "prepare",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/native-probe/prepare.py",
+        "--profile",
+        "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/profile.json",
+        "--raw-ramdisk",
+        "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/ramdisk-payload.raw",
+        "--probe",
+        "/home/brandonin/.local/share/inferno/native-probe/helper-build-42/inferno-probe",
+        "--hfsplus",
+        "/home/brandonin/.local/share/inferno/native-probe/tools/hfsplus",
+        "--disk-helper",
+        "/home/brandonin/.local/share/inferno/native-probe/helper-build-60/inferno-prepare-root",
+        "--disk-helper-existing",
+        "--imported-app-manifest",
+        "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/import/manifest.json",
+        "--imported-app-manifest-sha256",
+        "68cdc3ece31d151ad693766d2a288d8b4ea5ec12b24f1be7be3ea2cd5abbc66a",
+        "--system-launcher",
+        "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launcher/inferno-launcher",
+        "--exec-wrapper",
+        "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launcher/inferno-exec-launcher",
+        "--launchd-cache",
+        "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launchd-cache.plist",
+        "--launchd-cache-sha256",
+        "06291b66b9ed5e7886a2893f5c6094c0ae7e3de2fe7ddeef951e67c278e1b843",
+        "--output",
+        "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/recovery"
+      ],
+      "started": 1791424776.6077754,
+      "finished": 1791424777.018862,
+      "exit_code": 0,
+      "log": {
+        "path": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/prepare.log",
+        "sha256": "48895eeb6f4e4610858fda97dec8702f5b36fafc803ac1290450f47db658863a"
+      }
+    }
+  ],
+  "readback_comparisons": [
+    {
+      "source": "/home/brandonin/.local/share/inferno/native-probe/helper-build-42/inferno-probe",
+      "readback": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/recovery/readback-probe",
+      "bytes": 33392,
+      "sha256": "7def2d54fb9a0737666cbe175b38ad442eea5340a07fac202ffd1fda2df849c9"
+    },
+    {
+      "source": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launchd-cache.plist",
+      "readback": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/recovery/readback-launchd-cache",
+      "bytes": 596664,
+      "sha256": "06291b66b9ed5e7886a2893f5c6094c0ae7e3de2fe7ddeef951e67c278e1b843"
+    },
+    {
+      "source": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launcher/inferno-launcher",
+      "readback": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/recovery/readback-system-launcher",
+      "bytes": 69136,
+      "sha256": "770ff562cc7eb0ad99c32668cf560f18f26a447c12dd353d8656a40a95e9fb28"
+    },
+    {
+      "source": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launcher/inferno-exec-launcher",
+      "readback": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/recovery/readback-exec-wrapper",
+      "bytes": 67392,
+      "sha256": "56199ba0d01451b9f3f40aeb7d0d67231155aaf7c842e8aa5b51dfb6dc2372e3"
+    },
+    {
+      "source": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/recovery/imported-app.plan",
+      "readback": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/recovery/readback-imported-app.plan",
+      "bytes": 1992,
+      "sha256": "af1d5723b8619b2ee4552e3d585175736e613f786ba7fe8cb5abf5d4405c13c3"
+    },
+    {
+      "source": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/import/bundle/ImportedDemo.app/ImportedDemo",
+      "readback": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/recovery/readback-imported-0000",
+      "bytes": 70880,
+      "sha256": "765dfcc639fdf7a3b4936196e528040fe1c566b17eb99a28d08757460d88676d"
+    },
+    {
+      "source": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/import/bundle/ImportedDemo.app/Info.plist",
+      "readback": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/recovery/readback-imported-0001",
+      "bytes": 1012,
+      "sha256": "896344cee09178da2302fd84305002996264384df6f8e3278a46140ed0076dbd"
+    },
+    {
+      "source": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/import/bundle/ImportedDemo.app/Message.txt",
+      "readback": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/recovery/readback-imported-0002",
+      "bytes": 47,
+      "sha256": "3f4a0b1e4b9bf2bc63476535707976a2fafaaa3924d222bd7a686678c94f02d5"
+    }
+  ],
+  "ramdisk_sha256": "eb17f5049c622d658aa54714e135308628d11c40aab799334f8f881b2b51c531",
+  "limits": [
+    "Host preparation only; no recovery or installed VM executed.",
+    "Runtime validator ran normally inside preparation; this audit does not repeat full backing-disk hashes.",
+    "Existing sessions/source trees untouched; new session pins persistent source."
+  ]
+}

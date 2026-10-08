@@ -1,0 +1,103 @@
+[
+  {
+    "label": "import",
+    "argv": [
+      "/usr/bin/python3",
+      "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/app-import.py",
+      "--ipa",
+      "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/ImportedDemo.ipa",
+      "--output",
+      "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/import"
+    ],
+    "started": 1791424776.246306,
+    "finished": 1791424776.274064,
+    "exit_code": 0,
+    "log": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/import.log",
+      "sha256": "ff201a1e75453bf766b25fa64e43bf72d3d78993fb81e1416e7d0ada5f8ea305"
+    }
+  },
+  {
+    "label": "launcher",
+    "argv": [
+      "/usr/bin/python3",
+      "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/app-probe/build-import-launcher.py",
+      "--manifest",
+      "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/import/manifest.json",
+      "--manifest-sha256",
+      "68cdc3ece31d151ad693766d2a288d8b4ea5ec12b24f1be7be3ea2cd5abbc66a",
+      "--clang",
+      "/usr/bin/clang",
+      "--linker",
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+      "--output",
+      "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launcher"
+    ],
+    "started": 1791424776.2766848,
+    "finished": 1791424776.4897218,
+    "exit_code": 0,
+    "log": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launcher.log",
+      "sha256": "a087f4358c726251d633563da41205c02ed932f6a80a3347f59af734a78ddc54"
+    }
+  },
+  {
+    "label": "cache",
+    "argv": [
+      "/usr/bin/python3",
+      "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/native-probe/merge-launchd-cache.py",
+      "--cache",
+      "/home/brandonin/.local/share/inferno/native-probe/launchd-system-app-unlock-supported.plist",
+      "--replace-owned-job",
+      "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launcher/org.inferno.app-probe.plist",
+      "--output",
+      "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launchd-cache.plist"
+    ],
+    "started": 1791424776.4900455,
+    "finished": 1791424776.5743632,
+    "exit_code": 0,
+    "log": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/cache.log",
+      "sha256": "2a829df20fc62c550ec2e7c0d2105c4fef086602a7b24f3a41f3d735f1b1b407"
+    }
+  },
+  {
+    "label": "prepare",
+    "argv": [
+      "/usr/bin/python3",
+      "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/native-probe/prepare.py",
+      "--profile",
+      "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/profile.json",
+      "--raw-ramdisk",
+      "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/ramdisk-payload.raw",
+      "--probe",
+      "/home/brandonin/.local/share/inferno/native-probe/helper-build-42/inferno-probe",
+      "--hfsplus",
+      "/home/brandonin/.local/share/inferno/native-probe/tools/hfsplus",
+      "--disk-helper",
+      "/home/brandonin/.local/share/inferno/native-probe/helper-build-60/inferno-prepare-root",
+      "--disk-helper-existing",
+      "--imported-app-manifest",
+      "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/import/manifest.json",
+      "--imported-app-manifest-sha256",
+      "68cdc3ece31d151ad693766d2a288d8b4ea5ec12b24f1be7be3ea2cd5abbc66a",
+      "--system-launcher",
+      "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launcher/inferno-launcher",
+      "--exec-wrapper",
+      "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launcher/inferno-exec-launcher",
+      "--launchd-cache",
+      "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/launchd-cache.plist",
+      "--launchd-cache-sha256",
+      "06291b66b9ed5e7886a2893f5c6094c0ae7e3de2fe7ddeef951e67c278e1b843",
+      "--output",
+      "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/recovery"
+    ],
+    "started": 1791424776.6077754,
+    "finished": 1791424777.018862,
+    "exit_code": 0,
+    "log": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/durable-prepare-demo-1/prepare.log",
+      "sha256": "48895eeb6f4e4610858fda97dec8702f5b36fafc803ac1290450f47db658863a"
+    }
+  }
+]
