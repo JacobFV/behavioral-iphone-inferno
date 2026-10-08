@@ -44,11 +44,17 @@ def module(name,path):
 IMPORTER=module('owned_ipa_import',SOURCE/'app-import.py')
 
 def validate_runtime(record):
-    expected={'schema','inputs','overlay_tools_root','cache_binding'}
+    expected={'schema','inputs','overlay_tools_root','cache_binding','tool_invocations'}
     names={'profile','raw_ramdisk','probe','disk_helper','helper_build','hfsplus','clang','linker','cache','base_report','emulator','emulator_build'}
     if set(record)!=expected or record['schema']!='inferno.local-ipa-runtime.v1' or set(record['inputs'])!=names:
         raise ValueError('Unsupported runtime schema/fields')
     paths={k:pin(v) for k,v in record['inputs'].items()}
+    if set(record['tool_invocations'])!={'clang','linker'}:
+        raise ValueError('Explicit compiler/linker invocation names required')
+    for name,invocation in record['tool_invocations'].items():
+        tool_path=Path(invocation)
+        if not tool_path.is_absolute() or tool_path.resolve(strict=True)!=paths[name]:
+            raise ValueError('Tool invocation does not resolve to pinned binary: '+name)
     profile,inputs=load_profile(paths['profile'])
     build=read_json(paths['emulator_build'])
     if build.get('binary',{}).get('sha256')!=record['inputs']['emulator']['sha256']:
@@ -114,7 +120,7 @@ def main():
             if result.returncode:raise ValueError(label+' failed; retain incomplete output')
         run('import',[SOURCE/'app-import.py','--ipa',a.ipa.resolve(strict=True),'--output',output/'import'])
         manifest_path=output/'import/manifest.json';m=IMPORTER.validate_manifest(manifest_path);manifest_pin=artifact(manifest_path)
-        run('launcher',[SOURCE/'app-probe/build-import-launcher.py','--manifest',manifest_path,'--manifest-sha256',manifest_pin['sha256'],'--clang',paths['clang'],'--linker',paths['linker'],'--output',output/'launcher'])
+        run('launcher',[SOURCE/'app-probe/build-import-launcher.py','--manifest',manifest_path,'--manifest-sha256',manifest_pin['sha256'],'--clang',runtime['tool_invocations']['clang'],'--linker',runtime['tool_invocations']['linker'],'--output',output/'launcher'])
         cache=output/'launchd-cache.plist';job=output/'launcher/org.inferno.app-probe.plist'
         run('cache',[SOURCE/'native-probe/merge-launchd-cache.py','--cache',paths['cache'],'--replace-owned-job',job,'--output',cache])
         original=plistlib.loads(paths['cache'].read_bytes());merged=plistlib.loads(cache.read_bytes());replacement=plistlib.loads(job.read_bytes())
@@ -135,6 +141,8 @@ def main():
                 readbacks.append(artifact(dest))
         IMPORTER.validate_manifest(manifest_path)
         for value in runtime['inputs'].values():pin(value)
+        for name,invocation in runtime['tool_invocations'].items():
+            if Path(invocation).resolve(strict=True)!=paths[name]:raise ValueError('Tool invocation target changed')
         if sha(runtime_path)!=a.runtime_sha256:raise ValueError('Runtime changed during preparation')
         # Read-only complete base verification again; no chmod, KEEP writes or overlays.
         after=load_stopped_overlay(paths['base_report'],verified['overlay_tool'])

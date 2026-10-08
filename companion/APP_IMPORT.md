@@ -92,7 +92,9 @@ Root command integration is separate.
 Runtime schema `inferno.local-ipa-runtime.v1` requires exact `inputs` pins
 (`path`, `sha256`) for profile, raw_ramdisk, probe, disk_helper, helper_build,
 hfsplus, clang, linker, cache, base_report, emulator and emulator_build; also
-`overlay_tools_root` and `cache_binding`. All paths must be absolute regular
+`overlay_tools_root`, `cache_binding`, and `tool_invocations` (exact clang/linker
+invocation paths whose resolved binaries must match the corresponding pins).
+This preserves the `ld64.lld` driver name while hashing its real binary. All paths must be absolute regular
 unaliases (resolve tool symlinks when making the descriptor). The helper build
 must bind the current preparation sources and binary. Existing profile and
 recorded-overlay validators check original components and all base dependencies.
