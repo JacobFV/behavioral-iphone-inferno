@@ -1,0 +1,114 @@
+{
+  "schema": "inferno.recorded-overlay-chain.v1",
+  "path": "/home/brandonin/.local/share/inferno/app-import/seed-data-stage-1/recovery-run/disks/root.qcow2",
+  "format": "qcow2",
+  "backing_report": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/report.json",
+  "backing_report_sha256": "215c46030dad52ebf48569f2fb53c0e4cf34a95213d8d55b16110e6eec484abc",
+  "stopped_manifest": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/stopped-disk-hashes.json",
+  "stopped_manifest_sha256": "d1712085f6e4a4e3917b87edc526642e84398263dead21a100050f037814490f",
+  "dependencies": [
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/root.qcow2",
+      "format": "qcow2",
+      "sha256": "89d99759b9f1663d5cd6481bcd55429690cbe7710fa7d77806f64eb603297afd",
+      "bytes": 4063232,
+      "device": 66306,
+      "inode": 55445353,
+      "mtime_ns": 1791432299971109403,
+      "ctime_ns": 1791432306026127988,
+      "mode": "0o444"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/initial-volumes-source-1/root.raw",
+      "format": "raw",
+      "sha256": "93f97dae602a8fc844f0f88819d3fe358b1cf14ee5e193b0beb7009376032594",
+      "bytes": 8589934592,
+      "device": 66306,
+      "inode": 48799599,
+      "mtime_ns": 1791430887226554083,
+      "ctime_ns": 1791430896801588458,
+      "mode": "0o444"
+    }
+  ],
+  "retention_markers": [
+    "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/KEEP-OVERLAY-BACKING.json",
+    "/home/brandonin/.local/share/inferno/images/ios14b5/initial-volumes-source-1/KEEP-OVERLAY-BACKING.json"
+  ],
+  "tool": {
+    "root": "/home/brandonin/.local/share/inferno/disk-overlay-tools",
+    "binary": "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-img",
+    "sha256": "f26da24f8a7fd880ab13f6fcabf42d099fb68ea86df5de0c55e6faadfe2d9a6e",
+    "provenance": "/home/brandonin/.local/share/inferno/disk-overlay-tools/tool-provenance.json",
+    "provenance_sha256": "bc5893936a16a2b2dd5cf7e6408da5742a3e1909d7c8d3606ff100ec7236c9f2"
+  },
+  "metadata_revalidation": [],
+  "image_info": {
+    "children": [
+      {
+        "name": "file",
+        "info": {
+          "children": [],
+          "virtual-size": 197120,
+          "filename": "/home/brandonin/.local/share/inferno/app-import/seed-data-stage-1/recovery-run/disks/root.qcow2",
+          "format": "file",
+          "actual-size": 200704,
+          "format-specific": {
+            "type": "file",
+            "data": {}
+          },
+          "dirty-flag": false
+        }
+      }
+    ],
+    "backing-filename-format": "qcow2",
+    "virtual-size": 8589934592,
+    "filename": "/home/brandonin/.local/share/inferno/app-import/seed-data-stage-1/recovery-run/disks/root.qcow2",
+    "cluster-size": 65536,
+    "format": "qcow2",
+    "actual-size": 200704,
+    "format-specific": {
+      "type": "qcow2",
+      "data": {
+        "compat": "1.1",
+        "compression-type": "zlib",
+        "lazy-refcounts": false,
+        "refcount-bits": 16,
+        "corrupt": false,
+        "extended-l2": false
+      }
+    },
+    "full-backing-filename": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/root.qcow2",
+    "backing-filename": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/root.qcow2",
+    "dirty-flag": false
+  },
+  "source_sha256": "16180ed475f586b60031c129bf2a11169597dca10fc77a804d9fcdf0f20e3978",
+  "dependency_warning": "Retain every immutable layer and recorded report at its exact absolute path.",
+  "backing_after_stop": {
+    "unchanged": true,
+    "layers": [
+      {
+        "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/root.qcow2",
+        "format": "qcow2",
+        "sha256": "89d99759b9f1663d5cd6481bcd55429690cbe7710fa7d77806f64eb603297afd",
+        "bytes": 4063232,
+        "device": 66306,
+        "inode": 55445353,
+        "mtime_ns": 1791432299971109403,
+        "ctime_ns": 1791432306026127988,
+        "mode": "0o444"
+      },
+      {
+        "path": "/home/brandonin/.local/share/inferno/images/ios14b5/initial-volumes-source-1/root.raw",
+        "format": "raw",
+        "sha256": "93f97dae602a8fc844f0f88819d3fe358b1cf14ee5e193b0beb7009376032594",
+        "bytes": 8589934592,
+        "device": 66306,
+        "inode": 48799599,
+        "mtime_ns": 1791430887226554083,
+        "ctime_ns": 1791430896801588458,
+        "mode": "0o444"
+      }
+    ],
+    "metadata_revalidation": []
+  }
+}
