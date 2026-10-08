@@ -1,0 +1,65 @@
+{
+  "scope": "Actual host compilation/link/package/import/launcher build and original-cache export audit; no guest actions or behavior claim",
+  "source_revision": "df73d9f9786da318b8935bcaa3157b46717e7e14",
+  "actual_build_command": [
+    "python3",
+    "/tmp/inferno-initial-volumes-doc-link/companion/navigation-demo/build.py",
+    "--clang",
+    "/usr/bin/clang",
+    "--linker",
+    "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18",
+    "--output",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-004"
+  ],
+  "exit_code": 0,
+  "manifest": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/navigation-demo-004/imported/manifest.json",
+    "sha256": "0521102f19d15fe64bb22c09d086c782770232a946128a1d93f5835e4e5fb868",
+    "tree_sha256": "6937edda81c0bbb157f6eed2f60e8f0ad52a035a572f34e082dd74daaeaf3efc"
+  },
+  "ipa": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/navigation-demo-004/NavigationDemo.ipa",
+    "sha256": "dfde77f844ee3f947023d1366ec2efd2dec73bc3d996317e3b4cf64e79c491c9",
+    "bytes": 7926
+  },
+  "build_evidence_sha256": "073e44a57309918ffa640bee848bd12addc63d56def62e9f34a424f7fb1c5a35",
+  "retained_raw_inputs": {
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-004/build-evidence.json": "073e44a57309918ffa640bee848bd12addc63d56def62e9f34a424f7fb1c5a35",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-004/build.log": "5298702388bec6b4e9a381edc66e4fa9ec1dc5b27e843f7e242f377d019424d8",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-004-command.log": "073e44a57309918ffa640bee848bd12addc63d56def62e9f34a424f7fb1c5a35",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-004/imported/manifest.json": "0521102f19d15fe64bb22c09d086c782770232a946128a1d93f5835e4e5fb868",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-004/launcher/build-evidence.json": "f21e2ed8c5c2127e6c61725119435d0a4a5a23c98b7e6da96121057ff3d7b3af",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-004/prior-export-audit-binding.json": "778d85131b8127046c31019a2d6c585e57d097e1f9d89b86f3676b3c8c2a70c5",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-003/import-audit.json": "1b465f08cac67243be0d2b5e78b393f6ce4331edad6fda66d03fba0b329dfde8",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-003/dynamic-classes-audit.json": "3967df3df51288c66528984585a32d6581a1441570f479e0710e9888bd1cd2b5",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-003-audit.log": "fb1ce186c323030a48ff71899472421d2969caece7b73da7159656dd8818ae60",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-001-command.log": "51e0e9ccdd57443ab91f812ce1c24428953632ec3b8917b7ce409b0c0b1a05bb",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-001/build.log": "68d58a1aa1c522f0435dd84e9fadeca0f5acf325c368ccbceeb6fbfab8169ac3",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-002-command.log": "87c1b5c11998d7532ca0be877359fdb19cc381cf6959ac2b64c2d9b6eadc0953"
+  },
+  "failed_attempts": [
+    {
+      "directory": "/home/brandonin/.local/share/inferno/app-import/navigation-demo-001",
+      "incomplete_retained": true,
+      "reason": "Resolved linker basename selected generic lld driver"
+    },
+    {
+      "directory": "/home/brandonin/.local/share/inferno/app-import/navigation-demo-002",
+      "incomplete_retained": true,
+      "reason": "Restrictive umask removed importer-required directory0755 bits"
+    }
+  ],
+  "successful_prior_build": "/home/brandonin/.local/share/inferno/app-import/navigation-demo-003",
+  "final_executables_identical_to_audited_prior": true,
+  "imports_checked": 110,
+  "dynamic_classes": [
+    "UINavigationController",
+    "UIScrollView",
+    "UISwitch"
+  ],
+  "limitations": [
+    "No selector execution/ABI behavioral proof from exported class symbols.",
+    "No guest staging, launch, scroll, navigation, save, switch or bundled text display yet.",
+    "Fixed portrait owned fixture only; no arbitraryIPA/Xcode compatibility claim."
+  ]
+}
