@@ -2,6 +2,20 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-08: user-requested temporary cache cleanup clears storage blocker
+
+Removed498292 stale regular files from /tmp/tsx-1000 and
+/tmp/node-compile-cache, all older24h, unchanged at deletion and not observed
+open/mapped. Freed10616885248 allocatedbytes (~9.9GiB), noerrors. Preserved
+Inferno worktrees, pinnedproducer paths, firmware/disks and all ancestry.
+Actual small summary: companion/evidence/temporary-cache-cleanup/result.json;
+full external deletion manifest in ~/.local/share/inferno/cleanup/.
+Host now~236GiBfree; other concurrentcleanup also increased space beyond ours.
+The34GiB freshflatten storage gate is now unblocked; recheck immediatelybefore
+execution. Prior healthy94/Navigation006 outcomes and unresolvedfreeze unchanged.
+No VM launched by cleanup. Next resume freshkeybag flatten and subsequent
+reviewed fresh-runtime stages from retained inputs; no need for Mac.
+
 ### 2026-10-08: fixture94 healthy and stopped; fresh setup storage input remains missing
 
 Rootvisual fbcaf4ce5d: actual strictQMP0→1 and genuine tap1 in boot

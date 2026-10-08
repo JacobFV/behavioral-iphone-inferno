@@ -81,8 +81,9 @@ last line of its bundled text. Sample-only corrections then passed [the second g
 including button-start scrolling and full text, followed by normal shutdown. Saved state was
 in-process only. This successful journey does not resolve the display freeze.
 
-Fresh setup execution is currently blocked by storage: the next guarded flatten
-requires34GiB free, while this host has approximately5.6GiB. Existing images and
+The next fresh setup flatten requires34GiB free. User-requested temporary-cache
+cleanup removed9.9GiB; with other concurrent cleanup, the host now has approximately236GiB free.
+The storage prerequisite is cleared; fresh setup execution still remains. Existing images and
 backing chains remain preserved. Finishing that setup path, resolving the freeze,
 and establishing the supported IPA set are the main gates before release packaging.
 
