@@ -1,0 +1,109 @@
+{
+  "complete": false,
+  "actions": [
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/qmp_control.py",
+        "--report",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-92",
+        "probe-status",
+        "--arguments",
+        "{}"
+      ],
+      "started_time": 1791440378.8458505
+    },
+    {
+      "argv": [
+        "/usr/bin/python3",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/vnc-control.py",
+        "--socket",
+        "/tmp/inferno-boot-ifzjkcd2/vnc.sock",
+        "--output",
+        "/home/brandonin/.local/share/inferno/app-import/fixed-timing-92-1/before-beta",
+        "--settle-seconds",
+        "0",
+        "--observe-seconds",
+        "0"
+      ],
+      "started_time": 1791440383.8053188
+    }
+  ],
+  "observations": [
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/fixed-timing-92-1/before-beta/settled.png",
+      "sha256": "77a30c3182072f0fba2b7c475450b271ee4823b899ce250ac8daefa2498983e2",
+      "time": 1791440384.1208098,
+      "final_capture": {
+        "path": "/home/brandonin/.local/share/inferno/app-import/fixed-timing-92-1/before-beta/settled.png",
+        "sha256": "77a30c3182072f0fba2b7c475450b271ee4823b899ce250ac8daefa2498983e2",
+        "time": 1791440384.0954957,
+        "requested_time": 1791440383.9752727,
+        "received_time": 1791440384.0680308,
+        "request_to_receive_seconds": 0.09275911201257259
+      },
+      "observer_report_sha256": "e8fbd2f5296b3e3e1de4418acf16c68404c759d951e544447efd6c670f7f8e8e",
+      "scope": "File capture times; no automatic visual classification"
+    }
+  ],
+  "scope": "Three explicit fixed actions at most; no retry, strict-after, finish, Home, OPEN, CPU or sample.",
+  "host_identity": {
+    "pid": 1258668,
+    "start_ticks": 85898302,
+    "binary_metadata": {
+      "st_dev": 66306,
+      "st_ino": 41829511,
+      "st_size": 114851864,
+      "st_mtime_ns": 1791332518044270624,
+      "st_ctime_ns": 1791332518044584337
+    }
+  },
+  "diagnostic_off_basis": {
+    "kind": "Pinned binary/source default-disabled plus exact startup command and no subsequent ADP enable/HMP; not nine runtime query replies",
+    "command_template_sha256": "9b4348fc07bd35891c07ee2900eea2847cdb13f92942033131acfbf0c4cef38c"
+  },
+  "source_sha256": {
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/guarded-setup-counter.py": "85263dc31b20a15c5a38fb01c51657b9b2244d6c9bbc77845c1771568a71e436",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/qmp_control.py": "906716956328980c1a054f1836298471b88acd1db8788c8d18b78b8cbc7c01a2",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/owned-control.py": "3ca9c6f31839fc8dbee4fbfbaa9c3565d3086b22c6fcaf2238ead072a31d085d",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/vnc-control.py": "99016edaf5f58ef7a6e2433a03d5a465d46c440053bdcfc2ec06a93124d5d29f",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/boot.py": "beb55cb892ad246e215a5aa8d1178fc7dcbac6c63adfca6591c9da58606cf097",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/probe_journey.py": "1c4cbb542a79b85560433d62726123b99555ad0a47522d5ecd659faf3a04f308",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/fixed-fixture-alert-timing.py": "77e2514a06635e6e8bd3546d1a889b4e373e182fef06c2de410c83096e599252",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/app-import.py": "e2ae5081168b99f4989cc759e797ae1381b595e263adea825705993685c1ce56"
+  },
+  "root_review_commit": "5ad7a300e6",
+  "crop": [
+    0,
+    250,
+    828,
+    1450
+  ],
+  "initial_unlock": {
+    "request_id": "e474894a466d4694b30d49a0f7cb2e74",
+    "started_time": 1791440344.7941785,
+    "finished_time": 1791440344.937867,
+    "reply": {
+      "request_id": "e474894a466d4694b30d49a0f7cb2e74",
+      "guest_acknowledgment": "not checked",
+      "ui_acceptance": "not observed by transport",
+      "write_begin_monotonic": 859528.74326113,
+      "send_deadline_monotonic": null,
+      "transmission": "written-to-serial-socket",
+      "bytes_sent": 82,
+      "write_end_monotonic": 859528.74327297,
+      "write_end_after_deadline": false
+    },
+    "submission_sha256": "a51f7317a2f5902215b37d4ce8099e2401b30f4821079ee8d52535d4e589f82a",
+    "submission": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-92/unlock-002/submission.json"
+  },
+  "identity": {
+    "boot": "1B232CC6-70B7-4E6A-88E2-FE87D795B270",
+    "pid": 265,
+    "sequence": 4,
+    "serial_bytes": 357937,
+    "serial_sha256": "172b2df819552f8920db222887cfd575d0cd750e0b63e8c60568e24ba9cc12dd",
+    "scope": "Original relay identity evidence, not a fresh host query of guest process liveness"
+  },
+  "error": "Exact state mismatch; no input"
+}
