@@ -34,7 +34,9 @@ def main():
         found = shutil.which(getattr(args, name))
         if not found:
             parser.error('Missing tool: ' + name)
-        tools[name] = str(Path(found).resolve(strict=True))
+        # Preserve ld64.lld's invocation basename: the same binary selects its
+        # object-format driver from argv[0]. Hashing still follows the symlink.
+        tools[name] = os.path.abspath(found)
         if sha(tools[name]) != TOOL_HASHES[name]:
             parser.error('Tool differs from reviewed LLVM18 build: ' + name)
     paths = [source / name for name in ('build.py', 'Main.m', 'NavigationNarrow.h', 'Info.plist', 'Guide.txt')]
@@ -95,7 +97,7 @@ def main():
             'status': 'built-and-import-validated-not-executed',
             'guest_actions': False, 'commands': commands, 'sources': pins,
             'git_revision': subprocess.check_output(['git', '-C', str(source), 'rev-parse', 'HEAD'], text=True).strip(),
-            'tools': {name: {'path': path, 'sha256': sha(path), 'version': subprocess.check_output([path, '--version'], text=True).strip()} for name, path in tools.items()},
+            'tools': {name: {'path': path, 'resolved_path': str(Path(path).resolve(strict=True)), 'sha256': sha(path), 'version': subprocess.check_output([path, '--version'], text=True).strip()} for name, path in tools.items()},
             'ipa': {'path': str(ipa), 'sha256': sha(ipa), 'bytes': ipa.stat().st_size},
             'manifest': {'path': str(manifest_path), 'sha256': sha(manifest_path), 'tree_sha256': manifest['tree_sha256']},
             'bundle_files': {f.name: {'sha256': sha(f), 'bytes': f.stat().st_size} for f in sorted(bundle.iterdir())},
