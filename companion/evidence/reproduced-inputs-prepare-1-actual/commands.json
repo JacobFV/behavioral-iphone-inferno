@@ -1,0 +1,103 @@
+[
+  {
+    "label": "import",
+    "argv": [
+      "/usr/bin/python3",
+      "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/app-import.py",
+      "--ipa",
+      "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/ImportedDemo.ipa",
+      "--output",
+      "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/import"
+    ],
+    "started": 1791429506.7532861,
+    "finished": 1791429506.7950182,
+    "exit_code": 0,
+    "log": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/import.log",
+      "sha256": "ebcf163a359689d6a97f5456f9eade36e72554c9ebb7e1387ec93a9de01df1b4"
+    }
+  },
+  {
+    "label": "launcher",
+    "argv": [
+      "/usr/bin/python3",
+      "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/app-probe/build-import-launcher.py",
+      "--manifest",
+      "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/import/manifest.json",
+      "--manifest-sha256",
+      "68cdc3ece31d151ad693766d2a288d8b4ea5ec12b24f1be7be3ea2cd5abbc66a",
+      "--clang",
+      "/usr/bin/clang",
+      "--linker",
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+      "--output",
+      "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/launcher"
+    ],
+    "started": 1791429506.7984242,
+    "finished": 1791429506.9963732,
+    "exit_code": 0,
+    "log": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/launcher.log",
+      "sha256": "26aa5792c5b37428a8920cb7f315606524db87cc9b5a02bd76a38370adfd98de"
+    }
+  },
+  {
+    "label": "cache",
+    "argv": [
+      "/usr/bin/python3",
+      "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/native-probe/merge-launchd-cache.py",
+      "--cache",
+      "/home/brandonin/.local/share/inferno/native-probe/launchd-system-app-unlock-supported.plist",
+      "--replace-owned-job",
+      "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/launcher/org.inferno.app-probe.plist",
+      "--output",
+      "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/launchd-cache.plist"
+    ],
+    "started": 1791429506.9967458,
+    "finished": 1791429507.1314836,
+    "exit_code": 0,
+    "log": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/cache.log",
+      "sha256": "2a829df20fc62c550ec2e7c0d2105c4fef086602a7b24f3a41f3d735f1b1b407"
+    }
+  },
+  {
+    "label": "prepare",
+    "argv": [
+      "/usr/bin/python3",
+      "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/native-probe/prepare.py",
+      "--profile",
+      "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/profile.json",
+      "--raw-ramdisk",
+      "/home/brandonin/.local/share/inferno/images/ios14b5/raw-recovery-reproduced-1/ramdisk-payload.raw",
+      "--probe",
+      "/home/brandonin/.local/share/inferno/native-probe/helper-build-42/inferno-probe",
+      "--hfsplus",
+      "/home/brandonin/.local/share/inferno/native-probe/tools/hfsplus",
+      "--disk-helper",
+      "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/inferno-prepare-root",
+      "--disk-helper-existing",
+      "--imported-app-manifest",
+      "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/import/manifest.json",
+      "--imported-app-manifest-sha256",
+      "68cdc3ece31d151ad693766d2a288d8b4ea5ec12b24f1be7be3ea2cd5abbc66a",
+      "--system-launcher",
+      "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/launcher/inferno-launcher",
+      "--exec-wrapper",
+      "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/launcher/inferno-exec-launcher",
+      "--launchd-cache",
+      "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/launchd-cache.plist",
+      "--launchd-cache-sha256",
+      "06291b66b9ed5e7886a2893f5c6094c0ae7e3de2fe7ddeef951e67c278e1b843",
+      "--output",
+      "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/recovery"
+    ],
+    "started": 1791429507.1642253,
+    "finished": 1791429507.5793867,
+    "exit_code": 0,
+    "log": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/reproduced-inputs-prepare-1/prepare.log",
+      "sha256": "4a6bec9515bdf84ac78a6901e098623f12d5ce909611531778295b2fd1e1e6ac"
+    }
+  }
+]
