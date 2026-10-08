@@ -75,7 +75,7 @@ def finish_proof(folder,stage,pins):
 
 def validate_flatten(path,expected,pins,tools_root):
     path=KS.pin(path,expected,pins);flat=bounded_record(path)
-    if flat.get('schema')!='inferno.flattened-keybag-state.v1' or flat.get('status')!='flattened-fresh-keybag-not-runtime-ready' or flat.get('ipa_runtime_ready') is not False:raise ValueError('Expected typed flattened keybag result')
+    if flat.get('schema')!='inferno.flattened-keybag-state.v1' or flat.get('status')!='flattened-fresh-keybag-not-runtime-ready' or any(flat.get(k) is not False for k in ('ipa_runtime_ready','sep_destination_bytes_verified','postgrowth_full_data_verified')):raise ValueError('Expected typed flattened keybag result')
     if any((path.parent/n).exists() for n in ('INCOMPLETE.json','failure.json')):raise ValueError('Flatten incomplete/failed')
     KS.SK.unchanged({**flat['source_sha256'],**flat['evidence_sha256']});pins.update(flat['source_sha256']);pins.update(flat['evidence_sha256'])
     prior=KS.validate(Path(flat['keybag_stage']['path']),flat['keybag_stage']['sha256'],pins,tools_root)
@@ -114,6 +114,22 @@ def validate_inputs(args):
     profile=KS.pin(paths['inspection'].parent/'recovery/profile.json',r['profile_sha256'],pins)
     _,actual_inputs=KS.SK.load_profile(profile)
     if actual_inputs!=r['inputs'] or r['binary_sha256']!=prior['preparation_inputs']['binary_sha256'] or r['build_manifest_sha256']!=prior['preparation_inputs']['build_manifest_sha256']:raise ValueError('Inspection actual runtime inputs differ')
+    launch=KS.inspected(paths['inspection'].parent/'launch.json',pins)
+    builds=[]
+    for p,h in launch['input_sha256'].items():
+        if Path(p).suffix=='.json':
+            record=bounded_record(KS.pin(p,h,pins))
+            if record.get('status')=='built-owned-runtime-inspector-only; no guest execution yet':builds.append((Path(p),record))
+    if len(builds)!=1:raise ValueError('Missing unique inspector helper build')
+    build_path,build=builds[0]
+    for name in ('inspect.c','sha256.h','libSystem.tbd','entitlements.plist'):
+        if [h for p,h in build['sources'].items() if Path(p).name==name]!=[sha(SOURCE/'runtime-inspector'/name)]:raise ValueError('Inspector helper build source differs')
+    helper=KS.pin(build_path.parent/'inferno-runtime-inspector',build['outputs']['inferno-runtime-inspector']['sha256'],pins)
+    for name,expected_hash in [('helper',pins[str(helper)]),('probe',prior['preparation_inputs']['probe_sha256'])]:
+        actual=KS.pin(paths['inspection'].parent/('readback-'+name),launch['readbacks'][name]['sha256'],pins)
+        if pins[str(actual)]!=expected_hash:raise ValueError('Inspector HFS executable readback differs')
+    job=KS.pin(paths['inspection'].parent/'readback-job',launch['readbacks']['job']['sha256'],pins)
+    if plistlib.loads(job.read_bytes())!={'Label':'org.inferno.probe.prepare-root','ProgramArguments':['/usr/bin/inferno-prepare-root','--disposable-root-copy'],'RunAtLoad':True,'StandardOutPath':'/dev/console','StandardErrorPath':'/dev/console','UserName':'root'}:raise ValueError('Inspector HFS job differs')
     observed=OV.load_stopped_overlay(rp,prior['tool']);base=prior['chain']
     if len(observed['layers'])!=4 or observed['layers'][1:]!=base['layers'] or r.get('overlay_base_report')!={k:base[k] for k in ('report','report_sha256','stopped_manifest','stopped_manifest_sha256')}:raise ValueError('Inspector predecessor lineage differs')
     aux=r.get('auxiliary_base',{})

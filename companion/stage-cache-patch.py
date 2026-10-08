@@ -74,8 +74,8 @@ def main():
         destination = CO.IMPORTER.external_output(args.output)
         preflight = CO.no_running_emulator()
         paths, input_pins, verified = validate_inputs(args)
-        if shutil.disk_usage(destination.parent).free < 2 << 30:
-            raise ValueError('Require2GiB free for sparse patch clone, recovery and logs')
+        if shutil.disk_usage(destination.parent).free < 4 << 30:
+            raise ValueError('Require4GiB free for sparse patch clone, recovery and logs')
         destination.mkdir(mode=0o700)
         output = destination
         CO.write_new(output / 'INCOMPLETE.json', {'status': 'incomplete-no-phase-promotion', 'ipa_runtime_ready': False})
@@ -124,8 +124,8 @@ def main():
         unchanged({**source_pins, **input_pins})
         CO.no_running_emulator()
         check_base_metadata(verified)
-        if shutil.disk_usage(output).free < 2 << 30:
-            raise ValueError('Require2GiB free immediately before recovery')
+        if shutil.disk_usage(output).free < 4 << 30:
+            raise ValueError('Require4GiB free immediately before recovery')
         for name in ('stdout.log', 'stderr.log'):
             logs.append((output / name).open('xb'))
         runner = subprocess.Popen(command, stdout=logs[0], stderr=logs[1], start_new_session=True)
