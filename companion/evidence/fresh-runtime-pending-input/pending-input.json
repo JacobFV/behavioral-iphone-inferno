@@ -1,0 +1,44 @@
+{
+  "schema": "inferno.fresh-runtime-artifact-input.pending.v1",
+  "status": "pending-successful-inspector-not-executable",
+  "target_schema": "inferno.fresh-runtime-artifact-input.v1",
+  "inputs": {
+    "inspection": null,
+    "keybag_stage": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/sep-keybag-stage-1/sep-keybag.json",
+      "sha256": "04547b9971e6d8fa01b674e26fd7e0b05cd28dc7bb2524145e456590ed00ab09"
+    },
+    "runtime_build": {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-runtime-build-1/build.json",
+      "sha256": "aa7ba5975fe5436ebb6bfbd7f922817e3b7b4e0c4b2250756ca2824547ddcf35"
+    },
+    "prepare_build": {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/build.json",
+      "sha256": "3cb1656f3978bfdcca7e3da80d7f8091f524c1b7593bb64a42a7a2a47f34e532"
+    },
+    "app_manifest": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/imported/manifest.json",
+      "sha256": "68cdc3ece31d151ad693766d2a288d8b4ea5ec12b24f1be7be3ea2cd5abbc66a"
+    },
+    "launcher_build": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/launcher/build-evidence.json",
+      "sha256": "2e872818910486f972f6aba370c8b436007a3fb6756c842682142aa2919b18a0"
+    }
+  },
+  "policy": "disable-five-unsupported-services",
+  "required_next_step": "After corrected inspector succeeds, independently verify it and insert its exact path/SHA; then emit only schema/inputs/policy using target_schema. Never use the failed first inspector or invent an inspection hash.",
+  "validated_owned_demo": {
+    "directory_name": "ImportedDemo.app",
+    "executable": "ImportedDemo",
+    "guest_path": "/Applications/ImportedDemo.app",
+    "identifier": "org.inferno.companion.ipademo",
+    "minimum_os": "14.0",
+    "relative_path": "bundle/ImportedDemo.app"
+  },
+  "launcher_outputs": {
+    "ImportedAppTarget.h": "731544192b5ca272bfe2a2927a2624b12b30912c7bc2b5016db908a4c2bc4690",
+    "org.inferno.app-probe.plist": "642afa46f9840c58ade9119561d2b98698ceff1a3ef1a14459ffdc10d23f8433",
+    "inferno-launcher": "770ff562cc7eb0ad99c32668cf560f18f26a447c12dd353d8656a40a95e9fb28",
+    "inferno-exec-launcher": "56199ba0d01451b9f3f40aeb7d0d67231155aaf7c842e8aa5b51dfb6dc2372e3"
+  }
+}
