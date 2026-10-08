@@ -9,6 +9,22 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-07: NavigationDemo installed wrapper launched
+
+Recoveryactualad0908fa3a and independent53e01baabf passed. Verifiedstage
+56d5a4adda63385ef5d950c17ac6e7c880355a69bf43c77413416b11a76e88a0.
+RootGO installedplanb58b425845. WrapperPID1324529/startticks86176487 launched
+1791442581.0015507 from unchanged persistentipa-release-host-1/source3f8b2d.
+Output~/.local/share/inferno/app-import/navigation-boot-1; launchsibling.
+RootsoleinstalledUI/finish owner; no otherVM/no secondQMP. Wrapperduration1200s;
+use SAMEpersistenthost companion/run for observe/owned-control/finish-observation.
+No fixedtimingtargets and nofixturetelemetry. Review actualNavigationDemo catalog,
+item1detail+Guide/Back, scroll12/endmarker, item12detail switchOff→On, Save→
+catalogsummary item12/OptionOn/Saves1, reopen12On/Back. Noautomaticgesture retry.
+Need actualbootreport/privateVNC/currentprocess before claiming launch.
+Recoveryeligibilityonly; installedbehavior untestedatthisentry.
+Freshbootstrapstillspaceblocked34GiB (~7GiBfree).
+
 ### 2026-10-07: NavigationDemo recovery coordinator live
 
 ActualHOSTprepare26c773c914, independentf9df44c57f and exactargvreview integrated.
