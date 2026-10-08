@@ -152,4 +152,7 @@ def validate_inputs(args):
     paths['root']=Path(flat['raw']['path']);paths['auxiliary_state']=Path(flat['auxiliary_state'])
     metadata={**prior['identities'],**FL.identities(observed),str(paths['root']):CO.identity(paths['root'])}
     KS.SK.unchanged(pins)
-    return paths,pins,{'flat':flat,'keybag':prior['manifest'],'base':{**base,'layers':[flat['raw'],*base['layers']]},'tool':prior['tool'],'base_metadata':metadata,'runtime_inputs':{k:str(v) for k,v in prior['preparation_inputs'].items()}}
+    # CO.freeze_new_disks uses base.layers only as a protected inode inventory.
+    # This includes the flattened raw AND retained historical layers; it is not
+    # the boot backing chain, which is independently checked as depth2 afterward.
+    return paths,pins,{'base_scope':'Protected inode inventory only, not actual ancestry; actual output chain must be raw plus new overlay (depth2).','flat':flat,'keybag':prior['manifest'],'base':{**base,'layers':[flat['raw'],*base['layers']]},'tool':prior['tool'],'base_metadata':metadata,'runtime_inputs':{k:str(v) for k,v in prior['preparation_inputs'].items()}}
