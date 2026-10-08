@@ -1,0 +1,49 @@
+{
+  "scope": "Bounded static interpretation of actual82 null/equality population; no guest memory/extra registers interpreted",
+  "original_kernel_sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910",
+  "external_disassembly": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/iomfb-swapwait-inspection/wait-gated.txt",
+    "sha256": "06f87075abec9f3fe46c1b83d32d3fcd5ecc6fb4e5fef9e2c1369c9b135e0932"
+  },
+  "facts": [
+    {
+      "address": "fffffff0096f198c..1994,19c0..19ec",
+      "finding": "Requested token stored FP-1c, mode/flags FP-20, third FP-24. Bit31 extracted into FP-3c, low31 mode stored back FP-20. No reviewed persistent mode GPR at null observation site."
+    },
+    {
+      "address": "fffffff0096f1be0..1bf8",
+      "finding": "Earlier requested vs pipeline+bf4 equality sets local byte FP-61. Later captured W0/W1 pair is another load, not the stored local flag."
+    },
+    {
+      "address": "fffffff0096f1c00..1c30",
+      "finding": "Earlier nonnull active request token match can set local byte FP-62. Captured X11 is a later active-pointer read; null now does not prove earlier pointer/flag."
+    },
+    {
+      "address": "fffffff0096f1c34..1c78",
+      "finding": "Captured requested/completed loads and null X11 lead to zero dummy active-token local; X10 ignored. No direct success/return occurs at this site."
+    },
+    {
+      "address": "fffffff0096f1cb0..1d74",
+      "finding": "If matching-request flag not already set, traverse queued requests and set flag on match. No queued-match snapshots is not proof queue empty."
+    },
+    {
+      "address": "fffffff0096f1d78..1d8c",
+      "finding": "Mode0 immediate-success path requires both equality local and matching-request local clear. Equal-token local can therefore sustain pending without nonnull active pointer."
+    },
+    {
+      "address": "fffffff0096f1dcc..1e40",
+      "finding": "Mode1 can take success when matching-request local clear. Mode2 can take success when later active and queue reads both null. These differ from mode0; actual82 mode not captured."
+    },
+    {
+      "address": "fffffff0096f1e58..1ea4",
+      "finding": "Later bit31 handling controls nonblocking pending status, already mapped. Current3PC profile has no final return site."
+    }
+  ],
+  "interpretation": "183 same-attempt observed null/equal snapshots reject using stationary nonnull active request as the observed82 explanation, but do not prove semantic completion or final pending status. Need same-attempt stack context; no need to read guest stack locals or guess mode from unrelated registers.",
+  "not_proven": [
+    "No per-snapshot CPU/thread/pipeline attribution or caller/return pairing.",
+    "No equality-latch value, mode, highbit or finalstatus established by these dumps.",
+    "The field label completed token does not itself mean SwapWait must succeed on equality.",
+    "No model transition or completion bypass proposed."
+  ]
+}
