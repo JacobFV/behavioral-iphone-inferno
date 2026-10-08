@@ -95,13 +95,28 @@ def validate_inputs(args):
 
 def execute(command, output, label, timeout):
     started = time.time()
+    process = None
+    failure = None
+    cleanup = {}
     with (output / (label + '.stdout')).open('xb') as out, (output / (label + '.stderr')).open('xb') as err:
-        process = subprocess.run(command, stdout=out, stderr=err, timeout=timeout)
-    record = {'argv': command, 'started': started, 'finished': time.time(), 'exit_code': process.returncode,
+        try:
+            process = subprocess.Popen(command, stdout=out, stderr=err, start_new_session=True)
+            value = Path(f'/proc/{process.pid}/stat').read_text()
+            process.inferno_start_ticks = int(value[value.rfind(')') + 2:].split()[19])
+            process.wait(timeout=timeout)
+            if process.returncode or CO.owned_group_members(process):
+                raise ValueError(label + ' failed or left child-session members')
+        except BaseException as exc:
+            failure = exc
+            if process is not None:
+                cleanup = CO.stop_owned_group(process)
+    record = {'argv': command, 'started': started, 'finished': time.time(),
+              'exit_code': process.returncode if process else None, 'cleanup': cleanup,
+              'error': str(failure) if failure else None,
               'stdout_sha256': sha(output / (label + '.stdout')), 'stderr_sha256': sha(output / (label + '.stderr'))}
     CO.write_new(output / (label + '.json'), record)
-    if process.returncode:
-        raise ValueError(label + ' failed; no retry')
+    if failure is not None:
+        raise failure
     return record
 
 
@@ -186,12 +201,17 @@ def main():
         if runner.wait(timeout=180) != 0 or CO.owned_group_members(runner):
             raise ValueError('Runner did not exit normally and completely')
         report_path = report_dir / 'report.json'
+        stopped_pins = {str(p): sha(p) for p in (report_path, serial, report_dir / 'control-transcript.jsonl',
+                        report_dir / 'qmp-transcript.jsonl', output / 'content-check.json', output / 'finish.stdout')}
         report = CO.check_completed_report(context, report_path)
         if report['inputs'] != profile_inputs or report['binary_sha256'] != args.binary_sha256 or report['build_manifest_sha256'] != args.build_manifest_sha256:
             raise ValueError('Stopped runtime input mismatch')
         if report.get('auxiliary_base') or report['root_base'] != {'path': str(paths['root']), 'sha256': ORIGINAL_ROOT_SHA, 'bytes': 8 << 30, 'copied_before_use': False, 'retained_immutable_backing': True}:
             raise ValueError('Unexpected inherited disks')
-        content = verify_content(serial.read_bytes())
+        final_serial = serial.read_bytes()
+        if hashlib.sha256(final_serial[:checkpoint['serial_bytes']]).hexdigest() != checkpoint['serial_sha256']:
+            raise ValueError('Final serial does not preserve exact pre-finish checkpoint prefix')
+        content = verify_content(final_serial)
         controls = [json.loads(line) for line in (report_dir / 'control-transcript.jsonl').read_bytes().split(b'\n') if line]
         if len(controls) != 1:
             raise ValueError('Unexpected control submissions')
@@ -201,9 +221,7 @@ def main():
             raise ValueError('Finish does not follow content checkpoint')
         if control['response']['return'].get('finish_requested') is not True or bounded_record(output / 'finish.stdout') != control['response']:
             raise ValueError('Finish response mismatch')
-        stopped_pins = {str(p): sha(p) for p in (report_path, serial, report_dir / 'control-transcript.jsonl',
-                        report_dir / 'qmp-transcript.jsonl', output / 'content-check.json', output / 'finish.stdout')}
-        unchanged({**source_pins, **input_pins})
+        unchanged({**source_pins, **input_pins, **stopped_pins})
         frozen = CO.freeze_new_disks(report_path, report, context, output)
         retention = report_dir / 'stopped-disk-hashes.json'
         CO.PRESERVE.preserve(report_path, retention, False)
