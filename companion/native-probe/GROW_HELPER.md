@@ -1,0 +1,9 @@
+# Build the owned APFS growth helper
+
+`build-grow-helper.py` builds the unchanged `grow-container.c` into a NEW external directory. It follows the preparation-helper producer’s pinned-tool/source checks without changing that producer or its consumers. Supply absolute `--clang`, `--linker`, `--ldid` paths and matching `--*-sha256`, plus `--output`. The linker must use the Mach-O driver name `ld64.lld` or historical `ld64.lld-18`, not its resolved `lld` basename.
+
+The committed `grow-libSystem.tbd` and `grow-entitlements.plist` are the exact owned declarations and entitlement dictionary retained by historical `grow-build-1`; their hashes are respectively `5097ae10a2380d8c2e20c6ddb4b5c70512a664f5c0316cccecf30f1e02136427` and `0cde67f69fe204502340423f1d95db7f9fc5a002d65fae583bc66b12a66f323b`. The unchanged C source is `79cbffe339d68b6fef816399877772311f3e45cdfd76fdf460d9419b3a19b282`. These contain no Apple implementation code.
+
+The SDK-free commands compile arm64/iOS14, link against the owned libSystem declaration file, and ad-hoc sign only `inferno-grow`. The original APFS framework is dynamically opened by the helper at runtime; it is not copied or signed by this build. The existing disk-device-access and singleton AppleAPFSUserClient entitlements are preserved exactly, then extracted with `ldid -e` and compared as a plist.
+
+`build.json` retains committed source revision, source/tool hashes, argv, raw command logs, output hashes and entitlement readback. An incomplete or failed build must not be consumed. This command neither grows GPT/APFS nor launches a VM. The helper remains fixed to the historical 32GiB GPT geometry and explicit `--disposable-root-copy` guard; see [GROW.md](../os-image/GROW.md). A future coordinator must independently validate that geometry and preserve the paired initialized namespaces before execution.
