@@ -1,0 +1,23 @@
+{
+  "verdict": "PASS, no blocking finding in scoped source/artifact review",
+  "reviewed_source_commit": "90f244ac75",
+  "actual_evidence_commit": "dad61e9fcb",
+  "actual_build_sha256": "3cb1656f3978bfdcca7e3da80d7f8091f524c1b7593bb64a42a7a2a47f34e532",
+  "helper": {
+    "bytes": 86144,
+    "sha256": "66492292ea073d5710af269585058129d92db71509c16c3cd74453421e61a3e3"
+  },
+  "checks": [
+    "Independently ran retained audit.py against actual new and helper60 artifacts; full helper bytes equal,86144bytes and SHA66492292ea073d5710af269585058129d92db71509c16c3cd74453421e61a3e3.",
+    "Compared first three argv arrays after replacing only source/output roots: exact compile/link/sign flags and tool invocation paths match helper60. Fourth command is entitlement readback.",
+    "Consumer prepare-import.validate_runtime expects four source basename/hash bindings and outputs.inferno-prepare-root.sha256; new build preserves these exact fields and actual sources match.",
+    "Existing entitlement dictionary unchanged: apfs.xart true and singleton AppleEffaceableStorageUserClient class array. Readback plist equals source.",
+    "external_output rejects existing output and any Git worktree; actual products external. Owned helper only signed; no imported app or Apple binary mutation.",
+    "Committed source/tool hashes captured before build and checked afterward; commands exit0 with retained stdout/stderr hashes. Incomplete marker retained on failure; final build record published only after validation."
+  ],
+  "limits": [
+    "No rebuild, VM, guest readback or full runtime/backing rehash performed by reviewer.",
+    "Byte equality proves reproducibility of this artifact, not fresh guest execution or runtime eligibility.",
+    "Failure subprocess timeout is a host build timeout, not a guest watchdog."
+  ]
+}
