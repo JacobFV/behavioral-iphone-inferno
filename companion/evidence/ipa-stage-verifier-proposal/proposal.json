@@ -1,0 +1,37 @@
+{
+  "status": "Design only; no verifier implementation or guest actions.",
+  "interface": "verify-import-stage --session PINNED_SESSION --session-sha256 SHA --report STOPPED_RECOVERY_REPORT --output NEW_STAGE_VERIFICATION",
+  "input_binding": [
+    "Revalidate session hash/schema, importer manifest and retained IPA/tree, exact helper profile/ramdisk and generated launchd job/cache/launcher/wrapper hashes. Pin validator/helper source revisions and helper executable, not only claimed JSON status.",
+    "Require report recovery kind, command actually selects the pinned profile and stopped base report, no disk-boot/probe journey, sole control mailbox. Reject unknown extra preparation operations by comparing ramdisk job argv to session's exact approved install set.",
+    "Use existing disk_overlay source eligibility and full paired seven-namespace provenance. Enforce maximum actual resulting depth4; imported recovery stage must be at most3 if a subsequent app boot needs another layer. Count real backing chain including raw base using existing module; never trust a supplied depth integer.",
+    "Rehash inputs at final verification and compare stable lstat identities before/after. Reject symlinks, changed source files, unexpected outputs, duplicate JSON keys and nonfinite values. Imported manifest trust is integrity, not code authorization."
+  ],
+  "expected_records": {
+    "derivation": "Derive directory/file entry count and total regular-file bytes from revalidated manifest, target bundle/ID from its canonical target; helper/cache sizes from pinned external artifacts. Require each expected milestone exactly once in helper source execution order.",
+    "sequence": [
+      "Exactly one INFERNO_PREP_BEGIN with existing1/roles0/gigalocker0 for this narrow route.",
+      "When selected, exactly one EXEC_WRAPPER_READBACK and SYSTEM_LAUNCHER_READBACK, exact artifact byte sizes and mismatches0, in source order.",
+      "Exactly one IMPORTED_APP_PLAN with exact name/ID/entry count/total bytes and identical_fixture0 for fresh generic app. Collision exception only if session explicitly pins exact fixture tree and known two-file fixture.",
+      "PARENT lstat0/path0 and one source-reviewed permitted root directory tuple; fresh root/nested directory metadata-before/after entries exactly correspond to expected created directories, copy0/stat0/mode0755/uid0/gid0 afterward. Existing identical fixture branch instead requires its explicit collision-accepted marker and no fresh-root metadata mutation.",
+      "Exactly one IMPORTED_APP_READBACK with exact byte total/count and mismatches0, followed by FINISH result0/unmount0/errno0.",
+      "When cache selected, exactly one CACHE_READBACK with pinned byte size/mismatches0 and installed marker.",
+      "Exactly one final PREP_COMPLETE after every requested operation. No later PREP_BEGIN, mismatch, failure or conflicting success record."
+    ],
+    "parsing": "Physical LF records with explicitly allowed serial CR suffix; preserve exact byte offsets/hash/raw lines. Full-match each recognized owned prefix; reject malformed/truncated relevant lines, duplicates, unexpected target/ID, any TREE_MISMATCH, nonzero operation result or unexplained helper restart. Do not silently skip malformed owned records or use substring COMPLETE as proof.",
+    "actual_demo2": "Raw ordered example: wrapper67392, launcher69136, PLAN3/71939, source root0755/0:0 versus newly created target0755/0:80, metadata copy after0755/0:0, READBACK71939/3/0, FINISH0/unmount0, CACHE596664/0, PREP_COMPLETE. Expected sizes must be recomputed, not hardcoded to demo2."
+  },
+  "normal_shutdown": [
+    "Launch recovery with existing --control-mailbox and no probe journey. An operator or separately reviewed coordinator waits for valid complete raw stage prefix, then submits exactly one existing finish-observation through the mailbox. No SIGTERM special-success promotion.",
+    "Record raw complete-prefix byte length/hash and source-gated milestone references before finish request. Bind matching control request/reply and subsequent QMP quit request/ACK/host-qmp-quit SHUTDOWN, require process gone and emulator exit0, report attempt_completed=true and error absent. Reparse final serial to reject late errors/restarts.",
+    "finish-observation currently works for no-journey recovery: it sets finish_requested; boot loop breaks, performs final observations/screendump, then normal finally QMP quit. Its success alone is not stage success. An expired-duration run without explicit finish must not silently qualify for this coordinator contract.",
+    "Only after process absence and immutable final evidence checks invoke preserve-stopped without --failed-attempt. Reuse its exact seven disks, header/backing verification, hashes, descriptor checks, unchanged ancestors and new-file output semantics. Preserve permission-denied /proc scope; no host-wide exclusivity claim.",
+    "Write a new stage eligibility attestation bound to returned stopped-manifest hash only if every stage and shutdown check passes. Never modify original report, generic retention verdict, older manifests or source disks. Failed stages may be retained separately as forensic-only, never promoted."
+  ],
+  "mixed_boot_scope": "Current helper markers contain no session nonce or boot UUID. Exactly one PREP_BEGIN/COMPLETE, fresh nonappended serial file, pinned single emulator command/process and raw transcript chronology can reject observed mixed/restarted logs, but cannot cryptographically authenticate arbitrary pasted records. Do not claim stronger mixed-boot protection. A future helper session nonce would strengthen attribution but is outside this proposal's implementation scope.",
+  "negative_replay_plan": [
+    "Actual failed fixture1/2 and demo1 must reject with original failure records; successful demo2 raw stage portion should satisfy content but fail new normal-finish contract because it used Signal15.",
+    "Synthetic bounded mutations labeled as such: wrong manifest size/ID, duplicate/malformed milestone, missing final newline/COMPLETE, mixed second BEGIN, late failure, mismatched profile, changed source, depth requiring fifth layer, incomplete QMP shutdown and live PID must reject.",
+    "First future normal recovery supplies actual end-to-end execution evidence; no host fixture substitutes for it."
+  ]
+}
