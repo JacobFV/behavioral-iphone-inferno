@@ -1,0 +1,1 @@
+Actual stage 2 completed role creation and clean unmounts, then one normal coordinator finish and all seven new-file freezing/retention. Raw content replay, source/metadata hashes and current frozen identities pass. ipa_runtime_ready remains false. Failed stage 1 is unchanged. No further VM was launched.

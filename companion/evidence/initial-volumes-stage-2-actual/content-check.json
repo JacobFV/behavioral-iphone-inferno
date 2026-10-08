@@ -1,0 +1,221 @@
+{
+  "schema": "inferno.initial-volumes-content.v1",
+  "content_verified": true,
+  "ipa_runtime_ready": false,
+  "serial_bytes": 52182,
+  "serial_sha256": "282f497dad3f44a029733091e606569febfa03dffd912ad71ff6655a397a55aa",
+  "records": [
+    {
+      "text": "INFERNO_PREP_BEGIN: disposable /dev/disk0s1 existing=0 roles=1 gigalocker=0",
+      "byte_start": 35689,
+      "byte_end": 35764,
+      "sha256": "bbc4d538471dcce0eebb1bde53187b663b39f61ca7e97f7a505ac402010d39a6"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE disk0 type=6",
+      "byte_start": 35767,
+      "byte_end": 35799,
+      "sha256": "874b98c98f27108f5cd6886558ed1650fe5b38fd253b569436ba340f7d601262"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE rdisk0 type=2",
+      "byte_start": 35802,
+      "byte_end": 35835,
+      "sha256": "d4f6508d1969f31a4b268f2e104748dac6303bb6ed2ecc40d6453845c12baef2"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE disk0s1 type=6",
+      "byte_start": 35838,
+      "byte_end": 35872,
+      "sha256": "1824107d3411ec6a3b530308217dad352322c8b2fff3d30cb13531e8a99aaa40"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE rdisk0s1 type=2",
+      "byte_start": 35875,
+      "byte_end": 35910,
+      "sha256": "a6c81b688e224e1bed44a61e72bad43fc138b37cac8cc3c98af1f106be87b41b"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE disk0s1s1 type=6",
+      "byte_start": 35913,
+      "byte_end": 35949,
+      "sha256": "28479e4a01c83c614e1d96d8176067f7a92f8db39c87709c1498cef1f63e2a1f"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE rdisk0s1s1 type=2",
+      "byte_start": 35952,
+      "byte_end": 35989,
+      "sha256": "64ebd5dba19b3e0c913b7bd916c8e54b8a9e9700f9c4aa916af03a1552d3ebf1"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE disk1 type=6",
+      "byte_start": 35992,
+      "byte_end": 36024,
+      "sha256": "de8827b024dcecfe1bc2a4f762559add11e39f028417cd3cdc84aa2b7c352ffc"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE rdisk1 type=2",
+      "byte_start": 36027,
+      "byte_end": 36060,
+      "sha256": "bffc33606a2771169278902b3817605c7667a184a953b99b30820e05b56d39c1"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/newfs_apfs -A -o role=b -v Preboot /dev/disk0s1",
+      "byte_start": 36132,
+      "byte_end": 36203,
+      "sha256": "cb86583abff7a1b514b5cdb56305e7ae3a9ad82d1cdc127e43602941441c2452"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 38317,
+      "byte_end": 38342,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/newfs_apfs -s10485760 -A -o role=x -v xART /dev/disk0s1",
+      "byte_start": 38345,
+      "byte_end": 38424,
+      "sha256": "0634323ac38d8597998750e7f72d29c5e3d6b6b83b22151f65089df21f225f6c"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 40100,
+      "byte_end": 40125,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/newfs_apfs -s25165824 -A -o role=h -v Hardware /dev/disk0s1",
+      "byte_start": 40128,
+      "byte_end": 40211,
+      "sha256": "57fe5b0ae18a2076dfda0ed390c84a1e3d8d6f1c0e8d822d6a343bdbfa2c056f"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 43806,
+      "byte_end": 43831,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s1 /mnt1",
+      "byte_start": 43834,
+      "byte_end": 43895,
+      "sha256": "c820686e02dbadc110090c4951ae1b78d3d99d054808727103f34329e075a4c4"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 44723,
+      "byte_end": 44748,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_PREP_VOLUME /dev/disk0s1s1 name=AzulSeed18A5351d.N104N841DeveloperOS",
+      "byte_start": 44751,
+      "byte_end": 44827,
+      "sha256": "825e94c603a8097501dd46e80e00ef35a20ed5c72a1f81df3d26d0c2a3cac276"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s3 /mnt1",
+      "byte_start": 45136,
+      "byte_end": 45197,
+      "sha256": "3b07654123ea71295e5fc7efa2b7dc3583484079e2f495954f28ea0e09ba3b34"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 45977,
+      "byte_end": 46002,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_PREP_VOLUME /dev/disk0s1s3 name=Preboot",
+      "byte_start": 46005,
+      "byte_end": 46052,
+      "sha256": "fed08d764b918763f8163361774c300ce79c1dfc6e19c963fcdd97258e9411b4"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s4 /mnt1",
+      "byte_start": 46314,
+      "byte_end": 46375,
+      "sha256": "bcf48e79e6424137209848bc22682233c29099f63e281984a8734418efd23b97"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 47150,
+      "byte_end": 47175,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_PREP_VOLUME /dev/disk0s1s4 name=xART",
+      "byte_start": 47178,
+      "byte_end": 47222,
+      "sha256": "4ba101db30e44fcd9f6a1c5b2c8eba894a5abac56f2734ed9ff2d4a6427f56d3"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s5 /mnt1",
+      "byte_start": 47479,
+      "byte_end": 47540,
+      "sha256": "fac8b3586d22421b109103f0761f3175d94ca296da10da2bd127cacd87cda026"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 48323,
+      "byte_end": 48348,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_PREP_VOLUME /dev/disk0s1s5 name=Hardware",
+      "byte_start": 48351,
+      "byte_end": 48399,
+      "sha256": "a6c716817c590663bd4e02aba266cc29d17378746683a4cd1c5b3095c440a62c"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s1 /mnt1",
+      "byte_start": 48664,
+      "byte_end": 48725,
+      "sha256": "c820686e02dbadc110090c4951ae1b78d3d99d054808727103f34329e075a4c4"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 49553,
+      "byte_end": 49578,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o rw /dev/disk0s1s3 /mnt2",
+      "byte_start": 49581,
+      "byte_end": 49642,
+      "sha256": "27cd838e663184cfd9c3003271c4f97abdbd01d90be9a222b2436c454736f96e"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 51248,
+      "byte_end": 51273,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_PREP_COMPLETE: requested preparation operations succeeded",
+      "byte_start": 52114,
+      "byte_end": 52179,
+      "sha256": "a7a571c5755813427bec20203fe2cebd4db90fc868a56b32ef6a5a36e774faff"
+    }
+  ],
+  "commands": [
+    "/sbin/newfs_apfs -A -o role=b -v Preboot /dev/disk0s1",
+    "/sbin/newfs_apfs -s10485760 -A -o role=x -v xART /dev/disk0s1",
+    "/sbin/newfs_apfs -s25165824 -A -o role=h -v Hardware /dev/disk0s1",
+    "/sbin/mount_apfs -o ro /dev/disk0s1s1 /mnt1",
+    "/sbin/mount_apfs -o ro /dev/disk0s1s3 /mnt1",
+    "/sbin/mount_apfs -o ro /dev/disk0s1s4 /mnt1",
+    "/sbin/mount_apfs -o ro /dev/disk0s1s5 /mnt1",
+    "/sbin/mount_apfs -o ro /dev/disk0s1s1 /mnt1",
+    "/sbin/mount_apfs -o rw /dev/disk0s1s3 /mnt2"
+  ],
+  "volumes": {
+    "AzulSeed18A5351d.N104N841DeveloperOS": "/dev/disk0s1s1",
+    "Preboot": "/dev/disk0s1s3",
+    "xART": "/dev/disk0s1s4",
+    "Hardware": "/dev/disk0s1s5"
+  },
+  "scope": "Role-only copy/unmount code path corroborated by original logs; no firmware-tree byte readback, Data/keybag/cache/setup or cryptographic boot nonce.",
+  "captured_time": 1791432300.9566162,
+  "eligible": false
+}
