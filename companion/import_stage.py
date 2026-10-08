@@ -85,7 +85,8 @@ def verify_content(raw, manifest, artifact_sizes, identical_fixture=False):
                        rb'INFERNO_PREP_DEVICE [a-zA-Z0-9]+ type=[0-9]+',
                        rb'INFERNO_PREP_EXEC /sbin/mount_apfs -o (?:ro|rw) /dev/disk0s1s[1-6] /mnt1',
                        rb'INFERNO_PREP_STATUS raw=0',
-                       rb'INFERNO_PREP_VOLUME /dev/disk0s1s[1-6] name=[A-Za-z0-9._-]+')
+                       rb'INFERNO_PREP_VOLUME /dev/disk0s1s[1-6] name=[A-Za-z0-9._-]+',
+                       rb'INFERNO_TREE_PROGRESS entries=[1-9][0-9]*000 bytes=[0-9]+ mismatches=0')
             if not complete or not any(re.fullmatch(pattern,rest) for pattern in auxiliary):
                 raise ValueError('Unknown/malformed owned preparation record at byte '+str(offset))
         offset += len(physical)+1
