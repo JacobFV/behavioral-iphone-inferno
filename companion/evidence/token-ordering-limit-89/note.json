@@ -1,0 +1,17 @@
+{
+  "scope": "Existing bounded original ranges only; no runtime, new dump, profile or model change.",
+  "ordering": "SwapBegin allocates token before SwapEnd submission. Ring token presence therefore is not submission acceptance proof.",
+  "completion_compatibility": "Previously mapped kernel completion can store bf4 then clear active. Equality with nullactive is compatible with retained bf4 after active removal; field equality alone is not contradiction or stuck-request proof. Existing populations are independent and queue absence must not be paired by assumption.",
+  "additional_existing_source_fact": {
+    "source": "QuartzCore-finish-update.txt pinned by compositor-token-producer-84/audit.json",
+    "addresses": "1883108d4\u2192a74/ad8\u2192ae4; alternativeb3c..b5c also\u2192ae4",
+    "finding": "Reviewed nonzero SwapEnd error path clears ring token atae4. X27 token pointer was savedf630/restored10700. Globalbyte at1ddd9c5e2 selects diagnostic detour; both paths converge on clear. A simple assumption that every failed submission leaks ring token is unsupported."
+  },
+  "minimal_positive_evidence": "Distinguish successful selector4 allocation from successful selector5 submission associated with its token; then completion/removal evidence for that token. Selector4 success alone cannot do this. A future exact register-only submission-return observation requires separate liveness/coverage review; no new site is approved here.",
+  "limits": [
+    "No actual selector4/5 results or token pairing captured.",
+    "No current scanout/fence meaning inferred from bf4.",
+    "Reviewed error convergence does not establish all possible early exit or downstream behavior.",
+    "First collect existing fivePC on confirmed fixture failure; no new diagnostic before that."
+  ]
+}
