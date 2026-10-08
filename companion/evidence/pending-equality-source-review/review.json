@@ -1,0 +1,26 @@
+{
+  "status": "Independent source review PASS; actual owned fixture still required",
+  "candidate": "ec08c11bee",
+  "source_sha256": {
+    "companion/qmp_control.py": "906716956328980c1a054f1836298471b88acd1db8788c8d18b78b8cbc7c01a2",
+    "companion/boot.py": "beb55cb892ad246e215a5aa8d1178fc7dcbac6c63adfca6591c9da58606cf097",
+    "companion/pending-equality-result.py": "6952324aa8c92be314a7aa33af5632c28c99607d3dcb8901c3722298c35578eb",
+    "companion/cpu-window-probe/equality.S": "4cc1ad6a97a813181c7f2ef0bd1a70171f234db5e7276b3a12707fd5dafd0b35",
+    "companion/cpu-window-probe/run.py": "cc2d7396eb6dfe21693cc008a43cb055fca6883173af3a24e1601f51d57b692f"
+  },
+  "reviewed": [
+    "Only one fixed five-site profile added; original baseline and pending-branch strings/defaults unchanged.",
+    "Same pinned kernel/binary/source and zero-slide gate, explicit diagnostic opt-in, one mailbox owner; new profile shares exact nine-event disabled-state precondition.",
+    "Same cooperative seconds1..3 and8MiB cutoff, unchanged deadline/early/uncertain restoration. Planned production observations remain explicit1s; poll limits are not hard realtime guarantees.",
+    "No emulation/source-state change, extra MMIO, RAM read, guest patch, automatic input or arbitrary filter.",
+    "Five original PC constants match independently reviewed f84d6b222d roles. Parser applies low32 only to complete known-PC snapshots; neutral bf4 naming, mode local to exactsite, equality predicate beforestore, matchinglocal not active-only, finalstatus independent.",
+    "Unknown/malformed/truncated records and semantic violations remain explicit; no pairing/count subtraction. Raw registers remain available.",
+    "Owned fixture covers CBZtarget, B.NEfallthrough, TBNZfalse/true and BLreturn continuation with self-authored data; actual mode0/equal253/false0/true1/statusE00002D5 are expected, not original kernel data.",
+    "Existing baseline fixture source paths/selection preserved; pending-branch source remains unchanged. Fixture production filter response vs relocated CLI filter must stay explicitly distinguished."
+  ],
+  "limits": [
+    "Parser semantic violations are recorded separately while raw-derived distributions remain present; consumers must require zero semantic violations before treating distributions as valid evidence.",
+    "No actual fixture run by reviewer. No production reachability, iOS boot or failure-cause claim.",
+    "Complete coherent register block does not authenticate a process/thread or identify a same-call sequence."
+  ]
+}
