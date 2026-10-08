@@ -9,6 +9,35 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-07: fixture91 stopped healthy; bounded timing driver in progress
+
+Root visual5ad7a300e6 and actual raw6590e007de/e5ee04d721 complete. Strict
+counter0 to1, original current-boot appearance/tap, both QMPcaptures rootreviewed.
+Normalfinish/emulator0/nullerror/808.061555s and ordinary7/ancestors passed;
+runner1195600/QEMU1196912 gone. No CPUwindow, ADPchange, samples or warmcycle.
+BootUUID13226926-FA0A-4D40-8D5F-FDBC0FD1C415. Exact hostsubmission intervals:
+149.56705s cont→firstunlock,396.03755s unlockgap,59.33119s second→beta,
+26.41070s beta→Setup,58.70226s Setup→counter. Later targets43/18/13 were missed
+by operator/tool overhead, so do not call this a completed short-cadence test.
+No current VM. Root user objective remains active; no pause/handoff requested.
+
+Fresh-runtime stage source a018978b23, corrections284d42f719, artifact-only replay
+bf9dd50830 and independent final2c73d47aec passed. It has NOT run actual typed
+renderer preflight, HFS preparation or guest installation. Successful artifact2
+independently verified07a77335e2: exact435jobs/5policy edits/3owned additions,
+source/input/output pins and actual merger bytes/preparefragment match.
+
+Host free ~8GiB, typed keybag flatten still needs34GiB. Async user space/path
+question pending; do not delete retained evidence/ancestors or weaken guard.
+Meanwhile disk worker implements new fixed-fixture-alert-timing.py in existing
+worktree; native reviews source and actual91 timings. Driver uses exact reviewed
+91 beta/Setup/counter0 PNG crops (0,250,828,1450), exact832VNC/828QMP dimensions,
+noresize/OCR/fuzzy match; failclosed on state/deadline/ACK/source mismatch, no
+input retries. Root alone may explicitly invoke its three fixed actions after a
+fresh second unlock; strictbeforecapture required before onecountertap. Driver
+returns after25s observation for rootpixelreview, never finishes or enablesCPU.
+Do not launch next guest until source review and exact plan/rootdecision.
+
 ### 2026-10-07: corrected inspection and host artifacts passed; fixture91 live
 
 Corrected inspector sourceea6eadc402/build801bcb446f/independent6bd9e20f10
