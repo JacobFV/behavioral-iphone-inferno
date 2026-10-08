@@ -41,7 +41,11 @@ The first byte-identical fixture IPA installed and launched, but its interactive
 journey reproduced the persistent display freeze. The distinct resource-using IPA
 completed visible counter0→1 in runs75,77,79 and81 without fixture telemetry. Run78
 also completed the imported fixture’s strict counter journey. This does not
-resolve that intermittent failure. Xcode support is outside the first-release milestone and needs an actual
+resolve that intermittent failure. Run85 repeated preparation and staging from a
+persistent source tree, then launched the demo and loaded its resource text, but
+the counter stayed0 after one acknowledged input. App callback receipt is
+unproven; the attempt was retained as a failure and the wrapper refused normal
+completion. Xcode support is outside the first-release milestone and needs an actual
 project build and guest run before it can be advertised. Release
 packaging follows those execution gates and the runtime reliability work.
 

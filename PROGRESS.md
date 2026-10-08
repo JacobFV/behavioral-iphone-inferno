@@ -2,6 +2,30 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 19:42: durable source staged successfully; boot85 interaction failed
+
+Persistent prepare/stage passed actual execution and independent readbacks:
+d7c6ff2658,31b9f72c7a,2b6ba5b746. Source remains external persistent
+ipa-release-host-1/source at3f8b2d5623, unchanged; stage/session pins retained.
+85 used that exact source through boot-import. Original ImportedDemo PID269/uid501,
+boot914CE962-C0BA-484C-B07B-1EE2F6BF8C81, visible bundled resource text and0.
+ONE counter703788b2ec02444dbd48b31236cafdb6 ACK0 at1791427077.77654;
+69 frames over separate25/25/45s windows all SHA79245198adbf7f7834ccdab4b1f4a5bf3fee464f19c54da1ed123d0e01643986,
+root reviewed Count0 and finalQMP0074 RGB-identical conversion. No generic callback
+telemetry: app receipt and specific display-freeze causality unproven. No input retry,
+CPU/ADP window or finish-observation. Visual0e9d14845d. Root fsynced operator-stop
+and SIGINT2 verifiedrunner3991121; all3processes gone, wrapper correctly kept
+failure/INCOMPLETE and no completed-run. Bootworker forensic7/ancestors retention
+in progress, diskworker independent audit. Never use85 as a disk base.
+
+Original samples14180b5738: both complete/tool0, boot-specific cache slide22bc4000
+validated independently. BBD21 samples:19 runloop,1 can_update+23c/usleep,
+1 +214/kern_SwapWait; SB20runloop. No continuous-wait, token/status or callback
+claim. Main blocker remains repeatable interaction. Next diagnostic fixture run
+uses successful imported-fixture3 base and five-PC pending-equality default-off;
+root controls all input and only samples CPU after genuine tap plus stale pixels.
+No new VM until85 postflight complete. Mac/Xcode remains deferred by user.
+
 ### 2026-10-07 19:21:84 calibration proved allfive production sites; persistent stage running
 
 84 completed strict0→1, three warmcycles ending4, and originalClockstopwatch
