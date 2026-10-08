@@ -98,6 +98,14 @@ provisioning/distribution is not provided by these three commands. Keep firmware
 disks, tools and generated products outside Git. No Mac is required to import an
 already-built compatible IPA; building Xcode projects remains deferred.
 
+The separate [initial-volume phase](INITIAL_VOLUMES.md) now has a bounded
+coordinator for a fresh original System-only source. Its first actual recovery
+validation is still pending. Even a successful result explicitly has
+`ipa_runtime_ready:false`: it prepares only Preboot/xART/Hardware and the original
+firmware copy. Data, keybag initialization, cache lineage, migration and reviewed
+Setup remain separate prerequisites. Do not substitute this phase's output for
+the eligible initialized base required by `prepare-import`.
+
 ## Retain a durable host source tree before preparation
 
 A session pins source hashes **and their original absolute source location**.
