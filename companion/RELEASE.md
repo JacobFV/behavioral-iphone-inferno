@@ -29,7 +29,7 @@ a built application; an Xcode project also needs a separate build toolchain.
 | IPA installation | Fixture and separate demo copied/read back with zero mismatches and clean unmount; prepared session2 passed normal recovery verification | Automated staging and the pinned boot-import wrapper passed installed demo journeys; broader app coverage remains |
 | Separate app and resources | Runs75/77/79/81: distinct imported IPA launched, original process observed, reviewed bundled text and counter0→1, normal shutdown | Broader app coverage and repeatability |
 | Xcode projects | Deferred by user; first release accepts already-built IPAs | A future build bridge needs macOS/Xcode and an actual recorded project build/run |
-| Setup and operation | Source-pinned runner, private headless control and disk retention; tracked helper build and plaintext recovery extraction reproduced prior artifacts byte-for-byte and passed actual host preparation and recovery staging | Fresh initial-volume creation now passed recovery and preservation; Data/keybag initialization, migration/setup, verified cache/base lineage and distribution setup remain |
+| Setup and operation | Source-pinned runner, private headless control and disk retention; tracked helper build and plaintext recovery extraction reproduced prior artifacts byte-for-byte and passed actual host preparation and recovery staging | Fresh initial volumes, Data seeding and byte verification, flattening, capacity growth and SEP/keybag initialization passed; fresh cache inspection/patching, runtime installation, migration/setup and distribution setup remain |
 | Reliability and resource use | Two simultaneous idle guests measured; individual active journeys retained | Repeatable release journeys and sustained active workload measurements |
 
 The successful repeated counter runs do not establish that the earlier freeze
@@ -56,11 +56,17 @@ retained as a failure; staging alone does not establish app execution.
 
 The setup guide now includes the complete local runtime descriptor and generic
 headless operation steps. The helper and raw-image producers remove two one-off
-host steps. The new first-volume coordinator also passed original guest role
-creation and normal preservation. This is a partial initialization step; Data,
-keybag, cache and setup phases remain. Runs86–89 supplied further
+host steps. Fresh initialization now also passed original role creation, Data seeding and a
+separate read-only comparison (13,025 files, zero mismatches), host flattening,
+original APFS capacity growth and SEP/keybag creation. Each retained its actual
+raw evidence and stopped disk ancestry. These results are not an app-ready
+runtime: fresh cache inspection/patching, owned-runtime installation and ordinary
+Setup remain. Runtime helper builds now have recorded source/tool pins and actual
+command logs. Runs86–89 supplied further
 healthy fixture journeys with diagnostic logging off, while run85 remains a
-retained failed interaction. No release-readiness claim follows from those passes.
+retained failed interaction. A direct generic demo journey in run90 also reached
+counter1, while the reproduced wrapper attempt remains a failure. No
+release-readiness claim follows from those passes.
 
 The chronological record and current assignments remain in
 [PROGRESS.md](../PROGRESS.md) and [NEXT_SESSION.md](../NEXT_SESSION.md).
