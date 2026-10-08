@@ -1,0 +1,72 @@
+{
+  "status": "Independent static PASS for bounded five-site proposal; no implementation/runtime approval implied",
+  "proposal_commit": "da71236a50",
+  "proposal_sha256": "e06b78a37585662eacbfbb5d00dc13434096c29634bcc42929b1b83d1d70a493",
+  "kernel": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/kernel-original-decoded",
+    "sha256": "524b91442ad73a225f8b86afbed26642fbc14a821647d972d3c52dfc4c431910"
+  },
+  "retained_disassembly": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/iomfb-swapwait-inspection/wait-gated.txt",
+    "sha256": "06f87075abec9f3fe46c1b83d32d3fcd5ecc6fb4e5fef9e2c1369c9b135e0932"
+  },
+  "sites": [
+    {
+      "pc": "0xfffffff0096f1bc0",
+      "typed_register": "low32X08 masked mode0/1/2",
+      "proof": "Loads1ba0/1ba8/1bb4 followed respectively CBZ1ba4, BEQ1bb0 or BNE1bbc fallthrough preserve W8. First instruction1bc0 overwrites only after snapshot. All accepted paths end prior TB.",
+      "reject": "Values outside0/1/2 invalidate this typed interpretation."
+    },
+    {
+      "pc": "0xfffffff0096f1bf4",
+      "typed_register": "low32X08 requested; low32X09 pipeline+bf4 token",
+      "proof": "Request load1be0 and tokenload1be8 survive CMP1bec and unique BNE1bf0 fallthrough. Natural conditional-fallthrough TB begins before MOV1bf4 changesW8.",
+      "reject": "Unequal tokens violate exact-PC predicate; do not call this a read of stored equality latch. Its setting occurs1bf4/1bf8 afterward."
+    },
+    {
+      "pc": "0xfffffff0096f1e4c",
+      "typed_register": "low32X08 matching-request local, bit0false",
+      "proof": "Local-byte load1e44 is immediately tested at TBNZ1e48. Unique fallthrough snapshots W8 before unconditional branch1e4c. Reviewed local initialized0 at1bd4, set1 only1c24(active match)/1d60(queue match).",
+      "reject": "W8otherthan0 is inconsistent with reviewed Boolean local. This path is a conditional continuation subset, not every nonmatch."
+    },
+    {
+      "pc": "0xfffffff0096f1e50",
+      "typed_register": "low32X08 matching-request local, bit0true",
+      "proof": "Unique TBNZ1e48 target preserves loaded byte before SUB1e50 and lambda call1e54. Same initialization/set sites establish Boolean0/1 domain.",
+      "reject": "W8otherthan1 is inconsistent; true may originate from active OR queued match, cannot identify which."
+    },
+    {
+      "pc": "0xfffffff0096e219c",
+      "typed_register": "low32X00 final scalar-wrapper status",
+      "proof": "Previously independently reviewed original final wrapper continuation, covered by owned fixture and actual68/76. No change to earlier ABI interpretation.",
+      "reject": "No pair with any earlier sampled mode/token/flag; preserve all low32status values rather than assuming pending."
+    }
+  ],
+  "TB_proof": {
+    "sources": {
+      "accel/tcg/cpu-exec.c": "4f03249bbdb9c10f70d32373efd8dd25e31094ce4baffc082c00f6c3f24cbd71",
+      "target/arm/tcg/translate-a64.c": "1629b25b4346bc00eb50513f87e225ede524bb5ba4dafb7e38d00cc04efa1157",
+      "target/arm/cpu.c": "9d969ee42b7d05b337feb151c21dd51ba6cc4387274f379bbf5599d3db6fcdd5"
+    },
+    "reasoning": "Original trans_CBZ, trans_B_cond and trans_TBZ produce gen_goto_tb exits for both target and PC+4 fallthrough. cpu_tb_exec logs at TB entry before guest instruction execution. Exact dfilter is TB-PC selection, not per-instruction logging; nochain matters. No new interior instruction chosen.",
+    "runtime_limit": "Static candidates still require owned relocated fixture coverage before production. A missing site in a bounded window never proves absence of the corresponding operation."
+  },
+  "patch_scope": {
+    "reuse": "1ebe6759e4 independently checked whole gated function [0xfffffff0096f1968,0xfffffff0096f2024), covering allfournewsites. Prior original-iomfb-swapwait-path audit covers outer219c. Source/binary profile remains f37/0889; no emulator semantic patch proposed.",
+    "references": {
+      "companion/evidence/pending-branch-independent-review/review.json": "5eb89a7a4d3c894a1c7465409235f9652453691295b69eb4172bd2d40fcc7f63",
+      "companion/evidence/pending-branch-independent-review/patch-ranges.json": "660565b568fdf609e5152f97d3a7c714c1e200fe4df1266f7bdb18af27b565c7",
+      "companion/evidence/original-iomfb-swapwait-path/patch-range-audit.json": "62c684cbac949dcd265ad6ba7e72b9f608b81df855e70e356f6bdfb97e475bca"
+    },
+    "limit": "No runtime-RAM equality claim; no new patch or guest memory read."
+  },
+  "limitations": [
+    "Five independent populations only, no call/CPU/thread pairing, no count subtraction or same-call conjunction.",
+    "The pipeline field is identified by offsetbf4; positive equality is not proof of semantic frame completion.",
+    "Equality predicate capture precedes local store; matching local capture follows mode-specific early exits.",
+    "Mode1/2 early success paths mean matching continuation counts are not a denominator for accepted-mode counts.",
+    "Do not label shared1dcc as equalitytrue: incomingW8 canbe nonzero mode OR equality OR matching local.",
+    "1d84/1d8c are interior predicates, not guaranteed exact TB-start snapshots.",
+    "Observer reads only logged registers; no stack/RAM snapshots, arbitrary filter or guest-state mutation."
+  ]
+}
