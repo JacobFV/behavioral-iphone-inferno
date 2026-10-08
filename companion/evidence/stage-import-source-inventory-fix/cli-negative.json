@@ -1,0 +1,18 @@
+{
+  "scope": "Actual CLI entry source-inventory path then intentional missing-session rejection; no VM, no disk or output creation",
+  "command": [
+    "/usr/bin/python3",
+    "/tmp/inferno-stage-import/companion/stage-import.py",
+    "--session",
+    "/tmp/inferno-stage-inventory-9eq2r520/intentionally-missing-session.json",
+    "--session-sha256",
+    "0000000000000000000000000000000000000000000000000000000000000000",
+    "--output",
+    "/tmp/inferno-stage-inventory-9eq2r520/must-not-exist"
+  ],
+  "source_sha256": "649dfb8fffaf9a454861fc3d5281864c77d362990db1dd8458fe80ac1451bae0",
+  "returncode": 1,
+  "stdout": "",
+  "stderr": "stage-import failed: [Errno 2] No such file or directory: '/tmp/inferno-stage-inventory-9eq2r520/intentionally-missing-session.json'\n",
+  "output_absent": true
+}
