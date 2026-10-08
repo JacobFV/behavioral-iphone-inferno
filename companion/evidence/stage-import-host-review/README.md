@@ -24,3 +24,10 @@ Run77 was legitimately using that retained stage as a backing disk. This is an
 actual active-backing rejection, not a failed staging operation. A new positive
 stopped replay awaits its release; the earlier successful stage2 verification
 remains unchanged. No concurrent follow-up disk hashes are being run.
+
+After run77 stopped and released its descriptors, the same read-only replay
+completed in56.025s: actual session/runtime revalidation, normal report/raw-QMP
+checks and full stopped eligibility all passed. Both earlier failed reports still
+rejected. `stopped-positive.json` preserves the returned verified evidence and
+source/input hashes; `replay.py` records the exact read-only invocation logic.
+No disk modes, reports, retention manifests or guest state were changed.
