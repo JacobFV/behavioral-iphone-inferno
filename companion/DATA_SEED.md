@@ -35,3 +35,6 @@ The next phase must independently mount System and Data read-only and compare
 bytes, metadata, symlinks and extra entries using `--verify-data` **without**
 `--seed-data`; the existing helper verifies before copying if both are requested.
 No installed-iOS boot or app success is asserted by this recovery tool.
+
+Use the separately reviewed [Data verification coordinator](DATA_VERIFY.md)
+for that next phase after an actual successful seed result exists.

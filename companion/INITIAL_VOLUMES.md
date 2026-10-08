@@ -53,3 +53,7 @@ exclusive host lock. The first actual run completed guest preparation but failed
 to inherited group-write permissions. After the coordinator fixed its creation
 umask, the second fresh attempt completed the full recovery and preservation
 path. This establishes this initial-volume phase only, not an installed runtime.
+
+The next bounded steps are [Data seeding](DATA_SEED.md) and then
+[separate read-only Data verification](DATA_VERIFY.md). Neither establishes
+an installed runtime; preserve their explicit readiness limits.
