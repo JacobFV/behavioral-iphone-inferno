@@ -182,3 +182,33 @@ checks are point-in-time and do not provide an exclusive host-wide lock.
 Successful staging is still not app execution: installed boot, launch and visual
 review remain separate explicit steps. No app gestures, Home, OPEN or sampling
 are sent by this command.
+
+## Boot a verified imported stage
+
+```sh
+./companion/run boot-import \
+  --stage /external/STAGE/verified-stage.json --stage-sha256 SHA256 \
+  --session /external/PREPARED/session.json \
+  --output /external/NEW-INSTALLED-ATTEMPT --seconds 1200
+```
+
+This explicitly starts one installed guest after rerunning the full session and
+raw stopped-stage checks. The original installed profile, emulator/build and
+newly verified stage are derived from pinned fields. The sibling `boot.py` and
+`qmp_control.py` must exactly match the session source pins; use its reviewed
+stable host tree. A newer host runner is not silently accepted because a separate
+manual attempt worked. No profile/base/argv override is offered.
+
+Output must be new and outside Git. The guest uses a fresh child overlay and
+paired auxiliary copies; no source disk is changed or frozen. Duration is1..3600s
+(default1200). The existing headless display and sole control mailbox are enabled
+at `NEW-INSTALLED-ATTEMPT/boot`. Operators may review frames and explicitly send
+ordinary controls or `finish-observation`; the wrapper sends no gestures, OPEN,
+Home, samples or CPU diagnostic. It does not enable fixture-specific telemetry.
+The installed owned launchd job may attempt the app's normal launch.
+
+`completed-run.json` means normal runner/QMP shutdown only, with
+`app_execution_asserted:false`. Require no INCOMPLETE/failure marker. App launch,
+visible output and disk retention are separate checks. Failed or uncertain
+attempts retain logs and failure markers, stop only their owned child session,
+and never retry or become an eligible next base automatically.
