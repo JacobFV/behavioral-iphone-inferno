@@ -1,0 +1,13 @@
+# Fresh owned-runtime recovery stage
+
+`stage-fresh-runtime.py` accepts explicit `--renderer-stage` and `--artifacts` paths with SHA256s, pinned `--overlay-tools-root`, and an exclusively new external `--output`. It requires a successful depth2 renderer stage and a host-prepared artifact result whose read-only inspection and keybag predecessor exactly match the renderer lineage. It does not accept a failed installed boot, the inspection descendant, or historical runtime configuration as backing.
+
+Validation recursively binds the typed flatten/keybag/growth chain, renderer original/patched full cache hashes, exact sparse plan, HFS helper/job/plan inputs, raw pre-finish checkpoint and normal QMP shutdown, frozen seven namespaces and unchanged ancestors. The artifact consumer independently revalidates the reviewed helper builds, imported app tree/source IPA, manifest-specific launcher/wrapper, exact three jobs, five explicit Disabled changes, fresh cache insertion and exact preparation argument fragment. No arbitrary extra helper flag is forwarded.
+
+The unchanged general preparer receives only existing-volumes, readiness, HID, empty-secret helper, manifest-specific wrapper/launcher, generic imported-app manifest, and merged launchd cache. This stage copies the empty-secret helper; it does not execute it in recovery or initialize another keybag. No Data seeding, SEP copy, keybag creation, arbitrary executable replacement or firmware operation is included.
+
+All helper/probe/job/cache and imported-file HFS readbacks are independently extracted before launching. Expected guest readback sizes come from those verified bytes and the imported manifest, including the readiness binary plus its loose job. Ordered runtime installation markers, app plan/directory metadata/file comparison, original clean unmount after each copy group and final PREP_COMPLETE are mandatory. Unknown owned markers and collision exceptions fail closed.
+
+The sole coordinator finish follows an actual saved raw checkpoint. Normal exit/QMP/PID checks, fresh seven-file freezing, ordinary retention, exact paired-state ancestry and depth3 precede `fresh-runtime.json` publication. At least4GiB free is required both before allocation and before recovery. Only new output files may be frozen. Failures remain failed clones and cannot be promoted by manual override.
+
+The result schema is `inferno.fresh-runtime-stage.v1`, status `owned-runtime-staged-not-booted`, with `ipa_runtime_ready:false`. It proves only the stated copies and normal recovery completion. Installed migration, first unlock, app launch and visible interaction require a subsequent actual journey. No current source-only check establishes those outcomes.
