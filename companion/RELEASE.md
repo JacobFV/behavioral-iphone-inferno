@@ -29,7 +29,7 @@ a built application; an Xcode project also needs a separate build toolchain.
 | IPA installation | Fixture and separate demo copied/read back with zero mismatches and clean unmount; prepared session2 passed normal recovery verification | Automated staging and the pinned boot-import wrapper passed installed demo journeys; broader app coverage remains |
 | Separate app and resources | Runs75/77/79/81: distinct imported IPA launched, original process observed, reviewed bundled text and counter0→1, normal shutdown | Broader app coverage and repeatability |
 | Xcode projects | Deferred by user; first release accepts already-built IPAs | A future build bridge needs macOS/Xcode and an actual recorded project build/run |
-| Setup and operation | Source-pinned runner, private headless control and disk retention; tracked helper build and plaintext recovery extraction reproduced prior artifacts byte-for-byte and passed actual host preparation and recovery staging | Fresh initial volumes, Data seeding and byte verification, flattening, capacity growth and SEP/keybag initialization passed; fresh cache inspection/patching, runtime installation, migration/setup and distribution setup remain |
+| Setup and operation | Source-pinned runner, private headless control and disk retention; tracked helper build and plaintext recovery extraction reproduced prior artifacts byte-for-byte and passed actual host preparation and recovery staging | Fresh initial volumes, Data seeding and byte verification, flattening, capacity growth and SEP/keybag initialization passed; fresh cache inspection and host runtime artifacts also passed; cache patching, guest runtime installation, migration/setup and distribution setup remain |
 | Reliability and resource use | Two simultaneous idle guests measured; individual active journeys retained | Repeatable release journeys and sustained active workload measurements |
 
 The successful repeated counter runs do not establish that the earlier freeze
@@ -60,8 +60,12 @@ host steps. Fresh initialization now also passed original role creation, Data se
 separate read-only comparison (13,025 files, zero mismatches), host flattening,
 original APFS capacity growth and SEP/keybag creation. Each retained its actual
 raw evidence and stopped disk ancestry. These results are not an app-ready
-runtime: fresh cache inspection/patching, owned-runtime installation and ordinary
-Setup remain. Runtime helper builds now have recorded source/tool pins and actual
+runtime: fresh cache patching, owned-runtime installation and ordinary
+Setup remain. The corrected read-only inspector subsequently reconstructed the
+original launch configuration and matched the full original system-cache hash,
+then stopped normally. Host preparation also produced the three owned launch
+jobs and merged configuration with an exact decoded-content comparison. These
+artifacts have not yet been installed on the fresh image. Runtime helper builds now have recorded source/tool pins and actual
 command logs. Runs86–89 supplied further
 healthy fixture journeys with diagnostic logging off, while run85 remains a
 retained failed interaction. A direct generic demo journey in run90 also reached
