@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "mode": "owned-relocated-fixture-not-production",
+  "input_bytes": 2511539,
+  "input_sha256": "dd50e344c686e2694109c75068e30bace0742b24fb14db2e58757400abf474b5",
+  "expected_pcs": {
+    "null-active": "0x40200014",
+    "active-join": "0x40200034",
+    "queued-match": "0x4020004c"
+  },
+  "snapshot_count": 3261,
+  "complete_count": 3261,
+  "exact_pc_counts": {
+    "0x0000000040200014": 1087,
+    "0x0000000040200034": 1087,
+    "0x000000004020004c": 1087
+  },
+  "unknown_pc_count": 0,
+  "orphan_fragments": [],
+  "incomplete_eof_record": null,
+  "distributions": [
+    {
+      "role": "active-join",
+      "fields": {
+        "active_pointer_second_read": "0x0000000040001000",
+        "active_token_equals_requested": true,
+        "active_token_third_read": 294,
+        "completed_token": 292,
+        "mode": "unknown",
+        "requested_equals_completed": false,
+        "requested_token": 294
+      },
+      "snapshots": 1087
+    },
+    {
+      "role": "null-active",
+      "fields": {
+        "active_pointer": "0x0000000000000000",
+        "completed_token": 292,
+        "mode": "unknown",
+        "null_branch_register_valid": true,
+        "requested_equals_completed": false,
+        "requested_token": 293
+      },
+      "snapshots": 1087
+    },
+    {
+      "role": "queued-match",
+      "fields": {
+        "mode": "unknown",
+        "queue_pointer": "0x0000000040002000",
+        "queued_token": 295,
+        "requested_token": 295,
+        "tokens_equal": true
+      },
+      "snapshots": 1087
+    }
+  ],
+  "limitations": [
+    "Counts are independent snapshots, never invocation counts, CPU/process/thread identity or paired calls.",
+    "Production interpretation requires independently validated original kernel/build/zero slide and actual exact-PC TB coverage.",
+    "Modes0/1/2 can reach these sites; no captured mode or flags assumed.",
+    "Active pointer is second field read, token comes from a third pointer read; coherent GPR dump is not atomic memory state.",
+    "At null-active ignore X10. At active-join with X11zero token is unknown, never infer previous X10 value.",
+    "Positive queued-match observation identifies equal comparison only; absence is not proof no queued match.",
+    "No pointer is dereferenced; unknown/malformed/truncated blocks and semantic inconsistencies remain explicit."
+  ],
+  "role_counts": {
+    "null-active": 1087,
+    "active-join": 1087,
+    "queued-match": 1087
+  },
+  "semantic_violations": [],
+  "base_parser_sha256": "6c22f7a54fdd1dec01d6afdeffb78ccc54a8f50a57428d0504789a5b52d1fe30",
+  "input_path": "/home/brandonin/.local/share/inferno/native-probe/pending-branch-owned-attempt-1/guest-errors.log",
+  "parsed_output_sha256": "4074dc812e4b0c268f3c6b4ef4a578ac84e5d3e3e3a5f9584c5fa3e8efdf5d60",
+  "parser_source_sha256": "5928f5e4aa34d539ae211d899c533d41c345171abad97c1d249486d2e378a159"
+}
