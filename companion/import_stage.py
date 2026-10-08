@@ -140,7 +140,7 @@ def validate_session(path, sha256):
         if Path(relative).is_absolute() or '..' in Path(relative).parts:raise ValueError('Invalid source pin path')
         _pin({'path':str(source_root/relative),'sha256':expected_hash})
     runtime_validator=_load('prepare-import',source_root)
-    runtime_validator.validate_runtime(runtime)
+    verified_runtime=runtime_validator.validate_runtime(runtime)
     manifest = _load('app-import').validate_manifest(pinned['import_manifest'])
     if manifest['bundle'] != s['bundle'] or manifest['tree_sha256'] != s['tree_sha256']:
         raise ValueError('Manifest target differs')
@@ -177,7 +177,7 @@ def validate_session(path, sha256):
         raise ValueError('Preparation helper hash differs')
     if not any(x['args'][:2]==['add',str(job_path)] for x in operations):
         raise ValueError('Preparation job installation absent')
-    return {'session':s,'manifest':manifest,'artifact_sizes':artifacts,'session_path':str(path),'session_sha256':sha256,
+    return {'session':s,'verified_runtime':verified_runtime,'manifest':manifest,'artifact_sizes':artifacts,'session_path':str(path),'session_sha256':sha256,
             'pinned':{key:str(value) for key,value in pinned.items()}}
 
 
