@@ -91,8 +91,8 @@ def verify_content(raw):
              '/sbin/mount_apfs -o ro ' + volumes['Data'] + ' /mnt2']
     if commands != discovered + final:
         raise ValueError('Unexpected verification commands/order or extra mounts')
-    # Original helper returns before COMPLETE on copyfile or unmount failure.
-    # Also retain original filesystem output after the final writable mount.
+    # The helper returns before COMPLETE on tree mismatch or unmount failure.
+    # Retain original unmount output after the final read-only tree result.
     final_exec = next(r for r in records if r['text'].startswith('INFERNO_TREE_RESULT '))
     tail = raw[final_exec['byte_end']:records[-1]['byte_start']]
     expected = [b"unmounting volume 'Data'", ("unmounting volume '" + SYSTEM_NAME + "'").encode(),
