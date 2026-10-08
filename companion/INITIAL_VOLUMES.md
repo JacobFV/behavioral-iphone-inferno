@@ -49,5 +49,7 @@ Existing ancestor modes and historical records remain unchanged.
 states `initial-volumes-prepared`, `ipa_runtime_ready:false`; it is not accepted
 as an imported-app verification result. All failed/uncertain attempts are
 forensic only. Source and raw marker checks are point-in-time evidence, not an
-exclusive host lock. No runtime execution has been established merely by building
-or host-reviewing this coordinator; an actual allocated recovery run is required.
+exclusive host lock. The first actual run completed guest preparation but failed host retention due
+to inherited group-write permissions. After the coordinator fixed its creation
+umask, the second fresh attempt completed the full recovery and preservation
+path. This establishes this initial-volume phase only, not an installed runtime.

@@ -9,6 +9,25 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-07 21:06:fresh initial volumes passed; Data seeding implementation next
+
+Reviewed umaskfixaf40a60f3b/independent939f736f7e keptsharedfreezerguard unchanged.
+Actual NEWinitial-volumes-stage-2 from frozen8f1bb1a11b completed coordinator0,
+originalroles/newfs/copy/unmount/checkpoint/solefinish/QMPnormal/all7new0444+
+KEEP/ordinaryretention. PIDs116475/116588/116702absent; nofailure/INCOMPLETE.
+Manifest initial-volumes.json SHA
+ af68573561e4a123034dca2d29951e38405b6fb3d2e7052966d631c1cc8eff16
+reports initial-volumes-prepared, ipa_runtime_ready:false. Nativeindependentraw
+audit anddiskworkerevidencepackaging underway. Firstfailedstage1unchanged.
+
+Rootauthorized bootworkerimplementationonly stage-seed-data.py/data_seed.py/docs
+in isolatedtree: consumeexacteligibleinitialmanifest+actualpins, existinghelper
+seedonly, private077/source+prefix/stoppedmetadata/ownedcleanup gates, preserve
+all7/depthlimit. No guestC/keybag/cache/setupchange; noVMuntilreview. Resultmust
+remain seeded-not-byteverified/ipaReadyfalse; separateoriginalROtreeverification
+is required because existing verify-data executes before seeding. Source is8GiB,
+correctedreview440522516f; actualguestspace governs, notlogicaldisklength.
+
 ### 2026-10-07 21:02:90 healthy; first fresh-volume trial hit host-mode guard
 
 Generic90 healthy resource/count0→1 afterONE19e172911a7541fabc2796011229b000,
