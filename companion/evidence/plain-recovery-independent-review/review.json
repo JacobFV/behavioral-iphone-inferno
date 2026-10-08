@@ -1,0 +1,21 @@
+{
+  "verdict": "PASS for narrow supported extraction; no blocking finding",
+  "source_commit": "4b7258c469",
+  "actual_evidence_commit": "09cb0cd2b7",
+  "checks": [
+    "Profile bytes bound to supplied SHA; exact schema/device/board/build/variant checked, ramdisk path unaliased and hash bound both to profile and explicit argument. No implicit firmware lookup.",
+    "Component regular/no-follow/bounded512MiB; canonical definite DER lengths bounded by parent, exact four fields IM4P/rdsk/description/OCTETSTRING, no trailing fields/container bytes. Unsupported encryption metadata/compression rejected rather than processed.",
+    "Plain whole HFS+/HFSX header/version and allocation geometry validated; recognition explicitly not complete filesystem integrity or authenticity.",
+    "New external output gate reuses importer, rejects existing paths and Git worktrees. Source full SHA before/after, descriptor identity/path association checked after copy, profile/source bytes rechecked; output full readback SHA. Failure markers retained.",
+    "Independently replayed retained six synthetic rejection cases; all reject and labeled synthetic plain-header case accepts.",
+    "Independently ran cmp between actual reproduced104685568-byte output and retained raw; exit0. No duplicate full-image hash.",
+    "Independently checked actual external HFS listing bytes against escaped retained text/hash, pinned HFS tool hash and extractor hash. Actual listing evidence records exit0; no new HFS invocation or VM."
+  ],
+  "actual_output_sha256_from_extraction": "5eff57f37009c1d996d6de3d6a069029a855cdc978fd54af0977cac49b42689e",
+  "limits": [
+    "Hash expected values are explicit caller pins, not Apple authenticity verification.",
+    "Imported external_output dependency is source-reviewed here but its hash is not included in extraction.json; record is narrower than a complete software environment attestation.",
+    "No guest boot, decryption, signature/key/ticket operation or filesystem repair performed.",
+    "Independent raw comparison confirms equality, not new original input authenticity or filesystem consistency."
+  ]
+}
