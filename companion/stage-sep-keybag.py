@@ -145,7 +145,7 @@ def validate_inputs(args):
     if len(original_builds)!=1: raise ValueError('Ambiguous original growth helper build')
     inherited=argparse.Namespace(**vars(args));inherited.helper_build=Path(original_builds[0][0]);inherited.helper_build_sha256=original_builds[0][1];inherited.flattened_data=Path(stage['predecessor']['path']);inherited.flattened_data_sha256=stage['predecessor']['sha256']
     _,prior_pins,prior=growth.validate_inputs(inherited);pins.update(prior_pins)
-    if host['source']!=prior['flat']['raw']['path'] or host['source_sha256']!=prior['flat']['raw']['sha256'] or report.get('auxiliary_base',{}).get('report')!=str(Path(prior['flat']['auxiliary_state'])/'report.json') or report['auxiliary_base']['namespaces']!={k.removesuffix('.raw'):v for k,v in prior['base']['auxiliary'].items()}: raise ValueError('Growth predecessor/paired state differs')
+    if host['source']!=prior['flat']['raw']['path'] or host['source_sha256']!=prior['flat']['raw']['sha256'] or report.get('auxiliary_base',{}).get('report')!=str(Path(prior['flat']['auxiliary_state'])/'report.json') or report['auxiliary_base']['namespaces']!={k.removesuffix('.raw'):{field:v[field] for field in ('path','bytes','sha256')} for k,v in prior['base']['auxiliary'].items()}: raise ValueError('Growth predecessor/paired state differs')
     for item in freeze['files'].values():
         if CO.identity(item['path'])!=item['after']:raise ValueError('Growth metadata changed during validation')
     return paths,pins,{'profile_inputs':inputs,'base':chain,'tool':tools,'base_metadata':{p:CO.identity(p) for p in {x['path'] for x in chain['layers']}|{x['path'] for x in chain['auxiliary'].values()}|set(prior['base_metadata'])}}
