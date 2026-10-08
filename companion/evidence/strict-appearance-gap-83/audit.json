@@ -1,0 +1,20 @@
+{
+  "scope": "Read-only live83 telemetry gap/source gate audit; no input/control/change",
+  "captured_time": 1791424162.0847573,
+  "serial_bytes": 309432,
+  "serial_sha256": "850693fa7b73d8c1d74caff96c06f24bf6c9654451be5a3d2fcf4a8971d2cf48",
+  "sources": {
+    "companion/probe_journey.py": "1c4cbb542a79b85560433d62726123b99555ad0a47522d5ecd659faf3a04f308",
+    "companion/app-probe/Main.m": "44e3bb7e87ef37c5bbb12297987dbd7fe3b6ce70529fc8c63c95369e9f50c034",
+    "companion/verify-journey.py": "7fe16cc6ca661c7902a198d789b6ff0290b35f377f1138606a6edf86d13c3298"
+  },
+  "observed": "Currentboot6F133A30-5482-44F2-8D3B-9B751816392F PID227 accepted firstlaunch timing includes appeared, but lifecycle event records1/2/3/5/6/7 omit4 and appeared marker; live strict state waiting-for-app rejected beforecapture.",
+  "gate": "Only genuine INFERNO_UIKIT_PROBE_V1 event=appeared count=0 advances waiting-for-app; timing does not substitute.",
+  "source": "viewDidAppear records timing then marker. Event store advances sequence and attempts send once; no acknowledgment/retry of missing event. Timing and event are separate records. Missing raw transport record does not prove view callback never ran.",
+  "honest_options": [
+    "Keep strict incomplete; perform separately labelled diagnostic manual screenshot/one tap only if root elects, never claim strict gates passed.",
+    "A genuinely later accepted appeared0 before anytap could satisfy sourcegate; ordinary Home/reopen does not guarantee another viewDidAppear.",
+    "New-process recovery verifier main-only prior rule does not cover this prior process with full lifecycle records; do not relabel it as existing approved recovery scope."
+  ],
+  "cause_limit": "No actual failure code for missing event4 identified here; do not infer socket, UIKit or display cause."
+}
