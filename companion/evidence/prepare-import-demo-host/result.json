@@ -1,0 +1,117 @@
+{
+  "scope": "Actual host-only integrated demo IPA pipeline; no recovery/installed VM launch or successpromotion",
+  "source_revision": "be06be031196b52237dc03be628b26db3d673ef6",
+  "session": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/prepare-session-demo-2/session.json",
+    "sha256": "82b7446dac935b0aab9dd5c74e1a56af311ff782d4850c784ebd94c585abf9c1"
+  },
+  "runtime": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/prepare-session-demo-1-inputs/runtime.json",
+    "sha256": "afba737fc6089cd2a600441e7ea1a5674274a53015b820d858d0c076090d9a7f"
+  },
+  "imported_bundle": {
+    "directory_name": "ImportedDemo.app",
+    "executable": "ImportedDemo",
+    "guest_path": "/Applications/ImportedDemo.app",
+    "identifier": "org.inferno.companion.ipademo",
+    "minimum_os": "14.0",
+    "relative_path": "bundle/ImportedDemo.app"
+  },
+  "tree_sha256": "35fd846f9af725483a54d65db7065266c249fc87e568e1e63dc23873082da325",
+  "readbacks_independently_rehashed": [
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/prepare-session-demo-2/recovery/readback-probe",
+      "bytes": 33392,
+      "sha256": "7def2d54fb9a0737666cbe175b38ad442eea5340a07fac202ffd1fda2df849c9"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/prepare-session-demo-2/recovery/readback-launchd-cache",
+      "bytes": 596664,
+      "sha256": "06291b66b9ed5e7886a2893f5c6094c0ae7e3de2fe7ddeef951e67c278e1b843"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/prepare-session-demo-2/recovery/readback-system-launcher",
+      "bytes": 69136,
+      "sha256": "770ff562cc7eb0ad99c32668cf560f18f26a447c12dd353d8656a40a95e9fb28"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/prepare-session-demo-2/recovery/readback-exec-wrapper",
+      "bytes": 67392,
+      "sha256": "56199ba0d01451b9f3f40aeb7d0d67231155aaf7c842e8aa5b51dfb6dc2372e3"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/prepare-session-demo-2/recovery/readback-imported-app.plan",
+      "bytes": 1992,
+      "sha256": "af1d5723b8619b2ee4552e3d585175736e613f786ba7fe8cb5abf5d4405c13c3"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/prepare-session-demo-2/recovery/readback-imported-0000",
+      "bytes": 70880,
+      "sha256": "765dfcc639fdf7a3b4936196e528040fe1c566b17eb99a28d08757460d88676d"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/prepare-session-demo-2/recovery/readback-imported-0001",
+      "bytes": 1012,
+      "sha256": "896344cee09178da2302fd84305002996264384df6f8e3278a46140ed0076dbd"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/prepare-session-demo-2/recovery/readback-imported-0002",
+      "bytes": 47,
+      "sha256": "3f4a0b1e4b9bf2bc63476535707976a2fafaaa3924d222bd7a686678c94f02d5"
+    }
+  ],
+  "expected_guest_markers": [
+    "INFERNO_EXEC_WRAPPER_READBACK bytes=67392 mismatches=0",
+    "INFERNO_SYSTEM_LAUNCHER_READBACK bytes=69136 mismatches=0",
+    "INFERNO_IMPORTED_APP_READBACK bundle=ImportedDemo.app bytes=71939 entries=3 mismatches=0",
+    "INFERNO_IMPORTED_APP_FINISH result=0 unmount=0 errno=0",
+    "INFERNO_CACHE_READBACK bytes=596664 mismatches=0",
+    "INFERNO_PREP_COMPLETE: requested preparation operations succeeded"
+  ],
+  "recovery_command_not_executed": [
+    "/usr/bin/python3",
+    "/tmp/inferno-prepare-import/companion/boot.py",
+    "--profile",
+    "/home/brandonin/.local/share/inferno/app-import/prepare-session-demo-2/recovery/profile.json",
+    "--overlay-base-report",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-from50-sample-1/report.json",
+    "--overlay-tools-root",
+    "/home/brandonin/.local/share/inferno/disk-overlay-tools",
+    "--ramdisk-boot",
+    "--control-mailbox",
+    "--guest-errors",
+    "--binary",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "--manifest",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build-manifest.json",
+    "--seconds",
+    "1200",
+    "--output",
+    "/home/brandonin/.local/share/inferno/app-import/prepare-session-demo-2/recovery-run"
+  ],
+  "retained_failures": [
+    {
+      "stage": "cache binding preflight",
+      "detail": "Actual install30 lacked successful cache marker; rejected before output. Corrected descriptor selects actual install31/helper32 raw evidence."
+    },
+    {
+      "stage": "helper link",
+      "detail": "Canonical lld invocation lost ld64.lld driver basename; failed output retained incomplete. Explicit symlink invocation now resolves to pinned binary without losing driver name."
+    }
+  ],
+  "small_json_negatives": [
+    {
+      "case": "duplicate-key",
+      "rejected": "Duplicate JSON key: schema"
+    },
+    {
+      "case": "nonfinite",
+      "rejected": "Nonfinite JSON constant: NaN"
+    }
+  ],
+  "provenance_limits": [
+    "Cache selection derives from hash-pinned reviewed retained lineage with original profile/readback/serial references; not fresh guest-cache export.",
+    "Whole base loader verification ran twice with identical result; no metadata mutation, no duplicate separate disk hash audit here.",
+    "HFS readback proves prepared ramdisk bytes only; actual System copy, launch and pixels remain future gates."
+  ]
+}
