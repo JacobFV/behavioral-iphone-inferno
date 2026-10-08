@@ -2,6 +2,20 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 17:46: imported fixture78 passed; automated staging retry next
+
+Run78 displayed Tap count0 before and Tap count1 after one explicit counter
+request4c3486b23ddc445dbc38eb40fa0262bd, actual ACK0/rawtap1. Root reviewed
+before-counter/settled and after-counter/observed-0018, then strict QMP after
+capture and its RGB-identical conversion. Normal finish-run exited0/errornull
+in581.156820s. No CPU window, SAMPLE, Home or OPEN; pending-branch original
+kernel coverage remains unmeasured. This success does not resolve prior freezes.
+Visual evidence: companion/evidence/imported-fixture-78-visual. Bootworker owns
+ordinary stopped retention, then fresh coordinated-stage-demo-2 actual retry
+using stable /tmp/inferno-stage-import corrected inventory and session2 pins.
+Diskworker independently audits actual coordinator result. User confirmed Mac
+later; prebuilt developer IPAs remain the active release scope.
+
 ### 2026-10-07 17:35: coordinator preflight corrected; pending-branch78 launching
 
 Coordinatorfirstattempt failedBEFOREoutput/VM/diskmutation: invented sourcepath
