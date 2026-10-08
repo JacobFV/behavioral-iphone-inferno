@@ -170,7 +170,9 @@ sent. Normal report/QMP shutdown and process disappearance precede freezing.
 Only the seven newly allocated files inside this fresh report are frozen, via
 verified descriptors, with identity/hash and readable-FD checks. Parent/backing
 files are never chmodded. Default stopped preservation and the stopped stage
-verifier must then pass before `verified-stage.json` is published.
+verifier must then pass before `verified-stage.json` is published. A consumable
+result additionally requires both `INCOMPLETE.json` and `failure.json` to be
+absent; the eligibility JSON alone is insufficient.
 
 Any failure retains `INCOMPLETE.json` and `failure.json`, logs and possible partial
 freeze records. Do not consume that directory even if an intermediate report
