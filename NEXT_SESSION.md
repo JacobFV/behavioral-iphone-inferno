@@ -9,6 +9,33 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-07: fresh initialization through SEP/keybag passed; runtime remains unfinished
+
+Original APFS growth passed (actual 5d8a8af1cf, independent bcab00f794),
+result SHA5825856bf0fdb53542437d578dd09eb466c24edf703f8880d2b6c57c23d9c358.
+Fresh SEP/keybag preparation passed (actual edf0e5205e, independent 0346134e65),
+result SHA04547b9971e6d8fa01b674e26fd7e0b05cd28dc7bb2524145e456590ed00ab09
+at ~/.local/share/inferno/app-import/sep-keybag-stage-1/sep-keybag.json.
+Original APIs recorded fresh effaceable state 0 to 1 and MKB creation status 0;
+ordered unmounts, sole normal finish, all seven disk preservation and ancestry
+checks passed. All recovery processes stopped. Depth3, IPA runtime ready false.
+This does not prove destination SEP bytes, full Data after growth, installed
+boot, first unlock, Setup completion or fresh-runtime app execution.
+
+Next: disk_path implements a fixed read-only fresh launchd configuration exporter
+and full dyld cache hasher; boot_runner implements a separately typed flatten
+consumer for the successful keybag tuple. Both use isolated ownership and need
+source review before execution. The inspector child is observation only, never
+an implicit runtime base. Root integrates and reviews; native_probe audits.
+Host free space measured about19GiB: large flatten execution held for capacity
+review, source work continues. No retained artifacts or ancestors may be deleted.
+
+First IPA-first release remains blocked on reproducible runtime installation and
+fresh-image app journey, intermittent display/app reliability, and broader IPA
+validation/packaging. Current successful legacy-lineage IPA journeys establish
+an internal prototype, not release readiness. Mac/Xcode project builds deferred
+at the user's request; no Mac required for the current prebuilt-IPA work.
+
 ### 2026-10-07 21:43:original APFS growth attempt live; SEP/keybag implementation next
 
 Growthsource2c7ed6383b→582a19ec5d, actualreadonlypreflightab6a7b01db and
