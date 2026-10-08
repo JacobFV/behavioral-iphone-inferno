@@ -1,0 +1,69 @@
+{
+  "status": "read-only plan only; no new code, VM, image hash or export",
+  "sources": {
+    "companion/fs-patches/README.md": "fdcc66dc686dced34862959caa6e74aec11bf50bc0eaf40b5c48c38ff0fa2933",
+    "companion/fs-patches/make-plan.py": "f3e29ad772c7f769d9b8dcc2117267c7c25ade1766c7206595244e558af62e6b",
+    "companion/fs-patches/cache-patch.c": "eb18e50ed0cf28862fa78a4173a72ca55a24f176fa8dfc9eca9314b18c0fbac7",
+    "companion/fs-patches/prepare.py": "c2a23d5dde82dcd2863f96083b0cb6918dba29343c2f0b050e2f0fc6d29380ef",
+    "companion/fs-patches/build.sh": "d799f24a8c4c0f1a5d29c3116d4a1bd7b8a1f41fe0be68fa884700a2aa83f726",
+    "companion/native-probe/merge-launchd-cache.py": "2bce3330224dd6edd927658a9a6fb7eef7753acce2290a572fb6fc3cfe998fc1",
+    "companion/native-probe/prepare.py": "1dbdaccd542643397c30ee3ff0f43c3b3fe639752e586da4806cd0ebf402d85a",
+    "companion/native-probe/prepare-root.c": "20a4eaf4b7a900573b172f4f59f04e5268f0e930534d7794d3b1bcdb4ee7d539",
+    "companion/prepare-import.py": "3f428668264b479f54777a3b41b01e0e79efd7cc204b4846261ba14d883535ab"
+  },
+  "starting_lineage": "Actual grow-data-stage-1 depth2, then separately verified original keybag initialization; cannot inherit historical cache-install31 provenance. Keybag execution/result pending when this plan was written.",
+  "smallest_next_deliverable": {
+    "name": "fixed read-only runtime cache inspector/exporter and bounded host reconstruction",
+    "guest": "Owned helper mounts System read-only; fixed launchd cache path /System/Library/xpc/launchd.plist only, bounded regular size<=2MiB, exports exact offset-tagged bytes and full hash; fixed dyld cache path /System/Library/Caches/com.apple.dyld/dyld_shared_cache_arm64e reports complete SHA256 and size without exporting2GiB. Clean unmount before unique COMPLETE.",
+    "host": "Explicit current stopped base/result pins, source/tool/helper hashes, fresh clone and six paired auxiliaries, ordered unique records/contiguous offsets/length/hash/EOF/no truncation, plist schema checks, normal stop/all7 retention. All extracted Apple configuration/cache artifacts external. No arbitrary path export.",
+    "why": "Current crash/owned export caps131072B and exports known Data paths, not original launchd cache; current filesystem patch tool needs externally supplied original cache bytes. A fixed fresh inspector supplies current-base provenance and original launchd configuration without transplanting install31."
+  },
+  "renderer_plan": {
+    "upstream": "InfernoFSPatcher3008aaaa0909824a71ee3040c9edc58703c250f5 AGPL-3.0-or-later",
+    "host_inputs": "Original cache extracted read-only from explicitly supplied original System image (existing7zip tool or supplied exact artifact); original/patched/sidecar outsideGit; pin all hashes and actual patcher invocation/build. Do not re-download firmware or claim existing oneoff build is reproducible.",
+    "known_original_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+    "known_patched_sha256": "af1001abe5b075afd337bf110562746c3e006e9d93951e163fc5daae062aeab8",
+    "known_plan_sha256": "c20a73ee8aa777ea36595cf60fb1ed86b9fc4a3bad42645a34045536ab01b079",
+    "known_size": 2052489216,
+    "known_records": 45,
+    "known_replacement_bytes": 180,
+    "producer": "Existing make-plan.py validates old sidecar bytes/new bytes/full input hashes and every byte outside records; retain new actual generator record. Historical hashes are expectations, not fresh application evidence.",
+    "guest_apply": "Existing cache-patch.c validates full originalSHA before any write, all45records then pwrite/fsync/readback/full patchedSHA/unmount/result0. Dedicated normal coordinator needed: historical actual cache-patching-1 used intentional interrupt/forensic report, unsuitable as new normal base.",
+    "limits": "No Apple signature edits or forging. Existing renderer patch behavior remains experimental and recurrent display failures remain unresolved."
+  },
+  "launchd_and_owned_runtime": {
+    "original_configuration": "Fresh exported launchd plist, not historical merged cache. Preserve all original mappings/metadata unless an explicit existing reviewed option is selected.",
+    "merge": "merge-launchd-cache.py --job adds owned jobs; --replace-owned-job requires exactly one owned label. Original cache432jobs historically; fresh count/hash must be checked. Optional disable-unsupported-services modifies five documented original service entries; make explicit/pinned and do not silently enable it.",
+    "components": [
+      "owned readiness observer plus exact job",
+      "owned HID console helper plus exact job/capabilities",
+      "owned null-secret unlock helper/job required for normal first-unlock initialization flow",
+      "owned imported demo/fixture and explicit wrapper/launcher/job",
+      "merged launchd configuration, original .sig unchanged"
+    ],
+    "build_gaps": "Existing build.sh/fixture scripts exist but several rely on external tool/cache export audit state; new producer must expose exact compiled source/tool/stub/entitlement pins and raw installed-cache import audit. Reuse existing reproducible preparation-helper producer; do not change guest behavior to hide build gaps.",
+    "staging_gates": "native-probe/prepare.py supports payloads and HFS extraction readbacks; prepare-root.c logs exact per-component readbackbytes/mismatches then unmount/COMPLETE. A fresh fixed operation coordinator must validate every requested operation and unique raw completion, normalquit/all7.",
+    "boot": "Explicit --launchd-unsecure-cache selects original documented loader mode, no signature generation; actual new boot must prove owned observer/HID and ordinary Setup separately from build/staging."
+  },
+  "provenance_contract": {
+    "must_bind": [
+      "new initialized base and all6 namespaces",
+      "fresh cache inspector/export raw and host hash",
+      "actual original host dyld artifact and complete guest SHA",
+      "actual patcher/generator plan",
+      "actual guest patch fullbefore/afterSHA and normal result",
+      "actual launchd merge source/jobs/all-other-entry equality",
+      "new installation profile/HFS readback/raw guest readback/normal report",
+      "later Setup/migration and current runtime base lineage"
+    ],
+    "consumer_gap": "prepare-import.validate_runtime currently accepts only reviewed-retained-lineage-not-fresh-guest-export with install_profile/report/serial/cache_readback/raw_preparation/lineage_evidence. New producer must emit real new installation references; must not point at31 or merely change basis label. A narrowly reviewed consumer/schema extension can describe new explicit lineage once actual phase proof exists."
+  },
+  "depth_budget": "Grow2\u2192keybag3. Further patch/install stages cannot all fit. Flatten the successful initialized/keybag tuple before patch/install (existing flatten-verified-data currently only recognizes initial/seed/verify, so a narrowly typed initialized-phase flatten consumer extension is needed). Read-only inspector may use a disposable sibling clone while binding immutable base and requiring cacheSHA again during patch; do not silently claim its modified auxiliary copy is the runtime base. Budget patched2\u2192installed3\u2192Setup4 then flatten successful initialized runtime before repeated IPA recovery/boot children.",
+  "not_claimed": [
+    "fresh image ready for arbitraryIPA",
+    "genericXcodebuild onLinux",
+    "new runtime identity from historical install31",
+    "whole cache/export success from tool assertions alone",
+    "display freeze fixed"
+  ]
+}
