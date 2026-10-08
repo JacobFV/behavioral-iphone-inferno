@@ -76,7 +76,7 @@ def main():
             command += ['-needed_library', str(stub)]
         run(command + [str(obj), '-o', str(executable)])
         executable.chmod(0o755)
-        for name in ('Info.plist', 'Guide.txt', 'UIKit.tbd'):
+        for name in ('Info.plist', 'Guide.txt'):
             shutil.copyfile(source / name, bundle / name)
             (bundle / name).chmod(0o644)
         ipa = output / 'NavigationDemo.ipa'
