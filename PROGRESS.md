@@ -2,6 +2,24 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07: fresh runtime inspector recovery authorized and running
+
+Shared validator correction c0e839c792, guarded flatten581b131304 and actual
+read-only base preflight ecf38b22ca integrated. Final independent review2b1cfb9f48
+passed. Inspector actual input preflight51d6acaa69 passed65.01seconds, plan SHA
+26a40fcb227368a9f17ffdce61ed7fbed8ff2827b714f82aca8c0c26fc119aa0.
+Root authorized one exact planned invocation from the external preflight record.
+Frozen /tmp/inferno-runtime-inspector tip e3b4f06c9e; coordinator1032152,
+external app-import/runtime-inspection-stage-1. Disk worker monitors the sole
+coordinator; no manual QMP, second VM or retry. Full raw serial and exported
+Apple launchd configuration remain external; commit only paths/digests and clearly
+derived nonexport marker excerpts. No actual inspector result yet.
+
+Boot worker now owns fresh cache patch coordinator in /tmp/inferno-fresh-cache-stage;
+native worker owns new fresh host runtime artifact/merge producer. Root owns
+integration and launch decisions. Typed keybag flatten stays held by34GiB free
+space requirement; async user question pending, smaller work continues.
+
 ### 2026-10-07: reproducible runtime helper builds passed; inspector in final review
 
 New cache producer17c4a74c88, source review911ab72d43, actual buildf76841426b
