@@ -1,0 +1,94 @@
+{
+  "conclusion": "Actual independently named imported app resource and Count0-to1 journey supported by bound staging, original process/LS records, one HID submission and independently reviewed pixels.",
+  "input_binding": {
+    "manifest_sha256": "68cdc3ece31d151ad693766d2a288d8b4ea5ec12b24f1be7be3ea2cd5abbc66a",
+    "tree_sha256": "35fd846f9af725483a54d65db7065266c249fc87e568e1e63dc23873082da325",
+    "bundle": {
+      "directory_name": "ImportedDemo.app",
+      "executable": "ImportedDemo",
+      "guest_path": "/Applications/ImportedDemo.app",
+      "identifier": "org.inferno.companion.ipademo",
+      "minimum_os": "14.0",
+      "relative_path": "bundle/ImportedDemo.app"
+    },
+    "source_revision": "cd86f465c84cd7d9eaf6baac1c848dc67ca80e38",
+    "built_source_hashes": {
+      "/tmp/inferno-ipa-demo/companion/ipa-demo/Main.m": "9cb549881188a5dfcd781ff21bc3bdbae152274cc37505c843ea6de5bd23d12e",
+      "/tmp/inferno-ipa-demo/companion/ipa-demo/Info.plist": "896344cee09178da2302fd84305002996264384df6f8e3278a46140ed0076dbd",
+      "/tmp/inferno-ipa-demo/companion/ipa-demo/Message.txt": "3f4a0b1e4b9bf2bc63476535707976a2fafaaa3924d222bd7a686678c94f02d5",
+      "/tmp/inferno-ipa-demo/companion/ipa-demo/build.py": "f6daf8137c11abfd2a616518448c473b5826bcf3840615670b9da8ea652ac3a8",
+      "/tmp/inferno-ipa-demo/companion/app-probe/UIKitNarrow.h": "a78977e34024c0667f69906f6238659a0db950bae7b6fcb08115116dda6549de",
+      "/tmp/inferno-ipa-demo/companion/app-import.py": "e2ae5081168b99f4989cc759e797ae1381b595e263adea825705993685c1ce56"
+    },
+    "stage_profile_sha256": "29114c9ae87db8d28890dbc70d87dc9372bcb48fd2d1e2a293d2c58850c068ac",
+    "stage_report_sha256": "c72d834983044d115cd1f3a0e7b7e0475eac750c167bbf4e3f008c1cd61b9433",
+    "stopped_manifest_sha256": "a61e7a945aff29963da27c28e7300d3df14dc4e15ed122b97f446b656ae80bbf",
+    "launcher_sha256": "770ff562cc7eb0ad99c32668cf560f18f26a447c12dd353d8656a40a95e9fb28",
+    "wrapper_sha256": "56199ba0d01451b9f3f40aeb7d0d67231155aaf7c842e8aa5b51dfb6dc2372e3"
+  },
+  "raw_serial_sha256": "b05c426d3f1388ca61446debe7620cb20dcf733964606029116943f4f5882d9f",
+  "observations": {
+    "LS": "Exact bundle proxy valid/typeSystem; original open callback accepted1. Duplicate NSLog/plain lines are not two distinct launches.",
+    "process": "Original observer ps rows repeatedly list PID231 uid501 exact /Applications/ImportedDemo.app/ImportedDemo.",
+    "input": {
+      "request": {
+        "request_id": "c9a590e4b36946c289a601a67c41ecd3",
+        "kind": "tap",
+        "duration_ms": 150,
+        "x": 16384,
+        "y": 18102
+      },
+      "one_before_send": true,
+      "one_guest_request": true,
+      "one_ack0": true,
+      "down_and_up_result": "0x0"
+    },
+    "pixels": [
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-75/before-counter/settled.png",
+        "sha256": "b3392d3119618786d93347847dedb629abb2150f9ad6ca5361c306b7cae09265",
+        "received_time": 1791417635.0665789
+      },
+      {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-75/after-counter/observed-0018.png",
+        "sha256": "dcdeb893f426ead8710c6078dc0f6663ecd183949f8910bbb2dcf6d2be0a97fb",
+        "received_time": 1791417668.5290575
+      }
+    ],
+    "visual_review": "Reviewer viewed full originals: before Count0/resource text, after Count1/same resource text. Root retains visual evidence; no duplicate images here.",
+    "shutdown": {
+      "exit_code": 0,
+      "quit_response": {
+        "return": {},
+        "id": 82
+      },
+      "finish_requested": true
+    }
+  },
+  "limits": [
+    "LS acceptance and ps alone do not prove rendered UI; HID ACK alone explicitly delivery-unproven. Pixel comparison supplies response evidence.",
+    "No app telemetry or precise internal increment timestamp/latency; no claim of exclusive PID identity from screenshots alone.",
+    "Resource text corresponds to original Foundation bundle-file read in pinned owned source; no runtime file-open trace collected.",
+    "One simple thinARM64 resource app; not arbitrary IPA dependencies, entitlements, signing, nested frameworks, network behavior or AppStore compatibility.",
+    "No Xcode/Mac build route claim; no fix or universal reliability claim for persistent display freezes.",
+    "Recovery stage stopped by intentional Signal15 after PREP_COMPLETE; app run exited0 after finish-observation. Distinct milestone scopes retained."
+  ],
+  "stage_serial_sha256": "7b6c26c1e590f1e7b3d9e2b04d60685e1335686bd07636e763451b08c9aa473c",
+  "stage_actual_records": [
+    {
+      "byte_start": 54003,
+      "text": "INFERNO_IMPORTED_APP_READBACK bundle=ImportedDemo.app bytes=71939 entries=3 mismatches=0",
+      "sha256": "c9a161899a292ed191b5381d9c45989ff3405906e7e4fe27837315b720a5e3d6"
+    },
+    {
+      "byte_start": 54699,
+      "text": "INFERNO_IMPORTED_APP_FINISH result=0 unmount=0 errno=0",
+      "sha256": "4a1b505cbe081da500ec5d27545666414046a212875aa60cac6ed4916e3fa6bd"
+    },
+    {
+      "byte_start": 57519,
+      "text": "INFERNO_PREP_COMPLETE: requested preparation operations succeeded",
+      "sha256": "fe4dd46bcb9a496b838f072a4a0d2d31212a326cf1ebc311e3fa49b41b69e625"
+    }
+  ]
+}
