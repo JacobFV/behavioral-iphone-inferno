@@ -80,3 +80,39 @@ and is rejected when a probe journey is active; its existing completion gate
 still applies. Run75 completed this uninstrumented guest journey and normal shutdown; retained
 visual evidence is in `evidence/ipa-demo-75-visual/`. This single app does not
 establish general compatibility or resolve the intermittent display freeze.
+
+## Prepare a complete host session
+
+`prepare-import.py --ipa /external/Owned.ipa --runtime /external/runtime.json
+--runtime-sha256 SHA256 --output /external/NEW` performs import, bound helper
+build, one owned cache-job replacement, and recovery ramdisk preparation. It
+never boots, modifies base disks, freezes files or declares an app successful.
+Root command integration is separate.
+
+Runtime schema `inferno.local-ipa-runtime.v1` requires exact `inputs` pins
+(`path`, `sha256`) for profile, raw_ramdisk, probe, disk_helper, helper_build,
+hfsplus, clang, linker, cache, base_report, emulator and emulator_build; also
+`overlay_tools_root` and `cache_binding`. All paths must be absolute regular
+unaliases (resolve tool symlinks when making the descriptor). The helper build
+must bind the current preparation sources and binary. Existing profile and
+recorded-overlay validators check original components and all base dependencies.
+The base must have depth available for both recovery and installed child layers.
+
+The cache binding is explicit selected configuration, **not independently proved
+current guest cache identity**. It requires basis
+`reviewed-retained-lineage-not-fresh-guest-export`, exact `base_report_sha256` and
+`cache_sha256`, pinned original `install_profile`, `install_report`,
+`install_serial`, `cache_readback`, `raw_ramdisk_preparation`, and a nonempty list
+of pinned `lineage_evidence`. The fixed checks bind the original profile/cache
+readback and actual raw successful cache-install marker; every retained lineage
+reference must exist and hash-match. A reviewer still assesses the intervening
+lineage. No arbitrary JSON predicate can waive these checks. Actual new recovery
+readback is required later. Supply local firmware/cache/base assets yourself;
+the command distributes none.
+
+Successful output contains `session.json` with status
+`host-prepared-not-staged`, pinned artifacts, exact subprocess logs, expected
+recovery markers and a proposed recovery argv. `INCOMPLETE.json` or failure output
+must not be consumed. Every prepared HFS readback is checked; base dependencies
+are reverified after host preparation. No existing app collision exception is
+provided by this generic command. Failed recovery clones are never eligible.
