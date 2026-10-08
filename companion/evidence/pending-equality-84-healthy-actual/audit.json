@@ -1,0 +1,285 @@
+{
+  "scope": "Actual84 healthy original Clock calibration, separate from preceding strict/warm acceptance; no worker runtime actions",
+  "parser_sha256": "6952324aa8c92be314a7aa33af5632c28c99607d3dcb8901c3722298c35578eb",
+  "binary_sha256": "0889bfe40c6bbb3e6eb9d493ada2bb86637e1d7acb61e36699e16da2568563f2",
+  "build_manifest_sha256": "1c0ca353df0b88956f071503654a9a0a3f1e22346270e89accdfaa911391f096",
+  "runner_sha256": "beb55cb892ad246e215a5aa8d1178fc7dcbac6c63adfca6591c9da58606cf097",
+  "control_source_sha256": "906716956328980c1a054f1836298471b88acd1db8788c8d18b78b8cbc7c01a2",
+  "pins": {
+    "zero_slide": true,
+    "exact_five_filter": true,
+    "default_CPU_off": true,
+    "nine_ADP_disabled_checks": true
+  },
+  "window": {
+    "before": {
+      "time": 1791425670.4768395,
+      "monotonic_ns": 844854353317483,
+      "stage": "before-enable",
+      "seconds": 1,
+      "offset": 5950,
+      "inode": [
+        66306,
+        48638299
+      ],
+      "profile": "pending-equality",
+      "filter": "0xfffffff0096f1bc0+4,0xfffffff0096f1bf4+4,0xfffffff0096f1e4c+4,0xfffffff0096f1e50+4,0xfffffff0096e219c+4",
+      "slide_evidence_sha256": "90d324fa1e1c26c49589cda1ea8076ea1c3f9073a1f1fccf44bdc91ae15d91eb"
+    },
+    "restored": {
+      "time": 1791425671.489015,
+      "monotonic_ns": 844855365493021,
+      "stage": "restored",
+      "reason": "deadline",
+      "offset": 592306,
+      "bytes_since_enable": 586356
+    },
+    "enable_reply": {
+      "time": 1791425670.4771054,
+      "monotonic_ns": 844854353583548,
+      "stage": "after-enable",
+      "response": {
+        "return": "",
+        "id": 120
+      }
+    },
+    "restore_reply": {
+      "time": 1791425671.488981,
+      "monotonic_ns": 844855365459725,
+      "stage": "after-restore",
+      "response": {
+        "return": "",
+        "id": 122
+      }
+    },
+    "all_snapshot_offsets_inside": true
+  },
+  "populations": [
+    {
+      "role": "accepted-mode",
+      "fields": {
+        "mode": 0
+      },
+      "snapshots": 200
+    },
+    {
+      "role": "final-return",
+      "fields": {
+        "status": 0
+      },
+      "snapshots": 4
+    },
+    {
+      "role": "final-return",
+      "fields": {
+        "status": 3758097109
+      },
+      "snapshots": 195
+    },
+    {
+      "role": "matching-request-local-false",
+      "fields": {
+        "matching_request_local": 0
+      },
+      "snapshots": 191
+    },
+    {
+      "role": "matching-request-local-true",
+      "fields": {
+        "matching_request_local": 1
+      },
+      "snapshots": 4
+    },
+    {
+      "role": "token-equality-predicate-true",
+      "fields": {
+        "pipeline_bf4_token": 468,
+        "requested_token": 468
+      },
+      "snapshots": 27
+    },
+    {
+      "role": "token-equality-predicate-true",
+      "fields": {
+        "pipeline_bf4_token": 469,
+        "requested_token": 469
+      },
+      "snapshots": 52
+    },
+    {
+      "role": "token-equality-predicate-true",
+      "fields": {
+        "pipeline_bf4_token": 470,
+        "requested_token": 470
+      },
+      "snapshots": 69
+    },
+    {
+      "role": "token-equality-predicate-true",
+      "fields": {
+        "pipeline_bf4_token": 471,
+        "requested_token": 471
+      },
+      "snapshots": 10
+    },
+    {
+      "role": "token-equality-predicate-true",
+      "fields": {
+        "pipeline_bf4_token": 472,
+        "requested_token": 472
+      },
+      "snapshots": 34
+    }
+  ],
+  "counts": {
+    "accepted-mode": 200,
+    "token-equality-predicate-true": 192,
+    "matching-request-local-false": 191,
+    "final-return": 199,
+    "matching-request-local-true": 4
+  },
+  "raw_QMP_matches": [
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791425670.468389,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 111, \"arguments\": {\"name\": \"apple_adp_submit\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791425670.469519,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_submit\", \"state\": \"disabled\"}], \"id\": 111}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791425670.4697497,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 112, \"arguments\": {\"name\": \"apple_adp_bh\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791425670.470356,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_bh\", \"state\": \"disabled\"}], \"id\": 112}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791425670.4703863,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 113, \"arguments\": {\"name\": \"apple_adp_pipe\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791425670.471018,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_pipe\", \"state\": \"disabled\"}], \"id\": 113}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791425670.4710362,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 114, \"arguments\": {\"name\": \"apple_adp_output_ready\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791425670.4718451,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_output_ready\", \"state\": \"disabled\"}], \"id\": 114}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791425670.471873,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 115, \"arguments\": {\"name\": \"apple_adp_irq_write\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791425670.4726005,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_irq_write\", \"state\": \"disabled\"}], \"id\": 115}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791425670.4726198,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 116, \"arguments\": {\"name\": \"apple_adp_unknown_mmio\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791425670.4735396,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_unknown_mmio\", \"state\": \"disabled\"}], \"id\": 116}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791425670.4736674,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 117, \"arguments\": {\"name\": \"apple_adp_gp_config_write\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791425670.4746203,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_gp_config_write\", \"state\": \"disabled\"}], \"id\": 117}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791425670.4747477,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 118, \"arguments\": {\"name\": \"apple_adp_status_read\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791425670.4756489,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_status_read\", \"state\": \"disabled\"}], \"id\": 118}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791425670.475782,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 119, \"arguments\": {\"name\": \"apple_adp_read_caller\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791425670.4766746,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_read_caller\", \"state\": \"disabled\"}], \"id\": 119}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791425670.4768507,
+        "raw": "{\"execute\": \"human-monitor-command\", \"id\": 120, \"arguments\": {\"command-line\": \"log cpu,nochain,guest_errors\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791425670.4770937,
+        "raw": "{\"return\": \"\", \"id\": 120}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791425671.4883351,
+        "raw": "{\"execute\": \"human-monitor-command\", \"id\": 122, \"arguments\": {\"command-line\": \"log guest_errors\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791425671.4888687,
+        "raw": "{\"return\": \"\", \"id\": 122}\r\n"
+      }
+    }
+  ],
+  "interpretation": "Actual production PC coverage for allfive sites is established. Frequent token-equality/matchfalse/pending populations occur in this healthy calibration; equality alone does not identify freeze cause. Tokens span468..472 and finalstatus population includes4zero. No per-call conjunction is asserted.",
+  "limits": [
+    "Counts snapshots not invocations, unequal counts retained; no CPU/process/thread attribution or pairing.",
+    "Mode0 observed at mode site only, not propagated to other blocks.",
+    "pipeline_bf4_token is neutral offset label, not done/released fence; positive comparison precedes latch store.",
+    "Matchingfalse/true are conditional continuation subsets, and true cannot distinguish active versus queued.",
+    "Root owns visual advancing-clock validation; this register audit does not infer pixels from statuses.",
+    "One globally nochain-perturbed window, no performance/unperturbed scheduling claim.",
+    "Live prefixes after restore are labeled, not final stopped reports."
+  ]
+}
