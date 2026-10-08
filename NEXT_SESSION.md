@@ -9,6 +9,30 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-07 19:21:84 calibration proved allfive production sites; persistent stage running
+
+84 completed strict0→1, three warmcycles ending4, and originalClockstopwatch
+healthy calibration, thenreturned sameapp269 retained4. Normalfinish-run exit0/
+errornull/1149.728749s, strict/initialPASS, ordinaryall7/ancestors4d2fb43eac.
+Visuale2186a2d2b; independentCPU73f6748f17:ONE1s enable120 at5670.4771054,
+restore122 at5671.488981, offsets5950..592306/586356bytes, all9off actualACKs.
+786complete/all5productionPCs/nounknown/malformed/semantic errors. Mode200all0;
+equality192token468..472; matchingfalse191/true4; final199=195pendingE00002D5
++4zero. Counts unequal/independent, no pairing/modepropagation. Rootreviewed
+Clock00:01.67→00:14.47 before, continuous40s01:00.54→01:41.23 afterrestore,
+stopped03:49.18,returnedapp4. Equality/matchfalse/pending coexist with healthy
+advancing frames/tokens; none alone diagnosesfreeze. No failedfivePCcapture yet.
+No samples/modelpatch. Newdoc records actualcoverage without genericguarantees.
+
+VMslot rootauthorizedONE stage-import from persistent3f8b2d5623 unchangedtree,
+newdurable-prepare-demo-1 sessionfaaa48f9b2f7a9f8f1b6f705e09c72a59c05c1025c7af7d355ed1a4af35ed044.
+Coordinator3969904, NEW ~/.local/share/inferno/app-import/durable-stage-demo-1.
+Automatic ordinarycheckpoint/finish/shutdown/freeze7/retention validators; no
+manualinput/retry. Bootworker lifecycle, diskworker independentfinalaudit.
+No installedbootuntilrootgo. Native boundedpositive ringtokenwriter investigation
+from existing symbolmetadata; only named smallfunctionranges ifneeded, no broad
+Apple dump or guestmemoryread/implementationpatch.
+
 ### 2026-10-07 19:11:84 healthy warm work; durable preparation passed
 
 83 forensic retentionacb1873f8c completed all7/ancestors, strict rejected.

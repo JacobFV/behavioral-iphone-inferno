@@ -112,8 +112,13 @@ snapshot populations: do not pair them, subtract their counts, or propagate a
 mode to another snapshot. `pipeline_bf4_token` names a field offset, not proof of
 completion or safe reuse. Missing sites do not prove absent branches. Inspect
 unknown/malformed records and semantic violations before interpreting results.
-Owned relocated fixture coverage and cleanup passed; original-kernel reachability
-must be established separately by the actual production capture.
+Owned relocated fixture coverage and cleanup passed. Healthy run84 then captured
+all five original-kernel sites during an advancing Clock stopwatch:786 complete
+snapshots with no unknown PCs or semantic violations. It included mode0, positive
+equality, both matching-local values, and pending/successful returns. Those
+independent populations are a healthy calibration, not failed-state coverage;
+equality or a pending return alone cannot diagnose a freeze. See
+`evidence/pending-equality-84-healthy-actual/`.
 
 ## Start one disposable guest
 
