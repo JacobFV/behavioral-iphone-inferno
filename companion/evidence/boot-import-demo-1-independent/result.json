@@ -1,0 +1,188 @@
+{
+  "scope": "Independent actual boot-import wrapper/source/raw-shutdown audit; no VM, disk metadata changes or namespace hashes",
+  "artifacts": {
+    "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/launch.json": "32f30281be9d377203a3ca919948924e188a1707297c4b7be6a961f02ee6e3f9",
+    "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/runner-process.json": "c2e5dd158a37c23621483b6fc4864a71613521f6a75ee09d85192e5f2e148df5",
+    "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/completed-run.json": "562be0da4707b9f0e438f214c56dbfef2e3f2efae4ac6117d0fcec0b94ff90fa",
+    "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/stdout.log": "455f2c9461e09bb3e9818960cd6ba265bff5f4b9c62056df15b906dd307a87d8",
+    "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/report.json": "83f378dadf9d2ce8daf232e34a31948102f48be49bb77f779d5893aed6491042",
+    "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/command.json": "d78a6aa9d178b6a65e008b2034de72d9d7ed752bc1b8a23edc6a2c5ff552b020",
+    "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/profile.json": "7939d609b99b8223863dba0b0af9d181526b420c0023cc9520563fd7e0979ed8",
+    "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/serial.log": "b2522914f968b0c1300a276c6b91dd5f1bbf49387c879fed23a68464152ac02c",
+    "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/control-transcript.jsonl": "886f08713282dc7d7c656dac7215ada5df7863797107e598ca2ab0627fa0fe1e",
+    "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/qmp-transcript.jsonl": "89cff01a2a48b75c68a6d9be938fed94bf339a5a938d86a5200931b7d2b3acff"
+  },
+  "source_sha256": {
+    "/tmp/inferno-boot-import/companion/stage-import.py": "649dfb8fffaf9a454861fc3d5281864c77d362990db1dd8458fe80ac1451bae0",
+    "/tmp/inferno-boot-import/companion/import_stage.py": "8a1df10b2eca704a7fadc61965251fe7f8c396ddd554835819bb0e4670619761",
+    "/tmp/inferno-boot-import/companion/preserve-stopped.py": "904655ac4653ed7f860851aa71719540bc66716c2896ccd4858fd3fcb22b61e7",
+    "/tmp/inferno-boot-import/companion/disk_overlay.py": "16180ed475f586b60031c129bf2a11169597dca10fc77a804d9fcdf0f20e3978",
+    "/tmp/inferno-boot-import/companion/app-import.py": "e2ae5081168b99f4989cc759e797ae1381b595e263adea825705993685c1ce56",
+    "/tmp/inferno-boot-import/companion/boot.py": "8089c0bbffd7cc964d982d6fc199147a785efa1bfe134464b60301f257631037",
+    "/tmp/inferno-boot-import/companion/qmp_control.py": "0c147c8fa9fea8414f8f5a79c6a904b3c2b0f123352de142b03eaca56526afb7",
+    "/tmp/inferno-boot-import/companion/probe_journey.py": "1c4cbb542a79b85560433d62726123b99555ad0a47522d5ecd659faf3a04f308",
+    "/tmp/inferno-boot-import/companion/headless_refresh.py": "a19f60baf3aa4351998ca8fe977f5989797af7bcb125c6185948981c3c9c134a",
+    "/tmp/inferno-boot-import/companion/boot_milestones.py": "4aefd213f1587f2b93969378f34183053375d5d2a088e013d4626ebab0a5571a",
+    "/tmp/inferno-boot-import/companion/boot-import.py": "2ea8839efaae5eb9f59fe63d0d12346cba51a3f1818672cb0b660ac785ad7a8d",
+    "/tmp/inferno-boot-import/companion/run": "1a353522f23308e5018b8a84af1f1866e0fd6b35d12563dcf3bb241e0a454a86"
+  },
+  "selected_stage_sha256": "79bbdd1c93261b347977293ab70e0756f5341dfca8bd9a17f596879b2fe1b83f",
+  "selected_session_sha256": "82b7446dac935b0aab9dd5c74e1a56af311ff782d4850c784ebd94c585abf9c1",
+  "fixed_command": [
+    "/usr/bin/python3",
+    "/tmp/inferno-boot-import/companion/boot.py",
+    "--profile",
+    "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/profile.json",
+    "--binary",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "--manifest",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build-manifest.json",
+    "--overlay-tools-root",
+    "/home/brandonin/.local/share/inferno/disk-overlay-tools",
+    "--overlay-base-report",
+    "/home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-2/recovery-run/report.json",
+    "--disk-boot",
+    "--launchd-unsecure-cache",
+    "--control-mailbox",
+    "--guest-hid-serial",
+    "--guest-errors",
+    "--capture-interval",
+    "10",
+    "--seconds",
+    "1200",
+    "--output",
+    "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot"
+  ],
+  "actual_profile_inputs": {
+    "kernel": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/kernel-kernelcache.research.iphone12b",
+      "sha256": "cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3",
+      "bytes": 17429507
+    },
+    "dtb": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+      "sha256": "dbd9be96c4b18f48a1842879237ae8f27043b894a2ed6139e396dbedca232411",
+      "bytes": 42553
+    },
+    "trustcache": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache",
+      "sha256": "af33b3466bd828bf1ccaa1ab35d060bfcce62ade26ee74acf176501b00ea0d7f",
+      "bytes": 4931
+    },
+    "ramdisk": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/ramdisk-038-44135-124.dmg",
+      "sha256": "4013d9b3bb6c7fa0ff82397effc032b6afdb6f3c5e1672782698119dd9b3f704",
+      "bytes": 104685595
+    }
+  },
+  "generic_report_kind": "t8030_direct_root_experiment",
+  "normal_result": {
+    "status": "normal-installed-attempt-no-app-success-assertion",
+    "report": "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/report.json",
+    "report_sha256": "83f378dadf9d2ce8daf232e34a31948102f48be49bb77f779d5893aed6491042",
+    "inspected_report": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/report.json",
+      "identity": {
+        "st_dev": 66306,
+        "st_ino": 54937366,
+        "st_size": 46926,
+        "st_mode": 33204,
+        "st_mtime_ns": 1791422008346379282,
+        "st_ctime_ns": 1791422008346379282
+      },
+      "sha256": "83f378dadf9d2ce8daf232e34a31948102f48be49bb77f779d5893aed6491042"
+    },
+    "inspected_qmp": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/qmp-transcript.jsonl",
+      "identity": {
+        "st_dev": 66306,
+        "st_ino": 54937369,
+        "st_size": 21805,
+        "st_mode": 33204,
+        "st_mtime_ns": 1791421989403732995,
+        "st_ctime_ns": 1791421989403732995
+      },
+      "sha256": "89cff01a2a48b75c68a6d9be938fed94bf339a5a938d86a5200931b7d2b3acff"
+    },
+    "shutdown": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/qmp-transcript.jsonl",
+      "sha256": "89cff01a2a48b75c68a6d9be938fed94bf339a5a938d86a5200931b7d2b3acff",
+      "evidence": [
+        {
+          "line": 105,
+          "entry": {
+            "direction": "send",
+            "time": 1791421989.4039285,
+            "raw": "{\"execute\": \"quit\", \"id\": 43}\n"
+          }
+        },
+        {
+          "line": 106,
+          "entry": {
+            "direction": "receive",
+            "time": 1791421989.404327,
+            "raw": "{\"timestamp\": {\"seconds\": 1791421989, \"microseconds\": 404061}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"
+          }
+        },
+        {
+          "line": 107,
+          "entry": {
+            "direction": "receive",
+            "time": 1791421989.4046888,
+            "raw": "{\"return\": {}, \"id\": 43}\r\n"
+          }
+        }
+      ],
+      "reported_emulator_pid_absent": 3823050
+    },
+    "app_execution_asserted": false,
+    "scope": "Normal runner completion only; app launch, pixels and preservation remain separate."
+  },
+  "control_command_counts": {
+    "guest-hid-gesture": 5,
+    "finish-observation": 1
+  },
+  "operator_finish": {
+    "time": 1791421989.3945475,
+    "request_file": "request-f0406a22e4d34ce8a7dc5f29de13f46f.json",
+    "raw": "{\"execute\": \"finish-observation\", \"arguments\": {}, \"created\": 1791421989.3875387}\n",
+    "sha256": "5c7d52a39acd7b4942c0f76584b45ccb391b01a5b5ab382c78eebe4da640db6c",
+    "response": {
+      "return": {
+        "keep_running": false,
+        "finish_requested": true,
+        "scope": "Operator ends observation; no app execution or journey success asserted"
+      }
+    },
+    "byte_offset": 3847,
+    "byte_length": 433,
+    "request": {
+      "execute": "finish-observation",
+      "arguments": {},
+      "created": 1791421989.3875387
+    }
+  },
+  "quit": {
+    "direction": "send",
+    "time": 1791421989.4039285,
+    "raw": "{\"execute\": \"quit\", \"id\": 43}\n",
+    "byte_offset": 21390,
+    "byte_length": 98,
+    "message": {
+      "execute": "quit",
+      "id": 43
+    }
+  },
+  "absent_pids": {
+    "wrapper": 3822053,
+    "runner": 3822649,
+    "emulator": 3823050
+  },
+  "limits": [
+    "App pixels and input outcome require separate root visual evidence; wrapper explicitly does not assert execution.",
+    "No namespace/backing content rehash; existing runner pre/postflight and earlier stage verification remain their recorded evidence.",
+    "No automatic guest control is introduced by wrapper; operator transcript retained separately.",
+    "Host readable-FD/PID observations are point-in-time, not exclusive locks."
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "scope": "Raw operator transport and original process listing; UI result supplied by separate root review",
+  "request_id": "d8fd4385289a441fbf52efa8e939151e",
+  "artifacts": {
+    "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/control-transcript.jsonl": "886f08713282dc7d7c656dac7215ada5df7863797107e598ca2ab0627fa0fe1e",
+    "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/serial-input-transcript.jsonl": "b94f48945abe2f21beaa3a2508433e427636e4d5e458a74ad80f292038b2be71",
+    "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/serial.log": "b2522914f968b0c1300a276c6b91dd5f1bbf49387c879fed23a68464152ac02c"
+  },
+  "serial_records": [
+    {
+      "start": 238065,
+      "end": 238134,
+      "sha256": "3c67ee59261db89d16dc9e5e8c5b353e454dc6b240657d3c80f02aeaf6654486",
+      "text": "  256     1   501 Ss   /Applications/ImportedDemo.app/ImportedDemo"
+    },
+    {
+      "start": 264074,
+      "end": 264143,
+      "sha256": "3c67ee59261db89d16dc9e5e8c5b353e454dc6b240657d3c80f02aeaf6654486",
+      "text": "  256     1   501 Ss   /Applications/ImportedDemo.app/ImportedDemo"
+    },
+    {
+      "start": 301333,
+      "end": 301402,
+      "sha256": "3c67ee59261db89d16dc9e5e8c5b353e454dc6b240657d3c80f02aeaf6654486",
+      "text": "  256     1   501 Ss   /Applications/ImportedDemo.app/ImportedDemo"
+    },
+    {
+      "start": 308739,
+      "end": 308809,
+      "sha256": "80bc729b4276b7d129a8d787b56d2d4ce9ca1ddfa4f8adbe7e77ac665769d50b",
+      "text": "INFERNO_HID_V1 d8fd4385289a441fbf52efa8e939151e TAP 16384 18102 150"
+    },
+    {
+      "start": 308809,
+      "end": 308957,
+      "sha256": "94684746e9034898bd2122c30fa3ba38ec6d51f2da57a2b7ddec5daf6ef30db5",
+      "text": "INFERNO_HID_REQUEST request_id=d8fd4385289a441fbf52efa8e939151e kind=TAP x0=16384 y0=18102 x1=16384 y1=18102 duration_ms=150 timestamp=6662288247"
+    },
+    {
+      "start": 310090,
+      "end": 310225,
+      "sha256": "63247261618f70bd605e97373539b3e351820af0c7e0c36ba3bda24652f97722",
+      "text": "INFERNO_HID_REPORT request_id=d8fd4385289a441fbf52efa8e939151e phase=down x=16384 y=18102 touching=1 timestamp=6662568572 result=0x0"
+    },
+    {
+      "start": 310225,
+      "end": 310358,
+      "sha256": "e4d6608a32c9840005199bebd360558d3baca35592f4bab2b3da48307f7fd16a",
+      "text": "INFERNO_HID_REPORT request_id=d8fd4385289a441fbf52efa8e939151e phase=up x=16384 y=18102 touching=0 timestamp=6666319399 result=0x0"
+    },
+    {
+      "start": 310358,
+      "end": 310476,
+      "sha256": "a749b059ab1ac18dabacb2d0cbf1b4a6a038e1d2c26a4f03461951c943be8b83",
+      "text": "INFERNO_HID_ACK request_id=d8fd4385289a441fbf52efa8e939151e attempt_status=0 delivery=unproven timestamp=6666393751"
+    }
+  ],
+  "control-transcript.jsonl": [
+    {
+      "start": 3091,
+      "end": 3847,
+      "sha256": "933e9bf0d854e643f50030d332f3aca11a3d9d8d70e84539e9f49b25f37481ff",
+      "record": {
+        "time": 1791421914.0491028,
+        "request_file": "request-c2c7728f3d7941dab65cc6029fcfd304.json",
+        "raw": "{\"execute\": \"guest-hid-gesture\", \"arguments\": {\"request_id\": \"d8fd4385289a441fbf52efa8e939151e\", \"kind\": \"tap\", \"duration_ms\": 150, \"x\": 16384, \"y\": 18102}, \"created\": 1791421913.982114}\n",
+        "sha256": "c6ed277167fe9d0611ef5f85b8d2697547c5d71f8d5a5092ffdb1a92948adab8",
+        "response": {
+          "request_id": "d8fd4385289a441fbf52efa8e939151e",
+          "guest_acknowledgment": "not checked",
+          "ui_acceptance": "not observed by transport",
+          "write_begin_monotonic": 841097.925778314,
+          "send_deadline_monotonic": null,
+          "transmission": "written-to-serial-socket",
+          "bytes_sent": 68,
+          "write_end_monotonic": 841097.925798058,
+          "write_end_after_deadline": false
+        }
+      }
+    }
+  ],
+  "serial-input-transcript.jsonl": [
+    {
+      "start": 3066,
+      "end": 3410,
+      "sha256": "599edaba16880baafb5513f66dd0712c718dbf12a4950497ece8e3300914144e",
+      "record": {
+        "time": 1791421914.049223,
+        "monotonic": 841097.925700954,
+        "send_deadline_monotonic": null,
+        "stage": "before-send",
+        "request_id": "d8fd4385289a441fbf52efa8e939151e",
+        "operation": "HID",
+        "raw": "INFERNO_HID_V1 d8fd4385289a441fbf52efa8e939151e TAP 16384 18102 150\n",
+        "sha256": "e965002c484a4fb13635c615e1198993994f139bb52c57c98df555be8247b7dc"
+      }
+    },
+    {
+      "start": 3410,
+      "end": 3825,
+      "sha256": "bf3da34352a4e5921dfbd71394b92aa5f3861be737ed9a3dc98a559a04420bd1",
+      "record": {
+        "time": 1791421914.0493205,
+        "stage": "after-send",
+        "response": {
+          "request_id": "d8fd4385289a441fbf52efa8e939151e",
+          "guest_acknowledgment": "not checked",
+          "ui_acceptance": "not observed by transport",
+          "write_begin_monotonic": 841097.925778314,
+          "send_deadline_monotonic": null,
+          "transmission": "written-to-serial-socket",
+          "bytes_sent": 68,
+          "write_end_monotonic": 841097.925798058,
+          "write_end_after_deadline": false
+        }
+      }
+    }
+  ]
+}
