@@ -2,6 +2,35 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 17:12: reproduced freeze76 and captured missing numeric wait state
+
+76 boot3442161D-82A9-4B3C-833A-B681C4C74777 PID257, singlecounterrequest
+ d40a2316f8524c468c9a9c2f27ca051d produced rawtap1/ACK0 but reviewedpixels0.
+95 VNCcaptures across25/25/35/50-second windows allfullSHA
+5e03b5ba6323ee554009378000b16d83354a67b66073ad06cdad99f9133b3985;
+rootreviewafter0012/confirm0017/duringCPU0023/duringsamples0030/finalQMP0.
+No aftercapture/retry/Home/OPEN. Gaps between windows retained, notcontinuous.
+ADP10strace disabledall9 at1791418164.8400636. ONE1s CPUwindow enabledid66,
+restoredid68, actual12663..352839/340176bytes. Independent2f0c96ebfe:
+456complete snapshots,228entries token293/flags80000000/third0/client
+ffffffe19be76d90;228finalreturns e00002d5/nozero. Healthy68 had tokens545..550
+and5zero/177pending. Supports persistentpending hypothesis, not pairedcalls,
+thread/pipelineidentity or rootcause. Actualzero kernelslide/pins validated.
+Both originalsamples complete: BBD60/ver20712761bytes52chunks request
+ a5a52e1278df42a69500e9160287e46e; SB57/ver11710357/43 request
+ bceb62de13504df4accc92707244f9fb. Native maps thisboot's ownslide next.
+RootSIGINT2 afterfinalreview; bootworker allseven/unchangedancestors forensic
+retention underway. Never use76asbase. No liveguest work afterstop.
+
+Host-only prepare-import actualexternaldemo session passed (50d4e07b36),
+/source commands992e1b6718, session82b7446dac935b0aab9dd5c74e1a56af311ff782d4850c784ebd94c585abf9c1
+at /home/brandonin/.local/share/inferno/app-import/prepare-session-demo-2/session.json.
+Linkerargv0 corrected afterretainedfailedattempt; duplicates/nonfinite JSON and
+source/reference drift guarded. Verifier7958713dd3/1569864974plusreviewfixes
+implements rawcontent checkpoint BEFOREfinish and stoppednormal eligibility.
+Independent diskworker review running; firstactualnormalrecovery next afterPASS.
+No VMlaunch claimed byhostsession, nofailedSIGTERMstage retrospectivelypromoted.
+
 ### 2026-10-07 17:04: demo75 independently verified; next work active
 
 75 raw/postflight16302c2af9 and independent3f019154a7 integrated. Allseven and
