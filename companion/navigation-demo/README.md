@@ -57,3 +57,14 @@ Coordinates come from each reviewed actual frame; labels and accessibility IDs
 assist review, not fabricated acceptance. ACK means transport acceptance only.
 Unchanged pixels or missing resource text are retained as an incomplete/failed
 journey, never inferred success from process presence or a build manifest.
+
+## Actual host result
+
+`navigation-demo-004` built from `df73d9f978` passed compile with `-Werror`,
+link, IPA import/revalidation and manifest-bound helper build. The IPA is 7,926
+bytes and contains a 72,544-byte executable plus Info.plist and Guide.txt. Its
+three executable outputs are byte-identical to audited build003: all 110 imported
+symbols resolve in the supplied original cache, and all three dynamically named
+UIKit classes are exported through UIKitCore. This does not execute their
+selectors. Raw host logs, pins and the two earlier failed host attempts are
+retained in `evidence/`; all IPA/binary products remain external.
