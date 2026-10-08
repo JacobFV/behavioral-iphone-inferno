@@ -1,0 +1,489 @@
+{
+  "verdict": "PASS actual read-only Data tree comparison and normal stopped retention; not runtime readiness",
+  "result_sha256": "d3587d03988b1c5e797c59ad25c06b04c0406d44a07028e2b803d0385a65de34",
+  "checks": {
+    "raw_parser_equals_result": true,
+    "checkpoint_prefix_exact": true,
+    "all_stopped_metadata_and_source_pins_current": true,
+    "single_finish_after_checkpoint": true,
+    "quit_request": {
+      "direction": "send",
+      "time": 1791433344.2303603,
+      "raw": "{\"execute\": \"quit\", \"id\": 9}\n"
+    },
+    "quit_ack": {
+      "direction": "receive",
+      "time": 1791433344.23117,
+      "raw": "{\"return\": {}, \"id\": 9}\r\n"
+    },
+    "processes_absent": [
+      163843,
+      164030,
+      164282
+    ],
+    "seven_current_identities_equal_freeze_after": {
+      "ctrl_bits.raw": {
+        "st_dev": 66306,
+        "st_ino": 55091551,
+        "st_size": 8192,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791433296304982819,
+        "st_ctime_ns": 1791433349531293545
+      },
+      "effaceable.raw": {
+        "st_dev": 66306,
+        "st_ino": 55091553,
+        "st_size": 4096,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791433296307358950,
+        "st_ctime_ns": 1791433349587293627
+      },
+      "firmware.raw": {
+        "st_dev": 66306,
+        "st_ino": 55091549,
+        "st_size": 8388608,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791433296298634026,
+        "st_ctime_ns": 1791433349641293705
+      },
+      "nvram.raw": {
+        "st_dev": 66306,
+        "st_ino": 55091552,
+        "st_size": 8192,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791433298674221926,
+        "st_ctime_ns": 1791433349694293782
+      },
+      "panic_log.raw": {
+        "st_dev": 66306,
+        "st_ino": 55091554,
+        "st_size": 1048576,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791433296308317543,
+        "st_ctime_ns": 1791433349750293864
+      },
+      "root.qcow2": {
+        "st_dev": 66306,
+        "st_ino": 55091548,
+        "st_size": 196736,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791433296290218687,
+        "st_ctime_ns": 1791433349804293942
+      },
+      "syscfg.raw": {
+        "st_dev": 66306,
+        "st_ino": 55091550,
+        "st_size": 131072,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791433296303544097,
+        "st_ctime_ns": 1791433349858294021
+      }
+    },
+    "retention_hashes_equal_freeze": true,
+    "ancestors_readonly_distinct": true,
+    "KEEP_present": true
+  },
+  "tree": {
+    "entries": 16665,
+    "files": 13025,
+    "links": 1,
+    "bytes": 269210433
+  },
+  "raw_records": [
+    {
+      "text": "INFERNO_PREP_BEGIN: disposable /dev/disk0s1 existing=1 roles=0 gigalocker=0",
+      "byte_start": 35590,
+      "byte_end": 35665,
+      "sha256": "344d36d38eb24a06f04cfe05667f95d333bf8cbe347598a94b3d9d5dcd362e2f"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE disk0 type=6",
+      "byte_start": 35732,
+      "byte_end": 35764,
+      "sha256": "874b98c98f27108f5cd6886558ed1650fe5b38fd253b569436ba340f7d601262"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE rdisk0 type=2",
+      "byte_start": 35767,
+      "byte_end": 35800,
+      "sha256": "d4f6508d1969f31a4b268f2e104748dac6303bb6ed2ecc40d6453845c12baef2"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE disk0s1 type=6",
+      "byte_start": 35803,
+      "byte_end": 35837,
+      "sha256": "1824107d3411ec6a3b530308217dad352322c8b2fff3d30cb13531e8a99aaa40"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE rdisk0s1 type=2",
+      "byte_start": 35840,
+      "byte_end": 35875,
+      "sha256": "a6c81b688e224e1bed44a61e72bad43fc138b37cac8cc3c98af1f106be87b41b"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE disk0s1s2 type=6",
+      "byte_start": 35878,
+      "byte_end": 35914,
+      "sha256": "f86e163995c158afae91bc9f90ac64c50c29b38d05f688ac00b1c1ab87c59ebf"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE rdisk0s1s2 type=2",
+      "byte_start": 35917,
+      "byte_end": 35954,
+      "sha256": "900f5ba6701942f242b5ff76a9c5427585bf2bb95bacf11ec1377d767a1cb464"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE disk0s1s1 type=6",
+      "byte_start": 35957,
+      "byte_end": 35993,
+      "sha256": "28479e4a01c83c614e1d96d8176067f7a92f8db39c87709c1498cef1f63e2a1f"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE rdisk0s1s1 type=2",
+      "byte_start": 35996,
+      "byte_end": 36033,
+      "sha256": "64ebd5dba19b3e0c913b7bd916c8e54b8a9e9700f9c4aa916af03a1552d3ebf1"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE disk0s1s5 type=6",
+      "byte_start": 36036,
+      "byte_end": 36072,
+      "sha256": "353473e54acfa3406fee9b3a9bbfe6b1868ff171610d92dbf920768890709d03"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE rdisk0s1s5 type=2",
+      "byte_start": 36075,
+      "byte_end": 36112,
+      "sha256": "4db1e619452a29f099935cc3fdac953cbd57c96104c724c17ad4e1dbfbc3a2d7"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE disk0s1s3 type=6",
+      "byte_start": 36115,
+      "byte_end": 36151,
+      "sha256": "ab0c65ea8235d149168ffd54e7b16136123144a0ba6ce86bbd0af8f88e7e56eb"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE rdisk0s1s3 type=2",
+      "byte_start": 36154,
+      "byte_end": 36191,
+      "sha256": "399761f7d1a331f8e53d3802590d1ae42418667353b29b515d66d5feecfe9fbb"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE disk0s1s6 type=6",
+      "byte_start": 36194,
+      "byte_end": 36230,
+      "sha256": "918952e1b16dd9746743ed8568805f651ea8af6957740d8f0ffe31ac14ca4293"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE rdisk0s1s6 type=2",
+      "byte_start": 36233,
+      "byte_end": 36270,
+      "sha256": "26e45007c41ed539a2db0d93d54699e559e69219faa5d900c51aff60cb749892"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE disk0s1s4 type=6",
+      "byte_start": 36273,
+      "byte_end": 36309,
+      "sha256": "c59638f76f388c406b54cfe03764cb84fd9b1b3a33dbb9af756afb21e84022cb"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE rdisk0s1s4 type=2",
+      "byte_start": 36312,
+      "byte_end": 36349,
+      "sha256": "0ab86b1d540333a53ee036d9dd4ae3243156b5e70662a5e7fe0b335c4a98b410"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE disk1 type=6",
+      "byte_start": 36352,
+      "byte_end": 36384,
+      "sha256": "de8827b024dcecfe1bc2a4f762559add11e39f028417cd3cdc84aa2b7c352ffc"
+    },
+    {
+      "text": "INFERNO_PREP_DEVICE rdisk1 type=2",
+      "byte_start": 36387,
+      "byte_end": 36420,
+      "sha256": "bffc33606a2771169278902b3817605c7667a184a953b99b30820e05b56d39c1"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s1 /mnt1",
+      "byte_start": 36492,
+      "byte_end": 36553,
+      "sha256": "c820686e02dbadc110090c4951ae1b78d3d99d054808727103f34329e075a4c4"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 37766,
+      "byte_end": 37791,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_PREP_VOLUME /dev/disk0s1s1 name=AzulSeed18A5351d.N104N841DeveloperOS",
+      "byte_start": 37794,
+      "byte_end": 37870,
+      "sha256": "825e94c603a8097501dd46e80e00ef35a20ed5c72a1f81df3d26d0c2a3cac276"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s2 /mnt1",
+      "byte_start": 38179,
+      "byte_end": 38240,
+      "sha256": "f9fefb71bebc208babbddaf5ca3479920fef72f01eb252c53fd784520b0c9e78"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 39004,
+      "byte_end": 39029,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_PREP_VOLUME /dev/disk0s1s2 name=Data",
+      "byte_start": 39032,
+      "byte_end": 39076,
+      "sha256": "a3ba95ed2daa5bbb2ece871306e3bf33da793cbf9a44e94e3042672809ac748d"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s3 /mnt1",
+      "byte_start": 39321,
+      "byte_end": 39382,
+      "sha256": "3b07654123ea71295e5fc7efa2b7dc3583484079e2f495954f28ea0e09ba3b34"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 42083,
+      "byte_end": 42108,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_PREP_VOLUME /dev/disk0s1s3 name=Preboot",
+      "byte_start": 42111,
+      "byte_end": 42158,
+      "sha256": "fed08d764b918763f8163361774c300ce79c1dfc6e19c963fcdd97258e9411b4"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s4 /mnt1",
+      "byte_start": 42420,
+      "byte_end": 42481,
+      "sha256": "bcf48e79e6424137209848bc22682233c29099f63e281984a8734418efd23b97"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 43257,
+      "byte_end": 43282,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_PREP_VOLUME /dev/disk0s1s4 name=xART",
+      "byte_start": 43285,
+      "byte_end": 43329,
+      "sha256": "4ba101db30e44fcd9f6a1c5b2c8eba894a5abac56f2734ed9ff2d4a6427f56d3"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s5 /mnt1",
+      "byte_start": 43586,
+      "byte_end": 43647,
+      "sha256": "fac8b3586d22421b109103f0761f3175d94ca296da10da2bd127cacd87cda026"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 44431,
+      "byte_end": 44456,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_PREP_VOLUME /dev/disk0s1s5 name=Hardware",
+      "byte_start": 44459,
+      "byte_end": 44507,
+      "sha256": "a6c716817c590663bd4e02aba266cc29d17378746683a4cd1c5b3095c440a62c"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s6 /mnt1",
+      "byte_start": 44772,
+      "byte_end": 44833,
+      "sha256": "79dd747eef17844700ccc96c47587db90da70f9628c45611636475d0c581a7bc"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 45612,
+      "byte_end": 45637,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_PREP_VOLUME /dev/disk0s1s6 name=Update",
+      "byte_start": 45640,
+      "byte_end": 45686,
+      "sha256": "a2c00e12f8e9fb888eabe5f3042f416648ea0a8b06440113654177e914f63a2e"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s1 /mnt1",
+      "byte_start": 45946,
+      "byte_end": 46007,
+      "sha256": "c820686e02dbadc110090c4951ae1b78d3d99d054808727103f34329e075a4c4"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 46836,
+      "byte_end": 46861,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s2 /mnt2",
+      "byte_start": 46864,
+      "byte_end": 46925,
+      "sha256": "a76a9629f041d4ce6457dbf343cfc154999178596290ed2923b3ea901c7d8903"
+    },
+    {
+      "text": "INFERNO_PREP_STATUS raw=0",
+      "byte_start": 47258,
+      "byte_end": 47283,
+      "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=1000 bytes=13206903 mismatches=0",
+      "byte_start": 47286,
+      "byte_end": 47348,
+      "sha256": "ae904cdad4a1608e09e2886c97f610899e7e479afd728bcbecc8df6ea07feaf1"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=2000 bytes=23062636 mismatches=0",
+      "byte_start": 47351,
+      "byte_end": 47413,
+      "sha256": "8032e391e86ebd1d51fc153167fd00db08d4451b25a593747e5713404bf5a414"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=3000 bytes=41577628 mismatches=0",
+      "byte_start": 47416,
+      "byte_end": 47478,
+      "sha256": "bab4b41b40c129cf39d973391232ba8be34bbbe8da354330e2120364015324d2"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=3000 bytes=41577628 mismatches=0",
+      "byte_start": 47481,
+      "byte_end": 47543,
+      "sha256": "bab4b41b40c129cf39d973391232ba8be34bbbe8da354330e2120364015324d2"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=4000 bytes=49983887 mismatches=0",
+      "byte_start": 47546,
+      "byte_end": 47608,
+      "sha256": "983705a9464be2929542785a3b1f3e1ce2500f8939aac8418e76b80c780950bb"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=5000 bytes=63165278 mismatches=0",
+      "byte_start": 47611,
+      "byte_end": 47673,
+      "sha256": "a8c2a4f5e22256812ab54d364ddc9ad2557c94a5d1eb269d5cd16db3f4c73813"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=6000 bytes=72846092 mismatches=0",
+      "byte_start": 47676,
+      "byte_end": 47738,
+      "sha256": "25c200dadea6873c3d35863906a7dd30a5c8f07539156c4bebcf93ded160c63e"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=7000 bytes=78950092 mismatches=0",
+      "byte_start": 47741,
+      "byte_end": 47803,
+      "sha256": "720775e20b39efdb040539ff64a6e1ac5908ab9b2ec26abec4052b16c4daf06f"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=9000 bytes=125692441 mismatches=0",
+      "byte_start": 47806,
+      "byte_end": 47869,
+      "sha256": "65a8c9954051aeed4fcc578db0027a5f813486d54156f8a1d7ca0ff57e915329"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=10000 bytes=136590397 mismatches=0",
+      "byte_start": 47872,
+      "byte_end": 47936,
+      "sha256": "00ca514d35822f133c1a73876df7f32974eb32cec5ffe33774995735545abc17"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=11000 bytes=141667617 mismatches=0",
+      "byte_start": 47939,
+      "byte_end": 48003,
+      "sha256": "e256456d17567cc859fe6067256531b32529df35b0feb21fa927f2a8e21353ef"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=11000 bytes=141667617 mismatches=0",
+      "byte_start": 48006,
+      "byte_end": 48070,
+      "sha256": "e256456d17567cc859fe6067256531b32529df35b0feb21fa927f2a8e21353ef"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=12000 bytes=179718862 mismatches=0",
+      "byte_start": 48073,
+      "byte_end": 48137,
+      "sha256": "3838cd9dcca05e39799ec1a4bc7791b073a6e8dc7fb6230e57e840f29c836197"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=12000 bytes=179718862 mismatches=0",
+      "byte_start": 48140,
+      "byte_end": 48204,
+      "sha256": "3838cd9dcca05e39799ec1a4bc7791b073a6e8dc7fb6230e57e840f29c836197"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=13000 bytes=207254837 mismatches=0",
+      "byte_start": 48207,
+      "byte_end": 48271,
+      "sha256": "69a06eb42b085fdf4ee24fc2ce4f8a23b470dd115408b74426d94029a1def36b"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=14000 bytes=227521775 mismatches=0",
+      "byte_start": 48274,
+      "byte_end": 48338,
+      "sha256": "c9a6291a9119e8b503f339e498721ba70e1c1777d3ec5390815d20bc4ddf6130"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=15000 bytes=236146732 mismatches=0",
+      "byte_start": 48341,
+      "byte_end": 48405,
+      "sha256": "1f761a5ea67ee93b50169a85c3747ff72eca8674c117410b245c08e3e141e83f"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=15000 bytes=236146732 mismatches=0",
+      "byte_start": 48408,
+      "byte_end": 48472,
+      "sha256": "1f761a5ea67ee93b50169a85c3747ff72eca8674c117410b245c08e3e141e83f"
+    },
+    {
+      "text": "INFERNO_TREE_PROGRESS entries=16000 bytes=260092641 mismatches=0",
+      "byte_start": 48475,
+      "byte_end": 48539,
+      "sha256": "d3e107453198eb0a69c3a1f6de68c90f2c28268a9c42bdae42e0661128c59236"
+    },
+    {
+      "text": "INFERNO_TREE_RESULT entries=16665 files=13025 links=1 bytes=269210433 mismatches=0",
+      "byte_start": 48542,
+      "byte_end": 48624,
+      "sha256": "002d8e5305998466f3047b18a0c0afb281af12a4ae3e9fb75b2c575a8c177e07"
+    },
+    {
+      "text": "INFERNO_PREP_COMPLETE: requested preparation operations succeeded",
+      "byte_start": 49182,
+      "byte_end": 49247,
+      "sha256": "a7a571c5755813427bec20203fe2cebd4db90fc868a56b32ef6a5a36e774faff"
+    }
+  ],
+  "raw_refs": {
+    "/home/brandonin/.local/share/inferno/app-import/data-verify-stage-1/data-verified.json": "d3587d03988b1c5e797c59ad25c06b04c0406d44a07028e2b803d0385a65de34",
+    "/home/brandonin/.local/share/inferno/app-import/data-verify-stage-1/freeze-record.json": "e946b499a399440ee6d0dfdbe4b1a60536c1cf01644c960f9850cc37e3b47a5c",
+    "/home/brandonin/.local/share/inferno/app-import/data-verify-stage-1/content-check.json": "7618317fd4abf1497c86dc4a10ca965d93dc1a7a493c7536cf319748fe46a422",
+    "/home/brandonin/.local/share/inferno/app-import/data-verify-stage-1/recovery-run/serial.log": "84093d74347054daeac9ba1ca4309f5d8f95ef062224bce24110795471147f1d",
+    "/home/brandonin/.local/share/inferno/app-import/data-verify-stage-1/recovery-run/qmp-transcript.jsonl": "50dd31a68da8f2b5177813818223b7ea5f1a5140004c3feeb33f348fcc3303e1",
+    "/home/brandonin/.local/share/inferno/app-import/data-verify-stage-1/recovery-run/control-transcript.jsonl": "da9763f6dfa75a22c191cd9b6650277735a165dcf2b5341bf816a768bcf097c5",
+    "/home/brandonin/.local/share/inferno/app-import/data-verify-stage-1/recovery-run/report.json": "83db02c98de9562b038baf43be7e6d33ffd2492e858cb8eff054e05afa99da8f",
+    "/home/brandonin/.local/share/inferno/app-import/data-verify-stage-1/recovery-run/stopped-disk-hashes.json": "b9d847deac37e422239392bd6e1c4bbd94fc426007292c26616e786a69accdc3"
+  },
+  "limits": [
+    "No duplicate full image hash; current identities checked against matching retained/freeze content hashes.",
+    "Original comparator verifies file bytes, modes, owners, symlink targets and missing/extra entries; no xattr, ACL, timestamp or compression encoding equivalence.",
+    "Depth4 requires verified flatten before another child; IPA runtime readiness remains false.",
+    "Point-in-time process absence, not exclusive host lock."
+  ],
+  "final_raw_excerpt": {
+    "source_byte_start": 48542,
+    "source_byte_end": 49250,
+    "sha256": "a5769a4d562b1373bb13a12e81afe525f9b5095797d928ec4b519ddef48764eb"
+  },
+  "backing_depth": 4,
+  "ipa_runtime_ready": false
+}
