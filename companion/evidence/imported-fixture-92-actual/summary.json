@@ -1,0 +1,129 @@
+{
+  "scope": "Forensic failed driver-state gate; NOT app freeze, failed callback or completed interaction. Exactly2unlock swipes, no taps.",
+  "time": 1791440556.0551414,
+  "source_revision_at_postflight": "1de934f8048e60fce9cec04e85dd9223426f892a",
+  "postflight_source_sha256": {
+    "verify-journey.py": "7fe16cc6ca661c7902a198d789b6ff0290b35f377f1138606a6edf86d13c3298",
+    "preserve-stopped.py": "904655ac4653ed7f860851aa71719540bc66716c2896ccd4858fd3fcb22b61e7",
+    "launch-timing.py": "69dcaae0ed48955344dff3285eb0e94a87d0416f782ad66b507004131221f3c2",
+    "disk_overlay.py": "16180ed475f586b60031c129bf2a11169597dca10fc77a804d9fcdf0f20e3978"
+  },
+  "stop": {
+    "pid": 1258668,
+    "exit_code": 0,
+    "attempt_completed": false,
+    "error": {
+      "type": "KeyboardInterrupt",
+      "detail": "Signal 2"
+    },
+    "quit_response": {
+      "return": {},
+      "id": 83
+    },
+    "elapsed_seconds": 679.772914
+  },
+  "processes_absent": [
+    1258070,
+    1258668
+  ],
+  "strict_result": {
+    "status": "rejected",
+    "reason": "strict journey incomplete",
+    "schema": "inferno.strict-journey-verification.v1",
+    "report": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-92",
+    "verifier_sha256": "7fe16cc6ca661c7902a198d789b6ff0290b35f377f1138606a6edf86d13c3298",
+    "sources": {
+      "report.json": {
+        "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-92/report.json",
+        "bytes": 76369,
+        "sha256": "b3af50ca8fd048d791c1f89083ee1b9130771039bb34a6950c3dd988d7874b8e"
+      }
+    },
+    "limits": [
+      "Read-only host verification of recorded guest lifecycle, explicit input and QMP captures.",
+      "Manual visual review remains separate; PPM hashes do not classify pixels.",
+      "Claimed app PID is verified by relay; TCP peer PID remains unauthenticated.",
+      "No disk preservation or backing-chain validation performed by this tool.",
+      "Host arrival ordering is observational, not intrinsic app latency."
+    ]
+  },
+  "retention": "Failed-attempt7/unchanged ancestors PASS; root forensic_only true, never future base. No chmod or metadata mutation.",
+  "driver": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/fixed-timing-92-1",
+    "sequence_sha256": "14846f8f239ec9d567c10fca19b5f04fddaece8fe73b6020311f56a75ed3da12",
+    "complete": false,
+    "error": "Exact state mismatch; no input",
+    "first_invocation": "Rootstop records checkout-output rejection beforeactions; explicitly corrected external invocation retained. No automaticretry."
+  },
+  "raw_control_requests": [
+    {
+      "execute": "guest-hid-gesture",
+      "created": 1791439948.8034549,
+      "arguments": {
+        "request_id": "2f166c0081b24e378ad0f6a8502051f5",
+        "kind": "swipe",
+        "duration_ms": 1500,
+        "x0": 16384,
+        "y0": 32270,
+        "x1": 16384,
+        "y1": 9145
+      },
+      "time": 1791439948.9395483
+    },
+    {
+      "execute": "guest-hid-gesture",
+      "created": 1791440344.8321042,
+      "arguments": {
+        "request_id": "e474894a466d4694b30d49a0f7cb2e74",
+        "kind": "swipe",
+        "duration_ms": 1500,
+        "x0": 16384,
+        "y0": 32270,
+        "x1": 16384,
+        "y1": 9145
+      },
+      "time": 1791440344.8666315
+    },
+    {
+      "execute": "probe-status",
+      "created": 1791440378.8812356,
+      "arguments": {},
+      "time": 1791440378.9608457
+    }
+  ],
+  "diagnostic_scope": "No CPUwindow, ADPtrace, sample, Home, OPEN, beta/Setup/counter tap. Startup touch trace separately retained in QMP.",
+  "framebuffer_sha256": "44145a752bfe6d46ef632c09fdd2e0de3c7e3490a43f79358cb61df0f4416dfa",
+  "files": {
+    "root-stop.json": "bb7dec2a51dc7a602fdc4c686fee24fbfa723ad2549fe4670ca37809234c76b0",
+    "stopped-disk-hashes-verification.json": "b3f619bba09b40286ed93b137769251d390af2d4fbcd8e36f8be11dbec983643",
+    "report.json": "b3af50ca8fd048d791c1f89083ee1b9130771039bb34a6950c3dd988d7874b8e",
+    "stopped-disk-hashes.json": "a492723560f1dba17e58c88aa67010ca356d1f491f9addb9f0a22485446d4a83",
+    "profile.json": "7939d609b99b8223863dba0b0af9d181526b420c0023cc9520563fd7e0979ed8",
+    "initial-timing.json": "90ee4b05e188b2bc1a8468c9467d04647ae044651c4dba59d2e2edd540a7145d",
+    "stderr.log": "90d324fa1e1c26c49589cda1ea8076ea1c3f9073a1f1fccf44bdc91ae15d91eb",
+    "control-transcript.jsonl": "708d7d28f0947fcc37c7c585951cb1dcb66d18a2f77412e3146e9b966c79b836",
+    "journey-verification-rejected.json": "4fbeb9f134da46da2849076af91e2b90b2095abc009f028f78105488fac562c2",
+    "root-overlay.json": "2e5b653e532dd10605f3c992284c50903acfc29d48f8647acdf05345c5e26545",
+    "serial-input-transcript.jsonl": "089a94774c8ccbeff341f9c3d22a06689a8e09270c2d8eaeb4547cfb3fbd849e",
+    "guest-errors.log": "a6eca5c516fda0100f44ef14f03f3c7c0a7b39fb49751bf8f40d54b2051972ec",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "qmp-transcript.jsonl": "7c792c63deb61672bae34dd71a39a07b890b4c286bca062c179b78a092f1adb5",
+    "command.json": "a9b4d689d33133071eff413fc859662ddea7079b09645e3b00648193c7b9a868",
+    "serial.log": "172b2df819552f8920db222887cfd575d0cd750e0b63e8c60568e24ba9cc12dd",
+    "build-manifest.json": "1c0ca353df0b88956f071503654a9a0a3f1e22346270e89accdfaa911391f096",
+    "unlock-001/submission.json": "25ba21e96bf3938bc5edf42046b36e990f28833e0968194ceb0f5e0a089f6be7",
+    "launch/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "launch/launch.json": "31d74138b74760c4f9fb6416a5e71c6dafe05f872f4fd6bedeadda46292b1ee6",
+    "launch/stdout.log": "2ed8d85c5d787f2e73436541b2b91c0ed8000dcd4c89e9f15cb17a6eb7eaa481",
+    "unlock-002/submission.json": "a51f7317a2f5902215b37d4ce8099e2401b30f4821079ee8d52535d4e589f82a",
+    "driver/before-beta.stdout": "b15cdc30c31f2d117f9d0786155f29ac7e347c5ea97818d38ed3e5373c540ea2",
+    "driver/control-1.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "driver/before-beta.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "driver/control-1.stdout": "d9c048efebe3524369b4d3f5c418dfd8dab13498e699ab24f0203ed8c379b722",
+    "driver/sequence.json": "14846f8f239ec9d567c10fca19b5f04fddaece8fe73b6020311f56a75ed3da12",
+    "control/reply-498dfe2102ab4f8f9759f413b979f599.json": "78f1a26f5670fbb4b0ffa9ab56c4c4bea9c11821ee22cf4cf3a6aa79adbf2055",
+    "control/reply-55cd1841656646fdaada12fc796bbdbe.json": "d9c048efebe3524369b4d3f5c418dfd8dab13498e699ab24f0203ed8c379b722",
+    "control/reply-b520c7e1dcef483c866fe9bb27d09394.json": "17c4a740eb2b45d0f432f9b045147067f13d92e79388bd474e27f8ac9a4136f6",
+    "driver/before-beta/report.json": "e8fbd2f5296b3e3e1de4418acf16c68404c759d951e544447efd6c670f7f8e8e"
+  }
+}
