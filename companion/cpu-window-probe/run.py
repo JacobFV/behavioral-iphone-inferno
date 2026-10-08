@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Actual owned baremetal TB/GPR logging check; never an iOS claim."""
 import argparse,pathlib,subprocess,socket,time,json,sys,hashlib,tempfile,uuid,re,shutil
-ap=argparse.ArgumentParser();ap.add_argument('--binary',type=pathlib.Path,required=True);ap.add_argument('--output',type=pathlib.Path,required=True);ap.add_argument('--profile',choices=('baseline','pending-branch'),default='baseline');a=ap.parse_args();o=a.output.resolve();o.mkdir(exist_ok=False);repo=pathlib.Path(__file__).resolve().parents[1];sys.path.insert(0,str(repo));from boot import QMP
+ap=argparse.ArgumentParser();ap.add_argument('--binary',type=pathlib.Path,required=True);ap.add_argument('--output',type=pathlib.Path,required=True);ap.add_argument('--profile',choices=('baseline','pending-branch','pending-equality'),default='baseline');a=ap.parse_args();o=a.output.resolve();o.mkdir(exist_ok=False);repo=pathlib.Path(__file__).resolve().parents[1];sys.path.insert(0,str(repo));from boot import QMP
 from qmp_control import ControlMailbox,write_private,read_private
 sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
-src=pathlib.Path(__file__).with_name('pending.S' if a.profile=='pending-branch' else 'loop.S');commands=[['as','-o',str(o/'loop.o'),str(src)],['ld','-Ttext=0x40200000','-e','_start','-o',str(o/'loop.elf'),str(o/'loop.o')]]
+src=pathlib.Path(__file__).with_name({'baseline':'loop.S','pending-branch':'pending.S','pending-equality':'equality.S'}[a.profile]);commands=[['as','-o',str(o/'loop.o'),str(src)],['ld','-Ttext=0x40200000','-e','_start','-o',str(o/'loop.elf'),str(o/'loop.o')]]
 for c in commands:subprocess.run(c,check=True,capture_output=True)
-nm=subprocess.check_output(['nm',str(o/'loop.elf')],text=True);syms={s[2]:int(s[0],16) for l in nm.splitlines() if len(s:=l.split())==3};pcs=[syms[x] for x in (('probe_null','probe_active','probe_queued') if a.profile=='pending-branch' else ('probe_entry','probe_return'))];filt=','.join(hex(x)+'+4' for x in pcs)
+nm=subprocess.check_output(['nm',str(o/'loop.elf')],text=True);syms={s[2]:int(s[0],16) for l in nm.splitlines() if len(s:=l.split())==3};pcs=[syms[x] for x in {'baseline':('probe_entry','probe_return'),'pending-branch':('probe_null','probe_active','probe_queued'),'pending-equality':('probe_mode','probe_equal','probe_false','probe_true','probe_return')}[a.profile]];filt=','.join(hex(x)+'+4' for x in pcs)
 # Synthetic fixture solely exercises production slide gate; virt does not report an Apple kernel slide.
 (o/'stderr.log').write_text('OWNED HARNESS SLIDE FIXTURE, NOT GUEST KERNEL EVIDENCE\ninfo: Kernel Virtual Slide: 0x0000000000000000\n')
 r={'profile':a.profile,'scope':'Wholly owned baremetal loop, synthetic filter and explicitly labeled slide fixture; no iOS/kernel capture claim.','binary_sha256':sha(a.binary),'sources':{str(p):sha(p) for p in [src,pathlib.Path(__file__),repo/'qmp_control.py',repo/'boot.py']},'build_commands':commands,'symbols':syms,'filter':filt,'checks':{}}
@@ -33,12 +33,18 @@ try:
     if a.profile=='baseline':
      if pc==pcs[0]:assert regs['X01']==0x1234 and regs['X02']==0x56
      if pc==pcs[1]:assert regs['X00']==0x789
-    else:
+    elif a.profile=='pending-branch':
      if pc==pcs[0]:assert regs['X00']==0x125 and regs['X01']==0x124 and regs['X11']==0
      if pc==pcs[1]:assert regs['X00']==0x126 and regs['X01']==0x124 and regs['X11']==0x40001000 and regs['X10']==0x126
      if pc==pcs[2]:assert regs['X08']==0x40002000 and regs['X09']==regs['X11']==0x127
+    else:
+     if pc==pcs[0]:assert regs['X08']==0
+     if pc==pcs[1]:assert regs['X08']==regs['X09']==253
+     if pc==pcs[2]:assert regs['X08']==0
+     if pc==pcs[3]:assert regs['X08']==1
+     if pc==pcs[4]:assert regs['X00']==0xe00002d5
     found.add(pc)
-   assert found==set(pcs);r['checks']['known_branch_exact_PCs' if a.profile=='pending-branch' else 'known_entry_and_return_exact_PCs']=True;r['checks']['only_filtered_PCs']=True;r['block_count']=len(blocks)
+   assert found==set(pcs);r['checks']['known_branch_exact_PCs' if a.profile!='baseline' else 'known_entry_and_return_exact_PCs']=True;r['checks']['only_filtered_PCs']=True;r['block_count']=len(blocks)
    time.sleep(.1);start=len(log());time.sleep(.15);tail=log()[start:];assert ' PC=' not in tail and 'pl011_read: Bad offset 0x50' in tail;r['checks']['deadline_restore_cpu_off_guest_errors_on']=True
    r['early_request']=request(3);time.sleep(.05);box.close(q);time.sleep(.1);start=len(log());time.sleep(.15);tail=log()[start:];assert ' PC=' not in tail and 'pl011_read: Bad offset 0x50' in tail;r['checks']['early_cleanup_restore']=True
    class UncertainEnable:

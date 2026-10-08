@@ -70,3 +70,26 @@ relocated, self-authored branch sites. Parse its output with
 filter is recorded in `command`/`filter`; the mailbox response reports the
 production profile descriptor, not that relocated CLI filter. This verifies
 logging and parser plumbing only, not actual original-kernel TB coverage.
+
+## Pending-equality profile
+
+Explicit `--swapwait-cpu-profile pending-equality` selects five reviewed natural
+TB sites: mode at `0xfffffff0096f1bc0`, positive token comparison at
+`0xfffffff0096f1bf4`, matching-request local false/true at
+`0xfffffff0096f1e4c` / `0xfffffff0096f1e50`, and final status at
+`0xfffffff0096e219c`. Existing profiles are unchanged. All nine ADP events must
+be disabled, with the same pins, actual zero-slide, finite window and cleanup.
+
+`pending-equality-result.py` uses the same strict complete31-GPR grammar.
+It validates mode0/1/2, equal W8/W9, local0/1, and preserves W0 final status as
+an independent population. `pipeline_bf4_token` is neutral: historical
+`completed_token` records name an offset, not successful release/reuse. No mode
+is propagated between blocks; no counts are subtracted to infer hidden paths.
+The equality site precedes its latch store, and match sites are conditional
+continuation subsets. None establishes a per-call conjunction.
+
+The existing owned harness accepts `--profile pending-equality`; its wholly
+owned `equality.S` exercises five relocated branch/call structures and known
+registers. Parse with `--owned-fixture-report`. This is logging plumbing evidence,
+never Apple-kernel TB coverage. Production descriptor versus actual fixture CLI
+filter remains explicitly distinguished in retained evidence.

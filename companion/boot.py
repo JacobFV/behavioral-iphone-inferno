@@ -139,7 +139,7 @@ def main():
     parser.add_argument('--manifest', type=Path)
     parser.add_argument('--seconds', type=float, default=120)
     parser.add_argument('--output', type=Path)
-    parser.add_argument('--swapwait-cpu-profile', choices=tuple(SWAPWAIT_PROFILES), default='baseline', help='fixed CPU sites; pending-branch requires explicit diagnostic opt-in')
+    parser.add_argument('--swapwait-cpu-profile', choices=tuple(SWAPWAIT_PROFILES), default='baseline', help='fixed CPU sites; nonbaseline profiles require explicit diagnostic opt-in')
     parser.add_argument('--swapwait-cpu-diagnostic', action='store_true', help='opt in to fixed kernel SwapWait GPR windows; requires pinned inputs, mailbox and guest-errors')
     parser.add_argument('--guest-errors', action='store_true',
                         help='record QEMU guest-error diagnostics in guest-errors.log')
