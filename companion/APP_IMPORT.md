@@ -251,7 +251,7 @@ or replace a missing provenance record with an assertion of success.
 
 | Field(s) | Required producer or retained evidence |
 | --- | --- |
-| `profile`, `raw_ramdisk` | Retained original-component profile accepted by `boot.load_profile` and its unwrapped recovery payload. The preparation record below must bind both. This is not the new IPA recovery profile. |
+| `profile`, `raw_ramdisk` | Retained original-component profile accepted by `boot.load_profile` and its unwrapped recovery payload. [The plaintext recovery extractor](native-probe/RAW_RECOVERY.md) produces the raw payload for the supported pinned profile without changing its bytes. The preparation record below must bind both. This is not the new IPA recovery profile. |
 | `probe`, `disk_helper`, `helper_build` | Compatible owned binaries and their actual build record. The validator requires `outputs.inferno-prepare-root.sha256` and `sources` pins matching the current four preparation source files. [The preparation-helper builder](native-probe/PREPARE_HELPER.md) now produces this record from an actual build; its first output matched retained helper60 byte-for-byte. The older `native-probe/build.sh` record format is not interchangeable. Do not hand-convert a record to pretend a build occurred. |
 | `hfsplus`, `clang`, `linker`, `tool_invocations` | Existing local binaries with hashes; input pins name resolved regular files. Invocation paths must resolve to those files; retain `ld64.lld` as the Mach-O driver name even if its target is `lld`. |
 | `emulator`, `emulator_build` | `companion/build-linux.sh` output and actual build manifest binding its binary. Keep its dependency/build tree. |
