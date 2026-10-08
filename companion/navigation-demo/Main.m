@@ -14,6 +14,16 @@ static UIButton *button(UIView *parent, CGRect frame, NSString *text, id target,
     [value addTarget:target action:action forControlEvents:1UL<<6];
     [parent addSubview:value]; return value;
 }
+// Permit catalog buttons to surrender tracking when UIKit recognizes a drag.
+// Ordinary touch-up-inside taps and the default delay policy remain unchanged.
+@interface CatalogScrollView : UIScrollView
+@end
+@implementation CatalogScrollView
+- (BOOL)touchesShouldCancelInContentView:(UIView *)view {
+    if ([view isKindOfClass:[UIButton class]]) return 1;
+    return [super touchesShouldCancelInContentView:view];
+}
+@end
 @interface DetailController : UIViewController { UISwitch *_enabled; UILabel *_state; }
 @end
 @implementation DetailController
@@ -24,7 +34,7 @@ static UIButton *button(UIView *parent, CGRect frame, NSString *text, id target,
     NSString *path = [[NSClassFromString(@"NSBundle") mainBundle] pathForResource:@"Guide" ofType:@"txt"];
     NSError *error = nil;
     NSString *message = path ? [NSString stringWithContentsOfFile:path encoding:4 error:&error] : nil;
-    UILabel *resource = label(view,Rect(24,190,366,170),message ? message : @"RESOURCE READ FAILED",21);
+    UILabel *resource = label(view,Rect(24,190,366,200),message ? message : @"RESOURCE READ FAILED",21);
     [resource setAccessibilityIdentifier:@"navigation-resource"];
     label(view,Rect(24,405,220,55),@"Enable this option",22);
     _enabled = [[NSClassFromString(@"UISwitch") alloc] initWithFrame:Rect(300,415,51,31)];
@@ -53,8 +63,9 @@ static UIButton *button(UIView *parent, CGRect frame, NSString *text, id target,
     _summary = label(view,Rect(24,100,366,65),@"No saved item. Saves: 0",20);
     [_summary setAccessibilityIdentifier:@"navigation-summary"];
     label(view,Rect(24,172,366,35),@"Scroll to item 12, then open it.",18);
-    UIScrollView *scroll = [[NSClassFromString(@"UIScrollView") alloc] initWithFrame:Rect(0,225,414,600)];
+    UIScrollView *scroll = [[CatalogScrollView alloc] initWithFrame:Rect(0,225,414,600)];
     [scroll setContentSize:(CGSize){414,1300}]; [scroll setAlwaysBounceVertical:1];
+    [scroll setCanCancelContentTouches:1];
     [scroll setAccessibilityIdentifier:@"navigation-catalog"]; [view addSubview:scroll];
     for (NSUInteger i=1;i<=12;i++) {
         UIButton *row = button(scroll,Rect(30,(i-1)*100+10,354,75),[NSString stringWithFormat:@"Open item %lu",i],self,@selector(openItem:));

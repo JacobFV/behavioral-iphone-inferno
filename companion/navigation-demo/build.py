@@ -39,7 +39,7 @@ def main():
         tools[name] = os.path.abspath(found)
         if sha(tools[name]) != TOOL_HASHES[name]:
             parser.error('Tool differs from reviewed LLVM18 build: ' + name)
-    paths = [source / name for name in ('build.py', 'Main.m', 'NavigationNarrow.h', 'Info.plist', 'Guide.txt')]
+    paths = [source / name for name in ('build.py', 'Main.m', 'NavigationNarrow.h', 'Info.plist', 'Guide.txt', 'UIKit.tbd')]
     paths += [companion / 'app-import.py']
     paths += [companion / 'app-probe' / name for name in (
         'build-import-launcher.py', 'UIKitNarrow.h', 'LaunchServicesNarrow.h',
@@ -72,10 +72,11 @@ def main():
         command = [tools['linker'], '-arch', 'arm64', '-platform_version', 'ios', '14.0', '14.0',
                    '-e', '_main', '-no_uuid', '-adhoc_codesign']
         for library in ('libSystem', 'libobjc', 'Foundation', 'UIKit'):
-            command += ['-needed_library', str(companion / 'app-probe/stubs' / (library + '.tbd'))]
+            stub = source / 'UIKit.tbd' if library == 'UIKit' else companion / 'app-probe/stubs' / (library + '.tbd')
+            command += ['-needed_library', str(stub)]
         run(command + [str(obj), '-o', str(executable)])
         executable.chmod(0o755)
-        for name in ('Info.plist', 'Guide.txt'):
+        for name in ('Info.plist', 'Guide.txt', 'UIKit.tbd'):
             shutil.copyfile(source / name, bundle / name)
             (bundle / name).chmod(0o644)
         ipa = output / 'NavigationDemo.ipa'

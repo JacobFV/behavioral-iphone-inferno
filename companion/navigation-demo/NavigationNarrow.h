@@ -2,6 +2,10 @@
 // Sample-local Objective-C ABI declarations, not an SDK or implementation.
 #import "../app-probe/UIKitNarrow.h"
 extern Class NSClassFromString(NSString *name);
+@interface NSObject (NavigationDemoType)
++ (Class)class;
+- (BOOL)isKindOfClass:(Class)type;
+@end
 @interface UIView (NavigationDemoTag)
 - (void)setTag:(NSInteger)tag;
 - (NSInteger)tag;
@@ -20,6 +24,8 @@ extern Class NSClassFromString(NSString *name);
 @interface UIScrollView : UIView
 - (void)setContentSize:(CGSize)size;
 - (void)setAlwaysBounceVertical:(BOOL)value;
+- (void)setCanCancelContentTouches:(BOOL)value;
+- (BOOL)touchesShouldCancelInContentView:(UIView *)view;
 @end
 @interface UISwitch : UIView
 - (void)setOn:(BOOL)value animated:(BOOL)animated;

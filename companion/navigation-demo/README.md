@@ -7,16 +7,17 @@ Foundation. Save changes only in-process state; no persistence or permissions
 are added. The sample has no private API, entitlements, networking, nested code,
 probe event transport, or new framework implementation.
 
-**Not yet executed in a guest.** Build/import success cannot establish any UI
-behavior. This is a fixed 414-point portrait research fixture, not an SDK,
+**This revised sample has not executed in a guest.** Build/import success cannot
+establish any UI behavior. This is a fixed 414-point portrait research fixture, not an SDK,
 Xcode project build bridge, or general IPA compatibility claim.
 
 ## Host build
 
-The producer reuses the existing self-authored UIKit header and four link stubs
-without editing them. Sample-local declarations describe new selector ABIs;
-`NSClassFromString` obtains the original UINavigationController, UIScrollView,
-and UISwitch classes. Missing classes display an explicit failure screen.
+The producer reuses the existing self-authored UIKit header and three link stubs
+without editing them. Its sample-local UIKit.tbd adds only the UIScrollView
+superclass symbol to the existing UIKit declarations. Sample-local declarations describe new selector ABIs;
+`NSClassFromString` obtains the original UINavigationController and UISwitch
+classes. The owned CatalogScrollView subclasses original UIScrollView. Missing classes display an explicit failure screen.
 
 Use the same hash-pinned LLVM18 tools as the earlier imported demo and a new
 external output directory:
@@ -44,7 +45,8 @@ pipeline, root retains actual VNC/QMP images and explicit request IDs/ACKs:
 1. Review Navigation Demo with catalog items and `No saved item. Saves: 0`.
 2. Open item 1; review the detail title and exact bundled Guide text. Use the
    standard navigation Back button and review the catalog again.
-3. Swipe upward inside the catalog until item 12 and the end marker are visible.
+3. Start an upward swipe on a visible catalog button; review actual scrolling.
+   Continue with explicit reviewed swipes until item 12 and the end marker are visible.
    Review those pixels before tapping item 12; no blind fixed-count scrolling.
 4. Review `Detail for item 12`, bundled text, and `Option: Off`. Tap the switch
    once and review `Option: On`.
@@ -68,3 +70,24 @@ symbols resolve in the supplied original cache, and all three dynamically named
 UIKit classes are exported through UIKitCore. This does not execute their
 selectors. Raw host logs, pins and the two earlier failed host attempts are
 retained in `evidence/`; all IPA/binary products remain external.
+
+## Sample-only revision after the first actual journey
+
+Root observed the original build's catalog, item1 detail, Back, margin-start
+scrolling to item12, switch On and Save with summary item12/Saves1. Its bundled
+Guide text was clipped, and a swipe starting on a button did not move the catalog.
+Those limitations remain part of that attempt; they are not retroactively fixed.
+
+Apple documents that `touchesShouldCancelInContentView:` defaults to NO for
+UIControl children, and that NO retains touch tracking in that child rather than
+starting a drag. The method is not consulted if `canCancelContentTouches` is NO.
+The observed button/margin difference is consistent with this policy, not direct
+proof of the original runtime branch. Sources: [touchesShouldCancel(in:)](https://developer.apple.com/documentation/uikit/uiscrollview/touchesshouldcancel(in:))
+and [canCancelContentTouches](https://developer.apple.com/documentation/uikit/uiscrollview/cancancelcontenttouches).
+
+CatalogScrollView now returns YES for UIButton children, otherwise forwarding to
+super, and explicitly enables content-touch cancellation. Ordinary button actions
+and default delaysContentTouches are unchanged. The resource label grows from
+170 to200 points, ending at y390 before the y405 option row. A new guest journey
+must verify button-start scrolling, normal taps and full Guide text; neither
+this layout choice nor documentation establishes successful rendering.
