@@ -9,6 +9,24 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-07 18:44: five-site fixture passed; production attempt83 authorized
+
+Integrated implementation167f080fbc, source reviewf32b8fcf35, actual owned
+fixture9bccbe10f4 and independent raw audit42790be00a. All5193 complete snapshots,
+allfive relocated sites, no semantic violations. Three actual enable/restore
+pairs cover deadline, early cleanup and lost-response handling; all27 fixed ADP
+off checks and normal QMP shutdown retained. This is owned firmware-free evidence,
+not original-kernel coverage or a rendering fix.
+Bootworker authorized ONE fixture83 from the same frozen imported-fixture3 base
+and0889 binary as82, with pending-equality selected and CPU logging initiallyOFF.
+Root owns strict0→1 and, if healthy, three warm Home/reopen/tap cycles. At a
+confirmed freeze, stop input and retain repeated observation across ONE1s window
+only after all9 ADP events are disabled. Independent populations: accepted mode,
+positive token comparison, matching-local continuation and final return; no
+pairing/count subtraction or absence proof. No model/Apple semantic patch.
+User will obtain a Mac later; first release continues with prebuilt developer
+IPAs. Frozen prepare/stage/boot-import source trees remain unchanged.
+
 ### 2026-10-07 18:36: reviewed five-site wait decision diagnostic implementing
 
 Proposal2aaae8204f/e8f076d275 independently reviewed00c71348da, root approved
