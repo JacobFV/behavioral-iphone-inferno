@@ -9,6 +9,20 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-07: NavigationDemo recovery coordinator live
+
+ActualHOSTprepare26c773c914, independentf9df44c57f and exactargvreview integrated.
+Session54551a25f5b0865b1169bc7eba15afa99b694c7e614edbfc54aa6da4a224c27d;
+eightHFSreadbacks/4commands0/onlyownedcachejobreplacement passed. RootGO
+4b245fd7ac launches one stage-import from unchanged persistent3f8b2d.
+CoordinatorPID1320519, toolsession5821 owned bootworker; output
+~/.local/share/inferno/app-import/navigation-stage-1 and launchsibling.
+Immediate noVM/free4GiB/newoutput/sourceclean checks passed. Coordinator owns
+soleQMP/finish/normalnew7freeze+ancestry. No secondQMP or manualfinish.
+Rootawaits actualstage result then independentreview before installedboot.
+NoNavigationDemo guestlaunch/UIclaim yet.93 remains stoppedhealthywith missed
+shorttimingtargets. Freshbootstrap34GiBspace requirementstillblocked.
+
 ### 2026-10-07:93 normal complete; NavigationDemo host passed, preparation next
 
 Rootvisual5183c1f7ac and rawnormal e6ce36a086 complete strict0→1. Guestboot
