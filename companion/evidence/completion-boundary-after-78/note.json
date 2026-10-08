@@ -1,0 +1,65 @@
+{
+  "scope": "Read-only synthesis of already mapped original driver and current model; no new disassembly, guest observation, memory read or semantic patch",
+  "model": {
+    "path": "hw/display/apple_displaypipe_v4.c",
+    "sha256": "08d3709cd9c076c0121fe4ab600fee4aa7d618f82f3906ad7ee3126ce1b1df7a",
+    "source_pin": "f37ad49dbb68dc9c0097960381ebc14270fc3da8"
+  },
+  "inputs": {
+    "original-adp-post-ready-gates/inspection.json": "9116856a14331d182665fdbd78f47c39b488e412a7b8e9a7fac673e05a1a44a8",
+    "original-iomfb-swapwait-path/inspection.json": "203040bbe412475d4ecf909a80340a988b23706730c953d3135ecd50353296fb",
+    "swapwait-cpu-76-failure-actual/audit.json": "10fcf93d05c1ca82adbc5dad35a6ed19558d3614dc7758163d85fd96c3d7ac9e"
+  },
+  "source_facts": [
+    {
+      "lines": [
+        619,
+        627
+      ],
+      "fact": "Submit register bit12 schedules one QEMU BH; there is no token identifier carried through this model call."
+    },
+    {
+      "lines": [
+        1010,
+        1023
+      ],
+      "fact": "BH visits both pipes and unconditionally ORs FRAME_PROCESSED bit20 afterward, including disabled/no-buffer outcomes. The bit is a latched interrupt condition, not a guest request token completion record."
+    },
+    {
+      "lines": [
+        738,
+        742
+      ],
+      "fact": "Display gfx_update separately ORs OUTPUT_READY bit10, independently of submit/BH and without checking processed state."
+    },
+    {
+      "lines": [
+        599,
+        607
+      ],
+      "fact": "Guest W1C clears status bits and recomputes interrupt level; acknowledgement does not run original pipeline completion."
+    },
+    {
+      "lines": [
+        312,
+        316
+      ],
+      "fact": "IRQ level is enabled AND latched status nonzero; repeated readiness can coalesce."
+    }
+  ],
+  "original_static_boundary": {
+    "handler": "At97453fc bit10 and returned maskzero permit later active-request test9745408..5410 and virtual call; observed x21=400 alone cannot prove them.",
+    "completion_gate": "At97b8bac..8c20 incoming pipeline ID is compared to prior ID; equal plus false unnamed property returns without unequal-ID completion path. Unequal-ID path invokes the mapped Legacy completion chain.",
+    "state_change": "Mapped Legacy path conditionally updates completed token bf4 and clears active pointer ad0 before wake. None is represented directly in current ADP trace.",
+    "limits": "No current runtime ID/property/active state observation, no proven lost notification or required new hardware transition."
+  },
+  "missing_observation": "During a genuine persistent failure, determine whether sampled pending demand matches active request, queued request, or completed-token comparison using already reviewed fixed3PC register-only profile. Run78 was healthy with CPU disabled and provides no such coverage.",
+  "next_protocol": [
+    "Retain genuine one-tap marker plus repeated reviewed stale frames before diagnostic; no replay/Home/OPEN intervention.",
+    "Use existing bounded ADP window to establish readiness/status/W1C/no-submit context, then prove all9off.",
+    "Enable exactly one1s pending-branch CPU window, retain exact startup filter/zero-slide/pins/QMP restoration and continuous no-input visual context.",
+    "Parse every complete/malformed/unknown block. Compare only typed independent populations; mode unknown, repeated loads non-atomic, absent sites not negative proof.",
+    "If stable nonnull active token equals requested while completed differs, investigate original completion invocation/ID predicate next; do not force processed/ready or clear active state. If null/queue evidence dominates, follow that branch instead."
+  ],
+  "decision": "No additional instrumentation or semantic change justified before actual failed-run pending-profile coverage. A new normal boot alone is not discriminating; do not call healthy78 evidence of repaired completion."
+}
