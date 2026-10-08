@@ -1,0 +1,114 @@
+{
+  "status": "PASS-independent-host-artifact-audit",
+  "scope": "Actual host production only; no disk eligibility, renderer, staging, readiness or app execution claim. Full decoded Apple configuration and serial remain external.",
+  "result": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/fresh-runtime-artifacts-2/fresh-runtime-artifacts.json",
+    "sha256": "95f72bc41d35e0b6d4131dba714dc17ba2ad4d3df9f3cb637e62b79e20155274"
+  },
+  "original_launchd": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-2/launchd.plist",
+    "sha256": "e5847afbcf6c025ee7f15620918eb6bc79bc916a29301bba8b034cf4775f3c24"
+  },
+  "original_jobs": 432,
+  "merged_jobs": 435,
+  "exact_disabled_labels": [
+    "com.apple.CommCenter",
+    "com.apple.CommCenterMobileHelper",
+    "com.apple.CommCenterRootHelper",
+    "com.apple.locationd",
+    "com.apple.voicemail.vmd"
+  ],
+  "exact_owned_additions": [
+    "org.inferno.app-probe.plist",
+    "org.inferno.readiness.plist",
+    "org.inferno.unlock-empty.plist"
+  ],
+  "whole_decoded_tree_type_sensitive_equality": true,
+  "actual_cache": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/fresh-runtime-artifacts-2/launchd.plist",
+    "bytes": 596664,
+    "sha256": "06291b66b9ed5e7886a2893f5c6094c0ae7e3de2fe7ddeef951e67c278e1b843"
+  },
+  "input_pins": {
+    "inspection": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-2/runtime-inspection.json",
+      "sha256": "bccc16c0181d168aea69a02f93bbd715639e9870b257d88141d0868d6fc33f56"
+    },
+    "keybag_stage": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/sep-keybag-stage-1/sep-keybag.json",
+      "sha256": "04547b9971e6d8fa01b674e26fd7e0b05cd28dc7bb2524145e456590ed00ab09"
+    },
+    "runtime_build": {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-runtime-build-1/build.json",
+      "sha256": "aa7ba5975fe5436ebb6bfbd7f922817e3b7b4e0c4b2250756ca2824547ddcf35"
+    },
+    "prepare_build": {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/build.json",
+      "sha256": "3cb1656f3978bfdcca7e3da80d7f8091f524c1b7593bb64a42a7a2a47f34e532"
+    },
+    "app_manifest": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/imported/manifest.json",
+      "sha256": "68cdc3ece31d151ad693766d2a288d8b4ea5ec12b24f1be7be3ea2cd5abbc66a"
+    },
+    "launcher_build": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/launcher/build-evidence.json",
+      "sha256": "2e872818910486f972f6aba370c8b436007a3fb6756c842682142aa2919b18a0"
+    }
+  },
+  "verified_source_input_output_pin_count": 177,
+  "raw_production_command": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/fresh-runtime-artifact-input-1/production-2-command.json",
+    "sha256": "cd781a3ef231f2eaa5bf75395cef4d286fe89a324abef51c1face96df34ae2c5",
+    "exit_code": 0,
+    "started": 1791437556.4285822,
+    "finished": 1791437556.8432574,
+    "logs": {
+      "/home/brandonin/.local/share/inferno/app-import/fresh-runtime-artifact-input-1/production-2.stdout": "dbb4cbd04bfc3243d5cdffa227ee58614ae22f3be91d2d317b55bc4c2d2d224d",
+      "/home/brandonin/.local/share/inferno/app-import/fresh-runtime-artifact-input-1/production-2.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "prepare_arguments_fragment": [
+    "--disk-helper-existing",
+    "--readiness-probe",
+    "/home/brandonin/.local/share/inferno/native-probe/reproducible-runtime-build-1/inferno-readiness",
+    "--hid-input-helper",
+    "/home/brandonin/.local/share/inferno/native-probe/reproducible-runtime-build-1/inferno-hid-input",
+    "--unlock-helper",
+    "/home/brandonin/.local/share/inferno/native-probe/reproducible-runtime-build-1/inferno-unlock-empty",
+    "--disk-helper",
+    "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/inferno-prepare-root",
+    "--system-launcher",
+    "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/launcher/inferno-launcher",
+    "--exec-wrapper",
+    "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/launcher/inferno-exec-launcher",
+    "--imported-app-manifest",
+    "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/imported/manifest.json",
+    "--imported-app-manifest-sha256",
+    "68cdc3ece31d151ad693766d2a288d8b4ea5ec12b24f1be7be3ea2cd5abbc66a",
+    "--launchd-cache",
+    "/home/brandonin/.local/share/inferno/app-import/fresh-runtime-artifacts-2/launchd.plist",
+    "--launchd-cache-sha256",
+    "06291b66b9ed5e7886a2893f5c6094c0ae7e3de2fe7ddeef951e67c278e1b843"
+  ],
+  "merge_command": [
+    "/usr/bin/python3",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/merge-launchd-cache.py",
+    "--cache",
+    "/home/brandonin/.local/share/inferno/app-import/runtime-inspection-stage-2/launchd.plist",
+    "--disable-unsupported-services",
+    "--output",
+    "/home/brandonin/.local/share/inferno/app-import/fresh-runtime-artifacts-2/launchd.plist",
+    "--job",
+    "/home/brandonin/.local/share/inferno/app-import/fresh-runtime-artifacts-2/org.inferno.app-probe.plist",
+    "--job",
+    "/home/brandonin/.local/share/inferno/app-import/fresh-runtime-artifacts-2/org.inferno.readiness.plist",
+    "--job",
+    "/home/brandonin/.local/share/inferno/app-import/fresh-runtime-artifacts-2/org.inferno.unlock-empty.plist"
+  ],
+  "prior_failure_preserved": {
+    "failure_path": "/home/brandonin/.local/share/inferno/app-import/fresh-runtime-artifacts-1/failure.json",
+    "failure_sha256": "371232dfd85dd947c85021e773743ef890cc02056ddda79be65b27a30a709cf1",
+    "incomplete_sha256": "f52c52f244d3b23019ba913592684ebd05874596165bb368ffd04c5e654d1cd0"
+  },
+  "ipa_runtime_ready": false
+}
