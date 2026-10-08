@@ -6,6 +6,7 @@ from pathlib import Path
 from PIL import Image
 HERE=Path(__file__).resolve().parent
 CROP=(0,250,828,1450)
+COMMAND_TEMPLATE_SHA='9b4348fc07bd35891c07ee2900eea2847cdb13f92942033131acfbf0c4cef38c'
 TEMPLATES={
  'beta':('after-unlock-002/settled.png','33aa5d4dee2047c11cdd427ed400c122108fcbde36882b9befaa7b8772653bee','030fa0c662d6534e2738d71b0a0c2ddd44ad814ee20f354a75b9913038682aac'),
  'setup':('after-beta-close/settled.png','d39b2b5bc77379b94fbb0faed9bd9ce7fbb422df02ef8d8ee6b4837acd9ad9e4','04b54478416ff438debe00f9d5626e9b98f82de1a1fd5d32af91a903e6664339'),
@@ -114,7 +115,10 @@ class Driver:
   endpoint=command[command.index('-vnc')+1];qmp=command[command.index('-qmp')+1].split(',')[0]
   if not endpoint.startswith('unix:') or not qmp.startswith('unix:'):raise ValueError('Private Unix surfaces required')
   self.socket=Path(endpoint[5:]);parent=self.socket.parent;s=parent.stat()
-  if self.socket.name!='vnc.sock' or Path(qmp[5:]).parent!=parent or parent.resolve()!=parent or stat.S_IMODE(s.st_mode)!=0o700 or s.st_uid!=os.getuid() or not self.socket.is_socket() or self.socket.lstat().st_uid!=os.getuid():raise ValueError('Unowned/aliased socket namespace')
+  if self.socket.name!='vnc.sock' or Path(qmp[5:]).parent!=parent or parent.resolve()!=parent or stat.S_IMODE(s.st_mode)!=0o700 or s.st_uid!=os.getuid() or self.socket.resolve()!=self.socket or not stat.S_ISSOCK(self.socket.lstat().st_mode) or self.socket.lstat().st_uid!=os.getuid():raise ValueError('Unowned/aliased socket namespace')
+  template=HERE/'evidence/fixed-fixture-alert-timing/command-template.json'
+  if sha(read(template))!=COMMAND_TEMPLATE_SHA or [x.replace(str(self.report),'@REPORT@').replace(str(parent),'@PRIVATE@') for x in command]!=record(template):raise ValueError('Exact normalized run91 startup command differs')
+  self.log['diagnostic_off_basis']={'kind':'Pinned binary/source default-disabled plus exact startup command and no subsequent ADP enable/HMP; not nine runtime query replies','command_template_sha256':COMMAND_TEMPLATE_SHA}
   if Path(v['control_mailbox']).resolve()!=self.report/'control' or list((self.report/'control').glob('request-*.json')):raise ValueError('Pending/mismatched mailbox')
   controls=rows(self.report/'control-transcript.jsonl')
   for c in controls:
@@ -126,7 +130,9 @@ class Driver:
    msg=json.loads(q['raw'])
    if q['direction']=='send':
     if msg.get('execute')=='human-monitor-command':raise ValueError('HMP diagnostic observed')
-    if msg.get('execute')=='trace-event-set-state' and msg['arguments']['name'] in self.G.qmp_control.DISPLAY_TRACE_EVENTS:states[msg['arguments']['name']]=(msg['arguments']['enable'],msg['id'])
+    if msg.get('execute')=='trace-event-set-state' and msg['arguments']['name'] in self.G.qmp_control.DISPLAY_TRACE_EVENTS:
+     if msg['arguments']['enable'] is not False:raise ValueError('ADP enable observed')
+     states[msg['arguments']['name']]=(False,msg['id'])
    elif 'id' in msg:responses[msg['id']]=msg
   if any(on is not False or 'return' not in responses.get(i,{}) for on,i in states.values()):raise ValueError('Diagnostics not acknowledged OFF')
   ident=self.G.identity(self.report,self.args.boot_uuid)
@@ -138,7 +144,13 @@ class Driver:
   self.run_command([sys.executable,str(HERE/'vnc-control.py'),'--socket',str(self.socket),'--output',str(dest),'--settle-seconds','0','--observe-seconds',str(seconds)],name,timeout)
   r=record(dest/'report.json')
   if not r.get('completed') or r.get('pointer_events') or r.get('home_button_events'):raise ValueError('Observation incomplete/unexpected input')
-  p=dest/'settled.png';self.log['observations'].append({'path':str(p),'sha256':sha(read(p)),'time':time.time()});self.save();return p
+  p=dest/'settled.png';entry={'path':str(p),'sha256':sha(read(p)),'time':time.time()}
+  captures=r.get('captures',[])
+  if not captures:raise ValueError('Missing actual capture records')
+  final=captures[-1];final_path=Path(final['path'])
+  if final_path.parent!=dest or sha(read(final_path))!=final['sha256']:raise ValueError('Final observation capture binding differs')
+  entry['final_capture']=final;entry['observer_report_sha256']=sha(read(dest/'report.json'));entry['scope']='File capture times; no automatic visual classification'
+  self.log['observations'].append(entry);self.save();return p
  def wait_until(self,wall):
   while time.time()<wall:
    if abs((time.time()-self.wall0)-(time.monotonic()-self.mono0))>.05:raise ValueError('Clock drift')

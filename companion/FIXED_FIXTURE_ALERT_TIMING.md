@@ -41,3 +41,15 @@ returns for root's visual review. It does not capture strict-after, stop the VM,
 open Home, relaunch, sample stacks or issue any second counter tap. A completed
 host sequence alone does not prove that pixels changed. All command logs,
 submission timestamps, PNGs and failures remain in the new external output.
+
+Diagnostic default-off evidence uses the pinned emulator and runner plus exact
+run91 startup argv, normalizing only the report path and private socket directory.
+Every later ADP enable and HMP command is rejected. This is not a claim that nine
+ADP state queries ran. Startup MT tracing remains allowed.
+
+The zero-second pre-action observer receives two complete frames and compares
+the second. Its whole subprocess has at most three seconds inside the four-second
+pre-read budget; the counter also needs its QMP capture within that budget. Slow
+refresh therefore aborts rather than shifting the action later. The final
+25-second observation records its actual last capture path, hash and receive time
+separately from the initial settled frame, for manual review.
