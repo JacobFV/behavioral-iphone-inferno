@@ -1,0 +1,268 @@
+{
+  "scope": "Actual82 first failed production pending-branch window; read-only independent prefix audit",
+  "parser_sha256": "5928f5e4aa34d539ae211d899c533d41c345171abad97c1d249486d2e378a159",
+  "binary_sha256": "0889bfe40c6bbb3e6eb9d493ada2bb86637e1d7acb61e36699e16da2568563f2",
+  "build_manifest_sha256": "1c0ca353df0b88956f071503654a9a0a3f1e22346270e89accdfaa911391f096",
+  "runner_sha256": "86e625db02acbca308e98f65e4715255077328bdecee981eb0fdabaf3a1dd19f",
+  "control_source_sha256": "642e75b59a116e10e351845d3a037c8689bdd3042bf5053a5a5c54b3817070f8",
+  "pins": {
+    "zero_slide": true,
+    "exact_three_filter": true,
+    "default_CPU_off": true,
+    "nine_ADP_disabled_checks": true
+  },
+  "window": {
+    "before": {
+      "time": 1791422708.7830133,
+      "monotonic_ns": 841892659491411,
+      "stage": "before-enable",
+      "seconds": 1,
+      "offset": 6833,
+      "inode": [
+        66306,
+        48523112
+      ],
+      "profile": "pending-branch",
+      "filter": "0xfffffff0096f1c74+4,0xfffffff0096f1c7c+4,0xfffffff0096f1d1c+4",
+      "slide_evidence_sha256": "90d324fa1e1c26c49589cda1ea8076ea1c3f9073a1f1fccf44bdc91ae15d91eb"
+    },
+    "restored": {
+      "time": 1791422709.7858574,
+      "monotonic_ns": 841893662335644,
+      "stage": "restored",
+      "reason": "deadline",
+      "offset": 143351,
+      "bytes_since_enable": 136518
+    },
+    "enable_reply": {
+      "time": 1791422708.7833865,
+      "monotonic_ns": 841892659864468,
+      "stage": "after-enable",
+      "response": {
+        "return": "",
+        "id": 98
+      }
+    },
+    "restore_reply": {
+      "time": 1791422709.7858272,
+      "monotonic_ns": 841893662305804,
+      "stage": "after-restore",
+      "response": {
+        "return": "",
+        "id": 99
+      }
+    },
+    "ADP_stop": {
+      "time": 1791422657.4288185,
+      "monotonic_ns": 841841305296369,
+      "stage": "stop-result",
+      "reason": "deadline",
+      "all_disabled": true,
+      "pending": []
+    },
+    "all_snapshot_offsets_inside": true
+  },
+  "populations": [
+    {
+      "role": "null-active",
+      "fields": {
+        "active_pointer": "0x0000000000000000",
+        "completed_token": 253,
+        "mode": "unknown",
+        "null_branch_register_valid": true,
+        "requested_equals_completed": true,
+        "requested_token": 253
+      },
+      "snapshots": 183
+    }
+  ],
+  "counts": {
+    "complete": 183,
+    "null_active": 183,
+    "active_join": 0,
+    "queued_match": 0,
+    "unknown": 0,
+    "malformed": 0
+  },
+  "raw_QMP_matches": [
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791422708.7761264,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 89, \"arguments\": {\"name\": \"apple_adp_submit\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791422708.776977,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_submit\", \"state\": \"disabled\"}], \"id\": 89}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791422708.7772121,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 90, \"arguments\": {\"name\": \"apple_adp_bh\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791422708.7778409,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_bh\", \"state\": \"disabled\"}], \"id\": 90}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791422708.7779858,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 91, \"arguments\": {\"name\": \"apple_adp_pipe\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791422708.7786124,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_pipe\", \"state\": \"disabled\"}], \"id\": 91}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791422708.7787476,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 92, \"arguments\": {\"name\": \"apple_adp_output_ready\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791422708.7793517,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_output_ready\", \"state\": \"disabled\"}], \"id\": 92}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791422708.7793744,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 93, \"arguments\": {\"name\": \"apple_adp_irq_write\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791422708.7799268,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_irq_write\", \"state\": \"disabled\"}], \"id\": 93}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791422708.7799463,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 94, \"arguments\": {\"name\": \"apple_adp_unknown_mmio\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791422708.7806613,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_unknown_mmio\", \"state\": \"disabled\"}], \"id\": 94}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791422708.7806973,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 95, \"arguments\": {\"name\": \"apple_adp_gp_config_write\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791422708.7814927,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_gp_config_write\", \"state\": \"disabled\"}], \"id\": 95}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791422708.781512,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 96, \"arguments\": {\"name\": \"apple_adp_status_read\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791422708.7822342,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_status_read\", \"state\": \"disabled\"}], \"id\": 96}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791422708.7822511,
+        "raw": "{\"execute\": \"trace-event-get-state\", \"id\": 97, \"arguments\": {\"name\": \"apple_adp_read_caller\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791422708.7829456,
+        "raw": "{\"return\": [{\"name\": \"apple_adp_read_caller\", \"state\": \"disabled\"}], \"id\": 97}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791422708.7830303,
+        "raw": "{\"execute\": \"human-monitor-command\", \"id\": 98, \"arguments\": {\"command-line\": \"log cpu,nochain,guest_errors\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791422708.7833767,
+        "raw": "{\"return\": \"\", \"id\": 98}\r\n"
+      }
+    },
+    {
+      "request": {
+        "direction": "send",
+        "time": 1791422709.785301,
+        "raw": "{\"execute\": \"human-monitor-command\", \"id\": 99, \"arguments\": {\"command-line\": \"log guest_errors\"}}\n"
+      },
+      "reply": {
+        "direction": "receive",
+        "time": 1791422709.7857125,
+        "raw": "{\"return\": \"\", \"id\": 99}\r\n"
+      }
+    }
+  ],
+  "serial_context": [
+    {
+      "line": 924,
+      "offset": 61709,
+      "bytes": 145,
+      "text": "INFERNO_EVENT_RELAY_READY boot=66FDA903-F891-4C7C-97C5-D4F07C94BCE0 lifetime=7200 transport=tcp address=127.0.0.1 port=37373 connections_max=128\r"
+    },
+    {
+      "line": 5511,
+      "offset": 308532,
+      "bytes": 68,
+      "text": "INFERNO_HID_V1 8526bf0ac8cb4665a4fce5be9ce240e9 TAP 16384 20316 150\r"
+    },
+    {
+      "line": 5513,
+      "offset": 308602,
+      "bytes": 146,
+      "text": "INFERNO_HID_REQUEST request_id=8526bf0ac8cb4665a4fce5be9ce240e9 kind=TAP x0=16384 y0=20316 x1=16384 y1=20316 duration_ms=150 timestamp=7865757019\r"
+    },
+    {
+      "line": 5537,
+      "offset": 309883,
+      "bytes": 133,
+      "text": "INFERNO_HID_REPORT request_id=8526bf0ac8cb4665a4fce5be9ce240e9 phase=down x=16384 y=20316 touching=1 timestamp=7866096280 result=0x0\r"
+    },
+    {
+      "line": 5539,
+      "offset": 310018,
+      "bytes": 131,
+      "text": "INFERNO_HID_REPORT request_id=8526bf0ac8cb4665a4fce5be9ce240e9 phase=up x=16384 y=20316 touching=0 timestamp=7870565734 result=0x0\r"
+    },
+    {
+      "line": 5541,
+      "offset": 310151,
+      "bytes": 116,
+      "text": "INFERNO_HID_ACK request_id=8526bf0ac8cb4665a4fce5be9ce240e9 attempt_status=0 delivery=unproven timestamp=7870604566\r"
+    }
+  ],
+  "interpretation": "Observed null-active comparison population has requested253 equal completed253, X11zero. This narrows beyond failed76 stationary token/pending returns: it does not support nonnull-active token as the observed pending condition in82. No entry/return or mode/CPU/process pairing is possible across profiles or attempts.",
+  "limits": [
+    "Exact source-reviewed registers only; X10 ignored at null site.",
+    "Absence of active/queued snapshots is not proof no active/queued request existed elsewhere or outside window.",
+    "Completed token is a mapped field label, not proof all frontend/display completion succeeded; equality remains a pending comparison in original mode0 mapping.",
+    "Mode is unknown at these PCs; do not assign prior76 flags to82.",
+    "CPU nochain perturbs execution globally; bounded window can overshoot and counts are snapshots not invocations.",
+    "Prefixes captured from live attempt after restore; root owns visual classification, no worker guest action."
+  ]
+}
