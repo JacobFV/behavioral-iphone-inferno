@@ -1,0 +1,564 @@
+{
+  "kind": "t8030_recovery_ramdisk_experiment",
+  "attempt_completed": true,
+  "ios_booted": null,
+  "app_executed": null,
+  "milestones": {
+    "kernel_serial": {
+      "state": "observed",
+      "evidence": [
+        {
+          "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/serial.log",
+          "sha256": "282f497dad3f44a029733091e606569febfa03dffd912ad71ff6655a397a55aa",
+          "byte_start": 33,
+          "byte_end": 63,
+          "line": 2,
+          "text": "corecrypto_kext_start called"
+        }
+      ],
+      "scope": "Original kernel/kext diagnostic text; not boot completion."
+    },
+    "launchd_userland": {
+      "state": "observed",
+      "evidence": [
+        {
+          "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/serial.log",
+          "sha256": "282f497dad3f44a029733091e606569febfa03dffd912ad71ff6655a397a55aa",
+          "byte_start": 32001,
+          "byte_end": 32116,
+          "line": 436,
+          "text": "Thu Oct  8 04:04:56 2026 localhost com.apple.xpc.launchd[1] <Notice>: Early boot complete. Continuing system boot."
+        }
+      ],
+      "scope": "t8030_recovery_ramdisk_experiment"
+    },
+    "owned_app_lifecycle": {
+      "state": "unestablished",
+      "evidence": []
+    },
+    "strict_owned_journey": {
+      "state": "unestablished",
+      "evidence": []
+    }
+  },
+  "milestone_source_sha256": "4aefd213f1587f2b93969378f34183053375d5d2a088e013d4626ebab0a5571a",
+  "milestone_note": "QMP running and framebuffer captures alone do not establish iOS boot.",
+  "profile_path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery/profile.json",
+  "profile_sha256": "1c5b52ce29f24baa059b88028bdbe25b8fc65f0ae99454440ab02d4719173eb5",
+  "inputs": {
+    "kernel": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/kernel-kernelcache.research.iphone12b",
+      "sha256": "cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3",
+      "bytes": 17429507
+    },
+    "dtb": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+      "sha256": "dbd9be96c4b18f48a1842879237ae8f27043b894a2ed6139e396dbedca232411",
+      "bytes": 42553
+    },
+    "trustcache": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache",
+      "sha256": "af33b3466bd828bf1ccaa1ab35d060bfcce62ade26ee74acf176501b00ea0d7f",
+      "bytes": 4931
+    },
+    "ramdisk": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery/ramdisk.raw",
+      "sha256": "5c979b80fb5fc1b21d6a3e4ad573a0de6837955ecb8c276fd0baf26c4b946c89",
+      "bytes": 104685568
+    }
+  },
+  "binary": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+  "binary_sha256": "0889bfe40c6bbb3e6eb9d493ada2bb86637e1d7acb61e36699e16da2568563f2",
+  "build_manifest_path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build-manifest.json",
+  "build_manifest_sha256": "1c0ca353df0b88956f071503654a9a0a3f1e22346270e89accdfaa911391f096",
+  "build_manifest": {
+    "schema": "inferno.local-linux-build.v1",
+    "purpose": "build provenance only; no guest boot or firmware execution claim",
+    "sep_mode": "simulated-unencrypted",
+    "kvm_enabled": true,
+    "upstream_base": "cc4302a99167abec69b714cfd00c38caece7e7de",
+    "source_revision": "f37ad49dbb68dc9c0097960381ebc14270fc3da8",
+    "source_diff": "",
+    "mlib_revision": "d0fd65a8695218ffabf2aa543ce51ca3af69536f",
+    "host_machine": "aarch64",
+    "host_platform": "Linux-6.17.0-1026-nvidia-aarch64-with-glibc2.39",
+    "python": "3.12.3",
+    "compiler": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "meson": "1.7.2",
+    "ninja": "1.11.1.git.kitware.jobserver-1",
+    "inputs": {
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/build-linux.sh": "eca6961c7c82b6a14a15ba184f944aa2e1e1660dbf6546e40e3508cf17337267",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/bootstrap-linux.py": "8e1982776284e01d33e993c8400dc55c3af7532143f9c744dea2a7fc595a227d",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/linux-dependencies-arm64.json": "754a310b006a6b504a214390a3c59b7d5811da7f0600a7b4ef35f7fa48bff40d",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/build-tools-arm64.txt": "310ef416baa0a946c58bb88e7b7e007bdef03a0fae7e099846f6d3a1a926c372",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/downloads/nettle-3.10.2.tar.gz": "fe9ff51cb1f2abb5e65a6b8c10a92da0ab5ab6eaf26e7fc2b675c45f1fb519b5",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/config-host.mak": "0419523d1df6e73d6aacebdd361ba4ce5204b5b68e864990b0c5ac6f18e28f79",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/config.status": "e7f1a539641d37b6cf47e81d15385189e6961c8a58acdb17008f36735319b242",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/meson-info/intro-buildoptions.json": "14ce66bcd20612203c921bbaf0fd4520bd97bc1f9c26aed368dd4d72a80777a9"
+    },
+    "binary": {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+      "sha256": "0889bfe40c6bbb3e6eb9d493ada2bb86637e1d7acb61e36699e16da2568563f2",
+      "bytes": 114851864
+    },
+    "system_dependencies": {
+      "glib-2.0": "2.80.0",
+      "pixman-1": "0.42.2",
+      "zlib": "1.3",
+      "libpng": "1.6.43"
+    },
+    "keycodemapdb_revision": "f5772a62ec52591ff6870b7e8ef32482371f22c6"
+  },
+  "runner_sha256": "beb55cb892ad246e215a5aa8d1178fc7dcbac6c63adfca6591c9da58606cf097",
+  "companion_revision": "8f1bb1a11b431646db7ea3c168b34cd349267d08",
+  "duration_limit_seconds": 1200.0,
+  "disks": [
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/root.qcow2",
+      "initial_state": "private qcow2 overlay over retained hash-verified read-only backing",
+      "bytes": 8589934592,
+      "format": "qcow2",
+      "nsid": 1,
+      "nstype": 1
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/firmware.raw",
+      "initial_state": "fresh sparse zero-filled raw",
+      "bytes": 8388608,
+      "format": "raw",
+      "nsid": 2,
+      "nstype": 2
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/syscfg.raw",
+      "initial_state": "fresh sparse zero-filled raw",
+      "bytes": 131072,
+      "format": "raw",
+      "nsid": 3,
+      "nstype": 3
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/ctrl_bits.raw",
+      "initial_state": "fresh sparse zero-filled raw",
+      "bytes": 8192,
+      "format": "raw",
+      "nsid": 4,
+      "nstype": 4
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/nvram.raw",
+      "initial_state": "fresh sparse zero-filled raw",
+      "bytes": 8192,
+      "format": "raw",
+      "nsid": 5,
+      "nstype": 5
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/effaceable.raw",
+      "initial_state": "fresh sparse zero-filled raw",
+      "bytes": 4096,
+      "format": "raw",
+      "nsid": 6,
+      "nstype": 6
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/panic_log.raw",
+      "initial_state": "fresh sparse zero-filled raw",
+      "bytes": 1048576,
+      "format": "raw",
+      "nsid": 7,
+      "nstype": 8
+    }
+  ],
+  "observations": [
+    {
+      "return": {
+        "status": "running",
+        "running": true
+      },
+      "id": 6
+    },
+    {
+      "return": [
+        {
+          "thread-id": 116715,
+          "qom-type": "apple-a13-cpu",
+          "qom-path": "/machine/cluster0/cpu0",
+          "cpu-index": 0,
+          "target": "aarch64"
+        },
+        {
+          "thread-id": 116716,
+          "qom-type": "apple-a13-cpu",
+          "qom-path": "/machine/cluster0/cpu1",
+          "cpu-index": 1,
+          "target": "aarch64"
+        }
+      ],
+      "id": 7
+    }
+  ],
+  "root_base": {
+    "path": "/home/brandonin/.local/share/inferno/images/ios14b5/initial-volumes-source-1/root.raw",
+    "sha256": "93f97dae602a8fc844f0f88819d3fe358b1cf14ee5e193b0beb7009376032594",
+    "bytes": 8589934592,
+    "copied_before_use": false,
+    "retained_immutable_backing": true
+  },
+  "control_mailbox": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/control",
+  "observation_run_control": {
+    "keep_running": false,
+    "finish_requested": true
+  },
+  "control_source_sha256": "906716956328980c1a054f1836298471b88acd1db8788c8d18b78b8cbc7c01a2",
+  "root_overlay": {
+    "schema": "inferno.raw-backed-overlay.v1",
+    "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/root.qcow2",
+    "format": "qcow2",
+    "backing": {
+      "path": "/home/brandonin/.local/share/inferno/images/ios14b5/initial-volumes-source-1/root.raw",
+      "format": "raw",
+      "sha256": "93f97dae602a8fc844f0f88819d3fe358b1cf14ee5e193b0beb7009376032594",
+      "bytes": 8589934592,
+      "device": 66306,
+      "inode": 48799599,
+      "mtime_ns": 1791430887226554083,
+      "ctime_ns": 1791430896801588458,
+      "mode": "0o444"
+    },
+    "tool": {
+      "root": "/home/brandonin/.local/share/inferno/disk-overlay-tools",
+      "binary": "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-img",
+      "sha256": "f26da24f8a7fd880ab13f6fcabf42d099fb68ea86df5de0c55e6faadfe2d9a6e",
+      "provenance": "/home/brandonin/.local/share/inferno/disk-overlay-tools/tool-provenance.json",
+      "provenance_sha256": "bc5893936a16a2b2dd5cf7e6408da5742a3e1909d7c8d3606ff100ec7236c9f2"
+    },
+    "image_info": {
+      "children": [
+        {
+          "name": "file",
+          "info": {
+            "children": [],
+            "virtual-size": 197120,
+            "filename": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/root.qcow2",
+            "format": "file",
+            "actual-size": 200704,
+            "format-specific": {
+              "type": "file",
+              "data": {}
+            },
+            "dirty-flag": false
+          }
+        }
+      ],
+      "backing-filename-format": "raw",
+      "virtual-size": 8589934592,
+      "filename": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/root.qcow2",
+      "cluster-size": 65536,
+      "format": "qcow2",
+      "actual-size": 200704,
+      "format-specific": {
+        "type": "qcow2",
+        "data": {
+          "compat": "1.1",
+          "compression-type": "zlib",
+          "lazy-refcounts": false,
+          "refcount-bits": 16,
+          "corrupt": false,
+          "extended-l2": false
+        }
+      },
+      "full-backing-filename": "/home/brandonin/.local/share/inferno/images/ios14b5/initial-volumes-source-1/root.raw",
+      "backing-filename": "/home/brandonin/.local/share/inferno/images/ios14b5/initial-volumes-source-1/root.raw",
+      "dirty-flag": false
+    },
+    "metadata_revalidation": [],
+    "dependency_warning": "Retain this immutable raw base at the exact recorded path; overlay is not standalone.",
+    "source_sha256": "16180ed475f586b60031c129bf2a11169597dca10fc77a804d9fcdf0f20e3978",
+    "backing_after_stop": {
+      "unchanged": true,
+      "sha256": "93f97dae602a8fc844f0f88819d3fe358b1cf14ee5e193b0beb7009376032594",
+      "metadata_revalidation": []
+    }
+  },
+  "invocation": [
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "-machine",
+    "t8030,kaslr-off=true,usb-conn-type=unix,usb-conn-addr=/tmp/inferno-boot-8h0gzt_q/absent-usb.sock,trustcache=/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache,boot-mode=exit_recovery",
+    "-accel",
+    "tcg",
+    "-smp",
+    "2",
+    "-m",
+    "4G",
+    "-S",
+    "-kernel",
+    "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/kernel-kernelcache.research.iphone12b",
+    "-dtb",
+    "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+    "-initrd",
+    "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery/ramdisk.raw",
+    "-append",
+    "rd=md0 debug=0x14e serial=3 wdt=-1 tlto_us=-1 mtxspin=-1 agm-genuine=1 agm-authentic=1 agm-trusted=1 -vm_compressor_wk_sw",
+    "-display",
+    "none",
+    "-vnc",
+    "unix:/tmp/inferno-boot-8h0gzt_q/vnc.sock",
+    "-monitor",
+    "none",
+    "-serial",
+    "file:/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/serial.log",
+    "-qmp",
+    "unix:/tmp/inferno-boot-8h0gzt_q/qmp.sock,server=on,wait=off",
+    "-no-reboot",
+    "-d",
+    "guest_errors",
+    "-D",
+    "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/guest-errors.log",
+    "-drive",
+    "file=/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/root.qcow2,format=qcow2,if=none,id=root",
+    "-device",
+    "nvme-ns,drive=root,bus=nvme-bus.0,nsid=1,nstype=1,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/firmware.raw,format=raw,if=none,id=firmware",
+    "-device",
+    "nvme-ns,drive=firmware,bus=nvme-bus.0,nsid=2,nstype=2,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/syscfg.raw,format=raw,if=none,id=syscfg",
+    "-device",
+    "nvme-ns,drive=syscfg,bus=nvme-bus.0,nsid=3,nstype=3,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/ctrl_bits.raw,format=raw,if=none,id=ctrl_bits",
+    "-device",
+    "nvme-ns,drive=ctrl_bits,bus=nvme-bus.0,nsid=4,nstype=4,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/nvram.raw,format=raw,if=none,id=nvram",
+    "-device",
+    "apple-nvram,drive=nvram,bus=nvme-bus.0,nsid=5,nstype=5,id=nvram,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/effaceable.raw,format=raw,if=none,id=effaceable",
+    "-device",
+    "nvme-ns,drive=effaceable,bus=nvme-bus.0,nsid=6,nstype=6,logical_block_size=4096,physical_block_size=4096",
+    "-drive",
+    "file=/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/panic_log.raw,format=raw,if=none,id=panic_log",
+    "-device",
+    "nvme-ns,drive=panic_log,bus=nvme-bus.0,nsid=7,nstype=8,logical_block_size=4096,physical_block_size=4096"
+  ],
+  "pid": 116702,
+  "greeting": {
+    "QMP": {
+      "version": {
+        "qemu": {
+          "micro": 2,
+          "minor": 2,
+          "major": 10
+        },
+        "package": ""
+      },
+      "capabilities": [
+        "oob"
+      ]
+    }
+  },
+  "screendump": {
+    "return": {},
+    "id": 8
+  },
+  "framebuffer_captured": true,
+  "framebuffer_sha256": "fd27fc149822f9f986de68f276a382ea7e2bf9ed4a5ba54f60c757c075ef9d7c",
+  "quit_response": {
+    "return": {},
+    "id": 9
+  },
+  "qmp_commands": [
+    {
+      "request": {
+        "execute": "qmp_capabilities",
+        "id": 1
+      },
+      "response": {
+        "return": {},
+        "id": 1
+      }
+    },
+    {
+      "request": {
+        "execute": "query-status",
+        "id": 2
+      },
+      "response": {
+        "return": {
+          "status": "prelaunch",
+          "running": false
+        },
+        "id": 2
+      }
+    },
+    {
+      "request": {
+        "execute": "query-cpus-fast",
+        "id": 3
+      },
+      "response": {
+        "return": [
+          {
+            "thread-id": 116715,
+            "qom-type": "apple-a13-cpu",
+            "qom-path": "/machine/cluster0/cpu0",
+            "cpu-index": 0,
+            "target": "aarch64"
+          },
+          {
+            "thread-id": 116716,
+            "qom-type": "apple-a13-cpu",
+            "qom-path": "/machine/cluster0/cpu1",
+            "cpu-index": 1,
+            "target": "aarch64"
+          }
+        ],
+        "id": 3
+      }
+    },
+    {
+      "request": {
+        "execute": "query-mice",
+        "id": 4
+      },
+      "response": {
+        "return": [
+          {
+            "index": 1,
+            "name": "Apple Multitouch HID SPI",
+            "current": true,
+            "absolute": true
+          }
+        ],
+        "id": 4
+      }
+    },
+    {
+      "request": {
+        "execute": "cont",
+        "id": 5
+      },
+      "response": {
+        "return": {},
+        "id": 5
+      }
+    },
+    {
+      "request": {
+        "execute": "query-status",
+        "id": 6
+      },
+      "response": {
+        "return": {
+          "status": "running",
+          "running": true
+        },
+        "id": 6
+      }
+    },
+    {
+      "request": {
+        "execute": "query-cpus-fast",
+        "id": 7
+      },
+      "response": {
+        "return": [
+          {
+            "thread-id": 116715,
+            "qom-type": "apple-a13-cpu",
+            "qom-path": "/machine/cluster0/cpu0",
+            "cpu-index": 0,
+            "target": "aarch64"
+          },
+          {
+            "thread-id": 116716,
+            "qom-type": "apple-a13-cpu",
+            "qom-path": "/machine/cluster0/cpu1",
+            "cpu-index": 1,
+            "target": "aarch64"
+          }
+        ],
+        "id": 7
+      }
+    },
+    {
+      "request": {
+        "execute": "screendump",
+        "id": 8,
+        "arguments": {
+          "filename": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/framebuffer.ppm"
+        }
+      },
+      "response": {
+        "return": {},
+        "id": 8
+      }
+    },
+    {
+      "request": {
+        "execute": "quit",
+        "id": 9
+      },
+      "response": {
+        "return": {},
+        "id": 9
+      }
+    }
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 11.974157,
+  "serial_bytes": 52182,
+  "observed_milestones": {
+    "schema": "inferno.boot-observations.v1",
+    "scope": "Retained serial/control observations, not automated visual verification or arbitrary-app compatibility.",
+    "ios_booted": null,
+    "app_executed": null,
+    "ios_booted_note": "Deprecated ambiguous alias; consult granular milestones. Recovery userland is not installed-system readiness.",
+    "milestones": {
+      "kernel_serial": {
+        "state": "observed",
+        "evidence": [
+          {
+            "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/serial.log",
+            "sha256": "282f497dad3f44a029733091e606569febfa03dffd912ad71ff6655a397a55aa",
+            "byte_start": 33,
+            "byte_end": 63,
+            "line": 2,
+            "text": "corecrypto_kext_start called"
+          }
+        ],
+        "scope": "Original kernel/kext diagnostic text; not boot completion."
+      },
+      "launchd_userland": {
+        "state": "observed",
+        "evidence": [
+          {
+            "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/serial.log",
+            "sha256": "282f497dad3f44a029733091e606569febfa03dffd912ad71ff6655a397a55aa",
+            "byte_start": 32001,
+            "byte_end": 32116,
+            "line": 436,
+            "text": "Thu Oct  8 04:04:56 2026 localhost com.apple.xpc.launchd[1] <Notice>: Early boot complete. Continuing system boot."
+          }
+        ],
+        "scope": "t8030_recovery_ramdisk_experiment"
+      },
+      "owned_app_lifecycle": {
+        "state": "unestablished",
+        "evidence": []
+      },
+      "strict_owned_journey": {
+        "state": "unestablished",
+        "evidence": []
+      }
+    },
+    "serial": {
+      "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/serial.log",
+      "sha256": "282f497dad3f44a029733091e606569febfa03dffd912ad71ff6655a397a55aa",
+      "bytes": 52182
+    }
+  }
+}
