@@ -1,0 +1,44 @@
+{
+  "scope": "Read-only conditional proposal for after a failed five-PC window; no new disassembly, implementation or runtime action.",
+  "precondition": "Confirmed unchanged fixture pixels with genuine callback, plus independently observed stationary equality/localfalse/pending populations. These are not same-call conjunctions.",
+  "reviewed_source": "companion/evidence/compositor-token-producer-84/audit.json",
+  "smallest_positive_observation": {
+    "preferred_unslid_PC": "0x192b6d274",
+    "function": "kern_SwapBegin",
+    "meaning": "Snapshot immediately before store of successful scalar output into nonnull caller output pointer.",
+    "registers": {
+      "W8": "low32 scalar output loaded at192b6d268 after successful selector4 call",
+      "X20": "nonnull caller output pointer preserved from entry; record as opaque address, never dereference",
+      "X19": "framebuffer client object opaque address, not process identity"
+    },
+    "control_proof": "IOConnectCallScalarMethod selector4 at248, CBZ W0 at24c takes success25c. Success path loads returned scalar intoW8 at268, storesclient+58 at26c, CBZ X20 at270 skips to278 ifnull. PC274 is nonnull conditional fallthrough, giving a candidate natural TB boundary. Prior call result was zero on this path; no numeric status invented beyond that branch proof.",
+    "coverage_requirement": "Must verify actual exact-PC TB coverage with a separately reviewed relocated owned fixture and healthy original calibration before treating missing records as useful. The site observes before output store; not proof the store or whole submit completed.",
+    "runtime_slide_requirement": "This is userspace cache code, so existing fixed zero-slide kernel profile cannot simply reuse preferredPC. Any future profile needs verified same-attempt cache UUID and slide and exact bounded filter; no arbitrary address parameter or guessed prior slide. Current implementation remains unchanged."
+  },
+  "interpretation_cases": [
+    {
+      "observation": "Successful-output snapshots with changingW8 values",
+      "supports": "New successful selector4 results occur within the sampled window; persistent token retention cannot be explained solely by total absence of new allocations across every observed client.",
+      "does_not_support": "Those results belong to the same display/ring/process as stationary wait populations, or that SwapEnd/completion succeeded."
+    },
+    {
+      "observation": "Successful-output snapshots repeatedly expose sameW8",
+      "supports": "Successful selector4 output path is being reached with that value, so repeated token value alone is not proof allocation path absent.",
+      "does_not_support": "Unique invocation count, token uniqueness contract, or same-call pairing with waits."
+    },
+    {
+      "observation": "No successful-output snapshots",
+      "supports": "No positive producer observation at this site in this bounded window.",
+      "does_not_support": "No allocation attempts, failure before success, missing TB coverage, or a causal completion failure cannot be distinguished. An entry site would only separate observed attempts from observed successes as independent populations, not pair them."
+    }
+  ],
+  "why_not_return278": "PC278 is also target of null-output skip; nonnull path falls through from274, so exact278 coverage for nonnull output may not be guaranteed.274 has a directly reviewed conditional predecessor and excludes null destination.",
+  "minimum_next_step": "Do not add a profile before failedfivePC evidence. If that evidence warrants producer tracing, review one fixed success-output PC274 with same-boot slide binding and production coverage. Only add entry1f4 if distinguishing attempted allocation from successful-output absence becomes necessary. No guest RAM/stack reads or model change.",
+  "limits": [
+    "W8 may be zero unless actual data show otherwise; call success is not proof positive/nonzero token.",
+    "No process/thread/CPU identification or adjacent-block pairing.",
+    "Opaque client/output addresses are context, not stable ownership proof.",
+    "SwapBegin output precedes SwapEnd; it is not completion or scanout evidence.",
+    "Existing healthy84 changing equality tokens cannot be paired retrospectively with selector4 results."
+  ]
+}
