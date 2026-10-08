@@ -1,0 +1,96 @@
+{
+  "status": "read-only proposal; no verification VM or flatten executed",
+  "source_pins": [
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/prepare-root.c",
+      "sha256": "20a4eaf4b7a900573b172f4f59f04e5268f0e930534d7794d3b1bcdb4ee7d539"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/prepare.py",
+      "sha256": "1dbdaccd542643397c30ee3ff0f43c3b3fe639752e586da4806cd0ebf402d85a"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/companion/disk_overlay.py",
+      "sha256": "16180ed475f586b60031c129bf2a11169597dca10fc77a804d9fcdf0f20e3978"
+    },
+    {
+      "path": "/home/brandonin/Documents/behavioral-iphone-inferno/companion/evidence/stage50-flatten-conversion-1/executed-conversion.py",
+      "sha256": "115abab589889b023f9678f62dabde834834befc86dc8b92e6938de5ffa7ac20"
+    }
+  ],
+  "input": "Only future successful seed-stage result over initial-volumes-stage-2; exact paired six auxiliary states, frozen root, normal report and ordinary retention required. Failed stage1 never a base.",
+  "preparation_flags": [
+    "--disk-helper-existing",
+    "--disk-helper-verify-data"
+  ],
+  "guest_argv": [
+    "/usr/bin/inferno-prepare-root",
+    "--disposable-root-copy",
+    "--existing-volumes",
+    "--verify-data"
+  ],
+  "profile_gates": [
+    "Same pinned original kernel/DT/recovery trustcache, newly prepared ramdisk with exact helper/probe/job HFS readbacks.",
+    "provenance helper flags existing=true, verify_data=true; roles/gigalocker/data/keybag/export all false. No SEP/cache/app/readiness install payload.",
+    "boot ramdisk mode with --overlay-base-report exact stopped seeded report and paired auxiliaries from that same report; fresh external output."
+  ],
+  "raw_gates": [
+    "Unique BEGIN existing=1 roles=0 gigalocker=0; no newfs or seed/copy/install/gigalocker/keybag operations.",
+    "Discover actual System and Data device identifiers from original volume names/content; never assume creation-order indices. Discovery mounts must be read-only and successfully unmounted.",
+    "Final System /mnt1 and Data /mnt2 mount_apfs -o ro, status0.",
+    "Unique INFERNO_TREE_RESULT nonzero entries/files/bytes, links recorded, mismatches=0; no TREE_MISMATCH, invalid/truncated/duplicate or unknown phase markers.",
+    "Data then System original unmount completion, mounted count0, then unique PREP_COMPLETE. Exact final serial retains prefinish checkpoint prefix."
+  ],
+  "tree_scope": {
+    "included": [
+      "regular file bytes and size",
+      "full mode/uid/gid",
+      "symlink target",
+      "missing and extra directory entries",
+      "unsupported types reject"
+    ],
+    "not_compared": [
+      "xattrs",
+      "ACLs",
+      "timestamps",
+      "APFS compression/storage encoding",
+      "Update/Hardware tree content"
+    ],
+    "historical_reference_only": {
+      "entries": 16665,
+      "files": 13025,
+      "links": 1,
+      "bytes": 269210433,
+      "mismatches": 0,
+      "source": "companion/evidence/data-guest-verification-serial.txt:619",
+      "rule": "Historical counts corroborate original var contents, not replacement for new raw results; any drift requires explanation."
+    }
+  },
+  "shutdown_and_retention": [
+    "Write raw content checkpoint before one finish-observation, no retry; require actual control request/response and QMP quit reply/SHUTDOWN(host-qmp-quit), runner exit0/no error/process absent.",
+    "Freeze only this new report seven namespaces using restrictive umask and exact ownership/FD/identity guards; retain KEEP, ordinary all7 hashes and backing-after-stop verification.",
+    "Read-only guest mounts do not mean whole VM or namespaces unchanged; preserve the resulting paired seven states without claiming no disk writes.",
+    "Phase result remains ipa_runtime_ready:false."
+  ],
+  "layer_budget": {
+    "meaning": "actual len(layers) includes raw base, not only qcow2 layers",
+    "initial_actual": 2,
+    "seed_expected": 3,
+    "verify_expected": 4,
+    "keybag_without_flatten_would_be": 5,
+    "limit": "load_stopped_overlay MAX_OVERLAY_DEPTH4 rejects len(layers)>4; final keybag eligibility would fail even though a child may begin.",
+    "recommendation": "Flatten verified stopped Data-check result at depth4 before keybag; then raw base only and new keybag overlay depth2."
+  },
+  "flatten_procedure": [
+    "Use existing stage50-flatten-conversion-1 executed-conversion.py as reviewed historical workflow, not blindly execute its hard-coded paths. New bounded producer needed for arbitrary verified-phase input.",
+    "Validate stopped verification result/report/all7/ancestors and no live reader/writer descriptors in inspectable proc; retain full source identities/hashes before and after.",
+    "Pinned qemu-img convert -f qcow2 -O raw -S 4k VERIFIED_ROOT NEW_EXTERNAL_RAW; original images unchanged.",
+    "Pinned qemu-img compare -f qcow2 -F raw VERIFIED_ROOT NEW_EXTERNAL_RAW must exit0; validate both 4096GPT CRCs, geometry and logical size.",
+    "Hash/fsync/freeze only new raw0444, exact copy/conversion provenance and KEEP; keep original all ancestors and original verification records.",
+    "Next keybag stage must select six auxiliary files from the same verified Data-check report, not zero/reseeded auxiliaries. Raw base binding must explicitly cite verified result+conversion proof; no generic assertion JSON or inferred ancestry."
+  ],
+  "limitations": [
+    "No code, VM, conversion or full disk hashing in this review.",
+    "Initial manifest is phase-only; later original device initialization, keybag, migration/cache/setup remain separate work."
+  ]
+}
