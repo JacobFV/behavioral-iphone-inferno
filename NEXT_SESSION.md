@@ -9,6 +9,22 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-07 18:01: fixture80 live; boot-import implementation underway
+
+79 normal retention integrated7cced5b79a; full coordinator-installed journey
+visual8b11f6cfa7. Fixture80 runner3816175/QEMU3816729 is live at private VNC
+/tmp/inferno-boot-lt_pp9u9/vnc.sock, report .local-build/reports/app-boot-80.
+Same78 profile/config and successful fixturestage3 base, CPU logging OFF.
+Root reviewed lock after first swipe f955d60c080e4cfb8d3c438ff75dd615 ACK0;
+second swipe5bc642e8d5194af5858b2c245c802229 is under20s observation.
+Root alone performs inputs and conditionally one1s pending-branch CPU window
+only after rawtap1 plus persistently reviewed pixels0; no input retry on uncertainty.
+Diskworker implements boot-import in NEW /tmp/inferno-boot-import based stable
+a91d7ff8bb. Contract22e6595e65/independent02067ae178 requires full fresh stage
+verification, original installed profile, fixed argv and exact session runner pins.
+Native implementation review next; no wrapper VM until80 stops. Existing stable
+session/coordinator source worktrees remain unchanged.
+
 ### 2026-10-07 17:56: app79 completed automatic-stage installed journey
 
 From coordinator2’s independently verified stage (44262d2234/304b1ff09b),
