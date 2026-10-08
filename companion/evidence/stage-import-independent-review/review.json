@@ -1,0 +1,27 @@
+{
+  "scope": "Independent read-only source review, no coordinator execution/VM/freeze or app claim",
+  "reviewed_commit": "62ba73b47e",
+  "source_sha256": "a55fd9e325662c704cc31d7c4d0f3a7673330e8b67d03f755faa943a92d96126",
+  "findings_resolved": [
+    "Use fresh validate_runtime verified result instead of stored session assertion; tuple unpack corrected before VM use.",
+    "Snapshot directly used app-import and profile modules alongside coordinator/verifier/runner/control/preservation modules.",
+    "Write verified-stage before removing INCOMPLETE; consumers must reject any failure/incomplete marker."
+  ],
+  "checks": [
+    "Fixed recovery command derived from validated pins, not arbitrary session argv.",
+    "New external directory and INCOMPLETE marker precede launch; no automatic retry.",
+    "Original full raw content verification precedes exactly one finish-observation submission; uncertain failure is forensic-only.",
+    "Runner normal exit/QMP shutdown and absence of private-session members required before freeze.",
+    "Only exact seven new singly linked namespace files with distinct inherited identities can be chmod via checked descriptor; source layers untouched.",
+    "Source snapshots rechecked before launch, freeze and final publication; final stopped verifier revalidates session/raw/QMP/retention.",
+    "Failure cleanup targets original runner and private process group with recorded start ticks; no arbitrary guest PID."
+  ],
+  "limits": [
+    "No exclusive cross-process VM lock; readable /proc inventory is a point-in-time preflight.",
+    "Descriptor scan scope remains readable /proc only.",
+    "Cooperative runner timeout and cleanup can exceed deadline; no hard real-time guarantee.",
+    "Group cleanup has ordinary proc/PID race limits; identity failures fail closed rather than signal unrelated identities.",
+    "This source review does not replace actual normal recovery execution/retention test."
+  ],
+  "decision": "No remaining source blocker for parent-controlled actual validation."
+}
