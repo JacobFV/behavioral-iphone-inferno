@@ -1,0 +1,23 @@
+{
+  "scope": "Independent read-only contract review; no wrapper implementation or runtime proof",
+  "proposal_commit": "9a63d0630f",
+  "inputs": {
+    "source-bindings.json": "bcf2c88a6664ebcd250eba95c60ccc3a75566de1c3d1668329278429ccf28320",
+    "README.md": "772df2f26fec75b88154746a83c4d486252a1efa869182ed4b3c69586e42e842"
+  },
+  "decision": "PASS for scoped implementation; implementation review still required",
+  "requirements": [
+    "Hash-pinned stage and bound session; no incomplete/failure coordinator markers.",
+    "Fresh validate_session and verify_stopped, compare stable raw/metadata bindings, not volatile timestamp assertions.",
+    "Installed profile derives from runtime.inputs.profile; recovery ramdisk profile cannot be used.",
+    "Exact sibling boot/control hashes equal session sources; actual79 newer-source success grants no exception.",
+    "Fixed argv and private endpoints; no profile/binary/filter/input/retry overrides or automatic app success claim.",
+    "Snapshot metadata/source across long validation and launch; recheck markers before process creation.",
+    "Bound private owned process/session cleanup; preserve failed attempt evidence.",
+    "Normal installed attempt does not automatically become reusable stage; existing explicit postflight remains."
+  ],
+  "limitations": [
+    "Contract review only, no new disk hashing/VM/guest input or integration claim.",
+    "Actual79 source differences and diagnostic option differences explicitly retained."
+  ]
+}
