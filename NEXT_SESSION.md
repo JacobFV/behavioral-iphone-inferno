@@ -9,6 +9,23 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-07 20:04:87 healthy initial journey;88 fresh attempt authorized
+
+87 normal0/errornull/365.814429s, strict/initial andall7/ancestors PASS1b8359ed47.
+Visual44b08d79c8 rootreviewed0→1 afterONEbf73d7111317417eb42b3cec85efb6af;
+bootFA2A1F2E-BA35-45FB-9E43-4F8E3B5EF769/PID254/main3044677213.
+No warmcycles/CPU/ADP/samples. Healthy capture does not resolve85or earlierfailures.
+RootauthorizedONE88 fromsamefixture3/0889/pending-equalitydefaultoff, exactroot
+1b8359ed47, rootexclusiveinput/CPU/finish. Fresh-boot focus; threewarmhealthy86
+alreadyretained. NeedfailedfivePC evidence persists; don'tenableCPUonhealthyrun.
+
+Staticexisting-rangeflags795f67b362: mainringcan_update flags lower mode0locally;
+bit31 set iff reviewedglobalbytezero AND argumentbit1clear, otherwiseflags0.
+Bothsingle/retrycalls preserveflags; kernmarshalsselector6token/flags/third0.
+Onlyzeroreturn clearsringtoken; timeoutalone doesnot. Separatecallsmode1exist.
+No globalbyte/argumentsemanticname/runtimevalue or currentpipelineattribution.
+Diskworker reviewing smallest fresh-runtime reproducibilitygap read-only.
+
 ### 2026-10-07 19:56:86 healthy; helper build and real host preparation reproduced
 
 86 normal0/errornull/689.277972s, strict/initial andall7/ancestors PASSbf916000e1.
