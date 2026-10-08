@@ -100,6 +100,34 @@ def validate_inputs(args):
         raise ValueError('Flattened raw identity/GPT differs')
     if tools != flat['tool']:
         raise ValueError('Flatten tool identity differs')
+    folder = paths['flattened_data'].parent
+    marker_path = folder / 'KEEP-OVERLAY-BACKING.json'
+    pins[str(marker_path)] = sha(marker_path)
+    marker = bounded_record(marker_path)
+    if marker.get('provenance_sha256') != args.flattened_data_sha256 or marker.get('backing') != raw or marker.get('paired_auxiliary_must_be_retained') != paired or marker.get('retirement_prohibited_while_dependent_overlays_exist') is not True:
+        raise ValueError('Flatten KEEP provenance differs')
+    original = chain['layers'][0]['path']
+    operations = {
+        'convert': ['convert', '-f', 'qcow2', '-O', 'raw', '-S', '4k', original, str(paths['root'])],
+        'raw-info': ['info', '--output=json', '-f', 'raw', str(paths['root'])],
+        'logical-compare': ['compare', '-f', 'qcow2', '-F', 'raw', original, str(paths['root'])],
+    }
+    previous = 0
+    for label, tail in operations.items():
+        command_path = folder / (label + '.json')
+        pins[str(command_path)] = sha(command_path)
+        command = bounded_record(command_path)
+        if command.get('argv') != [tools['binary'], *tail] or command.get('exit_code') != 0 or command.get('error') or not previous <= command['started'] <= command['finished']:
+            raise ValueError('Flatten actual command record differs: ' + label)
+        previous = command['finished']
+        for stream in ('stdout', 'stderr'):
+            log = folder / (label + '.' + stream)
+            pin(log, command[stream + '_sha256']); pins[str(log)] = command[stream + '_sha256']
+    if (folder / 'logical-compare.stdout').read_text().strip() != 'Images are identical.':
+        raise ValueError('Flatten logical comparison did not report equality')
+    info = bounded_record(folder / 'raw-info.stdout')
+    if info.get('format') != 'raw' or info.get('virtual-size') != 8 << 30:
+        raise ValueError('Flatten original qemu-img geometry differs')
     paths['auxiliary_state'] = Path(flat['auxiliary_state'])
     pins[str(paths['root'])] = flat['raw']['sha256']
     return paths, pins, {'profile_inputs': inputs, 'base': {'layers': [raw], 'auxiliary': paired},
