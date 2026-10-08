@@ -1,0 +1,34 @@
+{
+  "reviewed_commit": "6c2a69bf9f",
+  "verdict": "Changes requested before execution",
+  "scope": "Independent source/reused-contract review only; no VM, image hashing or source edits",
+  "blocking_findings": [
+    {
+      "location": "stage-initial-volumes.py checkpoint/final verify_content",
+      "finding": "Final serial is independently parsed but not compared with exact captured pre-finish prefix. A replacement/truncation could lose the actual chronology source while still satisfy final parser.",
+      "requested": "Retain exact checkpointed bytes and require final raw begins with that prefix; bind checkpoint metadata to its hash."
+    },
+    {
+      "location": "stage-initial-volumes.py stopped validation through initial-volumes.json publication",
+      "finding": "Report/control/QMP/content/checkpoint inspected before lengthy freeze/preserve operations, but result uses freshly read hashes without proving inspected files unchanged.",
+      "requested": "Snapshot inspected files and identity/hash, recheck before publication; emit inspected hashes rather than unchecked new ones."
+    },
+    {
+      "location": "stage-initial-volumes.py execute",
+      "finding": "subprocess.run(timeout) kills immediate child only. prepare.py may have live HFS child after timeout, continuing writes in output after failure is published.",
+      "requested": "Private owned subprocess session with known leader identity and finite stop/reap of only its group; preserve uncertain outputs and no retry."
+    }
+  ],
+  "positive_checks": [
+    "Exact original System wrapper content/geometry and new-copy nonalias identity required; validate_base performs real hash, no attestation bypass.",
+    "Role-only prepare flags and extracted exactlaunchd job exclude Data/keybag/app/cache operations; helper/probe bytes read back fromHFS.",
+    "Helper four-source pins and executable/build/profile bindings enforced.",
+    "Raw parser insists oneBEGIN/COMPLETE, exact3newfs and4volume set/mountorder/status0, finalorderedoriginalunmount text. Firmwaretree readback limitation explicit.",
+    "Existing normalfinish/reportshutdown checks and exactnew sevenfilefreeze/preserve loader reused; no ancestor chmod intended.",
+    "ipa_runtime_ready remainsfalse and failed outputs forensiconly."
+  ],
+  "limits": [
+    "Source-only review does not prove actual original utility output accepted or original-volume guest success.",
+    "Point-in-time guards are not a global host ownership lock."
+  ]
+}
