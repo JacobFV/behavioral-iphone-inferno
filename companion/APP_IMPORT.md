@@ -186,5 +186,7 @@ are sent by this command.
 The corrected coordinator completed its first actual automatic recovery in
 `evidence/stage-coordinator-first-success/`: raw content check before exactly one
 normal finish, new-file freezing, ordinary retention and final eligibility. The
-earlier source-inventory failure is retained separately. An installed app journey
-from this coordinator output remains a distinct validation step.
+earlier source-inventory failure is retained separately. Run79 then completed the separate installed-app journey from this output: original
+process presence, reviewed bundled text and counter0→1, normal shutdown. Its
+visual evidence is in `evidence/ipa-demo-79-visual/`. These are owned-app results,
+not general IPA compatibility or a fix for the intermittent display freeze.

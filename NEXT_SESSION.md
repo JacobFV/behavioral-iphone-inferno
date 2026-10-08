@@ -9,6 +9,20 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-07 17:56: app79 completed automatic-stage installed journey
+
+From coordinator2’s independently verified stage (44262d2234/304b1ff09b),
+generic demo79 launched as original PID221 UID501. Root reviewed bundled resource
+text and Count0, then Count1 after ONE counter e1d091db7d164a45bdf2b453de51192b
+(actual down/up0 and ACK0). Last VNC observed-0018 and RGB-identical final QMP
+frame0023 both show resource/1. Normal finish-observation exit0/errornull,
+268.493380s. No fixture telemetry, CPU window, SAMPLE, Home or OPEN.
+Visual evidence companion/evidence/ipa-demo-79-visual. Bootworker owns ordinary
+retention, then fixture80 with same78 pending-branch profile initially OFF.
+Only a genuine persistent failed counter permits one1s CPU capture. Root allUI.
+This completes the owned IPA host-preparation→automatic recovery→installed app
+journey; broad compatibility and the intermittent display freeze remain open.
+
 ### 2026-10-07 17:50: automatic IPA staging passed actual recovery
 
 Corrected stage-import completed the entire recovery workflow without manual
