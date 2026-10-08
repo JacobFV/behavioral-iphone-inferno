@@ -9,6 +9,21 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-08: one failure-conditional fixture94 active
+
+After completed Navigation006 journey, root approved6152de0d7a following
+independent658b481124. ActualrunnerPID1399064/startticks86456753 launched
+1791445383.6540222, output.local-build/reports/app-boot-94. Exact93 relevant
+source/binary/build/base hashes verified, noVM/free>=4GiB/newoutput checks passed.
+Root soleUI/control/finish; no secondQMP. Normal manually reviewed gestures,
+NO43/18/13 targets or fixedtimingdriver; not timingreplay. pending-equality five-PC
+profile configuredOFF. Only genuine fixturetap1 withpixels0 across25+25seconds
+permits one1s CPUwindow during45s continuous observer, all9ADPactualoff and
+restore verified. No extra appinput/Home/OPEN beforefailurecapture. Healthy:
+strictbefore/afterQMPreview+normalfinish. Failed: forensicstop and ordinaryall7
+retention/ancestors, neverbase. No claimed freeze outcome yet.
+Freshsetup still34GiBspaceblocked; ongoingreleasework remainsdeveloperIPA-first.
+
 ### 2026-10-08: corrected NavigationDemo006 journey passed and stopped normally
 
 Rootvisual b204c4be90 retains16 reviewed frames/13input submissions from boot
