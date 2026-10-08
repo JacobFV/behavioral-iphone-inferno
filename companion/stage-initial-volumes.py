@@ -201,6 +201,8 @@ def main():
             raise ValueError('Finish does not follow content checkpoint')
         if control['response']['return'].get('finish_requested') is not True or bounded_record(output / 'finish.stdout') != control['response']:
             raise ValueError('Finish response mismatch')
+        stopped_pins = {str(p): sha(p) for p in (report_path, serial, report_dir / 'control-transcript.jsonl',
+                        report_dir / 'qmp-transcript.jsonl', output / 'content-check.json', output / 'finish.stdout')}
         unchanged({**source_pins, **input_pins})
         frozen = CO.freeze_new_disks(report_path, report, context, output)
         retention = report_dir / 'stopped-disk-hashes.json'
@@ -212,13 +214,13 @@ def main():
         # Existing overlay loader independently checks the normal stopped seven-file
         # layout, exact current identities and immutable raw backing dependency.
         chain = load_stopped_overlay(report_path, verified['tool'])
-        unchanged({**source_pins, **input_pins})
+        unchanged({**source_pins, **input_pins, **stopped_pins})
         CO.write_new(output / 'initial-volumes.json', {'schema': 'inferno.initial-volumes-stage.v1',
                      'status': 'initial-volumes-prepared', 'ipa_runtime_ready': False,
                      'report': str(report_path), 'report_sha256': sha(report_path),
                      'retention': str(retention), 'retention_sha256': sha(retention),
                      'content': content, 'content_checkpoint_sha256': sha(output / 'content-check.json'),
-                     'backing_depth': len(chain['layers']), 'source_sha256': source_pins,
+                     'backing_depth': len(chain['layers']), 'source_sha256': source_pins, 'stopped_evidence_sha256': stopped_pins,
                      'scope': 'Only Preboot/xART/Hardware and original firmware copy; no Data/keybag/cache/setup/app readiness'})
         (output / 'INCOMPLETE.json').unlink()
         print(json.dumps({'result': str(output / 'initial-volumes.json'), 'sha256': sha(output / 'initial-volumes.json'), 'ipa_runtime_ready': False}))
