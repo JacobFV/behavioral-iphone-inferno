@@ -2,6 +2,26 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 17:32: prepared demo77 interactive success; coordinator execution next
+
+77 fromnormalpreparedsession2 displayedresource and Count0→1 afteronecounter
+069e16936a65491a9bf4a02a0497a498 ACK0. OriginalPS PID263 UID501, rootreview
+before-countersettled/after-counter0017/finalQMP. Normalfinish-observation,
+exit0/errornull/395.459263s. Raw8f41f2531f/allseven+unchangedancestors retained.
+Visualcompanion/evidence/ipa-demo-77-visual. No genericcompatibility/freezefixclaim.
+Stagecoordinatorimplemented644a346282/ab4c6e737d/3165bf9d3b, review6993c161d6,
+actualread-onlynormalstoppedreplay045e81bd61. Live77descriptor initially rejected
+correctly; afterreleasepositiveeligibility passed. Runtime returnshape fixed
+2ba247a653 before coordinator execution, noactualstage modifiedbythatbug.
+Actual coordinator nowPID3601181, stableworktree/tmp/inferno-stage-import@c1a4abc06a,
+NEWexternal /home/brandonin/.local/share/inferno/app-import/coordinated-stage-demo-1.
+Same session2/sourcebaselinepins. Coordinatorownsonefinish/freezenewonly/retention;
+rootdoesnotmanuallyfinish; workerrecordsrawsuccessorfailure withoutoverride.
+Pendingbranch ownedfixturePASSnative0e240827bb, diskworkerindependentreviewpending;
+exactrelocated3PC1087each/defaultoff/deadlinerestore/earlycleanup/lostresponse
+restore; thisisownedbaremetalplumbing NOTiOSkernelcoverage. Production78planned
+onlyaftercoordinatorstops andprofile/source integration reviewed.
+
 ### 2026-10-07 17:20: prepared session2 passed actual normal recovery
 
 Integrated94854b28d7: exactsession82b7446d...f9c1, rawapp71939/3/readback0,

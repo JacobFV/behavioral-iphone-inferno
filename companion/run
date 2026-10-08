@@ -7,6 +7,7 @@ if (($#)); then shift; fi
 case "$command" in
     app-import) exec python3 "$root/companion/app-import.py" "$@" ;;
     build-import-launcher) exec python3 "$root/companion/app-probe/build-import-launcher.py" "$@" ;;
+    stage-import) exec python3 "$root/companion/stage-import.py" "$@" ;;
     prepare-import) exec python3 "$root/companion/prepare-import.py" "$@" ;;
     verify-import-stage) exec python3 "$root/companion/verify-import-stage.py" "$@" ;;
     status) exec python3 "$root/companion/status.py" "$@" ;;
@@ -30,6 +31,7 @@ case "$command" in
         printf '%s\n' 'Usage: companion/run COMMAND [arguments]; COMMAND --help for options' \
           '  app-import  validate and unpack an unencrypted developer IPA outside Git' \
           '  build-import-launcher  build owned helpers bound to an imported app' \
+          '  stage-import  run and verify one prepared IPA recovery stage' \
           '  prepare-import  prepare an external pinned IPA recovery session without booting' \
           '  verify-import-stage  check raw recovery content or stopped-stage eligibility' \
           '  status   inspect the durable build and saved execution evidence' \
