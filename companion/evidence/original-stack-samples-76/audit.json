@@ -1,0 +1,48 @@
+{
+  "scope": "Actual76 post-restored-CPU failure samples; no guest actions by reviewer.",
+  "transport": {
+    "backboardd": {
+      "request": {
+        "request_id": "a5a52e1278df42a69500e9160287e46e",
+        "boot_uuid": "3442161D-82A9-4B3C-833A-B681C4C74777",
+        "target": "BACKBOARDD"
+      },
+      "transport_replayed_bytes_equal": true,
+      "report_sha256": "f6772a6ca06ed0aed76659140b374b7ccdac789067becfbb74d17a662f197122",
+      "serial_prefix_bytes": 364507,
+      "serial_prefix_sha256": "813dd6df85ed2bd02128790f6216e82e6a795e3558594d6b693e222bb11bd209"
+    },
+    "springboard": {
+      "request": {
+        "request_id": "bceb62de13504df4accc92707244f9fb",
+        "boot_uuid": "3442161D-82A9-4B3C-833A-B681C4C74777",
+        "target": "SPRINGBOARD"
+      },
+      "transport_replayed_bytes_equal": true,
+      "report_sha256": "f06829f8b9097588350bffcccb6a63c7b6d113a49ce7ff1cbdd7c324472fd86b",
+      "serial_prefix_bytes": 389563,
+      "serial_prefix_sha256": "6321d77263d5bf00392764f41c7f97c632f6e9866dc3a7c2c711d496af496ba4"
+    }
+  },
+  "actual_cache_slide": "0x2ab58000",
+  "cache_UUID": "11AD39C9-E3C9-3067-A337-7287744FDCB5",
+  "mapping": "Both original headers and cache image UUID/base/ranges validated anew; standalone executable UUIDs checked.",
+  "backboardd_display_primary": {
+    "samples": 20,
+    "runloop_wait": 17,
+    "can_update_usleep": 2,
+    "can_update_SwapWait_IOConnect": 1
+  },
+  "springboard_main": {
+    "samples": 21,
+    "runloop_mach_port_wait": 21
+  },
+  "comparison": "Failed65 5/21 can_update; failed74 7/20; failed76 3/20; healthy49 0/20 in separate sample window. These are sampled populations, not duration/causality estimates.",
+  "relation_to_CPU": "CPU76 earlier window observes stationarytoken293/nonblockingflags and allpending final-return population. Later stack samples corroborate retry-path activity in backboardd; no per-call/thread association with CPU blocks is established.",
+  "limits": [
+    "Original kernel symbol-owner warning retained; unknown/kernel/standalone frames unmapped.",
+    "Nearest symbols not function extents; zero4-byte sampled-PC patch overlap not wholedependency proof.",
+    "No new numericreturn from stacks, no hidden pipeline fields or entry-return pairing.",
+    "Post-CPU samples are after a scheduling-perturbing window; separate sample action also perturbs execution."
+  ]
+}
