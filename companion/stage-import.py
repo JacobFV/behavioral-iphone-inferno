@@ -32,6 +32,17 @@ def digest(path):
     with Path(path).open('rb') as f:return hashlib.file_digest(f,'sha256').hexdigest()
 
 
+def source_inventory():
+    """Hash the actual coordinator, validator and runner Python dependencies."""
+    names=('stage-import.py','import_stage.py','preserve-stopped.py',
+           'disk_overlay.py','app-import.py','boot.py','qmp_control.py',
+           'probe_journey.py','headless_refresh.py','boot_milestones.py')
+    paths=[SOURCE/name for name in names]
+    for path in paths:
+        if not path.is_file():raise ValueError('Required coordinator source missing: '+str(path))
+    return paths,{str(path):digest(path) for path in paths}
+
+
 def write_new(path,record):
     with Path(path).open('x') as f:json.dump(record,f,indent=2,allow_nan=False);f.write('\n')
 
@@ -173,8 +184,7 @@ def main():
     parser.add_argument('--output',type=Path,required=True)
     args=parser.parse_args();output=None;process=None;finish_started=False;logs=[]
     try:
-        source_paths=[Path(__file__).resolve(),SOURCE/'import_stage.py',SOURCE/'preserve-stopped.py',SOURCE/'disk_overlay.py',SOURCE/'app-import.py',SOURCE/'profile.py',SOURCE/'boot.py',SOURCE/'qmp_control.py']
-        sources={str(p):digest(p) for p in source_paths}
+        source_paths,sources=source_inventory()
         context=validate_session(args.session,args.session_sha256)
         output=IMPORTER.external_output(args.output)
         proc_check=no_running_emulator()
