@@ -9,6 +9,29 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-08: user-authorized historical experiment disk cleanup
+
+Removed19 historical experiment disks (7os-inspection raw/APFS variants,
+3native-probe earlydisk variants, 9oldUSB guest.qcow2 files), reclaiming
+84579131392 allocatedbytes (~78.8GiB). Exact inventory and execution result:
+companion/evidence/experiment-disk-cleanup/{plan,result}.json. These old attempts
+are RETIRED: their metadata/logs remain, but their disks no longer replay.
+Current reproducedOS images, initialvolume/growth/keybag/app-import artifacts,
+firmware, helper/tool builds, source and evidence preserved. Scanned26 retained
+QCOWbackingedges; no deletedfile was a backing target. All18 existing distinct
+backingfiles retained exact identity/mode/ctime. NoVM was active.
+External ~/.local/share/inferno usage reduced~147→69GiB. Free space also changed
+substantially due to other concurrent cleanup; only78.8GiB is attributed here.
+
+IMPORTANT PRE-EXISTING LOSS: .local-build was already absent BEFORE this cleanup.
+Six existing QCOW edges reference its missing disk-preparation-from50-sample-1
+base. Do not attempt installed boots or claim intact runtime readiness. Locate
+an existing moved copy/backup or reconstruct build and required base artifacts
+before resuming that path. This cleanup did not remove .local-build. Current
+freshstage dependencies still require validation before executing; space alone
+is no longer the blocker. User cleanup authorization supersedes blanket retention
+of the specifically inventoried historical artifacts, not all retained disks.
+
 ### 2026-10-08: user-requested temporary cache cleanup clears storage blocker
 
 Removed498292 stale regular files from /tmp/tsx-1000 and

@@ -89,3 +89,9 @@ and establishing the supported IPA set are the main gates before release packagi
 
 The chronological record and current assignments remain in
 [PROGRESS.md](../PROGRESS.md) and [NEXT_SESSION.md](../NEXT_SESSION.md).
+
+Storage update: authorized retirement of historical experiment disks reclaimed78.8GiB,
+reducing external Inferno artifacts to about69GiB. Their logs/metadata remain.
+The `.local-build` directory was already absent before this cleanup; restoring or
+reconstructing its build and referenced base artifacts is now an explicit runtime
+prerequisite. Existing successful run evidence does not establish current boot readiness.
