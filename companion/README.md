@@ -75,8 +75,11 @@ pending and successful returns coexist with advancing frames. These snapshots
 have no process/thread identity and cannot be paired as calls. Run76 subsequently
 captured the reproduced freeze: all 228 entry snapshots requested token293 and
 all 228 final-return snapshots were pending, with unchanged reviewed counter0.
-A separate three-address diagnostic can distinguish active, queued and null
-request observations; it still needs coverage during a real failure. No rendering
+Run82 then captured 183 null-active observations during a reproduced freeze,
+with requested token253 equal to the pipeline field at offset0xbf4. The field’s
+historical label "completed_token" does not establish that a wait should succeed.
+Same-run compositor samples again included wait/retry paths. The next bounded
+diagnostic targets the uncaptured mode and decision predicates; no rendering
 fix is claimed.
 
 Runs69–72 completed the strict visual journey, and69 also passed three

@@ -2,6 +2,23 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 18:36: reviewed five-site wait decision diagnostic implementing
+
+Proposal2aaae8204f/e8f076d275 independently reviewed00c71348da, root approved
+native implementation in NEW isolated worktree. Preserve baseline/pending-branch
+profiles unchanged. New pending-equality fixed PCs:1bc0 W8maskedmode0/1/2;
+1bf4 W8requested/W9pipeline_bf4_token equal positivecomparison BEFORElocalstore;
+1e4c/1e50 W8matching-local false/true AFTERmode-specific successgates; outer
+96e219c W0finalstatus independentpopulation. NaturalTBboundaries source-reviewed,
+not runtimecoverage. No pairing/countsubtraction/absentbranchproof/memoryread.
+Old completed_token is only a historical fieldlabel: mapped completion records
+bf4 conditionally, while equality can keep mode0 pending. Actualdone/reuse/retained
+ownership semantics remain unknown; new parser uses neutralpipeline_bf4_token.
+Native owns source/parser/ownedrelocatedfixture; diskworker independentreview.
+VM slot free exclusively for reviewed ownedfixture actual defaultoff/deadline/
+earlycleanup/lostresponse restoration proof. No productioniOS until fixturepasses
+and rootgo. No semanticmodel/Applepatch justified. Rootcontinues documentation.
+
 ### 2026-10-07 18:32: failure82 captured null/equal wait state; next probe design
 
 82 reproduced rawtap1/ACK0 after ONE8526bf0ac8cb4665a4fce5be9ce240e9 while
