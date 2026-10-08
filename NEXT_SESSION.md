@@ -9,6 +9,27 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-08: fixture94 healthy and stopped; fresh setup storage input remains missing
+
+Rootvisual fbcaf4ce5d: actual strictQMP0→1 and genuine tap1 in boot
+5BA3EE00-7116-4A14-9246-03581E63DD39, guestPID221. Normalfinish/rawpostflight
+e9ccb7bd64: strictverified/initialcomplete/exit0/elapsed345.769143, runner1399064
+andQEMUabsent, ordinaryseven+ancestors PASS. Retention
+4d9034886cc139527ff74c82330085bec4657cb1b580b6998c0c58262ea76a18.
+Actual submission gaps unlock1→2 74.627651s, then38.009729/15.348946/53.978814.
+No timingreplay/freeze fix; noCPUwindow/ADPoverride/SAMPLE/warm. Failed-state
+five-PCcoverage stillmissing. No currentVM or ongoing execution worker.
+
+Completed this continuation: correctedNavigation006 actual fullUI journey,
+normalstop/retention, standalone importerumask077 fix with actualCLI evidence,
+and boundedfixture94. Main remaining release gates: fresh reproducible setup,
+intermittent freeze, broader supportedIPA coverage and packaging. Fresh keybag
+flatten still needs34GiBfree; hostnow~5.6GiB. Userstoragepath/free-space input
+remains genuinelymissing; do not weaken guard, remove retained images/ancestors
+or improvise exfat storage. FutureMac/Xcode deferred as userselected. Continue
+from retained source/artifacts when storage is available; don't repeat healthy
+runs as proof that reliability is fixed. No release percentage/date justified.
+
 ### 2026-10-08: one failure-conditional fixture94 active
 
 After completed Navigation006 journey, root approved6152de0d7a following

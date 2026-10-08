@@ -82,7 +82,7 @@ including button-start scrolling and full text, followed by normal shutdown. Sav
 in-process only. This successful journey does not resolve the display freeze.
 
 Fresh setup execution is currently blocked by storage: the next guarded flatten
-requires34GiB free, while this host has approximately6GiB. Existing images and
+requires34GiB free, while this host has approximately5.6GiB. Existing images and
 backing chains remain preserved. Finishing that setup path, resolving the freeze,
 and establishing the supported IPA set are the main gates before release packaging.
 
