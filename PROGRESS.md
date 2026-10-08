@@ -2,6 +2,19 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 17:04: demo75 independently verified; next work active
+
+75 raw/postflight16302c2af9 and independent3f019154a7 integrated. Allseven and
+unchangedancestors PASS; manifest0c07ec6657b5d55afc3dba0ed8f18e46fdd7020a8932f11b36b40011597c16bc,
+verification9a1e778ee4cb831f1e021c8037db77cb82f2f3fd4a024660b8c7f5d51c349de6.
+Root visual846c82aaf3 includes finalQMPCount1. No freeze fix claim.
+Bootworker launching76 from successful importedfixturestage3, same0889 with
+existing swapwait diagnostic optin; CPU remains OFF unless root confirms actual
+persistent tap1/pixels0 then one1s window. Root allUI. OneVM only.
+Diskworker implements host-only prepare-import from proposal0cc53f99cd: external
+pinnedruntime/import/helpers/cache/recovery preparation, noVM/successpromotion.
+Nativeworker designs parameterized raw recovery success verifier independently.
+
 ### 2026-10-07 17:02: distinct imported IPA completed visible interaction
 
 Run75 original PS shows PID231/UID501 /Applications/ImportedDemo.app/ImportedDemo.

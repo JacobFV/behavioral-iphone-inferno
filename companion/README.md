@@ -89,9 +89,12 @@ remaining compatibility, setup and reliability work.
 Manifest import, bounded recovery staging and app-bound launch helpers now exist.
 The first imported fixture installed and launched in74, but its actual tap left
 the display frozen at0. That failed interactive journey and original guest
-samples are retained; the intermittent freeze remains unresolved. A separately
-named resource-loading demo is being exercised through fresh installation and
-the general launcher. General IPA compatibility is not yet claimed.
+samples are retained; the intermittent freeze remains unresolved. Run75 then
+completed fresh installation and manifest-bound launch of a separate imported
+demo: original process presence, reviewed bundled resource text and counter0→1,
+normal shutdown and all-seven-disk/ancestor verification. Its raw and visual
+evidence is under `evidence/ipa-demo-installed-75/` and
+`evidence/ipa-demo-75-visual/`. General IPA compatibility is not yet claimed.
 
 Broader reliability and active-workload measurements remain ongoing. See [BOOT.md](BOOT.md) for the image profile and headless runner,
 [USB.md](USB.md) for the isolated USB companion, and `evidence/` for raw execution.
