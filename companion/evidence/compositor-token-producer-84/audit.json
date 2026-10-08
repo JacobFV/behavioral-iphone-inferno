@@ -1,0 +1,108 @@
+{
+  "scope": "Bounded original static producer inspection; no runtime, memory query, or semantic changes. Apple implementation bytes stay outside Git.",
+  "original_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+  "QuartzCore_UUID": "A0D546D8-BA79-340E-BFC6-B5E8001A5250",
+  "tool": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/llvm-objdump",
+    "sha256": "32b78ffb3f9f14a19716cb7d3d6a5baa59ea98bc502fb183d3ff429df0f20a21"
+  },
+  "retained_external_sources": [
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/QuartzCore-nearby-symbol-index.txt",
+      "sha256": "4ce794f7e5eee6803bb7696a95f17b5a409cbf34a57998a9bb17abcf63260265"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/IOMFB-submit-symbol-index.txt",
+      "sha256": "7e7d9ce8b175d8cd9610d9b0b5e6c96a842e3c45b3d0265597fc8a3642afaead"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/QuartzCore-finish-update.txt",
+      "sha256": "69e03eec607731b0cfdade1cc5a06d919a0dc301e24da15ad8114fca0dfe3b42"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/QuartzCore-finish-update-ring-advance.txt",
+      "sha256": "398f3156fdb1e903bfdaacdc0dcb5279f867f38dc10e5e53df00e498d76441d4"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/IOMFB-SwapBegin-End-wrappers.txt",
+      "sha256": "8699ba91d7f9e56ef63761ba8547c1101c95eaa0210633699ff0fd7a43b7eb08"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/IOMFB-kern-submit.txt",
+      "sha256": "794e6e17b0ac0d1c7e849c7b6d394850192a6f9fe5ca8cf9d23fa0a6ff48bb36"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/submit-veneer-targets.json",
+      "sha256": "0f336417564d8e36388ce560109f007feeff34d550fa85167654181ba88ee50d"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/submit-indirect-symbols.txt",
+      "sha256": "8a10d45f827ac51b2a8bf1c7381d0ab5ee1dca7687edbb8fbd0c68016283cfe2"
+    }
+  ],
+  "patch_plan": {
+    "path": "/home/brandonin/.local/share/inferno/fs-patcher-modified/software-rendering.infrpat",
+    "sha256": "c20a73ee8aa777ea36595cf60fb1ed86b9fc4a3bad42645a34045536ab01b079",
+    "whole_inspected_named_range_overlap": [
+      {
+        "start": "0x18830ef8c",
+        "end_exclusive": "0x188310bc4",
+        "overlapping_patch_records": []
+      },
+      {
+        "start": "0x18830969c",
+        "end_exclusive": "0x1883097d0",
+        "overlapping_patch_records": []
+      },
+      {
+        "start": "0x192b6a5b8",
+        "end_exclusive": "0x192b6a5f0",
+        "overlapping_patch_records": []
+      },
+      {
+        "start": "0x192b6d1f4",
+        "end_exclusive": "0x192b6d334",
+        "overlapping_patch_records": []
+      }
+    ]
+  },
+  "facts": [
+    {
+      "range": "18830f208..22c",
+      "finding": "finish_update selects index self+29c, record stride0x30; computes token address +308. Existing nonzero token skips SwapBegin. Zero token passes its address as output argument; immediate caller does not branch on SwapBegin status."
+    },
+    {
+      "range": "192b6a5b8..5d0",
+      "finding": "Public SwapBegin tail-calls object function pointer +4e0 if object/pointer nonnull, otherwise returns e00002c2. Backend selection is not re-proven in this bounded inspection."
+    },
+    {
+      "range": "192b6d230..278",
+      "finding": "Named kern_SwapBegin calls IOConnectCallScalarMethod selector4, zero scalar inputs and output capacity1. Error maps to e00002bc without output store. Success copies low32 scalar output to object+58 and caller output pointer if nonnull, then returns0."
+    },
+    {
+      "range": "192b6d2c0..2dc",
+      "finding": "Named kern_SwapEnd passes object+18 length0x264 to IOConnectCallStructMethod selector5, retaining return status."
+    },
+    {
+      "range": "188310894..904",
+      "finding": "finish_update calls public SwapEnd and checks return W20; zero continues normal finish path, nonzero enters error path."
+    },
+    {
+      "range": "188309700..714",
+      "finding": "finish_update_ stores current self+29c index into self+2a0 and advances/wraps self+29c using count+2a4. This identifies excluded index as most recently finished slot, without proving current physical scanout."
+    },
+    {
+      "range": "188308344..390 (prior retained audit)",
+      "finding": "can_update passes retained ring token to SwapWait and clears it only on zero-return path."
+    }
+  ],
+  "interpretation": "Ring token is an allocated SwapBegin output retained across submission/wait, not a CPU-generated loop counter or proof of completed fence. Its generation precedes SwapEnd. Healthy84 token468..472 population therefore fits successive allocated/reused slots, but captures do not pair tokens with submissions or final returns. Frozen76/82 stationary tokens alone cannot distinguish no new allocation from retained-token reuse or downstream completion state.",
+  "next_discriminator": "First obtain existing five-PC profile on a confirmed freeze. If equality/matchfalse/pending remains stationary, the next minimal producer evidence would distinguish successful new selector4 allocation/token return from lack of new allocation; any new register-only site requires separate exact kernel source/TB-liveness review. No new profile is implemented or proposed as already validated.",
+  "limits": [
+    "No actual runtime backend-pointer or selector4 result captured here.",
+    "No exhaustive writer search; this is a positively identified kernel-backed producer path, not a claim it is the sole possible backend.",
+    "No current-scanout or completed-fence semantic claim for bf4/slot2a0.",
+    "No mode propagation, count subtraction, call pairing, thread or process identity from CPU populations.",
+    "Sparse patch nonoverlap covers specified mapped ranges only, not every dependency or initialization path."
+  ]
+}
