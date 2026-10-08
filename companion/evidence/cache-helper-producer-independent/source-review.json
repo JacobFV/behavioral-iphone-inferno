@@ -1,0 +1,15 @@
+{
+  "verdict": "PASS source17c4a74c88 before actual build",
+  "source_sha256": {
+    "build-cache-helper.py": "53098920d0f9bcf19d3bea3ad2ff3671c6ae775b3ded0e607e482112a52b49eb",
+    "cache-patch.c": "eb18e50ed0cf28862fa78a4173a72ca55a24f176fa8dfc9eca9314b18c0fbac7",
+    "libSystem.tbd": "632388ec8c55d119a667ec9accda60ad074a13faa07635a258cffe3dd96620d2",
+    "entitlements.plist": "53082fdea2f98764073ccc129187e93552b2b59552a518aba95bcf4b60231581"
+  },
+  "review": [
+    "Mechanical reviewed grow producer adaptation: only input/output/status names changed.",
+    "Compile/link flags match legacy cache build.sh; unchanged owned C/TBD/plist; disk-device-access plus AppleAPFSUserClient existing dictionary, no grant added.",
+    "New external output, committed sources/tool pre/post pins, four bounded commands, exact extracted entitlement dictionary; failed/incomplete output rejected.",
+    "No new cache patch plan, imported/Apple signing, guest execution or output reproducibility claim before actual build."
+  ]
+}
