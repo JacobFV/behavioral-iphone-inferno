@@ -382,6 +382,7 @@ the host display:
 
 ```sh
 set -euo pipefail
+inferno_host=/persistent/external/host-runtimes/RELEASE
 attempt=/external/NEW-INSTALLED/boot
 vnc_socket=$(python3 - "$attempt/command.json" <<'PY'
 import json, sys
