@@ -1,0 +1,778 @@
+{
+  "scope": "Read-only historical actual seed serial replay and fresh actual initial-stage validation. No seed VM or byte-equality claim.",
+  "sources": {
+    "/tmp/inferno-data-seed/companion/stage-import.py": "649dfb8fffaf9a454861fc3d5281864c77d362990db1dd8458fe80ac1451bae0",
+    "/tmp/inferno-data-seed/companion/import_stage.py": "8a1df10b2eca704a7fadc61965251fe7f8c396ddd554835819bb0e4670619761",
+    "/tmp/inferno-data-seed/companion/preserve-stopped.py": "904655ac4653ed7f860851aa71719540bc66716c2896ccd4858fd3fcb22b61e7",
+    "/tmp/inferno-data-seed/companion/disk_overlay.py": "16180ed475f586b60031c129bf2a11169597dca10fc77a804d9fcdf0f20e3978",
+    "/tmp/inferno-data-seed/companion/app-import.py": "e2ae5081168b99f4989cc759e797ae1381b595e263adea825705993685c1ce56",
+    "/tmp/inferno-data-seed/companion/boot.py": "beb55cb892ad246e215a5aa8d1178fc7dcbac6c63adfca6591c9da58606cf097",
+    "/tmp/inferno-data-seed/companion/qmp_control.py": "906716956328980c1a054f1836298471b88acd1db8788c8d18b78b8cbc7c01a2",
+    "/tmp/inferno-data-seed/companion/probe_journey.py": "1c4cbb542a79b85560433d62726123b99555ad0a47522d5ecd659faf3a04f308",
+    "/tmp/inferno-data-seed/companion/headless_refresh.py": "a19f60baf3aa4351998ca8fe977f5989797af7bcb125c6185948981c3c9c134a",
+    "/tmp/inferno-data-seed/companion/boot_milestones.py": "4aefd213f1587f2b93969378f34183053375d5d2a088e013d4626ebab0a5571a",
+    "/tmp/inferno-data-seed/companion/stage-seed-data.py": "fd56ab47204a953cbde2759c9c71ac75726e7a99227107d11b9f9b0fadd4fb36",
+    "/tmp/inferno-data-seed/companion/data_seed.py": "09f0a77f7ccafc7784809bcb771dc15cfb03219b8eefd376283f7e94a69e8901",
+    "/tmp/inferno-data-seed/companion/initial_volumes.py": "e5664c1aa0cc7c67855ecb264826c1c92636ee1f660d070a7c4b8f1dd795157e",
+    "/tmp/inferno-data-seed/companion/native-probe/prepare.py": "1dbdaccd542643397c30ee3ff0f43c3b3fe639752e586da4806cd0ebf402d85a",
+    "/tmp/inferno-data-seed/companion/native-probe/imported_app.py": "b84b6c9fd9959411b45b8f326ab56d518b1158be47b1e7d8182b073be864b580",
+    "/tmp/inferno-data-seed/companion/native-probe/prepare-root.c": "20a4eaf4b7a900573b172f4f59f04e5268f0e930534d7794d3b1bcdb4ee7d539",
+    "/tmp/inferno-data-seed/companion/native-probe/imported-app.c": "eaf6ef4668ef196823d378d3b7b50a1ef3bac9f3d527679b1e88551d0ccc2224",
+    "/tmp/inferno-data-seed/companion/native-probe/libSystem.tbd": "4f9508344cc02089adb89f2d069dee0b255d681a3feecda3194f51ec8b90bb52",
+    "/tmp/inferno-data-seed/companion/native-probe/entitlements.plist": "ce51e5bb5be0cb72780a6e6b1c09bb2711643ba170dd875815fc4528a64a281d"
+  },
+  "historical_serial_sha256": "2fda90e96ad52fa7779e822584b39f0c447937b12d205f4383ea1df9ab2bf210",
+  "positive": {
+    "schema": "inferno.data-seed-content.v1",
+    "status": "seeded-not-byteverified",
+    "copy_path_succeeded": true,
+    "tree_bytes_verified": false,
+    "ipa_runtime_ready": false,
+    "serial_bytes": 55760,
+    "serial_sha256": "2fda90e96ad52fa7779e822584b39f0c447937b12d205f4383ea1df9ab2bf210",
+    "records": [
+      {
+        "text": "INFERNO_PREP_BEGIN: disposable /dev/disk0s1 existing=1 roles=0 gigalocker=0",
+        "byte_start": 35764,
+        "byte_end": 35839,
+        "sha256": "344d36d38eb24a06f04cfe05667f95d333bf8cbe347598a94b3d9d5dcd362e2f"
+      },
+      {
+        "text": "INFERNO_PREP_DEVICE disk0 type=6",
+        "byte_start": 35842,
+        "byte_end": 35874,
+        "sha256": "874b98c98f27108f5cd6886558ed1650fe5b38fd253b569436ba340f7d601262"
+      },
+      {
+        "text": "INFERNO_PREP_DEVICE rdisk0 type=2",
+        "byte_start": 35877,
+        "byte_end": 35910,
+        "sha256": "d4f6508d1969f31a4b268f2e104748dac6303bb6ed2ecc40d6453845c12baef2"
+      },
+      {
+        "text": "INFERNO_PREP_DEVICE disk0s1 type=6",
+        "byte_start": 35913,
+        "byte_end": 35947,
+        "sha256": "1824107d3411ec6a3b530308217dad352322c8b2fff3d30cb13531e8a99aaa40"
+      },
+      {
+        "text": "INFERNO_PREP_DEVICE rdisk0s1 type=2",
+        "byte_start": 35950,
+        "byte_end": 35985,
+        "sha256": "a6c81b688e224e1bed44a61e72bad43fc138b37cac8cc3c98af1f106be87b41b"
+      },
+      {
+        "text": "INFERNO_PREP_DEVICE disk0s1s1 type=6",
+        "byte_start": 36052,
+        "byte_end": 36088,
+        "sha256": "28479e4a01c83c614e1d96d8176067f7a92f8db39c87709c1498cef1f63e2a1f"
+      },
+      {
+        "text": "INFERNO_PREP_DEVICE rdisk0s1s1 type=2",
+        "byte_start": 36091,
+        "byte_end": 36128,
+        "sha256": "64ebd5dba19b3e0c913b7bd916c8e54b8a9e9700f9c4aa916af03a1552d3ebf1"
+      },
+      {
+        "text": "INFERNO_PREP_DEVICE disk0s1s5 type=6",
+        "byte_start": 36131,
+        "byte_end": 36167,
+        "sha256": "353473e54acfa3406fee9b3a9bbfe6b1868ff171610d92dbf920768890709d03"
+      },
+      {
+        "text": "INFERNO_PREP_DEVICE rdisk0s1s5 type=2",
+        "byte_start": 36170,
+        "byte_end": 36207,
+        "sha256": "4db1e619452a29f099935cc3fdac953cbd57c96104c724c17ad4e1dbfbc3a2d7"
+      },
+      {
+        "text": "INFERNO_PREP_DEVICE disk0s1s4 type=6",
+        "byte_start": 36210,
+        "byte_end": 36246,
+        "sha256": "c59638f76f388c406b54cfe03764cb84fd9b1b3a33dbb9af756afb21e84022cb"
+      },
+      {
+        "text": "INFERNO_PREP_DEVICE rdisk0s1s4 type=2",
+        "byte_start": 36249,
+        "byte_end": 36286,
+        "sha256": "0ab86b1d540333a53ee036d9dd4ae3243156b5e70662a5e7fe0b335c4a98b410"
+      },
+      {
+        "text": "INFERNO_PREP_DEVICE disk0s1s3 type=6",
+        "byte_start": 36289,
+        "byte_end": 36325,
+        "sha256": "ab0c65ea8235d149168ffd54e7b16136123144a0ba6ce86bbd0af8f88e7e56eb"
+      },
+      {
+        "text": "INFERNO_PREP_DEVICE rdisk0s1s3 type=2",
+        "byte_start": 36328,
+        "byte_end": 36365,
+        "sha256": "399761f7d1a331f8e53d3802590d1ae42418667353b29b515d66d5feecfe9fbb"
+      },
+      {
+        "text": "INFERNO_PREP_DEVICE disk1 type=6",
+        "byte_start": 36368,
+        "byte_end": 36400,
+        "sha256": "de8827b024dcecfe1bc2a4f762559add11e39f028417cd3cdc84aa2b7c352ffc"
+      },
+      {
+        "text": "INFERNO_PREP_DEVICE rdisk1 type=2",
+        "byte_start": 36403,
+        "byte_end": 36436,
+        "sha256": "bffc33606a2771169278902b3817605c7667a184a953b99b30820e05b56d39c1"
+      },
+      {
+        "text": "INFERNO_PREP_EXEC /sbin/newfs_apfs -A -o role=d -v Data /dev/disk0s1",
+        "byte_start": 36508,
+        "byte_end": 36576,
+        "sha256": "48218ebe3c5f5039f64677388734c9c6b2d1996288f1f4f434d3cb3956d5ef75"
+      },
+      {
+        "text": "INFERNO_PREP_STATUS raw=0",
+        "byte_start": 40635,
+        "byte_end": 40660,
+        "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+      },
+      {
+        "text": "INFERNO_PREP_EXEC /sbin/newfs_apfs -A -o role=p -v Update /dev/disk0s1",
+        "byte_start": 40663,
+        "byte_end": 40733,
+        "sha256": "91f1199c9b14f762dfae0c76744f46e7c8c2c912bcd33924148ad855369104ea"
+      },
+      {
+        "text": "INFERNO_PREP_STATUS raw=0",
+        "byte_start": 42409,
+        "byte_end": 42434,
+        "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+      },
+      {
+        "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s1 /mnt1",
+        "byte_start": 42437,
+        "byte_end": 42498,
+        "sha256": "c820686e02dbadc110090c4951ae1b78d3d99d054808727103f34329e075a4c4"
+      },
+      {
+        "text": "INFERNO_PREP_STATUS raw=0",
+        "byte_start": 43327,
+        "byte_end": 43352,
+        "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+      },
+      {
+        "text": "INFERNO_PREP_VOLUME /dev/disk0s1s1 name=AzulSeed18A5351d.N104N841DeveloperOS",
+        "byte_start": 43355,
+        "byte_end": 43431,
+        "sha256": "825e94c603a8097501dd46e80e00ef35a20ed5c72a1f81df3d26d0c2a3cac276"
+      },
+      {
+        "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s2 /mnt1",
+        "byte_start": 43740,
+        "byte_end": 43801,
+        "sha256": "f9fefb71bebc208babbddaf5ca3479920fef72f01eb252c53fd784520b0c9e78"
+      },
+      {
+        "text": "INFERNO_PREP_STATUS raw=0",
+        "byte_start": 44565,
+        "byte_end": 44590,
+        "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+      },
+      {
+        "text": "INFERNO_PREP_VOLUME /dev/disk0s1s2 name=Data",
+        "byte_start": 44593,
+        "byte_end": 44637,
+        "sha256": "a3ba95ed2daa5bbb2ece871306e3bf33da793cbf9a44e94e3042672809ac748d"
+      },
+      {
+        "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s3 /mnt1",
+        "byte_start": 44882,
+        "byte_end": 44943,
+        "sha256": "3b07654123ea71295e5fc7efa2b7dc3583484079e2f495954f28ea0e09ba3b34"
+      },
+      {
+        "text": "INFERNO_PREP_STATUS raw=0",
+        "byte_start": 45724,
+        "byte_end": 45749,
+        "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+      },
+      {
+        "text": "INFERNO_PREP_VOLUME /dev/disk0s1s3 name=Preboot",
+        "byte_start": 45752,
+        "byte_end": 45799,
+        "sha256": "fed08d764b918763f8163361774c300ce79c1dfc6e19c963fcdd97258e9411b4"
+      },
+      {
+        "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s4 /mnt1",
+        "byte_start": 46061,
+        "byte_end": 46122,
+        "sha256": "bcf48e79e6424137209848bc22682233c29099f63e281984a8734418efd23b97"
+      },
+      {
+        "text": "INFERNO_PREP_STATUS raw=0",
+        "byte_start": 46898,
+        "byte_end": 46923,
+        "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+      },
+      {
+        "text": "INFERNO_PREP_VOLUME /dev/disk0s1s4 name=xART",
+        "byte_start": 46926,
+        "byte_end": 46970,
+        "sha256": "4ba101db30e44fcd9f6a1c5b2c8eba894a5abac56f2734ed9ff2d4a6427f56d3"
+      },
+      {
+        "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s5 /mnt1",
+        "byte_start": 47227,
+        "byte_end": 47288,
+        "sha256": "fac8b3586d22421b109103f0761f3175d94ca296da10da2bd127cacd87cda026"
+      },
+      {
+        "text": "INFERNO_PREP_STATUS raw=0",
+        "byte_start": 48072,
+        "byte_end": 48097,
+        "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+      },
+      {
+        "text": "INFERNO_PREP_VOLUME /dev/disk0s1s5 name=Hardware",
+        "byte_start": 48100,
+        "byte_end": 48148,
+        "sha256": "a6c716817c590663bd4e02aba266cc29d17378746683a4cd1c5b3095c440a62c"
+      },
+      {
+        "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s6 /mnt1",
+        "byte_start": 48413,
+        "byte_end": 48474,
+        "sha256": "79dd747eef17844700ccc96c47587db90da70f9628c45611636475d0c581a7bc"
+      },
+      {
+        "text": "INFERNO_PREP_STATUS raw=0",
+        "byte_start": 49253,
+        "byte_end": 49278,
+        "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+      },
+      {
+        "text": "INFERNO_PREP_VOLUME /dev/disk0s1s6 name=Update",
+        "byte_start": 49281,
+        "byte_end": 49327,
+        "sha256": "a2c00e12f8e9fb888eabe5f3042f416648ea0a8b06440113654177e914f63a2e"
+      },
+      {
+        "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o ro /dev/disk0s1s1 /mnt1",
+        "byte_start": 49587,
+        "byte_end": 49648,
+        "sha256": "c820686e02dbadc110090c4951ae1b78d3d99d054808727103f34329e075a4c4"
+      },
+      {
+        "text": "INFERNO_PREP_STATUS raw=0",
+        "byte_start": 50477,
+        "byte_end": 50502,
+        "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+      },
+      {
+        "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o rw /dev/disk0s1s2 /mnt2",
+        "byte_start": 50505,
+        "byte_end": 50566,
+        "sha256": "2a17f56f84148499ddb41bd5f3920b98e1a21b3298da53dad1fe3c2ed461a34d"
+      },
+      {
+        "text": "INFERNO_PREP_STATUS raw=0",
+        "byte_start": 52152,
+        "byte_end": 52177,
+        "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+      },
+      {
+        "text": "INFERNO_SPACE before-data-seed block_size=4096 available_blocks=100703 available_bytes=412479488",
+        "byte_start": 52180,
+        "byte_end": 52276,
+        "sha256": "e53ade160df60dab4bf56840c909df7f54d89dc4428eb0b375f5fd1b06ad7a69"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/preferences -> /mnt2/preferences",
+        "byte_start": 52279,
+        "byte_end": 52342,
+        "sha256": "64e616c79cf4d9e64a0c57cc5535e53ac76a10da80c367ba230d49b98eb57177"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/networkd -> /mnt2/networkd",
+        "byte_start": 52345,
+        "byte_end": 52402,
+        "sha256": "9d2d504ff2ab1637ecaef659fb13556b5d1eedc8a031b354d745163e13979d95"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/hardware -> /mnt2/hardware",
+        "byte_start": 52405,
+        "byte_end": 52462,
+        "sha256": "ffeb477676711290daf5ee8b25540164faf80c7b0f38059826fcf4df17b41843"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/empty -> /mnt2/empty",
+        "byte_start": 52465,
+        "byte_end": 52516,
+        "sha256": "33eb0022de127a367ee8e1d98ad12718b37fe1477aa044fd9c47c6f9a1233364"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/MobileAsset -> /mnt2/MobileAsset",
+        "byte_start": 52519,
+        "byte_end": 52582,
+        "sha256": "17c5fdac78477f6a86192ee09dc2e3aa30c0b22543c58c6d16c34a3d4d316cef"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/staged_system_apps -> /mnt2/staged_system_apps",
+        "byte_start": 52585,
+        "byte_end": 52662,
+        "sha256": "dabcfde77fca7f777db56865e528fe81493b07cf9e3a9a2cc1f464b3090d636f"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/buddy -> /mnt2/buddy",
+        "byte_start": 52665,
+        "byte_end": 52716,
+        "sha256": "233e5e2e09382ad55bf50be10d4fc8c1e8c1e280b811f37b6d28c56f405e288a"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/vm -> /mnt2/vm",
+        "byte_start": 52719,
+        "byte_end": 52764,
+        "sha256": "ac10d28de581d42b2c3dd5ff737ade098207ef4a5b980969c7b94f7869e58364"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/msgs -> /mnt2/msgs",
+        "byte_start": 52767,
+        "byte_end": 52816,
+        "sha256": "8a685c845b6bff7829b6888a0266b7737b99c66a4ee8599e196146f9e771bcfc"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/logs -> /mnt2/logs",
+        "byte_start": 52819,
+        "byte_end": 52868,
+        "sha256": "9424d4dd7cebc914a99eb0cddffe5b63b54ada49d01b26150f918fd4695f2cb9"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/audit -> /mnt2/audit",
+        "byte_start": 52871,
+        "byte_end": 52922,
+        "sha256": "2d651150e3f3e2d9774612ca5418fca1ecfa167db37e6f4639897b9044f42a6a"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/installd -> /mnt2/installd",
+        "byte_start": 52925,
+        "byte_end": 52982,
+        "sha256": "846106e195bde66c234cfe70edc2059e70be82b30d1fc522e08e06ca6c536545"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/MobileSoftwareUpdate -> /mnt2/MobileSoftwareUpdate",
+        "byte_start": 52985,
+        "byte_end": 53066,
+        "sha256": "a74ed6de40c33f37a509c97877f1430bfbe21ebbf6ce13489fa625e600de8d63"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/mobile -> /mnt2/mobile",
+        "byte_start": 53069,
+        "byte_end": 53122,
+        "sha256": "570d74e4b614d6f4e8a0c59d877d4285dcabcca93f24797e82faa397a1a6c5ee"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/MobileDevice -> /mnt2/MobileDevice",
+        "byte_start": 53125,
+        "byte_end": 53190,
+        "sha256": "c3beb48df680934e0ca967b7afe48a3cd2851dae0aea1018f2eb7bdbe61e1c30"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/wireless -> /mnt2/wireless",
+        "byte_start": 53193,
+        "byte_end": 53250,
+        "sha256": "224a8d74dbbd50d821b310eec4b7fd359b42cd1455a0e73e83ed58bfde0acea8"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/root -> /mnt2/root",
+        "byte_start": 53253,
+        "byte_end": 53302,
+        "sha256": "10ce0618a00c7da174d13bb58cf332046adcb59b6ec7da0d52318c37e627ed90"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/db -> /mnt2/db",
+        "byte_start": 53305,
+        "byte_end": 53350,
+        "sha256": "de88b49e01bcc017db827cddfcbc6e88442a50d4c51d7957b6d6be9d62abea2c"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/log -> /mnt2/log",
+        "byte_start": 53353,
+        "byte_end": 53400,
+        "sha256": "5a7db209e74225197335a46e3b2d655c4f04869b73179ac77bf371b6527e8007"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/folders -> /mnt2/folders",
+        "byte_start": 53403,
+        "byte_end": 53458,
+        "sha256": "a9d6383db877a5049a1ad9e35c39473dbe7299d54e403ca354e9446f206efe32"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/Managed Preferences -> /mnt2/Managed Preferences",
+        "byte_start": 53461,
+        "byte_end": 53540,
+        "sha256": "22ccca8da701c22ccfc033feeeb564458cf85431b4c635b3f93cda8e705f1472"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/select -> /mnt2/select",
+        "byte_start": 53544,
+        "byte_end": 53597,
+        "sha256": "4609a9b304a6b333d887ec2faa78d156c458e4caf3d5aa4bc70fcbd31d7ca8cd"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/run -> /mnt2/run",
+        "byte_start": 53600,
+        "byte_end": 53647,
+        "sha256": "b9754acfca75828ae52f71d5612912ace96c1e95d6c7b89ea07c3222ca8df5c5"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/Keychains -> /mnt2/Keychains",
+        "byte_start": 53650,
+        "byte_end": 53709,
+        "sha256": "d1ac0c6ac34f263e7159bdd6725c0295bf3f393ac79d92c58253e966cc6b1388"
+      },
+      {
+        "text": "INFERNO_COPY /mnt1/private/var/tmp -> /mnt2/tmp",
+        "byte_start": 53712,
+        "byte_end": 53759,
+        "sha256": "b535e2792ca94181000bdbdb66264f97016a201773d14ea763c9408bc7e0fe03"
+      },
+      {
+        "text": "INFERNO_SPACE after-data-seed block_size=4096 available_blocks=63633 available_bytes=260640768",
+        "byte_start": 53762,
+        "byte_end": 53856,
+        "sha256": "5e7b657ab86df401a7f1a2ce831e7a316efaa5259439408eda428eb22f147dfe"
+      },
+      {
+        "text": "INFERNO_PREP_EXEC /sbin/mount_apfs -o rw /dev/disk0s1s5 /mnt4",
+        "byte_start": 53859,
+        "byte_end": 53920,
+        "sha256": "e80975c3050611d4529c67a28bf67e5dc7d3819b8fb33910794fb18694b9a80a"
+      },
+      {
+        "text": "INFERNO_PREP_STATUS raw=0",
+        "byte_start": 54333,
+        "byte_end": 54358,
+        "sha256": "91c6d7b127765293b29f55fc09638bd50160be891c78ab953cc5bf0a4010ccf3"
+      },
+      {
+        "text": "INFERNO_DATA_COMPLETE: original var seeded; Update and Hardware mount paths prepared",
+        "byte_start": 55605,
+        "byte_end": 55689,
+        "sha256": "4511d0755cd7acfd6c0bc8d96d08fe773e8336dffa8a4f1ade35ac936fae6674"
+      },
+      {
+        "text": "INFERNO_PREP_COMPLETE: requested preparation operations succeeded",
+        "byte_start": 55692,
+        "byte_end": 55757,
+        "sha256": "a7a571c5755813427bec20203fe2cebd4db90fc868a56b32ef6a5a36e774faff"
+      }
+    ],
+    "commands": [
+      "/sbin/newfs_apfs -A -o role=d -v Data /dev/disk0s1",
+      "/sbin/newfs_apfs -A -o role=p -v Update /dev/disk0s1",
+      "/sbin/mount_apfs -o ro /dev/disk0s1s1 /mnt1",
+      "/sbin/mount_apfs -o ro /dev/disk0s1s2 /mnt1",
+      "/sbin/mount_apfs -o ro /dev/disk0s1s3 /mnt1",
+      "/sbin/mount_apfs -o ro /dev/disk0s1s4 /mnt1",
+      "/sbin/mount_apfs -o ro /dev/disk0s1s5 /mnt1",
+      "/sbin/mount_apfs -o ro /dev/disk0s1s6 /mnt1",
+      "/sbin/mount_apfs -o ro /dev/disk0s1s1 /mnt1",
+      "/sbin/mount_apfs -o rw /dev/disk0s1s2 /mnt2",
+      "/sbin/mount_apfs -o rw /dev/disk0s1s5 /mnt4"
+    ],
+    "volumes": {
+      "AzulSeed18A5351d.N104N841DeveloperOS": "/dev/disk0s1s1",
+      "Data": "/dev/disk0s1s2",
+      "Preboot": "/dev/disk0s1s3",
+      "xART": "/dev/disk0s1s4",
+      "Hardware": "/dev/disk0s1s5",
+      "Update": "/dev/disk0s1s6"
+    },
+    "space": {
+      "before": {
+        "block_size": 4096,
+        "available_blocks": 100703,
+        "available_bytes": 412479488
+      },
+      "after": {
+        "block_size": 4096,
+        "available_blocks": 63633,
+        "available_bytes": 260640768
+      }
+    },
+    "copies": [
+      "INFERNO_COPY /mnt1/private/var/preferences -> /mnt2/preferences",
+      "INFERNO_COPY /mnt1/private/var/networkd -> /mnt2/networkd",
+      "INFERNO_COPY /mnt1/private/var/hardware -> /mnt2/hardware",
+      "INFERNO_COPY /mnt1/private/var/empty -> /mnt2/empty",
+      "INFERNO_COPY /mnt1/private/var/MobileAsset -> /mnt2/MobileAsset",
+      "INFERNO_COPY /mnt1/private/var/staged_system_apps -> /mnt2/staged_system_apps",
+      "INFERNO_COPY /mnt1/private/var/buddy -> /mnt2/buddy",
+      "INFERNO_COPY /mnt1/private/var/vm -> /mnt2/vm",
+      "INFERNO_COPY /mnt1/private/var/msgs -> /mnt2/msgs",
+      "INFERNO_COPY /mnt1/private/var/logs -> /mnt2/logs",
+      "INFERNO_COPY /mnt1/private/var/audit -> /mnt2/audit",
+      "INFERNO_COPY /mnt1/private/var/installd -> /mnt2/installd",
+      "INFERNO_COPY /mnt1/private/var/MobileSoftwareUpdate -> /mnt2/MobileSoftwareUpdate",
+      "INFERNO_COPY /mnt1/private/var/mobile -> /mnt2/mobile",
+      "INFERNO_COPY /mnt1/private/var/MobileDevice -> /mnt2/MobileDevice",
+      "INFERNO_COPY /mnt1/private/var/wireless -> /mnt2/wireless",
+      "INFERNO_COPY /mnt1/private/var/root -> /mnt2/root",
+      "INFERNO_COPY /mnt1/private/var/db -> /mnt2/db",
+      "INFERNO_COPY /mnt1/private/var/log -> /mnt2/log",
+      "INFERNO_COPY /mnt1/private/var/folders -> /mnt2/folders",
+      "INFERNO_COPY /mnt1/private/var/Managed Preferences -> /mnt2/Managed Preferences",
+      "INFERNO_COPY /mnt1/private/var/select -> /mnt2/select",
+      "INFERNO_COPY /mnt1/private/var/run -> /mnt2/run",
+      "INFERNO_COPY /mnt1/private/var/Keychains -> /mnt2/Keychains",
+      "INFERNO_COPY /mnt1/private/var/tmp -> /mnt2/tmp"
+    ],
+    "scope": "Original utility/copy/unmount path only. Requires separate read-only tree comparison; no keybag, setup, launch or IPA readiness."
+  },
+  "negative_cases": {
+    "failed_newfs": {
+      "rejected": true,
+      "error": "Unpaired/failed original utility status",
+      "sha256": "1600109232516db4e40f033f425afc8a8b96d108314e57377a3c73d9192459f8"
+    },
+    "missing_copy_completion": {
+      "rejected": true,
+      "error": "Missing/duplicate/wrong seed BEGIN/DATA_COMPLETE/COMPLETE",
+      "sha256": "320a8a1eddf82eb434e228ac135784a4a37ecd81ca007d4be136f8cb81fd9505"
+    },
+    "missing_normal_unmount": {
+      "rejected": true,
+      "error": "Missing ordered clean seed unmount evidence",
+      "sha256": "7ef29ddfdf5923f47ce8dba35f8caf4bf028afedd65507a52d0527538cb1ab34"
+    },
+    "wrong_copy_target": {
+      "rejected": true,
+      "error": "Unexpected/duplicate copy path",
+      "sha256": "4ff2e29fe048ca61d26c41356130bf8eb9ca829867237235da2a16cc9042767d"
+    },
+    "extra_operation": {
+      "rejected": true,
+      "error": "Unexpected seed operation/failure: INFERNO_KEYBAG_COMPLETE: unexpected",
+      "sha256": "dea8adb6fb8e2156f0bed9a096317df237ba09ca54f1147f82f616e06012a94c"
+    },
+    "zero_remaining_space": {
+      "rejected": true,
+      "error": "Invalid/duplicate seed capacity record",
+      "sha256": "8a4d26c313342376b1bb054452c637f393aaecd9eb5f13d03efd80630ed2a71a"
+    },
+    "truncated_complete": {
+      "rejected": true,
+      "error": "Truncated/ambiguous owned record",
+      "sha256": "76d58b17d1424b3e2f052da89134aee7ec39a185516761fd2369ce31b51a1ca9"
+    },
+    "verify_instead_of_seed": {
+      "rejected": true,
+      "error": "Missing/duplicate/wrong seed BEGIN/DATA_COMPLETE/COMPLETE",
+      "sha256": "6d0ab75fdca23b0ab1cdab6de90c008b2f00899095003a31f922b64671fed2ae"
+    }
+  },
+  "input_arguments": {
+    "profile": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/profile.json",
+    "profile_sha256": "7939d609b99b8223863dba0b0af9d181526b420c0023cc9520563fd7e0979ed8",
+    "raw_recovery_record": "/home/brandonin/.local/share/inferno/images/ios14b5/raw-recovery-reproduced-1/extraction.json",
+    "raw_recovery_record_sha256": "500127c92ff6d3692513ae50ea1d7592fe3f4f4005d059b27fb23b0782372f9f",
+    "helper_build": "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/build.json",
+    "helper_build_sha256": "3cb1656f3978bfdcca7e3da80d7f8091f524c1b7593bb64a42a7a2a47f34e532",
+    "probe": "/home/brandonin/.local/share/inferno/native-probe/helper-build-42/inferno-probe",
+    "probe_sha256": "7def2d54fb9a0737666cbe175b38ad442eea5340a07fac202ffd1fda2df849c9",
+    "hfsplus": "/home/brandonin/.local/share/inferno/native-probe/tools/hfsplus",
+    "hfsplus_sha256": "2b38fd84323addc7487587738d4c4dd5b0d012d7e895e77e9e8ef1840fac7454",
+    "binary": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "binary_sha256": "0889bfe40c6bbb3e6eb9d493ada2bb86637e1d7acb61e36699e16da2568563f2",
+    "build_manifest": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build-manifest.json",
+    "build_manifest_sha256": "1c0ca353df0b88956f071503654a9a0a3f1e22346270e89accdfaa911391f096",
+    "initial_stage": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/initial-volumes.json",
+    "initial_stage_sha256": "af68573561e4a123034dca2d29951e38405b6fb3d2e7052966d631c1cc8eff16",
+    "overlay_tools_root": "/home/brandonin/.local/share/inferno/disk-overlay-tools"
+  },
+  "initial_validation": {
+    "profile_inputs": {
+      "kernel": {
+        "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/kernel-kernelcache.research.iphone12b",
+        "sha256": "cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3",
+        "bytes": 17429507
+      },
+      "dtb": {
+        "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/dtb-DeviceTree.n104ap.im4p",
+        "sha256": "dbd9be96c4b18f48a1842879237ae8f27043b894a2ed6139e396dbedca232411",
+        "bytes": 42553
+      },
+      "trustcache": {
+        "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/trustcache-038-44135-124.dmg.trustcache",
+        "sha256": "af33b3466bd828bf1ccaa1ab35d060bfcce62ade26ee74acf176501b00ea0d7f",
+        "bytes": 4931
+      },
+      "ramdisk": {
+        "path": "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/ramdisk-038-44135-124.dmg",
+        "sha256": "4013d9b3bb6c7fa0ff82397effc032b6afdb6f3c5e1672782698119dd9b3f704",
+        "bytes": 104685595
+      }
+    },
+    "base": {
+      "report": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/report.json",
+      "report_sha256": "215c46030dad52ebf48569f2fb53c0e4cf34a95213d8d55b16110e6eec484abc",
+      "stopped_manifest": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/stopped-disk-hashes.json",
+      "stopped_manifest_sha256": "d1712085f6e4a4e3917b87edc526642e84398263dead21a100050f037814490f",
+      "layers": [
+        {
+          "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/root.qcow2",
+          "format": "qcow2",
+          "sha256": "89d99759b9f1663d5cd6481bcd55429690cbe7710fa7d77806f64eb603297afd",
+          "bytes": 4063232,
+          "device": 66306,
+          "inode": 55445353,
+          "mtime_ns": 1791432299971109403,
+          "ctime_ns": 1791432306026127988,
+          "mode": "0o444"
+        },
+        {
+          "path": "/home/brandonin/.local/share/inferno/images/ios14b5/initial-volumes-source-1/root.raw",
+          "format": "raw",
+          "sha256": "93f97dae602a8fc844f0f88819d3fe358b1cf14ee5e193b0beb7009376032594",
+          "bytes": 8589934592,
+          "device": 66306,
+          "inode": 48799599,
+          "mtime_ns": 1791430887226554083,
+          "ctime_ns": 1791430896801588458,
+          "mode": "0o444"
+        }
+      ],
+      "virtual_size": 8589934592,
+      "auxiliary": {
+        "ctrl_bits.raw": {
+          "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/ctrl_bits.raw",
+          "bytes": 8192,
+          "sha256": "9f1dcbc35c350d6027f98be0f5c8b43b42ca52b7604459c0c42be3aa88913d47",
+          "format": "raw"
+        },
+        "effaceable.raw": {
+          "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/effaceable.raw",
+          "bytes": 4096,
+          "sha256": "ad7facb2586fc6e966c004d7d1d16b024f5805ff7cb47c7a85dabd8b48892ca7",
+          "format": "raw"
+        },
+        "firmware.raw": {
+          "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/firmware.raw",
+          "bytes": 8388608,
+          "sha256": "2daeb1f36095b44b318410b3f4e8b5d989dcc7bb023d1426c492dab0a3053e74",
+          "format": "raw"
+        },
+        "nvram.raw": {
+          "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/nvram.raw",
+          "bytes": 8192,
+          "sha256": "fb6e2c653b01fada0a4d5196a699478d9383fe7ef3d1cfb657aefe254f9774a9",
+          "format": "raw"
+        },
+        "panic_log.raw": {
+          "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/panic_log.raw",
+          "bytes": 1048576,
+          "sha256": "30e14955ebf1352266dc2ff8067e68104607e750abb9d3b36582b8af909fcb58",
+          "format": "raw"
+        },
+        "root.qcow2": {
+          "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/root.qcow2",
+          "bytes": 4063232,
+          "sha256": "89d99759b9f1663d5cd6481bcd55429690cbe7710fa7d77806f64eb603297afd",
+          "format": "qcow2",
+          "standalone": false,
+          "backing_chain": [
+            {
+              "path": "/home/brandonin/.local/share/inferno/images/ios14b5/initial-volumes-source-1/root.raw",
+              "format": "raw",
+              "sha256": "93f97dae602a8fc844f0f88819d3fe358b1cf14ee5e193b0beb7009376032594",
+              "bytes": 8589934592,
+              "device": 66306,
+              "inode": 48799599,
+              "mtime_ns": 1791430887226554083,
+              "ctime_ns": 1791430896801588458,
+              "mode": "0o444"
+            }
+          ]
+        },
+        "syscfg.raw": {
+          "path": "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/syscfg.raw",
+          "bytes": 131072,
+          "sha256": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+          "format": "raw"
+        }
+      },
+      "metadata_revalidation": []
+    },
+    "tool": {
+      "root": "/home/brandonin/.local/share/inferno/disk-overlay-tools",
+      "binary": "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-img",
+      "sha256": "f26da24f8a7fd880ab13f6fcabf42d099fb68ea86df5de0c55e6faadfe2d9a6e",
+      "provenance": "/home/brandonin/.local/share/inferno/disk-overlay-tools/tool-provenance.json",
+      "provenance_sha256": "bc5893936a16a2b2dd5cf7e6408da5742a3e1909d7c8d3606ff100ec7236c9f2"
+    },
+    "base_metadata": {
+      "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/nvram.raw": {
+        "st_dev": 66306,
+        "st_ino": 55445358,
+        "st_size": 8192,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791432295603095994,
+        "st_ctime_ns": 1791432305916127650
+      },
+      "/home/brandonin/.local/share/inferno/images/ios14b5/initial-volumes-source-1/root.raw": {
+        "st_dev": 66306,
+        "st_ino": 48799599,
+        "st_size": 8589934592,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791430887226554083,
+        "st_ctime_ns": 1791430896801588458
+      },
+      "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/root.qcow2": {
+        "st_dev": 66306,
+        "st_ino": 55445353,
+        "st_size": 4063232,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791432299971109403,
+        "st_ctime_ns": 1791432306026127988
+      },
+      "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/firmware.raw": {
+        "st_dev": 66306,
+        "st_ino": 55445355,
+        "st_size": 8388608,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791432293440671883,
+        "st_ctime_ns": 1791432305863127487
+      },
+      "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/ctrl_bits.raw": {
+        "st_dev": 66306,
+        "st_ino": 55445357,
+        "st_size": 8192,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791432293440710764,
+        "st_ctime_ns": 1791432305750127140
+      },
+      "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/panic_log.raw": {
+        "st_dev": 66306,
+        "st_ino": 55445360,
+        "st_size": 1048576,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791432293440757260,
+        "st_ctime_ns": 1791432305971127819
+      },
+      "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/effaceable.raw": {
+        "st_dev": 66306,
+        "st_ino": 55445359,
+        "st_size": 4096,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791432293440742604,
+        "st_ctime_ns": 1791432305808127318
+      },
+      "/home/brandonin/.local/share/inferno/app-import/initial-volumes-stage-2/recovery-run/disks/syscfg.raw": {
+        "st_dev": 66306,
+        "st_ino": 55445356,
+        "st_size": 131072,
+        "st_mode": 33060,
+        "st_mtime_ns": 1791432293440694028,
+        "st_ctime_ns": 1791432306081128156
+      }
+    }
+  },
+  "source_unchanged": true
+}
