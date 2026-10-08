@@ -2,6 +2,24 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 17:35: coordinator preflight corrected; pending-branch78 launching
+
+Coordinatorfirstattempt failedBEFOREoutput/VM/diskmutation: invented sourcepath
+companion/profile.py absent (dd7f284ca9 rawlog/launchretained). Actualprofileloader
+lives inboot.py. Narrowfix9f9f33bc35 usesreal10moduleinventory exercised byexact
+mainpath; oldhelper-onlyreplay missedmaininventory, documentedbc5ed2300f.
+Stablecoordinatorworktree/tmp/inferno-stage-import stillbaseline/session2pins;
+retryNEWcoordinated-stage-demo-2 waits78stop andindependentfixreview.
+Pendingbranchprofile integratedb72f61ff9b/355605720d, actualownedfixture4df5666597,
+independent543c9d518a. ThreefixedPCs1c74null/1c7cactive/1d1cqueued; initialCPUoff,
+internalexact9ADPdisabledchecks beforeeachwindow; samedeadline/restore/sizeguards.
+Baseline2PCunchanged. Nooriginalkernelcoverageclaimedfromownedfixture.
+78 detachedrunner3639703 launched dd7f284ca9, outputapp-boot-78, same0889 and
+successfulimportedfixturestage3as76; --probe-journey/keep-running/control/HID/
+capture10/1200s + --swapwait-cpu-diagnostic --swapwait-cpu-profile pending-branch.
+RootownsallUI; ONE1sCPUwindow onlyifactualrawtap1/persistentlypixels0 confirmed.
+NootherVM. Bootworkerpreflight/sourcepinsactual5modules. NoApple/RAMpatch.
+
 ### 2026-10-07 17:32: prepared demo77 interactive success; coordinator execution next
 
 77 fromnormalpreparedsession2 displayedresource and Count0→1 afteronecounter
