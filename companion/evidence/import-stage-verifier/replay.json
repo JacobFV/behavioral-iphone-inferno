@@ -1,0 +1,59 @@
+{
+  "disk-preparation-imported-fixture-1": {
+    "actual_raw_sha256": "d750f583f3ee7670625b344af826f909a8847bf365a5df24f197884484c29f6e",
+    "accepted_content": false,
+    "error": "Unexpected/duplicate/malformed stage record at byte 48879, expected index 2"
+  },
+  "disk-preparation-imported-fixture-2": {
+    "actual_raw_sha256": "fb7fb07a40c6f3f0f82a315ee7754b4bdafadfe14113b9c23b6eab885f895b4f",
+    "accepted_content": false,
+    "error": "Unexpected/duplicate/malformed stage record at byte 48919, expected index 3"
+  },
+  "disk-preparation-imported-demo-1": {
+    "actual_raw_sha256": "aed73b58b09ebb04130764abf658790e5cc007ab549615dc44a281ac09ff3d8d",
+    "accepted_content": false,
+    "error": "Actual preparation failure at byte 53662"
+  },
+  "disk-preparation-imported-demo-2": {
+    "actual_raw_sha256": "7b6c26c1e590f1e7b3d9e2b04d60685e1335686bd07636e763451b08c9aa473c",
+    "accepted_content": true,
+    "error": null
+  },
+  "synthetic_duplicate_begin": {
+    "rejected": true,
+    "error": "Unexpected/duplicate/malformed stage record at byte 57587, expected index 12"
+  },
+  "synthetic_wrong_size": {
+    "rejected": true,
+    "error": "Unexpected/duplicate/malformed stage record at byte 54003, expected index 7"
+  },
+  "synthetic_missing_complete": {
+    "rejected": true,
+    "error": "Incomplete stage: 11/12 records"
+  },
+  "synthetic_late_failure": {
+    "rejected": true,
+    "error": "Unexpected/duplicate/malformed stage record at byte 57587, expected index 12"
+  },
+  "synthetic_unexpected_operation": {
+    "rejected": true,
+    "error": "Unknown/malformed owned preparation record at byte 57587"
+  },
+  "synthetic_malformed_status": {
+    "rejected": true,
+    "error": "Nonzero/malformed preparation child status"
+  },
+  "synthetic_unterminated_complete": {
+    "rejected": true,
+    "error": "Unexpected/duplicate/malformed stage record at byte 57519, expected index 11"
+  },
+  "demo2_normal_finish": {
+    "accepted": false,
+    "actual_error": {
+      "type": "KeyboardInterrupt",
+      "detail": "Signal 15"
+    },
+    "attempt_completed": false,
+    "scope": "Direct normal-report prerequisite, not synthesized session replay."
+  }
+}
