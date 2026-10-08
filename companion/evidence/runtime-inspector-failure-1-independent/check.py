@@ -37,7 +37,8 @@ assert len(ret)==7 and verification['failed_attempt_opt_in'] is True and verific
 files={}
 for name,row in ret.items():
  st=Path(row['path']).lstat();assert st.st_size==row['bytes'];files[name]={'path':row['path'],'size':st.st_size,'mode':oct(st.st_mode),'device':st.st_dev,'inode':st.st_ino,'recorded_sha256_not_rehashed':row['sha256']}
-for pid in (1032152,1042481,1048889):assert not Path('/proc')/str(pid) if False else not (Path('/proc')/str(pid)).exists()
+for pid in (1032152,1042481,1048889):
+ assert not (Path('/proc')/str(pid)).exists()
 assert not (R/'runtime-inspection.json').exists() and not (R/'launchd.plist').exists() and (R/'INCOMPLETE.json').exists()
 for p,pin in pins.items():assert sha(Path(p).read_bytes())==pin['sha256']
 result={'scope':'Independent failed export framing/parser/cleanup and seven-file metadata audit; no image rehash, Apple configuration reconstruction, or successful inspection claim','inputs':pins,'parser_source':{'path':str(S),'sha256':sha(S.read_bytes())},'malformed_chunks':malformed,'nonexport_markers':nonexport,'actual_parser_rejection':rejection,'quit_ack':quit_rows,'report_outcome':{'attempt_completed':False,'error':report['error'],'emulator_exit_code':report['exit_code']},'seven_file_metadata':files,'pids_absent':[1032152,1042481,1048889],'limits':['Guest hash and unmount records exist, but five malformed export records prevent reconstruction.','Coordinator signal cleanup and QMP quit0 are not a normal successful inspection finish.','Forensic retention hashes are referenced; this independent audit did not reread disk payloads.','No eligible manifest or exported launchd file exists.']}
