@@ -19,8 +19,9 @@ r=m.parse(a+b+c)
 assert r['complete_count']==3 and not r['semantic_violations']
 assert 'active_token_third_read' not in r['blocks'][0]['branch_observation']
 assert m.parse(block('null-active',{'X11':1}))['semantic_violations']
-assert m.parse(block('queued-match',{'X09':1,'X11':2}))['semantic_violations']
+assert m.parse(block('queued-match',{'X08':0x5000,'X09':1,'X11':2}))['semantic_violations']
+assert m.parse(block('queued-match',{'X08':0,'X09':1,'X11':1}))['semantic_violations']
 assert not m.parse(a[:-2])['blocks'][0]['complete']
 assert not m.parse(a.replace(b'\n',b'\r',1))['blocks'][0]['complete']
 assert m.parse(base)['unknown_pc_count']==1
-print(json.dumps({'scope':'host-only replay and explicitly synthetic branch blocks','baseline_actual_snapshots':old['snapshot_count'],'synthetic_three_roles':r['role_counts'],'negative_checks':['null-register','queue-comparison','truncated-EOF','bare-CR','unknown-PC'],'passed':True},indent=2))
+print(json.dumps({'scope':'host-only replay and explicitly synthetic branch blocks','baseline_actual_snapshots':old['snapshot_count'],'synthetic_three_roles':r['role_counts'],'negative_checks':['null-register','queue-comparison','null-queue-pointer','truncated-EOF','bare-CR','unknown-PC'],'passed':True},indent=2))
