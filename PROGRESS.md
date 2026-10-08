@@ -2,6 +2,30 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 21:02:90 healthy; first fresh-volume trial hit host-mode guard
+
+Generic90 healthy resource/count0→1 afterONE19e172911a7541fabc2796011229b000,
+rootVNC0017/finalQMP0034reviewed1. Boot46AB0BFA-A8CB-497B-9D0B-6C88EB916794,
+originalapp255uid501. Normal0/null376.093694, ordinary7/ancestorsPASS51c79adc1f,
+rootvisual55de069552. NoCPU/ADP/sample/warm/strictfixture. No fix claim and
+failedfivePCcapture remainsmissing. All90PIDs gone; no liveVM now.
+
+Initial-volume actual coordinator111903/runner112004/QEMU112134 executed
+reviewed frozen976afb970f plan into externalapp-import/initial-volumes-stage-1.
+Original role creation/firmwarecopy/unmount/PREP_COMPLETE and solefinish/QMPquit9/
+runnerexit0 succeeded, but finalfreeze rejected newfirmware.raw mode0664.
+Allsixnewauxiliaries inheritedhostumask002; root0644. No filesfrozen or eligible
+result, failure/INCOMPLETEretained. Diskworker auditing and implementing explicit
+coordinatorumask077 forprivateoutputs/subprocesses, not broadfreezepolicyrelax.
+Nativeindependentrawreview/patchreview, no retryuntilrootgo/newstage2.
+OriginalSystem-onlysourcecopyandallhistoricalinputsunchanged.
+
+Bootworker read-only nextphase: existing-volumes+seed-data only, original Data(d)
+andUpdate(p) newfs, SystemRO→DataRW private/var copy, HardwareFactoryData copy,
+sync/unmount/DATA_COMPLETE. Existing verify-data runs BEFORE seeding, so a later
+independent verificationphase is required; never combine those flags blindly.
+NoData/keybag/cache/setupimplementation or VM yet.
+
 ### 2026-10-07 20:52:reproduced demo failed; generic90 diagnostics launching
 
 Reproduced helper/raw recovery → host preparation → original recovery staging
