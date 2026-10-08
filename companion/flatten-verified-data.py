@@ -100,7 +100,11 @@ def validate_phase(path, expected, index, pins, seen=None):
             raise ValueError('Observed phase implementation differs: ' + name)
     context = {'session': {'recovery_profile': {'sha256': report['profile_sha256']}, 'sources': {'boot.py': report['runner_sha256'], 'qmp_control.py': report['control_source_sha256']}}}
     CO.check_completed_report(context, report_path)
-    frozen_path = path.parent / 'freeze-record.json'; frozen = bounded_record(frozen_path); pins[str(frozen_path)] = sha(frozen_path)
+    frozen_path = path.parent / 'freeze-record.json'
+    frozen_hash = sha(frozen_path)
+    pin(frozen_path, frozen_hash, pins)
+    frozen = bounded_record(frozen_path)
+    if sha(frozen_path) != frozen_hash: raise ValueError('Freeze record changed during parsing')
     records = bounded_record(retention)
     if set(records) != {'root.qcow2', *CO.AUXILIARY_SIZES} or set(frozen['files']) != set(records):
         raise ValueError('Expected exactly seven frozen paired namespaces')
@@ -217,6 +221,8 @@ def main():
         finally: os.close(fd)
         final = OV.validate_base(raw, raw_hash, allow_attestation=False)
         if any(CO.identity(raw)[k] != raw_before[k] for k in ('st_dev', 'st_ino', 'st_size', 'st_mtime_ns')): raise ValueError('Unexpected new raw freeze identity change')
+        unchanged({**sources, **pins})
+        if OV.validate_tools(args.overlay_tools_root) != tool: raise ValueError('Pinned qemu-img tool changed during final raw validation')
         if identities(before) != before_ids: raise ValueError('Source metadata changed at publication')
         auxiliary = {name: entry for name, entry in before['auxiliary'].items() if name != 'root.qcow2'}
         provenance = {'schema': 'inferno.flattened-verified-data.v1', 'status': 'flattened-verified-data-not-runtime-ready', 'ipa_runtime_ready': False, 'data_verified': {'path': str(args.data_verified), 'sha256': args.data_verified_sha256}, 'raw': final, 'allocated_bytes': raw.stat().st_blocks * 512, 'gpt': gpt, 'tool': tool, 'source_before': before, 'source_after': after, 'identities_before': before_ids, 'identities_after': after_ids, 'source_sha256': sources, 'evidence_sha256': pins, 'paired_auxiliary': auxiliary, 'auxiliary_state': str(Path(stage['report']).parent), 'auxiliary_report_sha256': stage['report_sha256'], 'auxiliary_retention_sha256': stage['retention_sha256'], 'future_boot_arguments': ['--root-image', str(raw), '--root-sha256', raw_hash, '--root-overlay', '--auxiliary-state', str(Path(stage['report']).parent)], 'scope': 'Host logical equality and GPT validation only; original verified Data comparison scope retained. No growth, APFS resize, guest execution, keybag or runtime readiness.'}
