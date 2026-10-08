@@ -9,6 +9,32 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-08: NavigationDemo first installed journey complete; revised sample next
+
+Root visual evidence a3376f9035 retains original frames and17 input submissions.
+Boot C0CE9A60-B5DC-4C7B-86D7-CEFD525F9471 showed catalog, item1 detail/Back,
+margin scrolling to item12, switch Off→On, Save and reopen retained OptionOn;
+final catalog Saved item12 / OptionOn / Saves1. Bundled Guide prefix loaded but
+last line clipped. Button-start drag did not scroll even after25s; diagnostic
+item1 tap worked, then margin drags scrolled. First item12 tap missed during
+scroll settling; a separate explicit updated-coordinate tap opened it. No
+fixture telemetry, disk-persistence, arbitraryIPA or freeze-fix claim.
+Wrapper expired normally at configured duration before root sent finish:
+attempttrue/errornone/emulator0, elapsed1228.056373, QMPquit128 acknowledged.
+Supervisor1324529/runner1325355/QEMU1325833 absent; bootworker auditing ordinary
+seven-file/ancestor retention. No current VM, no installed-child base promotion.
+
+Sample-only corrections d6a441eef7/f6637cc978 and hostactual1c98515a60 add owned
+UIButton touch cancellation and increase Guide height. External navigation-demo-006
+IPA SHA907c1d556f2099b236c386d9d9491a851935a07966aeb372752fd2378ffa3a2b;
+manifest2d51cef51bf521f4eca395bcaeeb1b0366b0f98bc5c71f47d74947e4ada7759d.
+Exact threefile bundle/115 exports pass; independent audit pending. Superseded005
+packaged an unnecessary self-authored stub, remains preserved and must not stage.
+Frozen004 producer unchanged. Next: independent006 review, new prepare/stage
+from original masterbase, then root-owned installed UI journey. No corrected
+scroll/layout runtime claim until observed. Freshbootstrap still requires34GiB
+free; storage question pending. First release is developerIPA-first, Mac deferred.
+
 ### 2026-10-07: NavigationDemo installed wrapper launched
 
 Recoveryactualad0908fa3a and independent53e01baabf passed. Verifiedstage
