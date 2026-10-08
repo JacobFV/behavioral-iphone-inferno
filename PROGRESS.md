@@ -2,6 +2,30 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 18:57: responsive83 retained with separate strict telemetry failure
+
+83 reached actual imported app227, boot6F133A30-5482-44F2-8D3B-9B751816392F,
+main_ticks2417555388. Required raw appeared0 was missing (timing appeared present;
+event sequence4 absent), so probe-capture-before correctly rejected waiting-for-app.
+Audit472eab6768 preserves the gap; no fake event, state edit or timing substitution.
+Root explicitly continued diagnostic visual journey only: initial tap
+ a2eb1f29c8ee4f5d9d10f3e4b46ecf84 ACK0/rawtap1/reviewed1, then three actual
+Home/background→OPEN/foreground/active cycles with same process and retained1/2/3,
+then individual taps45ccb0242c7f4128a0435706cbe5ce5e,
+9f84635b3b824786a4c261738bd97b06,4a84580514834f49b8ba61f15fe6b140
+visibly advanced2/3/4. Final periodicQMP0074 reviewed4. Rootvisualbd93e78f01.
+No freeze, CPU enable, samples or display-trace request. Strict remains incomplete;
+root fsynced operator-stop and SIGINT2, both PIDs gone/emulator0/errorSignal2.
+Bootworker forensic all7/ancestors verification ongoing; NEVER83asbase.
+Next production run will keep same reviewed pending-equality configuration.
+
+Durable host-source docs d23b85f4c9/44d16f43ee now use ordinary independent local
+Git clone/detached commit in persistent storage, stopping on first command failure.
+Actual host-only clone at ~/.local/share/inferno/host-runtimes/ipa-release-host-1/source
+is3f8b2d5623a2ac862eba2899771049c44b197316;168Python sources, helper60 fourpins
+and three CLIhelp entrypoints checked. No new session/VM or oldsource relocation.
+First release still prebuilt developerIPA; Mac/Xcode later.
+
 ### 2026-10-07 18:44: five-site fixture passed; production attempt83 authorized
 
 Integrated implementation167f080fbc, source reviewf32b8fcf35, actual owned
