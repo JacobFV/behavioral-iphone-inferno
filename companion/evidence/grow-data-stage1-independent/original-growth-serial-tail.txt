@@ -1,0 +1,121 @@
+INFERNO_GROW_BEGIN device=/dev/disk0s1 requested_bytes=34358669312
+newfs_apfs: unknown option '-h'
+newfs_apfs: [-o options] [-b block-size] [[-s volume-size] | [-r volume-reserve] [-q volume-quota]] [-v volume-name] [-i | -e] [-U uid] [-G gid] [-E [-S passphrase]] [-A | -C] [-F fusion] [-R role] device
+Thu Oct  8 04:45:23 2026 localhost com.apple.xpc.launchd[1] (org.inferno.probe.apfs-help.6) <Warning>: Service exited with abnormal code: 64
+dev_init:297: disk0s1 device accelerated crypto: 3 (compiled @ Aug 12 2020 22:19:57)
+dev_init:300: disk0s1 device_handle block size 4096 block count 8388347 features 22 internal solidstate
+nx_kernel_mount:1134: disk0s1 initializing cache w/hash_size 4096 and cache size 10064
+nx_kernel_mount:1234: disk0s1 container cleanly-unmounted flag set.
+nx_kernel_mount:1402: disk0s1 checkpoint search: largest xid 74, best xid 74 @ 39
+handle_mount:627: vol-uuid: 5133F48D-5D9E-499B-A8BA-45E692E36FD9 block size: 4096 block count: 1878803 (unencrypted; flags: 0x1; features: 8.0.12)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6634: Volume AzulSeed18A5351d.N104N841DeveloperOS is not in a volume group
+apfs_vfsop_mount:2171: disk0s1s1:0 mounted volume: AzulSeed18A5351d.N104N841DeveloperOS
+INFERNO_GROW_MOUNT raw_status=0
+INFERNO_GROW_SPACE block_size=4096 blocks=1870099 available=63561
+INFERNO_GROW_FILE /mnt1/System/Library/CoreServices/SystemVersion.plist bytes=620 fnv1a64=79ee8c1553980999
+INFERNO_GROW_FILE /mnt1/sbin/launchd bytes=400400 fnv1a64=540761db9a135599
+apfs_vfsop_unmount:2375: disk0s1: unmounting volume 'AzulSeed18A5351d.N104N841DeveloperOS'
+nx_volume_group_update:6634: Volume AzulSeed18A5351d.N104N841DeveloperOS is not in a volume group
+apfs: total mem allocated: 32 (0 mb);
+apfs_vfsop_unmount:2682: all done.  going home.  (numMountedAPFSVolumes 0)
+INFERNO_GROW_UNMOUNT result=0 errno=0
+containerResize:3703: Called on Container
+dev_init:297: disk0s1 device accelerated crypto: 3 (compiled @ Aug 12 2020 22:19:57)
+dev_init:300: disk0s1 device_handle block size 4096 block count 8388347 features 22 internal solidstate
+nx_kernel_mount:1134: disk0s1 initializing cache w/hash_size 4096 and cache size 10064
+nx_kernel_mount:1234: disk0s1 container cleanly-unmounted flag set.
+nx_kernel_mount:1402: disk0s1 checkpoint search: largest xid 74, best xid 74 @ 39
+spaceman_metazone_init:189: disk0s1 metazone for device 0 of size 131072 blocks (encrypted: 1747731-1813267 unencrypted: 1813267-1878803)
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 1 blocks starting at paddr 32768
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 2 blocks starting at paddr 0
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 3 blocks starting at paddr 1441792
+spaceman_datazone_init:442: disk0s1 allocation zone on dev 0 for allocations of 4 blocks starting at paddr 1474560
+dev_dump:256: Aggregate constructed: dev=<ptr> di=0 dv_num_slice=15 dv_num_slice_blk=131072 dv_num_lslice_blk=43795
+nx_resize:5188: disk0s1 growing non-fusion 1878803+0 -> 8388347+0
+nx_resize:5190: disk0s1 1878803 -> 8388347, total required metadata 19429 blocks
+spaceman_trim_free_blocks:3361: disk0s1 scan took 0.036297 s, trims took 0.020254 s
+spaceman_trim_free_blocks:3369: disk0s1 70100 blocks free in 4241 extents
+spaceman_trim_free_blocks:3377: disk0s1 70100 blocks trimmed in 4241 extents (4 us/trim, 209390 trims/s)
+spaceman_trim_free_blocks:3380: disk0s1 trim distribution 1:1438 2+:1355 4+:1122 16+:288 64+:18 256+:20
+nx_resize:5404: disk0s1 find_new_metadata(available_block_index 1878803, resize_block_count[tier 0] 8388347)
+nx_resize:5410: disk0s1 find_new_metadata(): [18448]@1878803, [777]@923, [188]@1700, [16]@1888
+spaceman_resize:1504: disk0s1 IP bm of current sm 14207 is in cache, remove it
+spaceman_resize:1690: disk0s1 cib of current sm 13963 is in cache, remove it
+spaceman_resize:1717: disk0s1 Chunk of current sm 13964 is in cache, remove it
+spaceman_resize:1717: disk0s1 Chunk of current sm 13965 is in cache, remove it
+spaceman_resize:1717: disk0s1 Chunk of current sm 13966 is in cache, remove it
+spaceman_resize:1717: disk0s1 Chunk of current sm 13967 is in cache, remove it
+spaceman_resize:1717: disk0s1 Chunk of current sm 13968 is in cache, remove it
+spaceman_resize:1717: disk0s1 Chunk of current sm 13969 is in cache, remove it
+spaceman_resize:1717: disk0s1 Chunk of current sm 13984 is in cache, remove it
+spaceman_resize:1717: disk0s1 Chunk of current sm 13986 is in cache, remove it
+spaceman_resize:1717: disk0s1 Chunk of current sm 13987 is in cache, remove it
+spaceman_resize:1717: disk0s1 Chunk of current sm 13990 is in cache, remove it
+spaceman_metazone_init:189: disk0s1 metazone for device 0 of size 262135 blocks (encrypted: 8126212-8257279 unencrypted: 8257279-8388347)
+dev_dump:256: Aggregate constructed: dev=<ptr> di=0 dv_num_slice=15 dv_num_slice_blk=589824 dv_num_lslice_blk=130811
+Usage: asr <verb> <options>
+  <verb> is one of the following:
+    asr help | version
+    asr restore --source <source> --target <target> [<options>]
+    asr restore --source asr://<host>/ --file <file> [<options>]
+    asr server  --source <source> --config <plist> [<options>]
+    asr imagescan --source <source> [--filechecksum] [--nostream]
+    asr info --source <source> [--plist]
+  <size> is in bytes but may end with a scale factor (b, k, m, g)
+
+common <options> are any of:
+      --source <source> path or url to disk image file, mountpoint, or
+                        web accessible disk image
+      --puppetstrings   print out messages in format good for machine parsing
+      --verbose         display verbose output
+      --debug           display debug output
+
+restore <options> are any of:
+      --target <target> path to volume or mountpoint
+      --erase           formats target volume
+      --format <HFS+|HFSX> target format when erasing (defaults to source)
+      --noprompt        don't require confirmation on erase
+      --noverify        don't checksum results
+      --buffers <num>   number of buffers to use in block copy
+      --buffersize <size>  size of buffers to use in block copy
+      --csumbuffers <num>  number of buffers for the checksum if different
+      --csumbuffersize <size> size of buffers for the checksum if different
+      --timeout <seconds>     max wait for stream in multicast client mode
+      --SHA256			force asr to verify with a SHA2-256 hash
+
+server <options> are any of:
+      --interface <if> Use 'if' as the interface for the server's
+                       outgoing stream
+      --config <configuration> server configuration file in plist format
+
+imagescan <options> are any of:
+      --filechecksum calculate file checksum
+      --nostream     don't reorder file for multicast streaming
+dev_dump:256: Aggregate destructed: dev=<ptr> di=0 dv_num_slice=15 dv_num_slice_blk=131072 dv_num_lslice_blk=43795
+dev_dump:256: Aggregate destructed: dev=<ptr> di=0 dv_num_slice=15 dv_num_slice_blk=589824 dv_num_lslice_blk=130811
+dev_init:297: disk0s1 device accelerated crypto: 3 (compiled @ Aug 12 2020 22:19:57)
+dev_init:300: disk0s1 device_handle block size 4096 block count 8388347 features 22 internal solidstate
+nx_kernel_mount:1134: disk0s1 initializing cache w/hash_size 4096 and cache size 10064
+nx_kernel_mount:1234: disk0s1 container cleanly-unmounted flag set.
+nx_kernel_mount:1402: disk0s1 checkpoint search: largest xid 75, best xid 75 @ 1
+INFERNO_GROW_API_RETURN status=0 hex=00000000
+dev_init:297: disk0s1 device accelerated crypto: 3 (compiled @ Aug 12 2020 22:19:57)
+dev_init:300: disk0s1 device_handle block size 4096 block count 8388347 features 22 internal solidstate
+nx_kernel_mount:1134: disk0s1 initializing cache w/hash_size 4096 and cache size 10064
+nx_kernel_mount:1234: disk0s1 container cleanly-unmounted flag set.
+nx_kernel_mount:1402: disk0s1 checkpoint search: largest xid 75, best xid 75 @ 1
+handle_mount:627: vol-uuid: 5133F48D-5D9E-499B-A8BA-45E692E36FD9 block size: 4096 block count: 8388347 (unencrypted; flags: 0x1; features: 8.0.12)
+handle_mount:640: setting dev block size to 4096 from 512
+nx_volume_group_update:6634: Volume AzulSeed18A5351d.N104N841DeveloperOS is not in a volume group
+apfs_vfsop_mount:2171: disk0s1s1:0 mounted volume: AzulSeed18A5351d.N104N841DeveloperOS
+INFERNO_GROW_MOUNT raw_status=0
+INFERNO_GROW_SPACE block_size=4096 blocks=8379643 available=6559837
+INFERNO_GROW_FILE /mnt1/System/Library/CoreServices/SystemVersion.plist bytes=620 fnv1a64=79ee8c1553980999
+INFERNO_GROW_FILE /mnt1/sbin/launchd bytes=400400 fnv1a64=540761db9a135599
+apfs_vfsop_unmount:2375: disk0s1: unmounting volume 'AzulSeed18A5351d.N104N841DeveloperOS'
+nx_volume_group_update:6634: Volume AzulSeed18A5351d.N104N841DeveloperOS is not in a volume group
+apfs: total mem allocated: 1056 (0 mb);
+apfs_vfsop_unmount:2682: all done.  going home.  (numMountedAPFSVolumes 0)
+INFERNO_GROW_UNMOUNT result=0 errno=2
+INFERNO_GROW_COMPLETE before_blocks=1870099 after_blocks=8379643 file_consistency=pass
