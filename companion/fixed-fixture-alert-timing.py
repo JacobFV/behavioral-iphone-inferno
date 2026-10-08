@@ -15,6 +15,9 @@ BASE_REPORT_SHA='c54198ab00829fe496f9da3bf4931daf4d76de7ca4bc78cd4c45815887169ee
 BASE_RETENTION_SHA='e196f51a4ed0f4281ae1179aeb7bfa88ed246ec551cc051f65b05c8964d968db'
 DEPENDENCIES={'guarded-setup-counter.py':'85263dc31b20a15c5a38fb01c51657b9b2244d6c9bbc77845c1771568a71e436','qmp_control.py':'906716956328980c1a054f1836298471b88acd1db8788c8d18b78b8cbc7c01a2','owned-control.py':'3ca9c6f31839fc8dbee4fbfbaa9c3565d3086b22c6fcaf2238ead072a31d085d','vnc-control.py':'99016edaf5f58ef7a6e2433a03d5a465d46c440053bdcfc2ec06a93124d5d29f'}
 
+DEPENDENCIES['boot.py']=RUNTIME['runner_sha256']
+DEPENDENCIES['probe_journey.py']='1c4cbb542a79b85560433d62726123b99555ad0a47522d5ecd659faf3a04f308'
+
 def sha(b):return hashlib.sha256(b).hexdigest()
 def read(p,limit=64<<20):
  p=Path(p);s=p.lstat()
@@ -73,7 +76,7 @@ def submission(report,path,expected):
 
 class Driver:
  def __init__(self,args):
-  self.args=args;self.report=args.report.resolve(strict=True);self.output=args.output.absolute();self.G=module('fixed_guard_support',HERE/'guarded-setup-counter.py');self.refs=templates(HERE/'evidence/imported-fixture-91-visual');self.allowed=[];self.log={'complete':False,'actions':[],'observations':[],'scope':'Three explicit fixed actions at most; no retry, strict-after, finish, Home, OPEN, CPU or sample.'};self.count=0
+  self.created=False;self.host_identity=None;self.args=args;self.report=args.report.resolve(strict=True);self.output=args.output.absolute();self.G=module('fixed_guard_support',HERE/'guarded-setup-counter.py');self.refs=templates(HERE/'evidence/imported-fixture-91-visual');self.allowed=[];self.log={'complete':False,'actions':[],'observations':[],'scope':'Three explicit fixed actions at most; no retry, strict-after, finish, Home, OPEN, CPU or sample.'};self.count=0
   for n,h in DEPENDENCIES.items():
    if sha(read(HERE/n))!=h:raise ValueError('Source dependency mismatch: '+n)
   self.source_pins={str(HERE/n):h for n,h in DEPENDENCIES.items()};self.source_pins[str(Path(__file__).resolve())]=sha(read(Path(__file__).resolve()))
@@ -99,6 +102,14 @@ class Driver:
   if sha(read(Path(base['report'])))!=BASE_REPORT_SHA or sha(read(Path(base['stopped_manifest'])))!=BASE_RETENTION_SHA:raise ValueError('Fixture metadata pins changed')
   command=record(self.report/'command.json');proc=Path('/proc')/str(v['pid'])
   if [x.decode() for x in (proc/'cmdline').read_bytes().split(b'\0') if x]!=command or (proc/'exe').resolve()!=Path(command[0]).resolve():raise ValueError('Emulator identity differs')
+  procstat=(proc/'stat').read_text();ticks=int(procstat[procstat.rfind(')')+2:].split()[19]);st=(proc/'exe').stat()
+  host={'pid':v['pid'],'start_ticks':ticks,'binary_metadata':{k:getattr(st,k) for k in ('st_dev','st_ino','st_size','st_mtime_ns','st_ctime_ns')}}
+  if self.host_identity is None:
+   if st.st_size>256<<20:raise ValueError('Unexpected executable size')
+   with (proc/'exe').open('rb') as executable:
+    if hashlib.file_digest(executable,'sha256').hexdigest()!=RUNTIME['binary_sha256']:raise ValueError('Actual emulator executable hash differs')
+   self.host_identity=host;self.log['host_identity']=host
+  elif self.host_identity!=host:raise ValueError('Host process/binary identity changed')
   if '-d' not in command or command[command.index('-d')+1]!='guest_errors':raise ValueError('Unexpected CPU logging mode')
   endpoint=command[command.index('-vnc')+1];qmp=command[command.index('-qmp')+1].split(',')[0]
   if not endpoint.startswith('unix:') or not qmp.startswith('unix:'):raise ValueError('Private Unix surfaces required')
@@ -139,7 +150,7 @@ class Driver:
   if len(wires)!=2 or wires[-1]['request_id']!=initial['request_id'] or any(r['operation']!='HID' or not re.fullmatch(r'INFERNO_HID_V1 [0-9a-f]{32} SWIPE 16384 32270 16384 9145 1500\n',r['raw']) for r in wires):raise ValueError('Require exactly two fixed unlocks, no earlier action')
   self.allowed=[r['request_id'] for r in wires];ack(self.report,initial['request_id']);self.guard()
   if time.time()>initial['started_time']+39:raise TimeoutError('Too late for first observation/deadline')
-  self.output.mkdir(mode=0o700);self.log.update(source_sha256=self.source_pins,root_review_commit='5ad7a300e6',crop=list(CROP),initial_unlock=initial,identity=self.identity);self.save()
+  self.output.mkdir(mode=0o700);self.created=True;self.log.update(source_sha256=self.source_pins,root_review_commit='5ad7a300e6',crop=list(CROP),initial_unlock=initial,identity=self.identity);self.save()
   status=self.command('probe-status')['return']
   if status['state']!='waiting-for-operator-before-capture' or status.get('automatic_input'):raise ValueError('Before-capture gate already consumed')
   prior=initial
@@ -166,7 +177,7 @@ def main():
  p=argparse.ArgumentParser(description=__doc__);p.add_argument('--report',type=Path,required=True);p.add_argument('--boot-uuid',required=True);p.add_argument('--second-unlock',type=Path,required=True);p.add_argument('--output',type=Path,required=True);a=p.parse_args();d=None;old=os.umask(0o077)
  try:d=Driver(a);d.run();return 0
  except BaseException as e:
-  if d is not None and d.output.exists():d.log['error']=str(e);d.save()
+  if d is not None and d.created:d.log['error']=str(e);d.save()
   print('Fixed sequence aborted; no retry: '+str(e),file=sys.stderr);return 1
  finally:os.umask(old)
 if __name__=='__main__':raise SystemExit(main())
