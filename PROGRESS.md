@@ -2,6 +2,30 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 19:11:84 healthy warm work; durable preparation passed
+
+83 forensic retentionacb1873f8c completed all7/ancestors, strict rejected.
+84 LIVE runner3937496/QEMU3938459,VNC/tmp/inferno-boot-3iy5ppmf/vnc.sock,
+samefixture3/0889 sourceacb1873f8c and pending-equality defaultCPUoff.
+Boot0D5AD307-62DD-489D-B6BB-E88C6BFEBE8C/app269/main3885379434.
+Strictbefore/after accepted after reviewed0→1 and ONEea1a6d7c26544ff3bcaa8d0b5607c886.
+Three warm Home/reopen/tap cycles progressing; root controls all input.
+If healthy through4, root will perform originalClock advancing-stopwatch calibration
+with ONE1s pending-equality window and continuous before/after VNC. No freeze yet;
+this extends original-PC reachability proof rather than claiming failed-state data.
+Native ready independently audit; no model/source patch. Preserve normal afterward.
+
+Persistent source host-only prepare d7c6ff2658 passed actual38.01s/exit0, all72
+source pins and8 HFSbyteequal readbacks. NEW external
+~/.local/share/inferno/app-import/durable-prepare-demo-1/session.json SHA
+faaa48f9b2f7a9f8f1b6f705e09c72a59c05c1025c7af7d355ed1a4af35ed044.
+Source remains ~/.local/share/inferno/host-runtimes/ipa-release-host-1/source
+commit3f8b2d5623a2ac862eba2899771049c44b197316. No stage/VM yet; keep source
+unchanged for next stage/boot. Old sessions unaffected. A stage may follow84
+only after root authorizes VMslot. Rootsource notea9523efccb maps ringtoken
+selection/clear from existing ranges; positivewriter outside retained range,
+current-scanout semantics unproven. No broad dump or implementation patch.
+
 ### 2026-10-07 18:57: responsive83 retained with separate strict telemetry failure
 
 83 reached actual imported app227, boot6F133A30-5482-44F2-8D3B-9B751816392F,
