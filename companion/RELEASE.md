@@ -29,7 +29,7 @@ a built application; an Xcode project also needs a separate build toolchain.
 | IPA installation | Fixture and separate demo copied/read back with zero mismatches and clean unmount; prepared session2 passed normal recovery verification | Automated staging and the pinned boot-import wrapper passed installed demo journeys; broader app coverage remains |
 | Separate app and resources | Runs75/77/79/81: distinct imported IPA launched, original process observed, reviewed bundled text and counter0→1, normal shutdown | Broader app coverage and repeatability |
 | Xcode projects | Deferred by user; first release accepts already-built IPAs | A future build bridge needs macOS/Xcode and an actual recorded project build/run |
-| Setup and operation | Source-pinned runner, private headless control and disk retention; tracked helper build and plaintext recovery extraction reproduced prior artifacts byte-for-byte and passed actual host preparation | A fresh initialized runtime still needs original guest initialization, migration/setup and verified cache/base lineage; distribution setup remains |
+| Setup and operation | Source-pinned runner, private headless control and disk retention; tracked helper build and plaintext recovery extraction reproduced prior artifacts byte-for-byte and passed actual host preparation and recovery staging | A fresh initialized runtime still needs original guest initialization, migration/setup and verified cache/base lineage; distribution setup remains |
 | Reliability and resource use | Two simultaneous idle guests measured; individual active journeys retained | Repeatable release journeys and sustained active workload measurements |
 
 The successful repeated counter runs do not establish that the earlier freeze
@@ -48,6 +48,10 @@ unproven; the attempt was retained as a failure and the wrapper refused normal
 completion. Xcode support is outside the first-release milestone and needs an actual
 project build and guest run before it can be advertised. Release
 packaging follows those execution gates and the runtime reliability work.
+
+The newly reproduced inputs also completed actual recovery staging, including
+byte-for-byte app readbacks and a normal stop. An installed run from that stage
+is being checked; staging alone does not establish app execution.
 
 The setup guide now includes the complete local runtime descriptor and generic
 headless operation steps. The helper and raw-image producers remove two one-off
