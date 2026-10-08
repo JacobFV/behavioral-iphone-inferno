@@ -10,6 +10,10 @@ qmp=m.pixels(root/'probe-before.png',828);assert qmp==refs['zero']
 report=main.parent/'.local-build/reports/app-boot-91'
 unlock=m.submission(report,root/'unlock-002/submission.json',{'kind':'swipe','duration_ms':1500,'x0':16384,'y0':32270,'x1':16384,'y1':9145})
 ack=m.ack(report,unlock['request_id'])
+command=m.record(report/'command.json');private=command[command.index('-vnc')+1][5:].rsplit('/',1)[0]
+template=source.parent/'evidence/fixed-fixture-alert-timing/command-template.json'
+assert m.sha(m.read(template))==m.COMMAND_TEMPLATE_SHA
+assert [x.replace(str(report),'@REPORT@').replace(private,'@PRIVATE@') for x in command]==m.record(template)
 # Calling guard on a stopped actual report must reject before any command/output.
 m.HERE=main
 args=argparse.Namespace(report=report,boot_uuid='unused-stopped-rejection',second_unlock=root/'unlock-002/submission.json',output=Path('/tmp/inferno-fixed-timing-stopped-negative-output'))
