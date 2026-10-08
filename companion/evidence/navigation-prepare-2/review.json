@@ -1,0 +1,69 @@
+{
+  "status": "host-prepared-not-staged",
+  "session_sha256": "a4b188240030f60954ef0682f3257e13028df4c8f5f6ee4069f9b3c6043ca46b",
+  "source_revision": "3f8b2d5623a2ac862eba2899771049c44b197316",
+  "source_clean": true,
+  "exit_code": 0,
+  "readbacks": [
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/navigation-prepare-2/recovery/readback-probe",
+      "bytes": 33392,
+      "sha256": "7def2d54fb9a0737666cbe175b38ad442eea5340a07fac202ffd1fda2df849c9"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/navigation-prepare-2/recovery/readback-launchd-cache",
+      "bytes": 596664,
+      "sha256": "06291b66b9ed5e7886a2893f5c6094c0ae7e3de2fe7ddeef951e67c278e1b843"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/navigation-prepare-2/recovery/readback-system-launcher",
+      "bytes": 69136,
+      "sha256": "f11eedcea3c553a134222fbd8663611644ff9adeb4cd86c72cf60d22de5163f6"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/navigation-prepare-2/recovery/readback-exec-wrapper",
+      "bytes": 67392,
+      "sha256": "bc844b8f59557576d40101ef9323744bb3ed2df7408d59734fd3637e00d8016f"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/navigation-prepare-2/recovery/readback-imported-app.plan",
+      "bytes": 1992,
+      "sha256": "8f274ff1f6dd99db927fbc33d1309604180c8e59bd4fa6cd3ad8a11fba7639da"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/navigation-prepare-2/recovery/readback-imported-0000",
+      "bytes": 149,
+      "sha256": "686f739574da2ac8c3b7cf6433d646d0fd187a4116a0763cab86e01d119fa6af"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/navigation-prepare-2/recovery/readback-imported-0001",
+      "bytes": 1025,
+      "sha256": "9bb162575c006b081c5052222c59f2fe7038a7bd2ca947ccb5743c1d62ea42f1"
+    },
+    {
+      "path": "/home/brandonin/.local/share/inferno/app-import/navigation-prepare-2/recovery/readback-imported-0002",
+      "bytes": 73344,
+      "sha256": "8f9bc84bd400658eb012ecb84f59503f46cbf92d27700b085e66561f4905297c"
+    }
+  ],
+  "expected_guest_markers": [
+    "INFERNO_EXEC_WRAPPER_READBACK bytes=67392 mismatches=0",
+    "INFERNO_SYSTEM_LAUNCHER_READBACK bytes=69136 mismatches=0",
+    "INFERNO_IMPORTED_APP_READBACK bundle=NavigationDemo.app bytes=74518 entries=3 mismatches=0",
+    "INFERNO_IMPORTED_APP_FINISH result=0 unmount=0 errno=0",
+    "INFERNO_CACHE_READBACK bytes=596664 mismatches=0",
+    "INFERNO_PREP_COMPLETE: requested preparation operations succeeded"
+  ],
+  "stage_argv": [
+    "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/run",
+    "stage-import",
+    "--session",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-prepare-2/session.json",
+    "--session-sha256",
+    "a4b188240030f60954ef0682f3257e13028df4c8f5f6ee4069f9b3c6043ca46b",
+    "--output",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-stage-2"
+  ],
+  "stage_executed": false,
+  "scope": "Host preparation only; no recovery staging or app UI result."
+}
