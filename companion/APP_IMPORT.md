@@ -119,3 +119,38 @@ recovery markers and a proposed recovery argv. `INCOMPLETE.json` or failure outp
 must not be consumed. Every prepared HFS readback is checked; base dependencies
 are reverified after host preparation. No existing app collision exception is
 provided by this generic command. Failed recovery clones are never eligible.
+
+
+## Verify actual recovery before an app boot
+
+The prepared session is not an installed image. Recovery runs with the control
+mailbox and no probe journey. After original guest readbacks and PREP_COMPLETE,
+record a content checkpoint before requesting normal shutdown:
+
+```sh
+companion/run verify-import-stage --session /external/session/session.json \
+  --session-sha256 SHA --serial /external/session/recovery-run/serial.log \
+  --output /external/session/content-check.json
+companion/run control --report /external/session/recovery-run finish-observation
+```
+
+The content check is explicitly ineligible for boot. Once the runner and emulator
+have exited normally, retain the seven new namespaces and their unchanged
+ancestors. Only newly created stage files may be frozen; never change an
+ancestor's permissions. Standard `preserve-stopped` records the final identities.
+Then run the stopped verifier:
+
+```sh
+companion/run verify-import-stage --session /external/session/session.json \
+  --session-sha256 SHA --report /external/session/recovery-run/report.json \
+  --retention /external/session/recovery-run/stopped-disk-hashes.json \
+  --content-check /external/session/content-check.json \
+  --output /external/session/stopped-stage-check.json
+```
+
+The verifier checks original records, the pre-finish checkpoint, actual normal
+finish and QMP shutdown, source/profile bindings, all seven disks and remaining
+overlay depth. A historical SIGTERM preparation does not pass this normal-finish
+contract. Session2 completed this route with original readbacks, normal exit0 and
+eligible stage verification; see `evidence/prepare-session-demo-2-actual/`.
+Eligibility permits the next installed boot; it does not prove app execution.

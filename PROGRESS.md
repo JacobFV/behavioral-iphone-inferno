@@ -2,6 +2,24 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 17:20: prepared session2 passed actual normal recovery
+
+Integrated94854b28d7: exactsession82b7446d...f9c1, rawapp71939/3/readback0,
+wrapper67392/launcher69136/cache596664/readback0, FINISH0/unmount0/COMPLETE.
+Rootreviewraw then content-checkcapturedprefix57603bytesSHA
+0a36c6b2958b522feae1fb620e56aa0bf9971a1e110d9c164481f539788ca0fd,
+then explicitfinish-observation. Actualnormalreportexit0/errornull/118.614955s.
+Onlynewsevenfilesfrozenonce/KEEP, ordinaryretention andunchangedancestorsPASS:
+manifestfeb79713f34532886cb3c50145e35f4a0ba064e233dfdfb284801603110b1079,
+verificationedc9c2013f0ca73263a8e220c5d52d936a61a48fa1e3317dad393099028d47c7.
+Stoppedverifiereligibletrue/depth3; report8bd25ad087a47989a44fa1f9a780f4f8aeb4de41ea0efc7e12c3bfa84e964b14.
+No SIGTERM exception/promotion used. Base remains external session2/recovery-run.
+Nextgeneric77boot after nativeworker releasesownedfixture VMslot; rootallUI.
+Native implements independentlyreviewed345ba16bac threefixedregistersites
+1c74null/1c7cactive/1d1cqueued diagnostic; baseline2PCunchanged. Ownedfixture
+first, noRAMread/semanticpatch. Diskworker builds stage-import coordinator using
+now-executednormalgates; no extraVMwithoutslot. UserstillIPAsfirst/Maclater.
+
 ### 2026-10-07 17:12: reproduced freeze76 and captured missing numeric wait state
 
 76 boot3442161D-82A9-4B3C-833A-B681C4C74777 PID257, singlecounterrequest
