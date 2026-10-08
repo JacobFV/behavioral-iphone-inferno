@@ -6,10 +6,20 @@ for dyld bootstrap; no SDK headers or Apple binaries are copied. It is an execut
 not a UIKit app, installed iOS journey, or performance benchmark. LLVM generates
 an ad-hoc signature for our code; it does not forge an Apple signature.
 
-Build outside Git with the host clang and LLVM Mach-O linker:
+Build outside Git with pinned host tools. `build-runtime-helpers.py` produces the
+probe, readiness, HID and empty-secret helpers from existing owned sources. It
+records committed source, actual command logs and exact HID/unlock entitlement
+readbacks. Build the preparation helper separately with `build-prepare-helper.py`;
+the historical `build.sh` preparation link omits its newer imported-app object.
+These host builds do not establish guest installation or runtime readiness.
+
 
 ```sh
-companion/native-probe/build.sh /absolute/ld64.lld /absolute/probe-build
+python3 companion/native-probe/build-runtime-helpers.py \
+  --clang /absolute/clang --clang-sha256 CLANG_SHA256 \
+  --linker /absolute/ld64.lld --linker-sha256 LINKER_SHA256 \
+  --ldid /absolute/ldid --ldid-sha256 LDID_SHA256 \
+  --output /absolute/probe-build
 python3 companion/native-probe/prepare.py \
   --profile /absolute/verified-profile/profile.json \
   --raw-ramdisk /absolute/verified-profile/ramdisk-payload.raw \
