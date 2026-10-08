@@ -81,6 +81,23 @@ still applies. Runs75 and77 completed this uninstrumented guest journey and norm
 visual evidence is in `evidence/ipa-demo-75-visual/` and `evidence/ipa-demo-77-visual/`. This single app does not
 establish general compatibility or resolve the intermittent display freeze.
 
+## Host and runtime prerequisites
+
+The tested host is Ubuntu24.04 ARM64. Use Python3.11+ (the validators use
+`hashlib.file_digest`) and Pillow for headless observation. Follow the local build
+prerequisites in [README.md](README.md#build-and-run-the-control-plane-check);
+retain the complete emulator build root and its manifest, not just the binary.
+Preparation also needs pinned Clang/LLVM Mach-O linker, HFS+ tool, owned helpers
+and [overlay tools](BOOT.md). The demonstrated path uses local tools without an
+Apple SDK. It is not a bootstrap for arbitrary Linux distributions.
+
+An **already initialized, retained compatible runtime lineage** is required.
+An IPSW alone is insufficient: the current workflow consumes an eligible stopped
+base, original cache-install evidence and matched owned helpers. Fresh runtime
+provisioning/distribution is not provided by these three commands. Keep firmware,
+disks, tools and generated products outside Git. No Mac is required to import an
+already-built compatible IPA; building Xcode projects remains deferred.
+
 ## Retain a durable host source tree before preparation
 
 A session pins source hashes **and their original absolute source location**.
@@ -185,6 +202,70 @@ must not be consumed. Every prepared HFS readback is checked; base dependencies
 are reverified after host preparation. No existing app collision exception is
 provided by this generic command. Failed recovery clones are never eligible.
 
+
+### Assemble the local runtime descriptor
+
+This complete structural template uses placeholders, not valid pins. Replace
+all paths and SHA256 values with your retained artifacts; JSON accepts no
+comments. Hash the resulting descriptor with `sha256sum runtime.json` for
+`--runtime-sha256`. Do not copy another machine's paths, fabricate install logs,
+or replace a missing provenance record with an assertion of success.
+
+```json
+{
+  "schema": "inferno.local-ipa-runtime.v1",
+  "inputs": {
+    "profile": {"path": "/external/runtime/profile.json", "sha256": "PROFILE_SHA256"},
+    "raw_ramdisk": {"path": "/external/runtime/ramdisk-payload.raw", "sha256": "RAW_RAMDISK_SHA256"},
+    "probe": {"path": "/external/helpers/inferno-probe", "sha256": "PROBE_SHA256"},
+    "disk_helper": {"path": "/external/helpers/inferno-prepare-root", "sha256": "HELPER_SHA256"},
+    "helper_build": {"path": "/external/helpers/build.json", "sha256": "HELPER_BUILD_SHA256"},
+    "hfsplus": {"path": "/external/tools/hfsplus", "sha256": "HFSPLUS_SHA256"},
+    "clang": {"path": "/absolute/resolved/clang", "sha256": "CLANG_SHA256"},
+    "linker": {"path": "/absolute/resolved/lld", "sha256": "LLD_SHA256"},
+    "cache": {"path": "/external/runtime/launchd-cache.plist", "sha256": "CACHE_SHA256"},
+    "base_report": {"path": "/external/stopped-base/report.json", "sha256": "BASE_REPORT_SHA256"},
+    "emulator": {"path": "/external/build/qemu-system-aarch64", "sha256": "EMULATOR_SHA256"},
+    "emulator_build": {"path": "/external/build/build-manifest.json", "sha256": "EMULATOR_BUILD_SHA256"}
+  },
+  "overlay_tools_root": "/external/overlay-tools",
+  "tool_invocations": {
+    "clang": "/absolute/invocation/clang",
+    "linker": "/absolute/invocation/ld64.lld"
+  },
+  "cache_binding": {
+    "basis": "reviewed-retained-lineage-not-fresh-guest-export",
+    "base_report_sha256": "BASE_REPORT_SHA256",
+    "cache_sha256": "CACHE_SHA256",
+    "install_profile": {"path": "/external/cache-install/profile.json", "sha256": "INSTALL_PROFILE_SHA256"},
+    "install_report": {"path": "/external/cache-install/run/report.json", "sha256": "INSTALL_REPORT_SHA256"},
+    "install_serial": {"path": "/external/cache-install/run/serial.log", "sha256": "INSTALL_SERIAL_SHA256"},
+    "cache_readback": {"path": "/external/cache-install/readback-launchd-cache", "sha256": "CACHE_SHA256"},
+    "raw_ramdisk_preparation": {"path": "/external/recovery-preparation/preparation.json", "sha256": "PREPARATION_SHA256"},
+    "lineage_evidence": [
+      {"path": "/external/lineage/review.json", "sha256": "LINEAGE_SHA256"}
+    ]
+  }
+}
+```
+
+| Field(s) | Required producer or retained evidence |
+| --- | --- |
+| `profile`, `raw_ramdisk` | Retained original-component profile accepted by `boot.load_profile` and its unwrapped recovery payload. The preparation record below must bind both. This is not the new IPA recovery profile. |
+| `probe`, `disk_helper`, `helper_build` | Compatible owned binaries and their actual build record. The validator requires `outputs.inferno-prepare-root.sha256` and `sources` pins matching the current four preparation source files. Durable preparation used retained helper60; the older `native-probe/build.sh` record format is not interchangeable. Do not hand-convert a record to pretend a build occurred. |
+| `hfsplus`, `clang`, `linker`, `tool_invocations` | Existing local binaries with hashes; input pins name resolved regular files. Invocation paths must resolve to those files; retain `ld64.lld` as the Mach-O driver name even if its target is `lld`. |
+| `emulator`, `emulator_build` | `companion/build-linux.sh` output and actual build manifest binding its binary. Keep its dependency/build tree. |
+| `overlay_tools_root` | `python3 companion/disk_overlay.py bootstrap --tools-root /external/NEW-tools` produces pinned local tools/provenance for the tested platform. Existing valid tools may be reused. |
+| `cache` | Retained original launchd cache with exactly one owned `org.inferno.app-probe` job. Preparation replaces that job only, preserving all other entries. |
+| `base_report` | Eligible stopped overlay report with retained seven namespaces, immutable backing chain, hashes and KEEP records. Both recovery and installed child depth must fit; no failed attempt may substitute. See [BOOT.md](BOOT.md). |
+| `install_profile`, `install_report`, `install_serial`, `cache_readback` | Actual original cache-staging artifacts: profile cache hash, report/profile binding and exit0, sibling serial log with unique zero-mismatch cache readback and completion, plus byte-identical readback. Produced by the earlier recovery preparation/run, not by this template. |
+| `raw_ramdisk_preparation` | Actual `native-probe/prepare.py` preparation record whose `source_raw_sha256` and `source_profile` bind the selected raw payload/profile. |
+| `lineage_evidence` | One to32 pinned retained records for reviewer-assessed ancestry from that installation to the selected base. Hash checks retain the selected history; they do not independently prove current guest cache contents. |
+
+Durable preparation used this exact schema, checked all72 source pins and eight
+HFS readbacks; see `evidence/durable-prepare-demo-1-actual/`. Its subsequent
+recovery passed the separate raw/stopped checks. These are local-artifact
+examples, not a distributable runtime or an automatic fresh-IPSW installation.
 
 ## Verify actual recovery before an app boot
 
@@ -291,3 +372,70 @@ completion. Separate root-reviewed frames showed the imported bundled text and
 counter0→1. Evidence is retained in `evidence/boot-import-81-visual/` and the
 wrapper execution record. This uses the pinned baseline host tree and does not
 establish compatibility with other runner revisions or arbitrary IPAs.
+
+### Observe and operate a generic imported app
+
+`boot-import` remains in the first terminal until the attempt ends. In a second
+terminal, use the **same retained host tree**. Once `boot/command.json` exists,
+read its private VNC endpoint; do not open a second QMP connection or a window on
+the host display:
+
+```sh
+set -euo pipefail
+attempt=/external/NEW-INSTALLED/boot
+vnc_socket=$(python3 - "$attempt/command.json" <<'PY'
+import json, sys
+argv = json.load(open(sys.argv[1]))
+assert isinstance(argv, list) and argv.count('-vnc') == 1
+endpoint = argv[argv.index('-vnc') + 1]
+assert endpoint.startswith('unix:')
+print(endpoint[len('unix:'):])
+PY
+)
+"$inferno_host/source/companion/run" observe --socket "$vnc_socket" \
+  --output "$attempt/view-001" --observe-seconds 10
+```
+
+Review the captured PNGs before choosing any action. A first frame can be stale;
+continuous observation can stimulate display refresh and is not presentation
+latency evidence. See [headless display details](BOOT.md#headless-interaction-during-a-long-boot).
+Every observation/action directory must be new. Wait for the current guest's
+`INFERNO_HID_READY` serial banner before explicit touch input. Touch uses the
+owned serial HID route, **not** `observe --tap` VNC pointer events. For a target
+you have actually reviewed, coordinates are normalized integers0..32767;
+choose `reviewed_x`/`reviewed_y` for the current frame, never reuse fixture
+coordinates blindly:
+
+```sh
+"$inferno_host/source/companion/run" owned-control \
+  --report "$attempt" --output "$attempt/tap-001" \
+  tap "$reviewed_x" "$reviewed_y" --duration-ms 150
+"$inferno_host/source/companion/run" observe --socket "$vnc_socket" \
+  --output "$attempt/view-002" --observe-seconds 10
+```
+
+Lock screens or alerts may require separately reviewed actions first. For an
+explicit swipe, `owned-control ... swipe X0 Y0 X1 Y1 --duration-ms 1500` uses the
+same coordinate range. The generic imported launcher does not support the
+fixture's `open` command or strict lifecycle/counter gates. Do not send repeated
+input merely because the first acknowledgment arrived without a visible change.
+
+Keep the before/after frames, raw serial, action submission and original process
+listing. An ACK reports transport acceptance, not app callback or UI success.
+After the intended observation is complete, an explicit normal end is:
+
+```sh
+"$inferno_host/source/companion/run" control --report "$attempt" finish-observation
+```
+
+Wait for the first terminal to exit and inspect its result. `completed-run.json`
+only asserts normal shutdown; assess visible resource loading and interaction
+separately. Failed or uncertain visual results must stay labeled as such even
+if shutdown is normal. Do not use `finish-observation` to convert a failed
+interaction into a successful journey. Run85 retained two observation windows
+with Count0 after one ACK0 (`delivery=unproven`); no app callback was established.
+Its operator interrupted the verified runner for forensic preservation, and the
+wrapper retained `failure.json`/`INCOMPLETE.json`, not a completed result. No
+failed output is a new eligible base. [The control contract](QMP_CONTROL.md)
+and [owned journey guide](OWNED_JOURNEY.md) describe the underlying tools; their
+fixture-only success checks do not apply to arbitrary imported apps.
