@@ -50,8 +50,9 @@ project build and guest run before it can be advertised. Release
 packaging follows those execution gates and the runtime reliability work.
 
 The newly reproduced inputs also completed actual recovery staging, including
-byte-for-byte app readbacks and a normal stop. An installed run from that stage
-is being checked; staging alone does not establish app execution.
+byte-for-byte app readbacks and a normal stop. The installed demo from that stage loaded its resource text but remained at
+counter0 after acknowledged input and repeated observation. That attempt was
+retained as a failure; staging alone does not establish app execution.
 
 The setup guide now includes the complete local runtime descriptor and generic
 headless operation steps. The helper and raw-image producers remove two one-off

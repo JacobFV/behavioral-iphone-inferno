@@ -2,6 +2,33 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 20:52:reproduced demo failed; generic90 diagnostics launching
+
+Reproduced helper/raw recovery → host preparation → original recovery staging
+passed5d07fc0203/independent11a45604ce. Installed demo then failed visible input:
+originalPID256uid501/boot7ED91F18-FA5B-48EF-A705-625589F6D887, resource+count0
+reviewed, ONE45c73966058d46acb6232e88566a0f24 acknowledged but69frames across
+25s+25s+45s retained identicala693c92d...a3109, rootQMP0043 still0.
+Genericcallbackreceiptunproven. Root fsyncedoperatorstop and SIGINT2 at
+1791431390.6482425. Wrapperfailedclosed/no completed; forensic7/ancestorsPASS,
+neverbase. Raw5b1f7b1519/3629d5a139, visual686d987db3; independent original
+samples currentverifiedslide0x127c4000: BBD20=7usleep+4SwapWait+9runloop,
+SB19runloop+1afterCACommitcleanup. No continuouswait/token/callback/causeproof.
+
+ONE directgeneric90 launched runner105635 from root90419a9834, sameSUCCESSFUL
+reproduced-inputs-stage-1 report (SHAverifiedstage0767c38e...1a57c), same0889/app,
+samegenericwrapperarguments plus pending-equality diagnostic configuredOFF.
+No fixturestrictgate/touchstartup, no wrapper/session mutation. Report/control
+.local-build/reports/app-boot-90,1200s. RootexclusiveUI/CPU/finish; one1sCPUonly
+afterpersistentlyfailedinteraction; genericcallbackstillunproven. Endpointpending.
+
+Initial-volume coordinator source integrated through90419a9834, independentPASS
+522896caf3: exact role-only/HFSreadbacks/raworiginalnewfs/copy/unmount gates,
+pre-finishprefix bound, inspectedmetadata stability through preservation, owned
+host subprocess groupcleanup. NEWimmutable8GiBcopy ready/hostchecks56b7c6b2a6.
+No actualrole-stage VM yet. Diskworker preparing exactcommand for AFTER90 slot;
+original sources unchanged. Output remains explicitly ipa_runtime_ready:false.
+
 ### 2026-10-07 20:40:reproduced-input installation verified; next installed demo authorized
 
 Run89 ordinary strict/initial/all7/ancestors passed b79db4ed3a. Timing audit
