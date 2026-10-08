@@ -1,0 +1,53 @@
+{
+  "verdict": "PASS bounded source review; no remaining identified blocker",
+  "reviewed_commits": [
+    "4c72f52396",
+    "4520bfccb9",
+    "bae7240fad",
+    "d08f6cf69d"
+  ],
+  "source_and_small_evidence_pins": {
+    "/tmp/inferno-fresh-runtime-stage/companion/fresh_runtime_stage.py": {
+      "sha256": "6d724997b03530e016af785fb249fee8de94ffd4cd3cc2a438741b7e003739f8",
+      "bytes": 24453
+    },
+    "/tmp/inferno-fresh-runtime-stage/companion/stage-fresh-runtime.py": {
+      "sha256": "f2494fedec0f32430b682f1675266c3509c2ba9870ef64085129459a4a5ea68a",
+      "bytes": 16135
+    },
+    "/tmp/inferno-fresh-runtime-stage/companion/prepare-fresh-runtime.py": {
+      "sha256": "760d84c53ad026358d760639c94c9bae9e5a34a8d1b2888733fa9e723f794cc0",
+      "bytes": 15546
+    },
+    "/tmp/inferno-fresh-runtime-stage/companion/evidence/fresh-runtime-stage-artifact-check/result.json": {
+      "sha256": "cb3d787cead7e0c0bdcafdac2787fbb03cfd7e5235d43631fd1ea3389ce76f87",
+      "bytes": 41449
+    },
+    "/tmp/inferno-fresh-runtime-stage/companion/evidence/fresh-runtime-stage-artifact-check/parser-recheck.json": {
+      "sha256": "d726977473f8fe75b043157dcbe166733c778c562664122bd3334ffc8d067a77",
+      "bytes": 12101
+    }
+  },
+  "actual_artifact": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/fresh-runtime-artifacts-2/fresh-runtime-artifacts.json",
+    "sha256": "95f72bc41d35e0b6d4131dba714dc17ba2ad4d3df9f3cb637e62b79e20155274"
+  },
+  "resolved_findings": [
+    "Compare the entire decoded merged plist, then use actual merger bytes for digest/size/prepare arguments. This addresses actual producer1 serialization failure without tolerating any configuration change.",
+    "Exact output inventory includes launchd.plist.json; its original/cache/jobs/disabled/output bindings are checked.",
+    "After final importer tree traversal, source/input/stopped hashes and ancestor metadata are checked again immediately before result publication."
+  ],
+  "checked_boundaries": [
+    "Six exact install categories and fixed generic ImportedDemo manifest; no collision exception, extra keybag/seed/SEP/multitouch operations or arbitrary target.",
+    "Readiness job matches prepare.py emitted plist; raw verification sizes derive helper/readiness-job bytes and each actual HFS readback.",
+    "Raw marker order follows unchanged prepare-root.c: HID/readiness/wrapper/launcher/unlock/imported app/cache, original unmounts, COMPLETE; malformed/duplicate/unknown/failure/panic records reject.",
+    "Fixed renderer-depth2 predecessor, same keybag and inspector bindings, ordinary seven-file lineage and expected source/profile/binary pins.",
+    "New private output, owned process-session cleanup, checkpoint before sole finish, normal QMP/exit validation, stopped metadata stability and new-only freeze/default preservation; resulting depth3 remains IPA false."
+  ],
+  "limits": [
+    "Actual artifact consumer replay uses an explicitly stubbed renderer/keybag identity context. It is not full typed renderer preflight, HFS preparation, guest execution, readback or normal-stop evidence.",
+    "Synthetic marker tests do not establish successful original utility execution.",
+    "Renderer dependency was independently reviewed by root; this audit checked consumer interfaces and did not repeat full disk/cache hashes.",
+    "No runtime readiness, migration, first unlock, app launch or pixel success follows from this source review."
+  ]
+}
