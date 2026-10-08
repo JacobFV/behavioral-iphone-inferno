@@ -1,0 +1,62 @@
+{
+  "status": "normal-installed-attempt-no-app-success-assertion",
+  "report": "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/report.json",
+  "report_sha256": "83f378dadf9d2ce8daf232e34a31948102f48be49bb77f779d5893aed6491042",
+  "inspected_report": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/report.json",
+    "identity": {
+      "st_dev": 66306,
+      "st_ino": 54937366,
+      "st_size": 46926,
+      "st_mode": 33204,
+      "st_mtime_ns": 1791422008346379282,
+      "st_ctime_ns": 1791422008346379282
+    },
+    "sha256": "83f378dadf9d2ce8daf232e34a31948102f48be49bb77f779d5893aed6491042"
+  },
+  "inspected_qmp": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/qmp-transcript.jsonl",
+    "identity": {
+      "st_dev": 66306,
+      "st_ino": 54937369,
+      "st_size": 21805,
+      "st_mode": 33204,
+      "st_mtime_ns": 1791421989403732995,
+      "st_ctime_ns": 1791421989403732995
+    },
+    "sha256": "89cff01a2a48b75c68a6d9be938fed94bf339a5a938d86a5200931b7d2b3acff"
+  },
+  "shutdown": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/boot-import-demo-1/boot/qmp-transcript.jsonl",
+    "sha256": "89cff01a2a48b75c68a6d9be938fed94bf339a5a938d86a5200931b7d2b3acff",
+    "evidence": [
+      {
+        "line": 105,
+        "entry": {
+          "direction": "send",
+          "time": 1791421989.4039285,
+          "raw": "{\"execute\": \"quit\", \"id\": 43}\n"
+        }
+      },
+      {
+        "line": 106,
+        "entry": {
+          "direction": "receive",
+          "time": 1791421989.404327,
+          "raw": "{\"timestamp\": {\"seconds\": 1791421989, \"microseconds\": 404061}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"
+        }
+      },
+      {
+        "line": 107,
+        "entry": {
+          "direction": "receive",
+          "time": 1791421989.4046888,
+          "raw": "{\"return\": {}, \"id\": 43}\r\n"
+        }
+      }
+    ],
+    "reported_emulator_pid_absent": 3823050
+  },
+  "app_execution_asserted": false,
+  "scope": "Normal runner completion only; app launch, pixels and preservation remain separate."
+}
