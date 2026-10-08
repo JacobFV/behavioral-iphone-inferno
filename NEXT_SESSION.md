@@ -9,6 +9,22 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-06 17:03 local
 
+### 2026-10-07 17:02: distinct imported IPA completed visible interaction
+
+Run75 original PS shows PID231/UID501 /Applications/ImportedDemo.app/ImportedDemo.
+Root reviewed original resource text and unobstructed Count:0, sent one counter
+request c9a590e4b36946c289a601a67c41ecd3 (16384,18102), observed original HID ACK0,
+and directly reviewed Count:1 in after-counter/observed-0013.png and final QMP
+frames/0060.ppm converted with byte-identical RGB. Continuous25s VNC retained.
+No probe telemetry/strict fixture gate, CPU window, SAMPLE, Home or OPEN used.
+finish-observation accepted; final report exit0/errorabsent/641.694414s, QMP quit
+response0. Bootworker retaining all7/unchangedancestors; independent source/raw
+journey audit underway. Visual evidence companion/evidence/ipa-demo-75-visual.
+This proves this separate IPA's import/staging/launch/resource/interaction path,
+not arbitrary IPA support or a fix for earlier display freezes. Next work reduces
+manual preparation glue while preserving pins and pursues unresolved reliability.
+No live VM. Mac/Xcode builds remain deferred at user's explicit preference.
+
 ### 2026-10-07 16:51: generic imported demo75 live
 
 Successful demo stage2 retained0e22f73606: root62062fe1faf8a053061cd07c5062935a7e941bba805a70d3f78bf7dfe7c00b1e,

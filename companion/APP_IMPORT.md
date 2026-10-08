@@ -68,8 +68,8 @@ not app execution evidence.
 
 The first imported-fixture guest test deliberately reuses the existing launcher
 and cached job because its path, identifier and executable bytes are unchanged.
-The manifest-configured helper is a separate build milestone until exercised
-with a different imported app and reviewed guest output.
+Run75 exercised the manifest-configured helper with the distinct ImportedDemo
+app: original process listing, reviewed bundled resource text and counter0→1.
 
 An uninstrumented app uses a normal disk boot with the control mailbox and HID
 serial input, without `--probe-journey`. Preserve original process listings and
@@ -77,4 +77,6 @@ reviewed VNC/periodic QMP frames as execution evidence. After observation,
 `companion/run control --report ATTEMPT finish-observation` requests normal
 runner cleanup and QMP shutdown. This command asserts no app or journey success
 and is rejected when a probe journey is active; its existing completion gate
-still applies. The actual uninstrumented guest journey remains to be validated.
+still applies. Run75 completed this uninstrumented guest journey and normal shutdown; retained
+visual evidence is in `evidence/ipa-demo-75-visual/`. This single app does not
+establish general compatibility or resolve the intermittent display freeze.
