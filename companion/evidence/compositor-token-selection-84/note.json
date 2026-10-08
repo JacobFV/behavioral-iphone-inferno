@@ -1,0 +1,53 @@
+{
+  "scope": "Read-only existing retained can_update_ disassembly only; no new broad dump/guest memory/source changes",
+  "original_cache_sha256": "59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1",
+  "QuartzCore_UUID": "A0D546D8-BA79-340E-BFC6-B5E8001A5250",
+  "source": {
+    "path": "/home/brandonin/.local/share/inferno/native-probe/display-wait-inspection/QuartzCore-can-update-full.txt",
+    "sha256": "91eae0562b27d1c1b983107193e146699cf8925d1efd547608e8cd914da2604f"
+  },
+  "facts": [
+    {
+      "address": "1883081d4..21c",
+      "finding": "Read count at self+2a4; scan record flags+318 with stride30. Flags affect loop bound and aggregate state; no semantic names assigned."
+    },
+    {
+      "address": "188308248..27c",
+      "finding": "Begin from self+29c, wrap at count, skip index equal self+2a0. Call these start/excluded index offsets, not proven current-scanout names."
+    },
+    {
+      "address": "188308280..2bc",
+      "finding": "Selected index*30+self record must have nonzero stateword+2f0 and token+308 to enter wait."
+    },
+    {
+      "address": "1883082f4,344..364",
+      "finding": "Address selected+308 retained inX22, load tokenW25; pass to original SwapWait with framebufferobjectself+278 and separately selectedflags."
+    },
+    {
+      "address": "188308364..390",
+      "finding": "Nonzero return retries until time limit; zero-return path clears selected token via storezero[X22] at390."
+    },
+    {
+      "address": "188308394..43c",
+      "finding": "Then clear stateword+2f0, associated flags/resources+310/+2f8/+300 and count availability. This is beyond just rendering pixels."
+    },
+    {
+      "address": "188308518..548",
+      "finding": "Later scan finds zero token slot and updates self+29c; this supports reuse-selection role without naming all fields."
+    },
+    {
+      "address": "18830854c..59c",
+      "finding": "Separate path selects self+2a0 record and calls SwapWait with80000001, using returned pending comparison to update recordflag. Different waitmode must not be conflated with sampled retry path."
+    }
+  ],
+  "not_found": "No positive assignment/generation of record+308 in existing retained function ranges; exact writer and returned-token association require separately bounded producer inspection. No such new inspection performed.",
+  "conditional_hypothesis": "If actual84 establishes independentmode0/equality/matchfalse/pending populations, inspect whether compositor selected a record whose retained token matches kernelbf4 while a different slot is excluded. Existing code can hold token/resources until waitsuccess, so failure to advance can prevent new submission. This is a possible token-lifetime/index mismatch boundary, not proof of hardware fault or circular dependency.",
+  "bf4_limit": "Original kernel conditionally records requesttoken inbf4 during completion while mode0 equality can remain pending. Retained/current scanout is plausible but unproven; use neutral pipeline_bf4_token.",
+  "next_minimal_source_step": "Only after runtime predicate evidence, identify nonzero+308 producer in one exact method using existing symbol metadata; avoid new broad framework dump or arbitrary live memory snapshot.",
+  "limits": [
+    "No84 runtime predicate data used yet.",
+    "No same-call pairing between mode/comparison/status populations.",
+    "No writer discovered must be reported as a coverage limit, not an absent writer.",
+    "No guard/status/notification/ID semantic patch justified."
+  ]
+}
