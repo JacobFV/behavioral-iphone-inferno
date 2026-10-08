@@ -43,7 +43,8 @@ def main():
     paths += [companion / 'app-import.py']
     paths += [companion / 'app-probe' / name for name in (
         'build-import-launcher.py', 'UIKitNarrow.h', 'LaunchServicesNarrow.h',
-        'DiagnosticLauncher.m', 'ExecLauncher.c', 'AppTarget.h',
+        'DiagnosticLauncher.m', 'Launcher.m', 'EventRecord.h', 'OwnedClock.h',
+        'ExecLauncher.c', 'AppTarget.h',
         'org.inferno.app-probe-system-app.plist')]
     paths += sorted((companion / 'app-probe/stubs').glob('*.tbd'))
     pins = {str(path): sha(path) for path in paths}
