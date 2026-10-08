@@ -24,6 +24,7 @@ def parse(data,pcs=PRODUCTION,scope='production-fixed-pending-branch'):
             fields.update(requested_token=w('X00'),completed_token=w('X01'),active_pointer=block['registers']['X11'])
             if regs['X11']!=0:violations.append({'start':block['start'],'reason':'null-site X11 is not zero'})
             fields['null_branch_register_valid']=regs['X11']==0
+            fields['requested_equals_completed']=w('X00')==w('X01')
         elif role=='active-join':
             fields.update(requested_token=w('X00'),completed_token=w('X01'),active_pointer_second_read=block['registers']['X11'])
             if regs['X11']:
@@ -32,6 +33,7 @@ def parse(data,pcs=PRODUCTION,scope='production-fixed-pending-branch'):
             fields['requested_equals_completed']=w('X00')==w('X01')
         else:
             fields.update(queue_pointer=block['registers']['X08'],queued_token=w('X09'),requested_token=w('X11'),tokens_equal=w('X09')==w('X11'))
+            if regs['X08']==0:violations.append({'start':block['start'],'reason':'queued-site X08 is zero'})
             if not fields['tokens_equal']:violations.append({'start':block['start'],'reason':'queued-site W09 differs from W11'})
         block['branch_observation']=fields
         distribution[(role,json.dumps(fields,sort_keys=True))]+=1
