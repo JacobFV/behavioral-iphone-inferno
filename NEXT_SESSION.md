@@ -9,6 +9,21 @@ independent work in isolated worktrees; commit progressively.
 
 ## Current execution, 2026-10-07
 
+### 2026-10-08: corrected NavigationDemo installed boot2 active
+
+Recovery74fe213fb1 and independent3579f4e397 passed; stageSHA
+79210e24ae3f3a86f3c8e2cb157669eada15f47808a53c769995a0e23693d3ab.
+RootGO a6ec7d64ca launched one boot-import from immutable persistent3f8b2d:
+PID1346054/startticks86373236, launched1791444548.4855108, output
+~/.local/share/inferno/app-import/navigation-boot-2; launchsibling retains argv.
+Root alone owns all UI/finish. No otherVM/no secondQMP. Duration1200s; use same
+persistent companion/run for control/observe. Verify full Guide, button-start
+scroll, normal taps/navigation, switch/save/reopen. NoCPUprofile or fixtureevents.
+Currentroot importer fix749af2e026 is NOT in immutableconsumer or frozen006;
+this is intentional, current session pins unchanged. Both before077 rejection
+and after077 acceptance independently replayed by root against raw outputs.
+Fresh setup still storageblocked; continue developerIPA-first scope.
+
 ### 2026-10-08: corrected NavigationDemo006 recovery staging authorized
 
 Normal installed1 retention1cfdb83201 complete; rootvisuala3376f9035. No finish
