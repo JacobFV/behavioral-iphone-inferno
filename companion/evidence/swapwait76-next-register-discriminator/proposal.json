@@ -1,0 +1,46 @@
+{
+  "status": "Static proposal only; no code/filter/VM/memory action.",
+  "motivation": "76observed all228entry snapshots token293 and all228return snapshots pending; healthy68 has multiple tokens and zero returns. Next distinguish which original pending condition applies, without guessed heap reads.",
+  "one_bounded_evidence_step": "Separately review a fixed 1second CPU/nochain diagnostic with the two candidate original branch-entry PCs below, same zero-slide/kernel/build guards, allADPoff and unchanged restoration/size cap. Keep existing two-PC baseline evidence; do not silently broaden current production filter.",
+  "candidate_PCs": [
+    {
+      "pc": "0xfffffff0096f1c7c",
+      "kind": "Branch join target from1c70; fallthrough from null-active1c78",
+      "coherent_register_meaning": {
+        "X00_low32": "Requested token loaded1c34 thenmov1c38; not overwritten beforejoin.",
+        "X01_low32": "Pipeline completed token bf4 loaded1c40 thenmov1c44; not overwritten beforejoin.",
+        "X11": "Active request pointer loaded1c4c, not overwritten beforejoin.",
+        "X10_low32_if_X11_nonzero": "Active token loaded from active+22c at1c68. Null-active branch leavesX10 zero pointer loaded1c48; do not call it a token."
+      },
+      "source": "1c34..1c78; commonjoin occurs beforeldr w8 at1c7c. No data from stack or RAM requested by observer.",
+      "discrimination": "Compare requested/completed and requested/active-token within one complete dump. Repeatedactive match supports active pending; completed equality is separateoriginalcondition. No actual return from same invocation inferred."
+    },
+    {
+      "pc": "0xfffffff0096f1d1c",
+      "kind": "Conditional fallthrough aftercmp w9,w11 at1d14 and b.ne1d18",
+      "coherent_register_meaning": {
+        "X08": "Current queued request pointer loaded1d08, beforeoverwrite at1d1c.",
+        "W09": "Queued token loaded1d0c.",
+        "W11": "Requested token loaded1d10; branch reachesPC onlyif equal."
+      },
+      "discrimination": "Positive snapshot demonstrates queried token matches a queued request at this original comparison, independent of entry/return pairing. Absence is notproof noqueuedmatch (TBcoverage/scheduling/filterlimits)."
+    }
+  ],
+  "prerequisites": [
+    "Independent original instruction/register-liveness and patched-guest overlap review for bothsites; currentproposal source is originalkernel524b9144... only.",
+    "Confirm current TCG materializes both exact branchstartPCs before interpreting; unknown/missingPC coverage remainsunknown.",
+    "Separate fixed-filter optin and bounded control review required before newrun. Existing live/stopped76cannotgainpast snapshots."
+  ],
+  "limits": [
+    "These observations are individual query-state comparisons, not atomic pipeline-wide snapshots or completion timelines.",
+    "No CPU/process/thread identity, no invocationcounts, no crossblock pairings, no pointerdereference byQMP.",
+    "A completed-token equality or active/queue match is a pending condition in original mode0 logic, not independently proof which hardware completion notification was lost.",
+    "Only exactobservedPCs qualify; never interpret nearby nearestsymbol dumps.",
+    "No speculative emulator/driver semantic patch justified."
+  ],
+  "source": {
+    "external_disassembly": "/home/brandonin/.local/share/inferno/native-probe/iomfb-swapwait-inspection/wait-gated.txt",
+    "sha256": "06f87075abec9f3fe46c1b83d32d3fcd5ecc6fb4e5fef9e2c1369c9b135e0932",
+    "prior_mapping": "companion/evidence/original-iomfb-swapwait-path/inspection.json"
+  }
+}
