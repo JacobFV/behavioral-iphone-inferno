@@ -1,0 +1,172 @@
+Sampling SpringBoard [57] for 2 seconds with 100 milliseconds of run time between samples
+Sampling completed, generating report...
+Failed to find matching kernels in /System/Library/Kernels, /, /, 
+Unable to create any kext symbol owners.
+Date/Time:        2026-10-07 17:11:33.485 -0700
+End time:         2026-10-07 17:11:35.536 -0700
+OS Version:       iPhone OS 14.0 (Build 18A5351d)
+Architecture:     arm64e
+Report Version:   32
+
+Data Source:      Stackshots
+Shared Cache:     11AD39C9-E3C9-3067-A337-7287744FDCB5 slid base address 0x1aab58000, slide 0x2ab58000
+
+Command:          SpringBoard
+Path:             /System/Library/CoreServices/SpringBoard.app/SpringBoard
+Identifier:       com.apple.springboard
+Version:          1.0 (50)
+Beta Identifier:  76AE4E22-5DBD-4578-B354-4F660899C072
+Parent:           UNKNOWN [1]
+PID:              57
+Time Since Fork:  443s
+
+Duration:         2.05s
+Steps:            21 (100ms sampling interval)
+
+Hardware model:   iPhone12,1
+Active cpus:      2
+Boot args:        debug=0x14e serial=3 wdt=-1 tlto_us=-1 mtxspin=-1 agm-genuine=1 agm-authentic=1 agm-trusted=1 -vm_compressor_wk_sw launchd_unsecure_cache=1
+
+Time Awake Since Boot: 452s
+Time Since Wake:  n/a (machine hasn't slept)
+
+
+----------------------------------------
+Heavy format: stacks are sorted by count
+----------------------------------------
+
+
+
+Process:          SpringBoard [57]
+UUID:             886E2CCD-1559-3C0C-A5F1-6971FAB35E37
+Beta Identifier:  76AE4E22-5DBD-4578-B354-4F660899C072
+App Version:      1.0
+Build Version:    50
+Path:             /System/Library/CoreServices/SpringBoard.app/SpringBoard
+Architecture:     arm64
+Parent:           UNKNOWN [1]
+UID:              501
+Sudden Term:      Tracked
+Footprint:        30.42 MB
+Time Since Fork:  443s
+Num samples:      21 (1-21)
+CPU Time:         0.137s
+Note:             5 idle work queue threads omitted
+
+  Thread 0x2b7    DispatchQueue "com.apple.main-thread"(1)    21 samples (1-21)    priority 47 (base 47)    cpu time 0.120s
+  21  ??? (libdyld.dylib + 3680) [0x1aadd7e60]  => /usr/lib/system/libdyld.dylib	_start +0x4
+    21  ??? (SpringBoard + 914376) [0x1f037e3c8]  => /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard	_SBSystemAppMain +0x18d8
+      21  ??? (UIKitCore + 12055516) [0x1af8583dc]  => /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore	_UIApplicationMain +0xa8
+        21  ??? (UIKitCore + 12033280) [0x1af852d00]  => /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore	-[UIApplication _run] +0x430
+          21  ??? (GraphicsServices + 14368) [0x1b70c9820]  => /System/Library/PrivateFrameworks/GraphicsServices.framework/GraphicsServices	_GSEventRunModal +0xa4
+            21  ??? (CoreFoundation + 623148) [0x1aaf5022c]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRunSpecific +0x258
+              21  ??? (CoreFoundation + 625688) [0x1aaf50c18]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x4c0
+                21  ??? (CoreFoundation + 649832) [0x1aaf56a68]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopServiceMachPort +0x17c
+                  21  ??? (libsystem_kernel.dylib + 12836) [0x1aada9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+                    21  ??? (libsystem_kernel.dylib + 15984) [0x1aada9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+                     *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x4f2    Thread name "com.apple.uikit.eventfetch-thread"    21 samples (1-21)    priority 47 (base 47)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x1aace1788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x1aacd8ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (Foundation + 1516144) [0x1ab458270]  => /System/Library/Frameworks/Foundation.framework/Foundation	___NSThread__start__ +0x360
+        21  ??? (UIKitCore + 12754904) [0x1af902fd8]  => /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore	-[UIEventFetcher threadMain] +0x204
+          21  ??? (Foundation + 33832) [0x1ab2ee428]  => /System/Library/Frameworks/Foundation.framework/Foundation	-[NSRunLoop(NSRunLoop) runUntilDate:] +0x5c
+            21  ??? (Foundation + 34128) [0x1ab2ee550]  => /System/Library/Frameworks/Foundation.framework/Foundation	-[NSRunLoop(NSRunLoop) runMode:beforeDate:] +0xe8
+              21  ??? (CoreFoundation + 623148) [0x1aaf5022c]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRunSpecific +0x258
+                21  ??? (CoreFoundation + 625688) [0x1aaf50c18]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x4c0
+                  21  ??? (CoreFoundation + 649832) [0x1aaf56a68]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopServiceMachPort +0x17c
+                    21  ??? (libsystem_kernel.dylib + 12836) [0x1aada9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+                      21  ??? (libsystem_kernel.dylib + 15984) [0x1aada9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+                       *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x5c2    Thread name "com.apple.CoreMotion.MotionThread"    21 samples (1-21)    priority 47 (base 47)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x1aace1788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x1aacd8ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (CoreMotion + 1316884) [0x1b9edd814]  => /System/Library/Frameworks/CoreMotion.framework/CoreMotion	_CLClientCreateIso6709Notation +0x2b650
+        21  ??? (CoreFoundation + 627456) [0x1aaf51300]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRun +0x40
+          21  ??? (CoreFoundation + 623148) [0x1aaf5022c]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRunSpecific +0x258
+            21  ??? (CoreFoundation + 625688) [0x1aaf50c18]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x4c0
+              21  ??? (CoreFoundation + 649832) [0x1aaf56a68]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopServiceMachPort +0x17c
+                21  ??? (libsystem_kernel.dylib + 12836) [0x1aada9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+                  21  ??? (libsystem_kernel.dylib + 15984) [0x1aada9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+                   *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x5ce    Thread name "SBWiFiManager callback thread"    21 samples (1-21)    priority 31 (base 31)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x1aace1788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x1aacd8ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (Foundation + 1516144) [0x1ab458270]  => /System/Library/Frameworks/Foundation.framework/Foundation	___NSThread__start__ +0x360
+        21  ??? (SpringBoard + 1952268) [0x1f047ba0c]  => /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard	-[SBWiFiManager _runManagerCallbackThread] +0x10c
+          21  ??? (Foundation + 241340) [0x1ab320ebc]  => /System/Library/Frameworks/Foundation.framework/Foundation	-[NSRunLoop(NSRunLoop) run] +0x5c
+            21  ??? (Foundation + 34128) [0x1ab2ee550]  => /System/Library/Frameworks/Foundation.framework/Foundation	-[NSRunLoop(NSRunLoop) runMode:beforeDate:] +0xe8
+              21  ??? (CoreFoundation + 623148) [0x1aaf5022c]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRunSpecific +0x258
+                21  ??? (CoreFoundation + 625688) [0x1aaf50c18]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x4c0
+                  21  ??? (CoreFoundation + 649832) [0x1aaf56a68]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopServiceMachPort +0x17c
+                    21  ??? (libsystem_kernel.dylib + 12836) [0x1aada9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+                      21  ??? (libsystem_kernel.dylib + 15984) [0x1aada9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+                       *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x6b1    Thread name "CommonUtilities-WiFi-Thread"    21 samples (1-21)    priority 31 (base 31)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x1aace1788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x1aacd8ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (Foundation + 1516144) [0x1ab458270]  => /System/Library/Frameworks/Foundation.framework/Foundation	___NSThread__start__ +0x360
+        21  ??? (CommonUtilities + 56456) [0x1adf8ec88]  => /System/Library/PrivateFrameworks/CommonUtilities.framework/CommonUtilities	_CUTXPCAlert +0x23b4
+          21  ??? (CoreFoundation + 627456) [0x1aaf51300]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRun +0x40
+            21  ??? (CoreFoundation + 623148) [0x1aaf5022c]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRunSpecific +0x258
+              21  ??? (CoreFoundation + 625688) [0x1aaf50c18]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x4c0
+                21  ??? (CoreFoundation + 649832) [0x1aaf56a68]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopServiceMachPort +0x17c
+                  21  ??? (libsystem_kernel.dylib + 12836) [0x1aada9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+                    21  ??? (libsystem_kernel.dylib + 15984) [0x1aada9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+                     *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x6ce    Thread name "WFWiFiStateMonitor callback thread"    21 samples (1-21)    priority 31 (base 31)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x1aace1788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x1aacd8ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (Foundation + 1516144) [0x1ab458270]  => /System/Library/Frameworks/Foundation.framework/Foundation	___NSThread__start__ +0x360
+        21  ??? (WiFiKit + 353580) [0x1d3d1452c]  => /System/Library/PrivateFrameworks/WiFiKit.framework/WiFiKit	-[WFWiFiStateMonitor _runManagerCallbackThread] +0x118
+          21  ??? (Foundation + 241340) [0x1ab320ebc]  => /System/Library/Frameworks/Foundation.framework/Foundation	-[NSRunLoop(NSRunLoop) run] +0x5c
+            21  ??? (Foundation + 34128) [0x1ab2ee550]  => /System/Library/Frameworks/Foundation.framework/Foundation	-[NSRunLoop(NSRunLoop) runMode:beforeDate:] +0xe8
+              21  ??? (CoreFoundation + 623148) [0x1aaf5022c]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRunSpecific +0x258
+                21  ??? (CoreFoundation + 625688) [0x1aaf50c18]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x4c0
+                  21  ??? (CoreFoundation + 649832) [0x1aaf56a68]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopServiceMachPort +0x17c
+                    21  ??? (libsystem_kernel.dylib + 12836) [0x1aada9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+                      21  ??? (libsystem_kernel.dylib + 15984) [0x1aada9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+                       *21  ??? [0xfffffff007a075e4]
+
+  Thread 0x8b4    Thread name "com.apple.UIKit.inProcessAnimationManager"    21 samples (1-21)    priority 53 (base 53)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x1aace1788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x1aacd8ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (Foundation + 1516144) [0x1ab458270]  => /System/Library/Frameworks/Foundation.framework/Foundation	___NSThread__start__ +0x360
+        21  ??? (UIKitCore + 16654808) [0x1afcbb1d8]  => /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore	___66-[UIViewInProcessAnimationManager startAdvancingAnimationManager:]_block_invoke_2 +0xc0
+          21  ??? (libdispatch.dylib + 18096) [0x1aac6e6b0]  => /usr/lib/system/libdispatch.dylib	__dispatch_semaphore_wait_slow +0x84
+            21  ??? (libdispatch.dylib + 16408) [0x1aac6e018]  => /usr/lib/system/libdispatch.dylib	__dispatch_sema4_wait +0x1c
+              21  ??? (libsystem_kernel.dylib + 16044) [0x1aada9eac]  => /usr/lib/system/libsystem_kernel.dylib	_semaphore_wait_trap +0x8
+               *21  ??? [0xfffffff007a5fd6c]
+
+  Thread 0xd3e    Thread name "AVAudioSession Notify Thread"    21 samples (1-21)    priority 15 (base 15)
+  21  ??? (libsystem_pthread.dylib + 42888) [0x1aace1788]  => /usr/lib/system/libsystem_pthread.dylib	_thread_start +0x8
+    21  ??? (libsystem_pthread.dylib + 7336) [0x1aacd8ca8]  => /usr/lib/system/libsystem_pthread.dylib	__pthread_start +0x140
+      21  ??? (AudioSession + 62456) [0x1ece103f8]  => /System/Library/PrivateFrameworks/AudioSession.framework/AudioSession	__ZN9CAPThread5EntryEPS_ +0x5c
+        21  ??? (AudioSession + 54036) [0x1ece0e314]  => /System/Library/PrivateFrameworks/AudioSession.framework/AudioSession	__ZN20GenericRunLoopThread5EntryEPv +0xa4
+          21  ??? (CoreFoundation + 623148) [0x1aaf5022c]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	_CFRunLoopRunSpecific +0x258
+            21  ??? (CoreFoundation + 625688) [0x1aaf50c18]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopRun +0x4c0
+              21  ??? (CoreFoundation + 649832) [0x1aaf56a68]  => /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation	___CFRunLoopServiceMachPort +0x17c
+                21  ??? (libsystem_kernel.dylib + 12836) [0x1aada9224]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg +0x4c
+                  21  ??? (libsystem_kernel.dylib + 15984) [0x1aada9e70]  => /usr/lib/system/libsystem_kernel.dylib	_mach_msg_trap +0x8
+                   *21  ??? [0xfffffff007a075e4]
+
+  Binary Images:
+           0x100248000 -                ???  com.apple.springboard 1.0 (50) <886E2CCD-1559-3C0C-A5F1-6971FAB35E37>  /System/Library/CoreServices/SpringBoard.app/SpringBoard
+           0x1aac6a000 -        0x1aacabfff  libdispatch.dylib              <636C9B4E-09D7-39CF-B9A7-732F26E4D3DC>  /usr/lib/system/libdispatch.dylib
+           0x1aacd7000 -        0x1aace2fff  libsystem_pthread.dylib        <2582EECA-422F-3909-9579-D8177D42492B>  /usr/lib/system/libsystem_pthread.dylib
+           0x1aada6000 -        0x1aadd6fff  libsystem_kernel.dylib         <7A525942-131A-332B-B9E6-575C0F7B50B6>  /usr/lib/system/libsystem_kernel.dylib
+           0x1aadd7000 -        0x1aae10fff  libdyld.dylib                  <20D5095F-60CD-3C1A-96AC-9A0583DC73BF>  /usr/lib/system/libdyld.dylib
+           0x1aaeb8000 -        0x1ab26bfff  CoreFoundation                 <548058AC-65EB-31FD-A60D-AA27AF827C0A>  /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
+           0x1ab2e6000 -        0x1ab594fff  Foundation                     <14C58694-70A8-3655-A854-B634DBC9F68B>  /System/Library/Frameworks/Foundation.framework/Foundation
+           0x1adf81000 -        0x1adf9cfff  CommonUtilities                <F88A160B-DDF1-37E1-80D3-E122B5CC09E6>  /System/Library/PrivateFrameworks/CommonUtilities.framework/CommonUtilities
+           0x1aecd9000 -        0x1b010cfff  UIKitCore                      <EFF94CE9-EE86-34C6-A228-4F9B8DE18016>  /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
+           0x1b70c6000 -        0x1b70cefff  GraphicsServices               <2BCA3F88-680C-375E-B88E-308912D6A996>  /System/Library/PrivateFrameworks/GraphicsServices.framework/GraphicsServices
+           0x1b9d9c000 -        0x1b9ff9fff  CoreMotion                     <0B2D6B21-2219-35C4-A427-A6F14A0BC678>  /System/Library/Frameworks/CoreMotion.framework/CoreMotion
+           0x1d3cbe000 -        0x1d3d6cfff  WiFiKit                        <89D7A893-028E-3355-8FB0-2FAC56DA37EA>  /System/Library/PrivateFrameworks/WiFiKit.framework/WiFiKit
+           0x1ece01000 -        0x1ece19fff  AudioSession                   <621EF68E-C8CA-38B9-B78A-F72A201697B9>  /System/Library/PrivateFrameworks/AudioSession.framework/AudioSession
+           0x1f029f000 -        0x1f09f9fff  SpringBoard                    <B6217766-5D0A-3779-A364-D8AAA580B3CC>  /System/Library/PrivateFrameworks/SpringBoard.framework/SpringBoard
