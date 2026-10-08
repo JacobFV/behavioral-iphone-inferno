@@ -23,6 +23,14 @@ uint32 zero, then length old bytes and length replacement bytes. Offsets must be
 sorted and nonoverlapping. Limits are 65536 records, 4096 bytes per record, 16 MiB
 plan size and 8 GiB cache size. Digest pairs are a separate fixed 64-byte sidecar.
 
+For new reproducible builds, use `build-cache-helper.py --help`. Supply explicit
+absolute `--clang`, `--linker`, and `--ldid` invocations with each tool's SHA256,
+and a new external `--output` directory. The producer requires committed source,
+checks source and tools before and after compilation, records actual command logs,
+and reads back the owned helper's entitlement dictionary. It creates no guest
+or cache patch. `companion/evidence/reproducible-cache-helper-build-1/` retains
+an actual successful build; fresh guest application remains a separate milestone.
+
 `build.sh LD64_LLD LDID OUTPUT_DIRECTORY` builds the SDK-free helper and records
 source/tool/binary hashes. `prepare.py --help` lists required inputs; it delegates
 the tested recovery cloning and launch job installation to an explicitly supplied
