@@ -1,0 +1,803 @@
+{
+  "scope": "Host QMP cont request and serial before/after-send journals only. No filemtime or guest-clock conversion; no VM actions.",
+  "runs": [
+    {
+      "run": 85,
+      "cont_host_request": 1791426459.0553632,
+      "actions": [
+        {
+          "label": "unlock-001",
+          "request": {
+            "request_id": "aaf8ad54326849b7a0981b8ab19f6e16",
+            "kind": "swipe",
+            "duration_ms": 1500,
+            "x0": 16384,
+            "y0": 32270,
+            "x1": 16384,
+            "y1": 9145
+          },
+          "host_before_send": 1791426608.121202,
+          "host_after_send": 1791426608.1213417,
+          "elapsed_from_cont": 149.06583881378174,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/boot/unlock-001/request.json"
+        },
+        {
+          "label": "unlock-002",
+          "request": {
+            "request_id": "46dd69f49a6c4194962b2630422ccf3d",
+            "kind": "swipe",
+            "duration_ms": 1500,
+            "x0": 16384,
+            "y0": 32270,
+            "x1": 16384,
+            "y1": 9145
+          },
+          "host_before_send": 1791427004.3287334,
+          "host_after_send": 1791427004.328795,
+          "elapsed_from_cont": 545.2733702659607,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/unlock-002/request.json"
+        },
+        {
+          "label": "beta-close",
+          "request": {
+            "request_id": "f5c1e423ef91440c8fca5ddeea2133d5",
+            "kind": "tap",
+            "duration_ms": 150,
+            "x": 16384,
+            "y": 18560
+          },
+          "host_before_send": 1791427047.6298308,
+          "host_after_send": 1791427047.6299002,
+          "elapsed_from_cont": 588.5744676589966,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/beta-close/request.json"
+        },
+        {
+          "label": "setup-not-now",
+          "request": {
+            "request_id": "800eb4d6a6d342d0a048bbd506333667",
+            "kind": "tap",
+            "duration_ms": 150,
+            "x": 11028,
+            "y": 18432
+          },
+          "host_before_send": 1791427065.2695196,
+          "host_after_send": 1791427065.2696397,
+          "elapsed_from_cont": 606.2141563892365,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/setup-not-now/request.json"
+        },
+        {
+          "label": "counter-tap",
+          "request": {
+            "request_id": "703788b2ec02444dbd48b31236cafdb6",
+            "kind": "tap",
+            "duration_ms": 150,
+            "x": 16384,
+            "y": 18102
+          },
+          "host_before_send": 1791427077.8903878,
+          "host_after_send": 1791427077.8904917,
+          "elapsed_from_cont": 618.8350245952606,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/counter-tap/request.json"
+        }
+      ],
+      "intervals_seconds": {
+        "unlock-001->unlock-002": 396.20753145217896,
+        "unlock-002->setup-not-now": 60.94078612327576,
+        "setup-not-now->counter-tap": 12.62086820602417
+      },
+      "launch_accepted_raw_only": [
+        {
+          "path": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/boot/serial.log",
+          "line": 4625,
+          "byte_start": 284402,
+          "byte_end": 284502,
+          "raw": "INFERNO_LAUNCHER_V1 event=open-callback attempt=14 accepted=1 domain=(nil) code=0 description=(nil)\r",
+          "clock": "guest/untimestamped raw, no host-arrival mapping available; not used for host elapsed"
+        },
+        {
+          "path": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/boot/serial.log",
+          "line": 4627,
+          "byte_start": 284504,
+          "byte_end": 284655,
+          "raw": "2026-10-07 19:30:20.621 inferno-launcher[208:2240] INFERNO_LAUNCHER_V1 event=open-callback attempt=14 accepted=1 domain=(nil) code=0 description=(nil)\r",
+          "clock": "guest/untimestamped raw, no host-arrival mapping available; not used for host elapsed"
+        }
+      ],
+      "raw_host_references": [
+        {
+          "path": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/boot/qmp-transcript.jsonl",
+          "line": 10,
+          "byte_start": 1423,
+          "byte_end": 1520,
+          "raw": "{\"direction\": \"send\", \"time\": 1791426459.0553632, \"raw\": \"{\\\"execute\\\": \\\"cont\\\", \\\"id\\\": 5}\\n\"}\n",
+          "sha256": "e3a6b72cd16e72c2891528e4ddeb959147cff4001778641219f2739a3a9857d7"
+        },
+        {
+          "path": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/boot/serial-input-transcript.jsonl",
+          "line": 1,
+          "byte_start": 0,
+          "byte_end": 358,
+          "raw": "{\"time\": 1791426608.121202, \"monotonic\": 845791.997680169, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"aaf8ad54326849b7a0981b8ab19f6e16\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 aaf8ad54326849b7a0981b8ab19f6e16 SWIPE 16384 32270 16384 9145 1500\\n\", \"sha256\": \"bf1d6e1f49a8be88c4713155f8c327d5a351ec840631d775a6ea460e409e4fc1\"}\n",
+          "sha256": "159a9d934fa548899dae047e821596a5841d13341da7df80455a45fb596f1383"
+        },
+        {
+          "path": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/boot/serial-input-transcript.jsonl",
+          "line": 2,
+          "byte_start": 358,
+          "byte_end": 773,
+          "raw": "{\"time\": 1791426608.1213417, \"stage\": \"after-send\", \"response\": {\"request_id\": \"aaf8ad54326849b7a0981b8ab19f6e16\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 845791.997790538, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 82, \"write_end_monotonic\": 845791.997818442, \"write_end_after_deadline\": false}}\n",
+          "sha256": "bc40d8869f168c348678214160de0ddc4c8e673fe76e31f14fade26c82896dbd"
+        },
+        {
+          "path": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/boot/serial-input-transcript.jsonl",
+          "line": 3,
+          "byte_start": 773,
+          "byte_end": 1131,
+          "raw": "{\"time\": 1791427004.3287334, \"monotonic\": 846188.20521177, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"46dd69f49a6c4194962b2630422ccf3d\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 46dd69f49a6c4194962b2630422ccf3d SWIPE 16384 32270 16384 9145 1500\\n\", \"sha256\": \"a41c7897009f7a121dec7644b316e5b5e889515ae08dd7a99bb6d0d04077bf60\"}\n",
+          "sha256": "fe57739d97d7578a58bb0f74e9f03273567c785639c36ac4c13c06298c9376e0"
+        },
+        {
+          "path": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/boot/serial-input-transcript.jsonl",
+          "line": 4,
+          "byte_start": 1131,
+          "byte_end": 1545,
+          "raw": "{\"time\": 1791427004.328795, \"stage\": \"after-send\", \"response\": {\"request_id\": \"46dd69f49a6c4194962b2630422ccf3d\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 846188.205263994, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 82, \"write_end_monotonic\": 846188.205272458, \"write_end_after_deadline\": false}}\n",
+          "sha256": "8f66b47fc5c71696b313934f069795bcee2067f2b04af2222b68b63151d8b037"
+        },
+        {
+          "path": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/boot/serial-input-transcript.jsonl",
+          "line": 5,
+          "byte_start": 1545,
+          "byte_end": 1890,
+          "raw": "{\"time\": 1791427047.6298308, \"monotonic\": 846231.506308846, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"f5c1e423ef91440c8fca5ddeea2133d5\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 f5c1e423ef91440c8fca5ddeea2133d5 TAP 16384 18560 150\\n\", \"sha256\": \"39b883bbf09553e415d915b71f768fe7ae02ef5aa9c4818b74217173625549a8\"}\n",
+          "sha256": "6af89e10be0fea9fc56f800f9e13023528f93460f8448025e9fe3da75efc1b54"
+        },
+        {
+          "path": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/boot/serial-input-transcript.jsonl",
+          "line": 6,
+          "byte_start": 1890,
+          "byte_end": 2305,
+          "raw": "{\"time\": 1791427047.6299002, \"stage\": \"after-send\", \"response\": {\"request_id\": \"f5c1e423ef91440c8fca5ddeea2133d5\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 846231.506368511, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68, \"write_end_monotonic\": 846231.506377999, \"write_end_after_deadline\": false}}\n",
+          "sha256": "1709cbc846ffba19083704be99de2e64656538ad65316ad25ccb3dec19b15b5c"
+        },
+        {
+          "path": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/boot/serial-input-transcript.jsonl",
+          "line": 7,
+          "byte_start": 2305,
+          "byte_end": 2650,
+          "raw": "{\"time\": 1791427065.2695196, \"monotonic\": 846249.145997635, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"800eb4d6a6d342d0a048bbd506333667\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 800eb4d6a6d342d0a048bbd506333667 TAP 11028 18432 150\\n\", \"sha256\": \"e008516085b7fdb5e568b2dd3df198aa7f89ed382a8f1a6d819f9ea899d902de\"}\n",
+          "sha256": "1d3883ef5194783e759091f326da31d634a39eb960462469e520c93b1703a68a"
+        },
+        {
+          "path": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/boot/serial-input-transcript.jsonl",
+          "line": 8,
+          "byte_start": 2650,
+          "byte_end": 3065,
+          "raw": "{\"time\": 1791427065.2696397, \"stage\": \"after-send\", \"response\": {\"request_id\": \"800eb4d6a6d342d0a048bbd506333667\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 846249.146098771, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68, \"write_end_monotonic\": 846249.146117203, \"write_end_after_deadline\": false}}\n",
+          "sha256": "6ea4b8a3d3b8eb555c2ef3aacb2bea9c7191ab0a7bd643b7839ba3f0e72ecabc"
+        },
+        {
+          "path": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/boot/serial-input-transcript.jsonl",
+          "line": 9,
+          "byte_start": 3065,
+          "byte_end": 3410,
+          "raw": "{\"time\": 1791427077.8903878, \"monotonic\": 846261.766865903, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"703788b2ec02444dbd48b31236cafdb6\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 703788b2ec02444dbd48b31236cafdb6 TAP 16384 18102 150\\n\", \"sha256\": \"50f89fd26a7dbd1fdf782983bd9812efdb8918f99b80b05f685db9b68754a064\"}\n",
+          "sha256": "b4dfc6a951e3a3e878d8778cf71bfb9614c649acef71f442c6ddbf10670ef0fa"
+        },
+        {
+          "path": "/home/brandonin/.local/share/inferno/app-import/durable-boot-demo-1/boot/serial-input-transcript.jsonl",
+          "line": 10,
+          "byte_start": 3410,
+          "byte_end": 3825,
+          "raw": "{\"time\": 1791427077.8904917, \"stage\": \"after-send\", \"response\": {\"request_id\": \"703788b2ec02444dbd48b31236cafdb6\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 846261.766947903, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68, \"write_end_monotonic\": 846261.766969023, \"write_end_after_deadline\": false}}\n",
+          "sha256": "e9109891d83b3249fdc35d403b2989a5dae62a510c37acf865b4a4d81911b28f"
+        }
+      ]
+    },
+    {
+      "run": 86,
+      "cont_host_request": 1791427408.9123468,
+      "actions": [
+        {
+          "label": "unlock-001",
+          "request": {
+            "request_id": "fc771ac8198447c9a3ff86e6a316a62e",
+            "kind": "swipe",
+            "duration_ms": 1500,
+            "x0": 16384,
+            "y0": 32270,
+            "x1": 16384,
+            "y1": 9145
+          },
+          "host_before_send": 1791427523.615088,
+          "host_after_send": 1791427523.6152103,
+          "elapsed_from_cont": 114.70274114608765,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/unlock-001/request.json"
+        },
+        {
+          "label": "unlock-002",
+          "request": {
+            "request_id": "d9b01181e5514db4b8a0a3311e96a1a5",
+            "kind": "swipe",
+            "duration_ms": 1500,
+            "x0": 16384,
+            "y0": 32270,
+            "x1": 16384,
+            "y1": 9145
+          },
+          "host_before_send": 1791427572.3479218,
+          "host_after_send": 1791427572.3479917,
+          "elapsed_from_cont": 163.43557500839233,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/unlock-002/request.json"
+        },
+        {
+          "label": "beta-close",
+          "request": {
+            "request_id": "d823900f66fa4bfd96b3cbf9b3b6deb2",
+            "kind": "tap",
+            "duration_ms": 150,
+            "x": 16384,
+            "y": 18560
+          },
+          "host_before_send": 1791427621.492468,
+          "host_after_send": 1791427621.4925928,
+          "elapsed_from_cont": 212.58012127876282,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/beta-close/request.json"
+        },
+        {
+          "label": "setup-not-now",
+          "request": {
+            "request_id": "9c56721e5f354b04a96c19de10ad158a",
+            "kind": "tap",
+            "duration_ms": 150,
+            "x": 11028,
+            "y": 18432
+          },
+          "host_before_send": 1791427651.7716067,
+          "host_after_send": 1791427651.7718349,
+          "elapsed_from_cont": 242.8592598438263,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/setup-not-now/request.json"
+        },
+        {
+          "label": "counter-tap",
+          "request": {
+            "request_id": "acb3f00e6d5d46a1a486f6be2863d527",
+            "kind": "tap",
+            "duration_ms": 150,
+            "x": 16384,
+            "y": 20316
+          },
+          "host_before_send": 1791427698.3952768,
+          "host_after_send": 1791427698.3953834,
+          "elapsed_from_cont": 289.48292994499207,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/counter-tap/request.json"
+        }
+      ],
+      "intervals_seconds": {
+        "unlock-001->unlock-002": 48.73283386230469,
+        "unlock-002->setup-not-now": 79.42368483543396,
+        "setup-not-now->counter-tap": 46.62367010116577
+      },
+      "launch_accepted_raw_only": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/serial.log",
+          "line": 3433,
+          "byte_start": 211580,
+          "byte_end": 211679,
+          "raw": "INFERNO_LAUNCHER_V1 event=open-callback attempt=7 accepted=1 domain=(nil) code=0 description=(nil)\r",
+          "clock": "guest/untimestamped raw, no host-arrival mapping available; not used for host elapsed"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/serial.log",
+          "line": 3435,
+          "byte_start": 211681,
+          "byte_end": 211831,
+          "raw": "2026-10-07 19:45:50.097 inferno-launcher[200:2676] INFERNO_LAUNCHER_V1 event=open-callback attempt=7 accepted=1 domain=(nil) code=0 description=(nil)\r",
+          "clock": "guest/untimestamped raw, no host-arrival mapping available; not used for host elapsed"
+        }
+      ],
+      "raw_host_references": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/qmp-transcript.jsonl",
+          "line": 22,
+          "byte_start": 3114,
+          "byte_end": 3212,
+          "raw": "{\"direction\": \"send\", \"time\": 1791427408.9123468, \"raw\": \"{\\\"execute\\\": \\\"cont\\\", \\\"id\\\": 11}\\n\"}\n",
+          "sha256": "ca29170208948d67b1d835c8da186354facfb9e46930797642410d023ff11a1d"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/serial-input-transcript.jsonl",
+          "line": 1,
+          "byte_start": 0,
+          "byte_end": 358,
+          "raw": "{\"time\": 1791427523.615088, \"monotonic\": 846707.491566127, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"fc771ac8198447c9a3ff86e6a316a62e\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 fc771ac8198447c9a3ff86e6a316a62e SWIPE 16384 32270 16384 9145 1500\\n\", \"sha256\": \"f20a2683892d9ba5b13de955f636d550d75c46dc95d761c11680093a0bb8bf65\"}\n",
+          "sha256": "4493be0cfbbb6fba8ed1ec23495d696997e100e8472a8f906ca7561b4730bb03"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/serial-input-transcript.jsonl",
+          "line": 2,
+          "byte_start": 358,
+          "byte_end": 773,
+          "raw": "{\"time\": 1791427523.6152103, \"stage\": \"after-send\", \"response\": {\"request_id\": \"fc771ac8198447c9a3ff86e6a316a62e\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 846707.491666016, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 82, \"write_end_monotonic\": 846707.491687616, \"write_end_after_deadline\": false}}\n",
+          "sha256": "6dfbf53e8c37abf5fb4831608a926ec07f3dea67f72ea24b45193e27803c099e"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/serial-input-transcript.jsonl",
+          "line": 3,
+          "byte_start": 773,
+          "byte_end": 1132,
+          "raw": "{\"time\": 1791427572.3479218, \"monotonic\": 846756.224400137, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"d9b01181e5514db4b8a0a3311e96a1a5\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 d9b01181e5514db4b8a0a3311e96a1a5 SWIPE 16384 32270 16384 9145 1500\\n\", \"sha256\": \"ad21c49fdfb0868a950ae475435c9869e84b4681a1ce093d5a1d24e56b8ac3a6\"}\n",
+          "sha256": "e001eefaa1c4e2289afe07ab34e58bec44510a126ac91d2da09f07aa2a56dbcd"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/serial-input-transcript.jsonl",
+          "line": 4,
+          "byte_start": 1132,
+          "byte_end": 1547,
+          "raw": "{\"time\": 1791427572.3479917, \"stage\": \"after-send\", \"response\": {\"request_id\": \"d9b01181e5514db4b8a0a3311e96a1a5\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 846756.224453962, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 82, \"write_end_monotonic\": 846756.224469306, \"write_end_after_deadline\": false}}\n",
+          "sha256": "8f7d42e0c0f846504416b7a6e3849bd2fa6e05da7e897358e5121809625f5b91"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/serial-input-transcript.jsonl",
+          "line": 5,
+          "byte_start": 1547,
+          "byte_end": 1891,
+          "raw": "{\"time\": 1791427621.492468, \"monotonic\": 846805.368946459, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"d823900f66fa4bfd96b3cbf9b3b6deb2\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 d823900f66fa4bfd96b3cbf9b3b6deb2 TAP 16384 18560 150\\n\", \"sha256\": \"4994e9e47f8538deedb48e13ea8a4024c18d7036c4cf367c82ad3645abc5ce4d\"}\n",
+          "sha256": "08cbf24f52e4d5abbb2984f6e3a493cca815d1584650b51ea40e123baeb440b8"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/serial-input-transcript.jsonl",
+          "line": 6,
+          "byte_start": 1891,
+          "byte_end": 2306,
+          "raw": "{\"time\": 1791427621.4925928, \"stage\": \"after-send\", \"response\": {\"request_id\": \"d823900f66fa4bfd96b3cbf9b3b6deb2\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 846805.369047835, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68, \"write_end_monotonic\": 846805.369070299, \"write_end_after_deadline\": false}}\n",
+          "sha256": "6b321d341f4313554509e4d69d2206729250ed89ee568fc15b3fda78bfb44cdb"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/serial-input-transcript.jsonl",
+          "line": 7,
+          "byte_start": 2306,
+          "byte_end": 2651,
+          "raw": "{\"time\": 1791427651.7716067, \"monotonic\": 846835.648084876, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"9c56721e5f354b04a96c19de10ad158a\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 9c56721e5f354b04a96c19de10ad158a TAP 11028 18432 150\\n\", \"sha256\": \"5e22efdac9bbf44d089003aa91b54620bca4b6c71d817a9f0b7f15346c193231\"}\n",
+          "sha256": "b3d04ebd4d36f26fe2a9c9149b73239f6dc9dc2759e6fee6ab9ebc7b8846ef4a"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/serial-input-transcript.jsonl",
+          "line": 8,
+          "byte_start": 2651,
+          "byte_end": 3066,
+          "raw": "{\"time\": 1791427651.7718349, \"stage\": \"after-send\", \"response\": {\"request_id\": \"9c56721e5f354b04a96c19de10ad158a\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 846835.648294077, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68, \"write_end_monotonic\": 846835.648312157, \"write_end_after_deadline\": false}}\n",
+          "sha256": "95b21754b83e1f39c2ef4c18ca6dc6f54879ba42ce650e0117aa56524964bb11"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/serial-input-transcript.jsonl",
+          "line": 9,
+          "byte_start": 3066,
+          "byte_end": 3411,
+          "raw": "{\"time\": 1791427698.3952768, \"monotonic\": 846882.271754907, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"acb3f00e6d5d46a1a486f6be2863d527\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 acb3f00e6d5d46a1a486f6be2863d527 TAP 16384 20316 150\\n\", \"sha256\": \"e0504a5dabf088733fc7c9b88be5b0a8d659a44fda519c82da22c40fcb1192ed\"}\n",
+          "sha256": "697967542ae1d650191d7748c45dfc8f39209d5b3ec78c8b7460fda477c6f6c8"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-86/serial-input-transcript.jsonl",
+          "line": 10,
+          "byte_start": 3411,
+          "byte_end": 3826,
+          "raw": "{\"time\": 1791427698.3953834, \"stage\": \"after-send\", \"response\": {\"request_id\": \"acb3f00e6d5d46a1a486f6be2863d527\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 846882.271838763, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68, \"write_end_monotonic\": 846882.271860491, \"write_end_after_deadline\": false}}\n",
+          "sha256": "5ddfa2eddb2496b8c3dfcaa9b9c4fe48a423360f09601768c9d450b0f778b2cd"
+        }
+      ]
+    },
+    {
+      "run": 87,
+      "cont_host_request": 1791428244.204606,
+      "actions": [
+        {
+          "label": "unlock-001",
+          "request": {
+            "request_id": "15ffa60450c74b74b3b4b93a3ee13315",
+            "kind": "swipe",
+            "duration_ms": 1500,
+            "x0": 16384,
+            "y0": 32270,
+            "x1": 16384,
+            "y1": 9145
+          },
+          "host_before_send": 1791428355.1452165,
+          "host_after_send": 1791428355.1453304,
+          "elapsed_from_cont": 110.94061040878296,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/unlock-001/request.json"
+        },
+        {
+          "label": "unlock-002",
+          "request": {
+            "request_id": "8ec8e3bc0cfd49ec89533b3bbaef0ba8",
+            "kind": "swipe",
+            "duration_ms": 1500,
+            "x0": 16384,
+            "y0": 32270,
+            "x1": 16384,
+            "y1": 9145
+          },
+          "host_before_send": 1791428407.0921886,
+          "host_after_send": 1791428407.0922644,
+          "elapsed_from_cont": 162.88758254051208,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/unlock-002/request.json"
+        },
+        {
+          "label": "beta-close",
+          "request": {
+            "request_id": "c7119159a22f482f9767e453e971e48b",
+            "kind": "tap",
+            "duration_ms": 150,
+            "x": 16384,
+            "y": 18560
+          },
+          "host_before_send": 1791428456.8330026,
+          "host_after_send": 1791428456.8330715,
+          "elapsed_from_cont": 212.62839651107788,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/beta-close/request.json"
+        },
+        {
+          "label": "setup-not-now",
+          "request": {
+            "request_id": "fbc54996d82948a382002cf4db1fa90b",
+            "kind": "tap",
+            "duration_ms": 150,
+            "x": 11028,
+            "y": 18432
+          },
+          "host_before_send": 1791428489.729994,
+          "host_after_send": 1791428489.7301412,
+          "elapsed_from_cont": 245.52538800239563,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/setup-not-now/request.json"
+        },
+        {
+          "label": "counter-tap",
+          "request": {
+            "request_id": "bf73d7111317417eb42b3cec85efb6af",
+            "kind": "tap",
+            "duration_ms": 150,
+            "x": 16384,
+            "y": 20316
+          },
+          "host_before_send": 1791428524.636637,
+          "host_after_send": 1791428524.6366975,
+          "elapsed_from_cont": 280.432030916214,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/counter-tap/request.json"
+        }
+      ],
+      "intervals_seconds": {
+        "unlock-001->unlock-002": 51.946972131729126,
+        "unlock-002->setup-not-now": 82.63780546188354,
+        "setup-not-now->counter-tap": 34.90664291381836
+      },
+      "launch_accepted_raw_only": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/serial.log",
+          "line": 3891,
+          "byte_start": 238557,
+          "byte_end": 238656,
+          "raw": "INFERNO_LAUNCHER_V1 event=open-callback attempt=6 accepted=1 domain=(nil) code=0 description=(nil)\r",
+          "clock": "guest/untimestamped raw, no host-arrival mapping available; not used for host elapsed"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/serial.log",
+          "line": 3893,
+          "byte_start": 238658,
+          "byte_end": 238808,
+          "raw": "2026-10-07 19:59:35.085 inferno-launcher[201:2755] INFERNO_LAUNCHER_V1 event=open-callback attempt=6 accepted=1 domain=(nil) code=0 description=(nil)\r",
+          "clock": "guest/untimestamped raw, no host-arrival mapping available; not used for host elapsed"
+        }
+      ],
+      "raw_host_references": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/qmp-transcript.jsonl",
+          "line": 22,
+          "byte_start": 3110,
+          "byte_end": 3207,
+          "raw": "{\"direction\": \"send\", \"time\": 1791428244.204606, \"raw\": \"{\\\"execute\\\": \\\"cont\\\", \\\"id\\\": 11}\\n\"}\n",
+          "sha256": "070b71e1704565487c1225a93c2c51ebc8cf621f451d9f9eea02e8c081ee3bf1"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/serial-input-transcript.jsonl",
+          "line": 1,
+          "byte_start": 0,
+          "byte_end": 359,
+          "raw": "{\"time\": 1791428355.1452165, \"monotonic\": 847539.021694801, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"15ffa60450c74b74b3b4b93a3ee13315\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 15ffa60450c74b74b3b4b93a3ee13315 SWIPE 16384 32270 16384 9145 1500\\n\", \"sha256\": \"48390c1797601040a92e04bc9526e86013b3a3780bbe6e68aadc3b21f4894ab1\"}\n",
+          "sha256": "1279e9f5f1789d5747c3560ee824135f4de41767b5c675b99f58828df850a77d"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/serial-input-transcript.jsonl",
+          "line": 2,
+          "byte_start": 359,
+          "byte_end": 774,
+          "raw": "{\"time\": 1791428355.1453304, \"stage\": \"after-send\", \"response\": {\"request_id\": \"15ffa60450c74b74b3b4b93a3ee13315\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 847539.021788593, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 82, \"write_end_monotonic\": 847539.021807458, \"write_end_after_deadline\": false}}\n",
+          "sha256": "26d37e473739bc8458c03e61033e20847433ed52e07d7cd60c30f6693fff6a3c"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/serial-input-transcript.jsonl",
+          "line": 3,
+          "byte_start": 774,
+          "byte_end": 1133,
+          "raw": "{\"time\": 1791428407.0921886, \"monotonic\": 847590.968666827, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"8ec8e3bc0cfd49ec89533b3bbaef0ba8\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 8ec8e3bc0cfd49ec89533b3bbaef0ba8 SWIPE 16384 32270 16384 9145 1500\\n\", \"sha256\": \"13771d7d7905716db964fe13d53e814a81b2f05949aa26bd26f286be1a8b5d8e\"}\n",
+          "sha256": "f8e64b6932e285618a4abedca7df9b4276815929f665ca48f86b69d91cd48e53"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/serial-input-transcript.jsonl",
+          "line": 4,
+          "byte_start": 1133,
+          "byte_end": 1548,
+          "raw": "{\"time\": 1791428407.0922644, \"stage\": \"after-send\", \"response\": {\"request_id\": \"8ec8e3bc0cfd49ec89533b3bbaef0ba8\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 847590.968727707, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 82, \"write_end_monotonic\": 847590.968742059, \"write_end_after_deadline\": false}}\n",
+          "sha256": "f77944b91070fbf166c1eabb8c0fc2b4069b32cd3c34975839df01acbcfa1235"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/serial-input-transcript.jsonl",
+          "line": 5,
+          "byte_start": 1548,
+          "byte_end": 1893,
+          "raw": "{\"time\": 1791428456.8330026, \"monotonic\": 847640.709480766, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"c7119159a22f482f9767e453e971e48b\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 c7119159a22f482f9767e453e971e48b TAP 16384 18560 150\\n\", \"sha256\": \"184e63857e9e30dc9c586e0ee0cbfd6ff60d2f11b47860ac2d0d13785eda8648\"}\n",
+          "sha256": "6061f80356c978cbad872022ae98f88b000bc1d3823e37e344b681742b3e97ae"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/serial-input-transcript.jsonl",
+          "line": 6,
+          "byte_start": 1893,
+          "byte_end": 2307,
+          "raw": "{\"time\": 1791428456.8330715, \"stage\": \"after-send\", \"response\": {\"request_id\": \"c7119159a22f482f9767e453e971e48b\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 847640.709535358, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68, \"write_end_monotonic\": 847640.70954867, \"write_end_after_deadline\": false}}\n",
+          "sha256": "406f67296ff6e267c549df4458c2fc9ae503aa1bdb3ee1c0561f76be4b9c984f"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/serial-input-transcript.jsonl",
+          "line": 7,
+          "byte_start": 2307,
+          "byte_end": 2651,
+          "raw": "{\"time\": 1791428489.729994, \"monotonic\": 847673.606471987, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"fbc54996d82948a382002cf4db1fa90b\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 fbc54996d82948a382002cf4db1fa90b TAP 11028 18432 150\\n\", \"sha256\": \"1d89c244e297b4a4b3c720994feeb4f4e4c52315108e81fefd9317418bcc4840\"}\n",
+          "sha256": "e391dea341d95e4633ae387a2154159d08260f01f2cf12f1c70b7a6ea865700c"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/serial-input-transcript.jsonl",
+          "line": 8,
+          "byte_start": 2651,
+          "byte_end": 3065,
+          "raw": "{\"time\": 1791428489.7301412, \"stage\": \"after-send\", \"response\": {\"request_id\": \"fbc54996d82948a382002cf4db1fa90b\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 847673.606607572, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68, \"write_end_monotonic\": 847673.60661882, \"write_end_after_deadline\": false}}\n",
+          "sha256": "072ff00d66aa12845f503f1bd80d3ff2f1ac7a985bb0c20523878588d14f4d85"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/serial-input-transcript.jsonl",
+          "line": 9,
+          "byte_start": 3065,
+          "byte_end": 3408,
+          "raw": "{\"time\": 1791428524.636637, \"monotonic\": 847708.51311497, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"bf73d7111317417eb42b3cec85efb6af\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 bf73d7111317417eb42b3cec85efb6af TAP 16384 20316 150\\n\", \"sha256\": \"371de31eda2cedd517dc59297762de5eeef35201408c7bac9fc4c7df317df914\"}\n",
+          "sha256": "9a21f730156289e73a6370d66fdf3dec65a30da56e7f3b5ce753224384781d3e"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-87/serial-input-transcript.jsonl",
+          "line": 10,
+          "byte_start": 3408,
+          "byte_end": 3823,
+          "raw": "{\"time\": 1791428524.6366975, \"stage\": \"after-send\", \"response\": {\"request_id\": \"bf73d7111317417eb42b3cec85efb6af\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 847708.513167594, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68, \"write_end_monotonic\": 847708.513175402, \"write_end_after_deadline\": false}}\n",
+          "sha256": "4578e738e26aa464624d9b5b1ee8473dd5a3a4decdab6fff7586b6e86311de34"
+        }
+      ]
+    },
+    {
+      "run": 88,
+      "cont_host_request": 1791428753.0658753,
+      "actions": [
+        {
+          "label": "unlock-001",
+          "request": {
+            "request_id": "d09308f607854f87bfb92ae8677f46f1",
+            "kind": "swipe",
+            "duration_ms": 1500,
+            "x0": 16384,
+            "y0": 32270,
+            "x1": 16384,
+            "y1": 9145
+          },
+          "host_before_send": 1791428889.1053019,
+          "host_after_send": 1791428889.1053734,
+          "elapsed_from_cont": 136.0394265651703,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/unlock-001/request.json"
+        },
+        {
+          "label": "unlock-002",
+          "request": {
+            "request_id": "38ed65d3f47e44c9a02d943731f82e94",
+            "kind": "swipe",
+            "duration_ms": 1500,
+            "x0": 16384,
+            "y0": 32270,
+            "x1": 16384,
+            "y1": 9145
+          },
+          "host_before_send": 1791428969.9342074,
+          "host_after_send": 1791428969.9343119,
+          "elapsed_from_cont": 216.86833214759827,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/unlock-002/request.json"
+        },
+        {
+          "label": "beta-close",
+          "request": {
+            "request_id": "0e46167652684014aafb6280269a96d9",
+            "kind": "tap",
+            "duration_ms": 150,
+            "x": 16384,
+            "y": 18560
+          },
+          "host_before_send": 1791429049.7571135,
+          "host_after_send": 1791429049.757166,
+          "elapsed_from_cont": 296.69123816490173,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/beta-close/request.json"
+        },
+        {
+          "label": "setup-not-now",
+          "request": {
+            "request_id": "027c2a0854b242f495f488608ea51c53",
+            "kind": "tap",
+            "duration_ms": 150,
+            "x": 11028,
+            "y": 18432
+          },
+          "host_before_send": 1791429090.8806305,
+          "host_after_send": 1791429090.880742,
+          "elapsed_from_cont": 337.8147552013397,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/setup-not-now/request.json"
+        },
+        {
+          "label": "counter-tap",
+          "request": {
+            "request_id": "5174156509a849f6a0f79198644bdd6f",
+            "kind": "tap",
+            "duration_ms": 150,
+            "x": 16384,
+            "y": 20316
+          },
+          "host_before_send": 1791429130.0056531,
+          "host_after_send": 1791429130.0057137,
+          "elapsed_from_cont": 376.93977785110474,
+          "transmission": "written-to-serial-socket",
+          "source_request": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/counter-tap/request.json"
+        }
+      ],
+      "intervals_seconds": {
+        "unlock-001->unlock-002": 80.82890558242798,
+        "unlock-002->setup-not-now": 120.94642305374146,
+        "setup-not-now->counter-tap": 39.125022649765015
+      },
+      "launch_accepted_raw_only": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/serial.log",
+          "line": 4087,
+          "byte_start": 249858,
+          "byte_end": 249958,
+          "raw": "INFERNO_LAUNCHER_V1 event=open-callback attempt=13 accepted=1 domain=(nil) code=0 description=(nil)\r",
+          "clock": "guest/untimestamped raw, no host-arrival mapping available; not used for host elapsed"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/serial.log",
+          "line": 4089,
+          "byte_start": 249960,
+          "byte_end": 250111,
+          "raw": "2026-10-07 20:08:22.154 inferno-launcher[201:2265] INFERNO_LAUNCHER_V1 event=open-callback attempt=13 accepted=1 domain=(nil) code=0 description=(nil)\r",
+          "clock": "guest/untimestamped raw, no host-arrival mapping available; not used for host elapsed"
+        }
+      ],
+      "raw_host_references": [
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/qmp-transcript.jsonl",
+          "line": 22,
+          "byte_start": 3115,
+          "byte_end": 3213,
+          "raw": "{\"direction\": \"send\", \"time\": 1791428753.0658753, \"raw\": \"{\\\"execute\\\": \\\"cont\\\", \\\"id\\\": 11}\\n\"}\n",
+          "sha256": "90e59245afdebbd9cdf3e8d80454373feca110ed9d7f2b6f0a5afca9cabec69b"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/serial-input-transcript.jsonl",
+          "line": 1,
+          "byte_start": 0,
+          "byte_end": 359,
+          "raw": "{\"time\": 1791428889.1053019, \"monotonic\": 848072.981779851, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"d09308f607854f87bfb92ae8677f46f1\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 d09308f607854f87bfb92ae8677f46f1 SWIPE 16384 32270 16384 9145 1500\\n\", \"sha256\": \"49871ad906e45a446d25cecf28db288cb2a731b58ff6768122ce6e64026f397d\"}\n",
+          "sha256": "bbbcc3c991d7dc38a2bbe97eefbc2ca3c129ce5f0a49f14efa1f342a222dc695"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/serial-input-transcript.jsonl",
+          "line": 2,
+          "byte_start": 359,
+          "byte_end": 774,
+          "raw": "{\"time\": 1791428889.1053734, \"stage\": \"after-send\", \"response\": {\"request_id\": \"d09308f607854f87bfb92ae8677f46f1\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 848072.981838827, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 82, \"write_end_monotonic\": 848072.981851195, \"write_end_after_deadline\": false}}\n",
+          "sha256": "54df7937710474601880ecc7c093807c29ca473efdba20f349ca82461bc98e28"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/serial-input-transcript.jsonl",
+          "line": 3,
+          "byte_start": 774,
+          "byte_end": 1133,
+          "raw": "{\"time\": 1791428969.9342074, \"monotonic\": 848153.810685917, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"38ed65d3f47e44c9a02d943731f82e94\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 38ed65d3f47e44c9a02d943731f82e94 SWIPE 16384 32270 16384 9145 1500\\n\", \"sha256\": \"6ea6ae09e79818a03f41347cbab2614dc174a49d4f4c8afc51fd5ef8efd41b90\"}\n",
+          "sha256": "4edab7d5f737a177dbbd8a0651ee8aad2ae0cf477e4cd2fe3bcfebb78921f97a"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/serial-input-transcript.jsonl",
+          "line": 4,
+          "byte_start": 1133,
+          "byte_end": 1548,
+          "raw": "{\"time\": 1791428969.9343119, \"stage\": \"after-send\", \"response\": {\"request_id\": \"38ed65d3f47e44c9a02d943731f82e94\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 848153.810770989, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 82, \"write_end_monotonic\": 848153.810788877, \"write_end_after_deadline\": false}}\n",
+          "sha256": "6da9fabdb1ea168afd9fd3f002934efb742935dbf6b374088507aef29931eb0e"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/serial-input-transcript.jsonl",
+          "line": 5,
+          "byte_start": 1548,
+          "byte_end": 1893,
+          "raw": "{\"time\": 1791429049.7571135, \"monotonic\": 848233.633591404, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"0e46167652684014aafb6280269a96d9\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 0e46167652684014aafb6280269a96d9 TAP 16384 18560 150\\n\", \"sha256\": \"0eb58e5b247c629218a2dbdc180b819de26081ff76d6cab0d26b93560965407d\"}\n",
+          "sha256": "0f900a1f93b3ae2b4e1a68b9f8df3522c3dc884898e052f29f4d8e67d8ac4f90"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/serial-input-transcript.jsonl",
+          "line": 6,
+          "byte_start": 1893,
+          "byte_end": 2307,
+          "raw": "{\"time\": 1791429049.757166, \"stage\": \"after-send\", \"response\": {\"request_id\": \"0e46167652684014aafb6280269a96d9\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 848233.633635244, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68, \"write_end_monotonic\": 848233.633643436, \"write_end_after_deadline\": false}}\n",
+          "sha256": "12a707d6adf4450c0292956f28da8572968dc20507358294bc384577ff28bed4"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/serial-input-transcript.jsonl",
+          "line": 7,
+          "byte_start": 2307,
+          "byte_end": 2652,
+          "raw": "{\"time\": 1791429090.8806305, \"monotonic\": 848274.757108765, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"027c2a0854b242f495f488608ea51c53\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 027c2a0854b242f495f488608ea51c53 TAP 11028 18432 150\\n\", \"sha256\": \"6f384b83f038bd81f1576f2712280b3230738a160e86df037dc10b4233995407\"}\n",
+          "sha256": "0a5e597fb1591f02b01a5f8734bb4a41c1a9231bb2aa84cfa8d8d98ad1851126"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/serial-input-transcript.jsonl",
+          "line": 8,
+          "byte_start": 2652,
+          "byte_end": 3066,
+          "raw": "{\"time\": 1791429090.880742, \"stage\": \"after-send\", \"response\": {\"request_id\": \"027c2a0854b242f495f488608ea51c53\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 848274.757197581, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68, \"write_end_monotonic\": 848274.757219357, \"write_end_after_deadline\": false}}\n",
+          "sha256": "94c895810fa13d1c7517fc1b92e7127151830b7dd2e80b51a5915680f37cab06"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/serial-input-transcript.jsonl",
+          "line": 9,
+          "byte_start": 3066,
+          "byte_end": 3411,
+          "raw": "{\"time\": 1791429130.0056531, \"monotonic\": 848313.882131198, \"send_deadline_monotonic\": null, \"stage\": \"before-send\", \"request_id\": \"5174156509a849f6a0f79198644bdd6f\", \"operation\": \"HID\", \"raw\": \"INFERNO_HID_V1 5174156509a849f6a0f79198644bdd6f TAP 16384 20316 150\\n\", \"sha256\": \"b82511e28f280ce67aaa3e0a3428f70d50b6e63d2f1cf7b9f3c3ff7dedec1228\"}\n",
+          "sha256": "94f3ba5419a8105ac2772e7af7cdc9a2830d5839beb1fe5f7ab3b2c3f6130bd6"
+        },
+        {
+          "path": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/app-boot-88/serial-input-transcript.jsonl",
+          "line": 10,
+          "byte_start": 3411,
+          "byte_end": 3826,
+          "raw": "{\"time\": 1791429130.0057137, \"stage\": \"after-send\", \"response\": {\"request_id\": \"5174156509a849f6a0f79198644bdd6f\", \"guest_acknowledgment\": \"not checked\", \"ui_acceptance\": \"not observed by transport\", \"write_begin_monotonic\": 848313.882180654, \"send_deadline_monotonic\": null, \"transmission\": \"written-to-serial-socket\", \"bytes_sent\": 68, \"write_end_monotonic\": 848313.882191279, \"write_end_after_deadline\": false}}\n",
+          "sha256": "33e549787ee0a239973fef8d7bf1d375e4257871588232bdfa25215630241765"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "85 generic demo differs from86\u201388 fixture; wrapper/profile/telemetry context confounds comparison.",
+    "Host send is not guest processing or visible unlock time.",
+    "Accepted launch serial lacks host-arrival mapping in retained records; preserved separately without elapsed arithmetic.",
+    "Long initial lock delay is only one candidate discriminator, not evidence of causation."
+  ]
+}
