@@ -184,7 +184,11 @@ def validate_session(path, sha256):
 def verify_stopped(context, report_path, retention_path, content_check_path):
     """Read-only eligibility verification after ordinary preserve-stopped exists."""
     from disk_overlay import load_stopped_overlay, validate_tools
-    report_path=Path(report_path).absolute(); report=strict_json(report_path.read_bytes()); s=context['session']
+    report_path=Path(report_path).absolute()
+    stable_paths=[report_path,report_path.parent/'control-transcript.jsonl',report_path.parent/'qmp-transcript.jsonl',Path(retention_path).absolute(),Path(retention_path).absolute().with_name(Path(retention_path).stem+'-verification.json'),Path(content_check_path)]
+    stable_bytes={str(p):p.read_bytes() for p in stable_paths}
+    stable_hashes={p:digest_bytes(raw) for p,raw in stable_bytes.items()}
+    report=strict_json(stable_bytes[str(report_path)]); s=context['session']
     if report.get('kind')!='t8030_recovery_ramdisk_experiment' or report.get('attempt_completed') is not True or report.get('error') or report.get('exit_code')!=0:
         raise ValueError('Recovery did not complete normally')
     if report.get('profile_sha256')!=s['recovery_profile']['sha256'] or Path(report['profile_path'])!=Path(s['recovery_profile']['path']):
@@ -207,13 +211,13 @@ def verify_stopped(context, report_path, retention_path, content_check_path):
         raise ValueError('Actual ramdisk/sole serial path differs')
     raw=(report_path.parent/'serial.log').read_bytes()
     content=verify_content(raw,context['manifest'],context['artifact_sizes'])
-    checkpoint=strict_json(Path(content_check_path).read_bytes())
+    checkpoint=strict_json(stable_bytes[str(Path(content_check_path))])
     n=checkpoint.get('serial_bytes')
     if (checkpoint.get('session_sha256')!=context['session_sha256'] or checkpoint.get('content_verified') is not True
             or type(n) is not int or n<=0 or n>len(raw) or digest_bytes(raw[:n])!=checkpoint.get('serial_sha256')):
         raise ValueError('Pre-finish content checkpoint differs from final serial prefix')
     verify_content(raw[:n],context['manifest'],context['artifact_sizes'])
-    control_raw=(report_path.parent/'control-transcript.jsonl').read_bytes()
+    control_raw=stable_bytes[str(report_path.parent/'control-transcript.jsonl')]
     if not control_raw.endswith(b'\n') or len(control_raw)>32<<20:raise ValueError('Incomplete/oversize control journal')
     finishes=[]
     for line in control_raw.split(b'\n')[:-1]:
@@ -229,7 +233,7 @@ def verify_stopped(context, report_path, retention_path, content_check_path):
         raise ValueError('Complete content not observed before finish request')
     # Reuse original shutdown checker without its write-producing preserve API.
     preserve=_load('preserve-stopped'); shutdown=preserve.verify_shutdown(report_path.parent,report)
-    qmp_raw=(report_path.parent/'qmp-transcript.jsonl').read_bytes()
+    qmp_raw=stable_bytes[str(report_path.parent/'qmp-transcript.jsonl')]
     if not qmp_raw.endswith(b'\n'):raise ValueError('Truncated QMP journal')
     quit_sends=[];quit_acks=[];shutdowns=[]
     for i,line in enumerate(qmp_raw.split(b'\n')[:-1]):
@@ -243,7 +247,7 @@ def verify_stopped(context, report_path, retention_path, content_check_path):
         raise ValueError('QMP shutdown does not follow normal finish')
     retention_path=Path(retention_path).absolute(); side=retention_path.with_name(retention_path.stem+'-verification.json')
     if retention_path!=report_path.parent/'stopped-disk-hashes.json':raise ValueError('Use standard stopped manifest bound by overlay loader')
-    retention=strict_json(retention_path.read_bytes()); verification=strict_json(side.read_bytes())
+    retention=strict_json(stable_bytes[str(retention_path)]); verification=strict_json(stable_bytes[str(side)])
     expected_paths={x['path'] for x in report['disks']}
     if {x['path'] for x in retention.values()}!=expected_paths:raise ValueError('Retention paths differ from actual namespaces')
     if verification.get('failed_attempt_opt_in') is not False or verification.get('report_sha256')!=digest_bytes(report_path.read_bytes()) or verification.get('attempt_error') or verification.get('attempt_completed') is not True:
@@ -261,8 +265,9 @@ def verify_stopped(context, report_path, retention_path, content_check_path):
     validate_session(context['session_path'],context['session_sha256'])
     if digest_bytes((report_path.parent/'serial.log').read_bytes())!=content['serial_sha256']:
         raise ValueError('Serial changed during verification')
+    if any(digest_bytes(Path(p).read_bytes())!=h for p,h in stable_hashes.items()):raise ValueError('Inspected metadata changed during verification')
     return {'schema':'inferno.verified-import-stage.v1','eligible':True,'session_sha256':context['session_sha256'],
-            'report':str(report_path),'report_sha256':digest_bytes(report_path.read_bytes()),
-            'retention':str(retention_path),'retention_sha256':digest_bytes(retention_path.read_bytes()),
-            'content':content,'shutdown':shutdown,'descriptor_check':descriptors,'content_checkpoint_sha256':digest_bytes(Path(content_check_path).read_bytes()),'backing_depth':len(backing['layers']),
+            'report':str(report_path),'report_sha256':stable_hashes[str(report_path)],
+            'retention':str(retention_path),'retention_sha256':stable_hashes[str(retention_path)],
+            'content':content,'shutdown':shutdown,'descriptor_check':descriptors,'content_checkpoint_sha256':stable_hashes[str(Path(content_check_path))],'backing_depth':len(backing['layers']),
             'scope':'Stage eligibility only, not app launch. Point-in-time source/process evidence; no exclusive lock or nonce-authenticated serial.'}
