@@ -1,0 +1,305 @@
+{
+  "scope": "Independent raw replay of wholly owned firmware-free fixture, not iOS or original kernel coverage",
+  "artifact_paths_hashes": {
+    "/home/brandonin/.local/share/inferno/native-probe/pending-equality-owned-attempt-1/report.json": "df2b27964c0fc945fcd94bc5a9672b1d9b5dc307ca72b0fff868e793a9feec0b",
+    "/home/brandonin/.local/share/inferno/native-probe/pending-equality-owned-attempt-1/guest-errors.log": "c25bbc1f29d376f26b02837c7e462d36c21515218da24167ff23cdca976a6299",
+    "/home/brandonin/.local/share/inferno/native-probe/pending-equality-owned-attempt-1/qmp-transcript.jsonl": "80d2a6180f62d05e17bbad07adab9f4a23a8369965440e41f83174dcec250d91",
+    "/home/brandonin/.local/share/inferno/native-probe/pending-equality-owned-attempt-1/swapwait-cpu-control.jsonl": "b903bcf3ff1c77b4d312833d9980343b15d68effa0e2990e97080907a8cc3290",
+    "/home/brandonin/.local/share/inferno/native-probe/pending-equality-owned-attempt-1/stderr.log": "9676393568859b05ec5ab9f08641db23ddf60a6e098a7c013526a3b7095a8105"
+  },
+  "source_hashes": {
+    "/tmp/inferno-pending-equality/companion/cpu-window-probe/equality.S": "4cc1ad6a97a813181c7f2ef0bd1a70171f234db5e7276b3a12707fd5dafd0b35",
+    "/tmp/inferno-pending-equality/companion/cpu-window-probe/run.py": "cc2d7396eb6dfe21693cc008a43cb055fca6883173af3a24e1601f51d57b692f",
+    "/tmp/inferno-pending-equality/companion/qmp_control.py": "906716956328980c1a054f1836298471b88acd1db8788c8d18b78b8cbc7c01a2",
+    "/tmp/inferno-pending-equality/companion/boot.py": "beb55cb892ad246e215a5aa8d1178fc7dcbac6c63adfca6591c9da58606cf097"
+  },
+  "parser_sha256": "6952324aa8c92be314a7aa33af5632c28c99607d3dcb8901c3722298c35578eb",
+  "base_parser_sha256": "6c22f7a54fdd1dec01d6afdeffb78ccc54a8f50a57428d0504789a5b52d1fe30",
+  "actual_command_filter": "0x4020000c+4,0x4020001c+4,0x40200024+4,0x40200034+4,0x40200038+4",
+  "mailbox_declared_production_filter": "0xfffffff0096f1bc0+4,0xfffffff0096f1bf4+4,0xfffffff0096f1e4c+4,0xfffffff0096f1e50+4,0xfffffff0096e219c+4",
+  "complete_count": 5193,
+  "role_counts": {
+    "final-return": 1041,
+    "accepted-mode": 1038,
+    "token-equality-predicate-true": 1038,
+    "matching-request-local-false": 1038,
+    "matching-request-local-true": 1038
+  },
+  "distributions": [
+    {
+      "role": "accepted-mode",
+      "fields": {
+        "mode": 0
+      },
+      "snapshots": 1038
+    },
+    {
+      "role": "final-return",
+      "fields": {
+        "status": 3758097109
+      },
+      "snapshots": 1041
+    },
+    {
+      "role": "matching-request-local-false",
+      "fields": {
+        "matching_request_local": 0
+      },
+      "snapshots": 1038
+    },
+    {
+      "role": "matching-request-local-true",
+      "fields": {
+        "matching_request_local": 1
+      },
+      "snapshots": 1038
+    },
+    {
+      "role": "token-equality-predicate-true",
+      "fields": {
+        "pipeline_bf4_token": 253,
+        "requested_token": 253
+      },
+      "snapshots": 1038
+    }
+  ],
+  "disabled_state_queries": 27,
+  "windows": [
+    {
+      "start_offset": 19908,
+      "end_offset": 3603858,
+      "reason": "deadline",
+      "role_counts": {
+        "final-return": 990,
+        "accepted-mode": 989,
+        "token-equality-predicate-true": 989,
+        "matching-request-local-false": 989,
+        "matching-request-local-true": 989
+      },
+      "complete_count": 4946,
+      "incomplete_count": 0,
+      "enable": {
+        "direction": "send",
+        "time": 1791423589.3568149,
+        "raw": "{\"execute\": \"human-monitor-command\", \"id\": 12, \"arguments\": {\"command-line\": \"log cpu,nochain,guest_errors\"}}\n",
+        "byte_offset": 3642,
+        "byte_length": 184,
+        "message": {
+          "execute": "human-monitor-command",
+          "id": 12,
+          "arguments": {
+            "command-line": "log cpu,nochain,guest_errors"
+          }
+        }
+      },
+      "enable_reply": {
+        "direction": "receive",
+        "time": 1791423589.357115,
+        "raw": "{\"return\": \"\", \"id\": 12}\r\n",
+        "byte_offset": 3826,
+        "byte_length": 97,
+        "message": {
+          "return": "",
+          "id": 12
+        }
+      },
+      "restore": {
+        "direction": "send",
+        "time": 1791423590.3652713,
+        "raw": "{\"execute\": \"human-monitor-command\", \"id\": 13, \"arguments\": {\"command-line\": \"log guest_errors\"}}\n",
+        "byte_offset": 3923,
+        "byte_length": 172,
+        "message": {
+          "execute": "human-monitor-command",
+          "id": 13,
+          "arguments": {
+            "command-line": "log guest_errors"
+          }
+        }
+      },
+      "restore_reply": {
+        "direction": "receive",
+        "time": 1791423590.3658104,
+        "raw": "{\"return\": \"\", \"id\": 13}\r\n",
+        "byte_offset": 4095,
+        "byte_length": 98,
+        "message": {
+          "return": "",
+          "id": 13
+        }
+      }
+    },
+    {
+      "start_offset": 3648574,
+      "end_offset": 3826960,
+      "reason": "runner cleanup",
+      "role_counts": {
+        "final-return": 50,
+        "accepted-mode": 49,
+        "token-equality-predicate-true": 49,
+        "matching-request-local-false": 49,
+        "matching-request-local-true": 49
+      },
+      "complete_count": 246,
+      "incomplete_count": 0,
+      "enable": {
+        "direction": "send",
+        "time": 1791423590.6989052,
+        "raw": "{\"execute\": \"human-monitor-command\", \"id\": 23, \"arguments\": {\"command-line\": \"log cpu,nochain,guest_errors\"}}\n",
+        "byte_offset": 7096,
+        "byte_length": 184,
+        "message": {
+          "execute": "human-monitor-command",
+          "id": 23,
+          "arguments": {
+            "command-line": "log cpu,nochain,guest_errors"
+          }
+        }
+      },
+      "enable_reply": {
+        "direction": "receive",
+        "time": 1791423590.6993506,
+        "raw": "{\"return\": \"\", \"id\": 23}\r\n",
+        "byte_offset": 7280,
+        "byte_length": 98,
+        "message": {
+          "return": "",
+          "id": 23
+        }
+      },
+      "restore": {
+        "direction": "send",
+        "time": 1791423590.7500355,
+        "raw": "{\"execute\": \"human-monitor-command\", \"id\": 24, \"arguments\": {\"command-line\": \"log guest_errors\"}}\n",
+        "byte_offset": 7378,
+        "byte_length": 172,
+        "message": {
+          "execute": "human-monitor-command",
+          "id": 24,
+          "arguments": {
+            "command-line": "log guest_errors"
+          }
+        }
+      },
+      "restore_reply": {
+        "direction": "receive",
+        "time": 1791423590.7507288,
+        "raw": "{\"return\": \"\", \"id\": 24}\r\n",
+        "byte_offset": 7550,
+        "byte_length": 98,
+        "message": {
+          "return": "",
+          "id": 24
+        }
+      }
+    },
+    {
+      "start_offset": 3863136,
+      "end_offset": 3863995,
+      "reason": "enable failed or uncertain",
+      "role_counts": {
+        "final-return": 1
+      },
+      "complete_count": 1,
+      "incomplete_count": 0,
+      "enable": {
+        "direction": "send",
+        "time": 1791423591.0198576,
+        "raw": "{\"execute\": \"human-monitor-command\", \"id\": 34, \"arguments\": {\"command-line\": \"log cpu,nochain,guest_errors\"}}\n",
+        "byte_offset": 10554,
+        "byte_length": 184,
+        "message": {
+          "execute": "human-monitor-command",
+          "id": 34,
+          "arguments": {
+            "command-line": "log cpu,nochain,guest_errors"
+          }
+        }
+      },
+      "enable_reply": {
+        "direction": "receive",
+        "time": 1791423591.0204487,
+        "raw": "{\"return\": \"\", \"id\": 34}\r\n",
+        "byte_offset": 10738,
+        "byte_length": 98,
+        "message": {
+          "return": "",
+          "id": 34
+        }
+      },
+      "restore": {
+        "direction": "send",
+        "time": 1791423591.0205069,
+        "raw": "{\"execute\": \"human-monitor-command\", \"id\": 35, \"arguments\": {\"command-line\": \"log guest_errors\"}}\n",
+        "byte_offset": 10836,
+        "byte_length": 172,
+        "message": {
+          "execute": "human-monitor-command",
+          "id": 35,
+          "arguments": {
+            "command-line": "log guest_errors"
+          }
+        }
+      },
+      "restore_reply": {
+        "direction": "receive",
+        "time": 1791423591.0209668,
+        "raw": "{\"return\": \"\", \"id\": 35}\r\n",
+        "byte_offset": 11008,
+        "byte_length": 98,
+        "message": {
+          "return": "",
+          "id": 35
+        }
+      }
+    }
+  ],
+  "quit": {
+    "direction": "send",
+    "time": 1791423591.2798126,
+    "raw": "{\"execute\": \"quit\", \"id\": 36}\n",
+    "byte_offset": 11106,
+    "byte_length": 98,
+    "message": {
+      "execute": "quit",
+      "id": 36
+    }
+  },
+  "quit_reply": {
+    "direction": "receive",
+    "time": 1791423591.2804875,
+    "raw": "{\"return\": {}, \"id\": 36}\r\n",
+    "byte_offset": 11426,
+    "byte_length": 96,
+    "message": {
+      "return": {},
+      "id": 36
+    }
+  },
+  "shutdown": {
+    "direction": "receive",
+    "time": 1791423591.2804015,
+    "raw": "{\"timestamp\": {\"seconds\": 1791423591, \"microseconds\": 280132}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n",
+    "byte_offset": 11204,
+    "byte_length": 222,
+    "message": {
+      "timestamp": {
+        "seconds": 1791423591,
+        "microseconds": 280132
+      },
+      "event": "SHUTDOWN",
+      "data": {
+        "guest": false,
+        "reason": "host-qmp-quit"
+      }
+    }
+  },
+  "limits": [
+    "Synthetic slide file intentionally exercises gate; not original kernel evidence.",
+    "Relocated owned PC coverage supports logging mechanism, not proof original guest PCs are reached.",
+    "Returned production filter label differs from deliberately relocated fixture CLI filter; no identity conflation.",
+    "Error injection lost only enable reply after actual QMP acknowledged; final restoration visible in raw transcript.",
+    "Buffered file offsets bound emitted bytes, not exact guest event times.",
+    "No CPU/process/thread pairing, cross-site mode attribution or guest memory reads."
+  ]
+}
