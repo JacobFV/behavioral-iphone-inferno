@@ -1,0 +1,107 @@
+{
+  "verdict": "PASS actual host flatten logical comparison and provenance; no guest resize/runtime readiness",
+  "manifest_sha256": "3b0733b0033688e163f60377b87a255ab050bbee5fb1c1dca8b3b0a275f5812d",
+  "raw_identity": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/flattened-data-1/root.raw",
+    "format": "raw",
+    "sha256": "fc6372fa1aaf24b5f24673e8811fc5f6485543802c29985763158d84f70e01fb",
+    "bytes": 8589934592,
+    "device": 66306,
+    "inode": 54959918,
+    "mtime_ns": 1791434071726642748,
+    "ctime_ns": 1791434088397678293,
+    "mode": "0o444"
+  },
+  "gpt_independently_recomputed_from_small_reads": {
+    "primary": {
+      "lba": 1,
+      "backup_lba": 2097151,
+      "header_crc32": 775332064,
+      "entry_count": 128,
+      "entry_size": 128,
+      "entries_crc32": 3531964847,
+      "entries_sha256": "9c4b90bc16e6ba45d5ac3de624a645c8378818304a54f7d2a3d221056d6db2fa"
+    },
+    "backup": {
+      "lba": 2097151,
+      "backup_lba": 1,
+      "header_crc32": 3806161518,
+      "entry_count": 128,
+      "entry_size": 128,
+      "entries_crc32": 3531964847,
+      "entries_sha256": "9c4b90bc16e6ba45d5ac3de624a645c8378818304a54f7d2a3d221056d6db2fa"
+    }
+  },
+  "actual_commands": {
+    "convert": {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-img",
+        "convert",
+        "-f",
+        "qcow2",
+        "-O",
+        "raw",
+        "-S",
+        "4k",
+        "/home/brandonin/.local/share/inferno/app-import/data-verify-stage-1/recovery-run/disks/root.qcow2",
+        "/home/brandonin/.local/share/inferno/app-import/flattened-data-1/root.raw"
+      ],
+      "LD_LIBRARY_PATH": "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/lib/aarch64-linux-gnu",
+      "started": 1791434064.081797,
+      "finished": 1791434071.7944293,
+      "exit_code": 0,
+      "error": null,
+      "cleanup": {},
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "raw-info": {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-img",
+        "info",
+        "--output=json",
+        "-f",
+        "raw",
+        "/home/brandonin/.local/share/inferno/app-import/flattened-data-1/root.raw"
+      ],
+      "LD_LIBRARY_PATH": "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/lib/aarch64-linux-gnu",
+      "started": 1791434071.7946956,
+      "finished": 1791434071.8220909,
+      "exit_code": 0,
+      "error": null,
+      "cleanup": {},
+      "stdout_sha256": "fd073f207d73da5325c2e1c139d28e63849853b89609cdbe18eeac2b48816165",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "logical-compare": {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/bin/qemu-img",
+        "compare",
+        "-f",
+        "qcow2",
+        "-F",
+        "raw",
+        "/home/brandonin/.local/share/inferno/app-import/data-verify-stage-1/recovery-run/disks/root.qcow2",
+        "/home/brandonin/.local/share/inferno/app-import/flattened-data-1/root.raw"
+      ],
+      "LD_LIBRARY_PATH": "/home/brandonin/.local/share/inferno/disk-overlay-tools/root/usr/lib/aarch64-linux-gnu",
+      "started": 1791434075.7105296,
+      "finished": 1791434078.4119399,
+      "exit_code": 0,
+      "error": null,
+      "cleanup": {},
+      "stdout_sha256": "45c4d472e996560294f5829abf4e511b3f3d3a7a319e0f4f0fb8c7f2dea8fc26",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "checks": [
+    "Source before/after normalized records and exact identities equal; current source disk identities still match.",
+    "All source/evidence small-file hashes rechecked; convert/compare exact source/destination, actual compare stdout Images are identical. and exit0.",
+    "New raw single-link0444 distinct source inode, exact six paired refs match verified-stage retention and KEEP.",
+    "PID280164 absent; no INCOMPLETE/failure; final manifest/KEEP binding valid."
+  ],
+  "limits": [
+    "No duplicate8GiB hash or conversion. Raw content digest is coordinator-recorded and current metadata-bound; qemu-img actual comparison is retained raw execution evidence.",
+    "Host GPT/logical equality only, no APFS expansion/keybag/cache/IPA runtime claim."
+  ]
+}
