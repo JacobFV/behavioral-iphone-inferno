@@ -1,0 +1,180 @@
+{
+  "status": "built-owned-preparation-helper-only; no guest execution yet",
+  "source_revision": "90f244ac75775f24c8c151666dbb856c01c99ab4",
+  "sources": {
+    "/tmp/inferno-helper-builder/companion/native-probe/prepare-root.c": "20a4eaf4b7a900573b172f4f59f04e5268f0e930534d7794d3b1bcdb4ee7d539",
+    "/tmp/inferno-helper-builder/companion/native-probe/imported-app.c": "eaf6ef4668ef196823d378d3b7b50a1ef3bac9f3d527679b1e88551d0ccc2224",
+    "/tmp/inferno-helper-builder/companion/native-probe/libSystem.tbd": "4f9508344cc02089adb89f2d069dee0b255d681a3feecda3194f51ec8b90bb52",
+    "/tmp/inferno-helper-builder/companion/native-probe/entitlements.plist": "ce51e5bb5be0cb72780a6e6b1c09bb2711643ba170dd875815fc4528a64a281d"
+  },
+  "producer_sources": {
+    "/tmp/inferno-helper-builder/companion/native-probe/build-prepare-helper.py": "950f733b58bcb1354408230eb3a34f1df68f54a4c431f0a731f3ac42803ece35",
+    "/tmp/inferno-helper-builder/companion/app-import.py": "e2ae5081168b99f4989cc759e797ae1381b595e263adea825705993685c1ce56"
+  },
+  "commands": [
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-ffreestanding",
+      "-fno-stack-protector",
+      "-fno-builtin",
+      "-O2",
+      "-c",
+      "/tmp/inferno-helper-builder/companion/native-probe/prepare-root.c",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/prepare-root.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "ios",
+      "14.0",
+      "14.0",
+      "-e",
+      "_main",
+      "-needed_library",
+      "/tmp/inferno-helper-builder/companion/native-probe/libSystem.tbd",
+      "-no_uuid",
+      "-adhoc_codesign",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/inferno-prepare-root",
+      "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/prepare-root.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "-Cadhoc",
+      "-S/tmp/inferno-helper-builder/companion/native-probe/entitlements.plist",
+      "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/inferno-prepare-root"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "-e",
+      "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/inferno-prepare-root"
+    ]
+  ],
+  "command_records": [
+    {
+      "argv": [
+        "/usr/bin/clang",
+        "--target=arm64-apple-ios14",
+        "-ffreestanding",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-O2",
+        "-c",
+        "/tmp/inferno-helper-builder/companion/native-probe/prepare-root.c",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/prepare-root.o"
+      ],
+      "started": 1791427766.8306649,
+      "finished": 1791427766.9947913,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/command-0.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/command-0.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+        "-arch",
+        "arm64",
+        "-platform_version",
+        "ios",
+        "14.0",
+        "14.0",
+        "-e",
+        "_main",
+        "-needed_library",
+        "/tmp/inferno-helper-builder/companion/native-probe/libSystem.tbd",
+        "-no_uuid",
+        "-adhoc_codesign",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/inferno-prepare-root",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/prepare-root.o"
+      ],
+      "started": 1791427766.995076,
+      "finished": 1791427767.0106575,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/command-1.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/command-1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+        "-Cadhoc",
+        "-S/tmp/inferno-helper-builder/companion/native-probe/entitlements.plist",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/inferno-prepare-root"
+      ],
+      "started": 1791427767.0109138,
+      "finished": 1791427767.0186143,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/command-2.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/command-2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+        "-e",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/inferno-prepare-root"
+      ],
+      "started": 1791427767.0189536,
+      "finished": 1791427767.0267332,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/helper-entitlements.plist",
+        "sha256": "b2225e59cc96f956425acdad7795d9dc8c44b322ef0cd05417cf0ec72f7e19dc"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/command-3.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "tools": {
+    "clang": {
+      "invocation": "/usr/bin/clang",
+      "resolved": "/usr/lib/llvm-18/bin/clang",
+      "sha256": "6d99f6207153b8b2063ace5d2a6177debaf6a6b6f31649e03afac07b98ba0b4d"
+    },
+    "linker": {
+      "invocation": "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+      "resolved": "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/lld",
+      "sha256": "f8835e48488195c65fb3dcb946053284ddf6b1369922893785209a9073c4e57b"
+    },
+    "ldid": {
+      "invocation": "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "resolved": "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "sha256": "d536519229ae8bd35a02a702e1ee07565de841869858fd36ea73dc9fd4162e7f"
+    }
+  },
+  "outputs": {
+    "inferno-prepare-root": {
+      "bytes": 86144,
+      "sha256": "66492292ea073d5710af269585058129d92db71509c16c3cd74453421e61a3e3"
+    },
+    "helper-entitlements.plist": {
+      "bytes": 363,
+      "sha256": "b2225e59cc96f956425acdad7795d9dc8c44b322ef0cd05417cf0ec72f7e19dc"
+    }
+  },
+  "signing": "Only owned preparation helper; exact existing entitlement dictionary; no imported or Apple executable signed"
+}
