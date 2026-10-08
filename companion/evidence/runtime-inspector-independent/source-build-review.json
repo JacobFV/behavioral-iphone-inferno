@@ -1,0 +1,35 @@
+{
+  "verdict": "PASS bounded inspector guest/parser/build source90c9854d9e and actual owned build; coordinator not reviewed yet",
+  "source_sha256": {
+    "inspect.c": "498b336bb5068130ce75142e9782276f2fb86c5637984c60368b87500ff1ff7f",
+    "result.py": "37695abae4b2d9e3ff3e00c15ca98e9c2fe1b0689036790ecf40dbd5cccea33e",
+    "sha256.h": "74d9b62a29eba9725b1dca24d683ada365a16da4b0063048078057b48f91e7b0",
+    "build.py": "07879a616a3d1100d859ce964046b7867f5a89b3a4b6b0f2c1fc5b574c7934e7",
+    "libSystem.tbd": "e482c8e19703ad40204aa1cf0264465bba103af166a8999865f32770871c9a1c",
+    "entitlements.plist": "53082fdea2f98764073ccc129187e93552b2b59552a518aba95bcf4b60231581"
+  },
+  "build_sha256": "38c3445b602f761da5c772fe18e51e47fab1cf2a3694a84db2c634c3edeeb99a",
+  "outputs": {
+    "inferno-runtime-inspector": {
+      "bytes": 68272,
+      "sha256": "388ad7d1241d29633cce632d94e2ef6413438423a7eebae00e6dcecee9a2997e"
+    },
+    "helper-entitlements.plist": {
+      "bytes": 368,
+      "sha256": "395a8bd074b45187f40ff0a0c644546590fc56015ba5bacc17b7e7d9e5be7f67"
+    }
+  },
+  "checks": [
+    "Fixed System volume RO mount, two fixed paths only, root-owned regular file/no-follow, descriptor/path stat consistency including mtime/ctime; exactEOF checks.",
+    "Launchd<=2MiB export512bytechunks exactoffset/length/hex plus recomputed SHA; dyld exact2052489216 bytes fullhash only; no implementation binary export.",
+    "Original mount and clean unmount/status0 gates, unknown/duplicate/truncated/missingchunks fail parser; returned metadata omits original exportedbytes.",
+    "Owned SHA implementation independently exact-text equal to retained cache helper implementation.",
+    "Actual4build commands0/rawlog hashes/source+output pins/exact entitlement readback checked; sizeof stat144 has source assertion, offsets match existing preparer declaration."
+  ],
+  "limits": [
+    "No guest execution or original import resolution newly proven by this review; current actual build is host evidence only.",
+    "Serialinterleaving/corruption fails closed; no assumption every export can succeed.",
+    "Whole dyld SHA has no offline byte verification in parser; actual owned helper execution/provenance is necessary.",
+    "Coordinator dependency/source review remains separate, no runtime-ready claim."
+  ]
+}
