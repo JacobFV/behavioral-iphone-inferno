@@ -2,6 +2,32 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 20:18:89 delayed-second-unlock experiment live; extractor reproduced
+
+88 strictinitial0→1 normal0/errornull/516.197794s, postflighta761bdbba9 and
+rootvisualf551b77fd8 passed. No warm/CPU/ADP/samples. FailedfivePCstillmissing.
+Rawhosttiming2ab1e62f58:85unlock1→2=396.21s vs86/87/88=48.73/51.95/80.83s.
+85setupdismiss→tap12.62s vshealthy34.91..46.62s; genericapp differs too.
+No causalclaim or mixing guestlaunchclock withhosttime.
+
+89 LIVE runner4183354/QEMU4184257, VNC/tmp/inferno-boot-1m04mobg/vnc.sock,
+report/control.local-build/reports/app-boot-89. Exactlaunchsource2ab1e62f58,
+fixture3/0889 sameflags/pending-equalitydefaultoff/seconds1200. RawcontACK
+1791429471.3733523. RootallUI. PLAN: normalfirstunlockafterreadiness+review;
+ifstilllockafter25s, delaysecondunlockuntil~396safterfirsthostsubmission.
+NoVNCininterveninggap, existingperiodicQMPunchanged. Setupdismiss→tap~40s
+consistentwithhealthy88; validateappearance/counter0 beforegate. Noactualdelay
+claimuntilrecorded. Onlygenuinecallback+stale25/25s thenONE1sCPUwindow.
+
+Newplaintextrecoveryproducer5cf4ccb401, actual5ddc05a34b, independent83d0a8b977:
+exactprofile/ramdiskhash, boundedcanonicalfourfieldrdskDER, plainHFSXwholegeometry,
+unchangedOCTETcopyoffset27/104685568bytes. Actualoutputmatchesretainedrawbytes;
+pinnedHFSlisting0 andsixsyntheticmalformed/unsupportedrejects. NoApplebytesGit,
+no decrypt/signature/ticket/key/VMoperation. APP_IMPORT linke226912266.
+Diskworker actualhostprepare with NEWdescriptor substitutingonlysame-hashnewraw
+path into rebuilt-helper runtime, preservinghistoricalprofile/preparationbinding;
+outputreproduced-inputs-prepare-1 running. NoVM/stage, oldartifactsunchanged.
+
 ### 2026-10-07 20:04:87 healthy initial journey;88 fresh attempt authorized
 
 87 normal0/errornull/365.814429s, strict/initial andall7/ancestors PASS1b8359ed47.
