@@ -2,6 +2,25 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 19:44: failed85 retained; instrumented86 live
+
+85 forensic postflight72b9f2b12e and independent45c635a10a passed preservation/
+cleanup checks, not app success. Wrapper failed closed. No failed child promoted.
+86 now LIVE runner4084561/QEMU4088312, VNC/tmp/inferno-boot-npbbi57h/vnc.sock,
+report/control.local-build/reports/app-boot-86. Exact launchroot72b9f2b12e;
+successful imported-fixture3 base/0889 binary, strict keep-running, HID/mailbox,
+startuptrace900,capture10,seconds1200,pending-equality CPUdefaultoff. Root allUI.
+Initial lockscreen reviewed; waiting original HID readiness before explicitinput.
+Only genuine fixture tap plus persistently stale reviewed frames triggers ONE1s
+fivePC window; healthy originalClock84 already calibrated allfive sites.
+
+Read-only nextobservationproposal5d7567c186 identifies successfulSwapBegin
+outputstore192b6d274 W8returnedtoken/X20opaqueoutputpointer, but samebootcache
+slide, TBcoverage, separateguard/calibration needed. No runtimeimplementation,
+no negativeproof from absent snapshots, no pairingwithwaits. Diskworker owns
+APP_IMPORT operator documentation to close concrete setup gaps6fb1c657d3.
+Mac/Xcode deferred; continued work authorized across roadmap/status questions.
+
 ### 2026-10-07 19:42: durable source staged successfully; boot85 interaction failed
 
 Persistent prepare/stage passed actual execution and independent readbacks:
