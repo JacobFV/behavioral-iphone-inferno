@@ -1,0 +1,167 @@
+{
+  "session_path": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/session.json",
+  "session_sha256": "aae8fd302f4a053c20e0ab6acb7de1ad0ac3be0ddfe211ffd47484b8fc825d9b",
+  "status": "host-prepared-not-staged",
+  "source": "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion",
+  "source_revision": "3f8b2d5623a2ac862eba2899771049c44b197316",
+  "source_pins_verified": 72,
+  "commands": [
+    {
+      "label": "import",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/app-import.py",
+        "--ipa",
+        "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/ImportedDemo.ipa",
+        "--output",
+        "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/import"
+      ],
+      "started": 1791427991.839954,
+      "finished": 1791427991.8683338,
+      "exit_code": 0,
+      "log": {
+        "path": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/import.log",
+        "sha256": "28441d92a9f80753a4cfb76e2aac3703223b9af1489e8df2455a0320b855ee23"
+      }
+    },
+    {
+      "label": "launcher",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/app-probe/build-import-launcher.py",
+        "--manifest",
+        "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/import/manifest.json",
+        "--manifest-sha256",
+        "68cdc3ece31d151ad693766d2a288d8b4ea5ec12b24f1be7be3ea2cd5abbc66a",
+        "--clang",
+        "/usr/bin/clang",
+        "--linker",
+        "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+        "--output",
+        "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/launcher"
+      ],
+      "started": 1791427991.871583,
+      "finished": 1791427992.0640736,
+      "exit_code": 0,
+      "log": {
+        "path": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/launcher.log",
+        "sha256": "b526bdb4b0f714ed948175b57f3c2eaa01879b909cf3ba914aa9d2fbafc416ea"
+      }
+    },
+    {
+      "label": "cache",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/native-probe/merge-launchd-cache.py",
+        "--cache",
+        "/home/brandonin/.local/share/inferno/native-probe/launchd-system-app-unlock-supported.plist",
+        "--replace-owned-job",
+        "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/launcher/org.inferno.app-probe.plist",
+        "--output",
+        "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/launchd-cache.plist"
+      ],
+      "started": 1791427992.0643868,
+      "finished": 1791427992.147644,
+      "exit_code": 0,
+      "log": {
+        "path": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/cache.log",
+        "sha256": "2a829df20fc62c550ec2e7c0d2105c4fef086602a7b24f3a41f3d735f1b1b407"
+      }
+    },
+    {
+      "label": "prepare",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/native-probe/prepare.py",
+        "--profile",
+        "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/profile.json",
+        "--raw-ramdisk",
+        "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/ramdisk-payload.raw",
+        "--probe",
+        "/home/brandonin/.local/share/inferno/native-probe/helper-build-42/inferno-probe",
+        "--hfsplus",
+        "/home/brandonin/.local/share/inferno/native-probe/tools/hfsplus",
+        "--disk-helper",
+        "/home/brandonin/.local/share/inferno/native-probe/reproducible-helper-build-1/inferno-prepare-root",
+        "--disk-helper-existing",
+        "--imported-app-manifest",
+        "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/import/manifest.json",
+        "--imported-app-manifest-sha256",
+        "68cdc3ece31d151ad693766d2a288d8b4ea5ec12b24f1be7be3ea2cd5abbc66a",
+        "--system-launcher",
+        "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/launcher/inferno-launcher",
+        "--exec-wrapper",
+        "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/launcher/inferno-exec-launcher",
+        "--launchd-cache",
+        "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/launchd-cache.plist",
+        "--launchd-cache-sha256",
+        "06291b66b9ed5e7886a2893f5c6094c0ae7e3de2fe7ddeef951e67c278e1b843",
+        "--output",
+        "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/recovery"
+      ],
+      "started": 1791427992.1807292,
+      "finished": 1791427992.5700653,
+      "exit_code": 0,
+      "log": {
+        "path": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/prepare.log",
+        "sha256": "6a3ebb11ae0408a182901a762c617522428eb2285bb26f12d417278f998c2edb"
+      }
+    }
+  ],
+  "readback_comparisons": [
+    {
+      "source": "/home/brandonin/.local/share/inferno/native-probe/helper-build-42/inferno-probe",
+      "readback": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/recovery/readback-probe",
+      "bytes": 33392,
+      "sha256": "7def2d54fb9a0737666cbe175b38ad442eea5340a07fac202ffd1fda2df849c9"
+    },
+    {
+      "source": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/launchd-cache.plist",
+      "readback": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/recovery/readback-launchd-cache",
+      "bytes": 596664,
+      "sha256": "06291b66b9ed5e7886a2893f5c6094c0ae7e3de2fe7ddeef951e67c278e1b843"
+    },
+    {
+      "source": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/launcher/inferno-launcher",
+      "readback": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/recovery/readback-system-launcher",
+      "bytes": 69136,
+      "sha256": "770ff562cc7eb0ad99c32668cf560f18f26a447c12dd353d8656a40a95e9fb28"
+    },
+    {
+      "source": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/launcher/inferno-exec-launcher",
+      "readback": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/recovery/readback-exec-wrapper",
+      "bytes": 67392,
+      "sha256": "56199ba0d01451b9f3f40aeb7d0d67231155aaf7c842e8aa5b51dfb6dc2372e3"
+    },
+    {
+      "source": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/recovery/imported-app.plan",
+      "readback": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/recovery/readback-imported-app.plan",
+      "bytes": 1992,
+      "sha256": "af1d5723b8619b2ee4552e3d585175736e613f786ba7fe8cb5abf5d4405c13c3"
+    },
+    {
+      "source": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/import/bundle/ImportedDemo.app/ImportedDemo",
+      "readback": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/recovery/readback-imported-0000",
+      "bytes": 70880,
+      "sha256": "765dfcc639fdf7a3b4936196e528040fe1c566b17eb99a28d08757460d88676d"
+    },
+    {
+      "source": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/import/bundle/ImportedDemo.app/Info.plist",
+      "readback": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/recovery/readback-imported-0001",
+      "bytes": 1012,
+      "sha256": "896344cee09178da2302fd84305002996264384df6f8e3278a46140ed0076dbd"
+    },
+    {
+      "source": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/import/bundle/ImportedDemo.app/Message.txt",
+      "readback": "/home/brandonin/.local/share/inferno/app-import/rebuilt-helper-prepare-1/recovery/readback-imported-0002",
+      "bytes": 47,
+      "sha256": "3f4a0b1e4b9bf2bc63476535707976a2fafaaa3924d222bd7a686678c94f02d5"
+    }
+  ],
+  "ramdisk_sha256": "6b7344b63e01c6cb3102f4cbddafc8ea165e97746ec6adfc1f8530ccc90fb640",
+  "limits": [
+    "Host preparation only; no recovery or installed VM executed.",
+    "Runtime validator ran normally inside preparation; this audit does not repeat full backing-disk hashes.",
+    "Existing sessions/source trees untouched; new session pins persistent source."
+  ]
+}
