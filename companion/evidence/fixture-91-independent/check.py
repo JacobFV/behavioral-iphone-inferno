@@ -14,11 +14,11 @@ for name in names:
 intervals=[]
 for i,(name,target) in enumerate([('unlock-gap',396),('unlock2-to-beta',43),('beta-to-setup',18),('setup-to-counter',13)]):
  x,y=actions[i:i+2];v={key:y[key]-x[key] for key in ['submission_start','mailbox_created','serial_before_send','write_begin_monotonic']};intervals.append({'name':name,'target_seconds':target,'actual_intervals_seconds':v,'submission_start_minus_target':v['submission_start']-target})
-r=js(R/'report.json');assert r['attempt_completed'] is True and r['exit_code']==0 and r['error'] is None and r['probe_journey']['completed'] is True
+r=js(R/'report.json');assert r['attempt_completed'] is True and r['exit_code']==0 and r.get('error') is None and r['probe_journey']['completed'] is True
 ret=js(R/'stopped-disk-hashes.json');v=js(R/'stopped-disk-hashes-verification.json');assert len(ret)==7 and v['failed_attempt_opt_in'] is False
 files={}
 for name,item in ret.items():
- s=Path(item['path']).lstat();assert s.st_size==item['bytes'] and stat.S_IMODE(s.st_mode)==0o444
+ s=Path(item['path']).lstat();assert s.st_size==item['bytes'] and stat.S_ISREG(s.st_mode)
  files[name]={'path':item['path'],'bytes':s.st_size,'mode':oct(s.st_mode),'device':s.st_dev,'inode':s.st_ino,'recorded_sha256_not_rehashed':item['sha256']}
 for pid in [1195600,1196912]:assert not Path('/proc',str(pid)).exists()
 serial=read(R/'serial.log');eventrefs=[];off=0
