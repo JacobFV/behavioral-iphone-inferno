@@ -91,3 +91,13 @@ and default delaysContentTouches are unchanged. The resource label grows from
 170 to200 points, ending at y390 before the y405 option row. A new guest journey
 must verify button-start scrolling, normal taps and full Guide text; neither
 this layout choice nor documentation establishes successful rendering.
+
+
+The revised host producer built `navigation-demo-006` from `eda2b7c31f`.
+It passed strict compile/link/import and manifest launcher build. The ZIP again
+contains exactly three app files. All115 executable imports passed the original
+cache audit on byte-identical executables from005, including the new UIScrollView
+superclass reference. Build005 is retained but superseded because its producer
+also packaged the local link declaration;006 corrects that copy list. Revised
+raw host evidence is in `evidence/scroll-revision-006/`. No revised guest run is
+claimed, and the old004 producer/output remains untouched.

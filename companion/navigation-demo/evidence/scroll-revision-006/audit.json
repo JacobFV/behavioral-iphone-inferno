@@ -1,0 +1,72 @@
+{
+  "status": "host-build-import-export-audit-passed-not-executed",
+  "source_revision": "eda2b7c31f700f1c2932186c66493fb762998ed7",
+  "ipa": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/navigation-demo-006/NavigationDemo.ipa",
+    "sha256": "907c1d556f2099b236c386d9d9491a851935a07966aeb372752fd2378ffa3a2b",
+    "bytes": 8333
+  },
+  "manifest": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/navigation-demo-006/imported/manifest.json",
+    "sha256": "2d51cef51bf521f4eca395bcaeeb1b0366b0f98bc5c71f47d74947e4ada7759d",
+    "tree_sha256": "9d53df8fa859281d9cc4234fa310ae92d87b210c782bf6ef246905aa715635e9"
+  },
+  "exact_zip_entries": [
+    "Payload/NavigationDemo.app/Guide.txt",
+    "Payload/NavigationDemo.app/Info.plist",
+    "Payload/NavigationDemo.app/NavigationDemo"
+  ],
+  "original005_preserved": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/navigation-demo-005",
+    "reason": "Unnecessary sample link stub accidentally packaged; retained and superseded, never staged by this worker"
+  },
+  "executable_export_audit_binding": {
+    "Payload/NavigationDemo.app/NavigationDemo": {
+      "old": "8f9bc84bd400658eb012ecb84f59503f46cbf92d27700b085e66561f4905297c",
+      "new": "8f9bc84bd400658eb012ecb84f59503f46cbf92d27700b085e66561f4905297c"
+    },
+    "launcher/inferno-launcher": {
+      "old": "f11eedcea3c553a134222fbd8663611644ff9adeb4cd86c72cf60d22de5163f6",
+      "new": "f11eedcea3c553a134222fbd8663611644ff9adeb4cd86c72cf60d22de5163f6"
+    },
+    "launcher/inferno-exec-launcher": {
+      "old": "bc844b8f59557576d40101ef9323744bb3ed2df7408d59734fd3637e00d8016f",
+      "new": "bc844b8f59557576d40101ef9323744bb3ed2df7408d59734fd3637e00d8016f"
+    }
+  },
+  "imports": 115,
+  "raw_files": {
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-006/build-evidence.json": "3a0b9d3bfd15d92bda5a49aabc15bd530f5d92a9370918629e2dad48020b3046",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-006/build.log": "b20c51b1905cd00a094242bd9e4c039cad3dcdedca60c73d86508864c1ff95c4",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-006-command.log": "3a0b9d3bfd15d92bda5a49aabc15bd530f5d92a9370918629e2dad48020b3046",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-006/imported/manifest.json": "2d51cef51bf521f4eca395bcaeeb1b0366b0f98bc5c71f47d74947e4ada7759d",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-006/launcher/build-evidence.json": "06f503832a7f7ce2dc29512c5d594f9d4332c87aadfd6561cc07bc63d18848a0",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-005/import-audit.json": "7d31360654c20acd5345aab54e83c1c2806c89142a6c228c5fdb7038a677312e",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-005/dynamic-classes-audit.json": "c1d033ae7b3826c1ac5e8ea1a1a184e3dcb62ea21ded3a5900928913e3d000c6",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-005-audit.log": "87b4d2c8f5397044c59b2772447157daf9f45e1832b1c9fa80c1f008ad66e7d6",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-demo-005/build-evidence.json": "47ac2875791ae9cbbd119a2f0071bf16d2dccfb9d5e01ed80672265a23248818"
+  },
+  "code_scope": [
+    "UIButton-only catalog scroll cancellation, super for other content",
+    "canCancelContentTouches explicitlytrue; delaysContentTouches unchanged",
+    "resource label height200; full display unproven until guest",
+    "local UIKit stub only adds UIScrollView; no shared stub/header edits"
+  ],
+  "primary_sources": [
+    "https://developer.apple.com/documentation/uikit/uiscrollview/touchesshouldcancel(in:)",
+    "https://developer.apple.com/documentation/uikit/uiscrollview/cancancelcontenttouches"
+  ],
+  "limits": [
+    "Prior button-vs-margin difference consistent with documented control arbitration, not captured runtime branch proof",
+    "Host outputs only; no stage/VM/input/scroll/Guide success claim"
+  ],
+  "worktree": {
+    "path": "/tmp/inferno-navigation-scroll-fix",
+    "creation": "git worktree add --detach --no-checkout, sparse paths configured before checkout",
+    "sparse_paths": [
+      "/companion/navigation-demo/",
+      "/companion/app-probe/",
+      "/companion/app-import.py"
+    ]
+  }
+}

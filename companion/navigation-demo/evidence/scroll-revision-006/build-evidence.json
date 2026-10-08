@@ -1,0 +1,129 @@
+{
+  "status": "built-and-import-validated-not-executed",
+  "guest_actions": false,
+  "commands": [
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-fobjc-runtime=ios-14.0",
+      "-fno-objc-arc",
+      "-fno-stack-protector",
+      "-ffreestanding",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "/tmp/inferno-navigation-scroll-fix/companion/navigation-demo/Main.m",
+      "-o",
+      "/home/brandonin/.local/share/inferno/app-import/navigation-demo-006/Main.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "ios",
+      "14.0",
+      "14.0",
+      "-e",
+      "_main",
+      "-no_uuid",
+      "-adhoc_codesign",
+      "-needed_library",
+      "/tmp/inferno-navigation-scroll-fix/companion/app-probe/stubs/libSystem.tbd",
+      "-needed_library",
+      "/tmp/inferno-navigation-scroll-fix/companion/app-probe/stubs/libobjc.tbd",
+      "-needed_library",
+      "/tmp/inferno-navigation-scroll-fix/companion/app-probe/stubs/Foundation.tbd",
+      "-needed_library",
+      "/tmp/inferno-navigation-scroll-fix/companion/navigation-demo/UIKit.tbd",
+      "/home/brandonin/.local/share/inferno/app-import/navigation-demo-006/Main.o",
+      "-o",
+      "/home/brandonin/.local/share/inferno/app-import/navigation-demo-006/Payload/NavigationDemo.app/NavigationDemo"
+    ],
+    [
+      "/usr/bin/python3",
+      "/tmp/inferno-navigation-scroll-fix/companion/app-probe/build-import-launcher.py",
+      "--manifest",
+      "/home/brandonin/.local/share/inferno/app-import/navigation-demo-006/imported/manifest.json",
+      "--manifest-sha256",
+      "2d51cef51bf521f4eca395bcaeeb1b0366b0f98bc5c71f47d74947e4ada7759d",
+      "--clang",
+      "/usr/bin/clang",
+      "--linker",
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18",
+      "--output",
+      "/home/brandonin/.local/share/inferno/app-import/navigation-demo-006/launcher"
+    ]
+  ],
+  "sources": {
+    "/tmp/inferno-navigation-scroll-fix/companion/navigation-demo/build.py": "800bff3ae38828e63ac407723bb497689658cb6b85c7833ca2ee97c2cbb8cbf9",
+    "/tmp/inferno-navigation-scroll-fix/companion/navigation-demo/Main.m": "ac3bb6675534a6a0da1467cf21130a55c7cd982637f038adfafafd2c9c8a9f3a",
+    "/tmp/inferno-navigation-scroll-fix/companion/navigation-demo/NavigationNarrow.h": "94971bf56a9e3835f64a8806571f5340f5d9388586e78d6853c1515b39ea0ded",
+    "/tmp/inferno-navigation-scroll-fix/companion/navigation-demo/Info.plist": "9bb162575c006b081c5052222c59f2fe7038a7bd2ca947ccb5743c1d62ea42f1",
+    "/tmp/inferno-navigation-scroll-fix/companion/navigation-demo/Guide.txt": "686f739574da2ac8c3b7cf6433d646d0fd187a4116a0763cab86e01d119fa6af",
+    "/tmp/inferno-navigation-scroll-fix/companion/navigation-demo/UIKit.tbd": "48624f04cdd8a48e2266cfd3a251ac9c25c28236138dbd7895f3c82b4c660ea8",
+    "/tmp/inferno-navigation-scroll-fix/companion/app-import.py": "e2ae5081168b99f4989cc759e797ae1381b595e263adea825705993685c1ce56",
+    "/tmp/inferno-navigation-scroll-fix/companion/app-probe/build-import-launcher.py": "b6bb1582efce65a99f2506ef634dbc77f77077d824070ddb9f854667f44ff017",
+    "/tmp/inferno-navigation-scroll-fix/companion/app-probe/UIKitNarrow.h": "a78977e34024c0667f69906f6238659a0db950bae7b6fcb08115116dda6549de",
+    "/tmp/inferno-navigation-scroll-fix/companion/app-probe/LaunchServicesNarrow.h": "1703808c5381323ebdaa95ed40f79e1fd2d4a2f30ccfd226420289caa48bbda7",
+    "/tmp/inferno-navigation-scroll-fix/companion/app-probe/DiagnosticLauncher.m": "f35d233f86a2cf2706ab54842e5036a46c0a3a44d22d9b30ce4ebcca3eaf68d5",
+    "/tmp/inferno-navigation-scroll-fix/companion/app-probe/Launcher.m": "c1b15e94d22e75ce105271b5856c9fd6eb9a845af447bcb192c136544290af6c",
+    "/tmp/inferno-navigation-scroll-fix/companion/app-probe/EventRecord.h": "dfdaf58a1c7f617bf25a7fdc30a33a9eba43824b4c344718b15814b65b7c7e81",
+    "/tmp/inferno-navigation-scroll-fix/companion/app-probe/OwnedClock.h": "b5f758c329acf7d5b97354adc9d0029d8844d301ad3772dd152c3377529ce488",
+    "/tmp/inferno-navigation-scroll-fix/companion/app-probe/ExecLauncher.c": "b5b1520679340968a9765cfe9b6055ac567b103f69a7f5134a3ca5d0589d4483",
+    "/tmp/inferno-navigation-scroll-fix/companion/app-probe/AppTarget.h": "238c9ef1a7982a1ab148a5ddca8442cde1578811c0078392034e551c4b97fcfb",
+    "/tmp/inferno-navigation-scroll-fix/companion/app-probe/org.inferno.app-probe-system-app.plist": "642afa46f9840c58ade9119561d2b98698ceff1a3ef1a14459ffdc10d23f8433",
+    "/tmp/inferno-navigation-scroll-fix/companion/app-probe/stubs/CoreServices.tbd": "d218c64fcf28aef2f88d7ff26ff0a48cbcc22341c7d8663a664309aa9396d489",
+    "/tmp/inferno-navigation-scroll-fix/companion/app-probe/stubs/Foundation.tbd": "a0c7fdb3e641589537296e58024a74064ebfeae6f939554755eb3d1ce72a8b1f",
+    "/tmp/inferno-navigation-scroll-fix/companion/app-probe/stubs/UIKit.tbd": "1efa4c024d51eca90e36841c57c797b8b6661e79edd2482118fe131da8d12048",
+    "/tmp/inferno-navigation-scroll-fix/companion/app-probe/stubs/libSystem.tbd": "f09cc074e887b30abd62d7b882f1a6a83672413affeb82db0910bddf6509411b",
+    "/tmp/inferno-navigation-scroll-fix/companion/app-probe/stubs/libobjc.tbd": "c2c2e5237ddcbbb40c090e776ca0173fe2055a1e2095321e406f9339ca93a4f2"
+  },
+  "git_revision": "eda2b7c31f700f1c2932186c66493fb762998ed7",
+  "tools": {
+    "clang": {
+      "path": "/usr/bin/clang",
+      "resolved_path": "/usr/lib/llvm-18/bin/clang",
+      "sha256": "6d99f6207153b8b2063ace5d2a6177debaf6a6b6f31649e03afac07b98ba0b4d",
+      "version": "Ubuntu clang version 18.1.3 (1ubuntu1)\nTarget: aarch64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /usr/bin"
+    },
+    "linker": {
+      "path": "/home/brandonin/.local/share/inferno/native-probe/tools/usr/bin/ld64.lld-18",
+      "resolved_path": "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/lld",
+      "sha256": "f8835e48488195c65fb3dcb946053284ddf6b1369922893785209a9073c4e57b",
+      "version": "Ubuntu LLD 18.1.3"
+    }
+  },
+  "ipa": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/navigation-demo-006/NavigationDemo.ipa",
+    "sha256": "907c1d556f2099b236c386d9d9491a851935a07966aeb372752fd2378ffa3a2b",
+    "bytes": 8333
+  },
+  "manifest": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/navigation-demo-006/imported/manifest.json",
+    "sha256": "2d51cef51bf521f4eca395bcaeeb1b0366b0f98bc5c71f47d74947e4ada7759d",
+    "tree_sha256": "9d53df8fa859281d9cc4234fa310ae92d87b210c782bf6ef246905aa715635e9"
+  },
+  "bundle_files": {
+    "Guide.txt": {
+      "sha256": "686f739574da2ac8c3b7cf6433d646d0fd187a4116a0763cab86e01d119fa6af",
+      "bytes": 149
+    },
+    "Info.plist": {
+      "sha256": "9bb162575c006b081c5052222c59f2fe7038a7bd2ca947ccb5743c1d62ea42f1",
+      "bytes": 1025
+    },
+    "NavigationDemo": {
+      "sha256": "8f9bc84bd400658eb012ecb84f59503f46cbf92d27700b085e66561f4905297c",
+      "bytes": 73344
+    }
+  },
+  "build_log_sha256": "b20c51b1905cd00a094242bd9e4c039cad3dcdedca60c73d86508864c1ff95c4",
+  "limitations": [
+    "UIKit dynamic class existence and selectors require guest validation.",
+    "No guest staging, launch, navigation, scrolling, switch, save, or resource display asserted.",
+    "Fixed portrait research fixture, not arbitrary IPA or Linux Xcode compatibility."
+  ]
+}
