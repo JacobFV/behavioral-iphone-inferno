@@ -196,12 +196,17 @@ def validate_artifacts(path,expected,renderer,verified,pins):
     for name,e in a['outputs'].items():
         if Path(e['path'])!=path.parent/name:raise ValueError('Artifact output escaped')
         KS.pin(e['path'],e['sha256'],pins)
-    if set(a['outputs'])!={*jobs,'launchd.plist','merge.stdout','merge.stderr'} or a['jobs']!=sorted(jobs):raise ValueError('Artifact output inventory differs')
+    if set(a['outputs'])!={*jobs,'launchd.plist','launchd.plist.json','merge.stdout','merge.stderr'} or a['jobs']!=sorted(jobs):raise ValueError('Artifact output inventory differs')
     for name,job in jobs.items():
         if plistlib.loads((path.parent/name).read_bytes())!=job:raise ValueError('Artifact job bytes differ')
     original=plistlib.loads(Path(records['inspection']['launchd_export']['path']).read_bytes())
-    merged=plistlib.dumps(F.merge(original,jobs),fmt=plistlib.FMT_BINARY,sort_keys=False)
-    if (path.parent/'launchd.plist').read_bytes()!=merged:raise ValueError('Fresh exact cache merge differs')
+    merged=(path.parent/'launchd.plist').read_bytes()
+    expected_merge=F.merge(original,jobs)
+    if plistlib.loads(merged)!=expected_merge:raise ValueError('Fresh complete decoded cache merge differs')
+    provenance=bounded_record(path.parent/'launchd.plist.json')
+    explicit={'/System/Library/LaunchDaemons/'+name:{'label':job['Label'],'sha256':sha(path.parent/name)} for name,job in jobs.items()}
+    disabled=[key for label in F.POLICY for key,value in original['LaunchDaemons'].items() if value.get('Label')==label]
+    if provenance.get('source')!=records['inspection']['launchd_export']['path'] or provenance.get('source_sha256')!=records['inspection']['launchd_export']['sha256'] or provenance.get('original_jobs')!=len(original['LaunchDaemons']) or provenance.get('merged_jobs')!=len(expected_merge['LaunchDaemons']) or provenance.get('explicit_jobs')!=explicit or provenance.get('disabled_documented_services')!=disabled or provenance.get('output_sha256')!=digest_bytes(merged):raise ValueError('Cache merger provenance sidecar differs')
     merge=a['merge_command'];merge_tail=['--cache',records['inspection']['launchd_export']['path'],'--disable-unsupported-services','--output',str(path.parent/'launchd.plist')]
     for name in jobs:merge_tail+=['--job',str(path.parent/name)]
     if len(merge)<2 or Path(merge[1]).name!='merge-launchd-cache.py' or sha(Path(merge[1]))!=sha(SOURCE/'native-probe/merge-launchd-cache.py') or merge[2:]!=merge_tail:raise ValueError('Artifact merge command differs')
