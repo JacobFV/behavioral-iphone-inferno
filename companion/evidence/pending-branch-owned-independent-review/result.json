@@ -1,0 +1,297 @@
+{
+  "scope": "Independent raw replay of wholly owned firmware-free fixture, not iOS or original kernel coverage",
+  "artifact_paths_hashes": {
+    "/home/brandonin/.local/share/inferno/native-probe/pending-branch-owned-attempt-1/report.json": "52a2d9c3017e1d989264e9c19579d3c26b0e5844cae76332f00664a2ea9a2bcd",
+    "/home/brandonin/.local/share/inferno/native-probe/pending-branch-owned-attempt-1/guest-errors.log": "dd50e344c686e2694109c75068e30bace0742b24fb14db2e58757400abf474b5",
+    "/home/brandonin/.local/share/inferno/native-probe/pending-branch-owned-attempt-1/qmp-transcript.jsonl": "d6bbdbc64aa95d88029f305118a373e1c9a7cc65a78768ee1098e5728769ca17",
+    "/home/brandonin/.local/share/inferno/native-probe/pending-branch-owned-attempt-1/swapwait-cpu-control.jsonl": "72206a3f99230215ef903d8ed05916d79549937017fd5cd337386958e2e686a7",
+    "/home/brandonin/.local/share/inferno/native-probe/pending-branch-owned-attempt-1/stderr.log": "9676393568859b05ec5ab9f08641db23ddf60a6e098a7c013526a3b7095a8105"
+  },
+  "source_hashes": {
+    "/tmp/inferno-pending-branch-profile/companion/cpu-window-probe/pending.S": "d1f05848be984ad7de364d63d0ff792d9948c0651851977e7d901063150fdaeb",
+    "/tmp/inferno-pending-branch-profile/companion/cpu-window-probe/run.py": "8edd4a5e1d6cf3616be9af0f9861c6f448514ecd912203e06c8865e42eed4959",
+    "/tmp/inferno-pending-branch-profile/companion/qmp_control.py": "642e75b59a116e10e351845d3a037c8689bdd3042bf5053a5a5c54b3817070f8",
+    "/tmp/inferno-pending-branch-profile/companion/boot.py": "86e625db02acbca308e98f65e4715255077328bdecee981eb0fdabaf3a1dd19f"
+  },
+  "parser_sha256": "5928f5e4aa34d539ae211d899c533d41c345171abad97c1d249486d2e378a159",
+  "base_parser_sha256": "6c22f7a54fdd1dec01d6afdeffb78ccc54a8f50a57428d0504789a5b52d1fe30",
+  "actual_command_filter": "0x40200014+4,0x40200034+4,0x4020004c+4",
+  "mailbox_declared_production_filter": "0xfffffff0096f1c74+4,0xfffffff0096f1c7c+4,0xfffffff0096f1d1c+4",
+  "complete_count": 3261,
+  "role_counts": {
+    "null-active": 1087,
+    "active-join": 1087,
+    "queued-match": 1087
+  },
+  "distributions": [
+    {
+      "role": "active-join",
+      "fields": {
+        "active_pointer_second_read": "0x0000000040001000",
+        "active_token_equals_requested": true,
+        "active_token_third_read": 294,
+        "completed_token": 292,
+        "mode": "unknown",
+        "requested_equals_completed": false,
+        "requested_token": 294
+      },
+      "snapshots": 1087
+    },
+    {
+      "role": "null-active",
+      "fields": {
+        "active_pointer": "0x0000000000000000",
+        "completed_token": 292,
+        "mode": "unknown",
+        "null_branch_register_valid": true,
+        "requested_equals_completed": false,
+        "requested_token": 293
+      },
+      "snapshots": 1087
+    },
+    {
+      "role": "queued-match",
+      "fields": {
+        "mode": "unknown",
+        "queue_pointer": "0x0000000040002000",
+        "queued_token": 295,
+        "requested_token": 295,
+        "tokens_equal": true
+      },
+      "snapshots": 1087
+    }
+  ],
+  "disabled_state_queries": 27,
+  "windows": [
+    {
+      "start_offset": 20916,
+      "end_offset": 2282503,
+      "reason": "deadline",
+      "role_counts": {
+        "null-active": 1035,
+        "active-join": 1035,
+        "queued-match": 1035
+      },
+      "complete_count": 3105,
+      "incomplete_count": 0,
+      "enable": {
+        "direction": "send",
+        "time": 1791419452.168291,
+        "raw": "{\"execute\": \"human-monitor-command\", \"id\": 12, \"arguments\": {\"command-line\": \"log cpu,nochain,guest_errors\"}}\n",
+        "byte_offset": 3633,
+        "byte_length": 183,
+        "message": {
+          "execute": "human-monitor-command",
+          "id": 12,
+          "arguments": {
+            "command-line": "log cpu,nochain,guest_errors"
+          }
+        }
+      },
+      "enable_reply": {
+        "direction": "receive",
+        "time": 1791419452.1686826,
+        "raw": "{\"return\": \"\", \"id\": 12}\r\n",
+        "byte_offset": 3816,
+        "byte_length": 98,
+        "message": {
+          "return": "",
+          "id": 12
+        }
+      },
+      "restore": {
+        "direction": "send",
+        "time": 1791419453.1684983,
+        "raw": "{\"execute\": \"human-monitor-command\", \"id\": 13, \"arguments\": {\"command-line\": \"log guest_errors\"}}\n",
+        "byte_offset": 3914,
+        "byte_length": 172,
+        "message": {
+          "execute": "human-monitor-command",
+          "id": 13,
+          "arguments": {
+            "command-line": "log guest_errors"
+          }
+        }
+      },
+      "restore_reply": {
+        "direction": "receive",
+        "time": 1791419453.1691546,
+        "raw": "{\"return\": \"\", \"id\": 13}\r\n",
+        "byte_offset": 4086,
+        "byte_length": 98,
+        "message": {
+          "return": "",
+          "id": 13
+        }
+      }
+    },
+    {
+      "start_offset": 2327275,
+      "end_offset": 2440951,
+      "reason": "runner cleanup",
+      "role_counts": {
+        "null-active": 52,
+        "active-join": 52,
+        "queued-match": 52
+      },
+      "complete_count": 156,
+      "incomplete_count": 0,
+      "enable": {
+        "direction": "send",
+        "time": 1791419453.502196,
+        "raw": "{\"execute\": \"human-monitor-command\", \"id\": 23, \"arguments\": {\"command-line\": \"log cpu,nochain,guest_errors\"}}\n",
+        "byte_offset": 7082,
+        "byte_length": 183,
+        "message": {
+          "execute": "human-monitor-command",
+          "id": 23,
+          "arguments": {
+            "command-line": "log cpu,nochain,guest_errors"
+          }
+        }
+      },
+      "enable_reply": {
+        "direction": "receive",
+        "time": 1791419453.5024333,
+        "raw": "{\"return\": \"\", \"id\": 23}\r\n",
+        "byte_offset": 7265,
+        "byte_length": 98,
+        "message": {
+          "return": "",
+          "id": 23
+        }
+      },
+      "restore": {
+        "direction": "send",
+        "time": 1791419453.5527594,
+        "raw": "{\"execute\": \"human-monitor-command\", \"id\": 24, \"arguments\": {\"command-line\": \"log guest_errors\"}}\n",
+        "byte_offset": 7363,
+        "byte_length": 172,
+        "message": {
+          "execute": "human-monitor-command",
+          "id": 24,
+          "arguments": {
+            "command-line": "log guest_errors"
+          }
+        }
+      },
+      "restore_reply": {
+        "direction": "receive",
+        "time": 1791419453.5532527,
+        "raw": "{\"return\": \"\", \"id\": 24}\r\n",
+        "byte_offset": 7535,
+        "byte_length": 98,
+        "message": {
+          "return": "",
+          "id": 24
+        }
+      }
+    },
+    {
+      "start_offset": 2476343,
+      "end_offset": 2476455,
+      "reason": "enable failed or uncertain",
+      "role_counts": {},
+      "complete_count": 0,
+      "incomplete_count": 0,
+      "enable": {
+        "direction": "send",
+        "time": 1791419453.8172758,
+        "raw": "{\"execute\": \"human-monitor-command\", \"id\": 34, \"arguments\": {\"command-line\": \"log cpu,nochain,guest_errors\"}}\n",
+        "byte_offset": 10539,
+        "byte_length": 184,
+        "message": {
+          "execute": "human-monitor-command",
+          "id": 34,
+          "arguments": {
+            "command-line": "log cpu,nochain,guest_errors"
+          }
+        }
+      },
+      "enable_reply": {
+        "direction": "receive",
+        "time": 1791419453.8178344,
+        "raw": "{\"return\": \"\", \"id\": 34}\r\n",
+        "byte_offset": 10723,
+        "byte_length": 98,
+        "message": {
+          "return": "",
+          "id": 34
+        }
+      },
+      "restore": {
+        "direction": "send",
+        "time": 1791419453.8179684,
+        "raw": "{\"execute\": \"human-monitor-command\", \"id\": 35, \"arguments\": {\"command-line\": \"log guest_errors\"}}\n",
+        "byte_offset": 10821,
+        "byte_length": 172,
+        "message": {
+          "execute": "human-monitor-command",
+          "id": 35,
+          "arguments": {
+            "command-line": "log guest_errors"
+          }
+        }
+      },
+      "restore_reply": {
+        "direction": "receive",
+        "time": 1791419453.8184702,
+        "raw": "{\"return\": \"\", \"id\": 35}\r\n",
+        "byte_offset": 10993,
+        "byte_length": 98,
+        "message": {
+          "return": "",
+          "id": 35
+        }
+      }
+    }
+  ],
+  "quit": {
+    "direction": "send",
+    "time": 1791419454.074482,
+    "raw": "{\"execute\": \"quit\", \"id\": 36}\n",
+    "byte_offset": 11091,
+    "byte_length": 97,
+    "message": {
+      "execute": "quit",
+      "id": 36
+    }
+  },
+  "quit_reply": {
+    "direction": "receive",
+    "time": 1791419454.0751169,
+    "raw": "{\"return\": {}, \"id\": 36}\r\n",
+    "byte_offset": 11409,
+    "byte_length": 96,
+    "message": {
+      "return": {},
+      "id": 36
+    }
+  },
+  "shutdown": {
+    "direction": "receive",
+    "time": 1791419454.0750165,
+    "raw": "{\"timestamp\": {\"seconds\": 1791419454, \"microseconds\": 74797}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n",
+    "byte_offset": 11188,
+    "byte_length": 221,
+    "message": {
+      "timestamp": {
+        "seconds": 1791419454,
+        "microseconds": 74797
+      },
+      "event": "SHUTDOWN",
+      "data": {
+        "guest": false,
+        "reason": "host-qmp-quit"
+      }
+    }
+  },
+  "limits": [
+    "Synthetic slide file intentionally exercises gate; not original kernel evidence.",
+    "Relocated owned PC coverage supports logging mechanism, not proof original guest PCs are reached.",
+    "Returned production filter label differs from deliberately relocated fixture CLI filter; no identity conflation.",
+    "Error injection lost only enable reply after actual QMP acknowledged; final restoration visible in raw transcript.",
+    "Buffered file offsets bound emitted bytes, not exact guest event times.",
+    "No CPU/process/thread pairing, mode attribution or guest memory reads."
+  ]
+}
