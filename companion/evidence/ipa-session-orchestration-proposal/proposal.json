@@ -1,0 +1,180 @@
+{
+  "scope": "Read-only proposal based on actual generic demo staging2 and current CLI; no new implementation or VM action. Visual outcome75 remains separate root review.",
+  "source_revision": "846c82aaf379894329ad56e1e03a36708df9f0c4",
+  "references": {
+    "companion/app-import.py": {
+      "sha256": "e2ae5081168b99f4989cc759e797ae1381b595e263adea825705993685c1ce56",
+      "bytes": 19174
+    },
+    "companion/app-probe/build-import-launcher.py": {
+      "sha256": "b6bb1582efce65a99f2506ef634dbc77f77077d824070ddb9f854667f44ff017",
+      "bytes": 5157
+    },
+    "companion/native-probe/merge-launchd-cache.py": {
+      "sha256": "2bce3330224dd6edd927658a9a6fb7eef7753acce2290a572fb6fc3cfe998fc1",
+      "bytes": 3382
+    },
+    "companion/native-probe/prepare.py": {
+      "sha256": "1dbdaccd542643397c30ee3ff0f43c3b3fe639752e586da4806cd0ebf402d85a",
+      "bytes": 18763
+    },
+    "companion/native-probe/imported-app.c": {
+      "sha256": "eaf6ef4668ef196823d378d3b7b50a1ef3bac9f3d527679b1e88551d0ccc2224",
+      "bytes": 8908
+    },
+    "companion/disk_overlay.py": {
+      "sha256": "16180ed475f586b60031c129bf2a11169597dca10fc77a804d9fcdf0f20e3978",
+      "bytes": 22496
+    },
+    "companion/preserve-stopped.py": {
+      "sha256": "904655ac4653ed7f860851aa71719540bc66716c2896ccd4858fd3fcb22b61e7",
+      "bytes": 12307
+    },
+    "companion/boot.py": {
+      "sha256": "8089c0bbffd7cc964d982d6fc199147a785efa1bfe134464b60301f257631037",
+      "bytes": 34654
+    },
+    "companion/qmp_control.py": {
+      "sha256": "0c147c8fa9fea8414f8f5a79c6a904b3c2b0f123352de142b03eaca56526afb7",
+      "bytes": 33946
+    },
+    "companion/evidence/ipa-demo-staging-attempt-2/host-command.json": {
+      "sha256": "524eacf9426bab3279f86b11465f6349aa6b88db55136a044cbfa4551b7bf2bd",
+      "bytes": 1347
+    },
+    "companion/evidence/ipa-demo-staging-attempt-2/preparation.json": {
+      "sha256": "8691d7d44d2651498b95d71045b4ba99371fdbcfb2b7b2a20199bf3e5a995372",
+      "bytes": 9345
+    },
+    ".local-build/reports/disk-preparation-imported-demo-2-launch.json": {
+      "sha256": "b16bebdb8d655a694c826a9dd437fc693879273538542a736baf944ff1b3580c",
+      "bytes": 1329
+    },
+    ".local-build/reports/disk-preparation-imported-demo-2/staging-verification.json": {
+      "sha256": "29734cd33789ba6cb8654174d63b543bba8e6ba486beed0fbff29a2f4369d80b",
+      "bytes": 7859
+    }
+  },
+  "smallest_deliverable": {
+    "command": "companion/run prepare-import --ipa /external/Owned.ipa --runtime /external/runtime.json --runtime-sha256 SHA256 --output /external/NEW-session",
+    "execution": "Host-only: import, build owned bound launch helpers, merge one owned cached launchd job, prepare cloned recovery ramdisk, write pinned session manifest and exact recovery command. Does not launch either VM or mark stage eligible.",
+    "reason": "Removes app-specific ID/path/header/job/cache/prepare argument glue using existing validators while retaining visible separation between host preparation, real recovery staging and installed-app observation. Runtime prerequisites are explicit once in a local hash-pinned descriptor."
+  },
+  "runtime_descriptor": {
+    "schema": "proposed inferno.local-ipa-runtime.v1",
+    "all_local_inputs_hash_pinned": [
+      "verified recovery profile and raw ramdisk",
+      "stopped immutable base report and stopped manifest, original six paired auxiliary disks via load_stopped_overlay",
+      "compatible launchd cache with retained provenance to that base (not inferred from arbitrary filename)",
+      "owned probe and freshly built prepare-root helper with build manifest including imported-app.c",
+      "hfsplus tool",
+      "clang + ld64.lld tools",
+      "emulator binary + build manifest",
+      "qemu-img tool metadata required by disk_overlay"
+    ],
+    "no_distribution": "Descriptor contains paths/hashes only; no Apple firmware/cache/root images bundled or downloaded. Require caller-provided local assets.",
+    "cache_contract": "Require exactly one preexisting owned org.inferno.app-probe job for replacement and preserve all other cache entries; reject missing/ambiguous match. Pin cache source to selected baseline provenance; no generic trust/signature edits.",
+    "base_contract": "Use loader to validate ancestry/immutable identities/hash/KEEP and paired auxiliaries. Never write/chmod selected base. New recovery and installed boots use fresh overlays; bounded maximum depth may require separately reviewed flattening."
+  },
+  "host_pipeline": [
+    {
+      "step": 1,
+      "api": "app-import.py import_ipa then validate_manifest",
+      "output": "session/import/manifest.json plus preserved app tree; pin hash; generic collision allowance absent"
+    },
+    {
+      "step": 2,
+      "api": "build-import-launcher.py --manifest ... --manifest-sha256 ... --linker ... --output session/launcher",
+      "output": "owned wrapper/launcher + fixed generated owned job + build-evidence"
+    },
+    {
+      "step": 3,
+      "api": "merge-launchd-cache.py --cache PINNED --replace-owned-job session/launcher/org.inferno.app-probe.plist --output session/cache.plist",
+      "output": "new cloned cache; validate bytehash and exact one owned-job diff"
+    },
+    {
+      "step": 4,
+      "api": "native-probe/prepare.py --profile ... --raw-ramdisk ... --probe ... --hfsplus ... --disk-helper ... --disk-helper-existing --imported-app-manifest ... --imported-app-manifest-sha256 ... --exec-wrapper ... --system-launcher ... --launchd-cache ... --launchd-cache-sha256 ... --output session/recovery",
+      "output": "new prepared ramdisk/profile and individual HFS readbacks"
+    },
+    {
+      "step": 5,
+      "api": "session manifest and commands generated without execution",
+      "output": "all sources/tool hashes/base identities + new artifacts + expected actual readback markers derived from manifest/helper/cache sizes; status host-prepared-not-staged"
+    }
+  ],
+  "later_controlled_stages": {
+    "proposed_commands": [
+      "companion/run stage-import --session /external/session/session.json --session-sha256 SHA --output /external/NEW-recovery-report",
+      "companion/run observe-import --stage /external/verified-stage.json --stage-sha256 SHA --seconds 1200 --output /external/NEW-observation-report"
+    ],
+    "stage_requirements": [
+      "Own one runner; bounded timeout; exact current-boot raw staging records with zero mismatches, expected byte counts, successful unmount and PREP_COMPLETE. Any failure halts; never retry same failed clone.",
+      "Normal explicit observation finish only after real preparation success, then QMP SHUTDOWN/quit ACK/emulator0, all7 retention/backing checks. No promotion merely from attempt_completed or filenames.",
+      "Freeze ONLY newly created successful stage files once after no-writer checks; record before/after identities and KEEP. Never chmod inherited dependencies.",
+      "New stage eligibility manifest must derive expected markers from pinned session, not fixture constants; use existing disk_overlay loader as final check."
+    ],
+    "observation_requirements": [
+      "Fresh child overlay over verified stage; --control-mailbox without --probe-journey or fixture controlled OPEN. Optional bounded no-input viewer must be explicit.",
+      "Operator performs normal input and observes actual app-specific pixels; original LS callback acceptance is distinct from process execution and presentation.",
+      "finish-observation requests orderly shutdown only; no app success asserted. No automatic taps/Home/relaunch/sample."
+    ]
+  },
+  "missing_reusable_pieces": [
+    "No checked-in consolidated local runtime descriptor binds base cache/probe/helper/tool inputs; all are present locally but currently manually selected.",
+    "No reusable recovery success verifier/retention publisher parameterized by imported manifest. Current demo stage2 uses preserved bespoke staging-verification artifact and intentional SIGTERM, generic attempt_completedfalse. Do not replicate handcrafted success promotion in a generic wrapper.",
+    "No normal installed-app process-identity evidence adapter for arbitrary imported app; current probe telemetry and HID OPEN remain fixture-specific. Generic visual/launch evidence must be stated separately.",
+    "Existing prepared baseline/bootstrap is a prerequisite, not a clean-machine firmware install recipe. First release should fail clearly when local verified base/profile/tools are absent."
+  ],
+  "available_actual_inputs": {
+    "host_prepare_command": [
+      "python3",
+      "companion/native-probe/prepare.py",
+      "--profile",
+      "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/profile.json",
+      "--raw-ramdisk",
+      "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/ramdisk-payload.raw",
+      "--probe",
+      "/home/brandonin/.local/share/inferno/native-probe/helper-build-42/inferno-probe",
+      "--hfsplus",
+      "/home/brandonin/.local/share/inferno/native-probe/tools/hfsplus",
+      "--disk-helper",
+      "/home/brandonin/.local/share/inferno/native-probe/helper-build-60/inferno-prepare-root",
+      "--disk-helper-existing",
+      "--imported-app-manifest",
+      "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/imported/manifest.json",
+      "--imported-app-manifest-sha256",
+      "68cdc3ece31d151ad693766d2a288d8b4ea5ec12b24f1be7be3ea2cd5abbc66a",
+      "--system-launcher",
+      "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/launcher/inferno-launcher",
+      "--exec-wrapper",
+      "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/launcher/inferno-exec-launcher",
+      "--launchd-cache",
+      "/home/brandonin/.local/share/inferno/app-import/ipa-demo-001/staging/launchd-cache.plist",
+      "--launchd-cache-sha256",
+      "06291b66b9ed5e7886a2893f5c6094c0ae7e3de2fe7ddeef951e67c278e1b843",
+      "--output",
+      "/home/brandonin/.local/share/inferno/native-probe/helper-attempt-60"
+    ],
+    "recovery_launch": [
+      "bash",
+      "companion/run",
+      "boot",
+      "--profile",
+      "/home/brandonin/.local/share/inferno/native-probe/helper-attempt-60/profile.json",
+      "--seconds",
+      "1200",
+      "--output",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-imported-demo-2",
+      "--overlay-base-report",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/reports/disk-preparation-from50-sample-1/report.json",
+      "--ramdisk-boot",
+      "--guest-errors",
+      "--binary",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+      "--manifest",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build-manifest.json"
+    ]
+  },
+  "implementation_order": "Implement host-only prepare-import first and replay generic demo manifest through original validators; follow with parameterized recovery finish/eligibility orchestration before claiming a single command boots arbitrary imports. No macOS/Xcode build integration in this prebuilt-IPA slice."
+}
