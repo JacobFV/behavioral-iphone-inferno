@@ -91,9 +91,9 @@ and [canCancelContentTouches](https://developer.apple.com/documentation/uikit/ui
 CatalogScrollView now returns YES for UIButton children, otherwise forwarding to
 super, and explicitly enables content-touch cancellation. Ordinary button actions
 and default delaysContentTouches are unchanged. The resource label grows from
-170 to200 points, ending at y390 before the y405 option row. A new guest journey
-must verify button-start scrolling, normal taps and full Guide text; neither
-this layout choice nor documentation establishes successful rendering.
+170 to200 points, ending at y390 before the y405 option row. The separate boot2 guest journey
+verified button-start scrolling, normal taps and full Guide text using actual
+reviewed frames; the layout choice and documentation alone were not proof.
 
 
 The revised host producer built `navigation-demo-006` from `eda2b7c31f`.
@@ -102,5 +102,5 @@ contains exactly three app files. All115 executable imports passed the original
 cache audit on byte-identical executables from005, including the new UIScrollView
 superclass reference. Build005 is retained but superseded because its producer
 also packaged the local link declaration;006 corrects that copy list. Revised
-raw host evidence is in `evidence/scroll-revision-006/`. No revised guest run is
-claimed, and the old004 producer/output remains untouched.
+raw host evidence is in `evidence/scroll-revision-006/`. The subsequent boot2
+guest evidence is linked above; the old004 producer/output remains untouched.
