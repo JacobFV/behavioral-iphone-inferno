@@ -1,0 +1,63 @@
+{
+  "scope": "Read-only feasibility proposal; no code edits, guest actions, or new stage success asserted.",
+  "source_revision": "51c79adc1f355d62469e76726f9c6315200c0ba7",
+  "sources": {
+    "companion/native-probe/prepare-root.c": "20a4eaf4b7a900573b172f4f59f04e5268f0e930534d7794d3b1bcdb4ee7d539",
+    "companion/native-probe/prepare.py": "1dbdaccd542643397c30ee3ff0f43c3b3fe639752e586da4806cd0ebf402d85a",
+    "companion/evidence/data-preparation-serial.txt": "2fda90e96ad52fa7779e822584b39f0c447937b12d205f4383ea1df9ab2bf210",
+    "companion/evidence/data-guest-verification-serial.txt": "6d0ab75fdca23b0ab1cdab6de90c008b2f00899095003a31f922b64671fed2ae",
+    "companion/evidence/data-preparation.json": "176603692701d2d122ccbf91c68d0e4d4f0de82f6823b431e42af474f2049a8e",
+    "companion/evidence/data-guest-verification.json": "7a0eec2fcaa3bf5b2ab04e318795f4899e9f1af3796b2480c7c5fc8a5791efdc"
+  },
+  "smallest_mode": {
+    "prepare_flags": [
+      "--disk-helper-existing",
+      "--disk-helper-data"
+    ],
+    "guest_argv": [
+      "/usr/bin/inferno-prepare-root",
+      "--disposable-root-copy",
+      "--existing-volumes",
+      "--seed-data"
+    ],
+    "exclude": [
+      "--role-volumes",
+      "--init-gigalocker",
+      "--create-keybag",
+      "--copy-sep",
+      "all app/helper/cache installation flags"
+    ],
+    "base": "New initial-volumes verified stage ONLY after actual normal eligibility; clone root overlay and copy exact six paired auxiliary namespaces. Do not use historical disk13 as new source."
+  },
+  "actual_source_order": [
+    "newfs_apfs -A -o role=d -v Data /dev/disk0s1; raw child status0",
+    "newfs_apfs -A -o role=p -v Update /dev/disk0s1; raw child status0",
+    "Scan actual /dev/disk0s1s1..16 RO mounts with volume-name/original System paths, unmount each; never assume slice order",
+    "Require discovered System,Preboot,Data,Hardware; mount SystemRO/DataRW",
+    "space before; copy each original /private/var child via copyfile ALL15|RECURSIVE|NOFOLLOW; metadata-only7|NOFOLLOW on Data root; space after",
+    "HardwareRW at/mnt4; ensure FactoryData/System/Library/Caches/com.apple.factorydata; optionally copy original existing factorydata contents",
+    "sync; unmount Hardware,Data,System normally; INFERNO_DATA_COMPLETE then PREP_COMPLETE"
+  ],
+  "verification_caveats": [
+    "Current --verify-data block precedes --seed-data copy. Do not combine flags in one invocation expecting post-copy verification. Separate read-only second phase required without source change.",
+    "Seed flag always creates Data+Update; not idempotent. Admit only verified predecessor lacking these volumes; reject reruns or duplicate names. Existing helper does not itself guard absence before creation.",
+    "Update discovered creation status proves original tool success but existing scan does not store/validate Update identity or role. Narrow coordinator evidence should distinguish creation command from role inspection.",
+    "Data COMPLETE proves code path/copy return/unmount, not whole-tree byte equality. Separate original guest compare required before declaring byte-verified seed.",
+    "Historical7z zero streams for compressed Data were a reader discrepancy; original guest comparison17 read16665entries/13025files/1symlink/269210433bytes/0mismatches. Do not repair compression fromhostreader alone.",
+    "Future coordinator needs narrow parser for interleaved kernel output: historical first newfs command shares line with original sandbox message. Do not silently ignore malformed owned records.",
+    "Preserve all7 namespaces: root,firmware,syscfg,ctrl_bits,nvram,effaceable,panic_log. No blankaux restart or old namespace substitution.",
+    "No keybag/gigalocker/SEP step required for original copy phase; those later boot prerequisites remain separate.",
+    "Historical13 had only412479488bytes available before,260640768after; new32GiB stage capacity must be checked from actual guest space, not inferred from disk length."
+  ],
+  "historical_proof": {
+    "seed": "data-preparation-serial.txt lines442/502/503/521 commands/status,647/673space,698DATA_COMPLETE,699PREP_COMPLETE; no gigalocker/keybag",
+    "verify": "data-guest-verification-serial.txt line619 TREE_RESULT16665/13025/1/269210433/0 then cleanunmount and628COMPLETE"
+  },
+  "proposed_acceptance": [
+    "Authenticate initial-volume stage + helper/profile source pins and absent Data/Update precondition",
+    "Actual exact original commands and zero exits; inventory names and all childcopies; no failure marker",
+    "DATA_COMPLETE/PREP_COMPLETE after normalunmount; raw checkpoint before sole finish-observation",
+    "NormalQMPquit/emulator0/PIDsabsent; onlynewfreeze/default7preserve/ancestorchecks",
+    "SeparateROverification phase all-tree0mismatch and cleanunmount; never combine keybag for this gate"
+  ]
+}
