@@ -2,6 +2,28 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07: first runtime inspection failed framing; corrected producer underway
+
+Inspector stage1 failed closed, retained34ed325b6c. Full original launchd file
+1,025,279bytes guest SHAe5847afbcf6c025ee7f15620918eb6bc79bc916a29301bba8b034cf4775f3c24
+and original dyld2,052,489,216bytes SHA59fdf288034e947c39b087b7c405ed149de3fea9f8af4a5ae2611fa03d4081e1
+were reported, with unmount0/result0. Host rejected five malformed chunks:
+ASR help output interleaved between a separately printed/flushed chunk header and
+its hex-body write. No normalization, reconstruction or eligibility promotion.
+Full serial/config remain external. All processes stopped; forensic7 manifest
+612a9fb2e9b61861d9927da3475dced1e50e6c7c61325a16fe89ab3404b00344,
+verification acd28d2f779466030c24bcd75754173df41bb00642c5dbd94e453331a8adcc9d.
+Original frozen source remains untouched. Disk worker owns corrected producer in
+/tmp/inferno-runtime-inspector-framing: single bounded record write,64B chunks,
+strict host parser unchanged. Boot worker reviews new source/build before root
+explicit retry decision. Native audits failure while finalizing host artifact
+producer. No live VM and no retry authorized yet.
+
+Fresh cache patch coordinator963b49b730/f99d97e7f4/550b43e0a1 integrated;
+root source review3f797734c0 passed, historical raw parser replayccb50ac5e7 is
+not fresh execution. Writable cache phase requires4GiB reserve. Successful fresh
+inspector and typed keybag flatten still required before actual cache staging.
+
 ### 2026-10-07: fresh runtime inspector recovery authorized and running
 
 Shared validator correction c0e839c792, guarded flatten581b131304 and actual
