@@ -1,0 +1,74 @@
+{
+  "source_commit": "73bc914b76",
+  "artifact_directory": "/home/brandonin/.local/share/inferno/native-probe/pending-branch-owned-attempt-1",
+  "scope": "Actual firmware-free owned AArch64 branch fixture; no iOS boot or production kernel coverage claim",
+  "tools": {
+    "as": {
+      "path": "/usr/bin/aarch64-linux-gnu-as",
+      "sha256": "1ffda50efb6d91b6b05ef933aced099595c36577594c0296c91161f2d13db374",
+      "version": "GNU assembler (GNU Binutils for Ubuntu) 2.42"
+    },
+    "ld": {
+      "path": "/usr/bin/aarch64-linux-gnu-ld.bfd",
+      "sha256": "1e4d3369b76845fa8e099b83513bf28f6f722e046f9b2cde1378c9e27f96d19c",
+      "version": "GNU ld (GNU Binutils for Ubuntu) 2.42"
+    },
+    "nm": {
+      "path": "/usr/bin/aarch64-linux-gnu-nm",
+      "sha256": "338d018c73ef394539da2566405a1f2f50a808e3c15ef72e9b48dd2f0b0d262f",
+      "version": "GNU nm (GNU Binutils for Ubuntu) 2.42"
+    }
+  },
+  "artifacts": {
+    "report.json": {
+      "bytes": 4412,
+      "sha256": "52a2d9c3017e1d989264e9c19579d3c26b0e5844cae76332f00664a2ea9a2bcd"
+    },
+    "stderr.log": {
+      "bytes": 102,
+      "sha256": "9676393568859b05ec5ab9f08641db23ddf60a6e098a7c013526a3b7095a8105"
+    },
+    "swapwait-cpu-control.jsonl": {
+      "bytes": 8275,
+      "sha256": "72206a3f99230215ef903d8ed05916d79549937017fd5cd337386958e2e686a7"
+    },
+    "control-transcript.jsonl": {
+      "bytes": 1100,
+      "sha256": "cc8d030f1326ccebea0b34bf075c642610e87a0d3079245b4bc991846904d52b"
+    },
+    "loop.o": {
+      "bytes": 1144,
+      "sha256": "8eccb856bc2a3c660a3a853dd3aa9870bf8cbeee906b82f20b424cf10396ae7a"
+    },
+    "parsed.json": {
+      "bytes": 8333833,
+      "sha256": "4074dc812e4b0c268f3c6b4ef4a578ac84e5d3e3e3a5f9584c5fa3e8efdf5d60"
+    },
+    "guest-errors.log": {
+      "bytes": 2511539,
+      "sha256": "dd50e344c686e2694109c75068e30bace0742b24fb14db2e58757400abf474b5"
+    },
+    "loop.elf": {
+      "bytes": 66528,
+      "sha256": "9d0bf9f411ba2201e449086935f035fd585b931186fe054c90a7f9adfe01df71"
+    },
+    "qmp-transcript.jsonl": {
+      "bytes": 11505,
+      "sha256": "d6bbdbc64aa95d88029f305118a373e1c9a7cc65a78768ee1098e5728769ca17"
+    },
+    "emulator-stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "actual_filter": "0x40200014+4,0x40200034+4,0x4020004c+4",
+  "production_descriptor_in_mailbox_reply": "0xfffffff0096f1c74+4,0xfffffff0096f1c7c+4,0xfffffff0096f1d1c+4",
+  "default_profile_regression": "Baseline source path remains unchanged; retained actual attempt6 raw replay922 complete blocks. No new baseline VM was necessary.",
+  "limits": [
+    "Actual fixture PCs are relocated self-authored code; original production TB coverage still untested.",
+    "Synthetic zero-slide stderr is explicitly labeled and is not Apple kernel evidence.",
+    "Each of three windows internally checked exact9 disabled ADP states through sole QMP owner; public allowlist unchanged.",
+    "No CPU/process/thread pairing; counts are snapshots.",
+    "Last window intentionally simulated response loss after actual enable; diagnostic remains incomplete despite successful restoration."
+  ]
+}
