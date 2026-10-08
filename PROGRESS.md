@@ -2,6 +2,29 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 21:43:original APFS growth attempt live; SEP/keybag implementation next
+
+Growthsource2c7ed6383b→582a19ec5d, actualreadonlypreflightab6a7b01db and
+independentsourcereview0f0198c45f integrated. Shape mismatches for6pairedaux vs
+7loaderentries andbarebootnamespacefields corrected beforeexecution; flatten
+rawconvert/compare/KEEP provenance fullybound. Frozenworker097b9c0795
+/tmp/inferno-grow-data-stage; sourcebytes18b7535338. RootGO exactactualpreflight
+SHA d0e43a82f669aea02fcc85c743117fdcd247928a4f72e7beef2ccb31aa48e0ab.
+
+Actualcoordinator468257 live, externalapp-import/grow-data-stage-1; owns sole
+lifecycle. HostGPT toolalreadyexit0 createdNEW32GiBprivate0600; payload/source/
+fullhash/freezevalidationunderway beforeguestlaunch. NoAPFSgrowthsuccessyet.
+Inputflatten3b0733...812d unchanged, pairedauxdata-verify-stage-1 unchanged.
+NootherVM; do notlaunchanother, manualfinish orretry.
+
+SEP/keybagreadonlyplanbe3ec2f7c0 matched officialZIPplaintextSEPmemberSHA256 and
+selectedBuildManifestSHA384 via streaming, no keys/decryption/extractionneeded.
+Bootworker now implementingnewstage-sep-keybag.py/sep_keybag.py/docs only:
+unchangedgeneralhelper existing+copy-sep+create-keybag, no redundantinitflag;
+actualfresh effaceable0→1 andMKB0 required, all7pair/source/prefix/normalgates.
+No destinationSEPbyte-readbackclaim (helperdoesnotprovideit), no guestCchange,
+noVMuntilsource review andactualgrownresult. Diskownsactivegrowth, nativeauditnext.
+
 ### 2026-10-07 21:38:Data verified and flattened; original growth coordinator in review
 
 Actual Data seed49035d86da/bc7a7c9946 independentlypassedf2a5c69fc8, result

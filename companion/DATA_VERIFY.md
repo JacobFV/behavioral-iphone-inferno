@@ -8,4 +8,4 @@ A unique zero-mismatch tree result must precede successful Data/System unmounts 
 
 The required input has three layers including its raw base. Verification produces four. **Flatten the successfully stopped verification tuple before keybag initialization** using an independently reviewed, exact logical comparison and source-preservation procedure. Keep all original ancestors and the six paired auxiliary states. This command does not flatten or initialize keys.
 
-Initial implementation is awaiting source review and an actual fresh-stage run. Historical Data verification serial can test the pure parser; that replay does not validate this new coordinator’s execution.
+The first fresh-stage run passed the original guest comparison: 16,665 entries, 13,025 files, one link and 269,210,433 bytes with zero mismatches, followed by normal shutdown and preservation. Actual records are in `evidence/data-verify-stage-1-actual/`; the independent audit is in `evidence/data-verify-stage1-independent/`.
