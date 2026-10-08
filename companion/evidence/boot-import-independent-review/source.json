@@ -1,0 +1,24 @@
+{
+  "reviewed_source_commits": [
+    "5d421d9039",
+    "2e165c1474"
+  ],
+  "source_sha256": "2ea8839efaae5eb9f59fe63d0d12346cba51a3f1818672cb0b660ac785ad7a8d",
+  "scope": "Independent source review only; no VM, boot or new replay performed",
+  "decision": "No remaining source blocker for parent-controlled installed-boot validation",
+  "checks": [
+    "Strict bounded stage/session hash and coordinator layout, incomplete/failure rejection.",
+    "Fresh full session/stopped verifier result compared using stable raw/metadata bindings.",
+    "Installed profile from runtime input, exact sibling boot/control session pins, fixed emulator/tools/base argv.",
+    "Source/metadata snapshot checks before launch and after normal runner completion.",
+    "One private owned runner session, no input/retry/arbitrary command or preservation mutation.",
+    "Final report and QMP bytes now captured before validation, shutdown hash matched, both snapshots rechecked; returned hashes are inspected bytes.",
+    "Result asserts only normal installed attempt; app success and disk eligibility remain separate."
+  ],
+  "resolved_finding": "2e165c1474 fixes initially observed final-report/QMP read-versus-later-hash provenance race.",
+  "limits": [
+    "No exclusive host VM lock; reused coordinator readable /proc checks are point-in-time.",
+    "Current exact source policy deliberately rejects newer sibling runtime even if actual79 succeeded.",
+    "Actual wrapper execution remains pending, and source review does not establish app pixels or launch."
+  ]
+}
