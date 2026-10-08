@@ -2,6 +2,22 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07 20:36:89 delayed-unlock journey passed; reproduced-input staging next
+
+Run89 completed the strict initial counter0→1 journey and normal shutdown
+(exit0, errornull,1087.807095s). Root directly reviewed VNC and RGB-identical
+QMP conversions; evidence28134af3fe. OriginalPID264/main3448966974, boot
+F51382CF-44FC-4A29-9518-41A297F38F2B. One counter request
+ac683206a385462f9b4be6e5e3d7d339 produced actualtap1 and reviewedcount1.
+The unlock gap was401.970647s (target396); setup→tap46.956017s (target40).
+The long beta-close→setup dismissal overhead is retained in raw timestamps.
+This was not an exact replay of generic demo85 and supports no causal conclusion.
+No warm cycles, CPU windows, ADP windows or samples; failedfivePC capture remains
+missing. Bootworker performing ordinary stopped postflight; no new VM yet.
+Next: stage the actual reproduced-inputs-prepare-1 session with the immutable
+persistent3f8b2d consumer after89 postflight, then validate the installed demo.
+Diskworker reviewing remaining original guest initialization/cache-lineage gap.
+
 ### 2026-10-07 20:18:89 delayed-second-unlock experiment live; extractor reproduced
 
 88 strictinitial0→1 normal0/errornull/516.197794s, postflighta761bdbba9 and

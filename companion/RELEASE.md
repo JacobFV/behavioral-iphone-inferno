@@ -51,7 +51,7 @@ packaging follows those execution gates and the runtime reliability work.
 
 The setup guide now includes the complete local runtime descriptor and generic
 headless operation steps. The helper and raw-image producers remove two one-off
-host steps; they do not replace guest initialization. Runs86–88 supplied further
+host steps; they do not replace guest initialization. Runs86–89 supplied further
 healthy fixture journeys with diagnostic logging off, while run85 remains a
 retained failed interaction. No release-readiness claim follows from those passes.
 
