@@ -1,0 +1,31 @@
+{
+  "status": "root-approved-one-recovery-attempt",
+  "session": "/home/brandonin/.local/share/inferno/app-import/navigation-prepare-1/session.json",
+  "session_sha256": "54551a25f5b0865b1169bc7eba15afa99b694c7e614edbfc54aa6da4a224c27d",
+  "argv": [
+    "/home/brandonin/.local/share/inferno/host-runtimes/ipa-release-host-1/source/companion/run",
+    "stage-import",
+    "--session",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-prepare-1/session.json",
+    "--session-sha256",
+    "54551a25f5b0865b1169bc7eba15afa99b694c7e614edbfc54aa6da4a224c27d",
+    "--output",
+    "/home/brandonin/.local/share/inferno/app-import/navigation-stage-1"
+  ],
+  "preconditions": [
+    "Independent actual hostpreparation reviewPASS",
+    "No activeVM and4GiBhostreserve immediatelybeforelaunch",
+    "Same immutable persistent3f8b2d consumer and sourcepins",
+    "No targetdirectoryexists"
+  ],
+  "expected_app_readback": {
+    "bundle": "NavigationDemo.app",
+    "bytes": 73718,
+    "entries": 3,
+    "mismatches": 0
+  },
+  "ownership": "Bootworker invokes coordinator onlyafterrootGO; coordinator soleQMP/lifecycleowner. RootneveropenssecondQMP. NoUI needed forrecovery.",
+  "limits": "Stagingonly; installedlaunch/navigation/scroll/switch/save/pixels require separatejourney.",
+  "preparation_audit": "00b8e6711a",
+  "root_decision": "GO exact recorded argv only after workerrechecks noVM/free4GiB/newoutput. Coordinator ownsnormalfinish and new-onlyfreezing/retention; no appUI."
+}
