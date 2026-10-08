@@ -2,6 +2,39 @@
 
 ## 2026-10-06: real t8030 initialization and early-boot preparation
 
+### 2026-10-07: corrected inspection and host artifacts passed; fixture91 live
+
+Corrected inspector sourceea6eadc402/build801bcb446f/independent6bd9e20f10
+explicit retry passed. Actual compact evidence0c00e44324/d5140205b5, independent
+987391b682. Result app-import/runtime-inspection-stage-2/runtime-inspection.json
+SHAbccc16c0181d168aea69a02f93bbd715639e9870b257d88141d0868d6fc33f56,
+strict launchd1,025,279bytes432jobs/SHAe5847afbcf6c025ee7f15620918eb6bc79bc916a29301bba8b034cf4775f3c24,
+full original dyld hash, clean unmount, sole normalfinish/QMPquit9/all7 preserved.
+Depth4 observation only, never runtime base; full serial/config external.
+
+Fresh artifact producer7fba0009ec through11ed1213e7 rootreview59420d4e00.
+Attempt1 failed on binary plist serialization equality despite identical decoded
+values; narrow97a44065d2 compares entire decoded tree and binds actualbytes.
+Explicit attempt2 passed5fd399b2b8, externalfresh-runtime-artifacts-2 resultSHA
+95f72bc41d35e0b6d4131dba714dc17ba2ad4d3df9f3cb637e62b79e20155274,
+cache596664bytes/SHA06291b66b9ed5e7886a2893f5c6094c0ae7e3de2fe7ddeef951e67c278e1b843,
+432 to435 jobs, exact5policy edits and3ownedjobs. Host only, not staged/ready.
+Disk worker independently audits; native reviews bootworker fresh runtime stage.
+
+ONE live installed VM: root fixture timing91, plan de9bbd1c0b, runner1195600,
+VNC /tmp/inferno-boot-y7w8pzrc/vnc.sock. Root alone owns UI/control/finish.
+Actualcont1791437453.2264; first unlock request288796a82a534283bc4da5ff16e4cb15
+at1791437602.7934513 (~149.567s aftercont), ACK0 and last observed0014 stayslock.
+VNC observation closed1791437648.9929295. No VNC/input during waitinggap;
+SECOND UNLOCK TARGET1791437998.7934513 (396s afterfirst). Review latest existing
+QMPframe before action, do not invent result. Next conditional targets: betaClose
+43s aftersecondunlock, SetupNotNow18s afterbetaClose, SINGLEfixturecountertap13s
+afterSetup; root must review states/ACKs, record actualdeviations. Counter coordinates
+16384,20316. CPU pending-equality configured but OFF, onlyone1swindow if genuine
+callback/pixelsfailure persists25+25s. AllnineADPoff verified; no healthyCPUwindow.
+Normal strictfinish on actual success, explicitforensicstop onfailure.
+Space ~8GiB; fullflatten still requires34GiB, asyncuserquestionpending. No otherVM.
+
 ### 2026-10-07: first runtime inspection failed framing; corrected producer underway
 
 Inspector stage1 failed closed, retained34ed325b6c. Full original launchd file
