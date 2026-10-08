@@ -43,3 +43,30 @@ products and raw logs go only to a new external output directory:
 ```
 python3 companion/cpu-window-probe/run.py --binary /absolute/qemu-system-aarch64 --output /absolute/new-output
 ```
+
+## Separate pending-branch profile
+
+Adding `--swapwait-cpu-profile pending-branch` at boot selects only
+`0xfffffff0096f1c74+4`, `0xfffffff0096f1c7c+4` and
+`0xfffffff0096f1d1c+4`. It requires the existing diagnostic opt-in and pins;
+there is no runtime profile change or arbitrary address argument. Baseline
+remains the default. Before each pending-branch window the sole QMP owner
+queries exactly the nine known ADP events and requires each disabled. This
+internal fixed query does not expand the public trace-query allowlist.
+
+`pending-branch-result.py --input LOG --output NEW_JSON` preserves complete
+31-GPR blocks, malformed/truncated blocks, raw offsets and unknown PCs. At the
+null branch, X11 must be zero and X10 is ignored. At the active join, X11 is
+the second active-pointer read; W10 comes from the third pointer read and is
+interpreted only for nonzero X11. At the queued match, X8 is the queue pointer
+and W9 equals W11. W0/W1 are requested/completed tokens at the first two sites.
+Modes 0/1/2 can reach these sites: mode remains unknown. No pointers are read,
+no snapshots are paired, and repeated memory loads are not an atomic snapshot.
+Absence of a site is not evidence its branch never occurred.
+
+The owned harness accepts `--profile pending-branch` and substitutes three
+relocated, self-authored branch sites. Parse its output with
+`--owned-fixture-report /absolute/output/report.json`. The actual fixture CLI
+filter is recorded in `command`/`filter`; the mailbox response reports the
+production profile descriptor, not that relocated CLI filter. This verifies
+logging and parser plumbing only, not actual original-kernel TB coverage.

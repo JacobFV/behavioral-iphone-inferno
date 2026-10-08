@@ -259,6 +259,8 @@ class DisplayTraceWindow:
 
 
 SWAPWAIT_FILTER = '0xfffffff0096df690+4,0xfffffff0096e219c+4'
+SWAPWAIT_PROFILES = {'baseline': SWAPWAIT_FILTER,
+    'pending-branch': '0xfffffff0096f1c74+4,0xfffffff0096f1c7c+4,0xfffffff0096f1d1c+4'}
 SWAPWAIT_KERNEL = 'cfb260879625327b06d5549abc42a84daa86bebf6a894403aad7633ee94148a3'
 SWAPWAIT_BINARY = '0889bfe40c6bbb3e6eb9d493ada2bb86637e1d7acb61e36699e16da2568563f2'
 SWAPWAIT_SOURCE = 'f37ad49dbb68dc9c0097960381ebc14270fc3da8'
@@ -266,7 +268,11 @@ SWAPWAIT_SOURCE = 'f37ad49dbb68dc9c0097960381ebc14270fc3da8'
 
 class SwapWaitCPUWindow:
     """Fixed GPR-only observation; no CPU identity or invocation pairing."""
-    def __init__(self, output):
+    def __init__(self, output, profile='baseline'):
+        if profile not in SWAPWAIT_PROFILES:
+            raise ValueError('Unknown fixed CPU profile')
+        self.profile = profile
+        self.filter = SWAPWAIT_PROFILES[profile]
         self.output = output
         self.log = output / 'guest-errors.log'
         self.journal = output / 'swapwait-cpu-control.jsonl'
@@ -274,7 +280,7 @@ class SwapWaitCPUWindow:
         self.deadline = None
         self.start_offset = None
         self.file_identity = None
-        self.report = {'state': 'not-requested', 'restore_pending': False, 'errors': []}
+        self.report = {'state': 'not-requested', 'restore_pending': False, 'errors': [], 'profile': profile, 'filter': self.filter}
 
     def record(self, **fields):
         fd = os.open(self.journal, os.O_WRONLY | os.O_APPEND | os.O_CREAT | os.O_NOFOLLOW, 0o600)
@@ -301,13 +307,22 @@ class SwapWaitCPUWindow:
         slides = re.findall(rb'^info: Kernel Virtual Slide: (0x[0-9a-fA-F]+)\r?$', raw, re.M)
         if slides != [b'0x0000000000000000']:
             raise ValueError('Exactly one actual zero kernel virtual slide required')
+        if self.profile == 'pending-branch':
+            states=[]
+            for event in DISPLAY_TRACE_EVENTS:
+                response=qmp.execute('trace-event-get-state', {'name':event})
+                self.record(stage='display-off-check', event=event, response=response)
+                if response.get('return') != [{'name':event, 'state':'disabled'}]:
+                    raise ValueError('Pending-branch profile requires all fixed ADP events disabled')
+                states.append(event)
+            self.report['verified_disabled_events']=states
         self.file_identity, self.start_offset = self.offset()
         self.deadline = time.monotonic() + seconds
         self.pending = True  # uncertain command delivery always requires restoration
         self.report.update(state='active', restore_pending=True)
         try:
             self.record(stage='before-enable', seconds=seconds, offset=self.start_offset,
-                        inode=list(self.file_identity), slide_evidence_sha256=hashlib.sha256(raw).hexdigest())
+                        inode=list(self.file_identity), profile=self.profile, filter=self.filter, slide_evidence_sha256=hashlib.sha256(raw).hexdigest())
             response = qmp.execute('human-monitor-command', {'command-line': 'log cpu,nochain,guest_errors'})
             self.record(stage='after-enable', response=response)
             if response.get('return') != '':
@@ -317,7 +332,7 @@ class SwapWaitCPUWindow:
             self.report['state'] = 'incomplete'
             self.stop(qmp, 'enable failed or uncertain')
             raise
-        return {'seconds': seconds, 'filter': SWAPWAIT_FILTER, 'scope': 'GPR snapshots only; global nochain scheduling perturbation; no CPU attribution or entry/return pairing.'}
+        return {'seconds': seconds, 'filter': self.filter, 'profile': self.profile, 'scope': 'GPR snapshots only; global nochain scheduling perturbation; no CPU attribution or entry/return pairing.'}
 
     def stop(self, qmp, reason):
         if not self.pending:
@@ -359,7 +374,7 @@ class SwapWaitCPUWindow:
 
 
 class ControlMailbox:
-    def __init__(self, output, journey=None, keep_running=False, swapwait_cpu=False):
+    def __init__(self, output, journey=None, keep_running=False, swapwait_cpu=False, swapwait_profile='baseline'):
         self.path = output / 'control'
         self.path.mkdir(mode=0o700)
         self.journal = output / 'control-transcript.jsonl'
@@ -368,7 +383,7 @@ class ControlMailbox:
         self.journey = journey
         self.run_control = {'keep_running': keep_running, 'finish_requested': False}
         self.display_trace = DisplayTraceWindow(output)
-        self.swapwait_cpu = SwapWaitCPUWindow(output) if swapwait_cpu else None
+        self.swapwait_cpu = SwapWaitCPUWindow(output, swapwait_profile) if swapwait_cpu else None
 
     def close(self, qmp):
         # Runner calls before quit; propagate cleanup error for its report, not a retry loop.
