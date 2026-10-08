@@ -131,6 +131,9 @@ def main():
     output = None
     runner = None
     logs = []
+    # Fresh namespaces must be private regardless of the invoking shell umask.
+    # Child preparation/boot processes inherit this; never chmod existing inputs.
+    previous_umask = os.umask(0o077)
     try:
         source_pins = sources()
         destination = CO.IMPORTER.external_output(args.output)
@@ -256,6 +259,7 @@ def main():
         print('initial-volumes failed: ' + str(exc), file=sys.stderr)
         return 1
     finally:
+        os.umask(previous_umask)
         for log in logs:
             log.close()
 
