@@ -1,0 +1,41 @@
+{
+  "scope": "Read-only binary symbol/section and generator-source proof; no live memory query and no second whole binary hash",
+  "binary": "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+  "expected_binary_sha256_from_pinned_run91": "0889bfe40c6bbb3e6eb9d493ada2bb86637e1d7acb61e36699e16da2568563f2",
+  "command": [
+    "readelf",
+    "-Ws",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64"
+  ],
+  "selected_output": [
+    " 58167: 00000000020e22f2     2 OBJECT  GLOBAL DEFAULT   25 _TRACE_APPLE_ADP_STATUS_READ_DSTATE",
+    " 59182: 00000000020e2300     2 OBJECT  GLOBAL DEFAULT   25 _TRACE_APPLE_ADP_SUBMIT_DSTATE",
+    " 65385: 00000000020e22f4     2 OBJECT  GLOBAL DEFAULT   25 _TRACE_APPLE_ADP_GP_CONFIG_WRITE_DSTATE",
+    " 66243: 00000000020e22f8     2 OBJECT  GLOBAL DEFAULT   25 _TRACE_APPLE_ADP_IRQ_WRITE_DSTATE",
+    " 68641: 00000000020e22f6     2 OBJECT  GLOBAL DEFAULT   25 _TRACE_APPLE_ADP_UNKNOWN_MMIO_DSTATE",
+    " 69661: 00000000020e22fa     2 OBJECT  GLOBAL DEFAULT   25 _TRACE_APPLE_ADP_OUTPUT_READY_DSTATE",
+    " 78739: 00000000020e22fc     2 OBJECT  GLOBAL DEFAULT   25 _TRACE_APPLE_ADP_PIPE_DSTATE",
+    " 81995: 00000000020e22fe     2 OBJECT  GLOBAL DEFAULT   25 _TRACE_APPLE_ADP_BH_DSTATE",
+    " 83014: 00000000020e22f0     2 OBJECT  GLOBAL DEFAULT   25 _TRACE_APPLE_ADP_READ_CALLER_DSTATE"
+  ],
+  "sections_command": [
+    "readelf",
+    "-SW",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64"
+  ],
+  "selected_sections": [
+    "  [25] .bss              NOBITS          00000000020a1580 20a157c 043588 00  WA  0   0 16"
+  ],
+  "sources": {
+    "/home/brandonin/Documents/behavioral-iphone-inferno/scripts/tracetool/format/c.py": {
+      "sha256": "440c95bdd656e37a58686c348957efa75fd594c9e1e0f979f71a4ec4eba53318"
+    },
+    "/home/brandonin/Documents/behavioral-iphone-inferno/trace/control.c": {
+      "sha256": "a0e498a2d4c081f983f4650075c33c3a2f82f214e1e42fb72f17cc99023e066e"
+    },
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/trace/trace-hw_display.c": {
+      "sha256": "a43fa713f51d757e685b99d34cce6b388525b0f7e50c21a78654ef863b05cc41"
+    }
+  },
+  "interpretation": "Nine DSTATE globals reside in zero-initialized .bss; registration assigns IDs only. Exact reviewed startup argv has no trace-event enable options. Subsequent event enable APIs must remain absent/rejected. This is default-off provenance, not nine actual QMP state-query responses."
+}
