@@ -1,0 +1,50 @@
+{
+  "candidate": "b73b3e1cdaa8b0dcfa84eebae92c7b0f6a8fc8d9",
+  "reviewed_commits": [
+    "f198d1d957",
+    "f0d85fdd85",
+    "d596debedc",
+    "b73b3e1cda"
+  ],
+  "source_sha256": {
+    "companion/import_stage.py": "7c95b130079d9f5ec5dbb5703f33ddf2365c878a39f0035d1d7a5e533185254b",
+    "companion/verify-import-stage.py": "f576757fa44f1dfa92b6bc751c41080d00f5ea8af1302f408b78f1e160b84e9d"
+  },
+  "verdict": "No remaining blocking finding; ready for actual normal-stop recovery validation",
+  "actual_session_validation": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/prepare-session-demo-2/session.json",
+    "sha256": "82b7446dac935b0aab9dd5c74e1a56af311ff782d4850c784ebd94c585abf9c1",
+    "full_runtime_validation_passed": true,
+    "elapsed_seconds": 18.486619472503662,
+    "includes": "original profile/component hashes, runtime cache references, helper/source bindings, complete stopped backing loader verification"
+  },
+  "actual_content_replay": {
+    "source": "disk-preparation-imported-demo-2/serial.log",
+    "sha256": "7b6c26c1e590f1e7b3d9e2b04d60685e1335686bd07636e763451b08c9aa473c",
+    "serial_bytes": 57587,
+    "ordered_records": 12,
+    "expected_file_bytes": 71939,
+    "expected_entries": 3,
+    "scope": "Raw content passes, but original SIGTERM stage remains ineligible under normal-stop gates."
+  },
+  "resolved_findings": [
+    "Changed _pin stability comparison from whole stat_result to explicit dev/inode/mode/size/mtime_ns/ctime_ns, avoiding atime false rejection.",
+    "Stopped report binds exact runner/control hashes and original load_profile input dictionary to pinned prepared session.",
+    "Session reuses pinned-source runtime validator, rechecking concrete cache evidence, tool invocation and helper/base constraints.",
+    "Inspected report/control/QMP/retention/sidecar/checkpoint bytes and hashes are snapshotted and rechecked after long validation; returned hashes identify original verified content."
+  ],
+  "checked_gates": [
+    "Pure raw parser enforces exact ordered begin/helperreadbacks/plan/parent/new-directory metadata/appreadback/finish/cache/complete; duplicate/unknown owned operations, malformed/nonzero status, failures and missing records reject.",
+    "Zero-mismatch existing TREE_PROGRESS admitted only as auxiliary progress, never success.",
+    "Pre-finish checkpoint must be exact complete prefix of final serial and precede successful finish-observation creation/acceptance; exactly one finish required.",
+    "Normal recovery report with noerror/attempt_completedtrue/emulator0, exact ramdisk/solefile serial, recorded base and emulator pins required.",
+    "QMP quit ACK/host-qmp-quit and order checked; standard seven-file retention must use default success path, match actual disks, and be backed by live hashes/loader/descriptorcheck/PIDgone.",
+    "No disk/guest mutation, freezing or successpromotion in verifier; eligible means stage only."
+  ],
+  "limitations": [
+    "No actual new normally stopped imported-stage acceptance yet; this is source review plus real raw/session replays.",
+    "Guest stage records contain no nonce or boot UUID, so source/report/fresh-run provenance bounds attribution; records are not self-authenticating.",
+    "Metadata/hash checks are point-in-time; no exclusive lock against privileged concurrent writers.",
+    "Caller-selected reviewed cache lineage remains distinct from fresh guest cache export."
+  ]
+}
