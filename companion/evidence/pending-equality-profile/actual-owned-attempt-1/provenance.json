@@ -1,0 +1,82 @@
+{
+  "scope": "Actual wholly owned firmware-free five-site fixture; no Apple kernel/iOS execution claim",
+  "source_commit": "ec08c11bee",
+  "external_artifacts": "/home/brandonin/.local/share/inferno/native-probe/pending-equality-owned-attempt-1",
+  "tools": {
+    "as": {
+      "path": "/usr/bin/aarch64-linux-gnu-as",
+      "sha256": "1ffda50efb6d91b6b05ef933aced099595c36577594c0296c91161f2d13db374",
+      "version": "GNU assembler (GNU Binutils for Ubuntu) 2.42"
+    },
+    "ld": {
+      "path": "/usr/bin/aarch64-linux-gnu-ld.bfd",
+      "sha256": "1e4d3369b76845fa8e099b83513bf28f6f722e046f9b2cde1378c9e27f96d19c",
+      "version": "GNU ld (GNU Binutils for Ubuntu) 2.42"
+    },
+    "nm": {
+      "path": "/usr/bin/aarch64-linux-gnu-nm",
+      "sha256": "338d018c73ef394539da2566405a1f2f50a808e3c15ef72e9b48dd2f0b0d262f",
+      "version": "GNU nm (GNU Binutils for Ubuntu) 2.42"
+    }
+  },
+  "artifact_hashes": {
+    "report.json": {
+      "bytes": 4644,
+      "sha256": "df2b27964c0fc945fcd94bc5a9672b1d9b5dc307ca72b0fff868e793a9feec0b"
+    },
+    "stderr.log": {
+      "bytes": 102,
+      "sha256": "9676393568859b05ec5ab9f08641db23ddf60a6e098a7c013526a3b7095a8105"
+    },
+    "swapwait-cpu-control.jsonl": {
+      "bytes": 8410,
+      "sha256": "b903bcf3ff1c77b4d312833d9980343b15d68effa0e2990e97080907a8cc3290"
+    },
+    "control-transcript.jsonl": {
+      "bytes": 1187,
+      "sha256": "2d09e5d764fbd2a5209edaff1006ea95bb8fe3622b30f26de24ea8dfb08d37d9"
+    },
+    "loop.o": {
+      "bytes": 1304,
+      "sha256": "c9a6301cb02cbfc5a63692721bb35e37a19f04e9c3bcf661f333251a71e34278"
+    },
+    "parsed.json": {
+      "bytes": 12316584,
+      "sha256": "341b269e030ecbb5d0c73ff480f6227323b8107db5bfe9b2da0ccad46e9c4f91"
+    },
+    "guest-errors.log": {
+      "bytes": 3899219,
+      "sha256": "c25bbc1f29d376f26b02837c7e462d36c21515218da24167ff23cdca976a6299"
+    },
+    "loop.elf": {
+      "bytes": 66592,
+      "sha256": "2277cf5c8509a3d01231a2837703073d4fa8304866f73c5f74589b424d6accfb"
+    },
+    "qmp-transcript.jsonl": {
+      "bytes": 11522,
+      "sha256": "80d2a6180f62d05e17bbad07adab9f4a23a8369965440e41f83174dcec250d91"
+    },
+    "emulator-stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "actual_cli_filter": "0x4020000c+4,0x4020001c+4,0x40200024+4,0x40200034+4,0x40200038+4",
+  "mailbox_filter_descriptor": "0xfffffff0096f1bc0+4,0xfffffff0096f1bf4+4,0xfffffff0096f1e4c+4,0xfffffff0096f1e50+4,0xfffffff0096e219c+4",
+  "default_and_cleanup_checks": {
+    "default_cpu_off_guest_errors_on": true,
+    "known_branch_exact_PCs": true,
+    "only_filtered_PCs": true,
+    "deadline_restore_cpu_off_guest_errors_on": true,
+    "early_cleanup_restore": true,
+    "uncertain_actual_enable_restored": true
+  },
+  "no_QEMU_after": [],
+  "limits": [
+    "Fixture filter and synthetic slide are explicitly relocated/labeled; actual production TB coverage remains untested.",
+    "5193 independent snapshots:1038 each mode/equality/matchfalse/matchtrue and1041return. Unequal counts are retained, never paired/subtracted.",
+    "Actual nine-event disabled-state QMP queries precede each of3 windows; fixed public allowlist unchanged.",
+    "Last window intentionally simulates response loss after actual enable, leaving diagnostic incomplete despite restoration.",
+    "No new baseline run; existing922 baseline raw parser replay and unchanged branches are compatibility evidence, not new baseline execution."
+  ]
+}

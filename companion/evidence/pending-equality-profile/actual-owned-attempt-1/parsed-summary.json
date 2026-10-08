@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "mode": "owned-relocated-fixture-not-production",
+  "input_bytes": 3899219,
+  "input_sha256": "c25bbc1f29d376f26b02837c7e462d36c21515218da24167ff23cdca976a6299",
+  "expected_pcs": {
+    "accepted-mode": "0x4020000c",
+    "token-equality-predicate-true": "0x4020001c",
+    "matching-request-local-false": "0x40200024",
+    "matching-request-local-true": "0x40200034",
+    "final-return": "0x40200038"
+  },
+  "snapshot_count": 5193,
+  "complete_count": 5193,
+  "exact_pc_counts": {
+    "0x0000000040200038": 1041,
+    "0x000000004020000c": 1038,
+    "0x000000004020001c": 1038,
+    "0x0000000040200024": 1038,
+    "0x0000000040200034": 1038
+  },
+  "unknown_pc_count": 0,
+  "orphan_fragments": [],
+  "incomplete_eof_record": null,
+  "distributions": [
+    {
+      "role": "accepted-mode",
+      "fields": {
+        "mode": 0
+      },
+      "snapshots": 1038
+    },
+    {
+      "role": "final-return",
+      "fields": {
+        "status": 3758097109
+      },
+      "snapshots": 1041
+    },
+    {
+      "role": "matching-request-local-false",
+      "fields": {
+        "matching_request_local": 0
+      },
+      "snapshots": 1038
+    },
+    {
+      "role": "matching-request-local-true",
+      "fields": {
+        "matching_request_local": 1
+      },
+      "snapshots": 1038
+    },
+    {
+      "role": "token-equality-predicate-true",
+      "fields": {
+        "pipeline_bf4_token": 253,
+        "requested_token": 253
+      },
+      "snapshots": 1038
+    }
+  ],
+  "limitations": [
+    "Independent snapshots, not invocation counts or CPU/process/thread identity; no pairing or count subtraction.",
+    "Mode is typed only at accepted-mode; never propagated to other snapshots.",
+    "Equality is the positive comparison before its local store, not observed latch lifetime or completion.",
+    "pipeline_bf4_token is an offset label, not a done/released/reusable fence predicate.",
+    "Matching local may represent active OR queued match; sites are conditional continuation subsets.",
+    "Absence of sites is not proof of absent branches; production exact-PC TB coverage requires actual evidence.",
+    "Unknown, malformed, truncated blocks and semantic violations retained. Full raw X values preserved.",
+    "Zero-slide/build/filter/control and restoration provenance require separate verification; no guest memory reads."
+  ],
+  "role_counts": {
+    "final-return": 1041,
+    "accepted-mode": 1038,
+    "token-equality-predicate-true": 1038,
+    "matching-request-local-false": 1038,
+    "matching-request-local-true": 1038
+  },
+  "semantic_violations": [],
+  "base_parser_sha256": "6c22f7a54fdd1dec01d6afdeffb78ccc54a8f50a57428d0504789a5b52d1fe30",
+  "input_path": "/home/brandonin/.local/share/inferno/native-probe/pending-equality-owned-attempt-1/guest-errors.log",
+  "parsed_output_sha256": "341b269e030ecbb5d0c73ff480f6227323b8107db5bfe9b2da0ccad46e9c4f91",
+  "parser_sha256": "6952324aa8c92be314a7aa33af5632c28c99607d3dcb8901c3722298c35578eb"
+}
