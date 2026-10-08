@@ -1,0 +1,66 @@
+{
+  "scope": "First actual persistent-freeze production CPU window; no worker runtime actions.",
+  "binary_sha256": "0889bfe40c6bbb3e6eb9d493ada2bb86637e1d7acb61e36699e16da2568563f2",
+  "build_manifest_sha256": "1c0ca353df0b88956f071503654a9a0a3f1e22346270e89accdfaa911391f096",
+  "parser_sha256": "6c22f7a54fdd1dec01d6afdeffb78ccc54a8f50a57428d0504789a5b52d1fe30",
+  "pins": {
+    "actual_zero_slide": true,
+    "exact_two_dfilter_ranges": true,
+    "default_mask_guest_errors": true,
+    "all9_ADP_disabled_before_window": true,
+    "raw_matching_enable_restore_ACKs": [
+      66,
+      68
+    ]
+  },
+  "window": {
+    "before_enable": {
+      "time": 1791418192.1118839,
+      "monotonic_ns": 837375988362311,
+      "stage": "before-enable",
+      "seconds": 1,
+      "offset": 12663,
+      "inode": [
+        66306,
+        49826859
+      ],
+      "slide_evidence_sha256": "90d324fa1e1c26c49589cda1ea8076ea1c3f9073a1f1fccf44bdc91ae15d91eb"
+    },
+    "restored": {
+      "time": 1791418193.1241896,
+      "monotonic_ns": 837377000667839,
+      "stage": "restored",
+      "reason": "deadline",
+      "offset": 352839,
+      "bytes_since_enable": 340176
+    },
+    "all_blocks_inside_offsets": true,
+    "requested_seconds": 1,
+    "enable_to_restore_ack_seconds": 1.010951280593872
+  },
+  "populations": {
+    "entry_snapshots": 228,
+    "return_snapshots": 228,
+    "entry_abi": {
+      "{\"flags\": 2147483648, \"third\": 0, \"token\": 293}": 228
+    },
+    "return_abi": {
+      "{\"status\": 3758097109}": 228
+    },
+    "entry_client_X00": {
+      "0xffffffe19be76d90": 228
+    }
+  },
+  "comparison": {
+    "healthy68": "182entry tokens545..550 flags80000000/third0;182return177pending(e00002d5),5zero. Tokens nonmonotonic, no pairing.",
+    "failed76": "228entry alltoken293 flags80000000/third0;228return allpending(e00002d5),0zero. One observed client pointer; this is not a process/thread identity."
+  },
+  "interpretation": "Within this bounded logging window, observed entry-token population is stationary and final-return population entirely pending. This strengthens persistent-pending hypothesis versus healthy68 but does not prove which entry produced which return, pipeline identity, missing completion mechanism or root cause. Existing65/74 sampled can_update retry path is compatible, not causal linkage.",
+  "limitations": [
+    "Snapshot counts not invocations; no CPU/process/thread attribution, cross-block pairing or temporal bijection despite equal counts.",
+    "Only1second of globally nochain-perturbed execution; absence of zero samples is not proof no completion elsewhere/before/after.",
+    "No heap/pipeline state, token association at return, IRQ causality or exact failure duration observed.",
+    "Raw fullX registers retained; low32 interpreted only at exact source-reviewed PCs.",
+    "Root owns before/during/after visual confirmation; this audit does not turn register distributions into pixel claims."
+  ]
+}
