@@ -1,0 +1,59 @@
+{
+  "status": "Rootreviewedstrict0to1; normalfinishrequested; retentionpending",
+  "boot_uuid": "7C698077-561D-4148-BEE4-87FC3DB4F87F",
+  "root_visual_reviews": {
+    "before-unlock/settled.png": "Original lock",
+    "after-unlock-001/observed-0007.png": "Still lock afterACKfirstswipe",
+    "after-unlock-002/settled.png": "Unlock transition incomplete; not betaapproval",
+    "beta-review/settled.png": "Original betaalert overfixture",
+    "after-beta-close/settled.png": "Transient unobstructedzero, beforeSetup appeared",
+    "setup-review/settled.png": "Finish Setting Up prompt reviewed",
+    "after-setup/settled.png": "Unobstructedcounter0",
+    "after-counter/settled.png": "Unobstructedcounter1"
+  },
+  "additional_visual_reviews": {
+    "before-delayed-unlock.png": "QMP0050 stilllock beforedelayedsecondswipe",
+    "probe-before.png": "ActualstrictQMPzero",
+    "probe-after.png": "ActualstrictQMPone"
+  },
+  "submission_intervals_seconds": {
+    "cont_to_first": 149.0380311012268,
+    "first_to_second": 396.03763365745544,
+    "second_to_beta": 114.09193825721741,
+    "beta_to_setup": 69.37053489685059,
+    "setup_to_counter": 28.769569873809814
+  },
+  "targets": [
+    149,
+    396,
+    43,
+    18,
+    13
+  ],
+  "operator_terminal_deadline_rejections": [
+    {
+      "phase": "beta",
+      "target": 1791441288.6839237,
+      "observed_check": 1791441292.773689
+    },
+    {
+      "phase": "setup",
+      "target": 1791441377.775862,
+      "observed_check": 1791441385.3676538
+    },
+    {
+      "phase": "counter",
+      "target": 1791441442.1463969,
+      "observed_check": 1791441443.458051
+    }
+  ],
+  "deadline_rejection_record_scope": "Root-authored record of actual terminal assertions; not guest delivery or separately instrumented logs. Each rejected before anyinput; later each phase separatelyexplicitmanual.",
+  "strict_qmp_sha256": {
+    "probe-before": "520f82845a61b3c1356813720913058b236ef512220285e2ca386c6e80e8c3b4",
+    "probe-after": "c14578cc5df85ca627d01ecb01d13c8250515ec1f070c57028cca079ce534a76"
+  },
+  "cpu_window": false,
+  "samples": false,
+  "warm_cycles": 0,
+  "limit": "Healthy ordinary fixturejourney; allshorttimingtargets missed. Not completedcadence or reliabilityfix."
+}
