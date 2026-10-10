@@ -74,13 +74,45 @@ def checked_map(values, pins):
     for path, sha in values.items():
         pin({'path': path, 'sha256': sha}, pins)
 
-def build_outputs(path, build, names, pins):
+def historical_importer(build, source_path, sha):
+    """Authenticate a reviewed build's superseded importer producer from Git.
+
+    Only the in-checkout app-import.py producer qualifies: its bytes must equal
+    the pin at the build's own recorded source revision, which must be an
+    ancestor of HEAD. The current importer is pinned separately by its
+    current hash; the old hash is never recorded as the current file.
+    """
+    path = Path(source_path).resolve(strict=True)
+    importer = SOURCE / 'app-import.py'
+    if path != importer or source_path not in build['producer_sources'] or digest(read(path)) == sha:
+        return None
+    revision = build.get('source_revision')
+    if not isinstance(revision, str) or len(revision) != 40 or any(c not in '0123456789abcdef' for c in revision):
+        raise ValueError('Historical importer needs an exact recorded source revision')
+    repo = SOURCE.parent
+    git = ['git', '-C', str(repo)]
+    if subprocess.run(git + ['merge-base', '--is-ancestor', revision, 'HEAD'], timeout=30).returncode != 0:
+        raise ValueError('Historical importer revision is not an ancestor of HEAD')
+    relative = importer.relative_to(repo).as_posix()
+    blob = subprocess.run(git + ['cat-file', 'blob', revision + ':' + relative], check=True, capture_output=True, timeout=30).stdout
+    if digest(blob) != sha:
+        raise ValueError('Historical importer differs from recorded build revision: ' + str(path))
+    return {'path': str(path), 'pinned_sha256': sha, 'source_revision': revision, 'git_object': revision + ':' + relative,
+            'git_blob_sha256': digest(blob), 'current_sha256': digest(read(path)),
+            'scope': 'Producer provenance of an existing reviewed build only; current importer pinned at its current hash.'}
+
+def build_outputs(path, build, names, pins, historical=None):
     if (path.parent / 'INCOMPLETE.json').exists() or (path.parent / 'failure.json').exists():
         raise ValueError('Incomplete build')
     # Legacy reviewed producers recorded ../app-probe headers lexically.
     # Resolve those source references, preserving their original spelling in the
     # pinned build manifest; output/input artifacts still require canonical paths.
     for source_path, sha in {**build['sources'], **build['producer_sources']}.items():
+        superseded = historical_importer(build, source_path, sha)
+        if superseded is not None:
+            if historical is not None:
+                historical.append(superseded)
+            continue
         pin({'path': str(Path(source_path).resolve(strict=True)), 'sha256': sha}, pins)
     for row in build['command_records']:
         for channel in ('stdout', 'stderr'):
@@ -157,7 +189,8 @@ def prepare(config_path, expected, output):
     for name, (approved_sha, status) in approved.items():
         if config['inputs'][name]['sha256'] != approved_sha or records[name].get('status') != status:
             raise ValueError('First fresh preparation requires exact independently reviewed owned build: ' + name)
-    helpers = build_outputs(paths['runtime_build'], records['runtime_build'], ('inferno-probe', 'inferno-readiness', 'inferno-hid-input', 'inferno-unlock-empty'), pins)
+    superseded = []
+    helpers = build_outputs(paths['runtime_build'], records['runtime_build'], ('inferno-probe', 'inferno-readiness', 'inferno-hid-input', 'inferno-unlock-empty'), pins, superseded)
     for binary, entitlement in (('inferno-hid-input', 'hid-entitlements.plist'), ('inferno-unlock-empty', 'unlock-entitlements.plist')):
         name = binary + '-entitlements.plist'
         readback = records['runtime_build']['outputs'][name]
@@ -166,7 +199,7 @@ def prepare(config_path, expected, output):
         source_raw = read(source); pins[str(source)] = digest(source_raw)
         if len(raw) != readback['bytes'] or plistlib.loads(raw) != plistlib.loads(source_raw):
             raise ValueError('Runtime helper entitlement readback mismatch')
-    prep = build_outputs(paths['prepare_build'], records['prepare_build'], ('inferno-prepare-root',), pins)
+    prep = build_outputs(paths['prepare_build'], records['prepare_build'], ('inferno-prepare-root',), pins, superseded)
     entitlement = records['prepare_build']['outputs']['helper-entitlements.plist']
     _, raw = pin({'path': str(paths['prepare_build'].parent / 'helper-entitlements.plist'), 'sha256': entitlement['sha256']}, pins)
     source = SOURCE / 'native-probe/entitlements.plist'
@@ -223,7 +256,7 @@ def prepare(config_path, expected, output):
         IMPORTER.validate_manifest(paths['app_manifest'])
         checked_map(dict(pins), {})
         args = ['--disk-helper-existing', '--readiness-probe', helpers['inferno-readiness'], '--hid-input-helper', helpers['inferno-hid-input'], '--unlock-helper', helpers['inferno-unlock-empty'], '--disk-helper', prep['inferno-prepare-root'], '--system-launcher', launch_outputs['inferno-launcher'], '--exec-wrapper', launch_outputs['inferno-exec-launcher'], '--imported-app-manifest', str(paths['app_manifest']), '--imported-app-manifest-sha256', config['inputs']['app_manifest']['sha256'], '--launchd-cache', str(output / 'launchd.plist'), '--launchd-cache-sha256', digest(merged)]
-        result = {'schema': 'inferno.fresh-runtime-artifacts.v1', 'status': 'host-prepared-not-staged', 'ipa_runtime_ready': False, 'inputs': config['inputs'], 'input_source_sha256': pins, 'merge_command': command, 'policy': {'disabled_original_labels': list(POLICY), 'original_signature_modified': False, 'signature_scope': 'Original signature not read or written', 'fresh_insertion': True}, 'jobs': sorted(jobs), 'outputs': {p.name: {'path': str(p), 'sha256': digest(read(p))} for p in sorted(output.iterdir()) if p.name != 'INCOMPLETE.json'}, 'prepare_arguments_fragment': args, 'scope': 'Small artifact preparation only. No disk eligibility validation, renderer success, ramdisk construction, guest staging, migration, first unlock or launch. Require separately verified renderer stage from same keybag before constructing a recovery session. No signature file is supplied or modified.'}
+        result = {'schema': 'inferno.fresh-runtime-artifacts.v1', 'status': 'host-prepared-not-staged', 'ipa_runtime_ready': False, 'inputs': config['inputs'], 'input_source_sha256': pins, 'historical_producer_sources': superseded, 'merge_command': command, 'policy': {'disabled_original_labels': list(POLICY), 'original_signature_modified': False, 'signature_scope': 'Original signature not read or written', 'fresh_insertion': True}, 'jobs': sorted(jobs), 'outputs': {p.name: {'path': str(p), 'sha256': digest(read(p))} for p in sorted(output.iterdir()) if p.name != 'INCOMPLETE.json'}, 'prepare_arguments_fragment': args, 'scope': 'Small artifact preparation only. No disk eligibility validation, renderer success, ramdisk construction, guest staging, migration, first unlock or launch. Require separately verified renderer stage from same keybag before constructing a recovery session. No signature file is supplied or modified.'}
         (output / 'fresh-runtime-artifacts.json').write_text(json.dumps(result, indent=2) + '\n')
         (output / 'INCOMPLETE.json').unlink()
         return result

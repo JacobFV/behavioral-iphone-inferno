@@ -18,14 +18,16 @@ import time
 import zlib
 import disk_overlay as OV
 import keybag_state as KS
+import runtime_rebuild as RB
 from initial_volumes import bounded_record
 
 SOURCE=Path(__file__).resolve().parent
 CO=KS.CO
+RB.install(KS, OV)
 sha=KS.sha
 
 def source_pins():
-    pins=KS.sources();pins[str(Path(__file__).resolve())]=sha(Path(__file__))
+    pins=KS.sources();pins[str(Path(__file__).resolve())]=sha(Path(__file__));pins[str(Path(RB.__file__).resolve())]=sha(Path(RB.__file__))
     return pins
 
 def unchanged(pins):
@@ -96,7 +98,15 @@ def main():
         raise InterruptedError('Signal ' + str(number))
     handlers = {number: signal.signal(number, interrupted) for number in (signal.SIGINT, signal.SIGTERM)}
     try:
-        sources = source_pins(); pins = {}; CO.no_running_emulator()
+        with RB.historical(): return flatten(args, output)
+    finally:
+        os.umask(mask)
+        for number, handler in handlers.items(): signal.signal(number, handler)
+
+
+def flatten(args, output):
+    try:
+        substitution = RB.load(); sources = source_pins(); pins = {}; CO.no_running_emulator()
         destination = CO.IMPORTER.external_output(args.output)
         validated=KS.validate(args.keybag_stage,args.keybag_stage_sha256,pins,args.overlay_tools_root)
         stage=validated['manifest'];tool=validated['tool'];before=validated['chain'];before_ids=validated['identities']
@@ -135,7 +145,7 @@ def main():
         if OV.validate_tools(args.overlay_tools_root) != tool: raise ValueError('Pinned qemu-img tool changed during final raw validation')
         if identities(before) != before_ids: raise ValueError('Source metadata changed at publication')
         auxiliary = {name: entry for name, entry in before['auxiliary'].items() if name != 'root.qcow2'}
-        provenance = {'schema': 'inferno.flattened-keybag-state.v1', 'status': 'flattened-fresh-keybag-not-runtime-ready', 'ipa_runtime_ready': False, 'sep_destination_bytes_verified': False, 'postgrowth_full_data_verified': False, 'keybag_stage': {'path': str(args.keybag_stage), 'sha256': args.keybag_stage_sha256}, 'raw': final, 'allocated_bytes': raw.stat().st_blocks * 512, 'gpt': gpt, 'tool': tool, 'source_before': before, 'source_after': after, 'identities_before': before_ids, 'identities_after': after_ids, 'source_sha256': sources, 'evidence_sha256': pins, 'paired_auxiliary': auxiliary, 'auxiliary_state': str(Path(stage['report']).parent), 'auxiliary_report_sha256': stage['report_sha256'], 'auxiliary_retention_sha256': stage['retention_sha256'], 'future_boot_arguments': ['--root-image', str(raw), '--root-sha256', raw_hash, '--root-overlay', '--auxiliary-state', str(Path(stage['report']).parent)], 'scope': 'Host logical equality/GPT only; fresh original API keybag state preserved with exact paired auxiliaries. No new keybag operation, postgrowth full Data equality, destination SEP byte proof or runtime readiness.'}
+        provenance = {'schema': 'inferno.flattened-keybag-state.v1', 'status': 'flattened-fresh-keybag-not-runtime-ready', 'ipa_runtime_ready': False, 'sep_destination_bytes_verified': False, 'postgrowth_full_data_verified': False, 'keybag_stage': {'path': str(args.keybag_stage), 'sha256': args.keybag_stage_sha256}, 'raw': final, 'allocated_bytes': raw.stat().st_blocks * 512, 'gpt': gpt, 'tool': tool, 'source_before': before, 'source_after': after, 'identities_before': before_ids, 'identities_after': after_ids, 'source_sha256': sources, 'evidence_sha256': pins, 'paired_auxiliary': auxiliary, 'runtime_substitution': substitution, 'auxiliary_state': str(Path(stage['report']).parent), 'auxiliary_report_sha256': stage['report_sha256'], 'auxiliary_retention_sha256': stage['retention_sha256'], 'future_boot_arguments': ['--root-image', str(raw), '--root-sha256', raw_hash, '--root-overlay', '--auxiliary-state', str(Path(stage['report']).parent)], 'scope': 'Host logical equality/GPT only; fresh original API keybag state preserved with exact paired auxiliaries. No new keybag operation, postgrowth full Data equality, destination SEP byte proof or runtime readiness.'}
         CO.write_new(output / 'flattened-keybag.json', provenance)
         CO.write_new(output / 'KEEP-OVERLAY-BACKING.json', {'backing': final, 'provenance_sha256': sha(output / 'flattened-keybag.json'), 'retirement_prohibited_while_dependent_overlays_exist': True, 'paired_auxiliary_must_be_retained': auxiliary, 'scope': 'Only new raw frozen; all original reports/disks retained unchanged.'})
         (output / 'INCOMPLETE.json').unlink()
@@ -146,9 +156,6 @@ def main():
     except BaseException as exc:
         if output is not None: CO.write_new(output / 'failure.json', {'status': 'failed-not-eligible', 'error': str(exc), 'ipa_runtime_ready': False})
         print('flatten-keybag failed: ' + str(exc), file=sys.stderr); return 1
-    finally:
-        os.umask(mask)
-        for number, handler in handlers.items(): signal.signal(number, handler)
 
 
 if __name__ == '__main__': raise SystemExit(main())

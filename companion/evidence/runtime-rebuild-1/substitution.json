@@ -1,0 +1,50 @@
+{
+  "schema": "inferno.runtime-rebuild-substitution.v1",
+  "reason": "The original incremental emulator build and .local-build directory were lost before 2026-10-08 cleanup. A clean rebuild of the identical committed source, configure arguments, dependency lock and host toolchain is not byte-identical, so historical pins of that path cannot be satisfied by bytes.",
+  "source_revision": "f37ad49dbb68dc9c0097960381ebc14270fc3da8",
+  "rebuild_started": "2026-10-10T15:53:10-07:00",
+  "rebuild_driver": {
+    "path": "companion/evidence/runtime-rebuild-1/rebuild-pinned.sh",
+    "sha256": "10893c0c0b6e9a07503363998a7f6a1c123885f5303a25396596997ea710a439",
+    "difference_from_build_linux_sh": "script_dir and source_commit fixed to the main companion directory and the pinned source revision"
+  },
+  "rebuild_log": {
+    "path": "companion/evidence/runtime-rebuild-1/rebuild.log.xz",
+    "sha256": "1366a35b6b8ecab65211ae407d018271e57ca47a29e0859fe78dca67f68999c1"
+  },
+  "original_manifest_evidence": {
+    "path": "companion/evidence/healthy-warm-86/build-manifest.json",
+    "sha256": "1c0ca353df0b88956f071503654a9a0a3f1e22346270e89accdfaa911391f096"
+  },
+  "rebuilt_manifest_evidence": {
+    "path": "companion/evidence/runtime-rebuild-1/build-manifest.json",
+    "sha256": "72cb564142d34882355a810315dd61afdd037c8fd76b97d399051f2f8acecff2"
+  },
+  "manifest_differences": {
+    "top_level": [
+      "binary"
+    ],
+    "binary": [
+      "bytes",
+      "sha256"
+    ]
+  },
+  "substitutions": {
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64": {
+      "pinned_sha256": "0889bfe40c6bbb3e6eb9d493ada2bb86637e1d7acb61e36699e16da2568563f2",
+      "rebuilt_sha256": "f0a887f069afb075e158ad51d04d425adc4fd96614eb070dfc009a3ea7549d90",
+      "pinned_bytes": 114851864,
+      "rebuilt_bytes": 114802328
+    },
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build-manifest.json": {
+      "pinned_sha256": "1c0ca353df0b88956f071503654a9a0a3f1e22346270e89accdfaa911391f096",
+      "rebuilt_sha256": "72cb564142d34882355a810315dd61afdd037c8fd76b97d399051f2f8acecff2"
+    }
+  },
+  "smoke": {
+    "path": "companion/evidence/runtime-rebuild-1/smoke/report.json",
+    "sha256": "f02f299e302099ffdc094f7b74074d7f9dc1cdd3c928f193a9245156704528cb",
+    "scope": "firmware-free QMP control plane only"
+  },
+  "scope": "Historical records keep their original pins and remain statements about runs on the original bytes. Only consumers revalidating those records may accept these exact path/hash pairs. New executions must record and expect the rebuilt hashes. No claim that the rebuilt binary behaves identically until actual guest stages run on it."
+}
