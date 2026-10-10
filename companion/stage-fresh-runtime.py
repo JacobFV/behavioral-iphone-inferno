@@ -17,8 +17,10 @@ from disk_overlay import load_stopped_overlay
 from initial_volumes import bounded_record
 from fresh_runtime_stage import verify_content, validate_inputs, sources
 import fresh_runtime_stage as FR
+import runtime_rebuild as RB
 import shutil
 CO=FR.CO;sha=FR.sha
+RB.install(FR)
 unchanged=FR.KS.SK.unchanged
 
 
@@ -69,8 +71,12 @@ def main():
     # Fresh namespaces must be private regardless of the invoking shell umask.
     # Child preparation/boot processes inherit this; never chmod existing inputs.
     previous_umask = os.umask(0o077)
+    # Historical pins of the lost emulator build are satisfied only by the
+    # recorded rebuild; this run's own report records the actual rebuilt hashes.
+    historical = RB.historical(); historical.__enter__()
     try:
-        source_pins = sources()
+        substitution = RB.load()
+        source_pins = sources(); source_pins[str(Path(RB.__file__).resolve())] = sha(Path(RB.__file__))
         destination = CO.IMPORTER.external_output(args.output)
         preflight = CO.no_running_emulator()
         paths, input_pins, verified = validate_inputs(args)
@@ -158,7 +164,8 @@ def main():
         stopped_pins = {str(p): sha(p) for p in (report_path, serial, report_dir / 'control-transcript.jsonl',
                         report_dir / 'qmp-transcript.jsonl', output / 'content-check.json', output / 'finish.stdout')}
         report = CO.check_completed_report(context, report_path)
-        if report['inputs'] != profile_inputs or report['binary_sha256'] != verified['runtime_inputs']['binary_sha256'] or report['build_manifest_sha256'] != verified['runtime_inputs']['build_manifest_sha256']:
+        runtime = verified['runtime_inputs']
+        if report['inputs'] != profile_inputs or report['binary_sha256'] != RB.current(runtime['binary'], runtime['binary_sha256']) or report['build_manifest_sha256'] != RB.current(runtime['build_manifest'], runtime['build_manifest_sha256']):
             raise ValueError('Stopped runtime input mismatch')
         expected_base={k:verified['base'][k] for k in ('report','report_sha256','stopped_manifest','stopped_manifest_sha256')}
         if report.get('overlay_base_report')!=expected_base or report.get('root_base'):raise ValueError('Unexpected renderer root lineage')
@@ -203,7 +210,7 @@ def main():
                      'report':str(report_path),'report_sha256':stopped_pins[str(report_path)],'retention':str(retention),'retention_sha256':stopped_pins[str(retention)],
                      'content':content,'content_checkpoint_sha256':stopped_pins[str(output/'content-check.json')],'backing_depth':len(chain['layers']),
                      'source_sha256':source_pins,'input_sha256':input_pins,'stopped_evidence_sha256':stopped_pins,
-                     'predecessor':{'path':str(args.renderer_stage),'sha256':args.renderer_stage_sha256},'artifacts':{'path':str(args.artifacts),'sha256':args.artifacts_sha256},
+                     'predecessor':{'path':str(args.renderer_stage),'sha256':args.renderer_stage_sha256},'artifacts':{'path':str(args.artifacts),'sha256':args.artifacts_sha256},'runtime_substitution':substitution,
                      'scope':'Exact owned helper/app/launchd configuration copies read back and normally unmounted. No keybag initialization or Data seeding repeated. No installed boot, migration, unlock or app interaction proof.'})
         (output / 'INCOMPLETE.json').unlink()
         print(json.dumps({'result': str(output / 'fresh-runtime.json'), 'sha256': sha(output / 'fresh-runtime.json'), 'ipa_runtime_ready': False}))
@@ -220,6 +227,7 @@ def main():
         print('stage-fresh-runtime failed: ' + str(exc), file=sys.stderr)
         return 1
     finally:
+        historical.__exit__(None, None, None)
         os.umask(previous_umask)
         for log in logs:
             log.close()

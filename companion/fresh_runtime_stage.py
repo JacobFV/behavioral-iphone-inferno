@@ -7,6 +7,7 @@ from pathlib import Path
 import plistlib
 import re
 import cache_patch_stage as CP
+import runtime_rebuild as RB
 from initial_volumes import bounded_record
 SOURCE=Path(__file__).resolve().parent
 KS=CP.KS;CO=CP.CO;sha=CP.sha
@@ -140,7 +141,8 @@ def validate_renderer(path,expected,pins,tools_root):
     for name,key in [('boot.py','runner_sha256'),('qmp_control.py','control_source_sha256')]:
         if [h for p,h in stage['source_sha256'].items() if Path(p).name==name]!=[r[key]]:raise ValueError('Renderer source report mismatch')
     profile=KS.pin(path.parent/'recovery/profile.json',r['profile_sha256'],pins);_,inputs=KS.SK.load_profile(profile)
-    if inputs!=r['inputs'] or r['binary_sha256']!=verified['runtime_inputs']['binary_sha256'] or r['build_manifest_sha256']!=verified['runtime_inputs']['build_manifest_sha256']:raise ValueError('Renderer runtime input mismatch')
+    runtime=verified['runtime_inputs']
+    if inputs!=r['inputs'] or r['binary_sha256']!=RB.current(runtime['binary'],runtime['binary_sha256']) or r['build_manifest_sha256']!=RB.current(runtime['build_manifest'],runtime['build_manifest_sha256']):raise ValueError('Renderer runtime input mismatch')
     for name,expected_hash in [('helper',sha(paths['helper'])),('probe',sha(paths['probe'])),('plan',CP.PLAN),('digests',digest_bytes(bytes.fromhex(CP.ORIGINAL+CP.PATCHED)))]:
         p=KS.pin(path.parent/('readback-'+name),launch['readbacks'][name]['sha256'],pins)
         if pins[str(p)]!=expected_hash:raise ValueError('Renderer HFS readback differs')

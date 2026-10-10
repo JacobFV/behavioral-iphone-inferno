@@ -22,6 +22,7 @@ def module(name,path):
     spec=importlib.util.spec_from_file_location(name,path);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
 FL=module('cache_flatten_support',SOURCE/'flatten-keybag.py')
 IR=module('cache_inspection_result',SOURCE/'runtime-inspector/result.py')
+HP=module('cache_historical_producer',SOURCE/'prepare-fresh-runtime.py')
 
 def sources():
     pins=FL.source_pins()
@@ -137,7 +138,10 @@ def validate_inputs(args):
     if inspection['content']['dyld']['sha256']!=ORIGINAL or args.original_cache_sha256!=ORIGINAL or args.patched_cache_sha256!=PATCHED or paths['original_cache'].stat().st_size!=BYTES or paths['patched_cache'].stat().st_size!=BYTES:raise ValueError('Exact original renderer cache binding differs')
     build=bounded_record(paths['helper_build']);folder=paths['helper_build'].parent
     if build.get('status')!='built-owned-cache-helper-only; no guest execution yet' or any((folder/n).exists() for n in ('INCOMPLETE.json','failure.json')):raise ValueError('Cache helper build not complete')
-    for p,h in {**build['sources'],**build['producer_sources']}.items():KS.pin(p,h,pins)
+    # A reviewed build may pin the superseded in-checkout importer; authenticate it from Git.
+    superseded=[x for x in (HP.historical_importer(build,p,h) for p,h in build['producer_sources'].items()) if x]
+    for p,h in {**build['sources'],**build['producer_sources']}.items():
+        if p not in {x['path'] for x in superseded}:KS.pin(p,h,pins)
     for name in ('cache-patch.c','libSystem.tbd','entitlements.plist'):
         if [h for p,h in build['sources'].items() if Path(p).name==name]!=[sha(SOURCE/'fs-patches'/name)]:raise ValueError('Cache helper source differs')
     if build['outputs']['inferno-cache-patch']!={'bytes':68416,'sha256':'13cd534f238d6fc47ec70351479034a6b97262e0984588c0948625478d2edb8c'}:raise ValueError('Reviewed reproducible cache helper differs')
@@ -155,4 +159,4 @@ def validate_inputs(args):
     # CO.freeze_new_disks uses base.layers only as a protected inode inventory.
     # This includes the flattened raw AND retained historical layers; it is not
     # the boot backing chain, which is independently checked as depth2 afterward.
-    return paths,pins,{'base_scope':'Protected inode inventory only, not actual ancestry; actual output chain must be raw plus new overlay (depth2).','flat':flat,'keybag':prior['manifest'],'base':{**base,'layers':[flat['raw'],*base['layers']]},'tool':prior['tool'],'base_metadata':metadata,'runtime_inputs':{k:str(v) for k,v in prior['preparation_inputs'].items()}}
+    return paths,pins,{'base_scope':'Protected inode inventory only, not actual ancestry; actual output chain must be raw plus new overlay (depth2).','flat':flat,'keybag':prior['manifest'],'base':{**base,'layers':[flat['raw'],*base['layers']]},'tool':prior['tool'],'base_metadata':metadata,'runtime_inputs':{k:str(v) for k,v in prior['preparation_inputs'].items()},'historical_producer_sources':superseded}
