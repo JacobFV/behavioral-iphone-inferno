@@ -223,7 +223,11 @@ def import_ipa(source, output=None):
         dirs = sorted(x[len(prefix):] for x in directories if x.startswith(prefix))
     if 'Info.plist' not in files:
         raise ValueError('Missing root Info.plist')
-    info = plistlib.loads(files['Info.plist'][0])
+    try:
+        info = plistlib.loads(files['Info.plist'][0])
+    except Exception as exc:
+        # plistlib surfaces expat/OverflowError/etc. for malformed plists.
+        raise ValueError('Info.plist is not a valid property list: %s' % exc) from None
     if not isinstance(info,dict) or info.get('CFBundlePackageType')!='APPL':
         raise ValueError('Require APPL Info.plist')
     identifier, executable = info.get('CFBundleIdentifier'), info.get('CFBundleExecutable')
