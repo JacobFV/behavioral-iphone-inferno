@@ -1,0 +1,38 @@
+{
+  "status": "normal-installed-attempt-no-app-success-assertion",
+  "report": "/home/brandonin/.local/share/inferno/app-import/fresh-boot-1/boot/report.json",
+  "report_sha256": "429432074185025d9fa2b0cce72bef57689faafca1f629f1c4ef4a8f11e57bc6",
+  "shutdown": {
+    "path": "/home/brandonin/.local/share/inferno/app-import/fresh-boot-1/boot/qmp-transcript.jsonl",
+    "sha256": "8a39cecf3246c3069ef29e334be082af357b35d3049ca5e0f81cea2552d28196",
+    "evidence": [
+      {
+        "line": 514,
+        "entry": {
+          "direction": "send",
+          "time": 1791681102.1721268,
+          "raw": "{\"execute\": \"quit\", \"id\": 246}\n"
+        }
+      },
+      {
+        "line": 515,
+        "entry": {
+          "direction": "receive",
+          "time": 1791681102.1728747,
+          "raw": "{\"timestamp\": {\"seconds\": 1791681102, \"microseconds\": 172693}, \"event\": \"SHUTDOWN\", \"data\": {\"guest\": false, \"reason\": \"host-qmp-quit\"}}\r\n"
+        }
+      },
+      {
+        "line": 516,
+        "entry": {
+          "direction": "receive",
+          "time": 1791681102.1798284,
+          "raw": "{\"return\": {}, \"id\": 246}\r\n"
+        }
+      }
+    ],
+    "reported_emulator_pid_absent": 3678900
+  },
+  "app_execution_asserted": false,
+  "scope": "Normal runner completion only; migration, unlock, app launch, pixels and preservation remain separate."
+}
