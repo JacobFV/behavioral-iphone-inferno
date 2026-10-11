@@ -2754,3 +2754,19 @@ for these launcher/documentation additions. No iOS boot/app claims have changed.
 Setup work is intentionally handed off so the user can close the old session and
 open a new session rooted here. There are no continuing framework workers or
 emulator processes from this setup. Continue with NEXT_SESSION.md in the new one.
+
+## 2026-10-11 status: fresh-image Setup Assistant journey
+- Emulator rebuilt from source with a recorded hash substitution
+  (`companion/runtime_rebuild.py`, `evidence/runtime-rebuild-1/`); fresh-setup
+  chain (keybag flatten, renderer cache patch, runtime install) re-run on it.
+- `companion/boot-fresh.py` boots the staged fresh image. fresh-boot-1 and
+  fresh-boot-6 (`evidence/fresh-boot-*/`) drove Setup Assistant by HID from Hello
+  to "Welcome to iPhone" (31 delivered gestures in boot 6; 1-3 min per screen).
+- Owner accepted the setup-journey test as a success (2026-10-11). Observed
+  limits: the final Welcome swipe never visibly advanced, so no Home screen,
+  no ImportedDemo launch, no app pixels. Do not SIGSTOP QEMU: the runner's
+  screendump times out and it quits the run.
+- Merged `companion/ipa-coverage` (NotesDemo, importer malformed-plist fix).
+- Open: app launch on fresh image, display freeze (FREEZE_HYPOTHESES.md),
+  typed flatten for installed-boot overlays (depth limit 4), fewer-input setup
+  path (32-gesture HID cap is tight), speed (TCG only; see KVM notes).
