@@ -126,6 +126,7 @@ def main():
                    '--manifest', str(paths['build_manifest']), '--seconds', '1200', '--output', str(report_dir)]
         CO.write_new(output / 'launch.json', {'command': command, 'source_sha256': source_pins, 'input_sha256': input_pins,
                     'verified_inputs': verified, 'profile_inputs': profile_inputs, 'readbacks': readbacks,
+                    'runtime_substitution': substitution, 'runtime_actual_sha256': {p: sha(Path(p)) for p in substitution['substitutions']},
                     'proc_preflight': preflight, 'scope': 'Owned runtime/app/cache installation only; not runtime ready'})
         unchanged({**source_pins, **input_pins})
         FR.F.IMPORTER.validate_manifest(paths['app_manifest'])
@@ -210,7 +211,7 @@ def main():
                      'report':str(report_path),'report_sha256':stopped_pins[str(report_path)],'retention':str(retention),'retention_sha256':stopped_pins[str(retention)],
                      'content':content,'content_checkpoint_sha256':stopped_pins[str(output/'content-check.json')],'backing_depth':len(chain['layers']),
                      'source_sha256':source_pins,'input_sha256':input_pins,'stopped_evidence_sha256':stopped_pins,
-                     'predecessor':{'path':str(args.renderer_stage),'sha256':args.renderer_stage_sha256},'artifacts':{'path':str(args.artifacts),'sha256':args.artifacts_sha256},'runtime_substitution':substitution,
+                     'predecessor':{'path':str(args.renderer_stage),'sha256':args.renderer_stage_sha256},'artifacts':{'path':str(args.artifacts),'sha256':args.artifacts_sha256},'runtime_substitution':substitution,'runtime_actual_sha256':{p:sha(Path(p)) for p in substitution['substitutions']},
                      'scope':'Exact owned helper/app/launchd configuration copies read back and normally unmounted. No keybag initialization or Data seeding repeated. No installed boot, migration, unlock or app interaction proof.'})
         (output / 'INCOMPLETE.json').unlink()
         print(json.dumps({'result': str(output / 'fresh-runtime.json'), 'sha256': sha(output / 'fresh-runtime.json'), 'ipa_runtime_ready': False}))
