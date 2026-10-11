@@ -191,8 +191,8 @@ def main():
     parser.add_argument('--seconds', type=int, default=1200)
     parser.add_argument('--dry-run', action='store_true', help='validate and print argv; launch nothing')
     args = parser.parse_args()
-    if not 1 <= args.seconds <= 3600:
-        parser.error('--seconds must be 1..3600')
+    if not 1 <= args.seconds <= 7000:
+        parser.error('--seconds must be 1..7000')
     output = process = None
     handles = []
     previous_umask = os.umask(0o077)

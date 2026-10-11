@@ -1,0 +1,58 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/boot.py",
+    "--profile",
+    "/home/brandonin/.local/share/inferno/images/ios14b5/verified-profile/profile.json",
+    "--binary",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64",
+    "--manifest",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build-manifest.json",
+    "--overlay-tools-root",
+    "/home/brandonin/.local/share/inferno/disk-overlay-tools",
+    "--overlay-base-report",
+    "/home/brandonin/.local/share/inferno/app-import/fresh-runtime-stage-1/recovery-run/report.json",
+    "--disk-boot",
+    "--launchd-unsecure-cache",
+    "--control-mailbox",
+    "--guest-hid-serial",
+    "--guest-errors",
+    "--capture-interval",
+    "10",
+    "--seconds",
+    "6900",
+    "--output",
+    "/home/brandonin/.local/share/inferno/app-import/fresh-boot-6/boot"
+  ],
+  "stage": "/home/brandonin/.local/share/inferno/app-import/fresh-runtime-stage-1/fresh-runtime.json",
+  "stage_sha256": "2e63f0589ff412ab787a701691d0416a05a6fc59f23d2b2284005450a6d0a2ae",
+  "runtime_substitution": {
+    "record": "/home/brandonin/Documents/behavioral-iphone-inferno/companion/evidence/runtime-rebuild-1/substitution.json",
+    "record_sha256": "cac4c9ce52ecd681255355caac253f4218c09a0b74aa6be48f261a869a90d6f8",
+    "source_sha256": "aff57f149c3d32cb467458799241eb2223945536a430670d679dc4f738f1d820",
+    "substitutions": {
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64": {
+        "pinned_sha256": "0889bfe40c6bbb3e6eb9d493ada2bb86637e1d7acb61e36699e16da2568563f2",
+        "rebuilt_sha256": "f0a887f069afb075e158ad51d04d425adc4fd96614eb070dfc009a3ea7549d90",
+        "pinned_bytes": 114851864,
+        "rebuilt_bytes": 114802328
+      },
+      "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build-manifest.json": {
+        "pinned_sha256": "1c0ca353df0b88956f071503654a9a0a3f1e22346270e89accdfaa911391f096",
+        "rebuilt_sha256": "72cb564142d34882355a810315dd61afdd037c8fd76b97d399051f2f8acecff2"
+      }
+    }
+  },
+  "runtime_actual_sha256": {
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build/qemu-system-aarch64": "f0a887f069afb075e158ad51d04d425adc4fd96614eb070dfc009a3ea7549d90",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/.local-build/build-manifest.json": "72cb564142d34882355a810315dd61afdd037c8fd76b97d399051f2f8acecff2"
+  },
+  "source_drift": [],
+  "proc_preflight": {
+    "matching_processes": [],
+    "permission_denied_pids": [],
+    "scope": "Readable /proc comm inventory; no exclusive host lock",
+    "time": 1791720215.1871805
+  },
+  "scope": "One explicit installed attempt; no automatic gestures, retries or app success assertion"
+}
