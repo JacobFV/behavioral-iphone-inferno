@@ -21,7 +21,8 @@ from initial_volumes import bounded_record
 
 CO = FR.CO
 RB.install(FR, OV)
-DEFAULT_PROFILE = Path.home() / '.local/share/inferno/images/ios14b5/verified-profile/profile.json'
+INFERNO_HOME = Path(os.environ.get('INFERNO_HOME') or Path.home() / '.local/share/inferno')
+DEFAULT_PROFILE = INFERNO_HOME / 'images/ios14b5/verified-profile/profile.json'
 SCHEMA = 'inferno.fresh-runtime-stage.v1'
 MIN_FREE = 4 << 30
 MUST_MATCH_SOURCES = ('boot.py', 'qmp_control.py')

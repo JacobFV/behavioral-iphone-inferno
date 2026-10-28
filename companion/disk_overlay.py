@@ -23,7 +23,8 @@ import subprocess
 import time
 import urllib.request
 
-DEFAULT_TOOLS = Path.home() / '.local/share/inferno/disk-overlay-tools'
+INFERNO_HOME = Path(os.environ.get('INFERNO_HOME') or Path.home() / '.local/share/inferno')
+DEFAULT_TOOLS = INFERNO_HOME / 'disk-overlay-tools'
 PACKAGES = (
     ('qemu-utils', 'pool/main/q/qemu/qemu-utils_8.2.2+ds-0ubuntu1.18_arm64.deb',
      'a7f7ded1090721ea524ad4616fb4ea8111c45b5690bbb066d7d703e63fcef7c6'),

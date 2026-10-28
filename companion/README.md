@@ -2,8 +2,14 @@
 
 This local fork builds on ChefKiss Inferno instead of reimplementing UIKit and
 Foundation. Upstream history and notices are preserved. The initial upstream pin
-is recorded in upstream.json; the remote is named `upstream`. This checkout has
-not been published to a GitHub account.
+is recorded in upstream.json; the remote is named `upstream`. Every branch is
+pushed to a private GitHub repository, JacobFV/behavioral-iphone-inferno, as
+`origin`; `master` is the integrated line.
+
+Machine-local state (firmware, staged disks, run outputs, disk-overlay tools)
+lives outside the repository, under `$INFERNO_HOME`, which defaults to
+`~/.local/share/inferno`. None of it is tracked, and none of it may be: see
+AGENTS.md on Apple binaries.
 
 The objective is a reproducible Linux runner for real iOS app execution, with
 headless control, screenshots, repeatable journeys and measured resource use.

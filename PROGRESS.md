@@ -2770,3 +2770,17 @@ emulator processes from this setup. Continue with NEXT_SESSION.md in the new one
 - Open: app launch on fresh image, display freeze (FREEZE_HYPOTHESES.md),
   typed flatten for installed-boot overlays (depth limit 4), fewer-input setup
   path (32-gesture HID cap is tight), speed (TCG only; see KVM notes).
+
+## 2026-10-28: published, landed, and the machine-local state rebuilt from scratch
+
+The checkout is now pushed in full to a private GitHub repository,
+JacobFV/behavioral-iphone-inferno (`origin`), so the 2026-10-05 note that no
+GitHub-hosted fork exists is historical. Eleven commits that lived only on side
+branches were landed on master: three cherry-picked as they were, one set of
+boot-49 evidence kept in its own folder, and the rest found already present on
+master in later form. `~/.local/share/inferno` (firmware, staged images, run
+outputs) was deleted during a disk cleanup on 2026-10-26; the iOS 14.0 beta 5
+IPSW has been re-downloaded and matches the recorded sha256
+706742ed60327a5247c29ccc5bf7e6ce9bbf11dd30a468f8f6fc9da76bdca96d. Staging must be
+re-run before any boot. Paths under it now honour `INFERNO_HOME`.
+
