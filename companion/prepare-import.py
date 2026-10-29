@@ -13,7 +13,7 @@ import subprocess
 import sys
 import time
 from boot import load_profile
-from disk_overlay import validate_tools, load_stopped_overlay
+from disk_overlay import validate_tools, load_stopped_overlay, MAX_OVERLAY_DEPTH
 
 SOURCE = Path(__file__).resolve().parent
 
@@ -100,7 +100,7 @@ def validate_runtime(record):
     tool=validate_tools(Path(record['overlay_tools_root']))
     base=load_stopped_overlay(paths['base_report'],tool)
     # Both a recovery child and its installed observation child must fit.
-    if len(base['layers'])+1>4:
+    if len(base['layers'])+1>MAX_OVERLAY_DEPTH:
         raise ValueError('Insufficient recorded overlay depth for recovery and installed child')
     return paths,{'profile_inputs':inputs,'base':base,'overlay_tool':tool,
         'cache_binding_scope':'Reviewed retained lineage selected by caller, references checked. Not independent proof of current guest cache identity; actual new staging readback still required.'}

@@ -61,7 +61,9 @@ def no_running_emulator():
         try:
             owner=p.stat().st_uid
             comm=(p/'comm').read_text().strip()
-            if comm.startswith('qemu-system'):found.append({'pid':int(p.name),'comm':comm})
+            # The USB companion (usb-companion.py) is a separate Linux guest that the iOS
+            # machine attaches to; it never touches iOS disks, so it does not count.
+            if comm.startswith('qemu-system') and b'/usb-companion/' not in (p/'cmdline').read_bytes():found.append({'pid':int(p.name),'comm':comm})
         except (FileNotFoundError,ProcessLookupError):continue
         except PermissionError:
             if p.exists() and p.stat().st_uid==uid:raise ValueError('Cannot inspect own-UID process '+p.name)

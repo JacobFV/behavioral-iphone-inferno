@@ -183,7 +183,7 @@ def validate_session(path, sha256):
 
 def verify_stopped(context, report_path, retention_path, content_check_path):
     """Read-only eligibility verification after ordinary preserve-stopped exists."""
-    from disk_overlay import load_stopped_overlay, validate_tools
+    from disk_overlay import load_stopped_overlay, validate_tools, MAX_OVERLAY_DEPTH
     report_path=Path(report_path).absolute()
     stable_paths=[report_path,report_path.parent/'control-transcript.jsonl',report_path.parent/'qmp-transcript.jsonl',Path(retention_path).absolute(),Path(retention_path).absolute().with_name(Path(retention_path).stem+'-verification.json'),Path(content_check_path)]
     stable_bytes={str(p):p.read_bytes() for p in stable_paths}
@@ -258,7 +258,7 @@ def verify_stopped(context, report_path, retention_path, content_check_path):
         _pin(value)
     tool=validate_tools(Path(s['runtime_record']['overlay_tools_root']))
     backing=load_stopped_overlay(report_path,tool)
-    if len(backing['layers'])>=4:raise ValueError('No remaining depth for installed-app boot')
+    if len(backing['layers'])>=MAX_OVERLAY_DEPTH:raise ValueError('No remaining depth for installed-app boot')
     descriptors=preserve.descriptor_check([Path(x['path']) for x in retention.values()])
     if Path('/proc').joinpath(str(report['pid'])).exists():raise ValueError('Emulator PID exists after hashing')
     # Revalidate all mutable input dependencies once more after potentially long hashes.

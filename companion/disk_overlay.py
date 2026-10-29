@@ -271,7 +271,7 @@ def verify_backing(record):
     return {'unchanged': True, 'sha256': current['sha256'], 'metadata_revalidation':journal}
 
 
-MAX_OVERLAY_DEPTH = 4
+MAX_OVERLAY_DEPTH = 10  # was 4; post-setup app imports stack recovery + installed children on a 4-layer base
 AUXILIARY_SIZES = {'firmware.raw': 8 << 20, 'syscfg.raw': 128 << 10,
                    'ctrl_bits.raw': 8 << 10, 'nvram.raw': 8 << 10,
                    'effaceable.raw': 4 << 10, 'panic_log.raw': 1 << 20}
@@ -339,7 +339,7 @@ def load_stopped_overlay(report_path, tool, seen=()):
     else:
         raise ValueError('Unsupported owned overlay record schema')
     if len(layers) > MAX_OVERLAY_DEPTH:  # Adding a child makes len(layers) qcow2 layers.
-        raise ValueError('New child would exceed four qcow2 layers')
+        raise ValueError('New child would exceed MAX_OVERLAY_DEPTH qcow2 layers')
     info = json.loads(tool_run(tool, 'info', '--output=json', '-f', 'qcow2', root_path))
     if (info.get('backing-filename') != layers[1]['path'] or
             info.get('backing-filename-format') != layers[1]['format'] or
