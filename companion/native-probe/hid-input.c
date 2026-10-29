@@ -78,13 +78,13 @@ static int parse(const char *line,struct inferno_gesture *g) {
     if(number(&p,&g->duration_ms,1))return -1;
     return g->x0>32767 || g->x1>32767 || g->y0>32767 || g->y1>32767 || !g->duration_ms || g->duration_ms>2000 ? -1:0;
 }
-static int handle(const char *line,char seen[32][33],unsigned *count) {
+static int handle(const char *line,char seen[INFERNO_HID_MAX_REQUESTS][33],unsigned *count) {
     struct inferno_gesture g;
     if(parse(line,&g)) {printf("INFERNO_HID_REJECT reason=syntax_or_bounds\n");fflush(0);return -1;}
     if(inferno_command_id_seen(g.request_id)) {
         printf("INFERNO_HID_REJECT request_id=%s reason=duplicate\n",g.request_id);fflush(0);return -1;
     }
-    if(*count>=32)return -1;
+    if(*count>=INFERNO_HID_MAX_REQUESTS)return -1;
     for(unsigned i=0;i<33;i++)seen[*count][i]=g.request_id[i];
     ++*count;inferno_command_id_remember(g.request_id);
     printf("INFERNO_HID_REQUEST request_id=%s kind=%s x0=%u y0=%u x1=%u y1=%u duration_ms=%u timestamp=%llu\n",g.request_id,g.swipe?"SWIPE":"TAP",g.x0,g.y0,g.x1,g.y1,g.duration_ms,mach_absolute_time());fflush(0);
@@ -103,7 +103,7 @@ int main(int argc,char **argv) {
     if(argc!=2 || strcmp(argv[1],"--console-operator-input"))return 64;
     struct timebase tb;
     if(mach_timebase_info(&tb) || !tb.numer || !tb.denom)return 65;
-    signal(2,stop);signal(15,stop);signal(14,stop);alarm(7200);
+    signal(2,stop);signal(15,stop);signal(14,stop);alarm(INFERNO_HID_LIFETIME_SECONDS);
     int fd=open("/dev/console",4); /* Darwin O_RDONLY | O_NONBLOCK; leave termios unchanged. */
     if(fd<0){printf("INFERNO_HID_OPEN_FAILED errno=%d\n",*__error());fflush(0);return 66;}
     printf("INFERNO_HID_BEGIN automatic_gestures=0\n");fflush(0);
@@ -112,19 +112,20 @@ int main(int argc,char **argv) {
     readiness_watch_start();
     int backend=inferno_hid_prepare();
     printf("INFERNO_HID_BACKEND_INITIALIZE status=%d delivery=unproven\n",backend);fflush(0);
-    printf("INFERNO_HID_READY protocol=1 console=/dev/console max_requests=32 lifetime_seconds=7200 automatic_gestures=0\n");fflush(0);
-    char line[160],seen[32][33];unsigned used=0,count=0,rejected=0;int discard=0;
+    printf("INFERNO_HID_READY protocol=1 console=/dev/console max_requests=%u lifetime_seconds=%u automatic_gestures=0\n",INFERNO_HID_MAX_REQUESTS,INFERNO_HID_LIFETIME_SECONDS);fflush(0);
+    static char seen[INFERNO_HID_MAX_REQUESTS][33];
+    char line[160];unsigned used=0,count=0,rejected=0;int discard=0;
     unsigned long long began=mach_absolute_time();
-    while(!stopping && count<32 && rejected<32) {
+    while(!stopping && count<INFERNO_HID_MAX_REQUESTS && rejected<32) {
         inferno_open_poll();
         inferno_sample_poll();
         readiness_watch_poll("idle");
         unsigned long long ticks=mach_absolute_time()-began;
-        if((ticks/(unsigned long long)tb.denom)*tb.numer>=7200000000000ULL)break;
+        if((ticks/(unsigned long long)tb.denom)*tb.numer>=INFERNO_HID_LIFETIME_SECONDS*1000000000ULL)break;
         char buffer[128];long got=read(fd,buffer,sizeof(buffer));
         if(got<0) {if(*__error()!=35 && *__error()!=4)break;usleep(100000);continue;}
         if(!got)break;
-        for(long i=0;i<got && !stopping && count<32 && rejected<32;i++) {
+        for(long i=0;i<got && !stopping && count<INFERNO_HID_MAX_REQUESTS && rejected<32;i++) {
             unsigned char c=(unsigned char)buffer[i];
             if(c=='\n') {
                 if(discard){printf("INFERNO_HID_REJECT reason=line_encoding_or_length\n");fflush(0);rejected++;}

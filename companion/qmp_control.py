@@ -14,6 +14,10 @@ import threading
 import time
 import uuid
 
+# Equal to INFERNO_HID_MAX_REQUESTS in native-probe/open-control.h; the guest
+# helper enforces the same bound and lifetime (INFERNO_HID_LIFETIME_SECONDS).
+HID_MAX_REQUESTS = 2048
+
 TRACE_EVENTS = {
     'input_event_btn', 'input_event_abs', 'input_event_sync',
     'apple_mt_spi_host_event', 'apple_mt_spi_enqueue', 'apple_mt_spi_dequeue',
@@ -557,11 +561,11 @@ class SerialGestureTransport:
             raise ValueError('Duplicate serial request ID; never replay a possibly transmitted request')
         if not self.report['connected'] or self.stopping.is_set() or not self.thread.is_alive():
             raise ValueError('Serial transport is not connected and draining')
-        if len(self.seen) >= 42:
-            raise ValueError('At most 42 shared HID/OPEN/SAMPLE attempts are allowed per run')
+        if len(self.seen) >= HID_MAX_REQUESTS + 52:
+            raise ValueError('At most %d shared HID/OPEN/SAMPLE attempts are allowed per run' % (HID_MAX_REQUESTS + 52))
         if operation == 'HID':
-            if self.hid_attempts >= 32:
-                raise ValueError('At most 32 explicit HID attempts are allowed per run')
+            if self.hid_attempts >= HID_MAX_REQUESTS:
+                raise ValueError('At most %d explicit HID attempts are allowed per run' % HID_MAX_REQUESTS)
             self.hid_attempts += 1
         if operation == 'OPEN':
             if self.open_attempts >= 8:
