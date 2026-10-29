@@ -32,25 +32,36 @@ INSPECTOR = module('fresh_inspector_result', SOURCE / 'runtime-inspector/result.
 # reviewed record's: the build record itself also hashes host tool paths and the
 # signer binary, which differ across hosts while the signed helpers do not.
 APPROVED_BUILDS = {
-    'runtime_build': ('aa7ba5975fe5436ebb6bfbd7f922817e3b7b4e0c4b2250756ca2824547ddcf35',
-                      'built-owned-runtime-helpers-only; no guest execution yet',
-                      SOURCE / 'evidence/reproducible-runtime-helpers-build-1/build.json'),
-    'prepare_build': ('3cb1656f3978bfdcca7e3da80d7f8091f524c1b7593bb64a42a7a2a47f34e532',
-                      'built-owned-preparation-helper-only; no guest execution yet',
-                      SOURCE / 'evidence/reproducible-prepare-helper-actual/build.json'),
+    'runtime_build': (
+        ('aa7ba5975fe5436ebb6bfbd7f922817e3b7b4e0c4b2250756ca2824547ddcf35',
+         SOURCE / 'evidence/reproducible-runtime-helpers-build-1/build.json'),
+        # Same sources except the HID helper's 2048-request / 21600 s bounds.
+        ('479ff77851738237f45e26442ef7a098d0d94e2f3f26ef0eef6c1383bda048c1',
+         SOURCE / 'evidence/reproducible-runtime-helpers-build-2/build.json'),
+    ),
+    'prepare_build': (
+        ('3cb1656f3978bfdcca7e3da80d7f8091f524c1b7593bb64a42a7a2a47f34e532',
+         SOURCE / 'evidence/reproducible-prepare-helper-actual/build.json'),
+    ),
+}
+APPROVED_STATUS = {
+    'runtime_build': 'built-owned-runtime-helpers-only; no guest execution yet',
+    'prepare_build': 'built-owned-preparation-helper-only; no guest execution yet',
 }
 
 
 def reviewed_build(name, input_sha256, record):
-    approved_sha, status, tracked = APPROVED_BUILDS[name]
-    if record.get('status') != status:
+    if record.get('status') != APPROVED_STATUS[name]:
         return False
-    if input_sha256 == approved_sha:
-        return True
-    raw = tracked.read_bytes()
-    if hashlib.sha256(raw).hexdigest() != approved_sha:
-        raise ValueError('Tracked reviewed build record differs: ' + name)
-    return record.get('outputs') == json.loads(raw)['outputs']
+    for approved_sha, tracked in APPROVED_BUILDS[name]:
+        if input_sha256 == approved_sha:
+            return True
+        raw = tracked.read_bytes()
+        if hashlib.sha256(raw).hexdigest() != approved_sha:
+            raise ValueError('Tracked reviewed build record differs: ' + name)
+        if record.get('outputs') == json.loads(raw)['outputs']:
+            return True
+    return False
 
 def identity(s):
     return (s.st_dev, s.st_ino, s.st_mode, s.st_size, s.st_mtime_ns, s.st_ctime_ns)

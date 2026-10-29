@@ -1,0 +1,792 @@
+{
+  "status": "built-owned-runtime-helpers-only; no guest execution yet",
+  "source_revision": "2f03b877ec418f4ec74e8b51bacdd25eb5fcef82",
+  "sources": {
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/probe.S": "6c5be93c5b54af33bcdddbe290830cddcce5dfaa97c8ad21e7792104ccee6bac",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/readiness.c": "2fa6c51d29c913a681d02f8bb30c9b901680b99d291962543c39de0a8831ed5a",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/ioreg-touch.c": "418428beffb3c505f6a47b01394287e40aae28770e79b199f96ec09486a5ad81",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/app-event-relay.c": "68f4a1beb5e427dbbee473f7863e036aecf0959c4965ae6e54a32bb6c1e9a59b",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/app-event-proc.c": "e61c530d64e89b52f5487ea4ec2e2ac26a2bfb0361a4446080023328ba045df8",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/unlock-empty.c": "85c1489db0fda9c34b5ff4e9bc168dddd4d5533923763a1fc70cd5843456905e",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/sample-control.c": "821f889f485aedc1ff8a320ae0be594aeea52665cab041557620522d3a4f1e25",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/sample-control.h": "b9f362543e8f7115f3d7fc95ae018abaebf8579834aed9e08bdafaa1acecc2c6",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/open-control.c": "107f3d8a4d59739670e63bcc1f255508b8d092b68e649f1e7d3d8e296c513fe2",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/open-control.h": "6557f240a74314f8cd00060fe4515dc78bb6f0707dc82f439ac52edbfac68b5a",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/hid-input.c": "207f2d1a75379bfa75b0f459f50d6be06a0251437008fc7507cf3b59419d8a2f",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/hid-input.h": "5fe012be08e97ff941591a78104902d15e16c72cfa65ef6e53ca8fa6ab23c679",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/hid-user-device.c": "c21b36b6be63675b242a2de147969cfbfaa0678952eb361ecad120489d663d60",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/libSystem.tbd": "4f9508344cc02089adb89f2d069dee0b255d681a3feecda3194f51ec8b90bb52",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/IOKit.tbd": "74939f89e4649360d60c50c60b7b05573728def27f79bf36702b4385cdc7ad4b",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/hid-entitlements.plist": "59a7ca8f919b0ca55dd6c6ceb2ec60ac3d4d8b0d5db0d3ca352468d56b75f113",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/unlock-entitlements.plist": "47db9a9f7182b1bb7eeead357d9bcf65486fd3b000809cf5e521ccb42a11f518",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/../app-probe/EventRecord.h": "dfdaf58a1c7f617bf25a7fdc30a33a9eba43824b4c344718b15814b65b7c7e81",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/../app-probe/LoopbackEvent.h": "ecca6dd042246d5d6aba6267af72190f376739a938f8ba99bffb24f6e7e77dda",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/../app-probe/OwnedClock.h": "b5f758c329acf7d5b97354adc9d0029d8844d301ad3772dd152c3377529ce488"
+  },
+  "producer_sources": {
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/build-runtime-helpers.py": "00058d2839eec5e1aa4c6357a43684f7bfee05a99732a379017653433ea86459",
+    "/home/brandonin/Documents/behavioral-iphone-inferno/companion/app-import.py": "040dac9dee919ac21e4f5c0448d07beb372a57d1454737c17e3bbda1d36e4cc4"
+  },
+  "commands": [
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-c",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/probe.S",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/probe.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "ios",
+      "14.0",
+      "14.0",
+      "-e",
+      "_start",
+      "-needed_library",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/libSystem.tbd",
+      "-no_uuid",
+      "-adhoc_codesign",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-probe",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/probe.o"
+    ],
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-ffreestanding",
+      "-fno-stack-protector",
+      "-fno-builtin",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-DIOREG_TOUCH_LIBRARY",
+      "-c",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/ioreg-touch.c",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/ioreg-touch.o"
+    ],
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-ffreestanding",
+      "-fno-stack-protector",
+      "-fno-builtin",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/app-event-relay.c",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/app-event-relay.o"
+    ],
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-ffreestanding",
+      "-fno-stack-protector",
+      "-fno-builtin",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/app-event-proc.c",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/app-event-proc.o"
+    ],
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-ffreestanding",
+      "-fno-stack-protector",
+      "-fno-builtin",
+      "-O2",
+      "-c",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/readiness.c",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/readiness.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "ios",
+      "14.0",
+      "14.0",
+      "-e",
+      "_main",
+      "-needed_library",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/libSystem.tbd",
+      "-no_uuid",
+      "-adhoc_codesign",
+      "-needed_library",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/IOKit.tbd",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-readiness",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/readiness.o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/ioreg-touch.o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/app-event-relay.o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/app-event-proc.o"
+    ],
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-ffreestanding",
+      "-fno-stack-protector",
+      "-fno-builtin",
+      "-O2",
+      "-c",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/unlock-empty.c",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/unlock-empty.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "ios",
+      "14.0",
+      "14.0",
+      "-e",
+      "_main",
+      "-needed_library",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/libSystem.tbd",
+      "-no_uuid",
+      "-adhoc_codesign",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-unlock-empty",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/unlock-empty.o"
+    ],
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-ffreestanding",
+      "-fno-stack-protector",
+      "-fno-builtin",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/sample-control.c",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/sample-control.o"
+    ],
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-ffreestanding",
+      "-fno-stack-protector",
+      "-fno-builtin",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/open-control.c",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/open-control.o"
+    ],
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-ffreestanding",
+      "-fno-stack-protector",
+      "-fno-builtin",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/hid-input.c",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/hid-input.o"
+    ],
+    [
+      "/usr/bin/clang",
+      "--target=arm64-apple-ios14",
+      "-ffreestanding",
+      "-fno-stack-protector",
+      "-fno-builtin",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-c",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/hid-user-device.c",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/hid-user-device.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+      "-arch",
+      "arm64",
+      "-platform_version",
+      "ios",
+      "14.0",
+      "14.0",
+      "-e",
+      "_main",
+      "-needed_library",
+      "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/libSystem.tbd",
+      "-no_uuid",
+      "-adhoc_codesign",
+      "-o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-hid-input",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/hid-input.o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/hid-user-device.o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/open-control.o",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/sample-control.o"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "-Cadhoc",
+      "-S/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/hid-entitlements.plist",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-hid-input"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "-e",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-hid-input"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "-Cadhoc",
+      "-S/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/unlock-entitlements.plist",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-unlock-empty"
+    ],
+    [
+      "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "-e",
+      "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-unlock-empty"
+    ]
+  ],
+  "command_records": [
+    {
+      "argv": [
+        "/usr/bin/clang",
+        "--target=arm64-apple-ios14",
+        "-c",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/probe.S",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/probe.o"
+      ],
+      "started": 1793269137.033831,
+      "finished": 1793269137.147761,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-0.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-0.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+        "-arch",
+        "arm64",
+        "-platform_version",
+        "ios",
+        "14.0",
+        "14.0",
+        "-e",
+        "_start",
+        "-needed_library",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/libSystem.tbd",
+        "-no_uuid",
+        "-adhoc_codesign",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-probe",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/probe.o"
+      ],
+      "started": 1793269137.14802,
+      "finished": 1793269137.1635492,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-1.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-1.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/clang",
+        "--target=arm64-apple-ios14",
+        "-ffreestanding",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-DIOREG_TOUCH_LIBRARY",
+        "-c",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/ioreg-touch.c",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/ioreg-touch.o"
+      ],
+      "started": 1793269137.163789,
+      "finished": 1793269137.2275105,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-2.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-2.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/clang",
+        "--target=arm64-apple-ios14",
+        "-ffreestanding",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-c",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/app-event-relay.c",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/app-event-relay.o"
+      ],
+      "started": 1793269137.22775,
+      "finished": 1793269137.3417833,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-3.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-3.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/clang",
+        "--target=arm64-apple-ios14",
+        "-ffreestanding",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-c",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/app-event-proc.c",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/app-event-proc.o"
+      ],
+      "started": 1793269137.342138,
+      "finished": 1793269137.4061434,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-4.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-4.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/clang",
+        "--target=arm64-apple-ios14",
+        "-ffreestanding",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-O2",
+        "-c",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/readiness.c",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/readiness.o"
+      ],
+      "started": 1793269137.4065971,
+      "finished": 1793269137.5207157,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-5.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-5.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+        "-arch",
+        "arm64",
+        "-platform_version",
+        "ios",
+        "14.0",
+        "14.0",
+        "-e",
+        "_main",
+        "-needed_library",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/libSystem.tbd",
+        "-no_uuid",
+        "-adhoc_codesign",
+        "-needed_library",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/IOKit.tbd",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-readiness",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/readiness.o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/ioreg-touch.o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/app-event-relay.o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/app-event-proc.o"
+      ],
+      "started": 1793269137.5210652,
+      "finished": 1793269137.5529299,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-6.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-6.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/clang",
+        "--target=arm64-apple-ios14",
+        "-ffreestanding",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-O2",
+        "-c",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/unlock-empty.c",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/unlock-empty.o"
+      ],
+      "started": 1793269137.5532603,
+      "finished": 1793269137.6171918,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-7.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-7.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+        "-arch",
+        "arm64",
+        "-platform_version",
+        "ios",
+        "14.0",
+        "14.0",
+        "-e",
+        "_main",
+        "-needed_library",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/libSystem.tbd",
+        "-no_uuid",
+        "-adhoc_codesign",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-unlock-empty",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/unlock-empty.o"
+      ],
+      "started": 1793269137.6175277,
+      "finished": 1793269137.6333458,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-8.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-8.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/clang",
+        "--target=arm64-apple-ios14",
+        "-ffreestanding",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-c",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/sample-control.c",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/sample-control.o"
+      ],
+      "started": 1793269137.6336777,
+      "finished": 1793269137.697654,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-9.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-9.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/clang",
+        "--target=arm64-apple-ios14",
+        "-ffreestanding",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-c",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/open-control.c",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/open-control.o"
+      ],
+      "started": 1793269137.6980357,
+      "finished": 1793269137.8121755,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-10.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-10.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/clang",
+        "--target=arm64-apple-ios14",
+        "-ffreestanding",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-c",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/hid-input.c",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/hid-input.o"
+      ],
+      "started": 1793269137.812525,
+      "finished": 1793269137.8764493,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-11.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-11.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/usr/bin/clang",
+        "--target=arm64-apple-ios14",
+        "-ffreestanding",
+        "-fno-stack-protector",
+        "-fno-builtin",
+        "-O2",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-c",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/hid-user-device.c",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/hid-user-device.o"
+      ],
+      "started": 1793269137.8767686,
+      "finished": 1793269137.9405496,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-12.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-12.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+        "-arch",
+        "arm64",
+        "-platform_version",
+        "ios",
+        "14.0",
+        "14.0",
+        "-e",
+        "_main",
+        "-needed_library",
+        "/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/libSystem.tbd",
+        "-no_uuid",
+        "-adhoc_codesign",
+        "-o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-hid-input",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/hid-input.o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/hid-user-device.o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/open-control.o",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/sample-control.o"
+      ],
+      "started": 1793269137.9408977,
+      "finished": 1793269137.956536,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-13.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-13.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+        "-Cadhoc",
+        "-S/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/hid-entitlements.plist",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-hid-input"
+      ],
+      "started": 1793269137.9568684,
+      "finished": 1793269137.964527,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-14.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-14.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+        "-e",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-hid-input"
+      ],
+      "started": 1793269137.9647944,
+      "finished": 1793269137.9683735,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-hid-input-entitlements.plist",
+        "sha256": "a0201949d3734799856a50ca6d6d9ee7194955f56ee3769a8b4ad79726230db6"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-15.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+        "-Cadhoc",
+        "-S/home/brandonin/Documents/behavioral-iphone-inferno/companion/native-probe/unlock-entitlements.plist",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-unlock-empty"
+      ],
+      "started": 1793269137.9685931,
+      "finished": 1793269137.9762087,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-16.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-16.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+        "-e",
+        "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-unlock-empty"
+      ],
+      "started": 1793269137.9764652,
+      "finished": 1793269137.9799297,
+      "exit_code": 0,
+      "stdout": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/inferno-unlock-empty-entitlements.plist",
+        "sha256": "7e0dd19242edf74b66326fc846dfdb7427fd09d95728c83020b3cf573bdd67ec"
+      },
+      "stderr": {
+        "path": "/home/brandonin/.local/share/inferno/native-probe/runtime-helpers-r3/command-17.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "tools": {
+    "clang": {
+      "invocation": "/usr/bin/clang",
+      "resolved": "/usr/lib/llvm-18/bin/clang",
+      "sha256": "6d99f6207153b8b2063ace5d2a6177debaf6a6b6f31649e03afac07b98ba0b4d"
+    },
+    "linker": {
+      "invocation": "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/ld64.lld",
+      "resolved": "/home/brandonin/.local/share/inferno/native-probe/tools/usr/lib/llvm-18/bin/lld",
+      "sha256": "f8835e48488195c65fb3dcb946053284ddf6b1369922893785209a9073c4e57b"
+    },
+    "ldid": {
+      "invocation": "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "resolved": "/home/brandonin/.local/share/inferno/native-probe/ldid/ldid",
+      "sha256": "f765802009ddc1fbc7d4421e1d1112a9039e3283712bcba9424b725e54ff5391"
+    }
+  },
+  "outputs": {
+    "inferno-probe": {
+      "bytes": 33392,
+      "sha256": "7def2d54fb9a0737666cbe175b38ad442eea5340a07fac202ffd1fda2df849c9"
+    },
+    "inferno-readiness": {
+      "bytes": 86448,
+      "sha256": "2440b210892898f43bd2f2afe3907ee5b682262d1d71c47e8c940757aa46c0b2"
+    },
+    "inferno-hid-input": {
+      "bytes": 88944,
+      "sha256": "11031260df256f0b72331254434cbcf78e6c09e2eccf86eda94d43ac0d53d945"
+    },
+    "inferno-unlock-empty": {
+      "bytes": 67600,
+      "sha256": "876e864942e88a44d3d7e4d2cb525aa202b754914284dc5a0afa6025d1e8bbc9"
+    },
+    "inferno-hid-input-entitlements.plist": {
+      "bytes": 371,
+      "sha256": "a0201949d3734799856a50ca6d6d9ee7194955f56ee3769a8b4ad79726230db6"
+    },
+    "inferno-unlock-empty-entitlements.plist": {
+      "bytes": 235,
+      "sha256": "7e0dd19242edf74b66326fc846dfdb7427fd09d95728c83020b3cf573bdd67ec"
+    }
+  },
+  "signing": "Only existing owned helpers; LLVM ad-hoc markers and exact existing HID/unlock entitlement dictionaries; no imported or Apple executable signed"
+}
