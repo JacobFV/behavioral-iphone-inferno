@@ -200,3 +200,12 @@ character set (NetNewsWire's `AppIcon@2x.png` etc.; the guest copy helper allows
 `[A-Za-z0-9_. -]`), and re-signs every Mach-O with `ldid -S` innermost first. Result: HelloSwiftUI,
 HelloStoryboard, HelloAsync and NetNewsWire 6.0 all pass import validation. Running them is
 in progress (`try-app.sh`).
+
+**First Swift run (HelloSwiftUI, Xcode 16.4, ad-hoc re-signed with ldid).** After import onto the
+setup-complete base and one boot, LaunchServices registered it (icon "Hello SwiftUI" appears on
+Home page 2) and the launcher's open was accepted; the process list shows
+`/Applications/HelloSwiftUI.app/HelloSwiftUI` running as uid 501 with no crash report. So iOS 14
+loads an Xcode 16.4 / iOS 18.5-SDK Swift binary and its ldid signature. Its on-screen rendering is
+not captured yet: `session.sh`'s alert bring-up pressed Home and backgrounded it; tap the icon in
+the next tour. Page 2 of Home in this build: Files, Find My, Shortcuts, iTunes Store, Translate,
+Contacts, Watch, Tips, a Utilities folder, Feedback (plus imported apps).
