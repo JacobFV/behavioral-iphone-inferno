@@ -261,3 +261,27 @@ because the importer (and the guest copy helper `imported-app.c`) allowed only `
 For Puzzles and Tipulator that is most of the artwork. Allowed `@ ~ +` in all three validators and
 rebuilt the preparation helper (`reproducible-helper-build-r3`, built on the same pinned clang/lld/ldid
 as r2). `tour/make-runtime-record.py --helper-build` writes a runtime record pinning it (`runtime-r7`).
+
+**First results from the Swift/Xcode batch (runtime-r6, before the foreground fixes).**
+- *HelloStoryboard (Xcode 16.4)* renders: storyboard scene, xib card, and the gold background from the
+  `Brand` colour set in `Assets.car`, so compiled nibs, storyboards and asset catalogs all load on iOS 14.
+  The iOS-beta "update available" alert sat on top, because bring-up mistook the gold app for wallpaper.
+- *HelloAsync* stayed on the lock screen: `session.sh`'s single unlock swipe did not take.
+- *NetNewsWire 6.0* installed with its real icon on Home page 2; the launcher's opens were refused while
+  the device was locked (`FBSOpenApplicationErrorDomain` 7, "device is locked") and accepted at attempt 21
+  after unlock, but the app was not in front afterwards (most likely a crash at start; no crash text reaches
+  the serial console). Re-run queued with the icon reopen.
+- *Notes Demo* (Linux-built, never run before) now runs in the foreground: "Notes Demo, Launches: 1 |
+  Notes: 0", text field and buttons.
+
+**Bring-up for imported apps, fixed three ways** (`tour/bringup.py`, `BRINGUP_NO_HOME=1`):
+detect alerts by shape (a white body across mid-screen plus blue button text on the button row) rather
+than by background colour; detect the lock screen by its dark torch and camera buttons and retry the
+unlock; then press Home, go to page 2 and tap the app's icon (`BRINGUP_ICON`, default row 3 column 4 —
+imports land right after "Imported Demo"). Checked on real frames: lock screen, an app under an alert,
+Home, Home under a two-button alert.
+
+**A queue mistake worth not repeating:** `RUNTIME` must be the record *file* (`runtime-r7/runtime.json`);
+pointing it at the directory makes `prepare-import` fail instantly for every app. And `pkill -f PATTERN`
+over ssh kills the ssh shell itself when the same command line contains the pattern; put such steps in a
+script file.
