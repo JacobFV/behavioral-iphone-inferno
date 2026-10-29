@@ -137,3 +137,66 @@ On Linux the switch is the vendor request usbmuxd sends for `USBMUXD_DEFAULT_DEV
 mode). After re-enumeration select configuration 5; `cdc_ncm` binds; give the host side an
 address, run DHCP/DNS (dnsmasq), and NAT out through the companion's own user networking.
 (Reference: Synacktiv, "iOS: a journey in the USB networking stack".)
+
+## 2026-10-29 (evening): installing more apps, the GPU answer, and how far networking got
+
+**Installing apps onto a setup-complete device (works, ~2 min per app).** Re-running the fresh
+chain to add an app would mean redoing Setup Assistant. Instead `prepare-import` / `stage-import`
+now target the setup-complete base directly:
+- `tour/make-runtime-record.py` writes the `inferno.local-ipa-runtime.v1` record from the fresh
+  chain's own evidence (`fresh-r6/recovery-run` profile/report/serial with its
+  `INFERNO_CACHE_READBACK`, `art-r6/launchd.plist`, `fresh-r6/recovery/preparation.json`).
+- The overlay depth cap was 4, and a fresh base is already 4 layers deep; raised to 10
+  (`MAX_OVERLAY_DEPTH`, shared by `disk_overlay`, `prepare-import`, `import_stage`).
+- `stage-import`'s "no other emulator" preflight now ignores the USB companion VM.
+- The emulation host had no clang: Ubuntu's clang-18 debs (`apt-get download`, `dpkg-deb -x`)
+  plus a 3-line wrapper setting `LD_LIBRARY_PATH` work without root
+  (`native-probe/clang18/clang`).
+- `tour/build-objc-app.py` builds small Objective-C apps (several sources, per-app `.tbd`
+  overrides, resources) into import-validated IPAs.
+- Caveat: all imports share one launcher job slot (`org.inferno.app-probe.plist`), and each import
+  adds two overlay layers (recovery + boot), so ~3 apps can be chained per image before a flatten
+  step is needed. `tour/try-app.sh NAME IPA` does import → boot → unlock → record → stop → contact
+  sheet for one app.
+
+**The graphics answer (`gpu-probe/`).** In the emulated iPhone 11 on iOS 14.0b5:
+Metal.framework loads but `MTLCreateSystemDefaultDevice()` returns **nil**; OpenGLES.framework
+and `EAGLContext` load but **neither an ES3 nor an ES2 context can be created**; SpriteKit and
+QuartzCore (`CAMetalLayer`) load; ordinary CPU-composited UIKit views draw correctly. So anything
+that needs a GPU device (Metal/GLES games, SDL with a GPU renderer, SpriteKit scenes) won't
+render; UIKit/Core Animation software paths do.
+
+**Networking: reverse tethering gets to "interface up, unconfigured".**
+- USB companion VM (Ubuntu Noble cloud image, TCG because this user has no `/dev/kvm` access on
+  the second host) attaches to the iPhone's USB transport; the phone enumerates as `05ac:12a8`.
+- `net/ncm-mode.py set 3` (vendor request `0x52`, index 3) works: the phone re-enumerates with a
+  5th configuration "PTP + Apple Mobile Device + NCM" (interfaces: PTP, usbmux, CDC-NCM control
+  class 2/13 with interrupt EP 0x86, NCM data 10/0 with alt 1 bulk EPs 0x87/0x05).
+  iOS logs `IOUSBDeviceController::setupDeviceSetConfiguration: configuration 4 -> 5`.
+- The cloud kernel lacks `cdc_ncm`: install `linux-modules-extra-$(uname -r)`. Then `cdc_ncm`
+  binds as `enxdeadbeef22ed` (iOS's NCM MAC is `de:ad:be:ef:22:ed`).
+- iOS answers `GET_NTB_PARAMETERS` (NTB16 only, 12144-byte NTBs, divisor 4, alignment 4, 8
+  datagrams) and accepts the data alt-setting from userspace (`net/ncm-probe.py`).
+- **Inside iOS** (`net-probe/`, an owned app showing `getifaddrs` + TCP tests on screen): `en0`
+  is UP,RUNNING with only a link address — no IPv4, not even an IPv6 link-local — and `en1` is
+  down; `utun0/1` exist. TCP to 192.168.77.1 and 1.1.1.1 time out.
+- **On Linux**: NO-CARRIER, zero frames either way. iOS never sends the NCM NetworkConnection
+  notification.
+- Reading: the NCM interface exists and is up, but configd has no network service for it, so
+  IPConfiguration never runs DHCP (on a real iPhone the reverse-tethering service is set up by the
+  system when a Mac shares its connection). Next step: an owned root helper in the guest that
+  creates that service (SCPreferences) or configures `en0` directly (address/route via ioctl +
+  SCDynamicStore DNS), plus forcing carrier on the Linux side (or bridging NCM from userspace with
+  `ncm-probe.py`'s approach, which bypasses `usbnet`'s carrier gate).
+- Dead end noted: GStreamer can't decode the Remotion mp4; use the compositor ffmpeg.
+
+**Swift / SwiftUI / storyboard IPAs from the build farm.** Importer changes (`app-import.py`):
+embedded `MH_DYLIB` Mach-Os under `Frameworks/` (thin arm64, minos ≤ 14, unencrypted), `@rpath`
+dependencies resolved against the loader's rpaths *and the main executable's* (Apple's
+back-deployed `libswift_Concurrency.dylib` has none of its own and relies on the app's
+`/usr/lib/swift` rpath), `/usr/lib/swift` names accepted as guest-cache libraries, Mach-O files
+get mode 0755. `tour/prepare-swift-ipa.py` strips `PlugIns/`, drops names outside the importer's
+character set (NetNewsWire's `AppIcon@2x.png` etc.; the guest copy helper allows only
+`[A-Za-z0-9_. -]`), and re-signs every Mach-O with `ldid -S` innermost first. Result: HelloSwiftUI,
+HelloStoryboard, HelloAsync and NetNewsWire 6.0 all pass import validation. Running them is
+in progress (`try-app.sh`).

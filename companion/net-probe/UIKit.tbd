@@ -1,0 +1,11 @@
+--- !tapi-tbd
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Self-authored symbol declarations; no implementation or Apple SDK content.
+tbd-version: 4
+targets: [ arm64-ios ]
+install-name: '/System/Library/Frameworks/UIKit.framework/UIKit'
+exports:
+  - targets: [ arm64-ios ]
+    symbols: [ _UIApplicationMain ]
+    objc-classes: [ UIView, UIViewController, UIWindow, UIScreen, UILabel, UIButton, UIFont, UIColor ]
+...

@@ -47,11 +47,11 @@ def safe_path(name):
     return parts
 
 
-def macho(data):
+def macho(data, embedded=False):
     if len(data) < 32 or data[:4] != bytes.fromhex('cffaedfe'):
         raise ValueError('First subset requires thin little-endian ARM64 Mach-O; fat/32-bit unsupported')
     _, cpu, subtype, kind, ncmds, sizeofcmds, flags, reserved = struct.unpack_from('<8I', data)
-    if cpu != 0x0100000c or subtype & 0x00ffffff != 0 or kind != 2:
+    if cpu != 0x0100000c or subtype & 0x00ffffff != 0 or kind != (6 if embedded else 2):
         raise ValueError('Require ARM64_ALL device MH_EXECUTE; arm64e/simulator-only unsupported')
     if not 1 <= ncmds <= 4096 or not 8*ncmds <= sizeofcmds <= len(data)-32:
         raise ValueError('Invalid Mach-O command extent')
@@ -100,7 +100,7 @@ def macho(data):
             if size < 24:
                 raise ValueError('Truncated dylib command')
             name = string_at(struct.unpack_from('<I', data, pos+8)[0], 24)
-            if not name.startswith(('/usr/lib/', '/System/Library/Frameworks/', '/System/Library/PrivateFrameworks/')) or '..' in name.split('/') or '\\' in name:
+            if not name.startswith(('/usr/lib/', '/System/Library/Frameworks/', '/System/Library/PrivateFrameworks/', '@rpath/')) or '..' in name.split('/') or '\\' in name:
                 raise ValueError('First subset permits system dependencies only: '+name)
             dependencies.append({'path':name, 'weak':cmd == 0x80000018})
         elif cmd == 0x20:
@@ -131,13 +131,15 @@ def macho(data):
                 raise ValueError('LC_MAIN entry outside file')
             entrypoints.append(off)
         pos += size
-    if pos != end or len(minimums) != 1 or len(entrypoints) != 1 or len(signatures) > 1 or len(loaders) != 1:
+    if embedded and pos == end and len(minimums) == 1 and not entrypoints and not loaders and len(signatures) <= 1:
+        pass  # MH_DYLIB: no entry point or loader of its own
+    elif pos != end or len(minimums) != 1 or len(entrypoints) != 1 or len(signatures) > 1 or len(loaders) != 1:
         raise ValueError('Ambiguous/missing platform or entrypoint metadata')
     if not (0, 0, 0) < minimums[0] <= (14, 0, 0):
         raise ValueError('Minimum iOS version exceeds supported14.0 guest')
     return {'architecture':'arm64', 'platform':'ios-device', 'minimum_os':'.'.join(map(str, minimums[0])),
             'dependencies':dependencies, 'rpaths':rpaths, 'code_signatures':signatures,
-            'entry_file_offset':entrypoints[0], 'encrypted':False,
+            'entry_file_offset':entrypoints[0] if entrypoints else None, 'encrypted':False,
             'scope':'Structure/compatibility preflight; dependency availability, signature trust and execution unverified'}
 
 
@@ -246,14 +248,43 @@ def import_ipa(source, output=None):
     if len(files)+len(dirs) > MAX_ENTRIES:
         raise ValueError('Expanded tree entry count exceeds limit')
     for name in list(files)+dirs:
-        if any(x.lower() in ('frameworks','plugins','watch','appclips') or x.lower().endswith(('.appex','.framework','.app')) for x in name.split('/')):
-            raise ValueError('Nested code/app extensions unsupported in first subset')
+        if any(x.lower() in ('plugins','watch','appclips') or x.lower().endswith(('.appex','.app')) for x in name.split('/')):
+            raise ValueError('Nested app extensions unsupported (strip PlugIns/ before import)')
+        if any(x.lower().endswith('.framework') or x.lower() == 'frameworks' for x in name.split('/')) and not name.startswith('Frameworks'):
+            raise ValueError('Embedded frameworks are accepted only under Frameworks/')
+    embedded = {}
     for name,(data,mode) in files.items():
         if name != executable and data[:4] in MAGICS:
-            raise ValueError('Nested Mach-O unsupported in first subset')
-        if name != executable and mode & 0o111:
-            raise ValueError('Additional executable files unsupported in first subset')
-    records = [{'path':name,'bytes':len(data),'sha256':digest(data),'mode':0o755 if name==executable else 0o644} for name,(data,_) in sorted(files.items())]
+            if not name.startswith('Frameworks/'):
+                raise ValueError('Embedded Mach-O is accepted only under Frameworks/: '+name)
+            embedded[name] = macho(data, embedded=True)
+        elif name != executable and mode & 0o111 and not name.startswith('Frameworks/'):
+            raise ValueError('Additional executable files unsupported')
+    # Resolve @rpath loads (main binary and embedded code) against bundle Frameworks/ or the
+    # guest's /usr/lib/swift (present in the iOS 14 shared cache; not re-verified here).
+    for owner, d in [(executable, details), *embedded.items()]:
+        base = owner.rsplit('/', 1)[0] if '/' in owner else ''
+        for dep in d['dependencies']:
+            if not dep['path'].startswith('@rpath/'):
+                continue
+            leaf = dep['path'][len('@rpath/'):]
+            found = False
+            # dyld searches the loader's rpaths, then those of the images that loaded it (the main executable).
+            for r in d['rpaths'] + [x for x in details['rpaths'] if x not in d['rpaths']]:
+                if r == '/usr/lib/swift' and leaf.startswith('libswift'):
+                    found = True
+                for prefix in ('@executable_path/', '@loader_path/'):
+                    if r.startswith(prefix):
+                        root = '' if prefix == '@executable_path/' else base
+                        cand = '/'.join(x for x in (root, r[len(prefix):], leaf) if x)
+                        parts = []
+                        for x in cand.split('/'):
+                            if x == '..': parts and parts.pop()
+                            elif x and x != '.': parts.append(x)
+                        found = found or '/'.join(parts) in files
+            if not found and not dep['weak']:
+                raise ValueError('Unresolved @rpath dependency %s of %s' % (dep['path'], owner))
+    records = [{'path':name,'bytes':len(data),'sha256':digest(data),'mode':0o755 if name==executable or name in embedded else 0o644} for name,(data,_) in sorted(files.items())]
     tree = {'directories':dirs,'files':records}
     manifest = {'schema':'inferno.owned-ipa-import.v1','status':'validated-not-executed',
         'input':{'path':str(source),'bytes':len(raw),'sha256':digest(raw)},
