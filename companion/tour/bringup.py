@@ -17,11 +17,19 @@ def alert(im):
     # A system alert: white body at mid-screen and blue button text on its button row (y~1014).
     body = im.getpixel((416, 880)); row = [im.getpixel((x, y)) for x in range(200, 640, 4) for y in (1006, 1014, 1022)]
     return min(body) > 225 and any(p[2] > 150 and p[2] - p[0] > 60 for p in row)
+def locked(im):
+    # Lock screen: the dark round torch and camera buttons over the saturated wallpaper.
+    t, c, w = im.getpixel((157, 1626)), im.getpixel((672, 1626)), im.getpixel((60, 1500))
+    return sum(t) / 3 < 90 and sum(c) / 3 < 90 and max(w) - min(w) > 40
+def unlock():
+    n[0]+=1
+    subprocess.run([R,"owned-control","--report",B,"--output",f"{B}/bring-{RUN}-{n[0]:03d}-unlock","swipe",str(round(416/832*32767)),str(round(1765/1792*32767)),str(round(416/832*32767)),str(round(500/1792*32767)),"--duration-ms","1500"],capture_output=True)
 if os.environ.get("BRINGUP_NO_HOME")=="1":
     # Imported apps can be any colour, so don't infer "lock screen" from saturation: just close
     # alerts on top of the launched app and leave it in the foreground.
-    for k in range(8):
+    for k in range(10):
         im=look()
+        if locked(im): unlock(); time.sleep(45); continue
         if alert(im): tap(278,1014); time.sleep(20); continue
         if k >= 2: break
         time.sleep(20)
