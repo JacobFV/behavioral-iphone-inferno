@@ -13,6 +13,19 @@ def look():
 def tap(x,y):
     n[0]+=1
     subprocess.run([R,"owned-control","--report",B,"--output",f"{B}/bring-{RUN}-{n[0]:03d}-tap","tap",str(round(x/832*32767)),str(round(y/1792*32767)),"--duration-ms","120"],capture_output=True)
+def alert(im):
+    # A system alert: white body at mid-screen and blue button text on its button row (y~1014).
+    body = im.getpixel((416, 880)); row = [im.getpixel((x, y)) for x in range(200, 640, 4) for y in (1006, 1014, 1022)]
+    return min(body) > 225 and any(p[2] > 150 and p[2] - p[0] > 60 for p in row)
+if os.environ.get("BRINGUP_NO_HOME")=="1":
+    # Imported apps can be any colour, so don't infer "lock screen" from saturation: just close
+    # alerts on top of the launched app and leave it in the foreground.
+    for k in range(8):
+        im=look()
+        if alert(im): tap(278,1014); time.sleep(20); continue
+        if k >= 2: break
+        time.sleep(20)
+    print("alerts cleared, app left in foreground"); sys.exit(0)
 clear_since=None; deadline=time.time()+900
 while time.time()<deadline:
     im=look(); px=im.getpixel((60,1500)); sat=max(px)-min(px); val=sum(px)/3
