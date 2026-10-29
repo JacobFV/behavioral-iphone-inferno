@@ -1,5 +1,6 @@
-# bringup.py BOOTDIR : after unlock, dismiss system alerts until the app screen is clear, then press Home.
-import json,subprocess,sys,time
+# bringup.py BOOTDIR : after unlock, dismiss system alerts until the app screen is clear, then press Home
+# (unless BRINGUP_NO_HOME=1, which leaves the launched app in the foreground for recording).
+import json,os,subprocess,sys,time
 from PIL import Image
 from pathlib import Path
 B=sys.argv[1]; R=str(Path(__file__).resolve().parent.parent / "run")
@@ -28,5 +29,7 @@ while time.time()<deadline:
     clear_since=clear_since or time.time()
     if time.time()-clear_since>90: break
     time.sleep(15)
+if os.environ.get("BRINGUP_NO_HOME")=="1":
+    print("clear, app left in foreground", time.time()-deadline+900); sys.exit(0)
 subprocess.run([R,"observe","--socket",sock,"--home-button","--output",f"{B}/bring-{RUN}-home"],capture_output=True)
 time.sleep(20); print("home", time.time()-deadline+900)

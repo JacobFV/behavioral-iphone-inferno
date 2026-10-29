@@ -209,3 +209,35 @@ loads an Xcode 16.4 / iOS 18.5-SDK Swift binary and its ldid signature. Its on-s
 not captured yet: `session.sh`'s alert bring-up pressed Home and backgrounded it; tap the icon in
 the next tour. Page 2 of Home in this build: Files, Find My, Shortcuts, iTunes Store, Translate,
 Contacts, Watch, Tips, a Utilities folder, Feedback (plus imported apps).
+
+## 2026-10-29 (late): a root network helper, a userspace NCM bridge, and building OSS apps on Macs
+
+**Why `en0` never got an address.** Nothing in the guest owns it: configd has no network service for the
+NCM interface, so IPConfiguration never runs. Instead of creating a configd *Setup* service, give the
+interface what a service would have produced:
+- `app-probe/NetHelper.h`, compiled into the per-import root launch wrapper (`ExecLauncher.c`, which
+  launchd already runs as root at boot via `org.inferno.app-probe`). Before dropping to mobile it forks a
+  root child that polls for `en0` every 3 s and, when `en0` lacks 192.168.77.2, does
+  `SIOCAIFADDR` (192.168.77.2/24), adds a default route to 192.168.77.1 via a `PF_ROUTE` `RTM_ADD`
+  message, and publishes configd *State* keys with `SCDynamicStoreSetValue` (reached through
+  `dlopen`/`dlsym`, so no SDK headers): `State:/Network/Interface/en0/Link {Active}`,
+  `State:/Network/Service/org.inferno.ncm/IPv4 {Addresses, SubnetMasks, Router, InterfaceName}` and
+  `.../DNS {ServerAddresses}`. IPMonitor turns those into the primary service, routes and the resolver.
+  Serial log line: `INFERNO_NET_CONFIGURED if=en0 addr=… route=… publish=…`.
+- The libSystem link stub gained `_dlopen _dlsym _ioctl _if_nametoindex _usleep`.
+
+**Why Linux saw NO-CARRIER.** `cdc_ncm` waits for the NCM NetworkConnection notification, which iOS never
+sends, and usbnet moves no frames without carrier. `net/ncm-bridge.py` (run as root in the USB companion)
+skips the kernel driver entirely: pyusb claims the NCM control and data interfaces, selects data alt 1, and
+copies frames between NTB16 transfers and a TAP device (`ncm0`, 192.168.77.1/24), with dnsmasq for DNS and
+NAT out through the companion's uplink.
+
+**Recording imported apps.** `tour/bringup.py` pressed Home after clearing alerts, so `try-app.sh` recorded
+the home screen instead of the app (HelloSwiftUI's first run). `BRINGUP_NO_HOME=1` (set by `try-app.sh`)
+leaves the launched app in the foreground.
+
+**OSS apps: build on Macs, not Linux.** Building Puzzles/Tipulator/jot/vfr Reader on Linux needs ARC,
+blocks, CoreGraphics/CoreText and much more UIKit in our hand-written headers (days). Since Xcode-built
+IPAs now pass the importer and HelloSwiftUI runs, the faster route is the GitHub Actions macOS farm
+(`JacobFV/ios-build-farm`, `scripts/oss/*.sh`): Puzzles, Tipulator, jot (CocoaPods), vfr Reader,
+ACEDrawingView. The Linux-native path stays the long-term, Mac-free option.

@@ -7,6 +7,7 @@ TOUR=$(cd "$(dirname "$0")" && pwd)
 WORK=${INFERNO_TOUR_WORK:-$HOME/inferno-chain}
 source $WORK/env.sh; cd $R
 NAME=$1; IPA=$2; WATCH=${3:-180}
+export BRINGUP_NO_HOME=1  # keep the launched app in the foreground while recording
 RT=${RUNTIME:-$A/runtime-r6/runtime.json}
 L=$WORK/try-$NAME.log; : > $L
 python3 companion/prepare-import.py --ipa $IPA --runtime $RT --runtime-sha256 $(s $RT) --output $A/$NAME-prep >> $L 2>&1 || { echo "PREPARE FAILED" | tee -a $L; exit 1; }

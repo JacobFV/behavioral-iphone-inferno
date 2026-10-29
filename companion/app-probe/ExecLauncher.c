@@ -3,6 +3,9 @@
  * No launch privileges, registration workaround or file writes.
  */
 #include "AppTarget.h"
+#ifdef INFERNO_MANIFEST_TARGET
+#include "NetHelper.h"
+#endif
 extern int printf(const char *,...),fflush(void *),fork(void),waitpid(int,int*,int);
 extern int setgroups(int,const unsigned int *),setgid(unsigned int),setuid(unsigned int);
 extern unsigned int getuid(void),getgid(void),sleep(unsigned int);
@@ -60,7 +63,13 @@ int main(int argc,char **argv){
   failures+=attempt("/usr/bin/inferno-launcher",1,1,"system-mobile-noargs");
   printf("INFERNO_EXEC_MATRIX_COMPLETE failures=%d\n",failures);fflush(0);return failures?1:0;
  }
- if(argc==2 && !strcmp(argv[1],"--system-app")){application_path=INFERNO_SYSTEM_APP_PATH;return attempt("/usr/bin/inferno-launcher",1,0,"system-mobile-system-app");}
+ if(argc==2 && !strcmp(argv[1],"--system-app")){
+#ifdef INFERNO_MANIFEST_TARGET
+  /* Root network helper (NetHelper.h) stays behind as a child; the app still runs as mobile. */
+  int net=fork();if(!net){inferno_net_loop();_exit(0);}
+  printf("INFERNO_NET_HELPER pid=%d\n",net);fflush(0);
+#endif
+  application_path=INFERNO_SYSTEM_APP_PATH;return attempt("/usr/bin/inferno-launcher",1,0,"system-mobile-system-app");}
  if(argc==2 && !strcmp(argv[1],"--system"))return attempt("/usr/bin/inferno-launcher",1,0,"system-mobile-register");
  return attempt("/private/var/inferno/inferno-launcher",1,0,"data-mobile-register");
 }
