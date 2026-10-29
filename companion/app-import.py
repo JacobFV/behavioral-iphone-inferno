@@ -42,7 +42,7 @@ def safe_path(name):
     if not isinstance(name, str) or not name or len(name.encode('utf-8')) > 511:
         raise ValueError('Empty or oversized archive path')
     parts = name.split('/')
-    if len(parts) > 16 or any(x in ('', '.', '..') or not re.fullmatch(r'[A-Za-z0-9_. -]{1,127}', x) for x in parts):
+    if len(parts) > 16 or any(x in ('', '.', '..') or not re.fullmatch(r'[A-Za-z0-9_. @~+-]{1,127}', x) for x in parts):
         raise ValueError('Unsupported or escaping archive path: '+repr(name))
     return parts
 

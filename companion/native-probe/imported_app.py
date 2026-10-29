@@ -20,7 +20,7 @@ def safe_path(value):
     if not isinstance(value, str) or len(value.encode('ascii')) > 511:
         raise ValueError('Imported relative path exceeds ASCII bound')
     parts = value.split('/')
-    if len(parts)>16 or any(x in ('','.', '..') or not re.fullmatch(r'[A-Za-z0-9_. -]+',x) for x in parts):
+    if len(parts)>16 or any(x in ('','.', '..') or not re.fullmatch(r'[A-Za-z0-9_. @~+-]+',x) for x in parts):
         raise ValueError('Unsafe imported relative path')
     return value
 

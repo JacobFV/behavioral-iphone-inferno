@@ -17,7 +17,7 @@ static int imported_path(const char *s, unsigned capacity, int components) {
             if(!c)return (int)i;
             if(!components || ++depth>16)return -1;
             start=i+1;
-        } else if(!((c>='a'&&c<='z')||(c>='A'&&c<='Z')||(c>='0'&&c<='9')||c=='_'||c=='-'||c=='.'||c==' '))return -1;
+        } else if(!((c>='a'&&c<='z')||(c>='A'&&c<='Z')||(c>='0'&&c<='9')||c=='_'||c=='-'||c=='.'||c==' '||c=='@'||c=='~'||c=='+'))return -1;
     }
     return -1;
 }

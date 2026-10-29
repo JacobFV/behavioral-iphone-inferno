@@ -8,7 +8,7 @@ prepare-swift-ipa.py IN.ipa OUT.ipa --ldid PATH [--entitlements FILE]"""
 import argparse, hashlib, json, re, shutil, subprocess, tempfile, zipfile
 from pathlib import Path
 
-OK = re.compile(r'[A-Za-z0-9_. -]+')
+OK = re.compile(r'[A-Za-z0-9_. @~+-]+')
 MAGICS = (b'\xcf\xfa\xed\xfe', b'\xca\xfe\xba\xbe')
 
 def main():

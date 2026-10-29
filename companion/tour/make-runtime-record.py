@@ -24,15 +24,16 @@ def main():
     a.add_argument('--inferno-home', type=Path, default=Path.home() / '.local/share/inferno')
     a.add_argument('--repo', type=Path, default=Path(__file__).resolve().parents[2])
     a.add_argument('--output', type=Path, required=True)
+    a.add_argument('--helper-build', type=Path, help='prepare-helper build.json (default: reproducible-helper-build-r2)')
     x = a.parse_args()
     I = x.inferno_home / 'images/ios14b5'; N = x.inferno_home / 'native-probe'; F = x.fresh_stage
     prep = json.loads((F / 'recovery/preparation.json').read_text())
     raw = I / 'raw-recovery-r2/ramdisk-payload.raw'
     if sha(raw) != prep['source_raw_sha256']:
         raise SystemExit('raw ramdisk does not match the fresh stage preparation')
-    helper_build = N / 'reproducible-helper-build-r2/build.json'
+    helper_build = x.helper_build or N / 'reproducible-helper-build-r2/build.json'
     hb = json.loads(helper_build.read_text())
-    disk_helper = Path(hb['outputs']['inferno-prepare-root']['path']) if 'path' in hb['outputs']['inferno-prepare-root'] else N / 'reproducible-helper-build-r2/inferno-prepare-root'
+    disk_helper = Path(hb['outputs']['inferno-prepare-root']['path']) if 'path' in hb['outputs']['inferno-prepare-root'] else helper_build.parent / 'inferno-prepare-root'
     cache = x.artifacts / 'launchd.plist'
     inputs = {
         'profile': pin(I / 'profile/profile.json'), 'raw_ramdisk': pin(raw),
