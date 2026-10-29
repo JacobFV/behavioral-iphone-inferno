@@ -20,7 +20,9 @@ TRY=$!
 until grep -q READY $WORK/session-$NAME.log 2>/dev/null; do sleep 15; kill -0 $TRY 2>/dev/null || { log "try-app exited early"; exit 1; }; done
 B=$A/session-$NAME
 log "session ready: $B"
-$SSHC 'sudo pkill -f ncm-bridge.py; sudo python3 ncm-mode.py get; sudo python3 ncm-mode.py set 3; sleep 15; sudo python3 ncm-mode.py configs; sudo python3 ncm-mode.py select 5' >> $L 2>&1
+# The bracket keeps pkill from matching this very ssh command line (which would kill the shell).
+$SSHC 'sudo pkill -f "[n]cm-bridge"; sudo python3 ncm-mode.py get; sudo python3 ncm-mode.py set 3; sleep 15; sudo python3 ncm-mode.py configs; sudo python3 ncm-mode.py select 5; sudo python3 ncm-mode.py get' >> $L 2>&1
+grep -q "active config now 5" $L || { log "NCM configuration 5 not reached; see the ncm-mode output above"; }
 log "mode switched; starting bridge"
 $SSHC 'sudo nohup python3 ncm-bridge.py > bridge.log 2>&1 &' >> $L 2>&1
 for i in $(seq 1 40); do
