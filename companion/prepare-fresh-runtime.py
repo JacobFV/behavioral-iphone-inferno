@@ -27,6 +27,31 @@ def module(name, path):
 IMPORTER = module('fresh_app_import', SOURCE / 'app-import.py')
 INSPECTOR = module('fresh_inspector_result', SOURCE / 'runtime-inspector/result.py')
 
+# The independently reviewed helper builds, and the tracked copies of their records.
+# A rebuild on another host is accepted when its outputs are byte-identical to the
+# reviewed record's: the build record itself also hashes host tool paths and the
+# signer binary, which differ across hosts while the signed helpers do not.
+APPROVED_BUILDS = {
+    'runtime_build': ('aa7ba5975fe5436ebb6bfbd7f922817e3b7b4e0c4b2250756ca2824547ddcf35',
+                      'built-owned-runtime-helpers-only; no guest execution yet',
+                      SOURCE / 'evidence/reproducible-runtime-helpers-build-1/build.json'),
+    'prepare_build': ('3cb1656f3978bfdcca7e3da80d7f8091f524c1b7593bb64a42a7a2a47f34e532',
+                      'built-owned-preparation-helper-only; no guest execution yet',
+                      SOURCE / 'evidence/reproducible-prepare-helper-actual/build.json'),
+}
+
+
+def reviewed_build(name, input_sha256, record):
+    approved_sha, status, tracked = APPROVED_BUILDS[name]
+    if record.get('status') != status:
+        return False
+    if input_sha256 == approved_sha:
+        return True
+    raw = tracked.read_bytes()
+    if hashlib.sha256(raw).hexdigest() != approved_sha:
+        raise ValueError('Tracked reviewed build record differs: ' + name)
+    return record.get('outputs') == json.loads(raw)['outputs']
+
 def identity(s):
     return (s.st_dev, s.st_ino, s.st_mode, s.st_size, s.st_mtime_ns, s.st_ctime_ns)
 
@@ -182,12 +207,8 @@ def prepare(config_path, expected, output):
         raise ValueError('Fresh export differs from raw inspector bytes')
     pin({'path': inspection['retention'], 'sha256': inspection['retention_sha256']}, pins)
     pin({'path': str(paths['inspection'].parent / 'content-check.json'), 'sha256': inspection['content_checkpoint_sha256']}, pins)
-    approved = {
-        'runtime_build': ('aa7ba5975fe5436ebb6bfbd7f922817e3b7b4e0c4b2250756ca2824547ddcf35', 'built-owned-runtime-helpers-only; no guest execution yet'),
-        'prepare_build': ('3cb1656f3978bfdcca7e3da80d7f8091f524c1b7593bb64a42a7a2a47f34e532', 'built-owned-preparation-helper-only; no guest execution yet'),
-    }
-    for name, (approved_sha, status) in approved.items():
-        if config['inputs'][name]['sha256'] != approved_sha or records[name].get('status') != status:
+    for name in APPROVED_BUILDS:
+        if not reviewed_build(name, config['inputs'][name]['sha256'], records[name]):
             raise ValueError('First fresh preparation requires exact independently reviewed owned build: ' + name)
     superseded = []
     helpers = build_outputs(paths['runtime_build'], records['runtime_build'], ('inferno-probe', 'inferno-readiness', 'inferno-hid-input', 'inferno-unlock-empty'), pins, superseded)

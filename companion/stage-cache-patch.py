@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: AGPL-3.0-or-later
 """One fixed renderer cache patch on a fresh flattened keybag clone."""
+import contextlib
 import argparse
 import hashlib
 import importlib.util
@@ -57,6 +58,41 @@ def execute(command, output, label, timeout):
     return record
 
 
+
+def lost_build_context(*records):
+    """historical() only for a chain that pins the lost emulator build.
+
+    A chain produced with the recorded rebuild pins the rebuilt hashes on the
+    substituted paths; mapping those back to the lost ones would fail its own pins.
+    """
+    subs = RB.load()['substitutions']
+    rebuilt = {e['rebuilt_sha256'] for e in subs.values()}
+
+    def pins_rebuild(value, depth=0):
+        # The runs' own reports record the emulator they used; follow report and
+        # predecessor links, which is where a stage record keeps that binding.
+        if depth > 8:
+            return False
+        if isinstance(value, dict):
+            if any(value.get(p) == e['rebuilt_sha256'] for p, e in subs.items()):
+                return True
+            if value.get('binary_sha256') in rebuilt or value.get('build_manifest_sha256') in rebuilt:
+                return True
+            for key in ('report', 'predecessor'):
+                link = value.get(key)
+                link = link.get('path') if isinstance(link, dict) else link
+                if isinstance(link, str) and link.endswith('.json') and Path(link).is_file():
+                    if pins_rebuild(json.loads(Path(link).read_text()), depth + 1):
+                        return True
+            return any(pins_rebuild(v, depth + 1) for v in value.values())
+        if isinstance(value, list):
+            return any(pins_rebuild(v, depth + 1) for v in value)
+        return False
+    if any(pins_rebuild(json.loads(Path(r).read_text())) for r in records):
+        return contextlib.nullcontext()
+    return RB.historical()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('flattened-keybag', 'inspection', 'helper-build', 'original-cache', 'patched-cache', 'sidecar'):
@@ -73,7 +109,7 @@ def main():
     previous_umask = os.umask(0o077)
     # Historical pins of the lost emulator build are satisfied only by the
     # recorded rebuild; this run's own report records the actual rebuilt hashes.
-    historical = RB.historical(); historical.__enter__()
+    historical = lost_build_context(args.flattened_keybag); historical.__enter__()
     try:
         substitution = RB.load()
         source_pins = sources(); source_pins[str(Path(RB.__file__).resolve())] = sha(Path(RB.__file__))

@@ -169,9 +169,8 @@ def validate_artifacts(path,expected,renderer,verified,pins):
     if [h for p,h in a['input_source_sha256'].items() if Path(p).name=='prepare-fresh-runtime.py']!=[sha(SOURCE/'prepare-fresh-runtime.py')]:raise ValueError('Artifact producer source differs')
     paths={};records={}
     for name,e in a['inputs'].items():paths[name]=KS.pin(e['path'],e['sha256'],pins);records[name]=bounded_record(paths[name])
-    approved={'runtime_build':('aa7ba5975fe5436ebb6bfbd7f922817e3b7b4e0c4b2250756ca2824547ddcf35','built-owned-runtime-helpers-only; no guest execution yet'),'prepare_build':('3cb1656f3978bfdcca7e3da80d7f8091f524c1b7593bb64a42a7a2a47f34e532','built-owned-preparation-helper-only; no guest execution yet')}
-    for name,(h,status) in approved.items():
-        if a['inputs'][name]['sha256']!=h or records[name].get('status')!=status:raise ValueError('Reviewed helper build differs')
+    for name in F.APPROVED_BUILDS:
+        if not F.reviewed_build(name,a['inputs'][name]['sha256'],records[name]):raise ValueError('Reviewed helper build differs')
     runtime=F.build_outputs(paths['runtime_build'],records['runtime_build'],('inferno-probe','inferno-readiness','inferno-hid-input','inferno-unlock-empty'),pins)
     prep=F.build_outputs(paths['prepare_build'],records['prepare_build'],('inferno-prepare-root',),pins)
     for name,build,source in [('inferno-hid-input-entitlements.plist','runtime_build','hid-entitlements.plist'),('inferno-unlock-empty-entitlements.plist','runtime_build','unlock-entitlements.plist'),('helper-entitlements.plist','prepare_build','entitlements.plist')]:

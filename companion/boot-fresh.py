@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: AGPL-3.0-or-later
 """Boot one reverified fresh owned-runtime stage from disk; never assert app execution."""
+import contextlib
 import argparse
 import hashlib
 import json
@@ -57,6 +58,39 @@ def read_stage(path, expected):
     return path, stage, report
 
 
+
+def lost_build_context(stage):
+    """historical() only for a chain that pins the lost emulator build.
+
+    A chain produced with the recorded rebuild pins the rebuilt hashes on the
+    substituted paths; mapping those back to the lost ones would fail its own pins.
+    """
+    subs = RB.load()['substitutions']
+    rebuilt = {e['rebuilt_sha256'] for e in subs.values()}
+
+    def pins_rebuild(value, depth=0):
+        # The runs' own reports record the emulator they used; follow report and
+        # predecessor links, which is where a stage record keeps that binding.
+        if depth > 8:
+            return False
+        if isinstance(value, dict):
+            if any(value.get(p) == e['rebuilt_sha256'] for p, e in subs.items()):
+                return True
+            if value.get('binary_sha256') in rebuilt or value.get('build_manifest_sha256') in rebuilt:
+                return True
+            for key in ('report', 'predecessor'):
+                link = value.get(key)
+                link = link.get('path') if isinstance(link, dict) else link
+                if isinstance(link, str) and link.endswith('.json') and Path(link).is_file():
+                    if pins_rebuild(json.loads(Path(link).read_text()), depth + 1):
+                        return True
+            return any(pins_rebuild(v, depth + 1) for v in value.values())
+        if isinstance(value, list):
+            return any(pins_rebuild(v, depth + 1) for v in value)
+        return False
+    return contextlib.nullcontext() if pins_rebuild(stage) else RB.historical()
+
+
 def repin_historical(stage):
     """Re-hash every recorded pin under the recorded historical runtime substitution."""
     pins = {}
@@ -67,7 +101,7 @@ def repin_historical(stage):
     for key in ('report', 'retention'):
         pins[stage[key]] = (stage[key + '_sha256'], key)
     drift = []
-    with RB.historical():
+    with lost_build_context(stage):
         for path, (recorded, group) in sorted(pins.items()):
             if not re.fullmatch('[0-9a-f]{64}', str(recorded)):
                 raise ValueError('Malformed pin for ' + path)
@@ -114,7 +148,7 @@ def validate(args):
     for name, key in (('boot.py', 'runner_sha256'), ('qmp_control.py', 'control_source_sha256')):
         if actual_sha(SOURCE / name) != report.get(key):
             raise ValueError('Sibling %s differs from the staged run; use its reviewed host tree' % name)
-    with RB.historical():
+    with lost_build_context(stage):
         context = {'session': {'recovery_profile': {'sha256': report['profile_sha256']},
                                'sources': {'boot.py': report['runner_sha256'],
                                            'qmp_control.py': report['control_source_sha256']}}}
