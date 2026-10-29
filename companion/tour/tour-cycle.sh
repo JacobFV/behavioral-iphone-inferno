@@ -15,7 +15,7 @@ while [ $skip -lt $total ] && [ $boots -lt 12 ]; do
   echo "$(date +%T) boot $n skip=$skip" >> $L
   if [ "${ATTACH:-0}" = 1 ]; then ATTACH=0; SOCK=$(python3 -c "import json;a=json.load(open(\"$B/command.json\"));print([x for x in a if \"vnc.sock\" in str(x)][0][5:])")
   else
-  nice -n 5 python3 companion/boot.py --profile $P --binary $R/.local-build/build/qemu-system-aarch64 --manifest $R/.local-build/build-manifest.json --overlay-tools-root $T --overlay-base-report $BASE --disk-boot --launchd-unsecure-cache --control-mailbox --guest-hid-serial --guest-errors --capture-interval 10 --seconds 21000 --output $B > $WORK/tour-boot-$n.log 2>&1 &
+  nice -n 5 python3 companion/boot.py --profile $P --binary $R/.local-build/build/qemu-system-aarch64 --manifest $R/.local-build/build-manifest.json --overlay-tools-root $T --overlay-base-report $BASE --disk-boot --launchd-unsecure-cache --control-mailbox --guest-hid-serial --guest-errors --capture-interval 10 --seconds 21000 ${USB_SOCKET:+--usb-socket $USB_SOCKET} --output $B > $WORK/tour-boot-$n.log 2>&1 &
   until [ -f $B/command.json ]; do sleep 5; done
   until [ $(ls $B/frames 2>/dev/null | wc -l) -ge 66 ]; do sleep 10; done
   SOCK=$(python3 -c "import json;a=json.load(open(\"$B/command.json\"));print([x for x in a if \"vnc.sock\" in str(x)][0][5:])")

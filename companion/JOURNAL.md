@@ -103,3 +103,37 @@ apps show offline states (no network in the guest yet).
 problem (`FREEZE_HYPOTHESES.md`).
 
 Video: 248 s, frames scaled never edited, published on jvboid.dev (iPhone on Linux).
+
+## 2026-10-29 (afternoon): pruning, and how to give the guest a network
+
+**Prune.** The base's real backing chain (read with the pinned `qemu-img info --backing-chain -U`)
+is `fresh-boot-r6/root.qcow2 → fresh-r6 → cache-r6 → flatk-r6/root.raw`. Kept every `*-r6` stage,
+`ipa-demo-r2` (an input of `ain-r6`), `images/`, the IPSW, `cachework/`, tools and helpers. Deleted
+the ten tour boots, `fresh-boot-r1` and every superseded r2–r5 stage (27 directories, listed with
+sizes in the host's `~/inferno-chain/prune-2026-10-29.tsv`). 137.3 GB of apparent size; the
+filesystem gained ~51 GB (sparse files). Inferno state went 107 G → 56 G. Two
+`KEEP-OVERLAY-BACKING.json` markers named deleted directories, but only as *consumers* of a kept
+disk, never as backing files, so they don't block anything.
+
+**What the emulated iPhone 11 offers for networking.** No Wi-Fi or Ethernet model exists in the
+t8030 machine. Its only external link is USB: `apple_otg` wraps QEMU's DWC2 (extended for device
+mode) and the far end is `usb-tcp-remote`, which a Linux "USB companion" VM attaches to (USB.md;
+run9 already saw `ideviceinfo` report 14.0/18A5351d from an installed boot).
+
+Dead ends considered:
+- Emulating Wi-Fi (BCM4378 over PCIe with firmware): far too deep.
+- iPhone as USB *host* with an emulated USB-Ethernet dongle: needs Lightning/accessory role
+  detection to flip the OTG into host mode.
+- A `utun` tunnel from a root helper over a spare UART: workable in principle (9 UARTs exist,
+  only `/dev/console` is used), but needs a new guest helper, SCDynamicStore DNS/primary-service
+  plumbing and a host NAT, and apps may still see "no Wi-Fi/cellular".
+
+**Chosen: reverse tethering over USB CDC-NCM.** iOS ships device-side NCM ("computer shares its
+internet with the iPhone"). The decompressed iOS 14.0 kernelcache contains `AppleUSBDeviceNCM`,
+`AppleUSBDeviceNCMData`, `kVendorRequestSelectExtendedFunction` and `ncm-interrupt-ep-disabled`
+(decompress: find `bvx2` in the im4p and call `lzfse_decode_buffer` from the repo's liblzfse).
+On Linux the switch is the vendor request usbmuxd sends for `USBMUXD_DEFAULT_DEVICE_MODE=3`:
+`bmRequestType 0xC0, bRequest 0x52 (SET_MODE), wValue 0, wIndex 3, wLength 1` (`0x45` reads the
+mode). After re-enumeration select configuration 5; `cdc_ncm` binds; give the host side an
+address, run DHCP/DNS (dnsmasq), and NAT out through the companion's own user networking.
+(Reference: Synacktiv, "iOS: a journey in the USB networking stack".)
