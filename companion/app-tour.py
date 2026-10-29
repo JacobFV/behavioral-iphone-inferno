@@ -53,6 +53,17 @@ class Recorder(threading.Thread):
                             '--observe-seconds', '120'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 
+def status_strip(recordings):
+    """Digest of the newest recorded frame's status bar (it carries the minute clock)."""
+    from PIL import Image
+    import hashlib
+    frames = sorted(recordings.glob('chunk-*/observed-*.png'), key=lambda p: p.stat().st_mtime)
+    if not frames:
+        return None
+    strip = Image.open(frames[-1]).convert('L').crop((0, 0, 300, 80))
+    return hashlib.sha256(strip.tobytes()).hexdigest()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--report', type=Path, required=True, help='Active boot output directory (control mailbox)')
@@ -60,6 +71,10 @@ def main():
     parser.add_argument('--plan', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True, help='New directory')
     parser.add_argument('--no-record', action='store_true')
+    parser.add_argument('--freeze-dir', type=Path,
+                        help='Recorder output to watch: stop with exit 3 when the status-bar clock has not '
+                             'changed across two whole apps (the documented compositor freeze)')
+    parser.add_argument('--skip', type=int, default=0, help='Start at this app index (resume after a restart)')
     args = parser.parse_args()
     plan = json.loads(args.plan.read_text())
     panel = tuple(plan.get('panel', PANEL))
@@ -81,8 +96,11 @@ def main():
     if recorder:
         recorder.start()
     try:
-        for app in plan['apps']:
-            log.append({'app': app['name'], 'started': time.time()})
+        strips = []
+        for index, app in enumerate(plan['apps']):
+            if index < args.skip:
+                continue
+            log.append({'app': app['name'], 'index': index, 'started': time.time()})
             action('home', lambda out: [str(RUN), 'observe', '--socket', str(args.socket), '--home-button', '--output', str(out)])
             time.sleep(app.get('settle', 20))
             for step in app['steps']:
@@ -100,8 +118,15 @@ def main():
                                                   'swipe', str(x0), str(y0), str(x1), str(y1),
                                                   '--duration-ms', str(step.get('ms', 600))])
                 time.sleep(step.get('after', 0))
-            log.append({'app_end': app['name'], 'finished': time.time()})
+            log.append({'app_end': app['name'], 'index': index, 'finished': time.time()})
             (args.output / 'actions.json').write_text(json.dumps(log, indent=1))
+            if args.freeze_dir:
+                strips.append(status_strip(args.freeze_dir))
+                if len(strips) >= 3 and strips[-1] is not None and strips[-1] == strips[-3]:
+                    log.append({'frozen_after': app['name'], 'index': index, 'time': time.time()})
+                    (args.output / 'actions.json').write_text(json.dumps(log, indent=1))
+                    print(json.dumps({'frozen_after_index': index}))
+                    return 3
     finally:
         if recorder:
             recorder.stop.set()
