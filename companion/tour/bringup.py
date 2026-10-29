@@ -38,7 +38,9 @@ if os.environ.get("BRINGUP_NO_HOME")=="1":
     icon=os.environ.get("BRINGUP_ICON")  # "x,y" on Home page 2: reopen the app from its icon
     if icon:
         x,y=(int(v) for v in icon.split(","))
-        subprocess.run([R,"observe","--socket",sock,"--home-button","--output",f"{B}/bring-{RUN}-home2"],capture_output=True); time.sleep(15)
+        # Home returns to the last Home page shown (often page 2); a second press goes to page 1.
+        subprocess.run([R,"observe","--socket",sock,"--home-button","--output",f"{B}/bring-{RUN}-home2"],capture_output=True); time.sleep(12)
+        subprocess.run([R,"observe","--socket",sock,"--home-button","--output",f"{B}/bring-{RUN}-home3"],capture_output=True); time.sleep(12)
         n[0]+=1
         subprocess.run([R,"owned-control","--report",B,"--output",f"{B}/bring-{RUN}-{n[0]:03d}-page2","swipe",str(round(760/832*32767)),str(round(900/1792*32767)),str(round(80/832*32767)),str(round(900/1792*32767)),"--duration-ms","400"],capture_output=True); time.sleep(6)
         tap(x,y); time.sleep(45)
