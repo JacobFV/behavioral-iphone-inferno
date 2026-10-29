@@ -2794,3 +2794,13 @@ stage ran; the external tool roots still need re-provisioning there before
 initial-volumes. A 61-second demo assembled only from retained real captures (runs
 39/40, 75, navigation-boot-2 and fresh-boot-6, each labelled with its speed-up) is on
 jvboid.dev/projects/iphone-on-linux; it is not a new live run.
+
+### 2026-10-29: fresh device to Home on a second host; 21 stock apps toured
+
+The fresh chain ran end to end on promaxgb10-4dfb from the IPSW alone (all helpers rebuilt
+byte-identical except the HID helper). Setup Assistant stalled at "Welcome to iPhone" in
+fresh-boot-6 because the owned HID helper allowed 32 gestures per boot; with 2048, setup completed
+(37 gestures), and boots from that stopped state reach the lock screen and Home. A plan-driven tour
+(`companion/tour/`) restarts on the documented display freeze (5 freezes over 10 boots) and covered
+21 stock apps plus the imported Linux-built demo. Evidence: `companion/evidence/app-tour-1/`.
+The freeze is unchanged and remains the main reliability problem.
