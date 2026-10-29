@@ -285,3 +285,31 @@ Home, Home under a two-button alert.
 pointing it at the directory makes `prepare-import` fail instantly for every app. And `pkill -f PATTERN`
 over ssh kills the ssh shell itself when the same command line contains the pattern; put such steps in a
 script file.
+
+**Apps built on Linux (JacobFV/ios-linux-toolchain: swift.org Swift 6.1.2 + the iPhoneOS 18.5 SDK +
+ld64.lld-18, ldid-signed), on runtime-r7.**
+- *HelloSwiftUI (Linux build)* renders fully: navigation title, grouped list (Controls / Drawing /
+  Animation) and the About section. **A SwiftUI app compiled and linked on Linux runs on iOS 14 in the
+  emulator.** The Xcode build of the same fixture also loads and stays running (process alive, earlier
+  batch), but neither of its two runs got its screen captured (Home on the first; the second overshot to
+  the App Library — Home returns to the last page shown, so bring-up now presses Home twice). So "same
+  behaviour" is shown at the process level, not yet pixel for pixel.
+- *swift-2048 (Linux build)* launches and draws its "Start Game" screen; the display then froze (the known
+  compositor freeze: captures kept arriving, the status-bar clock stopped), so the taps and swipes that
+  followed were delivered but never drawn. Re-run queued.
+- *SwiftUIKit (Linux build)* and *Clendar (Linux build)* install with their real icons on page 2, and
+  their opens are accepted after unlock, but both ended on Home. SwiftUIKit left a crash report
+  (`SwiftUI Kit iOS-…ips`) before crash dumping existed; Clendar left none (slow start or a launch
+  watchdog kill are both possible). Re-runs will print crash text.
+- **Crash text now reaches the console.** The launch wrapper's root child prints any new CrashReporter
+  `.ips` (first 32 KiB) between `INFERNO_APP_CRASH_BEGIN/END`; readiness's own prefixes stop at eight per
+  boot and the MapKit snapshot service, Photos widgets, homed and maild use them up first.
+- **A display defect worth noting:** one capture showed a band of corrupted pixels across the top of the
+  App Library screen.
+
+**Networking, attempt 1 failed for a silly reason:** `net-test.sh` began with
+`ssh … 'sudo pkill -f ncm-bridge.py; …'`, and that pattern matched the ssh shell's own command line, so the
+mode switch never ran and the phone stayed in configuration 4. Now `pkill -f "[n]cm-bridge"`, and the
+script checks for "active config now 5". The USB companion also stops after `--seconds` (default 1800);
+restart it with `usb-companion.py --resume-from OLD --output NEW --seconds 36000` (disk, packages and key
+are kept).
