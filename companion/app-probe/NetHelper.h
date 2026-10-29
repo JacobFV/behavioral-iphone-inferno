@@ -5,6 +5,9 @@
  * address, adds a default route, and publishes configd State keys (link, IPv4, DNS) so
  * IPMonitor makes it the primary service and mDNSResponder gets a resolver.
  * Addresses: guest 192.168.77.2/24, host (companion) 192.168.77.1 = router and DNS.
+ * It also reports crashes: any CrashReporter .ips file that appears after it starts is printed to the
+ * console (first 32 KiB, control bytes masked) between INFERNO_APP_CRASH_BEGIN/END lines, because
+ * readiness's crash prefixes stop at eight per boot and system daemons use them up first.
  * No Apple code; CoreFoundation/SystemConfiguration are reached via dlopen/dlsym.
  */
 extern void *dlopen(const char *, int);
@@ -16,6 +19,10 @@ extern int socket(int, int, int), close(int), getpid(void);
 extern long write(int, const void *, unsigned long);
 extern int printf(const char *, ...), fflush(void *);
 extern int *__error(void);
+struct inferno_dirent { unsigned long long ino, seekoff; unsigned short reclen, namlen; unsigned char type; char name[1024]; };
+extern void *opendir(const char *); extern struct inferno_dirent *readdir(void *); extern int closedir(void *);
+extern int open(const char *, int, ...); extern long read(int, void *, unsigned long);
+extern int snprintf(char *, unsigned long, const char *, ...);
 
 struct inferno_sin { unsigned char len, family; unsigned short port; unsigned int addr; char zero[8]; };
 struct inferno_ifaliasreq { char name[16]; struct inferno_sin addr, broad, mask; };
@@ -79,10 +86,38 @@ static int inferno_publish(void) {
   return failures ? -100 - scerror() : 0;
 }
 
+#define INFERNO_CRASH_DIR "/private/var/mobile/Library/Logs/CrashReporter"
+static char inferno_seen[256][128]; static int inferno_nseen;
+static int inferno_known(const char *name) {
+  for (int i = 0; i < inferno_nseen; i++) { int j = 0; while (name[j] && name[j] == inferno_seen[i][j]) j++; if (!name[j] && !inferno_seen[i][j]) return 1; }
+  if (inferno_nseen < 256) { int j = 0; for (; name[j] && j < 127; j++) inferno_seen[inferno_nseen][j] = name[j]; inferno_seen[inferno_nseen][j] = 0; inferno_nseen++; }
+  return 0;
+}
+static void inferno_crash_scan(int report) {
+  void *d = opendir(INFERNO_CRASH_DIR); if (!d) return;
+  struct inferno_dirent *e;
+  while ((e = readdir(d))) {
+    int n = e->namlen; if (n < 5 || e->name[n-4] != '.' || e->name[n-3] != 'i' || e->name[n-2] != 'p' || e->name[n-1] != 's') continue;
+    if (inferno_known(e->name) || !report) continue;
+    char path[1200]; snprintf(path, sizeof path, "%s/%s", INFERNO_CRASH_DIR, e->name);
+    int fd = open(path, 0); if (fd < 0) continue;
+    printf("INFERNO_APP_CRASH_BEGIN %s\n", path); fflush(0);
+    char buf[4096]; long total = 0, got;
+    while (total < 32768 && (got = read(fd, buf, sizeof buf)) > 0) {
+      for (long i = 0; i < got; i++) if ((unsigned char)buf[i] < 32 && buf[i] != '\n' && buf[i] != '\t') buf[i] = '.';
+      write(1, buf, (unsigned long)got); total += got;
+    }
+    close(fd); printf("\nINFERNO_APP_CRASH_END bytes=%ld\n", total); fflush(0);
+  }
+  closedir(d);
+}
+
 /* Runs forever in a forked root child: (re)configures whenever en0 exists without our address. */
 static void inferno_net_loop(void) {
   int seen = 0;
+  inferno_crash_scan(0); /* remember what was there before, report only new crashes */
   for (;;) {
+    inferno_crash_scan(1);
     if (if_nametoindex(INFERNO_NET_IF)) {
       int fd = socket(2, 2, 0); /* AF_INET, SOCK_DGRAM */
       if (fd >= 0 && !inferno_has_address(fd)) {
