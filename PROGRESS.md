@@ -2784,3 +2784,13 @@ IPSW has been re-downloaded and matches the recorded sha256
 706742ed60327a5247c29ccc5bf7e6ce9bbf11dd30a468f8f6fc9da76bdca96d. Staging must be
 re-run before any boot. Paths under it now honour `INFERNO_HOME`.
 
+
+## 2026-10-29: the deterministic front of the chain reproduces on a second host
+
+On promaxgb10-4dfb the copied rebuilt emulator passed the QMP smoke, and `prepare`,
+`decode-udif` and `wrap-gpt4k` reproduced the System image byte-for-byte: all four
+recorded hashes match (`companion/evidence/second-host-reproduction-1/`). No recovery
+stage ran; the external tool roots still need re-provisioning there before
+initial-volumes. A 61-second demo assembled only from retained real captures (runs
+39/40, 75, navigation-boot-2 and fresh-boot-6, each labelled with its speed-up) is on
+jvboid.dev/projects/iphone-on-linux; it is not a new live run.
