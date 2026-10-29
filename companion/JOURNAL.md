@@ -241,3 +241,23 @@ blocks, CoreGraphics/CoreText and much more UIKit in our hand-written headers (d
 IPAs now pass the importer and HelloSwiftUI runs, the faster route is the GitHub Actions macOS farm
 (`JacobFV/ios-build-farm`, `scripts/oss/*.sh`): Puzzles, Tipulator, jot (CocoaPods), vfr Reader,
 ACEDrawingView. The Linux-native path stays the long-term, Mac-free option.
+
+**OSS builds on the macOS farm (all Xcode 16.4, minos 14.0, unsigned).** First tries and fixes, in
+`JacobFV/ios-build-farm` `scripts/oss/`:
+- ACEDrawingView demo (Apache-2.0, vendored Pods): built first try, 50 s.
+- vfr Reader (PDF): built first try, 80 s (no shared scheme; `xcodebuild -list` auto-creates one).
+- jot / JotDemo (MIT): `pod install` after raising the Podfile platform to 14.0; 45 s.
+- Puzzles (Simon Tatham's, iOS port): failed on `svnversion.c`, which a script phase generates from
+  `git merge-base HEAD simon/master` (a remote a fresh clone lacks) and which the compile can reach
+  first. Writing it up front fixed it; 139 s.
+- Tipulator (MIT): two failures. The xcconfig `#include`s HockeySDK from a submodule that is no longer
+  public, and the target links its static library, resource bundle and PLCrashReporter. A small patch
+  (`patches/tipulator-drop-hockeysdk.py`) removes the include, the three project references, the
+  dependency targets and the manager calls. It also has no `Release` configuration, so
+  `build-ipa.sh` now takes `CONFIGURATION` (Tipulator uses `Distribution`).
+
+**Retina assets were being dropped.** `prepare-swift-ipa.py` dropped every `@2x`/`@3x`/`~ipad` file
+because the importer (and the guest copy helper `imported-app.c`) allowed only `[A-Za-z0-9_. -]`.
+For Puzzles and Tipulator that is most of the artwork. Allowed `@ ~ +` in all three validators and
+rebuilt the preparation helper (`reproducible-helper-build-r3`, built on the same pinned clang/lld/ldid
+as r2). `tour/make-runtime-record.py --helper-build` writes a runtime record pinning it (`runtime-r7`).
