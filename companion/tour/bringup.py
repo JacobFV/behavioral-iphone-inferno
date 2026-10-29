@@ -15,8 +15,10 @@ def tap(x,y):
     subprocess.run([R,"owned-control","--report",B,"--output",f"{B}/bring-{RUN}-{n[0]:03d}-tap","tap",str(round(x/832*32767)),str(round(y/1792*32767)),"--duration-ms","120"],capture_output=True)
 def alert(im):
     # A system alert: white body at mid-screen and blue button text on its button row (y~1014).
-    body = im.getpixel((416, 880)); row = [im.getpixel((x, y)) for x in range(200, 640, 4) for y in (1006, 1014, 1022)]
-    return min(body) > 225 and any(p[2] > 150 and p[2] - p[0] > 60 for p in row)
+    body = [im.getpixel((x, y)) for x in range(250, 590, 20) for y in (870, 940)]
+    row = [im.getpixel((x, y)) for x in range(200, 640, 4) for y in (1006, 1014, 1022)]
+    white = sum(min(p) > 225 for p in body) / len(body)
+    return white > 0.6 and any(p[2] > 150 and p[2] - p[0] > 60 for p in row)
 def locked(im):
     # Lock screen: the dark round torch and camera buttons over the saturated wallpaper.
     t, c, w = im.getpixel((157, 1626)), im.getpixel((672, 1626)), im.getpixel((60, 1500))
@@ -33,6 +35,17 @@ if os.environ.get("BRINGUP_NO_HOME")=="1":
         if alert(im): tap(278,1014); time.sleep(20); continue
         if k >= 2: break
         time.sleep(20)
+    icon=os.environ.get("BRINGUP_ICON")  # "x,y" on Home page 2: reopen the app from its icon
+    if icon:
+        x,y=(int(v) for v in icon.split(","))
+        subprocess.run([R,"observe","--socket",sock,"--home-button","--output",f"{B}/bring-{RUN}-home2"],capture_output=True); time.sleep(15)
+        n[0]+=1
+        subprocess.run([R,"owned-control","--report",B,"--output",f"{B}/bring-{RUN}-{n[0]:03d}-page2","swipe",str(round(760/832*32767)),str(round(900/1792*32767)),str(round(80/832*32767)),str(round(900/1792*32767)),"--duration-ms","400"],capture_output=True); time.sleep(6)
+        tap(x,y); time.sleep(45)
+        for k in range(4):
+            im=look()
+            if alert(im): tap(278,1014); time.sleep(20); continue
+            break
     print("alerts cleared, app left in foreground"); sys.exit(0)
 clear_since=None; deadline=time.time()+900
 while time.time()<deadline:
