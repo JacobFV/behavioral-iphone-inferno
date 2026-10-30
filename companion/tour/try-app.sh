@@ -17,7 +17,8 @@ S=$A/$NAME-prep/session.json
 nice -n 5 python3 companion/stage-import.py --session $S --session-sha256 $(s $S) --output $A/$NAME-stage >> $L 2>&1 || { echo "STAGE FAILED" | tee -a $L; exit 1; }
 TOUR_BASE=$A/$NAME-stage/recovery-run/report.json $TOUR/session.sh $NAME >> $L 2>&1 &
 B=$A/session-$NAME
-until grep -q READY $WORK/session-$NAME.log 2>/dev/null; do sleep 15; done
+until grep -q -E "READY|BOOT-FAILED" $WORK/session-$NAME.log 2>/dev/null; do sleep 15; done
+grep -q BOOT-FAILED $WORK/session-$NAME.log && { echo "BOOT FAILED" | tee -a $L; exit 1; }
 # INTERACT=1: after the app has had 40 s to draw, run its touch script (interact.sh) while recording.
 [ "${INTERACT:-0}" = 1 ] && (sleep 40; $TOUR/interact.sh $NAME $B >> $L 2>&1) &
 sleep $WATCH
