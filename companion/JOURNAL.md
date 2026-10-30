@@ -409,3 +409,10 @@ exception is an Auto Layout one raised by the app's own 2014-era layout code on 
 import or signing problem; the same crash happens in the Xcode build. (Four images the code names,
 `deletebutton*` and `keypadBackspaceImage*`, are also absent from the bundle, but the footer does not
 use them.) Not pursued further: it is a property of the app.
+
+**NetNewsWire, symbolised the same way** (`tour/macho-sym.py BINARY OFFSET…`, the reader above kept as a
+tool): the SIGTRAP is in `ExtensionContainersFile.filePath`'s lazy initialiser, called from
+`ExtensionContainersFile.init` in `AppDelegate.application(_:didFinishLaunchingWithOptions:)`. That
+path lives in the App Group container, which confirms the missing-entitlement diagnosis; the
+entitlement-signed build (`NetNewsWire-ent`) is queued to show whether containermanagerd grants a
+group container to an ad-hoc signature on this device.
