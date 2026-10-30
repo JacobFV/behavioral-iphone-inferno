@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 // Owned probe: shows the guest's network interfaces (getifaddrs) every 3 s, and whether a TCP
 // connection to the USB companion's NCM address (192.168.77.1:53) and to 1.1.1.1:443 succeeds.
+// URL tour: once 1.1.1.1:443 first connects, it asks iOS to open the next of a few real web pages
+// (Safari takes the foreground); each time the probe becomes active again, it opens the next one.
+// The emulator has no keyboard input, so this is how Safari gets addresses.
 #import "../app-probe/UIKitNarrow.h"
 struct sockaddr { unsigned char sa_len, sa_family; char sa_data[14]; };
 struct sockaddr_in { unsigned char sin_len, sin_family; unsigned short sin_port; unsigned int sin_addr; char zero[8]; };
@@ -9,12 +12,27 @@ struct ifaddrs { struct ifaddrs *ifa_next; char *ifa_name; unsigned int ifa_flag
 extern int getifaddrs(struct ifaddrs **); extern void freeifaddrs(struct ifaddrs *);
 extern const char *inet_ntop(int, const void *, char *, unsigned int);
 extern int socket(int, int, int), connect(int, const void *, unsigned int), close(int), fcntl(int, int, ...);
+extern char *strstr(const char *, const char *);
 extern int poll(void *, unsigned int, int), getsockopt(int, int, int, void *, unsigned int *);
 struct pollfd { int fd; short events, revents; };
 @interface NSObject (NetProbe)
 + (id)scheduledTimerWithTimeInterval:(double)t target:(id)target selector:(SEL)s userInfo:(id)u repeats:(BOOL)r;
 @end
 extern Class NSClassFromString(NSString *name);
+@interface NSObject (WebTour)
++ (id)sharedApplication; - (BOOL)openURL:(id)url; + (id)URLWithString:(NSString *)s;
+- (void)performSelector:(SEL)s withObject:(id)o afterDelay:(double)delay;
+@end
+static const char *kTour[] = {"https://en.wikipedia.org/wiki/IPhone_11", "https://jvboid.dev/",
+    "https://github.com/ChefKissInc/Inferno", "https://news.ycombinator.com/", "https://www.apple.com/"};
+static unsigned g_next; static int g_online;
+static void openNext(void) {
+    if (g_next >= sizeof kTour / sizeof *kTour) return;
+    const char *u = kTour[g_next++];
+    id url = [NSClassFromString(@"NSURL") URLWithString:[NSString stringWithFormat:@"%s", u]];
+    BOOL ok = [[NSClassFromString(@"UIApplication") sharedApplication] openURL:url];
+    NSLog(@"INFERNO_NET_OPEN url=%s accepted=%d", u, (int)ok);
+}
 
 static const char *tcp(unsigned int addr_be, unsigned short port) {
     int s = socket(2, 1, 0); if (s < 0) return "socket failed";
@@ -44,6 +62,7 @@ static const char *tcp(unsigned int addr_be, unsigned short port) {
     [self refresh:nil];
     [NSClassFromString(@"NSTimer") scheduledTimerWithTimeInterval:3 target:self selector:@selector(refresh:) userInfo:nil repeats:1];
 }
+- (void)tour:(id)unused { (void)unused; openNext(); }
 - (void)refresh:(id)timer {
     (void)timer; char line[256], text[3000]; int off = 0; text[0] = 0;
     struct ifaddrs *list = 0;
@@ -63,16 +82,22 @@ static const char *tcp(unsigned int addr_be, unsigned short port) {
              tcp(0x014da8c0, 53), tcp(0x01010101, 443));
     off += snprintf(text + off, 3000 - off, "%s", line);
     [_body setText:[NSString stringWithFormat:@"%s", text]];
+    if (!g_online && strstr(line, "1.1.1.1:443  CONNECTED")) { g_online = 1; [self performSelector:@selector(tour:) withObject:nil afterDelay:4]; }
     NSLog(@"INFERNO_NET_PROBE %s", text);
 }
 @end
-@interface NetDelegate : NSObject <UIApplicationDelegate> { UIWindow *_window; }
+@interface NetDelegate : NSObject <UIApplicationDelegate> { UIWindow *_window; NetController *_controller; }
 @end
 @implementation NetDelegate
 - (BOOL)application:(UIApplication *)app didFinishLaunchingWithOptions:(NSDictionary *)options {
     (void)app; (void)options;
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [_window setRootViewController:[[NetController alloc] init]]; [_window makeKeyAndVisible]; return 1;
+    _controller = [[NetController alloc] init];
+    [_window setRootViewController:_controller]; [_window makeKeyAndVisible]; return 1;
+}
+- (void)applicationDidBecomeActive:(UIApplication *)app {
+    (void)app;  // back from Safari: open the next page
+    if (g_online && g_next) [_controller performSelector:@selector(tour:) withObject:nil afterDelay:4];
 }
 @end
 int main(int argc, char **argv) { return UIApplicationMain(argc, argv, nil, @"NetDelegate"); }
