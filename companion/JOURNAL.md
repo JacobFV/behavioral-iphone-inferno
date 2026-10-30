@@ -526,3 +526,27 @@ another lane is up, not just the new one. Queue D was re-run as lane D2 (`-r8` n
 SaveTheDot (played to "Game Over"), Recipes run. CardsAgainst traps in its own `UIImage.launchImage`
 (called from `MenuViewController.setupLaunchImage`): a force-unwrapped launch image looked up by a
 name the Linux asset step does not produce (sent to the toolchain). SwiftUI2048 gets real swipes now.
+
+## 2026-10-30 (09:00): freezes dominate, a stuck queue, and what the network tours got
+
+**The compositor freeze is now the main cost.** `frozen.py` (status-bar strip identical in the last frame
+and the frame 30 captures earlier) over 34 app sessions: 15 froze during recording, about 45%. Network
+sessions NetTour2, NetTour3 and NetTour4 froze too: two of them while the NetworkProbe app (which
+redraws constantly) was in front, the third two minutes into the tour. Every rerun is a fresh boot, so
+reruns (`-r9`, `C-*-r2`) are the only remedy until the freeze itself is fixed.
+
+**Network footage that did land:** Safari on en.wikipedia.org (NetProbe5) and google.com (NetTour4,
+via the start page's Favorites tile: no keyboard needed), Weather with live data and the App Store's
+What's New sheet (NetTour1). The Apple Favorites tap did nothing; the Favorites grid was probably not
+yet drawn when it came.
+
+**A dead guest blocked a queue for 30 minutes.** L-HelloAsync-r8's guest exited before launchd userland
+(~08:20) and `session.sh` kept waiting for 66 frames that would never come; `try-app.sh` waited for its
+READY, and lane D2 waited for try-app. `session.sh` now fails the session (`BOOT-FAILED`) as soon as
+boot.py has exited or after `BOOT_TIMEOUT` (1500 s), and try-app reports `BOOT FAILED`.
+
+**Corpus touch scripts never matched.** `interact.sh` stripped `MF-`/`L-` but not the corpus lane's
+`C-` prefix, so corpus apps always got the generic touches (SwiftUI2048 got taps, not swipes). Fixed.
+
+**SwiftTerm** passes import validation but `prepare-import` fails at `hfsplus add` into the 100 MB
+recovery ramdisk (the app is 30 MB); likely a space bound in the recovery image. Not pursued yet.
