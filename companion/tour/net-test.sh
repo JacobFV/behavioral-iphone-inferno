@@ -21,7 +21,8 @@ until grep -q READY $WORK/session-$NAME.log 2>/dev/null; do sleep 15; kill -0 $T
 B=$A/session-$NAME
 log "session ready: $B"
 # The bracket keeps pkill from matching this very ssh command line (which would kill the shell).
-$SSHC 'sudo pkill -f "[n]cm-bridge"; sudo python3 ncm-mode.py get; sudo python3 ncm-mode.py set 3; sleep 15; sudo python3 ncm-mode.py configs; sudo python3 ncm-mode.py select 5; sudo python3 ncm-mode.py get' >> $L 2>&1
+$SSHC 'sudo pkill -f "[n]cm-bridge"; sudo python3 ncm-mode.py get; sudo python3 ncm-mode.py set 3; sleep 15; sudo python3 ncm-mode.py configs; sudo systemctl stop usbmuxd.service usbmuxd.socket 2>/dev/null; sudo pkill -x usbmuxd; for t in 1 2 3; do sudo python3 ncm-mode.py select 5 && break; sleep 5; done; sudo python3 ncm-mode.py get' >> $L 2>&1
+# (usbmuxd in the companion claims the usbmux interface, and set_configuration then fails with EBUSY)
 grep -q "active config now 5" $L || { log "NCM configuration 5 not reached; see the ncm-mode output above"; }
 log "mode switched; starting bridge"
 $SSHC 'sudo nohup python3 ncm-bridge.py > bridge.log 2>&1 &' >> $L 2>&1
