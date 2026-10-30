@@ -22,8 +22,6 @@ while t=$(pop); [ -n "$t" ]; do
     single) export BOOT_EXTRA="--tcg-thread single" BOOT_TIMEOUT=3600 ;;
     vblank) export BOOT_EXTRA="--qemu-global apple-display-pipe-v4.vblank-ns=16666667" BOOT_TIMEOUT=1500 ;;
     vbcomp) export BOOT_EXTRA="--qemu-global apple-display-pipe-v4.vblank-ns=16666667 --qemu-global apple-display-pipe-v4.complete-at-vblank=on" BOOT_TIMEOUT=1500 ;;
-    vblank) export BOOT_EXTRA="--qemu-global apple-display-pipe-v4.vblank-ns=16666667" BOOT_TIMEOUT=1500 ;;
-    vbcomp) export BOOT_EXTRA="--qemu-global apple-display-pipe-v4.vblank-ns=16666667 --qemu-global apple-display-pipe-v4.complete-at-vblank=on" BOOT_TIMEOUT=1500 ;;
     *) echo "unknown arm $arm" >&2; continue ;;
   esac
   n=X-$id-$arm; B=$A/session-$n; t0=$(date +%s)
