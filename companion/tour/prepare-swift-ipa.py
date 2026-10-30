@@ -74,6 +74,16 @@ def main():
                 mode = (info.external_attr >> 16) & 0o777
                 if mode and not n.endswith('/'): (tmp / n).chmod(mode)
         app = next((tmp / 'Payload').glob('*.app'))
+        # The importer requires an explicit iPhone device family. Xcode writes UIDeviceFamily from
+        # TARGETED_DEVICE_FAMILY; projects that leave it unset (iPhone-only by default) ship without the
+        # key, which iOS itself reads as iPhone. Write that default (or normalise the list) before signing (Info.plist is hashed).
+        import plistlib
+        info_p = app / 'Info.plist'; info = plistlib.loads(info_p.read_bytes())
+        # Catalyst projects also list 6 (Mac); keep the iPhone/iPad members only.
+        family = [f for f in info.get('UIDeviceFamily', [1]) if f in (1, 2)] or [1]
+        device_family_added = info.get('UIDeviceFamily') != family
+        if device_family_added:
+            info['UIDeviceFamily'] = family; info_p.write_bytes(plistlib.dumps(info, fmt=plistlib.FMT_BINARY))
         machos = [f for f in app.rglob('*') if f.is_file() and f.read_bytes()[:4] in MAGICS]
         thinned = [str(f.relative_to(tmp)) for f in machos if thin_arm64(f)]
         retargeted = {str(f.relative_to(tmp)): r for f in machos if (r := retarget_dylibs(f))}
@@ -93,7 +103,7 @@ def main():
                 info.compress_type = zipfile.ZIP_DEFLATED; z.writestr(info, f.read_bytes())
     rec = {'input': str(x.ipa), 'input_sha256': hashlib.sha256(x.ipa.read_bytes()).hexdigest(),
            'output': str(x.out), 'output_sha256': hashlib.sha256(x.out.read_bytes()).hexdigest(),
-           'dropped': dropped, 'thinned_to_arm64': thinned, 'dylib_paths_retargeted': retargeted,'signed_innermost_first': signed}
+           'dropped': dropped, 'thinned_to_arm64': thinned, 'dylib_paths_retargeted': retargeted, 'device_family_added': device_family_added,'signed_innermost_first': signed}
     x.out.with_suffix('.prepare.json').write_text(json.dumps(rec, indent=2) + '\n')
     print(json.dumps({'output': rec['output'], 'dropped': len(dropped), 'signed': len(signed)}))
 

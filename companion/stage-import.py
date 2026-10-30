@@ -68,8 +68,11 @@ def no_running_emulator():
         except PermissionError:
             if p.exists() and p.stat().st_uid==uid:raise ValueError('Cannot inspect own-UID process '+p.name)
             denied.append(int(p.name))
-    if found:raise ValueError('An emulator is already running: '+json.dumps(found))
-    return {'matching_processes':found,'permission_denied_pids':denied,'scope':'Readable /proc comm inventory; no exclusive host lock','time':time.time()}
+    # INFERNO_ALLOW_CONCURRENT=1: a second tour lane. Every session writes only its own new overlay
+    # above read-only (a-w) ancestors, so two emulators never share a writable disk; the inventory
+    # is still recorded so the stage report shows what else was running.
+    if found and os.environ.get('INFERNO_ALLOW_CONCURRENT')!='1':raise ValueError('An emulator is already running: '+json.dumps(found))
+    return {'concurrent_allowed':bool(found),'matching_processes':found,'permission_denied_pids':denied,'scope':'Readable /proc comm inventory; no exclusive host lock','time':time.time()}
 
 
 def owned_group_members(process):
