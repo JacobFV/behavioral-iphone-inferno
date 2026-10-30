@@ -336,3 +336,38 @@ are kept).
 all set without error). The host half stopped short: `SET_MODE 3` was accepted (mode bytes 5,3,3) but
 `set_configuration(5)` failed with **EBUSY**, because usbmuxd inside the companion holds the usbmux
 interface. `net-test.sh` now stops usbmuxd and retries the selection (attempt 3 queued).
+
+## 2026-10-30 (early): reading the overnight output properly, and three import fixes
+
+**Most "crash" text on the console is not the app's.** The launch wrapper prints every new
+CrashReporter report, and a fresh boot always produces several from system services that have nothing
+to do with the app under test: `com.apple.MapKit.SnapshotService` (SIGSEGV in VectorKit, no GPU),
+`PhotosReliveWidget` (abort), `AutoBugCapture-*` from homed and maild, `backboardd.wakeups_resource`
+and `log-aggregated`. Filter on the app's own executable name. The apps' real reports were there:
+`Tipulator-…ips` (SIGABRT, `Last Exception Backtrace` thrown from the app's own code at image offset
+0x7d54, reason not included in the report) and `NetNewsWire-…ips` (SIGTRAP at offset 0xb216c,
+called from the scene delegate's launch path: a Swift runtime trap).
+
+**NetNewsWire's trap.** Its Info.plist names `AppGroup = group.com.ranchero.NetNewsWire.iOS` and the
+app builds its database path from that group's container; an ad-hoc signature with no
+`com.apple.security.application-groups` entitlement gets no container, and the force unwrap traps.
+`prepare-swift-ipa.py --entitlements` already signs the main executable with an entitlements plist;
+a NetNewsWire build signed with `application-identifier`, the app group and a keychain group is queued
+(`NetNewsWire-ent`). Whether containermanagerd honours an ad-hoc entitlement here is the question.
+
+**jot was rejected twice, for two reasons.**
+1. `First subset requires thin little-endian ARM64 Mach-O; fat/32-bit unsupported`: its Pods target
+   still builds armv7+arm64. `prepare-swift-ipa.py` now replaces any fat Mach-O with its plain arm64
+   slice (`thinned_to_arm64` in the prepare record). There is no `lipo` on Linux; the fat header is
+   20 bytes per architecture and the slice is copied out as is.
+2. `First subset permits system dependencies only: /Developer/Library/PrivateFrameworks/DTXConnectionServices`:
+   the scheme built a test host, so Xcode embedded its test runtime (XCTest, XCUIAutomation, XCUnit,
+   Testing, libXCTest*). The app never loads them; preparation now drops them. Both fixes together:
+   JotDemo passes the importer's dry run.
+
+**The page-2 tour (pass 3) only toured Files.** Files worked (Recents, Browse, iCloud Drive's
+"Sign in to iCloud" page). Every later app swiped from page 2 to the App Library, because Home returns
+to the last page shown, and the App Library's first-run "Welcome to App Library" sheet then sat over
+everything. Page 2 holds Files, Find My, Shortcuts, iTunes Store, Translate, Contacts, Watch, Tips,
+a Utilities folder, Feedback and Imported Demo. Pass 4 (`plan-builtin-pass4.json`) presses Home twice
+before each swipe.
