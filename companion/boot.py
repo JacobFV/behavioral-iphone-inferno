@@ -138,6 +138,10 @@ def main():
     parser.add_argument('--binary', type=Path, default=repo / '.local-build/build/qemu-system-aarch64')
     parser.add_argument('--manifest', type=Path)
     parser.add_argument('--seconds', type=float, default=120)
+    parser.add_argument('--qemu-global', action='append', default=[], metavar='DRIVER.PROP=VALUE',
+                        help='experiment knob: pass -global to QEMU (recorded in the report)')
+    parser.add_argument('--tcg-thread', choices=('multi', 'single'), default='multi',
+                        help='experiment knob: TCG threading (default multi, as before)')
     parser.add_argument('--output', type=Path)
     parser.add_argument('--swapwait-cpu-profile', choices=tuple(SWAPWAIT_PROFILES), default='baseline', help='fixed CPU sites; nonbaseline profiles require explicit diagnostic opt-in')
     parser.add_argument('--swapwait-cpu-diagnostic', action='store_true', help='opt in to fixed kernel SwapWait GPR windows; requires pinned inputs, mailbox and guest-errors')
@@ -341,6 +345,11 @@ def main():
                        '-display', 'none', '-vnc', 'unix:' + str(Path(tmp) / 'vnc.sock'),
                        '-monitor', 'none', '-serial', 'file:' + str(output / 'serial.log'),
                        '-qmp', 'unix:' + endpoint + ',server=on,wait=off', '-no-reboot']
+            if args.tcg_thread != 'multi':
+                command[command.index('-accel') + 1] = 'tcg,thread=' + args.tcg_thread
+            for item in args.qemu_global:
+                command += ['-global', item]
+            report['experiment_knobs'] = {'tcg_thread': args.tcg_thread, 'qemu_global': list(args.qemu_global)}
             if args.guest_hid_serial:
                 serial_path = Path(tmp) / 'gesture-serial.sock'
                 serial_transport = SerialGestureTransport(serial_path, output)

@@ -10,7 +10,10 @@ source $WORK/env.sh; cd $R
 n=$1; B=$A/session-$n
 BASE=${TOUR_BASE:-$A/fresh-boot-r6/boot/report.json}
 sc(){ python3 -c "print(round($1/$2*32767))"; }
-nice -n 5 python3 companion/boot.py --profile $P --binary $R/.local-build/build/qemu-system-aarch64 --manifest $R/.local-build/build-manifest.json --overlay-tools-root $T --overlay-base-report $BASE --disk-boot --launchd-unsecure-cache --control-mailbox --guest-hid-serial --guest-errors --capture-interval 10 --seconds ${SECONDS_LIMIT:-21000} ${USB_SOCKET:+--usb-socket $USB_SOCKET} --output $B > $WORK/session-$n.log 2>&1 &
+# Experiment knobs (all optional; defaults reproduce the pinned runtime):
+#   QEMU_BIN / QEMU_MANIFEST, BOOT_EXTRA (extra boot.py args, e.g. --tcg-thread single
+#   or --qemu-global apple-display-pipe-v4.completion-delay-ns=16666667)
+nice -n 5 python3 companion/boot.py --profile $P --binary ${QEMU_BIN:-$R/.local-build/build/qemu-system-aarch64} --manifest ${QEMU_MANIFEST:-$R/.local-build/build-manifest.json} ${BOOT_EXTRA:-} --overlay-tools-root $T --overlay-base-report $BASE --disk-boot --launchd-unsecure-cache --control-mailbox --guest-hid-serial --guest-errors --capture-interval 10 --seconds ${SECONDS_LIMIT:-21000} ${USB_SOCKET:+--usb-socket $USB_SOCKET} --output $B > $WORK/session-$n.log 2>&1 &
 BOOT=$!
 # A guest that dies before userland (boot.py exits) or never gets there must not block a queue forever:
 # give up after BOOT_TIMEOUT seconds or as soon as boot.py is gone, and say so on the session log.

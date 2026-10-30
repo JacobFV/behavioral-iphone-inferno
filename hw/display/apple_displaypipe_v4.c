@@ -199,6 +199,16 @@ struct AppleDisplayPipeV4State {
     QemuConsole *console;
     QEMUBH *update_disp_image_bh;
     QEMUTimer *boot_splash_timer;
+    /*
+     * Experiment knob, default off (0): deliver FRAME_PROCESSED this many
+     * virtual-clock ns after the draw instead of in the same main-loop pass as
+     * the submit. Completions are counted, one per drawn submit, so a delay
+     * cannot coalesce two frames into one interrupt. See
+     * companion/FREEZE_EXPERIMENT_1.md.
+     */
+    uint32_t completion_delay_ns;
+    uint32_t pending_completions;
+    QEMUTimer *completion_timer;
 };
 
 static const VMStateDescription vmstate_adp_v4 = {
@@ -915,16 +925,40 @@ static void adp_v4_reset_hold(Object *obj, ResetType type)
     adp_v4_read_and_draw_boot_splash(adp);
 }
 
+static void adp_v4_completion_timer(void *opaque)
+{
+    AppleDisplayPipeV4State *adp = opaque;
+
+    if (adp->pending_completions == 0) {
+        return;
+    }
+    adp->pending_completions--;
+    qatomic_or(&adp->int_status, R_CONTROL_INT_FRAME_PROCESSED_MASK);
+    adp_v4_update_irqs(adp);
+    trace_apple_adp_bh("delayed-complete", adp->genpipe[0].state.config_control,
+                       adp->genpipe[1].state.config_control,
+                       qatomic_read(&adp->int_status),
+                       qatomic_read(&adp->int_enable));
+    if (adp->pending_completions) {
+        timer_mod(adp->completion_timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+                                             adp->completion_delay_ns);
+    }
+}
+
 static void adp_v4_realize(DeviceState *dev, Error **errp)
 {
     AppleDisplayPipeV4State *adp = APPLE_DISPLAY_PIPE_V4(dev);
 
     adp->console = graphic_console_init(dev, 0, &adp_v4_ops, adp);
+    adp->completion_timer =
+        timer_new_ns(QEMU_CLOCK_VIRTUAL, adp_v4_completion_timer, adp);
 }
 
 static const Property adp_v4_props[] = {
     DEFINE_PROP_UINT32("width", AppleDisplayPipeV4State, width, 0),
     DEFINE_PROP_UINT32("height", AppleDisplayPipeV4State, height, 0),
+    DEFINE_PROP_UINT32("completion-delay-ns", AppleDisplayPipeV4State,
+                       completion_delay_ns, 0),
 };
 
 static void adp_v4_class_init(ObjectClass *klass, const void *data)
@@ -1016,8 +1050,17 @@ static void adp_v4_update_disp_bh(void *opaque)
     adp_v4_gp_draw(&adp->genpipe[0], &adp->dma_as, disp_image, adp->console, 0);
     adp_v4_gp_draw(&adp->genpipe[1], &adp->dma_as, disp_image, adp->console, 1);
 
-    qatomic_or(&adp->int_status, R_CONTROL_INT_FRAME_PROCESSED_MASK);
-    adp_v4_update_irqs(adp);
+    if (adp->completion_delay_ns) {
+        adp->pending_completions++;
+        if (!timer_pending(adp->completion_timer)) {
+            timer_mod(adp->completion_timer,
+                      qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
+                          adp->completion_delay_ns);
+        }
+    } else {
+        qatomic_or(&adp->int_status, R_CONTROL_INT_FRAME_PROCESSED_MASK);
+        adp_v4_update_irqs(adp);
+    }
     trace_apple_adp_bh("exit", adp->genpipe[0].state.config_control,
                        adp->genpipe[1].state.config_control,
                        qatomic_read(&adp->int_status), qatomic_read(&adp->int_enable));
