@@ -397,3 +397,15 @@ Three separate problems were then in the way, found in this order:
 The bridge also now sends what host NCM drivers send before data flows (SET_NTB_FORMAT NTB16,
 SET_NTB_INPUT_SIZE 16384, SET_ETHERNET_PACKET_FILTER 0x1F) and resets the data interface alt 0 -> 1.
 The phone accepted all three requests; on their own they did not unblock the OUT endpoint.
+
+**Tipulator, symbolised without LLVM tools.** The crash report's `Last Exception Backtrace` has the
+app frames as raw addresses and the console copy stops before the binary-image list, but the
+Distribution build keeps its symbol table: reading LC_SYMTAB directly (a 30-line Python reader of the
+nlist entries; no llvm-symbolizer on either host) maps them to
+`-[Tipulator application:didFinishLaunchingWithOptions:]` -> `-[TIPGuestCheckViewController viewDidLoad]+0x80`
+-> `-[TIPGuestCheckViewController loadFooterViews]+0x51c`, which is where the footer's layout
+constraints are added (`NSLayoutConstraint constraintWithItem:… toItem:backgroundView`). So the
+exception is an Auto Layout one raised by the app's own 2014-era layout code on iOS 14, not an
+import or signing problem; the same crash happens in the Xcode build. (Four images the code names,
+`deletebutton*` and `keypadBackspaceImage*`, are also absent from the bundle, but the footer does not
+use them.) Not pursued further: it is a property of the app.
