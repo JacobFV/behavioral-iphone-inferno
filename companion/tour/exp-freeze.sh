@@ -11,7 +11,8 @@ source $WORK/env.sh; cd $R
 EXP=${EXP:-$WORK/exp1}; LANE=$1
 PLAN=${EXP_PLAN:-$TOUR/plan-builtin-pass1.json}
 export INFERNO_ALLOW_CONCURRENT=1
-export QEMU_BIN=$R/.local-build/build-exp/qemu-system-aarch64 QEMU_MANIFEST=$R/.local-build/build-exp-manifest.json
+BX=${EXP_BUILD:-build-exp}   # build-exp (experiment 1) or build-exp2 (experiment 2)
+export QEMU_BIN=$R/.local-build/$BX/qemu-system-aarch64 QEMU_MANIFEST=$R/.local-build/$BX-manifest.json
 pop(){ ( flock 9; t=$(head -1 $EXP/trials.txt); [ -n "$t" ] && sed -i 1d $EXP/trials.txt; echo "$t" ) 9>$EXP/.lock; }
 while t=$(pop); [ -n "$t" ]; do
   read id arm <<< "$t"
@@ -19,6 +20,10 @@ while t=$(pop); [ -n "$t" ]; do
     base)   export BOOT_EXTRA="" BOOT_TIMEOUT=1500 ;;
     delay)  export BOOT_EXTRA="--qemu-global apple-display-pipe-v4.completion-delay-ns=16666667" BOOT_TIMEOUT=1500 ;;
     single) export BOOT_EXTRA="--tcg-thread single" BOOT_TIMEOUT=3600 ;;
+    vblank) export BOOT_EXTRA="--qemu-global apple-display-pipe-v4.vblank-ns=16666667" BOOT_TIMEOUT=1500 ;;
+    vbcomp) export BOOT_EXTRA="--qemu-global apple-display-pipe-v4.vblank-ns=16666667 --qemu-global apple-display-pipe-v4.complete-at-vblank=on" BOOT_TIMEOUT=1500 ;;
+    vblank) export BOOT_EXTRA="--qemu-global apple-display-pipe-v4.vblank-ns=16666667" BOOT_TIMEOUT=1500 ;;
+    vbcomp) export BOOT_EXTRA="--qemu-global apple-display-pipe-v4.vblank-ns=16666667 --qemu-global apple-display-pipe-v4.complete-at-vblank=on" BOOT_TIMEOUT=1500 ;;
     *) echo "unknown arm $arm" >&2; continue ;;
   esac
   n=X-$id-$arm; B=$A/session-$n; t0=$(date +%s)

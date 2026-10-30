@@ -209,6 +209,16 @@ struct AppleDisplayPipeV4State {
     uint32_t completion_delay_ns;
     uint32_t pending_completions;
     QEMUTimer *completion_timer;
+    /*
+     * Experiment knob, default off (0): raise OUTPUT_READY from a periodic
+     * QEMU_CLOCK_VIRTUAL timer every vblank_ns instead of from the host
+     * display refresh (gfx_update), whose cadence depends on VNC clients and
+     * host load. With complete_at_vblank, pending frame completions are also
+     * delivered on the next tick. See companion/FREEZE_EXPERIMENT_2.md.
+     */
+    uint32_t vblank_ns;
+    bool complete_at_vblank;
+    QEMUTimer *vblank_timer;
 };
 
 static const VMStateDescription vmstate_adp_v4 = {
@@ -745,6 +755,9 @@ static void adp_v4_gfx_update(void *opaque)
     }
     g_free(snap);
 
+    if (adp->vblank_ns) {
+        return; /* OUTPUT_READY comes from the virtual-clock vblank timer */
+    }
     before = qatomic_read(&adp->int_status);
     qatomic_or(&adp->int_status, R_CONTROL_INT_OUTPUT_READY_MASK);
     adp_v4_update_irqs(adp);
@@ -945,6 +958,24 @@ static void adp_v4_completion_timer(void *opaque)
     }
 }
 
+static void adp_v4_vblank_timer(void *opaque)
+{
+    AppleDisplayPipeV4State *adp = opaque;
+    uint32_t before = qatomic_read(&adp->int_status);
+    uint32_t bits = R_CONTROL_INT_OUTPUT_READY_MASK;
+
+    if (adp->complete_at_vblank && adp->pending_completions) {
+        adp->pending_completions--;
+        bits |= R_CONTROL_INT_FRAME_PROCESSED_MASK;
+    }
+    qatomic_or(&adp->int_status, bits);
+    adp_v4_update_irqs(adp);
+    trace_apple_adp_output_ready(before, qatomic_read(&adp->int_status),
+                                 qatomic_read(&adp->int_enable));
+    timer_mod(adp->vblank_timer,
+              qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + adp->vblank_ns);
+}
+
 static void adp_v4_realize(DeviceState *dev, Error **errp)
 {
     AppleDisplayPipeV4State *adp = APPLE_DISPLAY_PIPE_V4(dev);
@@ -952,6 +983,12 @@ static void adp_v4_realize(DeviceState *dev, Error **errp)
     adp->console = graphic_console_init(dev, 0, &adp_v4_ops, adp);
     adp->completion_timer =
         timer_new_ns(QEMU_CLOCK_VIRTUAL, adp_v4_completion_timer, adp);
+    adp->vblank_timer =
+        timer_new_ns(QEMU_CLOCK_VIRTUAL, adp_v4_vblank_timer, adp);
+    if (adp->vblank_ns) {
+        timer_mod(adp->vblank_timer,
+                  qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) + adp->vblank_ns);
+    }
 }
 
 static const Property adp_v4_props[] = {
@@ -959,6 +996,9 @@ static const Property adp_v4_props[] = {
     DEFINE_PROP_UINT32("height", AppleDisplayPipeV4State, height, 0),
     DEFINE_PROP_UINT32("completion-delay-ns", AppleDisplayPipeV4State,
                        completion_delay_ns, 0),
+    DEFINE_PROP_UINT32("vblank-ns", AppleDisplayPipeV4State, vblank_ns, 0),
+    DEFINE_PROP_BOOL("complete-at-vblank", AppleDisplayPipeV4State,
+                     complete_at_vblank, false),
 };
 
 static void adp_v4_class_init(ObjectClass *klass, const void *data)
@@ -1050,7 +1090,9 @@ static void adp_v4_update_disp_bh(void *opaque)
     adp_v4_gp_draw(&adp->genpipe[0], &adp->dma_as, disp_image, adp->console, 0);
     adp_v4_gp_draw(&adp->genpipe[1], &adp->dma_as, disp_image, adp->console, 1);
 
-    if (adp->completion_delay_ns) {
+    if (adp->vblank_ns && adp->complete_at_vblank) {
+        adp->pending_completions++;
+    } else if (adp->completion_delay_ns) {
         adp->pending_completions++;
         if (!timer_pending(adp->completion_timer)) {
             timer_mod(adp->completion_timer,
