@@ -1,7 +1,8 @@
 /* SPDX-License-Identifier: AGPL-3.0-or-later
  * Owned root helper for guest networking over USB CDC-NCM (reverse tethering).
- * The launch wrapper forks this before dropping to mobile. It waits for en0 (the NCM
- * interface, present once the USB companion selects configuration 5), assigns a static
+ * The launch wrapper forks this before dropping to mobile. It waits for the NCM interface
+ * (INFERNO_NET_IF; en1 on this device: en0 exists and is UP before any USB configuration is
+ * chosen, so it is not the NCM function), brings it up, assigns a static
  * address, adds a default route, and publishes configd State keys (link, IPv4, DNS) so
  * IPMonitor makes it the primary service and mDNSResponder gets a resolver.
  * Addresses: guest 192.168.77.2/24, host (companion) 192.168.77.1 = router and DNS.
@@ -28,12 +29,23 @@ struct inferno_sin { unsigned char len, family; unsigned short port; unsigned in
 struct inferno_ifaliasreq { char name[16]; struct inferno_sin addr, broad, mask; };
 struct inferno_ifreq { char name[16]; struct inferno_sin addr; };
 
-#define INFERNO_NET_IF "en0"
+#define INFERNO_NET_IF "en1"
+#define INFERNO_SIOCGIFFLAGS 0xc0206911UL /* _IOWR('i', 17, struct ifreq) */
+#define INFERNO_SIOCSIFFLAGS 0x80206910UL /* _IOW('i', 16, struct ifreq) */
 #define INFERNO_SIOCAIFADDR 0x8040691aUL  /* _IOW('i', 26, struct ifaliasreq) */
 #define INFERNO_SIOCGIFADDR 0xc0206921UL  /* _IOWR('i', 33, struct ifreq) */
 static unsigned int inferno_ip(unsigned a, unsigned b, unsigned c, unsigned d) { return a | b << 8 | c << 16 | d << 24; }
 static struct inferno_sin inferno_sa(unsigned int addr) { struct inferno_sin s = {16, 2, 0, addr, {0}}; return s; }
 static void inferno_name(char *dst) { const char *s = INFERNO_NET_IF; int i = 0; for (; s[i]; i++) dst[i] = s[i]; for (; i < 16; i++) dst[i] = 0; }
+
+struct inferno_ifreq_flags { char name[16]; short flags; char pad[14]; };
+static int inferno_bring_up(int fd) {
+  struct inferno_ifreq_flags r; inferno_name(r.name); r.flags = 0;
+  if (ioctl(fd, INFERNO_SIOCGIFFLAGS, &r)) return -*__error();
+  if (r.flags & 1) return 0;           /* IFF_UP already */
+  r.flags |= 1;
+  return ioctl(fd, INFERNO_SIOCSIFFLAGS, &r) ? -*__error() : 1;
+}
 
 static int inferno_has_address(int fd) {
   struct inferno_ifreq r; inferno_name(r.name); r.addr = inferno_sa(0);
@@ -112,7 +124,7 @@ static void inferno_crash_scan(int report) {
   closedir(d);
 }
 
-/* Runs forever in a forked root child: (re)configures whenever en0 exists without our address. */
+/* Runs forever in a forked root child: (re)configures whenever the interface exists without our address. */
 static void inferno_net_loop(void) {
   int seen = 0;
   inferno_crash_scan(0); /* remember what was there before, report only new crashes */
@@ -124,9 +136,10 @@ static void inferno_net_loop(void) {
         struct inferno_ifaliasreq r; inferno_name(r.name);
         r.addr = inferno_sa(inferno_ip(192, 168, 77, 2)); r.broad = inferno_sa(inferno_ip(192, 168, 77, 255));
         r.mask = inferno_sa(inferno_ip(255, 255, 255, 0));
+        int up = inferno_bring_up(fd);
         int a = ioctl(fd, INFERNO_SIOCAIFADDR, &r), ae = a ? *__error() : 0;
         int rt = inferno_add_route(), pub = inferno_publish();
-        printf("INFERNO_NET_CONFIGURED if=%s addr=%d errno=%d route=%d publish=%d\n", INFERNO_NET_IF, a, ae, rt, pub); fflush(0);
+        printf("INFERNO_NET_CONFIGURED if=%s up=%d addr=%d errno=%d route=%d publish=%d\n", INFERNO_NET_IF, up, a, ae, rt, pub); fflush(0);
         seen = 1;
       }
       if (fd >= 0) close(fd);

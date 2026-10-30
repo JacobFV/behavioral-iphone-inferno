@@ -25,7 +25,11 @@ $SSHC 'sudo pkill -f "[n]cm-bridge"; sudo python3 ncm-mode.py get; sudo python3 
 # (usbmuxd in the companion claims the usbmux interface, and set_configuration then fails with EBUSY)
 grep -q "active config now 5" $L || { log "NCM configuration 5 not reached; see the ncm-mode output above"; }
 log "mode switched; starting bridge"
-$SSHC 'sudo nohup python3 ncm-bridge.py > bridge.log 2>&1 &' >> $L 2>&1
+# The companion's 2.4 GB disk fills up (apt cache); a full disk silently empties anything written there.
+$SSHC 'sudo apt-get clean; df -h / | tail -1' >> $L 2>&1
+$SSHC 'cat > ncm-bridge.py' < $R/companion/net/ncm-bridge.py
+# setsid + </dev/null: a plain nohup child died with this ssh session and the bridge never ran.
+$SSHC 'sudo setsid nohup python3 ncm-bridge.py > bridge.log 2>&1 < /dev/null & sleep 3; pgrep -f "[n]cm-bridge" >/dev/null && echo BRIDGE-RUNNING || echo BRIDGE-NOT-RUNNING' >> $L 2>&1
 for i in $(seq 1 40); do
   sleep 15
   grep -a -E "INFERNO_NET_" $B/serial.log | tail -2 | sed 's/^/  serial: /' >> $L

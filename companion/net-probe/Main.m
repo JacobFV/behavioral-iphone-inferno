@@ -26,6 +26,33 @@ extern Class NSClassFromString(NSString *name);
 static const char *kTour[] = {"https://en.wikipedia.org/wiki/IPhone_11", "https://jvboid.dev/",
     "https://github.com/ChefKissInc/Inferno", "https://news.ycombinator.com/", "https://www.apple.com/"};
 static unsigned g_next; static int g_online;
+extern void *dlopen(const char *, int); extern void *dlsym(void *, const char *);
+// Which driver owns each network interface: walk IONetworkInterface services, print "BSD Name"
+// and the provider's class (e.g. an NCM function vs. something else), via dlopen'd IOKit/CF.
+static char g_iokit[700];
+static void ioNetInterfaces(void) {
+    void *io = dlopen("/System/Library/Frameworks/IOKit.framework/IOKit", 1);
+    void *cf = dlopen("/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation", 1);
+    if (!io || !cf) { snprintf(g_iokit, sizeof g_iokit, "IOKit unavailable"); return; }
+    void *(*matching)(const char *) = dlsym(io, "IOServiceMatching");
+    int (*getServices)(unsigned, void *, unsigned *) = dlsym(io, "IOServiceGetMatchingServices");
+    unsigned (*next)(unsigned) = dlsym(io, "IOIteratorNext");
+    int (*parent)(unsigned, const char *, unsigned *) = dlsym(io, "IORegistryEntryGetParentEntry");
+    int (*cls)(unsigned, char *) = dlsym(io, "IOObjectGetClass");
+    const void *(*prop)(unsigned, const void *, const void *, unsigned) = dlsym(io, "IORegistryEntryCreateCFProperty");
+    const void *(*cfstr)(const void *, const char *, unsigned) = dlsym(cf, "CFStringCreateWithCString");
+    unsigned char (*getc)(const void *, char *, long, unsigned) = dlsym(cf, "CFStringGetCString");
+    if (!matching || !getServices || !next || !parent || !cls || !prop || !cfstr || !getc) { snprintf(g_iokit, sizeof g_iokit, "IOKit symbols missing"); return; }
+    unsigned it = 0, off = 0;
+    if (getServices(0, matching("IONetworkInterface"), &it)) { snprintf(g_iokit, sizeof g_iokit, "no match"); return; }
+    for (unsigned s; (s = next(it)) && off < sizeof g_iokit - 80;) {
+        char name[64] = "?", pc[128] = "?", gc[128] = "?"; unsigned p = 0, g = 0;
+        const void *v = prop(s, cfstr(0, "BSD Name", 0x08000100), 0, 0);
+        if (v) getc(v, name, sizeof name, 0x08000100);
+        if (!parent(s, "IOService", &p)) { cls(p, pc); if (!parent(p, "IOService", &g)) cls(g, gc); }
+        off += snprintf(g_iokit + off, sizeof g_iokit - off, "%s <- %s <- %s\n", name, pc, gc);
+    }
+}
 static void openNext(void) {
     if (g_next >= sizeof kTour / sizeof *kTour) return;
     const char *u = kTour[g_next++];
@@ -81,6 +108,8 @@ static const char *tcp(unsigned int addr_be, unsigned short port) {
     snprintf(line, 256, "\nrefresh %u\nTCP 192.168.77.1:53  %s\nTCP 1.1.1.1:443  %s\n", ++_n,
              tcp(0x014da8c0, 53), tcp(0x01010101, 443));
     off += snprintf(text + off, 3000 - off, "%s", line);
+    if (!g_iokit[0] || _n % 10 == 1) ioNetInterfaces();
+    off += snprintf(text + off, 3000 - off, "\n%s", g_iokit);
     [_body setText:[NSString stringWithFormat:@"%s", text]];
     if (!g_online && strstr(line, "1.1.1.1:443  CONNECTED")) { g_online = 1; [self performSelector:@selector(tour:) withObject:nil afterDelay:4]; }
     NSLog(@"INFERNO_NET_PROBE %s", text);

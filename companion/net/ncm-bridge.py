@@ -103,6 +103,18 @@ def main():
         log('NTB parameters', p.hex())
     except usb.core.USBError as e:
         log('GET_NTB_PARAMETERS failed', e)
+    # What a host's NCM driver sends before data flows (Linux cdc_ncm / macOS AppleUSBNCM): NTB16 format,
+    # our NTB input size, and an Ethernet packet filter; then the data interface is reset to alternate 0
+    # (no endpoints) and back to 1. A device function may hold its data endpoints idle until the filter is set.
+    for name, req, value, data in (('SET_NTB_FORMAT(NTB16)', 0x84, 0, None),
+                                   ('SET_NTB_INPUT_SIZE', 0x86, 0, struct.pack('<I', 16384)),
+                                   ('SET_ETHERNET_PACKET_FILTER', 0x43, 0x001F, None)):
+        try:
+            dev.ctrl_transfer(0x21, req, value, ctrl_if, data, timeout=2000)
+            log(name, 'ok')
+        except usb.core.USBError as e:
+            log(name, 'failed', e)
+    dev.set_interface_altsetting(interface=data_if, alternate_setting=0)
     dev.set_interface_altsetting(interface=data_if, alternate_setting=1)
 
     tap = open_tap(args.tap)
