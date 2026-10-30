@@ -127,11 +127,17 @@ def main():
         sh('sysctl -q -w net.ipv4.ip_forward=1')
         sh('iptables -t nat -C POSTROUTING -s %s -o %s -j MASQUERADE 2>/dev/null || '
            'iptables -t nat -A POSTROUTING -s %s -o %s -j MASQUERADE' % (net, up, net, up))
-        sh('pkill -f "dnsmasq.*inferno-ncm" ; dnsmasq --conf-file=/dev/null --pid-file=/run/inferno-ncm-dnsmasq.pid '
-           '--interface=%s --bind-interfaces --dhcp-range=%s.10,%s.50,12h --dhcp-option=3,%s --dhcp-option=6,%s '
+        # Stop an earlier instance by its pid file. Not `pkill -f "dnsmasq.*inferno-ncm"`: that pattern
+        # matches this very shell's command line (which names dnsmasq and the pid file), so pkill killed
+        # the shell and dnsmasq never started; iOS's DNS queries then met "port 53 unreachable".
+        sh('[ -f /run/inferno-ncm-dnsmasq.pid ] && kill $(cat /run/inferno-ncm-dnsmasq.pid) 2>/dev/null; sleep 1')
+        sh('dnsmasq --conf-file=/dev/null --pid-file=/run/inferno-ncm-dnsmasq.pid '
+           '--listen-address=%s --bind-interfaces --no-resolv --server=8.8.8.8 --server=1.1.1.1 '
+           '--dhcp-range=%s.10,%s.50,12h --dhcp-option=3,%s --dhcp-option=6,%s '
            '--log-facility=/var/log/inferno-ncm-dnsmasq.log --log-queries --dhcp-authoritative'
-           % (args.tap, args.host.rsplit('.', 1)[0], args.host.rsplit('.', 1)[0],
+           % (args.host.split('/')[0], args.host.rsplit('.', 1)[0], args.host.rsplit('.', 1)[0],
               args.host.split('/')[0], args.host.split('/')[0]))
+        sh('ss -lun | grep -q "%s:53 " && echo DNS-LISTENING || echo DNS-NOT-LISTENING' % args.host.split('/')[0])
 
     counts = {'rx': 0, 'tx': 0}
 

@@ -37,6 +37,13 @@ for i in $(seq 1 40); do
   grep -q PING-OK $L && break
 done
 $SSHC 'cat bridge.log | head -20; ip -br addr show ncm0; sudo tail -20 /var/log/inferno-ncm-dnsmasq.log; ping -c3 192.168.77.2' >> $L 2>&1
+$SSHC 'grep -E "DNS-(NOT-)?LISTENING" bridge.log | tail -1; getent hosts en.wikipedia.org >/dev/null && echo COMPANION-DNS-OK' >> $L 2>&1
 log "network checks done; app keeps recording until try-app finishes"
+# NET_TOUR_PLAN=plan.json: with the network up, tour network-dependent built-in apps on this session.
+if [ -n "${NET_TOUR_PLAN:-}" ]; then
+  SOCK=$(grep READY $WORK/session-$NAME.log | sed 's/.*vnc=//' | tail -1)
+  python3 companion/app-tour.py --report $B --socket $SOCK --plan $NET_TOUR_PLAN --output $B/nettour --freeze-dir $B/nettour-freeze >> $L 2>&1
+  log "net tour rc=$?"
+fi
 wait $TRY
 log "DONE $NAME"

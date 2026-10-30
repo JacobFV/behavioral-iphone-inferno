@@ -470,3 +470,34 @@ under a new name, or wait for the old one to exit.
 **Generic touches.** `interact.sh` had per-app coordinates only; corpus apps get a generic exploration
 (tap near the top, scroll, back, tap lower, swipe sideways) so their clips show a response, not just a
 first screen.
+
+## 2026-10-30 03:14: the emulated iPhone is on the internet
+
+**Safari loaded https://en.wikipedia.org over the USB NCM bridge** (`evidence/network-ncm-5/`).
+Run 5 (NetHelper on `en1` with `IFF_UP`, bridge setup requests, `setsid` bridge) was the first with
+frames flowing: the first ~15 s of bulk-OUT writes time out (iOS has not brought the function up yet),
+then the bridge counts climb (198 from / 94 to the phone after a minute, 850/849 after DNS worked).
+`ip neigh` in the companion shows 192.168.77.2 at `de:ad:be:ef:12:dd` (the phone's NCM MAC), and
+companion → phone ping is 6–20 ms (TCG). So `en1` was the right interface.
+
+**The last blocker was DNS, and it was the pkill trap again.** tcpdump on `ncm0` showed iOS asking
+192.168.77.1:53 for `iphonesubmissions.apple.com`, `time.apple.com` etc. and getting ICMP "port
+unreachable": no DNS server was listening. The bridge started dnsmasq with
+`sh -c 'pkill -f "dnsmasq.*inferno-ncm"; dnsmasq … --pid-file=/run/inferno-ncm-dnsmasq.pid …'`; that
+pattern matches the `sh -c` command line itself, so pkill killed the shell before dnsmasq ran.
+Started a forwarder by hand (`--listen-address=192.168.77.1 --bind-interfaces --no-resolv
+--server=8.8.8.8`) on the live session and replies flowed at once; the bridge now stops the old
+instance by its pid file and prints `DNS-LISTENING`/`DNS-NOT-LISTENING`.
+
+**TLS works with full-size segments**: tcpdump showed complete handshakes and 1440-byte segments
+from Wikipedia's CDN (151.101.x) and Akamai, so the NTB16 framing carries MTU-size frames both ways.
+
+**Safari crashed once.** The first attempt (started before DNS worked, then reloaded) died with
+`EXC_BAD_ACCESS` in the UI process (CoreFoundation ← WebCore ← WebKit ← JavaScriptCore, thread 0).
+Reopening Safari from the dock loaded the article and stayed up. One crash, not yet reproduced;
+watch for it on the network tour.
+
+**Next:** `NET_TOUR_PLAN` in `net-test.sh` tours App Store, Weather, Stocks, News, Maps, Podcasts, TV,
+Books, Music, Mail and Safari on a networked session (`plan-net.json`); the session runs beside the
+other lanes (`INFERNO_ALLOW_CONCURRENT=1`). Sign-ins: the session's VNC socket is printed on the
+`READY` line, for a person to drive.
