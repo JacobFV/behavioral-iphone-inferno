@@ -62,3 +62,27 @@ with that in mind.
 ## Results
 
 (appended after the trials)
+
+**Ran 12:05–13:44 on 2026-10-30; stopped after 15 of 24 trials.** Deviation from the plan, stated: I
+stopped handing out trials once every arm had met its pre-registered falsifier (≥ 3 of 8 frozen); the
+9 unrun trials are in `~/inferno-chain/exp1/trials-unrun.txt`. In-flight trials were allowed to finish.
+
+| arm | frozen | completed | error | apps done before the freeze (detector) |
+|---|---|---|---|---|
+| base | 5 | 0 | 0 | 3, 5, 7, 3, 6 |
+| delay | 4 | 0 | 1 | 5, 5, 5, 3 |
+| single | 5 | 0 | 0 | 3, 5, 4, 3, 11 |
+
+The error (trial 11) was the harness, not the guest: the freeze detector opened a frame the recorder
+was still writing (`UnidentifiedImageError`); fixed in `app-tour.py` the same afternoon.
+
+**Verdict:** both hypotheses falsified at this load. Delivering FRAME_PROCESSED one frame later did not
+reduce the freeze (4/4), and neither did removing cross-vCPU concurrency (5/5). Base froze 5 of 5, so
+the experiment was informative. The detector fires up to two apps after the onset; the frames show the
+display usually stopping at the *first or second* app launch, typically on a blank launch screen with
+the clock stopped (e.g. trial 2: 16 captures over 160 s, all at 12:22).
+
+**What it suggests:** with 6–7 emulators sharing the host, the freeze went from ~45% of sessions to
+essentially every session, early. A host-load dependence points at something paced by host time.
+Experiment 2 (`FREEZE_EXPERIMENT_2.md`) tests the one display signal the model paces by the host
+console refresh: OUTPUT_READY.
