@@ -576,3 +576,44 @@ session; `build_tour.py` takes the directory that *contains* ffmpeg (`~/inferno-
 **Open:** the compositor freeze (≈45% of sessions; now the dominant cost); Maps and Stocks crash at launch;
 NetNewsWire does not stay open; SwiftTerm fails `hfsplus add` into the 100 MB recovery ramdisk; Interests
 and CompositionalLayoutsKit exceed the import bounds; CardsAgainst needs launch images by name.
+
+## 2026-10-30 (12:00): disk, a freeze experiment, and what the prune cost
+
+**Disk.** The peer was at 94% (109G free). Deleted 275 finished `app-import` directories (every
+`session-*`, `*-prep`, `*-stage` and `tour-boot-*`): 107G freed, Inferno state 168G → 61G, peer 217G free.
+Kept: the setup-complete base chain (`fresh-boot-r6`, `fresh-r6`, `cache-r6`, `art-r6`, `flatk-r6`,
+`flatd-r6`, `grow-r6`, `kb-r6`, `seed-r6`, `iv-r6`, `insp-r6`, `ain-r6`, `verify-r6`), `runtime-r6/r7`,
+`ipa-demo-r2` and the small `*-build` dirs. Before deleting, every kept qcow2's backing chain was read
+with the pinned qemu-img (it needs `LD_LIBRARY_PATH=$T/root/usr/lib/aarch64-linux-gnu`, as
+`disk_overlay.py` sets it; called bare it fails on `liburing.so.2`): all 18 chain members are inside
+the kept set or `images/`. Every path `runtime-r7/runtime.json` references still exists. The list and
+sizes are in `~/inferno-chain/prune-2026-10-30.tsv`; JSON/log/txt files under 1 MB from each deleted
+directory are in `~/inferno-chain/session-reports-2026-10-30/reports.tar.gz`.
+
+**What the prune cost, stated plainly.** Two things I should have checked first and did not:
+- `cuts-v3.json` references 31 session directories; their raw frames are gone. The rendered
+  `iphone-on-linux-app-tour-v3.mp4` and `part2-v3.mp4` are kept, so a v4 can only *append* to v3.
+- The page-2 tour boots (`tour-boot-23/24`) were deleted before anyone reviewed their frames. The
+  tour is being re-recorded (`after-crash-page2.sh`, pass 4).
+- Session `serial.log` files were over the 1 MB cut-off, so the start-crash texts for Velik,
+  CompositionalDiffable, Sol, SwiftUIKit and NetNewsWire went with them. They reproduce, so a
+  crash lane (`tour/crash-lane.sh`) re-runs them and keeps full serial logs.
+The rule for next time: *before pruning, grep every spec/cut/plan file for paths, and archive
+serial logs regardless of size* (they compress well).
+
+**Freeze experiment 1** is pre-registered in `FREEZE_EXPERIMENT_1.md` (commit 72656e6, before any
+trial). One experiment binary for all arms: the pinned source f37ad49 plus a default-off
+`completion-delay-ns` property on the display pipe (FRAME_PROCESSED from a virtual-clock timer,
+counted per submit). Arms: base, delay (16.67 ms), single-thread TCG. 24 block-randomised trials, 4
+lanes (`tour/exp-freeze.sh`), each a fresh boot plus the 23-app page-1 plan with freeze detection.
+
+**Building the experiment binary on the peer** (`tour/build-exp.sh`): an isolated worktree
+(`.local-build/source-exp`) and build dir (`.local-build/build-exp`), so the pinned build and its
+manifest are untouched. The peer has no GLib/pixman/libpng/libfdt/libslirp dev packages (the original
+binary was built on Dell-gb10-1, which has them system-wide), and meson stops at "glib-2.0 not found".
+Without root: `apt-get download` the 13 `-dev` debs (plus `libfdt1`, `libslirp0`), `dpkg-deb -x` into
+`.local-build/packages-exp`, rewrite `prefix=/usr` in their `.pc` files, re-point the dangling `.so`
+dev symlinks at `/usr/lib/aarch64-linux-gnu`, and put that prefix first in PKG_CONFIG_PATH, CPPFLAGS,
+LDFLAGS (with an rpath) and PATH. libfdt ships no `.pc`; configure finds it as a plain library once the
+include and lib dirs are on the flags. Full build at -j12: about 10 minutes. Binary
+`ae9375211716…`, manifest `.local-build/build-exp-manifest.json` (marked EXPERIMENT).
