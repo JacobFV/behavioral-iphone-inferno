@@ -650,3 +650,12 @@ bring-up landed on the App Library's first-run sheet instead of the app, so it i
 **A pinned-source trap:** `stage-import` checks that companion sources haven't changed since
 `prepare-import`. Editing `app-tour.py` while a prepare was in flight failed that one stage
 ("Pinned source changed"). Commit tooling changes between imports, not during them.
+
+**Correction to the 12:00 prune entry: the loss was total for the video clips.** The prune deleted the
+source frames of every clip in `cuts-part2.json` and `cuts-v3.json`: 0 of 1,324 frames remain
+(`cuts-local.json` survived only because its frames had been copied to `video-frames/`). Every phone
+recording is meant to be a standalone, reusable video, so this is the expensive kind of mistake. **The
+rule from now on: never delete a session's `rec/` frames until its clips are exported.** Before
+pruning any session, copy its frames or encode them to mp4 under `~/inferno-chain/clips/`, then
+delete. Disks (`*.qcow2`) may go once a session is finished; frames and serial logs may not. The
+experiment, crash and rerun lanes delete only qcow2 disks and keep every `rec/` directory.
