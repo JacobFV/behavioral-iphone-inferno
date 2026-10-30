@@ -438,3 +438,35 @@ SwiftUICore. HelloSwiftUI happened not to (no SwiftUICore load command), which i
 now rewrites that load command's path to `SwiftUI.framework/SwiftUI` (it fits in place; `ldid` re-signs
 afterwards): exactly what `$ld$previous` would have produced. SwiftUIKit and both Clendar builds needed
 it. The proper fix is in the toolchain's link step; this keeps already-built IPAs usable.
+
+## 2026-10-30 (early): three emulators at once, and the OSS corpus
+
+**Why a second lane, and why it is safe.** `stage-import.py` refused to stage while any other
+`qemu-system` ran (`no_running_emulator`). That guard predates per-session overlays: every try-app
+session now writes only its own new overlay above ancestors that were made read-only (`chmod a-w`)
+after preservation, and VNC/QMP endpoints are per-session sockets under each session's directory or a
+fresh `/tmp/inferno-boot-*`. `INFERNO_ALLOW_CONCURRENT=1` skips the refusal (the inventory is still
+recorded in the stage report, with `concurrent_allowed: true`). First concurrent stage: C-SwiftUI2048
+staged `eligible: true` while queue D's network session was booting. Two corpus lanes (A, B) plus
+queue D now run together: three guests at 2 vCPU each on the 20-core peer.
+
+**Corpus import dry-run** (`app-import.py` on each of toolchain #4's 25 IPAs): 19 pass as built. Fixed
+in `prepare-swift-ipa.py`:
+- *SwiftUI2048*: `UIDeviceFamily` was `[1, 2, 6]` (6 = Mac Catalyst); the importer takes iPhone/iPad
+  only. Preparation now keeps members 1 and 2, and writes `[1]` (iOS's own default) when the key is absent.
+- *Sol*: a font shipped with mode 0775 ("Additional executable files unsupported"); preparation already
+  writes non-Mach-O files 0644.
+- *SwiftTerm*: an embedded framework fat with arm64e; preparation already thins to arm64.
+Not fixed here (bounds shared with the guest-side copy helper, 128 MiB tree / 64 MiB file, so raising
+them means a helper rebuild): *Interests* (one 92 MB `Assets.car`, images apparently stored without
+compression) and *CompositionalLayoutsKit* (175 MB: the project's README demo GIFs are copied into the
+bundle). Sent back to the toolchain.
+
+**Pitfalls.** A failed `prepare-import` leaves its output directory, and the next attempt dies with
+"Output must be new"; the corpus lane clears only its own `C-*` directories before each app. Replacing a
+running bash script's file (scp) can corrupt the run, since bash reads scripts lazily: start a new copy
+under a new name, or wait for the old one to exit.
+
+**Generic touches.** `interact.sh` had per-app coordinates only; corpus apps get a generic exploration
+(tap near the top, scroll, back, tap lower, swipe sideways) so their clips show a response, not just a
+first screen.
