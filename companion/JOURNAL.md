@@ -659,3 +659,36 @@ rule from now on: never delete a session's `rec/` frames until its clips are exp
 pruning any session, copy its frames or encode them to mp4 under `~/inferno-chain/clips/`, then
 delete. Disks (`*.qcow2`) may go once a session is finished; frames and serial logs may not. The
 experiment, crash and rerun lanes delete only qcow2 disks and keep every `rec/` directory.
+
+## 2026-10-30 (16:30): the freeze has a cause, and a candidate fix
+
+**Freeze experiment 2: a guest-clock vblank stops it** (`FREEZE_EXPERIMENT_2.md`). The display model
+raised OUTPUT_READY (the guest's frame tick) only from the host console refresh, so its cadence in
+guest time depended on VNC clients and host load. A default-off `vblank-ns` property raises it from a
+QEMU_CLOCK_VIRTUAL timer instead. At a load where the stock path froze in every session:
+
+| arm | froze / n | 95% CI |
+|---|---|---|
+| base | 5/5 | 48–100% |
+| vblank (16.67 ms) | 0/5 | 0–52% |
+| vblank + complete-at-vblank | 0/4 | 0–60% |
+
+Fisher one-sided vs base: p ≈ 0.004 and 0.008; pooled 0/9 vs 5/5 p ≈ 0.0005. Every vblank trial ran
+all 23 apps with the clock advancing on screen. A network tour on the vblank binary also ran its
+whole plan, where every network tour on the stock binary had frozen part-way. **Supported, not yet the
+default:** the plan still needs ≥ 10 confirming sessions (≥ 5 at low load) and an animation-speed check.
+
+**How to use it now:** experiment binary `.local-build/build-exp2/qemu-system-aarch64` with manifest
+`.local-build/build-exp2-manifest.json` (built by `tour/build-exp.sh 2`), and
+`BOOT_EXTRA="--qemu-global apple-display-pipe-v4.vblank-ns=16666667"` via `QEMU_BIN`/`QEMU_MANIFEST`
+in `session.sh` (see `tour/exp-freeze.sh`).
+
+**Maps and Stocks.** Built-in sessions have no crash printer (it lives in the per-import launch
+wrapper), so `tour/builtin-crash.sh` imports a harmless app first. With it: `MapKit.SnapshotService`
+crashed 23 times with exactly Velik's fault (SIGSEGV at 0x88, VectorKit+6236612), MapKit's Metal
+renderer with no Metal device. Maps itself left no report; that it dies the same way is an inference.
+Stocks left no report at all; its cause is still unknown.
+
+**Recordings kept.** Every experiment, crash and network session recorded today is encoded whole to
+`~/inferno-chain/clips/sessions/` (31 mp4s plus posters, `tour/export-sessions.py`), so their frames
+outlive any future prune.
