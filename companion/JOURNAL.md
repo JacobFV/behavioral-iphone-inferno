@@ -371,3 +371,29 @@ to the last page shown, and the App Library's first-run "Welcome to App Library"
 everything. Page 2 holds Files, Find My, Shortcuts, iTunes Store, Translate, Contacts, Watch, Tips,
 a Utilities folder, Feedback and Imported Demo. Pass 4 (`plan-builtin-pass4.json`) presses Home twice
 before each swipe.
+
+## 2026-10-30 (early): networking attempt 3, and what it showed
+
+The usbmuxd fix worked: with usbmuxd stopped in the companion, `ncm-mode.py select 5` succeeded
+("active config now 5", mode bytes 5,3,3). Config 5 is: if0 PTP-style (6/1/1), if1 usbmux (255/254/2),
+if2 CDC-NCM control (2/13), if3 NCM data (10/0/1, alt 0 and alt 1; IN 0x87, OUT 0x05, 512-byte packets).
+
+Three separate problems were then in the way, found in this order:
+1. **The bridge never ran.** `sudo nohup python3 ncm-bridge.py &` inside a one-shot `ssh` died with the
+   session: `bridge.log` empty, no `ncm0`. Now `setsid nohup … </dev/null &` and a BRIDGE-RUNNING check.
+2. **The companion's root disk (2.4 GB) was full** (apt cache), so files written there silently came
+   out empty; one copy of `ncm-bridge.py` was truncated to nothing. `apt-get clean` freed 336 MB; the
+   test now cleans and re-copies the bridge each run.
+3. **The helper was configuring the wrong interface.** Started by hand, the bridge brought up `ncm0`
+   and the gateway, but every OUT transfer timed out (ETIMEDOUT, 2 s) and no frame came from the phone.
+   The probe's screen explains it: `en0 UP,RUN 192.168.77.2` was already there at 01:39, a minute
+   *before* configuration 5 was selected, and the list did not change after it (`en1` stayed `down`).
+   So `en0` is some other interface; the helper (polling for `en0`) addressed it, and the actual NCM
+   interface was never brought up, so its driver never armed its endpoints. NetHelper now targets
+   `en1` and sets IFF_UP before adding the address; the probe now lists every IONetworkInterface with
+   its provider classes, so the next run shows which BSD name belongs to the NCM function instead of
+   relying on this inference.
+
+The bridge also now sends what host NCM drivers send before data flows (SET_NTB_FORMAT NTB16,
+SET_NTB_INPUT_SIZE 16384, SET_ETHERNET_PACKET_FILTER 0x1F) and resets the data interface alt 0 -> 1.
+The phone accepted all three requests; on their own they did not unblock the OUT endpoint.
