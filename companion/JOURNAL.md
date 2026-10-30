@@ -617,3 +617,36 @@ dev symlinks at `/usr/lib/aarch64-linux-gnu`, and put that prefix first in PKG_C
 LDFLAGS (with an rpath) and PATH. libfdt ships no `.pc`; configure finds it as a plain library once the
 include and lib dirs are on the flags. Full build at -j12: about 10 minutes. Binary
 `ae9375211716…`, manifest `.local-build/build-exp-manifest.json` (marked EXPERIMENT).
+
+## 2026-10-30 (14:00): experiment 1 says no; why apps crash at start
+
+**Freeze experiment 1 falsified both hypotheses** (`FREEZE_EXPERIMENT_1.md`): 14 of 15 trials froze.
+Base 5/5, FRAME_PROCESSED one frame later 4/4 (+1 harness error), single-threaded TCG 5/5. So neither
+the zero-latency completion nor two vCPUs racing on it is the trigger. What changed instead was the
+freeze *rate*: with 6–7 emulators on the host it froze in essentially every session, usually at the
+first or second app launch (a blank launch screen, clock stopped), against ~45% per session with 2–3
+emulators. Experiment 2 tests the one host-paced display signal, OUTPUT_READY (`FREEZE_EXPERIMENT_2.md`).
+
+**A detector race, fixed:** `app-tour.py`'s freeze check opened the newest recorded PNG while the
+recorder was still writing it (`UnidentifiedImageError`, trial 11). It now uses the newest frame that
+decodes.
+
+**Start crashes, with full crash text** (`tour/crash-lane.sh`, `tour/rerun-lane.sh`, summarised by
+`tour/crash-summary.py`; symbols by `tour/macho-sym.py` on the app binary):
+
+| app | where it dies | class |
+|---|---|---|
+| Velik | SIGSEGV at 0x88 inside VectorKit, from its own MKMapView at launch | emulator: MapKit renders with Metal, and the guest has no Metal device |
+| CompositionalDiffable | uncaught exception from its `cell(collectionView:indexPath:item:)` into UIKit's dequeue, with an assertion-handler frame | toolchain, probably: collection-view cell nibs from `nibc.py` |
+| Sol | uncaught exception in `-[SOLAddLocationViewController initWithNibName:bundle:]` | app vs SDK: it builds a `UISearchDisplayController`, which UIKit refuses for apps linked against an iOS 13+ SDK; an Xcode build crashes the same way |
+
+**Now running** (no crash report of their own): NetNewsWire built with its App Group entitlement
+(`NetNewsWire-ent`; the Feeds list with its 12 default feeds; so the earlier SIGTRAP really was the
+missing container, and containermanagerd honours an ad-hoc entitlement here), CardsAgainst with the
+toolchain's launch-image fix (its "Waiting For Players" lobby), SwiftTerm with bitcode stripped from
+`libswift_Concurrency` (a terminal view and key bar). The rebuilt SwiftUIKit did not crash, but
+bring-up landed on the App Library's first-run sheet instead of the app, so it is not yet seen.
+
+**A pinned-source trap:** `stage-import` checks that companion sources haven't changed since
+`prepare-import`. Editing `app-tour.py` while a prepare was in flight failed that one stage
+("Pinned source changed"). Commit tooling changes between imports, not during them.
