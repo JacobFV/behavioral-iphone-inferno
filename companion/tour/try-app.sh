@@ -18,6 +18,8 @@ nice -n 5 python3 companion/stage-import.py --session $S --session-sha256 $(s $S
 TOUR_BASE=$A/$NAME-stage/recovery-run/report.json $TOUR/session.sh $NAME >> $L 2>&1 &
 B=$A/session-$NAME
 until grep -q READY $WORK/session-$NAME.log 2>/dev/null; do sleep 15; done
+# INTERACT=1: after the app has had 40 s to draw, run its touch script (interact.sh) while recording.
+[ "${INTERACT:-0}" = 1 ] && (sleep 40; $TOUR/interact.sh $NAME $B >> $L 2>&1) &
 sleep $WATCH
 grep -a -E "INFERNO_LAUNCHER_V1 event=open-callback" $B/serial.log | tail -3 >> $L
 python3 companion/qmp_control.py --report $B finish-observation >> $L 2>&1
