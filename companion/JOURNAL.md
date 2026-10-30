@@ -44,6 +44,15 @@ path on every host (stage records hash absolute paths).
 8. **Use it.** Every boot from the base starts at the lock screen:
    `companion/tour/tour-cycle.sh PLAN N` unlocks, dismisses system alerts, and tours apps from
    a JSON plan, restarting on the display freeze.
+9. **Install apps.** `companion/tour/prepare-swift-ipa.py IN.ipa OUT.ipa --ldid …` (thin, strip
+   extensions, normalise the device family, re-sign), then `companion/tour/try-app.sh NAME OUT.ipa`
+   imports it onto the base, boots, opens it and records (`INTERACT=1` adds touches). To run lanes side
+   by side, set `INFERNO_ALLOW_CONCURRENT=1` in **every** lane.
+10. **Network.** Start `companion/usb-companion.py` (a small Linux VM attached as the phone's USB host),
+   then `USBDIR=… USB_SSH_PORT=… companion/tour/net-test.sh NAME IPA SECONDS`: it switches the phone to
+   CDC-NCM (config 5, with usbmuxd stopped), starts `net/ncm-bridge.py` (userspace NTB16 bridge to a
+   TAP, NAT, dnsmasq on 192.168.77.1), and the import's launch wrapper configures `en1` as
+   192.168.77.2. Expect `PING-OK` and `DNS-LISTENING`; `NET_TOUR_PLAN=plan.json` tours apps online.
 
 ## 2026-10-29: a second host, a fresh device to Home, and 21 apps
 
@@ -550,3 +559,20 @@ boot.py has exited or after `BOOT_TIMEOUT` (1500 s), and try-app reports `BOOT F
 
 **SwiftTerm** passes import validation but `prepare-import` fails at `hfsplus add` into the 100 MB
 recovery ramdisk (the app is 30 MB); likely a space bound in the recovery image. Not pursued yet.
+
+## 2026-10-30 (12:00): v3 video, and where things stand
+
+**Reruns.** Lanes F (`C-*-r2`) and G (`*-r9`) re-ran the freeze victims; about half froze again, but
+`livewin.py`-style windows (the last capture where the status bar still changed) let each clip stop at
+the freeze, so most apps have usable footage from at least one run. The page-2 tour (pass 4) needed
+`plan-builtin-pass4.json` synced to the peer (it had never been copied), then completed on its retry boot.
+
+**Video v3** (400 s, jvboid.dev `iphone-on-linux-app-tour-v3.mp4`): part 1 as before; part 2 on the
+internet (Safari: Wikipedia, google.com; Weather live; App Store); part 3 Linux-built apps (Hello
+SwiftUI/Mixed/Async, swift-2048, Mac-free Hello Storyboard, Clendar, Puzzles, Reader, ACEDrawingView,
+jot); part 4 the open-source corpus built on Linux (18 apps). `make_cuts2.py` with `skip`/`until` per
+session; `build_tour.py` takes the directory that *contains* ffmpeg (`~/inferno-chain/ffmpeg`).
+
+**Open:** the compositor freeze (≈45% of sessions; now the dominant cost); Maps and Stocks crash at launch;
+NetNewsWire does not stay open; SwiftTerm fails `hfsplus add` into the 100 MB recovery ramdisk; Interests
+and CompositionalLayoutsKit exceed the import bounds; CardsAgainst needs launch images by name.
