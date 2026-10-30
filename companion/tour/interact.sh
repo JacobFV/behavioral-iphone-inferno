@@ -5,7 +5,7 @@
 # measured from recorded frames of each app.
 set -u
 cd "$(dirname "$0")/../.."
-APP=$(echo "$1" | sed -E 's/^(MF|L)-//; s/-r[0-9a-z]+$//; s/-ent$//'); B=$2
+APP=$(echo "$1" | sed -E 's/^(MF|L|C)-//; s/-r[0-9a-z]+$//; s/-ent$//'); B=$2
 sc(){ python3 -c "print(round($1/$2*32767))"; }
 c(){ companion/run owned-control --report $B --output $B/act-$(date +%s%N) "$@" >/dev/null 2>&1; }
 tap(){ c tap $(sc $1 832) $(sc $2 1792) --duration-ms 120; sleep ${3:-8}; }
