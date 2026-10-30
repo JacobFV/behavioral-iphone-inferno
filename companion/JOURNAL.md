@@ -416,3 +416,14 @@ tool): the SIGTRAP is in `ExtensionContainersFile.filePath`'s lazy initialiser, 
 path lives in the App Group container, which confirms the missing-entitlement diagnosis; the
 entitlement-signed build (`NetNewsWire-ent`) is queued to show whether containermanagerd grants a
 group container to an ad-hoc signature on this device.
+
+**Video, part 2.** The pruning on 29 October removed most of the tour boots whose frames made the first
+video (1,005 of its 1,162 frames are gone), so the first video is kept as an mp4 and part 2 is built
+separately and joined with ffmpeg's concat demuxer (`-c copy`; both are h264 high, 1920x1080, 30 fps,
+yuv420p). `tour/make_cuts2.py` turns try-app sessions into clips: frames after bring-up (the newest
+`bring-*` action directory), evenly subsampled to a target length, with the true recorded-to-screen
+speed-up on each clip. Part 2 (49 s): Hello SwiftUI, Hello Mixed, Hello Async, swift-2048 and Notes Demo
+built on Linux; Hello Storyboard, Puzzles, vfr Reader and ACEDrawingView built by Xcode on the runner;
+a closing card on networking. Published on jvboid.dev (`iphone-on-linux-app-tour-v2.mp4`, 297 s) with a
+results table. These clips are static first screens; queue D re-runs the apps with `INTERACT=1`, so the
+next cut can show them responding, plus the Mac-free builds.
