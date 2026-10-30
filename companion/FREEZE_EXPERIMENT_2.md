@@ -58,3 +58,42 @@ Unmeasured assumption, stated: 16.67 ms is the iPhone 11 panel's refresh. The de
 ## Results
 
 (appended after the trials)
+
+**Ran 13:44–16:04 on 2026-10-30; 14 trials** (the user stopped the series at 14; 10 unrun trials are
+listed in `~/inferno-chain/exp2/trials-unrun.txt`). Deviations, stated: n is 5/5/4 rather than 8 per
+arm; and for part of the run three non-experiment lanes ran beside it (a vblank network tour, the
+page-2 re-tour, a crash capture) where the plan allowed two. That extra load works against the vblank
+arms, not for them.
+
+| arm | frozen | completed | freeze rate | 95% CI (Clopper–Pearson) | apps done |
+|---|---|---|---|---|---|
+| base | 5 | 0 | 5/5 = 100% | 48–100% | 12, 3, 3, 3, 3 |
+| vblank | 0 | 5 | 0/5 = 0% | 0–52% | 23 ×5 |
+| vblank + complete-at-vblank | 0 | 4 | 0/4 = 0% | 0–60% | 23 ×4 |
+| either vblank arm | 0 | 9 | 0/9 = 0% | 0–34% | |
+
+Fisher exact, one-sided, against base: vblank p = 1/252 ≈ 0.004; vblank+complete p = 1/126 ≈ 0.008;
+both vblank arms pooled p = 1/2002 ≈ 0.0005.
+
+Checks that a "completed" really was a moving display (not a detector miss): in X-113-vblank the
+status-bar clock advances 3:34 → 3:47 → 4:04 across the recording while apps open and draw (Books'
+"Get Started" sheet, then Home). The vblank arms rendered normally throughout (Settings, Clock, Photos
+etc.). Separately, a network tour on the vblank binary (`session-NetTour6vb`, not randomised, not
+counted) ran its whole plan (Safari on two sites, App Store, News, Podcasts, TV, Weather, Books, Music,
+Mail) without freezing, where network tours 2–4 on the stock binary had all frozen part-way.
+
+**Verdict: H-vblank is SUPPORTED by the pre-registered rule** (base ≥ 5 frozen, arm ≤ 1 frozen):
+raising OUTPUT_READY from a guest-clock 60 Hz timer instead of the host console refresh took the freeze
+from 5/5 to 0/9 at a load where it otherwise happens in nearly every session. Delivering FRAME_PROCESSED
+on the tick as well (complete-at-vblank) made no visible further difference; plain vblank is sufficient.
+
+It is **not yet a default change.** The plan requires ≥ 10 further confirming sessions of the chosen
+arm, at least 5 at low load (1–2 emulators), and those have not run. Also unchecked: whether
+animations run at the right speed with a 16.67 ms guest-time tick (the Clock stopwatch is the obvious
+test), and whether the host-console path still needs OUTPUT_READY for anything else.
+
+What this says about the mechanism (a hypothesis, not tested here): the compositor's frame loop is
+driven by OUTPUT_READY, and when that tick arrives at host-paced, irregular guest-time intervals the
+swap bookkeeping can enter the stuck state documented in `FREEZE_HYPOTHESES.md` (H1/H1a). A guest-time
+vblank keeps the tick regular. Host load made the old path worse, which is why the freeze rose from
+~45% to ~100% of sessions as more emulators shared the host.
