@@ -24,6 +24,9 @@ case $APP in
   Tipulator) tap 416 1300 6; tap 250 1300 6; tap 580 1450 6; swipe 416 1000 416 500 ;;
   swift-2048) tap 416 900 20
     for d in "416 1300 416 600" "700 900 130 900" "416 600 416 1300" "130 900 700 900"; do set -- $d; swipe $1 $2 $3 $4 300 10; done ;;
+  SwiftUI2048)
+    for d in "416 1300 416 600" "700 900 130 900" "416 600 416 1300" "130 900 700 900" "416 1300 416 600" "700 900 130 900"; do
+      set -- $d; swipe $1 $2 $3 $4 300 8; done ;;
   NetNewsWire|Clendar|SwiftUIKit) tap 416 600 15; back 10; swipe 416 1300 416 500; tap 416 900 15 ;;
   *) # Generic exploration for apps without a measured script (the OSS corpus): open the first
      # thing near the top, scroll, go back, open something lower down, then a sideways swipe.

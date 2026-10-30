@@ -501,3 +501,28 @@ watch for it on the network tour.
 Books, Music, Mail and Safari on a networked session (`plan-net.json`); the session runs beside the
 other lanes (`INFERNO_ALLOW_CONCURRENT=1`). Sign-ins: the session's VNC socket is printed on the
 `READY` line, for a person to drive.
+
+## 2026-10-30 (04:10): network apps on a networked session, and a lane mistake
+
+**Network tour 1** (`NET_TOUR_PLAN=plan-net.json` on session NetTour1, DNS-LISTENING, PING-OK):
+- *Weather* shows live data: Cupertino, partly cloudy, hourly forecast, AQI 24, sunrise/sunset. The
+  first built-in app to show real downloaded content.
+- *App Store, News, Podcasts, TV* reach their first-run "Welcome / What's New" sheets (they need a
+  Continue tap; pass 2 does that).
+- *Maps* and *Stocks* still crash at launch (6 reports each), network or not.
+- From TV onward the display stopped changing (the known compositor freeze), so Books, Music, Mail and
+  Safari recorded nothing new. Pass 2 (`plan-net2.json`) repeats them after the Continue taps and adds a
+  web tour: the probe opens the next of five sites each time it becomes active again, so the plan taps
+  Safari's "◀ Network Probe" breadcrumb (125,73 in the 832x1792 panel) after each page.
+- The probe's `NSLog` lines (`INFERNO_NET_OPEN`, `INFERNO_NET_PROBE`) never reach the serial console;
+  only the launch wrapper's own prints do. Read the probe's state from its screen.
+
+**A mistake worth not repeating.** Queue D's stages all failed between 03:33 and 03:44 with "An emulator
+is already running": the corpus lanes had emulators up and queue D did not set
+`INFERNO_ALLOW_CONCURRENT`. An opt-in that relaxes a guard must be set by *every* lane that runs while
+another lane is up, not just the new one. Queue D was re-run as lane D2 (`-r8` names).
+
+**Corpus so far** (generic touches): SwiftUI2048, Artistry, Birthdays (navigated into its add form),
+SaveTheDot (played to "Game Over"), Recipes run. CardsAgainst traps in its own `UIImage.launchImage`
+(called from `MenuViewController.setupLaunchImage`): a force-unwrapped launch image looked up by a
+name the Linux asset step does not produce (sent to the toolchain). SwiftUI2048 gets real swipes now.
