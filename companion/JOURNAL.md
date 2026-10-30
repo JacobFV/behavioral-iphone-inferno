@@ -313,3 +313,26 @@ mode switch never ran and the phone stayed in configuration 4. Now `pkill -f "[n
 script checks for "active config now 5". The USB companion also stops after `--seconds` (default 1800);
 restart it with `usb-companion.py --resume-from OLD --output NEW --seconds 36000` (disk, packages and key
 are kept).
+
+## 2026-10-30: results of the overnight queue (runtime-r7, foreground bring-up, crash dumping)
+
+| App | Built with | Result |
+|---|---|---|
+| Simon Tatham's Puzzles | Xcode (farm) | **runs**: full game list with artwork (Black Box, Bridges, Cube, Dominosa…) |
+| vfr Reader | Xcode | **runs**: "Reader v2.8.8" |
+| ACEDrawingView demo | Xcode | **runs**: drawing canvas with Undo/Redo/Clear and the Black/Pen/Image/Width/Alpha bar |
+| HelloStoryboard | Xcode | **runs, clean**: storyboard, xib card ("Loaded from CardView.xib"), Assets.car colour |
+| HelloSwiftUI / HelloSPM | **Linux** | **run**: SwiftUI list screen (SPM build too) |
+| HelloMixed | **Linux** | **runs**: "Built on Linux — Objective-C says: 0 taps" (Swift + ObjC bridging) |
+| HelloAsync | **Linux** | **runs**: "Swift Concurrency on iOS 14" (embedded `libswift_Concurrency.dylib`) |
+| swift-2048 | **Linux** | **runs** to "Start Game" (twice); gameplay not yet recorded (the first run froze) |
+| Tipulator | Xcode | crashes at start: `EXC_CRASH (SIGABRT)` through `libc++abi` — an uncaught exception |
+| NetNewsWire 6.0 | Xcode | crashes at start: `EXC_BREAKPOINT (SIGTRAP)` in its own code — a Swift trap (likely a missing App Group container) |
+| SwiftUIKit, Clendar | **Linux** | install, open accepted, end on Home; re-runs with crash text queued |
+| jot (JotDemo) | Xcode | rejected at `prepare-import` (to investigate: probably its embedded Pods frameworks) |
+
+**Networking, attempt 2.** The guest half works: the launch wrapper's root child logged
+`INFERNO_NET_CONFIGURED if=en0 addr=0 route=0 publish=0` (address, default route and configd State keys
+all set without error). The host half stopped short: `SET_MODE 3` was accepted (mode bytes 5,3,3) but
+`set_configuration(5)` failed with **EBUSY**, because usbmuxd inside the companion holds the usbmux
+interface. `net-test.sh` now stops usbmuxd and retries the selection (attempt 3 queued).
