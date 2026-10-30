@@ -28,6 +28,34 @@ def thin_arm64(f):
             f.write_bytes(b[off:off + size]); return True
     raise SystemExit('%s: fat Mach-O without a plain arm64 slice' % f)
 
+# SwiftUICore.framework exists from iOS 18. Apple's ld honours `$ld$previous` entries in the SDK's
+# SwiftUICore.tbd and records such symbols against SwiftUI.framework when the deployment target is older;
+# ld64.lld ignores them, so Linux builds link SwiftUICore by name and dyld refuses to launch them on iOS 14
+# ("dependent dylib '.../SwiftUICore' not found"). Rewriting the load command's path does what $ld$previous
+# would have done: the same symbols live in SwiftUI.framework on iOS 14.
+RETARGET = {b'/System/Library/Frameworks/SwiftUICore.framework/SwiftUICore':
+            b'/System/Library/Frameworks/SwiftUI.framework/SwiftUI'}
+
+def retarget_dylibs(f):
+    import struct
+    b = bytearray(f.read_bytes())
+    if b[:4] != b'\xcf\xfa\xed\xfe':
+        return []
+    ncmds, off, done = struct.unpack_from('<I', b, 16)[0], 32, []
+    for _ in range(ncmds):
+        cmd, size = struct.unpack_from('<II', b, off)
+        if cmd in (0xC, 0x80000018, 0x8000001F, 0x23):  # LC_LOAD_DYLIB, _WEAK_, _REEXPORT_, _LAZY_
+            name_off = struct.unpack_from('<I', b, off + 8)[0]
+            start = off + name_off; end = b.index(b'\0', start)
+            new = RETARGET.get(bytes(b[start:end]))
+            if new and len(new) < off + size - start:
+                b[start:off + size] = new + b'\0' * (off + size - start - len(new))
+                done.append(new.decode())
+        off += size
+    if done:
+        f.write_bytes(bytes(b))
+    return done
+
 def main():
     a = argparse.ArgumentParser(description=__doc__)
     a.add_argument('ipa', type=Path); a.add_argument('out', type=Path)
@@ -48,6 +76,7 @@ def main():
         app = next((tmp / 'Payload').glob('*.app'))
         machos = [f for f in app.rglob('*') if f.is_file() and f.read_bytes()[:4] in MAGICS]
         thinned = [str(f.relative_to(tmp)) for f in machos if thin_arm64(f)]
+        retargeted = {str(f.relative_to(tmp)): r for f in machos if (r := retarget_dylibs(f))}
         # innermost first: deepest paths, main executable last
         main_exe = app / __import__('plistlib').loads((app / 'Info.plist').read_bytes())['CFBundleExecutable']
         for f in sorted(machos, key=lambda p: (p == main_exe, -len(p.parts))):
@@ -64,7 +93,7 @@ def main():
                 info.compress_type = zipfile.ZIP_DEFLATED; z.writestr(info, f.read_bytes())
     rec = {'input': str(x.ipa), 'input_sha256': hashlib.sha256(x.ipa.read_bytes()).hexdigest(),
            'output': str(x.out), 'output_sha256': hashlib.sha256(x.out.read_bytes()).hexdigest(),
-           'dropped': dropped, 'thinned_to_arm64': thinned, 'signed_innermost_first': signed}
+           'dropped': dropped, 'thinned_to_arm64': thinned, 'dylib_paths_retargeted': retargeted,'signed_innermost_first': signed}
     x.out.with_suffix('.prepare.json').write_text(json.dumps(rec, indent=2) + '\n')
     print(json.dumps({'output': rec['output'], 'dropped': len(dropped), 'signed': len(signed)}))
 

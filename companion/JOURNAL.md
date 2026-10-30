@@ -427,3 +427,14 @@ built on Linux; Hello Storyboard, Puzzles, vfr Reader and ACEDrawingView built b
 a closing card on networking. Published on jvboid.dev (`iphone-on-linux-app-tour-v2.mp4`, 297 s) with a
 results table. These clips are static first screens; queue D re-runs the apps with `INTERACT=1`, so the
 next cut can show them responding, plus the Mac-free builds.
+
+**Why SwiftUIKit and Clendar (Linux builds) "returned to Home".** With crash text on the console the
+answer was immediate: `Termination Description: DYLD … dependent dylib
+'/System/Library/Frameworks/SwiftUICore.framework/SwiftUICore' not found`. SwiftUICore only exists from
+iOS 18. In the iOS 18 SDK, SwiftUICore.tbd carries `$ld$previous` entries telling Apple's linker to record
+those symbols against SwiftUI.framework when the deployment target is older; ld64.lld does not implement
+`$ld$previous`, so any Linux-built app that uses one of the moved symbols gets a hard dependency on
+SwiftUICore. HelloSwiftUI happened not to (no SwiftUICore load command), which is why it ran. Preparation
+now rewrites that load command's path to `SwiftUI.framework/SwiftUI` (it fits in place; `ldid` re-signs
+afterwards): exactly what `$ld$previous` would have produced. SwiftUIKit and both Clendar builds needed
+it. The proper fix is in the toolchain's link step; this keeps already-built IPAs usable.
