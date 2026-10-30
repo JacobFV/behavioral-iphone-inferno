@@ -58,10 +58,14 @@ def status_strip(recordings):
     from PIL import Image
     import hashlib
     frames = sorted(recordings.glob('chunk-*/observed-*.png'), key=lambda p: p.stat().st_mtime)
-    if not frames:
-        return None
-    strip = Image.open(frames[-1]).convert('L').crop((0, 0, 300, 80))
-    return hashlib.sha256(strip.tobytes()).hexdigest()
+    # The newest file may still be being written by the recorder: use the newest one that decodes.
+    for frame in reversed(frames[-3:]):
+        try:
+            strip = Image.open(frame).convert('L').crop((0, 0, 300, 80))
+        except (OSError, ValueError):
+            continue
+        return hashlib.sha256(strip.tobytes()).hexdigest()
+    return None
 
 
 def main():
